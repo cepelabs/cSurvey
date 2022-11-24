@@ -1,0 +1,633 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblCompassClipartZoomFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 14</value>
+  </data>
+  <data name="lblCompassClipartZoomFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblCompassClipartZoomFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>149</value>
+  </data>
+  <data name="lblCompassClipartZoomFactor.Text" xml:space="preserve">
+    <value>Length (m):</value>
+  </data>
+  <data name="&gt;&gt;lblCompassClipartZoomFactor.Name" xml:space="preserve">
+    <value>lblCompassClipartZoomFactor</value>
+  </data>
+  <data name="&gt;&gt;lblCompassClipartZoomFactor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblCompassClipartZoomFactor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCompassClipartZoomFactor.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="txtScaleMeters.EditValue" type="System.Decimal, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="txtScaleMeters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 12</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="txtScaleMeters.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtScaleMeters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 20</value>
+  </data>
+  <data name="txtScaleMeters.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtScaleMeters.Name" xml:space="preserve">
+    <value>txtScaleMeters</value>
+  </data>
+  <data name="&gt;&gt;txtScaleMeters.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtScaleMeters.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtScaleMeters.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="lblScaleSteps.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 41</value>
+  </data>
+  <data name="lblScaleSteps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 13</value>
+  </data>
+  <data name="lblScaleSteps.TabIndex" type="System.Int32, mscorlib">
+    <value>151</value>
+  </data>
+  <data name="lblScaleSteps.Text" xml:space="preserve">
+    <value>Intervals (m):</value>
+  </data>
+  <data name="&gt;&gt;lblScaleSteps.Name" xml:space="preserve">
+    <value>lblScaleSteps</value>
+  </data>
+  <data name="&gt;&gt;lblScaleSteps.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblScaleSteps.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblScaleSteps.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="txtScaleSteps.EditValue" type="System.Decimal, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="txtScaleSteps.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 39</value>
+  </data>
+  <data name="txtScaleSteps.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtScaleSteps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 20</value>
+  </data>
+  <data name="txtScaleSteps.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtScaleSteps.Name" xml:space="preserve">
+    <value>txtScaleSteps</value>
+  </data>
+  <data name="&gt;&gt;txtScaleSteps.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtScaleSteps.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtScaleSteps.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="chkScaleTextFontUnderline.Location" type="System.Drawing.Point, System.Drawing">
+    <value>171, 129</value>
+  </data>
+  <data name="chkScaleTextFontUnderline.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkScaleTextFontUnderline.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;chkScaleTextFontUnderline.Name" xml:space="preserve">
+    <value>chkScaleTextFontUnderline</value>
+  </data>
+  <data name="&gt;&gt;chkScaleTextFontUnderline.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkScaleTextFontUnderline.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkScaleTextFontUnderline.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="chkScaleTextFontItalic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>141, 129</value>
+  </data>
+  <data name="chkScaleTextFontItalic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkScaleTextFontItalic.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;chkScaleTextFontItalic.Name" xml:space="preserve">
+    <value>chkScaleTextFontItalic</value>
+  </data>
+  <data name="&gt;&gt;chkScaleTextFontItalic.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkScaleTextFontItalic.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkScaleTextFontItalic.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="chkScaleTextFontBold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 129</value>
+  </data>
+  <data name="chkScaleTextFontBold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkScaleTextFontBold.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;chkScaleTextFontBold.Name" xml:space="preserve">
+    <value>chkScaleTextFontBold</value>
+  </data>
+  <data name="&gt;&gt;chkScaleTextFontBold.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkScaleTextFontBold.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkScaleTextFontBold.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="lblScaleTextFontChar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 105</value>
+  </data>
+  <data name="lblScaleTextFontChar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 13</value>
+  </data>
+  <data name="lblScaleTextFontChar.TabIndex" type="System.Int32, mscorlib">
+    <value>165</value>
+  </data>
+  <data name="lblScaleTextFontChar.Text" xml:space="preserve">
+    <value>Font:</value>
+  </data>
+  <data name="&gt;&gt;lblScaleTextFontChar.Name" xml:space="preserve">
+    <value>lblScaleTextFontChar</value>
+  </data>
+  <data name="&gt;&gt;lblScaleTextFontChar.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblScaleTextFontChar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblScaleTextFontChar.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="cboScaleTextFontSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 159</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Buttons1" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Clear</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Items" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Items1" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Items2" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Items3" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Items4" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Items5" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Items6" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Items7" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Items8" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Items9" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Items10" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Items11" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Items12" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Items13" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Items14" xml:space="preserve">
+    <value>36</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Items15" xml:space="preserve">
+    <value>48</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.Items16" xml:space="preserve">
+    <value>72</value>
+  </data>
+  <data name="cboScaleTextFontSize.Properties.NullText" xml:space="preserve">
+    <value>[Default]</value>
+  </data>
+  <data name="cboScaleTextFontSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 20</value>
+  </data>
+  <data name="cboScaleTextFontSize.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;cboScaleTextFontSize.Name" xml:space="preserve">
+    <value>cboScaleTextFontSize</value>
+  </data>
+  <data name="&gt;&gt;cboScaleTextFontSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboScaleTextFontSize.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboScaleTextFontSize.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="lblScaleTextFontSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 162</value>
+  </data>
+  <data name="lblScaleTextFontSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 13</value>
+  </data>
+  <data name="lblScaleTextFontSize.TabIndex" type="System.Int32, mscorlib">
+    <value>163</value>
+  </data>
+  <data name="lblScaleTextFontSize.Text" xml:space="preserve">
+    <value>Size:</value>
+  </data>
+  <data name="&gt;&gt;lblScaleTextFontSize.Name" xml:space="preserve">
+    <value>lblScaleTextFontSize</value>
+  </data>
+  <data name="&gt;&gt;lblScaleTextFontSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblScaleTextFontSize.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblScaleTextFontSize.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="lblScaleColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 200</value>
+  </data>
+  <data name="lblScaleColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
+  </data>
+  <data name="lblScaleColor.TabIndex" type="System.Int32, mscorlib">
+    <value>160</value>
+  </data>
+  <data name="lblScaleColor.Text" xml:space="preserve">
+    <value>Color:</value>
+  </data>
+  <data name="&gt;&gt;lblScaleColor.Name" xml:space="preserve">
+    <value>lblScaleColor</value>
+  </data>
+  <data name="&gt;&gt;lblScaleColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblScaleColor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblScaleColor.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="Label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 231</value>
+  </data>
+  <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 13</value>
+  </data>
+  <data name="Label2.TabIndex" type="System.Int32, mscorlib">
+    <value>169</value>
+  </data>
+  <data name="Label2.Text" xml:space="preserve">
+    <value>Text:</value>
+  </data>
+  <data name="&gt;&gt;Label2.Name" xml:space="preserve">
+    <value>Label2</value>
+  </data>
+  <data name="&gt;&gt;Label2.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;Label2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Label2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtScaleText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 228</value>
+  </data>
+  <data name="txtScaleText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 20</value>
+  </data>
+  <data name="txtScaleText.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;txtScaleText.Name" xml:space="preserve">
+    <value>txtScaleText</value>
+  </data>
+  <data name="&gt;&gt;txtScaleText.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtScaleText.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtScaleText.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblScaleStep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 68</value>
+  </data>
+  <data name="lblScaleStep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 13</value>
+  </data>
+  <data name="lblScaleStep.TabIndex" type="System.Int32, mscorlib">
+    <value>172</value>
+  </data>
+  <data name="lblScaleStep.Text" xml:space="preserve">
+    <value>Min. interval (m):</value>
+  </data>
+  <data name="&gt;&gt;lblScaleStep.Name" xml:space="preserve">
+    <value>lblScaleStep</value>
+  </data>
+  <data name="&gt;&gt;lblScaleStep.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblScaleStep.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblScaleStep.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtScaleStep.EditValue" type="System.Decimal, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtScaleStep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 66</value>
+  </data>
+  <data name="txtScaleStep.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtScaleStep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 20</value>
+  </data>
+  <data name="txtScaleStep.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtScaleStep.Name" xml:space="preserve">
+    <value>txtScaleStep</value>
+  </data>
+  <data name="&gt;&gt;txtScaleStep.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtScaleStep.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtScaleStep.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="chkHideScaleValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 255</value>
+  </data>
+  <data name="chkHideScaleValue.Properties.Caption" xml:space="preserve">
+    <value>Hide value</value>
+  </data>
+  <data name="chkHideScaleValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 20</value>
+  </data>
+  <data name="chkHideScaleValue.TabIndex" type="System.Int32, mscorlib">
+    <value>173</value>
+  </data>
+  <data name="&gt;&gt;chkHideScaleValue.Name" xml:space="preserve">
+    <value>chkHideScaleValue</value>
+  </data>
+  <data name="&gt;&gt;chkHideScaleValue.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkHideScaleValue.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkHideScaleValue.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cboScaleTextFontChar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 102</value>
+  </data>
+  <data name="cboScaleTextFontChar.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboScaleTextFontChar.Properties.Buttons1" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Clear</value>
+  </data>
+  <data name="cboScaleTextFontChar.Properties.NullText" xml:space="preserve">
+    <value>[Default]</value>
+  </data>
+  <data name="cboScaleTextFontChar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 20</value>
+  </data>
+  <data name="cboScaleTextFontChar.TabIndex" type="System.Int32, mscorlib">
+    <value>174</value>
+  </data>
+  <data name="&gt;&gt;cboScaleTextFontChar.Name" xml:space="preserve">
+    <value>cboScaleTextFontChar</value>
+  </data>
+  <data name="&gt;&gt;cboScaleTextFontChar.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.FontEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboScaleTextFontChar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboScaleTextFontChar.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="txtScaleColor.EditValue" type="System.Drawing.Color, System.Drawing">
+    <value />
+  </data>
+  <data name="txtScaleColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 193</value>
+  </data>
+  <data name="txtScaleColor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtScaleColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="txtScaleColor.TabIndex" type="System.Int32, mscorlib">
+    <value>175</value>
+  </data>
+  <data name="&gt;&gt;txtScaleColor.Name" xml:space="preserve">
+    <value>txtScaleColor</value>
+  </data>
+  <data name="&gt;&gt;txtScaleColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ColorPickEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtScaleColor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtScaleColor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>333, 288</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmParametersScale</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.XtraUserControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+</root>

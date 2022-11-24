@@ -139,7 +139,7 @@
     <value>lblPropPenColor</value>
   </data>
   <data name="&gt;&gt;lblPropPenColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPenColor.Parent" xml:space="preserve">
     <value>pnlPenStyle</value>
@@ -166,7 +166,7 @@
     <value>lblPropPenDecorationScale</value>
   </data>
   <data name="&gt;&gt;lblPropPenDecorationScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPenDecorationScale.Parent" xml:space="preserve">
     <value>pnlPenClipartSettings</value>
@@ -193,7 +193,7 @@
     <value>lblPropPenDecorationSpacePercentage</value>
   </data>
   <data name="&gt;&gt;lblPropPenDecorationSpacePercentage.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPenDecorationSpacePercentage.Parent" xml:space="preserve">
     <value>pnlPenClipartSettings</value>
@@ -220,7 +220,7 @@
     <value>lblPropPenWidth</value>
   </data>
   <data name="&gt;&gt;lblPropPenWidth.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPenWidth.Parent" xml:space="preserve">
     <value>pnlPenStyle</value>
@@ -247,7 +247,7 @@
     <value>lblPropPenDecorationAlignment</value>
   </data>
   <data name="&gt;&gt;lblPropPenDecorationAlignment.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPenDecorationAlignment.Parent" xml:space="preserve">
     <value>pnlPenClipartSettings</value>
@@ -274,7 +274,7 @@
     <value>lblPropPenStyle</value>
   </data>
   <data name="&gt;&gt;lblPropPenStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPenStyle.Parent" xml:space="preserve">
     <value>pnlPenStyle</value>
@@ -301,7 +301,7 @@
     <value>lblPropPenDecoration</value>
   </data>
   <data name="&gt;&gt;lblPropPenDecoration.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPenDecoration.Parent" xml:space="preserve">
     <value>pnlPenStyle</value>
@@ -328,7 +328,7 @@
     <value>lblPropPenPattern</value>
   </data>
   <data name="&gt;&gt;lblPropPenPattern.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPenPattern.Parent" xml:space="preserve">
     <value>$this</value>
@@ -366,8 +366,8 @@
   <data name="txtPropPenColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>274, 27</value>
   </data>
-  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="txtPropPenColor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+  <assembly alias="DevExpress.Utils.v22.1" name="DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="txtPropPenColor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.1">
     <value>Combo</value>
   </data>
   <data name="txtPropPenColor.Size" type="System.Drawing.Size, System.Drawing">
@@ -425,7 +425,7 @@
     <value>barDockControlTop</value>
   </data>
   <data name="&gt;&gt;barDockControlTop.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;barDockControlTop.Parent" xml:space="preserve">
     <value>$this</value>
@@ -449,7 +449,7 @@
     <value>barDockControlBottom</value>
   </data>
   <data name="&gt;&gt;barDockControlBottom.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;barDockControlBottom.Parent" xml:space="preserve">
     <value>$this</value>
@@ -473,7 +473,7 @@
     <value>barDockControlLeft</value>
   </data>
   <data name="&gt;&gt;barDockControlLeft.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;barDockControlLeft.Parent" xml:space="preserve">
     <value>$this</value>
@@ -497,7 +497,7 @@
     <value>barDockControlRight</value>
   </data>
   <data name="&gt;&gt;barDockControlRight.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;barDockControlRight.Parent" xml:space="preserve">
     <value>$this</value>
@@ -514,7 +514,7 @@
   <data name="cboPropPenStyle.Location" type="System.Drawing.Point, System.Drawing">
     <value>156, 0</value>
   </data>
-  <data name="cboPropPenStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+  <data name="cboPropPenStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.1">
     <value>Combo</value>
   </data>
   <data name="cboPropPenStyle.Properties.Items" xml:space="preserve">
@@ -554,7 +554,7 @@
     <value>cboPropPenStyle</value>
   </data>
   <data name="&gt;&gt;cboPropPenStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPropPenStyle.Parent" xml:space="preserve">
     <value>pnlPenStyle</value>
@@ -568,7 +568,7 @@
   <data name="txtPropPenWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>156, 27</value>
   </data>
-  <data name="txtPropPenWidth.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+  <data name="txtPropPenWidth.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.1">
     <value>Combo</value>
   </data>
   <data name="txtPropPenWidth.Size" type="System.Drawing.Size, System.Drawing">
@@ -581,7 +581,7 @@
     <value>txtPropPenWidth</value>
   </data>
   <data name="&gt;&gt;txtPropPenWidth.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtPropPenWidth.Parent" xml:space="preserve">
     <value>pnlPenStyle</value>
@@ -592,7 +592,7 @@
   <data name="cboPropPenDecoration.Location" type="System.Drawing.Point, System.Drawing">
     <value>156, 53</value>
   </data>
-  <data name="cboPropPenDecoration.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+  <data name="cboPropPenDecoration.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.1">
     <value>Combo</value>
   </data>
   <data name="cboPropPenDecoration.Properties.Items" xml:space="preserve">
@@ -638,7 +638,7 @@
     <value>cboPropPenDecoration</value>
   </data>
   <data name="&gt;&gt;cboPropPenDecoration.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPropPenDecoration.Parent" xml:space="preserve">
     <value>pnlPenStyle</value>
@@ -665,7 +665,7 @@
     <value>pnlPenStyle</value>
   </data>
   <data name="&gt;&gt;pnlPenStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlPenStyle.Parent" xml:space="preserve">
     <value>$this</value>
@@ -692,7 +692,7 @@
     <value>cmdPropPenCleanClipart</value>
   </data>
   <data name="&gt;&gt;cmdPropPenCleanClipart.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPropPenCleanClipart.Parent" xml:space="preserve">
     <value>pnlPenClipart</value>
@@ -719,7 +719,7 @@
     <value>cmdPropPenBrowseClipart</value>
   </data>
   <data name="&gt;&gt;cmdPropPenBrowseClipart.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPropPenBrowseClipart.Parent" xml:space="preserve">
     <value>pnlPenClipart</value>
@@ -743,7 +743,7 @@
     <value>picPropPenClipartImage</value>
   </data>
   <data name="&gt;&gt;picPropPenClipartImage.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;picPropPenClipartImage.Parent" xml:space="preserve">
     <value>pnlPenClipart</value>
@@ -770,7 +770,7 @@
     <value>lblPropPenClipartImage</value>
   </data>
   <data name="&gt;&gt;lblPropPenClipartImage.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPenClipartImage.Parent" xml:space="preserve">
     <value>pnlPenClipart</value>
@@ -797,7 +797,7 @@
     <value>pnlPenClipart</value>
   </data>
   <data name="&gt;&gt;pnlPenClipart.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlPenClipart.Parent" xml:space="preserve">
     <value>$this</value>
@@ -808,7 +808,7 @@
   <data name="cboPropPenDecorationPosition.Location" type="System.Drawing.Point, System.Drawing">
     <value>157, 26</value>
   </data>
-  <data name="cboPropPenDecorationPosition.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+  <data name="cboPropPenDecorationPosition.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.1">
     <value>Combo</value>
   </data>
   <data name="cboPropPenDecorationPosition.Properties.Items" xml:space="preserve">
@@ -827,7 +827,7 @@
     <value>cboPropPenDecorationPosition</value>
   </data>
   <data name="&gt;&gt;cboPropPenDecorationPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPropPenDecorationPosition.Parent" xml:space="preserve">
     <value>pnlPenClipartSettings</value>
@@ -854,7 +854,7 @@
     <value>lblPenPropDecorationPosition</value>
   </data>
   <data name="&gt;&gt;lblPenPropDecorationPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPenPropDecorationPosition.Parent" xml:space="preserve">
     <value>pnlPenClipartSettings</value>
@@ -865,7 +865,7 @@
   <data name="cboPropPenClipartPenMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>157, 104</value>
   </data>
-  <data name="cboPropPenClipartPenMode.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+  <data name="cboPropPenClipartPenMode.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.1">
     <value>Combo</value>
   </data>
   <data name="cboPropPenClipartPenMode.Properties.Items" xml:space="preserve">
@@ -884,7 +884,7 @@
     <value>cboPropPenClipartPenMode</value>
   </data>
   <data name="&gt;&gt;cboPropPenClipartPenMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPropPenClipartPenMode.Parent" xml:space="preserve">
     <value>pnlPenClipartSettings</value>
@@ -911,7 +911,7 @@
     <value>lblPropPenClipartPen</value>
   </data>
   <data name="&gt;&gt;lblPropPenClipartPen.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPenClipartPen.Parent" xml:space="preserve">
     <value>pnlPenClipartSettings</value>
@@ -925,7 +925,7 @@
   <data name="txtPropPenDecorationScale.Location" type="System.Drawing.Point, System.Drawing">
     <value>157, 78</value>
   </data>
-  <data name="txtPropPenDecorationScale.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+  <data name="txtPropPenDecorationScale.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.1">
     <value>Combo</value>
   </data>
   <data name="txtPropPenDecorationScale.Size" type="System.Drawing.Size, System.Drawing">
@@ -938,7 +938,7 @@
     <value>txtPropPenDecorationScale</value>
   </data>
   <data name="&gt;&gt;txtPropPenDecorationScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtPropPenDecorationScale.Parent" xml:space="preserve">
     <value>pnlPenClipartSettings</value>
@@ -952,7 +952,7 @@
   <data name="txtPropPenDecorationSpacePercentage.Location" type="System.Drawing.Point, System.Drawing">
     <value>157, 52</value>
   </data>
-  <data name="txtPropPenDecorationSpacePercentage.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+  <data name="txtPropPenDecorationSpacePercentage.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.1">
     <value>Combo</value>
   </data>
   <data name="txtPropPenDecorationSpacePercentage.Size" type="System.Drawing.Size, System.Drawing">
@@ -965,7 +965,7 @@
     <value>txtPropPenDecorationSpacePercentage</value>
   </data>
   <data name="&gt;&gt;txtPropPenDecorationSpacePercentage.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtPropPenDecorationSpacePercentage.Parent" xml:space="preserve">
     <value>pnlPenClipartSettings</value>
@@ -976,7 +976,7 @@
   <data name="cboPropPenDecorationAlignment.Location" type="System.Drawing.Point, System.Drawing">
     <value>157, 0</value>
   </data>
-  <data name="cboPropPenDecorationAlignment.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+  <data name="cboPropPenDecorationAlignment.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.1">
     <value>Combo</value>
   </data>
   <data name="cboPropPenDecorationAlignment.Properties.Items" xml:space="preserve">
@@ -998,7 +998,7 @@
     <value>cboPropPenDecorationAlignment</value>
   </data>
   <data name="&gt;&gt;cboPropPenDecorationAlignment.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPropPenDecorationAlignment.Parent" xml:space="preserve">
     <value>pnlPenClipartSettings</value>
@@ -1025,7 +1025,7 @@
     <value>pnlPenClipartSettings</value>
   </data>
   <data name="&gt;&gt;pnlPenClipartSettings.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlPenClipartSettings.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1036,7 +1036,7 @@
   <data name="cboPropPenClipartPenStyle.Location" type="System.Drawing.Point, System.Drawing">
     <value>225, 0</value>
   </data>
-  <data name="cboPropPenClipartPenStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+  <data name="cboPropPenClipartPenStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.1">
     <value>Combo</value>
   </data>
   <data name="cboPropPenClipartPenStyle.Properties.Items" xml:space="preserve">
@@ -1076,7 +1076,7 @@
     <value>cboPropPenClipartPenStyle</value>
   </data>
   <data name="&gt;&gt;cboPropPenClipartPenStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPropPenClipartPenStyle.Parent" xml:space="preserve">
     <value>pnlPenClipartSettingsPen</value>
@@ -1103,7 +1103,7 @@
     <value>lblPropPenClipartPenStyle</value>
   </data>
   <data name="&gt;&gt;lblPropPenClipartPenStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPenClipartPenStyle.Parent" xml:space="preserve">
     <value>pnlPenClipartSettingsPen</value>
@@ -1117,7 +1117,7 @@
   <data name="txtPropPenClipartPenWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>225, 26</value>
   </data>
-  <data name="txtPropPenClipartPenWidth.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+  <data name="txtPropPenClipartPenWidth.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.1">
     <value>Combo</value>
   </data>
   <data name="txtPropPenClipartPenWidth.Size" type="System.Drawing.Size, System.Drawing">
@@ -1130,7 +1130,7 @@
     <value>txtPropPenClipartPenWidth</value>
   </data>
   <data name="&gt;&gt;txtPropPenClipartPenWidth.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtPropPenClipartPenWidth.Parent" xml:space="preserve">
     <value>pnlPenClipartSettingsPen</value>
@@ -1157,7 +1157,7 @@
     <value>lblPropPenClipartPenColor</value>
   </data>
   <data name="&gt;&gt;lblPropPenClipartPenColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPenClipartPenColor.Parent" xml:space="preserve">
     <value>pnlPenClipartSettingsPen</value>
@@ -1184,7 +1184,7 @@
     <value>lblPropPenClipartPenWidth</value>
   </data>
   <data name="&gt;&gt;lblPropPenClipartPenWidth.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPenClipartPenWidth.Parent" xml:space="preserve">
     <value>pnlPenClipartSettingsPen</value>
@@ -1198,7 +1198,7 @@
   <data name="txtPropPenClipartPenColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>343, 26</value>
   </data>
-  <data name="txtPropPenClipartPenColor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+  <data name="txtPropPenClipartPenColor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.1">
     <value>Combo</value>
   </data>
   <data name="txtPropPenClipartPenColor.Size" type="System.Drawing.Size, System.Drawing">
@@ -1238,7 +1238,7 @@
     <value>pnlPenClipartSettingsPen</value>
   </data>
   <data name="&gt;&gt;pnlPenClipartSettingsPen.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlPenClipartSettingsPen.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1253,37 +1253,37 @@
     <value>mnuSaveAs</value>
   </data>
   <data name="&gt;&gt;mnuSaveAs.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnPropSaveToFile.Name" xml:space="preserve">
     <value>btnPropSaveToFile</value>
   </data>
   <data name="&gt;&gt;btnPropSaveToFile.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnPropSaveToSurvey.Name" xml:space="preserve">
     <value>btnPropSaveToSurvey</value>
   </data>
   <data name="&gt;&gt;btnPropSaveToSurvey.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnPropImport.Name" xml:space="preserve">
     <value>btnPropImport</value>
   </data>
   <data name="&gt;&gt;btnPropImport.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnPropExport.Name" xml:space="preserve">
     <value>btnPropExport</value>
   </data>
   <data name="&gt;&gt;btnPropExport.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;BarManager.Name" xml:space="preserve">
     <value>BarManager</value>
   </data>
   <data name="&gt;&gt;BarManager.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>cItemPenStylePropertyControl</value>
@@ -1307,7 +1307,7 @@
     <value>cmdPropSave</value>
   </data>
   <data name="&gt;&gt;cmdPropSave.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.DropDownButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.DropDownButton, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPropSave.Parent" xml:space="preserve">
     <value>$this</value>

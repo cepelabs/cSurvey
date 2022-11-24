@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cboPropSignFlip.Items" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="cboPropSignFlip.Items1" xml:space="preserve">
+    <value>Horizontally</value>
+  </data>
+  <data name="cboPropSignFlip.Items2" xml:space="preserve">
+    <value>Vertically</value>
+  </data>
+  <data name="cboPropSignFlip.Items3" xml:space="preserve">
+    <value>Both</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cboPropSignFlip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 33</value>
+  </data>
+  <data name="cboPropSignFlip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 21</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cboPropSignFlip.TabIndex" type="System.Int32, mscorlib">
+    <value>212</value>
+  </data>
+  <data name="&gt;&gt;cboPropSignFlip.Name" xml:space="preserve">
+    <value>cboPropSignFlip</value>
+  </data>
+  <data name="&gt;&gt;cboPropSignFlip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropSignFlip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropSignFlip.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblPropSignFlip.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropSignFlip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 36</value>
+  </data>
+  <data name="lblPropSignFlip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 13</value>
+  </data>
+  <data name="lblPropSignFlip.TabIndex" type="System.Int32, mscorlib">
+    <value>211</value>
+  </data>
+  <data name="lblPropSignFlip.Text" xml:space="preserve">
+    <value>Flip:</value>
+  </data>
+  <data name="&gt;&gt;lblPropSignFlip.Name" xml:space="preserve">
+    <value>lblPropSignFlip</value>
+  </data>
+  <data name="&gt;&gt;lblPropSignFlip.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropSignFlip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropSignFlip.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cboPropSign.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 87</value>
+  </data>
+  <data name="cboPropSign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 21</value>
+  </data>
+  <data name="cboPropSign.TabIndex" type="System.Int32, mscorlib">
+    <value>205</value>
+  </data>
+  <data name="&gt;&gt;cboPropSign.Name" xml:space="preserve">
+    <value>cboPropSign</value>
+  </data>
+  <data name="&gt;&gt;cboPropSign.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropSign.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropSign.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblPropSign.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropSign.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropSign.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 90</value>
+  </data>
+  <data name="lblPropSign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 13</value>
+  </data>
+  <data name="lblPropSign.TabIndex" type="System.Int32, mscorlib">
+    <value>206</value>
+  </data>
+  <data name="lblPropSign.Text" xml:space="preserve">
+    <value>Sign:</value>
+  </data>
+  <data name="&gt;&gt;lblPropSign.Name" xml:space="preserve">
+    <value>lblPropSign</value>
+  </data>
+  <data name="&gt;&gt;lblPropSign.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropSign.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropSign.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cboPropSignSize.Items" xml:space="preserve">
+    <value>1.00 - Default</value>
+  </data>
+  <data name="cboPropSignSize.Items1" xml:space="preserve">
+    <value>0.25 - Very small</value>
+  </data>
+  <data name="cboPropSignSize.Items2" xml:space="preserve">
+    <value>0.50 - Small</value>
+  </data>
+  <data name="cboPropSignSize.Items3" xml:space="preserve">
+    <value>1.00 - Medium</value>
+  </data>
+  <data name="cboPropSignSize.Items4" xml:space="preserve">
+    <value>2.00 - Big</value>
+  </data>
+  <data name="cboPropSignSize.Items5" xml:space="preserve">
+    <value>4.00 - Very big</value>
+  </data>
+  <data name="cboPropSignSize.Items6" xml:space="preserve">
+    <value>6.00</value>
+  </data>
+  <data name="cboPropSignSize.Items7" xml:space="preserve">
+    <value>8.00</value>
+  </data>
+  <data name="cboPropSignSize.Items8" xml:space="preserve">
+    <value>10.00</value>
+  </data>
+  <data name="cboPropSignSize.Items9" xml:space="preserve">
+    <value>12.00</value>
+  </data>
+  <data name="cboPropSignSize.Items10" xml:space="preserve">
+    <value>16.00</value>
+  </data>
+  <data name="cboPropSignSize.Items11" xml:space="preserve">
+    <value>20.00</value>
+  </data>
+  <data name="cboPropSignSize.Items12" xml:space="preserve">
+    <value>24.00</value>
+  </data>
+  <data name="cboPropSignSize.Items13" xml:space="preserve">
+    <value>32.00</value>
+  </data>
+  <data name="cboPropSignSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 60</value>
+  </data>
+  <data name="cboPropSignSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 21</value>
+  </data>
+  <data name="cboPropSignSize.TabIndex" type="System.Int32, mscorlib">
+    <value>209</value>
+  </data>
+  <data name="&gt;&gt;cboPropSignSize.Name" xml:space="preserve">
+    <value>cboPropSignSize</value>
+  </data>
+  <data name="&gt;&gt;cboPropSignSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropSignSize.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropSignSize.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lblPropSignSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropSignSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 63</value>
+  </data>
+  <data name="lblPropSignSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
+  </data>
+  <data name="lblPropSignSize.TabIndex" type="System.Int32, mscorlib">
+    <value>208</value>
+  </data>
+  <data name="lblPropSignSize.Text" xml:space="preserve">
+    <value>Scale:</value>
+  </data>
+  <data name="&gt;&gt;lblPropSignSize.Name" xml:space="preserve">
+    <value>lblPropSignSize</value>
+  </data>
+  <data name="&gt;&gt;lblPropSignSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropSignSize.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropSignSize.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="cboPropSignRotateMode.Items" xml:space="preserve">
+    <value>Rotable</value>
+  </data>
+  <data name="cboPropSignRotateMode.Items1" xml:space="preserve">
+    <value>Fixed</value>
+  </data>
+  <data name="cboPropSignRotateMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 6</value>
+  </data>
+  <data name="cboPropSignRotateMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 21</value>
+  </data>
+  <data name="cboPropSignRotateMode.TabIndex" type="System.Int32, mscorlib">
+    <value>207</value>
+  </data>
+  <data name="&gt;&gt;cboPropSignRotateMode.Name" xml:space="preserve">
+    <value>cboPropSignRotateMode</value>
+  </data>
+  <data name="&gt;&gt;cboPropSignRotateMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropSignRotateMode.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropSignRotateMode.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="lblPropSignRotateMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropSignRotateMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 9</value>
+  </data>
+  <data name="lblPropSignRotateMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
+  </data>
+  <data name="lblPropSignRotateMode.TabIndex" type="System.Int32, mscorlib">
+    <value>204</value>
+  </data>
+  <data name="lblPropSignRotateMode.Text" xml:space="preserve">
+    <value>Rotation:</value>
+  </data>
+  <data name="&gt;&gt;lblPropSignRotateMode.Name" xml:space="preserve">
+    <value>lblPropSignRotateMode</value>
+  </data>
+  <data name="&gt;&gt;lblPropSignRotateMode.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropSignRotateMode.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropSignRotateMode.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="lblPropSignRotationAngleDelta.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPropSignRotationAngleDelta.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropSignRotationAngleDelta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>190, 9</value>
+  </data>
+  <data name="lblPropSignRotationAngleDelta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 13</value>
+  </data>
+  <data name="lblPropSignRotationAngleDelta.TabIndex" type="System.Int32, mscorlib">
+    <value>214</value>
+  </data>
+  <data name="lblPropSignRotationAngleDelta.Text" xml:space="preserve">
+    <value>Base rotation:</value>
+  </data>
+  <data name="&gt;&gt;lblPropSignRotationAngleDelta.Name" xml:space="preserve">
+    <value>lblPropSignRotationAngleDelta</value>
+  </data>
+  <data name="&gt;&gt;lblPropSignRotationAngleDelta.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPropSignRotationAngleDelta.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropSignRotationAngleDelta.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtPropSignRotationAngleDelta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>271, 7</value>
+  </data>
+  <data name="txtPropSignRotationAngleDelta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 21</value>
+  </data>
+  <data name="txtPropSignRotationAngleDelta.TabIndex" type="System.Int32, mscorlib">
+    <value>213</value>
+  </data>
+  <data name="txtPropSignRotationAngleDelta.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropSignRotationAngleDelta.Name" xml:space="preserve">
+    <value>txtPropSignRotationAngleDelta</value>
+  </data>
+  <data name="&gt;&gt;txtPropSignRotationAngleDelta.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropSignRotationAngleDelta.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropSignRotationAngleDelta.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>397, 113</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>cItemSignPropertyControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

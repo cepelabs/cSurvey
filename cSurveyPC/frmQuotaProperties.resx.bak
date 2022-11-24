@@ -1,0 +1,615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 88</value>
+  </data>
+  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 13</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Label1.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="Label1.Text" xml:space="preserve">
+    <value>Step lenght (m):</value>
+  </data>
+  <data name="&gt;&gt;Label1.Name" xml:space="preserve">
+    <value>Label1</value>
+  </data>
+  <data name="&gt;&gt;Label1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
+    <value>frmScaleQuota</value>
+  </data>
+  <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtQuotaticksize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>167, 88</value>
+  </data>
+  <data name="txtQuotaticksize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 21</value>
+  </data>
+  <data name="txtQuotaticksize.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaticksize.Name" xml:space="preserve">
+    <value>txtQuotaticksize</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaticksize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaticksize.Parent" xml:space="preserve">
+    <value>frmScaleQuota</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaticksize.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtQuotatickfrequency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>189, 32</value>
+  </data>
+  <data name="txtQuotatickfrequency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtQuotatickfrequency.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtQuotatickfrequency.Name" xml:space="preserve">
+    <value>txtQuotatickfrequency</value>
+  </data>
+  <data name="&gt;&gt;txtQuotatickfrequency.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtQuotatickfrequency.Parent" xml:space="preserve">
+    <value>frmScaleQuota</value>
+  </data>
+  <data name="&gt;&gt;txtQuotatickfrequency.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblPlotPenWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 34</value>
+  </data>
+  <data name="lblPlotPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 13</value>
+  </data>
+  <data name="lblPlotPenWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lblPlotPenWidth.Text" xml:space="preserve">
+    <value>Step frequency (m):</value>
+  </data>
+  <data name="&gt;&gt;lblPlotPenWidth.Name" xml:space="preserve">
+    <value>lblPlotPenWidth</value>
+  </data>
+  <data name="&gt;&gt;lblPlotPenWidth.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPlotPenWidth.Parent" xml:space="preserve">
+    <value>frmScaleQuota</value>
+  </data>
+  <data name="&gt;&gt;lblPlotPenWidth.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblPlotSelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 61</value>
+  </data>
+  <data name="lblPlotSelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="lblPlotSelectedPenWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="lblPlotSelectedPenWidth.Text" xml:space="preserve">
+    <value>Label frequency (m):</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSelectedPenWidth.Name" xml:space="preserve">
+    <value>lblPlotSelectedPenWidth</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSelectedPenWidth.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSelectedPenWidth.Parent" xml:space="preserve">
+    <value>frmScaleQuota</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSelectedPenWidth.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtQuotaticklabelfrequency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>189, 61</value>
+  </data>
+  <data name="txtQuotaticklabelfrequency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtQuotaticklabelfrequency.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaticklabelfrequency.Name" xml:space="preserve">
+    <value>txtQuotaticklabelfrequency</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaticklabelfrequency.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaticklabelfrequency.Parent" xml:space="preserve">
+    <value>frmScaleQuota</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaticklabelfrequency.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="frmScaleQuota.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="frmScaleQuota.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 122</value>
+  </data>
+  <data name="frmScaleQuota.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="frmScaleQuota.Text" xml:space="preserve">
+    <value>Horizontal/vertical scale:</value>
+  </data>
+  <data name="&gt;&gt;frmScaleQuota.Name" xml:space="preserve">
+    <value>frmScaleQuota</value>
+  </data>
+  <data name="&gt;&gt;frmScaleQuota.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;frmScaleQuota.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;frmScaleQuota.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblQuotaRightRefPercent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 88</value>
+  </data>
+  <data name="lblQuotaRightRefPercent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 13</value>
+  </data>
+  <data name="lblQuotaRightRefPercent.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="lblQuotaRightRefPercent.Text" xml:space="preserve">
+    <value>% right reference:</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaRightRefPercent.Name" xml:space="preserve">
+    <value>lblQuotaRightRefPercent</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaRightRefPercent.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaRightRefPercent.Parent" xml:space="preserve">
+    <value>frmHVQuota</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaRightRefPercent.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtQuotaRightRefPercent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>189, 88</value>
+  </data>
+  <data name="txtQuotaRightRefPercent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtQuotaRightRefPercent.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaRightRefPercent.Name" xml:space="preserve">
+    <value>txtQuotaRightRefPercent</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaRightRefPercent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaRightRefPercent.Parent" xml:space="preserve">
+    <value>frmHVQuota</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaRightRefPercent.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblQuotaCapDecoration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 34</value>
+  </data>
+  <data name="lblQuotaCapDecoration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="lblQuotaCapDecoration.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lblQuotaCapDecoration.Text" xml:space="preserve">
+    <value>Decoration:</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaCapDecoration.Name" xml:space="preserve">
+    <value>lblQuotaCapDecoration</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaCapDecoration.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaCapDecoration.Parent" xml:space="preserve">
+    <value>frmHVQuota</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaCapDecoration.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblQuotaLeftRefPercent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 61</value>
+  </data>
+  <data name="lblQuotaLeftRefPercent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 13</value>
+  </data>
+  <data name="lblQuotaLeftRefPercent.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="lblQuotaLeftRefPercent.Text" xml:space="preserve">
+    <value>% left reference:</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaLeftRefPercent.Name" xml:space="preserve">
+    <value>lblQuotaLeftRefPercent</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaLeftRefPercent.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaLeftRefPercent.Parent" xml:space="preserve">
+    <value>frmHVQuota</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaLeftRefPercent.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtQuotaLeftRefPercent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>189, 61</value>
+  </data>
+  <data name="txtQuotaLeftRefPercent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtQuotaLeftRefPercent.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaLeftRefPercent.Name" xml:space="preserve">
+    <value>txtQuotaLeftRefPercent</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaLeftRefPercent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaLeftRefPercent.Parent" xml:space="preserve">
+    <value>frmHVQuota</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaLeftRefPercent.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cboQuotaCapDecoration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 31</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cboQuotaCapDecoration.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboQuotaCapDecoration.Properties.Items" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="cboQuotaCapDecoration.Properties.Items1" xml:space="preserve">
+    <value>Arrows</value>
+  </data>
+  <data name="cboQuotaCapDecoration.Properties.Items2" xml:space="preserve">
+    <value>Oblique segments</value>
+  </data>
+  <data name="cboQuotaCapDecoration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 20</value>
+  </data>
+  <data name="cboQuotaCapDecoration.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cboQuotaCapDecoration.Name" xml:space="preserve">
+    <value>cboQuotaCapDecoration</value>
+  </data>
+  <data name="&gt;&gt;cboQuotaCapDecoration.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboQuotaCapDecoration.Parent" xml:space="preserve">
+    <value>frmHVQuota</value>
+  </data>
+  <data name="&gt;&gt;cboQuotaCapDecoration.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="frmHVQuota.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 140</value>
+  </data>
+  <data name="frmHVQuota.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 122</value>
+  </data>
+  <data name="frmHVQuota.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="frmHVQuota.Text" xml:space="preserve">
+    <value>Horizontal/vertical dimension:</value>
+  </data>
+  <data name="&gt;&gt;frmHVQuota.Name" xml:space="preserve">
+    <value>frmHVQuota</value>
+  </data>
+  <data name="&gt;&gt;frmHVQuota.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;frmHVQuota.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;frmHVQuota.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblQuotaAltitudeFill.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 61</value>
+  </data>
+  <data name="lblQuotaAltitudeFill.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="lblQuotaAltitudeFill.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="lblQuotaAltitudeFill.Text" xml:space="preserve">
+    <value>Fill:</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaAltitudeFill.Name" xml:space="preserve">
+    <value>lblQuotaAltitudeFill</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaAltitudeFill.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaAltitudeFill.Parent" xml:space="preserve">
+    <value>frmAltQuota</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaAltitudeFill.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblQuotaAltitudeStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 34</value>
+  </data>
+  <data name="lblQuotaAltitudeStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="lblQuotaAltitudeStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lblQuotaAltitudeStyle.Text" xml:space="preserve">
+    <value>Style:</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaAltitudeStyle.Name" xml:space="preserve">
+    <value>lblQuotaAltitudeStyle</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaAltitudeStyle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaAltitudeStyle.Parent" xml:space="preserve">
+    <value>frmAltQuota</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaAltitudeStyle.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cboQuotaAltitudeFill.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 59</value>
+  </data>
+  <data name="cboQuotaAltitudeFill.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboQuotaAltitudeFill.Properties.Items" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="cboQuotaAltitudeFill.Properties.Items1" xml:space="preserve">
+    <value>Solid</value>
+  </data>
+  <data name="cboQuotaAltitudeFill.Properties.Items2" xml:space="preserve">
+    <value>Black and white</value>
+  </data>
+  <data name="cboQuotaAltitudeFill.Properties.Items3" xml:space="preserve">
+    <value>White and black</value>
+  </data>
+  <data name="cboQuotaAltitudeFill.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 20</value>
+  </data>
+  <data name="cboQuotaAltitudeFill.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cboQuotaAltitudeFill.Name" xml:space="preserve">
+    <value>cboQuotaAltitudeFill</value>
+  </data>
+  <data name="&gt;&gt;cboQuotaAltitudeFill.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboQuotaAltitudeFill.Parent" xml:space="preserve">
+    <value>frmAltQuota</value>
+  </data>
+  <data name="&gt;&gt;cboQuotaAltitudeFill.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cboQuotaAltitudeStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 31</value>
+  </data>
+  <data name="cboQuotaAltitudeStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboQuotaAltitudeStyle.Properties.Items" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="cboQuotaAltitudeStyle.Properties.Items1" xml:space="preserve">
+    <value>Style 1</value>
+  </data>
+  <data name="cboQuotaAltitudeStyle.Properties.Items2" xml:space="preserve">
+    <value>Style 2</value>
+  </data>
+  <data name="cboQuotaAltitudeStyle.Properties.Items3" xml:space="preserve">
+    <value>Style 3</value>
+  </data>
+  <data name="cboQuotaAltitudeStyle.Properties.Items4" xml:space="preserve">
+    <value>Style 4</value>
+  </data>
+  <data name="cboQuotaAltitudeStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 20</value>
+  </data>
+  <data name="cboQuotaAltitudeStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cboQuotaAltitudeStyle.Name" xml:space="preserve">
+    <value>cboQuotaAltitudeStyle</value>
+  </data>
+  <data name="&gt;&gt;cboQuotaAltitudeStyle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboQuotaAltitudeStyle.Parent" xml:space="preserve">
+    <value>frmAltQuota</value>
+  </data>
+  <data name="&gt;&gt;cboQuotaAltitudeStyle.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="frmAltQuota.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 268</value>
+  </data>
+  <data name="frmAltQuota.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 93</value>
+  </data>
+  <data name="frmAltQuota.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="frmAltQuota.Text" xml:space="preserve">
+    <value>Altitude:</value>
+  </data>
+  <data name="&gt;&gt;frmAltQuota.Name" xml:space="preserve">
+    <value>frmAltQuota</value>
+  </data>
+  <data name="&gt;&gt;frmAltQuota.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;frmAltQuota.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;frmAltQuota.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>284, 404</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmQuotaProperties</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

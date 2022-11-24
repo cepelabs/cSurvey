@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblPropPlanSplay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblPropPlanSplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 9</value>
+  </data>
+  <data name="lblPropPlanSplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblPropPlanSplay.TabIndex" type="System.Int32, mscorlib">
+    <value>161</value>
+  </data>
+  <data name="lblPropPlanSplay.Text" xml:space="preserve">
+    <value>Splay:</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplay.Name" xml:space="preserve">
+    <value>lblPropPlanSplay</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplay.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplay.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplay.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="cmdPropCrossSectionSplay.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdPropCrossSectionSplay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropCrossSectionSplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>474, 4</value>
+  </data>
+  <data name="cmdPropCrossSectionSplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdPropCrossSectionSplay.TabIndex" type="System.Int32, mscorlib">
+    <value>168</value>
+  </data>
+  <data name="cmdPropCrossSectionSplay.ToolTip" xml:space="preserve">
+    <value>Replicate splay settings...</value>
+  </data>
+  <data name="&gt;&gt;cmdPropCrossSectionSplay.Name" xml:space="preserve">
+    <value>cmdPropCrossSectionSplay</value>
+  </data>
+  <data name="&gt;&gt;cmdPropCrossSectionSplay.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropCrossSectionSplay.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdPropCrossSectionSplay.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="picPropCrossSectionProjectionSchema.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 6</value>
+  </data>
+  <data name="picPropCrossSectionProjectionSchema.Properties.NullText" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="picPropCrossSectionProjectionSchema.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 128</value>
+  </data>
+  <data name="picPropCrossSectionProjectionSchema.TabIndex" type="System.Int32, mscorlib">
+    <value>175</value>
+  </data>
+  <data name="&gt;&gt;picPropCrossSectionProjectionSchema.Name" xml:space="preserve">
+    <value>picPropCrossSectionProjectionSchema</value>
+  </data>
+  <data name="&gt;&gt;picPropCrossSectionProjectionSchema.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;picPropCrossSectionProjectionSchema.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;picPropCrossSectionProjectionSchema.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="txtPropCrossSectionSplayProjectionVerticalAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 164</value>
+  </data>
+  <data name="txtPropCrossSectionSplayProjectionVerticalAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropCrossSectionSplayProjectionVerticalAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>185</value>
+  </data>
+  <data name="txtPropCrossSectionSplayProjectionVerticalAngle.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionVerticalAngle.Name" xml:space="preserve">
+    <value>txtPropCrossSectionSplayProjectionVerticalAngle</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionVerticalAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionVerticalAngle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionVerticalAngle.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkPropCrossSectionShowOnlyCutSplay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropCrossSectionShowOnlyCutSplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 140</value>
+  </data>
+  <data name="chkPropCrossSectionShowOnlyCutSplay.Properties.Caption" xml:space="preserve">
+    <value>Only cut splay</value>
+  </data>
+  <data name="chkPropCrossSectionShowOnlyCutSplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 20</value>
+  </data>
+  <data name="chkPropCrossSectionShowOnlyCutSplay.TabIndex" type="System.Int32, mscorlib">
+    <value>184</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.Name" xml:space="preserve">
+    <value>chkPropCrossSectionShowOnlyCutSplay</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkPropCrossSectionSplayText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropCrossSectionSplayText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 245</value>
+  </data>
+  <data name="chkPropCrossSectionSplayText.Properties.Caption" xml:space="preserve">
+    <value>Station label</value>
+  </data>
+  <data name="chkPropCrossSectionSplayText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 20</value>
+  </data>
+  <data name="chkPropCrossSectionSplayText.TabIndex" type="System.Int32, mscorlib">
+    <value>183</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionSplayText.Name" xml:space="preserve">
+    <value>chkPropCrossSectionSplayText</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionSplayText.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionSplayText.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionSplayText.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtPropCrossSectionSplayMaxVariationAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 191</value>
+  </data>
+  <data name="txtPropCrossSectionSplayMaxVariationAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropCrossSectionSplayMaxVariationAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>182</value>
+  </data>
+  <data name="txtPropCrossSectionSplayMaxVariationAngle.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayMaxVariationAngle.Name" xml:space="preserve">
+    <value>txtPropCrossSectionSplayMaxVariationAngle</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayMaxVariationAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayMaxVariationAngle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayMaxVariationAngle.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblPropCrossSectionSplayMaxVariationAngle.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionSplayMaxVariationAngle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionSplayMaxVariationAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 193</value>
+  </data>
+  <data name="lblPropCrossSectionSplayMaxVariationAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="lblPropCrossSectionSplayMaxVariationAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>181</value>
+  </data>
+  <data name="lblPropCrossSectionSplayMaxVariationAngle.Text" xml:space="preserve">
+    <value>Variation:</value>
+  </data>
+  <data name="lblPropCrossSectionSplayMaxVariationAngle.ToolTip" xml:space="preserve">
+    <value>Angle's range used to show splays</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.Name" xml:space="preserve">
+    <value>lblPropCrossSectionSplayMaxVariationAngle</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblPropCrossSectionSplayProjectionAngle.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionSplayProjectionAngle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionSplayProjectionAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 166</value>
+  </data>
+  <data name="lblPropCrossSectionSplayProjectionAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
+  </data>
+  <data name="lblPropCrossSectionSplayProjectionAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>176</value>
+  </data>
+  <data name="lblPropCrossSectionSplayProjectionAngle.Text" xml:space="preserve">
+    <value>Δ angle:</value>
+  </data>
+  <data name="lblPropCrossSectionSplayProjectionAngle.ToolTip" xml:space="preserve">
+    <value>Projection angle for the splay (Δ on shot bearing, Δ on vertical)</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.Name" xml:space="preserve">
+    <value>lblPropCrossSectionSplayProjectionAngle</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.Items" xml:space="preserve">
+    <value>Only points</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.Items1" xml:space="preserve">
+    <value>Points and rays</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.Items2" xml:space="preserve">
+    <value>Rays</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 218</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 21</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>180</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionSplayLineStyle.Name" xml:space="preserve">
+    <value>cboPropCrossSectionSplayLineStyle</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionSplayLineStyle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionSplayLineStyle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionSplayLineStyle.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="txtPropCrossSectionSplayProjectionAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 164</value>
+  </data>
+  <data name="txtPropCrossSectionSplayProjectionAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropCrossSectionSplayProjectionAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>177</value>
+  </data>
+  <data name="txtPropCrossSectionSplayProjectionAngle.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionAngle.Name" xml:space="preserve">
+    <value>txtPropCrossSectionSplayProjectionAngle</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionAngle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionAngle.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="lblPropCrossSectionSplayLineStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionSplayLineStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 221</value>
+  </data>
+  <data name="lblPropCrossSectionSplayLineStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="lblPropCrossSectionSplayLineStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>179</value>
+  </data>
+  <data name="lblPropCrossSectionSplayLineStyle.Text" xml:space="preserve">
+    <value>Style:</value>
+  </data>
+  <data name="lblPropCrossSectionSplayLineStyle.ToolTip" xml:space="preserve">
+    <value>The style of the connection line between the points of the contour</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.Name" xml:space="preserve">
+    <value>lblPropCrossSectionSplayLineStyle</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="chkPropCrossSectionShowSplayBorder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropCrossSectionShowSplayBorder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 140</value>
+  </data>
+  <data name="chkPropCrossSectionShowSplayBorder.Properties.Caption" xml:space="preserve">
+    <value>Show splay</value>
+  </data>
+  <data name="chkPropCrossSectionShowSplayBorder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 20</value>
+  </data>
+  <data name="chkPropCrossSectionShowSplayBorder.TabIndex" type="System.Int32, mscorlib">
+    <value>178</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.Name" xml:space="preserve">
+    <value>chkPropCrossSectionShowSplayBorder</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 268</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>cItemCrossSectionSplayPropertyControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

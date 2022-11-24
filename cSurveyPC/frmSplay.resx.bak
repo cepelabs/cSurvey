@@ -1,0 +1,1250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="chkCrossSection.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="chkCrossSection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 9</value>
+  </data>
+  <data name="chkCrossSection.Properties.Caption" xml:space="preserve">
+    <value>Change this settings</value>
+  </data>
+  <data name="chkCrossSection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 20</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="chkCrossSection.TabIndex" type="System.Int32, mscorlib">
+    <value>168</value>
+  </data>
+  <data name="&gt;&gt;chkCrossSection.Name" xml:space="preserve">
+    <value>chkCrossSection</value>
+  </data>
+  <data name="&gt;&gt;chkCrossSection.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkCrossSection.Parent" xml:space="preserve">
+    <value>tabCrossSections</value>
+  </data>
+  <data name="&gt;&gt;chkCrossSection.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkPropCrossSectionShowOnlyCutSplay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropCrossSectionShowOnlyCutSplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 9</value>
+  </data>
+  <data name="chkPropCrossSectionShowOnlyCutSplay.Properties.Caption" xml:space="preserve">
+    <value>Only cut splay</value>
+  </data>
+  <data name="chkPropCrossSectionShowOnlyCutSplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 20</value>
+  </data>
+  <data name="chkPropCrossSectionShowOnlyCutSplay.TabIndex" type="System.Int32, mscorlib">
+    <value>166</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.Name" xml:space="preserve">
+    <value>chkPropCrossSectionShowOnlyCutSplay</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.Parent" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblPropCrossSectionSplayProjectionAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 38</value>
+  </data>
+  <data name="lblPropCrossSectionSplayProjectionAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
+  </data>
+  <data name="lblPropCrossSectionSplayProjectionAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>162</value>
+  </data>
+  <data name="lblPropCrossSectionSplayProjectionAngle.Text" xml:space="preserve">
+    <value>Angle:</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.Name" xml:space="preserve">
+    <value>lblPropCrossSectionSplayProjectionAngle</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.Parent" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtPropCrossSectionSplayProjectionAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 36</value>
+  </data>
+  <data name="txtPropCrossSectionSplayProjectionAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropCrossSectionSplayProjectionAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>147</value>
+  </data>
+  <data name="txtPropCrossSectionSplayProjectionAngle.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionAngle.Name" xml:space="preserve">
+    <value>txtPropCrossSectionSplayProjectionAngle</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionAngle.Parent" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionAngle.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkPropCrossSectionShowSplayBorder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropCrossSectionShowSplayBorder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 9</value>
+  </data>
+  <data name="chkPropCrossSectionShowSplayBorder.Properties.Caption" xml:space="preserve">
+    <value>Show splay</value>
+  </data>
+  <data name="chkPropCrossSectionShowSplayBorder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 20</value>
+  </data>
+  <data name="chkPropCrossSectionShowSplayBorder.TabIndex" type="System.Int32, mscorlib">
+    <value>148</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.Name" xml:space="preserve">
+    <value>chkPropCrossSectionShowSplayBorder</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.Parent" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblPropCrossSectionSplayLineStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 93</value>
+  </data>
+  <data name="lblPropCrossSectionSplayLineStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="lblPropCrossSectionSplayLineStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>163</value>
+  </data>
+  <data name="lblPropCrossSectionSplayLineStyle.Text" xml:space="preserve">
+    <value>Style:</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.Name" xml:space="preserve">
+    <value>lblPropCrossSectionSplayLineStyle</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.Parent" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.Items" xml:space="preserve">
+    <value>Only points</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.Items1" xml:space="preserve">
+    <value>Points and lines</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 90</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 21</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>151</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionSplayLineStyle.Name" xml:space="preserve">
+    <value>cboPropCrossSectionSplayLineStyle</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionSplayLineStyle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionSplayLineStyle.Parent" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionSplayLineStyle.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblPropCrossSectionSplayMaxVariationAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 65</value>
+  </data>
+  <data name="lblPropCrossSectionSplayMaxVariationAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="lblPropCrossSectionSplayMaxVariationAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>161</value>
+  </data>
+  <data name="lblPropCrossSectionSplayMaxVariationAngle.Text" xml:space="preserve">
+    <value>Variation:</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.Name" xml:space="preserve">
+    <value>lblPropCrossSectionSplayMaxVariationAngle</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.Parent" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="txtPropCrossSectionSplayMaxVariationAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 63</value>
+  </data>
+  <data name="txtPropCrossSectionSplayMaxVariationAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropCrossSectionSplayMaxVariationAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>153</value>
+  </data>
+  <data name="txtPropCrossSectionSplayMaxVariationAngle.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayMaxVariationAngle.Name" xml:space="preserve">
+    <value>txtPropCrossSectionSplayMaxVariationAngle</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayMaxVariationAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayMaxVariationAngle.Parent" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayMaxVariationAngle.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="chkPropCrossSectionSplayText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropCrossSectionSplayText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 117</value>
+  </data>
+  <data name="chkPropCrossSectionSplayText.Properties.Caption" xml:space="preserve">
+    <value>Show station label</value>
+  </data>
+  <data name="chkPropCrossSectionSplayText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 20</value>
+  </data>
+  <data name="chkPropCrossSectionSplayText.TabIndex" type="System.Int32, mscorlib">
+    <value>154</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionSplayText.Name" xml:space="preserve">
+    <value>chkPropCrossSectionSplayText</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionSplayText.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionSplayText.Parent" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionSplayText.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="pnlCrosssection.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="pnlCrosssection.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="pnlCrosssection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 35</value>
+  </data>
+  <data name="pnlCrosssection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 149</value>
+  </data>
+  <data name="pnlCrosssection.TabIndex" type="System.Int32, mscorlib">
+    <value>169</value>
+  </data>
+  <data name="&gt;&gt;pnlCrosssection.Name" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;pnlCrosssection.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlCrosssection.Parent" xml:space="preserve">
+    <value>tabCrossSections</value>
+  </data>
+  <data name="&gt;&gt;pnlCrosssection.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkPlan.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 9</value>
+  </data>
+  <data name="chkPlan.Properties.Caption" xml:space="preserve">
+    <value>Change this settings</value>
+  </data>
+  <data name="chkPlan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 20</value>
+  </data>
+  <data name="chkPlan.TabIndex" type="System.Int32, mscorlib">
+    <value>162</value>
+  </data>
+  <data name="&gt;&gt;chkPlan.Name" xml:space="preserve">
+    <value>chkPlan</value>
+  </data>
+  <data name="&gt;&gt;chkPlan.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPlan.Parent" xml:space="preserve">
+    <value>tabPlan</value>
+  </data>
+  <data name="&gt;&gt;chkPlan.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cboPropPlanSplayPlanProjectionType.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="cboPropPlanSplayPlanProjectionType.Items" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="cboPropPlanSplayPlanProjectionType.Items1" xml:space="preserve">
+    <value>The central point of the line</value>
+  </data>
+  <data name="cboPropPlanSplayPlanProjectionType.Items2" xml:space="preserve">
+    <value>Fixed elevation value</value>
+  </data>
+  <data name="cboPropPlanSplayPlanProjectionType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 9</value>
+  </data>
+  <data name="cboPropPlanSplayPlanProjectionType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 21</value>
+  </data>
+  <data name="cboPropPlanSplayPlanProjectionType.TabIndex" type="System.Int32, mscorlib">
+    <value>154</value>
+  </data>
+  <data name="&gt;&gt;cboPropPlanSplayPlanProjectionType.Name" xml:space="preserve">
+    <value>cboPropPlanSplayPlanProjectionType</value>
+  </data>
+  <data name="&gt;&gt;cboPropPlanSplayPlanProjectionType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropPlanSplayPlanProjectionType.Parent" xml:space="preserve">
+    <value>pnlPlan</value>
+  </data>
+  <data name="&gt;&gt;cboPropPlanSplayPlanProjectionType.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblPropPlanSplayInclinationRange.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropPlanSplayInclinationRange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropPlanSplayInclinationRange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 92</value>
+  </data>
+  <data name="lblPropPlanSplayInclinationRange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="lblPropPlanSplayInclinationRange.TabIndex" type="System.Int32, mscorlib">
+    <value>161</value>
+  </data>
+  <data name="lblPropPlanSplayInclinationRange.Text" xml:space="preserve">
+    <value>Incl. range:</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplayInclinationRange.Name" xml:space="preserve">
+    <value>lblPropPlanSplayInclinationRange</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplayInclinationRange.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplayInclinationRange.Parent" xml:space="preserve">
+    <value>pnlPlan</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplayInclinationRange.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtPropPlanSplayMaxVariationDelta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 63</value>
+  </data>
+  <data name="txtPropPlanSplayMaxVariationDelta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropPlanSplayMaxVariationDelta.TabIndex" type="System.Int32, mscorlib">
+    <value>151</value>
+  </data>
+  <data name="txtPropPlanSplayMaxVariationDelta.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropPlanSplayMaxVariationDelta.Name" xml:space="preserve">
+    <value>txtPropPlanSplayMaxVariationDelta</value>
+  </data>
+  <data name="&gt;&gt;txtPropPlanSplayMaxVariationDelta.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropPlanSplayMaxVariationDelta.Parent" xml:space="preserve">
+    <value>pnlPlan</value>
+  </data>
+  <data name="&gt;&gt;txtPropPlanSplayMaxVariationDelta.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtPropPlanSplayInclinationRangeMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>187, 90</value>
+  </data>
+  <data name="txtPropPlanSplayInclinationRangeMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropPlanSplayInclinationRangeMax.TabIndex" type="System.Int32, mscorlib">
+    <value>160</value>
+  </data>
+  <data name="txtPropPlanSplayInclinationRangeMax.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropPlanSplayInclinationRangeMax.Name" xml:space="preserve">
+    <value>txtPropPlanSplayInclinationRangeMax</value>
+  </data>
+  <data name="&gt;&gt;txtPropPlanSplayInclinationRangeMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropPlanSplayInclinationRangeMax.Parent" xml:space="preserve">
+    <value>pnlPlan</value>
+  </data>
+  <data name="&gt;&gt;txtPropPlanSplayInclinationRangeMax.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtPropPlanSplayPlanDeltaZ.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 36</value>
+  </data>
+  <data name="txtPropPlanSplayPlanDeltaZ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropPlanSplayPlanDeltaZ.TabIndex" type="System.Int32, mscorlib">
+    <value>153</value>
+  </data>
+  <data name="txtPropPlanSplayPlanDeltaZ.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropPlanSplayPlanDeltaZ.Name" xml:space="preserve">
+    <value>txtPropPlanSplayPlanDeltaZ</value>
+  </data>
+  <data name="&gt;&gt;txtPropPlanSplayPlanDeltaZ.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropPlanSplayPlanDeltaZ.Parent" xml:space="preserve">
+    <value>pnlPlan</value>
+  </data>
+  <data name="&gt;&gt;txtPropPlanSplayPlanDeltaZ.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtPropPlanSplayInclinationRangeMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 90</value>
+  </data>
+  <data name="txtPropPlanSplayInclinationRangeMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropPlanSplayInclinationRangeMin.TabIndex" type="System.Int32, mscorlib">
+    <value>159</value>
+  </data>
+  <data name="txtPropPlanSplayInclinationRangeMin.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropPlanSplayInclinationRangeMin.Name" xml:space="preserve">
+    <value>txtPropPlanSplayInclinationRangeMin</value>
+  </data>
+  <data name="&gt;&gt;txtPropPlanSplayInclinationRangeMin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropPlanSplayInclinationRangeMin.Parent" xml:space="preserve">
+    <value>pnlPlan</value>
+  </data>
+  <data name="&gt;&gt;txtPropPlanSplayInclinationRangeMin.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblPropPlanSplayPlanProjectionType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 12</value>
+  </data>
+  <data name="lblPropPlanSplayPlanProjectionType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 13</value>
+  </data>
+  <data name="lblPropPlanSplayPlanProjectionType.TabIndex" type="System.Int32, mscorlib">
+    <value>156</value>
+  </data>
+  <data name="lblPropPlanSplayPlanProjectionType.Text" xml:space="preserve">
+    <value>Plan:</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplayPlanProjectionType.Name" xml:space="preserve">
+    <value>lblPropPlanSplayPlanProjectionType</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplayPlanProjectionType.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplayPlanProjectionType.Parent" xml:space="preserve">
+    <value>pnlPlan</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplayPlanProjectionType.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lblPropPlanSplayMaxVariationDelta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 65</value>
+  </data>
+  <data name="lblPropPlanSplayMaxVariationDelta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="lblPropPlanSplayMaxVariationDelta.TabIndex" type="System.Int32, mscorlib">
+    <value>158</value>
+  </data>
+  <data name="lblPropPlanSplayMaxVariationDelta.Text" xml:space="preserve">
+    <value>Variation:</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplayMaxVariationDelta.Name" xml:space="preserve">
+    <value>lblPropPlanSplayMaxVariationDelta</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplayMaxVariationDelta.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplayMaxVariationDelta.Parent" xml:space="preserve">
+    <value>pnlPlan</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplayMaxVariationDelta.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="lblPropPlanSplayPlanDeltaZ.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 38</value>
+  </data>
+  <data name="lblPropPlanSplayPlanDeltaZ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 13</value>
+  </data>
+  <data name="lblPropPlanSplayPlanDeltaZ.TabIndex" type="System.Int32, mscorlib">
+    <value>157</value>
+  </data>
+  <data name="lblPropPlanSplayPlanDeltaZ.Text" xml:space="preserve">
+    <value>Δ plan:</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplayPlanDeltaZ.Name" xml:space="preserve">
+    <value>lblPropPlanSplayPlanDeltaZ</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplayPlanDeltaZ.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplayPlanDeltaZ.Parent" xml:space="preserve">
+    <value>pnlPlan</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplayPlanDeltaZ.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="pnlPlan.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="pnlPlan.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="pnlPlan.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 35</value>
+  </data>
+  <data name="pnlPlan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 149</value>
+  </data>
+  <data name="pnlPlan.TabIndex" type="System.Int32, mscorlib">
+    <value>163</value>
+  </data>
+  <data name="&gt;&gt;pnlPlan.Name" xml:space="preserve">
+    <value>pnlPlan</value>
+  </data>
+  <data name="&gt;&gt;pnlPlan.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlPlan.Parent" xml:space="preserve">
+    <value>tabPlan</value>
+  </data>
+  <data name="&gt;&gt;pnlPlan.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtPropProfileSplayNegInclinationRangeMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>187, 90</value>
+  </data>
+  <data name="txtPropProfileSplayNegInclinationRangeMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropProfileSplayNegInclinationRangeMax.TabIndex" type="System.Int32, mscorlib">
+    <value>165</value>
+  </data>
+  <data name="txtPropProfileSplayNegInclinationRangeMax.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayNegInclinationRangeMax.Name" xml:space="preserve">
+    <value>txtPropProfileSplayNegInclinationRangeMax</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayNegInclinationRangeMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayNegInclinationRangeMax.Parent" xml:space="preserve">
+    <value>pnlProfile</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayNegInclinationRangeMax.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtPropProfileSplayNegInclinationRangeMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 90</value>
+  </data>
+  <data name="txtPropProfileSplayNegInclinationRangeMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropProfileSplayNegInclinationRangeMin.TabIndex" type="System.Int32, mscorlib">
+    <value>164</value>
+  </data>
+  <data name="txtPropProfileSplayNegInclinationRangeMin.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayNegInclinationRangeMin.Name" xml:space="preserve">
+    <value>txtPropProfileSplayNegInclinationRangeMin</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayNegInclinationRangeMin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayNegInclinationRangeMin.Parent" xml:space="preserve">
+    <value>pnlProfile</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayNegInclinationRangeMin.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblPropProfileSplayNegInclinationRange.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropProfileSplayNegInclinationRange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropProfileSplayNegInclinationRange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 92</value>
+  </data>
+  <data name="lblPropProfileSplayNegInclinationRange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lblPropProfileSplayNegInclinationRange.TabIndex" type="System.Int32, mscorlib">
+    <value>166</value>
+  </data>
+  <data name="lblPropProfileSplayNegInclinationRange.Text" xml:space="preserve">
+    <value>Incl. range -:</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayNegInclinationRange.Name" xml:space="preserve">
+    <value>lblPropProfileSplayNegInclinationRange</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayNegInclinationRange.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayNegInclinationRange.Parent" xml:space="preserve">
+    <value>pnlProfile</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayNegInclinationRange.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtPropProfileSplayPosInclinationRangeMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>187, 63</value>
+  </data>
+  <data name="txtPropProfileSplayPosInclinationRangeMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropProfileSplayPosInclinationRangeMax.TabIndex" type="System.Int32, mscorlib">
+    <value>162</value>
+  </data>
+  <data name="txtPropProfileSplayPosInclinationRangeMax.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayPosInclinationRangeMax.Name" xml:space="preserve">
+    <value>txtPropProfileSplayPosInclinationRangeMax</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayPosInclinationRangeMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayPosInclinationRangeMax.Parent" xml:space="preserve">
+    <value>pnlProfile</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayPosInclinationRangeMax.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtPropProfileSplayPosInclinationRangeMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 63</value>
+  </data>
+  <data name="txtPropProfileSplayPosInclinationRangeMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropProfileSplayPosInclinationRangeMin.TabIndex" type="System.Int32, mscorlib">
+    <value>161</value>
+  </data>
+  <data name="txtPropProfileSplayPosInclinationRangeMin.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayPosInclinationRangeMin.Name" xml:space="preserve">
+    <value>txtPropProfileSplayPosInclinationRangeMin</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayPosInclinationRangeMin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayPosInclinationRangeMin.Parent" xml:space="preserve">
+    <value>pnlProfile</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayPosInclinationRangeMin.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblPropProfileSplayPosInclinationRange.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropProfileSplayPosInclinationRange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropProfileSplayPosInclinationRange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 65</value>
+  </data>
+  <data name="lblPropProfileSplayPosInclinationRange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 13</value>
+  </data>
+  <data name="lblPropProfileSplayPosInclinationRange.TabIndex" type="System.Int32, mscorlib">
+    <value>163</value>
+  </data>
+  <data name="lblPropProfileSplayPosInclinationRange.Text" xml:space="preserve">
+    <value>Incl. range +:</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayPosInclinationRange.Name" xml:space="preserve">
+    <value>lblPropProfileSplayPosInclinationRange</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayPosInclinationRange.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayPosInclinationRange.Parent" xml:space="preserve">
+    <value>pnlProfile</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayPosInclinationRange.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblPropProfileSplayProjectionAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 11</value>
+  </data>
+  <data name="lblPropProfileSplayProjectionAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
+  </data>
+  <data name="lblPropProfileSplayProjectionAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>160</value>
+  </data>
+  <data name="lblPropProfileSplayProjectionAngle.Text" xml:space="preserve">
+    <value>Angle:</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayProjectionAngle.Name" xml:space="preserve">
+    <value>lblPropProfileSplayProjectionAngle</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayProjectionAngle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayProjectionAngle.Parent" xml:space="preserve">
+    <value>pnlProfile</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayProjectionAngle.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lblPropProfileSplayMaxVariationAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 38</value>
+  </data>
+  <data name="lblPropProfileSplayMaxVariationAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="lblPropProfileSplayMaxVariationAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>159</value>
+  </data>
+  <data name="lblPropProfileSplayMaxVariationAngle.Text" xml:space="preserve">
+    <value>Variation:</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayMaxVariationAngle.Name" xml:space="preserve">
+    <value>lblPropProfileSplayMaxVariationAngle</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayMaxVariationAngle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayMaxVariationAngle.Parent" xml:space="preserve">
+    <value>pnlProfile</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayMaxVariationAngle.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="txtPropProfileSplayMaxVariationAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 36</value>
+  </data>
+  <data name="txtPropProfileSplayMaxVariationAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropProfileSplayMaxVariationAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>140</value>
+  </data>
+  <data name="txtPropProfileSplayMaxVariationAngle.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayMaxVariationAngle.Name" xml:space="preserve">
+    <value>txtPropProfileSplayMaxVariationAngle</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayMaxVariationAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayMaxVariationAngle.Parent" xml:space="preserve">
+    <value>pnlProfile</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayMaxVariationAngle.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="txtPropProfileSplayProjectionAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 9</value>
+  </data>
+  <data name="txtPropProfileSplayProjectionAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropProfileSplayProjectionAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>137</value>
+  </data>
+  <data name="txtPropProfileSplayProjectionAngle.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayProjectionAngle.Name" xml:space="preserve">
+    <value>txtPropProfileSplayProjectionAngle</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayProjectionAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayProjectionAngle.Parent" xml:space="preserve">
+    <value>pnlProfile</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayProjectionAngle.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="pnlProfile.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="pnlProfile.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="pnlProfile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 35</value>
+  </data>
+  <data name="pnlProfile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 149</value>
+  </data>
+  <data name="pnlProfile.TabIndex" type="System.Int32, mscorlib">
+    <value>168</value>
+  </data>
+  <data name="&gt;&gt;pnlProfile.Name" xml:space="preserve">
+    <value>pnlProfile</value>
+  </data>
+  <data name="&gt;&gt;pnlProfile.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlProfile.Parent" xml:space="preserve">
+    <value>tabProfile</value>
+  </data>
+  <data name="&gt;&gt;pnlProfile.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkProfile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkProfile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 9</value>
+  </data>
+  <data name="chkProfile.Properties.Caption" xml:space="preserve">
+    <value>Change this settings</value>
+  </data>
+  <data name="chkProfile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 20</value>
+  </data>
+  <data name="chkProfile.TabIndex" type="System.Int32, mscorlib">
+    <value>167</value>
+  </data>
+  <data name="&gt;&gt;chkProfile.Name" xml:space="preserve">
+    <value>chkProfile</value>
+  </data>
+  <data name="&gt;&gt;chkProfile.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkProfile.Parent" xml:space="preserve">
+    <value>tabProfile</value>
+  </data>
+  <data name="&gt;&gt;chkProfile.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="cmdCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>382, 236</value>
+  </data>
+  <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 25</value>
+  </data>
+  <data name="cmdCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;cmdCancel.Name" xml:space="preserve">
+    <value>cmdCancel</value>
+  </data>
+  <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="cmdOk.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 236</value>
+  </data>
+  <data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 25</value>
+  </data>
+  <data name="cmdOk.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="cmdOk.Text" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="&gt;&gt;cmdOk.Name" xml:space="preserve">
+    <value>cmdOk</value>
+  </data>
+  <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cmdApply.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="cmdApply.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdApply.Location" type="System.Drawing.Point, System.Drawing">
+    <value>296, 236</value>
+  </data>
+  <data name="cmdApply.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 25</value>
+  </data>
+  <data name="cmdApply.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="cmdApply.Text" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="&gt;&gt;cmdApply.Name" xml:space="preserve">
+    <value>cmdApply</value>
+  </data>
+  <data name="&gt;&gt;cmdApply.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdApply.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdApply.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabMain.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="tabMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="tabPlan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 184</value>
+  </data>
+  <data name="tabPlan.Text" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+  <data name="&gt;&gt;tabPlan.Name" xml:space="preserve">
+    <value>tabPlan</value>
+  </data>
+  <data name="&gt;&gt;tabPlan.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabPlan.Parent" xml:space="preserve">
+    <value>tabMain</value>
+  </data>
+  <data name="&gt;&gt;tabPlan.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 213</value>
+  </data>
+  <data name="tabMain.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="tabProfile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 184</value>
+  </data>
+  <data name="tabProfile.Text" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="&gt;&gt;tabProfile.Name" xml:space="preserve">
+    <value>tabProfile</value>
+  </data>
+  <data name="&gt;&gt;tabProfile.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabProfile.Parent" xml:space="preserve">
+    <value>tabMain</value>
+  </data>
+  <data name="&gt;&gt;tabProfile.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabCrossSections.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 184</value>
+  </data>
+  <data name="tabCrossSections.Text" xml:space="preserve">
+    <value>Cross sections</value>
+  </data>
+  <data name="&gt;&gt;tabCrossSections.Name" xml:space="preserve">
+    <value>tabCrossSections</value>
+  </data>
+  <data name="&gt;&gt;tabCrossSections.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabCrossSections.Parent" xml:space="preserve">
+    <value>tabMain</value>
+  </data>
+  <data name="&gt;&gt;tabCrossSections.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tabMain.Name" xml:space="preserve">
+    <value>tabMain</value>
+  </data>
+  <data name="&gt;&gt;tabMain.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabMain.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>474, 273</value>
+  </data>
+  <data name="frmSplay.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAK5zAACvdAAAsXYAALp1AAC9dgAAtHoGALx7AAC+fAAAtHoIALV+
+        DgC5fgkAtn8QALV9OgCEe0wAtH9BALeBEwC3gRQAr4g6ALaAPgC2gUIAt4NEALiCQAC5hEIAuINHALiE
+        RAC6lksAupZMAJ6UfwC6lWoAzJVDANOdTgDTnlAA1Z9RAMqmWwDKplwA1aBTANyoWwDcqVwA37FuAMum
+        eQDksmgA5rRpAOi1agDgs3AA7r1zAO+/dADsv3wAE3jFABZ5xgAWe8kAGnzIABZ+0wB1kI4AIIDKACWB
+        ywAphM4AL4fRAC6I0QAxh9EAM4jRADWK1AA7kd4APZvzAEyW2ABKmd8ASJjhAEPM8wBGzfMASM3wAFnT
+        8gBc1PMAatv2AGzb9gB64vgAfOP5AKCWggChmIUApJ6PAKSdkQCioZ4ApKGcALGlmgCfoKEAoaCgAN+7
+        iADlvIIA5b2EAOjBiADqxIsA+suAAOjFkgDoypoA6s2fAOzPpADs0KQA6tKuAO3VsgDq1bUA9N6+AI7u
+        /gCP8P8Akvf/AJT3/wCZ9f8AnfX/AJH7/wCa+f8A9N/BAPXkywD25c4A++jPAP7uzQD359AA9+jRAPno
+        0gD+79AA+uvXAPrr2AD/8dIA//TVAP3y2QD/9doA/vPcAP703gD/+d0A//bhAP/54QD//eIA//3lAP/8
+        6QD//e4A///xAP/+9wD//vkA///+AP/SEQD/2DEA/91RAP/kcQD/6pEA//CxAP/20QD///8AAAAAAC8U
+        AABQIgAAcDAAAJA+AACwTQAAz1sAAPBpAAD/eREA/4oxAP+dUQD/r3EA/8GRAP/SsQD/5dEA////AAAA
+        AAAvAwAAUAQAAHAGAACQCQAAsAoAAM8MAADwDgAA/yASAP8+MQD/XFEA/3pxAP+XkQD/trEA/9TRAP//
+        /wAAAAAALwAOAFAAFwBwACEAkAArALAANgDPAEAA8ABJAP8RWgD/MXAA/1GGAP9xnAD/kbIA/7HIAP/R
+        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
+</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Replicate splay settings:</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmSplay</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tvCaveInfos.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tvCaveInfos.ImageIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <metadata name="iml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="iml.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABE
+        CAAAAk1TRnQBSQFMAgEBAwEAARABAwEQAQMBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        AwABEAMAAQEBAAEYBgABDCoAA/QD+SoAA/QD+YcAA/QDsQO2A/kkAAP0A7EDtgP5GAAC6gH1Av0B/hIA
+        Av0B/gLoAfVLAAP0A7UD4APYA7YD+R4AA/QDtQPgA9gDtgP5EgAC6wH2AU8BTAHyAkIB7QL9Af4MAAL9
+        Af4BKQEnAeMBMQEvAeoC6AH1RQAD8wO4A+IG/QPZA7YD+RgAA/MDuAPiBv0D2QO2A/kMAALrAfYBWAFW
+        AfUBYwFhAfoBWAFVAfYBRAFCAewC/QH+BgAC/QH+AS8BLgHlAUEBPwHxAUwBSgH2ATEBLwHqAugB9T8A
+        A/MDuwPkA/0B+wHsAdUB/QHSAZcB/QH7AfcD2QO3A/kSAAPzA7sD5AP9Ac0B4gHXAX8BugGcAfYB+QH3
+        A9kDtwP5CQAC9AH4AVsBWAH2AWUBYgH6AXEBcAH/AVkBVgH2AUUBQwHtAv0B/gL9Af4BOAE1AegBRwFF
+        AfIBYwFiAf8BSgFIAfQBLwEtAekB8wHyAfg8AAP0A74D5QP9AfsB7AHWAf0BzQGGAf8BzwGMAfoB0QGX
+        AfkB9wHzA9kDtwP5DAAD9AO+A+UD/QHOAeMB2AFsAbABjQFyAbQBkgGBAboBnAHyAfUB9APZA7cD+QkA
+        AvQB+AFbAVkB9gFmAWMB+gF0AXEB/wFaAVgB9gFGAUQB7QFCAUAB7AFQAU0B9AFoAWcB/wFQAU4B9QE2
+        ATQB6wLzAfg8AAP0A8ID5wP9AfsB7AHWAf0BzQGIAf8B1QGYAf8B1gGcAf8B0AGOAfcBzAGNAf0B/AH7
+        A9kDtwP5BgAD9APCA+cD/QHOAeMB2AFuAbEBjgGBAbwBngGGAb8BoQF0AbYBlAF1AbIBkwH6AfwB+wPZ
+        A7cD+QkAAvQB+AFcAVoB9gFnAWQB+gF0AXIB/wFzAXAB/wFwAW4B/wFuAWwB/wFXAVUB9wE/AT0B7gLz
+        Afg8AAP0A8UD6AP9AfsB7AHWAf0BzQGIAf8B1QGYAf8B1wGeAf8B1gGbAf8BzgGJAf0B4QG6A/0D1wO1
+        A/sDAAP0A8UD6AP9Ac4B4wHYAW4BsQGOAYEBvAGeAYgBwAGjAYQBvgGgAW4BsgGPAaoB0QG9A/0D1wO1
+        A/sMAAL0AfgBXQFbAfcBeQF2Af8BWQFWAf8BVwFUAf8BcgFwAf8BSAFGAfAC8wH4PAAD9APJA+kD/QH7
+        AesB0wH/AcwBgwH/AdQBmAH/AdcBngH/AdYBmwH/Ac8BiwH9AeIBvAP9A9kDuQP7AwAD9APJA+kD/QHK
+        AeIB1gFnAa8BigGAAbwBnQGIAcABowGEAb4BoAFwAbMBkQGuAdMBwAP9A9kDuQP7DwAC/QH+AV8BXAH2
+        AX0BeQH/AV4BWwH/AVsBWAH/AXYBdAH/AUgBRQHvAv0B/jwAA80D6wP9A/oB+wHzAecB/gHOAYkB/wHU
+        AZYB/wHVAZoB/wHPAYsB/QHiAbwD/QPaA70D+wYAA80D6wP9A/oB4wHuAegBbwGzAY8BfgG7AZsBgwG+
+        AZ8BcAGzAZEBrgHTAcAD/QPaA70D+w8AAv0B/gFpAWYB+AFwAW0B+wGAAX4B/wF+AXsB/wF8AXkB/wF5
+        AXcB/wFeAVwB9wFKAUcB7gL9Af45AAPNBv0D/AP3Af0B9QHqAf4BzwGKAf8BzAGDAf0B4gG8A/0D3APA
+        A/sJAAPNBv0D/AP3AeYB8QHrAXABswGQAWcBrgGJAa4B0wHAA/0D3APAA/sPAAH+Af0B/gFxAW4B+wF3
+        AXQB/QGGAYIB/wF2AXMB/AFkAWIB+AFgAV0B9wFtAWoB+gF7AXkB/wFgAV0B9wFLAUgB7gL9Af42AAPO
+        A/0D4APLA88D9wH7AfMB6AH9AeMBvQP9A94DwwP7DAADzgP9A+ADywPPA/cB4wHvAekBrwHTAcED/QPe
+        A8MD+w8AA/4BdgFzAf4BfQF6Af4BigGHAf8BfAF5Af0BbAFpAfsC9AH5AvQB+QFhAV4B+AFuAWwB+gF9
+        AXoB/wFhAV8B9wFMAUkB7wP+MwAD0AP9A80DAAPVA/MD+wP9A+ADxwP7DwAD0AP9A80DAAPVA/MD+wP9
+        A+ADxwP7EgAC+AH6AXoBdwH/AYEBfgH/AYEBfgH+AXQBcQH9AvUB+QYAAvQB+QFiAV8B+AFvAW0B+wF+
+        AXwB/wFiAV8B+AHSAdEB8QP/MAAD0gP9A+IDzgPgBv0D4gPLA/sSAAPSA/0D4gPOA+AG/QPiA8sD+xgA
+        AvgB+gF6AXcB/wF5AXYB/gL1AfkMAAL0AfkBZAFhAfgBagFoAfkBqwGpAfAB9QH0AfkzAAPTD/0D5APN
+        A/sVAAPTD/0D5APNA/seAAL4AfoC9QH5EgAC9AH5AtUB8wLtAfY2AAPVA9QD0gPRA9ADzgPNA/sYAAPV
+        A9QD0gPRA9ADzgPNA/s8AAP9OQABQgFNAT4HAAE+AwABKAMAAUADAAEQAwABAQEAAQEFAAGAFwAD/wEA
+        Af8BPwH/AT8C/wIAAf4BHwH+AR8C5wIAAfwBDwH8AQ8CwwIAAfgBBwH4AQcCgQIAAfABAwHwAQMBgAEB
+        AgAB4AEBAeABAQHAAQMCAAHAAQABwAEAAeABBwIAAYABAAGAAQAB8AEPAwABAQEAAQEB8AEPAwABAwEA
+        AQMB4AEHAwABBwEAAQcBwAEDAwABDwEAAQ8BgAEBAgABEAEfARABHwGBAYADAAE/AQABPwHDAcEDAAF/
+        AQABfwHnAeMDAAH/AQAC/wH3AgAL
+</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tvCaveInfos.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="tvCaveInfos.SelectedImageIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tvCaveInfos.Size" type="System.Drawing.Size, System.Drawing">
+    <value>439, 287</value>
+  </data>
+  <data name="tvCaveInfos.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;tvCaveInfos.Name" xml:space="preserve">
+    <value>tvCaveInfos</value>
+  </data>
+  <data name="&gt;&gt;tvCaveInfos.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tvCaveInfos.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tvCaveInfos.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="chkKeepCaveAndBranchGrouped.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="chkKeepCaveAndBranchGrouped.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkKeepCaveAndBranchGrouped.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 340</value>
+  </data>
+  <data name="chkKeepCaveAndBranchGrouped.Properties.Caption" xml:space="preserve">
+    <value>Keep cave and branch structure</value>
+  </data>
+  <data name="chkKeepCaveAndBranchGrouped.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 20</value>
+  </data>
+  <data name="chkKeepCaveAndBranchGrouped.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;chkKeepCaveAndBranchGrouped.Name" xml:space="preserve">
+    <value>chkKeepCaveAndBranchGrouped</value>
+  </data>
+  <data name="&gt;&gt;chkKeepCaveAndBranchGrouped.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkKeepCaveAndBranchGrouped.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkKeepCaveAndBranchGrouped.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cmdMoveUp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdMoveUp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdMoveUp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>457, 12</value>
+  </data>
+  <data name="cmdMoveUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 25</value>
+  </data>
+  <data name="cmdMoveUp.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="cmdMoveUp.Text" xml:space="preserve">
+    <value>Move up</value>
+  </data>
+  <data name="&gt;&gt;cmdMoveUp.Name" xml:space="preserve">
+    <value>cmdMoveUp</value>
+  </data>
+  <data name="&gt;&gt;cmdMoveUp.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdMoveUp.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdMoveUp.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cmdMoveDown.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdMoveDown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdMoveDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>457, 43</value>
+  </data>
+  <data name="cmdMoveDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 25</value>
+  </data>
+  <data name="cmdMoveDown.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="cmdMoveDown.Text" xml:space="preserve">
+    <value>Move down</value>
+  </data>
+  <data name="&gt;&gt;cmdMoveDown.Name" xml:space="preserve">
+    <value>cmdMoveDown</value>
+  </data>
+  <data name="&gt;&gt;cmdMoveDown.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdMoveDown.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdMoveDown.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TreeList1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="colCaveBranch.Caption" xml:space="preserve">
+    <value>Cave/branch</value>
+  </data>
+  <data name="txtCaveBranch.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="colCaveBranch.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colCaveBranch.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="colCaveBranch.Width" type="System.Int32, mscorlib">
+    <value>377</value>
+  </data>
+  <data name="colZOrder.Caption" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="colZOrder.MaxWidth" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="colZOrder.MinWidth" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="colZOrder.Width" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="TreeList1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="TreeList1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>439, 322</value>
+  </data>
+  <data name="TreeList1.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;TreeList1.Name" xml:space="preserve">
+    <value>TreeList1</value>
+  </data>
+  <data name="&gt;&gt;TreeList1.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;TreeList1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TreeList1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>549, 369</value>
+  </data>
+  <data name="&gt;&gt;iml.Name" xml:space="preserve">
+    <value>iml</value>
+  </data>
+  <data name="&gt;&gt;iml.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colCaveBranch.Name" xml:space="preserve">
+    <value>colCaveBranch</value>
+  </data>
+  <data name="&gt;&gt;colCaveBranch.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtCaveBranch.Name" xml:space="preserve">
+    <value>txtCaveBranch</value>
+  </data>
+  <data name="&gt;&gt;txtCaveBranch.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemTextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colZOrder.Name" xml:space="preserve">
+    <value>colZOrder</value>
+  </data>
+  <data name="&gt;&gt;colZOrder.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmParametersZOrder</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.XtraUserControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+</root>

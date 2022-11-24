@@ -410,11 +410,13 @@ Friend Class frmScaleRules
         Dim oCheckBox As DevExpress.XtraEditors.CheckEdit = DirectCast(sender, DevExpress.XtraEditors.CheckEdit)
         Dim bEnabled As Boolean = oCheckBox.Checked
         Dim oChildControls As List(Of String) = oCheckBox.Tag
-        For Each oChildControl As Control In oCheckBox.Parent.Controls
-            If oChildControls.Contains(oChildControl.Name.ToLower) Then
-                oChildControl.Enabled = bEnabled
-            End If
-        Next
+        If oChildControls IsNot Nothing Then
+            For Each oChildControl As Control In oCheckBox.Parent.Controls
+                If oChildControls.Contains(oChildControl.Name.ToLower) Then
+                    oChildControl.Enabled = bEnabled
+                End If
+            Next
+        End If
         'End If
     End Sub
 

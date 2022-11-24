@@ -1,0 +1,621 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cboPropQuotaFormat.Items" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cboPropQuotaFormat.Items1" xml:space="preserve">
+    <value>+0;-0;0</value>
+  </data>
+  <data name="cboPropQuotaFormat.Items2" xml:space="preserve">
+    <value>+0.0;-0.0;0.0</value>
+  </data>
+  <data name="cboPropQuotaFormat.Items3" xml:space="preserve">
+    <value>+0.00;-0.00;0.00</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cboPropQuotaFormat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 87</value>
+  </data>
+  <data name="cboPropQuotaFormat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 21</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cboPropQuotaFormat.TabIndex" type="System.Int32, mscorlib">
+    <value>223</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaFormat.Name" xml:space="preserve">
+    <value>cboPropQuotaFormat</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaFormat.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaFormat.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaFormat.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblPropQuotaFormat.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropQuotaFormat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>163, 90</value>
+  </data>
+  <data name="lblPropQuotaFormat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 13</value>
+  </data>
+  <data name="lblPropQuotaFormat.TabIndex" type="System.Int32, mscorlib">
+    <value>222</value>
+  </data>
+  <data name="lblPropQuotaFormat.Text" xml:space="preserve">
+    <value>Format:</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaFormat.Name" xml:space="preserve">
+    <value>lblPropQuotaFormat</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaFormat.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaFormat.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaFormat.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblPropQuotaTextPosition.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropQuotaTextPosition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 63</value>
+  </data>
+  <data name="lblPropQuotaTextPosition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 13</value>
+  </data>
+  <data name="lblPropQuotaTextPosition.TabIndex" type="System.Int32, mscorlib">
+    <value>221</value>
+  </data>
+  <data name="lblPropQuotaTextPosition.Text" xml:space="preserve">
+    <value>Text pos.:</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaTextPosition.Name" xml:space="preserve">
+    <value>lblPropQuotaTextPosition</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaTextPosition.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaTextPosition.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaTextPosition.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cboPropQuotaTextPosition.Items" xml:space="preserve">
+    <value>Up/Left</value>
+  </data>
+  <data name="cboPropQuotaTextPosition.Items1" xml:space="preserve">
+    <value>Down/Right</value>
+  </data>
+  <data name="cboPropQuotaTextPosition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 60</value>
+  </data>
+  <data name="cboPropQuotaTextPosition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 21</value>
+  </data>
+  <data name="cboPropQuotaTextPosition.TabIndex" type="System.Int32, mscorlib">
+    <value>220</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaTextPosition.Name" xml:space="preserve">
+    <value>cboPropQuotaTextPosition</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaTextPosition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaTextPosition.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaTextPosition.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cmdPropQuotaOtherOptions.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cmdPropQuotaOtherOptions.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropQuotaOtherOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>285, 4</value>
+  </data>
+  <data name="cmdPropQuotaOtherOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdPropQuotaOtherOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>219</value>
+  </data>
+  <data name="cmdPropQuotaOtherOptions.ToolTip" xml:space="preserve">
+    <value>Other settings...</value>
+  </data>
+  <data name="&gt;&gt;cmdPropQuotaOtherOptions.Name" xml:space="preserve">
+    <value>cmdPropQuotaOtherOptions</value>
+  </data>
+  <data name="&gt;&gt;cmdPropQuotaOtherOptions.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropQuotaOtherOptions.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdPropQuotaOtherOptions.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblPropQuotaRelativeTrigpoint.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="lblPropQuotaRelativeTrigpoint.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropQuotaRelativeTrigpoint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 144</value>
+  </data>
+  <data name="lblPropQuotaRelativeTrigpoint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 13</value>
+  </data>
+  <data name="lblPropQuotaRelativeTrigpoint.TabIndex" type="System.Int32, mscorlib">
+    <value>216</value>
+  </data>
+  <data name="lblPropQuotaRelativeTrigpoint.Text" xml:space="preserve">
+    <value>Station:</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaRelativeTrigpoint.Name" xml:space="preserve">
+    <value>lblPropQuotaRelativeTrigpoint</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaRelativeTrigpoint.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaRelativeTrigpoint.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaRelativeTrigpoint.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="cboPropQuotaType.Items" xml:space="preserve">
+    <value>Vertical</value>
+  </data>
+  <data name="cboPropQuotaType.Items1" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="cboPropQuotaType.Items2" xml:space="preserve">
+    <value>Oblique</value>
+  </data>
+  <data name="cboPropQuotaType.Items3" xml:space="preserve">
+    <value>Drop</value>
+  </data>
+  <data name="cboPropQuotaType.Items4" xml:space="preserve">
+    <value>Altitude</value>
+  </data>
+  <data name="cboPropQuotaType.Items5" xml:space="preserve">
+    <value>Vertical scale</value>
+  </data>
+  <data name="cboPropQuotaType.Items6" xml:space="preserve">
+    <value>Horizontal scale</value>
+  </data>
+  <data name="cboPropQuotaType.Items7" xml:space="preserve">
+    <value>Grid</value>
+  </data>
+  <data name="cboPropQuotaType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 6</value>
+  </data>
+  <data name="cboPropQuotaType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 21</value>
+  </data>
+  <data name="cboPropQuotaType.TabIndex" type="System.Int32, mscorlib">
+    <value>215</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaType.Name" xml:space="preserve">
+    <value>cboPropQuotaType</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaType.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaType.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="lblPropQuotaType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropQuotaType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 9</value>
+  </data>
+  <data name="lblPropQuotaType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="lblPropQuotaType.TabIndex" type="System.Int32, mscorlib">
+    <value>214</value>
+  </data>
+  <data name="lblPropQuotaType.Text" xml:space="preserve">
+    <value>Type:</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaType.Name" xml:space="preserve">
+    <value>lblPropQuotaType</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaType.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaType.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaType.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="cboPropQuotaValueType.Items" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="cboPropQuotaValueType.Items1" xml:space="preserve">
+    <value>Meters</value>
+  </data>
+  <data name="cboPropQuotaValueType.Items2" xml:space="preserve">
+    <value>Feet</value>
+  </data>
+  <data name="cboPropQuotaValueType.Items3" xml:space="preserve">
+    <value>Yards</value>
+  </data>
+  <data name="cboPropQuotaValueType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 114</value>
+  </data>
+  <data name="cboPropQuotaValueType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 21</value>
+  </data>
+  <data name="cboPropQuotaValueType.TabIndex" type="System.Int32, mscorlib">
+    <value>213</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaValueType.Name" xml:space="preserve">
+    <value>cboPropQuotaValueType</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaValueType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaValueType.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaValueType.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="lblPropQuotaValueType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropQuotaValueType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 117</value>
+  </data>
+  <data name="lblPropQuotaValueType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
+  </data>
+  <data name="lblPropQuotaValueType.TabIndex" type="System.Int32, mscorlib">
+    <value>212</value>
+  </data>
+  <data name="lblPropQuotaValueType.Text" xml:space="preserve">
+    <value>Measure:</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaValueType.Name" xml:space="preserve">
+    <value>lblPropQuotaValueType</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaValueType.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaValueType.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaValueType.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="cboPropQuotaValue.Items" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="cboPropQuotaValue.Items1" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="cboPropQuotaValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 87</value>
+  </data>
+  <data name="cboPropQuotaValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 21</value>
+  </data>
+  <data name="cboPropQuotaValue.TabIndex" type="System.Int32, mscorlib">
+    <value>211</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaValue.Name" xml:space="preserve">
+    <value>cboPropQuotaValue</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaValue.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaValue.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="lblPropQuotaValue.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropQuotaValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 90</value>
+  </data>
+  <data name="lblPropQuotaValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
+  </data>
+  <data name="lblPropQuotaValue.TabIndex" type="System.Int32, mscorlib">
+    <value>210</value>
+  </data>
+  <data name="lblPropQuotaValue.Text" xml:space="preserve">
+    <value>Value:</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaValue.Name" xml:space="preserve">
+    <value>lblPropQuotaValue</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaValue.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaValue.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaValue.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="cboPropQuotaAlign.Items" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="cboPropQuotaAlign.Items1" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="cboPropQuotaAlign.Items2" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="cboPropQuotaAlign.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 33</value>
+  </data>
+  <data name="cboPropQuotaAlign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 21</value>
+  </data>
+  <data name="cboPropQuotaAlign.TabIndex" type="System.Int32, mscorlib">
+    <value>209</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaAlign.Name" xml:space="preserve">
+    <value>cboPropQuotaAlign</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaAlign.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaAlign.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropQuotaAlign.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="lblPropQuotaAlign.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropQuotaAlign.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 36</value>
+  </data>
+  <data name="lblPropQuotaAlign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 13</value>
+  </data>
+  <data name="lblPropQuotaAlign.TabIndex" type="System.Int32, mscorlib">
+    <value>208</value>
+  </data>
+  <data name="lblPropQuotaAlign.Text" xml:space="preserve">
+    <value>Alignment:</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaAlign.Name" xml:space="preserve">
+    <value>lblPropQuotaAlign</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaAlign.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaAlign.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropQuotaAlign.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="txtPropQuotaRelativeTrigpoint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 141</value>
+  </data>
+  <data name="txtPropQuotaRelativeTrigpoint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 20</value>
+  </data>
+  <data name="txtPropQuotaRelativeTrigpoint.TabIndex" type="System.Int32, mscorlib">
+    <value>217</value>
+  </data>
+  <data name="&gt;&gt;txtPropQuotaRelativeTrigpoint.Name" xml:space="preserve">
+    <value>txtPropQuotaRelativeTrigpoint</value>
+  </data>
+  <data name="&gt;&gt;txtPropQuotaRelativeTrigpoint.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ButtonEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropQuotaRelativeTrigpoint.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropQuotaRelativeTrigpoint.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="pnlParameters.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pnlParameters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pnlParameters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 70</value>
+  </data>
+  <data name="pnlParameters.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pnlParameters.Name" xml:space="preserve">
+    <value>pnlParameters</value>
+  </data>
+  <data name="&gt;&gt;pnlParameters.Type" xml:space="preserve">
+    <value>DevExpress.Utils.FlyoutPanelControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlParameters.Parent" xml:space="preserve">
+    <value>flyParameters</value>
+  </data>
+  <data name="&gt;&gt;pnlParameters.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flyParameters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>341, 36</value>
+  </data>
+  <data name="flyParameters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 70</value>
+  </data>
+  <data name="flyParameters.TabIndex" type="System.Int32, mscorlib">
+    <value>224</value>
+  </data>
+  <data name="&gt;&gt;flyParameters.Name" xml:space="preserve">
+    <value>flyParameters</value>
+  </data>
+  <data name="&gt;&gt;flyParameters.Type" xml:space="preserve">
+    <value>DevExpress.Utils.FlyoutPanel, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;flyParameters.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;flyParameters.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>506, 167</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>cItemQuotaPropertyControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

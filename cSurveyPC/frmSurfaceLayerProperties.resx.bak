@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>194, 159</value>
+  </data>
+  <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 25</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cmdCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;cmdCancel.Name" xml:space="preserve">
+    <value>cmdCancel</value>
+  </data>
+  <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 159</value>
+  </data>
+  <data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 25</value>
+  </data>
+  <data name="cmdOk.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="cmdOk.Text" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="&gt;&gt;cmdOk.Name" xml:space="preserve">
+    <value>cmdOk</value>
+  </data>
+  <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="frmScale.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="txtMaxScale.EditValue" type="System.Decimal, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtMaxScale.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtMaxScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 60</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="txtMaxScale.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtMaxScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 20</value>
+  </data>
+  <data name="txtMaxScale.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtMaxScale.Name" xml:space="preserve">
+    <value>txtMaxScale</value>
+  </data>
+  <data name="&gt;&gt;txtMaxScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtMaxScale.Parent" xml:space="preserve">
+    <value>frmScale</value>
+  </data>
+  <data name="&gt;&gt;txtMaxScale.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtMinScale.EditValue" type="System.Decimal, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtMinScale.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtMinScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 33</value>
+  </data>
+  <data name="txtMinScale.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtMinScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 20</value>
+  </data>
+  <data name="txtMinScale.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtMinScale.Name" xml:space="preserve">
+    <value>txtMinScale</value>
+  </data>
+  <data name="&gt;&gt;txtMinScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtMinScale.Parent" xml:space="preserve">
+    <value>frmScale</value>
+  </data>
+  <data name="&gt;&gt;txtMinScale.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblMaxScale.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="lblMaxScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 62</value>
+  </data>
+  <data name="lblMaxScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 13</value>
+  </data>
+  <data name="lblMaxScale.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="lblMaxScale.Text" xml:space="preserve">
+    <value>1:</value>
+  </data>
+  <data name="&gt;&gt;lblMaxScale.Name" xml:space="preserve">
+    <value>lblMaxScale</value>
+  </data>
+  <data name="&gt;&gt;lblMaxScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblMaxScale.Parent" xml:space="preserve">
+    <value>frmScale</value>
+  </data>
+  <data name="&gt;&gt;lblMaxScale.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblMinScale.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="lblMinScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 36</value>
+  </data>
+  <data name="lblMinScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 13</value>
+  </data>
+  <data name="lblMinScale.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="lblMinScale.Text" xml:space="preserve">
+    <value>1:</value>
+  </data>
+  <data name="&gt;&gt;lblMinScale.Name" xml:space="preserve">
+    <value>lblMinScale</value>
+  </data>
+  <data name="&gt;&gt;lblMinScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblMinScale.Parent" xml:space="preserve">
+    <value>frmScale</value>
+  </data>
+  <data name="&gt;&gt;lblMinScale.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="chkMaxScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 60</value>
+  </data>
+  <data name="chkMaxScale.Properties.Caption" xml:space="preserve">
+    <value>Maximum scale:</value>
+  </data>
+  <data name="chkMaxScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 20</value>
+  </data>
+  <data name="chkMaxScale.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;chkMaxScale.Name" xml:space="preserve">
+    <value>chkMaxScale</value>
+  </data>
+  <data name="&gt;&gt;chkMaxScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkMaxScale.Parent" xml:space="preserve">
+    <value>frmScale</value>
+  </data>
+  <data name="&gt;&gt;chkMaxScale.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="chkMinScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 33</value>
+  </data>
+  <data name="chkMinScale.Properties.Caption" xml:space="preserve">
+    <value>Minimum scale:</value>
+  </data>
+  <data name="chkMinScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 20</value>
+  </data>
+  <data name="chkMinScale.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;chkMinScale.Name" xml:space="preserve">
+    <value>chkMinScale</value>
+  </data>
+  <data name="&gt;&gt;chkMinScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkMinScale.Parent" xml:space="preserve">
+    <value>frmScale</value>
+  </data>
+  <data name="&gt;&gt;chkMinScale.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="frmScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 48</value>
+  </data>
+  <data name="frmScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 92</value>
+  </data>
+  <data name="frmScale.TabIndex" type="System.Int32, mscorlib">
+    <value>127</value>
+  </data>
+  <data name="frmScale.Text" xml:space="preserve">
+    <value>Show in this scale range:</value>
+  </data>
+  <data name="&gt;&gt;frmScale.Name" xml:space="preserve">
+    <value>frmScale</value>
+  </data>
+  <data name="&gt;&gt;frmScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;frmScale.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;frmScale.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblPropTransparency.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropTransparency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 14</value>
+  </data>
+  <data name="lblPropTransparency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 13</value>
+  </data>
+  <data name="lblPropTransparency.TabIndex" type="System.Int32, mscorlib">
+    <value>128</value>
+  </data>
+  <data name="lblPropTransparency.Text" xml:space="preserve">
+    <value>Transparency:</value>
+  </data>
+  <data name="&gt;&gt;lblPropTransparency.Name" xml:space="preserve">
+    <value>lblPropTransparency</value>
+  </data>
+  <data name="&gt;&gt;lblPropTransparency.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropTransparency.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropTransparency.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="trkTransparency.EditValue" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="trkTransparency.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="trkTransparency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 12</value>
+  </data>
+  <data name="trkTransparency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 28</value>
+  </data>
+  <data name="trkTransparency.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;trkTransparency.Name" xml:space="preserve">
+    <value>trkTransparency</value>
+  </data>
+  <data name="&gt;&gt;trkTransparency.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.TrackBarControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;trkTransparency.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;trkTransparency.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>286, 196</value>
+  </data>
+  <data name="frmSurfaceLayerProperties.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAFdQTgBCXG8AUGp3AG1ucABnc38AcXBxAHB0cACIfHEAe4B0AKCW
+        fADptW4A7rtqAOm2cQDst3EA7blyAOa5fAD5v3EA+cJ1ACdglQAnYJgAIWKeADdynQAjY6AAXnSBABhv
+        yAAacMcAFXLOABpwyACYa8gAmmrNAJ9wyQCres0ADZr/ABGZ/wAVmP8AQpLSAGyfxAB0t9sAVrX6AF27
+        /wBqu+0Aab7sAGC9/wB8yvsAd9v/AHfc/wB52/8Ah4uCAJeakgCVnp4An5qYAJycmgCenp4AqZ2UAJCf
+        qACAm7AAtaymAMCEuQC1wr4A/8mOAOzLnQD/y5IA/8yTAP/NlQD/zpgA/9CaAP/RnQD/3J4AwcC/AP/T
+        oAD/1KIA/9alAP/cowD/2aUA/96nAP/YqQD/3KsA/9qtAP/crgD/3LEA/960AP/hpQD/46kA/+SrAP/m
+        rwD/4LIA/+awAP/gtgD/6rUA/+G5AP/kuAD/470A/+S+AP/qvgC0gNUAt4DZAMePwgDJjMkAzpjOANmm
+        1gDaotoA4q/jAK7AxwCm2/oApOD/ANXU0wD/48UA/+TGAP/oxgD/5ckA/+fMAP/pyQD/7cgA/+jOAP/t
+        zgD/9cgA/+nRAP/s0AD/69QA/+zWAP/t2QD/7twA//DaAP/12gD/8N0A//TeAP/52gD//NsA//zeANT2
+        /wDa8/8A2/T/AOXj4QDm5uQA//LgAP/04QD/8+UA//niAP/+4QD//+QA//XpAP/27QDo+f8A7fv/AP/5
+        8QD/+vYA//z5AP/9/ACwTQAAz1sAAPBpAAD/eREA/4oxAP+dUQD/r3EA/8GRAP/SsQD/5dEA////AAAA
+        AAAvAwAAUAQAAHAGAACQCQAAsAoAAM8MAADwDgAA/yASAP8+MQD/XFEA/3pxAP+XkQD/trEA/9TRAP//
+        /wAAAAAALwAOAFAAFwBwACEAkAArALAANgDPAEAA8ABJAP8RWgD/MXAA/1GGAP9xnAD/kbIA/7HIAP/R
+        3wD///8AAAAAAC8AIABQADYAcABMAJAAYgCwAHgAzwCOAPAApAD/EbMA/zG+AP9RxwD/cdEA/5HcAP+x
+        5QD/0fAA////AAAAAAAsAC8ASwBQAGkAcACHAJAApQCwAMQAzwDhAPAA8BH/APIx/wD0Uf8A9nH/APeR
+        /wD5sf8A+9H/AP///wAAAAAAGwAvAC0AUAA/AHAAUgCQAGMAsAB2AM8AiADwAJkR/wCmMf8AtFH/AMJx
+        /wDPkf8A3LH/AOvR/wD///8AAAAAAAgALwAOAFAAFQBwABsAkAAhALAAJgDPACwA8AA+Ef8AWDH/AHFR
+        /wCMcf8AppH/AL+x/wDa0f8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABTcAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAyAQI4AAAAAAAAAAAAAAAAAAAAAAAAABANDQ0NDQ0NDxEDGCkWChEPDQ0NDQ0NDQ0NDRAA
+        AAAADXZwcHBtbW1tcTsqaSwkF3RxbW1tcG1tbW1zDQAAAAANc11dXImIiF1dXiWQaCciFIyIiFxdXIiI
+        iHANAAAAAA1wXV1ah32HXFxdZyaPKCMjE4uIXFxch32HcA0AAAAADXBaW1iHh4dYWluKGS6EKyMjE4tb
+        W1iIh4hwDQAAAAANcId9flhYWH59fltZHC+EKyMjFIt+flhYWHANAAAAAA1wfXt9WFpYfXp9WFtZGi+E
+        KyMjE4t+WFpacw0AAAAADW9+fX1WUVZ9fX1WUVaBGi+EKyMjE4tWUVFzDQAAAAANdlBQUH17fVBQUH17
+        fVZXHC+EKyMjE4F+fXINAAAAAA12UFFQe3l7UFFQe3l7UFZXHC+EKyMjE4B8cw0AAAAADXZPT096e3pP
+        T096e3tOT0+AGi+EKyMjE4BzDQAAAAANdnl5e01OTXl5e01OTXl7eU1UHC+EKyMiFX8PAAAAAA12eHh5
+        Tk9OeXh5Tk9OeXh5TU9THC+EKyEIBBIAAAAADXd5eXlMTEx5eXlMTEx5eXlMTEx/HC6CNjMGBwAAAAAN
+        eUhMSnl4eUhMSnl4eUhMSnl4e0pSGzmFRTQJHgAAAA16SExIeHd4SExIeHd4SExIeHd4SE1LNWqGMGI6
+        HQAADXpHSEd4eHhHSEd4eHhHSEd4eHhHSEh8NTFlY2EfAAANfXd3eEZHRnh3eEZHRnh3eEZHRnh3eEdJ
+        YGZkIAAAAA19dXJ3R0dGd3V3R0dGd3V3R0dGd3V3RkpEX18AAAAADYd1dXdDRkN3dXdDRkN3dXdDRkN3
+        dXhDRkOKDAAAAAANiUJDQ3d1d0NDQ3d1d0NDQ3d1d0NDQnd3cokLAAAAAAuNQkNCdXJ1QkZCdXJ1QkZC
+        dXJ1QkZCdXJviQ0AAAAAC45AQkF1dXVBQkF1dXVBQkF1dXVBQkF1dXKNCwAAAAALjm9ydUBBQXVydUBB
+        QXVydUBBQXVydUBBP44NAAAAAA2Obm9yQEFAcm9yQEFAcm9yQEFAcm9yQEFAkQsAAAAAC5FrbG48Pzxv
+        bG88PzxvbG88PzxvbG88PzySCwAAAAANlJKSkpOTk5KSkpOTk5KSkpOTk5KSkpOTk5QNAAAAAD0NCwsL
+        CwsLCwsLCwsLCwsLCwsLCwsLCwsLDT0AAAD////////////P////w///gAAAB4AAAAeAAAAHgAAAB4AA
+        AAeAAAAHgAAAB4AAAAeAAAAHgAAAB4AAAAeAAAAHgAAAB4AAAAeAAAADgAAAAYAAAAGAAAADgAAAB4AA
+        AAeAAAAHgAAAB4AAAAeAAAAHgAAAB4AAAAeAAAAHgAAABygAAAAQAAAAIAAAAAEACAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAcnJ0AHF4cQB+e3gAeXx6AOm1bgDsuGkA9rtuAOm2cQDuuXIA57p9AOi6
+        fQD7v3IA/8JuACZgmQAoY54AK2aeACJioQBKZ4UATWiAAB5wxAAdcskAI3LFALl6twCYaskArXzOAFKA
+        owB/prYAEpn/ABWa/wAjqf8ALan/ADep8wBQkNkAQcX/AEXG/wB/0f0Ah4uDAJCHgAC+vboA7L6BAP/K
+        kgD/zpkA/9CbAP/RnQD/06EA/9WiAP/VpAD/2KgA/9qsAP/csAD/37QA/+K5ALeB2QC5hdoAga/XAMmW
+        xQDfsN8AjdT+AK3Z7wCJ4/8A/+zDAP/oxQD/5MgA/+bMAP/pygD/6M0A/+3NAP/1xwD/8M4A//bMAP/q
+        0gD/7NEA/+vUAP/s1QD/7dkA//HbAP/12gD/8N4A//TfAP/52gD/+d4A6ObkAP/x4QD/8+cA//XlAP/1
+        6gD/+PAA//r2AP/8+QD//fwAef9xAJj/kQC1/7EA1P/RAP///wAAAAAAFC8AACJQAAAwcAAAPZAAAEyw
+        AABZzwAAZ/AAAHj/EQCK/zEAnP9RAK7/cQDA/5EA0v+xAOT/0QD///8AAAAAACYvAABAUAAAWnAAAHSQ
+        AACOsAAAqc8AAMLwAADR/xEA2P8xAN7/UQDj/3EA6f+RAO//sQD2/9EA////AAAAAAAvJgAAUEEAAHBb
+        AACQdAAAsI4AAM+pAADwwwAA/9IRAP/YMQD/3VEA/+RxAP/qkQD/8LEA//bRAP///wAAAAAALxQAAFAi
+        AABwMAAAkD4AALBNAADPWwAA8GkAAP95EQD/ijEA/51RAP+vcQD/wZEA/9KxAP/l0QD///8AAAAAAC8D
+        AABQBAAAcAYAAJAJAACwCgAAzwwAAPAOAAD/IBIA/z4xAP9cUQD/enEA/5eRAP+2sQD/1NEA////AAAA
+        AAAvAA4AUAAXAHAAIQCQACsAsAA2AM8AQADwAEkA/xFaAP8xcAD/UYYA/3GcAP+RsgD/scgA/9HfAP//
+        /wAAAAAALwAgAFAANgBwAEwAkABiALAAeADPAI4A8ACkAP8RswD/Mb4A/1HHAP9x0QD/kdwA/7HlAP/R
+        8AD///8AAAAAACwALwBLAFAAaQBwAIcAkAClALAAxADPAOEA8ADwEf8A8jH/APRR/wD2cf8A95H/APmx
+        /wD70f8A////AAAAAAAbAC8ALQBQAD8AcABSAJAAYwCwAHYAzwCIAPAAmRH/AKYx/wC0Uf8AwnH/AM+R
+        /wDcsf8A69H/AP///wAAAAAACAAvAA4AUAAVAHAAGwCQACEAsAAmAM8ALADwAD4R/wBYMf8AcVH/AIxx
+        /wCmkf8Av7H/ANrR/wD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABMSIQAAAAAAAAALCAgICAcaGzoQ
+        DQkICgAACEM+Pj09IDwkHA9ERQgAAAhBU1M0NFEUIh8dDkYJAAAIQk9OMzNPURYjHx0RDAAACEgyMk5O
+        MjNQFiMeNwEAAAhJMTFOSzExTFAVOyYnAgAISktLMDBLSzAwTQNSJRcYCEtKSy8vS0svL0tNBDk4GQhT
+        LS1KSi0uSkouLlE1NgAFVCssSUksLEpJLCtVBgAABVZCSSoqR0kqKkdCVgUAAAVXP0ApKUBAKSlAP1cF
+        AAAIWlhYWVlYWFlZWFhaCAAAKAgFBQUFBQUFBQUFCCgAAP//AAD8fwAAAAMAAAADAAAAAwAAAAMAAAAD
+        AAAAAQAAAAAAAAAAAAAAAQAAAAMAAAADAAAAAwAAAAMAAAADAAA=
+</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Surface properties:</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmSurfaceLayerProperties</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

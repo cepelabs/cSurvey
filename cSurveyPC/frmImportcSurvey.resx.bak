@@ -1,0 +1,1141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="tipDefault.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="txtFilename.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="txtFilename.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 12</value>
+  </data>
+  <data name="txtFilename.Size" type="System.Drawing.Size, System.Drawing">
+    <value>337, 20</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="txtFilename.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="txtFilename.ToolTip" xml:space="preserve">
+    <value>VisualTopo file name</value>
+  </data>
+  <data name="txtFilename.ToolTip1" xml:space="preserve">
+    <value>VisualTopo file name</value>
+  </data>
+  <data name="&gt;&gt;txtFilename.Name" xml:space="preserve">
+    <value>txtFilename</value>
+  </data>
+  <data name="&gt;&gt;txtFilename.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtFilename.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtFilename.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="cmdOk.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>278, 628</value>
+  </data>
+  <data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 25</value>
+  </data>
+  <data name="cmdOk.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="cmdOk.Text" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="&gt;&gt;cmdOk.Name" xml:space="preserve">
+    <value>cmdOk</value>
+  </data>
+  <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="cmdCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>364, 628</value>
+  </data>
+  <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 25</value>
+  </data>
+  <data name="cmdCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;cmdCancel.Name" xml:space="preserve">
+    <value>cmdCancel</value>
+  </data>
+  <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="GroupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <metadata name="svgiml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>190, 17</value>
+  </metadata>
+  <data name="tvLog.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="tvLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 30</value>
+  </data>
+  <data name="tvLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>416, 101</value>
+  </data>
+  <data name="tvLog.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tvLog.Name" xml:space="preserve">
+    <value>tvLog</value>
+  </data>
+  <data name="&gt;&gt;tvLog.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tvLog.Parent" xml:space="preserve">
+    <value>GroupBox1</value>
+  </data>
+  <data name="&gt;&gt;tvLog.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="GroupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 40</value>
+  </data>
+  <data name="GroupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>428, 137</value>
+  </data>
+  <data name="GroupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>71</value>
+  </data>
+  <data name="GroupBox1.Text" xml:space="preserve">
+    <value>Survey check:</value>
+  </data>
+  <data name="&gt;&gt;GroupBox1.Name" xml:space="preserve">
+    <value>GroupBox1</value>
+  </data>
+  <data name="&gt;&gt;GroupBox1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GroupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GroupBox1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tvLogText.Caption" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="tvLogText.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tvLogText.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <metadata name="svgiml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>190, 17</value>
+  </metadata>
+  <metadata name="iml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>122, 17</value>
+  </metadata>
+  <data name="iml.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAC2
+        CwAAAk1TRnQBSQFMAgEBBAEAAWwBAQFsAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
+        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
+        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
+        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
+        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
+        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
+        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
+        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
+        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
+        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
+        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
+        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
+        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
+        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
+        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
+        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
+        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
+        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
+        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
+        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
+        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
+        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
+        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
+        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
+        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
+        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
+        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD//8A/wD/AP8ACQAB/wH0
+        BPMB9AH/KAAB9gGZAfYB/wGZAbwB7wgAAfQB8AFzBC4BcwHwAfQDABDzAwAC8wYAAvMHAAEbAVcBCAG8
+        AusB6gH0BgAB9AF4CC8BHAH0AgABUg5MAVICAAHzAkYB8wQAAfMCRgHzBgABGwFzAu0D7AEHBQAB/wEc
+        Ai8GNgIvARwB/wEAAVIGegLlBnoBUgEAAfMBRgIWAUYB8wIAAfMBRgIWAUYB8wMAAf8BGgF5AW0D9wPs
+        Af8EAAHyAS8JNgIvAfIBAAEaAXkBegRZAmYEWQF6AXkBGgEAAUYBFgLjARYBRgLzAUYBFgLjARYBRgIA
+        Av8CVwFzAvcC7QLsAfAB/wMAAXMBLwM2A/8ENgEvAXMCAAFSAZoEWQLqBFkBmgFSAgABRgEWA+MBFgJG
+        ARYD4wEWAUYBAAHzAVcBGgJXAVgB7AH3AZIC7QHsAUsBGwMAAS4BVwI2Bf8DNgEvAS4CAAH0AXQBoAhZ
+        AaABdAH0AwABRgEWAxcCFgMXARYBRgIAARsBVwGZA1cBcwHvAfcB7QHsAesBbQEIAwABLgF5ATYD/wE2
+        A/8CNgEvAS4DAAKZAXoCWQJmAlkBegKZBQABRgGUBhcBlAFGAwABGwFXAZkDVwFYAZIB7QH3ARoB7AHr
+        Ae8DAAEuAXkBNgL/AzYD/wE2AS8BLgQAAVIBwwF6AVkCEgFZAXoBwwFSBwABRgGUBBcBlAFGBAABGwFX
+        AZkEVwF0Au0B9wHvAfcBbgH/AgABLgF5BzYC/wE2AS8BLgQAARsBdAHDAVkC6gFZAcMBdAEbBgAB8wFG
+        AZQEFwGUAUYB8wMAARsBVwGZBFcBUQH3AcIBuwLvAesB8QIAAngBWAc2Af8BNgEvAXgFAAF0AZoBoALq
+        AaABmgF0BgAB8wFGAZQGTQGUAUYB8wIAAf8BGgH0BZkBbgIIAe8B7QLsAgAB9AEvAaABVwg2AS8B9AUA
+        Af8BUgEaApkBGgFSAf8FAAHzAUYBlANNApQDTQGUAUYB8wMAAf8FVwFLAfcBBwH3Au0BRAH0AgABmAFQ
+        AcMBeQQ2AlcBLwGZBwABGwF0AsMBdAEbBgABRgGaA0YBmgJGAZoDRgGaAUYEAAGZAXkBmQJXAXkBbQH3
+        Au0B6gEPARwDAAGZAS8BeQKfAnkBVwEvAZgJAAF0ApoBdAcAAUYBvQJGAb0BRgIAAUYBvQJGAb0BRgQA
+        Af8BmQRXAUsB6wHqAkQBCwHrBAAB9AF4BC4BeAH0CgAB9gJSAfYIAAFGAr0BRgQAAUYCvQFGBgAB9AEb
+        AggBGwEcA0QBbQHwAf8jAAJGBgACRgcAAfYEAAH0AesB7wH0AwABQgFNAT4HAAE+AwABKAMAAUADAAEg
+        AwABAQEAAQEGAAEBFgAD/4EAAfABDwT/AfABHwHgAQcCAALnAfABDwHAAQMCAALDAfABDwGAAQECAAKB
+        AcABBwGAAQECAAGAAQEBgAEDAYABAQGAAQEBgAEBAQABAwGAAQEBgAEBAcABAwEAAQMBgAEBAcABAwHg
+        AQcBAAEDAYABAQHgAQcB8AEPAQABAQGAAQEB4AEHAeABBwEAAQEBgAEBAfABDwHAAQMBAAEBAYABAQHw
+        AQ8BgAEBAcABAAHAAQMB+AEfAYABAQHgAQAB4AEHAfwBPwKBAeABAAHwAQ8B/AE/AsMB8AEABP8C5wH3
+        AYcL
+</value>
+  </data>
+  <data name="chkcSurveyImportScaleRules.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkcSurveyImportScaleRules.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 486</value>
+  </data>
+  <data name="chkcSurveyImportScaleRules.Properties.Caption" xml:space="preserve">
+    <value>Import scale settings</value>
+  </data>
+  <data name="chkcSurveyImportScaleRules.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 20</value>
+  </data>
+  <data name="chkcSurveyImportScaleRules.TabIndex" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportScaleRules.Name" xml:space="preserve">
+    <value>chkcSurveyImportScaleRules</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportScaleRules.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportScaleRules.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportScaleRules.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="chkcSurveyImportDesignProperties.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkcSurveyImportDesignProperties.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 463</value>
+  </data>
+  <data name="chkcSurveyImportDesignProperties.Properties.Caption" xml:space="preserve">
+    <value>Import graphics settings</value>
+  </data>
+  <data name="chkcSurveyImportDesignProperties.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 20</value>
+  </data>
+  <data name="chkcSurveyImportDesignProperties.TabIndex" type="System.Int32, mscorlib">
+    <value>69</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDesignProperties.Name" xml:space="preserve">
+    <value>chkcSurveyImportDesignProperties</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDesignProperties.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDesignProperties.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDesignProperties.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="chkcSurveyImportSurface.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkcSurveyImportSurface.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 440</value>
+  </data>
+  <data name="chkcSurveyImportSurface.Properties.Caption" xml:space="preserve">
+    <value>Import surface data</value>
+  </data>
+  <data name="chkcSurveyImportSurface.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 20</value>
+  </data>
+  <data name="chkcSurveyImportSurface.TabIndex" type="System.Int32, mscorlib">
+    <value>68</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportSurface.Name" xml:space="preserve">
+    <value>chkcSurveyImportSurface</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportSurface.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportSurface.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportSurface.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="chkcSurveyImportProfile.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkcSurveyImportProfile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkcSurveyImportProfile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 52</value>
+  </data>
+  <data name="chkcSurveyImportProfile.Properties.Caption" xml:space="preserve">
+    <value>Import profile</value>
+  </data>
+  <data name="chkcSurveyImportProfile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 20</value>
+  </data>
+  <data name="chkcSurveyImportProfile.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportProfile.Name" xml:space="preserve">
+    <value>chkcSurveyImportProfile</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportProfile.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportProfile.Parent" xml:space="preserve">
+    <value>pnlcSurveyImportGraphics</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportProfile.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="chkcSurveyImportPlan.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkcSurveyImportPlan.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkcSurveyImportPlan.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 29</value>
+  </data>
+  <data name="chkcSurveyImportPlan.Properties.Caption" xml:space="preserve">
+    <value>Import plan</value>
+  </data>
+  <data name="chkcSurveyImportPlan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 20</value>
+  </data>
+  <data name="chkcSurveyImportPlan.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportPlan.Name" xml:space="preserve">
+    <value>chkcSurveyImportPlan</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportPlan.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportPlan.Parent" xml:space="preserve">
+    <value>pnlcSurveyImportGraphics</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportPlan.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblFilename.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblFilename.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblFilename.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 16</value>
+  </data>
+  <data name="lblFilename.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 13</value>
+  </data>
+  <data name="lblFilename.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="lblFilename.Text" xml:space="preserve">
+    <value>File:</value>
+  </data>
+  <data name="&gt;&gt;lblFilename.Name" xml:space="preserve">
+    <value>lblFilename</value>
+  </data>
+  <data name="&gt;&gt;lblFilename.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblFilename.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblFilename.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="chkcSurveyImportData.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkcSurveyImportData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 188</value>
+  </data>
+  <data name="chkcSurveyImportData.Properties.Caption" xml:space="preserve">
+    <value>Import data</value>
+  </data>
+  <data name="chkcSurveyImportData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 20</value>
+  </data>
+  <data name="chkcSurveyImportData.TabIndex" type="System.Int32, mscorlib">
+    <value>66</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportData.Name" xml:space="preserve">
+    <value>chkcSurveyImportData</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportData.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportData.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportData.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="chkcSurveyImportGraphics.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkcSurveyImportGraphics.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 314</value>
+  </data>
+  <data name="chkcSurveyImportGraphics.Properties.Caption" xml:space="preserve">
+    <value>Import graphics</value>
+  </data>
+  <data name="chkcSurveyImportGraphics.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 20</value>
+  </data>
+  <data name="chkcSurveyImportGraphics.TabIndex" type="System.Int32, mscorlib">
+    <value>67</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportGraphics.Name" xml:space="preserve">
+    <value>chkcSurveyImportGraphics</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportGraphics.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportGraphics.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportGraphics.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="chkcSurveyImportCaveBranchFromDesign.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkcSurveyImportCaveBranchFromDesign.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkcSurveyImportCaveBranchFromDesign.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 75</value>
+  </data>
+  <data name="chkcSurveyImportCaveBranchFromDesign.Properties.Caption" xml:space="preserve">
+    <value>Import cave/branch binded to design object</value>
+  </data>
+  <data name="chkcSurveyImportCaveBranchFromDesign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 20</value>
+  </data>
+  <data name="chkcSurveyImportCaveBranchFromDesign.TabIndex" type="System.Int32, mscorlib">
+    <value>72</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportCaveBranchFromDesign.Name" xml:space="preserve">
+    <value>chkcSurveyImportCaveBranchFromDesign</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportCaveBranchFromDesign.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportCaveBranchFromDesign.Parent" xml:space="preserve">
+    <value>pnlcSurveyImportGraphics</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportCaveBranchFromDesign.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkcSurveyImportDuplicates.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkcSurveyImportDuplicates.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkcSurveyImportDuplicates.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 29</value>
+  </data>
+  <data name="chkcSurveyImportDuplicates.Properties.Caption" xml:space="preserve">
+    <value>Import existing shots</value>
+  </data>
+  <data name="chkcSurveyImportDuplicates.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 20</value>
+  </data>
+  <data name="chkcSurveyImportDuplicates.TabIndex" type="System.Int32, mscorlib">
+    <value>73</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDuplicates.Name" xml:space="preserve">
+    <value>chkcSurveyImportDuplicates</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDuplicates.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDuplicates.Parent" xml:space="preserve">
+    <value>pnlcSurveyImportData</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDuplicates.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cbocSurveyImportDuplicatesMode.Items" xml:space="preserve">
+    <value>by shot ID</value>
+  </data>
+  <data name="cbocSurveyImportDuplicatesMode.Items1" xml:space="preserve">
+    <value>by shot data</value>
+  </data>
+  <data name="cbocSurveyImportDuplicatesMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>147, 2</value>
+  </data>
+  <data name="cbocSurveyImportDuplicatesMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 21</value>
+  </data>
+  <data name="cbocSurveyImportDuplicatesMode.TabIndex" type="System.Int32, mscorlib">
+    <value>74</value>
+  </data>
+  <data name="&gt;&gt;cbocSurveyImportDuplicatesMode.Name" xml:space="preserve">
+    <value>cbocSurveyImportDuplicatesMode</value>
+  </data>
+  <data name="&gt;&gt;cbocSurveyImportDuplicatesMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbocSurveyImportDuplicatesMode.Parent" xml:space="preserve">
+    <value>pnlcSurveyImportData</value>
+  </data>
+  <data name="&gt;&gt;cbocSurveyImportDuplicatesMode.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblcSurveyImportDuplicatesMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 5</value>
+  </data>
+  <data name="lblcSurveyImportDuplicatesMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 13</value>
+  </data>
+  <data name="lblcSurveyImportDuplicatesMode.TabIndex" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="lblcSurveyImportDuplicatesMode.Text" xml:space="preserve">
+    <value>Find existing shots:</value>
+  </data>
+  <data name="&gt;&gt;lblcSurveyImportDuplicatesMode.Name" xml:space="preserve">
+    <value>lblcSurveyImportDuplicatesMode</value>
+  </data>
+  <data name="&gt;&gt;lblcSurveyImportDuplicatesMode.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblcSurveyImportDuplicatesMode.Parent" xml:space="preserve">
+    <value>pnlcSurveyImportData</value>
+  </data>
+  <data name="&gt;&gt;lblcSurveyImportDuplicatesMode.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesOverwrite.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesOverwrite.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesOverwrite.Location" type="System.Drawing.Point, System.Drawing">
+    <value>37, 52</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesOverwrite.Properties.Caption" xml:space="preserve">
+    <value>Overwrite duplicates</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesOverwrite.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 20</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesOverwrite.TabIndex" type="System.Int32, mscorlib">
+    <value>76</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDuplicatesOverwrite.Name" xml:space="preserve">
+    <value>chkcSurveyImportDuplicatesOverwrite</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDuplicatesOverwrite.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDuplicatesOverwrite.Parent" xml:space="preserve">
+    <value>pnlcSurveyImportData</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDuplicatesOverwrite.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesStations.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesStations.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesStations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 74</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesStations.Properties.Caption" xml:space="preserve">
+    <value>Import and overwrite existing stations</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesStations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 20</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesStations.TabIndex" type="System.Int32, mscorlib">
+    <value>77</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDuplicatesStations.Name" xml:space="preserve">
+    <value>chkcSurveyImportDuplicatesStations</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDuplicatesStations.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDuplicatesStations.Parent" xml:space="preserve">
+    <value>pnlcSurveyImportData</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDuplicatesStations.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="chkImportAsBranchOf.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkImportAsBranchOf.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 514</value>
+  </data>
+  <data name="chkImportAsBranchOf.Properties.Caption" xml:space="preserve">
+    <value>Import all as branch of:</value>
+  </data>
+  <data name="chkImportAsBranchOf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 20</value>
+  </data>
+  <data name="chkImportAsBranchOf.TabIndex" type="System.Int32, mscorlib">
+    <value>79</value>
+  </data>
+  <data name="&gt;&gt;chkImportAsBranchOf.Name" xml:space="preserve">
+    <value>chkImportAsBranchOf</value>
+  </data>
+  <data name="&gt;&gt;chkImportAsBranchOf.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkImportAsBranchOf.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkImportAsBranchOf.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="chkcSurveyImportUpdateCaveBranchPriority.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkcSurveyImportUpdateCaveBranchPriority.Location" type="System.Drawing.Point, System.Drawing">
+    <value>220, 568</value>
+  </data>
+  <data name="chkcSurveyImportUpdateCaveBranchPriority.Properties.Caption" xml:space="preserve">
+    <value>Update cave/branch priority</value>
+  </data>
+  <data name="chkcSurveyImportUpdateCaveBranchPriority.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 20</value>
+  </data>
+  <data name="chkcSurveyImportUpdateCaveBranchPriority.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="chkcSurveyImportUpdateCaveBranchPriority.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportUpdateCaveBranchPriority.Name" xml:space="preserve">
+    <value>chkcSurveyImportUpdateCaveBranchPriority</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportUpdateCaveBranchPriority.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportUpdateCaveBranchPriority.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportUpdateCaveBranchPriority.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="chkcSurveyImportCreateNewBranch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 568</value>
+  </data>
+  <data name="chkcSurveyImportCreateNewBranch.Properties.Caption" xml:space="preserve">
+    <value>Import all as new cave/branch</value>
+  </data>
+  <data name="chkcSurveyImportCreateNewBranch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 20</value>
+  </data>
+  <data name="chkcSurveyImportCreateNewBranch.TabIndex" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportCreateNewBranch.Name" xml:space="preserve">
+    <value>chkcSurveyImportCreateNewBranch</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportCreateNewBranch.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportCreateNewBranch.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportCreateNewBranch.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 51</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.Properties.Caption" xml:space="preserve">
+    <value>Overwrite only design binded shots</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 20</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.TabIndex" type="System.Int32, mscorlib">
+    <value>84</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDuplicatesOverwriteOnlyUsed.Name" xml:space="preserve">
+    <value>chkcSurveyImportDuplicatesOverwriteOnlyUsed</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDuplicatesOverwriteOnlyUsed.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDuplicatesOverwriteOnlyUsed.Parent" xml:space="preserve">
+    <value>pnlcSurveyImportData</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportDuplicatesOverwriteOnlyUsed.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkcSurveyDisableOriginAsExtendstart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkcSurveyDisableOriginAsExtendstart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 591</value>
+  </data>
+  <data name="chkcSurveyDisableOriginAsExtendstart.Properties.Caption" xml:space="preserve">
+    <value>Do not set origin as extendstart</value>
+  </data>
+  <data name="chkcSurveyDisableOriginAsExtendstart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 20</value>
+  </data>
+  <data name="chkcSurveyDisableOriginAsExtendstart.TabIndex" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyDisableOriginAsExtendstart.Name" xml:space="preserve">
+    <value>chkcSurveyDisableOriginAsExtendstart</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyDisableOriginAsExtendstart.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyDisableOriginAsExtendstart.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyDisableOriginAsExtendstart.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblcSurveyImportWarpingMode.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="lblcSurveyImportWarpingMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblcSurveyImportWarpingMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 5</value>
+  </data>
+  <data name="lblcSurveyImportWarpingMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 13</value>
+  </data>
+  <data name="lblcSurveyImportWarpingMode.TabIndex" type="System.Int32, mscorlib">
+    <value>87</value>
+  </data>
+  <data name="lblcSurveyImportWarpingMode.Text" xml:space="preserve">
+    <value>Warping mode:</value>
+  </data>
+  <data name="&gt;&gt;lblcSurveyImportWarpingMode.Name" xml:space="preserve">
+    <value>lblcSurveyImportWarpingMode</value>
+  </data>
+  <data name="&gt;&gt;lblcSurveyImportWarpingMode.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblcSurveyImportWarpingMode.Parent" xml:space="preserve">
+    <value>pnlcSurveyImportGraphics</value>
+  </data>
+  <data name="&gt;&gt;lblcSurveyImportWarpingMode.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbocSurveyImportWarpingMode.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cbocSurveyImportWarpingMode.Items" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="cbocSurveyImportWarpingMode.Items1" xml:space="preserve">
+    <value>Standard warping</value>
+  </data>
+  <data name="cbocSurveyImportWarpingMode.Items2" xml:space="preserve">
+    <value>Basic translation</value>
+  </data>
+  <data name="cbocSurveyImportWarpingMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>147, 2</value>
+  </data>
+  <data name="cbocSurveyImportWarpingMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 21</value>
+  </data>
+  <data name="cbocSurveyImportWarpingMode.TabIndex" type="System.Int32, mscorlib">
+    <value>86</value>
+  </data>
+  <data name="&gt;&gt;cbocSurveyImportWarpingMode.Name" xml:space="preserve">
+    <value>cbocSurveyImportWarpingMode</value>
+  </data>
+  <data name="&gt;&gt;cbocSurveyImportWarpingMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbocSurveyImportWarpingMode.Parent" xml:space="preserve">
+    <value>pnlcSurveyImportGraphics</value>
+  </data>
+  <data name="&gt;&gt;cbocSurveyImportWarpingMode.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="chkcsurveyimportlinkedsurvey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>240, 486</value>
+  </data>
+  <data name="chkcsurveyimportlinkedsurvey.Properties.Caption" xml:space="preserve">
+    <value>Linked surveys</value>
+  </data>
+  <data name="chkcsurveyimportlinkedsurvey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 20</value>
+  </data>
+  <data name="chkcsurveyimportlinkedsurvey.TabIndex" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+  <data name="&gt;&gt;chkcsurveyimportlinkedsurvey.Name" xml:space="preserve">
+    <value>chkcsurveyimportlinkedsurvey</value>
+  </data>
+  <data name="&gt;&gt;chkcsurveyimportlinkedsurvey.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkcsurveyimportlinkedsurvey.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkcsurveyimportlinkedsurvey.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pnlcSurveyImportData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 210</value>
+  </data>
+  <data name="pnlcSurveyImportData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>428, 104</value>
+  </data>
+  <data name="pnlcSurveyImportData.TabIndex" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <data name="&gt;&gt;pnlcSurveyImportData.Name" xml:space="preserve">
+    <value>pnlcSurveyImportData</value>
+  </data>
+  <data name="&gt;&gt;pnlcSurveyImportData.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlcSurveyImportData.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlcSurveyImportData.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlcSurveyImportGraphics.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 337</value>
+  </data>
+  <data name="pnlcSurveyImportGraphics.Size" type="System.Drawing.Size, System.Drawing">
+    <value>427, 97</value>
+  </data>
+  <data name="pnlcSurveyImportGraphics.TabIndex" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="&gt;&gt;pnlcSurveyImportGraphics.Name" xml:space="preserve">
+    <value>pnlcSurveyImportGraphics</value>
+  </data>
+  <data name="&gt;&gt;pnlcSurveyImportGraphics.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlcSurveyImportGraphics.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlcSurveyImportGraphics.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="chkcSurveyImportTexts.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkcSurveyImportTexts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>240, 463</value>
+  </data>
+  <data name="chkcSurveyImportTexts.Properties.Caption" xml:space="preserve">
+    <value>Import shared texts</value>
+  </data>
+  <data name="chkcSurveyImportTexts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 20</value>
+  </data>
+  <data name="chkcSurveyImportTexts.TabIndex" type="System.Int32, mscorlib">
+    <value>91</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportTexts.Name" xml:space="preserve">
+    <value>chkcSurveyImportTexts</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportTexts.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportTexts.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportTexts.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tvLogImageName.Caption" xml:space="preserve">
+    <value>ImageName</value>
+  </data>
+  <data name="cboImportAsBranchOfCave.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboImportAsBranchOfCave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 514</value>
+  </data>
+  <data name="cboImportAsBranchOfCave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 20</value>
+  </data>
+  <data name="cboImportAsBranchOfCave.TabIndex" type="System.Int32, mscorlib">
+    <value>92</value>
+  </data>
+  <data name="&gt;&gt;cboImportAsBranchOfCave.Name" xml:space="preserve">
+    <value>cboImportAsBranchOfCave</value>
+  </data>
+  <data name="&gt;&gt;cboImportAsBranchOfCave.Type" xml:space="preserve">
+    <value>cSurveyPC.cCaveDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboImportAsBranchOfCave.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboImportAsBranchOfCave.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="cboImportAsBranchOfBranch.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboImportAsBranchOfBranch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 542</value>
+  </data>
+  <data name="cboImportAsBranchOfBranch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 20</value>
+  </data>
+  <data name="cboImportAsBranchOfBranch.TabIndex" type="System.Int32, mscorlib">
+    <value>93</value>
+  </data>
+  <data name="&gt;&gt;cboImportAsBranchOfBranch.Name" xml:space="preserve">
+    <value>cboImportAsBranchOfBranch</value>
+  </data>
+  <data name="&gt;&gt;cboImportAsBranchOfBranch.Type" xml:space="preserve">
+    <value>cSurveyPC.cCaveBranchDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboImportAsBranchOfBranch.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboImportAsBranchOfBranch.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>456, 665</value>
+  </data>
+  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>333, 237</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Import from cSurvey:</value>
+  </data>
+  <data name="&gt;&gt;tipDefault.Name" xml:space="preserve">
+    <value>tipDefault</value>
+  </data>
+  <data name="&gt;&gt;tipDefault.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tvLogText.Name" xml:space="preserve">
+    <value>tvLogText</value>
+  </data>
+  <data name="&gt;&gt;tvLogText.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;svgiml.Name" xml:space="preserve">
+    <value>svgiml</value>
+  </data>
+  <data name="&gt;&gt;svgiml.Type" xml:space="preserve">
+    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;iml.Name" xml:space="preserve">
+    <value>iml</value>
+  </data>
+  <data name="&gt;&gt;iml.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tvLogImageName.Name" xml:space="preserve">
+    <value>tvLogImageName</value>
+  </data>
+  <data name="&gt;&gt;tvLogImageName.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmImportcSurvey</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

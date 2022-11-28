@@ -419,6 +419,12 @@
     <Compile Include="ItemPropertyControl\cItemPenStylePropertyControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Specialized\cPanelControl.Designer.vb">
+      <DependentUpon>cPanelControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cPanelControl.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1716,6 +1722,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ItemPropertyControl\cItemPenStylePropertyControl.ru.resx">
       <DependentUpon>cItemPenStylePropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\cPanelControl.resx">
+      <DependentUpon>cPanelControl.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Specialized\cSegmentsGrid.it.resx">
       <DependentUpon>cSegmentsGrid.vb</DependentUpon>

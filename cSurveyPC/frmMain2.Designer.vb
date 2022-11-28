@@ -684,18 +684,18 @@ Partial Class frmMain2
         Me.txtSegmentsListBearing = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
         Me.ToolTipController = New DevExpress.Utils.ToolTipController(Me.components)
         Me.pnlSegment = New DevExpress.XtraEditors.PanelControl()
-        Me.pnlSegmentFromAndTo = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlSegmentFromAndTo = New cPanelControl()
         Me.txtSegmentTo = New DevExpress.XtraEditors.TextEdit()
         Me.txtSegmentFrom = New DevExpress.XtraEditors.TextEdit()
         Me.lblSegmentFrom = New DevExpress.XtraEditors.LabelControl()
         Me.lblSegmentTo = New DevExpress.XtraEditors.LabelControl()
-        Me.pnlSegmentCaveBranches = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlSegmentCaveBranches = New cPanelControl()
         Me.pnlSegmentCaveBranchesColor = New DevExpress.XtraEditors.PanelControl()
         Me.lblSegmentCave = New DevExpress.XtraEditors.LabelControl()
         Me.lblSegmentBranch = New DevExpress.XtraEditors.LabelControl()
         Me.cboSegmentCaveList = New cSurveyPC.cCaveDropDown()
         Me.cboSegmentCaveBranchList = New cSurveyPC.cCaveBranchDropDown()
-        Me.pnlSegmentSession = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlSegmentSession = New cPanelControl()
         Me.pnlSegmentSessionColor = New DevExpress.XtraEditors.PanelControl()
         Me.lblSegmentSession = New DevExpress.XtraEditors.LabelControl()
         Me.cboSegmentSessionList = New cSurveyPC.cSessionDropDown()
@@ -7578,12 +7578,12 @@ Partial Class frmMain2
     Friend WithEvents lblSegmentSurfaceProfileShow As DevExpress.XtraEditors.LabelControl
     Friend WithEvents pnlSegmentSurfaceProfile As DevExpress.XtraEditors.PanelControl
     Friend WithEvents bwMain As System.ComponentModel.BackgroundWorker
-    Friend WithEvents pnlSegmentCaveBranches As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlSegmentCaveBranches As cPanelControl
     Friend WithEvents pnlSegmentCaveBranchesColor As DevExpress.XtraEditors.PanelControl
-    Friend WithEvents pnlSegmentSession As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlSegmentSession As cPanelControl
     Friend WithEvents pnlSegmentSessionColor As DevExpress.XtraEditors.PanelControl
     Friend WithEvents chkTrigpointDrawTranslationsLine As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents pnlSegmentFromAndTo As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlSegmentFromAndTo As cPanelControl
     Friend WithEvents pnlTrigpointName As DevExpress.XtraEditors.PanelControl
     Friend WithEvents chkSegmentZSurvey As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkSegmentCutSplay As DevExpress.XtraEditors.CheckEdit

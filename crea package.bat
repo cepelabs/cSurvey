@@ -1,6 +1,6 @@
 del csurvey64.zip
 cd cSurveyPC\bin\x64\Release
-xcopy D:\Downloads\localization\DevExpressLocalizedResources_2021.2_it\*.dll it /y
+xcopy D:\Downloads\localization\DevExpressLocalizedResources_2022.2_it\*.dll it /y
 cSurveyUpdateVersion.exe
 ..\..\..\..\7za a -tzip csurvey64 it
 ..\..\..\..\7za a -tzip csurvey64 en

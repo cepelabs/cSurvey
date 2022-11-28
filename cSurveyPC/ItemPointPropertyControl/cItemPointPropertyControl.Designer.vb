@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class cItemPointPropertyControl
-    Inherits System.Windows.Forms.UserControl
+    Inherits DevExpress.XtraEditors.XtraUserControl
 
     'UserControl overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>

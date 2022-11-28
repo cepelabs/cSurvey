@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports System.Drawing
 Imports cSurveyPC
 Imports cSurveyPC.cSurvey.Design
 
@@ -110,6 +111,7 @@ Public Class cItemPointPropertyControl
             End If
         End Set
     End Property
+
     Public Event OnGetFlags(Sender As Object, e As FlagEventArgs) Implements cUIControlPropertyInteractions.OnGetFlags
     Public Event OnSetFlags(Sender As Object, e As FlagEventArgs) Implements cUIControlPropertyInteractions.OnSetFlags
 

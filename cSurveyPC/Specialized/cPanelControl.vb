@@ -1,8 +1,10 @@
 ﻿Imports System.ComponentModel
+Imports System.ComponentModel.Design
 Imports System.Drawing
 Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 
+<Designer("System.Windows.Forms.Design.ParentControlDesigner, System.Design", GetType(IDesigner))>
 Public Class cPanelControl
     Public Sub New()
 

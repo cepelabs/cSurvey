@@ -610,6 +610,7 @@ Partial Class frmMain2
         Me.WorkspaceManager = New DevExpress.Utils.WorkspaceManager(Me.components)
         Me.tabSegmentsProperty = New DevExpress.XtraTab.XtraTabControl()
         Me.tabSegmentsMain = New DevExpress.XtraTab.XtraTabPage()
+        Me.pnlSegmentDataMain = New cSurveyPC.cPanelControl()
         Me.chkSegmentCalibration = New DevExpress.XtraEditors.CheckEdit()
         Me.lblSegmentDistance = New DevExpress.XtraEditors.LabelControl()
         Me.chkSegmentCutSplay = New DevExpress.XtraEditors.CheckEdit()
@@ -684,18 +685,18 @@ Partial Class frmMain2
         Me.txtSegmentsListBearing = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
         Me.ToolTipController = New DevExpress.Utils.ToolTipController(Me.components)
         Me.pnlSegment = New DevExpress.XtraEditors.PanelControl()
-        Me.pnlSegmentFromAndTo = New cPanelControl()
+        Me.pnlSegmentFromAndTo = New cSurveyPC.cPanelControl()
         Me.txtSegmentTo = New DevExpress.XtraEditors.TextEdit()
         Me.txtSegmentFrom = New DevExpress.XtraEditors.TextEdit()
         Me.lblSegmentFrom = New DevExpress.XtraEditors.LabelControl()
         Me.lblSegmentTo = New DevExpress.XtraEditors.LabelControl()
-        Me.pnlSegmentCaveBranches = New cPanelControl()
+        Me.pnlSegmentCaveBranches = New cSurveyPC.cPanelControl()
         Me.pnlSegmentCaveBranchesColor = New DevExpress.XtraEditors.PanelControl()
         Me.lblSegmentCave = New DevExpress.XtraEditors.LabelControl()
         Me.lblSegmentBranch = New DevExpress.XtraEditors.LabelControl()
         Me.cboSegmentCaveList = New cSurveyPC.cCaveDropDown()
         Me.cboSegmentCaveBranchList = New cSurveyPC.cCaveBranchDropDown()
-        Me.pnlSegmentSession = New cPanelControl()
+        Me.pnlSegmentSession = New cSurveyPC.cPanelControl()
         Me.pnlSegmentSessionColor = New DevExpress.XtraEditors.PanelControl()
         Me.lblSegmentSession = New DevExpress.XtraEditors.LabelControl()
         Me.cboSegmentSessionList = New cSurveyPC.cSessionDropDown()
@@ -805,6 +806,7 @@ Partial Class frmMain2
         Me.mnuTray = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.svgItemImages = New DevExpress.Utils.SvgImageCollection(Me.components)
         Me.TaskbarAssistant = New DevExpress.Utils.Taskbar.TaskbarAssistant()
+        Me.pnlSegmentDataLayout = New DevExpress.XtraEditors.PanelControl()
         CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Document2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DocumentGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -901,6 +903,7 @@ Partial Class frmMain2
         CType(Me.tabSegmentsProperty, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabSegmentsProperty.SuspendLayout()
         Me.tabSegmentsMain.SuspendLayout()
+        Me.pnlSegmentDataMain.SuspendLayout()
         CType(Me.chkSegmentCalibration.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkSegmentCutSplay.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkSegmentZSurvey.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -956,14 +959,11 @@ Partial Class frmMain2
         CType(Me.txtSegmentsListBearing, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlSegment, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlSegment.SuspendLayout()
-        CType(Me.pnlSegmentFromAndTo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlSegmentFromAndTo.SuspendLayout()
         CType(Me.txtSegmentTo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtSegmentFrom.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlSegmentCaveBranches, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlSegmentCaveBranches.SuspendLayout()
         CType(Me.pnlSegmentCaveBranchesColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlSegmentSession, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlSegmentSession.SuspendLayout()
         CType(Me.pnlSegmentSessionColor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlTrigPoint, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1028,6 +1028,8 @@ Partial Class frmMain2
         CType(Me.mnuDesignNone, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.mnuTray, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.svgItemImages, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlSegmentDataLayout, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlSegmentDataLayout.SuspendLayout()
         Me.SuspendLayout()
         '
         'DocumentGroup1
@@ -5448,36 +5450,43 @@ Partial Class frmMain2
         'tabSegmentsMain
         '
         resources.ApplyResources(Me.tabSegmentsMain, "tabSegmentsMain")
-        Me.tabSegmentsMain.Controls.Add(Me.chkSegmentCalibration)
-        Me.tabSegmentsMain.Controls.Add(Me.lblSegmentDistance)
-        Me.tabSegmentsMain.Controls.Add(Me.chkSegmentCutSplay)
-        Me.tabSegmentsMain.Controls.Add(Me.chkSegmentZSurvey)
-        Me.tabSegmentsMain.Controls.Add(Me.lblSegmentDirection)
-        Me.tabSegmentsMain.Controls.Add(Me.pnlSegmentSurfaceProfile)
-        Me.tabSegmentsMain.Controls.Add(Me.lblSegmentInclination)
-        Me.tabSegmentsMain.Controls.Add(Me.chkSegmentVirtual)
-        Me.tabSegmentsMain.Controls.Add(Me.txtSegmentInclination)
-        Me.tabSegmentsMain.Controls.Add(Me.chkSegmentUnbindable)
-        Me.tabSegmentsMain.Controls.Add(Me.lblSegmentBottom)
-        Me.tabSegmentsMain.Controls.Add(Me.chkSegmentSurface)
-        Me.tabSegmentsMain.Controls.Add(Me.lblSegmentBearing)
-        Me.tabSegmentsMain.Controls.Add(Me.chkSegmentDuplicate)
-        Me.tabSegmentsMain.Controls.Add(Me.lblSegmentSx)
-        Me.tabSegmentsMain.Controls.Add(Me.chkSegmentSplay)
-        Me.tabSegmentsMain.Controls.Add(Me.lblSegmentTop)
-        Me.tabSegmentsMain.Controls.Add(Me.txtSegmentDistance)
-        Me.tabSegmentsMain.Controls.Add(Me.txtSegmentRight)
-        Me.tabSegmentsMain.Controls.Add(Me.lblSegmentDx)
-        Me.tabSegmentsMain.Controls.Add(Me.txtSegmentUp)
-        Me.tabSegmentsMain.Controls.Add(Me.txtSegmentDown)
-        Me.tabSegmentsMain.Controls.Add(Me.txtSegmentLeft)
-        Me.tabSegmentsMain.Controls.Add(Me.txtSegmentBearing)
-        Me.tabSegmentsMain.Controls.Add(Me.chkSegmentExclude)
-        Me.tabSegmentsMain.Controls.Add(Me.chkSegmentInverted)
-        Me.tabSegmentsMain.Controls.Add(Me.cboSegmentDirection)
+        Me.tabSegmentsMain.Controls.Add(Me.pnlSegmentDataMain)
         Me.tabSegmentsMain.ImageOptions.SvgImage = CType(resources.GetObject("tabSegmentsMain.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.tabSegmentsMain.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.tabSegmentsMain.Name = "tabSegmentsMain"
+        '
+        'pnlSegmentDataMain
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentDataMain, CType(resources.GetObject("pnlSegmentDataMain.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlSegmentDataMain.Controls.Add(Me.chkSegmentCalibration)
+        Me.pnlSegmentDataMain.Controls.Add(Me.lblSegmentDistance)
+        Me.pnlSegmentDataMain.Controls.Add(Me.chkSegmentCutSplay)
+        Me.pnlSegmentDataMain.Controls.Add(Me.chkSegmentZSurvey)
+        Me.pnlSegmentDataMain.Controls.Add(Me.lblSegmentDirection)
+        Me.pnlSegmentDataMain.Controls.Add(Me.pnlSegmentSurfaceProfile)
+        Me.pnlSegmentDataMain.Controls.Add(Me.lblSegmentInclination)
+        Me.pnlSegmentDataMain.Controls.Add(Me.chkSegmentVirtual)
+        Me.pnlSegmentDataMain.Controls.Add(Me.txtSegmentInclination)
+        Me.pnlSegmentDataMain.Controls.Add(Me.chkSegmentUnbindable)
+        Me.pnlSegmentDataMain.Controls.Add(Me.lblSegmentBottom)
+        Me.pnlSegmentDataMain.Controls.Add(Me.chkSegmentSurface)
+        Me.pnlSegmentDataMain.Controls.Add(Me.lblSegmentBearing)
+        Me.pnlSegmentDataMain.Controls.Add(Me.chkSegmentDuplicate)
+        Me.pnlSegmentDataMain.Controls.Add(Me.lblSegmentSx)
+        Me.pnlSegmentDataMain.Controls.Add(Me.chkSegmentSplay)
+        Me.pnlSegmentDataMain.Controls.Add(Me.lblSegmentTop)
+        Me.pnlSegmentDataMain.Controls.Add(Me.txtSegmentDistance)
+        Me.pnlSegmentDataMain.Controls.Add(Me.txtSegmentRight)
+        Me.pnlSegmentDataMain.Controls.Add(Me.lblSegmentDx)
+        Me.pnlSegmentDataMain.Controls.Add(Me.txtSegmentUp)
+        Me.pnlSegmentDataMain.Controls.Add(Me.txtSegmentDown)
+        Me.pnlSegmentDataMain.Controls.Add(Me.txtSegmentLeft)
+        Me.pnlSegmentDataMain.Controls.Add(Me.txtSegmentBearing)
+        Me.pnlSegmentDataMain.Controls.Add(Me.chkSegmentExclude)
+        Me.pnlSegmentDataMain.Controls.Add(Me.chkSegmentInverted)
+        Me.pnlSegmentDataMain.Controls.Add(Me.cboSegmentDirection)
+        resources.ApplyResources(Me.pnlSegmentDataMain, "pnlSegmentDataMain")
+        Me.pnlSegmentDataMain.Name = "pnlSegmentDataMain"
         '
         'chkSegmentCalibration
         '
@@ -5692,8 +5701,7 @@ Partial Class frmMain2
         '
         'tabSegmentsLayout
         '
-        Me.tabSegmentsLayout.Controls.Add(Me.txtSegmentColor)
-        Me.tabSegmentsLayout.Controls.Add(Me.lblSegmentColor)
+        Me.tabSegmentsLayout.Controls.Add(Me.pnlSegmentDataLayout)
         Me.tabSegmentsLayout.ImageOptions.SvgImage = CType(resources.GetObject("tabSegmentsLayout.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.tabSegmentsLayout.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.tabSegmentsLayout.Name = "tabSegmentsLayout"
@@ -6103,7 +6111,6 @@ Partial Class frmMain2
         'pnlSegmentFromAndTo
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentFromAndTo, CType(resources.GetObject("pnlSegmentFromAndTo.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnlSegmentFromAndTo.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSegmentFromAndTo.Controls.Add(Me.txtSegmentTo)
         Me.pnlSegmentFromAndTo.Controls.Add(Me.txtSegmentFrom)
         Me.pnlSegmentFromAndTo.Controls.Add(Me.lblSegmentFrom)
@@ -6143,7 +6150,6 @@ Partial Class frmMain2
         'pnlSegmentCaveBranches
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentCaveBranches, CType(resources.GetObject("pnlSegmentCaveBranches.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnlSegmentCaveBranches.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSegmentCaveBranches.Controls.Add(Me.pnlSegmentCaveBranchesColor)
         Me.pnlSegmentCaveBranches.Controls.Add(Me.lblSegmentCave)
         Me.pnlSegmentCaveBranches.Controls.Add(Me.lblSegmentBranch)
@@ -6188,7 +6194,6 @@ Partial Class frmMain2
         'pnlSegmentSession
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentSession, CType(resources.GetObject("pnlSegmentSession.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnlSegmentSession.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSegmentSession.Controls.Add(Me.pnlSegmentSessionColor)
         Me.pnlSegmentSession.Controls.Add(Me.lblSegmentSession)
         Me.pnlSegmentSession.Controls.Add(Me.cboSegmentSessionList)
@@ -7219,6 +7224,14 @@ Partial Class frmMain2
         '
         Me.TaskbarAssistant.ParentControl = Me
         '
+        'pnlSegmentDataLayout
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentDataLayout, CType(resources.GetObject("pnlSegmentDataLayout.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlSegmentDataLayout.Controls.Add(Me.txtSegmentColor)
+        Me.pnlSegmentDataLayout.Controls.Add(Me.lblSegmentColor)
+        resources.ApplyResources(Me.pnlSegmentDataLayout, "pnlSegmentDataLayout")
+        Me.pnlSegmentDataLayout.Name = "pnlSegmentDataLayout"
+        '
         'frmMain2
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me, CType(resources.GetObject("$this.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
@@ -7336,7 +7349,8 @@ Partial Class frmMain2
         CType(Me.tabSegmentsProperty, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabSegmentsProperty.ResumeLayout(False)
         Me.tabSegmentsMain.ResumeLayout(False)
-        Me.tabSegmentsMain.PerformLayout()
+        Me.pnlSegmentDataMain.ResumeLayout(False)
+        Me.pnlSegmentDataMain.PerformLayout()
         CType(Me.chkSegmentCalibration.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkSegmentCutSplay.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkSegmentZSurvey.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -7360,7 +7374,6 @@ Partial Class frmMain2
         CType(Me.chkSegmentInverted.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboSegmentDirection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabSegmentsLayout.ResumeLayout(False)
-        Me.tabSegmentsLayout.PerformLayout()
         CType(Me.txtSegmentColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabSegmentsData.ResumeLayout(False)
         CType(Me.prpSegmentDataProperties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -7395,16 +7408,13 @@ Partial Class frmMain2
         CType(Me.txtSegmentsListBearing, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pnlSegment, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlSegment.ResumeLayout(False)
-        CType(Me.pnlSegmentFromAndTo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlSegmentFromAndTo.ResumeLayout(False)
         Me.pnlSegmentFromAndTo.PerformLayout()
         CType(Me.txtSegmentTo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtSegmentFrom.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlSegmentCaveBranches, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlSegmentCaveBranches.ResumeLayout(False)
         Me.pnlSegmentCaveBranches.PerformLayout()
         CType(Me.pnlSegmentCaveBranchesColor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlSegmentSession, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlSegmentSession.ResumeLayout(False)
         Me.pnlSegmentSession.PerformLayout()
         CType(Me.pnlSegmentSessionColor, System.ComponentModel.ISupportInitialize).EndInit()
@@ -7472,6 +7482,9 @@ Partial Class frmMain2
         CType(Me.mnuDesignNone, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.mnuTray, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.svgItemImages, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlSegmentDataLayout, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlSegmentDataLayout.ResumeLayout(False)
+        Me.pnlSegmentDataLayout.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -8181,4 +8194,6 @@ Partial Class frmMain2
     Friend WithEvents mnuUndo As DevExpress.XtraBars.PopupMenu
     Friend WithEvents pnlUndoPopup As DevExpress.XtraBars.PopupControlContainer
     Friend WithEvents btnViewToolbarFloatingBar As DevExpress.XtraBars.BarCheckItem
+    Friend WithEvents pnlSegmentDataMain As cPanelControl
+    Friend WithEvents pnlSegmentDataLayout As DevExpress.XtraEditors.PanelControl
 End Class

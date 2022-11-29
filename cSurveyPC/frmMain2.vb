@@ -13555,11 +13555,11 @@ Friend Class frmMain2
         'Call pSurveySegmentsRefresh()
     End Sub
 
-    Private Sub pnlSegment_Enter(ByVal sender As Object, ByVal e As System.EventArgs) Handles pnlSegment.Enter
+    Private Sub pnlSegment_Enter(ByVal sender As Object, ByVal e As System.EventArgs)
         bSegmentChanged = True
     End Sub
 
-    Private Sub pnlSegment_Leave(sender As System.Object, e As System.EventArgs) Handles pnlSegment.Leave
+    Private Sub pnlSegment_Leave(sender As System.Object, e As System.EventArgs)
         Call pSegmentSave(oTools.CurrentSegment)
     End Sub
 
@@ -16998,9 +16998,9 @@ Friend Class frmMain2
 
     Private Sub grdViewSegments_DoubleClick(sender As Object, e As EventArgs) Handles grdViewSegments.DoubleClick
         If grdViewSegments.FocusedColumn Is colSegmentsListNote Then
-            tabSegmentsProperty.SelectedTabPage = tabSegmentsNote
+            tabSegmentsPropertyitem.SelectedTabPage = tabSegmentsNoteitem
         ElseIf grdViewSegments.FocusedColumn Is colSegmentsListAttachment Then
-            tabSegmentsProperty.SelectedTabPage = tabSegmentsAttachments
+            tabSegmentsPropertyitem.SelectedTabPage = tabSegmentsAttachmentsitem
             If oTools.CurrentSegment.Attachments.Count = 1 Then
                 'If IsNothing(tvSegmentAttachments.SelectedObject) Then tvSegmentAttachments.SelectedObject = DirectCast(tvSegmentAttachments.Objects, cAttachmentLinks).FirstOrDefault
                 Call pSegmentAttachmentOpen()
@@ -19270,6 +19270,7 @@ Friend Class frmMain2
             Call pSurveyUndo()
         Next
     End Sub
+
 End Class
 
 

@@ -18392,6 +18392,96 @@
   <data name="&gt;&gt;txtSegmentAttachmentsNote.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="&gt;&gt;LayoutControlGroup1.Name" xml:space="preserve">
+    <value>LayoutControlGroup1</value>
+  </data>
+  <data name="&gt;&gt;LayoutControlGroup1.Type" xml:space="preserve">
+    <value>DevExpress.XtraLayout.LayoutControlGroup, DevExpress.XtraLayout.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabSegmentsPropertyitem.Name" xml:space="preserve">
+    <value>tabSegmentsPropertyitem</value>
+  </data>
+  <data name="&gt;&gt;tabSegmentsPropertyitem.Type" xml:space="preserve">
+    <value>DevExpress.XtraLayout.TabbedControlGroup, DevExpress.XtraLayout.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabSegmentsLayoutitem.Name" xml:space="preserve">
+    <value>tabSegmentsLayoutitem</value>
+  </data>
+  <data name="&gt;&gt;tabSegmentsLayoutitem.Type" xml:space="preserve">
+    <value>DevExpress.XtraLayout.LayoutControlGroup, DevExpress.XtraLayout.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentDataLayoutitem.Name" xml:space="preserve">
+    <value>pnlSegmentDataLayoutitem</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentDataLayoutitem.Type" xml:space="preserve">
+    <value>DevExpress.XtraLayout.LayoutControlItem, DevExpress.XtraLayout.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabSegmentsMainitem.Name" xml:space="preserve">
+    <value>tabSegmentsMainitem</value>
+  </data>
+  <data name="&gt;&gt;tabSegmentsMainitem.Type" xml:space="preserve">
+    <value>DevExpress.XtraLayout.LayoutControlGroup, DevExpress.XtraLayout.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;LayoutControlItem3.Name" xml:space="preserve">
+    <value>LayoutControlItem3</value>
+  </data>
+  <data name="&gt;&gt;LayoutControlItem3.Type" xml:space="preserve">
+    <value>DevExpress.XtraLayout.LayoutControlItem, DevExpress.XtraLayout.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabSegmentsDataitem.Name" xml:space="preserve">
+    <value>tabSegmentsDataitem</value>
+  </data>
+  <data name="&gt;&gt;tabSegmentsDataitem.Type" xml:space="preserve">
+    <value>DevExpress.XtraLayout.LayoutControlGroup, DevExpress.XtraLayout.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;prpSegmentDataPropertiesitem.Name" xml:space="preserve">
+    <value>prpSegmentDataPropertiesitem</value>
+  </data>
+  <data name="&gt;&gt;prpSegmentDataPropertiesitem.Type" xml:space="preserve">
+    <value>DevExpress.XtraLayout.LayoutControlItem, DevExpress.XtraLayout.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabSegmentsNoteitem.Name" xml:space="preserve">
+    <value>tabSegmentsNoteitem</value>
+  </data>
+  <data name="&gt;&gt;tabSegmentsNoteitem.Type" xml:space="preserve">
+    <value>DevExpress.XtraLayout.LayoutControlGroup, DevExpress.XtraLayout.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtSegmentNoteitem.Name" xml:space="preserve">
+    <value>txtSegmentNoteitem</value>
+  </data>
+  <data name="&gt;&gt;txtSegmentNoteitem.Type" xml:space="preserve">
+    <value>DevExpress.XtraLayout.LayoutControlItem, DevExpress.XtraLayout.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabSegmentsAttachmentsitem.Name" xml:space="preserve">
+    <value>tabSegmentsAttachmentsitem</value>
+  </data>
+  <data name="&gt;&gt;tabSegmentsAttachmentsitem.Type" xml:space="preserve">
+    <value>DevExpress.XtraLayout.LayoutControlGroup, DevExpress.XtraLayout.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;grdSegmentAttachmentsitem.Name" xml:space="preserve">
+    <value>grdSegmentAttachmentsitem</value>
+  </data>
+  <data name="&gt;&gt;grdSegmentAttachmentsitem.Type" xml:space="preserve">
+    <value>DevExpress.XtraLayout.LayoutControlItem, DevExpress.XtraLayout.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;LayoutControlItem4.Name" xml:space="preserve">
+    <value>LayoutControlItem4</value>
+  </data>
+  <data name="&gt;&gt;LayoutControlItem4.Type" xml:space="preserve">
+    <value>DevExpress.XtraLayout.LayoutControlItem, DevExpress.XtraLayout.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;LayoutControlItem1.Name" xml:space="preserve">
+    <value>LayoutControlItem1</value>
+  </data>
+  <data name="&gt;&gt;LayoutControlItem1.Type" xml:space="preserve">
+    <value>DevExpress.XtraLayout.LayoutControlItem, DevExpress.XtraLayout.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;LayoutControlItem2.Name" xml:space="preserve">
+    <value>LayoutControlItem2</value>
+  </data>
+  <data name="&gt;&gt;LayoutControlItem2.Type" xml:space="preserve">
+    <value>DevExpress.XtraLayout.LayoutControlItem, DevExpress.XtraLayout.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="&gt;&gt;grdViewSegments.Name" xml:space="preserve">
     <value>grdViewSegments</value>
   </data>
@@ -18854,20 +18944,17 @@
   <data name="&gt;&gt;TaskbarAssistant.Type" xml:space="preserve">
     <value>DevExpress.Utils.Taskbar.TaskbarAssistant, DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="&gt;&gt;LayoutConverter1.Name" xml:space="preserve">
+    <value>LayoutConverter1</value>
+  </data>
+  <data name="&gt;&gt;LayoutConverter1.Type" xml:space="preserve">
+    <value>DevExpress.XtraLayout.Converter.LayoutConverter, DevExpress.XtraLayout.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmMain2</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonForm, DevExpress.XtraBars.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="tabSegmentsProperty.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabSegmentsProperty.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 127</value>
-  </data>
-  <data name="tabSegmentsMain.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="pnlSegmentDataMain.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
     <value>Default</value>
@@ -19691,14 +19778,11 @@
   <data name="&gt;&gt;cboSegmentDirection.ZOrder" xml:space="preserve">
     <value>26</value>
   </data>
-  <data name="pnlSegmentDataMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
   <data name="pnlSegmentDataMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>5, 173</value>
   </data>
   <data name="pnlSegmentDataMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 204</value>
+    <value>240, 185</value>
   </data>
   <data name="pnlSegmentDataMain.TabIndex" type="System.Int32, mscorlib">
     <value>119</value>
@@ -19710,64 +19794,10 @@
     <value>cSurveyPC.cPanelControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pnlSegmentDataMain.Parent" xml:space="preserve">
-    <value>tabSegmentsMain</value>
+    <value>pnlSegment</value>
   </data>
   <data name="&gt;&gt;pnlSegmentDataMain.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabSegmentsMain.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v22.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIyLjEsIFZlcnNpb249MjIuMS42
-        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
-        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAJYEAAAC77u/
-        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
-        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
-        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
-        Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAg
-        MzIgMzIiPg0KICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLlllbGxvd3tmaWxsOiNGRkIxMTU7fQoJ
-        LlJlZHtmaWxsOiNEMTFDMUM7fQoJLkJsYWNre2ZpbGw6IzcyNzI3Mjt9CgkuQmx1ZXtmaWxsOiMxMTc3
-        RDc7fQoJLldoaXRle2ZpbGw6I0ZGRkZGRjt9CgkuR3JlZW57ZmlsbDojMDM5QzIzO30KCS5zdDB7b3Bh
-        Y2l0eTowLjc1O30KCS5zdDF7b3BhY2l0eTowLjU7fQoJLnN0MntvcGFjaXR5OjAuMjU7fQoJLnN0M3tm
-        aWxsOiNGRkIxMTU7fQo8L3N0eWxlPg0KICA8ZyBpZD0iUGFyYW1ldGVycyI+DQogICAgPHBhdGggZD0i
-        TTE0LDI2SDZWNGgxOHYxMmMwLjcsMC4yLDEuNCwwLjUsMiwwLjhWM2MwLTAuNi0wLjQtMS0xLTFINUM0
-        LjQsMiw0LDIuNCw0LDN2MjRjMCwwLjYsMC40LDEsMSwxaDkuOCAgIEMxNC41LDI3LjQsMTQuMiwyNi43
-        LDE0LDI2eiIgY2xhc3M9IkJsYWNrIiAvPg0KICAgIDxwYXRoIGQ9Ik0zMCwyNXYtMmwtMi4yLTAuNGMt
-        MC4yLTAuNi0wLjQtMS4zLTAuOC0xLjhsMS4zLTEuOGwtMS40LTEuNGwtMS44LDEuM2MtMC41LTAuMy0x
-        LjItMC42LTEuOC0wLjdMMjMsMTZoLTIgICBsLTAuNCwyLjJjLTAuNiwwLjItMS4zLDAuNC0xLjgsMC43
-        TDE3LDE3LjZMMTUuNiwxOWwxLjMsMS44Yy0wLjMsMC41LTAuNiwxLjItMC44LDEuOEwxNCwyM3YybDIu
-        MiwwLjRjMC4yLDAuNiwwLjQsMS4zLDAuOCwxLjggICBMMTUuNywyOWwxLjQsMS40bDEuOC0xLjNjMC41
-        LDAuMywxLjIsMC42LDEuOCwwLjdMMjEsMzJoMmwwLjQtMi4yYzAuNi0wLjIsMS4zLTAuNCwxLjgtMC43
-        bDEuOCwxLjNsMS40LTEuNGwtMS4zLTEuOCAgIGMwLjMtMC41LDAuNi0xLjIsMC44LTEuOEwzMCwyNXog
-        TTIyLDI2Yy0xLjEsMC0yLTAuOS0yLTJzMC45LTIsMi0yczIsMC45LDIsMlMyMy4xLDI2LDIyLDI2eiIg
-        Y2xhc3M9IkJsdWUiIC8+DQogIDwvZz4NCjwvc3ZnPgs=
-</value>
-  </data>
-  <data name="tabSegmentsMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 204</value>
-  </data>
-  <data name="tabSegmentsMain.Tooltip" xml:space="preserve">
-    <value>Main</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsMain.Name" xml:space="preserve">
-    <value>tabSegmentsMain</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsMain.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsMain.Parent" xml:space="preserve">
-    <value>tabSegmentsProperty</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsMain.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabSegmentsProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 236</value>
-  </data>
-  <data name="tabSegmentsProperty.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="pnlSegmentDataLayout.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
-    <value>Default</value>
+    <value>5</value>
   </data>
   <data name="txtSegmentColor.EditValue" type="System.Drawing.Color, System.Drawing">
     <value />
@@ -19826,78 +19856,14 @@
   <data name="&gt;&gt;lblSegmentColor.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="pnlSegmentDataLayout.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="pnlSegmentDataLayout.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="pnlSegmentDataLayout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 204</value>
-  </data>
-  <data name="pnlSegmentDataLayout.TabIndex" type="System.Int32, mscorlib">
-    <value>185</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentDataLayout.Name" xml:space="preserve">
-    <value>pnlSegmentDataLayout</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentDataLayout.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentDataLayout.Parent" xml:space="preserve">
-    <value>tabSegmentsLayout</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentDataLayout.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabSegmentsLayout.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v22.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIyLjEsIFZlcnNpb249MjIuMS42
-        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
-        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAL4CAAAC77u/
-        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
-        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
-        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
-        Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAg
-        MzIgMzIiPg0KICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLkJsYWNre2ZpbGw6IzczNzM3NDt9Cgku
-        WWVsbG93e2ZpbGw6I0ZDQjAxQjt9CgkuR3JlZW57ZmlsbDojMTI5QzQ5O30KCS5CbHVle2ZpbGw6IzM4
-        N0NCNzt9CgkuUmVke2ZpbGw6I0QwMjEyNzt9CgkuV2hpdGV7ZmlsbDojRkZGRkZGO30KCS5zdDB7b3Bh
-        Y2l0eTowLjU7fQoJLnN0MXtvcGFjaXR5OjAuNzU7fQoJLnN0MntvcGFjaXR5OjAuMjU7fQoJLnN0M3tk
-        aXNwbGF5Om5vbmU7ZmlsbDojNzM3Mzc0O30KPC9zdHlsZT4NCiAgPHBhdGggZD0iTTE4LDEwLjRWM2Mw
-        LTAuNS0wLjUtMS0xLTFIM0MyLjUsMiwyLDIuNSwyLDN2MTRjMCwwLjUsMC41LDEsMSwxaDcuNEMxMS41
-        LDE0LjMsMTQuMywxMS41LDE4LDEwLjR6IiBjbGFzcz0iQmx1ZSIgLz4NCiAgPGNpcmNsZSBjeD0iMjEi
-        IGN5PSIyMSIgcj0iOSIgY2xhc3M9IkdyZWVuIiAvPg0KPC9zdmc+Cw==
-</value>
-  </data>
-  <data name="tabSegmentsLayout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 204</value>
-  </data>
-  <data name="tabSegmentsLayout.Tooltip" xml:space="preserve">
-    <value>Layout</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsLayout.Name" xml:space="preserve">
-    <value>tabSegmentsLayout</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsLayout.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsLayout.Parent" xml:space="preserve">
-    <value>tabSegmentsProperty</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsLayout.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="prpSegmentDataProperties.BorderStyle" type="DevExpress.XtraEditors.Controls.BorderStyles, DevExpress.Utils.v22.1">
     <value>NoBorder</value>
   </data>
-  <data name="prpSegmentDataProperties.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
   <data name="prpSegmentDataProperties.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>5, 173</value>
   </data>
   <data name="prpSegmentDataProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 204</value>
+    <value>240, 185</value>
   </data>
   <data name="prpSegmentDataProperties.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -19909,139 +19875,19 @@
     <value>DevExpress.XtraVerticalGrid.PropertyGridControl, DevExpress.XtraVerticalGrid.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;prpSegmentDataProperties.Parent" xml:space="preserve">
-    <value>tabSegmentsData</value>
+    <value>pnlSegment</value>
   </data>
   <data name="&gt;&gt;prpSegmentDataProperties.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabSegmentsData.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v22.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIyLjEsIFZlcnNpb249MjIuMS42
-        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
-        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAFgEAAAC77u/
-        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
-        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
-        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
-        Y2U9InByZXNlcnZlIiBpZD0iTWFuYWdlX0RhdGFfU291cmNlIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91
-        bmQ6bmV3IDAgMCAzMiAzMiI+DQogIDxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+CgkuWWVsbG93e2ZpbGw6
-        I0ZGQjExNTt9CgkuQmx1ZXtmaWxsOiMxMTc3RDc7fQo8L3N0eWxlPg0KICA8cGF0aCBkPSJNMiwxMFY2
-        YzAtMi4yLDQuNS00LDEwLTRzMTAsMS44LDEwLDR2NGMwLDIuMi00LjUsNC0xMCw0UzIsMTIuMiwyLDEw
-        eiBNMTIsMjB2LTAuN2wyLjUtMC40TDEzLDE2LjhsMS0wLjkgIEMxMy4zLDE2LDEyLjcsMTYsMTIsMTZj
-        LTUuNSwwLTEwLTEuOC0xMC00djRDMiwxOC4yLDYuNSwyMCwxMiwyMHogTTE0LjUsMjUuMUwxMiwyNC43
-        VjIyYy01LjUsMC0xMC0xLjgtMTAtNHY0YzAsMi4yLDQuNSw0LDEwLDQgIGMwLjcsMCwxLjMsMCwxLjkt
-        MC4xTDE0LjUsMjUuMXoiIGNsYXNzPSJZZWxsb3ciIC8+DQogIDxwYXRoIGQ9Ik0zMCwyM3YtMmwtMi4y
-        LTAuNGMtMC4yLTAuNi0wLjQtMS4zLTAuNy0xLjhsMS4zLTEuOGwtMS40LTEuNGwtMS44LDEuM2MtMC41
-        LTAuMy0xLjItMC42LTEuOC0wLjdMMjMsMTRoLTIgIGwtMC40LDIuMmMtMC42LDAuMi0xLjMsMC40LTEu
-        OCwwLjdsLTEuOC0xLjNsLTEuNCwxLjRsMS4zLDEuOGMtMC4zLDAuNS0wLjYsMS4yLTAuNywxLjhMMTQs
-        MjF2MmwyLjIsMC40YzAuMiwwLjYsMC40LDEuMywwLjcsMS44ICBsLTEuMywxLjhsMS40LDEuNGwxLjgt
-        MS4zYzAuNSwwLjMsMS4yLDAuNiwxLjgsMC43TDIxLDMwaDJsMC40LTIuMmMwLjYtMC4yLDEuMy0wLjQs
-        MS44LTAuN2wxLjgsMS4zbDEuNC0xLjRsLTEuMy0xLjggIGMwLjMtMC41LDAuNi0xLjIsMC43LTEuOEwz
-        MCwyM3ogTTIyLDI0Yy0xLjEsMC0yLTAuOS0yLTJzMC45LTIsMi0yczIsMC45LDIsMlMyMy4xLDI0LDIy
-        LDI0eiIgY2xhc3M9IkJsdWUiIC8+DQo8L3N2Zz4L
-</value>
-  </data>
-  <data name="tabSegmentsData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 204</value>
-  </data>
-  <data name="tabSegmentsData.Tooltip" xml:space="preserve">
-    <value>Data</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsData.Name" xml:space="preserve">
-    <value>tabSegmentsData</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsData.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsData.Parent" xml:space="preserve">
-    <value>tabSegmentsProperty</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsData.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="txtSegmentNote.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+    <value>7</value>
   </data>
   <data name="txtSegmentNote.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>5, 173</value>
   </data>
   <data name="txtSegmentNote.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 204</value>
-  </data>
-  <data name="txtSegmentNote.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtSegmentNote.Name" xml:space="preserve">
-    <value>txtSegmentNote</value>
-  </data>
-  <data name="&gt;&gt;txtSegmentNote.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.MemoEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtSegmentNote.Parent" xml:space="preserve">
-    <value>tabSegmentsNote</value>
-  </data>
-  <data name="&gt;&gt;txtSegmentNote.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabSegmentsNote.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v22.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIyLjEsIFZlcnNpb249MjIuMS42
-        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
-        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAPQGAAAC77u/
-        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
-        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
-        MjAwMC9zdmciIHhtbDpzcGFjZT0icHJlc2VydmUiIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJh
-        Y2tncm91bmQ6bmV3IDAgMCAzMiAzMiI+DQogIDxkZWZzIGlkPSJkZWZzMTAiIC8+DQogIDxzdHlsZSB0
-        eXBlPSJ0ZXh0L2NzcyIgaWQ9InN0eWxlMiI+CgkuQmx1ZXtmaWxsOiMxMTc3RDc7fQoJLlllbGxvd3tm
-        aWxsOiNGRkIxMTU7fQoJLlJlZHtmaWxsOiNEMTFDMUM7fQoJLkdyZWVue2ZpbGw6IzAzOUMyMzt9Cgku
-        QmxhY2t7ZmlsbDojNzI3MjcyO30KCS5XaGl0ZXtmaWxsOiNGRkZGRkY7fQoJLnN0MHtvcGFjaXR5OjAu
-        NTt9Cgkuc3Qxe29wYWNpdHk6MC43NTt9Cgkuc3Qye2Rpc3BsYXk6bm9uZTt9Cgkuc3Qze2Rpc3BsYXk6
-        aW5saW5lO2ZpbGw6I0ZGQjExNTt9Cgkuc3Q0e2Rpc3BsYXk6aW5saW5lO30KCS5zdDV7ZGlzcGxheTpp
-        bmxpbmU7b3BhY2l0eTowLjc1O30KCS5zdDZ7ZGlzcGxheTppbmxpbmU7b3BhY2l0eTowLjU7fQoJLnN0
-        N3tkaXNwbGF5OmlubGluZTtmaWxsOiMwMzlDMjM7fQoJLnN0OHtkaXNwbGF5OmlubGluZTtmaWxsOiNE
-        MTFDMUM7fQoJLnN0OXtkaXNwbGF5OmlubGluZTtmaWxsOiMxMTc3RDc7fQoJLnN0MTB7ZGlzcGxheTpp
-        bmxpbmU7ZmlsbDojRkZGRkZGO30KPC9zdHlsZT4NCiAgPGcgaWQ9Ik5vdGUiIHN0eWxlPSJmaWxsOiNm
-        ZmIxMTU7ZmlsbC1vcGFjaXR5OjEiPg0KICAgIDxwYXRoIGQ9Ik0gMywyIEMgMi41LDIgMiwyLjUgMiwz
-        IHYgMjQgYyAwLDAuNSAwLjUsMSAxLDEgSCAyMS4wMjUzOTEgTCAyOCwyMS4wMjUzOTEgViAzIEMgMjgs
-        Mi41IDI3LjUsMiAyNywyIFoiIGlkPSJwYXRoNCIgc3R5bGU9ImZpbGw6I2ZmYjExNTtmaWxsLW9wYWNp
-        dHk6MSIgLz4NCiAgPC9nPg0KICA8cGF0aCBkPSJtIDIxLjA0NDcwNiwyNC4zMiAwLjAwOTQsLTMuMzUw
-        NTg4IDMuMjE4ODI0LC0wLjAyODIzIEwgMjEuMDQ0NzA2LDI0LjMyIiBpZD0icGF0aDg0NyIgc3R5bGU9
-        ImZpbGw6I2ZmZmZmZjtmaWxsLXJ1bGU6ZXZlbm9kZDtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6
-        MDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2UtbWl0ZXJsaW1p
-        dDo0O3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIiAvPg0KICA8c3R5bGUgdHlw
-        ZT0idGV4dC9jc3MiIGlkPSJzdHlsZTg0OSI+CgkuQmx1ZXtmaWxsOiMxMTc3RDc7fQoJLlllbGxvd3tm
-        aWxsOiNGRkIxMTU7fQoJLlJlZHtmaWxsOiNEMTFDMUM7fQoJLkdyZWVue2ZpbGw6IzAzOUMyMzt9Cgku
-        QmxhY2t7ZmlsbDojNzI3MjcyO30KCS5XaGl0ZXtmaWxsOiNGRkZGRkY7fQoJLnN0MHtvcGFjaXR5OjAu
-        NTt9Cgkuc3Qxe29wYWNpdHk6MC43NTt9Cgkuc3Qye2Rpc3BsYXk6bm9uZTt9Cgkuc3Qze2Rpc3BsYXk6
-        aW5saW5lO2ZpbGw6I0ZGQjExNTt9Cgkuc3Q0e2Rpc3BsYXk6aW5saW5lO30KCS5zdDV7ZGlzcGxheTpp
-        bmxpbmU7b3BhY2l0eTowLjc1O30KCS5zdDZ7ZGlzcGxheTppbmxpbmU7b3BhY2l0eTowLjU7fQoJLnN0
-        N3tkaXNwbGF5OmlubGluZTtmaWxsOiMwMzlDMjM7fQoJLnN0OHtkaXNwbGF5OmlubGluZTtmaWxsOiNE
-        MTFDMUM7fQoJLnN0OXtkaXNwbGF5OmlubGluZTtmaWxsOiMxMTc3RDc7fQoJLnN0MTB7ZGlzcGxheTpp
-        bmxpbmU7ZmlsbDojRkZGRkZGO30KPC9zdHlsZT4NCjwvc3ZnPgs=
-</value>
-  </data>
-  <data name="tabSegmentsNote.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 204</value>
-  </data>
-  <data name="tabSegmentsNote.Tooltip" xml:space="preserve">
-    <value>Note</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsNote.Name" xml:space="preserve">
-    <value>tabSegmentsNote</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsNote.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsNote.Parent" xml:space="preserve">
-    <value>tabSegmentsProperty</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsNote.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="grdSegmentAttachments.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+    <value>240, 185</value>
   </data>
   <data name="grdSegmentAttachments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>5, 173</value>
   </data>
   <data name="colSegmentAttachmentsImage.Caption" xml:space="preserve">
     <value> </value>
@@ -20080,7 +19926,7 @@
     <value>240</value>
   </data>
   <data name="grdSegmentAttachments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 204</value>
+    <value>240, 185</value>
   </data>
   <data name="grdSegmentAttachments.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -20092,59 +19938,484 @@
     <value>DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;grdSegmentAttachments.Parent" xml:space="preserve">
-    <value>tabSegmentsAttachments</value>
-  </data>
-  <data name="&gt;&gt;grdSegmentAttachments.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabSegmentsAttachments.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v22.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIyLjEsIFZlcnNpb249MjIuMS42
-        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
-        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAMkCAAAC77u/
-        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
-        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
-        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
-        Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAg
-        MzIgMzIiPg0KICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLlllbGxvd3tmaWxsOiNGRkIxMTU7fQoJ
-        LlJlZHtmaWxsOiNEMTFDMUM7fQoJLkJsdWV7ZmlsbDojMTE3N0Q3O30KCS5HcmVlbntmaWxsOiMwMzlD
-        MjM7fQoJLkJsYWNre2ZpbGw6IzcyNzI3Mjt9CgkuV2hpdGV7ZmlsbDojRkZGRkZGO30KCS5zdDB7b3Bh
-        Y2l0eTowLjc1O30KPC9zdHlsZT4NCiAgPGcgaWQ9IkF0dGFjaG1lbnRzIj4NCiAgICA8cGF0aCBkPSJN
-        MjIsMTB2MTNjMCwyLjgtMi4yLDUtNSw1cy01LTIuMi01LTVWN2MwLTEuNywxLjMtMywzLTNzMywxLjMs
-        MywzdjE2YzAsMC42LTAuNCwxLTEsMXMtMS0wLjQtMS0xVjEwaC0ydjEzICAgYzAsMS43LDEuMywzLDMs
-        M3MzLTEuMywzLTNWN2MwLTIuOC0yLjItNS01LTVzLTUsMi4yLTUsNXYxNmMwLDMuOSwzLjEsNyw3LDdz
-        Ny0zLjEsNy03VjEwSDIyeiIgY2xhc3M9IkJsYWNrIiAvPg0KICA8L2c+DQo8L3N2Zz4L
-</value>
-  </data>
-  <data name="tabSegmentsAttachments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 204</value>
-  </data>
-  <data name="tabSegmentsAttachments.Tooltip" xml:space="preserve">
-    <value>Attachments</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsAttachments.Name" xml:space="preserve">
-    <value>tabSegmentsAttachments</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsAttachments.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsAttachments.Parent" xml:space="preserve">
-    <value>tabSegmentsProperty</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsAttachments.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsProperty.Name" xml:space="preserve">
-    <value>tabSegmentsProperty</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsProperty.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;tabSegmentsProperty.Parent" xml:space="preserve">
     <value>pnlSegment</value>
   </data>
-  <data name="&gt;&gt;tabSegmentsProperty.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;grdSegmentAttachments.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="pnlSegmentDataLayout.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
+    <value>Default</value>
+  </data>
+  <data name="pnlSegmentDataLayout.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 173</value>
+  </data>
+  <data name="pnlSegmentDataLayout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 185</value>
+  </data>
+  <data name="pnlSegmentDataLayout.TabIndex" type="System.Int32, mscorlib">
+    <value>185</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentDataLayout.Name" xml:space="preserve">
+    <value>pnlSegmentDataLayout</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentDataLayout.Type" xml:space="preserve">
+    <value>cSurveyPC.cPanelControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentDataLayout.Parent" xml:space="preserve">
+    <value>pnlSegment</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentDataLayout.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="pnlSegmentFromAndTo.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
+    <value>Default</value>
+  </data>
+  <data name="txtSegmentTo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 7</value>
+  </data>
+  <data name="txtSegmentTo.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 10pt, style=Bold</value>
+  </data>
+  <data name="txtSegmentTo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 22</value>
+  </data>
+  <data name="txtSegmentTo.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="&gt;&gt;txtSegmentTo.Name" xml:space="preserve">
+    <value>txtSegmentTo</value>
+  </data>
+  <data name="&gt;&gt;txtSegmentTo.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtSegmentTo.Parent" xml:space="preserve">
+    <value>pnlSegmentFromAndTo</value>
+  </data>
+  <data name="&gt;&gt;txtSegmentTo.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="txtSegmentFrom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>41, 7</value>
+  </data>
+  <data name="txtSegmentFrom.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 10pt, style=Bold</value>
+  </data>
+  <data name="txtSegmentFrom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 22</value>
+  </data>
+  <data name="txtSegmentFrom.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="&gt;&gt;txtSegmentFrom.Name" xml:space="preserve">
+    <value>txtSegmentFrom</value>
+  </data>
+  <data name="&gt;&gt;txtSegmentFrom.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtSegmentFrom.Parent" xml:space="preserve">
+    <value>pnlSegmentFromAndTo</value>
+  </data>
+  <data name="&gt;&gt;txtSegmentFrom.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblSegmentFrom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblSegmentFrom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 12</value>
+  </data>
+  <data name="lblSegmentFrom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="lblSegmentFrom.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
+  </data>
+  <data name="lblSegmentFrom.Text" xml:space="preserve">
+    <value>From:</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentFrom.Name" xml:space="preserve">
+    <value>lblSegmentFrom</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentFrom.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentFrom.Parent" xml:space="preserve">
+    <value>pnlSegmentFromAndTo</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentFrom.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblSegmentTo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblSegmentTo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 12</value>
+  </data>
+  <data name="lblSegmentTo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="lblSegmentTo.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="lblSegmentTo.Text" xml:space="preserve">
+    <value>To:</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentTo.Name" xml:space="preserve">
+    <value>lblSegmentTo</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentTo.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentTo.Parent" xml:space="preserve">
+    <value>pnlSegmentFromAndTo</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentTo.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="pnlSegmentFromAndTo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 100</value>
+  </data>
+  <data name="pnlSegmentFromAndTo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 36</value>
+  </data>
+  <data name="pnlSegmentFromAndTo.TabIndex" type="System.Int32, mscorlib">
+    <value>112</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentFromAndTo.Name" xml:space="preserve">
+    <value>pnlSegmentFromAndTo</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentFromAndTo.Type" xml:space="preserve">
+    <value>cSurveyPC.cPanelControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentFromAndTo.Parent" xml:space="preserve">
+    <value>pnlSegment</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentFromAndTo.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="pnlSegmentCaveBranches.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
+    <value>Default</value>
+  </data>
+  <data name="pnlSegmentCaveBranchesColor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
+    <value>Default</value>
+  </data>
+  <data name="pnlSegmentCaveBranchesColor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="pnlSegmentCaveBranchesColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pnlSegmentCaveBranchesColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 58</value>
+  </data>
+  <data name="pnlSegmentCaveBranchesColor.TabIndex" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentCaveBranchesColor.Name" xml:space="preserve">
+    <value>pnlSegmentCaveBranchesColor</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentCaveBranchesColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentCaveBranchesColor.Parent" xml:space="preserve">
+    <value>pnlSegmentCaveBranches</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentCaveBranchesColor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblSegmentCave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblSegmentCave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 8</value>
+  </data>
+  <data name="lblSegmentCave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
+  </data>
+  <data name="lblSegmentCave.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblSegmentCave.Text" xml:space="preserve">
+    <value>Cave:</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentCave.Name" xml:space="preserve">
+    <value>lblSegmentCave</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentCave.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentCave.Parent" xml:space="preserve">
+    <value>pnlSegmentCaveBranches</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentCave.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblSegmentBranch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblSegmentBranch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 35</value>
+  </data>
+  <data name="lblSegmentBranch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 13</value>
+  </data>
+  <data name="lblSegmentBranch.TabIndex" type="System.Int32, mscorlib">
+    <value>109</value>
+  </data>
+  <data name="lblSegmentBranch.Text" xml:space="preserve">
+    <value>Branch:</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentBranch.Name" xml:space="preserve">
+    <value>lblSegmentBranch</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentBranch.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentBranch.Parent" xml:space="preserve">
+    <value>pnlSegmentCaveBranches</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentBranch.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cboSegmentCaveList.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
+    <value>Default</value>
+  </data>
+  <data name="cboSegmentCaveList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="cboSegmentCaveList.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboSegmentCaveList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>73, 5</value>
+  </data>
+  <data name="cboSegmentCaveList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 20</value>
+  </data>
+  <data name="cboSegmentCaveList.TabIndex" type="System.Int32, mscorlib">
+    <value>115</value>
+  </data>
+  <data name="&gt;&gt;cboSegmentCaveList.Name" xml:space="preserve">
+    <value>cboSegmentCaveList</value>
+  </data>
+  <data name="&gt;&gt;cboSegmentCaveList.Type" xml:space="preserve">
+    <value>cSurveyPC.cCaveDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboSegmentCaveList.Parent" xml:space="preserve">
+    <value>pnlSegmentCaveBranches</value>
+  </data>
+  <data name="&gt;&gt;cboSegmentCaveList.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cboSegmentCaveBranchList.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
+    <value>Default</value>
+  </data>
+  <data name="cboSegmentCaveBranchList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="cboSegmentCaveBranchList.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboSegmentCaveBranchList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>73, 31</value>
+  </data>
+  <data name="cboSegmentCaveBranchList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 20</value>
+  </data>
+  <data name="cboSegmentCaveBranchList.TabIndex" type="System.Int32, mscorlib">
+    <value>116</value>
+  </data>
+  <data name="&gt;&gt;cboSegmentCaveBranchList.Name" xml:space="preserve">
+    <value>cboSegmentCaveBranchList</value>
+  </data>
+  <data name="&gt;&gt;cboSegmentCaveBranchList.Type" xml:space="preserve">
+    <value>cSurveyPC.cCaveBranchDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboSegmentCaveBranchList.Parent" xml:space="preserve">
+    <value>pnlSegmentCaveBranches</value>
+  </data>
+  <data name="&gt;&gt;cboSegmentCaveBranchList.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="pnlSegmentCaveBranches.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 38</value>
+  </data>
+  <data name="pnlSegmentCaveBranches.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 58</value>
+  </data>
+  <data name="pnlSegmentCaveBranches.TabIndex" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentCaveBranches.Name" xml:space="preserve">
+    <value>pnlSegmentCaveBranches</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentCaveBranches.Type" xml:space="preserve">
+    <value>cSurveyPC.cPanelControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentCaveBranches.Parent" xml:space="preserve">
+    <value>pnlSegment</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentCaveBranches.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="pnlSegmentSession.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
+    <value>Default</value>
+  </data>
+  <data name="pnlSegmentSessionColor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
+    <value>Default</value>
+  </data>
+  <data name="pnlSegmentSessionColor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="pnlSegmentSessionColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pnlSegmentSessionColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 32</value>
+  </data>
+  <data name="pnlSegmentSessionColor.TabIndex" type="System.Int32, mscorlib">
+    <value>111</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentSessionColor.Name" xml:space="preserve">
+    <value>pnlSegmentSessionColor</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentSessionColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentSessionColor.Parent" xml:space="preserve">
+    <value>pnlSegmentSession</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentSessionColor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblSegmentSession.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 9</value>
+  </data>
+  <data name="lblSegmentSession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
+  </data>
+  <data name="lblSegmentSession.TabIndex" type="System.Int32, mscorlib">
+    <value>113</value>
+  </data>
+  <data name="lblSegmentSession.Text" xml:space="preserve">
+    <value>Session:</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentSession.Name" xml:space="preserve">
+    <value>lblSegmentSession</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentSession.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentSession.Parent" xml:space="preserve">
+    <value>pnlSegmentSession</value>
+  </data>
+  <data name="&gt;&gt;lblSegmentSession.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cboSegmentSessionList.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
+    <value>Default</value>
+  </data>
+  <data name="cboSegmentSessionList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="cboSegmentSessionList.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboSegmentSessionList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>73, 6</value>
+  </data>
+  <data name="cboSegmentSessionList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 20</value>
+  </data>
+  <data name="cboSegmentSessionList.TabIndex" type="System.Int32, mscorlib">
+    <value>114</value>
+  </data>
+  <data name="&gt;&gt;cboSegmentSessionList.Name" xml:space="preserve">
+    <value>cboSegmentSessionList</value>
+  </data>
+  <data name="&gt;&gt;cboSegmentSessionList.Type" xml:space="preserve">
+    <value>cSurveyPC.cSessionDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboSegmentSessionList.Parent" xml:space="preserve">
+    <value>pnlSegmentSession</value>
+  </data>
+  <data name="&gt;&gt;cboSegmentSessionList.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pnlSegmentSession.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 2</value>
+  </data>
+  <data name="pnlSegmentSession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 32</value>
+  </data>
+  <data name="pnlSegmentSession.TabIndex" type="System.Int32, mscorlib">
+    <value>111</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentSession.Name" xml:space="preserve">
+    <value>pnlSegmentSession</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentSession.Type" xml:space="preserve">
+    <value>cSurveyPC.cPanelControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentSession.Parent" xml:space="preserve">
+    <value>pnlSegment</value>
+  </data>
+  <data name="&gt;&gt;pnlSegmentSession.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="pnlSegment.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pnlSegment.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabSegmentsLayoutitem.Text" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="tabSegmentsMainitem.Text" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="tabSegmentsDataitem.Text" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="tabSegmentsNoteitem.Text" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="tabSegmentsAttachmentsitem.Text" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="pnlSegment.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 363</value>
+  </data>
+  <data name="pnlSegment.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;pnlSegment.Name" xml:space="preserve">
+    <value>pnlSegment</value>
+  </data>
+  <data name="&gt;&gt;pnlSegment.Type" xml:space="preserve">
+    <value>DevExpress.XtraLayout.LayoutControl, DevExpress.XtraLayout.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlSegment.Parent" xml:space="preserve">
+    <value>spSegments.Panel2</value>
+  </data>
+  <data name="&gt;&gt;pnlSegment.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtSegmentNote.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtSegmentNote.Name" xml:space="preserve">
+    <value>txtSegmentNote</value>
+  </data>
+  <data name="&gt;&gt;txtSegmentNote.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.MemoEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtSegmentNote.Parent" xml:space="preserve">
+    <value>pnlSegment</value>
+  </data>
+  <data name="&gt;&gt;txtSegmentNote.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="dockTopDesignerBar.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -20506,438 +20777,6 @@
     <value>spSegments</value>
   </data>
   <data name="&gt;&gt;spSegments.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="pnlSegment.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
-    <value>Default</value>
-  </data>
-  <data name="pnlSegmentFromAndTo.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
-    <value>Default</value>
-  </data>
-  <data name="txtSegmentTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 7</value>
-  </data>
-  <data name="txtSegmentTo.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 10pt, style=Bold</value>
-  </data>
-  <data name="txtSegmentTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 22</value>
-  </data>
-  <data name="txtSegmentTo.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="&gt;&gt;txtSegmentTo.Name" xml:space="preserve">
-    <value>txtSegmentTo</value>
-  </data>
-  <data name="&gt;&gt;txtSegmentTo.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtSegmentTo.Parent" xml:space="preserve">
-    <value>pnlSegmentFromAndTo</value>
-  </data>
-  <data name="&gt;&gt;txtSegmentTo.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtSegmentFrom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 7</value>
-  </data>
-  <data name="txtSegmentFrom.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 10pt, style=Bold</value>
-  </data>
-  <data name="txtSegmentFrom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 22</value>
-  </data>
-  <data name="txtSegmentFrom.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <data name="&gt;&gt;txtSegmentFrom.Name" xml:space="preserve">
-    <value>txtSegmentFrom</value>
-  </data>
-  <data name="&gt;&gt;txtSegmentFrom.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtSegmentFrom.Parent" xml:space="preserve">
-    <value>pnlSegmentFromAndTo</value>
-  </data>
-  <data name="&gt;&gt;txtSegmentFrom.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lblSegmentFrom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblSegmentFrom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 12</value>
-  </data>
-  <data name="lblSegmentFrom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 13</value>
-  </data>
-  <data name="lblSegmentFrom.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
-  </data>
-  <data name="lblSegmentFrom.Text" xml:space="preserve">
-    <value>From:</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentFrom.Name" xml:space="preserve">
-    <value>lblSegmentFrom</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentFrom.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentFrom.Parent" xml:space="preserve">
-    <value>pnlSegmentFromAndTo</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentFrom.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="lblSegmentTo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblSegmentTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 12</value>
-  </data>
-  <data name="lblSegmentTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 13</value>
-  </data>
-  <data name="lblSegmentTo.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="lblSegmentTo.Text" xml:space="preserve">
-    <value>To:</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentTo.Name" xml:space="preserve">
-    <value>lblSegmentTo</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentTo.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentTo.Parent" xml:space="preserve">
-    <value>pnlSegmentFromAndTo</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentTo.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="pnlSegmentFromAndTo.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="pnlSegmentFromAndTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 89</value>
-  </data>
-  <data name="pnlSegmentFromAndTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 38</value>
-  </data>
-  <data name="pnlSegmentFromAndTo.TabIndex" type="System.Int32, mscorlib">
-    <value>112</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentFromAndTo.Name" xml:space="preserve">
-    <value>pnlSegmentFromAndTo</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentFromAndTo.Type" xml:space="preserve">
-    <value>cSurveyPC.cPanelControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentFromAndTo.Parent" xml:space="preserve">
-    <value>pnlSegment</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentFromAndTo.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="pnlSegmentCaveBranches.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
-    <value>Default</value>
-  </data>
-  <data name="pnlSegmentCaveBranchesColor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
-    <value>Default</value>
-  </data>
-  <data name="pnlSegmentCaveBranchesColor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="pnlSegmentCaveBranchesColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="pnlSegmentCaveBranchesColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 57</value>
-  </data>
-  <data name="pnlSegmentCaveBranchesColor.TabIndex" type="System.Int32, mscorlib">
-    <value>110</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentCaveBranchesColor.Name" xml:space="preserve">
-    <value>pnlSegmentCaveBranchesColor</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentCaveBranchesColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentCaveBranchesColor.Parent" xml:space="preserve">
-    <value>pnlSegmentCaveBranches</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentCaveBranchesColor.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblSegmentCave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblSegmentCave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 8</value>
-  </data>
-  <data name="lblSegmentCave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 13</value>
-  </data>
-  <data name="lblSegmentCave.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblSegmentCave.Text" xml:space="preserve">
-    <value>Cave:</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentCave.Name" xml:space="preserve">
-    <value>lblSegmentCave</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentCave.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentCave.Parent" xml:space="preserve">
-    <value>pnlSegmentCaveBranches</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentCave.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lblSegmentBranch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblSegmentBranch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 35</value>
-  </data>
-  <data name="lblSegmentBranch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 13</value>
-  </data>
-  <data name="lblSegmentBranch.TabIndex" type="System.Int32, mscorlib">
-    <value>109</value>
-  </data>
-  <data name="lblSegmentBranch.Text" xml:space="preserve">
-    <value>Branch:</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentBranch.Name" xml:space="preserve">
-    <value>lblSegmentBranch</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentBranch.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentBranch.Parent" xml:space="preserve">
-    <value>pnlSegmentCaveBranches</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentBranch.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="cboSegmentCaveList.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
-    <value>Default</value>
-  </data>
-  <data name="cboSegmentCaveList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="cboSegmentCaveList.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="cboSegmentCaveList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>73, 5</value>
-  </data>
-  <data name="cboSegmentCaveList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 20</value>
-  </data>
-  <data name="cboSegmentCaveList.TabIndex" type="System.Int32, mscorlib">
-    <value>115</value>
-  </data>
-  <data name="&gt;&gt;cboSegmentCaveList.Name" xml:space="preserve">
-    <value>cboSegmentCaveList</value>
-  </data>
-  <data name="&gt;&gt;cboSegmentCaveList.Type" xml:space="preserve">
-    <value>cSurveyPC.cCaveDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cboSegmentCaveList.Parent" xml:space="preserve">
-    <value>pnlSegmentCaveBranches</value>
-  </data>
-  <data name="&gt;&gt;cboSegmentCaveList.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="cboSegmentCaveBranchList.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
-    <value>Default</value>
-  </data>
-  <data name="cboSegmentCaveBranchList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="cboSegmentCaveBranchList.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="cboSegmentCaveBranchList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>73, 31</value>
-  </data>
-  <data name="cboSegmentCaveBranchList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 20</value>
-  </data>
-  <data name="cboSegmentCaveBranchList.TabIndex" type="System.Int32, mscorlib">
-    <value>116</value>
-  </data>
-  <data name="&gt;&gt;cboSegmentCaveBranchList.Name" xml:space="preserve">
-    <value>cboSegmentCaveBranchList</value>
-  </data>
-  <data name="&gt;&gt;cboSegmentCaveBranchList.Type" xml:space="preserve">
-    <value>cSurveyPC.cCaveBranchDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cboSegmentCaveBranchList.Parent" xml:space="preserve">
-    <value>pnlSegmentCaveBranches</value>
-  </data>
-  <data name="&gt;&gt;cboSegmentCaveBranchList.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="pnlSegmentCaveBranches.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="pnlSegmentCaveBranches.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 32</value>
-  </data>
-  <data name="pnlSegmentCaveBranches.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 57</value>
-  </data>
-  <data name="pnlSegmentCaveBranches.TabIndex" type="System.Int32, mscorlib">
-    <value>110</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentCaveBranches.Name" xml:space="preserve">
-    <value>pnlSegmentCaveBranches</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentCaveBranches.Type" xml:space="preserve">
-    <value>cSurveyPC.cPanelControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentCaveBranches.Parent" xml:space="preserve">
-    <value>pnlSegment</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentCaveBranches.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="pnlSegmentSession.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
-    <value>Default</value>
-  </data>
-  <data name="pnlSegmentSessionColor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
-    <value>Default</value>
-  </data>
-  <data name="pnlSegmentSessionColor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="pnlSegmentSessionColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="pnlSegmentSessionColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 32</value>
-  </data>
-  <data name="pnlSegmentSessionColor.TabIndex" type="System.Int32, mscorlib">
-    <value>111</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentSessionColor.Name" xml:space="preserve">
-    <value>pnlSegmentSessionColor</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentSessionColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentSessionColor.Parent" xml:space="preserve">
-    <value>pnlSegmentSession</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentSessionColor.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblSegmentSession.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 9</value>
-  </data>
-  <data name="lblSegmentSession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 13</value>
-  </data>
-  <data name="lblSegmentSession.TabIndex" type="System.Int32, mscorlib">
-    <value>113</value>
-  </data>
-  <data name="lblSegmentSession.Text" xml:space="preserve">
-    <value>Session:</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentSession.Name" xml:space="preserve">
-    <value>lblSegmentSession</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentSession.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentSession.Parent" xml:space="preserve">
-    <value>pnlSegmentSession</value>
-  </data>
-  <data name="&gt;&gt;lblSegmentSession.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="cboSegmentSessionList.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
-    <value>Default</value>
-  </data>
-  <data name="cboSegmentSessionList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="cboSegmentSessionList.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="cboSegmentSessionList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>73, 6</value>
-  </data>
-  <data name="cboSegmentSessionList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 20</value>
-  </data>
-  <data name="cboSegmentSessionList.TabIndex" type="System.Int32, mscorlib">
-    <value>114</value>
-  </data>
-  <data name="&gt;&gt;cboSegmentSessionList.Name" xml:space="preserve">
-    <value>cboSegmentSessionList</value>
-  </data>
-  <data name="&gt;&gt;cboSegmentSessionList.Type" xml:space="preserve">
-    <value>cSurveyPC.cSessionDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cboSegmentSessionList.Parent" xml:space="preserve">
-    <value>pnlSegmentSession</value>
-  </data>
-  <data name="&gt;&gt;cboSegmentSessionList.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="pnlSegmentSession.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="pnlSegmentSession.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="pnlSegmentSession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 32</value>
-  </data>
-  <data name="pnlSegmentSession.TabIndex" type="System.Int32, mscorlib">
-    <value>111</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentSession.Name" xml:space="preserve">
-    <value>pnlSegmentSession</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentSession.Type" xml:space="preserve">
-    <value>cSurveyPC.cPanelControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentSession.Parent" xml:space="preserve">
-    <value>pnlSegment</value>
-  </data>
-  <data name="&gt;&gt;pnlSegmentSession.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="pnlSegment.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="pnlSegment.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="pnlSegment.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 363</value>
-  </data>
-  <data name="pnlSegment.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;pnlSegment.Name" xml:space="preserve">
-    <value>pnlSegment</value>
-  </data>
-  <data name="&gt;&gt;pnlSegment.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlSegment.Parent" xml:space="preserve">
-    <value>spSegments.Panel2</value>
-  </data>
-  <data name="&gt;&gt;pnlSegment.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;spSegments.Panel2.Name" xml:space="preserve">
@@ -22282,7 +22121,7 @@
     <value>3, 63</value>
   </data>
   <data name="lblCoordinateFormat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 17</value>
+    <value>38, 13</value>
   </data>
   <data name="lblCoordinateFormat.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
@@ -23149,5 +22988,8 @@
   </metadata>
   <metadata name="TaskbarAssistant.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>802, 67</value>
+  </metadata>
+  <metadata name="LayoutConverter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>440, 212</value>
   </metadata>
 </root>

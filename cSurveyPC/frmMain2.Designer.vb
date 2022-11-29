@@ -608,8 +608,6 @@ Partial Class frmMain2
         Me.lblTrigpointCoordinateY = New DevExpress.XtraEditors.LabelControl()
         Me.lblTrigpointCoordinateX = New DevExpress.XtraEditors.LabelControl()
         Me.WorkspaceManager = New DevExpress.Utils.WorkspaceManager(Me.components)
-        Me.tabSegmentsProperty = New DevExpress.XtraTab.XtraTabControl()
-        Me.tabSegmentsMain = New DevExpress.XtraTab.XtraTabPage()
         Me.pnlSegmentDataMain = New cSurveyPC.cPanelControl()
         Me.chkSegmentCalibration = New DevExpress.XtraEditors.CheckEdit()
         Me.lblSegmentDistance = New DevExpress.XtraEditors.LabelControl()
@@ -641,14 +639,11 @@ Partial Class frmMain2
         Me.chkSegmentExclude = New DevExpress.XtraEditors.CheckEdit()
         Me.chkSegmentInverted = New DevExpress.XtraEditors.CheckEdit()
         Me.cboSegmentDirection = New DevExpress.XtraEditors.ImageComboBoxEdit()
-        Me.tabSegmentsLayout = New DevExpress.XtraTab.XtraTabPage()
         Me.txtSegmentColor = New DevExpress.XtraEditors.ColorPickEdit()
         Me.lblSegmentColor = New DevExpress.XtraEditors.LabelControl()
-        Me.tabSegmentsData = New DevExpress.XtraTab.XtraTabPage()
         Me.prpSegmentDataProperties = New DevExpress.XtraVerticalGrid.PropertyGridControl()
-        Me.tabSegmentsNote = New DevExpress.XtraTab.XtraTabPage()
         Me.txtSegmentNote = New DevExpress.XtraEditors.MemoEdit()
-        Me.tabSegmentsAttachments = New DevExpress.XtraTab.XtraTabPage()
+        Me.pnlSegment = New DevExpress.XtraLayout.LayoutControl()
         Me.grdSegmentAttachments = New DevExpress.XtraGrid.GridControl()
         Me.grdViewSegmentAttachments = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colSegmentAttachmentsImage = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -656,6 +651,37 @@ Partial Class frmMain2
         Me.colSegmentAttachmentsName = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSegmentAttachmentsNote = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.txtSegmentAttachmentsNote = New DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit()
+        Me.pnlSegmentDataLayout = New cSurveyPC.cPanelControl()
+        Me.pnlSegmentFromAndTo = New cSurveyPC.cPanelControl()
+        Me.txtSegmentTo = New DevExpress.XtraEditors.TextEdit()
+        Me.txtSegmentFrom = New DevExpress.XtraEditors.TextEdit()
+        Me.lblSegmentFrom = New DevExpress.XtraEditors.LabelControl()
+        Me.lblSegmentTo = New DevExpress.XtraEditors.LabelControl()
+        Me.pnlSegmentCaveBranches = New cSurveyPC.cPanelControl()
+        Me.pnlSegmentCaveBranchesColor = New DevExpress.XtraEditors.PanelControl()
+        Me.lblSegmentCave = New DevExpress.XtraEditors.LabelControl()
+        Me.lblSegmentBranch = New DevExpress.XtraEditors.LabelControl()
+        Me.cboSegmentCaveList = New cSurveyPC.cCaveDropDown()
+        Me.cboSegmentCaveBranchList = New cSurveyPC.cCaveBranchDropDown()
+        Me.pnlSegmentSession = New cSurveyPC.cPanelControl()
+        Me.pnlSegmentSessionColor = New DevExpress.XtraEditors.PanelControl()
+        Me.lblSegmentSession = New DevExpress.XtraEditors.LabelControl()
+        Me.cboSegmentSessionList = New cSurveyPC.cSessionDropDown()
+        Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.tabSegmentsPropertyitem = New DevExpress.XtraLayout.TabbedControlGroup()
+        Me.tabSegmentsLayoutitem = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.pnlSegmentDataLayoutitem = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.tabSegmentsMainitem = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.tabSegmentsDataitem = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.prpSegmentDataPropertiesitem = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.tabSegmentsNoteitem = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.txtSegmentNoteitem = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.tabSegmentsAttachmentsitem = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.grdSegmentAttachmentsitem = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.dockTopDesignerBar = New DevExpress.XtraBars.StandaloneBarDockControl()
         Me.cMainMessageBar = New cSurveyPC.cMessageBar()
         Me.pnlData = New DevExpress.XtraEditors.PanelControl()
@@ -684,22 +710,6 @@ Partial Class frmMain2
         Me.cboSegmentsListAttachment = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
         Me.txtSegmentsListBearing = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
         Me.ToolTipController = New DevExpress.Utils.ToolTipController(Me.components)
-        Me.pnlSegment = New DevExpress.XtraEditors.PanelControl()
-        Me.pnlSegmentFromAndTo = New cSurveyPC.cPanelControl()
-        Me.txtSegmentTo = New DevExpress.XtraEditors.TextEdit()
-        Me.txtSegmentFrom = New DevExpress.XtraEditors.TextEdit()
-        Me.lblSegmentFrom = New DevExpress.XtraEditors.LabelControl()
-        Me.lblSegmentTo = New DevExpress.XtraEditors.LabelControl()
-        Me.pnlSegmentCaveBranches = New cSurveyPC.cPanelControl()
-        Me.pnlSegmentCaveBranchesColor = New DevExpress.XtraEditors.PanelControl()
-        Me.lblSegmentCave = New DevExpress.XtraEditors.LabelControl()
-        Me.lblSegmentBranch = New DevExpress.XtraEditors.LabelControl()
-        Me.cboSegmentCaveList = New cSurveyPC.cCaveDropDown()
-        Me.cboSegmentCaveBranchList = New cSurveyPC.cCaveBranchDropDown()
-        Me.pnlSegmentSession = New cSurveyPC.cPanelControl()
-        Me.pnlSegmentSessionColor = New DevExpress.XtraEditors.PanelControl()
-        Me.lblSegmentSession = New DevExpress.XtraEditors.LabelControl()
-        Me.cboSegmentSessionList = New cSurveyPC.cSessionDropDown()
         Me.DefaultToolTipController = New DevExpress.Utils.DefaultToolTipController(Me.components)
         Me.pnlTrigPoint = New DevExpress.XtraEditors.PanelControl()
         Me.pnlTrigpointName = New DevExpress.XtraEditors.PanelControl()
@@ -806,231 +816,238 @@ Partial Class frmMain2
         Me.mnuTray = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.svgItemImages = New DevExpress.Utils.SvgImageCollection(Me.components)
         Me.TaskbarAssistant = New DevExpress.Utils.Taskbar.TaskbarAssistant()
-        Me.pnlSegmentDataLayout = New DevExpress.XtraEditors.PanelControl()
-        CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Document2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DocumentGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Document1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlDesigner, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlDesigner.SuspendLayout()
-        CType(Me.pnlUndoPopup, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BarAndDockingController, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuTemplates, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuRecents, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuTherionPad, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuPasteSpecial, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuPlotManageStations, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuZoom, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainSessionList, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainSessionListView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtMainSessionListName, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainCaveList, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainCaveListView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtMainCaveListName, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainCaveListLocked, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.svgImages, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainCaveBranchList, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainCaveBranchListView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtMainCaveBranchName, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainCaveBranchListLocked, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainBindDesignType, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainBindCrossSections, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPenSmootingFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.barStatusProgress, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCurrentItemX, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCurrentItemY, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCurrentItemW, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCurrentItemH, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCurrentItemScaleW, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCurrentItemScaleH, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCurrentItemRotateBy, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkCurrentItemRotateCenteredOnOrigin, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCurrentItemGenericReducePointFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.trkZoom, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuSegmentDirection, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuConvertTo, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtAlignToGridSize, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuWorkspaces, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuBar, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboPensSmooting1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemPopupContainerEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCurrentItemTransparency, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnl3D, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnl3D.SuspendLayout()
-        CType(Me.picMap, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuUndo, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tabTrigpointsProperty, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabTrigpointsProperty.SuspendLayout()
-        Me.tabTrigpointsMain.SuspendLayout()
-        CType(Me.grdTrigPointAliases, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdViewTrigPointAliases, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkTrigpointZTurn.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointEntrance.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkTrigpointIsInExploration.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkTrigpointShowEntrance.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkTrigpointIsSpecial.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigPointType.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabTrigpointsLayout.SuspendLayout()
-        CType(Me.txtTrigpointFontColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkTrigpointDrawTranslationsLine.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigPointLabelPosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTrigPointLabelDistance, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigPointLabelSymbol.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabTrigpointsConnections.SuspendLayout()
-        CType(Me.grdTrigpointConnections, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdViewTrigpointConnections, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabTrigpointsData.SuspendLayout()
-        CType(Me.prpTrigpointDataProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabTrigpointsNote.SuspendLayout()
-        CType(Me.txtTrigpointNote.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabTrigpointsCoordinate.SuspendLayout()
-        CType(Me.cboTrigpointCoordinateGeo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointCoordinateFix.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTrigpointCoordinateAlt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlTrigpointCoordinateWGS84, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlTrigpointCoordinateWGS84.SuspendLayout()
-        CType(Me.txtTrigpointCoordinateLong.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTrigpointCoordinateLat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointCoordinateFormat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlTrigpointCoordinateUTM, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlTrigpointCoordinateUTM.SuspendLayout()
-        CType(Me.cboTrigpointCoordinateBand.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTrigpointCoordinateY.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointCoordinateZone.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTrigpointCoordinateX.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tabSegmentsProperty, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabSegmentsProperty.SuspendLayout()
-        Me.tabSegmentsMain.SuspendLayout()
-        Me.pnlSegmentDataMain.SuspendLayout()
-        CType(Me.chkSegmentCalibration.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSegmentCutSplay.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSegmentZSurvey.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlSegmentSurfaceProfile, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlSegmentSurfaceProfile.SuspendLayout()
-        CType(Me.cboSegmentSurfaceProfileShow.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSegmentVirtual.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentInclination.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSegmentUnbindable.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSegmentSurface.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSegmentDuplicate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSegmentSplay.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentDistance.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentRight.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentUp.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentDown.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentLeft.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentBearing.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSegmentExclude.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSegmentInverted.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboSegmentDirection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabSegmentsLayout.SuspendLayout()
-        CType(Me.txtSegmentColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabSegmentsData.SuspendLayout()
-        CType(Me.prpSegmentDataProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabSegmentsNote.SuspendLayout()
-        CType(Me.txtSegmentNote.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabSegmentsAttachments.SuspendLayout()
-        CType(Me.grdSegmentAttachments, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdViewSegmentAttachments, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picSegmentAttachmentsImage, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentAttachmentsNote, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlData, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlData.SuspendLayout()
-        CType(Me.spSegmentsAndTrigpoints, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.spSegmentsAndTrigpoints.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.spSegmentsAndTrigpoints.Panel1.SuspendLayout()
-        CType(Me.spSegmentsAndTrigpoints.Panel2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.spSegmentsAndTrigpoints.Panel2.SuspendLayout()
-        Me.spSegmentsAndTrigpoints.SuspendLayout()
-        CType(Me.spSegments, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.spSegments.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.spSegments.Panel1.SuspendLayout()
-        CType(Me.spSegments.Panel2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.spSegments.Panel2.SuspendLayout()
-        Me.spSegments.SuspendLayout()
-        CType(Me.grdSegments, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdViewSegments, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentsListNumericEdit, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboSegmentListProfileDirection2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboSegmentsListNote, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboSegmentsListAttachment, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentsListBearing, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlSegment, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlSegment.SuspendLayout()
-        Me.pnlSegmentFromAndTo.SuspendLayout()
-        CType(Me.txtSegmentTo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentFrom.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlSegmentCaveBranches.SuspendLayout()
-        CType(Me.pnlSegmentCaveBranchesColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlSegmentSession.SuspendLayout()
-        CType(Me.pnlSegmentSessionColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlTrigPoint, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlTrigPoint.SuspendLayout()
-        CType(Me.pnlTrigpointName, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlTrigpointName.SuspendLayout()
-        CType(Me.txtTrigPointName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.mnuDesignItemOLD.SuspendLayout()
-        Me.pnlForm.SuspendLayout()
-        Me.panelContainer1.SuspendLayout()
-        Me.dockProperties.SuspendLayout()
-        Me.ControlContainer10.SuspendLayout()
-        CType(Me.pnlDesignProp, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grpDesignProp, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnl3DProp, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grp3DProp, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlObjectProp, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlObjectProp.SuspendLayout()
-        CType(Me.pnlObjectSubProp, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grpObjectProp, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.dockLevels.SuspendLayout()
-        Me.dockClipart.SuspendLayout()
-        Me.ControlContainer6.SuspendLayout()
-        Me.DockPanel1_Container.SuspendLayout()
-        CType(Me.spTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.spTrigPoints.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.spTrigPoints.Panel1.SuspendLayout()
-        CType(Me.spTrigPoints.Panel2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.spTrigPoints.Panel2.SuspendLayout()
-        Me.spTrigPoints.SuspendLayout()
-        CType(Me.grdTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdViewTrigpoints, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointsListSpecial, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointsListEntrance, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointsListCoordinate, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointsListNote, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointsListInExploration, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picTrigpointsIcons, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigPointListsSplay, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DockManager, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.dockScript.SuspendLayout()
-        Me.dockIV.SuspendLayout()
-        Me.dockAV.SuspendLayout()
-        Me.dockJoinPoints.SuspendLayout()
-        Me.dockTexts.SuspendLayout()
-        Me.dockText.SuspendLayout()
-        Me.dockLS.SuspendLayout()
-        Me.dockConsole.SuspendLayout()
-        Me.dockDistances.SuspendLayout()
-        Me.dockData.SuspendLayout()
-        Me.dockDesigner.SuspendLayout()
-        CType(Me.DocumentManager, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.docView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuSegments, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuTrigpoint, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuDataProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuAliases, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuAttachments, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuDesignItemPoint, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuMapDrop, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuDesignItem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuDesignNone, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuTray, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.svgItemImages, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlSegmentDataLayout, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlSegmentDataLayout.SuspendLayout()
-        Me.SuspendLayout()
+        Me.LayoutConverter1 = New DevExpress.XtraLayout.Converter.LayoutConverter(Me.components)
+        CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Document2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DocumentGroup2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Document1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlDesigner, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlDesigner.SuspendLayout
+        CType(Me.pnlUndoPopup, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.BarAndDockingController, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuTemplates, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuRecents, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuTherionPad, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuPasteSpecial, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuPlotManageStations, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuZoom, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainSessionList, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainSessionListView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtMainSessionListName, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainCaveList, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainCaveListView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtMainCaveListName, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainCaveListLocked, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.svgImages, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainCaveBranchList, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainCaveBranchListView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtMainCaveBranchName, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainCaveBranchListLocked, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainBindDesignType, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainBindCrossSections, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPenSmootingFactor, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.barStatusProgress, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCurrentItemX, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCurrentItemY, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCurrentItemW, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCurrentItemH, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCurrentItemScaleW, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCurrentItemScaleH, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCurrentItemRotateBy, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkCurrentItemRotateCenteredOnOrigin, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCurrentItemGenericReducePointFactor, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.trkZoom, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuSegmentDirection, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuConvertTo, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtAlignToGridSize, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuWorkspaces, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuBar, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboPensSmooting1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemPopupContainerEdit1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCurrentItemTransparency, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnl3D, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnl3D.SuspendLayout
+        CType(Me.picMap, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuUndo, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabTrigpointsProperty, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabTrigpointsProperty.SuspendLayout
+        Me.tabTrigpointsMain.SuspendLayout
+        CType(Me.grdTrigPointAliases, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdViewTrigPointAliases, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkTrigpointZTurn.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointEntrance.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkTrigpointIsInExploration.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkTrigpointShowEntrance.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkTrigpointIsSpecial.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigPointType.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabTrigpointsLayout.SuspendLayout
+        CType(Me.txtTrigpointFontColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkTrigpointDrawTranslationsLine.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigPointLabelPosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTrigPointLabelDistance, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigPointLabelSymbol.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabTrigpointsConnections.SuspendLayout
+        CType(Me.grdTrigpointConnections, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdViewTrigpointConnections, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabTrigpointsData.SuspendLayout
+        CType(Me.prpTrigpointDataProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabTrigpointsNote.SuspendLayout
+        CType(Me.txtTrigpointNote.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabTrigpointsCoordinate.SuspendLayout
+        CType(Me.cboTrigpointCoordinateGeo.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointCoordinateFix.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTrigpointCoordinateAlt.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlTrigpointCoordinateWGS84, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlTrigpointCoordinateWGS84.SuspendLayout
+        CType(Me.txtTrigpointCoordinateLong.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTrigpointCoordinateLat.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointCoordinateFormat.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlTrigpointCoordinateUTM, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlTrigpointCoordinateUTM.SuspendLayout
+        CType(Me.cboTrigpointCoordinateBand.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTrigpointCoordinateY.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointCoordinateZone.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTrigpointCoordinateX.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlSegmentDataMain.SuspendLayout
+        CType(Me.chkSegmentCalibration.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkSegmentCutSplay.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkSegmentZSurvey.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlSegmentSurfaceProfile, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlSegmentSurfaceProfile.SuspendLayout
+        CType(Me.cboSegmentSurfaceProfileShow.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkSegmentVirtual.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentInclination.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkSegmentUnbindable.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkSegmentSurface.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkSegmentDuplicate.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkSegmentSplay.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentDistance.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentRight.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentUp.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentDown.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentLeft.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentBearing.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkSegmentExclude.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkSegmentInverted.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboSegmentDirection.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.prpSegmentDataProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentNote.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlSegment, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlSegment.SuspendLayout
+        CType(Me.grdSegmentAttachments, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdViewSegmentAttachments, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.picSegmentAttachmentsImage, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentAttachmentsNote, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlSegmentDataLayout.SuspendLayout
+        Me.pnlSegmentFromAndTo.SuspendLayout
+        CType(Me.txtSegmentTo.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentFrom.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlSegmentCaveBranches.SuspendLayout
+        CType(Me.pnlSegmentCaveBranchesColor, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlSegmentSession.SuspendLayout
+        CType(Me.pnlSegmentSessionColor, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabSegmentsPropertyitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabSegmentsLayoutitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlSegmentDataLayoutitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabSegmentsMainitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabSegmentsDataitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.prpSegmentDataPropertiesitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabSegmentsNoteitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentNoteitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabSegmentsAttachmentsitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdSegmentAttachmentsitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlData, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlData.SuspendLayout
+        CType(Me.spSegmentsAndTrigpoints, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.spSegmentsAndTrigpoints.Panel1, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.spSegmentsAndTrigpoints.Panel1.SuspendLayout
+        CType(Me.spSegmentsAndTrigpoints.Panel2, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.spSegmentsAndTrigpoints.Panel2.SuspendLayout
+        Me.spSegmentsAndTrigpoints.SuspendLayout
+        CType(Me.spSegments, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.spSegments.Panel1, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.spSegments.Panel1.SuspendLayout
+        CType(Me.spSegments.Panel2, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.spSegments.Panel2.SuspendLayout
+        Me.spSegments.SuspendLayout
+        CType(Me.grdSegments, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdViewSegments, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentsListNumericEdit, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboSegmentListProfileDirection2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboSegmentsListNote, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboSegmentsListAttachment, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentsListBearing, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlTrigPoint, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlTrigPoint.SuspendLayout
+        CType(Me.pnlTrigpointName, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlTrigpointName.SuspendLayout
+        CType(Me.txtTrigPointName.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.mnuDesignItemOLD.SuspendLayout
+        Me.pnlForm.SuspendLayout
+        Me.panelContainer1.SuspendLayout
+        Me.dockProperties.SuspendLayout
+        Me.ControlContainer10.SuspendLayout
+        CType(Me.pnlDesignProp, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grpDesignProp, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnl3DProp, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grp3DProp, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlObjectProp, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlObjectProp.SuspendLayout
+        CType(Me.pnlObjectSubProp, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grpObjectProp, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.dockLevels.SuspendLayout
+        Me.dockClipart.SuspendLayout
+        Me.ControlContainer6.SuspendLayout
+        Me.DockPanel1_Container.SuspendLayout
+        CType(Me.spTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.spTrigPoints.Panel1, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.spTrigPoints.Panel1.SuspendLayout
+        CType(Me.spTrigPoints.Panel2, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.spTrigPoints.Panel2.SuspendLayout
+        Me.spTrigPoints.SuspendLayout
+        CType(Me.grdTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdViewTrigpoints, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointsListSpecial, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointsListEntrance, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointsListCoordinate, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointsListNote, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointsListInExploration, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.picTrigpointsIcons, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigPointListsSplay, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DockManager, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.dockScript.SuspendLayout
+        Me.dockIV.SuspendLayout
+        Me.dockAV.SuspendLayout
+        Me.dockJoinPoints.SuspendLayout
+        Me.dockTexts.SuspendLayout
+        Me.dockText.SuspendLayout
+        Me.dockLS.SuspendLayout
+        Me.dockConsole.SuspendLayout
+        Me.dockDistances.SuspendLayout
+        Me.dockData.SuspendLayout
+        Me.dockDesigner.SuspendLayout
+        CType(Me.DocumentManager, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.docView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuSegments, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuTrigpoint, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuDataProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuAliases, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuAttachments, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuDesignItemPoint, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuMapDrop, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuDesignItem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuDesignNone, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuTray, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.svgItemImages, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.SuspendLayout
         '
         'DocumentGroup1
         '
@@ -5440,21 +5457,6 @@ Partial Class frmMain2
         Me.WorkspaceManager.TargetControl = Me
         Me.WorkspaceManager.TransitionType = FadeTransition1
         '
-        'tabSegmentsProperty
-        '
-        resources.ApplyResources(Me.tabSegmentsProperty, "tabSegmentsProperty")
-        Me.tabSegmentsProperty.Name = "tabSegmentsProperty"
-        Me.tabSegmentsProperty.SelectedTabPage = Me.tabSegmentsMain
-        Me.tabSegmentsProperty.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabSegmentsMain, Me.tabSegmentsLayout, Me.tabSegmentsData, Me.tabSegmentsNote, Me.tabSegmentsAttachments})
-        '
-        'tabSegmentsMain
-        '
-        resources.ApplyResources(Me.tabSegmentsMain, "tabSegmentsMain")
-        Me.tabSegmentsMain.Controls.Add(Me.pnlSegmentDataMain)
-        Me.tabSegmentsMain.ImageOptions.SvgImage = CType(resources.GetObject("tabSegmentsMain.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.tabSegmentsMain.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.tabSegmentsMain.Name = "tabSegmentsMain"
-        '
         'pnlSegmentDataMain
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentDataMain, CType(resources.GetObject("pnlSegmentDataMain.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
@@ -5699,14 +5701,6 @@ Partial Class frmMain2
         Me.cboSegmentDirection.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboSegmentDirection.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.cboSegmentDirection.Properties.SmallImages = Me.svgImages
         '
-        'tabSegmentsLayout
-        '
-        Me.tabSegmentsLayout.Controls.Add(Me.pnlSegmentDataLayout)
-        Me.tabSegmentsLayout.ImageOptions.SvgImage = CType(resources.GetObject("tabSegmentsLayout.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.tabSegmentsLayout.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.tabSegmentsLayout.Name = "tabSegmentsLayout"
-        resources.ApplyResources(Me.tabSegmentsLayout, "tabSegmentsLayout")
-        '
         'txtSegmentColor
         '
         resources.ApplyResources(Me.txtSegmentColor, "txtSegmentColor")
@@ -5724,14 +5718,6 @@ Partial Class frmMain2
         resources.ApplyResources(Me.lblSegmentColor, "lblSegmentColor")
         Me.lblSegmentColor.Name = "lblSegmentColor"
         '
-        'tabSegmentsData
-        '
-        Me.tabSegmentsData.Controls.Add(Me.prpSegmentDataProperties)
-        Me.tabSegmentsData.ImageOptions.SvgImage = CType(resources.GetObject("tabSegmentsData.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.tabSegmentsData.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.tabSegmentsData.Name = "tabSegmentsData"
-        resources.ApplyResources(Me.tabSegmentsData, "tabSegmentsData")
-        '
         'prpSegmentDataProperties
         '
         resources.ApplyResources(Me.prpSegmentDataProperties, "prpSegmentDataProperties")
@@ -5742,28 +5728,28 @@ Partial Class frmMain2
         Me.prpSegmentDataProperties.OptionsView.AllowReadOnlyRowAppearance = DevExpress.Utils.DefaultBoolean.[True]
         Me.prpSegmentDataProperties.OptionsView.ShowRootLevelIndent = False
         '
-        'tabSegmentsNote
-        '
-        Me.tabSegmentsNote.Controls.Add(Me.txtSegmentNote)
-        Me.tabSegmentsNote.ImageOptions.SvgImage = CType(resources.GetObject("tabSegmentsNote.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.tabSegmentsNote.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.tabSegmentsNote.Name = "tabSegmentsNote"
-        resources.ApplyResources(Me.tabSegmentsNote, "tabSegmentsNote")
-        '
         'txtSegmentNote
         '
         resources.ApplyResources(Me.txtSegmentNote, "txtSegmentNote")
         Me.txtSegmentNote.MenuManager = Me.RibbonControl
         Me.txtSegmentNote.Name = "txtSegmentNote"
         Me.txtSegmentNote.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.txtSegmentNote.StyleController = Me.pnlSegment
         '
-        'tabSegmentsAttachments
+        'pnlSegment
         '
-        Me.tabSegmentsAttachments.Controls.Add(Me.grdSegmentAttachments)
-        Me.tabSegmentsAttachments.ImageOptions.SvgImage = CType(resources.GetObject("tabSegmentsAttachments.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.tabSegmentsAttachments.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.tabSegmentsAttachments.Name = "tabSegmentsAttachments"
-        resources.ApplyResources(Me.tabSegmentsAttachments, "tabSegmentsAttachments")
+        Me.pnlSegment.AllowCustomization = False
+        Me.pnlSegment.Controls.Add(Me.grdSegmentAttachments)
+        Me.pnlSegment.Controls.Add(Me.pnlSegmentDataMain)
+        Me.pnlSegment.Controls.Add(Me.pnlSegmentDataLayout)
+        Me.pnlSegment.Controls.Add(Me.prpSegmentDataProperties)
+        Me.pnlSegment.Controls.Add(Me.txtSegmentNote)
+        Me.pnlSegment.Controls.Add(Me.pnlSegmentFromAndTo)
+        Me.pnlSegment.Controls.Add(Me.pnlSegmentCaveBranches)
+        Me.pnlSegment.Controls.Add(Me.pnlSegmentSession)
+        resources.ApplyResources(Me.pnlSegment, "pnlSegment")
+        Me.pnlSegment.Name = "pnlSegment"
+        Me.pnlSegment.Root = Me.LayoutControlGroup1
         '
         'grdSegmentAttachments
         '
@@ -5820,6 +5806,284 @@ Partial Class frmMain2
         'txtSegmentAttachmentsNote
         '
         Me.txtSegmentAttachmentsNote.Name = "txtSegmentAttachmentsNote"
+        '
+        'pnlSegmentDataLayout
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentDataLayout, CType(resources.GetObject("pnlSegmentDataLayout.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlSegmentDataLayout.Controls.Add(Me.txtSegmentColor)
+        Me.pnlSegmentDataLayout.Controls.Add(Me.lblSegmentColor)
+        resources.ApplyResources(Me.pnlSegmentDataLayout, "pnlSegmentDataLayout")
+        Me.pnlSegmentDataLayout.Name = "pnlSegmentDataLayout"
+        '
+        'pnlSegmentFromAndTo
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentFromAndTo, CType(resources.GetObject("pnlSegmentFromAndTo.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlSegmentFromAndTo.Controls.Add(Me.txtSegmentTo)
+        Me.pnlSegmentFromAndTo.Controls.Add(Me.txtSegmentFrom)
+        Me.pnlSegmentFromAndTo.Controls.Add(Me.lblSegmentFrom)
+        Me.pnlSegmentFromAndTo.Controls.Add(Me.lblSegmentTo)
+        resources.ApplyResources(Me.pnlSegmentFromAndTo, "pnlSegmentFromAndTo")
+        Me.pnlSegmentFromAndTo.Name = "pnlSegmentFromAndTo"
+        '
+        'txtSegmentTo
+        '
+        resources.ApplyResources(Me.txtSegmentTo, "txtSegmentTo")
+        Me.txtSegmentTo.MenuManager = Me.RibbonControl
+        Me.txtSegmentTo.Name = "txtSegmentTo"
+        Me.txtSegmentTo.Properties.Appearance.Font = CType(resources.GetObject("txtSegmentTo.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.txtSegmentTo.Properties.Appearance.Options.UseFont = True
+        Me.txtSegmentTo.Properties.Appearance.Options.UseTextOptions = True
+        Me.txtSegmentTo.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.txtSegmentTo.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtSegmentTo.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        '
+        'txtSegmentFrom
+        '
+        resources.ApplyResources(Me.txtSegmentFrom, "txtSegmentFrom")
+        Me.txtSegmentFrom.MenuManager = Me.RibbonControl
+        Me.txtSegmentFrom.Name = "txtSegmentFrom"
+        Me.txtSegmentFrom.Properties.Appearance.Font = CType(resources.GetObject("txtSegmentFrom.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.txtSegmentFrom.Properties.Appearance.Options.UseFont = True
+        Me.txtSegmentFrom.Properties.Appearance.Options.UseTextOptions = True
+        Me.txtSegmentFrom.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.txtSegmentFrom.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        '
+        'lblSegmentFrom
+        '
+        resources.ApplyResources(Me.lblSegmentFrom, "lblSegmentFrom")
+        Me.lblSegmentFrom.Name = "lblSegmentFrom"
+        '
+        'lblSegmentTo
+        '
+        resources.ApplyResources(Me.lblSegmentTo, "lblSegmentTo")
+        Me.lblSegmentTo.Name = "lblSegmentTo"
+        '
+        'pnlSegmentCaveBranches
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentCaveBranches, CType(resources.GetObject("pnlSegmentCaveBranches.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlSegmentCaveBranches.Controls.Add(Me.pnlSegmentCaveBranchesColor)
+        Me.pnlSegmentCaveBranches.Controls.Add(Me.lblSegmentCave)
+        Me.pnlSegmentCaveBranches.Controls.Add(Me.lblSegmentBranch)
+        Me.pnlSegmentCaveBranches.Controls.Add(Me.cboSegmentCaveList)
+        Me.pnlSegmentCaveBranches.Controls.Add(Me.cboSegmentCaveBranchList)
+        resources.ApplyResources(Me.pnlSegmentCaveBranches, "pnlSegmentCaveBranches")
+        Me.pnlSegmentCaveBranches.Name = "pnlSegmentCaveBranches"
+        '
+        'pnlSegmentCaveBranchesColor
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentCaveBranchesColor, CType(resources.GetObject("pnlSegmentCaveBranchesColor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlSegmentCaveBranchesColor.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        resources.ApplyResources(Me.pnlSegmentCaveBranchesColor, "pnlSegmentCaveBranchesColor")
+        Me.pnlSegmentCaveBranchesColor.Name = "pnlSegmentCaveBranchesColor"
+        '
+        'lblSegmentCave
+        '
+        resources.ApplyResources(Me.lblSegmentCave, "lblSegmentCave")
+        Me.lblSegmentCave.Name = "lblSegmentCave"
+        '
+        'lblSegmentBranch
+        '
+        resources.ApplyResources(Me.lblSegmentBranch, "lblSegmentBranch")
+        Me.lblSegmentBranch.Name = "lblSegmentBranch"
+        '
+        'cboSegmentCaveList
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.cboSegmentCaveList, CType(resources.GetObject("cboSegmentCaveList.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        resources.ApplyResources(Me.cboSegmentCaveList, "cboSegmentCaveList")
+        Me.cboSegmentCaveList.EditValue = Nothing
+        Me.cboSegmentCaveList.Name = "cboSegmentCaveList"
+        Me.cboSegmentCaveList.Workmode = cSurveyPC.cCaveDropDown.WorkmodeEnum.View
+        '
+        'cboSegmentCaveBranchList
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.cboSegmentCaveBranchList, CType(resources.GetObject("cboSegmentCaveBranchList.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        resources.ApplyResources(Me.cboSegmentCaveBranchList, "cboSegmentCaveBranchList")
+        Me.cboSegmentCaveBranchList.EditValue = Nothing
+        Me.cboSegmentCaveBranchList.Name = "cboSegmentCaveBranchList"
+        Me.cboSegmentCaveBranchList.Workmode = cSurveyPC.cCaveDropDown.WorkmodeEnum.View
+        '
+        'pnlSegmentSession
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentSession, CType(resources.GetObject("pnlSegmentSession.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlSegmentSession.Controls.Add(Me.pnlSegmentSessionColor)
+        Me.pnlSegmentSession.Controls.Add(Me.lblSegmentSession)
+        Me.pnlSegmentSession.Controls.Add(Me.cboSegmentSessionList)
+        resources.ApplyResources(Me.pnlSegmentSession, "pnlSegmentSession")
+        Me.pnlSegmentSession.Name = "pnlSegmentSession"
+        '
+        'pnlSegmentSessionColor
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentSessionColor, CType(resources.GetObject("pnlSegmentSessionColor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlSegmentSessionColor.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        resources.ApplyResources(Me.pnlSegmentSessionColor, "pnlSegmentSessionColor")
+        Me.pnlSegmentSessionColor.Name = "pnlSegmentSessionColor"
+        '
+        'lblSegmentSession
+        '
+        resources.ApplyResources(Me.lblSegmentSession, "lblSegmentSession")
+        Me.lblSegmentSession.Name = "lblSegmentSession"
+        '
+        'cboSegmentSessionList
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.cboSegmentSessionList, CType(resources.GetObject("cboSegmentSessionList.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        resources.ApplyResources(Me.cboSegmentSessionList, "cboSegmentSessionList")
+        Me.cboSegmentSessionList.EditValue = Nothing
+        Me.cboSegmentSessionList.Name = "cboSegmentSessionList"
+        '
+        'LayoutControlGroup1
+        '
+        Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlGroup1.GroupBordersVisible = False
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.tabSegmentsPropertyitem, Me.LayoutControlItem4, Me.LayoutControlItem1, Me.LayoutControlItem2})
+        Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
+        Me.LayoutControlGroup1.Padding = New DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(250, 363)
+        Me.LayoutControlGroup1.TextVisible = False
+        '
+        'tabSegmentsPropertyitem
+        '
+        Me.tabSegmentsPropertyitem.Location = New System.Drawing.Point(0, 138)
+        Me.tabSegmentsPropertyitem.Name = "tabSegmentsPropertyitem"
+        Me.tabSegmentsPropertyitem.Padding = New DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0)
+        Me.tabSegmentsPropertyitem.SelectedTabPage = Me.tabSegmentsLayoutitem
+        Me.tabSegmentsPropertyitem.Size = New System.Drawing.Size(250, 225)
+        Me.tabSegmentsPropertyitem.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.tabSegmentsMainitem, Me.tabSegmentsLayoutitem, Me.tabSegmentsDataitem, Me.tabSegmentsNoteitem, Me.tabSegmentsAttachmentsitem})
+        '
+        'tabSegmentsLayoutitem
+        '
+        Me.tabSegmentsLayoutitem.CaptionImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.shapespanel
+        Me.tabSegmentsLayoutitem.CaptionImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.tabSegmentsLayoutitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.pnlSegmentDataLayoutitem})
+        Me.tabSegmentsLayoutitem.Location = New System.Drawing.Point(0, 0)
+        Me.tabSegmentsLayoutitem.Name = "tabSegmentsLayoutitem"
+        Me.tabSegmentsLayoutitem.Size = New System.Drawing.Size(244, 189)
+        resources.ApplyResources(Me.tabSegmentsLayoutitem, "tabSegmentsLayoutitem")
+        Me.tabSegmentsLayoutitem.TextVisible = False
+        '
+        'pnlSegmentDataLayoutitem
+        '
+        Me.pnlSegmentDataLayoutitem.Control = Me.pnlSegmentDataLayout
+        Me.pnlSegmentDataLayoutitem.Location = New System.Drawing.Point(0, 0)
+        Me.pnlSegmentDataLayoutitem.Name = "pnlSegmentDataLayoutitem"
+        Me.pnlSegmentDataLayoutitem.Size = New System.Drawing.Size(244, 189)
+        Me.pnlSegmentDataLayoutitem.TextSize = New System.Drawing.Size(0, 0)
+        Me.pnlSegmentDataLayoutitem.TextVisible = False
+        '
+        'tabSegmentsMainitem
+        '
+        Me.tabSegmentsMainitem.CaptionImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.parameters
+        Me.tabSegmentsMainitem.CaptionImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.tabSegmentsMainitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3})
+        Me.tabSegmentsMainitem.Location = New System.Drawing.Point(0, 0)
+        Me.tabSegmentsMainitem.Name = "tabSegmentsMainitem"
+        Me.tabSegmentsMainitem.Size = New System.Drawing.Size(244, 189)
+        resources.ApplyResources(Me.tabSegmentsMainitem, "tabSegmentsMainitem")
+        Me.tabSegmentsMainitem.TextVisible = False
+        '
+        'LayoutControlItem3
+        '
+        Me.LayoutControlItem3.Control = Me.pnlSegmentDataMain
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem3.Name = "cPanelControlitem"
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(244, 189)
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem3.TextVisible = False
+        '
+        'tabSegmentsDataitem
+        '
+        Me.tabSegmentsDataitem.CaptionImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_database
+        Me.tabSegmentsDataitem.CaptionImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.tabSegmentsDataitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.prpSegmentDataPropertiesitem})
+        Me.tabSegmentsDataitem.Location = New System.Drawing.Point(0, 0)
+        Me.tabSegmentsDataitem.Name = "tabSegmentsDataitem"
+        Me.tabSegmentsDataitem.Size = New System.Drawing.Size(244, 189)
+        resources.ApplyResources(Me.tabSegmentsDataitem, "tabSegmentsDataitem")
+        Me.tabSegmentsDataitem.TextVisible = False
+        '
+        'prpSegmentDataPropertiesitem
+        '
+        Me.prpSegmentDataPropertiesitem.Control = Me.prpSegmentDataProperties
+        Me.prpSegmentDataPropertiesitem.Location = New System.Drawing.Point(0, 0)
+        Me.prpSegmentDataPropertiesitem.Name = "prpSegmentDataPropertiesitem"
+        Me.prpSegmentDataPropertiesitem.Size = New System.Drawing.Size(244, 189)
+        Me.prpSegmentDataPropertiesitem.TextSize = New System.Drawing.Size(0, 0)
+        Me.prpSegmentDataPropertiesitem.TextVisible = False
+        '
+        'tabSegmentsNoteitem
+        '
+        Me.tabSegmentsNoteitem.CaptionImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.sticky_note_1
+        Me.tabSegmentsNoteitem.CaptionImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.tabSegmentsNoteitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.txtSegmentNoteitem})
+        Me.tabSegmentsNoteitem.Location = New System.Drawing.Point(0, 0)
+        Me.tabSegmentsNoteitem.Name = "tabSegmentsNoteitem"
+        Me.tabSegmentsNoteitem.Size = New System.Drawing.Size(244, 189)
+        resources.ApplyResources(Me.tabSegmentsNoteitem, "tabSegmentsNoteitem")
+        Me.tabSegmentsNoteitem.TextVisible = False
+        '
+        'txtSegmentNoteitem
+        '
+        Me.txtSegmentNoteitem.Control = Me.txtSegmentNote
+        Me.txtSegmentNoteitem.Location = New System.Drawing.Point(0, 0)
+        Me.txtSegmentNoteitem.Name = "txtSegmentNoteitem"
+        Me.txtSegmentNoteitem.Size = New System.Drawing.Size(244, 189)
+        Me.txtSegmentNoteitem.TextSize = New System.Drawing.Size(0, 0)
+        Me.txtSegmentNoteitem.TextVisible = False
+        '
+        'tabSegmentsAttachmentsitem
+        '
+        Me.tabSegmentsAttachmentsitem.CaptionImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.attachments
+        Me.tabSegmentsAttachmentsitem.CaptionImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.tabSegmentsAttachmentsitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.grdSegmentAttachmentsitem})
+        Me.tabSegmentsAttachmentsitem.Location = New System.Drawing.Point(0, 0)
+        Me.tabSegmentsAttachmentsitem.Name = "tabSegmentsAttachmentsitem"
+        Me.tabSegmentsAttachmentsitem.Size = New System.Drawing.Size(244, 189)
+        resources.ApplyResources(Me.tabSegmentsAttachmentsitem, "tabSegmentsAttachmentsitem")
+        Me.tabSegmentsAttachmentsitem.TextVisible = False
+        '
+        'grdSegmentAttachmentsitem
+        '
+        Me.grdSegmentAttachmentsitem.Control = Me.grdSegmentAttachments
+        Me.grdSegmentAttachmentsitem.Location = New System.Drawing.Point(0, 0)
+        Me.grdSegmentAttachmentsitem.Name = "grdSegmentAttachmentsitem"
+        Me.grdSegmentAttachmentsitem.Size = New System.Drawing.Size(244, 189)
+        Me.grdSegmentAttachmentsitem.TextSize = New System.Drawing.Size(0, 0)
+        Me.grdSegmentAttachmentsitem.TextVisible = False
+        '
+        'LayoutControlItem4
+        '
+        Me.LayoutControlItem4.Control = Me.pnlSegmentFromAndTo
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 98)
+        Me.LayoutControlItem4.MaxSize = New System.Drawing.Size(0, 40)
+        Me.LayoutControlItem4.MinSize = New System.Drawing.Size(5, 40)
+        Me.LayoutControlItem4.Name = "LayoutControlItem4"
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(250, 40)
+        Me.LayoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem4.TextVisible = False
+        '
+        'LayoutControlItem1
+        '
+        Me.LayoutControlItem1.Control = Me.pnlSegmentCaveBranches
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 36)
+        Me.LayoutControlItem1.MaxSize = New System.Drawing.Size(0, 62)
+        Me.LayoutControlItem1.MinSize = New System.Drawing.Size(5, 62)
+        Me.LayoutControlItem1.Name = "cPanelControlitem"
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(250, 62)
+        Me.LayoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem1.TextVisible = False
+        '
+        'LayoutControlItem2
+        '
+        Me.LayoutControlItem2.Control = Me.pnlSegmentSession
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem2.MaxSize = New System.Drawing.Size(0, 36)
+        Me.LayoutControlItem2.MinSize = New System.Drawing.Size(5, 36)
+        Me.LayoutControlItem2.Name = "cPanelControlitem"
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(250, 36)
+        Me.LayoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem2.TextVisible = False
         '
         'dockTopDesignerBar
         '
@@ -6096,128 +6360,6 @@ Partial Class frmMain2
         '
         'ToolTipController
         '
-        '
-        'pnlSegment
-        '
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegment, CType(resources.GetObject("pnlSegment.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnlSegment.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        Me.pnlSegment.Controls.Add(Me.tabSegmentsProperty)
-        Me.pnlSegment.Controls.Add(Me.pnlSegmentFromAndTo)
-        Me.pnlSegment.Controls.Add(Me.pnlSegmentCaveBranches)
-        Me.pnlSegment.Controls.Add(Me.pnlSegmentSession)
-        resources.ApplyResources(Me.pnlSegment, "pnlSegment")
-        Me.pnlSegment.Name = "pnlSegment"
-        '
-        'pnlSegmentFromAndTo
-        '
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentFromAndTo, CType(resources.GetObject("pnlSegmentFromAndTo.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnlSegmentFromAndTo.Controls.Add(Me.txtSegmentTo)
-        Me.pnlSegmentFromAndTo.Controls.Add(Me.txtSegmentFrom)
-        Me.pnlSegmentFromAndTo.Controls.Add(Me.lblSegmentFrom)
-        Me.pnlSegmentFromAndTo.Controls.Add(Me.lblSegmentTo)
-        resources.ApplyResources(Me.pnlSegmentFromAndTo, "pnlSegmentFromAndTo")
-        Me.pnlSegmentFromAndTo.Name = "pnlSegmentFromAndTo"
-        '
-        'txtSegmentTo
-        '
-        resources.ApplyResources(Me.txtSegmentTo, "txtSegmentTo")
-        Me.txtSegmentTo.MenuManager = Me.RibbonControl
-        Me.txtSegmentTo.Name = "txtSegmentTo"
-        Me.txtSegmentTo.Properties.Appearance.Font = CType(resources.GetObject("txtSegmentTo.Properties.Appearance.Font"), System.Drawing.Font)
-        Me.txtSegmentTo.Properties.Appearance.Options.UseFont = True
-        Me.txtSegmentTo.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtSegmentTo.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        '
-        'txtSegmentFrom
-        '
-        resources.ApplyResources(Me.txtSegmentFrom, "txtSegmentFrom")
-        Me.txtSegmentFrom.MenuManager = Me.RibbonControl
-        Me.txtSegmentFrom.Name = "txtSegmentFrom"
-        Me.txtSegmentFrom.Properties.Appearance.Font = CType(resources.GetObject("txtSegmentFrom.Properties.Appearance.Font"), System.Drawing.Font)
-        Me.txtSegmentFrom.Properties.Appearance.Options.UseFont = True
-        Me.txtSegmentFrom.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        '
-        'lblSegmentFrom
-        '
-        resources.ApplyResources(Me.lblSegmentFrom, "lblSegmentFrom")
-        Me.lblSegmentFrom.Name = "lblSegmentFrom"
-        '
-        'lblSegmentTo
-        '
-        resources.ApplyResources(Me.lblSegmentTo, "lblSegmentTo")
-        Me.lblSegmentTo.Name = "lblSegmentTo"
-        '
-        'pnlSegmentCaveBranches
-        '
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentCaveBranches, CType(resources.GetObject("pnlSegmentCaveBranches.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnlSegmentCaveBranches.Controls.Add(Me.pnlSegmentCaveBranchesColor)
-        Me.pnlSegmentCaveBranches.Controls.Add(Me.lblSegmentCave)
-        Me.pnlSegmentCaveBranches.Controls.Add(Me.lblSegmentBranch)
-        Me.pnlSegmentCaveBranches.Controls.Add(Me.cboSegmentCaveList)
-        Me.pnlSegmentCaveBranches.Controls.Add(Me.cboSegmentCaveBranchList)
-        resources.ApplyResources(Me.pnlSegmentCaveBranches, "pnlSegmentCaveBranches")
-        Me.pnlSegmentCaveBranches.Name = "pnlSegmentCaveBranches"
-        '
-        'pnlSegmentCaveBranchesColor
-        '
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentCaveBranchesColor, CType(resources.GetObject("pnlSegmentCaveBranchesColor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnlSegmentCaveBranchesColor.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        resources.ApplyResources(Me.pnlSegmentCaveBranchesColor, "pnlSegmentCaveBranchesColor")
-        Me.pnlSegmentCaveBranchesColor.Name = "pnlSegmentCaveBranchesColor"
-        '
-        'lblSegmentCave
-        '
-        resources.ApplyResources(Me.lblSegmentCave, "lblSegmentCave")
-        Me.lblSegmentCave.Name = "lblSegmentCave"
-        '
-        'lblSegmentBranch
-        '
-        resources.ApplyResources(Me.lblSegmentBranch, "lblSegmentBranch")
-        Me.lblSegmentBranch.Name = "lblSegmentBranch"
-        '
-        'cboSegmentCaveList
-        '
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.cboSegmentCaveList, CType(resources.GetObject("cboSegmentCaveList.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        resources.ApplyResources(Me.cboSegmentCaveList, "cboSegmentCaveList")
-        Me.cboSegmentCaveList.EditValue = Nothing
-        Me.cboSegmentCaveList.Name = "cboSegmentCaveList"
-        Me.cboSegmentCaveList.Workmode = cSurveyPC.cCaveDropDown.WorkmodeEnum.View
-        '
-        'cboSegmentCaveBranchList
-        '
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.cboSegmentCaveBranchList, CType(resources.GetObject("cboSegmentCaveBranchList.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        resources.ApplyResources(Me.cboSegmentCaveBranchList, "cboSegmentCaveBranchList")
-        Me.cboSegmentCaveBranchList.EditValue = Nothing
-        Me.cboSegmentCaveBranchList.Name = "cboSegmentCaveBranchList"
-        Me.cboSegmentCaveBranchList.Workmode = cSurveyPC.cCaveDropDown.WorkmodeEnum.View
-        '
-        'pnlSegmentSession
-        '
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentSession, CType(resources.GetObject("pnlSegmentSession.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnlSegmentSession.Controls.Add(Me.pnlSegmentSessionColor)
-        Me.pnlSegmentSession.Controls.Add(Me.lblSegmentSession)
-        Me.pnlSegmentSession.Controls.Add(Me.cboSegmentSessionList)
-        resources.ApplyResources(Me.pnlSegmentSession, "pnlSegmentSession")
-        Me.pnlSegmentSession.Name = "pnlSegmentSession"
-        '
-        'pnlSegmentSessionColor
-        '
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentSessionColor, CType(resources.GetObject("pnlSegmentSessionColor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnlSegmentSessionColor.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        resources.ApplyResources(Me.pnlSegmentSessionColor, "pnlSegmentSessionColor")
-        Me.pnlSegmentSessionColor.Name = "pnlSegmentSessionColor"
-        '
-        'lblSegmentSession
-        '
-        resources.ApplyResources(Me.lblSegmentSession, "lblSegmentSession")
-        Me.lblSegmentSession.Name = "lblSegmentSession"
-        '
-        'cboSegmentSessionList
-        '
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.cboSegmentSessionList, CType(resources.GetObject("cboSegmentSessionList.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        resources.ApplyResources(Me.cboSegmentSessionList, "cboSegmentSessionList")
-        Me.cboSegmentSessionList.EditValue = Nothing
-        Me.cboSegmentSessionList.Name = "cboSegmentSessionList"
         '
         'DefaultToolTipController
         '
@@ -7224,14 +7366,6 @@ Partial Class frmMain2
         '
         Me.TaskbarAssistant.ParentControl = Me
         '
-        'pnlSegmentDataLayout
-        '
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentDataLayout, CType(resources.GetObject("pnlSegmentDataLayout.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnlSegmentDataLayout.Controls.Add(Me.txtSegmentColor)
-        Me.pnlSegmentDataLayout.Controls.Add(Me.lblSegmentColor)
-        resources.ApplyResources(Me.pnlSegmentDataLayout, "pnlSegmentDataLayout")
-        Me.pnlSegmentDataLayout.Name = "pnlSegmentDataLayout"
-        '
         'frmMain2
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me, CType(resources.GetObject("$this.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
@@ -7247,217 +7381,227 @@ Partial Class frmMain2
         Me.Name = "frmMain2"
         Me.Ribbon = Me.RibbonControl
         Me.StatusBar = Me.RibbonStatusBar1
-        CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Document2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DocumentGroup2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Document1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlDesigner, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Document2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DocumentGroup2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Document1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlDesigner, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlDesigner.ResumeLayout(False)
-        Me.pnlDesigner.PerformLayout()
-        CType(Me.pnlUndoPopup, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BarAndDockingController, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuTemplates, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuRecents, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuTherionPad, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuPasteSpecial, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuPlotManageStations, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuZoom, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainSessionList, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainSessionListView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtMainSessionListName, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainCaveList, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainCaveListView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtMainCaveListName, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainCaveListLocked, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.svgImages, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainCaveBranchList, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainCaveBranchListView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtMainCaveBranchName, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainCaveBranchListLocked, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainBindDesignType, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainBindCrossSections, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPenSmootingFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.barStatusProgress, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCurrentItemX, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCurrentItemY, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCurrentItemW, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCurrentItemH, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCurrentItemScaleW, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCurrentItemScaleH, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCurrentItemRotateBy, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkCurrentItemRotateCenteredOnOrigin, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCurrentItemGenericReducePointFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.trkZoom, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuSegmentDirection, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuConvertTo, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtAlignToGridSize, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuWorkspaces, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuBar, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboPensSmooting1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemPopupContainerEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCurrentItemTransparency, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnl3D, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlDesigner.PerformLayout
+        CType(Me.pnlUndoPopup, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.BarAndDockingController, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuTemplates, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuRecents, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuTherionPad, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuPasteSpecial, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuPlotManageStations, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuZoom, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainSessionList, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainSessionListView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtMainSessionListName, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainCaveList, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainCaveListView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtMainCaveListName, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainCaveListLocked, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.svgImages, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainCaveBranchList, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainCaveBranchListView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtMainCaveBranchName, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainCaveBranchListLocked, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainBindDesignType, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainBindCrossSections, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPenSmootingFactor, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.barStatusProgress, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCurrentItemX, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCurrentItemY, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCurrentItemW, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCurrentItemH, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCurrentItemScaleW, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCurrentItemScaleH, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCurrentItemRotateBy, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkCurrentItemRotateCenteredOnOrigin, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCurrentItemGenericReducePointFactor, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.trkZoom, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuSegmentDirection, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuConvertTo, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtAlignToGridSize, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuWorkspaces, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuBar, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboPensSmooting1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemPopupContainerEdit1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCurrentItemTransparency, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnl3D, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnl3D.ResumeLayout(False)
-        CType(Me.picMap, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuUndo, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tabTrigpointsProperty, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picMap, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuUndo, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabTrigpointsProperty, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabTrigpointsProperty.ResumeLayout(False)
         Me.tabTrigpointsMain.ResumeLayout(False)
-        Me.tabTrigpointsMain.PerformLayout()
-        CType(Me.grdTrigPointAliases, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdViewTrigPointAliases, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkTrigpointZTurn.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointEntrance.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkTrigpointIsInExploration.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkTrigpointShowEntrance.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkTrigpointIsSpecial.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigPointType.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabTrigpointsMain.PerformLayout
+        CType(Me.grdTrigPointAliases, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdViewTrigPointAliases, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkTrigpointZTurn.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointEntrance.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkTrigpointIsInExploration.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkTrigpointShowEntrance.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkTrigpointIsSpecial.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigPointType.Properties, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabTrigpointsLayout.ResumeLayout(False)
-        Me.tabTrigpointsLayout.PerformLayout()
-        CType(Me.txtTrigpointFontColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkTrigpointDrawTranslationsLine.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigPointLabelPosition.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTrigPointLabelDistance, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigPointLabelSymbol.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabTrigpointsLayout.PerformLayout
+        CType(Me.txtTrigpointFontColor.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkTrigpointDrawTranslationsLine.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigPointLabelPosition.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTrigPointLabelDistance, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigPointLabelSymbol.Properties, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabTrigpointsConnections.ResumeLayout(False)
-        CType(Me.grdTrigpointConnections, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdViewTrigpointConnections, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdTrigpointConnections, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdViewTrigpointConnections, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabTrigpointsData.ResumeLayout(False)
-        CType(Me.prpTrigpointDataProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.prpTrigpointDataProperties, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabTrigpointsNote.ResumeLayout(False)
-        CType(Me.txtTrigpointNote.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtTrigpointNote.Properties, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabTrigpointsCoordinate.ResumeLayout(False)
-        Me.tabTrigpointsCoordinate.PerformLayout()
-        CType(Me.cboTrigpointCoordinateGeo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointCoordinateFix.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTrigpointCoordinateAlt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlTrigpointCoordinateWGS84, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabTrigpointsCoordinate.PerformLayout
+        CType(Me.cboTrigpointCoordinateGeo.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointCoordinateFix.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTrigpointCoordinateAlt.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlTrigpointCoordinateWGS84, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlTrigpointCoordinateWGS84.ResumeLayout(False)
-        Me.pnlTrigpointCoordinateWGS84.PerformLayout()
-        CType(Me.txtTrigpointCoordinateLong.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTrigpointCoordinateLat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointCoordinateFormat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlTrigpointCoordinateUTM, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlTrigpointCoordinateWGS84.PerformLayout
+        CType(Me.txtTrigpointCoordinateLong.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTrigpointCoordinateLat.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointCoordinateFormat.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlTrigpointCoordinateUTM, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlTrigpointCoordinateUTM.ResumeLayout(False)
-        Me.pnlTrigpointCoordinateUTM.PerformLayout()
-        CType(Me.cboTrigpointCoordinateBand.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTrigpointCoordinateY.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointCoordinateZone.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTrigpointCoordinateX.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tabSegmentsProperty, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tabSegmentsProperty.ResumeLayout(False)
-        Me.tabSegmentsMain.ResumeLayout(False)
+        Me.pnlTrigpointCoordinateUTM.PerformLayout
+        CType(Me.cboTrigpointCoordinateBand.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTrigpointCoordinateY.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointCoordinateZone.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTrigpointCoordinateX.Properties, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlSegmentDataMain.ResumeLayout(False)
-        Me.pnlSegmentDataMain.PerformLayout()
-        CType(Me.chkSegmentCalibration.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSegmentCutSplay.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSegmentZSurvey.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlSegmentSurfaceProfile, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlSegmentDataMain.PerformLayout
+        CType(Me.chkSegmentCalibration.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkSegmentCutSplay.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkSegmentZSurvey.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlSegmentSurfaceProfile, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlSegmentSurfaceProfile.ResumeLayout(False)
-        Me.pnlSegmentSurfaceProfile.PerformLayout()
-        CType(Me.cboSegmentSurfaceProfileShow.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSegmentVirtual.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentInclination.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSegmentUnbindable.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSegmentSurface.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSegmentDuplicate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSegmentSplay.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentDistance.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentRight.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentUp.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentDown.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentLeft.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentBearing.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSegmentExclude.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSegmentInverted.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboSegmentDirection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tabSegmentsLayout.ResumeLayout(False)
-        CType(Me.txtSegmentColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tabSegmentsData.ResumeLayout(False)
-        CType(Me.prpSegmentDataProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tabSegmentsNote.ResumeLayout(False)
-        CType(Me.txtSegmentNote.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tabSegmentsAttachments.ResumeLayout(False)
-        CType(Me.grdSegmentAttachments, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdViewSegmentAttachments, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picSegmentAttachmentsImage, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentAttachmentsNote, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlData, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlData.ResumeLayout(False)
-        Me.pnlData.PerformLayout()
-        CType(Me.spSegmentsAndTrigpoints.Panel1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.spSegmentsAndTrigpoints.Panel1.ResumeLayout(False)
-        CType(Me.spSegmentsAndTrigpoints.Panel2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.spSegmentsAndTrigpoints.Panel2.ResumeLayout(False)
-        CType(Me.spSegmentsAndTrigpoints, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.spSegmentsAndTrigpoints.ResumeLayout(False)
-        CType(Me.spSegments.Panel1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.spSegments.Panel1.ResumeLayout(False)
-        CType(Me.spSegments.Panel2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.spSegments.Panel2.ResumeLayout(False)
-        CType(Me.spSegments, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.spSegments.ResumeLayout(False)
-        CType(Me.grdSegments, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdViewSegments, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentsListNumericEdit, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboSegmentListProfileDirection2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboSegmentsListNote, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboSegmentsListAttachment, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentsListBearing, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlSegment, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlSegmentSurfaceProfile.PerformLayout
+        CType(Me.cboSegmentSurfaceProfileShow.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkSegmentVirtual.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentInclination.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkSegmentUnbindable.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkSegmentSurface.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkSegmentDuplicate.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkSegmentSplay.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentDistance.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentRight.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentUp.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentDown.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentLeft.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentBearing.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkSegmentExclude.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkSegmentInverted.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboSegmentDirection.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentColor.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.prpSegmentDataProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentNote.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlSegment, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlSegment.ResumeLayout(False)
+        CType(Me.grdSegmentAttachments, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdViewSegmentAttachments, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.picSegmentAttachmentsImage, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentAttachmentsNote, System.ComponentModel.ISupportInitialize).EndInit
+        Me.pnlSegmentDataLayout.ResumeLayout(False)
+        Me.pnlSegmentDataLayout.PerformLayout
         Me.pnlSegmentFromAndTo.ResumeLayout(False)
-        Me.pnlSegmentFromAndTo.PerformLayout()
-        CType(Me.txtSegmentTo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentFrom.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlSegmentFromAndTo.PerformLayout
+        CType(Me.txtSegmentTo.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentFrom.Properties, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlSegmentCaveBranches.ResumeLayout(False)
-        Me.pnlSegmentCaveBranches.PerformLayout()
-        CType(Me.pnlSegmentCaveBranchesColor, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlSegmentCaveBranches.PerformLayout
+        CType(Me.pnlSegmentCaveBranchesColor, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlSegmentSession.ResumeLayout(False)
-        Me.pnlSegmentSession.PerformLayout()
-        CType(Me.pnlSegmentSessionColor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlTrigPoint, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlSegmentSession.PerformLayout
+        CType(Me.pnlSegmentSessionColor, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabSegmentsPropertyitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabSegmentsLayoutitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlSegmentDataLayoutitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabSegmentsMainitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabSegmentsDataitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.prpSegmentDataPropertiesitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabSegmentsNoteitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentNoteitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabSegmentsAttachmentsitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdSegmentAttachmentsitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlData, System.ComponentModel.ISupportInitialize).EndInit
+        Me.pnlData.ResumeLayout(False)
+        Me.pnlData.PerformLayout
+        CType(Me.spSegmentsAndTrigpoints.Panel1, System.ComponentModel.ISupportInitialize).EndInit
+        Me.spSegmentsAndTrigpoints.Panel1.ResumeLayout(False)
+        CType(Me.spSegmentsAndTrigpoints.Panel2, System.ComponentModel.ISupportInitialize).EndInit
+        Me.spSegmentsAndTrigpoints.Panel2.ResumeLayout(False)
+        CType(Me.spSegmentsAndTrigpoints, System.ComponentModel.ISupportInitialize).EndInit
+        Me.spSegmentsAndTrigpoints.ResumeLayout(False)
+        CType(Me.spSegments.Panel1, System.ComponentModel.ISupportInitialize).EndInit
+        Me.spSegments.Panel1.ResumeLayout(False)
+        CType(Me.spSegments.Panel2, System.ComponentModel.ISupportInitialize).EndInit
+        Me.spSegments.Panel2.ResumeLayout(False)
+        CType(Me.spSegments, System.ComponentModel.ISupportInitialize).EndInit
+        Me.spSegments.ResumeLayout(False)
+        CType(Me.grdSegments, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdViewSegments, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentsListNumericEdit, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboSegmentListProfileDirection2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboSegmentsListNote, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboSegmentsListAttachment, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentsListBearing, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlTrigPoint, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlTrigPoint.ResumeLayout(False)
-        CType(Me.pnlTrigpointName, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlTrigpointName, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlTrigpointName.ResumeLayout(False)
-        Me.pnlTrigpointName.PerformLayout()
-        CType(Me.txtTrigPointName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlTrigpointName.PerformLayout
+        CType(Me.txtTrigPointName.Properties, System.ComponentModel.ISupportInitialize).EndInit
         Me.mnuDesignItemOLD.ResumeLayout(False)
         Me.pnlForm.ResumeLayout(False)
         Me.panelContainer1.ResumeLayout(False)
         Me.dockProperties.ResumeLayout(False)
         Me.ControlContainer10.ResumeLayout(False)
-        CType(Me.pnlDesignProp, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grpDesignProp, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnl3DProp, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grp3DProp, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlObjectProp, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlDesignProp, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grpDesignProp, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnl3DProp, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grp3DProp, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlObjectProp, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlObjectProp.ResumeLayout(False)
-        CType(Me.pnlObjectSubProp, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grpObjectProp, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlObjectSubProp, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grpObjectProp, System.ComponentModel.ISupportInitialize).EndInit
         Me.dockLevels.ResumeLayout(False)
         Me.dockClipart.ResumeLayout(False)
         Me.ControlContainer6.ResumeLayout(False)
         Me.DockPanel1_Container.ResumeLayout(False)
-        Me.DockPanel1_Container.PerformLayout()
-        CType(Me.spTrigPoints.Panel1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.DockPanel1_Container.PerformLayout
+        CType(Me.spTrigPoints.Panel1, System.ComponentModel.ISupportInitialize).EndInit
         Me.spTrigPoints.Panel1.ResumeLayout(False)
-        CType(Me.spTrigPoints.Panel2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spTrigPoints.Panel2, System.ComponentModel.ISupportInitialize).EndInit
         Me.spTrigPoints.Panel2.ResumeLayout(False)
-        CType(Me.spTrigPoints, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spTrigPoints, System.ComponentModel.ISupportInitialize).EndInit
         Me.spTrigPoints.ResumeLayout(False)
-        CType(Me.grdTrigPoints, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdViewTrigpoints, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointsListSpecial, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointsListEntrance, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointsListCoordinate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointsListNote, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointsListInExploration, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picTrigpointsIcons, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigPointListsSplay, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DockManager, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdTrigPoints, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdViewTrigpoints, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointsListSpecial, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointsListEntrance, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointsListCoordinate, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointsListNote, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointsListInExploration, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.picTrigpointsIcons, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigPointListsSplay, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DockManager, System.ComponentModel.ISupportInitialize).EndInit
         Me.dockScript.ResumeLayout(False)
         Me.dockIV.ResumeLayout(False)
         Me.dockAV.ResumeLayout(False)
@@ -7469,24 +7613,21 @@ Partial Class frmMain2
         Me.dockDistances.ResumeLayout(False)
         Me.dockData.ResumeLayout(False)
         Me.dockDesigner.ResumeLayout(False)
-        CType(Me.DocumentManager, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.docView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuSegments, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuTrigpoint, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuDataProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuAliases, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuAttachments, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuDesignItemPoint, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuMapDrop, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuDesignItem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuDesignNone, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuTray, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.svgItemImages, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlSegmentDataLayout, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlSegmentDataLayout.ResumeLayout(False)
-        Me.pnlSegmentDataLayout.PerformLayout()
+        CType(Me.DocumentManager, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.docView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuSegments, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuTrigpoint, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuDataProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuAliases, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuAttachments, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuDesignItemPoint, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuMapDrop, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuDesignItem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuDesignNone, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuTray, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.svgItemImages, System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(False)
-        Me.PerformLayout()
+        Me.PerformLayout
 
     End Sub
     Friend WithEvents lblSegmentTo As DevExpress.XtraEditors.LabelControl
@@ -7537,7 +7678,6 @@ Partial Class frmMain2
     Friend WithEvents pnlTrigPoint As DevExpress.XtraEditors.PanelControl
     Friend WithEvents txtTrigPointName As DevExpress.XtraEditors.TextEdit
     Friend WithEvents lblTrigPointName As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents pnlSegment As DevExpress.XtraEditors.PanelControl
     Friend WithEvents spTrigPoints As DevExpress.XtraEditors.SplitContainerControl
     Friend WithEvents spSegments As DevExpress.XtraEditors.SplitContainerControl
     Friend WithEvents spSegmentsAndTrigpoints As DevExpress.XtraEditors.SplitContainerControl
@@ -7917,12 +8057,6 @@ Partial Class frmMain2
     Friend WithEvents mnuTrigpoint As DevExpress.XtraBars.PopupMenu
     Friend WithEvents btnGridExport As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnGridRefresh As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents tabSegmentsProperty As DevExpress.XtraTab.XtraTabControl
-    Friend WithEvents tabSegmentsMain As DevExpress.XtraTab.XtraTabPage
-    Friend WithEvents tabSegmentsData As DevExpress.XtraTab.XtraTabPage
-    Friend WithEvents tabSegmentsLayout As DevExpress.XtraTab.XtraTabPage
-    Friend WithEvents tabSegmentsNote As DevExpress.XtraTab.XtraTabPage
-    Friend WithEvents tabSegmentsAttachments As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents prpSegmentDataProperties As DevExpress.XtraVerticalGrid.PropertyGridControl
     Friend WithEvents txtSegmentNote As DevExpress.XtraEditors.MemoEdit
     Friend WithEvents btnDataPropertiesEdit As DevExpress.XtraBars.BarButtonItem
@@ -8195,5 +8329,22 @@ Partial Class frmMain2
     Friend WithEvents pnlUndoPopup As DevExpress.XtraBars.PopupControlContainer
     Friend WithEvents btnViewToolbarFloatingBar As DevExpress.XtraBars.BarCheckItem
     Friend WithEvents pnlSegmentDataMain As cPanelControl
-    Friend WithEvents pnlSegmentDataLayout As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlSegmentDataLayout As cPanelControl
+    Friend WithEvents pnlSegment As DevExpress.XtraLayout.LayoutControl
+    Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents tabSegmentsPropertyitem As DevExpress.XtraLayout.TabbedControlGroup
+    Friend WithEvents tabSegmentsNoteitem As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents txtSegmentNoteitem As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents tabSegmentsMainitem As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents tabSegmentsLayoutitem As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents pnlSegmentDataLayoutitem As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents tabSegmentsDataitem As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents prpSegmentDataPropertiesitem As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents tabSegmentsAttachmentsitem As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents grdSegmentAttachmentsitem As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutConverter1 As DevExpress.XtraLayout.Converter.LayoutConverter
 End Class

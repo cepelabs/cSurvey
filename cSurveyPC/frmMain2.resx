@@ -12770,6 +12770,9 @@
   <data name="tabTrigpointsProperty.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 40</value>
   </data>
+  <data name="pnlTrigpointsDataMain.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
+    <value>Default</value>
+  </data>
   <data name="grdTrigPointAliases.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -12786,7 +12789,7 @@
     <value>0</value>
   </data>
   <data name="grdTrigPointAliases.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 146</value>
+    <value>241, 131</value>
   </data>
   <data name="grdTrigPointAliases.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -12798,7 +12801,7 @@
     <value>DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;grdTrigPointAliases.Parent" xml:space="preserve">
-    <value>tabTrigpointsMain</value>
+    <value>pnlTrigpointsDataMain</value>
   </data>
   <data name="&gt;&gt;grdTrigPointAliases.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -12828,7 +12831,7 @@
     <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTrigpointZTurn.Parent" xml:space="preserve">
-    <value>tabTrigpointsMain</value>
+    <value>pnlTrigpointsDataMain</value>
   </data>
   <data name="&gt;&gt;chkTrigpointZTurn.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -12873,7 +12876,7 @@
     <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboTrigpointEntrance.Parent" xml:space="preserve">
-    <value>tabTrigpointsMain</value>
+    <value>pnlTrigpointsDataMain</value>
   </data>
   <data name="&gt;&gt;cboTrigpointEntrance.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -12903,7 +12906,7 @@
     <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTrigpointIsInExploration.Parent" xml:space="preserve">
-    <value>tabTrigpointsMain</value>
+    <value>pnlTrigpointsDataMain</value>
   </data>
   <data name="&gt;&gt;chkTrigpointIsInExploration.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -12933,7 +12936,7 @@
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblTrigpointEntrance.Parent" xml:space="preserve">
-    <value>tabTrigpointsMain</value>
+    <value>pnlTrigpointsDataMain</value>
   </data>
   <data name="&gt;&gt;lblTrigpointEntrance.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -12963,7 +12966,7 @@
     <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTrigpointShowEntrance.Parent" xml:space="preserve">
-    <value>tabTrigpointsMain</value>
+    <value>pnlTrigpointsDataMain</value>
   </data>
   <data name="&gt;&gt;chkTrigpointShowEntrance.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -12993,7 +12996,7 @@
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblTrigpointType.Parent" xml:space="preserve">
-    <value>tabTrigpointsMain</value>
+    <value>pnlTrigpointsDataMain</value>
   </data>
   <data name="&gt;&gt;lblTrigpointType.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -13023,7 +13026,7 @@
     <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTrigpointIsSpecial.Parent" xml:space="preserve">
-    <value>tabTrigpointsMain</value>
+    <value>pnlTrigpointsDataMain</value>
   </data>
   <data name="&gt;&gt;chkTrigpointIsSpecial.ZOrder" xml:space="preserve">
     <value>7</value>
@@ -13062,10 +13065,34 @@
     <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboTrigPointType.Parent" xml:space="preserve">
-    <value>tabTrigpointsMain</value>
+    <value>pnlTrigpointsDataMain</value>
   </data>
   <data name="&gt;&gt;cboTrigPointType.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="pnlTrigpointsDataMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pnlTrigpointsDataMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pnlTrigpointsDataMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>248, 291</value>
+  </data>
+  <data name="pnlTrigpointsDataMain.TabIndex" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="&gt;&gt;pnlTrigpointsDataMain.Name" xml:space="preserve">
+    <value>pnlTrigpointsDataMain</value>
+  </data>
+  <data name="&gt;&gt;pnlTrigpointsDataMain.Type" xml:space="preserve">
+    <value>cSurveyPC.cPanelControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;pnlTrigpointsDataMain.Parent" xml:space="preserve">
+    <value>tabTrigpointsMain</value>
+  </data>
+  <data name="&gt;&gt;pnlTrigpointsDataMain.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="tabTrigpointsMain.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v22.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -13118,6 +13145,9 @@
   <data name="tabTrigpointsProperty.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
+  <data name="pnlTrigpointsDataLayout.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
+    <value>Default</value>
+  </data>
   <data name="txtTrigpointFontColor.EditValue" type="System.Drawing.Color, System.Drawing">
     <value />
   </data>
@@ -13143,7 +13173,7 @@
     <value>DevExpress.XtraEditors.ColorPickEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtTrigpointFontColor.Parent" xml:space="preserve">
-    <value>tabTrigpointsLayout</value>
+    <value>pnlTrigpointsDataLayout</value>
   </data>
   <data name="&gt;&gt;txtTrigpointFontColor.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -13173,7 +13203,7 @@
     <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTrigpointDrawTranslationsLine.Parent" xml:space="preserve">
-    <value>tabTrigpointsLayout</value>
+    <value>pnlTrigpointsDataLayout</value>
   </data>
   <data name="&gt;&gt;chkTrigpointDrawTranslationsLine.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -13230,7 +13260,7 @@
     <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboTrigPointLabelPosition.Parent" xml:space="preserve">
-    <value>tabTrigpointsLayout</value>
+    <value>pnlTrigpointsDataLayout</value>
   </data>
   <data name="&gt;&gt;cboTrigPointLabelPosition.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -13263,7 +13293,7 @@
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblTrigpointFontchar.Parent" xml:space="preserve">
-    <value>tabTrigpointsLayout</value>
+    <value>pnlTrigpointsDataLayout</value>
   </data>
   <data name="&gt;&gt;lblTrigpointFontchar.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -13296,7 +13326,7 @@
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblTextFontSize.Parent" xml:space="preserve">
-    <value>tabTrigpointsLayout</value>
+    <value>pnlTrigpointsDataLayout</value>
   </data>
   <data name="&gt;&gt;lblTextFontSize.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -13323,7 +13353,7 @@
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtTrigPointLabelDistance.Parent" xml:space="preserve">
-    <value>tabTrigpointsLayout</value>
+    <value>pnlTrigpointsDataLayout</value>
   </data>
   <data name="&gt;&gt;txtTrigPointLabelDistance.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -13381,7 +13411,7 @@
     <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTrigpointFontBold.Parent" xml:space="preserve">
-    <value>tabTrigpointsLayout</value>
+    <value>pnlTrigpointsDataLayout</value>
   </data>
   <data name="&gt;&gt;chkTrigpointFontBold.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -13438,7 +13468,7 @@
     <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboTrigPointLabelSymbol.Parent" xml:space="preserve">
-    <value>tabTrigpointsLayout</value>
+    <value>pnlTrigpointsDataLayout</value>
   </data>
   <data name="&gt;&gt;cboTrigPointLabelSymbol.ZOrder" xml:space="preserve">
     <value>7</value>
@@ -13522,7 +13552,7 @@
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cboTrigpointFontSize.Parent" xml:space="preserve">
-    <value>tabTrigpointsLayout</value>
+    <value>pnlTrigpointsDataLayout</value>
   </data>
   <data name="&gt;&gt;cboTrigpointFontSize.ZOrder" xml:space="preserve">
     <value>8</value>
@@ -13570,7 +13600,7 @@
     <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTrigpointFontItalic.Parent" xml:space="preserve">
-    <value>tabTrigpointsLayout</value>
+    <value>pnlTrigpointsDataLayout</value>
   </data>
   <data name="&gt;&gt;chkTrigpointFontItalic.ZOrder" xml:space="preserve">
     <value>9</value>
@@ -13603,7 +13633,7 @@
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblTrigPointSymbol.Parent" xml:space="preserve">
-    <value>tabTrigpointsLayout</value>
+    <value>pnlTrigpointsDataLayout</value>
   </data>
   <data name="&gt;&gt;lblTrigPointSymbol.ZOrder" xml:space="preserve">
     <value>10</value>
@@ -13633,7 +13663,7 @@
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cboTrigpointFontChar.Parent" xml:space="preserve">
-    <value>tabTrigpointsLayout</value>
+    <value>pnlTrigpointsDataLayout</value>
   </data>
   <data name="&gt;&gt;cboTrigpointFontChar.ZOrder" xml:space="preserve">
     <value>11</value>
@@ -13666,7 +13696,7 @@
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblTrigpointLabelDistance.Parent" xml:space="preserve">
-    <value>tabTrigpointsLayout</value>
+    <value>pnlTrigpointsDataLayout</value>
   </data>
   <data name="&gt;&gt;lblTrigpointLabelDistance.ZOrder" xml:space="preserve">
     <value>12</value>
@@ -13714,7 +13744,7 @@
     <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTrigpointFontUnderline.Parent" xml:space="preserve">
-    <value>tabTrigpointsLayout</value>
+    <value>pnlTrigpointsDataLayout</value>
   </data>
   <data name="&gt;&gt;chkTrigpointFontUnderline.ZOrder" xml:space="preserve">
     <value>13</value>
@@ -13747,7 +13777,7 @@
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblFontColor.Parent" xml:space="preserve">
-    <value>tabTrigpointsLayout</value>
+    <value>pnlTrigpointsDataLayout</value>
   </data>
   <data name="&gt;&gt;lblFontColor.ZOrder" xml:space="preserve">
     <value>14</value>
@@ -13780,10 +13810,34 @@
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblTrigpointLabelPosition.Parent" xml:space="preserve">
-    <value>tabTrigpointsLayout</value>
+    <value>pnlTrigpointsDataLayout</value>
   </data>
   <data name="&gt;&gt;lblTrigpointLabelPosition.ZOrder" xml:space="preserve">
     <value>15</value>
+  </data>
+  <data name="pnlTrigpointsDataLayout.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pnlTrigpointsDataLayout.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pnlTrigpointsDataLayout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>248, 291</value>
+  </data>
+  <data name="pnlTrigpointsDataLayout.TabIndex" type="System.Int32, mscorlib">
+    <value>145</value>
+  </data>
+  <data name="&gt;&gt;pnlTrigpointsDataLayout.Name" xml:space="preserve">
+    <value>pnlTrigpointsDataLayout</value>
+  </data>
+  <data name="&gt;&gt;pnlTrigpointsDataLayout.Type" xml:space="preserve">
+    <value>cSurveyPC.cPanelControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;pnlTrigpointsDataLayout.Parent" xml:space="preserve">
+    <value>tabTrigpointsLayout</value>
+  </data>
+  <data name="&gt;&gt;pnlTrigpointsDataLayout.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="tabTrigpointsLayout.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v22.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -14062,6 +14116,9 @@
   <data name="&gt;&gt;tabTrigpointsNote.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="pnlTrigpointsDataCoordinate.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v22.1">
+    <value>Default</value>
+  </data>
   <data name="btnTrigpointCoordinateClear.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v22.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIyLjEsIFZlcnNpb249MjIuMS42
@@ -14101,7 +14158,7 @@
     <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnTrigpointCoordinateClear.Parent" xml:space="preserve">
-    <value>tabTrigpointsCoordinate</value>
+    <value>pnlTrigpointsDataCoordinate</value>
   </data>
   <data name="&gt;&gt;btnTrigpointCoordinateClear.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -14137,7 +14194,7 @@
     <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboTrigpointCoordinateGeo.Parent" xml:space="preserve">
-    <value>tabTrigpointsCoordinate</value>
+    <value>pnlTrigpointsDataCoordinate</value>
   </data>
   <data name="&gt;&gt;cboTrigpointCoordinateGeo.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -14167,7 +14224,7 @@
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblTrigpointCoordinateFix.Parent" xml:space="preserve">
-    <value>tabTrigpointsCoordinate</value>
+    <value>pnlTrigpointsDataCoordinate</value>
   </data>
   <data name="&gt;&gt;lblTrigpointCoordinateFix.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -14203,7 +14260,7 @@
     <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboTrigpointCoordinateFix.Parent" xml:space="preserve">
-    <value>tabTrigpointsCoordinate</value>
+    <value>pnlTrigpointsDataCoordinate</value>
   </data>
   <data name="&gt;&gt;cboTrigpointCoordinateFix.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -14233,7 +14290,7 @@
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblTrigpointCoordinateGeo.Parent" xml:space="preserve">
-    <value>tabTrigpointsCoordinate</value>
+    <value>pnlTrigpointsDataCoordinate</value>
   </data>
   <data name="&gt;&gt;lblTrigpointCoordinateGeo.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -14263,7 +14320,7 @@
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblTrigpointCoordinateAlt.Parent" xml:space="preserve">
-    <value>tabTrigpointsCoordinate</value>
+    <value>pnlTrigpointsDataCoordinate</value>
   </data>
   <data name="&gt;&gt;lblTrigpointCoordinateAlt.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -14290,7 +14347,7 @@
     <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtTrigpointCoordinateAlt.Parent" xml:space="preserve">
-    <value>tabTrigpointsCoordinate</value>
+    <value>pnlTrigpointsDataCoordinate</value>
   </data>
   <data name="&gt;&gt;txtTrigpointCoordinateAlt.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -14494,7 +14551,7 @@
     <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlTrigpointCoordinateWGS84.Parent" xml:space="preserve">
-    <value>tabTrigpointsCoordinate</value>
+    <value>pnlTrigpointsDataCoordinate</value>
   </data>
   <data name="&gt;&gt;pnlTrigpointCoordinateWGS84.ZOrder" xml:space="preserve">
     <value>7</value>
@@ -14734,7 +14791,7 @@
     <value>0, 28</value>
   </data>
   <data name="pnlTrigpointCoordinateUTM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 115</value>
+    <value>217, 115</value>
   </data>
   <data name="pnlTrigpointCoordinateUTM.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -14746,10 +14803,34 @@
     <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlTrigpointCoordinateUTM.Parent" xml:space="preserve">
-    <value>tabTrigpointsCoordinate</value>
+    <value>pnlTrigpointsDataCoordinate</value>
   </data>
   <data name="&gt;&gt;pnlTrigpointCoordinateUTM.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="pnlTrigpointsDataCoordinate.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pnlTrigpointsDataCoordinate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pnlTrigpointsDataCoordinate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>248, 291</value>
+  </data>
+  <data name="pnlTrigpointsDataCoordinate.TabIndex" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+  <data name="&gt;&gt;pnlTrigpointsDataCoordinate.Name" xml:space="preserve">
+    <value>pnlTrigpointsDataCoordinate</value>
+  </data>
+  <data name="&gt;&gt;pnlTrigpointsDataCoordinate.Type" xml:space="preserve">
+    <value>cSurveyPC.cPanelControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;pnlTrigpointsDataCoordinate.Parent" xml:space="preserve">
+    <value>tabTrigpointsCoordinate</value>
+  </data>
+  <data name="&gt;&gt;pnlTrigpointsDataCoordinate.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="tabTrigpointsCoordinate.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v22.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -21530,7 +21611,7 @@
     <value>pnlTrigpointName</value>
   </data>
   <data name="&gt;&gt;pnlTrigpointName.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>cSurveyPC.cPanelControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pnlTrigpointName.Parent" xml:space="preserve">
     <value>pnlTrigPoint</value>

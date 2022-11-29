@@ -546,6 +546,7 @@ Partial Class frmMain2
         Me.mnuUndo = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.tabTrigpointsProperty = New DevExpress.XtraTab.XtraTabControl()
         Me.tabTrigpointsMain = New DevExpress.XtraTab.XtraTabPage()
+        Me.pnlTrigpointsDataMain = New cSurveyPC.cPanelControl()
         Me.grdTrigPointAliases = New DevExpress.XtraGrid.GridControl()
         Me.grdViewTrigPointAliases = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colTrigPointAliasesAlias = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -558,6 +559,7 @@ Partial Class frmMain2
         Me.chkTrigpointIsSpecial = New DevExpress.XtraEditors.CheckEdit()
         Me.cboTrigPointType = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.tabTrigpointsLayout = New DevExpress.XtraTab.XtraTabPage()
+        Me.pnlTrigpointsDataLayout = New cSurveyPC.cPanelControl()
         Me.txtTrigpointFontColor = New DevExpress.XtraEditors.ColorPickEdit()
         Me.chkTrigpointDrawTranslationsLine = New DevExpress.XtraEditors.CheckEdit()
         Me.cboTrigPointLabelPosition = New DevExpress.XtraEditors.ComboBoxEdit()
@@ -584,6 +586,7 @@ Partial Class frmMain2
         Me.tabTrigpointsNote = New DevExpress.XtraTab.XtraTabPage()
         Me.txtTrigpointNote = New DevExpress.XtraEditors.MemoEdit()
         Me.tabTrigpointsCoordinate = New DevExpress.XtraTab.XtraTabPage()
+        Me.pnlTrigpointsDataCoordinate = New cSurveyPC.cPanelControl()
         Me.btnTrigpointCoordinateClear = New DevExpress.XtraEditors.SimpleButton()
         Me.cboTrigpointCoordinateGeo = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.lblTrigpointCoordinateFix = New DevExpress.XtraEditors.LabelControl()
@@ -712,7 +715,7 @@ Partial Class frmMain2
         Me.ToolTipController = New DevExpress.Utils.ToolTipController(Me.components)
         Me.DefaultToolTipController = New DevExpress.Utils.DefaultToolTipController(Me.components)
         Me.pnlTrigPoint = New DevExpress.XtraEditors.PanelControl()
-        Me.pnlTrigpointName = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlTrigpointName = New cSurveyPC.cPanelControl()
         Me.lblTrigPointName = New DevExpress.XtraEditors.LabelControl()
         Me.txtTrigPointName = New DevExpress.XtraEditors.TextEdit()
         Me.mnuDesignItemOLD = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -874,6 +877,7 @@ Partial Class frmMain2
         CType(Me.tabTrigpointsProperty, System.ComponentModel.ISupportInitialize).BeginInit
         Me.tabTrigpointsProperty.SuspendLayout
         Me.tabTrigpointsMain.SuspendLayout
+        Me.pnlTrigpointsDataMain.SuspendLayout
         CType(Me.grdTrigPointAliases, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.grdViewTrigPointAliases, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.chkTrigpointZTurn.Properties, System.ComponentModel.ISupportInitialize).BeginInit
@@ -883,6 +887,7 @@ Partial Class frmMain2
         CType(Me.chkTrigpointIsSpecial.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.cboTrigPointType.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         Me.tabTrigpointsLayout.SuspendLayout
+        Me.pnlTrigpointsDataLayout.SuspendLayout
         CType(Me.txtTrigpointFontColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.chkTrigpointDrawTranslationsLine.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.cboTrigPointLabelPosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit
@@ -896,6 +901,7 @@ Partial Class frmMain2
         Me.tabTrigpointsNote.SuspendLayout
         CType(Me.txtTrigpointNote.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         Me.tabTrigpointsCoordinate.SuspendLayout
+        Me.pnlTrigpointsDataCoordinate.SuspendLayout
         CType(Me.cboTrigpointCoordinateGeo.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.cboTrigpointCoordinateFix.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtTrigpointCoordinateAlt.Properties, System.ComponentModel.ISupportInitialize).BeginInit
@@ -987,7 +993,6 @@ Partial Class frmMain2
         CType(Me.txtSegmentsListBearing, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.pnlTrigPoint, System.ComponentModel.ISupportInitialize).BeginInit
         Me.pnlTrigPoint.SuspendLayout
-        CType(Me.pnlTrigpointName, System.ComponentModel.ISupportInitialize).BeginInit
         Me.pnlTrigpointName.SuspendLayout
         CType(Me.txtTrigPointName.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         Me.mnuDesignItemOLD.SuspendLayout
@@ -4913,19 +4918,26 @@ Partial Class frmMain2
         '
         'tabTrigpointsMain
         '
-        Me.tabTrigpointsMain.Controls.Add(Me.grdTrigPointAliases)
-        Me.tabTrigpointsMain.Controls.Add(Me.chkTrigpointZTurn)
-        Me.tabTrigpointsMain.Controls.Add(Me.cboTrigpointEntrance)
-        Me.tabTrigpointsMain.Controls.Add(Me.chkTrigpointIsInExploration)
-        Me.tabTrigpointsMain.Controls.Add(Me.lblTrigpointEntrance)
-        Me.tabTrigpointsMain.Controls.Add(Me.chkTrigpointShowEntrance)
-        Me.tabTrigpointsMain.Controls.Add(Me.lblTrigpointType)
-        Me.tabTrigpointsMain.Controls.Add(Me.chkTrigpointIsSpecial)
-        Me.tabTrigpointsMain.Controls.Add(Me.cboTrigPointType)
+        Me.tabTrigpointsMain.Controls.Add(Me.pnlTrigpointsDataMain)
         Me.tabTrigpointsMain.ImageOptions.SvgImage = CType(resources.GetObject("tabTrigpointsMain.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.tabTrigpointsMain.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.tabTrigpointsMain.Name = "tabTrigpointsMain"
         resources.ApplyResources(Me.tabTrigpointsMain, "tabTrigpointsMain")
+        '
+        'pnlTrigpointsDataMain
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlTrigpointsDataMain, CType(resources.GetObject("pnlTrigpointsDataMain.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlTrigpointsDataMain.Controls.Add(Me.grdTrigPointAliases)
+        Me.pnlTrigpointsDataMain.Controls.Add(Me.chkTrigpointZTurn)
+        Me.pnlTrigpointsDataMain.Controls.Add(Me.cboTrigpointEntrance)
+        Me.pnlTrigpointsDataMain.Controls.Add(Me.chkTrigpointIsInExploration)
+        Me.pnlTrigpointsDataMain.Controls.Add(Me.lblTrigpointEntrance)
+        Me.pnlTrigpointsDataMain.Controls.Add(Me.chkTrigpointShowEntrance)
+        Me.pnlTrigpointsDataMain.Controls.Add(Me.lblTrigpointType)
+        Me.pnlTrigpointsDataMain.Controls.Add(Me.chkTrigpointIsSpecial)
+        Me.pnlTrigpointsDataMain.Controls.Add(Me.cboTrigPointType)
+        resources.ApplyResources(Me.pnlTrigpointsDataMain, "pnlTrigpointsDataMain")
+        Me.pnlTrigpointsDataMain.Name = "pnlTrigpointsDataMain"
         '
         'grdTrigPointAliases
         '
@@ -5024,26 +5036,33 @@ Partial Class frmMain2
         '
         'tabTrigpointsLayout
         '
-        Me.tabTrigpointsLayout.Controls.Add(Me.txtTrigpointFontColor)
-        Me.tabTrigpointsLayout.Controls.Add(Me.chkTrigpointDrawTranslationsLine)
-        Me.tabTrigpointsLayout.Controls.Add(Me.cboTrigPointLabelPosition)
-        Me.tabTrigpointsLayout.Controls.Add(Me.lblTrigpointFontchar)
-        Me.tabTrigpointsLayout.Controls.Add(Me.lblTextFontSize)
-        Me.tabTrigpointsLayout.Controls.Add(Me.txtTrigPointLabelDistance)
-        Me.tabTrigpointsLayout.Controls.Add(Me.chkTrigpointFontBold)
-        Me.tabTrigpointsLayout.Controls.Add(Me.cboTrigPointLabelSymbol)
-        Me.tabTrigpointsLayout.Controls.Add(Me.cboTrigpointFontSize)
-        Me.tabTrigpointsLayout.Controls.Add(Me.chkTrigpointFontItalic)
-        Me.tabTrigpointsLayout.Controls.Add(Me.lblTrigPointSymbol)
-        Me.tabTrigpointsLayout.Controls.Add(Me.cboTrigpointFontChar)
-        Me.tabTrigpointsLayout.Controls.Add(Me.lblTrigpointLabelDistance)
-        Me.tabTrigpointsLayout.Controls.Add(Me.chkTrigpointFontUnderline)
-        Me.tabTrigpointsLayout.Controls.Add(Me.lblFontColor)
-        Me.tabTrigpointsLayout.Controls.Add(Me.lblTrigpointLabelPosition)
+        Me.tabTrigpointsLayout.Controls.Add(Me.pnlTrigpointsDataLayout)
         Me.tabTrigpointsLayout.ImageOptions.SvgImage = CType(resources.GetObject("tabTrigpointsLayout.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.tabTrigpointsLayout.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.tabTrigpointsLayout.Name = "tabTrigpointsLayout"
         resources.ApplyResources(Me.tabTrigpointsLayout, "tabTrigpointsLayout")
+        '
+        'pnlTrigpointsDataLayout
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlTrigpointsDataLayout, CType(resources.GetObject("pnlTrigpointsDataLayout.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlTrigpointsDataLayout.Controls.Add(Me.txtTrigpointFontColor)
+        Me.pnlTrigpointsDataLayout.Controls.Add(Me.chkTrigpointDrawTranslationsLine)
+        Me.pnlTrigpointsDataLayout.Controls.Add(Me.cboTrigPointLabelPosition)
+        Me.pnlTrigpointsDataLayout.Controls.Add(Me.lblTrigpointFontchar)
+        Me.pnlTrigpointsDataLayout.Controls.Add(Me.lblTextFontSize)
+        Me.pnlTrigpointsDataLayout.Controls.Add(Me.txtTrigPointLabelDistance)
+        Me.pnlTrigpointsDataLayout.Controls.Add(Me.chkTrigpointFontBold)
+        Me.pnlTrigpointsDataLayout.Controls.Add(Me.cboTrigPointLabelSymbol)
+        Me.pnlTrigpointsDataLayout.Controls.Add(Me.cboTrigpointFontSize)
+        Me.pnlTrigpointsDataLayout.Controls.Add(Me.chkTrigpointFontItalic)
+        Me.pnlTrigpointsDataLayout.Controls.Add(Me.lblTrigPointSymbol)
+        Me.pnlTrigpointsDataLayout.Controls.Add(Me.cboTrigpointFontChar)
+        Me.pnlTrigpointsDataLayout.Controls.Add(Me.lblTrigpointLabelDistance)
+        Me.pnlTrigpointsDataLayout.Controls.Add(Me.chkTrigpointFontUnderline)
+        Me.pnlTrigpointsDataLayout.Controls.Add(Me.lblFontColor)
+        Me.pnlTrigpointsDataLayout.Controls.Add(Me.lblTrigpointLabelPosition)
+        resources.ApplyResources(Me.pnlTrigpointsDataLayout, "pnlTrigpointsDataLayout")
+        Me.pnlTrigpointsDataLayout.Name = "pnlTrigpointsDataLayout"
         '
         'txtTrigpointFontColor
         '
@@ -5246,19 +5265,26 @@ Partial Class frmMain2
         'tabTrigpointsCoordinate
         '
         Me.tabTrigpointsCoordinate.AllowDrop = True
-        Me.tabTrigpointsCoordinate.Controls.Add(Me.btnTrigpointCoordinateClear)
-        Me.tabTrigpointsCoordinate.Controls.Add(Me.cboTrigpointCoordinateGeo)
-        Me.tabTrigpointsCoordinate.Controls.Add(Me.lblTrigpointCoordinateFix)
-        Me.tabTrigpointsCoordinate.Controls.Add(Me.cboTrigpointCoordinateFix)
-        Me.tabTrigpointsCoordinate.Controls.Add(Me.lblTrigpointCoordinateGeo)
-        Me.tabTrigpointsCoordinate.Controls.Add(Me.lblTrigpointCoordinateAlt)
-        Me.tabTrigpointsCoordinate.Controls.Add(Me.txtTrigpointCoordinateAlt)
-        Me.tabTrigpointsCoordinate.Controls.Add(Me.pnlTrigpointCoordinateWGS84)
-        Me.tabTrigpointsCoordinate.Controls.Add(Me.pnlTrigpointCoordinateUTM)
+        Me.tabTrigpointsCoordinate.Controls.Add(Me.pnlTrigpointsDataCoordinate)
         Me.tabTrigpointsCoordinate.ImageOptions.SvgImage = CType(resources.GetObject("tabTrigpointsCoordinate.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.tabTrigpointsCoordinate.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.tabTrigpointsCoordinate.Name = "tabTrigpointsCoordinate"
         resources.ApplyResources(Me.tabTrigpointsCoordinate, "tabTrigpointsCoordinate")
+        '
+        'pnlTrigpointsDataCoordinate
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlTrigpointsDataCoordinate, CType(resources.GetObject("pnlTrigpointsDataCoordinate.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.btnTrigpointCoordinateClear)
+        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.cboTrigpointCoordinateGeo)
+        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.lblTrigpointCoordinateFix)
+        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.cboTrigpointCoordinateFix)
+        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.lblTrigpointCoordinateGeo)
+        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.lblTrigpointCoordinateAlt)
+        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.txtTrigpointCoordinateAlt)
+        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.pnlTrigpointCoordinateWGS84)
+        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.pnlTrigpointCoordinateUTM)
+        resources.ApplyResources(Me.pnlTrigpointsDataCoordinate, "pnlTrigpointsDataCoordinate")
+        Me.pnlTrigpointsDataCoordinate.Name = "pnlTrigpointsDataCoordinate"
         '
         'btnTrigpointCoordinateClear
         '
@@ -6380,7 +6406,6 @@ Partial Class frmMain2
         'pnlTrigpointName
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlTrigpointName, CType(resources.GetObject("pnlTrigpointName.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnlTrigpointName.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlTrigpointName.Controls.Add(Me.lblTrigPointName)
         Me.pnlTrigpointName.Controls.Add(Me.txtTrigPointName)
         resources.ApplyResources(Me.pnlTrigpointName, "pnlTrigpointName")
@@ -7439,7 +7464,8 @@ Partial Class frmMain2
         CType(Me.tabTrigpointsProperty, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabTrigpointsProperty.ResumeLayout(False)
         Me.tabTrigpointsMain.ResumeLayout(False)
-        Me.tabTrigpointsMain.PerformLayout
+        Me.pnlTrigpointsDataMain.ResumeLayout(False)
+        Me.pnlTrigpointsDataMain.PerformLayout
         CType(Me.grdTrigPointAliases, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.grdViewTrigPointAliases, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.chkTrigpointZTurn.Properties, System.ComponentModel.ISupportInitialize).EndInit
@@ -7449,7 +7475,8 @@ Partial Class frmMain2
         CType(Me.chkTrigpointIsSpecial.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.cboTrigPointType.Properties, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabTrigpointsLayout.ResumeLayout(False)
-        Me.tabTrigpointsLayout.PerformLayout
+        Me.pnlTrigpointsDataLayout.ResumeLayout(False)
+        Me.pnlTrigpointsDataLayout.PerformLayout
         CType(Me.txtTrigpointFontColor.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.chkTrigpointDrawTranslationsLine.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.cboTrigPointLabelPosition.Properties, System.ComponentModel.ISupportInitialize).EndInit
@@ -7463,7 +7490,8 @@ Partial Class frmMain2
         Me.tabTrigpointsNote.ResumeLayout(False)
         CType(Me.txtTrigpointNote.Properties, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabTrigpointsCoordinate.ResumeLayout(False)
-        Me.tabTrigpointsCoordinate.PerformLayout
+        Me.pnlTrigpointsDataCoordinate.ResumeLayout(False)
+        Me.pnlTrigpointsDataCoordinate.PerformLayout
         CType(Me.cboTrigpointCoordinateGeo.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.cboTrigpointCoordinateFix.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.txtTrigpointCoordinateAlt.Properties, System.ComponentModel.ISupportInitialize).EndInit
@@ -7564,7 +7592,6 @@ Partial Class frmMain2
         CType(Me.txtSegmentsListBearing, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.pnlTrigPoint, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlTrigPoint.ResumeLayout(False)
-        CType(Me.pnlTrigpointName, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlTrigpointName.ResumeLayout(False)
         Me.pnlTrigpointName.PerformLayout
         CType(Me.txtTrigPointName.Properties, System.ComponentModel.ISupportInitialize).EndInit
@@ -7737,7 +7764,7 @@ Partial Class frmMain2
     Friend WithEvents pnlSegmentSessionColor As DevExpress.XtraEditors.PanelControl
     Friend WithEvents chkTrigpointDrawTranslationsLine As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents pnlSegmentFromAndTo As cPanelControl
-    Friend WithEvents pnlTrigpointName As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlTrigpointName As cPanelControl
     Friend WithEvents chkSegmentZSurvey As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkSegmentCutSplay As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkTrigpointZTurn As DevExpress.XtraEditors.CheckEdit
@@ -8347,4 +8374,7 @@ Partial Class frmMain2
     Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutConverter1 As DevExpress.XtraLayout.Converter.LayoutConverter
+    Friend WithEvents pnlTrigpointsDataMain As cPanelControl
+    Friend WithEvents pnlTrigpointsDataLayout As cPanelControl
+    Friend WithEvents pnlTrigpointsDataCoordinate As cPanelControl
 End Class

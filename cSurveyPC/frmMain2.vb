@@ -13563,11 +13563,11 @@ Friend Class frmMain2
         Call pSegmentSave(oTools.CurrentSegment)
     End Sub
 
-    Private Sub pnlTrigPoint_Enter(sender As Object, e As System.EventArgs) Handles pnlTrigPoint.Enter
+    Private Sub pnlTrigPoint_Enter(sender As Object, e As System.EventArgs)
         bTrigpointChanged = True
     End Sub
 
-    Private Sub pnlTrigPoint_Leave(sender As System.Object, e As System.EventArgs) Handles pnlTrigPoint.Leave
+    Private Sub pnlTrigPoint_Leave(sender As System.Object, e As System.EventArgs)
         Call pTrigPointSave(oTools.CurrentTrigpoint)
     End Sub
 
@@ -14610,7 +14610,7 @@ Friend Class frmMain2
     Private Sub pTrigpointSetCoordinate(TrigPoint As String, Coordinate As Calculate.cTrigPointCoordinate)
         Call pFieldDataShow(True)
         Call pSurveyFindTrigPoint(TrigPoint)
-        tabTrigpointsProperty.SelectedTabPage = tabTrigpointsCoordinate
+        tabTrigpointsPropertyitem.SelectedTabPage = tabTrigpointsCoordinateitem
         cboTrigpointCoordinateFormat.SelectedIndex = 0
         If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.Plan Then
             With oSurvey.Calculate.TrigPoints(TrigPoint)
@@ -14635,7 +14635,7 @@ Friend Class frmMain2
     Private Sub pTrigpointSetCoordinate(TrigPoint As String)
         Call pFieldDataShow(True)
         Call pSurveyFindTrigPoint(TrigPoint)
-        tabTrigpointsProperty.SelectedTabPage = tabTrigpointsCoordinate
+        tabTrigpointsPropertyitem.SelectedTabPage = tabTrigpointsCoordinateitem
         With oSurvey.Calculate.TrigPoints(TrigPoint)
             txtTrigpointCoordinateLat.Text = modNumbers.NumberToCoordinate(.Coordinate.Latitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "N", "S")
             txtTrigpointCoordinateLong.Text = modNumbers.NumberToCoordinate(.Coordinate.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "E", "W")
@@ -15249,7 +15249,7 @@ Friend Class frmMain2
 
     Private Sub ObjectProperty_OnCancelUndoSnapshot(Sender As Object, e As CommitUndoSnapshotEventArgs)
         With pGetCurrentDesignTools()
-            .cancelundosnapshot()
+            .CancelUndoSnapshot()
         End With
     End Sub
 
@@ -18902,7 +18902,7 @@ Friend Class frmMain2
         Call modDevExpress.UpdateFloatingForm(Me, e.Panel.FloatForm)
     End Sub
 
-    Private Sub tabTrigpointsCoordinate_DragDrop(sender As Object, e As DragEventArgs) Handles tabTrigpointsCoordinate.DragDrop
+    Private Sub tabTrigpointsCoordinate_DragDrop(sender As Object, e As DragEventArgs)
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             Dim sFilePaths As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
             If sFilePaths.Length = 1 Then
@@ -18928,7 +18928,7 @@ Friend Class frmMain2
         End If
     End Sub
 
-    Private Sub tabTrigpointsCoordinate_DragOver(sender As Object, e As DragEventArgs) Handles tabTrigpointsCoordinate.DragOver
+    Private Sub tabTrigpointsCoordinate_DragOver(sender As Object, e As DragEventArgs)
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             Dim sFilePaths As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
             If sFilePaths.Length = 1 Then

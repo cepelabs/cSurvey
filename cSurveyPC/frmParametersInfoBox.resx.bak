@@ -132,7 +132,7 @@
     <value>chkTextFontUnderline</value>
   </data>
   <data name="&gt;&gt;chkTextFontUnderline.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTextFontUnderline.Parent" xml:space="preserve">
     <value>GroupControl1</value>
@@ -153,7 +153,7 @@
     <value>chkTextFontItalic</value>
   </data>
   <data name="&gt;&gt;chkTextFontItalic.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTextFontItalic.Parent" xml:space="preserve">
     <value>GroupControl1</value>
@@ -174,7 +174,7 @@
     <value>chkTextFontBold</value>
   </data>
   <data name="&gt;&gt;chkTextFontBold.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTextFontBold.Parent" xml:space="preserve">
     <value>GroupControl1</value>
@@ -198,7 +198,7 @@
     <value>lblPropTextFontChar</value>
   </data>
   <data name="&gt;&gt;lblPropTextFontChar.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropTextFontChar.Parent" xml:space="preserve">
     <value>GroupControl1</value>
@@ -222,7 +222,7 @@
     <value>lblTextFontSize</value>
   </data>
   <data name="&gt;&gt;lblTextFontSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblTextFontSize.Parent" xml:space="preserve">
     <value>GroupControl1</value>
@@ -246,7 +246,7 @@
     <value>chkVisible</value>
   </data>
   <data name="&gt;&gt;chkVisible.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkVisible.Parent" xml:space="preserve">
     <value>GroupControl1</value>
@@ -294,8 +294,8 @@
   <data name="txtWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>99, 221</value>
   </data>
-  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="txtWidth.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+  <assembly alias="DevExpress.Utils.v22.1" name="DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="txtWidth.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.1">
     <value>Glyph</value>
   </data>
   <data name="txtWidth.Size" type="System.Drawing.Size, System.Drawing">
@@ -308,7 +308,7 @@
     <value>txtWidth</value>
   </data>
   <data name="&gt;&gt;txtWidth.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtWidth.Parent" xml:space="preserve">
     <value>$this</value>
@@ -335,7 +335,7 @@
     <value>lblWidthUnit</value>
   </data>
   <data name="&gt;&gt;lblWidthUnit.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblWidthUnit.Parent" xml:space="preserve">
     <value>$this</value>
@@ -359,7 +359,7 @@
     <value>chkUnlock</value>
   </data>
   <data name="&gt;&gt;chkUnlock.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkUnlock.Parent" xml:space="preserve">
     <value>GroupControl1</value>
@@ -370,10 +370,10 @@
   <data name="cboTextFontSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>87, 96</value>
   </data>
-  <data name="cboTextFontSize.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+  <data name="cboTextFontSize.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.1">
     <value>Combo</value>
   </data>
-  <data name="cboTextFontSize.Properties.Buttons1" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+  <data name="cboTextFontSize.Properties.Buttons1" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.1">
     <value>Clear</value>
   </data>
   <data name="cboTextFontSize.Properties.Items" xml:space="preserve">
@@ -440,7 +440,7 @@
     <value>cboTextFontSize</value>
   </data>
   <data name="&gt;&gt;cboTextFontSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboTextFontSize.Parent" xml:space="preserve">
     <value>GroupControl1</value>
@@ -451,10 +451,10 @@
   <data name="cboTextFontChar.Location" type="System.Drawing.Point, System.Drawing">
     <value>87, 39</value>
   </data>
-  <data name="cboTextFontChar.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+  <data name="cboTextFontChar.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.1">
     <value>Combo</value>
   </data>
-  <data name="cboTextFontChar.Properties.Buttons1" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+  <data name="cboTextFontChar.Properties.Buttons1" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.1">
     <value>Clear</value>
   </data>
   <data name="cboTextFontChar.Properties.NullText" xml:space="preserve">
@@ -470,7 +470,7 @@
     <value>cboTextFontChar</value>
   </data>
   <data name="&gt;&gt;cboTextFontChar.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.FontEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.FontEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboTextFontChar.Parent" xml:space="preserve">
     <value>GroupControl1</value>
@@ -484,7 +484,7 @@
   <data name="txtColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>87, 130</value>
   </data>
-  <data name="txtColor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+  <data name="txtColor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.1">
     <value>Combo</value>
   </data>
   <data name="txtColor.Size" type="System.Drawing.Size, System.Drawing">
@@ -497,7 +497,7 @@
     <value>txtColor</value>
   </data>
   <data name="&gt;&gt;txtColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ColorPickEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ColorPickEdit, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtColor.Parent" xml:space="preserve">
     <value>GroupControl1</value>
@@ -521,7 +521,7 @@
     <value>lblTextColor</value>
   </data>
   <data name="&gt;&gt;lblTextColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblTextColor.Parent" xml:space="preserve">
     <value>GroupControl1</value>
@@ -535,7 +535,7 @@
   <data name="GroupControl1.CustomHeaderButtons1" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="GroupControl1.CustomHeaderButtons2" type="DevExpress.XtraBars.Docking2010.ButtonStyle, DevExpress.Utils.v21.2">
+  <data name="GroupControl1.CustomHeaderButtons2" type="DevExpress.XtraBars.Docking2010.ButtonStyle, DevExpress.Utils.v22.1">
     <value>CheckButton</value>
   </data>
   <data name="GroupControl1.CustomHeaderButtons3" type="System.Resources.ResXNullRef, System.Windows.Forms">
@@ -571,7 +571,7 @@
   <data name="GroupControl1.CustomHeaderButtons13" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="GroupControl1.CustomHeaderButtons14" type="DevExpress.XtraBars.Docking2010.ButtonStyle, DevExpress.Utils.v21.2">
+  <data name="GroupControl1.CustomHeaderButtons14" type="DevExpress.XtraBars.Docking2010.ButtonStyle, DevExpress.Utils.v22.1">
     <value>CheckButton</value>
   </data>
   <data name="GroupControl1.CustomHeaderButtons15" type="System.Resources.ResXNullRef, System.Windows.Forms">
@@ -607,7 +607,7 @@
   <data name="GroupControl1.CustomHeaderButtons25" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="GroupControl1.CustomHeaderButtons26" type="DevExpress.XtraBars.Docking2010.ButtonStyle, DevExpress.Utils.v21.2">
+  <data name="GroupControl1.CustomHeaderButtons26" type="DevExpress.XtraBars.Docking2010.ButtonStyle, DevExpress.Utils.v22.1">
     <value>CheckButton</value>
   </data>
   <data name="GroupControl1.CustomHeaderButtons27" type="System.Resources.ResXNullRef, System.Windows.Forms">
@@ -653,7 +653,7 @@
     <value>GroupControl1</value>
   </data>
   <data name="&gt;&gt;GroupControl1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;GroupControl1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -674,6 +674,6 @@
     <value>frmParametersInfoBox</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.XtraUserControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.XtraUserControl, DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>

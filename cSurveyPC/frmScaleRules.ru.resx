@@ -402,9 +402,6 @@
   <data name="cboPlotLRUDPenStyle.Items3" xml:space="preserve">
 		<value>Линия с точкой</value>
 	</data>
-  <data name="lblDesignTextFont.Text" xml:space="preserve">
-		<value>Шрифт:</value>
-	</data>
   <data name="lblBaseLineWidthScaleFactor.Text" xml:space="preserve">
 		<value>Базовый (масштаб)</value>
 	</data>
@@ -438,17 +435,11 @@
   <data name="lblPlotTranslationLinePenStyle.Text" xml:space="preserve">
 		<value>Разрез:</value>
 	</data>
-  <data name="lblDesignSoilScale.Text" xml:space="preserve">
-		<value>Заливка (масштаб)</value>
-	</data>
   <data name="lblPlotLRUDSelectedPenWidth.Text" xml:space="preserve">
 		<value>Толщина (sel.):</value>
 	</data>
   <data name="lblPlotPenStyle.Text" xml:space="preserve">
 		<value>Разрез:</value>
-	</data>
-  <data name="lblDesignTerrainLevelScaleFactor.Text" xml:space="preserve">
-		<value>Граница (масштаб)</value>
 	</data>
   <data name="lblPlotTextScaleFactor.Text" xml:space="preserve">
 		<value>Текст (масштаб):</value>
@@ -468,15 +459,6 @@
   <data name="lblPlotTranslationLinePenColor.Text" xml:space="preserve">
 		<value>Цвет:</value>
 	</data>
-  <data name="lblDesignSignScaleFactor.Text" xml:space="preserve">
-		<value>Символы (масштаб)</value>
-	</data>
-  <data name="lblDesignTextScaleFactor.Text" xml:space="preserve">
-		<value>Текст (масштаб):</value>
-	</data>
-  <data name="lblDesignTextureScale.Text" xml:space="preserve">
-    <value>Текстуры brushes:</value>
-  </data>
   <data name="btnAdd.Caption" xml:space="preserve">
     <value>Добавить</value>
   </data>
@@ -506,8 +488,5 @@
   </data>
   <data name="tabInfoCategories.Text" xml:space="preserve">
     <value>Категории</value>
-  </data>
-  <data name="tabInfoDesign.Text" xml:space="preserve">
-    <value>Дизайн</value>
   </data>
 </root>

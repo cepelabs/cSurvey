@@ -298,12 +298,6 @@
   <data name="chkSegmentInverted.Properties.Caption" xml:space="preserve">
     <value>Inverti verso di disegno in sezione</value>
   </data>
-  <data name="tabSegmentPropertyMain.Text" xml:space="preserve">
-    <value>Dati</value>
-  </data>
-  <data name="tabSegmentPropertyMain.ToolTipText" xml:space="preserve">
-    <value>Informazioni battuta</value>
-  </data>
   <data name="mnuSegmentsDataPropertiesEdit.Text" xml:space="preserve">
     <value>Modifica proprietà aggiuntive...</value>
   </data>
@@ -321,12 +315,6 @@
   </data>
   <data name="lblSegmentColor.Text" xml:space="preserve">
     <value>Colore:</value>
-  </data>
-  <data name="tabSegmentPropertyLayout.Text" xml:space="preserve">
-    <value>Aspetto</value>
-  </data>
-  <data name="tabSegmentPropertyImage.Text" xml:space="preserve">
-    <value>Allegati</value>
   </data>
   <data name="iml.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -883,14 +871,8 @@
   <data name="lblTrigpointEntrance.Text" xml:space="preserve">
     <value>Ingresso:</value>
   </data>
-  <data name="tabTrigpointMain.Text" xml:space="preserve">
-    <value>Dati</value>
-  </data>
   <data name="mnuTrigpointDataPropertiesDelete.Text" xml:space="preserve">
     <value>Elimina valore</value>
-  </data>
-  <data name="tabTrigpointPropertyData.Text" xml:space="preserve">
-    <value>Dati agg.</value>
   </data>
   <data name="chkTrigpointDrawTranslationsLine.Properties.Caption" xml:space="preserve">
     <value>Linee di riporto</value>
@@ -997,9 +979,6 @@
   <data name="lblTextFontSize.Text" xml:space="preserve">
     <value>Dimensione:</value>
   </data>
-  <data name="tabTrigpointLayout.Text" xml:space="preserve">
-    <value>Aspetto</value>
-  </data>
   <data name="colConnectionsTrigPoint.HeaderText" xml:space="preserve">
     <value>Caposaldo</value>
   </data>
@@ -1008,9 +987,6 @@
   </data>
   <data name="colConnectionsIgnore.ToolTipText" xml:space="preserve">
     <value>Indica che nel disegno della sezione questa connessione verrà saltata.</value>
-  </data>
-  <data name="tabTrigpointConnections.Text" xml:space="preserve">
-    <value>Connessioni</value>
   </data>
   <data name="btnTrigpointCoordinateClear.ToolTip" xml:space="preserve">
     <value>Pulisci</value>
@@ -1047,12 +1023,6 @@
   </data>
   <data name="lblTrigpointCoordinateZone.Text" xml:space="preserve">
     <value>Zona:</value>
-  </data>
-  <data name="tabTrigpointCoordinate.Text" xml:space="preserve">
-    <value>Coordinate</value>
-  </data>
-  <data name="tabTrigpointImage.Text" xml:space="preserve">
-    <value>Immagini</value>
   </data>
   <data name="lblTrigPointName.Text" xml:space="preserve">
     <value>Caposaldo:</value>
@@ -7374,12 +7344,6 @@ o ad una sezione trasversale</value>
   <data name="tabMaintenance.Text" xml:space="preserve">
     <value>Manutenzione</value>
   </data>
-  <data name="tabSegmentsMain.Tooltip" xml:space="preserve">
-    <value>Principale</value>
-  </data>
-  <data name="tabTrigpointsMain.Tooltip" xml:space="preserve">
-    <value>Principale</value>
-  </data>
   <data name="btnDesignDeleteAll.Caption" xml:space="preserve">
     <value>Elimina tutti gli oggetti</value>
   </data>
@@ -7520,5 +7484,53 @@ o ad una sezione trasversale</value>
   </data>
   <data name="grpViewToolbar.Text" xml:space="preserve">
     <value>Barre degli strumenti</value>
+  </data>
+  <data name="tabTrigpointsCoordinateitem.Text" xml:space="preserve">
+    <value>Coordinate</value>
+  </data>
+  <data name="tabTrigpointsConnectionsitem.Text" xml:space="preserve">
+    <value>Connessioni</value>
+  </data>
+  <data name="tabTrigpointsNoteitem.Text" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="tabTrigpointsMainitem.Text" xml:space="preserve">
+    <value>Principale</value>
+  </data>
+  <data name="tabTrigpointsLayoutitem.Text" xml:space="preserve">
+    <value>Aspetto</value>
+  </data>
+  <data name="tabTrigpointsDataitem.Text" xml:space="preserve">
+    <value>Dati aggiuntivi</value>
+  </data>
+  <data name="tabSegmentsNoteitem.Text" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="tabSegmentsMainitem.Text" xml:space="preserve">
+    <value>Principale</value>
+  </data>
+  <data name="tabSegmentsLayoutitem.Text" xml:space="preserve">
+    <value>Aspetto</value>
+  </data>
+  <data name="tabSegmentsDataitem.Text" xml:space="preserve">
+    <value>Dati aggiuntivi</value>
+  </data>
+  <data name="tabSegmentsAttachmentsitem.Text" xml:space="preserve">
+    <value>Allegati</value>
+  </data>
+  <data name="btnStatusDesignGeographicState.Caption" xml:space="preserve">
+    <value>Stato funzioni geografiche</value>
+  </data>
+  <data name="btnStatusDesignWarping.Caption" xml:space="preserve">
+    <value>Warping</value>
+  </data>
+  <data name="btnStatusDesignWarpingState.Caption" xml:space="preserve">
+    <value>Stato warping</value>
+  </data>
+  <data name="btnStatusHistoryEnabled.Caption" xml:space="preserve">
+    <value>Stato cronologia</value>
+  </data>
+  <data name="btnStatusWMSOnLine.Caption" xml:space="preserve">
+    <value>Stato WMS</value>
   </data>
 </root>

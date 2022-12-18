@@ -6,7 +6,7 @@ Imports cSurveyPC.cSurvey.CaveRegister
 
 Namespace cSurvey
     Public Class cSurvey
-        Public Const Version As String = "1.13"
+        Public Const Version As String = "1.14"
 
         Private sID As String
 
@@ -1161,6 +1161,18 @@ Namespace cSurvey
                                 bRequested = True
                                 'the file structure is basically the same but in 1.11 there are supports for new pens...
                                 sCurrentVersion = "1.13"
+                            End If
+                        Case "1.13"
+                            Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
+                            If Not bRequested Then
+                                RaiseEvent OnFileConversionRequest(Me, oArgs)
+                            End If
+                            If oArgs.Cancel Then
+                                bCancel = True
+                            Else
+                                bRequested = True
+                                'the file structure is basically the same but in 1.11 there are supports for new pens and brushes options...
+                                sCurrentVersion = "1.14"
                             End If
                         Case Else
                             bOk = False

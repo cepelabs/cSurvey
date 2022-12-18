@@ -30,6 +30,7 @@ Namespace cSurvey.Design
         Private iDecorationPosition As cPen.DecorationPositionEnum
         Private iDecorationAlignment As cPen.DecorationAlignmentEnum
         Private sDecorationSpacePercentage As Single
+        Private sDecorationDistancePercentage As Single
         Private sDecorationScale As Single
         Private oClipart As cDrawClipArt
         Private iClipartPenMode As cPen.ClipartPenModeEnum
@@ -38,9 +39,13 @@ Namespace cSurvey.Design
         Private sClipartStylePattern As Single()
         Private oClipartPenColor As Color
 
+        Private iClipartBrushMode As cPen.ClipartBrushModeEnum
+        Private iClipartBrushStyle As cPen.BrushStylesEnum
+        Private oClipartBrushColor As Color
+
         Private oClipartPen As Pen
         Private oPen As Pen
-        Private oBrush As SolidBrush
+        Private oClipartBrush As SolidBrush
         Private oWireframePen As Pen
 
         Private sLocalLineWidth As Single
@@ -173,6 +178,7 @@ Namespace cSurvey.Design
             iDecorationPosition = Pen.iDecorationPosition
             iDecorationStyle = Pen.iDecorationStyle
             sDecorationSpacePercentage = Pen.sDecorationSpacePercentage
+            sDecorationDistancePercentage = Pen.sDecorationDistancePercentage
             sDecorationScale = Pen.sDecorationScale
             sLocalLineWidth = Pen.sLocalLineWidth
 
@@ -181,6 +187,10 @@ Namespace cSurvey.Design
             sClipartStylePattern = Pen.sClipartStylePattern
             sClipartPenWidth = Pen.sClipartPenWidth
             oClipartPenColor = Pen.oClipartPenColor
+
+            iClipartBrushMode = Pen.iClipartBrushMode
+            iClipartBrushStyle = Pen.iClipartBrushStyle
+            oClipartBrushColor = Pen.oClipartBrushColor
 
             If iType = cPen.PenTypeEnum.User Then
                 If sID Is Nothing OrElse sID = "" Then
@@ -304,11 +314,16 @@ Namespace cSurvey.Design
             oClipart = Clipart
             iDecorationStyle = DecorationStyle
             sDecorationSpacePercentage = DecorationSpacePercentage
+            sDecorationDistancePercentage = DecorationDistancePercentage
             iDecorationAlignment = DecorationAlignment
             iDecorationPosition = DecorationPosition
             sDecorationScale = DecorationScale
             iClipartPenMode = cPen.ClipartPenModeEnum.AsParent
             oClipartPenColor = Color.Black
+
+            iClipartBrushMode = ClipartBrushModeEnum.Default
+            iClipartBrushStyle = BrushStylesEnum.Solid
+            oClipartBrushColor = Color.Black
 
             If iType = cPen.PenTypeEnum.User Then
                 If ID Is Nothing OrElse ID = "" Then
@@ -327,9 +342,14 @@ Namespace cSurvey.Design
             oColor = Color.Black
             sWidth = 1
             sDecorationSpacePercentage = 100
+            sDecorationDistancePercentage = 0
             sDecorationScale = 1
             iClipartPenMode = cPen.ClipartPenModeEnum.AsParent
+            iClipartPenStyle = PenStylesEnum.Solid
             oClipartPenColor = Color.Black
+            iClipartBrushMode = ClipartBrushModeEnum.Default
+            iClipartBrushStyle = BrushStylesEnum.Solid
+            oClipartBrushColor = Color.Black
             bInvalidated = True
         End Sub
 
@@ -354,8 +374,9 @@ Namespace cSurvey.Design
                 oClipart = New cDrawClipArt(oXMLClipart)
             End If
             iDecorationStyle = modXML.GetAttributeValue(item, "decorationstyle")
-            sDecorationSpacePercentage = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "decorationspacepercentage"))
+            sDecorationSpacePercentage = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "decorationspacepercentage", 0))
             If sDecorationSpacePercentage = 0 Then sDecorationSpacePercentage = 100
+            sDecorationDistancePercentage = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "decorationdistancepercentage", 0))
             iDecorationAlignment = modXML.GetAttributeValue(item, "decorationalignment")
             iDecorationPosition = modXML.GetAttributeValue(item, "decorationposition")
             sDecorationScale = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "decorationscale"))
@@ -371,6 +392,13 @@ Namespace cSurvey.Design
                 oClipartPenColor = modXML.GetAttributeColor(item, "clipartpencolor", Color.Black)
             Else
                 oClipartPenColor = Color.Black
+            End If
+            iClipartBrushMode = modXML.GetAttributeValue(item, "clipartbrushmode", cPen.ClipartBrushModeEnum.Default)
+            If iClipartBrushMode = ClipartBrushModeEnum.Custom Then
+                iClipartBrushStyle = modXML.GetAttributeValue(item, "clipartbrushstyle")
+                oClipartBrushColor = modXML.GetAttributeColor(item, "clipartbrushcolor", Color.Black)
+            Else
+                oClipartBrushColor = Color.Black
             End If
 
             Call Invalidate()
@@ -413,6 +441,7 @@ Namespace cSurvey.Design
             If Not oClipart Is Nothing Then Call oClipart.SaveTo(File, Document, oItem)
             Call oItem.SetAttribute("decorationstyle", iDecorationStyle.ToString("D"))
             Call oItem.SetAttribute("decorationspacepercentage", modNumbers.NumberToString(sDecorationSpacePercentage, "0.0"))
+            If sDecorationDistancePercentage <> 0 Then Call oItem.SetAttribute("decorationdistancepercentage", modNumbers.NumberToString(sDecorationDistancePercentage, "0.0"))
             Call oItem.SetAttribute("decorationalignment", iDecorationAlignment.ToString("D"))
             If iDecorationPosition <> cPen.DecorationPositionEnum.Behind Then Call oItem.SetAttribute("decorationposition", iDecorationPosition.ToString("D"))
             Call oItem.SetAttribute("decorationscale", modNumbers.NumberToString(sDecorationScale, "0.00"))
@@ -426,10 +455,29 @@ Namespace cSurvey.Design
                 End If
                 Call oItem.SetAttribute("clipartpencolor", oClipartPenColor.ToArgb)
             End If
+            If iClipartBrushMode = ClipartBrushModeEnum.Custom Then
+                Call oItem.SetAttribute("clipartbrushmode", iClipartBrushMode.ToString("D"))
+                Call oItem.SetAttribute("clipartbrushstyle", iClipartBrushStyle.ToString("D"))
+                If iClipartBrushStyle = BrushStylesEnum.Solid Then
+                    Call oItem.SetAttribute("clipartbrushcolor", oClipartBrushColor.ToArgb)
+                End If
+            End If
 
             Call Parent.AppendChild(oItem)
             Return oItem
         End Function
+
+        Public Property ClipartBrushMode As cPen.ClipartBrushModeEnum
+            Get
+                Return iClipartBrushMode
+            End Get
+            Set(value As cPen.ClipartBrushModeEnum)
+                If iClipartBrushMode <> value Then
+                    iClipartBrushMode = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
 
         Public Property ClipartPenMode() As cPen.ClipartPenModeEnum
             Get
@@ -438,6 +486,18 @@ Namespace cSurvey.Design
             Set(value As cPen.ClipartPenModeEnum)
                 If iClipartPenMode <> value Then
                     iClipartPenMode = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property ClipartBrushStyle() As cPen.BrushStylesEnum
+            Get
+                Return iClipartBrushStyle
+            End Get
+            Set(value As cPen.BrushStylesEnum)
+                If iClipartBrushStyle <> value Then
+                    iClipartBrushStyle = value
                     Call Invalidate()
                 End If
             End Set
@@ -485,6 +545,18 @@ Namespace cSurvey.Design
             Set(ByVal value As cPen.PenStylesEnum)
                 If iStyle <> value Then
                     iStyle = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property ClipartBrushColor() As Color
+            Get
+                Return oClipartBrushColor
+            End Get
+            Set(ByVal value As Color)
+                If oClipartBrushColor <> value Then
+                    oClipartBrushColor = value
                     Call Invalidate()
                 End If
             End Set
@@ -557,6 +629,18 @@ Namespace cSurvey.Design
             Set(ByVal value As cPen.DecorationAlignmentEnum)
                 If iDecorationAlignment <> value Then
                     iDecorationAlignment = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property DecorationDistancePercentage() As Single
+            Get
+                Return sDecorationDistancePercentage
+            End Get
+            Set(ByVal value As Single)
+                If sDecorationDistancePercentage <> value Then
+                    sDecorationDistancePercentage = value
                     Call Invalidate()
                 End If
             End Set
@@ -697,17 +781,23 @@ Namespace cSurvey.Design
                             oClipartPen.DashPattern = sStylePattern
                     End Select
                 End If
-                'TODO: custom clipart brush
             Else
                 If oPen Is Nothing Then
                     oClipartPen = Nothing
                 Else
                     oClipartPen = oPen.Clone
                 End If
+                oClipartBrush = New SolidBrush(oTempPenColor)
             End If
-
-            'TODO: see above
-            oBrush = New SolidBrush(oTempPenColor)
+            If iClipartBrushMode = ClipartBrushModeEnum.Default Then
+                oClipartBrush = New SolidBrush(oTempPenColor)
+            Else
+                If iClipartBrushStyle = BrushStylesEnum.None Then
+                    oClipartBrush = Nothing
+                Else
+                    oClipartBrush = New SolidBrush(oClipartBrushColor)
+                End If
+            End If
 
             Dim oWireframePenColor As Color = If(oAlternativeColor.IsEmpty, Color.Black, oAlternativeColor)
             oWireframePen = New Pen(oWireframePenColor, cEditPaintObjects.FilettoPenWidth)
@@ -730,9 +820,9 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Friend ReadOnly Property Brush As Brush
+        Friend ReadOnly Property ClipartBrush As Brush
             Get
-                Return oBrush
+                Return oClipartBrush
             End Get
         End Property
 
@@ -749,8 +839,10 @@ Namespace cSurvey.Design
                     If oRenderArgs.Transparency <> 0 Then
                         oBackupColors(0) = oPen.Color
                         oPen.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oPen.Color)
-                        oBackupColors(1) = oBrush.Color
-                        oBrush.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oBrush.Color)
+                        If oClipartBrush IsNot Nothing Then
+                            oBackupColors(1) = oClipartBrush.Color
+                            oClipartBrush.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oClipartBrush.Color)
+                        End If
                     End If
 
                     Dim sZoomFactor As Single = GetPaintZoomFactor(PaintOptions)
@@ -760,21 +852,26 @@ Namespace cSurvey.Design
                     If DecorationStyle <> cPen.DecorationStylesEnum.None Then
                         Dim oTmpClipart As cDrawClipArt
                         Dim bUsePen As Boolean = True
-                        Dim bUseBrush As Boolean = True
+                        Dim bUseBrush As Boolean
                         Select Case DecorationStyle
                             Case cPen.DecorationStylesEnum.UpArrow
                                 oTmpClipart = modPenClipart.ClipartArrowUp
+                                bUseBrush = True
                             Case cPen.DecorationStylesEnum.DownArrow
                                 oTmpClipart = modPenClipart.ClipartArrowDown
+                                bUseBrush = True
                             Case cPen.DecorationStylesEnum.Dash
                                 oTmpClipart = modPenClipart.ClipartDash
                                 bUseBrush = False
                             Case cPen.DecorationStylesEnum.Triangle
                                 oTmpClipart = modPenClipart.ClipartTriangleUp
+                                bUseBrush = True
                             Case cPen.DecorationStylesEnum.DownTriangle
                                 oTmpClipart = modPenClipart.ClipartTriangleDown
+                                bUseBrush = True
                             Case cPen.DecorationStylesEnum.UpTriangle
                                 oTmpClipart = modPenClipart.ClipartTriangleUp
+                                bUseBrush = True
                             Case cPen.DecorationStylesEnum.Ice
                                 oTmpClipart = modPenClipart.Ice
                                 bUseBrush = False
@@ -786,10 +883,12 @@ Namespace cSurvey.Design
                                 bUseBrush = False
                             Case Else
                                 oTmpClipart = oClipart
+                                bUseBrush = True
                         End Select
-                        Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, oTmpClipart, iDecorationAlignment, sDecorationSpacePercentage, oColor, oColor, sDecorationScale * sZoomFactor)
+                        'Call cClipartOnPath.ClipartOnPath(Graphics, Path)
+                        Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, oTmpClipart, iDecorationAlignment, sDecorationSpacePercentage, sDecorationDistancePercentage, oColor, oColor, sDecorationScale * sZoomFactor)
                             If Not oPath Is Nothing Then
-                                Call Cache.AddBorder(oPath, If(bUsePen, oClipartPen, Nothing), Nothing, If(bUseBrush, oBrush, Nothing))
+                                Call Cache.AddBorder(oPath, If(bUsePen, oClipartPen, Nothing), Nothing, If(bUseBrush, oClipartBrush, Nothing))
                             End If
                         End Using
                     End If
@@ -799,7 +898,7 @@ Namespace cSurvey.Design
 
                     If oRenderArgs.Transparency <> 0 Then
                         oPen.Color = oBackupColors(0)
-                        oBrush.Color = oBackupColors(1)
+                        If oClipartBrush IsNot Nothing Then oClipartBrush.Color = oBackupColors(1)
                     End If
                 End If
             End If
@@ -824,9 +923,9 @@ Namespace cSurvey.Design
                         Call oWireframePen.Dispose()
                         oWireframePen = Nothing
                     End If
-                    If Not oBrush Is Nothing Then
-                        Call oBrush.Dispose()
-                        oBrush = Nothing
+                    If Not oClipartBrush Is Nothing Then
+                        Call oClipartBrush.Dispose()
+                        oClipartBrush = Nothing
                     End If
                     If Not oClipartPen Is Nothing Then
                         Call oClipartPen.Dispose()
@@ -895,6 +994,16 @@ Namespace cSurvey.Design
         Public Enum ClipartPenModeEnum
             AsParent = 0
             Custom = 1
+        End Enum
+
+        Public Enum ClipartBrushModeEnum
+            [Default] = 0
+            Custom = 1
+        End Enum
+
+        Public Enum BrushStylesEnum
+            Solid = 0
+            None = 98
         End Enum
 
         Public Enum PenStylesEnum
@@ -1116,6 +1225,18 @@ Namespace cSurvey.Design
                 Return oItem
             End If
         End Function
+
+        Public Property ClipartBrushMode() As cPen.ClipartBrushModeEnum
+            Get
+                Return oBasePen.ClipartBrushMode
+            End Get
+            Set(value As cPen.ClipartBrushModeEnum)
+                If oBasePen.IsWriteable Then
+                    oBasePen.ClipartBrushMode = value
+                End If
+            End Set
+        End Property
+
         Public Property ClipartPenMode() As cPen.ClipartPenModeEnum
             Get
                 Return oBasePen.ClipartPenMode
@@ -1123,6 +1244,17 @@ Namespace cSurvey.Design
             Set(value As cPen.ClipartPenModeEnum)
                 If oBasePen.IsWriteable Then
                     oBasePen.ClipartPenMode = value
+                End If
+            End Set
+        End Property
+
+        Public Property ClipartBrushStyle() As cPen.BrushStylesEnum
+            Get
+                Return oBasePen.ClipartBrushStyle
+            End Get
+            Set(value As cPen.BrushStylesEnum)
+                If oBasePen.IsWriteable Then
+                    oBasePen.ClipartBrushStyle = value
                 End If
             End Set
         End Property
@@ -1171,6 +1303,17 @@ Namespace cSurvey.Design
             End Set
         End Property
 
+        Public Property ClipartBrushColor() As Color
+            Get
+                Return oBasePen.ClipartBrushColor
+            End Get
+            Set(ByVal value As Color)
+                If oBasePen.IsWriteable Then
+                    oBasePen.ClipartBrushColor = value
+                End If
+            End Set
+        End Property
+
         Public Property ClipartPenColor() As Color
             Get
                 Return oBasePen.ClipartPenColor
@@ -1181,6 +1324,7 @@ Namespace cSurvey.Design
                 End If
             End Set
         End Property
+
         Public Property Color() As Color
             Get
                 Return oBasePen.Color
@@ -1231,6 +1375,17 @@ Namespace cSurvey.Design
             Set(value As DecorationAlignmentEnum)
                 If oBasePen.IsWriteable Then
                     oBasePen.DecorationAlignment = value
+                End If
+            End Set
+        End Property
+
+        Public Property DecorationDistancePercentage() As Single
+            Get
+                Return oBasePen.DecorationDistancePercentage
+            End Get
+            Set(value As Single)
+                If oBasePen.IsWriteable Then
+                    oBasePen.DecorationDistancePercentage = value
                 End If
             End Set
         End Property

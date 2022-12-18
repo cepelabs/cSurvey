@@ -934,15 +934,15 @@ Module modPaint
     Public Function GetZoomFactor(ByVal graphics As Graphics, ByVal Scale As Decimal) As Decimal
         Select Case graphics.PageUnit
             Case GraphicsUnit.Millimeter
-                Return 1.0 / Scale
+                Return 1.0F / Scale
             Case GraphicsUnit.Pixel
-                Return graphics.DpiX / (Scale * 0.0254)
+                Return graphics.DpiX / (Scale * 0.0254F)
             Case Else   'display...
                 'there is no way to detect if graphics is in a printer or screen/image context so I use dpi to dectect this and scale all correctly
                 If graphics.DpiX = 96 Then
-                    Return graphics.DpiX / (Scale * 0.0254)
+                    Return graphics.DpiX / (Scale * 0.0254F)
                 Else
-                    Return 1.0 / (Scale * 0.000254)
+                    Return 1.0F / (Scale * 0.000254F)
                 End If
         End Select
     End Function
@@ -951,34 +951,34 @@ Module modPaint
         Dim dScale As Decimal
         Select Case Graphics.PageUnit
             Case GraphicsUnit.Millimeter
-                dScale = 1.0 / Zoom
+                dScale = 1.0F / Zoom
             Case GraphicsUnit.Pixel
-                dScale = Graphics.DpiX / (Zoom * 0.0254)
+                dScale = Graphics.DpiX / (Zoom * 0.0254F)
             Case Else   'display...
                 'there is no way to detect if graphics is in a printer or screen/image context so I use dpi to dectect this and scale all correctly
                 If Graphics.DpiX = 96 Then
-                    dScale = Graphics.DpiX / (Zoom * 0.0254)
+                    dScale = Graphics.DpiX / (Zoom * 0.0254F)
                 Else
-                    dScale = 1 / (Zoom * 0.000254)
+                    dScale = 1.0F / (Zoom * 0.000254F)
                 End If
         End Select
         Return Math.Round(dScale, 0)
     End Function
 
     Public Function MillimetersToPixel(ByVal DPI As Single, ByVal Millimeters As Single) As Single
-        Return DPI * Millimeters / 25.4
+        Return DPI * Millimeters / 25.4F
     End Function
 
     Public Function PixelToMillimeters(ByVal DPI As Single, ByVal Pixels As Single) As Single
-        Return (DPI / 25.4) * Pixels
+        Return (DPI / 25.4F) * Pixels
     End Function
 
     Public Function PixelToMillimetersX(ByVal graphics As Graphics, ByVal Pixels As Single) As Single
-        Return (graphics.DpiX / 25.4) * Pixels
+        Return (graphics.DpiX / 25.4F) * Pixels
     End Function
 
     Public Function PixelToMillimetersY(ByVal graphics As Graphics, ByVal Pixels As Single) As Single
-        Return (graphics.DpiY / 25.4) * Pixels
+        Return (graphics.DpiY / 25.4F) * Pixels
     End Function
 
     Public Sub PointsToBeziers(ByVal Points() As PointF, ByVal Item As Drawings.cDrawCacheItem)
@@ -1082,11 +1082,11 @@ Module modPaint
     Public Function GetInclination(ByVal p0 As PointD, ByVal p1 As PointD) As Decimal
         Dim dDirection As Decimal
         Dim dBearing As Decimal = GetBearing(p0, p1)
-        If dBearing >= 0 AndAlso dBearing <= 180 Then
-            dBearing -= 90
+        If dBearing >= 0D AndAlso dBearing <= 180D Then
+            dBearing -= 90D
             dDirection = dBearing * -1
         Else
-            dBearing -= 270
+            dBearing -= 270D
             dDirection = dBearing
         End If
         Return dDirection
@@ -1095,11 +1095,11 @@ Module modPaint
     Public Function GetInclination(ByVal p0 As PointF, ByVal p1 As PointF) As Single
         Dim sDirection As Single
         Dim sBearing As Single = GetBearing(p0, p1)
-        If sBearing >= 0 AndAlso sBearing <= 180 Then
-            sBearing -= 90
+        If sBearing >= 0F AndAlso sBearing <= 180.0F Then
+            sBearing -= 90.0F
             sDirection = sBearing * -1
         Else
-            sBearing -= 270
+            sBearing -= 270.0F
             sDirection = sBearing
         End If
         Return sDirection
@@ -1163,7 +1163,7 @@ Module modPaint
         If dMin < dMax Then
             Return dMin <= Angle And Angle <= dMax
         Else
-            Return (dMin <= Angle And Angle < 360) Or (0 <= Angle And Angle <= dMax)
+            Return (dMin <= Angle And Angle < 360D) Or (0 <= Angle And Angle <= dMax)
         End If
     End Function
 
@@ -1171,23 +1171,23 @@ Module modPaint
         Dim sBearing As Decimal
         If p0.Y = p1.Y Then
             If p0.X < p1.X Then
-                sBearing = 90 '270
+                sBearing = 90D '270
             Else
-                sBearing = 270 '90
+                sBearing = 270D '90
             End If
         Else
             sBearing = modPaint.GetAngleBetweenSegment(p0, New PointD(p0.X, p1.Y), p0, p1)
             If p0.Y > p1.Y Then
                 If p0.X > p1.X Then
-                    sBearing = 360 - sBearing
+                    sBearing = 360D - sBearing
                 Else
                     'sBearing = 180 + sBearing
                 End If
             Else
                 If p0.X < p1.X Then
-                    sBearing = 180 - sBearing
+                    sBearing = 180D - sBearing
                 Else
-                    sBearing = 180 + sBearing
+                    sBearing = 180D + sBearing
                 End If
             End If
         End If
@@ -1198,26 +1198,26 @@ Module modPaint
         Dim sBearing As Single
         If p0.Y = p1.Y Then
             If p0.X < p1.X Then
-                sBearing = 90 '270
+                sBearing = 90.0F '270
             Else
-                sBearing = 270 '90
+                sBearing = 270.0F '90
             End If
         Else
             'sBearing = modnumbers.mathround(modPaint.GetAngleBetweenSegment(p0, New PointF(p0.X, p1.Y), p0, p1), 2)
             sBearing = modPaint.GetAngleBetweenSegment(p0, New PointF(p0.X, p1.Y), p0, p1)
             If p0.Y > p1.Y Then
                 If p0.X > p1.X Then
-                    sBearing = 360 - sBearing
+                    sBearing = 360.0F - sBearing
                 Else
                     'sBearing = 180 + sBearing
                 End If
             Else
                 If p0.X < p1.X Then
                     'sBearing = 180 + sBearing
-                    sBearing = 180 - sBearing
+                    sBearing = 180.0F - sBearing
                 Else
                     'sBearing = 180 - sBearing
-                    sBearing = 180 + sBearing
+                    sBearing = 180.0F + sBearing
                 End If
             End If
         End If
@@ -2362,6 +2362,10 @@ Module modPaint
         Return New PointF(Point1.X + dX, Point1.Y + dY)
     End Function
 
+    Public Function PointOnLineByDistance(ByVal Point1 As PointF, ByVal Point2 As PointF, ByVal Distance As Single) As PointF
+        Return PointOnLineByPercentage(Point1, Point2, Distance / DistancePointToPoint(Point1, Point2))
+    End Function
+
     'Public Function GetAngle(ByVal point1 As PointF, ByVal point2 As PointF, ByVal point3 As PointF) As Single
     '    Dim side_a As Single = Math.Sqrt((point2.X - point3.X) ^ 2 + (point2.Y - point3.Y) ^ 2)
     '    Dim side_b As Single = Math.Sqrt((point1.X - point3.X) ^ 2 + (point1.Y - point3.Y) ^ 2)
@@ -3168,7 +3172,6 @@ Module modPaint
                         oGridPen.Transform = Graphics.Transform
                         oGridPen.Transform.Invert()
                         Call Graphics.DrawPath(Survey.EditPaintObjects.GridPen, oMainGridPath)
-                        '0Call Graphics.DrawPath(Survey.EditPaintObjects.DetailedGridPen, oDetailedGridPath)
                     End Using
                 End Using
             End Using
@@ -3679,8 +3682,8 @@ Module modPaint
     Public Sub MapDrawRulers(ByVal Graphics As Graphics, PaintOptions As cOptionsDesign, ByVal Survey As cSurvey.cSurvey, Tools As cEditDesignTools, ByVal DrawRulesStyle As frmMain2.RulersStyleEnum, ByVal PaintZoom As Single)
         Try
             Dim sDPIRatio As Single = Graphics.DpiX / 96.0F
-            'Using oFont As Font = New Font(Survey.EditPaintObjects.RulersFont.FontFamily, (1.0F + (1.0F - sDPIRatio) / 2.0F) * 6 / PaintZoom)
-            Using oFont As Font = New Font(Survey.EditPaintObjects.RulersFont.FontFamily, sDPIRatio * 6.0F / PaintZoom)
+            Dim sFontScale As Single = If(sDPIRatio = 1.0F, 6.0F, 3.5F)
+            Using oFont As Font = New Font(Survey.EditPaintObjects.RulersFont.FontFamily, sDPIRatio * sFontScale / PaintZoom)
                 Using oSF As StringFormat = New StringFormat
                     oSF.Alignment = StringAlignment.Far
                     oSF.LineAlignment = StringAlignment.Near

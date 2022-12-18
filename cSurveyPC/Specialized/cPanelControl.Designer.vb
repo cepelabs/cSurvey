@@ -23,7 +23,6 @@ Partial Class cPanelControl
         '
         'cPanelControl
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.Name = "cPanelControl"
         Me.ResumeLayout(False)

@@ -304,12 +304,6 @@
   <data name="chkSegmentInverted.Properties.Caption" xml:space="preserve">
     <value>Развернуть направление разреза</value>
   </data>
-  <data name="tabSegmentPropertyMain.Text" xml:space="preserve">
-    <value>Данные</value>
-  </data>
-  <data name="tabSegmentPropertyMain.ToolTipText" xml:space="preserve">
-    <value>Данные измерений</value>
-  </data>
   <data name="mnuSegmentsDataPropertiesEdit.Text" xml:space="preserve">
     <value>Изменить свойства...</value>
   </data>
@@ -327,12 +321,6 @@
   </data>
   <data name="lblSegmentColor.Text" xml:space="preserve">
     <value>Цвет:</value>
-  </data>
-  <data name="tabSegmentPropertyLayout.Text" xml:space="preserve">
-    <value>Вид</value>
-  </data>
-  <data name="tabSegmentPropertyNote.Text" xml:space="preserve">
-    <value>Примечания</value>
   </data>
   <data name="iml.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -895,9 +883,6 @@
   <data name="lblTrigpointEntrance.Text" xml:space="preserve">
     <value>Вход:</value>
   </data>
-  <data name="tabTrigpointMain.Text" xml:space="preserve">
-    <value>Данные</value>
-  </data>
   <data name="mnuTrigpointDataPropertiesDelete.Text" xml:space="preserve">
     <value>Удалить значение</value>
   </data>
@@ -1006,9 +991,6 @@
   <data name="lblTextFontSize.Text" xml:space="preserve">
     <value>Размер:</value>
   </data>
-  <data name="tabTrigpointLayout.Text" xml:space="preserve">
-    <value>Вид</value>
-  </data>
   <data name="colConnectionsTrigPoint.HeaderText" xml:space="preserve">
     <value>Пикет</value>
   </data>
@@ -1017,9 +999,6 @@
   </data>
   <data name="colConnectionsIgnore.ToolTipText" xml:space="preserve">
     <value>Игнорировать этот сегмент в разрезе-развертке</value>
-  </data>
-  <data name="tabTrigpointConnections.Text" xml:space="preserve">
-    <value>Связи</value>
   </data>
   <data name="btnTrigpointCoordinateClear.ToolTip" xml:space="preserve">
     <value>Очистить</value>
@@ -1062,15 +1041,6 @@
   </data>
   <data name="lblTrigpointCoordinateZone.Text" xml:space="preserve">
     <value>Зона:</value>
-  </data>
-  <data name="tabTrigpointCoordinate.Text" xml:space="preserve">
-    <value>Координаты</value>
-  </data>
-  <data name="tabTrigpointNote.Text" xml:space="preserve">
-    <value>Примечания</value>
-  </data>
-  <data name="tabTrigpointImage.Text" xml:space="preserve">
-    <value>Изображения</value>
   </data>
   <data name="lblTrigPointName.Text" xml:space="preserve">
     <value>Пикет:</value>
@@ -6495,5 +6465,29 @@
   </data>
   <data name="btnPlotDeleteAll.Caption" xml:space="preserve">
     <value>Удалить сегменты</value>
+  </data>
+  <data name="tabTrigpointsCoordinateitem.Text" xml:space="preserve">
+    <value>Координаты</value>
+  </data>
+  <data name="tabTrigpointsConnectionsitem.Text" xml:space="preserve">
+    <value>Связи</value>
+  </data>
+  <data name="tabTrigpointsNoteitem.Text" xml:space="preserve">
+    <value>Примечания</value>
+  </data>
+  <data name="tabTrigpointsLayoutitem.Text" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="tabTrigpointsDataitem.Text" xml:space="preserve">
+    <value>Доп. данные</value>
+  </data>
+  <data name="tabSegmentsNoteitem.Text" xml:space="preserve">
+    <value>Примечания</value>
+  </data>
+  <data name="tabSegmentsLayoutitem.Text" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="tabSegmentsDataitem.Text" xml:space="preserve">
+    <value>Доп. данные</value>
   </data>
 </root>

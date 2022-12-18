@@ -65,8 +65,6 @@ Friend Class cDockClipart
     Private oDragboxFromMouseDown As Rectangle
     Private oDragScreenOffset As Point
 
-    Private oCurrentLv As ListView
-
     Private oMousePointer As cMousePointer
 
     Public Sub SetSurvey(ByVal Survey As cSurveyPC.cSurvey.cSurvey)
@@ -186,23 +184,6 @@ Friend Class cDockClipart
         oGrid.BringToFront()
         oGrid.Visible = True
 
-        'Dim oItem As NavigationBarItem = New NavigationBarItem
-        'oItem.Name = "tabpage_" & Name
-        'oItem.Text = Text
-        'oItem.Tag = New cGallery(ParentPath, Name, Groupable, oGrid)
-        'Call tabGallery.Items.Add(oItem)
-
-        'If tabGallery.SelectedItem Is Nothing Then
-        '    tabGallery.SelectedItem = oItem
-        'End If
-
-        'bLoadItems = LoadItems
-        'If bLoadItems Then
-        'Dim oThread As Threading.Thread = New Threading.Thread(AddressOf oThread_callback)
-        'Call oThread.Start({Path, Name})
-        'End If
-
-        'If oCurrentLv Is Nothing Then oCurrentLv = oLv
     End Sub
 
     Private Function pGetCurrentGrid() As DevExpress.XtraGrid.GridControl
@@ -246,24 +227,6 @@ Friend Class cDockClipart
                 btnRemove.Enabled = (iView = ViewModeEnum.Gallery)
             End If
         End If
-
-        'If oCurrentLv Is Nothing Then
-        '    tableMetadata.Enabled = False
-        'Else
-        '    If oCurrentLv.SelectedItems.Count < 1 Then
-        '        tableMetadata.Enabled = False
-        '    Else
-        '        tableMetadata.Enabled = True
-        '        Dim oItem As ListViewItem = oCurrentLv.SelectedItems(0)
-        '        Dim oClipart As cDrawClipArt = oItem.Tag(1)
-        '        'qua dovrei caricare i metadati...DA COMPLETARE
-        '        PictureBox1.Image = iml.Images(oItem.ImageKey)
-        '        txtMetadataClipartName.Text = oItem.Text
-        '        txtMetadataClipartFilename.Text = oItem.Tag(0)
-        '        Dim oMetadata As cMetadata = oItem.Tag(2)
-        '        prpMetadataProperties.SelectedObject = oMetadata
-        '    End If
-        'End If
     End Sub
 
     Private Sub pAddGroups(Lv As ListView)
@@ -448,32 +411,6 @@ Friend Class cDockClipart
             Call mnuGridContext.ShowPopup(oView.GridControl.PointToScreen(e.Location))
         End If
     End Sub
-
-    'Private Sub lv_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
-    '    If Not ocurrentlv Is Nothing Then
-    '        Dim oInfo As ListViewHitTestInfo = oCurrentLv.HitTest(e.X, e.Y)
-    '        If Not oInfo.Item Is Nothing Then
-    '            oDragItem = New OnItemEventArgs(oCurrentLv.Tag, oCurrentLv.Name, oInfo.Item.Tag(0))
-    '            Dim oDragSize As Size = SystemInformation.DragSize
-    '            oDragboxFromMouseDown = New Rectangle(New Point(e.X - (oDragSize.Width / 2), e.Y - (oDragSize.Height / 2)), oDragSize)
-    '        Else
-    '            oDragboxFromMouseDown = Rectangle.Empty
-    '        End If
-    '    End If
-    'End Sub
-
-    'Private Sub lv_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
-    '    If ((e.Button And MouseButtons.Left) = MouseButtons.Left) Then
-    '        If (Rectangle.op_Inequality(oDragboxFromMouseDown, Rectangle.Empty) And Not oDragboxFromMouseDown.Contains(e.X, e.Y)) Then
-    '            oDragScreenOffset = SystemInformation.WorkingArea.Location
-    '            Dim oDropEffect As DragDropEffects = oCurrentLv.DoDragDrop(oDragItem, DragDropEffects.Copy)
-    '        End If
-    '    End If
-    'End Sub
-
-    'Private Sub lv_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
-    '    oDragboxFromMouseDown = Rectangle.Empty
-    'End Sub
 
     Private Sub pItemRemove()
         Dim oGrid As DevExpress.XtraGrid.GridControl = pGetCurrentGrid()

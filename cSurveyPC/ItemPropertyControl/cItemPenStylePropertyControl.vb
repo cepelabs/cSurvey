@@ -68,8 +68,8 @@ Friend Class cItemPenStylePropertyControl
 
     Private Sub cboPropPenPattern_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropPenPattern.EditValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
             If oPoint Is Nothing Then
-                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
                 If cPen.IsUserPenID(cboPropPenPattern.EditValue) AndAlso Not oSurvey.Pens.Contains(cboPropPenPattern.EditValue) Then
                     Call oSurvey.Pens.Add(cboPropPenPattern.GetUserPen(cboPropPenPattern.EditValue))
                     Call cboPropPenPattern.Rebind(oSurvey)
@@ -117,6 +117,10 @@ Friend Class cItemPenStylePropertyControl
                 cboPropPenClipartPenStyle.SelectedIndex = pPenStyleToSelectedIndex(cboPropPenClipartPenStyle, oPen.ClipartPenStyle)
                 txtPropPenClipartPenWidth.EditValue = oPen.ClipartPenWidth
                 txtPropPenClipartPenColor.EditValue = oPen.ClipartPenColor
+
+                cboPropPenClipartBrushMode.SelectedIndex = oPen.ClipartBrushMode
+                cboPropPenClipartBrushStyle.SelectedIndex = pPenStyleToSelectedIndex(cboPropPenClipartBrushStyle, oPen.ClipartBrushStyle)
+                txtPropPenClipartBrushColor.EditValue = oPen.ClipartBrushColor
             Else
                 cmdPropSave.Visible = False
             End If
@@ -304,6 +308,7 @@ Friend Class cItemPenStylePropertyControl
         Dim bClipartVisible As Boolean
         Dim bClipartSettingsVisible As Boolean
         Dim bClipartSettingsPenVisible As Boolean
+        Dim bClipartSettingsBrushVisible As Boolean
 
         If oPen.Type = cPen.PenTypeEnum.Custom Then
             If cboPropPenDecoration.SelectedIndex > 0 Then
@@ -315,25 +320,31 @@ Friend Class cItemPenStylePropertyControl
                 End If
                 bClipartSettingsVisible = True
                 bClipartSettingsPenVisible = cboPropPenClipartPenMode.SelectedIndex = 1
+                bClipartSettingsBrushVisible = cboPropPenClipartBrushMode.SelectedIndex = 1
             Else
                 bStyleVisible = True
                 bClipartVisible = False
                 bClipartSettingsVisible = False
                 bClipartSettingsPenVisible = False
+                bClipartSettingsBrushVisible = False
             End If
         Else
             bStyleVisible = False
             bClipartVisible = False
             pnlPenClipartSettings.Visible = False
+            pnlPenClipartSettings1.Visible = False
             bClipartSettingsPenVisible = False
+            bClipartSettingsBrushVisible = False
         End If
 
         pnlPenStyle.Visible = bStyleVisible
         pnlPenClipart.Visible = bClipartVisible
         pnlPenClipartSettings.Visible = bClipartSettingsVisible
+        pnlPenClipartSettings1.Visible = bClipartSettingsVisible
         pnlPenClipartSettingsPen.Visible = bClipartSettingsPenVisible
+        pnlPenClipartSettingsBrush.Visible = bClipartSettingsBrushVisible
 
-        Height = (45 + If(bStyleVisible, pnlPenStyle.Height, 0) + If(bClipartVisible, pnlPenClipart.Height, 0) + If(bClipartSettingsVisible, pnlPenClipartSettings.Height, 0) + If(bClipartSettingsPenVisible, pnlPenClipartSettingsPen.Height, 0)) * CurrentAutoScaleDimensions.Height / 96.0F
+        Height = (45 + If(bStyleVisible, pnlPenStyle.Height, 0) + If(bClipartVisible, pnlPenClipart.Height, 0) + If(bClipartSettingsVisible, pnlPenClipartSettings.Height + pnlPenClipartSettings1.Height, 0) + If(bClipartSettingsPenVisible, pnlPenClipartSettingsPen.Height, 0) + If(bClipartSettingsBrushVisible, pnlPenClipartSettingsBrush.Height, 0)) * CurrentAutoScaleDimensions.Height / 96.0F
     End Sub
 
     Private Sub cmdPropPenCleanClipart_Click(sender As Object, e As EventArgs) Handles cmdPropPenCleanClipart.Click
@@ -387,6 +398,29 @@ Friend Class cItemPenStylePropertyControl
             End If
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenDecorationAlignment")
+            Call MyBase.MapInvalidate()
+        End If
+        Dim bEnabled As Boolean
+        If oPoint Is Nothing Then
+            bEnabled = Item.Pen.DecorationAlignment <> cPen.DecorationAlignmentEnum.Center
+        Else
+            bEnabled = oPoint.Pen.DecorationAlignment <> cPen.DecorationAlignmentEnum.Center
+        End If
+        txtPropPenDecorationDistancePercentage.Enabled = bEnabled
+        lblPropPenDecorationDistancePercentage.Enabled = bEnabled
+    End Sub
+
+    Private Sub txtPropPenDecorationDistancePercentage_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropPenDecorationDistancePercentage.EditValueChanged
+        If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
+            If oPoint Is Nothing Then
+                Item.Pen.DecorationDistancePercentage = txtPropPenDecorationDistancePercentage.EditValue
+            Else
+                Call pObjectSetSequencePen()
+                oPoint.Pen.DecorationDistancePercentage = txtPropPenDecorationDistancePercentage.EditValue
+            End If
+            Call MyBase.CommitUndoSnapshot()
+            Call MyBase.PropertyChanged("PenDecorationDistancePercentage")
             Call MyBase.MapInvalidate()
         End If
     End Sub
@@ -454,6 +488,21 @@ Friend Class cItemPenStylePropertyControl
         End If
     End Sub
 
+    Private Sub txtPropPenClipartBrushColor_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropPenClipartBrushColor.EditValueChanged
+        If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
+            If oPoint Is Nothing Then
+                Item.Pen.ClipartBrushColor = txtPropPenClipartBrushColor.EditValue
+            Else
+                Call pObjectSetSequencePen()
+                oPoint.Pen.ClipartBrushColor = txtPropPenClipartBrushColor.EditValue
+            End If
+            Call MyBase.CommitUndoSnapshot()
+            Call MyBase.PropertyChanged("ClipartBrushColor")
+            Call MyBase.MapInvalidate()
+        End If
+    End Sub
+
     Private Sub txtPropPenClipartPenColor_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropPenClipartPenColor.EditValueChanged
         If Not DisabledObjectProperty() Then
             Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
@@ -473,12 +522,30 @@ Friend Class cItemPenStylePropertyControl
         'for now custom pens are not managed
         Dim iCount As Integer = ComboBoxEdit.Properties.Items.Count
         If PenStyle = cPen.PenStylesEnum.None Then
-            'Return iCount - 2
             Return iCount - 1
-            'ElseIf PenStyle = cPen.PenStylesEnum.Custom Then
-            '    Return iCount - 1
         Else
             Return PenStyle
+        End If
+    End Function
+
+    Private Function pBrushStyleToSelectedIndex(ComboBoxEdit As DevExpress.XtraEditors.ComboBoxEdit, PenStyle As cPen.BrushStylesEnum) As Integer
+        'for now custom brushes are not managed
+        Dim iCount As Integer = ComboBoxEdit.Properties.Items.Count
+        If PenStyle = cPen.BrushStylesEnum.None Then
+            Return iCount - 1
+        Else
+            Return PenStyle
+        End If
+    End Function
+
+    Private Function pSelectedIndexToBrushStyle(ComboBoxEdit As DevExpress.XtraEditors.ComboBoxEdit) As cPen.BrushStylesEnum
+        'for now custom brushes are not managed
+        Dim iCount As Integer = ComboBoxEdit.Properties.Items.Count
+        Dim iSelected As Integer = ComboBoxEdit.SelectedIndex
+        If iSelected < iCount - 1 Then
+            Return iSelected
+        Else
+            Return cPen.BrushStylesEnum.None
         End If
     End Function
 
@@ -515,6 +582,17 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.PropertyChanged("ClipartPenStyle")
             Call MyBase.MapInvalidate()
         End If
+        If pSelectedIndexToPenStyle(cboPropPenClipartPenStyle) = cPen.PenStylesEnum.None Then
+            lblPropPenClipartPenColor.Enabled = False
+            txtPropPenClipartPenColor.Enabled = False
+            lblPropPenClipartPenWidth.Enabled = False
+            txtPropPenClipartPenWidth.Enabled = False
+        Else
+            lblPropPenClipartPenColor.Enabled = True
+            txtPropPenClipartPenColor.Enabled = True
+            lblPropPenClipartPenWidth.Enabled = True
+            txtPropPenClipartPenWidth.Enabled = True
+        End If
     End Sub
 
     Private Sub cboPropPenDecorationPosition_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropPenDecorationPosition.EditValueChanged
@@ -532,4 +610,43 @@ Friend Class cItemPenStylePropertyControl
         End If
     End Sub
 
+    Private Sub cboPropPenClipartBrushMode_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropPenClipartBrushMode.EditValueChanged
+        If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
+            Dim oPen As cPen
+            If oPoint Is Nothing Then
+                oPen = Item.Pen
+            Else
+                Call pObjectSetSequencePen()
+                oPen = oPoint.Pen
+            End If
+            oPen.ClipartBrushMode = cboPropPenClipartBrushMode.SelectedIndex
+            Call MyBase.CommitUndoSnapshot()
+            Call MyBase.PropertyChanged("ClipartBrushMode")
+            Call MyBase.MapInvalidate()
+        End If
+        Call pRefreshHeight()
+    End Sub
+
+    Private Sub cboPropPenClipartBrushStyle_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropPenClipartBrushStyle.EditValueChanged
+        If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
+            If oPoint Is Nothing Then
+                Item.Pen.ClipartBrushStyle = pSelectedIndexToBrushStyle(cboPropPenClipartBrushStyle)
+            Else
+                Call pObjectSetSequencePen()
+                oPoint.Pen.ClipartBrushStyle = pSelectedIndexToBrushStyle(cboPropPenClipartBrushStyle)
+            End If
+            Call MyBase.CommitUndoSnapshot()
+            Call MyBase.PropertyChanged("ClipartBrushStyle")
+            Call MyBase.MapInvalidate()
+        End If
+        If pSelectedIndexToBrushStyle(cboPropPenClipartBrushStyle) = cPen.BrushStylesEnum.None Then
+            lblPropPenClipartBrushColor.Enabled = False
+            txtPropPenClipartBrushColor.Enabled = False
+        Else
+            lblPropPenClipartBrushColor.Enabled = True
+            txtPropPenClipartBrushColor.Enabled = True
+        End If
+    End Sub
 End Class

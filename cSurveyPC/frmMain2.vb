@@ -9827,7 +9827,7 @@ Friend Class frmMain2
                         btnDelete.Enabled = bCanBeDeleted
 
                         Dim bStandardFormat As Boolean = pClipboardCheckDesignFormat()
-                        Dim bExtraFormat As Boolean = False 'pClipboardCheckDesignExtraFormats()
+                        Dim bExtraFormat As Boolean = pClipboardCheckDesignExtraFormats()
                         Dim bEnabled As Boolean = bStandardFormat OrElse bExtraFormat
 
                         If bEnabledEdit AndAlso (oItem.HavePen OrElse oItem.HaveBrush) Then

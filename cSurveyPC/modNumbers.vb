@@ -96,6 +96,7 @@
     End Function
 
     Public Function StringToSingle(ByVal [String] As String) As Single
+
         Dim sNumber As String = [String].Replace(".", Globalization.NumberFormatInfo.CurrentInfo.CurrencyDecimalSeparator)
         Dim sResult As Single
         If Single.TryParse(sNumber, sResult) Then

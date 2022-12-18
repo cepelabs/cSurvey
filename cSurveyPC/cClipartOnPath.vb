@@ -3,6 +3,8 @@ Imports System.Drawing.Imaging
 Imports System.Drawing.Drawing2D
 
 Imports cSurveyPC.cSurvey.Drawings
+Imports System.Windows.Media.Animation
+Imports OfficeOpenXml.FormulaParsing.Excel.Functions.Math
 
 Class cClipartOnPath
     Public Enum ClipartPositionEnum
@@ -13,34 +15,61 @@ Class cClipartOnPath
 
     Private Const iMaxPointCount As Integer = 20000
 
-    Public Shared Function ClipartOnPath(ByVal Graphics As Graphics, ByVal Pathdata As PathData, ByVal Clipart As cDrawClipArt, ClipartPosition As ClipartPositionEnum, ByVal ClipartSpacePercentage As Integer, ByVal Color As Color, ByVal FillColor As Color, ByVal Zoom As Single) As GraphicsPath
-        Dim sZoom As Single = Zoom / 40
+    Public Shared Function ClipartOnPath(ByVal Graphics As Graphics, Path As GraphicsPath) As GraphicsPath
+        Call Path.Flatten(Nothing, 0.4)
+
+
+    End Function
+
+    Private Shared Function pIsPathLine(PathData As PathData) As Boolean
+        Return Not PathData.Types.Where(Function(oType) oType <> PathPointType.Start AndAlso (oType And PathPointType.PathTypeMask) <> PathPointType.Line).Count > 0
+    End Function
+
+    Public Shared Function ClipartOnPath(ByVal Graphics As Graphics, ByVal Pathdata As PathData, ByVal Clipart As cDrawClipArt, ClipartPosition As ClipartPositionEnum, ByVal ClipartSpacePercentage As Single, ByVal ClipartDistancePercentage As Single, ByVal Color As Color, ByVal FillColor As Color, ByVal Zoom As Single) As GraphicsPath
+        Dim sZoom As Single = Zoom / 40.0F
         Dim oTransformedPath As cDrawPaths
         Using oTransformMatrix As Matrix = New Matrix
             Call oTransformMatrix.Scale(sZoom, sZoom)
             oTransformedPath = Clipart.TransformPaths(oTransformMatrix)
         End Using
-        Dim iClipartSpacePercentage As Integer = ClipartSpacePercentage * 10
+        Dim sClipartSpacePercentage As Single = ClipartSpacePercentage * 10.0F
+        Dim sClipartDistancePercentage As Single = ClipartDistancePercentage / 100.0F
 
         Dim oPoints As List(Of PointF) = New List(Of PointF)
         Dim oResultPoints As List(Of PointF) = New List(Of PointF)
-        Using oPath As GraphicsPath = New GraphicsPath(Pathdata.Points, Pathdata.Types)
-            If oPath.PointCount > 1 Then
-                oPath.FillMode = FillMode.Winding
-                Call oPath.Flatten(Nothing, 0.04)
-                Dim oPoint As PointF = oPath.PathPoints(0)
-                For i As Integer = 0 To oPath.PathPoints.Length - 2
-                    If oPath.PathTypes(i + 1) = PathPointType.Start Or (oPath.PathTypes(i) And PathPointType.CloseSubpath) = PathPointType.CloseSubpath Then
-                        Call oResultPoints.AddRange(pGetLinePoints(oPath.PathPoints(i), oPoint, 1))
-                        oPoint = oPath.PathPoints(i + 1)
-                    Else
-                        Call oResultPoints.AddRange(pGetLinePoints(oPath.PathPoints(i), oPath.PathPoints(i + 1), 1))
-                    End If
-                Next
-                oResultPoints = pCleanPoints(oResultPoints)
-            End If
-        End Using
-        Return pDrawClipart(Graphics, oTransformedPath, oResultPoints, ClipartPosition, iClipartSpacePercentage)
+        If pIsPathLine(Pathdata) Then
+            'the path in already a sequence of straight line
+            oResultPoints.AddRange(Pathdata.Points)
+            'Dim oPoint As PointF = Pathdata.Points(0)
+            'For i As Integer = 0 To Pathdata.Points.Length - 2
+            '    If Pathdata.Types(i + 1) = PathPointType.Start Or (Pathdata.Types(i) And PathPointType.CloseSubpath) = PathPointType.CloseSubpath Then
+            '        Call oResultPoints.AddRange(pGetLinePoints(Pathdata.Points(i), oPoint, 1))
+            '        oPoint = Pathdata.Points(i + 1)
+            '    Else
+            '        Call oResultPoints.AddRange(pGetLinePoints(Pathdata.Points(i), Pathdata.Points(i + 1), 1))
+            '    End If
+            'Next
+            oResultPoints = pCleanPoints(oResultPoints)
+            Return pDrawClipartOnLines(Graphics, oTransformedPath, oResultPoints, ClipartPosition, sClipartSpacePercentage, sClipartDistancePercentage)
+        Else
+            Using oPath As GraphicsPath = New GraphicsPath(Pathdata.Points, Pathdata.Types)
+                If oPath.PointCount > 1 Then
+                    oPath.FillMode = FillMode.Winding
+                    Call oPath.Flatten(Nothing, 0.04)
+                    Dim oPoint As PointF = oPath.PathPoints(0)
+                    For i As Integer = 0 To oPath.PathPoints.Length - 2
+                        If oPath.PathTypes(i + 1) = PathPointType.Start Or (oPath.PathTypes(i) And PathPointType.CloseSubpath) = PathPointType.CloseSubpath Then
+                            Call oResultPoints.AddRange(pGetLinePoints(oPath.PathPoints(i), oPoint, 1))
+                            oPoint = oPath.PathPoints(i + 1)
+                        Else
+                            Call oResultPoints.AddRange(pGetLinePoints(oPath.PathPoints(i), oPath.PathPoints(i + 1), 1))
+                        End If
+                    Next
+                    oResultPoints = pCleanPoints(oResultPoints)
+                End If
+            End Using
+            Return pDrawClipart(Graphics, oTransformedPath, oResultPoints, ClipartPosition, sClipartSpacePercentage, sClipartDistancePercentage)
+        End If
     End Function
 
     Private Shared Function pCleanPoints(ByVal Points As List(Of PointF)) As List(Of PointF)
@@ -48,7 +77,7 @@ Class cClipartOnPath
         Dim oLastPoint As PointF
         Dim i As Integer = 0
         For Each oPoint As PointF In Points
-            If i = 0 Or oPoint.X <> oLastPoint.X Or oPoint.Y <> oLastPoint.Y Then
+            If i = 0 OrElse oPoint.X <> oLastPoint.X OrElse oPoint.Y <> oLastPoint.Y Then
                 Call oPointResults.Add(oPoint)
             End If
             oLastPoint = oPoint
@@ -57,7 +86,38 @@ Class cClipartOnPath
         Return oPointResults
     End Function
 
-    Private Shared Function pDrawClipart(ByVal Graphics As Graphics, TransformedPath As cDrawPaths, ByVal Points As List(Of PointF), ClipartPosition As ClipartPositionEnum, ClipartSpacePercentage As Integer) As GraphicsPath
+    Private Shared Function pDrawClipartOnLines(ByVal Graphics As Graphics, TransformedPath As cDrawPaths, ByVal Points As List(Of PointF), ClipartPosition As ClipartPositionEnum, ClipartSpacePercentage As Single, ClipartDistancePercentage As Single) As GraphicsPath
+        Dim oPath As GraphicsPath = New GraphicsPath
+
+        Dim sMaxWidthClipart As Single = TransformedPath.GetBounds.Width
+        If sMaxWidthClipart < 0.1F Then sMaxWidthClipart = 0.1F '* sZoom '/ 40
+
+        Dim sWidth As Single = sMaxWidthClipart + sMaxWidthClipart * ClipartSpacePercentage / 17800.0F
+        If sWidth < 1.0F Then sWidth = 1.0F
+
+        Dim iIndex As Integer = 0
+        Dim oLastPoint As PointF
+        For Each oPoint As PointF In Points
+            If iIndex > 0 Then
+                Dim sDistance As Single = modPaint.DistancePointToPoint(oPoint, oLastPoint)
+                If sDistance > sWidth Then
+                    Dim sStep As Single = 0
+                    Do
+                        Dim sAngle As Single = pGetAngle(oLastPoint, oPoint)
+                        Dim oCenter As PointF = modPaint.PointOnLineByDistance(oLastPoint, oPoint, sStep + sWidth / 2)
+                        Call oPath.AddPath(pDrawRotatedClipart(Graphics, TransformedPath, ClipartPosition, sAngle, oCenter, ClipartDistancePercentage), False)
+                        sStep += sWidth
+                    Loop While (sStep + sWidth) <= sDistance
+                End If
+            End If
+            oLastPoint = oPoint
+            iIndex += 1
+        Next
+
+        Return oPath
+    End Function
+
+    Private Shared Function pDrawClipart(ByVal Graphics As Graphics, TransformedPath As cDrawPaths, ByVal Points As List(Of PointF), ClipartPosition As ClipartPositionEnum, ClipartSpacePercentage As Single, ClipartDistancePercentage As Single) As GraphicsPath
         Dim oPath As GraphicsPath = New GraphicsPath
         Dim iPointCount As Integer = Points.Count - 1
         Dim sCount As Single = 1
@@ -66,21 +126,30 @@ Class cClipartOnPath
         Dim oPoint As PointF
 
         Dim sAngle As Single
+        'Dim sLastAngle As Single?
 
         Dim sMaxWidthClipart As Single = TransformedPath.GetBounds.Width
-        If sMaxWidthClipart < 0.1 Then sMaxWidthClipart = 0.1 '* sZoom '/ 40
+        If sMaxWidthClipart < 0.1F Then sMaxWidthClipart = 0.1F '* sZoom '/ 40
 
-        Dim sWidth As Single = sMaxWidthClipart + sMaxWidthClipart * ClipartSpacePercentage / 100
-        If sWidth < 1 Then sWidth = 1
+        Dim sWidth As Single = sMaxWidthClipart + sMaxWidthClipart * ClipartSpacePercentage / 100.0F
+        If sWidth < 1.0F Then sWidth = 1.0F
+
+        'Graphics.DrawLines(New Pen(Brushes.Orange, 0.01), Points.ToArray)
 
         Do While sCount < iPointCount
-            If (sCount + sWidth \ 2) >= 0 And (sCount + sWidth) < iPointCount Then
+            If (sCount + sWidth \ 2) >= 0F AndAlso (sCount + sWidth) < iPointCount Then
                 sCount += sWidth
-                oPoint2 = Points(sCount)
-                oPoint = Points(sCount - sWidth \ 2)
+                'oPoint2 = Points(sCount)
+                Dim iCenter As Integer = sCount - sWidth \ 2.0F
+                oPoint1 = Points(iCenter - sWidth \ 2.0F)
+                oPoint2 = Points(iCenter + sWidth \ 2.0F)
+                oPoint = Points(iCenter)
+
                 sAngle = pGetAngle(oPoint1, oPoint2)
-                Call oPath.AddPath(pDrawRotatedClipart(Graphics, TransformedPath, ClipartPosition, sAngle, oPoint), False)
-                oPoint1 = Points(sCount)
+                Debug.Print(sAngle)
+                'Graphics.DrawLine(New Pen(Brushes.Red, 0.1), oPoint1, oPoint2)
+                Call oPath.AddPath(pDrawRotatedClipart(Graphics, TransformedPath, ClipartPosition, sAngle, oPoint, ClipartDistancePercentage), False)
+                'oPoint1 = Points(sCount)
             Else
                 sCount += sWidth
             End If
@@ -89,30 +158,31 @@ Class cClipartOnPath
     End Function
 
     Private Shared Function pGetAngle(ByVal P1 As PointF, ByVal P2 As PointF) As Single
-        Dim c As Single = Math.Sqrt((P2.X - P1.X) ^ 2 + (P2.Y - P1.Y) ^ 2)
+        Dim c As Single = Math.Sqrt((P2.X - P1.X) ^ 2.0F + (P2.Y - P1.Y) ^ 2.0F)
         If c = 0F Then
             Return 0F
         Else
             If P1.X > P2.X Then
-                Return Math.Asin((P1.Y - P2.Y) / c) * 180 / Math.PI - 180
+                Return Math.Asin((P1.Y - P2.Y) / c) * 180.0F / Math.PI - 180.0F
             Else
-                Return Math.Asin((P2.Y - P1.Y) / c) * 180 / Math.PI
+                Return Math.Asin((P2.Y - P1.Y) / c) * 180.0F / Math.PI
             End If
         End If
     End Function
 
-    Private Shared Function pDrawRotatedClipart(ByVal Graphics As Graphics, TransformedPath As cDrawPaths, ClipartPosition As ClipartPositionEnum, ByVal Angle As Single, ByVal Center As PointF) As GraphicsPath
+    Private Shared Function pDrawRotatedClipart(ByVal Graphics As Graphics, TransformedPath As cDrawPaths, ClipartPosition As ClipartPositionEnum, ByVal Angle As Single, ByVal Center As PointF, DistancePercentage As Single) As GraphicsPath
         Dim oBasePath As GraphicsPath = New GraphicsPath(Drawing.Drawing2D.FillMode.Winding)
         Dim x As Single = Center.X
         Dim y As Single = Center.Y
         Using oMatrix As Matrix = New Matrix
+            Dim sDelta As Single = TransformedPath.GetBounds.Height * DistancePercentage
             Select Case ClipartPosition
                 Case ClipartPositionEnum.OverPath
-                    Call oMatrix.Translate(x, y - TransformedPath.GetBounds.Height, MatrixOrder.Append)
+                    Call oMatrix.Translate(x - TransformedPath.GetBounds.Width / 2.0F, y - TransformedPath.GetBounds.Height - sDelta, MatrixOrder.Append)
                 Case ClipartPositionEnum.CenterPath
-                    Call oMatrix.Translate(x, y - TransformedPath.GetBounds.Height / 2, MatrixOrder.Append)
+                    Call oMatrix.Translate(x - TransformedPath.GetBounds.Width / 2.0F, y - TransformedPath.GetBounds.Height / 2.0F, MatrixOrder.Append)
                 Case ClipartPositionEnum.UnderPath
-                    Call oMatrix.Translate(x, y, MatrixOrder.Append)
+                    Call oMatrix.Translate(x - TransformedPath.GetBounds.Width / 2.0F, y + sDelta, MatrixOrder.Append)
             End Select
             Call oMatrix.RotateAt(Angle, Center, MatrixOrder.Append)
             For Each oDrawPath As cDrawPath In TransformedPath
@@ -159,13 +229,6 @@ Class cClipartOnPath
             Do
                 If iStep = StepWidth Then
                     Call oPoints.Add(P1)
-                    'If iCount <= iMaxPointCount Then
-                    '    oPoints(iCount) = P1
-                    '    iCount += 1
-                    'Else
-                    '    'oLastError = ex
-                    '    Exit Do
-                    'End If
                 Else
                     iStep += StepWidth
                 End If
@@ -184,13 +247,6 @@ Class cClipartOnPath
             Do
                 If iStep = StepWidth Then
                     Call oPoints.Add(P1)
-                    'If iCount <= iMaxPointCount Then
-                    '    oPoints(iCount) = P1
-                    '    iCount += 1
-                    'Else
-                    '    'oLastError = ex
-                    '    Exit Do
-                    'End If
                 Else
                     iStep += StepWidth
                 End If

@@ -49,6 +49,8 @@ Partial Class cItemPenStylePropertyControl
         Me.picPropPenClipartImage = New DevExpress.XtraEditors.PictureEdit()
         Me.lblPropPenClipartImage = New DevExpress.XtraEditors.LabelControl()
         Me.pnlPenClipartSettings = New DevExpress.XtraEditors.PanelControl()
+        Me.txtPropPenDecorationDistancePercentage = New DevExpress.XtraEditors.SpinEdit()
+        Me.lblPropPenDecorationDistancePercentage = New DevExpress.XtraEditors.LabelControl()
         Me.cboPropPenDecorationPosition = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.lblPenPropDecorationPosition = New DevExpress.XtraEditors.LabelControl()
         Me.cboPropPenClipartPenMode = New DevExpress.XtraEditors.ComboBoxEdit()
@@ -69,12 +71,23 @@ Partial Class cItemPenStylePropertyControl
         Me.txtPropPenWidth = New DevExpress.XtraEditors.SpinEdit()
         Me.pnlPenStyle = New DevExpress.XtraEditors.PanelControl()
         Me.pnlPenClipartSettingsPen = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlPenClipartSettingsBrush = New DevExpress.XtraEditors.PanelControl()
+        Me.cboPropPenClipartBrushStyle = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.lblPropPenClipartBrushStyle = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPropPenClipartBrushColor = New DevExpress.XtraEditors.LabelControl()
+        Me.txtPropPenClipartBrushColor = New cSurveyPC.cColorSelector()
+        Me.pnlPenClipartSettings1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cboPropPenClipartBrushMode = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.lblPropPenClipartBrushMode = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPropPenDecorationDistancePercentageUM = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPropPenDecorationSpacePercentageUM = New DevExpress.XtraEditors.LabelControl()
         CType(Me.txtPropPenColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.mnuSaveAs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picPropPenClipartImage.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlPenClipartSettings, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlPenClipartSettings.SuspendLayout()
+        CType(Me.txtPropPenDecorationDistancePercentage.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboPropPenDecorationPosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboPropPenClipartPenMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropPenDecorationScale.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -92,6 +105,13 @@ Partial Class cItemPenStylePropertyControl
         Me.pnlPenStyle.SuspendLayout()
         CType(Me.pnlPenClipartSettingsPen, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlPenClipartSettingsPen.SuspendLayout()
+        CType(Me.pnlPenClipartSettingsBrush, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlPenClipartSettingsBrush.SuspendLayout()
+        CType(Me.cboPropPenClipartBrushStyle.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPropPenClipartBrushColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlPenClipartSettings1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlPenClipartSettings1.SuspendLayout()
+        CType(Me.cboPropPenClipartBrushMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblPropPenColor
@@ -255,6 +275,10 @@ Partial Class cItemPenStylePropertyControl
         'pnlPenClipartSettings
         '
         Me.pnlPenClipartSettings.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlPenClipartSettings.Controls.Add(Me.lblPropPenDecorationSpacePercentageUM)
+        Me.pnlPenClipartSettings.Controls.Add(Me.lblPropPenDecorationDistancePercentageUM)
+        Me.pnlPenClipartSettings.Controls.Add(Me.txtPropPenDecorationDistancePercentage)
+        Me.pnlPenClipartSettings.Controls.Add(Me.lblPropPenDecorationDistancePercentage)
         Me.pnlPenClipartSettings.Controls.Add(Me.cboPropPenDecorationPosition)
         Me.pnlPenClipartSettings.Controls.Add(Me.lblPenPropDecorationPosition)
         Me.pnlPenClipartSettings.Controls.Add(Me.cboPropPenClipartPenMode)
@@ -267,6 +291,25 @@ Partial Class cItemPenStylePropertyControl
         Me.pnlPenClipartSettings.Controls.Add(Me.lblPropPenDecorationScale)
         resources.ApplyResources(Me.pnlPenClipartSettings, "pnlPenClipartSettings")
         Me.pnlPenClipartSettings.Name = "pnlPenClipartSettings"
+        '
+        'txtPropPenDecorationDistancePercentage
+        '
+        resources.ApplyResources(Me.txtPropPenDecorationDistancePercentage, "txtPropPenDecorationDistancePercentage")
+        Me.txtPropPenDecorationDistancePercentage.MenuManager = Me.BarManager
+        Me.txtPropPenDecorationDistancePercentage.Name = "txtPropPenDecorationDistancePercentage"
+        Me.txtPropPenDecorationDistancePercentage.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPropPenDecorationDistancePercentage.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtPropPenDecorationDistancePercentage.Properties.DisplayFormat.FormatString = "N0"
+        Me.txtPropPenDecorationDistancePercentage.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPropPenDecorationDistancePercentage.Properties.EditFormat.FormatString = "N0"
+        Me.txtPropPenDecorationDistancePercentage.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPropPenDecorationDistancePercentage.Properties.IsFloatValue = False
+        Me.txtPropPenDecorationDistancePercentage.Properties.MaskSettings.Set("mask", "N0")
+        Me.txtPropPenDecorationDistancePercentage.Properties.MaxValue = New Decimal(New Integer() {10000, 0, 0, 0})
+        '
+        'lblPropPenDecorationDistancePercentage
+        '
+        resources.ApplyResources(Me.lblPropPenDecorationDistancePercentage, "lblPropPenDecorationDistancePercentage")
+        Me.lblPropPenDecorationDistancePercentage.Name = "lblPropPenDecorationDistancePercentage"
         '
         'cboPropPenDecorationPosition
         '
@@ -450,12 +493,83 @@ Partial Class cItemPenStylePropertyControl
         Me.pnlPenClipartSettingsPen.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlPenClipartSettingsPen.Controls.Add(Me.cboPropPenClipartPenStyle)
         Me.pnlPenClipartSettingsPen.Controls.Add(Me.lblPropPenClipartPenStyle)
-        Me.pnlPenClipartSettingsPen.Controls.Add(Me.txtPropPenClipartPenWidth)
         Me.pnlPenClipartSettingsPen.Controls.Add(Me.lblPropPenClipartPenColor)
         Me.pnlPenClipartSettingsPen.Controls.Add(Me.lblPropPenClipartPenWidth)
+        Me.pnlPenClipartSettingsPen.Controls.Add(Me.txtPropPenClipartPenWidth)
         Me.pnlPenClipartSettingsPen.Controls.Add(Me.txtPropPenClipartPenColor)
         resources.ApplyResources(Me.pnlPenClipartSettingsPen, "pnlPenClipartSettingsPen")
         Me.pnlPenClipartSettingsPen.Name = "pnlPenClipartSettingsPen"
+        '
+        'pnlPenClipartSettingsBrush
+        '
+        Me.pnlPenClipartSettingsBrush.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlPenClipartSettingsBrush.Controls.Add(Me.cboPropPenClipartBrushStyle)
+        Me.pnlPenClipartSettingsBrush.Controls.Add(Me.lblPropPenClipartBrushStyle)
+        Me.pnlPenClipartSettingsBrush.Controls.Add(Me.lblPropPenClipartBrushColor)
+        Me.pnlPenClipartSettingsBrush.Controls.Add(Me.txtPropPenClipartBrushColor)
+        resources.ApplyResources(Me.pnlPenClipartSettingsBrush, "pnlPenClipartSettingsBrush")
+        Me.pnlPenClipartSettingsBrush.Name = "pnlPenClipartSettingsBrush"
+        '
+        'cboPropPenClipartBrushStyle
+        '
+        resources.ApplyResources(Me.cboPropPenClipartBrushStyle, "cboPropPenClipartBrushStyle")
+        Me.cboPropPenClipartBrushStyle.MenuManager = Me.BarManager
+        Me.cboPropPenClipartBrushStyle.Name = "cboPropPenClipartBrushStyle"
+        Me.cboPropPenClipartBrushStyle.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboPropPenClipartBrushStyle.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboPropPenClipartBrushStyle.Properties.Items.AddRange(New Object() {resources.GetString("cboPropPenClipartBrushStyle.Properties.Items"), resources.GetString("cboPropPenClipartBrushStyle.Properties.Items1")})
+        Me.cboPropPenClipartBrushStyle.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
+        'lblPropPenClipartBrushStyle
+        '
+        resources.ApplyResources(Me.lblPropPenClipartBrushStyle, "lblPropPenClipartBrushStyle")
+        Me.lblPropPenClipartBrushStyle.Name = "lblPropPenClipartBrushStyle"
+        '
+        'lblPropPenClipartBrushColor
+        '
+        resources.ApplyResources(Me.lblPropPenClipartBrushColor, "lblPropPenClipartBrushColor")
+        Me.lblPropPenClipartBrushColor.Name = "lblPropPenClipartBrushColor"
+        '
+        'txtPropPenClipartBrushColor
+        '
+        Me.txtPropPenClipartBrushColor.DefaultColor = System.Drawing.Color.Transparent
+        resources.ApplyResources(Me.txtPropPenClipartBrushColor, "txtPropPenClipartBrushColor")
+        Me.txtPropPenClipartBrushColor.Name = "txtPropPenClipartBrushColor"
+        Me.txtPropPenClipartBrushColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPropPenClipartBrushColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtPropPenClipartBrushColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txtPropPenClipartBrushColor.Properties.ShowSystemColors = False
+        Me.txtPropPenClipartBrushColor.Properties.ShowWebColors = False
+        '
+        'pnlPenClipartSettings1
+        '
+        Me.pnlPenClipartSettings1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlPenClipartSettings1.Controls.Add(Me.cboPropPenClipartBrushMode)
+        Me.pnlPenClipartSettings1.Controls.Add(Me.lblPropPenClipartBrushMode)
+        resources.ApplyResources(Me.pnlPenClipartSettings1, "pnlPenClipartSettings1")
+        Me.pnlPenClipartSettings1.Name = "pnlPenClipartSettings1"
+        '
+        'cboPropPenClipartBrushMode
+        '
+        resources.ApplyResources(Me.cboPropPenClipartBrushMode, "cboPropPenClipartBrushMode")
+        Me.cboPropPenClipartBrushMode.MenuManager = Me.BarManager
+        Me.cboPropPenClipartBrushMode.Name = "cboPropPenClipartBrushMode"
+        Me.cboPropPenClipartBrushMode.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboPropPenClipartBrushMode.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboPropPenClipartBrushMode.Properties.Items.AddRange(New Object() {resources.GetString("cboPropPenClipartBrushMode.Properties.Items"), resources.GetString("cboPropPenClipartBrushMode.Properties.Items1")})
+        Me.cboPropPenClipartBrushMode.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
+        'lblPropPenClipartBrushMode
+        '
+        resources.ApplyResources(Me.lblPropPenClipartBrushMode, "lblPropPenClipartBrushMode")
+        Me.lblPropPenClipartBrushMode.Name = "lblPropPenClipartBrushMode"
+        '
+        'lblPropPenDecorationDistancePercentageUM
+        '
+        resources.ApplyResources(Me.lblPropPenDecorationDistancePercentageUM, "lblPropPenDecorationDistancePercentageUM")
+        Me.lblPropPenDecorationDistancePercentageUM.Name = "lblPropPenDecorationDistancePercentageUM"
+        '
+        'lblPropPenDecorationSpacePercentageUM
+        '
+        resources.ApplyResources(Me.lblPropPenDecorationSpacePercentageUM, "lblPropPenDecorationSpacePercentageUM")
+        Me.lblPropPenDecorationSpacePercentageUM.Name = "lblPropPenDecorationSpacePercentageUM"
         '
         'cItemPenStylePropertyControl
         '
@@ -468,6 +582,8 @@ Partial Class cItemPenStylePropertyControl
         Me.Controls.Add(Me.cmdPropSave)
         Me.Controls.Add(Me.pnlPenClipartSettings)
         Me.Controls.Add(Me.pnlPenClipartSettingsPen)
+        Me.Controls.Add(Me.pnlPenClipartSettings1)
+        Me.Controls.Add(Me.pnlPenClipartSettingsBrush)
         Me.Controls.Add(Me.barDockControlLeft)
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
@@ -480,6 +596,7 @@ Partial Class cItemPenStylePropertyControl
         CType(Me.pnlPenClipartSettings, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlPenClipartSettings.ResumeLayout(False)
         Me.pnlPenClipartSettings.PerformLayout()
+        CType(Me.txtPropPenDecorationDistancePercentage.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboPropPenDecorationPosition.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboPropPenClipartPenMode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPropPenDecorationScale.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -500,6 +617,15 @@ Partial Class cItemPenStylePropertyControl
         CType(Me.pnlPenClipartSettingsPen, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlPenClipartSettingsPen.ResumeLayout(False)
         Me.pnlPenClipartSettingsPen.PerformLayout()
+        CType(Me.pnlPenClipartSettingsBrush, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPenClipartSettingsBrush.ResumeLayout(False)
+        Me.pnlPenClipartSettingsBrush.PerformLayout()
+        CType(Me.cboPropPenClipartBrushStyle.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPropPenClipartBrushColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlPenClipartSettings1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPenClipartSettings1.ResumeLayout(False)
+        Me.pnlPenClipartSettings1.PerformLayout()
+        CType(Me.cboPropPenClipartBrushMode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -549,4 +675,16 @@ Partial Class cItemPenStylePropertyControl
     Friend WithEvents lblPenPropDecorationPosition As DevExpress.XtraEditors.LabelControl
     Friend WithEvents pnlPenStyle As DevExpress.XtraEditors.PanelControl
     Friend WithEvents pnlPenClipartSettingsPen As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlPenClipartSettingsBrush As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cboPropPenClipartBrushStyle As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents lblPropPenClipartBrushStyle As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPropPenClipartBrushColor As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtPropPenClipartBrushColor As cColorSelector
+    Friend WithEvents pnlPenClipartSettings1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cboPropPenClipartBrushMode As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents lblPropPenClipartBrushMode As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtPropPenDecorationDistancePercentage As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents lblPropPenDecorationDistancePercentage As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPropPenDecorationSpacePercentageUM As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPropPenDecorationDistancePercentageUM As DevExpress.XtraEditors.LabelControl
 End Class

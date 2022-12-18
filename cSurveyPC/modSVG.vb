@@ -92,6 +92,19 @@ Module modSVG
         Return oXML
     End Function
 
+    Public Function ConvertRectangleToMeters(Rectangle As RectangleF, FromUnit As SizeUnit) As RectangleF
+        Select Case FromUnit
+            Case SizeUnit.cm
+                Return New RectangleF(Rectangle.X / 100.0F, Rectangle.Y / 100.0F, Rectangle.Width / 100.0F, Rectangle.Height / 100.0F)
+            Case SizeUnit.mm
+                Return New RectangleF(Rectangle.X / 1000.0F, Rectangle.Y / 1000.0F, Rectangle.Width / 1000.0F, Rectangle.Height / 1000.0F)
+            Case SizeUnit.inch
+                Return New RectangleF(Rectangle.X * 0.0254F, Rectangle.Y * 0.0254F, Rectangle.Width * 0.0254F, Rectangle.Height * 0.0254F)
+            Case SizeUnit.pixel
+                Return New RectangleF((Rectangle.X / 96.0F) * 0.0254F, (Rectangle.Y / 96.0F) * 0.0254F, (Rectangle.Width / 96.0F) * 0.0254F, (Rectangle.Height / 96.0F) * 0.0254F)
+        End Select
+    End Function
+
     Public Enum SizeUnit
         none = -1
         pixel = 0

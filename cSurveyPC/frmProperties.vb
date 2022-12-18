@@ -9,6 +9,8 @@ Imports System.Text
 Imports System.Xml
 Imports cSurveyPC.cSurvey.Surface
 Imports cSurveyPC.cTrigpointDropDown
+Imports DevExpress.Drawing.Internal
+Imports System.Diagnostics.Eventing.Reader
 
 Friend Class frmProperties
     Private oSurvey As cSurvey.cSurvey
@@ -162,7 +164,14 @@ Friend Class frmProperties
             cboInversionMode.SelectedIndex = .InversionMode
 
             cboClipBorder.SelectedIndex = .DesignProperties.GetValue("clipborder", cEditDesignEnvironment.GetSetting("design.clipborder", cSurvey.Design.cClippingRegions.ClipBorderEnum.ClipBorder))
-            cboClipAdvancedClipart.SelectedIndex = .DesignProperties.GetValue("clippingforadvancedbrush", cEditDesignEnvironment.GetSetting("clippingforadvancedbrush", cSurvey.Drawings.cIRegion.RegionTypeEnum.GDI))
+            Dim sClippingForAdvancedBrushValue As String = cEditDesignEnvironment.GetSetting("clippingforadvancedbrush", cSurvey.Drawings.cIRegion.RegionTypeEnum.GDI.ToString("D"))
+            If sClippingForAdvancedBrushValue = "Clipper" Then
+                cboClipAdvancedClipart.SelectedIndex = cSurvey.Drawings.cIRegion.RegionTypeEnum.Clipper
+            ElseIf sClippingForAdvancedBrushValue = "GDI" Then
+                cboClipAdvancedClipart.SelectedIndex = cSurvey.Drawings.cIRegion.RegionTypeEnum.GDI
+            Else
+                cboClipAdvancedClipart.SelectedIndex = .DesignProperties.GetValue("clippingforadvancedbrush", sClippingForAdvancedBrushValue)
+            End If
 
             cboLineType.SelectedIndex = .DesignProperties.GetValue("LineType", cEditDesignEnvironment.GetSetting("design.linetype", cSurvey.Design.Items.cIItemLine.LineTypeEnum.Splines))
 

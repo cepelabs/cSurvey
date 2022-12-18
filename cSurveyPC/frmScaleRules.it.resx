@@ -331,7 +331,7 @@ Per il range di scala al di sotto del più piccolo fattore inserito verranno uti
 		<value>Continuo</value>
 	</data>
   <data name="lblDesignSoilScale.Text" xml:space="preserve">
-		<value>Riempimento (scala):</value>
+		<value>Riemp. clipart:</value>
 	</data>
   <data name="lblPlotPenStyle.Text" xml:space="preserve">
 		<value>Tratto:</value>
@@ -448,7 +448,7 @@ Per il range di scala al di sotto del più piccolo fattore inserito verranno uti
 		<value>Spessore (sel.):</value>
 	</data>
   <data name="lblDesignTerrainLevelScaleFactor.Text" xml:space="preserve">
-		<value>Testo:</value>
+		<value>Bordi:</value>
 	</data>
   <data name="lblPlotTextScaleFactor.Text" xml:space="preserve">
 		<value>Testo:</value>
@@ -466,7 +466,7 @@ Per il range di scala al di sotto del più piccolo fattore inserito verranno uti
 		<value>Clipart:</value>
 	</data>
   <data name="lblDesignSignScaleFactor.Text" xml:space="preserve">
-		<value>Clipart:</value>
+		<value>Simboli:</value>
 	</data>
   <data name="lblDesignTextureScale.Text" xml:space="preserve">
     <value>Riemp. texture:</value>

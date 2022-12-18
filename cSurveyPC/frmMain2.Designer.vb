@@ -2425,6 +2425,7 @@ Partial Class frmMain2
         Me.pnlStatusDesignZoom.Id = 135
         Me.pnlStatusDesignZoom.ImageOptions.SvgImage = CType(resources.GetObject("pnlStatusDesignZoom.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.pnlStatusDesignZoom.Name = "pnlStatusDesignZoom"
+        Me.pnlStatusDesignZoom.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         Me.pnlStatusDesignZoom.Width = 100
         '
         'btnStatusDesignWarping

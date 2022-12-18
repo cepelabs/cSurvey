@@ -163,6 +163,7 @@ Partial Class frmPreview
         Me.pnlForm = New DevExpress.XtraEditors.PanelControl()
         Me.flyParameters = New DevExpress.Utils.FlyoutPanel()
         Me.pnlParameters = New DevExpress.Utils.FlyoutPanelControl()
+        Me.cMainMessageBar = New cSurveyPC.cMessageBar()
         Me.pnlOptions.SuspendLayout()
         CType(Me.pnlMainOptions, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlMainOptions.SuspendLayout()
@@ -1427,6 +1428,16 @@ Partial Class frmPreview
         Me.pnlParameters.FlyoutPanel = Me.flyParameters
         Me.pnlParameters.Name = "pnlParameters"
         '
+        'cMainMessageBar
+        '
+        Me.cMainMessageBar.AllowMessageClick = False
+        Me.cMainMessageBar.ButtonStyle = cSurveyPC.cMessageBar.ButtonStyleEnum.Close
+        Me.cMainMessageBar.CaptionForecolor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.cMainMessageBar.CustomButtonCaption = "Refresh"
+        Me.cMainMessageBar.CustomButtonTooltip = ""
+        resources.ApplyResources(Me.cMainMessageBar, "cMainMessageBar")
+        Me.cMainMessageBar.Name = "cMainMessageBar"
+        '
         'frmPreview
         '
         resources.ApplyResources(Me, "$this")
@@ -1435,6 +1446,7 @@ Partial Class frmPreview
         Me.Controls.Add(Me.pnlForm)
         Me.Controls.Add(Me.trkZoom)
         Me.Controls.Add(Me.RibbonStatusBar1)
+        Me.Controls.Add(Me.cMainMessageBar)
         Me.Controls.Add(Me.RibbonControl1)
         Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.print
         Me.KeyPreview = True
@@ -1675,4 +1687,5 @@ Partial Class frmPreview
     Friend WithEvents btnProfileExportToFile As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents mnuProfiles As DevExpress.XtraBars.PopupMenu
     Friend WithEvents chkPrintTrigpointText As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents cMainMessageBar As cMessageBar
 End Class

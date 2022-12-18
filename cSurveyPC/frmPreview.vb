@@ -317,6 +317,9 @@ Friend Class frmPreview
         Dim oBackcolor As Color = cEditDesignEnvironment.GetSetting("design.lowerlayersdesignbackcolor", Color.White)
         picMap.BackColor = oBackcolor
         pPreview.BackColor = oBackcolor
+
+        Dim oMessageForeColor As Color = cEditDesignEnvironment.GetSetting("messagebar.forecolor", SystemColors.ControlText)
+        cMainMessageBar.CaptionForecolor = oMessageForeColor
     End Sub
 
     Private Sub oEditDesignEnvironment_OnChanged(Sender As Object, e As PropertyChangeEventArgs)
@@ -915,6 +918,9 @@ Friend Class frmPreview
     Private Sub pDrawExportPreview() ' Optional DrawDesign As Boolean = True)
         oMousePointer.Push(Cursors.WaitCursor)
         bEventDisabled = True
+
+        Call pPopupHide()
+
         Call pOptionsSave()
         Dim oOptions As cSurvey.Design.cOptionsExport = oCurrentOptions 'pExportOptionsSave()
 
@@ -927,7 +933,8 @@ Friend Class frmPreview
             If (picExport.Image Is Nothing) OrElse (Not picExport.Image Is Nothing AndAlso ((picExport.Image.Width <> iImageWidth) OrElse (picExport.Image.Height <> iImageHeight))) Then
                 Try
                     oImage = New Bitmap(iImageWidth, iImageHeight) ', Drawing.Imaging.PixelFormat.Format32bppArgb)
-                Catch
+                Catch ex As Exception
+                    Call pPopupShow("error", modMain.GetLocalizedString("preview.textpart6"))
                     iImageWidth = 2048
                     iImageHeight = 2048
                     oImage = New Bitmap(iImageWidth, iImageHeight)
@@ -938,7 +945,8 @@ Friend Class frmPreview
         Catch
             Try
                 oImage = New Bitmap(iImageWidth, iImageHeight) ', Drawing.Imaging.PixelFormat.Format32bppArgb)
-            Catch
+            Catch ex As Exception
+                Call pPopupShow("error", modMain.GetLocalizedString("preview.textpart6"))
                 iImageWidth = 2048
                 iImageHeight = 2048
                 oImage = New Bitmap(iImageWidth, iImageHeight)
@@ -982,6 +990,7 @@ Friend Class frmPreview
 
                 sPaintZoom = 10
                 Dim oPageRect As RectangleF = New RectangleF(oMargins.Left, oMargins.Top, iImageWidth - oMargins.Left - oMargins.Right, iImageHeight - oMargins.Top - oMargins.Bottom)
+
                 oPaintTranslation = New PointF(oPageRect.Width / 2, oPageRect.Height / 2)
                 Dim oRect As RectangleF
                 If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
@@ -1526,9 +1535,11 @@ Friend Class frmPreview
                             Dim sImageWidth As Single = oOptions.ImageWidth  '4096
                             Dim sImageHeight As Single = oOptions.ImageHeight '4096
 
-                            Dim sPaintZoom As Single = 10
+                            Dim sPaintZoom As Single
+                            Dim iUnit As SizeUnit = pToSizeUnit(cboImageUM.SelectedIndex)
                             Dim oPageRect As RectangleF = New RectangleF(oOptions.Margins.Left, oOptions.Margins.Top, sImageWidth - oOptions.Margins.Left - oOptions.Margins.Right, sImageHeight - oOptions.Margins.Top - oOptions.Margins.Bottom)
-                            'oPaintTranslation = New PointF(oPageRect.Width / 2, oPageRect.Height / 2)
+                            oPageRect = modSVG.ConvertRectangleToMeters(oPageRect, iUnit)
+
                             Dim oRect As RectangleF
                             If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
                                 oRect = oSurvey.Plan.GetDesignVisibleBounds(oOptions)
@@ -1547,9 +1558,9 @@ Friend Class frmPreview
                                 Dim sDelta As Single = If(sDeltaX < sDeltaY, sDeltaX, sDeltaY)
                                 If Single.IsInfinity(sDelta) Then sDelta = 100
                                 sPaintZoom = sDelta
-                                Using oGr As Graphics = picExport.CreateGraphics
-                                    txtScaleManual.Value = modPaint.GetScaleFactor(oGr, sPaintZoom)
-                                End Using
+                                'Using oGr As Graphics = picExport.CreateGraphics
+                                '    txtScaleManual.Value = modPaint.GetScaleFactor(oGr, sPaintZoom)
+                                'End Using
                             Else
                                 Dim iFactor As Integer
                                 If cboScale.SelectedIndex = cboScale.Properties.Items.Count - 1 Then
@@ -1563,22 +1574,23 @@ Friend Class frmPreview
                                     End If
                                     txtScaleManual.Value = iFactor
                                 End If
-                                Using oGr As Graphics = picExport.CreateGraphics
-                                    sPaintZoom = modPaint.GetZoomFactor(oGr, iFactor) ' ((1 / iFactor) / 0.0254) * oGr.DpiX
-                                End Using
+                                sPaintZoom = 1.0F / iFactor
+                                'Using oGr As Graphics = picExport.CreateGraphics
+                                '    sPaintZoom = modPaint.GetZoomFactor(oGr, iFactor) ' ((1 / iFactor) / 0.0254) * oGr.DpiX
+                                'End Using
                             End If
                             'oRect = modPaint.ScaleRectangle(oRect, sPaintZoom)
 
                             Dim oPaintTranslation As PointF = New PointF(-oRect.Left * sPaintZoom + oPageRect.Left + (oPageRect.Width - (oRect.Width * sPaintZoom)) / 2, -oRect.Top * sPaintZoom + oPageRect.Top + (oPageRect.Height - (oRect.Height * sPaintZoom)) / 2)
 
                             'scale page coordinate to real coordinate (without margins....to prevent some svg viewer cutting objects outside viewbox)
-                            Dim oPageInPixels As RectangleF = New RectangleF(0, 0, sImageWidth, sImageHeight)
+                            Dim oPageInSourceUnit As RectangleF = New RectangleF(0, 0, sImageWidth, sImageHeight)
                             Dim oPageInMeters As RectangleF = New RectangleF(0, 0, sImageWidth, sImageHeight)
+                            oPageInMeters = modSVG.ConvertRectangleToMeters(oPageInMeters, iUnit)
                             oPageInMeters = modPaint.FullScaleRectangle(oPageInMeters, 1 / sPaintZoom)
                             oPageInMeters = New RectangleF(oPageInMeters.X - oPaintTranslation.X / sPaintZoom, oPageInMeters.Y - oPaintTranslation.Y / sPaintZoom, oPageInMeters.Width, oPageInMeters.Height)
 
                             Dim oSize As SizeF = New SizeF(sImageWidth, sImageHeight)
-                            Dim iUnit As SizeUnit = pToSizeUnit(cboImageUM.SelectedIndex)
 
                             sLastFilename = .FileName
 
@@ -1601,9 +1613,9 @@ Friend Class frmPreview
                             End If
 
                             If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
-                                oXML = oSurvey.Plan.ToSvg(oOptions, oSVGOptions, oSize, oPageInPixels, iUnit, oPageInMeters)
+                                oXML = oSurvey.Plan.ToSvg(oOptions, oSVGOptions, oSize, oPageInSourceUnit, iUnit, oPageInMeters)
                             Else
-                                oXML = oSurvey.Profile.ToSvg(oOptions, oSVGOptions, oSize, oPageInPixels, iUnit, oPageInMeters)
+                                oXML = oSurvey.Profile.ToSvg(oOptions, oSVGOptions, oSize, oPageInSourceUnit, iUnit, oPageInMeters)
                             End If
 
                             'Call XMLAddDeclaration(oXML)
@@ -3416,5 +3428,17 @@ Friend Class frmPreview
 
     Private Sub chkShowTrigpointText_CheckedChanged(sender As Object, e As EventArgs) Handles chkPrintTrigpointText.CheckedChanged
         Call pRefresh()
+    End Sub
+
+    Private Sub cMainMessageBar_OnCloseRequest(sender As Object, e As EventArgs) Handles cMainMessageBar.OnCloseRequest
+        Call pPopupHide()
+    End Sub
+
+    Private Sub pPopupShow(ByVal Type As String, ByVal Text As String, Optional Details As String = "")
+        Call cMainMessageBar.PopupShow(Type, Text, Details)
+    End Sub
+
+    Private Sub pPopupHide()
+        Call cMainMessageBar.Hide()
     End Sub
 End Class

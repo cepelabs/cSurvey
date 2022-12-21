@@ -13555,19 +13555,19 @@ Friend Class frmMain2
         'Call pSurveySegmentsRefresh()
     End Sub
 
-    Private Sub pnlSegment_Enter(ByVal sender As Object, ByVal e As System.EventArgs)
+    Private Sub pnlSegment_Enter(ByVal sender As Object, ByVal e As System.EventArgs) Handles pnlSegment.Enter
         bSegmentChanged = True
     End Sub
 
-    Private Sub pnlSegment_Leave(sender As System.Object, e As System.EventArgs)
+    Private Sub pnlSegment_Leave(sender As System.Object, e As System.EventArgs) Handles pnlSegment.Leave
         Call pSegmentSave(oTools.CurrentSegment)
     End Sub
 
-    Private Sub pnlTrigPoint_Enter(sender As Object, e As System.EventArgs)
+    Private Sub pnlTrigPoint_Enter(sender As Object, e As System.EventArgs) Handles pnlTrigPoint.Enter
         bTrigpointChanged = True
     End Sub
 
-    Private Sub pnlTrigPoint_Leave(sender As System.Object, e As System.EventArgs)
+    Private Sub pnlTrigPoint_Leave(sender As System.Object, e As System.EventArgs) Handles pnlTrigPoint.Leave
         Call pTrigPointSave(oTools.CurrentTrigpoint)
     End Sub
 

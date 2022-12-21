@@ -24,6 +24,8 @@
 
             Image = &H70
             Sketch = &H71
+
+            Geology = &H80
         End Enum
 
         Enum cItemTypeEnum As Integer
@@ -47,7 +49,6 @@
             InformationBoxText = 16
 
             CrossSectionMarker = 29
-
 
             Group = 50
 

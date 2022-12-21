@@ -47,7 +47,7 @@ Friend Class cItemBrushStylePropertyControl
         Dim bClipartVisible As Boolean
         Dim bTextureVisible As Boolean
         Dim bClipartSettingsVisible As Boolean
-        Dim bClipartAndPatternSettingsVisible As Boolean
+        Dim bPatternSettingsVisible As Boolean
         Dim bAlternativeColorVisible As Boolean
 
         If Item.Brush.Type = cBrush.BrushTypeEnum.Custom Then
@@ -59,7 +59,7 @@ Friend Class cItemBrushStylePropertyControl
                     bClipartVisible = False
                     bTextureVisible = True
                     bClipartSettingsVisible = False
-                    bClipartAndPatternSettingsVisible = False
+                    bPatternSettingsVisible = False
                     bPatternVisible = False
                     bAlternativeColorVisible = True
                 Case cBrush.HatchTypeEnum.Pattern
@@ -69,7 +69,7 @@ Friend Class cItemBrushStylePropertyControl
                     bClipartVisible = False
                     bTextureVisible = False
                     bClipartSettingsVisible = False
-                    bClipartAndPatternSettingsVisible = True
+                    bPatternSettingsVisible = True
                     bPatternVisible = True
                     bAlternativeColorVisible = True
                 Case cBrush.HatchTypeEnum.Clipart
@@ -79,7 +79,7 @@ Friend Class cItemBrushStylePropertyControl
                     bClipartVisible = True
                     bTextureVisible = False
                     bClipartSettingsVisible = True
-                    bClipartAndPatternSettingsVisible = True
+                    bPatternSettingsVisible = False
                     bPatternVisible = False
                     bAlternativeColorVisible = True
                 Case cBrush.HatchTypeEnum.Solid
@@ -89,6 +89,7 @@ Friend Class cItemBrushStylePropertyControl
                     bClipartVisible = False
                     bTextureVisible = False
                     bClipartSettingsVisible = False
+                    bPatternSettingsVisible = False
                     bPatternVisible = False
                     bAlternativeColorVisible = False
                 Case Else
@@ -98,7 +99,7 @@ Friend Class cItemBrushStylePropertyControl
                     bClipartVisible = False
                     bTextureVisible = False
                     bClipartSettingsVisible = False
-                    bClipartAndPatternSettingsVisible = False
+                    bPatternSettingsVisible = False
                     bPatternVisible = False
                     bAlternativeColorVisible = False
             End Select
@@ -110,9 +111,9 @@ Friend Class cItemBrushStylePropertyControl
         pnlBrushClipart.Visible = bClipartVisible
         pnlBrushTexture.Visible = bTextureVisible
         pnlBrushClipartSettings.Visible = bClipartSettingsVisible
-        pnlBrushClipartAnPatternSettings.Visible = bClipartAndPatternSettingsVisible = True
+        pnlBrushPatternSettings.Visible = bPatternSettingsVisible
 
-        Height = (45 + If(bStyleVisible, pnlBrushStyle.Height, 0) + If(bClipartVisible, pnlBrushClipart.Height, 0) + If(btexturevisible, pnlBrushTexture.Height, 0) + If(bClipartSettingsVisible, pnlBrushClipartSettings.Height, 0) + If(bPatternVisible, pnlBrushPattern.Height, 0) + If(bAlternativeColorVisible, pnlBrushAlternativeColor.Height, 0) + If(bClipartAndPatternSettingsVisible, pnlBrushClipartAnPatternSettings.Height, 0)) * CurrentAutoScaleDimensions.Height / 96.0F
+        Height = (45 + If(bStyleVisible, pnlBrushStyle.Height, 0) + If(bClipartVisible, pnlBrushClipart.Height, 0) + If(bTextureVisible, pnlBrushTexture.Height, 0) + If(bClipartSettingsVisible, pnlBrushClipartSettings.Height, 0) + If(bPatternVisible, pnlBrushPattern.Height, 0) + If(bAlternativeColorVisible, pnlBrushAlternativeColor.Height, 0) + If(bPatternSettingsVisible, pnlBrushPatternSettings.Height, 0)) * CurrentAutoScaleDimensions.Height / 96.0F
     End Sub
 
     Private Sub cboPropBrushClipartPosition_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropBrushClipartPosition.SelectedIndexChanged
@@ -236,8 +237,14 @@ Friend Class cItemBrushStylePropertyControl
                 txtPropBrushClipartZoomFactor.Value = Item.Brush.ClipartZoomFactor * 1000.0F
                 cboPropBrushClipartAngleMode.SelectedIndex = Item.Brush.ClipartAngleMode
                 txtPropBrushClipartAngle.Value = Item.Brush.ClipartAngle
+
                 cboPropBrushPatternType.SelectedIndex = Item.Brush.PatternType
                 cboPropBrushPatternPen.SelectedIndex = Item.Brush.PatternPenStyle
+                txtPropBrushPatternDensity.Value = Item.Brush.PatternDensity * 100.0F
+                cboPropBrushPatternAngleMode.SelectedIndex = Item.Brush.PatternAngleMode
+                txtPropBrushPatternAngle.Value = Item.Brush.PatternAngle
+                txtPropBrushPatternZoomFactor.Value = Item.Brush.PatternZoomFactor * 1000.0F
+
                 txtPropBrushAlternativeBrushColor.EditValue = Item.Brush.ClipartAlternativeColor
                 cboPropBrushClipartPosition.SelectedIndex = Item.Brush.ClipartPosition
                 txtPropBrushAlternativeBrushColor.EditValue = Item.Brush.ClipartAlternativeColor
@@ -336,6 +343,15 @@ Friend Class cItemBrushStylePropertyControl
         Call pExportToFile()
     End Sub
 
+    Private Sub txtPropBrushPatternZoomFactor_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropBrushPatternZoomFactor.EditValueChanged
+        If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternZoomFactor")
+            Item.Brush.PatternZoomFactor = txtPropBrushPatternZoomFactor.Value / 1000.0F
+            Call MyBase.PropertyChanged("BrushPatternZoomFactor")
+            Call MyBase.MapInvalidate()
+        End If
+    End Sub
+
     Private Sub txtPropBrushClipartZoomFactor_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropBrushClipartZoomFactor.EditValueChanged
         If Not DisabledObjectProperty() Then
             Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.ClipartZoomFactor")
@@ -397,5 +413,35 @@ Friend Class cItemBrushStylePropertyControl
                 End If
             End With
         End Using
+    End Sub
+
+    Private Sub txtPropBrushPatternDensity_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropBrushPatternDensity.EditValueChanged
+        If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternDensity")
+            Item.Brush.PatternDensity = txtPropBrushPatternDensity.Value / 100.0F
+            Call MyBase.PropertyChanged("BrushPatternDensity")
+            Call MyBase.MapInvalidate()
+        End If
+    End Sub
+
+    Private Sub txtPropBrushPatternAngle_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropBrushPatternAngle.EditValueChanged
+        If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternAngle")
+            Item.Brush.PatternAngle = txtPropBrushPatternAngle.Value
+            Call MyBase.PropertyChanged("BrushPatternAngle")
+            Call MyBase.MapInvalidate()
+        End If
+    End Sub
+
+    Private Sub cboPropBrushPatternngleMode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropBrushPatternAngleMode.SelectedIndexChanged
+        If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternAngleMode")
+            Item.Brush.PatternAngleMode = cboPropBrushPatternAngleMode.SelectedIndex
+            Call MyBase.PropertyChanged("BrushPatternAngleMode")
+            Call MyBase.MapInvalidate()
+        End If
+
+        txtPropBrushPatternAngle.Enabled = Item.Brush.PatternAngleMode = cBrush.PatternAngleModeEnum.Fixed
+        lblPropBrushPatternAngle.Enabled = txtPropBrushPatternAngle.Enabled
     End Sub
 End Class

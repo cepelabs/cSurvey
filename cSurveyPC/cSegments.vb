@@ -143,6 +143,11 @@ Namespace cSurvey
             End If
         End Sub
 
+        ''' <summary>
+        ''' Move a shot to a new position
+        ''' </summary>
+        ''' <param name="Index">The new position of the shot</param>
+        ''' <param name="Segment">The shot to be moved</param>
         Public Sub MoveTo(ByVal Index As Integer, ByVal Segment As cSegment)
             Try
                 Dim iIndex As Integer = oSegments.IndexOf(Segment)

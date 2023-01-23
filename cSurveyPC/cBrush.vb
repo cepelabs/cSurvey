@@ -7,9 +7,470 @@ Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.IO
 Imports DevExpress.Export.Xl
-
+Imports DevExpress.XtraRichEdit.Import.Html
+Imports cSurveyPC.cSurvey.Scripting
+Imports DevExpress.Data.TreeList
+Imports System.Collections.ObjectModel
+Imports DevExpress.XtraRichEdit.Layout
+Imports System.Dynamic
+Imports DevExpress.Emf
 
 Namespace cSurvey.Design
+
+    ''' <summary>
+    ''' Patter brush parameter base class
+    ''' </summary>
+    Public MustInherit Class cPatternBrushParameterBase
+        Private sName As String
+        Private sCaption As String
+        Private sTooltip As String
+        Private sType As String
+
+        Public MustOverride ReadOnly Property DefaultValue As Object
+
+        Public ReadOnly Property Caption As String
+            Get
+                Return sCaption
+            End Get
+        End Property
+
+        Public ReadOnly Property Tooltip As String
+            Get
+                Return sTooltip
+            End Get
+        End Property
+
+        Public ReadOnly Property Type As String
+            Get
+                Return sType
+            End Get
+        End Property
+
+        Public Function GetRealType() As Type
+            Select Case sType
+                Case "boolean"
+                    Return GetType(Boolean)
+                Case "date"
+                    Return GetType(Date)
+                Case "double"
+                    Return GetType(Double)
+                Case "single"
+                    Return GetType(Single)
+                Case "integer"
+                    Return GetType(Integer)
+                Case "string"
+                    Return GetType(String)
+            End Select
+        End Function
+
+        Public ReadOnly Property Name As String
+            Get
+                Return sName
+            End Get
+        End Property
+
+        Public Sub New(Name As String, Caption As String, Tooltip As String, Type As String)
+            sName = Name
+            sCaption = Caption
+            sTooltip = Tooltip
+            sType = Type
+        End Sub
+    End Class
+
+    Public Class cPatternBrushParameterString
+        Inherits cPatternBrushParameterBase
+
+        Private sDefaultValue As String
+
+        Public Overrides ReadOnly Property DefaultValue As Object
+            Get
+                Return sDefaultValue
+            End Get
+        End Property
+
+        Public Sub New(Name As String, Caption As String, Tooltip As String, DefaultValue As String)
+            MyBase.New(Name, Caption, Tooltip, "string")
+            sDefaultValue = DefaultValue
+        End Sub
+    End Class
+
+    Public Class cPatternBrushParameterBoolean
+        Inherits cPatternBrushParameterBase
+
+        Private bDefaultValue As Boolean
+
+        Public Overrides ReadOnly Property DefaultValue As Object
+            Get
+                Return bDefaultValue
+            End Get
+        End Property
+
+        Public Sub New(Name As String, Caption As String, Tooltip As String, DefaultValue As Boolean)
+            MyBase.New(Name, Caption, Tooltip, "boolean")
+            bDefaultValue = DefaultValue
+        End Sub
+    End Class
+
+    Public Class cPatternBrushParameterSingle
+        Inherits cPatternBrushParameterBase
+
+        Private sDefaultValue As Single
+        Private sMinValue As Single
+        Private sMaxValue As Single
+
+        Public ReadOnly Property MinValue As Single
+            Get
+                Return sMinValue
+            End Get
+        End Property
+
+        Public ReadOnly Property MaxValue As Single
+            Get
+                Return sMaxValue
+            End Get
+        End Property
+
+        Public Overrides ReadOnly Property DefaultValue As Object
+            Get
+                Return sDefaultValue
+            End Get
+        End Property
+
+        Public Sub New(Name As String, Caption As String, Tooltip As String, DefaultValue As Single, MinValue As Single, MaxValue As Single)
+            MyBase.New(Name, Caption, Tooltip, "single")
+            sDefaultValue = DefaultValue
+            sMinValue = MinValue
+            sMaxValue = MaxValue
+        End Sub
+    End Class
+
+    Public Class cPatternBrushInstance
+        Inherits Dynamic.DynamicObject
+
+        Private oBase As cPatternBrushBase
+        Private oParameterValues As Dictionary(Of String, Object)
+
+        Friend Event OnChanged(sender As Object, e As EventArgs)
+
+        Public Overrides Function TrySetMember(binder As SetMemberBinder, value As Object) As Boolean
+            If oBase.Parameters.Contains(binder.Name) Then
+                Call SetParameterValue(binder.Name, value)
+                Return True
+            End If
+        End Function
+
+        Public Overrides Function TryGetMember(binder As GetMemberBinder, ByRef result As Object) As Boolean
+            If oParameterValues.ContainsKey(binder.Name) Then
+                result = GetParameterValue(binder.Name)
+                Return True
+            ElseIf oBase.Parameters.Contains(binder.Name) Then
+                result = oBase.Parameters(binder.Name).DefaultValue
+                Return True
+            End If
+        End Function
+
+        Public Overrides Function GetDynamicMemberNames() As IEnumerable(Of String)
+            Return oBase.Parameters.Select(Function(oParameter) oParameter.Name)
+        End Function
+
+        Friend ReadOnly Property Base As cPatternBrushBase
+            Get
+                Return oBase
+            End Get
+        End Property
+
+        Friend Function ParameterValues() As Dictionary(Of String, Object)
+            Return oParameterValues
+        End Function
+
+        Public Function GetParameterValue(Name As String) As Object
+            If oParameterValues.ContainsKey(Name) Then
+                Return oParameterValues(Name)
+            Else
+                Return oBase.Parameters(Name).DefaultValue
+            End If
+        End Function
+
+        Public Sub SetParameterValue(Name As String, Value As Object)
+            If oParameterValues.ContainsKey(Name) Then
+                Call oParameterValues.Remove(Name)
+            End If
+            Call oParameterValues.Add(Name, Value)
+            RaiseEvent OnChanged(Me, EventArgs.Empty)
+        End Sub
+
+        Public Sub New(Instance As cPatternBrushInstance)
+            oBase = Instance.oBase
+            oParameterValues = New Dictionary(Of String, Object)(StringComparer.OrdinalIgnoreCase)
+            For Each sKey As String In Instance.ParameterValues.Keys
+                oParameterValues.Add(sKey, Instance.ParameterValues(sKey))
+            Next
+        End Sub
+
+        Public Sub New([ID] As Integer)
+            oBase = cPatternBrushHelper.GetGallery(ID)
+            oParameterValues = New Dictionary(Of String, Object)(StringComparer.OrdinalIgnoreCase)
+        End Sub
+
+        Public Sub New(Base As cPatternBrushBase)
+            oBase = Base
+            oParameterValues = New Dictionary(Of String, Object)(StringComparer.OrdinalIgnoreCase)
+        End Sub
+    End Class
+
+    Public Class cPatternBrushPainter
+        Implements IDisposable
+
+        Private oBrush As cPatternBrush
+        Private oBounds As RectangleF
+
+        Private oPath As GraphicsPath
+        Private disposedValue As Boolean
+
+        Private bIsFilled As Boolean
+
+        Public Property IsFilled As Boolean
+            Get
+                Return bIsFilled
+            End Get
+            Set(value As Boolean)
+                bIsFilled = value
+            End Set
+        End Property
+
+        Friend ReadOnly Property Path As GraphicsPath
+            Get
+                Return oPath
+            End Get
+        End Property
+
+        Public ReadOnly Property Density() As Single
+            Get
+                Return oBrush.PatternDensity
+            End Get
+        End Property
+
+        Public ReadOnly Property DeltaX() As Single
+            Get
+                Return oBrush.PatternDeltaX
+            End Get
+        End Property
+
+        Public ReadOnly Property DeltaY() As Single
+            Get
+                Return oBrush.PatternDeltaY
+            End Get
+        End Property
+
+        Public ReadOnly Property ZoomFactor() As Single
+            Get
+                Return oBrush.PatternZoomFactor
+            End Get
+        End Property
+
+        Public ReadOnly Property Parameters As Object
+            Get
+                Return oBrush.GetInstance
+            End Get
+        End Property
+
+        Public ReadOnly Property Brush As cPatternBrush
+            Get
+                Return oBrush
+            End Get
+        End Property
+
+        Public ReadOnly Property Bounds As RectangleF
+            Get
+                Return oBounds
+            End Get
+        End Property
+
+        Public Sub AddBeziers(points As PointF())
+            Call oPath.AddBeziers(points)
+        End Sub
+
+        Public Sub AddBezier(pt1 As PointF, pt2 As PointF, pt3 As PointF, pt4 As PointF)
+            Call oPath.AddBezier(pt1, pt2, pt3, pt4)
+        End Sub
+
+        Public Sub AddLines(points As PointF())
+            Call oPath.AddLines(points)
+        End Sub
+
+        Public Sub AddLine(pt1 As PointF, pt2 As PointF)
+            Call oPath.AddLine(pt1, pt2)
+        End Sub
+
+        Public Sub CloseFigure()
+            Call oPath.CloseFigure()
+        End Sub
+
+        Public Sub StartFigure()
+            Call oPath.StartFigure()
+        End Sub
+
+        Public Sub New(Brush As cPatternBrush, Bounds As RectangleF)
+            oBrush = Brush
+            oBounds = Bounds
+            oPath = New GraphicsPath
+        End Sub
+
+        Protected Overridable Sub Dispose(disposing As Boolean)
+            If Not disposedValue Then
+                If disposing Then
+                    Call oPath.Dispose()
+                End If
+                disposedValue = True
+            End If
+        End Sub
+
+        Public Sub Dispose() Implements IDisposable.Dispose
+            ' Do not change this code. Put cleanup code in 'Dispose(disposing As Boolean)' method
+            Dispose(disposing:=True)
+            GC.SuppressFinalize(Me)
+        End Sub
+    End Class
+
+    Public Class cPatternBrushParameterBaseCollection
+        Inherits KeyedCollection(Of String, cPatternBrushParameterBase)
+
+        Public Sub New()
+            Call MyBase.New(StringComparer.OrdinalIgnoreCase)
+        End Sub
+
+        Protected Overrides Function GetKeyForItem(ByVal item As cPatternBrushParameterBase) As String
+            Return item.Name
+        End Function
+    End Class
+
+    ''' <summary>
+    ''' Pattern brush from file with base code and parameters
+    ''' </summary>
+    Public Class cPatternBrushBase
+        Private iID As Integer
+        Private sName As String
+        Private sCaption As String
+        Private sTooltip As String
+        Private oClass As Object
+        Private oParameters As cPatternBrushParameterBaseCollection
+
+        Friend Sub OnPaint(Painter As cPatternBrushPainter)
+            Call oClass.DefaultInstance.onpaint(Painter)
+        End Sub
+
+        Public ReadOnly Property ID As Integer
+            Get
+                Return iID
+            End Get
+        End Property
+
+        Public ReadOnly Property Parameters As cPatternBrushParameterBaseCollection
+            Get
+                Return oParameters
+            End Get
+        End Property
+
+        Public ReadOnly Property Tooltip
+            Get
+                Return sTooltip
+            End Get
+        End Property
+
+        Public Overrides Function ToString() As String
+            Return sCaption
+        End Function
+
+        Public ReadOnly Property Caption
+            Get
+                Return sCaption
+            End Get
+        End Property
+
+        Public ReadOnly Property Name
+            Get
+                Return sName
+            End Get
+        End Property
+
+        Friend Sub New(XMLPattern As XmlElement)
+            iID = XMLPattern.GetAttribute("id")
+            sName = XMLPattern.GetAttribute("name")
+            Dim oLocalizedStrings As cLocalizedStrings = modXML.GetLocalizedStrings(XMLPattern)
+            sCaption = oLocalizedStrings.Caption
+            sTooltip = oLocalizedStrings.Tooltip
+            oParameters = New cPatternBrushParameterBaseCollection
+            If modXML.ChildElementExist(XMLPattern, "parameters") Then
+                For Each oXmlParameter As XmlElement In XMLPattern.Item("parameters")
+                    Dim oParameterLocalizedStrings As cLocalizedStrings = modXML.GetLocalizedStrings(oXmlParameter)
+                    Dim sParameterCaption As String = oParameterLocalizedStrings.Caption
+                    Dim sParameterTooltip As String = oParameterLocalizedStrings.Tooltip
+                    Select Case oXmlParameter.GetAttribute("type")
+                        Case "boolean"
+                            Dim oParameter As cPatternBrushParameterBoolean = New cPatternBrushParameterBoolean(oXmlParameter.GetAttribute("name"), sParameterCaption, sParameterTooltip, oXmlParameter.GetAttribute("default"))
+                            Call oParameters.Add(oParameter)
+                        Case "single"
+                            Dim oParameter As cPatternBrushParameterSingle = New cPatternBrushParameterSingle(oXmlParameter.GetAttribute("name"), sParameterCaption, sParameterTooltip, oXmlParameter.GetAttribute("default"), oXmlParameter.GetAttribute("min"), oXmlParameter.GetAttribute("max"))
+                            Call oParameters.Add(oParameter)
+                        Case "string"
+                            Dim oParameter As cPatternBrushParameterString = New cPatternBrushParameterString(oXmlParameter.GetAttribute("name"), sParameterCaption, sParameterTooltip, oXmlParameter.GetAttribute("default"))
+                            Call oParameters.Add(oParameter)
+                    End Select
+                Next
+            End If
+            Dim oXmlCode As XmlElement = XMLPattern("code")
+            oClass = New cClass(Nothing, sName.Replace(" ", "_"), oXmlCode.InnerText, If(oXmlCode.GetAttribute("lang") = "vb#", LanguageEnum.VisualBasic, LanguageEnum.CSharp))
+        End Sub
+    End Class
+
+    Public Class cPatternBrushBaseCollection
+        Inherits KeyedCollection(Of Integer, cPatternBrushBase)
+
+        Protected Overrides Function GetKeyForItem(ByVal item As cPatternBrushBase) As Integer
+            Return item.ID
+        End Function
+    End Class
+
+    ''' <summary>
+    ''' Helper class for patter brush management
+    ''' </summary>
+    Public Class cPatternBrushHelper
+        Private Shared oItems As cPatternBrushBaseCollection
+
+        Public Shared Function GetGallery() As cPatternBrushBaseCollection
+            If oItems Is Nothing Then
+                oItems = New cPatternBrushBaseCollection
+                For Each sFilename As String In My.Computer.FileSystem.GetFiles(IO.Path.Combine(IO.Path.Combine(modMain.GetApplicationPath, "objects"), "patterns"), FileIO.SearchOption.SearchTopLevelOnly, {"*.xml"})
+                    Dim oXML As XmlDocument = New XmlDocument
+                    oXML.Load(sFilename)
+                    If oXML.DocumentElement.Name = "pattern" Then
+                        Dim oPatternBrushBase = New cPatternBrushBase(oXML.DocumentElement)
+                        Call oItems.Add(oPatternBrushBase)
+                    Else
+                        For Each oXMLPattern As XmlElement In oXML.DocumentElement.SelectNodes("pattern")
+                            Dim oPatternBrushBase = New cPatternBrushBase(oXMLPattern)
+                            Call oItems.Add(oPatternBrushBase)
+                        Next
+                    End If
+                Next
+            End If
+            Return oItems
+        End Function
+    End Class
+
+    Public Interface cIPatternBrush
+        Property PatternType As cBrush.PatternTypeEnum
+        Property PatternPenStyle As cPen.PenStylesEnum
+        Property PatternAngleMode As cBrush.PatternAngleModeEnum
+        Property PatternAngle As Single
+        Property PatternDensity As Single
+        Property PatternZoomFactor As Single
+
+        Property PatternDeltaX As Single
+        Property PatternDeltaY As Single
+
+        Function GetPatternInstance() As Object
+    End Interface
 
     Public Class cPatternBrushes
         Implements IEnumerable
@@ -18,9 +479,33 @@ Namespace cSurvey.Design
 
         Private oItems As List(Of cPatternBrush)
 
+        Friend Event OnInvalidate(Sender As Object, e As EventArgs)
+
+        Public Function Count() As Integer
+            Return oItems.Count
+        End Function
+
+        Public ReadOnly Property [Default] As cPatternBrush
+            Get
+                Return oItems(0)
+            End Get
+        End Property
+
+        Friend Function Clone() As cPatternBrushes
+            Dim oClone As cPatternBrushes = New cPatternBrushes(oSurvey)
+            For Each oItem As cPatternBrush In oItems
+                oClone.oItems.Add(oItem.Clone)
+            Next
+            Return oClone
+        End Function
+
         Public Sub New(Survey As cSurvey)
             oSurvey = Survey
             oItems = New List(Of cPatternBrush)
+            Dim oItem As cPatternBrush = New cPatternBrush(oSurvey)
+            Call oItems.Add(oItem)
+            AddHandler oItem.OnGetIndex, AddressOf oItem_OnGetIndex
+            AddHandler oItem.OnInvalidate, AddressOf oItem_OnInvalidate
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal item As XmlElement)
@@ -28,9 +513,14 @@ Namespace cSurvey.Design
             oItems = New List(Of cPatternBrush)
             Dim oItem As cPatternBrush = New cPatternBrush(oSurvey, File, item)
             Call oItems.Add(oItem)
+            AddHandler oItem.OnGetIndex, AddressOf oItem_OnGetIndex
+            AddHandler oItem.OnInvalidate, AddressOf oItem_OnInvalidate
             If modXML.ChildElementExist(item, "patternbrushes") Then
-                For Each oChildItem As XmlElement In item("patterbrushes").ChildNodes
-                    Call oItems.Add(New cPatternBrush(oSurvey, File, oChildItem))
+                For Each oChildItem As XmlElement In item("patternbrushes").ChildNodes
+                    oItem = New cPatternBrush(oSurvey, File, oChildItem)
+                    Call oItems.Add(oItem)
+                    AddHandler oItem.OnGetIndex, AddressOf oItem_OnGetIndex
+                    AddHandler oItem.OnInvalidate, AddressOf oItem_OnInvalidate
                 Next
             End If
         End Sub
@@ -56,6 +546,31 @@ Namespace cSurvey.Design
                 Call oXMLItem.SetAttribute("patternzoomfactor", modNumbers.NumberToString(oItem.PatternZoomFactor, "0.0000"))
                 Call oXMLItem.SetAttribute("patternanglemode", oItem.PatternAngleMode.ToString("D"))
                 Call oXMLItem.SetAttribute("patternangle", modNumbers.NumberToString(oItem.PatternAngle))
+
+                If oItem.PatternDeltaX <> 0 Then Call oXMLItem.SetAttribute("patterndx", modNumbers.NumberToString(oItem.PatternDeltaX))
+                If oItem.PatternDeltaY <> 0 Then Call oXMLItem.SetAttribute("patterndy", modNumbers.NumberToString(oItem.PatternDeltaY))
+
+                Dim oXmlParametersCollection As XmlElement = Document.CreateElement("parameters")
+                Dim oParameterValues As Dictionary(Of String, Object) = oItem.GetParameterValues
+                For Each sName As String In oParameterValues.Keys
+                    Dim oValue As Object = oParameterValues(sName)
+                    Dim sType As String = oValue.GetType.Name
+                    Dim oXmlParameterCollectionItem As XmlElement = Document.CreateElement("item")
+                    Call oXmlParameterCollectionItem.SetAttribute("name", sName)
+                    Call oXmlParameterCollectionItem.SetAttribute("type", sType)
+                    Select Case sType.ToLower
+                        Case "color"
+                            Dim oValueColor As Color = oValue
+                            oXmlParameterCollectionItem.InnerText = oValueColor.ToArgb
+                        Case "single", "double", "decimal"
+                            oXmlParameterCollectionItem.InnerText = modNumbers.NumberToString(oValue, "")
+                        Case Else
+                            oXmlParameterCollectionItem.InnerText = oValue
+                    End Select
+                    Call oXmlParametersCollection.AppendChild(oXmlParameterCollectionItem)
+                Next
+                Call oXMLItem.AppendChild(oXmlParametersCollection)
+
                 iIndex += 1
             Next
             Return oXMLItems
@@ -70,11 +585,16 @@ Namespace cSurvey.Design
         Public Function Append() As cPatternBrush
             Dim oItem As cPatternBrush = New cPatternBrush(oSurvey)
             Call oItems.Add(oItem)
+            AddHandler oItem.OnGetIndex, AddressOf oItem_OnGetIndex
+            AddHandler oItem.OnInvalidate, AddressOf oItem_OnInvalidate
             Return oItem
         End Function
 
         Public Function Remove(Index As Integer) As Boolean
             If Index > 0 AndAlso Index < oItems.Count Then
+                Dim oItem As cPatternBrush = oItems(Index)
+                RemoveHandler oItem.OnGetIndex, AddressOf oItem_OnGetIndex
+                RemoveHandler oItem.OnInvalidate, AddressOf oItem_OnInvalidate
                 Call oItems.RemoveAt(Index)
                 Return True
             Else
@@ -92,19 +612,101 @@ Namespace cSurvey.Design
         Public Function GetEnumerator() As IEnumerator Implements IEnumerable.GetEnumerator
             Return oItems.GetEnumerator
         End Function
+
+        Public Function IndexOf(Item As cPatternBrush) As Integer
+            Return oItems.IndexOf(Item)
+        End Function
+
+        Private Sub oItem_OnGetIndex(Sender As Object, e As cPatternBrush.cGetIndexEventArgs)
+            e.Index = oItems.IndexOf(Sender)
+        End Sub
+
+        Private Sub oItem_OnInvalidate(Sender As Object, e As EventArgs)
+            RaiseEvent OnInvalidate(Me, e)
+        End Sub
     End Class
 
     Public Class cPatternBrush
+        Implements cIPatternBrush
+
+        Private oSurvey As cSurvey
+
         Private iPatternType As cBrush.PatternTypeEnum
         Private iPatternPenStyle As cPen.PenStylesEnum
         Private iPatternAngleMode As cBrush.PatternAngleModeEnum
         Private sPatternAngle As Single
         Private sPatternDensity As Single
         Private sPatternZoomFactor As Single
+        Private sPatternDeltaX As Single
+        Private sPatternDeltaY As Single
 
+        Private WithEvents oPatternBrushInstance As cPatternBrushInstance
+
+        Friend Class cGetIndexEventArgs
+            Inherits EventArgs
+
+            Public Index As Integer
+        End Class
+
+        Friend Event OnGetIndex(Sender As Object, e As cGetIndexEventArgs)
         Friend Event OnInvalidate(Sender As Object, e As EventArgs)
 
+        'Public Sub SetParameters(Parameters As Dictionary(Of String, Object))
+        '    Call oPatternBrushInstance.FromDictionary(Parameters)
+        'End Sub
+        Friend Sub OnPaint(Painter As cPatternBrushPainter)
+            oPatternBrushInstance.Base.OnPaint(Painter)
+        End Sub
+
+        Friend Function GetParameterValues() As Dictionary(Of String, Object)
+            Return oPatternBrushInstance.ParameterValues
+        End Function
+
+        Public Sub SetParameterValue(Name As String, Value As Object)
+            Call oPatternBrushInstance.SetParameterValue(Name, Value)
+        End Sub
+
+        Public Function GetParameterValue(Name As String) As Object
+            Return oPatternBrushInstance.GetParameterValue(Name)
+        End Function
+
+        Public Function GetParameterDefinitions() As cPatternBrushParameterBaseCollection
+            Return oPatternBrushInstance.Base.Parameters
+        End Function
+
+        Public Function GetParameterDefinition(Name As String) As cPatternBrushParameterBase
+            Return oPatternBrushInstance.Base.Parameters(Name)
+        End Function
+
+        Public Function GetInstance() As Object Implements cIPatternBrush.GetPatternInstance
+            Return oPatternBrushInstance
+        End Function
+
+        Public Function GetIndex() As Integer
+            Dim oArgs As cGetIndexEventArgs = New cGetIndexEventArgs
+            RaiseEvent OnGetIndex(Me, oArgs)
+            Return oArgs.Index
+        End Function
+
+        Friend Function Clone() As cPatternBrush
+            Dim oClone As cPatternBrush = New cPatternBrush(oSurvey)
+            oClone.iPatternType = iPatternType
+            oClone.iPatternPenStyle = iPatternPenStyle
+            oClone.iPatternAngleMode = iPatternAngleMode
+            oClone.sPatternAngle = sPatternAngle
+            oClone.sPatternDensity = sPatternDensity
+            oClone.sPatternZoomFactor = sPatternZoomFactor
+            oClone.sPatternDeltaX = sPatternDeltaX
+            oClone.sPatternDeltaY = sPatternDeltaY
+            oClone.oPatternBrushInstance = New cPatternBrushInstance(oPatternBrushInstance)
+            Return oClone
+        End Function
+
         Friend Sub New(ByVal Survey As cSurvey)
+            oSurvey = Survey
+
+            oPatternBrushInstance = New cPatternBrushInstance(iPatternType)
+
             If sPatternDensity <= 0 Then sPatternDensity = 1.0F
             If sPatternZoomFactor <= 0 Then sPatternZoomFactor = 1.0F
 
@@ -112,15 +714,48 @@ Namespace cSurvey.Design
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal item As XmlElement)
+            oSurvey = Survey
+
             iPatternType = modXML.GetAttributeValue(item, "patterntype")
+            oPatternBrushInstance = New cPatternBrushInstance(iPatternType)
+
             iPatternPenStyle = modXML.GetAttributeValue(item, "patternpenstyle")
             iPatternAngleMode = modXML.GetAttributeValue(item, "patternanglemode")
             sPatternDensity = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "patterndensity", modXML.GetAttributeValue(item, "clipartdensity")))
             sPatternZoomFactor = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "patternzoomfactor", 1.0F))
             sPatternAngle = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "patternangle", modXML.GetAttributeValue(item, "clipartangle")))
 
+            sPatternDeltaX = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "patterndx", 0F))
+            sPatternDeltaY = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "patterndy", 0F))
+
             If sPatternDensity <= 0 Then sPatternDensity = 1.0F
             If sPatternZoomFactor <= 0 Then sPatternZoomFactor = 1.0F
+
+            If modXML.ChildElementExist(item, "parameters") Then
+                For Each oXMLItem As XmlElement In item("parameters").ChildNodes
+                    Dim sName As String = oXMLItem.GetAttribute("name")
+                    Dim sType As String = oXMLItem.GetAttribute("type")
+                    Dim sValue As String = oXMLItem.InnerText
+                    Dim oValue As Object
+                    Select Case sType.ToLower
+                        Case "color"
+                            oValue = Color.FromArgb(sValue)
+                        Case "single"
+                            oValue = modNumbers.StringToSingle(sValue)
+                        Case "double"
+                            oValue = modNumbers.StringToDouble(sValue)
+                        Case "integer"
+                            oValue = CInt(sValue)
+                        Case "decimal"
+                            oValue = CDec(modNumbers.StringToDecimal(sValue))
+                        Case "long"
+                            oValue = CLng(sValue)
+                        Case Else
+                            oValue = sValue
+                    End Select
+                    oPatternBrushInstance.SetParameterValue(sName, oValue)
+                Next
+            End If
 
             Call Invalidate()
         End Sub
@@ -129,7 +764,35 @@ Namespace cSurvey.Design
             RaiseEvent OnInvalidate(Me, EventArgs.Empty)
         End Sub
 
-        Public Property PatternZoomFactor() As Single
+        Private Sub oPatternBrushInstance_OnChanged(sender As Object, e As EventArgs) Handles oPatternBrushInstance.OnChanged
+            Call Invalidate()
+        End Sub
+
+        Public Property PatternDeltaX() As Single Implements cIPatternBrush.PatternDeltaX
+            Get
+                Return sPatternDeltaX
+            End Get
+            Set(ByVal value As Single)
+                If sPatternDeltaX <> value Then
+                    sPatternDeltaX = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property PatternDeltaY() As Single Implements cIPatternBrush.PatternDeltaY
+            Get
+                Return sPatternDeltaY
+            End Get
+            Set(ByVal value As Single)
+                If sPatternDeltaY <> value Then
+                    sPatternDeltaY = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property PatternZoomFactor() As Single Implements cIPatternBrush.PatternZoomFactor
             Get
                 Return sPatternZoomFactor
             End Get
@@ -141,7 +804,7 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public Property PatternAngleMode() As cBrush.PatternAngleModeEnum
+        Public Property PatternAngleMode() As cBrush.PatternAngleModeEnum Implements cIPatternBrush.PatternAngleMode
             Get
                 Return iPatternAngleMode
             End Get
@@ -153,16 +816,19 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public Property PatternDensity() As Single
+        Public Property PatternDensity() As Single Implements cIPatternBrush.PatternDensity
             Get
                 Return sPatternDensity
             End Get
             Set(ByVal value As Single)
-                sPatternDensity = value
+                If sPatternDensity <> value Then
+                    sPatternDensity = value
+                    Call Invalidate()
+                End If
             End Set
         End Property
 
-        Public Property PatternAngle() As Single
+        Public Property PatternAngle() As Single Implements cIPatternBrush.PatternAngle
             Get
                 Return sPatternAngle
             End Get
@@ -174,7 +840,7 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public Property PatternPenStyle() As cPen.PenStylesEnum
+        Public Property PatternPenStyle() As cPen.PenStylesEnum Implements cIPatternBrush.PatternPenStyle
             Get
                 Return iPatternPenStyle
             End Get
@@ -186,13 +852,14 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public Property PatternType() As cBrush.PatternTypeEnum
+        Public Property PatternType() As cBrush.PatternTypeEnum Implements cIPatternBrush.PatternType
             Get
                 Return iPatternType
             End Get
             Set(ByVal value As cBrush.PatternTypeEnum)
                 If iPatternType <> value Then
                     iPatternType = value
+                    oPatternBrushInstance = New cPatternBrushInstance(iPatternType)
                     Call Invalidate()
                 End If
             End Set
@@ -201,6 +868,7 @@ Namespace cSurvey.Design
 
     Public Class cCustomBrush
         Implements IDisposable
+        Implements cIPatternBrush
 
         Private WithEvents oSurvey As cSurvey
 
@@ -234,15 +902,15 @@ Namespace cSurvey.Design
         Private oBrush As SolidBrush
         Private oSchematicBrush As HatchBrush
 
-        Private oPatternBrushes As cPatternBrushes
+        Private WithEvents oPatternBrushes As cPatternBrushes
 
-        Private oPatternPen As Pen
-        Private iPatternType As cBrush.PatternTypeEnum
-        Private iPatternPenStyle As cPen.PenStylesEnum
-        Private iPatternAngleMode As cBrush.PatternAngleModeEnum
-        Private sPatternAngle As Single
-        Private sPatternDensity As Single
-        Private sPatternZoomFactor As Single
+        Private oPatternPens As List(Of Pen)
+        'Private iPatternType As cBrush.PatternTypeEnum
+        'Private iPatternPenStyle As cPen.PenStylesEnum
+        'Private iPatternAngleMode As cBrush.PatternAngleModeEnum
+        'Private sPatternAngle As Single
+        'Private sPatternDensity As Single
+        'Private sPatternZoomFactor As Single
 
         Private sLocalLineWidth As Single
         Private sLocalZoomFactor As Single
@@ -417,11 +1085,12 @@ Namespace cSurvey.Design
             oTexture = Brush.oTexture
             iTextureWrapMode = Brush.iTextureWrapMode
 
-            oPatternPen = Brush.oPatternPen
-            iPatternType = Brush.iPatternType
-            iPatternPenStyle = Brush.iPatternPenStyle
-            iPatternAngleMode = Brush.iPatternAngleMode
-            sPatternZoomFactor = Brush.sPatternZoomFactor
+            oPatternBrushes = Brush.oPatternBrushes.Clone
+            'oPatternPen = Brush.oPatternPen
+            'iPatternType = Brush.iPatternType
+            'iPatternPenStyle = Brush.iPatternPenStyle
+            'iPatternAngleMode = Brush.iPatternAngleMode
+            'sPatternZoomFactor = Brush.sPatternZoomFactor
 
             sLocalLineWidth = Brush.sLocalLineWidth
             Call Invalidate()
@@ -458,27 +1127,25 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Public Property PatternPenStyle() As cPen.PenStylesEnum
+        Public Function GetPatternInstance() As Object Implements cIPatternBrush.GetPatternInstance
+            Return oPatternBrushes.Default.GetInstance
+        End Function
+
+        Public Property PatternPenStyle() As cPen.PenStylesEnum Implements cIPatternBrush.PatternPenStyle
             Get
-                Return iPatternPenStyle
+                Return oPatternBrushes.Default.PatternPenStyle
             End Get
             Set(ByVal value As cPen.PenStylesEnum)
-                If iPatternPenStyle <> value Then
-                    iPatternPenStyle = value
-                    Call Invalidate()
-                End If
+                oPatternBrushes.Default.PatternPenStyle = value
             End Set
         End Property
 
-        Public Property PatternType() As cBrush.PatternTypeEnum
+        Public Property PatternType() As cBrush.PatternTypeEnum Implements cIPatternBrush.PatternType
             Get
-                Return iPatternType
+                Return oPatternBrushes.Default.PatternType
             End Get
             Set(ByVal value As cBrush.PatternTypeEnum)
-                If iPatternType <> value Then
-                    iPatternType = value
-                    Call Invalidate()
-                End If
+                oPatternBrushes.Default.PatternType = value
             End Set
         End Property
 
@@ -506,15 +1173,30 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public Property PatternAngle() As Single
+        Public Property PatternDeltaX() As Single Implements cIPatternBrush.PatternDeltaX
             Get
-                Return sPatternAngle
+                Return oPatternBrushes.Default.PatternDeltaX
             End Get
             Set(ByVal value As Single)
-                If sPatternAngle <> value Then
-                    sPatternAngle = value
-                    Call Invalidate()
-                End If
+                oPatternBrushes.Default.PatternDeltaX = value
+            End Set
+        End Property
+
+        Public Property PatternDeltaY() As Single Implements cIPatternBrush.PatternDeltaY
+            Get
+                Return oPatternBrushes.Default.PatternDeltaY
+            End Get
+            Set(ByVal value As Single)
+                oPatternBrushes.Default.PatternDeltaY = value
+            End Set
+        End Property
+
+        Public Property PatternAngle() As Single Implements cIPatternBrush.PatternAngle
+            Get
+                Return oPatternBrushes.Default.PatternAngle
+            End Get
+            Set(ByVal value As Single)
+                oPatternBrushes.Default.PatternAngle = value
             End Set
         End Property
 
@@ -554,24 +1236,21 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public Property PatternAngleMode() As cBrush.PatternAngleModeEnum
+        Public Property PatternAngleMode() As cBrush.PatternAngleModeEnum Implements cIPatternBrush.PatternAngleMode
             Get
-                Return iPatternAngleMode
+                Return oPatternBrushes.Default.PatternAngleMode
             End Get
             Set(ByVal value As cBrush.PatternAngleModeEnum)
-                If iPatternAngleMode <> value Then
-                    iPatternAngleMode = value
-                    Call Invalidate()
-                End If
+                oPatternBrushes.Default.PatternAngle = value
             End Set
         End Property
 
-        Public Property PatternDensity() As Single
+        Public Property PatternDensity() As Single Implements cIPatternBrush.PatternDensity
             Get
-                Return sPatternDensity
+                Return oPatternBrushes.Default.PatternDensity
             End Get
             Set(ByVal value As Single)
-                sPatternDensity = value
+                oPatternBrushes.Default.PatternDensity = value
             End Set
         End Property
 
@@ -599,15 +1278,12 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public Property PatternZoomFactor() As Single
+        Public Property PatternZoomFactor() As Single Implements cIPatternBrush.PatternZoomFactor
             Get
-                Return sPatternZoomFactor
+                Return oPatternBrushes.Default.PatternZoomFactor
             End Get
             Set(ByVal value As Single)
-                If sPatternZoomFactor <> value And sPatternZoomFactor > 0 Then
-                    sPatternZoomFactor = value
-                    Call Invalidate()
-                End If
+                oPatternBrushes.Default.PatternZoomFactor = value
             End Set
         End Property
 
@@ -683,11 +1359,16 @@ Namespace cSurvey.Design
             iClipartCrop = ClipartCrop
             iClipartPosition = ClipartPosition
 
-            If sPatternDensity <= 0 Then sPatternDensity = 1
-            If sPatternZoomFactor <= 0 Then sPatternZoomFactor = 1
+            oPatternBrushes = New cPatternBrushes(oSurvey)
 
             bInvalidated = True
         End Sub
+
+        Public ReadOnly Property PatternBrushes As cPatternBrushes
+            Get
+                Return oPatternBrushes
+            End Get
+        End Property
 
         Public Shared Function CalculateHash(Brush As cCustomBrush) As String
             Using oMs As MemoryStream = New MemoryStream
@@ -731,8 +1412,7 @@ Namespace cSurvey.Design
             sClipartZoomFactor = 1.0F
             oClipartAlternativeColor = Nothing
 
-            sPatternDensity = 1.0F
-            sPatternZoomFactor = 1.0F
+            oPatternBrushes = New cPatternBrushes(oSurvey)
 
             bInvalidated = True
         End Sub
@@ -760,6 +1440,7 @@ Namespace cSurvey.Design
                         oTexture = modPaint.ByteArrayToBitmap(DirectCast(File.Data(sImagePath), Storage.cStorageItemFile).Stream.ToArray)
                 End Select
                 iTextureWrapMode = modXML.GetAttributeValue(item, "texturewrapmode")
+                oPatternBrushes = New cPatternBrushes(oSurvey)
             ElseIf iHatchType = cBrush.HatchTypeEnum.Clipart Then
                 Dim oXMLClipart As XmlElement = item.Item("clipart")
                 If oXMLClipart Is Nothing Then
@@ -775,23 +1456,15 @@ Namespace cSurvey.Design
                 End If
                 iClipartCrop = modXML.GetAttributeValue(item, "clipartcrop")
                 iClipartPosition = modXML.GetAttributeValue(item, "clipartposition")
-
+                oPatternBrushes = New cPatternBrushes(oSurvey)
                 oClipartAlternativeColor = modXML.GetAttributeColor(item, "clipartalternativecolor", Drawing.Color.Gray)
             ElseIf iHatchType = cBrush.HatchTypeEnum.Pattern Then
-                iPatternType = modXML.GetAttributeValue(item, "patterntype")
-                iPatternPenStyle = modXML.GetAttributeValue(item, "patternpenstyle")
-                iPatternAngleMode = modXML.GetAttributeValue(item, "patternanglemode")
-                sPatternDensity = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "patterndensity", modXML.GetAttributeValue(item, "clipartdensity")))
-                sPatternZoomFactor = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "patternzoomfactor", 1.0F))
-                sPatternAngle = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "patternangle", modXML.GetAttributeValue(item, "clipartangle")))
-
+                oPatternBrushes = New cPatternBrushes(oSurvey, File, item)
                 oClipartAlternativeColor = modXML.GetAttributeColor(item, "clipartalternativecolor", Drawing.Color.Gray)
             End If
 
             If sClipartDensity <= 0 Then sClipartDensity = 1.0F
             If sClipartZoomFactor <= 0 Then sClipartZoomFactor = 1.0F
-            If sPatternDensity <= 0 Then sPatternDensity = 1.0F
-            If sPatternZoomFactor <= 0 Then sPatternZoomFactor = 1.0F
 
             Call Invalidate()
         End Sub
@@ -842,12 +1515,13 @@ Namespace cSurvey.Design
                 End If
                 Call oItem.SetAttribute("clipartalternativecolor", oClipartAlternativeColor.ToArgb)
             ElseIf iHatchType = cBrush.HatchTypeEnum.Pattern Then
-                Call oItem.SetAttribute("patterntype", iPatternType.ToString("D"))
-                Call oItem.SetAttribute("patternpenstyle", iPatternPenStyle.ToString("D"))
-                Call oItem.SetAttribute("patterndensity", modNumbers.NumberToString(sPatternDensity))
-                Call oItem.SetAttribute("patternzoomfactor", modNumbers.NumberToString(sPatternZoomFactor, "0.0000"))
-                Call oItem.SetAttribute("patternanglemode", iPatternAngleMode.ToString("D"))
-                Call oItem.SetAttribute("patternangle", modNumbers.NumberToString(sPatternAngle))
+                Call oPatternBrushes.SaveTo(File, Document, oItem)
+                'Call oItem.SetAttribute("patterntype", iPatternType.ToString("D"))
+                'Call oItem.SetAttribute("patternpenstyle", iPatternPenStyle.ToString("D"))
+                'Call oItem.SetAttribute("patterndensity", modNumbers.NumberToString(sPatternDensity))
+                'Call oItem.SetAttribute("patternzoomfactor", modNumbers.NumberToString(sPatternZoomFactor, "0.0000"))
+                'Call oItem.SetAttribute("patternanglemode", iPatternAngleMode.ToString("D"))
+                'Call oItem.SetAttribute("patternangle", modNumbers.NumberToString(sPatternAngle))
 
                 Call oItem.SetAttribute("clipartalternativecolor", oClipartAlternativeColor.ToArgb)
             End If
@@ -937,19 +1611,23 @@ Namespace cSurvey.Design
                     oTextureBrush = New TextureBrush(oTexture, iTextureWrapMode, oRect)
                 End If
 
-                oPatternPen = New Pen(oPaintColor, sLineWidth / 10)
-                oPatternPen.SetLineCap(Drawing2D.LineCap.Round, Drawing2D.LineCap.Round, Drawing2D.DashCap.Round)
-                oPatternPen.LineJoin = Drawing2D.LineJoin.Round
-                Select Case iPatternPenStyle
-                    Case cPen.PenStylesEnum.Solid
-                        oPatternPen.DashStyle = DashStyle.Solid
-                    Case cPen.PenStylesEnum.Dot
-                        oPatternPen.DashStyle = DashStyle.Dot
-                    Case cPen.PenStylesEnum.Dash
-                        oPatternPen.DashStyle = DashStyle.Dash
-                    Case cPen.PenStylesEnum.DashDot
-                        oPatternPen.DashStyle = DashStyle.DashDot
-                End Select
+                oPatternPens = New List(Of Pen)
+                For Each oPatternBrush In oPatternBrushes
+                    Dim oPatternPen As Pen = New Pen(oPaintColor, sLineWidth / 10)
+                    oPatternPen.SetLineCap(Drawing2D.LineCap.Round, Drawing2D.LineCap.Round, Drawing2D.DashCap.Round)
+                    oPatternPen.LineJoin = Drawing2D.LineJoin.Round
+                    Select Case oPatternBrush.PatternPenStyle
+                        Case cPen.PenStylesEnum.Solid
+                            oPatternPen.DashStyle = DashStyle.Solid
+                        Case cPen.PenStylesEnum.Dot
+                            oPatternPen.DashStyle = DashStyle.Dot
+                        Case cPen.PenStylesEnum.Dash
+                            oPatternPen.DashStyle = DashStyle.Dash
+                        Case cPen.PenStylesEnum.DashDot
+                            oPatternPen.DashStyle = DashStyle.DashDot
+                    End Select
+                    Call oPatternPens.Add(oPatternPen)
+                Next
 
                 bInvalidated = False
             End If
@@ -1251,276 +1929,311 @@ Namespace cSurvey.Design
                     Call Cache.AddFiller(Path, Nothing, Nothing, oClipartAlternativeBrush2)
                 Else
                     Dim sZoomFactor As Single = GetPaintZoomFactor(PaintOptions)
-                    If sPatternDensity > 0 And Path.PointCount > 2 Then
-                        Dim sCurrentDensity As Single = sPatternDensity * sZoomFactor
-                        Dim sCurrentSize As Single = sCurrentDensity * sPatternZoomFactor
+                    If Path.PointCount > 2 Then
                         Call Cache.AddSetClip(Path)
-                        Using oPatternPath As GraphicsPath = New GraphicsPath
-                            Dim oBounds As RectangleF = Path.GetBounds
-                            Using oMatrix As Matrix = New Matrix
-                                Call oMatrix.RotateAt(sPatternAngle, modPaint.GetCenterPoint(oBounds))
-                                Using oBoundPath As GraphicsPath = New GraphicsPath
-                                    Call oBoundPath.AddRectangle(oBounds)
-                                    Call oBoundPath.Transform(oMatrix)
-                                    oBounds = oBoundPath.GetBounds
-                                End Using
-                                Dim bIsFilled As Boolean
-                                Select Case iPatternType
-                                    'Case 15 'brick and filled circle
-                                    '    Dim iEven As Integer = 0
-                                    '    For r As Single = oBounds.Top To oBounds.Bottom Step sCurrentDensity
-                                    '        iEven += 1
-                                    '        If iEven Mod 2 = 0 Then
-                                    '            For s As Single = oBounds.Left To oBounds.Right Step sCurrentSize * 2
-                                    '                Call oPatternPath.StartFigure()
-                                    '                Call oPatternPath.AddLines({New PointF(s, r), New PointF(s + sCurrentSize + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentDensity)})
-                                    '                Call oPatternPath.StartFigure()
-                                    '                Call oPatternPath.AddEllipse(New RectangleF(s + sCurrentSize, r, sCurrentSize, sCurrentSize))
-                                    '            Next
-                                    '        Else
-                                    '            For s As Single = oBounds.Left - sCurrentSize * 2 To oBounds.Right Step sCurrentSize * 2
-                                    '                Call oPatternPath.StartFigure()
-                                    '                Call oPatternPath.AddLines({New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize + sCurrentSize, r + sCurrentDensity)})
-                                    '                Call oPatternPath.StartFigure()
-                                    '                Call oPatternPath.AddEllipse(New RectangleF(s, r, sCurrentSize, sCurrentSize))
-                                    '            Next
-                                    '        End If
-                                    '    Next
-                                    '    bIsFilled = True
-                                    'Case 14 'brick and circle
-                                    '    Dim iEven As Integer = 0
-                                    '    For r As Single = oBounds.Top To oBounds.Bottom Step sCurrentDensity
-                                    '        iEven += 1
-                                    '        If iEven Mod 2 = 0 Then
-                                    '            For s As Single = oBounds.Left To oBounds.Right Step sCurrentSize * 2
-                                    '                Call oPatternPath.StartFigure()
-                                    '                Call oPatternPath.AddLines({New PointF(s, r), New PointF(s + sCurrentSize + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentDensity)})
-                                    '                Call oPatternPath.StartFigure()
-                                    '                Call oPatternPath.AddEllipse(New RectangleF(s + sCurrentSize - sCurrentSize / 4, r + sCurrentSize / 4, sCurrentSize / 2, sCurrentSize / 2))
-                                    '            Next
-                                    '        Else
-                                    '            For s As Single = oBounds.Left - sCurrentSize * 2 To oBounds.Right Step sCurrentSize * 2
-                                    '                Call oPatternPath.StartFigure()
-                                    '                Call oPatternPath.AddLines({New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize + sCurrentSize, r + sCurrentDensity)})
-                                    '                Call oPatternPath.StartFigure()
-                                    '                'Call oPatternPath.AddEllipse(New RectangleF(s, r, sCurrentSize / 2, sCurrentSize / 2))
-                                    '            Next
-                                    '        End If
-                                    '    Next
-                                    '    bIsFilled = False
-                                    Case 14 'sloping brick
-                                        Dim iEven As Integer = 0
-                                        For r As Single = oBounds.Top To oBounds.Bottom Step sCurrentDensity
-                                            iEven += 1
-                                            If iEven Mod 2 = 0 Then
-                                                For s As Single = oBounds.Left To oBounds.Right Step sCurrentSize * 2
-                                                    Call oPatternPath.StartFigure()
-                                                    Call oPatternPath.AddLines({New PointF(s, r), New PointF(s + sCurrentSize + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize / 2, r + sCurrentDensity)})
-                                                Next
-                                            Else
-                                                For s As Single = oBounds.Left - sCurrentSize * 2 To oBounds.Right Step sCurrentSize * 2
-                                                    Call oPatternPath.StartFigure()
-                                                    Call oPatternPath.AddLines({New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize + sCurrentSize / 2, r + sCurrentDensity)})
-                                                Next
-                                            End If
-                                        Next
-                                        bIsFilled = False
-                                    Case 13 'brick
-                                        Dim iEven As Integer = 0
-                                        For r As Single = oBounds.Top To oBounds.Bottom Step sCurrentDensity
-                                            iEven += 1
-                                            If iEven Mod 2 = 0 Then
-                                                For s As Single = oBounds.Left To oBounds.Right Step sCurrentSize * 2
-                                                    Call oPatternPath.StartFigure()
-                                                    Call oPatternPath.AddLines({New PointF(s, r), New PointF(s + sCurrentSize + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentDensity)})
-                                                Next
-                                            Else
-                                                For s As Single = oBounds.Left - sCurrentSize * 2 To oBounds.Right Step sCurrentSize * 2
-                                                    Call oPatternPath.StartFigure()
-                                                    Call oPatternPath.AddLines({New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize + sCurrentSize, r + sCurrentDensity)})
-                                                Next
-                                            End If
-                                        Next
-                                        bIsFilled = False
-                                    Case 12 'filled circle
-                                        Dim iEven As Integer = 0
-                                        For r As Single = oBounds.Top To oBounds.Bottom Step sCurrentDensity
-                                            iEven += 1
-                                            If iEven Mod 2 = 0 Then
-                                                For s As Single = oBounds.Left To oBounds.Right Step sCurrentDensity * 2
-                                                    Call oPatternPath.StartFigure()
-                                                    Call oPatternPath.AddEllipse(New RectangleF(s, r, sCurrentSize, sCurrentSize))
-                                                Next
-                                            Else
-                                                For s As Single = oBounds.Left To oBounds.Right Step sCurrentDensity * 2
-                                                    Call oPatternPath.StartFigure()
-                                                    Call oPatternPath.AddEllipse(New RectangleF(s + sCurrentDensity, r, sCurrentSize, sCurrentSize))
-                                                Next
-                                            End If
-                                        Next
-                                        bIsFilled = True
-                                    Case 11 'circle
-                                        Dim iEven As Integer = 0
-                                        For r As Single = oBounds.Top To oBounds.Bottom Step sCurrentDensity
-                                            iEven += 1
-                                            If iEven Mod 2 = 0 Then
-                                                For s As Single = oBounds.Left To oBounds.Right Step sCurrentDensity * 2
-                                                    Call oPatternPath.StartFigure()
-                                                    Call oPatternPath.AddEllipse(New RectangleF(s, r, sCurrentSize, sCurrentSize))
-                                                Next
-                                            Else
-                                                For s As Single = oBounds.Left To oBounds.Right Step sCurrentDensity * 2
-                                                    Call oPatternPath.StartFigure()
-                                                    Call oPatternPath.AddEllipse(New RectangleF(s + sCurrentDensity, r, sCurrentSize, sCurrentSize))
-                                                Next
-                                            End If
-                                        Next
-                                        bIsFilled = False
-                                    Case 10 'cross
-                                        Dim iEven As Integer = 0
-                                        For r As Single = oBounds.Top To oBounds.Bottom Step sCurrentDensity
-                                            iEven += 1
-                                            If iEven Mod 2 = 0 Then
-                                                For s As Single = oBounds.Left To oBounds.Right Step sCurrentDensity * 2
-                                                    Call oPatternPath.StartFigure()
-                                                    Call oPatternPath.AddLines({New PointF(s, r + sCurrentDensity / 2), New PointF(s + sCurrentDensity, r + sCurrentDensity / 2)})
-                                                    Call oPatternPath.StartFigure()
-                                                    Call oPatternPath.AddLines({New PointF(s + sCurrentDensity / 2, r), New PointF(s + sCurrentDensity / 2, r + sCurrentDensity)})
-                                                Next
-                                            Else
-                                                For s As Single = oBounds.Left To oBounds.Right Step sCurrentDensity * 2
-                                                    Call oPatternPath.StartFigure()
-                                                    Call oPatternPath.AddLines({New PointF(s + sCurrentDensity, r + sCurrentDensity / 2), New PointF(s + sCurrentDensity + sCurrentDensity, r + sCurrentDensity / 2)})
-                                                    Call oPatternPath.StartFigure()
-                                                    Call oPatternPath.AddLines({New PointF(s + sCurrentDensity + sCurrentDensity / 2, r), New PointF(s + sCurrentDensity + sCurrentDensity / 2, r + sCurrentDensity)})
-                                                Next
-                                            End If
-                                        Next
-                                        bIsFilled = False
-                                    Case 9 'filled triangle
-                                        Dim iEven As Integer = 0
-                                        For r As Single = oBounds.Top To oBounds.Bottom Step sCurrentDensity
-                                            iEven += 1
-                                            If iEven Mod 2 = 0 Then
-                                                For s As Single = oBounds.Left To oBounds.Right Step sCurrentDensity * 2
-                                                    Call oPatternPath.StartFigure()
-                                                    Call oPatternPath.AddLines({New PointF(s + sCurrentDensity, r + sCurrentDensity), New PointF(s + sCurrentDensity + sCurrentDensity / 2, r), New PointF(s + sCurrentDensity + sCurrentDensity, r + sCurrentDensity)})
-                                                    Call oPatternPath.CloseFigure()
-                                                Next
-                                            Else
-                                                For s As Single = oBounds.Left To oBounds.Right Step sCurrentDensity * 2
-                                                    Call oPatternPath.StartFigure()
-                                                    Call oPatternPath.AddLines({New PointF(s, r + sCurrentDensity), New PointF(s + sCurrentDensity / 2, r), New PointF(s + sCurrentDensity, r + sCurrentDensity)})
-                                                    Call oPatternPath.CloseFigure()
-                                                Next
-                                            End If
-                                        Next
-                                        bIsFilled = True
-                                    Case 8 'closed triangle
-                                        Dim iEven As Integer = 0
-                                        For r As Single = oBounds.Top To oBounds.Bottom Step sCurrentDensity
-                                            iEven += 1
-                                            If iEven Mod 2 = 0 Then
-                                                For s As Single = oBounds.Left To oBounds.Right Step sCurrentDensity * 2
-                                                    Call oPatternPath.StartFigure()
-                                                    Call oPatternPath.AddLines({New PointF(s + sCurrentDensity, r + sCurrentDensity), New PointF(s + sCurrentDensity + sCurrentDensity / 2, r), New PointF(s + sCurrentDensity + sCurrentDensity, r + sCurrentDensity)})
-                                                    Call oPatternPath.CloseFigure()
-                                                Next
-                                            Else
-                                                For s As Single = oBounds.Left To oBounds.Right Step sCurrentDensity * 2
-                                                    Call oPatternPath.StartFigure()
-                                                    Call oPatternPath.AddLines({New PointF(s, r + sCurrentDensity), New PointF(s + sCurrentDensity / 2, r), New PointF(s + sCurrentDensity, r + sCurrentDensity)})
-                                                    Call oPatternPath.CloseFigure()
-                                                Next
-                                            End If
-                                        Next
-                                        bIsFilled = False
-                                    Case 7 'opened triangle
-                                        Dim iEven As Integer = 0
-                                        For r As Single = oBounds.Top To oBounds.Bottom Step sCurrentDensity
-                                            iEven += 1
-                                            If iEven Mod 2 = 0 Then
-                                                For s As Single = oBounds.Left To oBounds.Right Step sCurrentDensity * 2
-                                                    Call oPatternPath.StartFigure()
-                                                    Call oPatternPath.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize / 2, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
-                                                Next
-                                            Else
-                                                For s As Single = oBounds.Left To oBounds.Right Step sCurrentDensity * 2
-                                                    Call oPatternPath.StartFigure()
-                                                    Call oPatternPath.AddLines({New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize / 2, r), New PointF(s + sCurrentSize, r + sCurrentSize)})
-                                                Next
-                                            End If
-                                        Next
-                                        bIsFilled = False
-                                    Case 6  'zigzag with 2 vertical bars
-                                        For r As Single = oBounds.Top To oBounds.Bottom Step sCurrentDensity
-                                            Call oPatternPath.StartFigure()
-                                            For s As Single = oBounds.Left To oBounds.Right Step sCurrentSize * 2
-                                                Call oPatternPath.AddLines({New PointF(s, r), New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize, r + sCurrentSize)})
-                                                Call oPatternPath.AddLines({New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
-                                            Next
-                                        Next
-                                        bIsFilled = False
-                                    Case 5 'zigzag with 1 vertical bars
-                                        For r As Single = oBounds.Top To oBounds.Bottom Step sCurrentDensity
-                                            Call oPatternPath.StartFigure()
-                                            For s As Single = oBounds.Left To oBounds.Right Step sCurrentSize * 2
-                                                Call oPatternPath.AddLines({New PointF(s, r), New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
-                                            Next
-                                        Next
-                                        bIsFilled = False
-                                    Case 4
-                                        For r As Single = oBounds.Top To oBounds.Bottom Step sCurrentDensity
-                                            Call oPatternPath.StartFigure()
-                                            For s As Single = oBounds.Left To oBounds.Right Step sCurrentSize * 2
-                                                Call oPatternPath.AddLines({New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
-                                            Next
-                                        Next
-                                        bIsFilled = False
-                                    Case 3
-                                        For r As Single = oBounds.Top To oBounds.Bottom Step sCurrentDensity
-                                            Call oPatternPath.StartFigure()
-                                            For s As Single = oBounds.Left To oBounds.Right Step sCurrentSize * 2
-                                                Call oPatternPath.AddBezier(New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize / 4, r + sCurrentSize), New PointF(s + sCurrentSize * 3 / 4, r), New PointF(s + sCurrentSize, r))
-                                                Call oPatternPath.AddBezier(New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize / 4, r), New PointF(s + sCurrentSize + sCurrentSize * 3 / 4, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize))
-                                            Next
-                                        Next
-                                        bIsFilled = False
-                                    Case 2
-                                        For r As Single = oBounds.Top To oBounds.Bottom Step sCurrentDensity / 2
-                                            Call oPatternPath.StartFigure()
-                                            For s As Single = oBounds.Left To oBounds.Right Step sCurrentSize * 2
-                                                Call oPatternPath.AddBezier(New PointF(s, r + sCurrentSize / 2), New PointF(s + sCurrentSize / 4, r + sCurrentSize / 2), New PointF(s + sCurrentSize * 3 / 4, r), New PointF(s + sCurrentSize, r))
-                                                Call oPatternPath.AddBezier(New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize / 4, r), New PointF(s + sCurrentSize + sCurrentSize * 3 / 4, r + sCurrentSize / 2), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize / 2))
-                                            Next
-                                        Next
-                                        bIsFilled = False
-                                    Case cBrush.PatternTypeEnum.Lines
-                                        For r = oBounds.Top To oBounds.Bottom Step sCurrentDensity
-                                            Call oPatternPath.StartFigure()
-                                            Call oPatternPath.AddLine(New PointF(oBounds.Left, r), New PointF(oBounds.Right, r))
-                                        Next
-                                        bIsFilled = False
-                                    Case cBrush.PatternTypeEnum.CrossedLines
-                                        For r = oBounds.Top To oBounds.Bottom Step sCurrentDensity
-                                            Call oPatternPath.StartFigure()
-                                            Call oPatternPath.AddLine(New PointF(oBounds.Left, r), New PointF(oBounds.Right, r))
-                                        Next
-                                        For r = oBounds.Left To oBounds.Right Step sCurrentDensity
-                                            Call oPatternPath.StartFigure()
-                                            Call oPatternPath.AddLine(New PointF(r, oBounds.Top), New PointF(r, oBounds.Bottom))
-                                        Next
-                                        bIsFilled = False
-                                End Select
-                                Call oPatternPath.Transform(oMatrix)
-                                If bIsFilled Then
-                                    Call Cache.AddFiller(oPatternPath, oPatternPen, Nothing, New SolidBrush(oPatternPen.Color))
-                                Else
-                                    Call Cache.AddFiller(oPatternPath, oPatternPen, Nothing)
-                                End If
-                            End Using
+                        Dim iPatternIndex As Integer
+                        For Each oPatternBrush As cPatternBrush In oPatternBrushes
+                            If oPatternBrush.PatternDensity > 0 Then
+                                Dim oPatternPen As Pen = oPatternPens(iPatternIndex)
+                                Dim sCurrentDensity As Single = oPatternBrush.PatternDensity * sZoomFactor
+                                Dim sCurrentSize As Single = oPatternBrush.PatternZoomFactor * sZoomFactor 'sCurrentDensity * oPatternBrush.PatternZoomFactor
+                                Dim oBounds As RectangleF = Path.GetBounds
+                                Using oMatrix As Matrix = New Matrix
+                                    Call oMatrix.RotateAt(oPatternBrush.PatternAngle, modPaint.GetCenterPoint(oBounds))
+                                    Using oBoundPath As GraphicsPath = New GraphicsPath
+                                        Call oBoundPath.AddRectangle(oBounds)
+                                        Call oBoundPath.Transform(oMatrix)
+                                        oBounds = oBoundPath.GetBounds
+                                    End Using
 
-                        End Using
+                                    Using oPainter As cPatternBrushPainter = New cPatternBrushPainter(oPatternBrush, oBounds)
+                                        oPatternBrush.OnPaint(oPainter)
+
+                                        'Select Case oPatternBrush.PatternType
+                                        '    Case 16 'wavy segment
+                                        '        Dim sDeltaY As Single = sCurrentDensity * oPatternBrush.PatternDeltaY / 100.0F
+                                        '        Dim sDeltaX As Single = sCurrentDensity * oPatternBrush.PatternDeltaX / 100.0F
+                                        '        Dim iEven As Integer = 0
+                                        '        For r As Single = oBounds.Top - sDeltaY To oBounds.Bottom Step sCurrentDensity
+                                        '            iEven += 1
+                                        '            If iEven Mod 2 = 0 Then
+                                        '                For s As Single = oBounds.Left - sDeltaX To oBounds.Right Step sCurrentDensity * 4.0F
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddBezier(New PointF(s, r + sCurrentDensity / 2.0F), New PointF(s + sCurrentSize / 4.0F, r + sCurrentDensity / 4.0F), New PointF(s + sCurrentSize * 3.0F / 4.0F, r + sCurrentDensity / 4.0F), New PointF(s + sCurrentSize, r + sCurrentDensity / 2.0F))
+                                        '                    Call oPatternPath.AddBezier(New PointF(s + sCurrentSize, r + sCurrentDensity / 2), New PointF(s + sCurrentSize + sCurrentSize / 4.0F, r + sCurrentDensity * 3 / 4), New PointF(s + sCurrentSize + sCurrentSize * 3.0F / 4.0F, r + sCurrentDensity * 3.0F / 4.0F), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentDensity / 2.0F))
+                                        '                Next
+                                        '            Else
+                                        '                For s As Single = oBounds.Left - sCurrentDensity * 2.0F - sDeltaX To oBounds.Right Step sCurrentDensity * 4.0F
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddBezier(New PointF(s, r + sCurrentDensity / 2.0F), New PointF(s + sCurrentSize / 4, r + sCurrentDensity / 4.0F), New PointF(s + sCurrentSize * 3.0F / 4.0F, r + sCurrentDensity / 4.0F), New PointF(s + sCurrentSize, r + sCurrentDensity / 2.0F))
+                                        '                    Call oPatternPath.AddBezier(New PointF(s + sCurrentSize, r + sCurrentDensity / 2.0F), New PointF(s + sCurrentSize + sCurrentSize / 4.0F, r + sCurrentDensity * 3.0F / 4.0F), New PointF(s + sCurrentSize + sCurrentSize * 3.0F / 4.0F, r + sCurrentDensity * 3.0F / 4.0F), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentDensity / 2.0F))
+                                        '                Next
+                                        '            End If
+                                        '        Next
+                                        '        bIsFilled = False
+                                        '    Case 15 'segment
+                                        '        Dim sDeltaY As Single = sCurrentDensity * oPatternBrush.PatternDeltaY / 100.0F
+                                        '        Dim sDeltaX As Single = sCurrentDensity * oPatternBrush.PatternDeltaX / 100.0F
+                                        '        Dim iEven As Integer = 0
+                                        '        For r As Single = oBounds.Top - sDeltaY To oBounds.Bottom Step sCurrentDensity
+                                        '            iEven += 1
+                                        '            If iEven Mod 2 = 0 Then
+                                        '                For s As Single = oBounds.Left - sDeltaX To oBounds.Right Step sCurrentDensity * 2.0F
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddLines({New PointF(s, r), New PointF(s + sCurrentSize, r)})
+                                        '                Next
+                                        '            Else
+                                        '                For s As Single = oBounds.Left - sCurrentDensity - sDeltaX To oBounds.Right Step sCurrentDensity * 2.0F
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddLines({New PointF(s, r), New PointF(s + sCurrentSize, r)})
+                                        '                Next
+                                        '            End If
+                                        '        Next
+                                        '        bIsFilled = False
+                                        '    Case 14 'sloping brick
+                                        '        Dim sDeltaY As Single = sCurrentDensity * oPatternBrush.PatternDeltaY / 100.0F
+                                        '        Dim sDeltaX As Single = sCurrentDensity * oPatternBrush.PatternDeltaX / 100.0F
+                                        '        Dim iEven As Integer = 0
+                                        '        For r As Single = oBounds.Top - sDeltaY To oBounds.Bottom Step sCurrentDensity
+                                        '            iEven += 1
+                                        '            If iEven Mod 2 = 0 Then
+                                        '                For s As Single = oBounds.Left - sDeltaX To oBounds.Right Step sCurrentDensity * 2.0F
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddLines({New PointF(s, r), New PointF(s + sCurrentDensity + sCurrentDensity, r), New PointF(s + sCurrentDensity + sCurrentDensity / 2, r + sCurrentDensity)})
+                                        '                Next
+                                        '            Else
+                                        '                For s As Single = oBounds.Left - sCurrentDensity - sDeltaX To oBounds.Right Step sCurrentDensity * 2.0F
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddLines({New PointF(s + sCurrentDensity, r), New PointF(s + sCurrentDensity + sCurrentDensity + sCurrentDensity, r), New PointF(s + sCurrentDensity + sCurrentDensity + sCurrentDensity / 2, r + sCurrentDensity)})
+                                        '                Next
+                                        '            End If
+                                        '        Next
+                                        '        bIsFilled = False
+                                        '    Case 13 'brick
+                                        '        Dim sDeltaY As Single = sCurrentDensity * oPatternBrush.PatternDeltaY / 100.0F
+                                        '        Dim sDeltaX As Single = sCurrentDensity * oPatternBrush.PatternDeltaX / 100.0F
+                                        '        Dim iEven As Integer = 0
+                                        '        For r As Single = oBounds.Top - sDeltaY To oBounds.Bottom Step sCurrentDensity
+                                        '            iEven += 1
+                                        '            If iEven Mod 2 = 0 Then
+                                        '                For s As Single = oBounds.Left - sDeltaX To oBounds.Right Step sCurrentDensity * 2.0F
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddLines({New PointF(s, r), New PointF(s + sCurrentDensity * 2.0F, r), New PointF(s + sCurrentDensity * 2.0F, r + sCurrentDensity)})
+                                        '                Next
+                                        '            Else
+                                        '                For s As Single = oBounds.Left - sDeltaX - sCurrentDensity To oBounds.Right Step sCurrentDensity * 2.0F
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddLines({New PointF(s, r), New PointF(s + sCurrentDensity * 2.0F, r), New PointF(s + sCurrentDensity * 2.0F, r + sCurrentDensity)})
+                                        '                Next
+                                        '            End If
+                                        '        Next
+                                        '        bIsFilled = False
+                                        '    Case 12 'filled circle
+                                        '        Dim sDeltaY As Single = sCurrentDensity * oPatternBrush.PatternDeltaY / 100.0F
+                                        '        Dim sDeltaX As Single = sCurrentDensity * oPatternBrush.PatternDeltaX / 100.0F
+                                        '        Dim iEven As Integer = 0
+                                        '        For r As Single = oBounds.Top - sDeltaY To oBounds.Bottom Step sCurrentDensity
+                                        '            iEven += 1
+                                        '            If iEven Mod 2 = 0 Then
+                                        '                For s As Single = oBounds.Left - sDeltaX To oBounds.Right Step sCurrentDensity
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddEllipse(New RectangleF(s, r, sCurrentSize, sCurrentSize))
+                                        '                Next
+                                        '            Else
+                                        '                For s As Single = oBounds.Left - sCurrentDensity / 2.0F - sDeltaX To oBounds.Right Step sCurrentDensity
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddEllipse(New RectangleF(s + sCurrentDensity, r, sCurrentSize, sCurrentSize))
+                                        '                Next
+                                        '            End If
+                                        '        Next
+                                        '        bIsFilled = True
+                                        '    Case 11 'circle
+                                        '        Dim sDeltaY As Single = sCurrentDensity * oPatternBrush.PatternDeltaY / 100.0F
+                                        '        Dim sDeltaX As Single = sCurrentDensity * oPatternBrush.PatternDeltaX / 100.0F
+                                        '        Dim iEven As Integer = 0
+                                        '        For r As Single = oBounds.Top - sDeltaY To oBounds.Bottom Step sCurrentDensity
+                                        '            iEven += 1
+                                        '            If iEven Mod 2 = 0 Then
+                                        '                For s As Single = oBounds.Left - sDeltaX To oBounds.Right Step sCurrentDensity
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddEllipse(New RectangleF(s, r, sCurrentSize, sCurrentSize))
+                                        '                Next
+                                        '            Else
+                                        '                For s As Single = oBounds.Left - sCurrentDensity / 2.0F - sDeltaX To oBounds.Right Step sCurrentDensity
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddEllipse(New RectangleF(s + sCurrentDensity, r, sCurrentSize, sCurrentSize))
+                                        '                Next
+                                        '            End If
+                                        '        Next
+                                        '        bIsFilled = False
+                                        '    Case 10 'cross
+                                        '        Dim sDeltaY As Single = sCurrentDensity * oPatternBrush.PatternDeltaY / 100.0F
+                                        '        Dim sDeltaX As Single = sCurrentDensity * oPatternBrush.PatternDeltaX / 100.0F
+                                        '        Dim iEven As Integer = 0
+                                        '        For r As Single = oBounds.Top - sDeltaY To oBounds.Bottom Step sCurrentDensity
+                                        '            iEven += 1
+                                        '            If iEven Mod 2 = 0 Then
+                                        '                For s As Single = oBounds.Left - sDeltaX To oBounds.Right Step sCurrentDensity * 2.0F
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddLines({New PointF(s, r + sCurrentSize / 2.0F), New PointF(s + sCurrentSize, r + sCurrentSize / 2.0F)})
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddLines({New PointF(s + sCurrentSize / 2.0F, r), New PointF(s + sCurrentSize / 2.0F, r + sCurrentSize)})
+                                        '                Next
+                                        '            Else
+                                        '                For s As Single = oBounds.Left - sCurrentDensity - sDeltaX To oBounds.Right Step sCurrentDensity * 2.0F
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize / 2.0F), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize / 2.0F)})
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddLines({New PointF(s + sCurrentSize + sCurrentSize / 2.0F, r), New PointF(s + sCurrentSize + sCurrentSize / 2.0F, r + sCurrentSize)})
+                                        '                Next
+                                        '            End If
+                                        '        Next
+                                        '        bIsFilled = False
+                                        '    Case 9 'filled triangle
+                                        '        Dim sDeltaY As Single = sCurrentDensity * oPatternBrush.PatternDeltaY / 100.0F
+                                        '        Dim sDeltaX As Single = sCurrentDensity * oPatternBrush.PatternDeltaX / 100.0F
+                                        '        Dim iEven As Integer = 0
+                                        '        For r As Single = oBounds.Top - sDeltaY To oBounds.Bottom Step sCurrentDensity
+                                        '            iEven += 1
+                                        '            If iEven Mod 2 = 0 Then
+                                        '                For s As Single = oBounds.Left - sDeltaX To oBounds.Right Step sCurrentDensity * 2.0F
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize / 2, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+                                        '                    Call oPatternPath.CloseFigure()
+                                        '                Next
+                                        '            Else
+                                        '                For s As Single = oBounds.Left - sCurrentDensity - sDeltaX To oBounds.Right Step sCurrentDensity * 2.0F
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddLines({New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize / 2.0F, r), New PointF(s + sCurrentSize, r + sCurrentSize)})
+                                        '                    Call oPatternPath.CloseFigure()
+                                        '                Next
+                                        '            End If
+                                        '        Next
+                                        '        bIsFilled = True
+                                        '    Case 8 'closed triangle
+                                        '        Dim sDeltaY As Single = sCurrentDensity * oPatternBrush.PatternDeltaY / 100.0F
+                                        '        Dim sDeltaX As Single = sCurrentDensity * oPatternBrush.PatternDeltaX / 100.0F
+                                        '        Dim iEven As Integer = 0
+                                        '        For r As Single = oBounds.Top - sDeltaY To oBounds.Bottom Step sCurrentDensity
+                                        '            iEven += 1
+                                        '            If iEven Mod 2 = 0 Then
+                                        '                For s As Single = oBounds.Left - sDeltaX To oBounds.Right Step sCurrentDensity * 2.0F
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize / 2, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+                                        '                    Call oPatternPath.CloseFigure()
+                                        '                Next
+                                        '            Else
+                                        '                For s As Single = oBounds.Left - sCurrentDensity - sDeltaX To oBounds.Right Step sCurrentDensity * 2.0F
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddLines({New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize / 2.0F, r), New PointF(s + sCurrentSize, r + sCurrentSize)})
+                                        '                    Call oPatternPath.CloseFigure()
+                                        '                Next
+                                        '            End If
+                                        '        Next
+                                        '        bIsFilled = False
+                                        '    Case 7 'opened triangle
+                                        '        Dim sDeltaY As Single = sCurrentDensity * oPatternBrush.PatternDeltaY / 100.0F
+                                        '        Dim sDeltaX As Single = sCurrentDensity * oPatternBrush.PatternDeltaX / 100.0F
+                                        '        Dim iEven As Integer = 0
+                                        '        For r As Single = oBounds.Top - sDeltaY To oBounds.Bottom Step sCurrentDensity
+                                        '            iEven += 1
+                                        '            If iEven Mod 2 = 0 Then
+                                        '                For s As Single = oBounds.Left - sDeltaX To oBounds.Right Step sCurrentDensity * 2
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize / 2, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+                                        '                Next
+                                        '            Else
+                                        '                For s As Single = oBounds.Left - sCurrentDensity - sDeltaX To oBounds.Right Step sCurrentDensity * 2
+                                        '                    Call oPatternPath.StartFigure()
+                                        '                    Call oPatternPath.AddLines({New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize / 2, r), New PointF(s + sCurrentSize, r + sCurrentSize)})
+                                        '                Next
+                                        '            End If
+                                        '        Next
+                                        '        bIsFilled = False
+                                        '    Case 6  'zigzag with 2 vertical bars
+                                        '        Dim sDeltaY As Single = sCurrentDensity * oPatternBrush.PatternDeltaY / 100.0F
+                                        '        Dim sDeltaX As Single = sCurrentDensity * oPatternBrush.PatternDeltaX / 100.0F
+                                        '        For r As Single = oBounds.Top - sDeltaY To oBounds.Bottom Step sCurrentDensity
+                                        '            Call oPatternPath.StartFigure()
+                                        '            For s As Single = oBounds.Left - sDeltaX To oBounds.Right Step sCurrentSize * 2
+                                        '                Call oPatternPath.AddLines({New PointF(s, r), New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize, r + sCurrentSize)})
+                                        '                Call oPatternPath.AddLines({New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+                                        '            Next
+                                        '        Next
+                                        '        bIsFilled = False
+                                        '    Case 5 'zigzag with 1 vertical bars
+                                        '        Dim sDeltaY As Single = sCurrentDensity * oPatternBrush.PatternDeltaY / 100.0F
+                                        '        Dim sDeltaX As Single = sCurrentDensity * oPatternBrush.PatternDeltaX / 100.0F
+                                        '        For r As Single = oBounds.Top - sDeltaY To oBounds.Bottom Step sCurrentDensity
+                                        '            Call oPatternPath.StartFigure()
+                                        '            For s As Single = oBounds.Left - sCurrentDensity - sDeltaX To oBounds.Right Step sCurrentSize * 2
+                                        '                Call oPatternPath.AddLines({New PointF(s, r), New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+                                        '            Next
+                                        '        Next
+                                        '        bIsFilled = False
+                                        '    Case 4
+                                        '        Dim sDeltaY As Single = sCurrentDensity * oPatternBrush.PatternDeltaY / 100.0F
+                                        '        Dim sDeltaX As Single = sCurrentDensity * oPatternBrush.PatternDeltaX / 100.0F
+                                        '        For r As Single = oBounds.Top - sDeltaY To oBounds.Bottom Step sCurrentDensity
+                                        '            Call oPatternPath.StartFigure()
+                                        '            For s As Single = oBounds.Left - sDeltaX To oBounds.Right Step sCurrentSize * 2.0F
+                                        '                Call oPatternPath.AddLines({New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+                                        '            Next
+                                        '        Next
+                                        '        bIsFilled = False
+                                        '    Case 3
+                                        '        Dim sDeltaY As Single = sCurrentDensity * oPatternBrush.PatternDeltaY / 100.0F
+                                        '        Dim sDeltaX As Single = sCurrentDensity * oPatternBrush.PatternDeltaX / 100.0F
+                                        '        For r As Single = oBounds.Top - sDeltaY To oBounds.Bottom Step sCurrentDensity
+                                        '            Call oPatternPath.StartFigure()
+                                        '            For s As Single = oBounds.Left - sDeltaX To oBounds.Right Step sCurrentSize * 2.0F
+                                        '                Call oPatternPath.AddBezier(New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize / 4, r + sCurrentSize), New PointF(s + sCurrentSize * 3 / 4, r), New PointF(s + sCurrentSize, r))
+                                        '                Call oPatternPath.AddBezier(New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize / 4, r), New PointF(s + sCurrentSize + sCurrentSize * 3 / 4, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize))
+                                        '            Next
+                                        '        Next
+                                        '        bIsFilled = False
+                                        '    Case 2
+                                        '        Dim sDeltaY As Single = sCurrentDensity * oPatternBrush.PatternDeltaY / 100.0F
+                                        '        Dim sDeltaX As Single = sCurrentDensity * oPatternBrush.PatternDeltaX / 100.0F
+                                        '        For r As Single = oBounds.Top - sDeltaY To oBounds.Bottom Step sCurrentDensity / 2.0F
+                                        '            Call oPatternPath.StartFigure()
+                                        '            For s As Single = oBounds.Left - sDeltaX To oBounds.Right Step sCurrentSize * 2.0F
+                                        '                Call oPatternPath.AddBezier(New PointF(s, r + sCurrentSize / 2), New PointF(s + sCurrentSize / 4, r + sCurrentSize / 2), New PointF(s + sCurrentSize * 3 / 4, r), New PointF(s + sCurrentSize, r))
+                                        '                Call oPatternPath.AddBezier(New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize / 4, r), New PointF(s + sCurrentSize + sCurrentSize * 3 / 4, r + sCurrentSize / 2), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize / 2))
+                                        '            Next
+                                        '        Next
+                                        '        bIsFilled = False
+                                        '    Case cBrush.PatternTypeEnum.Lines
+                                        '        Dim sDeltaY As Single = sCurrentDensity * oPatternBrush.PatternDeltaY / 100.0F
+                                        '        For r = oBounds.Top - sDeltaY To oBounds.Bottom Step sCurrentDensity
+                                        '            Call oPatternPath.StartFigure()
+                                        '            Call oPatternPath.AddLine(New PointF(oBounds.Left, r), New PointF(oBounds.Right, r))
+                                        '        Next
+                                        '        bIsFilled = False
+                                        '    Case cBrush.PatternTypeEnum.CrossedLines
+                                        '        Dim sDeltaY As Single = sCurrentDensity * oPatternBrush.PatternDeltaY / 100.0F
+                                        '        Dim sDeltaX As Single = sCurrentDensity * oPatternBrush.PatternDeltaX / 100.0F
+                                        '        For r = oBounds.Top - sDeltaY To oBounds.Bottom Step sCurrentDensity
+                                        '            Call oPatternPath.StartFigure()
+                                        '            Call oPatternPath.AddLine(New PointF(oBounds.Left, r), New PointF(oBounds.Right, r))
+                                        '        Next
+                                        '        For r = oBounds.Left - sDeltaX To oBounds.Right Step sCurrentDensity
+                                        '            Call oPatternPath.StartFigure()
+                                        '            Call oPatternPath.AddLine(New PointF(r, oBounds.Top), New PointF(r, oBounds.Bottom))
+                                        '        Next
+                                        '        bIsFilled = False
+                                        'End Select
+                                        Call oPainter.Path.Transform(oMatrix)
+                                        If oPainter.IsFilled Then
+                                            Call Cache.AddFiller(oPainter.Path, oPatternPen, Nothing, New SolidBrush(oPatternPen.Color))
+                                        Else
+                                            Call Cache.AddFiller(oPainter.Path, oPatternPen, Nothing)
+                                        End If
+                                    End Using
+                                End Using
+                            End If
+                            iPatternIndex += 1
+                        Next
                         Call Cache.AddResetclip()
                     End If
                 End If
@@ -1554,8 +2267,12 @@ Namespace cSurvey.Design
                         oClipartAlternativeBrush2.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oClipartAlternativeBrush2.Color)
                         oBackupColors(5) = oClipartAlternativeColor
                         oClipartAlternativeColor = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oClipartAlternativeColor)
-                        oBackupColors(6) = oPatternPen.Color
-                        oPatternPen.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oPatternPen.Color)
+                        If oPatternPens.Count > 0 Then
+                            oBackupColors(6) = oPatternPens(0).Color
+                            For Each oPatternPen As Pen In oPatternPens
+                                oPatternPen.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oBackupColors(6))
+                            Next
+                        End If
                     End If
 
                     Select Case iHatchType
@@ -1579,7 +2296,9 @@ Namespace cSurvey.Design
                         oClipartAlternativeBrush1.Color = oBackupColors(3)
                         oClipartAlternativeBrush2.Color = oBackupColors(4)
                         oClipartAlternativeColor = oBackupColors(5)
-                        oPatternPen.Color = oBackupColors(6)
+                        For Each oPatternPen As Pen In oPatternPens
+                            oPatternPen.Color = oBackupColors(6)
+                        Next
                     End If
                 End If
             End If
@@ -1590,6 +2309,10 @@ Namespace cSurvey.Design
                 Return bInvalidated
             End Get
         End Property
+
+        Private Sub oPatternBrushes_OnInvalidate(Sender As Object, e As EventArgs) Handles oPatternBrushes.OnInvalidate
+            Call Invalidate()
+        End Sub
 
         Friend Sub Invalidate()
             bInvalidated = True
@@ -1615,10 +2338,12 @@ Namespace cSurvey.Design
                         Call oPen.Dispose()
                         oPen = Nothing
                     End If
-                    If Not oPatternPen Is Nothing Then
+                    For Each oPatternPen As Pen In oPatternPens
                         Call oPatternPen.Dispose()
                         oPatternPen = Nothing
-                    End If
+                    Next
+                    Call oPatternPens.Clear()
+
                     If Not oBrush Is Nothing Then
                         Call oBrush.Dispose()
                         oBrush = Nothing
@@ -1657,11 +2382,13 @@ Namespace cSurvey.Design
             ' Non modificare questo codice. Inserire sopra il codice di pulizia in Dispose(disposing As Boolean).
             Dispose(True)
         End Sub
+
 #End Region
     End Class
 
     Public Class cBrush
         Implements IDisposable
+        Implements cIPatternBrush
 
         Public Enum BrushTypeEnum
             None = 0
@@ -1727,6 +2454,12 @@ Namespace cSurvey.Design
             Public Transparency As Single
         End Class
         Friend Event OnRender(sender As Object, RenderArgs As cRenderEventArgs)
+
+        Public ReadOnly Property PatternBrushes As cPatternBrushes
+            Get
+                Return oBaseBrush.PatternBrushes
+            End Get
+        End Property
 
         Public Function GetThumbnailSVG(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer, ByVal ForeColor As Color, ByVal Backcolor As Color) As XmlDocument
             Return oBaseBrush.GetThumbnailSVG(PaintOptions, Options, cItem.SelectionModeEnum.Selected, thumbWidth, thumbHeight, ForeColor, Backcolor)
@@ -1846,7 +2579,11 @@ Namespace cSurvey.Design
         '    End Get
         'End Property
 
-        Public Property PatternPenStyle() As cPen.PenStylesEnum
+        Public Function GetPatternInstance() As Object Implements cIPatternBrush.GetPatternInstance
+            Return oBaseBrush.GetPatternInstance
+        End Function
+
+        Public Property PatternPenStyle() As cPen.PenStylesEnum Implements cIPatternBrush.PatternPenStyle
             Get
                 Return oBaseBrush.PatternPenStyle
             End Get
@@ -1858,7 +2595,7 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public Property PatternType() As PatternTypeEnum
+        Public Property PatternType() As PatternTypeEnum Implements cIPatternBrush.PatternType
             Get
                 Return oBaseBrush.PatternType
             End Get
@@ -1894,11 +2631,35 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public Property PatternAngle() As Integer
+        Public Property PatternDeltaX() As Single Implements cIPatternBrush.PatternDeltaX
+            Get
+                Return oBaseBrush.PatternDeltaX
+            End Get
+            Set(ByVal value As Single)
+                If oBaseBrush.IsWriteable Then
+                    oBaseBrush.PatternDeltaX = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property PatternDeltaY() As Single Implements cIPatternBrush.PatternDeltaY
+            Get
+                Return oBaseBrush.PatternDeltaY
+            End Get
+            Set(ByVal value As Single)
+                If oBaseBrush.IsWriteable Then
+                    oBaseBrush.PatternDeltaY = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property PatternAngle() As Single Implements cIPatternBrush.PatternAngle
             Get
                 Return oBaseBrush.PatternAngle
             End Get
-            Set(ByVal value As Integer)
+            Set(ByVal value As Single)
                 If oBaseBrush.IsWriteable Then
                     oBaseBrush.PatternAngle = value
                     Call Invalidate()
@@ -1906,11 +2667,11 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public Property ClipartAngle() As Integer
+        Public Property ClipartAngle() As Single
             Get
                 Return oBaseBrush.ClipartAngle
             End Get
-            Set(ByVal value As Integer)
+            Set(ByVal value As Single)
                 If oBaseBrush.IsWriteable Then
                     oBaseBrush.ClipartAngle = value
                     Call Invalidate()
@@ -1930,7 +2691,7 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public Property PatternAngleMode() As PatternAngleModeEnum
+        Public Property PatternAngleMode() As PatternAngleModeEnum Implements cIPatternBrush.PatternAngleMode
             Get
                 Return oBaseBrush.PatternAngleMode
             End Get
@@ -1954,7 +2715,7 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public Property PatternDensity() As Single
+        Public Property PatternDensity() As Single Implements cIPatternBrush.PatternDensity
             Get
                 Return oBaseBrush.PatternDensity
             End Get
@@ -1990,7 +2751,7 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public Property PatternZoomFactor() As Single
+        Public Property PatternZoomFactor() As Single Implements cIPatternBrush.PatternZoomFactor
             Get
                 Return oBaseBrush.PatternZoomFactor
             End Get

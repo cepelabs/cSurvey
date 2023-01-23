@@ -66,6 +66,12 @@ Partial Class cItemBrushStylePropertyControl
         Me.cboPropBrushHatch = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.pnlBrushClipart = New DevExpress.XtraEditors.PanelControl()
         Me.pnlBrushPattern = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdPropPatternMoveUp = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdPropPatternMoveDown = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdPropPatternNext = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdPropPatternPrevious = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdPropPatternDelete = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdPropPatternAdd = New DevExpress.XtraEditors.SimpleButton()
         Me.pnlBrushAlternativeColor = New DevExpress.XtraEditors.PanelControl()
         Me.pnlBrushClipartSettings = New DevExpress.XtraEditors.PanelControl()
         Me.pnlBrushTexture = New DevExpress.XtraEditors.PanelControl()
@@ -73,6 +79,11 @@ Partial Class cItemBrushStylePropertyControl
         Me.lblPropBrushTextureImage = New DevExpress.XtraEditors.LabelControl()
         Me.cmdPropBrushBrowseTexture = New DevExpress.XtraEditors.SimpleButton()
         Me.pnlBrushPatternSettings = New DevExpress.XtraEditors.PanelControl()
+        Me.lblPropBrushPatternParameters = New DevExpress.XtraEditors.LabelControl()
+        Me.prpPropBrushPatterParameters = New DevExpress.XtraVerticalGrid.PropertyGridControl()
+        Me.txtPropBrushPatternDeltaY = New DevExpress.XtraEditors.SpinEdit()
+        Me.lblPropBrushPatternDeltaXY = New DevExpress.XtraEditors.LabelControl()
+        Me.txtPropBrushPatternDeltaX = New DevExpress.XtraEditors.SpinEdit()
         Me.lblPropBrushPatternZoomFactor = New DevExpress.XtraEditors.LabelControl()
         Me.txtPropBrushPatternZoomFactor = New DevExpress.XtraEditors.SpinEdit()
         Me.txtPropBrushPatternDensity = New DevExpress.XtraEditors.SpinEdit()
@@ -105,6 +116,9 @@ Partial Class cItemBrushStylePropertyControl
         CType(Me.picPropBrushTextureImage.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlBrushPatternSettings, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlBrushPatternSettings.SuspendLayout()
+        CType(Me.prpPropBrushPatterParameters, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPropBrushPatternDeltaY.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPropBrushPatternDeltaX.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropBrushPatternZoomFactor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropBrushPatternDensity.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropBrushPatternAngle.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -195,7 +209,7 @@ Partial Class cItemBrushStylePropertyControl
         '
         Me.cboPropBrushPatternType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboPropBrushPatternType.FormattingEnabled = True
-        Me.cboPropBrushPatternType.Items.AddRange(New Object() {resources.GetString("cboPropBrushPatternType.Items"), resources.GetString("cboPropBrushPatternType.Items1"), resources.GetString("cboPropBrushPatternType.Items2"), resources.GetString("cboPropBrushPatternType.Items3"), resources.GetString("cboPropBrushPatternType.Items4"), resources.GetString("cboPropBrushPatternType.Items5"), resources.GetString("cboPropBrushPatternType.Items6"), resources.GetString("cboPropBrushPatternType.Items7"), resources.GetString("cboPropBrushPatternType.Items8"), resources.GetString("cboPropBrushPatternType.Items9"), resources.GetString("cboPropBrushPatternType.Items10"), resources.GetString("cboPropBrushPatternType.Items11"), resources.GetString("cboPropBrushPatternType.Items12"), resources.GetString("cboPropBrushPatternType.Items13"), resources.GetString("cboPropBrushPatternType.Items14")})
+        Me.cboPropBrushPatternType.Items.AddRange(New Object() {resources.GetString("cboPropBrushPatternType.Items"), resources.GetString("cboPropBrushPatternType.Items1"), resources.GetString("cboPropBrushPatternType.Items2"), resources.GetString("cboPropBrushPatternType.Items3"), resources.GetString("cboPropBrushPatternType.Items4"), resources.GetString("cboPropBrushPatternType.Items5"), resources.GetString("cboPropBrushPatternType.Items6"), resources.GetString("cboPropBrushPatternType.Items7"), resources.GetString("cboPropBrushPatternType.Items8"), resources.GetString("cboPropBrushPatternType.Items9"), resources.GetString("cboPropBrushPatternType.Items10"), resources.GetString("cboPropBrushPatternType.Items11"), resources.GetString("cboPropBrushPatternType.Items12"), resources.GetString("cboPropBrushPatternType.Items13"), resources.GetString("cboPropBrushPatternType.Items14"), resources.GetString("cboPropBrushPatternType.Items15"), resources.GetString("cboPropBrushPatternType.Items16")})
         resources.ApplyResources(Me.cboPropBrushPatternType, "cboPropBrushPatternType")
         Me.cboPropBrushPatternType.Name = "cboPropBrushPatternType"
         '
@@ -422,12 +436,66 @@ Partial Class cItemBrushStylePropertyControl
         'pnlBrushPattern
         '
         Me.pnlBrushPattern.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlBrushPattern.Controls.Add(Me.cmdPropPatternMoveUp)
+        Me.pnlBrushPattern.Controls.Add(Me.cmdPropPatternMoveDown)
+        Me.pnlBrushPattern.Controls.Add(Me.cmdPropPatternNext)
+        Me.pnlBrushPattern.Controls.Add(Me.cmdPropPatternPrevious)
+        Me.pnlBrushPattern.Controls.Add(Me.cmdPropPatternDelete)
+        Me.pnlBrushPattern.Controls.Add(Me.cmdPropPatternAdd)
         Me.pnlBrushPattern.Controls.Add(Me.cboPropBrushPatternType)
         Me.pnlBrushPattern.Controls.Add(Me.lblPropBrushPatternType)
         Me.pnlBrushPattern.Controls.Add(Me.cboPropBrushPatternPen)
         Me.pnlBrushPattern.Controls.Add(Me.lblPropBrushPatternPen)
         resources.ApplyResources(Me.pnlBrushPattern, "pnlBrushPattern")
         Me.pnlBrushPattern.Name = "pnlBrushPattern"
+        '
+        'cmdPropPatternMoveUp
+        '
+        resources.ApplyResources(Me.cmdPropPatternMoveUp, "cmdPropPatternMoveUp")
+        Me.cmdPropPatternMoveUp.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdPropPatternMoveUp.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.layers11
+        Me.cmdPropPatternMoveUp.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.cmdPropPatternMoveUp.Name = "cmdPropPatternMoveUp"
+        '
+        'cmdPropPatternMoveDown
+        '
+        resources.ApplyResources(Me.cmdPropPatternMoveDown, "cmdPropPatternMoveDown")
+        Me.cmdPropPatternMoveDown.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdPropPatternMoveDown.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.layers2
+        Me.cmdPropPatternMoveDown.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.cmdPropPatternMoveDown.Name = "cmdPropPatternMoveDown"
+        '
+        'cmdPropPatternNext
+        '
+        resources.ApplyResources(Me.cmdPropPatternNext, "cmdPropPatternNext")
+        Me.cmdPropPatternNext.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdPropPatternNext.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_arrow4right
+        Me.cmdPropPatternNext.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.cmdPropPatternNext.Name = "cmdPropPatternNext"
+        '
+        'cmdPropPatternPrevious
+        '
+        resources.ApplyResources(Me.cmdPropPatternPrevious, "cmdPropPatternPrevious")
+        Me.cmdPropPatternPrevious.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdPropPatternPrevious.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_arrow4left
+        Me.cmdPropPatternPrevious.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.cmdPropPatternPrevious.Name = "cmdPropPatternPrevious"
+        '
+        'cmdPropPatternDelete
+        '
+        resources.ApplyResources(Me.cmdPropPatternDelete, "cmdPropPatternDelete")
+        Me.cmdPropPatternDelete.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdPropPatternDelete.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
+        Me.cmdPropPatternDelete.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.cmdPropPatternDelete.Name = "cmdPropPatternDelete"
+        '
+        'cmdPropPatternAdd
+        '
+        resources.ApplyResources(Me.cmdPropPatternAdd, "cmdPropPatternAdd")
+        Me.cmdPropPatternAdd.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdPropPatternAdd.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
+        Me.cmdPropPatternAdd.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.cmdPropPatternAdd.Name = "cmdPropPatternAdd"
         '
         'pnlBrushAlternativeColor
         '
@@ -489,6 +557,11 @@ Partial Class cItemBrushStylePropertyControl
         'pnlBrushPatternSettings
         '
         Me.pnlBrushPatternSettings.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlBrushPatternSettings.Controls.Add(Me.lblPropBrushPatternParameters)
+        Me.pnlBrushPatternSettings.Controls.Add(Me.prpPropBrushPatterParameters)
+        Me.pnlBrushPatternSettings.Controls.Add(Me.txtPropBrushPatternDeltaY)
+        Me.pnlBrushPatternSettings.Controls.Add(Me.lblPropBrushPatternDeltaXY)
+        Me.pnlBrushPatternSettings.Controls.Add(Me.txtPropBrushPatternDeltaX)
         Me.pnlBrushPatternSettings.Controls.Add(Me.lblPropBrushPatternZoomFactor)
         Me.pnlBrushPatternSettings.Controls.Add(Me.txtPropBrushPatternZoomFactor)
         Me.pnlBrushPatternSettings.Controls.Add(Me.txtPropBrushPatternDensity)
@@ -499,6 +572,55 @@ Partial Class cItemBrushStylePropertyControl
         Me.pnlBrushPatternSettings.Controls.Add(Me.lblPropBrushPatternAngle)
         resources.ApplyResources(Me.pnlBrushPatternSettings, "pnlBrushPatternSettings")
         Me.pnlBrushPatternSettings.Name = "pnlBrushPatternSettings"
+        '
+        'lblPropBrushPatternParameters
+        '
+        resources.ApplyResources(Me.lblPropBrushPatternParameters, "lblPropBrushPatternParameters")
+        Me.lblPropBrushPatternParameters.Name = "lblPropBrushPatternParameters"
+        '
+        'prpPropBrushPatterParameters
+        '
+        Me.prpPropBrushPatterParameters.Cursor = System.Windows.Forms.Cursors.Default
+        resources.ApplyResources(Me.prpPropBrushPatterParameters, "prpPropBrushPatterParameters")
+        Me.prpPropBrushPatterParameters.MenuManager = Me.BarManager
+        Me.prpPropBrushPatterParameters.Name = "prpPropBrushPatterParameters"
+        Me.prpPropBrushPatterParameters.OptionsView.AllowReadOnlyRowAppearance = DevExpress.Utils.DefaultBoolean.[True]
+        Me.prpPropBrushPatterParameters.OptionsView.LevelIndent = 0
+        Me.prpPropBrushPatterParameters.OptionsView.ShowRootCategories = False
+        Me.prpPropBrushPatterParameters.OptionsView.ShowRootLevelIndent = False
+        '
+        'txtPropBrushPatternDeltaY
+        '
+        resources.ApplyResources(Me.txtPropBrushPatternDeltaY, "txtPropBrushPatternDeltaY")
+        Me.txtPropBrushPatternDeltaY.MenuManager = Me.BarManager
+        Me.txtPropBrushPatternDeltaY.Name = "txtPropBrushPatternDeltaY"
+        Me.txtPropBrushPatternDeltaY.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPropBrushPatternDeltaY.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtPropBrushPatternDeltaY.Properties.DisplayFormat.FormatString = "N1"
+        Me.txtPropBrushPatternDeltaY.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPropBrushPatternDeltaY.Properties.EditFormat.FormatString = "N1"
+        Me.txtPropBrushPatternDeltaY.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPropBrushPatternDeltaY.Properties.Increment = New Decimal(New Integer() {5, 0, 0, 65536})
+        Me.txtPropBrushPatternDeltaY.Properties.MaskSettings.Set("mask", "N1")
+        Me.txtPropBrushPatternDeltaY.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
+        '
+        'lblPropBrushPatternDeltaXY
+        '
+        resources.ApplyResources(Me.lblPropBrushPatternDeltaXY, "lblPropBrushPatternDeltaXY")
+        Me.lblPropBrushPatternDeltaXY.Name = "lblPropBrushPatternDeltaXY"
+        '
+        'txtPropBrushPatternDeltaX
+        '
+        resources.ApplyResources(Me.txtPropBrushPatternDeltaX, "txtPropBrushPatternDeltaX")
+        Me.txtPropBrushPatternDeltaX.MenuManager = Me.BarManager
+        Me.txtPropBrushPatternDeltaX.Name = "txtPropBrushPatternDeltaX"
+        Me.txtPropBrushPatternDeltaX.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPropBrushPatternDeltaX.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtPropBrushPatternDeltaX.Properties.DisplayFormat.FormatString = "N1"
+        Me.txtPropBrushPatternDeltaX.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPropBrushPatternDeltaX.Properties.EditFormat.FormatString = "N1"
+        Me.txtPropBrushPatternDeltaX.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPropBrushPatternDeltaX.Properties.Increment = New Decimal(New Integer() {5, 0, 0, 65536})
+        Me.txtPropBrushPatternDeltaX.Properties.MaskSettings.Set("mask", "N1")
+        Me.txtPropBrushPatternDeltaX.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
         '
         'lblPropBrushPatternZoomFactor
         '
@@ -623,6 +745,9 @@ Partial Class cItemBrushStylePropertyControl
         CType(Me.pnlBrushPatternSettings, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlBrushPatternSettings.ResumeLayout(False)
         Me.pnlBrushPatternSettings.PerformLayout()
+        CType(Me.prpPropBrushPatterParameters, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPropBrushPatternDeltaY.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPropBrushPatternDeltaX.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPropBrushPatternZoomFactor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPropBrushPatternDensity.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPropBrushPatternAngle.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -687,4 +812,15 @@ Partial Class cItemBrushStylePropertyControl
     Friend WithEvents lblPropBrushPatternAngle As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lblPropBrushPatternZoomFactor As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtPropBrushPatternZoomFactor As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents cmdPropPatternNext As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdPropPatternPrevious As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdPropPatternDelete As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdPropPatternAdd As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents txtPropBrushPatternDeltaY As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents lblPropBrushPatternDeltaXY As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtPropBrushPatternDeltaX As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents cmdPropPatternMoveUp As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdPropPatternMoveDown As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lblPropBrushPatternParameters As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents prpPropBrushPatterParameters As DevExpress.XtraVerticalGrid.PropertyGridControl
 End Class

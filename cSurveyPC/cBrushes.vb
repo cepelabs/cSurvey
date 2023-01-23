@@ -324,6 +324,10 @@ Namespace cSurvey.Design
     Friend Class cBrushesBaseCollection
         Inherits KeyedCollection(Of String, cCustomBrush)
 
+        Public Sub New()
+            Call MyBase.New(StringComparer.OrdinalIgnoreCase)
+        End Sub
+
         Public Sub Rebind()
             MyBase.Dictionary.Clear()
             For Each oitem As cCustomBrush In MyBase.Items

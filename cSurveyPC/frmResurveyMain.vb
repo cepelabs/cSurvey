@@ -1424,7 +1424,7 @@ Friend Class frmResurveyMain
                                                     End If
                                                     Using oMatrix As Matrix = New Matrix
                                                         Call oMatrix.Translate(oPlanFromPoint.X, oPlanFromPoint.Y, MatrixOrder.Append)
-                                                        Call oMatrix.RotateAt(oShot.Bearing - 90, oPlanFromPoint, MatrixOrder.Append)
+                                                        Call oMatrix.RotateAt(oShot.Bearing - 90 - oOptions.NordCorrection, oPlanFromPoint, MatrixOrder.Append)
                                                         Call oPath.Transform(oMatrix)
                                                         Call oAreaPath.Transform(oMatrix)
                                                     End Using
@@ -1453,7 +1453,7 @@ Friend Class frmResurveyMain
                                                     End If
                                                     Using oMatrix As Matrix = New Matrix
                                                         Call oMatrix.Translate(oPlanToPoint.X, oPlanToPoint.Y, MatrixOrder.Append)
-                                                        Call oMatrix.RotateAt(oShot.Bearing - 90, oPlanToPoint, MatrixOrder.Append)
+                                                        Call oMatrix.RotateAt(oShot.Bearing - 90 - oOptions.NordCorrection, oPlanToPoint, MatrixOrder.Append)
                                                         Call oPath.Transform(oMatrix)
                                                     End Using
                                                     If oShot.GetLeft > 0 AndAlso oShot.GetRight > 0 Then
@@ -1902,6 +1902,7 @@ Friend Class frmResurveyMain
                             End If
                             Call oShots.Add(oShot)
                             If oOptions.CalculateLRUD Then
+                                sImageBearing = modPaint.AddAngle(sImageBearing, -oOptions.NordCorrection)
                                 If oOptions.LRUDStation = cOptions.LRUDStationEnum.ToStation Then
                                     pFillLR(oShot, oPlanToPoint, sImageBearing, Scale)
                                 ElseIf oOptions.LRUDStation = cOptions.LRUDStationEnum.FromStation Then

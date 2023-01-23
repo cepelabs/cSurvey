@@ -15247,7 +15247,7 @@ Friend Class frmMain2
         End Select
     End Sub
 
-    Private Sub ObjectProperty_OnCancelUndoSnapshot(Sender As Object, e As CommitUndoSnapshotEventArgs)
+    Private Sub ObjectProperty_OnCancelUndoSnapshot(Sender As Object, e As EventArgs)
         With pGetCurrentDesignTools()
             .CancelUndoSnapshot()
         End With

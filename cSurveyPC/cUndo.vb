@@ -453,7 +453,18 @@ Namespace cSurvey.Helper.Editor
             If sPropertyName.Contains(".") Then
                 Dim sPropertyNames As String() = sPropertyName.Split(".")
                 For i As Integer = 0 To sPropertyNames.Count - 2
-                    oBaseObject = CallByName(oBaseObject, sPropertyNames(i), CallType.Get)
+                    If sPropertyNames(i) Like "*(*)" Then
+                        Dim p As Integer = sPropertyNames(i).IndexOf("("c)
+                        Dim sCollectionPropertyName As String = sPropertyNames(i).Substring(0, p)
+                        Dim sCollectionReference As String = sPropertyNames(i).Substring(p + 1).TrimEnd(")"c)
+                        If IsNumeric(sCollectionReference) Then
+                            oBaseObject = CallByName(oBaseObject, sCollectionPropertyName, CallType.Get, {Integer.Parse(sCollectionReference)})
+                        Else
+                            oBaseObject = CallByName(oBaseObject, sCollectionPropertyName, CallType.Get, {sCollectionReference})
+                        End If
+                    Else
+                        oBaseObject = CallByName(oBaseObject, sPropertyNames(i), CallType.Get)
+                    End If
                 Next
                 sBasePropertyName = sPropertyNames(sPropertyNames.Count - 1)
             Else
@@ -470,7 +481,18 @@ Namespace cSurvey.Helper.Editor
             If sPropertyName.Contains(".") Then
                 Dim sPropertyNames As String() = sPropertyName.Split(".")
                 For i As Integer = 0 To sPropertyNames.Count - 2
-                    oBaseObject = CallByName(oBaseObject, sPropertyNames(i), CallType.Get)
+                    If sPropertyNames(i) Like "*(*)" Then
+                        Dim p As Integer = sPropertyNames(i).IndexOf("("c)
+                        Dim sCollectionPropertyName As String = sPropertyNames(i).Substring(0, p)
+                        Dim sCollectionReference As String = sPropertyNames(i).Substring(p + 1).TrimEnd(")"c)
+                        If IsNumeric(sCollectionReference) Then
+                            oBaseObject = CallByName(oBaseObject, sCollectionPropertyName, CallType.Get, {Integer.Parse(sCollectionReference)})
+                        Else
+                            oBaseObject = CallByName(oBaseObject, sCollectionPropertyName, CallType.Get, {sCollectionReference})
+                        End If
+                    Else
+                        oBaseObject = CallByName(oBaseObject, sPropertyNames(i), CallType.Get)
+                    End If
                 Next
                 sBasePropertyName = sPropertyNames(sPropertyNames.Count - 1)
             Else

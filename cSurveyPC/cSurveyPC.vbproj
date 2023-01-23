@@ -3126,6 +3126,9 @@
     <Content Include="Objects\Icons\item_logoimage.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Objects\Patterns\basepatterns.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Objects\Pens\CavePen.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

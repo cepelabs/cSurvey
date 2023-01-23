@@ -11,8 +11,79 @@ Imports DevExpress.XtraRichEdit.API.Native
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraBars.Ribbon
 Imports System.Reflection
+Imports System.ComponentModel
+'Imports OfficeOpenXml.FormulaParsing.Excel.Functions.Text
 
 Public Module modDevExpress
+    Public Class DynamicPropertyDescriptor
+        Inherits PropertyDescriptor
+
+        Private oBase As Object
+        Private oPropertyType As Type
+        Private sDescription As String
+
+        Public Sub New(ByVal Base As Object, ByVal propertyName As String, propertyDescription As String, ByVal propertyType As Type, ByVal propertyAttributes As Attribute())
+            MyBase.New(propertyName, propertyAttributes)
+            oBase = Base
+            oPropertyType = propertyType
+            sDescription = propertyDescription
+        End Sub
+
+        Public Sub New(ByVal Base As Object, ByVal propertyName As String, ByVal propertyType As Type, ByVal propertyAttributes As Attribute())
+            MyBase.New(propertyName, propertyAttributes)
+            oBase = Base
+            oPropertyType = propertyType
+        End Sub
+
+        Public Overrides ReadOnly Property Description As String
+            Get
+                If sdescription Is Nothing Then
+                    Return MyBase.Description
+                Else
+                    Return sDescription
+                End If
+            End Get
+        End Property
+
+        Public Overrides Function CanResetValue(ByVal component As Object) As Boolean
+            Return True
+        End Function
+
+        Public Overrides Function GetValue(ByVal component As Object) As Object
+            Return CallByName(oBase, Name, CallType.Get)
+        End Function
+
+        Public Overrides Sub ResetValue(ByVal component As Object)
+        End Sub
+
+        Public Overrides Sub SetValue(ByVal component As Object, ByVal value As Object)
+            Call CallByName(oBase, Name, CallType.Set, {value})
+        End Sub
+
+        Public Overrides Function ShouldSerializeValue(ByVal component As Object) As Boolean
+            Return False
+        End Function
+
+        Public Overrides ReadOnly Property ComponentType As Type
+            Get
+                Return GetType(Object)
+            End Get
+        End Property
+
+        Public Overrides ReadOnly Property IsReadOnly As Boolean
+            Get
+                Return False
+            End Get
+        End Property
+
+        Public Overrides ReadOnly Property PropertyType As Type
+            Get
+                Return oPropertyType
+            End Get
+        End Property
+    End Class
+
+
 
     <Extension>
     Public Function GetSize(RibbonMiniToolbar As RibbonMiniToolbar) As Size

@@ -717,7 +717,9 @@ Friend Class frmPreview
                 cboPrintDesignStyle.SelectedIndex = .DesignStyle
                 chkPrintCentrelineColorGray.Checked = .CenterlineColorGray
 
+                chkPrintImages.Visible = True
                 chkPrintImages.Checked = .DrawImages
+                chkPrintSketches.Visible = True
                 chkPrintSketches.Checked = .DrawSketches
                 chkPrintDesign.Checked = .DrawDesign
 
@@ -806,7 +808,9 @@ Friend Class frmPreview
                 cboPrintDesignStyle.SelectedIndex = .DesignStyle
                 chkPrintCentrelineColorGray.Checked = .CenterlineColorGray
 
+                chkPrintImages.Visible = True
                 chkPrintImages.Checked = .DrawImages
+                chkPrintSketches.Visible = True
                 chkPrintSketches.Checked = .DrawSketches
                 chkPrintDesign.Checked = .DrawDesign
 
@@ -884,7 +888,9 @@ Friend Class frmPreview
                 cboPrintDesignStyle.SelectedIndex = .DesignStyle
                 chkPrintCentrelineColorGray.Checked = .CenterlineColorGray
 
+                chkPrintImages.Visible = False
                 chkPrintImages.Checked = .DrawImages
+                chkPrintSketches.Visible = False
                 chkPrintSketches.Checked = .DrawSketches
                 chkPrintDesign.Checked = .DrawDesign
 

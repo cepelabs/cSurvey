@@ -1124,7 +1124,7 @@ Namespace cSurvey.Calculate
         Private Sub pCalculateDepthData(Trigpoint As cTrigPoints, Dictionary As IDictionary(Of String, String), Depth As Dictionary(Of String, Decimal))
             If Depth.Count > 0 Then
                 Threading.Tasks.Parallel.ForEach(Of cTrigPoint)(TrigPoints, Sub(oTrigpoint)
-                                                                                Dim sStation As String = Dictionary(oTrigpoint.Name)
+                                                                                Dim sStation As String = If(Dictionary Is Nothing, oTrigpoint.Name, Dictionary(oTrigpoint.Name))
                                                                                 If Depth.ContainsKey(sStation) Then
                                                                                     oTrigpoint.SetDepth(Depth(sStation))
                                                                                 Else

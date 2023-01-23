@@ -5,6 +5,7 @@ Imports DevExpress.XtraEditors
 
 Namespace cSurvey.UIHelpers
 
+
     Namespace Import
         Public Class cDestFields
             Inherits BindingList(Of cDestField)
@@ -140,7 +141,7 @@ Namespace cSurvey.UIHelpers
 
             Public ReadOnly Property Name As String
                 Get
-                    Dim oArgs As cgetnameeventargs = New cGetNameEventArgs
+                    Dim oArgs As cGetNameEventArgs = New cGetNameEventArgs
                     RaiseEvent OnGetName(Me, oArgs)
                     Return oArgs.Name
                 End Get
@@ -372,7 +373,7 @@ Namespace cSurvey.UIHelpers
             End Sub
 
             Public Sub New(DialogResult As DialogResult, Filename As String)
-                idialogresult = DialogResult
+                iDialogResult = DialogResult
                 sFilename = Filename
             End Sub
         End Class
@@ -722,7 +723,7 @@ Namespace cSurvey.UIHelpers
 
         Public Property Selected As Boolean
             Get
-                Return bselected
+                Return bSelected
             End Get
             Set(value As Boolean)
                 bSelected = value
@@ -3137,7 +3138,7 @@ Namespace cSurvey.UIHelpers
 
         Public Sub ResetVisible()
             Threading.Tasks.Parallel.ForEach(Of cSegmentPlaceholder)(Me, Sub(oPlaceholder)
-                                                                             Call oPlaceholder.resetvisible()
+                                                                             Call oPlaceholder.ResetVisible()
                                                                          End Sub)
         End Sub
 
@@ -3167,7 +3168,7 @@ Namespace cSurvey.UIHelpers
         End Sub
 
         Private Sub oSegments_OnSegmentChangeRange(Sender As cSegments, e As cSegments.OnSegmentsEventArgs) Handles oSegments.OnSegmentChangeRange
-            For Each oSegment As cSegment In e.segments
+            For Each oSegment As cSegment In e.Segments
                 Dim oPlaceholder As cSegmentPlaceholder = FindSegment(oSegment)
                 Call Validate(oPlaceholder)
             Next
@@ -3623,7 +3624,7 @@ Namespace cSurvey.UIHelpers
         End Property
         Public Property Selected As Boolean
             Get
-                Return bselected
+                Return bSelected
             End Get
             Set(value As Boolean)
                 bSelected = value

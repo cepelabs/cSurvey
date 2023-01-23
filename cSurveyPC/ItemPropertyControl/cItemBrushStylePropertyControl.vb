@@ -1,11 +1,14 @@
 ﻿Imports System.ComponentModel
 Imports System.Drawing.Drawing2D
+Imports System.Windows.Navigation
 Imports System.Xml
 Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Items
+Imports DevExpress.Data.Helpers
 Imports DevExpress.XtraBars
 Imports DevExpress.XtraTreeList
+Imports DevExpress.XtraVerticalGrid.Events
 
 Friend Class cItemBrushStylePropertyControl
     'Private oPaintOptions As cOptions
@@ -18,7 +21,9 @@ Friend Class cItemBrushStylePropertyControl
         ' This call is required by the designer.
         InitializeComponent()
 
-        ' Add any initialization after the InitializeComponent() 
+        ' Add any initialization after the InitializeComponent()
+        cboPropBrushPatternType.Items.Clear()
+        cboPropBrushPatternType.Items.AddRange(cPatternBrushHelper.GetGallery.Select(Function(oItem As Object) oItem).ToArray)
     End Sub
 
     Public Shadows Sub Rebind(Item As cItem, PaintOptions As cOptions)
@@ -30,6 +35,7 @@ Friend Class cItemBrushStylePropertyControl
         End If
 
         cboPropBrushPattern.EditValue = Item.Brush.ID
+        'cboPropBrushPattern_EditValueChanged(cboPropBrushPattern, EventArgs.Empty)
     End Sub
 
     Private Sub cmdPropBrushReseed_Click(sender As Object, e As EventArgs) Handles cmdPropBrushReseed.Click
@@ -127,10 +133,12 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub cboPropBrushPatternType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropBrushPatternType.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternType")
-            Item.Brush.PatternType = cboPropBrushPatternType.SelectedIndex
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternBrushes(" & iCurrentPatternIndex & ").PatternType")
+            pGetCurrentPatternBrush.PatternType = cboPropBrushPatternType.SelectedItem.id
             Call MyBase.PropertyChanged("BrushPatternType")
             Call MyBase.MapInvalidate()
+
+            Call pRefreshPatternProperties()
         End If
     End Sub
 
@@ -157,8 +165,8 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub cboPropBrushPatternPen_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropBrushPatternPen.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternPenStyle")
-            Item.Brush.PatternPenStyle = cboPropBrushPatternPen.SelectedIndex
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternBrushes(" & iCurrentPatternIndex & ").PatternPenStyle")
+            pGetCurrentPatternBrush.PatternPenStyle = cboPropBrushPatternPen.SelectedIndex
             Call MyBase.PropertyChanged("BrushPatternPen")
             Call MyBase.MapInvalidate()
         End If
@@ -213,7 +221,12 @@ Friend Class cItemBrushStylePropertyControl
             Call MyBase.MapInvalidate()
         End If
 
+        Call pRefreshPatternProperties()
+    End Sub
 
+    Private Sub pRefreshPatternProperties()
+        Dim bBackupDisabledObjectProperty As Boolean = MyBase.DisabledObjectProperty
+        MyBase.DisabledObjectProperty = True
         If Item IsNot Nothing Then
             If Item.Brush.Type = cBrush.BrushTypeEnum.Custom Then
                 cmdPropSave.Visible = True
@@ -238,23 +251,29 @@ Friend Class cItemBrushStylePropertyControl
                 cboPropBrushClipartAngleMode.SelectedIndex = Item.Brush.ClipartAngleMode
                 txtPropBrushClipartAngle.Value = Item.Brush.ClipartAngle
 
-                cboPropBrushPatternType.SelectedIndex = Item.Brush.PatternType
-                cboPropBrushPatternPen.SelectedIndex = Item.Brush.PatternPenStyle
-                txtPropBrushPatternDensity.Value = Item.Brush.PatternDensity * 100.0F
-                cboPropBrushPatternAngleMode.SelectedIndex = Item.Brush.PatternAngleMode
-                txtPropBrushPatternAngle.Value = Item.Brush.PatternAngle
-                txtPropBrushPatternZoomFactor.Value = Item.Brush.PatternZoomFactor * 1000.0F
+                cboPropBrushPatternType.SelectedItem = cPatternBrushHelper.GetGallery(pGetCurrentPatternBrush.PatternType)
+                cboPropBrushPatternPen.SelectedIndex = pGetCurrentPatternBrush.PatternPenStyle
+                txtPropBrushPatternDensity.Value = pGetCurrentPatternBrush.PatternDensity * 100.0F
+                cboPropBrushPatternAngleMode.SelectedIndex = pGetCurrentPatternBrush.PatternAngleMode
+                txtPropBrushPatternAngle.Value = pGetCurrentPatternBrush.PatternAngle
+                txtPropBrushPatternZoomFactor.Value = pGetCurrentPatternBrush.PatternZoomFactor * 1000.0F
+                txtPropBrushPatternDeltaX.Value = pGetCurrentPatternBrush.PatternDeltaX
+                txtPropBrushPatternDeltaY.Value = pGetCurrentPatternBrush.PatternDeltaY
+                prpPropBrushPatterParameters.SelectedObject = pGetCurrentPatternBrush.GetPatternInstance
 
                 txtPropBrushAlternativeBrushColor.EditValue = Item.Brush.ClipartAlternativeColor
                 cboPropBrushClipartPosition.SelectedIndex = Item.Brush.ClipartPosition
                 txtPropBrushAlternativeBrushColor.EditValue = Item.Brush.ClipartAlternativeColor
                 cboPropBrushClipartCrop.SelectedIndex = Item.Brush.ClipartCrop
+
+                Call pBrushPatternRefresh()
             Else
                 cmdPropSave.Visible = False
                 cmdPropBrushReseed.Visible = Item.Brush.HatchType = cBrush.HatchTypeEnum.Clipart
             End If
             Call pRefreshHeight()
         End If
+        MyBase.DisabledObjectProperty = bBackupDisabledObjectProperty
     End Sub
 
     Private Sub cboPropBrushClipartCrop_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropBrushClipartCrop.SelectedIndexChanged
@@ -343,10 +362,25 @@ Friend Class cItemBrushStylePropertyControl
         Call pExportToFile()
     End Sub
 
+    Private iCurrentPatternIndex As Integer
+
+    Private Function pGetCurrentPatternBrush() As cIPatternBrush
+        Return Item.Brush.PatternBrushes(iCurrentPatternIndex)
+    End Function
+
+    Private Sub pBrushPatternRefresh()
+        Dim bEnabled As Boolean = Item.Brush.PatternBrushes.Count > 1
+        cmdPropPatternDelete.Enabled = bEnabled AndAlso iCurrentPatternIndex > 0
+        cmdPropPatternPrevious.Enabled = iCurrentPatternIndex > 0
+        cmdPropPatternNext.Enabled = iCurrentPatternIndex < Item.Brush.PatternBrushes.Count - 1
+        cmdPropPatternMoveDown.Enabled = iCurrentPatternIndex > 0
+        cmdPropPatternMoveUp.Enabled = iCurrentPatternIndex < Item.Brush.PatternBrushes.Count - 1
+    End Sub
+
     Private Sub txtPropBrushPatternZoomFactor_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropBrushPatternZoomFactor.EditValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternZoomFactor")
-            Item.Brush.PatternZoomFactor = txtPropBrushPatternZoomFactor.Value / 1000.0F
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternBrushes(" & iCurrentPatternIndex & ").PatternZoomFactor")
+            pGetCurrentPatternBrush.PatternZoomFactor = txtPropBrushPatternZoomFactor.Value / 1000.0F
             Call MyBase.PropertyChanged("BrushPatternZoomFactor")
             Call MyBase.MapInvalidate()
         End If
@@ -417,8 +451,8 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub txtPropBrushPatternDensity_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropBrushPatternDensity.EditValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternDensity")
-            Item.Brush.PatternDensity = txtPropBrushPatternDensity.Value / 100.0F
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternBrushes(" & iCurrentPatternIndex & ").PatternDensity")
+            pGetCurrentPatternBrush.PatternDensity = txtPropBrushPatternDensity.Value / 100.0F
             Call MyBase.PropertyChanged("BrushPatternDensity")
             Call MyBase.MapInvalidate()
         End If
@@ -426,8 +460,8 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub txtPropBrushPatternAngle_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropBrushPatternAngle.EditValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternAngle")
-            Item.Brush.PatternAngle = txtPropBrushPatternAngle.Value
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternBrushes(" & iCurrentPatternIndex & ").PatternAngle")
+            pGetCurrentPatternBrush.PatternAngle = txtPropBrushPatternAngle.Value
             Call MyBase.PropertyChanged("BrushPatternAngle")
             Call MyBase.MapInvalidate()
         End If
@@ -435,13 +469,100 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub cboPropBrushPatternngleMode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropBrushPatternAngleMode.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternAngleMode")
-            Item.Brush.PatternAngleMode = cboPropBrushPatternAngleMode.SelectedIndex
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternBrushes(" & iCurrentPatternIndex & ").PatternAngleMode")
+            pGetCurrentPatternBrush.PatternAngleMode = cboPropBrushPatternAngleMode.SelectedIndex
             Call MyBase.PropertyChanged("BrushPatternAngleMode")
             Call MyBase.MapInvalidate()
         End If
 
-        txtPropBrushPatternAngle.Enabled = Item.Brush.PatternAngleMode = cBrush.PatternAngleModeEnum.Fixed
+        txtPropBrushPatternAngle.Enabled = pGetCurrentPatternBrush.PatternAngleMode = cBrush.PatternAngleModeEnum.Fixed
         lblPropBrushPatternAngle.Enabled = txtPropBrushPatternAngle.Enabled
+    End Sub
+
+    Private Sub cmdPropPatternAdd_Click(sender As Object, e As EventArgs) Handles cmdPropPatternAdd.Click
+        Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo33"))
+        Dim oPatterBrush As cPatternBrush = Item.Brush.PatternBrushes.Append()
+        iCurrentPatternIndex = oPatterBrush.GetIndex
+        Call pRefreshPatternProperties()
+        Call MyBase.CommitUndoSnapshot()
+        Call MyBase.PropertyChanged("BrushPatternAddPattern")
+        Call MyBase.MapInvalidate()
+    End Sub
+
+    Private Sub cmdPropPatternPrevious_Click(sender As Object, e As EventArgs) Handles cmdPropPatternPrevious.Click
+        If iCurrentPatternIndex > 0 Then
+            iCurrentPatternIndex -= 1
+            Call pRefreshPatternProperties()
+        End If
+    End Sub
+
+    Private Sub cmdPropPatternNext_Click(sender As Object, e As EventArgs) Handles cmdPropPatternNext.Click
+        If iCurrentPatternIndex < Item.Brush.PatternBrushes.Count - 1 Then
+            iCurrentPatternIndex += 1
+            Call pRefreshPatternProperties()
+        End If
+    End Sub
+
+    Private Sub cmdPropPatternDelete_Click(sender As Object, e As EventArgs) Handles cmdPropPatternDelete.Click
+        Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo33"))
+        Item.Brush.PatternBrushes.Remove(iCurrentPatternIndex)
+        If iCurrentPatternIndex >= Item.Brush.PatternBrushes.Count Then
+            iCurrentPatternIndex -= 1
+        End If
+        Call pRefreshPatternProperties()
+        Call MyBase.CommitUndoSnapshot()
+        Call MyBase.PropertyChanged("BrushPatternRemovePattern")
+        Call MyBase.MapInvalidate()
+    End Sub
+
+    Private Sub txtPropBrushPatternDeltaY_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropBrushPatternDeltaY.EditValueChanged
+        If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternBrushes(" & iCurrentPatternIndex & ").PatternDeltaY")
+            pGetCurrentPatternBrush.PatternDeltaY = txtPropBrushPatternDeltaY.Value
+            Call MyBase.PropertyChanged("BrushPatternDeltaY")
+            Call MyBase.MapInvalidate()
+        End If
+    End Sub
+
+    Private Sub txtPropBrushPatternDeltaX_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropBrushPatternDeltaX.EditValueChanged
+        If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternBrushes(" & iCurrentPatternIndex & ").PatternDeltaX")
+            pGetCurrentPatternBrush.PatternDeltaX = txtPropBrushPatternDeltaX.Value
+            Call MyBase.PropertyChanged("BrushPatternDeltaX")
+            Call MyBase.MapInvalidate()
+        End If
+    End Sub
+
+    Private Sub cmdPropPatternMoveDown_Click(sender As Object, e As EventArgs) Handles cmdPropPatternMoveDown.Click
+        Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo33"))
+        Item.Brush.PatternBrushes.MoveTo(iCurrentPatternIndex - 1, pGetCurrentPatternBrush)
+        iCurrentPatternIndex -= 1
+        Call pRefreshPatternProperties()
+        Call MyBase.CommitUndoSnapshot()
+        Call MyBase.PropertyChanged("BrushPatternMovedDownPattern")
+        Call MyBase.MapInvalidate()
+    End Sub
+
+    Private Sub cmdPropPatternMoveUp_Click(sender As Object, e As EventArgs) Handles cmdPropPatternMoveUp.Click
+        Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo33"))
+        Item.Brush.PatternBrushes.MoveTo(iCurrentPatternIndex + 1, pGetCurrentPatternBrush)
+        iCurrentPatternIndex += 1
+        Call pRefreshPatternProperties()
+        Call MyBase.CommitUndoSnapshot()
+        Call MyBase.PropertyChanged("BrushPatternMovedUpPattern")
+        Call MyBase.MapInvalidate()
+    End Sub
+
+    Private Sub prpPropBrushPatterParameters_CustomPropertyDescriptors(sender As Object, e As CustomPropertyDescriptorsEventArgs) Handles prpPropBrushPatterParameters.CustomPropertyDescriptors
+        Dim oProperties As PropertyDescriptorCollection = e.Properties
+        Dim oList As ArrayList = New ArrayList(oProperties)
+        Dim oBase As cPatternBrushInstance = e.Source
+        For Each oParameter In oBase.Base.Parameters
+            Dim val1 As DynamicPropertyDescriptor = New DynamicPropertyDescriptor(oBase, oParameter.Name, oParameter.Caption, oParameter.GetRealType, Nothing)
+            oList.Add(val1)
+        Next
+        Dim oResult As PropertyDescriptor() = New PropertyDescriptor(oList.Count - 1) {}
+        oList.ToArray().CopyTo(oResult, 0)
+        e.Properties = New PropertyDescriptorCollection(oResult)
     End Sub
 End Class

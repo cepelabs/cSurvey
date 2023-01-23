@@ -1,0 +1,530 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<patterns>
+	<pattern id="0" name="Lines">
+		<caption lang="it" caption="Linee" tooltip="Motivo a linee"/>
+		<caption lang="en" caption="Lines" tooltip="Lines pattern"/>
+		<parameters>
+		</parameters>
+		<code lang="vb#">
+			public sub OnPaint(Painter)
+				For r as single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+					Call Painter.StartFigure()
+					Call Painter.AddLine(New PointF(Painter.Bounds.Left, r), New PointF(Painter.Bounds.Right, r))
+				Next
+				Painter.IsFilled = False
+			end sub
+		</code>
+	</pattern>
+	<pattern id="1" name="Crossed Lines">
+		<caption lang="it" caption="Linee incrociate" tooltip="Motivo a linee incrociate"/>
+		<caption lang="en" caption="Crossed lines" tooltip="Crossed lines pattern"/>
+		<parameters>
+			<parameter name="HorizontalDistanceRatio" type="single" min="0.01" max="400" default="200"></parameter>
+		</parameters>
+		<code lang="vb#">
+			public sub OnPaint(Painter)
+				For r as single= Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+                    Call Painter.StartFigure()
+                    Call Painter.AddLine(New PointF(Painter.Bounds.Left, r), New PointF(Painter.Bounds.Right, r))
+                Next
+                For r as single= Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density*Painter.Parameters.HorizontalDistanceRatio/100F
+                    Call Painter.StartFigure()
+                    Call Painter.AddLine(New PointF(r, Painter.Bounds.Top), New PointF(r, Painter.Bounds.Bottom))
+                Next
+				Painter.IsFilled = False
+			end sub
+		</code>
+	</pattern>	
+	<pattern id="2" name="Light waves">
+		<caption lang="it" caption="Piccole onde" tooltip="Motivo con piccole onde"/>
+		<caption lang="en" caption="Light waves" tooltip="Light waves pattern"/>
+		<parameters>
+			<parameter name="Size" type="single" min="0.01" max="400" default="1"></parameter>
+		</parameters>
+		<code lang="vb#">
+			public sub OnPaint(Painter)
+				dim sCurrentSize as single=Painter.Parameters.size
+                For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density / 2.0F
+                    Call Painter.StartFigure()
+                    For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step sCurrentSize * 2.0F
+                        Call Painter.AddBezier(New PointF(s, r + sCurrentSize / 2), New PointF(s + sCurrentSize / 4, r + sCurrentSize / 2), New PointF(s + sCurrentSize * 3 / 4, r), New PointF(s + sCurrentSize, r))
+                        Call Painter.AddBezier(New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize / 4, r), New PointF(s + sCurrentSize + sCurrentSize * 3 / 4, r + sCurrentSize / 2), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize / 2))
+                    Next
+                Next
+				Painter.IsFilled = False
+			end sub
+		</code>
+	</pattern>	
+	<pattern id="3" name="Heavy waves">
+		<caption lang="it" caption="Grandi onde" tooltip="Motivo con grandi onde"/>
+		<caption lang="en" caption="Heavy waves" tooltip="Heavy waves pattern"/>
+		<parameters>
+			<parameter name="Size" type="single" min="0.01" max="400" default="1"></parameter>
+		</parameters>
+		<code lang="vb#">
+			public sub OnPaint(Painter)
+				dim sCurrentSize as single=Painter.Parameters.size
+				For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+                    Call Painter.StartFigure()
+                    For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step sCurrentSize * 2.0F
+                        Call Painter.AddBezier(New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize / 4, r + sCurrentSize), New PointF(s + sCurrentSize * 3 / 4, r), New PointF(s + sCurrentSize, r))
+                        Call Painter.AddBezier(New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize / 4, r), New PointF(s + sCurrentSize + sCurrentSize * 3 / 4, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize))
+                    Next
+                Next
+				Painter.IsFilled = False
+			end sub
+		</code>
+	</pattern>		
+	<pattern id="4" name="Zigzag">
+		<caption lang="it" caption="Zigzag" tooltip="Motivo a zig zag"/>
+		<caption lang="en" caption="Zigzag" tooltip="Zig zag pattern"/>
+		<parameters>
+			<parameter name="Size" type="single" min="0.01" max="400" default="1"></parameter>
+		</parameters>
+		<code lang="vb#">
+			public sub OnPaint(Painter)
+				dim sCurrentSize as single=Painter.Parameters.size
+				For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+					Call Painter.StartFigure()
+					For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step sCurrentSize * 2.0F
+						Call Painter.AddLines({New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+					Next
+				Next
+				Painter.IsFilled = False
+			end sub
+		</code>
+	</pattern>		
+	<pattern id="5" name="Zigzag with vertical line">
+		<caption lang="it" caption="Zigzag con linea verticale" tooltip="Motivo a zig zag con linea verticale"/>
+		<caption lang="en" caption="Zigzag with vertical line" tooltip="Zig zag pattern with vertical line"/>
+		<parameters>
+			<parameter name="Size" type="single" min="0.01" max="400" default="1"></parameter>
+		</parameters>
+		<code lang="vb#">
+			public sub OnPaint(Painter)
+				dim sCurrentSize as single=Painter.Parameters.size
+				For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+                    Call Painter.StartFigure()
+                    For s As Single = Painter.Bounds.Left - Painter.Density - Painter.DeltaX To Painter.Bounds.Right Step sCurrentSize * 2
+                        Call Painter.AddLines({New PointF(s, r), New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+                    Next
+                Next
+				Painter.IsFilled = False
+			end sub
+		</code>
+	</pattern>			
+	<pattern id="6" name="Zigzag with vertical lines">
+		<caption lang="it" caption="Zigzag con linee verticali" tooltip="Motivo a zig zag con linee verticali"/>
+		<caption lang="en" caption="Zigzag with vertical lines" tooltip="Zig zag pattern with vertical lines"/>
+		<parameters>
+			<parameter name="Size" type="single" min="0.01" max="400" default="1"></parameter>
+		</parameters>
+		<code lang="vb#">
+			public sub OnPaint(Painter)
+				dim sCurrentSize as single=Painter.Parameters.size
+                For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+                    Call Painter.StartFigure()
+                    For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step sCurrentSize * 2
+                        Call Painter.AddLines({New PointF(s, r), New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize, r + sCurrentSize)})
+                        Call Painter.AddLines({New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+                    Next
+                Next
+				Painter.IsFilled = False
+			end sub
+		</code>
+	</pattern>			
+	<pattern id="7" name="Opened triangles">
+		<caption lang="it" caption="Triangoli aperti" tooltip="Motivo con triangoli aperti"/>
+		<caption lang="en" caption="Open triangles" tooltip="Open triangles pattern"/>
+		<parameters>
+			<parameter name="EvenAndOdd" type="boolean" default="true"></parameter>
+			<parameter name="Size" type="single" min="0.01" max="400" default="1"></parameter>
+		</parameters>
+		<code lang="vb#">
+			public sub OnPaint(Painter)
+				dim sCurrentSize as single=Painter.Parameters.size
+				if Painter.Parameters.EvenAndOdd then
+					Dim iEven As Integer = 0
+					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+						iEven += 1
+						If iEven Mod 2 = 0 Then
+							For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
+								Call Painter.StartFigure()
+								Call Painter.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize / 2, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+							Next
+						Else
+							For s As Single = Painter.Bounds.Left - Painter.Density - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
+								Call Painter.StartFigure()
+								Call Painter.AddLines({New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize / 2, r), New PointF(s + sCurrentSize, r + sCurrentSize)})
+							Next
+						End If
+					Next
+				else
+					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+						For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
+							Call Painter.StartFigure()
+							Call Painter.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize / 2, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+						Next
+					Next	
+				end if
+				Painter.IsFilled = False
+			end sub
+		</code>
+	</pattern>			
+	<pattern id="8" name="Closed triangles">
+		<caption lang="it" caption="Triangoli chiusi" tooltip="Motivo con triangoli chiusi"/>
+		<caption lang="en" caption="Closed triangles" tooltip="Closed triangles pattern"/>
+		<parameters>
+			<parameter name="EvenAndOdd" type="boolean" default="true"></parameter>
+			<parameter name="Size" type="single" min="0.01" max="400" default="1"></parameter>
+		</parameters>
+		<code lang="vb#">
+			public sub OnPaint(Painter)
+				dim sCurrentSize as single=Painter.Parameters.size
+				if Painter.Parameters.EvenAndOdd then
+					Dim iEven As Integer = 0
+					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+						iEven += 1
+						If iEven Mod 2 = 0 Then
+							For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
+								Call Painter.StartFigure()
+								Call Painter.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize / 2, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+								call Painter.CloseFigure()
+							Next
+						Else
+							For s As Single = Painter.Bounds.Left - Painter.Density - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
+								Call Painter.StartFigure()
+								Call Painter.AddLines({New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize / 2, r), New PointF(s + sCurrentSize, r + sCurrentSize)})
+								call Painter.CloseFigure()
+							Next
+						End If
+					Next
+				else
+					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+						For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
+							Call Painter.StartFigure()
+							Call Painter.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize / 2, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+							call Painter.CloseFigure()
+						Next
+					Next	
+				end if
+				Painter.IsFilled = False
+			end sub
+		</code>
+	</pattern>		
+	<pattern id="9" name="Filled triangles">
+		<caption lang="it" caption="Triangoli pieni" tooltip="Motivo con triangoli pieni"/>
+		<caption lang="en" caption="Filled triangles" tooltip="Filled triangles pattern"/>
+		<parameters>
+			<parameter name="EvenAndOdd" type="boolean" default="true"></parameter>
+			<parameter name="Size" type="single" min="0.01" max="400" default="1"></parameter>
+		</parameters>
+		<code lang="vb#">
+			public sub OnPaint(Painter)
+				dim sCurrentSize as single=Painter.Parameters.size
+				if Painter.Parameters.EvenAndOdd then
+					Dim iEven As Integer = 0
+					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+						iEven += 1
+						If iEven Mod 2 = 0 Then
+							For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
+								Call Painter.StartFigure()
+								Call Painter.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize / 2, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+								call Painter.CloseFigure()
+							Next
+						Else
+							For s As Single = Painter.Bounds.Left - Painter.Density - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
+								Call Painter.StartFigure()
+								Call Painter.AddLines({New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize / 2, r), New PointF(s + sCurrentSize, r + sCurrentSize)})
+								call Painter.CloseFigure()
+							Next
+						End If
+					Next
+				else
+					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+						For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
+							Call Painter.StartFigure()
+							Call Painter.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize / 2, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+							call Painter.CloseFigure()
+						Next
+					Next	
+				end if
+				Painter.IsFilled = true
+			end sub
+		</code>
+	</pattern>		
+	<pattern id="10" name="Cross">
+		<caption lang="it" caption="Croci" tooltip="Motivo a croci"/>
+		<caption lang="en" caption="Cross" tooltip="Cross pattern"/>
+		<parameters>
+			<parameter name="EvenAndOdd" type="boolean" default="true"></parameter>
+			<parameter name="Size" type="single" min="0.01" max="400" default="1"></parameter>
+		</parameters>
+		<code lang="vb#">
+			public sub OnPaint(Painter)
+				dim sCurrentSize as single=Painter.Parameters.size
+				if Painter.Parameters.EvenAndOdd then
+					Dim iEven As Integer = 0
+						For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+                            iEven += 1
+                            If iEven Mod 2 = 0 Then
+                                For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
+                                    Call Painter.StartFigure()
+                                    Call Painter.AddLines({New PointF(s, r + sCurrentSize / 2.0F), New PointF(s + sCurrentSize, r + sCurrentSize / 2.0F)})
+                                    Call Painter.StartFigure()
+                                    Call Painter.AddLines({New PointF(s + sCurrentSize / 2.0F, r), New PointF(s + sCurrentSize / 2.0F, r + sCurrentSize)})
+                                Next
+                            Else
+                                For s As Single = Painter.Bounds.Left - Painter.Density - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
+                                    Call Painter.StartFigure()
+                                    Call Painter.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize / 2.0F), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize / 2.0F)})
+                                    Call Painter.StartFigure()
+                                    Call Painter.AddLines({New PointF(s + sCurrentSize + sCurrentSize / 2.0F, r), New PointF(s + sCurrentSize + sCurrentSize / 2.0F, r + sCurrentSize)})
+                                Next
+                            End If
+                        Next
+				else
+					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+						For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
+							Call Painter.StartFigure()
+                            Call Painter.AddLines({New PointF(s, r + sCurrentSize / 2.0F), New PointF(s + sCurrentSize, r + sCurrentSize / 2.0F)})
+                            Call Painter.StartFigure()
+                            Call Painter.AddLines({New PointF(s + sCurrentSize / 2.0F, r), New PointF(s + sCurrentSize / 2.0F, r + sCurrentSize)})			
+						Next	
+					Next	
+				end if
+				Painter.IsFilled = false
+			end sub
+		</code>
+	</pattern>			
+	<pattern id="11" name="Circles">
+		<caption lang="it" caption="Cerchi" tooltip="Motivo a cerchi"/>
+		<caption lang="en" caption="Circles" tooltip="Circles pattern"/>
+		<parameters>
+			<parameter name="EvenAndOdd" type="boolean" default="true"></parameter>
+			<parameter name="Size" type="single" min="0.01" max="400" default="1"></parameter>
+		</parameters>
+		<code lang="vb#">
+			public sub OnPaint(Painter)
+				dim sCurrentSize as single=Painter.Parameters.size
+				if Painter.Parameters.EvenAndOdd then
+					Dim iEven As Integer = 0
+						For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+                            iEven += 1
+                            If iEven Mod 2 = 0 Then
+                                For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
+                                     Call Painter.StartFigure()
+                                     Call Painter.AddEllipse(New RectangleF(s, r, sCurrentSize, sCurrentSize))
+                                Next
+                            Else
+                                For s As Single = Painter.Bounds.Left - Painter.Density - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
+                                    Call Painter.StartFigure()
+                                    Call Painter.AddEllipse(New RectangleF(s + Painter.Density, r, sCurrentSize, sCurrentSize))
+                                Next
+                            End If
+                        Next
+				else
+					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+						For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
+							Call Painter.StartFigure()
+							Call Painter.AddEllipse(New RectangleF(s + Painter.Density, r, sCurrentSize, sCurrentSize))						
+						Next	
+					Next	
+				end if
+				Painter.IsFilled = false
+			end sub
+		</code>
+	</pattern>	
+	<pattern id="12" name="Filled circles">
+		<caption lang="it" caption="Cerchi pieni" tooltip="Motivo a cerchi pieni"/>
+		<caption lang="en" caption="Filled circles" tooltip="Filled circles pattern"/>
+		<parameters>
+			<parameter name="EvenAndOdd" type="boolean" default="true"></parameter>
+			<parameter name="Size" type="single" min="0.01" max="400" default="1"></parameter>
+		</parameters>
+		<code lang="vb#">
+			public sub OnPaint(Painter)
+				dim sCurrentSize as single=Painter.Parameters.size
+				if Painter.Parameters.EvenAndOdd then
+					Dim iEven As Integer = 0
+						For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+                            iEven += 1
+                            If iEven Mod 2 = 0 Then
+                                For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
+                                     Call Painter.StartFigure()
+                                     Call Painter.AddEllipse(New RectangleF(s, r, sCurrentSize, sCurrentSize))
+                                Next
+                            Else
+                                For s As Single = Painter.Bounds.Left - Painter.Density - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
+                                    Call Painter.StartFigure()
+                                    Call Painter.AddEllipse(New RectangleF(s + Painter.Density, r, sCurrentSize, sCurrentSize))
+                                Next
+                            End If
+                        Next
+				else
+					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+						For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
+							Call Painter.StartFigure()
+							Call Painter.AddEllipse(New RectangleF(s + Painter.Density, r, sCurrentSize, sCurrentSize))						
+						Next	
+					Next	
+				end if
+				Painter.IsFilled = true
+			end sub
+		</code>
+	</pattern>		
+	<pattern id="13" name="Bricks">
+		<caption lang="it" caption="Mattoncini" tooltip="Motivo a mattoncini"/>
+		<caption lang="en" caption="Bricks" tooltip="Bricks pattern"/>
+		<parameters>
+			<parameter name="EvenAndOdd" type="boolean" default="true"></parameter>
+			<parameter name="VerticalRatio" type="single" min="0.01" max="100" default="50"></parameter>
+		</parameters>
+		<code lang="vb#">
+			public sub OnPaint(Painter)
+				if Painter.Parameters.EvenAndOdd then
+					Dim iEven As Integer = 0
+					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+						iEven += 1
+						If iEven Mod 2 = 0 Then
+							For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
+								Call Painter.StartFigure()
+								Call Painter.AddLines({New PointF(s, r), New PointF(s + Painter.Density * 2.0F, r), New PointF(s + Painter.Density * 2.0F, r + Painter.Density)})
+							Next
+						Else
+							For s As Single = Painter.Bounds.Left - Painter.Density - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
+								Call Painter.StartFigure()
+							    Call Painter.AddLines({New PointF(s, r), New PointF(s + Painter.Density * 2.0F, r), New PointF(s + Painter.Density * 2.0F, r + Painter.Density)})
+							Next
+						End If
+					Next
+				else
+					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density	
+						For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
+							Call Painter.StartFigure()
+							Call Painter.AddLines({New PointF(s, r), New PointF(s + Painter.Density * 2.0F, r), New PointF(s + Painter.Density * 2.0F, r + Painter.Density)})
+						next
+					next
+				end if
+				Painter.IsFilled=false
+			end sub
+		</code>
+	</pattern>	
+	<pattern id="14" name="Sloping bricks">
+		<caption lang="it" caption="Mattoncini inclinati" tooltip="Motivo a mattoncini inclinati"/>
+		<caption lang="en" caption="Sloping bricks" tooltip="Sloping bricks pattern"/>
+		<parameters>
+			<parameter name="EvenAndOdd" type="boolean" default="true"></parameter>
+			<parameter name="VerticalRatio" type="single" min="0.01" max="100" default="50"></parameter>
+			<parameter name="SlopeRatio" type="single" min="0.01" max="100" default="50"></parameter>
+		</parameters>
+		<code lang="vb#">
+			public sub OnPaint(Painter)
+				if Painter.Parameters.EvenAndOdd then
+					Dim iEven As Integer = 0
+					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+						iEven += 1
+						If iEven Mod 2 = 0 Then
+							For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
+								Call Painter.StartFigure()
+								Call Painter.AddLines({New PointF(s, r), New PointF(s + Painter.Density + Painter.Density, r), New PointF(s + Painter.Density + Painter.Density / 2, r + Painter.Density)})
+							Next
+						Else
+							For s As Single = Painter.Bounds.Left - Painter.Density - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
+								Call Painter.StartFigure()
+								Call Painter.AddLines({New PointF(s + Painter.Density, r), New PointF(s + Painter.Density + Painter.Density + Painter.Density, r), New PointF(s + Painter.Density + Painter.Density + Painter.Density / 2, r + Painter.Density)})
+							Next
+						End If
+					Next
+				else
+					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density	
+						For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
+							Call Painter.StartFigure()
+							Call Painter.AddLines({New PointF(s, r), New PointF(s + Painter.Density + Painter.Density, r), New PointF(s + Painter.Density + Painter.Density / 2, r + Painter.Density)})			
+						next
+					next
+				end if
+				Painter.IsFilled=false
+			end sub
+		</code>
+	</pattern>
+	<pattern id="15" name="Segment">
+		<caption lang="it" caption="Segmenti" tooltip="Motivo a segment"/>
+		<caption lang="en" caption="Segments" tooltip="Segments pattern"/>
+		<parameters>
+			<parameter name="EvenAndOdd" type="boolean" default="true"></parameter>
+			<parameter name="Size" type="single" min="0.01" max="400" default="1"></parameter>
+		</parameters>
+		<code lang="vb#">
+			public sub OnPaint(Painter)
+				dim sCurrentSize as single=Painter.Parameters.size
+				if Painter.Parameters.EvenAndOdd then
+					Dim iEven As Integer = 0
+					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom step Painter.Density
+						iEven += 1
+						If iEven Mod 2 = 0 Then
+							For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
+								Call Painter.StartFigure()
+								Call Painter.AddLines({New PointF(s, r), New PointF(s + sCurrentSize, r)})
+							Next
+						Else
+							For s As Single = Painter.Bounds.Left - Painter.Density - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
+								Call Painter.StartFigure()
+								Call Painter.AddLines({New PointF(s, r), New PointF(s + sCurrentSize, r)})
+							Next
+						End If
+					Next
+				else
+					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density	
+						For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
+							Call Painter.StartFigure()
+							Call Painter.AddLines({New PointF(s, r), New PointF(s + sCurrentSize, r)})						
+						next
+					next
+				end if
+				Painter.IsFilled=false
+			end sub
+		</code>
+	</pattern>	
+	<pattern id="16" name="Wavy">
+		<caption lang="it" caption="Onde" tooltip="Motivo ad onde"/>
+		<caption lang="en" caption="Wavy" tooltip="Wavy pattern"/>
+		<parameters>
+			<parameter name="EvenAndOdd" type="boolean" default="true"></parameter>
+			<parameter name="Size" type="single" min="0.01" max="400" default="1"></parameter>
+		</parameters>
+		<code lang="vb#">
+			public sub OnPaint(Painter)
+				dim sCurrentSize as single=Painter.Parameters.size
+				if Painter.Parameters.EvenAndOdd then
+					Dim iEven As Integer = 0
+					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+						iEven += 1
+						If iEven Mod 2 = 0 Then
+							For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 4.0F
+								Call Painter.StartFigure()
+								Call Painter.AddBezier(New PointF(s, r + Painter.Density / 2.0F), New PointF(s + sCurrentSize / 4.0F, r + Painter.Density / 4.0F), New PointF(s + sCurrentSize * 3.0F / 4.0F, r + Painter.Density / 4.0F), New PointF(s + sCurrentSize, r + Painter.Density / 2.0F))
+								Call Painter.AddBezier(New PointF(s + sCurrentSize, r + Painter.Density / 2), New PointF(s + sCurrentSize + sCurrentSize / 4.0F, r + Painter.Density * 3 / 4), New PointF(s + sCurrentSize + sCurrentSize * 3.0F / 4.0F, r + Painter.Density * 3.0F / 4.0F), New PointF(s + sCurrentSize + sCurrentSize, r + Painter.Density / 2.0F))
+							Next
+						Else
+							For s As Single = Painter.Bounds.Left - Painter.Density * 2.0F - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 4.0F
+								Call Painter.StartFigure()
+								Call Painter.AddBezier(New PointF(s, r + Painter.Density / 2.0F), New PointF(s + sCurrentSize / 4, r + Painter.Density / 4.0F), New PointF(s + sCurrentSize * 3.0F / 4.0F, r + Painter.Density / 4.0F), New PointF(s + sCurrentSize, r + Painter.Density / 2.0F))
+								Call Painter.AddBezier(New PointF(s + sCurrentSize, r + Painter.Density / 2.0F), New PointF(s + sCurrentSize + sCurrentSize / 4.0F, r + Painter.Density * 3.0F / 4.0F), New PointF(s + sCurrentSize + sCurrentSize * 3.0F / 4.0F, r + Painter.Density * 3.0F / 4.0F), New PointF(s + sCurrentSize + sCurrentSize, r + Painter.Density / 2.0F))
+							Next
+						End If
+					Next
+				else
+					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density	
+						For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
+							Call Painter.StartFigure()
+							Call Painter.AddBezier(New PointF(s, r + Painter.Density / 2.0F), New PointF(s + sCurrentSize / 4.0F, r + Painter.Density / 4.0F), New PointF(s + sCurrentSize * 3.0F / 4.0F, r + Painter.Density / 4.0F), New PointF(s + sCurrentSize, r + Painter.Density / 2.0F))
+							Call Painter.AddBezier(New PointF(s + sCurrentSize, r + Painter.Density / 2), New PointF(s + sCurrentSize + sCurrentSize / 4.0F, r + Painter.Density * 3 / 4), New PointF(s + sCurrentSize + sCurrentSize * 3.0F / 4.0F, r + Painter.Density * 3.0F / 4.0F), New PointF(s + sCurrentSize + sCurrentSize, r + Painter.Density / 2.0F))
+						next
+					next
+				end if
+				Painter.IsFilled=false
+			end sub
+		</code>
+	</pattern>		
+</patterns>

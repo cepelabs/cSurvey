@@ -20,6 +20,7 @@ Namespace cSurvey.Design
         Public Class cXVIStation
             Public Location As PointF
             Public Name As String
+
             Public Sub New(ByVal Name As String, ByVal Location As PointF)
                 Me.Name = Name
                 Me.Location = Location

@@ -502,7 +502,7 @@
     <value>pnlBrushPattern</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternType.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>7</value>
   </data>
   <data name="cboPropBrushPatternType.Items" xml:space="preserve">
     <value>Single lines</value>
@@ -549,6 +549,12 @@
   <data name="cboPropBrushPatternType.Items14" xml:space="preserve">
     <value>Sloping brick</value>
   </data>
+  <data name="cboPropBrushPatternType.Items15" xml:space="preserve">
+    <value>Segment</value>
+  </data>
+  <data name="cboPropBrushPatternType.Items16" xml:space="preserve">
+    <value>Wavy segment</value>
+  </data>
   <data name="cboPropBrushPatternType.Location" type="System.Drawing.Point, System.Drawing">
     <value>154, 0</value>
   </data>
@@ -568,7 +574,7 @@
     <value>pnlBrushPattern</value>
   </data>
   <data name="&gt;&gt;cboPropBrushPatternType.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>6</value>
   </data>
   <data name="cboPropBrushClipartCrop.Items" xml:space="preserve">
     <value>Do not cut</value>
@@ -652,7 +658,7 @@
     <value>pnlBrushPattern</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternPen.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>9</value>
   </data>
   <data name="cboPropBrushPatternPen.Items" xml:space="preserve">
     <value>Solid</value>
@@ -688,7 +694,7 @@
     <value>pnlBrushPattern</value>
   </data>
   <data name="&gt;&gt;cboPropBrushPatternPen.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>8</value>
   </data>
   <data name="txtPropBrushColor.EditValue" type="System.Drawing.Color, System.Drawing">
     <value />
@@ -869,7 +875,7 @@
     <value>Bottom</value>
   </data>
   <data name="barDockControlBottom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 450</value>
+    <value>0, 594</value>
   </data>
   <data name="barDockControlBottom.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -899,7 +905,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="barDockControlLeft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 450</value>
+    <value>0, 594</value>
   </data>
   <data name="&gt;&gt;barDockControlLeft.Name" xml:space="preserve">
     <value>barDockControlLeft</value>
@@ -923,7 +929,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="barDockControlRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 450</value>
+    <value>0, 594</value>
   </data>
   <data name="&gt;&gt;barDockControlRight.Name" xml:space="preserve">
     <value>barDockControlRight</value>
@@ -1035,6 +1041,201 @@
   </data>
   <data name="&gt;&gt;pnlBrushAlternativeColor.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="cmdPropPatternMoveUp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdPropPatternMoveUp.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cmdPropPatternMoveUp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropPatternMoveUp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>474, 29</value>
+  </data>
+  <data name="cmdPropPatternMoveUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdPropPatternMoveUp.TabIndex" type="System.Int32, mscorlib">
+    <value>237</value>
+  </data>
+  <data name="cmdPropPatternMoveUp.ToolTip" xml:space="preserve">
+    <value>Move pattern up</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternMoveUp.Name" xml:space="preserve">
+    <value>cmdPropPatternMoveUp</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternMoveUp.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternMoveUp.Parent" xml:space="preserve">
+    <value>pnlBrushPattern</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternMoveUp.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cmdPropPatternMoveDown.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdPropPatternMoveDown.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cmdPropPatternMoveDown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropPatternMoveDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>444, 29</value>
+  </data>
+  <data name="cmdPropPatternMoveDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdPropPatternMoveDown.TabIndex" type="System.Int32, mscorlib">
+    <value>236</value>
+  </data>
+  <data name="cmdPropPatternMoveDown.ToolTip" xml:space="preserve">
+    <value>Move pattern down</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternMoveDown.Name" xml:space="preserve">
+    <value>cmdPropPatternMoveDown</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternMoveDown.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternMoveDown.Parent" xml:space="preserve">
+    <value>pnlBrushPattern</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternMoveDown.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cmdPropPatternNext.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdPropPatternNext.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cmdPropPatternNext.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropPatternNext.Location" type="System.Drawing.Point, System.Drawing">
+    <value>474, 1</value>
+  </data>
+  <data name="cmdPropPatternNext.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdPropPatternNext.TabIndex" type="System.Int32, mscorlib">
+    <value>235</value>
+  </data>
+  <data name="cmdPropPatternNext.ToolTip" xml:space="preserve">
+    <value>Select next pattern</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternNext.Name" xml:space="preserve">
+    <value>cmdPropPatternNext</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternNext.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternNext.Parent" xml:space="preserve">
+    <value>pnlBrushPattern</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternNext.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cmdPropPatternPrevious.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdPropPatternPrevious.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cmdPropPatternPrevious.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropPatternPrevious.Location" type="System.Drawing.Point, System.Drawing">
+    <value>444, 1</value>
+  </data>
+  <data name="cmdPropPatternPrevious.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdPropPatternPrevious.TabIndex" type="System.Int32, mscorlib">
+    <value>234</value>
+  </data>
+  <data name="cmdPropPatternPrevious.ToolTip" xml:space="preserve">
+    <value>Select previous pattern</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternPrevious.Name" xml:space="preserve">
+    <value>cmdPropPatternPrevious</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternPrevious.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternPrevious.Parent" xml:space="preserve">
+    <value>pnlBrushPattern</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternPrevious.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cmdPropPatternDelete.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdPropPatternDelete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cmdPropPatternDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropPatternDelete.Location" type="System.Drawing.Point, System.Drawing">
+    <value>414, 1</value>
+  </data>
+  <data name="cmdPropPatternDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdPropPatternDelete.TabIndex" type="System.Int32, mscorlib">
+    <value>233</value>
+  </data>
+  <data name="cmdPropPatternDelete.ToolTip" xml:space="preserve">
+    <value>Delete current pattern</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternDelete.Name" xml:space="preserve">
+    <value>cmdPropPatternDelete</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternDelete.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternDelete.Parent" xml:space="preserve">
+    <value>pnlBrushPattern</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternDelete.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cmdPropPatternAdd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdPropPatternAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropPatternAdd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>384, 1</value>
+  </data>
+  <data name="cmdPropPatternAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdPropPatternAdd.TabIndex" type="System.Int32, mscorlib">
+    <value>232</value>
+  </data>
+  <data name="cmdPropPatternAdd.ToolTip" xml:space="preserve">
+    <value>Add new pattern over</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternAdd.Name" xml:space="preserve">
+    <value>cmdPropPatternAdd</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternAdd.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternAdd.Parent" xml:space="preserve">
+    <value>pnlBrushPattern</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPatternAdd.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="pnlBrushPattern.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -1330,6 +1531,141 @@
   <data name="&gt;&gt;pnlBrushClipartSettings.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="lblPropBrushPatternParameters.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropBrushPatternParameters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 85</value>
+  </data>
+  <data name="lblPropBrushPatternParameters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 13</value>
+  </data>
+  <data name="lblPropBrushPatternParameters.TabIndex" type="System.Int32, mscorlib">
+    <value>229</value>
+  </data>
+  <data name="lblPropBrushPatternParameters.Text" xml:space="preserve">
+    <value>Parameters:</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternParameters.Name" xml:space="preserve">
+    <value>lblPropBrushPatternParameters</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternParameters.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternParameters.Parent" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternParameters.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="prpPropBrushPatterParameters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>154, 79</value>
+  </data>
+  <data name="prpPropBrushPatterParameters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 114</value>
+  </data>
+  <data name="prpPropBrushPatterParameters.TabIndex" type="System.Int32, mscorlib">
+    <value>228</value>
+  </data>
+  <data name="&gt;&gt;prpPropBrushPatterParameters.Name" xml:space="preserve">
+    <value>prpPropBrushPatterParameters</value>
+  </data>
+  <data name="&gt;&gt;prpPropBrushPatterParameters.Type" xml:space="preserve">
+    <value>DevExpress.XtraVerticalGrid.PropertyGridControl, DevExpress.XtraVerticalGrid.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;prpPropBrushPatterParameters.Parent" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;prpPropBrushPatterParameters.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtPropBrushPatternDeltaY.EditValue" type="System.Decimal, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtPropBrushPatternDeltaY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>221, 53</value>
+  </data>
+  <data name="txtPropBrushPatternDeltaY.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtPropBrushPatternDeltaY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="txtPropBrushPatternDeltaY.TabIndex" type="System.Int32, mscorlib">
+    <value>227</value>
+  </data>
+  <data name="txtPropBrushPatternDeltaY.ToolTip" xml:space="preserve">
+    <value>Delta percentage for shift on Y axis</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDeltaY.Name" xml:space="preserve">
+    <value>txtPropBrushPatternDeltaY</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDeltaY.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDeltaY.Parent" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDeltaY.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblPropBrushPatternDeltaXY.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropBrushPatternDeltaXY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>81, 56</value>
+  </data>
+  <data name="lblPropBrushPatternDeltaXY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 13</value>
+  </data>
+  <data name="lblPropBrushPatternDeltaXY.TabIndex" type="System.Int32, mscorlib">
+    <value>226</value>
+  </data>
+  <data name="lblPropBrushPatternDeltaXY.Text" xml:space="preserve">
+    <value>Delta X/Y:</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternDeltaXY.Name" xml:space="preserve">
+    <value>lblPropBrushPatternDeltaXY</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternDeltaXY.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternDeltaXY.Parent" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternDeltaXY.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtPropBrushPatternDeltaX.EditValue" type="System.Decimal, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtPropBrushPatternDeltaX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>154, 53</value>
+  </data>
+  <data name="txtPropBrushPatternDeltaX.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtPropBrushPatternDeltaX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="txtPropBrushPatternDeltaX.TabIndex" type="System.Int32, mscorlib">
+    <value>225</value>
+  </data>
+  <data name="txtPropBrushPatternDeltaX.ToolTip" xml:space="preserve">
+    <value>Delta percentage for shift on X axis</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDeltaX.Name" xml:space="preserve">
+    <value>txtPropBrushPatternDeltaX</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDeltaX.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDeltaX.Parent" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDeltaX.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="lblPropBrushPatternZoomFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1355,7 +1691,7 @@
     <value>pnlBrushPatternSettings</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternZoomFactor.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>5</value>
   </data>
   <data name="txtPropBrushPatternZoomFactor.EditValue" type="System.Decimal, mscorlib">
     <value>1</value>
@@ -1382,7 +1718,7 @@
     <value>pnlBrushPatternSettings</value>
   </data>
   <data name="&gt;&gt;txtPropBrushPatternZoomFactor.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>6</value>
   </data>
   <data name="txtPropBrushPatternDensity.EditValue" type="System.Decimal, mscorlib">
     <value>10</value>
@@ -1409,7 +1745,7 @@
     <value>pnlBrushPatternSettings</value>
   </data>
   <data name="&gt;&gt;txtPropBrushPatternDensity.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>7</value>
   </data>
   <data name="lblPropBrushPatternAngleMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1436,7 +1772,7 @@
     <value>pnlBrushPatternSettings</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternAngleMode.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>8</value>
   </data>
   <data name="cboPropBrushPatternAngleMode.Items" xml:space="preserve">
     <value>Fixed</value>
@@ -1460,7 +1796,7 @@
     <value>pnlBrushPatternSettings</value>
   </data>
   <data name="&gt;&gt;cboPropBrushPatternAngleMode.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>9</value>
   </data>
   <data name="txtPropBrushPatternAngle.EditValue" type="System.Decimal, mscorlib">
     <value>0</value>
@@ -1487,7 +1823,7 @@
     <value>pnlBrushPatternSettings</value>
   </data>
   <data name="&gt;&gt;txtPropBrushPatternAngle.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>10</value>
   </data>
   <data name="lblPropBrushPatternDensity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1514,7 +1850,7 @@
     <value>pnlBrushPatternSettings</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternDensity.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>11</value>
   </data>
   <data name="lblPropBrushPatternAngle.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1544,7 +1880,7 @@
     <value>pnlBrushPatternSettings</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternAngle.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>12</value>
   </data>
   <data name="pnlBrushPatternSettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -1553,7 +1889,7 @@
     <value>0, 396</value>
   </data>
   <data name="pnlBrushPatternSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 54</value>
+    <value>505, 198</value>
   </data>
   <data name="pnlBrushPatternSettings.TabIndex" type="System.Int32, mscorlib">
     <value>273</value>
@@ -1571,7 +1907,7 @@
     <value>10</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 450</value>
+    <value>505, 594</value>
   </data>
   <data name="&gt;&gt;mnuSaveAs.Name" xml:space="preserve">
     <value>mnuSaveAs</value>

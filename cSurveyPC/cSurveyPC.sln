@@ -62,14 +62,14 @@ Global
 		{D8B150F9-A992-4EDC-B13F-6DE7F3FD31D3}.Release|x86.Build.0 = Release|x86
 		{66BD478C-6488-47DC-AA8C-2527D1D371DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{66BD478C-6488-47DC-AA8C-2527D1D371DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{66BD478C-6488-47DC-AA8C-2527D1D371DD}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{66BD478C-6488-47DC-AA8C-2527D1D371DD}.Debug|x64.Build.0 = Debug|Any CPU
+		{66BD478C-6488-47DC-AA8C-2527D1D371DD}.Debug|x64.ActiveCfg = Debug|x64
+		{66BD478C-6488-47DC-AA8C-2527D1D371DD}.Debug|x64.Build.0 = Debug|x64
 		{66BD478C-6488-47DC-AA8C-2527D1D371DD}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{66BD478C-6488-47DC-AA8C-2527D1D371DD}.Debug|x86.Build.0 = Debug|Any CPU
 		{66BD478C-6488-47DC-AA8C-2527D1D371DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66BD478C-6488-47DC-AA8C-2527D1D371DD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{66BD478C-6488-47DC-AA8C-2527D1D371DD}.Release|x64.ActiveCfg = Release|Any CPU
-		{66BD478C-6488-47DC-AA8C-2527D1D371DD}.Release|x64.Build.0 = Release|Any CPU
+		{66BD478C-6488-47DC-AA8C-2527D1D371DD}.Release|x64.ActiveCfg = Release|x64
+		{66BD478C-6488-47DC-AA8C-2527D1D371DD}.Release|x64.Build.0 = Release|x64
 		{66BD478C-6488-47DC-AA8C-2527D1D371DD}.Release|x86.ActiveCfg = Release|Any CPU
 		{66BD478C-6488-47DC-AA8C-2527D1D371DD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
@@ -77,9 +77,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {41835F43-2086-41B8-A8CE-95B69E5AB731}
-		RESX_ExcelExportMode = MultipleSheets
-		RESX_NeutralResourcesLanguage = en-001
 		RESX_CodeReferences = {"Items":[{"Expression":"\\W($File.$Key)\\W","Extensions":".cs,.xaml,.cshtml","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"ResourceManager.GetString\\(\"($Key)\"\\)","Extensions":".cs","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"typeof\\((\\w+\\.)*($File)\\).+\"($Key)\"|\"($Key)\".+typeof\\((\\w+\\.)*($File)\\)","Extensions":".cs","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"\\W($Key)\\W","Extensions":".vb","IsCaseSensitive":false,"SingleLineComment":"'"},{"Expression":"\\W($File::$Key)\\W","Extensions":".cpp,.c,.hxx,.h","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"<%\\$\\s+Resources:\\s*($File)\\s*,\\s*($Key)\\s*%>","Extensions":".aspx,.ascx","IsCaseSensitive":true,"SingleLineComment":null},{"Expression":"GetLocalizedString\\(\"($Key)\"\\)","Extensions":".vb","IsCaseSensitive":false,"SingleLineComment":"'"}]}
+		RESX_NeutralResourcesLanguage = en-001
+		RESX_ExcelExportMode = MultipleSheets
+		SolutionGuid = {41835F43-2086-41B8-A8CE-95B69E5AB731}
 	EndGlobalSection
 EndGlobal

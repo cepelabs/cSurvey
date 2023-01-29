@@ -1,4 +1,6 @@
-﻿Friend Class cForm
+﻿Imports cSurveyPC.cSurvey.Helper.Editor
+
+Friend Class cForm
     Inherits DevExpress.XtraEditors.XtraForm
 
     Private bSaveAndRestoreSettings As Boolean
@@ -21,25 +23,19 @@
         Inherits EventArgs
 
         Private sFormName As String
-        Private oReg As Microsoft.Win32.RegistryKey
+        Private oSettings As cEnvironmentSettingsFolder
 
-        Public Function GetValue(Key As String, Optional DefaultValue As Object = Nothing) As Object
-            Return oReg.GetValue("dialog." & sFormName & "." & Key, DefaultValue)
+        Public Function GetSetting(Key As String, Optional DefaultValue As Object = Nothing) As Object
+            Return oSettings.GetSetting("dialog." & sFormName & "." & Key, DefaultValue)
         End Function
 
-        Public Sub SetValue(Key As String, Value As Object)
-            Call oReg.SetValue("dialog." & sFormName & "." & Key, Value)
+        Public Sub SetSetting(Key As String, Value As Object)
+            Call oSettings.SetSetting("dialog." & sFormName & "." & Key, Value)
         End Sub
 
-        Public ReadOnly Property RegistryKey As Microsoft.Win32.RegistryKey
-            Get
-                Return oReg
-            End Get
-        End Property
-
-        Friend Sub New(FormName As String, Reg As Microsoft.Win32.RegistryKey)
+        Friend Sub New(FormName As String, Settings As cEnvironmentSettingsFolder)
             sFormName = FormName
-            oReg = Reg
+            oSettings = Settings
         End Sub
     End Class
 
@@ -56,43 +52,19 @@
     End Property
 
     Private Sub pFormSettingsLoad()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                RaiseEvent FormSettingsLoad(Me, New FormSettingsEventArgs(Name, oReg))
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        RaiseEvent FormSettingsLoad(Me, New FormSettingsEventArgs(Name, My.Application.Settings))
     End Sub
 
     Private Sub pFormSettingsSave()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                RaiseEvent FormSettingsSave(Me, New FormSettingsEventArgs(Name, oReg))
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        RaiseEvent FormSettingsSave(Me, New FormSettingsEventArgs(Name, My.Application.Settings))
     End Sub
 
     Private Sub pSettingsLoad()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                Size = modWindow.GetSizeFromRegistry(oReg, "dialog." & Name & ".size", Size)
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        Size = modWindow.GetSizeFromSettings(My.Application.Settings, "dialog." & Name & ".size", Size)
     End Sub
 
     Private Sub pSettingsSave()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Call modWindow.SetSizeFromRegistry(oReg, "dialog." & Name & ".size", Size)
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        Call modWindow.SetSizeToSettings(My.Application.Settings, "dialog." & Name & ".size", Size)
     End Sub
 
     Public Sub cForm_Load() Handles MyBase.Load

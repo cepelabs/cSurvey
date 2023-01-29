@@ -27,10 +27,7 @@ Friend Class cDockLinkedSurveys
         InitializeComponent()
 
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
-        Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-            sDefaultFolder = oReg.GetValue("default.folder", "")
-        End Using
-
+        sDefaultFolder = My.Application.Settings.GetSetting("default.folder", "")
         'Call pSetupLinkedSurveys()
     End Sub
 

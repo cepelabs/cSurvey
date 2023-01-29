@@ -2326,7 +2326,7 @@ Friend Class frmResurveyMain
     '    Shot.Up = Math.Abs(sD)
     'End Sub
     Private Sub pDesignEnvironmentSet()
-        Dim oMessageForeColor As Color = cEditDesignEnvironment.GetSetting("messagebar.forecolor", SystemColors.ControlText)
+        Dim oMessageForeColor As Color = My.Application.RuntimeSettings.GetSetting("messagebar.forecolor", SystemColors.ControlText)
         oMainMessageBar.CaptionForecolor = oMessageForeColor
     End Sub
 
@@ -2585,69 +2585,50 @@ Friend Class frmResurveyMain
     End Sub
 
     Private Sub pSettingsLoad()
-        Try
-            oRecents = cSurvey.UIHelpers.cRecentsHelper.Load("resurvey.recent", btnLoad)
+        oRecents = cSurvey.UIHelpers.cRecentsHelper.Load("resurvey.recent", btnLoad)
 
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                iDefaultCalculateMode = oReg.GetValue("resurvey.options.calculatemode", cResurvey.cOptions.CalculateModeEnum.Full)
+        iDefaultCalculateMode = My.Application.Settings.GetSetting("resurvey.options.calculatemode", cResurvey.cOptions.CalculateModeEnum.Full)
 
-                btnShowRulers.Checked = oReg.GetValue("resurvey.options.showrulers", 0)
-                btnShowRuler.Checked = oReg.GetValue("resurvey.options.showruler", 0)
+        btnShowRulers.Checked = My.Application.Settings.GetSetting("resurvey.options.showrulers", 0)
+        btnShowRuler.Checked = My.Application.Settings.GetSetting("resurvey.options.showruler", 0)
 
-                Dim sQAT As String = cEditDesignEnvironment.GetSetting("resurvey.qat.items", "")
-                If sQAT <> "" Then
-                    Dim oXML As XmlDocument = New XmlDocument
-                    Call oXML.LoadXml(sQAT)
-                    Call RibbonControl.Toolbar.ItemLinks.Clear()
-                    Dim oXMLRoot As XmlElement = oXML.DocumentElement
-                    For Each oXMLItem As XmlElement In oXMLRoot.ChildNodes
-                        Dim oItem As BarItem = RibbonControl.Items.FindById(oXMLItem.GetAttribute("i"))
-                        If oItem IsNot Nothing Then
-                            Dim oItemLink As BarItemLink = RibbonControl.Toolbar.ItemLinks.Add(oItem)
-                            oItemLink.BeginGroup = modXML.GetAttributeValue(oXMLItem, "bg", "0")
-                            oItemLink.Visible = modXML.GetAttributeValue(oXMLItem, "v", "1")
-                        End If
-                    Next
-                    RibbonControl.ToolbarLocation = modXML.GetAttributeValue(oXMLRoot, "tl", "0")
-                    RibbonControl.Minimized = modXML.GetAttributeValue(oXMLRoot, "m", "0")
+        Dim sQAT As String = My.Application.Settings.GetSetting("resurvey.qat.items", "")
+        If sQAT <> "" Then
+            Dim oXML As XmlDocument = New XmlDocument
+            Call oXML.LoadXml(sQAT)
+            Call RibbonControl.Toolbar.ItemLinks.Clear()
+            Dim oXMLRoot As XmlElement = oXML.DocumentElement
+            For Each oXMLItem As XmlElement In oXMLRoot.ChildNodes
+                Dim oItem As BarItem = RibbonControl.Items.FindById(oXMLItem.GetAttribute("i"))
+                If oItem IsNot Nothing Then
+                    Dim oItemLink As BarItemLink = RibbonControl.Toolbar.ItemLinks.Add(oItem)
+                    oItemLink.BeginGroup = modXML.GetAttributeValue(oXMLItem, "bg", "0")
+                    oItemLink.Visible = modXML.GetAttributeValue(oXMLItem, "v", "1")
                 End If
-
-                Call oReg.Close()
-            End Using
-        Catch ex As Exception
-        End Try
+            Next
+            RibbonControl.ToolbarLocation = modXML.GetAttributeValue(oXMLRoot, "tl", "0")
+            RibbonControl.Minimized = modXML.GetAttributeValue(oXMLRoot, "m", "0")
+        End If
     End Sub
 
     Private Sub pSettingsSave()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Call oReg.SetValue("resurvey.options.calculatemode", iDefaultCalculateMode.ToString("D"))
-                Call oReg.SetValue("resurvey.options.showrulers", If(btnShowRulers.Checked, 1, 0))
-                Call oReg.SetValue("resurvey.options.showruler", If(btnShowRuler.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("resurvey.options.calculatemode", iDefaultCalculateMode.ToString("D"))
+        Call My.Application.Settings.SetSetting("resurvey.options.showrulers", If(btnShowRulers.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("resurvey.options.showruler", If(btnShowRuler.Checked, 1, 0))
 
-                Dim oXml As XmlDocument = New XmlDocument
-                Dim oXmlRoot As XmlElement = oXml.CreateElement("is")
-                For Each oItemLink As BarItemLink In RibbonControl.Toolbar.ItemLinks
-                    Dim oXmlItem As XmlElement = oXml.CreateElement("i")
-                    Call oXmlItem.SetAttribute("i", oItemLink.ItemId)
-                    If oItemLink.BeginGroup Then Call oXmlItem.SetAttribute("bg", "1")
-                    If Not oItemLink.Visible Then Call oXmlItem.SetAttribute("v", "0")
-                    Call oXmlRoot.AppendChild(oXmlItem)
-                Next
-                Call oXmlRoot.SetAttribute("tl", RibbonControl.ToolbarLocation.ToString("D"))
-                If RibbonControl.Minimized Then Call oXmlRoot.SetAttribute("m", "1")
-                Call oXml.AppendChild(oXmlRoot)
-                Call oReg.SetValue("resurvey.qat.items", oXml.OuterXml)
-
-                'Using oMs As MemoryStream = New MemoryStream
-                '    Call WorkspaceManager.CaptureWorkspace("default", True)
-                '    Call WorkspaceManager.SaveWorkspace("default", oMs, True)
-                '    Call oReg.SetValue("resurvey.workspaces.default", oMs.ToArray, Microsoft.Win32.RegistryValueKind.Binary)
-                'End Using
-                Call oReg.Close()
-            End Using
-        Catch ex As Exception
-        End Try
+        Dim oXml As XmlDocument = New XmlDocument
+        Dim oXmlRoot As XmlElement = oXml.CreateElement("is")
+        For Each oItemLink As BarItemLink In RibbonControl.Toolbar.ItemLinks
+            Dim oXmlItem As XmlElement = oXml.CreateElement("i")
+            Call oXmlItem.SetAttribute("i", oItemLink.ItemId)
+            If oItemLink.BeginGroup Then Call oXmlItem.SetAttribute("bg", "1")
+            If Not oItemLink.Visible Then Call oXmlItem.SetAttribute("v", "0")
+            Call oXmlRoot.AppendChild(oXmlItem)
+        Next
+        Call oXmlRoot.SetAttribute("tl", RibbonControl.ToolbarLocation.ToString("D"))
+        If RibbonControl.Minimized Then Call oXmlRoot.SetAttribute("m", "1")
+        Call oXml.AppendChild(oXmlRoot)
+        Call My.Application.Settings.SetSetting("resurvey.qat.items", oXml.OuterXml)
     End Sub
 
     Private Sub pNew()
@@ -3476,7 +3457,7 @@ Friend Class frmResurveyMain
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(RibbonControl, False)
 
-        Call cEditDesignEnvironment.OnPropertyChangedAppend(AddressOf oEditDesignEnvironment_OnChanged)
+        Call My.Application.RuntimeSettings.OnPropertyChangedAppend(AddressOf oEditDesignEnvironment_OnChanged)
 
         Call dockStations.BringToFront()
 

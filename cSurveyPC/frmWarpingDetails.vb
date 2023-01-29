@@ -126,11 +126,11 @@ friend Class frmWarpingDetails
     End Sub
 
     Private Sub frmWarpingDetails_FormSettingsLoad(Sender As Object, e As FormSettingsEventArgs) Handles Me.FormSettingsLoad
-        btnShowMoreDetails.Checked = e.GetValue("showmoredetails", 0)
+        btnShowMoreDetails.Checked = e.GetSetting("showmoredetails", 0)
     End Sub
 
     Private Sub frmWarpingDetails_FormSettingsSave(Sender As Object, e As FormSettingsEventArgs) Handles Me.FormSettingsSave
-        Call e.SetValue("showmoredetails", If(btnShowMoreDetails.Checked, "1", "0"))
+        Call e.SetSetting("showmoredetails", If(btnShowMoreDetails.Checked, "1", "0"))
     End Sub
 
     Private Sub gridviewDetails_CustomUnboundColumnData(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs) Handles gridviewDetails.CustomUnboundColumnData

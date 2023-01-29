@@ -1092,7 +1092,7 @@ Namespace cSurvey.Design
                                     End If
                                 End If
                             Next
-                            Dim iLowerLayersDesignTransparencyThreshold As Integer = Helper.Editor.cEditDesignEnvironment.GetSetting("design.lowerlayersdesigntransparencythreshold", 120) 'oSurvey.Properties.DesignProperties.GetValue("LowerLayersDesignTransparencyThreshold", 120)
+                            Dim iLowerLayersDesignTransparencyThreshold As Integer = My.Application.Settings.GetSetting("design.lowerlayersdesigntransparencythreshold", 120) 'oSurvey.Properties.DesignProperties.GetValue("LowerLayersDesignTransparencyThreshold", 120)
                             If iLowerLayersDesignTransparencyThreshold > 0 Then
                                 Call Graphics.FillRectangle(New SolidBrush(Color.FromArgb(iLowerLayersDesignTransparencyThreshold, Color.White)), Graphics.ClipBounds)
                             End If
@@ -1171,7 +1171,7 @@ Namespace cSurvey.Design
                         If PaintOptions.IsDesign Then
                             'RENDERING for EDITOR (semplified and without clipping)
                             Dim oDesignOptions As cOptionsDesign = PaintOptions
-                            Dim iLowerLayersDesignTransparencyThreshold As Integer = Helper.Editor.cEditDesignEnvironment.GetSetting("design.lowerlayersdesigntransparencythreshold", 120) 'oSurvey.Properties.DesignProperties.GetValue("LowerLayersDesignTransparencyThreshold", 120)
+                            Dim iLowerLayersDesignTransparencyThreshold As Integer = My.Application.Settings.GetSetting("design.lowerlayersdesigntransparencythreshold", 120) 'oSurvey.Properties.DesignProperties.GetValue("LowerLayersDesignTransparencyThreshold", 120)
                             Using oClippingRegions As cClippingRegions = New cClippingRegions(oSurvey)
                                 Dim bLayerBeforeCurrent As Boolean = True
                                 For Each oLayer As cLayer In oLayers
@@ -1180,7 +1180,7 @@ Namespace cSurvey.Design
                                         If oLayer.Type > cLayers.LayerTypeEnum.Base Then
                                             If oLayer.Survey Is Selection.CurrentSurvey Then
                                                 If iLowerLayersDesignTransparencyThreshold > 0 Then
-                                                    Call Graphics.FillRectangle(New SolidBrush(Color.FromArgb(iLowerLayersDesignTransparencyThreshold, Helper.Editor.cEditDesignEnvironment.GetSetting("design.lowerlayersdesignbackcolor", Color.White))), Graphics.ClipBounds)
+                                                    Call Graphics.FillRectangle(New SolidBrush(Color.FromArgb(iLowerLayersDesignTransparencyThreshold, My.Application.Settings.GetSetting("design.lowerlayersdesignbackcolor", Color.White))), Graphics.ClipBounds)
                                                 End If
                                             End If
                                         End If

@@ -51,9 +51,7 @@ Friend Class frmExceptionManager
         oSurvey = Survey
         sFilename = Filename
 
-        Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-            bSendException = oReg.GetValue("debug.sendexception", 0)
-        End Using
+        bSendException = My.Application.Settings.GetSetting("debug.sendexception", 0)
 
         sPackageVersion = modMain.GetPackageVersion()
 
@@ -279,23 +277,14 @@ Friend Class frmExceptionManager
 
         Dim iAskToSendException As Integer
         'se arrivo qui l'invio delle segnalazioni è spento...
-        Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-            iAskToSendException = oReg.GetValue("debug.asktosendexception", 0)
-            iAskToSendException += 1
-            Call oReg.SetValue("debug.asktosendexception", iAskToSendException)
-            Call oReg.Close()
-        End Using
+        iAskToSendException = My.Application.Settings.GetSetting("debug.asktosendexception", 0)
+        iAskToSendException += 1
+        Call My.Application.Settings.SetSetting("debug.asktosendexception", iAskToSendException)
 
         If iAskToSendException < 4 Then
             If MsgBox(GetLocalizedString("exceptionmanager.dialog"), MsgBoxStyle.Question Or vbYesNo Or vbDefaultButton1, GetLocalizedString("exceptionmanager.warningtitle")) = MsgBoxResult.Yes Then
                 bSendException = True
-                Try
-                    Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                        Call oReg.SetValue("debug.sendexception", 1)
-                        Call oReg.Close()
-                    End Using
-                Catch
-                End Try
+                Call My.Application.Settings.SetSetting("debug.sendexception", 1)
             End If
             Call pSendException()
         End If

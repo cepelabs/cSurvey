@@ -11,40 +11,27 @@ Public Class cBorderFromSplay
     End Sub
 
     Private Sub pSettingsLoad()
-        Try
-            Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-            Select Case oReg.GetValue("borderfromsplay.mode", "0")
-                Case "0"
-                    optCutAndLRUD.Checked = True
-                Case Else
-                    optAllSplays.Checked = True
-            End Select
-            cboUseHull.SelectedIndex = oReg.GetValue("borderfromsplay.algtype", 0)
-            optCaveBranch.Checked = oReg.GetValue("borderfromsplay.cavebranch", 1)
-            cboLineType.SelectedIndex = oReg.GetValue("borderfromsplay.linetype", 0)
-            If Not optCaveBranch.Checked Then optSegment.Checked = True
-            Call oReg.Close()
-            Call oReg.Dispose()
-        Catch
-        End Try
+        Select Case My.Application.Settings.GetSetting("borderfromsplay.mode", "0")
+            Case "0"
+                optCutAndLRUD.Checked = True
+            Case Else
+                optAllSplays.Checked = True
+        End Select
+        cboUseHull.SelectedIndex = My.Application.Settings.GetSetting("borderfromsplay.algtype", 0)
+        optCaveBranch.Checked = My.Application.Settings.GetSetting("borderfromsplay.cavebranch", 1)
+        cboLineType.SelectedIndex = My.Application.Settings.GetSetting("borderfromsplay.linetype", 0)
+        If Not optCaveBranch.Checked Then optSegment.Checked = True
     End Sub
 
     Private Sub pSettingsSave()
-        Try
-            Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-            If optCutAndLRUD.Checked Then
-                Call oReg.SetValue("borderfromsplay.mode", "0")
-            Else
-                Call oReg.SetValue("borderfromsplay.mode", "1")
-            End If
-            Call oReg.SetValue("borderfromsplay.algtype", cboUseHull.SelectedIndex)
-            Call oReg.SetValue("borderfromsplay.cavebranch", IIf(optCaveBranch.Checked, "1", "0"))
-            Call oReg.SetValue("borderfromsplay.linetype", cboLineType.SelectedIndex)
-
-            Call oReg.Close()
-            Call oReg.Dispose()
-        Catch
-        End Try
+        If optCutAndLRUD.Checked Then
+            Call My.Application.Settings.SetSetting("borderfromsplay.mode", "0")
+        Else
+            Call My.Application.Settings.SetSetting("borderfromsplay.mode", "1")
+        End If
+        Call My.Application.Settings.SetSetting("borderfromsplay.algtype", cboUseHull.SelectedIndex)
+        Call My.Application.Settings.SetSetting("borderfromsplay.cavebranch", If(optCaveBranch.Checked, "1", "0"))
+        Call My.Application.Settings.SetSetting("borderfromsplay.linetype", cboLineType.SelectedIndex)
     End Sub
 
     Friend Event OnCreate(Sender As cBorderFromSplay, Args As EventArgs)

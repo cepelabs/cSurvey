@@ -1,31 +1,17 @@
 ﻿friend Class frmImportPocketTopo
 
     Private Sub pSettingsLoad()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                txtPrefix.Text = oReg.GetValue("data.import.pockettopo.prefix", "")
-                txtCaveName.Text = oReg.GetValue("data.import.pockettopo.cavename", "")
-
-                chkPocketTopoImportData.Checked = oReg.GetValue("data.import.pockettopo.importdata", 1)
-                chkPocketTopoImportGraphics.Checked = oReg.GetValue("data.import.pockettopo.importgraphics", 0)
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        txtPrefix.Text = My.Application.Settings.GetSetting("data.import.pockettopo.prefix", "")
+        txtCaveName.Text = My.Application.Settings.GetSetting("data.import.pockettopo.cavename", "")
+        chkPocketTopoImportData.Checked = My.Application.Settings.GetSetting("data.import.pockettopo.importdata", 1)
+        chkPocketTopoImportGraphics.Checked = My.Application.Settings.GetSetting("data.import.pockettopo.importgraphics", 0)
     End Sub
 
     Private Sub pSettingsSave()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Call oReg.SetValue("data.import.pockettopo.prefix", txtPrefix.Text)
-                Call oReg.SetValue("data.import.pockettopo.cavename", txtCaveName.Text)
-
-                Call oReg.SetValue("data.import.pockettopo.importdata", IIf(chkPocketTopoImportData.Checked, 1, 0))
-                Call oReg.SetValue("data.import.pockettopo.importgraphics", IIf(chkPocketTopoImportGraphics.Checked, 1, 0))
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        Call My.Application.Settings.SetSetting("data.import.pockettopo.prefix", txtPrefix.Text)
+        Call My.Application.Settings.SetSetting("data.import.pockettopo.cavename", txtCaveName.Text)
+        Call My.Application.Settings.SetSetting("data.import.pockettopo.importdata", IIf(chkPocketTopoImportData.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.pockettopo.importgraphics", IIf(chkPocketTopoImportGraphics.Checked, 1, 0))
     End Sub
 
     Public Sub New()

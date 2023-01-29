@@ -118,7 +118,7 @@ Public Module modDevExpress
     End Sub
 
     Public Function SkinBackcolor(Color As Color) As Color
-        If cSurvey.Helper.Editor.cEditDesignEnvironment.GetSetting("isdarkskin") Then
+        If My.Application.RuntimeSettings.GetSetting("isdarkskin") Then
             Return modPaint.DarkColor(Color, 0.35)
         Else
             Return modPaint.LightColor(Color, 0.85)

@@ -160,7 +160,7 @@ Namespace cSurvey
             oRulersCurrentBackgroundBrush = New SolidBrush(Color.FromArgb(150, Color.LightBlue))
             oRulersCurrentItemBackgroundBrush = New SolidBrush(Color.FromArgb(150, Color.Red))
 
-            Dim iGridOpacity As Integer = Helper.Editor.cEditDesignEnvironment.GetSetting("design.metricgrid.opacity", 50)
+            Dim iGridOpacity As Integer = My.Application.Settings.GetSetting("design.metricgrid.opacity", 50)
             oGridPen = New Pen(Color.FromArgb(iGridOpacity, Color.Gray), FilettoPenWidth)
             oDetailedGridPen = New Pen(Color.FromArgb(iGridOpacity * 0.8, Color.Gray), FilettoPenWidth)
             oAxisPen = New Pen(Drawing.Brushes.Gray, FilettoPenWidth)

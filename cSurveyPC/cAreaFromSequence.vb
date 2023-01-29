@@ -11,40 +11,27 @@ Public Class cAreaFromSequence
     End Sub
 
     Private Sub pSettingsLoad()
-        Try
-            Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-            cboLineType.SelectedIndex = oReg.GetValue("sequencetoarea.linetype", 0)
-            txtWidth.Value = modNumbers.StringToSingle(oReg.GetValue("sequencetoarea.width", 1))
-            txtReductionFactor.Value = modNumbers.StringToSingle(oReg.GetValue("sequencetoarea.reductionfactor", 1))
-            Dim sItem As String = oReg.GetValue("sequencetoarea.objecttype", "")
-            If sItem <> "" Then
-                Dim oItems() As ListViewItem = lvItemToCreate.Items.Find(sItem, True)
-                If oItems.Count = 1 Then
-                    oItems(0).Selected = True
-                End If
+        cboLineType.SelectedIndex = My.Application.Settings.GetSetting("sequencetoarea.linetype", 0)
+        txtWidth.Value = modNumbers.StringToSingle(My.Application.Settings.GetSetting("sequencetoarea.width", 1))
+        txtReductionFactor.Value = modNumbers.StringToSingle(My.Application.Settings.GetSetting("sequencetoarea.reductionfactor", 1))
+        Dim sItem As String = My.Application.Settings.GetSetting("sequencetoarea.objecttype", "")
+        If sItem <> "" Then
+            Dim oItems() As ListViewItem = lvItemToCreate.Items.Find(sItem, True)
+            If oItems.Count = 1 Then
+                oItems(0).Selected = True
             End If
-            Call oReg.Close()
-            Call oReg.Dispose()
-        Catch
-        End Try
+        End If
     End Sub
 
     Private Sub pSettingsSave()
-        Try
-            Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-            Call oReg.SetValue("sequencetoarea.linetype", cboLineType.SelectedIndex)
-            Call oReg.SetValue("sequencetoarea.width", modNumbers.NumberToString(txtWidth.Value))
-            Call oReg.SetValue("sequencetoarea.reductionfactor", modNumbers.NumberToString(txtReductionFactor.Value))
-            If lvItemToCreate.SelectedItems.Count = 0 Then
-                Call oReg.SetValue("sequencetoarea.objecttype", "")
-            Else
-                Call oReg.SetValue("sequencetoarea.objecttype", lvItemToCreate.SelectedItems(0).Name)
-            End If
-
-            Call oReg.Close()
-            Call oReg.Dispose()
-        Catch
-        End Try
+        Call My.Application.Settings.SetSetting("sequencetoarea.linetype", cboLineType.SelectedIndex)
+        Call My.Application.Settings.SetSetting("sequencetoarea.width", modNumbers.NumberToString(txtWidth.Value))
+        Call My.Application.Settings.SetSetting("sequencetoarea.reductionfactor", modNumbers.NumberToString(txtReductionFactor.Value))
+        If lvItemToCreate.SelectedItems.Count = 0 Then
+            Call My.Application.Settings.SetSetting("sequencetoarea.objecttype", "")
+        Else
+            Call My.Application.Settings.SetSetting("sequencetoarea.objecttype", lvItemToCreate.SelectedItems(0).Name)
+        End If
     End Sub
 
 

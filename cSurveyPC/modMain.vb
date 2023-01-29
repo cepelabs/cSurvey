@@ -93,17 +93,19 @@ Module modMain
     End Function
 
     Public Function FilterRestoreLast(Filter As String, Value As Integer) As Integer
-        Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey\Filters", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-            Return oReg.GetValue(Filter, Value)
-        End Using
+        Return My.Application.Settings.GetSetting(Filter, Value)
+        'Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey\Filters", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
+        '    Return oReg.GetValue(Filter, Value)
+        'End Using
     End Function
 
     Public Sub FilterSaveLast(Filter As String, Value As Integer)
-        Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey\Filters", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-            Call oReg.SetValue(Filter, Value, Microsoft.Win32.RegistryValueKind.String)
-            Call oReg.Flush()
-            Call oReg.Close()
-        End Using
+        Call My.Application.Settings.SetSetting(Filter, Value.ToString)
+        'Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey\Filters", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
+        '    Call oReg.SetValue(Filter, Value, Microsoft.Win32.RegistryValueKind.String)
+        '    Call oReg.Flush()
+        '    Call oReg.Close()
+        'End Using
     End Sub
 
     Public Function GetPackageDate() As Date

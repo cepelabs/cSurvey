@@ -1,4 +1,5 @@
 ﻿Imports System.Runtime.InteropServices
+Imports cSurveyPC.cSurvey.Helper.Editor
 
 Module modWindow
     <DllImport("user32.dll")>
@@ -9,12 +10,12 @@ Module modWindow
     Function GetKeyState(ByVal vKey As System.Windows.Forms.Keys) As Short
     End Function
 
-    Public Function SetSizeFromRegistry(Key As Microsoft.Win32.RegistryKey, Name As String, Value As Size) As Size
-        Call Key.SetValue(Name, Value.Width & ";" & Value.Height)
-    End Function
+    Public Sub SetSizeToSettings(Settings As cEnvironmentSettingsFolder, Name As String, Value As Size)
+        Call Settings.SetSetting(Name, Value.Width & ";" & Value.Height)
+    End Sub
 
-    Public Function GetSizeFromRegistry(Key As Microsoft.Win32.RegistryKey, Name As String, DefaultValue As Size) As Size
-        Dim sSize As String = Key.GetValue(Name, "")
+    Public Function GetSizeFromSettings(Settings As cEnvironmentSettingsFolder, Value As String, DefaultValue As Size) As Size
+        Dim sSize As String = "" & Settings.GetSetting(Value, Nothing)
         If sSize = "" Then
             Return DefaultValue
         Else

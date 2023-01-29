@@ -1,5 +1,6 @@
 ﻿Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
+Imports cSurveyPC.cSurvey.Helper.Editor
 Imports System.IO
 Imports System.Xml
 
@@ -70,7 +71,7 @@ Namespace cSurvey.Calculate
             Friend Sub New(ByVal [Date] As DateTime, ByVal Type As CalculateDataItemTypeEnum, ByVal Text As String, Value As Object)
                 oDate = [Date]
                 iType = Type
-                stext = Text
+                sText = Text
                 oValue = Value
             End Sub
         End Class
@@ -260,14 +261,6 @@ Namespace cSurvey.Calculate
                                                                                   Call modExport.CalculateCoordinatesFromTrigpoint(oSurvey, dlat, dLong, dAlt, sFrom, oTrigpoint.Name, dNewlat, dNewLong, dNewAlt)
                                                                                   Call oTrigpoint.SetCoordinate(dNewlat, dNewLong, dNewAlt)
                                                                               End Sub)
-
-                        'For Each oTrigpoint As cTrigPoint In oTPs
-                        '    Dim dNewlat As Decimal
-                        '    Dim dNewLong As Decimal
-                        '    Dim dNewAlt As Decimal
-                        '    Call modExport.CalculateCoordinatesFromTrigpoint(oSurvey, dlat, dLong, dAlt, sFrom, oTrigpoint.Name, dNewlat, dNewLong, dNewAlt)
-                        '    Call oTrigpoint.SetCoordinate(dNewlat, dNewLong, dNewAlt)
-                        'Next
                     End If
                 End If
             End If
@@ -678,6 +671,7 @@ Namespace cSurvey.Calculate
 
         Private Sub pCompassPltImportFrom(ByVal Filename As String, Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing)
             If My.Computer.FileSystem.FileExists(Filename) Then
+                Dim bLogVerbose As Boolean = My.Application.Settings.GetSetting("debug.log.verbose", False)
                 Dim oProcessed As List(Of String) = New List(Of String)
                 Using sr As StreamReader = My.Computer.FileSystem.OpenTextFileReader(Filename)
                     Do Until sr.EndOfStream
@@ -691,7 +685,8 @@ Namespace cSurvey.Calculate
                                 'set station location
                                 Dim sTrigPoint As String = sPart(4).Substring(1)
                                 sTrigPoint = DictionaryTranslate(Dictionary, sTrigPoint)
-                                If oTPs.Contains(sTrigPoint) Then
+                                If oTPs.Contains(sTrigPoint) AndAlso Not oProcessed.Contains(sTrigPoint) Then
+                                    If bLogVerbose Then Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, sTrigPoint & " -> " & sX & ";" & sY & ";" & sZ)
                                     With oTPs.Item(sTrigPoint)
                                         Call .MoveTo(sX, sY, sZ)
                                         If oSurvey.Properties.CalculateVersion > 2 Then
@@ -1525,13 +1520,13 @@ Namespace cSurvey.Calculate
                     'eseguo therion per quel th con il corrispondente thconfig e faccio generare un plt
                     'letto il file plt 
                     'carico i dati del plt come nel calcolo manuale
-                    Dim sThProcess As String = Helper.Editor.cEditDesignEnvironment.GetSetting("therion.path", "")
+                    Dim sThProcess As String = My.Application.Settings.GetSetting("therion.path", "")
                     If sThProcess = "" Then
                         Throw New cCalculateTherionMissingException(modMain.GetLocalizedString("calculate.textpart6"))
                         'Call Err.Raise(vbObjectError + 100, "survey.calculate", GetLocalizedString("calculate.textpart6"), Nothing, Nothing)
                     Else
-                        Dim bThBackgroundProcess As Boolean = Helper.Editor.cEditDesignEnvironment.GetSetting("therion.backgroundprocess", 1)
-                        Dim bThDeleteTempFile As Boolean = Helper.Editor.cEditDesignEnvironment.GetSetting("therion.deletetempfiles", 1)
+                        Dim bThBackgroundProcess As Boolean = My.Application.Settings.GetSetting("therion.backgroundprocess", 1)
+                        Dim bThDeleteTempFile As Boolean = My.Application.Settings.GetSetting("therion.deletetempfiles", 1)
 
                         Dim oDepth As Dictionary(Of String, Decimal)
                         Dim oFiles As List(Of String) = New List(Of String)
@@ -1563,7 +1558,7 @@ Namespace cSurvey.Calculate
                             Dim oInputdictionary As Dictionary(Of String, String) = Nothing
                             Dim oOutputdictionary As Dictionary(Of String, String) = Nothing
                             'create 2 dictionary for save station names...
-                            Dim bThTrigpointSafeName As Boolean = Helper.Editor.cEditDesignEnvironment.GetSetting("therion.trigpointsafename", 1)
+                            Dim bThTrigpointSafeName As Boolean = My.Application.Settings.GetSetting("therion.trigpointsafename", 1)
                             If bThTrigpointSafeName Then
                                 'create an key exclusion collection with branch with "integer" names...
                                 Dim oKeyToExclude As List(Of Integer) = oSurvey.Properties.CaveInfos.GetAllWithEmpty.Select(Function(oitem) oitem.Name).Where(Function(oitem)
@@ -1584,8 +1579,8 @@ Namespace cSurvey.Calculate
                                 Next
                             End If
 
-                            Dim bThSegmentForceDirection As Boolean = Helper.Editor.cEditDesignEnvironment.GetSetting("therion.segmentforcedirection", 1)
-                            Dim bThSegmentForcePath As Boolean = Helper.Editor.cEditDesignEnvironment.GetSetting("therion.segmentforcepath", 1)
+                            Dim bThSegmentForceDirection As Boolean = My.Application.Settings.GetSetting("therion.segmentforcedirection", 1)
+                            Dim bThSegmentForcePath As Boolean = My.Application.Settings.GetSetting("therion.segmentforcepath", 1)
                             Dim iThOptions As modExport.TherionExportOptionsEnum = modExport.TherionExportOptionsEnum.SegmentID Or If(bThSegmentForceDirection, modExport.TherionExportOptionsEnum.SegmentForceDirection, 0) Or If(bThSegmentForcePath, modExport.TherionExportOptionsEnum.SegmentForcePath, 0) Or TherionExportOptionsEnum.ExportSketch Or TherionExportOptionsEnum.CalculateSplay
                             Dim iLegacyCalculation As Integer
                             If oSurvey.SharedSettings.GetValue("legacycalculation1", "on") = "on" Then
@@ -1621,7 +1616,7 @@ Namespace cSurvey.Calculate
                             Dim bLoopErrors As Boolean
                             Dim bGeoMagLines As Boolean
                             For Each sLogLine As String In oLogLines
-                                Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, sLogLine)
+                                Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, sLogLine)
 
                                 If sLogLine Like "meridian convergence *" Then
                                     Dim sValue As String = sLogLine.Substring(28)

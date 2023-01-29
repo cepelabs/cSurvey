@@ -163,8 +163,8 @@ Friend Class frmProperties
 
             cboInversionMode.SelectedIndex = .InversionMode
 
-            cboClipBorder.SelectedIndex = .DesignProperties.GetValue("clipborder", cEditDesignEnvironment.GetSetting("design.clipborder", cSurvey.Design.cClippingRegions.ClipBorderEnum.ClipBorder))
-            Dim sClippingForAdvancedBrushValue As String = cEditDesignEnvironment.GetSetting("clippingforadvancedbrush", cSurvey.Drawings.cIRegion.RegionTypeEnum.GDI.ToString("D"))
+            cboClipBorder.SelectedIndex = .DesignProperties.GetValue("clipborder", My.Application.Settings.GetSetting("design.clipborder", cSurvey.Design.cClippingRegions.ClipBorderEnum.ClipBorder))
+            Dim sClippingForAdvancedBrushValue As String = My.Application.Settings.GetSetting("clippingforadvancedbrush", cSurvey.Drawings.cIRegion.RegionTypeEnum.GDI.ToString("D"))
             If sClippingForAdvancedBrushValue = "Clipper" Then
                 cboClipAdvancedClipart.SelectedIndex = cSurvey.Drawings.cIRegion.RegionTypeEnum.Clipper
             ElseIf sClippingForAdvancedBrushValue = "GDI" Then
@@ -173,7 +173,7 @@ Friend Class frmProperties
                 cboClipAdvancedClipart.SelectedIndex = .DesignProperties.GetValue("clippingforadvancedbrush", sClippingForAdvancedBrushValue)
             End If
 
-            cboLineType.SelectedIndex = .DesignProperties.GetValue("LineType", cEditDesignEnvironment.GetSetting("design.linetype", cSurvey.Design.Items.cIItemLine.LineTypeEnum.Splines))
+            cboLineType.SelectedIndex = .DesignProperties.GetValue("LineType", My.Application.Settings.GetSetting("design.linetype", cSurvey.Design.Items.cIItemLine.LineTypeEnum.Splines))
 
             cboSplayMode.SelectedIndex = .SplayMode
             'chkBindSplaySegment.Checked = .BindSplaySegment

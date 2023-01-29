@@ -2,33 +2,21 @@
     Private oSurvey As cSurvey.cSurvey
 
     Private Sub pSettingsLoad()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                chkExportWaypoint.Checked = oReg.GetValue("data.export.googlekml.waypoint", "1")
-                chkExportTrack.Checked = oReg.GetValue("data.export.googlekml.track", "0")
-                chkExportCaveBorders.Checked = oReg.GetValue("data.export.googlekml.caveborders", "0")
-                chkExportLinkedSurveys.Checked = oReg.GetValue("data.export.googlekml.linkedsurveys", "0")
-                txtCaveBordersTransparency.Value = oReg.GetValue("data.export.googlekml.caveborders.opacity", 0.471) * 255
-                chkExportUseCadastralIDInCaveNames.Checked = oReg.GetValue("data.export.googlekml.usecadastralidincavenames", "0")
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        chkExportWaypoint.Checked = My.Application.Settings.GetSetting("data.export.googlekml.waypoint", "1")
+        chkExportTrack.Checked = My.Application.Settings.GetSetting("data.export.googlekml.track", "0")
+        chkExportCaveBorders.Checked = My.Application.Settings.GetSetting("data.export.googlekml.caveborders", "0")
+        chkExportLinkedSurveys.Checked = My.Application.Settings.GetSetting("data.export.googlekml.linkedsurveys", "0")
+        txtCaveBordersTransparency.Value = My.Application.Settings.GetSetting("data.export.googlekml.caveborders.opacity", 0.471) * 255
+        chkExportUseCadastralIDInCaveNames.Checked = My.Application.Settings.GetSetting("data.export.googlekml.usecadastralidincavenames", "0")
     End Sub
 
     Private Sub pSettingsSave()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Call oReg.SetValue("data.export.googlekml.waypoint", If(chkExportWaypoint.Checked, "1", "0"))
-                Call oReg.SetValue("data.export.googlekml.track", If(chkExportTrack.Checked, "1", "0"))
-                Call oReg.SetValue("data.export.googlekml.caveborders", If(chkExportCaveBorders.Checked, "1", "0"))
-                Call oReg.SetValue("data.export.googlekml.linkedsurveys", If(chkExportLinkedSurveys.Checked, "1", "0"))
-                Call oReg.SetValue("data.export.googlekml.caveborders.opacity", txtCaveBordersTransparency.Value / 255)
-                Call oReg.SetValue("data.export.googlekml.usecadastralidincavenames", If(chkExportUseCadastralIDInCaveNames.Checked, "1", "0"))
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        Call My.Application.Settings.SetSetting("data.export.googlekml.waypoint", If(chkExportWaypoint.Checked, "1", "0"))
+        Call My.Application.Settings.SetSetting("data.export.googlekml.track", If(chkExportTrack.Checked, "1", "0"))
+        Call My.Application.Settings.SetSetting("data.export.googlekml.caveborders", If(chkExportCaveBorders.Checked, "1", "0"))
+        Call My.Application.Settings.SetSetting("data.export.googlekml.linkedsurveys", If(chkExportLinkedSurveys.Checked, "1", "0"))
+        Call My.Application.Settings.SetSetting("data.export.googlekml.caveborders.opacity", txtCaveBordersTransparency.Value / 255)
+        Call My.Application.Settings.SetSetting("data.export.googlekml.usecadastralidincavenames", If(chkExportUseCadastralIDInCaveNames.Checked, "1", "0"))
     End Sub
 
     Public Sub New(Survey As cSurvey.cSurvey)
@@ -45,11 +33,6 @@
     End Sub
 
     Private Sub chkExportLinkedSurveys_CheckedChanged(sender As Object, e As EventArgs) Handles chkExportLinkedSurveys.CheckedChanged
-        'If chkExportLinkedSurvey.Checked Then
-        '    Call TabControl1.TabPages.Add(TabPage2)
-        'Else
-        '    Call TabControl1.TabPages.Remove(TabPage2)
-        'End If
         linkedSurveys.Enabled = chkExportLinkedSurveys.Checked
     End Sub
 

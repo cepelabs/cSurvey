@@ -5,49 +5,42 @@ Imports DevExpress.XtraTreeList
 Friend Class frmImportExcel
 
     Private Sub pSettingsLoad()
+        txtPrefix.Text = My.Application.Settings.GetSetting("data.import.xlsx.prefix", "")
+        txtCaveName.Text = My.Application.Settings.GetSetting("data.import.xlsx.cavename", "")
+
+            chkFirstline.Checked = My.Application.Settings.GetSetting("data.import.xlsx.skipfirstline", 0)
+            chkAutoSplay.Checked = My.Application.Settings.GetSetting("data.import.xlsx.autosplay", 0)
+            chkSplaySymbol.Checked = My.Application.Settings.GetSetting("data.import.xlsx.splaysymbol", 0)
+            chkCutSplaySymbol.Checked = My.Application.Settings.GetSetting("data.import.xlsx.cutsplaysymbol", 0)
+            chkZeroPlaceholders.Checked = My.Application.Settings.GetSetting("data.import.xlsx.zeroplaceholders", 0)
+            chkCommentSymbols.Checked = My.Application.Settings.GetSetting("data.import.xlsx.comments", 0)
+
+        txtSplayMarker.Text = My.Application.Settings.GetSetting("data.import.xlsx.splaysymboltxt", ".")
+        txtCutSplayMarker.Text = My.Application.Settings.GetSetting("data.import.xlsx.cutsplaysymboltxt", "-")
+        txtZeroPlaceholders.Text = My.Application.Settings.GetSetting("data.import.xlsx.zeroplaceholderstxt", "-")
+        txtCommentSymbols.Text = My.Application.Settings.GetSetting("data.import.xlsx.commentsymbolstxt", "#%")
+
+        chkProgressiveDistance.Checked = My.Application.Settings.GetSetting("data.import.xlsx.progressivedistance", 0)
+
         Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                txtPrefix.Text = oReg.GetValue("data.import.xlsx.prefix", "")
-                txtCaveName.Text = oReg.GetValue("data.import.xlsx.cavename", "")
+            Dim sFields As String = My.Application.Settings.GetSetting("data.import.xlsx.fields", "")
+            If sFields <> "" Then
+                Dim oDestFields As cDestFields = tvDestField.DataSource
 
-                chkFirstline.Checked = oReg.GetValue("data.import.xlsx.skipfirstline", 0)
-                chkAutoSplay.Checked = oReg.GetValue("data.import.xlsx.autosplay", 0)
-                chkSplaySymbol.Checked = oReg.GetValue("data.import.xlsx.splaysymbol", 0)
-                chkCutSplaySymbol.Checked = oReg.GetValue("data.import.xlsx.cutsplaysymbol", 0)
-                chkZeroPlaceholders.Checked = oReg.GetValue("data.import.xlsx.zeroplaceholders", 0)
-                chkCommentSymbols.Checked = oReg.GetValue("data.import.xlsx.comments", 0)
-
-                txtSplayMarker.Text = oReg.GetValue("data.import.xlsx.splaysymboltxt", ".")
-                txtCutSplayMarker.Text = oReg.GetValue("data.import.xlsx.cutsplaysymboltxt", "-")
-                txtZeroPlaceholders.Text = oReg.GetValue("data.import.xlsx.zeroplaceholderstxt", "-")
-                txtCommentSymbols.Text = oReg.GetValue("data.import.xlsx.commentsymbolstxt", "#%")
-
-                chkProgressiveDistance.Checked = oReg.GetValue("data.import.xlsx.progressivedistance", 0)
-
-                Try
-                    Dim sFields As String = oReg.GetValue("data.import.xlsx.fields", "")
-                    If sFields <> "" Then
-                        Dim oDestFields As cDestFields = tvDestField.DataSource
-
-                        Dim sKeys() As String = sFields.Split(",")
-                        For Each sKey As String In sKeys
-                            Dim oData(2) As Object
-                            Dim sData() As String = sKey.Split("|")
-                            Dim iEnum As cSourceField.TextFieldIndexEnum
-                            If [Enum].TryParse(sData(0), iEnum) Then
-                                Dim oSourceItem As cSourceField = pGetItem(iEnum)
-                                Dim oDestItem As cDestField = oDestFields.Add(oSourceItem, Integer.Parse(sData(1)), sData(2))
-                                If oSourceItem.Index <> cSourceField.TextFieldIndexEnum.Empty Then
-                                    Call lstSourceFields.DataSource.Remove(oSourceItem)
-                                End If
-                            End If
-                        Next
+                Dim sKeys() As String = sFields.Split(",")
+                For Each sKey As String In sKeys
+                    Dim oData(2) As Object
+                    Dim sData() As String = sKey.Split("|")
+                    Dim iEnum As cSourceField.TextFieldIndexEnum
+                    If [Enum].TryParse(sData(0), iEnum) Then
+                        Dim oSourceItem As cSourceField = pGetItem(iEnum)
+                        Dim oDestItem As cDestField = oDestFields.Add(oSourceItem, Integer.Parse(sData(1)), sData(2))
+                        If oSourceItem.Index <> cSourceField.TextFieldIndexEnum.Empty Then
+                            Call lstSourceFields.DataSource.Remove(oSourceItem)
+                        End If
                     End If
-                Catch ex As Exception
-                End Try
-
-                Call oReg.Close()
-            End Using
+                Next
+            End If
         Catch ex As Exception
         End Try
 
@@ -64,30 +57,23 @@ Friend Class frmImportExcel
     End Function
 
     Private Sub pSettingsSave()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Call oReg.SetValue("data.import.xlsx.prefix", txtPrefix.Text)
-                Call oReg.SetValue("data.import.xlsx.cavename", txtCaveName.Text)
+        Call My.Application.Settings.SetSetting("data.import.xlsx.prefix", txtPrefix.Text)
+        Call My.Application.Settings.SetSetting("data.import.xlsx.cavename", txtCaveName.Text)
 
-                Call oReg.SetValue("data.import.xlsx.skipfirstline", If(chkFirstline.Checked, 1, 0))
-                Call oReg.SetValue("data.import.xlsx.autosplay", If(chkAutoSplay.Checked, 1, 0))
-                Call oReg.SetValue("data.import.xlsx.cutsplaysymbol", If(chkAutoSplay.Checked, 1, 0))
-                Call oReg.SetValue("data.import.xlsx.zeroplaceholders", If(chkZeroPlaceholders.Checked, 1, 0))
-                Call oReg.SetValue("data.import.xlsx.comments", If(chkCommentSymbols.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.xlsx.skipfirstline", If(chkFirstline.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.xlsx.autosplay", If(chkAutoSplay.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.xlsx.cutsplaysymbol", If(chkAutoSplay.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.xlsx.zeroplaceholders", If(chkZeroPlaceholders.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.xlsx.comments", If(chkCommentSymbols.Checked, 1, 0))
 
-                Call oReg.SetValue("data.import.xlsx.splaysymboltxt", txtSplayMarker.Text)
-                Call oReg.SetValue("data.import.xlsx.cutsplaysymboltxt", txtCutSplayMarker.Text)
-                Call oReg.SetValue("data.import.xlsx.zeroplaceholderstxt", txtZeroPlaceholders.Text)
-                Call oReg.SetValue("data.import.xlsx.commentsymbolstxt", txtCommentSymbols.Text)
+        Call My.Application.Settings.SetSetting("data.import.xlsx.splaysymboltxt", txtSplayMarker.Text)
+        Call My.Application.Settings.SetSetting("data.import.xlsx.cutsplaysymboltxt", txtCutSplayMarker.Text)
+        Call My.Application.Settings.SetSetting("data.import.xlsx.zeroplaceholderstxt", txtZeroPlaceholders.Text)
+        Call My.Application.Settings.SetSetting("data.import.xlsx.commentsymbolstxt", txtCommentSymbols.Text)
 
-                Call oReg.SetValue("data.import.xlsx.fields", GetFields.ToString)
+        Call My.Application.Settings.SetSetting("data.import.xlsx.fields", GetFields.ToString)
 
-                Call oReg.SetValue("data.import.xlsx.progressivedistance", If(chkProgressiveDistance.Checked, 1, 0))
-
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        Call My.Application.Settings.SetSetting("data.import.xlsx.progressivedistance", If(chkProgressiveDistance.Checked, 1, 0))
     End Sub
 
     Friend Function GetFields() As cDestFields

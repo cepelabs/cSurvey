@@ -5,57 +5,44 @@ friend Class frmManageLRUD
     Private oSurvey As cSurvey.cSurvey
 
     Private Sub pSettingsLoad()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                cboAction.SelectedIndex = oReg.GetValue("editor.managelrud.option", "0")
-                Call pRadioButtonEnabled()
+        cboAction.SelectedIndex = My.Application.Settings.GetSetting("editor.managelrud.option", "0")
+        Call pRadioButtonEnabled()
 
-                Select Case oReg.GetValue("editor.managelrud.option0", "0")
-                    Case 0
-                        RadioButton1a.Checked = True
-                    Case 1
-                        RadioButton1b.Checked = True
-                End Select
-                chkRestoreDeleteBackupAfterRestore.Checked = oReg.GetValue("editor.managelrud.deleteafterrestore", "0")
-                chkBackup.Checked = oReg.GetValue("editor.managelrud.backup", "0")
+        Select Case My.Application.Settings.GetSetting("editor.managelrud.option0", "0")
+            Case 0
+                RadioButton1a.Checked = True
+            Case 1
+                RadioButton1b.Checked = True
+        End Select
+        chkRestoreDeleteBackupAfterRestore.Checked = My.Application.Settings.GetSetting("editor.managelrud.deleteafterrestore", "0")
+        chkBackup.Checked = My.Application.Settings.GetSetting("editor.managelrud.backup", "0")
 
-                chkMode2OnlyCutSplay.Checked = oReg.GetValue("editor.managelrud.option1onlycutsplay", "0")
-                txtMode2H.Value = modNumbers.StringToInteger(oReg.GetValue("editor.managelrud.option1h", "45"))
-                txtMode2V.Value = modNumbers.StringToInteger(oReg.GetValue("editor.managelrud.option1v", "45"))
-                cboMode2Mode.SelectedIndex = oReg.GetValue("editor.managelrud.option1mode", "0")
+        chkMode2OnlyCutSplay.Checked = My.Application.Settings.GetSetting("editor.managelrud.option1onlycutsplay", "0")
+        txtMode2H.Value = modNumbers.StringToInteger(My.Application.Settings.GetSetting("editor.managelrud.option1h", "45"))
+        txtMode2V.Value = modNumbers.StringToInteger(My.Application.Settings.GetSetting("editor.managelrud.option1v", "45"))
+        cboMode2Mode.SelectedIndex = My.Application.Settings.GetSetting("editor.managelrud.option1mode", "0")
 
-                chkMarkAsCalculated.Checked = oReg.GetValue("editor.managelrud.markascalculated", "1")
+        chkMarkAsCalculated.Checked = My.Application.Settings.GetSetting("editor.managelrud.markascalculated", "1")
 
-                chkShotWithLRUD.Checked = oReg.GetValue("editor.managelrud.shotwithlrud", "0")
-                chkShotWithCalculatedLRUD.Checked = oReg.GetValue("editor.managelrud.shotwithcalculatedlrud", "1")
-                chkShotWithoutLRUD.Checked = oReg.GetValue("editor.managelrud.shotwithoutlrud", "1")
-
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        chkShotWithLRUD.Checked = My.Application.Settings.GetSetting("editor.managelrud.shotwithlrud", "0")
+        chkShotWithCalculatedLRUD.Checked = My.Application.Settings.GetSetting("editor.managelrud.shotwithcalculatedlrud", "1")
+        chkShotWithoutLRUD.Checked = My.Application.Settings.GetSetting("editor.managelrud.shotwithoutlrud", "1")
     End Sub
 
     Private Sub pSettingsSave()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Call oReg.SetValue("editor.managelrud.option", cboAction.SelectedIndex)
-                Call oReg.SetValue("editor.managelrud.option0", If(RadioButton1a.Checked, "0", IIf(RadioButton1b.Checked, "1", "")))
-                Call oReg.SetValue("editor.managelrud.deleteafterrestore", IIf(chkRestoreDeleteBackupAfterRestore.Checked, "1", "0"))
-                Call oReg.SetValue("editor.managelrud.backup", If(chkBackup.Checked, "1", "0"))
-                Call oReg.SetValue("editor.managelrud.option1onlycutsplay", If(chkMode2OnlyCutSplay.Checked, "1", "0"))
-                Call oReg.SetValue("editor.managelrud.option1h", modNumbers.NumberToString(txtMode2H.Value, "0"))
-                Call oReg.SetValue("editor.managelrud.option1v", modNumbers.NumberToString(txtMode2V.Value, "0"))
-                Call oReg.SetValue("editor.managelrud.option1mode", modNumbers.NumberToString(cboMode2Mode.SelectedIndex, "0"))
-                Call oReg.SetValue("editor.managelrud.markascalculated", If(chkMarkAsCalculated.Checked, "1", "0"))
+        Call My.Application.Settings.SetSetting("editor.managelrud.option", cboAction.SelectedIndex)
+        Call My.Application.Settings.SetSetting("editor.managelrud.option0", If(RadioButton1a.Checked, "0", IIf(RadioButton1b.Checked, "1", "")))
+        Call My.Application.Settings.SetSetting("editor.managelrud.deleteafterrestore", IIf(chkRestoreDeleteBackupAfterRestore.Checked, "1", "0"))
+        Call My.Application.Settings.SetSetting("editor.managelrud.backup", If(chkBackup.Checked, "1", "0"))
+        Call My.Application.Settings.SetSetting("editor.managelrud.option1onlycutsplay", If(chkMode2OnlyCutSplay.Checked, "1", "0"))
+        Call My.Application.Settings.SetSetting("editor.managelrud.option1h", modNumbers.NumberToString(txtMode2H.Value, "0"))
+        Call My.Application.Settings.SetSetting("editor.managelrud.option1v", modNumbers.NumberToString(txtMode2V.Value, "0"))
+        Call My.Application.Settings.SetSetting("editor.managelrud.option1mode", modNumbers.NumberToString(cboMode2Mode.SelectedIndex, "0"))
+        Call My.Application.Settings.SetSetting("editor.managelrud.markascalculated", If(chkMarkAsCalculated.Checked, "1", "0"))
 
-                Call oReg.SetValue("editor.managelrud.shotwithlrud", If(chkShotWithLRUD.Checked, "1", "0"))
-                Call oReg.SetValue("editor.managelrud.shotwithcalculatedlrud", If(chkShotWithCalculatedLRUD.Checked, "1", "0"))
-                Call oReg.SetValue("editor.managelrud.shotwithoutlrud", If(chkShotWithoutLRUD.Checked, "1", "0"))
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        Call My.Application.Settings.SetSetting("editor.managelrud.shotwithlrud", If(chkShotWithLRUD.Checked, "1", "0"))
+        Call My.Application.Settings.SetSetting("editor.managelrud.shotwithcalculatedlrud", If(chkShotWithCalculatedLRUD.Checked, "1", "0"))
+        Call My.Application.Settings.SetSetting("editor.managelrud.shotwithoutlrud", If(chkShotWithoutLRUD.Checked, "1", "0"))
     End Sub
 
     Public Sub New(Survey As cSurveyPC.cSurvey.cSurvey, Optional Session As cSession = Nothing, Optional Cave As cCaveInfo = Nothing, Optional CaveBranch As cCaveInfoBranch = Nothing, Optional Rows As Integer = 1)

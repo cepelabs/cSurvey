@@ -1,42 +1,29 @@
 ﻿friend Class frmImportTherion
 
     Private Sub pSettingsLoad()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                txtPrefix.Text = oReg.GetValue("data.import.pockettopo.prefix", "")
-                txtCaveName.Text = oReg.GetValue("data.import.pockettopo.cavename", "")
+        txtPrefix.Text = My.Application.Settings.GetSetting("data.import.pockettopo.prefix", "")
+        txtCaveName.Text = My.Application.Settings.GetSetting("data.import.pockettopo.cavename", "")
 
-                chkTherionImportplan.Checked = oReg.GetValue("data.import.therion.importplan", 1)
-                chkTherionImportprofile.Checked = oReg.GetValue("data.import.therion.importprofile", 1)
+        chkTherionImportplan.Checked = My.Application.Settings.GetSetting("data.import.therion.importplan", 1)
+        chkTherionImportprofile.Checked = My.Application.Settings.GetSetting("data.import.therion.importprofile", 1)
 
-                chkTherionMergeAndReorderBorders.Checked = oReg.GetValue("data.import.therion.mergeandreorderborders", 1)
-                chktherionConvertBezierToSpline.Checked = oReg.GetValue("data.import.therion.beziertospline", 0)
+        chkTherionMergeAndReorderBorders.Checked = My.Application.Settings.GetSetting("data.import.therion.mergeandreorderborders", 1)
+        chktherionConvertBezierToSpline.Checked = My.Application.Settings.GetSetting("data.import.therion.beziertospline", 0)
 
-                txtTherionScaleFactor.EditValue = modNumbers.StringToSingle(oReg.GetValue("data.import.therion.scalefactor", 1))
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        txtTherionScaleFactor.EditValue = modNumbers.StringToSingle(My.Application.Settings.GetSetting("data.import.therion.scalefactor", 1))
     End Sub
 
     Private Sub pSettingsSave()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Call oReg.SetValue("data.import.pockettopo.prefix", txtPrefix.Text)
-                Call oReg.SetValue("data.import.pockettopo.cavename", txtCaveName.Text)
+        Call My.Application.Settings.SetSetting("data.import.pockettopo.prefix", txtPrefix.Text)
+        Call My.Application.Settings.SetSetting("data.import.pockettopo.cavename", txtCaveName.Text)
 
-                Call oReg.SetValue("data.import.therion.importplan", IIf(chkTherionImportplan.Checked, 1, 0))
-                Call oReg.SetValue("data.import.therion.importprofile", IIf(chkTherionImportprofile.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.therion.importplan", If(chkTherionImportplan.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.therion.importprofile", If(chkTherionImportprofile.Checked, 1, 0))
 
-                Call oReg.SetValue("data.import.therion.mergeandreorderborders", IIf(chkTherionMergeAndReorderBorders.Checked, 1, 0))
-                Call oReg.SetValue("data.import.therion.beziertospline", IIf(chktherionConvertBezierToSpline.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.therion.mergeandreorderborders", If(chkTherionMergeAndReorderBorders.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.therion.beziertospline", If(chktherionConvertBezierToSpline.Checked, 1, 0))
 
-                Call oReg.SetValue("data.import.therion.scalefactor", modNumbers.NumberToString(txtTherionScaleFactor.EditValue, "0.00"))
-
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        Call My.Application.Settings.SetSetting("data.import.therion.scalefactor", modNumbers.NumberToString(txtTherionScaleFactor.EditValue, "0.00"))
     End Sub
 
     Public Sub New()

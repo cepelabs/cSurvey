@@ -1349,7 +1349,7 @@ The data must then be corrected manually after the import.</value>
     <value>C#</value>
   </data>
   <data name="cboFunctionLanguage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>134, 213</value>
+    <value>134, 197</value>
   </data>
   <data name="cboFunctionLanguage.Size" type="System.Drawing.Size, System.Drawing">
     <value>157, 21</value>
@@ -1373,7 +1373,7 @@ The data must then be corrected manually after the import.</value>
     <value>NoControl</value>
   </data>
   <data name="lblFunctionLanguage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 216</value>
+    <value>11, 200</value>
   </data>
   <data name="lblFunctionLanguage.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 13</value>
@@ -1465,7 +1465,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>NoControl</value>
   </data>
   <data name="Label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 136</value>
+    <value>11, 162</value>
   </data>
   <data name="Label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>453, 16</value>
@@ -1492,7 +1492,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>NoControl</value>
   </data>
   <data name="chkCheckNewVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 110</value>
+    <value>11, 136</value>
   </data>
   <data name="chkCheckNewVersion.Properties.Caption" xml:space="preserve">
     <value>Check for new version on-line</value>
@@ -1528,7 +1528,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>NoControl</value>
   </data>
   <data name="lblSendExceptionWarning.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 64</value>
+    <value>11, 90</value>
   </data>
   <data name="lblSendExceptionWarning.Size" type="System.Drawing.Size, System.Drawing">
     <value>453, 29</value>
@@ -1555,7 +1555,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>NoControl</value>
   </data>
   <data name="chkSendException.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 38</value>
+    <value>11, 64</value>
   </data>
   <data name="chkSendException.Properties.Caption" xml:space="preserve">
     <value>Report error </value>
@@ -4476,7 +4476,7 @@ The data must then be corrected manually after the import.</value>
     <value>NoControl</value>
   </data>
   <data name="chkForceGarbaceCollect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>134, 38</value>
+    <value>11, 38</value>
   </data>
   <data name="chkForceGarbaceCollect.Properties.Caption" xml:space="preserve">
     <value>Force garbace collect</value>

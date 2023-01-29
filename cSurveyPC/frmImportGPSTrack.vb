@@ -1,29 +1,17 @@
 ﻿friend Class frmImportGPSTrack
 
     Private Sub pSettingsLoad()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                chkGPSImportWaypoint.Checked = oReg.GetValue("data.import.gps.importwaypoint", 1)
-                cboGPSImportWaypointMode.SelectedIndex = oReg.GetValue("data.import.gps.waypointmode", 0)
-                chkGPSImportCreateCaveForWaypoint.Checked = oReg.GetValue("data.import.gps.createcaveforwaypoint", 1)
-                chkGPSImportCreateStationLinks.Checked = oReg.GetValue("data.import.gps.createstationlink", 1)
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        chkGPSImportWaypoint.Checked = My.Application.Settings.GetSetting("data.import.gps.importwaypoint", 1)
+        cboGPSImportWaypointMode.SelectedIndex = My.Application.Settings.GetSetting("data.import.gps.waypointmode", 0)
+        chkGPSImportCreateCaveForWaypoint.Checked = My.Application.Settings.GetSetting("data.import.gps.createcaveforwaypoint", 1)
+        chkGPSImportCreateStationLinks.Checked = My.Application.Settings.GetSetting("data.import.gps.createstationlink", 1)
     End Sub
 
     Private Sub pSettingsSave()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Call oReg.SetValue("data.import.gps.importwaypoint", IIf(chkGPSImportWaypoint.Checked, 1, 0))
-                Call oReg.SetValue("data.import.gps.waypointmode", cboGPSImportWaypointMode.SelectedIndex)
-                Call oReg.SetValue("data.import.gps.createcaveforwaypoint", IIf(chkGPSImportCreateCaveForWaypoint.Checked, 1, 0))
-                Call oReg.SetValue("data.import.gps.createstationlink", IIf(chkGPSImportCreateStationLinks.Checked, 1, 0))
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        Call My.Application.Settings.SetSetting("data.import.gps.importwaypoint", If(chkGPSImportWaypoint.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.gps.waypointmode", cboGPSImportWaypointMode.SelectedIndex)
+        Call My.Application.Settings.SetSetting("data.import.gps.createcaveforwaypoint", If(chkGPSImportCreateCaveForWaypoint.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.gps.createstationlink", If(chkGPSImportCreateStationLinks.Checked, 1, 0))
     End Sub
 
     Public Sub New()

@@ -34,7 +34,7 @@ Namespace cSurvey.Design
                 If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, "", "") Then
                     Dim oSVGItem As XmlElement = oItem.ToSvgItem(SVG, PaintOptions, Options)
                     If oItem.CanBeClipped Then
-                        Dim iClipBorder As cClippingRegions.ClipBorderEnum = oSurvey.Properties.DesignProperties.GetValue("ClipBorder", Helper.Editor.cEditDesignEnvironment.GetSetting("design.clipborder", cClippingRegions.ClipBorderEnum.ClipBorder))
+                        Dim iClipBorder As cClippingRegions.ClipBorderEnum = oSurvey.Properties.DesignProperties.GetValue("ClipBorder", My.Application.Settings.GetSetting("design.clipborder", cClippingRegions.ClipBorderEnum.ClipBorder))
                         If oItem.ClippingType = cItem.cItemClippingTypeEnum.Default Then
                             If (oItem.Type = cIItem.cItemTypeEnum.InvertedFreeHandArea AndAlso iType = cLayers.LayerTypeEnum.Borders) OrElse (iType > cLayers.LayerTypeEnum.Borders) OrElse (iClipBorder = cClippingRegions.ClipBorderEnum.DontClipBorder AndAlso iType = cLayers.LayerTypeEnum.Borders) Then
                                 'nothing

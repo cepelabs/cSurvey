@@ -401,7 +401,7 @@ Friend Class frmMain2
 
             '---------------------------------------------------------
             'added in v2 due to microsoft tips abound gc: some say this can be usefull, some no...
-            If cEditDesignEnvironment.GetSetting("debug.forcegc", False) Then Call GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced)
+            If My.Application.Settings.GetSetting("debug.forcegc", False) Then Call GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced)
 
             Call pToolsCreate()
 
@@ -761,7 +761,7 @@ Friend Class frmMain2
 
                             '---------------------------------------------------------
                             'added in v2 due to microsoft tips abound gc: some say this can be usefull, some no...
-                            If cEditDesignEnvironment.GetSetting("debug.forcegc", False) Then Call GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced)
+                            If My.Application.Settings.GetSetting("debug.forcegc", False) Then Call GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced)
 
                             Call pToolsCreate()
 
@@ -2447,19 +2447,16 @@ Friend Class frmMain2
     Private bFirstRun As Boolean
 
     Private Sub pFirstRun()
-        Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-            bFirstRun = oReg.ValueCount = 0
-            If bFirstRun Then
-                Call pAutoSettings()
-            End If
-            Dim sMachineID As String = oReg.GetValue("debug.machineid", "")
-            If sMachineID = "" Then
-                sMachineID = Guid.NewGuid.ToString
-                Call oReg.SetValue("debug.machineid", sMachineID)
-            End If
-            modMain.sMachineID = sMachineID
-            Call oReg.Close()
-        End Using
+        bFirstRun = My.Application.Settings.Count = 0
+        If bFirstRun Then
+            Call pAutoSettings()
+        End If
+        Dim sMachineID As String = My.Application.Settings.GetSetting("debug.machineid", "")
+        If sMachineID = "" Then
+            sMachineID = Guid.NewGuid.ToString
+            Call My.Application.Settings.SetSetting("debug.machineid", sMachineID)
+        End If
+        modMain.sMachineID = sMachineID
     End Sub
 
     Private Sub pForceInitialize(Parent As Control)
@@ -2500,19 +2497,19 @@ Friend Class frmMain2
     Private bChangePeriodKey As Boolean
 
     Private Sub pSettingsLoad()
-        Call cEditDesignEnvironment.Reset()
+        Call My.Application.Settings.Reset()
 
-        bChangeDecimalKey = cEditDesignEnvironment.GetSetting("keys.changedecimalkey", "1")
-        bChangePeriodKey = cEditDesignEnvironment.GetSetting("keys.changeperiodkey", "0")
+        bChangeDecimalKey = My.Application.Settings.GetSetting("keys.changedecimalkey", "1")
+        bChangePeriodKey = My.Application.Settings.GetSetting("keys.changeperiodkey", "0")
 
-        Dim sSkinName As String = "" & cEditDesignEnvironment.GetSetting("theme.name")
+        Dim sSkinName As String = "" & My.Application.Settings.GetSetting("theme.name")
         If sSkinName <> "" Then
-            Dim sPaletteName As String = "" & cEditDesignEnvironment.GetSetting("theme.palette")
+            Dim sPaletteName As String = "" & My.Application.Settings.GetSetting("theme.palette")
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle(sSkinName, sPaletteName)
             DevExpress.LookAndFeel.UserLookAndFeel.Default.UpdateStyleSettings()
         End If
 
-        Dim iFieldDataViewMode As Integer = cEditDesignEnvironment.GetSetting("user.fieldDataviewmode", 0)
+        Dim iFieldDataViewMode As Integer = My.Application.Settings.GetSetting("user.fieldDataviewmode", 0)
         Select Case iFieldDataViewMode
             Case 0
                 btnSegments.Checked = True
@@ -2525,52 +2522,52 @@ Friend Class frmMain2
                 Call pSegmentsAndTrigPointsShow(True)
         End Select
 
-        iDesignQuality = cEditDesignEnvironment.GetSetting("design.quality", 0)
+        iDesignQuality = My.Application.Settings.GetSetting("design.quality", 0)
         Call pSettingsSetDesignQuality(iDesignQuality, True)
-        Call pRulersSetVisible(cEditDesignEnvironment.GetSetting("design.rulers", 1))
-        iDrawRulesStyle = cEditDesignEnvironment.GetSetting("design.rulers.style", RulersStyleEnum.Simple)
-        iDrawMetricGrid = cEditDesignEnvironment.GetSetting("design.metricgrid", 0)
+        Call pRulersSetVisible(My.Application.Settings.GetSetting("design.rulers", 1))
+        iDrawRulesStyle = My.Application.Settings.GetSetting("design.rulers.style", RulersStyleEnum.Simple)
+        iDrawMetricGrid = My.Application.Settings.GetSetting("design.metricgrid", 0)
 
-        'bDesignBarShowLastUsedTools = cEditDesignEnvironment.GetSetting("design.designbar.showlastusedtools", 1)
+        'bDesignBarShowLastUsedTools =  My.Application.Settings.GetSetting("design.designbar.showlastusedtools", 1)
         'oLastUsedBar.Visible = bDesignBarShowLastUsedTools
-        iDesignBarPosition = cEditDesignEnvironment.GetSetting("design.designbar.defaultposition", 0)
+        iDesignBarPosition = My.Application.Settings.GetSetting("design.designbar.defaultposition", 0)
 
         'last used items
-        Dim sLui As String = cEditDesignEnvironment.GetSetting("lui", "")
+        Dim sLui As String = My.Application.Settings.GetSetting("lui", "")
         If sLui <> "" Then
             For Each sLuiItem As String In sLui.Split(",")
                 Call oLastUsedItems.Add(RibbonControl.Items.FindByName(sLuiItem))
             Next
         End If
 
-        bDesignLevelBarVisible = cEditDesignEnvironment.GetSetting("levelsbar", "1")
+        bDesignLevelBarVisible = My.Application.Settings.GetSetting("levelsbar", "1")
         btnViewToolbarLevels.Checked = bDesignLevelBarVisible
-        bDesignItemsBarVisible = cEditDesignEnvironment.GetSetting("itemsbar", "1")
+        bDesignItemsBarVisible = My.Application.Settings.GetSetting("itemsbar", "1")
         btnViewToolbarItems.Checked = bDesignItemsBarVisible
-        bLastUsedBarVisible = cEditDesignEnvironment.GetSetting("lastusedbar", "1")
+        bLastUsedBarVisible = My.Application.Settings.GetSetting("lastusedbar", "1")
         btnViewToolbarLastUsedTools.Checked = bLastUsedBarVisible
-        bFloatBarVisible = cEditDesignEnvironment.GetSetting("floatbar", "1")
+        bFloatBarVisible = My.Application.Settings.GetSetting("floatbar", "1")
         btnViewToolbarFloatingBar.Checked = bFloatBarVisible
 
         Call pReloadUsedToolsBar()
 
-        modMain.iMaxDrawItemCount = cEditDesignEnvironment.GetSetting("design.maxdrawitemcount", 20)
+        modMain.iMaxDrawItemCount = My.Application.Settings.GetSetting("design.maxdrawitemcount", 20)
 
-        btnAlignToGrid.Checked = cEditDesignEnvironment.GetSetting("snaptogrid", 0)
-        btnAlignToGridSize.EditValue = modNumbers.StringToSingle(cEditDesignEnvironment.GetSetting("snaptogrid.size", "0.1"))
+        btnAlignToGrid.Checked = My.Application.Settings.GetSetting("snaptogrid", 0)
+        btnAlignToGridSize.EditValue = modNumbers.StringToSingle(My.Application.Settings.GetSetting("snaptogrid.size", "0.1"))
 
-        bEditPointByPoint = cEditDesignEnvironment.GetSetting("user.editpointtopoint", 0)
+        bEditPointByPoint = My.Application.Settings.GetSetting("user.editpointtopoint", 0)
         btnEditDrawing.Down = Not bEditPointByPoint
         btnEditPointToPoint.Down = bEditPointByPoint
 
-        btnLoch.Visibility = modControls.VisibleToVisibility(cEditDesignEnvironment.GetSetting("therion.loch.enabled", 1))
+        btnLoch.Visibility = modControls.VisibleToVisibility(My.Application.Settings.GetSetting("therion.loch.enabled", 1))
 
-        sDefaultClub = cEditDesignEnvironment.GetSetting("default.club", "")
-        sDefaultTeam = cEditDesignEnvironment.GetSetting("default.team", "")
-        sDefaultDesigner = cEditDesignEnvironment.GetSetting("default.designer", "")
+        sDefaultClub = My.Application.Settings.GetSetting("default.club", "")
+        sDefaultTeam = My.Application.Settings.GetSetting("default.team", "")
+        sDefaultDesigner = My.Application.Settings.GetSetting("default.designer", "")
 
         'defaultfolder (if not set...create it)
-        sDefaultFolder = cEditDesignEnvironment.GetSetting("default.folder", "")
+        sDefaultFolder = My.Application.Settings.GetSetting("default.folder", "")
         If sDefaultFolder = "" Then
             Call pDefaultFolderSetup()
         End If
@@ -2580,70 +2577,70 @@ Friend Class frmMain2
 
         oRecents = UIHelpers.cRecentsHelper.Load("Recent", btnLoad)
 
-        iDefaultCalculateMode = cEditDesignEnvironment.GetSetting("default.calculatemode", 0)
-        iDefaultCalculateType = cEditDesignEnvironment.GetSetting("default.calculatetype", cSurvey.cSurvey.CalculateTypeEnum.Therion)
+        iDefaultCalculateMode = My.Application.Settings.GetSetting("default.calculatemode", 0)
+        iDefaultCalculateType = My.Application.Settings.GetSetting("default.calculatetype", cSurvey.cSurvey.CalculateTypeEnum.Therion)
 
-        bDefaultShowLegacyPrintAndExportObjects = cEditDesignEnvironment.GetSetting("default.showlegacyextraprintandexportobjects", Not bFirstRun)
+        bDefaultShowLegacyPrintAndExportObjects = My.Application.Settings.GetSetting("default.showlegacyextraprintandexportobjects", Not bFirstRun)
 
-        bDefaultArrangePriorityOnImport = cEditDesignEnvironment.GetSetting("default.arrangepriorityonimport", True)
+        bDefaultArrangePriorityOnImport = My.Application.Settings.GetSetting("default.arrangepriorityonimport", True)
 
-        iZoomType = cEditDesignEnvironment.GetSetting("zoom.type", 1)
+        iZoomType = My.Application.Settings.GetSetting("zoom.type", 1)
 
-        bGridExportSplayNames = cEditDesignEnvironment.GetSetting("grid.shotsgrid.exportsplaynames", 1)
+        bGridExportSplayNames = My.Application.Settings.GetSetting("grid.shotsgrid.exportsplaynames", 1)
 
         'bLogEnabled = oReg.GetValue("debug.log", 0)
 
-        bToolsEnabledByLevel = cEditDesignEnvironment.GetSetting("environment.setdesigntoolsenabledbylevel", 1)
-        bToolsHiddenByLevel = cEditDesignEnvironment.GetSetting("environment.setdesigntoolshiddenbylevel", 0)
-        iFunctionLanguage = cEditDesignEnvironment.GetSetting("environment.functionlanguage", 0)
+        bToolsEnabledByLevel = My.Application.Settings.GetSetting("environment.setdesigntoolsenabledbylevel", 1)
+        bToolsHiddenByLevel = My.Application.Settings.GetSetting("environment.setdesigntoolshiddenbylevel", 0)
+        iFunctionLanguage = My.Application.Settings.GetSetting("environment.functionlanguage", 0)
 
-        bAlwaysUseShellForAttachments = cEditDesignEnvironment.GetSetting("environment.alwaysuseshellforattachments", 0)
+        bAlwaysUseShellForAttachments = My.Application.Settings.GetSetting("environment.alwaysuseshellforattachments", 0)
 
-        tmrAutosave.Enabled = cEditDesignEnvironment.GetSetting("debug.autosave", 0)
-        bAutoSaveUseHistorySettings = cEditDesignEnvironment.GetSetting("debug.autosave.usehistorysettings", 0)
+        tmrAutosave.Enabled = My.Application.Settings.GetSetting("debug.autosave", 0)
+        bAutoSaveUseHistorySettings = My.Application.Settings.GetSetting("debug.autosave.usehistorysettings", 0)
 
-        Dim sPointPrecision As Single = modNumbers.StringToSingle(cEditDesignEnvironment.GetSetting("pens.smooth", "0.05"))
+        Dim sPointPrecision As Single = modNumbers.StringToSingle(My.Application.Settings.GetSetting("pens.smooth", "0.05"))
         If sPointPrecision < 0.01 Then sPointPrecision = 0.01
-        btnPenSmooting.Checked = cEditDesignEnvironment.GetSetting("pens.smooting", 0)
+        btnPenSmooting.Checked = My.Application.Settings.GetSetting("pens.smooting", 0)
         btnPenSmootingFactor.EditValue = Math.Round(sPointPrecision, 2)
 
-        Dim sToolsPrecision As Single = modNumbers.StringToSingle(cEditDesignEnvironment.GetSetting("tools.smooth", "0.05"))
+        Dim sToolsPrecision As Single = modNumbers.StringToSingle(My.Application.Settings.GetSetting("tools.smooth", "0.05"))
         If sToolsPrecision < 0.01F Then sToolsPrecision = 0.01F
         btnCurrentItemGenericReducePointFactor.EditValue = Math.Round(sToolsPrecision, 2)
 
-        bUseOnlyAnchorToMove = cEditDesignEnvironment.GetSetting("design.useonlyanchortomove", 1)
-        iAdvancedSelectionMode = cEditDesignEnvironment.GetSetting("design.selectionmode", 0)
-        sAdvancedSelectionPrecision = modNumbers.StringToSingle(cEditDesignEnvironment.GetSetting("design.selectionmode.precision", 1000.0F))
-        sAdvancedSelectionWide = modNumbers.StringToSingle(cEditDesignEnvironment.GetSetting("design.selectionmode.wide", 4.0F))
+        bUseOnlyAnchorToMove = My.Application.Settings.GetSetting("design.useonlyanchortomove", 1)
+        iAdvancedSelectionMode = My.Application.Settings.GetSetting("design.selectionmode", 0)
+        sAdvancedSelectionPrecision = modNumbers.StringToSingle(My.Application.Settings.GetSetting("design.selectionmode.precision", 1000.0F))
+        sAdvancedSelectionWide = modNumbers.StringToSingle(My.Application.Settings.GetSetting("design.selectionmode.wide", 4.0F))
 
-        modPaint.AnchorsScale = modNumbers.StringToSingle(cEditDesignEnvironment.GetSetting("design.anchorscale", 1))
+        modPaint.AnchorsScale = modNumbers.StringToSingle(My.Application.Settings.GetSetting("design.anchorscale", 1))
 
-        oPropObjectsBindingContainer.Expanded = cEditDesignEnvironment.GetSetting("design.objectsbinding.expanded")
-        oPropSegmentBindingContainer.Expanded = cEditDesignEnvironment.GetSetting("design.segmentsbinding.expanded")
-        oPropTrigpointsDistancesContainer.Expanded = cEditDesignEnvironment.GetSetting("design.trigpointdistances.expanded")
+        oPropObjectsBindingContainer.Expanded = My.Application.Settings.GetSetting("design.objectsbinding.expanded")
+        oPropSegmentBindingContainer.Expanded = My.Application.Settings.GetSetting("design.segmentsbinding.expanded")
+        oPropTrigpointsDistancesContainer.Expanded = My.Application.Settings.GetSetting("design.trigpointdistances.expanded")
 
-        bHistory = cEditDesignEnvironment.GetSetting("history.enabled", 0)
-        iHistoryMode = cEditDesignEnvironment.GetSetting("history.mode", 0)
-        sHistoryWebURL = cEditDesignEnvironment.GetSetting("history.web.url", "")
-        sHistoryWebUsername = cEditDesignEnvironment.GetSetting("history.web.username", "")
-        sHistoryWebPassword = cEditDesignEnvironment.GetSetting("history.web.password", "")
+        bHistory = My.Application.Settings.GetSetting("history.enabled", 0)
+        iHistoryMode = My.Application.Settings.GetSetting("history.mode", 0)
+        sHistoryWebURL = My.Application.Settings.GetSetting("history.web.url", "")
+        sHistoryWebUsername = My.Application.Settings.GetSetting("history.web.username", "")
+        sHistoryWebPassword = My.Application.Settings.GetSetting("history.web.password", "")
         If sHistoryWebPassword <> "" Then
             sHistoryWebPassword = New cLocalSecurity("csurvey").DecryptData(sHistoryWebPassword)
         End If
-        sHistoryFolder = cEditDesignEnvironment.GetSetting("history.folder", "")
-        iHistoryDailyCopies = cEditDesignEnvironment.GetSetting("history.maxdailycopies", 4)
-        iHistoryMaxCopies = cEditDesignEnvironment.GetSetting("history.maxcopies", 20)
-        bHistoryCreateOnSave = cEditDesignEnvironment.GetSetting("history.createonsave", 0)
-        bHistoryWebCreateOnSave = cEditDesignEnvironment.GetSetting("history.web.createonsave", 0)
+        sHistoryFolder = My.Application.Settings.GetSetting("history.folder", "")
+        iHistoryDailyCopies = My.Application.Settings.GetSetting("history.maxdailycopies", 4)
+        iHistoryMaxCopies = My.Application.Settings.GetSetting("history.maxcopies", 20)
+        bHistoryCreateOnSave = My.Application.Settings.GetSetting("history.createonsave", 0)
+        bHistoryWebCreateOnSave = My.Application.Settings.GetSetting("history.web.createonsave", 0)
 
-        bLinkedSurveysSelectOnAdd = cEditDesignEnvironment.GetSetting("linkedsurveys.selectonadd", "0")
-        bLinkedSurveysShowInCaveInfo = cEditDesignEnvironment.GetSetting("linkedsurveys.showincaveinfo", "0")
-        bLinkedSurveysRecursiveLoad = cEditDesignEnvironment.GetSetting("linkedsurveys.recursiveload", "0")
-        bLinkedSurveysRefreshOnLoadPrioritizeChildren = cEditDesignEnvironment.GetSetting("linkedsurveys.recursiveload.prioritizechildren", "0")
-        bLinkedSurveysRefreshOnLoad = cEditDesignEnvironment.GetSetting("linkedsurveys.refreshonload", "0")
+        bLinkedSurveysSelectOnAdd = My.Application.Settings.GetSetting("linkedsurveys.selectonadd", "0")
+        bLinkedSurveysShowInCaveInfo = My.Application.Settings.GetSetting("linkedsurveys.showincaveinfo", "0")
+        bLinkedSurveysRecursiveLoad = My.Application.Settings.GetSetting("linkedsurveys.recursiveload", "0")
+        bLinkedSurveysRefreshOnLoadPrioritizeChildren = My.Application.Settings.GetSetting("linkedsurveys.recursiveload.prioritizechildren", "0")
+        bLinkedSurveysRefreshOnLoad = My.Application.Settings.GetSetting("linkedsurveys.refreshonload", "0")
 
 
-        Dim sQAT As String = cEditDesignEnvironment.GetSetting("qat.items", "")
+        Dim sQAT As String = My.Application.Settings.GetSetting("qat.items", "")
         If sQAT <> "" Then
             Dim oXML As XmlDocument = New XmlDocument
             Call oXML.LoadXml(sQAT)
@@ -2664,49 +2661,38 @@ Friend Class frmMain2
         'TODO: remove this settings...have to be managed by cEditDesignEnviroment...
         Call pSurveyCheckBezierLineType()
 
-        If cEditDesignEnvironment.GetSetting("wms.cache.enabled", 0) Then
-            modWMSManager.MaxCacheSize = cEditDesignEnvironment.GetSetting("wms.cache.maxsize", 0) * 1048576
+        If My.Application.Settings.GetSetting("wms.cache.enabled", 0) Then
+            modWMSManager.MaxCacheSize = My.Application.Settings.GetSetting("wms.cache.maxsize", 0) * 1048576
         End If
 
-        bCheckNewVersion = cEditDesignEnvironment.GetSetting("debug.checknewversion", 0)
+        bCheckNewVersion = My.Application.Settings.GetSetting("debug.checknewversion", 0)
 
-        'TODO: remove this settings...have to be managed by cEditDesignEnviroment...
-        Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-            'most used items are merged with saved data...
-            If oReg.GetSubKeyNames().Contains("mui") Then
-                Using oRegMui As Microsoft.Win32.RegistryKey = oReg.OpenSubKey("mui", False)
-                    If oRegMui IsNot Nothing Then
-                        For Each sMuiItem As String In oRegMui.GetValueNames
-                            Dim iBaseCount As Integer = oRegMui.GetValue(sMuiItem)
-                            Call oMostUsedItems.Add(RibbonControl.Items.FindByName(sMuiItem), New cMostUsedItemCounters(iBaseCount))
-                        Next
-                    End If
-                    Call oRegMui.Close()
-                End Using
-            End If
-            Call oReg.Close()
-        End Using
+        Call oMostUsedItems.Clear()
+        Dim oMUIFolder As cEnvironmentSettingsFolder = My.Application.Settings.GetFolder("mui")
+        For Each sMuiItem As String In oMUIFolder.GetKeys
+            Dim iBaseCount As Integer = oMUIFolder.GetSetting(sMuiItem)
+            Call oMostUsedItems.Add(RibbonControl.Items.FindByName(sMuiItem), New cMostUsedItemCounters(iBaseCount))
+        Next
+
+        oDockConsole.restoresettings
 
         'Call ResumeLayout()
     End Sub
 
     Private Sub pSurveyCheckBezierLineType(Optional Survey As cSurvey.cSurvey = Nothing)
         If Survey Is Nothing Then
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Dim iLineType As Items.cIItemLine.LineTypeEnum = oReg.GetValue("design.linetype", Items.cIItemLine.LineTypeEnum.Splines)
-                If iLineType = cIItemLine.LineTypeEnum.Beziers Then
-                    If oReg.GetValue("design.warning.beziers", 0) = 0 Then
-                        'If UIHelpers.Dialogs.Msgbox(modMain.GetLocalizedString("main.warning27"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, modMain.GetLocalizedString("main.warningtitle")) = vbYes Then
-                        iLineType = cIItemLine.LineTypeEnum.Splines
-                        Call oReg.SetValue("design.linetype", iLineType.ToString("D"))
-                        Call oReg.SetValue("design.warning.beziers", 1)
-                        'End If
-                    End If
+            Dim iLineType As Items.cIItemLine.LineTypeEnum = My.Application.Settings.GetSetting("design.linetype", Items.cIItemLine.LineTypeEnum.Splines)
+            If iLineType = cIItemLine.LineTypeEnum.Beziers Then
+                If My.Application.Settings.GetSetting("design.warning.beziers", 0) = 0 Then
+                    'If UIHelpers.Dialogs.Msgbox(modMain.GetLocalizedString("main.warning27"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, modMain.GetLocalizedString("main.warningtitle")) = vbYes Then
+                    iLineType = cIItemLine.LineTypeEnum.Splines
+                    Call My.Application.Settings.SetSetting("design.linetype", iLineType.ToString("D"))
+                    Call My.Application.Settings.SetSetting("design.warning.beziers", 1)
+                    'End If
                 End If
-                Call oReg.Close()
-            End Using
+            End If
         Else
-            Dim iLineType As cIItemLine.LineTypeEnum = oSurvey.Properties.DesignProperties.GetValue("LineType", cEditDesignEnvironment.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
+            Dim iLineType As cIItemLine.LineTypeEnum = oSurvey.Properties.DesignProperties.GetValue("LineType", My.Application.Settings.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
             If iLineType = cIItemLine.LineTypeEnum.Beziers Then
                 If oSurvey.Properties.DesignProperties.GetValue("design.warning.beziers", 0) = 0 Then
                     'If UIHelpers.Dialogs.Msgbox(modMain.GetLocalizedString("main.warning28"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, modMain.GetLocalizedString("main.warningtitle")) = vbYes Then
@@ -2733,21 +2719,15 @@ Friend Class frmMain2
             Call bwMain.RunWorkerAsync("pCheckNewVersion")
         Else
             Dim iAskToCheckNewVersion As Integer
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                iAskToCheckNewVersion = oReg.GetValue("debug.asktochecknewversion", 0)
-                iAskToCheckNewVersion += 1
-                Call oReg.SetValue("debug.asktochecknewversion", iAskToCheckNewVersion)
-                If iAskToCheckNewVersion < 3 Then
-                    If UIHelpers.Dialogs.Msgbox(String.Format(GetLocalizedString("main.warning22"), sNewVersion), MsgBoxStyle.Question Or MsgBoxStyle.YesNo, "Attenzione: ") = MsgBoxResult.Yes Then
-                        Try
-                            Call oReg.SetValue("debug.checknewversion", 1)
-                        Catch
-                        End Try
-                        Call pCheckNewVersion()
-                    End If
+            iAskToCheckNewVersion = My.Application.Settings.GetSetting("debug.asktochecknewversion", 0)
+            iAskToCheckNewVersion += 1
+            Call My.Application.Settings.SetSetting("debug.asktochecknewversion", iAskToCheckNewVersion)
+            If iAskToCheckNewVersion < 3 Then
+                If UIHelpers.Dialogs.Msgbox(String.Format(GetLocalizedString("main.warning22"), sNewVersion), MsgBoxStyle.Question Or MsgBoxStyle.YesNo, "Attenzione: ") = MsgBoxResult.Yes Then
+                    My.Application.Settings.SetSetting("debug.checknewversion", 1)
+                    Call pCheckNewVersion()
                 End If
-                Call oReg.Close()
-            End Using
+            End If
         End If
     End Sub
 
@@ -2798,8 +2778,8 @@ Friend Class frmMain2
 
     Private Sub pSettingsSave()
         Try
-            Call cEditDesignEnvironment.SetSetting("theme.name", DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName)
-            Call cEditDesignEnvironment.SetSetting("theme.palette", DevExpress.LookAndFeel.UserLookAndFeel.Default.ActiveSvgPaletteName)
+            Call My.Application.Settings.SetSetting("theme.name", DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName)
+            Call My.Application.Settings.SetSetting("theme.palette", DevExpress.LookAndFeel.UserLookAndFeel.Default.ActiveSvgPaletteName)
             Dim iFieldDataViewMode As Integer
             If btnSegments.Checked Then
                 iFieldDataViewMode = 0
@@ -2808,15 +2788,15 @@ Friend Class frmMain2
             ElseIf btnSegmentsAndTrigPoints.Checked Then
                 iFieldDataViewMode = 2
             End If
-            Call cEditDesignEnvironment.SetSetting("user.fielddataviewmode", iFieldDataViewMode)
+            Call My.Application.Settings.SetSetting("user.fielddataviewmode", iFieldDataViewMode)
 
-            Call cEditDesignEnvironment.SetSetting("design.quality", Integer.Parse(iDesignQuality))
-            Call cEditDesignEnvironment.SetSetting("design.rulers", If(bDrawRulers, 1, 0))
-            Call cEditDesignEnvironment.SetSetting("design.metricgrid", iDrawMetricGrid)
+            Call My.Application.Settings.SetSetting("design.quality", Integer.Parse(iDesignQuality))
+            Call My.Application.Settings.SetSetting("design.rulers", If(bDrawRulers, 1, 0))
+            Call My.Application.Settings.SetSetting("design.metricgrid", iDrawMetricGrid)
 
-            Call cEditDesignEnvironment.SetSetting("design.objectsbinding.expanded", If(oPropObjectsBindingContainer.Expanded, 1, 0))
-            Call cEditDesignEnvironment.SetSetting("design.segmentsbinding.expanded", If(oPropSegmentBindingContainer.Expanded, 1, 0))
-            Call cEditDesignEnvironment.SetSetting("design.trigpointdistances.expanded", If(oPropTrigpointsDistancesContainer.Expanded, 1, 0))
+            Call My.Application.Settings.SetSetting("design.objectsbinding.expanded", If(oPropObjectsBindingContainer.Expanded, 1, 0))
+            Call My.Application.Settings.SetSetting("design.segmentsbinding.expanded", If(oPropSegmentBindingContainer.Expanded, 1, 0))
+            Call My.Application.Settings.SetSetting("design.trigpointdistances.expanded", If(oPropTrigpointsDistancesContainer.Expanded, 1, 0))
 
             Dim oXml As XmlDocument = New XmlDocument
             Dim oXmlRoot As XmlElement = oXml.CreateElement("is")
@@ -2830,34 +2810,29 @@ Friend Class frmMain2
             Call oXmlRoot.SetAttribute("tl", RibbonControl.ToolbarLocation.ToString("D"))
             If RibbonControl.Minimized Then Call oXmlRoot.SetAttribute("m", "1")
             Call oXml.AppendChild(oXmlRoot)
-            Call cEditDesignEnvironment.SetSetting("qat.items", oXml.OuterXml)
+            Call My.Application.Settings.SetSetting("qat.items", oXml.OuterXml)
 
             'last used items are barely overwritten each time...merging with other instance is not strategic
-            Call cEditDesignEnvironment.SetSetting("lui", String.Join(",", oLastUsedItems.Select(Function(oBarItem) oBarItem.Name)))
+            Call My.Application.Settings.SetSetting("lui", String.Join(",", oLastUsedItems.Select(Function(oBarItem) oBarItem.Name)))
 
-            Call cEditDesignEnvironment.SetSetting("snaptogrid", If(btnAlignToGrid.Checked, "1", "0"))
-            Call cEditDesignEnvironment.SetSetting("snaptogrid.size", modNumbers.NumberToString(btnAlignToGridSize.EditValue))
+            Call My.Application.Settings.SetSetting("snaptogrid", If(btnAlignToGrid.Checked, "1", "0"))
+            Call My.Application.Settings.SetSetting("snaptogrid.size", modNumbers.NumberToString(btnAlignToGridSize.EditValue))
 
-            Call cEditDesignEnvironment.SetSetting("pens.smooth", modNumbers.NumberToString(btnPenSmootingFactor.EditValue))
-            Call cEditDesignEnvironment.SetSetting("pens.smooting", If(btnPenSmooting.Checked, "1", "0"))
-            Call cEditDesignEnvironment.SetSetting("tools.smooth", modNumbers.NumberToString(btnCurrentItemGenericReducePointFactor.EditValue))
-            Call cEditDesignEnvironment.SetSetting("user.editpointtopoint", If(bEditPointByPoint, 1, 0))
+            Call My.Application.Settings.SetSetting("pens.smooth", modNumbers.NumberToString(btnPenSmootingFactor.EditValue))
+            Call My.Application.Settings.SetSetting("pens.smooting", If(btnPenSmooting.Checked, "1", "0"))
+            Call My.Application.Settings.SetSetting("tools.smooth", modNumbers.NumberToString(btnCurrentItemGenericReducePointFactor.EditValue))
+            Call My.Application.Settings.SetSetting("user.editpointtopoint", If(bEditPointByPoint, 1, 0))
 
-            Call cEditDesignEnvironment.Save()
+            Dim oMUIFolder As cEnvironmentSettingsFolder = My.Application.Settings.GetFolder("mui")
+            For Each oMostUsedItem As KeyValuePair(Of BarItem, cMostUsedItemCounters) In oMostUsedItems
+                Dim oBarItem As BarItem = oMostUsedItem.Key
+                Dim iCurrentCount As Integer = oMostUsedItem.Value.Value - oMostUsedItem.Value.BaseValue
+                Dim iLastCount As Integer = oMUIFolder.GetSetting(oBarItem.Name, 0)
+                Call oMUIFolder.SetSetting(oBarItem.Name, iLastCount + iCurrentCount)
+            Next
 
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                'most used items are merged with saved data...
-                Using oRegMui As Microsoft.Win32.RegistryKey = oReg.CreateSubKey("mui")
-                    For Each oMostUsedItem As KeyValuePair(Of BarItem, cMostUsedItemCounters) In oMostUsedItems
-                        Dim oBarItem As BarItem = oMostUsedItem.Key
-                        Dim iCurrentCount As Integer = oMostUsedItem.Value.Value - oMostUsedItem.Value.BaseValue
-                        Dim iLastCount As Integer = oRegMui.GetValue(oBarItem.Name)
-                        Call oRegMui.SetValue(oBarItem.Name, iLastCount + iCurrentCount)
-                    Next
-                    Call oRegMui.Close()
-                End Using
-                Call oReg.Close()
-            End Using
+            Call My.Application.Settings.Save()
+
         Catch ex As Exception
         End Try
     End Sub
@@ -5032,7 +5007,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pSurveyPenTypeRefresh()
-        Dim iLineType As cIItemLine.LineTypeEnum = oSurvey.Properties.DesignProperties.GetValue("LineType", cEditDesignEnvironment.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
+        Dim iLineType As cIItemLine.LineTypeEnum = oSurvey.Properties.DesignProperties.GetValue("LineType", My.Application.Settings.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
         Select Case iLineType
             Case cIItemLine.LineTypeEnum.Beziers
                 btnPenLine.Down = False
@@ -5293,18 +5268,18 @@ Friend Class frmMain2
             Else
                 If TypeOf oResult.Exception Is Calculate.cCalculate.cCalculateSegmentsException Then
                     Dim oSegments As List(Of cSegment) = DirectCast(oResult.Exception, Calculate.cCalculate.cCalculateSegmentsException).Segments
-                    Call pPopupShow("error", oResult.Exception.Message & " " & String.Join(", ", oSegments.Select(Function(oSegment) "<href=""sg:" & oSegment.ID & """><color=" & ColorTranslator.ToHtml(cEditDesignEnvironment.GetSetting("messagebar.forecolor", Color.Black)) & ">" & oSegment.From & " - " & oSegment.To & "</color></href>")))
+                    Call pPopupShow("error", oResult.Exception.Message & " " & String.Join(", ", oSegments.Select(Function(oSegment) "<href=""sg:" & oSegment.ID & """><color=" & ColorTranslator.ToHtml(My.Application.RuntimeSettings.GetSetting("messagebar.forecolor", Color.Black)) & ">" & oSegment.From & " - " & oSegment.To & "</color></href>")))
                     Call DirectCast(grdSegments.DataSource, UIHelpers.cSegmentsBindingList).SetCalculateException(oSegments, oResult.Exception.Message)
                 ElseIf TypeOf oResult.Exception Is Calculate.cCalculate.cCalculateSegmentException Then
                     Dim oSegment As cSegment = DirectCast(oResult.Exception, Calculate.cCalculate.cCalculateSegmentException).Segment
-                    Call pPopupShow("error", oResult.Exception.Message & " <href=""sg:" & oSegment.ID & """><color=" & ColorTranslator.ToHtml(cEditDesignEnvironment.GetSetting("messagebar.forecolor", Color.Black)) & ">" & oSegment.From & " - " & oSegment.To & "</color></href>")
+                    Call pPopupShow("error", oResult.Exception.Message & " <href=""sg:" & oSegment.ID & """><color=" & ColorTranslator.ToHtml(My.Application.RuntimeSettings.GetSetting("messagebar.forecolor", Color.Black)) & ">" & oSegment.From & " - " & oSegment.To & "</color></href>")
                     Call DirectCast(grdSegments.DataSource, UIHelpers.cSegmentsBindingList).SetCalculateException(oSegment, oResult.Exception.Message)
                 ElseIf TypeOf oResult.Exception Is Calculate.cCalculate.cCalculateTrigpointsException Then
                     Dim oTrigpoints As List(Of cTrigPoint) = DirectCast(oResult.Exception, Calculate.cCalculate.cCalculateTrigpointsException).Trigpoints
-                    Call pPopupShow("error", oResult.Exception.Message & " " & String.Join(", ", oTrigpoints.Select(Function(oTrigpoint) "<href=""tp:" & oTrigpoint.Name & """><color=" & ColorTranslator.ToHtml(cEditDesignEnvironment.GetSetting("messagebar.forecolor", Color.Black)) & ">" & oTrigpoint.Name & "</color></href>")))
+                    Call pPopupShow("error", oResult.Exception.Message & " " & String.Join(", ", oTrigpoints.Select(Function(oTrigpoint) "<href=""tp:" & oTrigpoint.Name & """><color=" & ColorTranslator.ToHtml(My.Application.RuntimeSettings.GetSetting("messagebar.forecolor", Color.Black)) & ">" & oTrigpoint.Name & "</color></href>")))
                 ElseIf TypeOf oResult.Exception Is Calculate.cCalculate.cCalculateTrigpointException Then
                     Dim oTrigpoint As cTrigPoint = DirectCast(oResult.Exception, Calculate.cCalculate.cCalculateTrigpointException).Trigpoint
-                    Call pPopupShow("error", oResult.Exception.Message & " <href=""tp:" & oTrigpoint.Name & """><color=" & ColorTranslator.ToHtml(cEditDesignEnvironment.GetSetting("messagebar.forecolor", Color.Black)) & ">" & oTrigpoint.Name & "</color></href>")
+                    Call pPopupShow("error", oResult.Exception.Message & " <href=""tp:" & oTrigpoint.Name & """><color=" & ColorTranslator.ToHtml(My.Application.RuntimeSettings.GetSetting("messagebar.forecolor", Color.Black)) & ">" & oTrigpoint.Name & "</color></href>")
                 Else
                     Call pPopupShow("error", oResult.Exception.Message)
                 End If
@@ -5385,8 +5360,8 @@ Friend Class frmMain2
                                 Case 2
                                     Using frmET As frmExportTherion = New frmExportTherion
                                         If frmET.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                                            Dim bThSegmentForceDirection As Boolean = cEditDesignEnvironment.GetSetting("therion.segmentforcedirection", 1)
-                                            Dim bThSegmentForcePath As Boolean = cEditDesignEnvironment.GetSetting("therion.segmentforcepath", 1)
+                                            Dim bThSegmentForceDirection As Boolean = My.Application.Settings.GetSetting("therion.segmentforcedirection", 1)
+                                            Dim bThSegmentForcePath As Boolean = My.Application.Settings.GetSetting("therion.segmentforcepath", 1)
                                             Dim iThOptions As modExport.TherionExportOptionsEnum = If(bThSegmentForceDirection, modExport.TherionExportOptionsEnum.SegmentForceDirection, 0) Or If(bThSegmentForcePath, modExport.TherionExportOptionsEnum.SegmentForcePath, 0)
                                             'If oSurvey.Properties.ThreeDLochUseCaveBorder Then iThOptions = iThOptions Or TherionExportOptionsEnum.Scrap
                                             If frmET.chkExportDesign.Checked Then iThOptions = iThOptions Or TherionExportOptionsEnum.Scrap
@@ -6841,7 +6816,7 @@ Friend Class frmMain2
                 Call pGetCurrentDesignTools.SelectLayer(oLayer)
                 oItem = oLayer.GetType.GetMethod(Bag.Method).Invoke(oLayer, Bag.GetInvokeParameters("cave", sCave, "branch", sBranch))
                 If oItem.HaveLineType Then
-                    DirectCast(oItem, cIItemLine).LineType = oSurvey.Properties.DesignProperties.GetValue("LineType", cEditDesignEnvironment.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
+                    DirectCast(oItem, cIItemLine).LineType = oSurvey.Properties.DesignProperties.GetValue("LineType", My.Application.Settings.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
                 End If
                 Call oItem.SetBindDesignType(iBindDesignType, oSurvey.CrossSections.GetBindItem(btnMainBindCrossSections.EditValue), False)
                 Call pGetCurrentDesignTools.EditItem(oItem, True)
@@ -7195,7 +7170,7 @@ Friend Class frmMain2
                             Dim oLineItem As Items.cIItemLine = oItem
                             Call oLineItem.ReducePoints(btnPenSmootingFactor.EditValue)
                         End If
-                        Dim iDefaultLineType As cIItemLine.LineTypeEnum = oSurvey.Properties.DesignProperties.GetValue("LineType", cEditDesignEnvironment.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
+                        Dim iDefaultLineType As cIItemLine.LineTypeEnum = oSurvey.Properties.DesignProperties.GetValue("LineType", My.Application.Settings.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
                         If iDefaultLineType = cIItemLine.LineTypeEnum.Beziers Then
                             'converto le sequenze in bezier
                             Call pSequencesTo(cIItemLine.LineTypeEnum.Beziers, True)
@@ -9381,12 +9356,12 @@ Friend Class frmMain2
     End Sub
 
     Private Function pSurveyExportToTherion(ByVal Commands As String, Optional ByRef Output As String = "") As Boolean
-        Dim sThProcess As String = cEditDesignEnvironment.GetSetting("therion.path", "")
+        Dim sThProcess As String = My.Application.Settings.GetSetting("therion.path", "")
         If sThProcess = "" Then
         Else
-            Dim bThBackgroundProcess As Boolean = cEditDesignEnvironment.GetSetting("therion.backgroundprocess", 0)
-            Dim bThTrigpointSafeName As Boolean = cEditDesignEnvironment.GetSetting("therion.trigpointsafename", 1)
-            Dim bThDeleteTempFile As Boolean = cEditDesignEnvironment.GetSetting("therion.deletetempfiles", 0)
+            Dim bThBackgroundProcess As Boolean = My.Application.Settings.GetSetting("therion.backgroundprocess", 0)
+            Dim bThTrigpointSafeName As Boolean = My.Application.Settings.GetSetting("therion.trigpointsafename", 1)
+            Dim bThDeleteTempFile As Boolean = My.Application.Settings.GetSetting("therion.deletetempfiles", 0)
             If sThProcess <> "" Then
                 Dim sTempThInputFilename As String = IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.Temp, "_therioninput.th")
                 Dim sTempConfigFilename As String = IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.Temp, "_therionconfig.")
@@ -9416,8 +9391,8 @@ Friend Class frmMain2
                         Next
                     End If
 
-                    Dim bThSegmentForceDirection As Boolean = cEditDesignEnvironment.GetSetting("therion.segmentforcedirection", 1)
-                    Dim bThSegmentForcePath As Boolean = cEditDesignEnvironment.GetSetting("therion.segmentforcepath", 1)
+                    Dim bThSegmentForceDirection As Boolean = My.Application.Settings.GetSetting("therion.segmentforcedirection", 1)
+                    Dim bThSegmentForcePath As Boolean = My.Application.Settings.GetSetting("therion.segmentforcepath", 1)
                     Dim iThOptions As modExport.TherionExportOptionsEnum = If(bThSegmentForceDirection, modExport.TherionExportOptionsEnum.SegmentForceDirection, 0) Or If(bThSegmentForcePath, modExport.TherionExportOptionsEnum.SegmentForcePath, 0)
                     iThOptions = iThOptions Or TherionExportOptionsEnum.Scrap
                     Call modExport.TherionThExportTo(oSurvey, sTempThInputFilename, oInputdictionary, iThOptions)
@@ -9452,16 +9427,16 @@ Friend Class frmMain2
 
     Private Function pSurveyLoch() As Boolean
         Dim iExitCode As Integer
-        Dim sThProcess As String = cEditDesignEnvironment.GetSetting("therion.path", "")
+        Dim sThProcess As String = My.Application.Settings.GetSetting("therion.path", "")
         If sThProcess = "" Then
             Return False
         Else
             Call pStatusSet(GetLocalizedString("main.textpart4"))
             Call oMousePointer.Push(Cursors.WaitCursor)
-            Dim bThBackgroundProcess As Boolean = cEditDesignEnvironment.GetSetting("therion.backgroundprocess", 0)
-            Dim bThTrigpointSafeName As Boolean = cEditDesignEnvironment.GetSetting("therion.trigpointsafename", 1)
-            Dim bThUseCadastralIDinCaveNames As Boolean = cEditDesignEnvironment.GetSetting("therion.usecadastralidincavenames", 0)
-            Dim bThDeleteTempFile As Boolean = cEditDesignEnvironment.GetSetting("therion.deletetempfiles", 0)
+            Dim bThBackgroundProcess As Boolean = My.Application.Settings.GetSetting("therion.backgroundprocess", 0)
+            Dim bThTrigpointSafeName As Boolean = My.Application.Settings.GetSetting("therion.trigpointsafename", 1)
+            Dim bThUseCadastralIDinCaveNames As Boolean = My.Application.Settings.GetSetting("therion.usecadastralidincavenames", 0)
+            Dim bThDeleteTempFile As Boolean = My.Application.Settings.GetSetting("therion.deletetempfiles", 0)
 
             Dim oFiles As List(Of String) = New List(Of String)
 
@@ -9621,33 +9596,13 @@ Friend Class frmMain2
         End If
     End Sub
 
-    'Private Sub frmThp_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles frmThP.FormClosed
-    '    Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-    '    Call oReg.SetValue("user.therionpadposition", modWindow.WindowSettingsToString(frmThP))
-    '    Call oReg.Close()
-    '    Call oReg.Dispose()
-    '    frmThP = Nothing
-    'End Sub
-
-    'Private Sub pSurveyTherionPad()
-    '    If frmThP Is Nothing Then
-    '        frmThP = New frmTherionPad
-    '        Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-    '        Try : Call modWindow.StringToWindowSettings(oReg.GetValue("user.therionpadposition"), frmThP) : Catch : End Try
-    '        Call oReg.Close()
-    '        Call oReg.Dispose()
-    '    End If
-    '    Call frmThP.Show()
-    '    Call frmThP.BringToFront()
-    'End Sub
-
     Private Sub btnTherionPadExport3D_ItemClick(ByVal Sender As Object, ByVal e As EventArgs) Handles btnTherionPadExport3D.ItemClick
         Dim sOutputFilename As String = Path.GetFileNameWithoutExtension(sFilename) & ".lox"
         Using sfd As SaveFileDialog = New SaveFileDialog
             With sfd
                 .Filter = GetLocalizedString("main.filetypeLOX") & " (*.LOX)|*.LOX|" & GetLocalizedString("main.filetypeCompass") & " (*.PLT)|*.PLT|" & GetLocalizedString("main.filetypeSurvex") & " (*.3D)|*.3D|" & GetLocalizedString("main.filetypeDXF") & " (*.DXF)|*.DXF|" & GetLocalizedString("main.filetypeShapeFile") & " (*.SHP)|*.SHP|" & GetLocalizedString("main.filetypeVRLM") & " (*.VRLM)|*.VRLM|" & GetLocalizedString("main.filetype3DMF") & " (*.3DMF)|*.3DMF|" & GetLocalizedString("main.filetypeKML") & " (*.KML)|*.KML"
                 .FilterIndex = 1
-                .FileName = sOutputFIlename
+                .FileName = sOutputFilename
                 If .ShowDialog(Me) = vbOK Then
                     sOutputFilename = .FileName
                     Dim s3DFormat As String = "loch"
@@ -11072,8 +11027,8 @@ Friend Class frmMain2
         'VISUALTOPO
         Dim dNow As Date = Date.Now
 
-        Dim bImportIncompatibleSet As Boolean = cEditDesignEnvironment.GetSetting("vtopo.importincompatibleset", 0)
-        Dim bImportSetAsBranch As Boolean = cEditDesignEnvironment.GetSetting("vtopo.importsetasbranch", 1)
+        Dim bImportIncompatibleSet As Boolean = My.Application.Settings.GetSetting("vtopo.importincompatibleset", 0)
+        Dim bImportSetAsBranch As Boolean = My.Application.Settings.GetSetting("vtopo.importsetasbranch", 1)
 
         Using frmIVT As frmImportVisualTopo = New frmImportVisualTopo
             frmIVT.txtFilename.Text = Filename
@@ -13022,11 +12977,11 @@ Friend Class frmMain2
     Private o3DDesignModel As cDesign3DModelControl
 
     Private Sub pDesignEnvironmentSet()
-        Dim oBackcolor As Color = cEditDesignEnvironment.GetSetting("design.lowerlayersdesignbackcolor", Color.White)
+        Dim oBackcolor As Color = My.Application.RuntimeSettings.GetSetting("design.lowerlayersdesignbackcolor", Color.White)
         picMap.BackColor = oBackcolor
         oHolos.SceneBackgroundcolor = oBackcolor
 
-        Dim oMessageForeColor As Color = cEditDesignEnvironment.GetSetting("messagebar.forecolor", SystemColors.ControlText)
+        Dim oMessageForeColor As Color = My.Application.RuntimeSettings.GetSetting("messagebar.forecolor", SystemColors.ControlText)
         cMainMessageBar.CaptionForecolor = oMessageForeColor
         oPropMessageBar.CaptionForecolor = oMessageForeColor
     End Sub
@@ -13058,7 +13013,7 @@ Friend Class frmMain2
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockDistances, False)
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockJoinPoints, False)
 
-        Call cEditDesignEnvironment.OnPropertyChangedAppend(AddressOf oEditDesignEnvironment_OnChanged)
+        Call My.Application.RuntimeSettings.OnPropertyChangedAppend(AddressOf oEditDesignEnvironment_OnChanged)
         AddHandler DevExpress.LookAndFeel.UserLookAndFeel.Default.StyleChanged, Sub()
                                                                                     Dim oBackcolor As Color
                                                                                     Dim oForecolor As Color
@@ -13078,7 +13033,7 @@ Friend Class frmMain2
                                                                                         bSpecialPanelBackcolor = oBackcolor
                                                                                         oMessageForecolor = SystemColors.ControlText
                                                                                     End If
-                                                                                    Call cEditDesignEnvironment.SetSettings("isdarkskin", bIsDarkSkin,
+                                                                                    Call My.Application.RuntimeSettings.SetSettings("isdarkskin", bIsDarkSkin,
                                                                                                                             "backcolor", oBackcolor,
                                                                                                                             "forecolor", oForecolor,
                                                                                                                             "design.lowerlayersdesignbackcolor", bSpecialPanelBackcolor,
@@ -16063,6 +16018,7 @@ Friend Class frmMain2
         Using frmS As frmSettings = New frmSettings()
             If frmS.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Call pSettingsLoad()
+                Call pSettingsSave()
                 Call pMapInvalidate()
             End If
         End Using
@@ -16861,22 +16817,22 @@ Friend Class frmMain2
         Dim oTrigpoint As cTrigPoint = grdViewTrigpoints.GetRow(e.RowHandle)
         If oTrigpoint IsNot Nothing Then
             If oTrigpoint.Data.IsSplay Then
-                If cEditDesignEnvironment.GetSetting("isdarkskin") Then
-                    e.Appearance.ForeColor = modPaint.LightColor(cEditDesignEnvironment.GetSetting("backcolor"), 0.25)
+                If My.Application.RuntimeSettings.GetSetting("isdarkskin") Then
+                    e.Appearance.ForeColor = modPaint.LightColor(My.Application.RuntimeSettings.GetSetting("backcolor"), 0.25)
                 Else
-                    e.Appearance.ForeColor = modPaint.DarkColor(cEditDesignEnvironment.GetSetting("backcolor"), 0.25)
+                    e.Appearance.ForeColor = modPaint.DarkColor(My.Application.RuntimeSettings.GetSetting("backcolor"), 0.25)
                 End If
             End If
             Select Case iGridTrigpointColorBy
                 Case 1
                     If oTrigpoint.Data.IsSplay Then
-                        If cEditDesignEnvironment.GetSetting("isdarkskin") Then
+                        If My.Application.RuntimeSettings.GetSetting("isdarkskin") Then
                             e.Appearance.BackColor = modPaint.DarkColor(Color.Gray, 0.35)
                         Else
                             e.Appearance.BackColor = modPaint.LightColor(Color.DimGray, 0.85)
                         End If
                     Else
-                        If cEditDesignEnvironment.GetSetting("isdarkskin") Then
+                        If My.Application.RuntimeSettings.GetSetting("isdarkskin") Then
                             e.Appearance.BackColor = modPaint.DarkColor(Color.DarkRed, 0.35)
                         Else
                             e.Appearance.BackColor = modPaint.LightColor(Color.LightCoral, 0.85)
@@ -16940,7 +16896,7 @@ Friend Class frmMain2
                 Case 3
                     Dim oColor As Color = oSurvey.Properties.CaveInfos.GetOriginColor(oSegment, Color.Transparent)
                     If (oColor <> Color.Transparent) Then
-                        If cEditDesignEnvironment.GetSetting("isdarkskin") Then
+                        If My.Application.RuntimeSettings.GetSetting("isdarkskin") Then
                             e.Appearance.BackColor = modPaint.DarkColor(oColor, 0.35)
                         Else
                             e.Appearance.BackColor = modPaint.LightColor(oColor, 0.85)
@@ -16949,7 +16905,7 @@ Friend Class frmMain2
                 Case 2
                     Dim oColor As Color = oSurvey.Properties.CaveInfos.GetColor(oSegment, Color.Transparent)
                     If (oColor <> Color.Transparent) Then
-                        If cEditDesignEnvironment.GetSetting("isdarkskin") Then
+                        If My.Application.RuntimeSettings.GetSetting("isdarkskin") Then
                             e.Appearance.BackColor = modPaint.DarkColor(oColor, 0.35)
                         Else
                             e.Appearance.BackColor = modPaint.LightColor(oColor, 0.85)
@@ -16958,7 +16914,7 @@ Friend Class frmMain2
                 Case 1
                     Dim oColor As Color = oSurvey.Properties.Sessions.GetColor(oSegment, Color.Transparent)
                     If (oColor <> Color.Transparent) Then
-                        If cEditDesignEnvironment.GetSetting("isdarkskin") Then
+                        If My.Application.RuntimeSettings.GetSetting("isdarkskin") Then
                             e.Appearance.BackColor = modPaint.DarkColor(oColor, 0.35)
                         Else
                             e.Appearance.BackColor = modPaint.LightColor(oColor, 0.85)
@@ -16978,18 +16934,18 @@ Friend Class frmMain2
                 e.Appearance.BackColor = oSurvey.Properties.Sessions.GetColor(oSegment, System.Drawing.Color.LightGray)
             ElseIf e.Column Is colSegmentsListTo Then
                 If oSegment.To Like "*(*)" Then
-                    If cEditDesignEnvironment.GetSetting("isdarkskin") Then
-                        e.Appearance.ForeColor = modPaint.LightColor(cEditDesignEnvironment.GetSetting("backcolor"), 0.25)
+                    If My.Application.RuntimeSettings.GetSetting("isdarkskin") Then
+                        e.Appearance.ForeColor = modPaint.LightColor(My.Application.RuntimeSettings.GetSetting("backcolor"), 0.25)
                     Else
-                        e.Appearance.ForeColor = modPaint.DarkColor(cEditDesignEnvironment.GetSetting("backcolor"), 0.25)
+                        e.Appearance.ForeColor = modPaint.DarkColor(My.Application.RuntimeSettings.GetSetting("backcolor"), 0.25)
                     End If
                 End If
             ElseIf e.Column Is colSegmentsListFrom Then
                 If oSegment.From Like "*(*)" Then
-                    If cEditDesignEnvironment.GetSetting("isdarkskin") Then
-                        e.Appearance.ForeColor = modPaint.LightColor(cEditDesignEnvironment.GetSetting("backcolor"), 0.25)
+                    If My.Application.RuntimeSettings.GetSetting("isdarkskin") Then
+                        e.Appearance.ForeColor = modPaint.LightColor(My.Application.RuntimeSettings.GetSetting("backcolor"), 0.25)
                     Else
-                        e.Appearance.ForeColor = modPaint.DarkColor(cEditDesignEnvironment.GetSetting("backcolor"), 0.25)
+                        e.Appearance.ForeColor = modPaint.DarkColor(My.Application.RuntimeSettings.GetSetting("backcolor"), 0.25)
                     End If
                 End If
             End If
@@ -18736,10 +18692,10 @@ Friend Class frmMain2
             If oSegmentPlaceholder IsNot Nothing Then
                 Dim oSegment As cSegment = oSegmentPlaceholder.Segment
                 If oSegment.Splay Then
-                    If cEditDesignEnvironment.GetSetting("isdarkskin") Then
-                        e.Appearance.ForeColor = modPaint.LightColor(cEditDesignEnvironment.GetSetting("backcolor"), 0.25)
+                    If My.Application.RuntimeSettings.GetSetting("isdarkskin") Then
+                        e.Appearance.ForeColor = modPaint.LightColor(My.Application.RuntimeSettings.GetSetting("backcolor"), 0.25)
                     Else
-                        e.Appearance.ForeColor = modPaint.DarkColor(cEditDesignEnvironment.GetSetting("backcolor"), 0.25)
+                        e.Appearance.ForeColor = modPaint.DarkColor(My.Application.RuntimeSettings.GetSetting("backcolor"), 0.25)
                     End If
                 End If
             End If
@@ -19212,25 +19168,25 @@ Friend Class frmMain2
     Private Sub btnViewToolbarItems_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnViewToolbarItems.CheckedChanged
         bDesignItemsBarVisible = btnViewToolbarItems.Checked
         oTopDesignItemsBar.Visible = bDesignItemsBarVisible
-        cEditDesignEnvironment.SetSetting("itemsbar", If(bDesignItemsBarVisible, "1", "0"))
+        My.Application.Settings.SetSetting("itemsbar", If(bDesignItemsBarVisible, "1", "0"))
     End Sub
 
     Private Sub btnViewToolbarLastUsedTools_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnViewToolbarLastUsedTools.CheckedChanged
         bLastUsedBarVisible = btnViewToolbarLastUsedTools.Checked
         oLastUsedBar.Visible = bLastUsedBarVisible
-        cEditDesignEnvironment.SetSetting("lastusedbar", If(bLastUsedBarVisible, "1", "0"))
+        My.Application.Settings.SetSetting("lastusedbar", If(bLastUsedBarVisible, "1", "0"))
     End Sub
 
     Private Sub btnViewToolbarFloatingBar_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnViewToolbarFloatingBar.CheckedChanged
         bFloatBarVisible = btnViewToolbarFloatingBar.Checked
         oFloatBar.Visible = bFloatBarVisible
-        cEditDesignEnvironment.SetSetting("floatbar", If(bFloatBarVisible, "1", "0"))
+        My.Application.Settings.SetSetting("floatbar", If(bFloatBarVisible, "1", "0"))
     End Sub
 
     Private Sub btnViewToolbarLevels_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnViewToolbarLevels.CheckedChanged
         bDesignLevelBarVisible = btnViewToolbarLevels.Checked
         oTopDesignLevelBar.Visible = bDesignLevelBarVisible
-        cEditDesignEnvironment.SetSetting("levelsbar", If(bDesignLevelBarVisible, "1", "0"))
+        My.Application.Settings.SetSetting("levelsbar", If(bDesignLevelBarVisible, "1", "0"))
     End Sub
 
     Private Sub btnUndo_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnUndo.ItemClick

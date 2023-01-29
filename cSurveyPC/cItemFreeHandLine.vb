@@ -212,7 +212,7 @@ Namespace cSurvey.Design.Items
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal Category As cIItem.cItemCategoryEnum)
             Call MyBase.New(Survey, Design, Layer, cIItem.cItemTypeEnum.FreeHandLine, Category)
-            iLineType = Survey.Properties.DesignProperties.GetValue("LineType", Helper.Editor.cEditDesignEnvironment.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
+            iLineType = Survey.Properties.DesignProperties.GetValue("LineType", My.Application.Settings.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
             AddHandler MyBase.Points.OnGetLineType, AddressOf oPoints_OnGetLineType
         End Sub
 

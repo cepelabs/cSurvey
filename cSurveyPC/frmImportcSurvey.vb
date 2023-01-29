@@ -12,68 +12,55 @@ Friend Class frmImportcSurvey
         tvLog.EndUpdate()
     End Sub
     Private Sub pSettingsLoad()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                chkcSurveyImportData.Checked = oReg.GetValue("data.import.csurvey.data", 1)
-                chkcSurveyImportDuplicates.Checked = oReg.GetValue("data.import.csurvey.duplicates", 1)
-                chkcSurveyImportDuplicatesOverwrite.Checked = oReg.GetValue("data.import.csurvey.duplicates.overwrite", 0)
-                chkcSurveyImportDuplicatesOverwriteOnlyUsed.Checked = oReg.GetValue("data.import.csurvey.duplicates.overwrite.onlyused", 0)
-                cbocSurveyImportDuplicatesMode.SelectedIndex = oReg.GetValue("data.import.csurvey.duplicates.findmode", 0)
-                chkcSurveyImportDuplicatesStations.Checked = oReg.GetValue("data.import.csurvey.duplicatesstations", 1)
+        chkcSurveyImportData.Checked = My.Application.Settings.GetSetting("data.import.csurvey.data", 1)
+        chkcSurveyImportDuplicates.Checked = My.Application.Settings.GetSetting("data.import.csurvey.duplicates", 1)
+        chkcSurveyImportDuplicatesOverwrite.Checked = My.Application.Settings.GetSetting("data.import.csurvey.duplicates.overwrite", 0)
+        chkcSurveyImportDuplicatesOverwriteOnlyUsed.Checked = My.Application.Settings.GetSetting("data.import.csurvey.duplicates.overwrite.onlyused", 0)
+        cbocSurveyImportDuplicatesMode.SelectedIndex = My.Application.Settings.GetSetting("data.import.csurvey.duplicates.findmode", 0)
+        chkcSurveyImportDuplicatesStations.Checked = My.Application.Settings.GetSetting("data.import.csurvey.duplicatesstations", 1)
 
-                chkcSurveyImportGraphics.Checked = oReg.GetValue("data.import.csurvey.graphics", 1)
-                chkcSurveyImportPlan.Checked = oReg.GetValue("data.import.csurvey.importplan", 1)
-                chkcSurveyImportProfile.Checked = oReg.GetValue("data.import.csurvey.importprofile", 1)
-                chkcSurveyImportSurface.Checked = oReg.GetValue("data.import.csurvey.importsurface", 1)
-                chkcSurveyImportCaveBranchFromDesign.Checked = oReg.GetValue("data.import.csurvey.importcavebranchfromdesign", 1)
+        chkcSurveyImportGraphics.Checked = My.Application.Settings.GetSetting("data.import.csurvey.graphics", 1)
+        chkcSurveyImportPlan.Checked = My.Application.Settings.GetSetting("data.import.csurvey.importplan", 1)
+        chkcSurveyImportProfile.Checked = My.Application.Settings.GetSetting("data.import.csurvey.importprofile", 1)
+        chkcSurveyImportSurface.Checked = My.Application.Settings.GetSetting("data.import.csurvey.importsurface", 1)
+        chkcSurveyImportCaveBranchFromDesign.Checked = My.Application.Settings.GetSetting("data.import.csurvey.importcavebranchfromdesign", 1)
 
-                cbocSurveyImportWarpingMode.SelectedIndex = oReg.GetValue("data.import.csurvey.warpingmode", 0)
+        cbocSurveyImportWarpingMode.SelectedIndex = My.Application.Settings.GetSetting("data.import.csurvey.warpingmode", 0)
 
-                chkcSurveyImportDesignProperties.Checked = oReg.GetValue("data.import.csurvey.designproperties", 1)
-                chkcSurveyImportScaleRules.Checked = oReg.GetValue("data.import.csurvey.scalerules", 1)
+        chkcSurveyImportDesignProperties.Checked = My.Application.Settings.GetSetting("data.import.csurvey.designproperties", 1)
+        chkcSurveyImportScaleRules.Checked = My.Application.Settings.GetSetting("data.import.csurvey.scalerules", 1)
 
-                chkcSurveyImportCreateNewBranch.Checked = oReg.GetValue("data.import.csurvey.createasnewbranch", 1)
-                chkcSurveyImportUpdateCaveBranchPriority.Checked = oReg.GetValue("data.import.csurvey.updatepriority", 1)
-                chkcSurveyDisableOriginAsExtendstart.Checked = oReg.GetValue("data.import.csurvey.disableoriginasextendstart", 0)
+        chkcSurveyImportCreateNewBranch.Checked = My.Application.Settings.GetSetting("data.import.csurvey.createasnewbranch", 1)
+        chkcSurveyImportUpdateCaveBranchPriority.Checked = My.Application.Settings.GetSetting("data.import.csurvey.updatepriority", 1)
+        chkcSurveyDisableOriginAsExtendstart.Checked = My.Application.Settings.GetSetting("data.import.csurvey.disableoriginasextendstart", 0)
 
-                chkcsurveyimportlinkedsurvey.Checked = oReg.GetValue("data.import.csurvey.linkedsurvey", 1)
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        chkcsurveyimportlinkedsurvey.Checked = My.Application.Settings.GetSetting("data.import.csurvey.linkedsurvey", 1)
     End Sub
 
     Private Sub pSettingsSave()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Call oReg.SetValue("data.import.csurvey.data", If(chkcSurveyImportData.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.duplicates", If(chkcSurveyImportDuplicates.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.duplicates.overwrite", If(chkcSurveyImportDuplicatesOverwrite.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.duplicates.overwrite.onlyused", If(chkcSurveyImportDuplicatesOverwriteOnlyUsed.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.duplicates.findmode", cbocSurveyImportDuplicatesMode.SelectedIndex)
-                Call oReg.SetValue("data.import.csurvey.duplicatesstations", If(chkcSurveyImportDuplicatesStations.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.disableoriginasextendstart", If(chkcSurveyDisableOriginAsExtendstart.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.csurvey.data", If(chkcSurveyImportData.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.csurvey.duplicates", If(chkcSurveyImportDuplicates.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.csurvey.duplicates.overwrite", If(chkcSurveyImportDuplicatesOverwrite.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.csurvey.duplicates.overwrite.onlyused", If(chkcSurveyImportDuplicatesOverwriteOnlyUsed.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.csurvey.duplicates.findmode", cbocSurveyImportDuplicatesMode.SelectedIndex)
+        Call My.Application.Settings.SetSetting("data.import.csurvey.duplicatesstations", If(chkcSurveyImportDuplicatesStations.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.csurvey.disableoriginasextendstart", If(chkcSurveyDisableOriginAsExtendstart.Checked, 1, 0))
 
-                Call oReg.SetValue("data.import.csurvey.graphics", If(chkcSurveyImportGraphics.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.importplan", If(chkcSurveyImportPlan.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.importprofile", If(chkcSurveyImportProfile.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.importsurface", If(chkcSurveyImportSurface.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.importcavebranchfromdesign", If(chkcSurveyImportCaveBranchFromDesign.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.csurvey.graphics", If(chkcSurveyImportGraphics.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.csurvey.importplan", If(chkcSurveyImportPlan.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.csurvey.importprofile", If(chkcSurveyImportProfile.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.csurvey.importsurface", If(chkcSurveyImportSurface.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.csurvey.importcavebranchfromdesign", If(chkcSurveyImportCaveBranchFromDesign.Checked, 1, 0))
 
-                Call oReg.SetValue("data.import.csurvey.warpingmode", cbocSurveyImportWarpingMode.SelectedIndex)
+        Call My.Application.Settings.SetSetting("data.import.csurvey.warpingmode", cbocSurveyImportWarpingMode.SelectedIndex)
 
-                Call oReg.SetValue("data.import.csurvey.designproperties", If(chkcSurveyImportDesignProperties.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.scalerules", If(chkcSurveyImportScaleRules.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.csurvey.designproperties", If(chkcSurveyImportDesignProperties.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.csurvey.scalerules", If(chkcSurveyImportScaleRules.Checked, 1, 0))
 
-                Call oReg.SetValue("data.import.csurvey.createasnewbranch", If(chkcSurveyImportCreateNewBranch.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.updatepriority", If(chkcSurveyImportUpdateCaveBranchPriority.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.csurvey.createasnewbranch", If(chkcSurveyImportCreateNewBranch.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.csurvey.updatepriority", If(chkcSurveyImportUpdateCaveBranchPriority.Checked, 1, 0))
 
-                Call oReg.SetValue("data.import.csurvey.linkedsurvey", If(chkcsurveyimportlinkedsurvey.Checked, 1, 0))
-
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        Call My.Application.Settings.SetSetting("data.import.csurvey.linkedsurvey", If(chkcsurveyimportlinkedsurvey.Checked, 1, 0))
     End Sub
 
     Private oSurvey As cSurvey.cSurvey

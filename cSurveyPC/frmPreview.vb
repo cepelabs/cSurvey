@@ -67,7 +67,7 @@ Friend Class frmPreview
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        Call cEditDesignEnvironment.OnPropertyChangedAppend(AddressOf oEditDesignEnvironment_OnChanged)
+        Call My.Application.RuntimeSettings.OnPropertyChangedAppend(AddressOf oEditDesignEnvironment_OnChanged)
         Call pDesignEnvironmentSet()
 
         oMousePointer = New cMousePointer
@@ -314,11 +314,11 @@ Friend Class frmPreview
     End Sub
 
     Private Sub pDesignEnvironmentSet()
-        Dim oBackcolor As Color = cEditDesignEnvironment.GetSetting("design.lowerlayersdesignbackcolor", Color.White)
+        Dim oBackcolor As Color = My.Application.RuntimeSettings.GetSetting("design.lowerlayersdesignbackcolor", Color.White)
         picMap.BackColor = oBackcolor
         pPreview.BackColor = oBackcolor
 
-        Dim oMessageForeColor As Color = cEditDesignEnvironment.GetSetting("messagebar.forecolor", SystemColors.ControlText)
+        Dim oMessageForeColor As Color = My.Application.RuntimeSettings.GetSetting("messagebar.forecolor", SystemColors.ControlText)
         cMainMessageBar.CaptionForecolor = oMessageForeColor
     End Sub
 
@@ -1602,19 +1602,19 @@ Friend Class frmPreview
 
                             Dim oXML As XmlDocument
                             Dim oSVGOptions As cSurvey.Design.cItem.SVGOptionsEnum
-                            If cEditDesignEnvironment.GetSetting("svg.exporttextaspath", 0) <> 0 Then
+                            If My.Application.Settings.GetSetting("svg.exporttextaspath", 0) <> 0 Then
                                 oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.TextAsPath
                             End If
-                            If cEditDesignEnvironment.GetSetting("svg.exportcsurveyreferences", 1) <> 0 Then
+                            If My.Application.Settings.GetSetting("svg.exportcsurveyreferences", 1) <> 0 Then
                                 oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.AddSourceReference
                             End If
-                            If cEditDesignEnvironment.GetSetting("svg.exportimages", 1) <> 0 Then
+                            If My.Application.Settings.GetSetting("svg.exportimages", 1) <> 0 Then
                                 oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.Images
                             End If
-                            If cEditDesignEnvironment.GetSetting("svg.exportnoclipping", 0) = 0 Then
+                            If My.Application.Settings.GetSetting("svg.exportnoclipping", 0) = 0 Then
                                 oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.Clipping
                             End If
-                            If cEditDesignEnvironment.GetSetting("svg.exportnoclipartbrushes", 0) = 0 Then
+                            If My.Application.Settings.GetSetting("svg.exportnoclipartbrushes", 0) = 0 Then
                                 oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.ClipartBrushes
                             End If
 

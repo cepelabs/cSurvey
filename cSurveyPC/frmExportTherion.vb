@@ -1,25 +1,13 @@
 ﻿friend Class frmExportTherion
 
     Private Sub pSettingsLoad()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                chkExportDesign.Checked = oReg.GetValue("data.export.therion.design", "0")
-                chkExportThconfig.Checked = oReg.GetValue("data.export.holos.createthconfig", "0")
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        chkExportDesign.Checked = My.Application.Settings.GetSetting("data.export.therion.design", "0")
+        chkExportThconfig.Checked = My.Application.Settings.GetSetting("data.export.holos.createthconfig", "0")
     End Sub
 
     Private Sub pSettingsSave()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Call oReg.SetValue("data.export.therion.design", If(chkExportDesign.Checked, "1", "0"))
-                Call oReg.SetValue("data.export.therion.createthconfig", If(chkExportThconfig.Checked, "1", "0"))
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        Call My.Application.Settings.SetSetting("data.export.therion.design", If(chkExportDesign.Checked, "1", "0"))
+        Call My.Application.Settings.SetSetting("data.export.therion.createthconfig", If(chkExportThconfig.Checked, "1", "0"))
     End Sub
 
     Public Sub New()

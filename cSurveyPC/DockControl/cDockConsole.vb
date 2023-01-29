@@ -64,6 +64,7 @@ Friend Class cDockConsole
     Private sLogFilename As String = Nothing
     Private oLogWriter As IO.StreamWriter
     Private bLogEnabled As Boolean
+
     Public Sub New()
 
         ' Chiamata richiesta dalla finestra di progettazione.
@@ -77,29 +78,29 @@ Friend Class cDockConsole
         oLog = New BindingList(Of cLogItem)
         GridControl1.DataSource = oLog
 
-        pRestoreSettings()
+        RestoreSettings()
     End Sub
 
     Public Sub SetSurvey(Survey As cSurveyPC.cSurvey.cSurvey)
         oSurvey = Survey
     End Sub
 
-    Private Sub pRestoreSettings()
+    Public Sub RestoreSettings()
         btnOpenFileLog.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        bLogVerbose = cEditDesignEnvironment.GetSetting("debug.log.verbose", False)
+        bLogVerbose = My.Application.Settings.GetSetting("debug.log.verbose", False)
         bLogEnabled = False
         If oLogWriter IsNot Nothing Then
             Call oLogWriter.Flush()
             Call oLogWriter.Close()
             Call oLogWriter.Dispose()
         End If
-        If cEditDesignEnvironment.GetSetting("debug.log.writeonfile", False) Then
+        If My.Application.Settings.GetSetting("debug.log.writeonfile", False) Then
             sLogFilename = IO.Path.Combine(modMain.GetUserApplicationPath(), Now.ToString("yyyyMMddhhmmssfff") & ".log")
         Else
             sLogFilename = Nothing
         End If
         oLogWriter = Nothing
-        iMaxLogCount = cEditDesignEnvironment.GetSetting("debug.log.maxlinecount", 512)
+        iMaxLogCount = My.Application.Settings.GetSetting("debug.log.maxlinecount", 512)
     End Sub
 
     Private Sub pLogEnable()
@@ -122,8 +123,8 @@ Friend Class cDockConsole
                 Dim sLines As String() = Text.Split(vbCr)
                 For Each sLine As String In sLines
                     sLine = sLine.Replace(vbCr, "").Replace(vbLf, "")
-                    Dim bAboveInfo As Boolean
-                    If Type And cSurvey.cSurvey.LogEntryType.Important = cSurvey.cSurvey.LogEntryType.Important OrElse Type = cSurvey.cSurvey.LogEntryType.Warning OrElse Type = cSurvey.cSurvey.LogEntryType.Error OrElse (Type = cSurvey.cSurvey.LogEntryType.Unknown AndAlso (Text Like "* error -- *")) Then
+                    Dim bAboveInfo As Boolean = False
+                    If (Type And cSurvey.cSurvey.LogEntryType.Important) = cSurvey.cSurvey.LogEntryType.Important OrElse Type = cSurvey.cSurvey.LogEntryType.Warning OrElse Type = cSurvey.cSurvey.LogEntryType.Error OrElse (Type = cSurvey.cSurvey.LogEntryType.Unknown AndAlso (Text Like "* error -- *")) Then
                         bAboveInfo = True
                     End If
                     If bLogVerbose OrElse bAboveInfo Then
@@ -141,7 +142,7 @@ Friend Class cDockConsole
                         ElseIf Type = cSurvey.cSurvey.LogEntryType.Warning Then
                             oColor = Color.Orange
                         Else
-                            oColor = cEditDesignEnvironment.GetSetting("forecolor", SystemColors.WindowText)
+                            oColor = My.Application.RuntimeSettings.GetSetting("forecolor", SystemColors.WindowText)
                         End If
                         Dim sHTMLLine As String
                         If URI = "" Then

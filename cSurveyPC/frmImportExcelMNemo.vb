@@ -5,33 +5,17 @@ Imports DevExpress.XtraTreeList
 Friend Class frmImportExcelMNemo
 
     Private Sub pSettingsLoad()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                txtPrefix.Text = oReg.GetValue("data.import.xlsx.mnemo.prefix", "")
-                txtCaveName.Text = oReg.GetValue("data.import.xlsx.mnemo.cavename", "")
-
-                cboBearingPolicy.SelectedIndex = oReg.GetValue("data.import.xlsx.mnemo.bearingpolicy", 0)
-                cboDepthPolicy.SelectedIndex = oReg.GetValue("data.import.xlsx.mnemo.depthpolicy", 0)
-
-                Call oReg.Close()
-            End Using
-        Catch ex As Exception
-        End Try
+        txtPrefix.Text = My.Application.Settings.GetSetting("data.import.xlsx.mnemo.prefix", "")
+        txtCaveName.Text = My.Application.Settings.GetSetting("data.import.xlsx.mnemo.cavename", "")
+        cboBearingPolicy.SelectedIndex = My.Application.Settings.GetSetting("data.import.xlsx.mnemo.bearingpolicy", 0)
+        cboDepthPolicy.SelectedIndex = My.Application.Settings.GetSetting("data.import.xlsx.mnemo.depthpolicy", 0)
     End Sub
 
     Private Sub pSettingsSave()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Call oReg.SetValue("data.import.xlsx.mnemo.prefix", txtPrefix.Text)
-                Call oReg.SetValue("data.import.xlsx.mnemo.cavename", txtCaveName.Text)
-
-                Call oReg.SetValue("data.import.xlsx.mnemo.bearingpolicy", cboBearingPolicy.SelectedIndex)
-                Call oReg.SetValue("data.import.xlsx.mnemo.depthpolicy", cboDepthPolicy.SelectedIndex)
-
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        Call My.Application.Settings.SetSetting("data.import.xlsx.mnemo.prefix", txtPrefix.Text)
+        Call My.Application.Settings.SetSetting("data.import.xlsx.mnemo.cavename", txtCaveName.Text)
+        Call My.Application.Settings.SetSetting("data.import.xlsx.mnemo.bearingpolicy", cboBearingPolicy.SelectedIndex)
+        Call My.Application.Settings.SetSetting("data.import.xlsx.mnemo.depthpolicy", cboDepthPolicy.SelectedIndex)
     End Sub
 
     Private oSurvey As cSurvey.cSurvey

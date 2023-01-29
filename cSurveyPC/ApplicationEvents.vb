@@ -1,4 +1,5 @@
-﻿Imports Microsoft.VisualBasic.ApplicationServices
+﻿Imports cSurveyPC.cSurvey.Helper.Editor
+Imports Microsoft.VisualBasic.ApplicationServices
 
 Namespace My
 
@@ -47,7 +48,24 @@ Namespace My
 
         Private Sub MyApplication_Startup(sender As Object, e As Microsoft.VisualBasic.ApplicationServices.StartupEventArgs) Handles Me.Startup
             Call DevExpress.XtraEditors.WindowsFormsSettings.LoadApplicationSettings()
-            Call pGlobalSettingsSet()
+
+            sCurrentLanguage = Threading.Thread.CurrentThread.CurrentCulture.Parent.Name
+            oSettings = New cEnvironmentSettings("Software\Cepelabs\cSurvey")
+            oRuntimeSettings = New cEnvironmentSettings
+
+            sCurrentLanguage = oSettings.GetSetting("language", sCurrentLanguage)
+            bChangeDecimalKey = oSettings.GetSetting("keys.changedecimalkey", "1")
+            bChangePeriodKey = oSettings.GetSetting("keys.changeperiodkey", "0")
+
+            If sCurrentLanguage <> "" Then
+                If bIsInDebug Then
+                    ''in debug...force this process to run with the culture's settings of the selected language...
+                    Threading.Thread.CurrentThread.CurrentCulture = New System.Globalization.CultureInfo(sCurrentLanguage)
+                End If
+                Threading.Thread.CurrentThread.CurrentUICulture = New System.Globalization.CultureInfo(sCurrentLanguage)
+            End If
+            Call modMain.LoadLocalizedStrings(sCurrentLanguage)
+
             Using oGr As Graphics = Graphics.FromHwnd(IntPtr.Zero)
                 sCurrentDPIRatio = oGr.DpiX / 96.0F
             End Using
@@ -68,26 +86,21 @@ Namespace My
             End Get
         End Property
 
-        Private Sub pGlobalSettingsSet()
-            sCurrentLanguage = Threading.Thread.CurrentThread.CurrentCulture.Parent.Name
-            Try
-                Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                    sCurrentLanguage = oReg.GetValue("language", sCurrentLanguage)
-                    bChangeDecimalKey = oReg.GetValue("keys.changedecimalkey", "1")
-                    bChangePeriodKey = oReg.GetValue("keys.changeperiodkey", "0")
-                End Using
-            Catch
-            End Try
-            If sCurrentLanguage <> "" Then
-                If bIsInDebug Then
-                    ''in debug...force this process to run with the culture's settings of the selected language...
-                    Threading.Thread.CurrentThread.CurrentCulture = New System.Globalization.CultureInfo(sCurrentLanguage)
-                End If
-                Threading.Thread.CurrentThread.CurrentUICulture = New System.Globalization.CultureInfo(sCurrentLanguage)
-            End If
-            Call modMain.LoadLocalizedStrings(sCurrentLanguage)
+        Private oRuntimeSettings As cEnvironmentSettings
+        Private oSettings As cEnvironmentSettings
 
-        End Sub
+        Public ReadOnly Property RuntimeSettings As cEnvironmentSettings
+            Get
+                Return oRuntimeSettings
+            End Get
+        End Property
+
+        Public ReadOnly Property Settings As cEnvironmentSettings
+            Get
+                Return oSettings
+            End Get
+        End Property
+
 
         Private Sub MyApplication_UnhandledException(ByVal sender As Object, ByVal e As Microsoft.VisualBasic.ApplicationServices.UnhandledExceptionEventArgs) Handles Me.UnhandledException
             e.ExitApplication = ManageUnhandledException(e.Exception)

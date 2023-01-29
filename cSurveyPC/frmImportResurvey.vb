@@ -1,27 +1,15 @@
 ﻿friend Class frmImportResurvey
 
     Private Sub pSettingsLoad()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                txtPrefix.Text = oReg.GetValue("data.import.resurvey.prefix", "")
-                txtCaveName.Text = oReg.GetValue("data.import.resurvey.cavename", "")
-                cboNordType.SelectedIndex = oReg.GetValue("data.import.resurvey.nordtype", 0)
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        txtPrefix.Text = My.Application.Settings.GetSetting("data.import.resurvey.prefix", "")
+        txtCaveName.Text = My.Application.Settings.GetSetting("data.import.resurvey.cavename", "")
+        cboNordType.SelectedIndex = My.Application.Settings.GetSetting("data.import.resurvey.nordtype", 0)
     End Sub
 
     Private Sub pSettingsSave()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Call oReg.SetValue("data.import.resurvey.prefix", txtPrefix.Text)
-                Call oReg.SetValue("data.import.resurvey.cavename", txtCaveName.Text)
-                Call oReg.SetValue("data.import.resurvey.nordtype", cboNordType.SelectedIndex)
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        Call My.Application.Settings.SetSetting("data.import.resurvey.prefix", txtPrefix.Text)
+        Call My.Application.Settings.SetSetting("data.import.resurvey.cavename", txtCaveName.Text)
+        Call My.Application.Settings.SetSetting("data.import.resurvey.nordtype", cboNordType.SelectedIndex)
     End Sub
 
     Public Sub New()

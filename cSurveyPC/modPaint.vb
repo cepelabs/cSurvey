@@ -236,10 +236,7 @@ Module modPaint
 
     Public Function GetDefaultFont() As cFont
         If oDefaultFont Is Nothing Then
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                oDefaultFont = New cFont(Nothing, oReg.GetValue("design.defaultfont.name", sDefaultFontName), modNumbers.StringToSingle(oReg.GetValue("design.defaultfont.size", sDefaultFontSize)), Color.Black, oReg.GetValue("design.defaultfont.bold", 0), oReg.GetValue("design.defaultfont.italic", 0), oReg.GetValue("design.defaultfont.underline", 0))
-                Call oReg.Close()
-            End Using
+            oDefaultFont = New cFont(Nothing, My.Application.Settings.GetSetting("design.defaultfont.name", sDefaultFontName), modNumbers.StringToSingle(My.Application.Settings.GetSetting("design.defaultfont.size", sDefaultFontSize)), Color.Black, My.Application.Settings.GetSetting("design.defaultfont.bold", 0), My.Application.Settings.GetSetting("design.defaultfont.italic", 0), My.Application.Settings.GetSetting("design.defaultfont.underline", 0))
         End If
         Return oDefaultFont
     End Function

@@ -834,7 +834,7 @@ Namespace cSurvey
                             Dim oXmlProperties As XmlElement = oXmlRoot.Item("properties")
                             Dim iCalculateMode As CalculateTypeEnum = oXmlProperties.GetAttribute("calculatemode")
                             If iCalculateMode = CalculateTypeEnum.Therion Then
-                                Dim sThProcess As String = Helper.Editor.cEditDesignEnvironment.GetSetting("therion.path", "")
+                                Dim sThProcess As String = My.Application.Settings.GetSetting("therion.path", "")
                                 If sThProcess = "" Then
                                     Return New cActionResult(False, "survey.check", modMain.GetLocalizedString("csurvey.textpart101"))
                                 End If

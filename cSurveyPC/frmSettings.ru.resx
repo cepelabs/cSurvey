@@ -673,16 +673,16 @@
   <data name="cboDesignBarPosition.Items3" xml:space="preserve">
 		<value>Рядом с текущим объектом или точкой</value>
 	</data>
-  <data name="cboDesignBarPosition2.Properties.Items" xml:space="preserve">
+  <data name="cboDesignBarPosition.Properties.Items" xml:space="preserve">
     <value>По умолчанию</value>
   </data>
-  <data name="cboDesignBarPosition2.Properties.Items1" xml:space="preserve">
+  <data name="cboDesignBarPosition.Properties.Items1" xml:space="preserve">
     <value>Верхний левый угол карты</value>
   </data>
-  <data name="cboDesignBarPosition2.Properties.Items2" xml:space="preserve">
+  <data name="cboDesignBarPosition.Properties.Items2" xml:space="preserve">
     <value>Рядом с текущим объектом </value>
   </data>
-  <data name="cboDesignBarPosition2.Properties.Items3" xml:space="preserve">
+  <data name="cboDesignBarPosition.Properties.Items3" xml:space="preserve">
     <value>Рядом с текущим объектом или точкой</value>
   </data>
 </root>

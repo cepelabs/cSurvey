@@ -808,19 +808,31 @@ Non vi è correlazione tra questo codice e alcun dato relativo all'utente.</valu
   <data name="chkLogOnFile.Properties.Caption" xml:space="preserve">
     <value>Scrivi log su file</value>
   </data>
-  <data name="cboDesignBarPosition2.Properties.Items" xml:space="preserve">
-    <value>Predefinito</value>
-  </data>
-  <data name="cboDesignBarPosition2.Properties.Items1" xml:space="preserve">
-    <value>Angolo in alto a sinistra dell'area di disegno</value>
-  </data>
-  <data name="cboDesignBarPosition2.Properties.Items2" xml:space="preserve">
-    <value>Vicino all'oggetto in fase di modifica</value>
-  </data>
-  <data name="cboDesignBarPosition2.Properties.Items3" xml:space="preserve">
-    <value>Vicino all'oggetto o al punto in fase di modifica</value>
-  </data>
   <data name="lblDesignBarPosition.Text" xml:space="preserve">
     <value>Posizione barra libera:</value>
+  </data>
+  <data name="cboDesignBarPosition.Properties.Items" xml:space="preserve">
+    <value>Predefinito</value>
+  </data>
+  <data name="cboDesignBarPosition.Properties.Items1" xml:space="preserve">
+    <value>Angolo in alto a sinistra dell'area di disegno</value>
+  </data>
+  <data name="cboDesignBarPosition.Properties.Items2" xml:space="preserve">
+    <value>Vicino all'oggetto in fase di modifica</value>
+  </data>
+  <data name="cboDesignBarPosition.Properties.Items3" xml:space="preserve">
+    <value>Vicino all'oggetto o al punto in fase di modifica</value>
+  </data>
+  <data name="chkTherionUseCadastralIDInCaveNames.Properties.Caption" xml:space="preserve">
+    <value>Includi numero di catasto nei nomi grotta</value>
+  </data>
+  <data name="chkTherionUseCadastralIDInCaveNames.ToolTip" xml:space="preserve">
+    <value>Usa dizionario per convertire i nomi dei capisaldi (per evitare problemi di compatibilità con Therion)</value>
+  </data>
+  <data name="chkITChangeDecimalKey.Properties.Caption" xml:space="preserve">
+    <value>Cambia automaticamente il tasto . nel tastierino numero in ,</value>
+  </data>
+  <data name="chkITChangePeriodKey.Properties.Caption" xml:space="preserve">
+    <value>Cambia automaticamente il tasto . in ,</value>
   </data>
 </root>

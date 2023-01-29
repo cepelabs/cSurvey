@@ -5,48 +5,41 @@ Imports DevExpress.XtraTreeList
 Friend Class frmImportGenericData
 
     Private Sub pSettingsLoad()
+        txtPrefix.Text = My.Application.Settings.GetSetting("data.import.generic.prefix", "")
+        txtCaveName.Text = My.Application.Settings.GetSetting("data.import.generic.cavename", "")
+
+        chkFirstline.Checked = My.Application.Settings.GetSetting("data.import.generic.skipfirstline", 0)
+        chkAutoSplay.Checked = My.Application.Settings.GetSetting("data.import.generic.autosplay", 0)
+        cboSeparator.SelectedIndex = My.Application.Settings.GetSetting("data.import.generic.separator", 0)
+        chkSplaySymbol.Checked = My.Application.Settings.GetSetting("data.import.generic.splaysymbol", 0)
+        chkCutSplaySymbol.Checked = My.Application.Settings.GetSetting("data.import.generic.cutsplaysymbol", 0)
+        chkZeroPlaceholders.Checked = My.Application.Settings.GetSetting("data.import.generic.zeroplaceholders", 0)
+        chkCommentSymbols.Checked = My.Application.Settings.GetSetting("data.import.generic.comments", 0)
+
+        txtSplayMarker.Text = My.Application.Settings.GetSetting("data.import.generic.splaysymboltxt", ".")
+        txtCutSplayMarker.Text = My.Application.Settings.GetSetting("data.import.generic.cutsplaysymboltxt", "-")
+        txtZeroPlaceholders.Text = My.Application.Settings.GetSetting("data.import.generic.zeroplaceholderstxt", "-")
+        txtCommentSymbols.Text = My.Application.Settings.GetSetting("data.import.generic.commentsymbolstxt", "#%")
+
         Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                txtPrefix.Text = oReg.GetValue("data.import.generic.prefix", "")
-                txtCaveName.Text = oReg.GetValue("data.import.generic.cavename", "")
+            Dim sFields As String = My.Application.Settings.GetSetting("data.import.generic.fields", "")
+            If sFields <> "" Then
+                Dim oDestFields As cDestFields = tvDestField.DataSource
 
-                chkFirstline.Checked = oReg.GetValue("data.import.generic.skipfirstline", 0)
-                chkAutoSplay.Checked = oReg.GetValue("data.import.generic.autosplay", 0)
-                cboSeparator.SelectedIndex = oReg.GetValue("data.import.generic.separator", 0)
-                chkSplaySymbol.Checked = oReg.GetValue("data.import.generic.splaysymbol", 0)
-                chkCutSplaySymbol.Checked = oReg.GetValue("data.import.generic.cutsplaysymbol", 0)
-                chkZeroPlaceholders.Checked = oReg.GetValue("data.import.generic.zeroplaceholders", 0)
-                chkCommentSymbols.Checked = oReg.GetValue("data.import.generic.comments", 0)
-
-                txtSplayMarker.Text = oReg.GetValue("data.import.generic.splaysymboltxt", ".")
-                txtCutSplayMarker.Text = oReg.GetValue("data.import.generic.cutsplaysymboltxt", "-")
-                txtZeroPlaceholders.Text = oReg.GetValue("data.import.generic.zeroplaceholderstxt", "-")
-                txtCommentSymbols.Text = oReg.GetValue("data.import.generic.commentsymbolstxt", "#%")
-
-                Try
-                    Dim sFields As String = oReg.GetValue("data.import.generic.fields", "")
-                    If sFields <> "" Then
-                        Dim oDestFields As cDestFields = tvDestField.DataSource
-
-                        Dim sKeys() As String = sFields.Split(",")
-                        For Each sKey As String In sKeys
-                            Dim oData(2) As Object
-                            Dim sData() As String = sKey.Split("|")
-                            Dim iEnum As cSourceField.TextFieldIndexEnum
-                            If [Enum].TryParse(sData(0), iEnum) Then
-                                Dim oSourceItem As cSourceField = pGetItem(iEnum)
-                                Dim oDestItem As cDestField = oDestFields.Add(oSourceItem, Integer.Parse(sData(1)), sData(2))
-                                If oSourceItem.Index <> cSourceField.TextFieldIndexEnum.Empty Then
-                                    Call lstSourceFields.DataSource.Remove(oSourceItem)
-                                End If
-                            End If
-                        Next
+                Dim sKeys() As String = sFields.Split(",")
+                For Each sKey As String In sKeys
+                    Dim oData(2) As Object
+                    Dim sData() As String = sKey.Split("|")
+                    Dim iEnum As cSourceField.TextFieldIndexEnum
+                    If [Enum].TryParse(sData(0), iEnum) Then
+                        Dim oSourceItem As cSourceField = pGetItem(iEnum)
+                        Dim oDestItem As cDestField = oDestFields.Add(oSourceItem, Integer.Parse(sData(1)), sData(2))
+                        If oSourceItem.Index <> cSourceField.TextFieldIndexEnum.Empty Then
+                            Call lstSourceFields.DataSource.Remove(oSourceItem)
+                        End If
                     End If
-                Catch ex As Exception
-                End Try
-
-                Call oReg.Close()
-            End Using
+                Next
+            End If
         Catch ex As Exception
         End Try
 
@@ -63,29 +56,22 @@ Friend Class frmImportGenericData
     End Function
 
     Private Sub pSettingsSave()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Call oReg.SetValue("data.import.generic.prefix", txtPrefix.Text)
-                Call oReg.SetValue("data.import.generic.cavename", txtCaveName.Text)
+        Call My.Application.Settings.SetSetting("data.import.generic.prefix", txtPrefix.Text)
+        Call My.Application.Settings.SetSetting("data.import.generic.cavename", txtCaveName.Text)
 
-                Call oReg.SetValue("data.import.generic.skipfirstline", If(chkFirstline.Checked, 1, 0))
-                Call oReg.SetValue("data.import.generic.autosplay", If(chkAutoSplay.Checked, 1, 0))
-                Call oReg.SetValue("data.import.generic.separator", cboSeparator.SelectedIndex)
-                Call oReg.SetValue("data.import.generic.cutsplaysymbol", If(chkAutoSplay.Checked, 1, 0))
-                Call oReg.SetValue("data.import.generic.zeroplaceholders", If(chkZeroPlaceholders.Checked, 1, 0))
-                Call oReg.SetValue("data.import.generic.comments", If(chkCommentSymbols.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.generic.skipfirstline", If(chkFirstline.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.generic.autosplay", If(chkAutoSplay.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.generic.separator", cboSeparator.SelectedIndex)
+        Call My.Application.Settings.SetSetting("data.import.generic.cutsplaysymbol", If(chkAutoSplay.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.generic.zeroplaceholders", If(chkZeroPlaceholders.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.generic.comments", If(chkCommentSymbols.Checked, 1, 0))
 
-                Call oReg.SetValue("data.import.generic.splaysymboltxt", txtSplayMarker.Text)
-                Call oReg.SetValue("data.import.generic.cutsplaysymboltxt", txtCutSplayMarker.Text)
-                Call oReg.SetValue("data.import.generic.zeroplaceholderstxt", txtZeroPlaceholders.Text)
-                Call oReg.SetValue("data.import.generic.commentsymbolstxt", txtCommentSymbols.Text)
+        Call My.Application.Settings.SetSetting("data.import.generic.splaysymboltxt", txtSplayMarker.Text)
+        Call My.Application.Settings.SetSetting("data.import.generic.cutsplaysymboltxt", txtCutSplayMarker.Text)
+        Call My.Application.Settings.SetSetting("data.import.generic.zeroplaceholderstxt", txtZeroPlaceholders.Text)
+        Call My.Application.Settings.SetSetting("data.import.generic.commentsymbolstxt", txtCommentSymbols.Text)
 
-                Call oReg.SetValue("data.import.generic.fields", GetFields.ToString)
-
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        Call My.Application.Settings.SetSetting("data.import.generic.fields", GetFields.ToString)
     End Sub
 
     Friend Function GetFields() As cDestFields

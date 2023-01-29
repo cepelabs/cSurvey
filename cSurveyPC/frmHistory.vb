@@ -213,9 +213,8 @@ friend Class frmHistory
         oSurvey = Survey
         sFilename = Filename
 
-        Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-        bHistory = oReg.GetValue("history.enabled", 0)
-        iHistoryMode = oReg.GetValue("history.mode", 0)
+        bHistory = My.Application.Settings.GetSetting("history.enabled", 0)
+        iHistoryMode = My.Application.Settings.GetSetting("history.mode", 0)
         Select Case iHistoryMode
             Case 0
                 btnShowLocal.Visible = True
@@ -234,21 +233,18 @@ friend Class frmHistory
                 btnShowWeb.Visible = True
         End Select
 
-        sHistoryWebURL = oReg.GetValue("history.web.url", "")
-        bHistoryWebAuthReq = oReg.GetValue("history.web.authreq", "0")
-        sHistoryWebUsername = oReg.GetValue("history.web.username", "")
-        sHistoryWebPassword = oReg.GetValue("history.web.password", "")
+        sHistoryWebURL = My.Application.Settings.GetSetting("history.web.url", "")
+        bHistoryWebAuthReq = My.Application.Settings.GetSetting("history.web.authreq", "0")
+        sHistoryWebUsername = My.Application.Settings.GetSetting("history.web.username", "")
+        sHistoryWebPassword = My.Application.Settings.GetSetting("history.web.password", "")
         If sHistoryWebPassword <> "" Then
             sHistoryWebPassword = New cLocalSecurity("csurvey").DecryptData(sHistoryWebPassword)
         End If
-        sHistoryFolder = oReg.GetValue("history.folder", "")
-        iHistoryDailyCopies = oReg.GetValue("history.maxdailycopies", 4)
-        iHistoryWebDailyCopies = oReg.GetValue("history.web.maxdailycopies", 4)
-        iHistoryMaxCopies = oReg.GetValue("history.maxcopies", 20)
-        iHistoryWebMaxCopies = oReg.GetValue("history.web.maxcopies", 20)
-
-        Call oReg.Close()
-        Call oReg.Dispose()
+        sHistoryFolder = My.Application.Settings.GetSetting("history.folder", "")
+        iHistoryDailyCopies = My.Application.Settings.GetSetting("history.maxdailycopies", 4)
+        iHistoryWebDailyCopies = My.Application.Settings.GetSetting("history.web.maxdailycopies", 4)
+        iHistoryMaxCopies = My.Application.Settings.GetSetting("history.maxcopies", 20)
+        iHistoryWebMaxCopies = My.Application.Settings.GetSetting("history.web.maxcopies", 20)
 
         Call lvItems.Groups.Add(New ListViewGroup("local", "Revisioni locali"))
         Call lvItems.Groups.Add(New ListViewGroup("web", "Revisioni web"))

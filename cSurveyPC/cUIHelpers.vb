@@ -1,6 +1,8 @@
 ﻿Imports System.ComponentModel
 Imports System.IO
+Imports cSurveyPC.cSurvey.Helper.Editor
 Imports cSurveyPC.cSurvey.Surface
+Imports DevExpress.Utils.Behaviors.Common
 Imports DevExpress.XtraEditors
 
 Namespace cSurvey.UIHelpers
@@ -3178,13 +3180,10 @@ Namespace cSurvey.UIHelpers
     Public Class cRecentsHelper
         Public Shared Function Load(RegistryKey As String, Button As DevExpress.XtraBars.BarButtonItem) As List(Of String)
             Dim oRecents As List(Of String) = New List(Of String)
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey\" & RegistryKey, Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                For Each sValueName As String In oReg.GetValueNames
-                    Call oRecents.Add(oReg.GetValue(sValueName).ToString.ToLower)
-                Next
-                Call oReg.Flush()
-                Call oReg.Close()
-            End Using
+            Dim oFolder As cEnvironmentSettingsFolder = My.Application.Settings.GetFolder(RegistryKey)
+            For Each skey As String In oFolder.GetKeys
+                Call oRecents.Add(oFolder.GetSetting(skey).ToString.ToLower)
+            Next
             Call ButtonUpdate(oRecents, Button)
             Return oRecents
         End Function
@@ -3203,18 +3202,12 @@ Namespace cSurvey.UIHelpers
         End Sub
 
         Private Shared Sub pSave(Recents As List(Of String), RegistryKey As String)
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey\" & RegistryKey, Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                For Each sValueName As String In oReg.GetValueNames
-                    Call oReg.DeleteValue(sValueName)
-                Next
-                Dim iValueIndex As Integer = 0
-                For Each sRecent As String In Recents
-                    Call oReg.SetValue(iValueIndex, sRecent)
-                    iValueIndex += 1
-                Next
-                Call oReg.Flush()
-                Call oReg.Close()
-            End Using
+            Dim oFolder As cEnvironmentSettingsFolder = My.Application.Settings.getfolder(RegistryKey)
+            Dim iValueIndex As Integer = 0
+            For Each sRecent As String In Recents
+                oFolder.SetSetting(iValueIndex, sRecent)
+                iValueIndex += 1
+            Next
         End Sub
 
         Public Shared Sub AppendTo(Filename As String, RegistryKey As String, Recents As List(Of String), Button As DevExpress.XtraBars.BarButtonItem)

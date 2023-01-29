@@ -1,23 +1,11 @@
 ﻿Friend Class frmImportCaveExplorer
 
     Private Sub pSettingsLoad()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                txtPrefix.Text = oReg.GetValue("data.import.caveexplorer.prefix", "")
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        txtPrefix.Text = My.Application.Settings.GetSetting("data.import.caveexplorer.prefix", "")
     End Sub
 
     Private Sub pSettingsSave()
-        Try
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Call oReg.SetValue("data.import.caveexplorer.prefix", txtPrefix.Text)
-                Call oReg.Close()
-            End Using
-        Catch
-        End Try
+        Call My.Application.Settings.SetSetting("data.import.caveexplorer.prefix", txtPrefix.Text)
     End Sub
 
     Public Sub New()

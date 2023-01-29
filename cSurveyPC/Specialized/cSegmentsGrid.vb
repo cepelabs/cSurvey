@@ -111,18 +111,18 @@ Public Class cSegmentsGrid
                 e.Appearance.BackColor = oSurvey.Properties.Sessions.GetColor(oSegment.Session, System.Drawing.Color.LightGray)
             ElseIf e.Column Is colSegmentsTo Then
                 If oSegment.To Like "*(*)" Then
-                    If cEditDesignEnvironment.GetSetting("isdarkskin") Then
-                        e.Appearance.ForeColor = modPaint.LightColor(cEditDesignEnvironment.GetSetting("backcolor"), 0.25)
+                    If My.Application.RuntimeSettings.GetSetting("isdarkskin") Then
+                        e.Appearance.ForeColor = modPaint.LightColor(My.Application.RuntimeSettings.GetSetting("backcolor"), 0.25)
                     Else
-                        e.Appearance.ForeColor = modPaint.DarkColor(cEditDesignEnvironment.GetSetting("backcolor"), 0.25)
+                        e.Appearance.ForeColor = modPaint.DarkColor(My.Application.RuntimeSettings.GetSetting("backcolor"), 0.25)
                     End If
                 End If
             ElseIf e.Column Is colSegmentsFrom Then
                 If oSegment.From Like "*(*)" Then
-                    If cEditDesignEnvironment.GetSetting("isdarkskin") Then
-                        e.Appearance.ForeColor = modPaint.LightColor(cEditDesignEnvironment.GetSetting("backcolor"), 0.25)
+                    If My.Application.RuntimeSettings.GetSetting("isdarkskin") Then
+                        e.Appearance.ForeColor = modPaint.LightColor(My.Application.RuntimeSettings.GetSetting("backcolor"), 0.25)
                     Else
-                        e.Appearance.ForeColor = modPaint.DarkColor(cEditDesignEnvironment.GetSetting("backcolor"), 0.25)
+                        e.Appearance.ForeColor = modPaint.DarkColor(My.Application.RuntimeSettings.GetSetting("backcolor"), 0.25)
                     End If
                 End If
             End If

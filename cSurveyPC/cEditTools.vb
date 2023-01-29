@@ -4,51 +4,55 @@ Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Drawings
 Imports cSurveyPC.cSurvey.Design.Items
 Imports cSurveyPC.cSurvey.Helper.Editor.cUndo
+Imports System.Windows.Input
+Imports DevExpress.XtraRichEdit.Commands.Internal
 
 Namespace cSurvey.Helper.Editor
-    Public Class cEditDesignEnvironment
+    Public Class cEnvironmentSettingsFolder
+        Private sPath As String
+        Private oValues As Dictionary(Of String, Object)
 
-        'Private Shared iLowerLayersDesignTransparencyThreshold As Integer
-        'Private Shared oLowerLayersDesignColor As Color
+        Friend Class cEnvironmentSettingsFolderPropertyChangedEventArgs
+            Private sPath As String
+            Private sName As String
 
-        Private Shared oValues As Dictionary(Of String, Object) = New Dictionary(Of String, Object)(StringComparer.OrdinalIgnoreCase)
+            Public ReadOnly Property Name As String
+                Get
+                    Return sName
+                End Get
+            End Property
 
-        Public Delegate Sub OnPropertyChanged(Sender As Object, e As PropertyChangeEventArgs)
-        Private Shared oChangedDelegates As List(Of OnPropertyChanged) = New List(Of OnPropertyChanged)
+            Public ReadOnly Property Path As String
+                Get
+                    Return sPath
+                End Get
+            End Property
 
-        Public Shared Sub Save()
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                For Each sName As String In oValues.Keys
-                    Call oReg.SetValue(sName, oValues(sName))
-                Next
-            End Using
+            Public Sub New(Path As String, Name As String)
+                sPath = Path
+                sName = Name
+            End Sub
+        End Class
+
+        Friend Event OnPropertyChanged(sender As Object, e As cEnvironmentSettingsFolderPropertyChangedEventArgs)
+
+        Public Sub New(Path As String)
+            sPath = Path
+            oValues = New Dictionary(Of String, Object)(StringComparer.OrdinalIgnoreCase)
         End Sub
 
-        Public Shared Sub Reset()
-            Call oValues.Clear()
-
-            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                For Each sName As String In oReg.GetValueNames
-                    Call oValues.Add(sName, oReg.GetValue(sName))
-                Next
-            End Using
+        Public Sub New()
+            sPath = ""
+            oValues = New Dictionary(Of String, Object)(StringComparer.OrdinalIgnoreCase)
         End Sub
 
-        Public Shared Sub OnPropertyChangedAppend(OnPropertyChanged As OnPropertyChanged)
-            Call oChangedDelegates.Add(OnPropertyChanged)
-        End Sub
+        Public ReadOnly Property Count As Integer
+            Get
+                Return oValues.Count
+            End Get
+        End Property
 
-        Public Shared Sub OnPropertyChangedRemove(OnPropertyChanged As OnPropertyChanged)
-            Call oChangedDelegates.Remove(OnPropertyChanged)
-        End Sub
-
-        Private Shared Sub pRaiseOnPropertyChanged(Name As String)
-            For Each oOnPropertyChanged As OnPropertyChanged In oChangedDelegates
-                Call oOnPropertyChanged(Nothing, New PropertyChangeEventArgs(Name))
-            Next
-        End Sub
-
-        Public Shared Sub SetSettings(ParamArray Settings() As Object)
+        Public Sub SetSettings(ParamArray Settings() As Object)
             For i As Integer = 0 To Settings.Count - 1 Step 2
                 Dim sKey As String = Settings(i)
                 Dim oValue As Object = Settings(i + 1)
@@ -57,46 +61,215 @@ Namespace cSurvey.Helper.Editor
                 End If
                 Call oValues.Add(sKey, oValue)
             Next
-            Call pRaiseOnPropertyChanged("")
+            RaiseEvent OnPropertyChanged(Me, New cEnvironmentSettingsFolderPropertyChangedEventArgs(sPath, ""))
         End Sub
 
-        Public Shared Sub SetSetting(Key As String, Value As Object)
+        Public Function DeleteSetting(Key As String) As Boolean
+            If oValues.ContainsKey(Key) Then
+                Call oValues.Remove(Key)
+                RaiseEvent OnPropertyChanged(Me, New cEnvironmentSettingsFolderPropertyChangedEventArgs(sPath, Key))
+                Return True
+            Else
+                Return False
+            End If
+        End Function
+
+        Protected Friend ReadOnly Property Values As Dictionary(Of String, Object)
+            Get
+                Return oValues
+            End Get
+        End Property
+
+        Public Function GetFolder(Key As String) As cEnvironmentSettingsFolder
+            If oValues.ContainsKey(Key) Then
+                If TypeOf oValues(Key) Is cEnvironmentSettingsFolder Then
+                    Return oValues(Key)
+                Else
+                    Throw New InvalidCastException
+                End If
+            Else
+                Dim oFolder As cEnvironmentSettingsFolder = New cEnvironmentSettingsFolder
+                Call oValues.Add(Key, oFolder)
+                Return oFolder
+            End If
+        End Function
+
+        Public Function GetKeys() As String()
+            Return oValues.Keys.ToArray
+        End Function
+
+        Public Sub SetSetting(Key As String, Value As Object)
             If oValues.ContainsKey(Key) Then Call oValues.Remove(Key)
             Call oValues.Add(Key, Value)
-            Call pRaiseOnPropertyChanged(Key)
+            RaiseEvent OnPropertyChanged(Me, New cEnvironmentSettingsFolderPropertyChangedEventArgs(sPath, Key))
         End Sub
 
-        Public Shared Sub SetSetting(Key As String, Value As Object, DefaultValue As Object)
+        Public Sub SetSetting(Key As String, Value As Object, DefaultValue As Object)
             If oValues.ContainsKey(Key) Then Call oValues.Remove(Key)
             If Value.Equals(DefaultValue) Then
                 Call oValues.Add(Key, Value)
             End If
-            Call pRaiseOnPropertyChanged(Key)
+            RaiseEvent OnPropertyChanged(Me, New cEnvironmentSettingsFolderPropertyChangedEventArgs(sPath, Key))
         End Sub
 
-        Public Shared Function Contains(Key As String) As Boolean
+        Public Function Contains(Key As String) As Boolean
             Return oValues.ContainsKey(Key)
         End Function
 
-        Public Shared Function GetSetting(ByVal Key As String, Optional ByVal DefaultValue As Object = Nothing) As Object
+        Public Function GetSetting(ByVal Key As String, Optional ByVal DefaultValue As Object = Nothing) As Object
             Try
                 If oValues.ContainsKey(Key) Then
                     Return oValues(Key)
                 Else
-                    Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                        Dim oValue As Object = oReg.GetValue(Key, DefaultValue)
-                        If oValue Is Nothing Then
-                            Return Nothing
-                        Else
-                            Call oValues.Add(Key, oValue)
-                            Return oValue
-                        End If
-                    End Using
+                    Return DefaultValue
                 End If
             Catch
                 Return DefaultValue
             End Try
         End Function
+    End Class
+
+    Public Class cEnvironmentSettings
+        Inherits cEnvironmentSettingsFolder
+
+        Public Delegate Sub OnPropertyChangedDelegate(Sender As Object, e As PropertyChangeEventArgs)
+        Private oChangedDelegates As List(Of OnPropertyChangedDelegate)
+
+        Private sRegistryKey As String
+
+        Private Sub Base_OnPropertyChanged(sender As Object, e As cEnvironmentSettingsFolderPropertyChangedEventArgs)
+            Call pRaiseOnPropertyChanged(e.Path, e.Name)
+        End Sub
+
+        Public Sub New()
+            Call MyBase.New()
+            AddHandler MyBase.OnPropertyChanged, AddressOf Base_OnPropertyChanged
+            oChangedDelegates = New List(Of OnPropertyChangedDelegate)
+        End Sub
+
+        Public Sub New(RegistryKey As String)
+            Call MyBase.New()
+            sRegistryKey = RegistryKey
+            oChangedDelegates = New List(Of OnPropertyChangedDelegate)
+            Call pAddFolder(Microsoft.Win32.Registry.CurrentUser.CreateSubKey(sRegistryKey, Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree), Me)
+        End Sub
+
+        Private Sub pAddFolder(SubKeyReg As Microsoft.Win32.RegistryKey, Settings As cEnvironmentSettingsFolder)
+            Using SubKeyReg
+                For Each sKey As String In SubKeyReg.GetValueNames
+                    Dim oValue As Object = SubKeyReg.GetValue(sKey)
+                    Call Settings.Values.Add(sKey, oValue)
+                Next
+                For Each sSubKey As String In SubKeyReg.GetSubKeyNames
+                    Dim oSettings As cEnvironmentSettingsFolder = New cEnvironmentSettingsFolder
+                    Call pAddFolder(SubKeyReg.OpenSubKey(sSubKey), oSettings)
+                    If Settings.Contains(sSubKey) Then Settings.DeleteSetting(sSubKey)
+                    Call Settings.Values.Add(sSubKey, oSettings)
+                    AddHandler Settings.OnPropertyChanged, AddressOf Base_OnPropertyChanged
+                Next
+            End Using
+        End Sub
+
+        Public Sub pSave(SubKeyReg As Microsoft.Win32.RegistryKey, Settings As cEnvironmentSettingsFolder)
+            Using SubKeyReg
+                For Each sName As String In Settings.Values.Keys
+                    Dim oValue As Object = Settings.Values(sName)
+                    If TypeOf oValue Is cEnvironmentSettingsFolder Then
+                        If oValue.count = 0 Then
+                            Call SubKeyReg.DeleteSubKey(sName, False)
+                        Else
+                            Call pSave(SubKeyReg.CreateSubKey(sName, True), oValue)
+                        End If
+                    ElseIf TypeOf oValue Is Boolean Then
+                        oValue = If(oValue, "1", "0")
+                        Call SubKeyReg.SetValue(sName, oValue)
+                    ElseIf TypeOf oValue Is Color Then
+                        oValue = DirectCast(oValue, Color).ToArgb
+                        Call SubKeyReg.SetValue(sName, oValue)
+                    Else
+                        Call SubKeyReg.SetValue(sName, oValue)
+                    End If
+                Next
+            End Using
+        End Sub
+
+        Public Sub Save()
+            If sRegistryKey IsNot Nothing Then
+                Call pSave(Microsoft.Win32.Registry.CurrentUser.CreateSubKey(sRegistryKey, Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree), Me)
+            End If
+        End Sub
+
+        Public Sub Reset()
+            Call MyBase.Values.Clear()
+            If sRegistryKey IsNot Nothing Then
+                Call pAddFolder(Microsoft.Win32.Registry.CurrentUser.CreateSubKey(sRegistryKey, Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree), Me)
+            End If
+        End Sub
+
+        Public Sub OnPropertyChangedAppend(OnPropertyChanged As OnPropertyChangedDelegate)
+            Call oChangedDelegates.Add(OnPropertyChanged)
+        End Sub
+
+        Public Sub OnPropertyChangedRemove(OnPropertyChanged As OnPropertyChangedDelegate)
+            Call oChangedDelegates.Remove(OnPropertyChanged)
+        End Sub
+
+        Private Sub pRaiseOnPropertyChanged(Path As String, Name As String)
+            For Each oOnPropertyChanged As OnPropertyChangedDelegate In oChangedDelegates
+                Call oOnPropertyChanged(Nothing, New PropertyChangeEventArgs(Path & "\" & Name))
+            Next
+        End Sub
+
+        'Public Sub SetSettings(ParamArray Settings() As Object)
+        '    For i As Integer = 0 To Settings.Count - 1 Step 2
+        '        Dim sKey As String = Settings(i)
+        '        Dim oValue As Object = Settings(i + 1)
+        '        If MyBase.Values.ContainsKey(sKey) Then
+        '            Call MyBase.Values.Remove(sKey)
+        '        End If
+        '        Call MyBase.Values.Add(sKey, oValue)
+        '    Next
+        '    Call pRaiseOnPropertyChanged("")
+        'End Sub
+
+        'Public Function DeleteSetting(Key As String) As Boolean
+        '    If MyBase.Values.ContainsKey(Key) Then
+        '        Call MyBase.Values.Remove(Key)
+        '        Return True
+        '    Else
+        '        Return False
+        '    End If
+        'End Function
+
+        'Public Sub SetSetting(Key As String, Value As Object)
+        '    If oValues.ContainsKey(Key) Then Call oValues.Remove(Key)
+        '    Call oValues.Add(Key, Value)
+        '    Call pRaiseOnPropertyChanged(Key)
+        'End Sub
+
+        'Public Sub SetSetting(Key As String, Value As Object, DefaultValue As Object)
+        '    If oValues.ContainsKey(Key) Then Call oValues.Remove(Key)
+        '    If Value.Equals(DefaultValue) Then
+        '        Call oValues.Add(Key, Value)
+        '    End If
+        '    Call pRaiseOnPropertyChanged(Key)
+        'End Sub
+
+        'Public Function Contains(Key As String) As Boolean
+        '    Return oValues.ContainsKey(Key)
+        'End Function
+
+        'Public Function GetSetting(ByVal Key As String, Optional ByVal DefaultValue As Object = Nothing) As Object
+        '    Try
+        '        If oValues.ContainsKey(Key) Then
+        '            Return oValues(Key)
+        '        Else
+        '            Return DefaultValue
+        '        End If
+        '    Catch
+        '        Return DefaultValue
+        '    End Try
+        'End Function
     End Class
 
     Public Interface cIEditSelection
@@ -523,7 +696,7 @@ Namespace cSurvey.Helper.Editor
             End If
             Try
                 If Clipboard.ContainsData("csurvey.segments") Then
-                    Dim bCleanPastedStation As Boolean = cEditDesignEnvironment.GetSetting("clipboard.cleanpastedstation", 0)
+                    Dim bCleanPastedStation As Boolean = My.Application.Settings.GetSetting("clipboard.cleanpastedstation", 0)
                     Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)
                         Dim oXML As XmlDocument = New XmlDocument
                         oXML.LoadXml(Clipboard.GetData("csurvey.segments"))
@@ -687,8 +860,8 @@ Namespace cSurvey.Helper.Editor
                 Dim oDataObject As DataObject = New DataObject
                 Call oDataObject.SetData("csurvey.segments", oXML.InnerXml)
 
-                Dim sExtFormats As String = cEditDesignEnvironment.GetSetting("clipboard.segments.extformats", "")
-                Dim bUseLocalFormat As Boolean = cEditDesignEnvironment.GetSetting("clipboard.uselocalformat", False)
+                Dim sExtFormats As String = My.Application.Settings.GetSetting("clipboard.segments.extformats", "")
+                Dim bUseLocalFormat As Boolean = My.Application.Settings.GetSetting("clipboard.uselocalformat", False)
                 If sExtFormats.Contains("csv") Then
                     Dim bBuffer() As Byte = System.Text.Encoding.UTF8.GetBytes(Segments.ToCSV(bUseLocalFormat))
                     Dim oMS As System.IO.MemoryStream = New System.IO.MemoryStream(bBuffer)
@@ -715,8 +888,8 @@ Namespace cSurvey.Helper.Editor
                 Dim oDataObject As DataObject = New DataObject
                 Call oDataObject.SetData("csurvey.segments", oXML.InnerXml)
 
-                Dim sExtFormats As String = cEditDesignEnvironment.GetSetting("clipboard.segments.extformats", "")
-                Dim bUseLocalFormat As Boolean = cEditDesignEnvironment.GetSetting("clipboard.uselocalformat", False)
+                Dim sExtFormats As String = My.Application.Settings.GetSetting("clipboard.segments.extformats", "")
+                Dim bUseLocalFormat As Boolean = My.Application.Settings.GetSetting("clipboard.uselocalformat", False)
                 If sExtFormats.Contains("csv") Then
                     Dim bBuffer() As Byte = System.Text.Encoding.UTF8.GetBytes(Segments.ToCSV(bUseLocalFormat))
                     Dim oMS As System.IO.MemoryStream = New System.IO.MemoryStream(bBuffer)
@@ -1520,7 +1693,7 @@ Namespace cSurvey.Helper.Editor
             Call oDataObject.SetText(oXMl.InnerXml)
             Call oDataObject.SetData("csurvey.item", oXMl.InnerXml)
 
-            Dim sExtFormats As String = cEditDesignEnvironment.GetSetting("clipboard.designitems.extformats", "")
+            Dim sExtFormats As String = My.Application.Settings.GetSetting("clipboard.designitems.extformats", "")
             If sExtFormats.Contains("xml") Then
                 Dim oXMLMS As IO.MemoryStream = New IO.MemoryStream
                 Call oXMl.Save(oXMLMS)
@@ -1545,7 +1718,7 @@ Namespace cSurvey.Helper.Editor
             Dim oDataObject As DataObject = New DataObject
             Call oDataObject.SetText(oXMl.InnerXml)
             Call oDataObject.SetData("csurvey.item", oXMl.InnerXml)
-            Dim sExtFormats As String = cEditDesignEnvironment.GetSetting("clipboard.designitems.extformats", "")
+            Dim sExtFormats As String = My.Application.Settings.GetSetting("clipboard.designitems.extformats", "")
 
             If sExtFormats.Contains("xml") Then
                 Dim oXMLMS As IO.MemoryStream = New IO.MemoryStream

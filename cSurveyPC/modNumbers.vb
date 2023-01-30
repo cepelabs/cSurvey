@@ -30,7 +30,7 @@
             sNumber = Number
         End If
         If Not UseLocalFormat Then
-            sNumber = sNumber.Replace(Globalization.NumberFormatInfo.CurrentInfo.CurrencyDecimalSeparator, ".")
+            sNumber = sNumber.Replace(Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator, ".")
         End If
         Return sNumber
     End Function
@@ -43,7 +43,7 @@
             sNumber = Number
         End If
         If Not UseLocalFormat Then
-            sNumber = sNumber.Replace(Globalization.NumberFormatInfo.CurrentInfo.CurrencyDecimalSeparator, ".")
+            sNumber = sNumber.Replace(Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator, ".")
         End If
         Return sNumber
     End Function
@@ -56,7 +56,7 @@
             sNumber = Number
         End If
         If Not UseLocalFormat Then
-            sNumber = sNumber.Replace(Globalization.NumberFormatInfo.CurrentInfo.CurrencyDecimalSeparator, ".")
+            sNumber = sNumber.Replace(Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator, ".")
         End If
         Return sNumber
     End Function
@@ -78,7 +78,7 @@
     End Function
 
     Public Function CurrentDecimalSeparatorToPoint(ByVal Number As String) As String
-        Return Number.Replace(Globalization.NumberFormatInfo.CurrentInfo.CurrencyDecimalSeparator, ".")
+        Return Number.Replace(Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator, ".")
     End Function
 
     Public Function AnyDecimalSeparatorToPoint(ByVal Number As String) As String
@@ -86,7 +86,7 @@
     End Function
 
     Public Function StringToDouble(ByVal [String] As String) As Double
-        Dim sNumber As String = [String].Replace(".", Globalization.NumberFormatInfo.CurrentInfo.CurrencyDecimalSeparator)
+        Dim sNumber As String = [String].Replace(".", Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator)
         Dim dResult As Double
         If Double.TryParse(sNumber, dResult) Then
             Return dResult
@@ -97,7 +97,7 @@
 
     Public Function StringToSingle(ByVal [String] As String) As Single
 
-        Dim sNumber As String = [String].Replace(".", Globalization.NumberFormatInfo.CurrentInfo.CurrencyDecimalSeparator)
+        Dim sNumber As String = [String].Replace(".", Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator)
         Dim sResult As Single
         If Single.TryParse(sNumber, sResult) Then
             Return sResult
@@ -130,7 +130,7 @@
     End Function
 
     Public Function StringToInteger(ByVal [String] As String) As Integer
-        Dim sNumber As String = [String].Replace(".", Globalization.NumberFormatInfo.CurrentInfo.CurrencyDecimalSeparator)
+        Dim sNumber As String = [String].Replace(".", Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator)
         Dim dResult As Integer
         If Integer.TryParse(sNumber, dResult) Then
             Return dResult
@@ -148,7 +148,7 @@
     End Function
 
     Public Function StringToDecimal(ByVal [String] As String) As Decimal
-        Dim sNumber As String = [String].Replace(".", Globalization.NumberFormatInfo.CurrentInfo.CurrencyDecimalSeparator)
+        Dim sNumber As String = [String].Replace(".", Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator)
         Dim dResult As Decimal
         If Decimal.TryParse(sNumber, dResult) Then
             Return dResult
@@ -166,8 +166,8 @@
         Try
             Dim sValue As String = Value
             sValue = sValue.Trim
-            sValue = sValue.Replace(".", Globalization.NumberFormatInfo.CurrentInfo.CurrencyDecimalSeparator)
-            If sValue.StartsWith(Globalization.NumberFormatInfo.CurrentInfo.CurrencyDecimalSeparator) Then
+            sValue = sValue.Replace(".", Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator)
+            If sValue.StartsWith(Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator) Then
                 sValue = "0" & sValue
             End If
             Return modNumbers.MathRound(CDec(sValue), Decimals)

@@ -33,11 +33,11 @@ friend Class frmAutoSettings
     Private Function pFindTherion() As String
         Dim sTherionPath As String = ""
         Dim sDefaultPaths As List(Of String) = New List(Of String)
-        'per i sistemi italiani accelero la ricerca mettendo i path standard...
+        'some standard path to speed up search
         Call sDefaultPaths.Add("%SYSTEMDRIVE%\Program Files (x86)\Therion")
         Call sDefaultPaths.Add("%SYSTEMDRIVE%\Program Files\Therion")
+        'IT version does not be usefull cause windows use original names but I don't remember for old os version
         Call sDefaultPaths.Add("%SYSTEMDRIVE%\Programmi\Therion")
-        'questi path dovrebbero essere 'sempre' quelli giusti...
         Call sDefaultPaths.Add(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Therion"))
         Call sDefaultPaths.Add(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Therion"))
 
@@ -133,6 +133,8 @@ friend Class frmAutoSettings
             sCurrentLanguage = sLanguage
 
             Call pSetProgress(GetLocalizedString("autosettigs.steptitle2"))
+
+            Call My.Application.Settings.Save()
 
             Call cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("autosettings.warning2"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Information, GetLocalizedString("autosettigs.warningtitle"))
 

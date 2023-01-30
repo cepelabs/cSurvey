@@ -2,6 +2,7 @@
 Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Helper.Editor
 Imports cSurveyPC.cSurvey.Net
+Imports DevExpress.XtraCharts.Sankey
 
 Friend Class frmSettings
 
@@ -140,6 +141,8 @@ Friend Class frmSettings
 
         Call My.Application.Settings.SetSetting("keys.changedecimalkey", If(chkITChangeDecimalKey.Checked, "1", "0"))
         Call My.Application.Settings.SetSetting("keys.changeperiodkey", If(chkITChangePeriodKey.Checked, "1", "0"))
+
+        Call My.Application.Settings.Save()
     End Sub
 
     Private Function pFindItemByTag(ByVal Group As String, ByVal Text As String) As ListViewItem
@@ -262,7 +265,9 @@ Friend Class frmSettings
         cboDesignLineType.SelectedIndex = My.Application.Settings.GetSetting("design.linetype", cSurvey.Design.Items.cIItemLine.LineTypeEnum.Splines)
         chkDesignUseOnlyAnchorToMove.Checked = My.Application.Settings.GetSetting("design.useonlyanchortomove", 1)
         cboDesignSelectionMode.SelectedIndex = My.Application.Settings.GetSetting("design.selectionmode", 0)
-        txtDesignAnchorScale.Value = modNumbers.StringToSingle(My.Application.Settings.GetSetting("design.anchorscale", 1))
+        Dim sAnchorScale As Single = modNumbers.StringToSingle(My.Application.Settings.GetSetting("design.anchorscale", 1))
+        If sAnchorScale < 1.0F Then sAnchorScale = 1.0F
+        txtDesignAnchorScale.Value = sAnchorScale
         chkDesignShowLegacyExtraPrintAndExportObjects.Checked = My.Application.Settings.GetSetting("design.showlegacyextraprintandexportobjects", Not bFirstRun)
 
         chkShotsGridExportSplayNames.Checked = My.Application.Settings.GetSetting("grid.shotsgrid.exportsplaynames", 1)
@@ -555,4 +560,5 @@ Friend Class frmSettings
         chkITChangeDecimalKey.Visible = bITVisible
         chkITChangePeriodKey.Visible = bITVisible
     End Sub
+
 End Class

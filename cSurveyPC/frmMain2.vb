@@ -2497,7 +2497,7 @@ Friend Class frmMain2
     Private bChangePeriodKey As Boolean
 
     Private Sub pSettingsLoad()
-        Call My.Application.Settings.Reset()
+        'Call My.Application.Settings.Reset()
 
         bChangeDecimalKey = My.Application.Settings.GetSetting("keys.changedecimalkey", "1")
         bChangePeriodKey = My.Application.Settings.GetSetting("keys.changeperiodkey", "0")
@@ -2533,9 +2533,11 @@ Friend Class frmMain2
         iDesignBarPosition = My.Application.Settings.GetSetting("design.designbar.defaultposition", 0)
 
         'last used items
+        Call oLastUsedItems.Clear()
         Dim sLui As String = My.Application.Settings.GetSetting("lui", "")
         If sLui <> "" Then
-            For Each sLuiItem As String In sLui.Split(",")
+            Dim sLastUsedItems As String() = sLui.Split(",").Distinct.ToArray
+            For Each sLuiItem As String In sLastUsedItems
                 Call oLastUsedItems.Add(RibbonControl.Items.FindByName(sLuiItem))
             Next
         End If
@@ -2613,7 +2615,9 @@ Friend Class frmMain2
         sAdvancedSelectionPrecision = modNumbers.StringToSingle(My.Application.Settings.GetSetting("design.selectionmode.precision", 1000.0F))
         sAdvancedSelectionWide = modNumbers.StringToSingle(My.Application.Settings.GetSetting("design.selectionmode.wide", 4.0F))
 
-        modPaint.AnchorsScale = modNumbers.StringToSingle(My.Application.Settings.GetSetting("design.anchorscale", 1))
+        Dim sAnchorScale As Single = modNumbers.StringToSingle(My.Application.Settings.GetSetting("design.anchorscale", 1))
+        If sAnchorScale < 1.0F Then sAnchorScale = 1.0F
+        modPaint.AnchorsScale = sAnchorScale
 
         oPropObjectsBindingContainer.Expanded = My.Application.Settings.GetSetting("design.objectsbinding.expanded")
         oPropSegmentBindingContainer.Expanded = My.Application.Settings.GetSetting("design.segmentsbinding.expanded")

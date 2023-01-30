@@ -671,14 +671,20 @@ Namespace cSurvey.Calculate
 
         Private Sub pCompassPltImportFrom(ByVal Filename As String, Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing)
             If My.Computer.FileSystem.FileExists(Filename) Then
-                Dim bLogVerbose As Boolean = My.Application.Settings.GetSetting("debug.log.verbose", False)
+                'Dim bLogVerbose As Boolean = My.Application.Settings.GetSetting("debug.log.verbose", False)
                 Dim oProcessed As List(Of String) = New List(Of String)
                 Using sr As StreamReader = My.Computer.FileSystem.OpenTextFileReader(Filename)
                     Do Until sr.EndOfStream
                         Dim sPart As String() = sr.ReadLine.Trim.Split(vbTab)
+                        'If bLogVerbose Then Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "plt line->" & String.Join("|", sPart))
                         Select Case sPart(0)
                             Case "D", "M"
                                 'read feets and get back meters
+                                'If bLogVerbose Then
+                                '    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "sY->" & sPart(1))
+                                '    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "sX->" & sPart(2))
+                                '    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "sZ->" & sPart(3))
+                                'End If
                                 Dim sY As Decimal = modNumbers.MathRound(modNumbers.StringToDecimal(sPart(1)) * -0.3048D, 4)
                                 Dim sX As Decimal = modNumbers.MathRound(modNumbers.StringToDecimal(sPart(2)) * 0.3048D, 4)
                                 Dim sZ As Decimal = modNumbers.MathRound(modNumbers.StringToDecimal(sPart(3)) * -0.3048D, 4)
@@ -686,7 +692,7 @@ Namespace cSurvey.Calculate
                                 Dim sTrigPoint As String = sPart(4).Substring(1)
                                 sTrigPoint = DictionaryTranslate(Dictionary, sTrigPoint)
                                 If oTPs.Contains(sTrigPoint) AndAlso Not oProcessed.Contains(sTrigPoint) Then
-                                    If bLogVerbose Then Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, sTrigPoint & " -> " & sX & ";" & sY & ";" & sZ)
+                                    'If bLogVerbose Then Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, sTrigPoint & " -> " & sX & ";" & sY & ";" & sZ)
                                     With oTPs.Item(sTrigPoint)
                                         Call .MoveTo(sX, sY, sZ)
                                         If oSurvey.Properties.CalculateVersion > 2 Then

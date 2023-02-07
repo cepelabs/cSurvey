@@ -12,6 +12,7 @@ Imports DevExpress.XtraBars
 Imports DevExpress.XtraNavBar
 Imports cSurveyPC.cSurvey.Helper.Editor
 Imports System.ComponentModel
+Imports System.Web
 
 Friend Class frmPreview
     'Private WithEvents frmPC As frmParametersCompass
@@ -170,6 +171,7 @@ Friend Class frmPreview
                 For Each oProfile As cViewerProfile In oSurvey.ViewerProfiles
                     Dim oLink As DevExpress.XtraNavBar.NavBarItemLink = grpMain.AddItem
                     oLink.Item.Caption = oProfile.Name
+                    oLink.Item.SuperTip = modDevExpress.CreateSuperTip(oLink.Item.Caption, Nothing, Nothing, If(oProfile.IsPlan, modMain.GetLocalizedString("viewerprofile.textpart1"), modMain.GetLocalizedString("viewerprofile.textpart2")), Nothing, Nothing, "", Nothing, Nothing)
                     oLink.Item.ImageOptions.SvgImage = My.Resources.viewer
                     oLink.Item.Tag = oProfile
                     If oProfile.IsSystem Then
@@ -181,23 +183,21 @@ Friend Class frmPreview
                 For Each oProfile As cPreviewProfile In oSurvey.PreviewProfiles
                     Dim oLink As DevExpress.XtraNavBar.NavBarItemLink = grpMain.AddItem
                     oLink.Item.Caption = oProfile.Name
+                    oLink.Item.SuperTip = modDevExpress.CreateSuperTip(oLink.Item.Caption, Nothing, Nothing, If(oProfile.IsPlan, modMain.GetLocalizedString("previewprofile.textpart1"), modMain.GetLocalizedString("previewprofile.textpart2")), Nothing, Nothing, "", Nothing, Nothing)
                     oLink.Item.ImageOptions.SvgImage = My.Resources.documentprint
                     oLink.Item.Tag = oProfile
                     If oProfile.IsSystem Then
                         oLink.Item.Caption = "<b>" & oLink.Item.Caption & "</b>"
-                    Else
-                        oLink.Item.Caption = oProfile.Name
                     End If
                 Next
                 For Each oProfile As cExportProfile In oSurvey.ExportProfiles
                     Dim oLink As DevExpress.XtraNavBar.NavBarItemLink = grpMain.AddItem
                     oLink.Item.Caption = oProfile.Name
+                    oLink.Item.SuperTip = modDevExpress.CreateSuperTip(oLink.Item.Caption, Nothing, Nothing, If(oProfile.IsPlan, modMain.GetLocalizedString("exportprofile.textpart1"), modMain.GetLocalizedString("exportprofile.textpart2")), Nothing, Nothing, "", Nothing, Nothing)
                     oLink.Item.ImageOptions.SvgImage = My.Resources.documentexport
                     oLink.Item.Tag = oProfile
                     If oProfile.IsSystem Then
                         oLink.Item.Caption = "<b>" & oLink.Item.Caption & "</b>"
-                    Else
-                        oLink.Item.Caption = oProfile.Name
                     End If
                 Next
 
@@ -233,6 +233,7 @@ Friend Class frmPreview
                 For Each oProfile As cExportProfile In oSurvey.ExportProfiles
                     Dim oLink As DevExpress.XtraNavBar.NavBarItemLink = grpMain.AddItem
                     oLink.Item.Caption = oProfile.Name
+                    oLink.Item.SuperTip = modDevExpress.CreateSuperTip(oLink.Item.Caption, Nothing, Nothing, If(oProfile.IsPlan, modMain.GetLocalizedString("exportprofile.textpart1"), modMain.GetLocalizedString("exportprofile.textpart2")), Nothing, Nothing, "", Nothing, Nothing)
                     oLink.Item.ImageOptions.SvgImage = My.Resources.documentexport
                     oLink.Item.Tag = oProfile
                     If oProfile.IsSystem Then
@@ -293,6 +294,7 @@ Friend Class frmPreview
                 For Each oProfile As cPreviewProfile In oSurvey.PreviewProfiles
                     Dim oLink As DevExpress.XtraNavBar.NavBarItemLink = grpMain.AddItem
                     oLink.Item.Caption = oProfile.Name
+                    oLink.Item.SuperTip = modDevExpress.CreateSuperTip(oLink.Item.Caption, Nothing, Nothing, If(oProfile.IsPlan, modMain.GetLocalizedString("previewprofile.textpart1"), modMain.GetLocalizedString("previewprofile.textpart2")), Nothing, Nothing, "", Nothing, Nothing)
                     oLink.Item.ImageOptions.SvgImage = My.Resources.documentprint
                     oLink.Item.Tag = oProfile
                     If oProfile.IsSystem Then
@@ -2264,6 +2266,7 @@ Friend Class frmPreview
                     Dim oNewProfile As cExportProfile = oSurvey.ExportProfiles.AddAsCopy(oCurrentProfile, sName)
                     Dim oLink As DevExpress.XtraNavBar.NavBarItemLink = grpMain.AddItem
                     oLink.Item.Caption = oNewProfile.Name
+                    oLink.Item.SuperTip = modDevExpress.CreateSuperTip(oLink.Item.Caption, Nothing, Nothing, If(oNewProfile.IsPlan, modMain.GetLocalizedString("exportprofile.textpart1"), modMain.GetLocalizedString("exportprofile.textpart2")), Nothing, Nothing, "", Nothing, Nothing)
                     oLink.Item.ImageOptions.SvgImage = My.Resources.documentexport
                     oLink.Item.Tag = oNewProfile
                     If oNewProfile.IsSystem Then
@@ -2278,6 +2281,7 @@ Friend Class frmPreview
                     Dim oNewProfile As cPreviewProfile = oSurvey.PreviewProfiles.AddAsCopy(oCurrentProfile, sName)
                     Dim oLink As DevExpress.XtraNavBar.NavBarItemLink = grpMain.AddItem
                     oLink.Item.Caption = oNewProfile.Name
+                    oLink.Item.SuperTip = modDevExpress.CreateSuperTip(oLink.Item.Caption, Nothing, Nothing, If(oNewProfile.IsPlan, modMain.GetLocalizedString("previewprofile.textpart1"), modMain.GetLocalizedString("previewprofile.textpart2")), Nothing, Nothing, "", Nothing, Nothing)
                     oLink.Item.ImageOptions.SvgImage = My.Resources.documentprint
                     oLink.Item.Tag = oNewProfile
                     If oNewProfile.IsSystem Then
@@ -2363,10 +2367,14 @@ Friend Class frmPreview
     End Sub
 
     Private Delegate Sub oDrawRefreshThread_callbackDelegate()
-
     Private Sub oDrawRefreshThread_callback()
         Try
-            Call pSurveyDraw(picMap.CreateGraphics)
+            If InvokeRequired Then
+                Invoke(New oDrawRefreshThread_callbackDelegate(AddressOf oDrawRefreshThread_callback))
+            Else
+                Call pSurveyDraw(picMap.CreateGraphics)
+            End If
+
         Catch ex As Exception
             Call Debug.Print(ex.Message)
         End Try
@@ -2452,9 +2460,9 @@ Friend Class frmPreview
                 Call oCurrentDesign.Paint(Graphics, oOptions, cDrawOptions.Empty, oSelection)
 
                 Graphics.SmoothingMode = SmoothingMode.None
-                If bDrawRulers Then
-                    Call modPaint.MapDrawRulers(Graphics, oCurrentOptions, oSurvey, oSelection, iDrawRulesStyle, sPaintZoom)
-                End If
+                'If bDrawRulers Then
+                '    Call modPaint.MapDrawRulers(Graphics, oCurrentOptions, oSurvey, oSelection, iDrawRulesStyle, sPaintZoom)
+                'End If
 
                 Graphics.SmoothingMode = SmoothingMode.AntiAlias
                 Graphics.ResetTransform()

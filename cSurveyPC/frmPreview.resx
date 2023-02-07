@@ -121,13 +121,6 @@
   <data name="chkPrintTrigpointText.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="chkPrintTrigpointText.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="chkPrintTrigpointText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="chkPrintTrigpointText.Location" type="System.Drawing.Point, System.Drawing">
     <value>30, 83</value>
@@ -190,6 +183,7 @@
   <data name="lblPrintCenterlineColorMode.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lblPrintCenterlineColorMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>

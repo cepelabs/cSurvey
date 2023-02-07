@@ -562,7 +562,7 @@ Friend Class frmMain2
                 If Filename = "" Then
                     Using olfd As OpenFileDialog = New OpenFileDialog
                         With olfd
-                            .Filter = GetLocalizedString("main.filetypeTRO") & " (*.TRO)|*.TRO|" & GetLocalizedString("main.filetypeCSURVEY") & " (*.CSX;*.CSZ)|*.CSX;*.CSZ|" & GetLocalizedString("main.filetypePOCKETTOPO") & " (*.TXT)|*.TXT|" & GetLocalizedString("main.filetypeCOMPASSDATA") & " (*.DAT)|*.dat|" & GetLocalizedString("main.filetypeCAVEEXPLORER") & " (*.TXT)|*.TXT|" & GetLocalizedString("main.filetypeTEXT") & " (*.CSV;*.TXT)|*.CSV;*.TXT|" & GetLocalizedString("main.filetypeXLSX") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeERON") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeMNEMO") & " (*.XLSX)|*.XLSX"
+                            .Filter = GetLocalizedString("main.filetypeTRO") & " (*.TRO)|*.TRO|" & GetLocalizedString("main.filetypeCSURVEY") & " (*.CSX;*.CSZ)|*.CSX;*.CSZ|" & GetLocalizedString("main.filetypePOCKETTOPO") & " (*.TXT)|*.TXT|" & GetLocalizedString("main.filetypeCOMPASSDATA") & " (*.DAT)|*.dat|" & GetLocalizedString("main.filetypeCAVEEXPLORER") & " (*.TXT)|*.TXT|" & GetLocalizedString("main.filetypeTEXT") & " (*.CSV;*.TXT)|*.CSV;*.TXT|" & GetLocalizedString("main.filetypeXLSX") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeERON") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeMNEMO") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeTH") & " (*.TH)|*.TH"
                             If FilterIndex > 0 Then
                                 .FilterIndex = FilterIndex
                                 bSaveLastUsedFilter = False
@@ -610,6 +610,9 @@ Friend Class frmMain2
                         Case 9
                             'MNEMO EXCEL FILE
                             Call pSurveyImportXLSXMNemo(Filename, Append)
+                        Case 10
+                            'Therion TH
+                            Call pSurveyImportTherion(Filename, Append)
                     End Select
                 End If
             Case ImportExportFormatEnum.Track
@@ -675,7 +678,7 @@ Friend Class frmMain2
                             Call pSurveyImportcSurvey(Filename, Append)
                         Case 3
                             'Therion TH2
-                            Call pSurveyImportTherion(Filename, Append)
+                            Call pSurveyImportTherionGraphics(Filename, Append)
                     End Select
                 End If
         End Select
@@ -9849,7 +9852,7 @@ Friend Class frmMain2
         End Try
     End Sub
 
-    Private Sub pSurveyImportTherion(Filename As String, Append As Boolean)
+    Private Sub pSurveyImportTherionGraphics(Filename As String, Append As Boolean)
         Using frmIT As frmImportTherion = New frmImportTherion
             frmIT.txtFilename.Text = Filename
 
@@ -10835,6 +10838,34 @@ Friend Class frmMain2
         End Using
     End Sub
 
+    Private Sub pSurveyImportTherion(Filename As String, Append As Boolean)
+        bDisableSegmentsChangeEvent = True
+        bDisableTrigpointsChangeEvent = True
+
+        Call oMousePointer.Push(Cursors.WaitCursor)
+
+        Call cTherion.SurveyImportTherionFile(oSurvey, Filename)
+
+        bDisableSegmentsChangeEvent = False
+        bDisableTrigpointsChangeEvent = False
+
+        Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, 0, GetLocalizedString("main.progressend9"))
+        Call oMousePointer.Pop()
+
+        Call pSurveyFillSessionList(False)
+        Call pSurveyFillCaveList(False)
+
+        Call pSurveyCaption()
+        Call pSurveySegmentsRefresh()
+        Call pSurveyTrigpointsRefresh()
+
+        'Call pSurveyLoadTreeLayers()
+
+        Call pSurveyCalculate(True)
+        Call pMapInvalidate()
+
+    End Sub
+
     Private Sub pSurveyImportText(Filename As String, Append As Boolean)
         'FILE DI TESTO GENERICO
         Dim dNow As Date = Date.Now
@@ -10903,102 +10934,103 @@ Friend Class frmMain2
                     Call oSurvey.Properties.DataTables.Segments.Add("import_date", Data.cDataFields.TypeEnum.Date)
 
                     Dim fi As FileInfo = New FileInfo(Filename)
-                    Dim sr As StreamReader = New StreamReader(fi.FullName, System.Text.Encoding.ASCII)
-                    If Not sr.EndOfStream Then
-                        If bSkipFirstLine Then
-                            Call sr.ReadLine()
+                    Using sr As StreamReader = New StreamReader(fi.FullName, System.Text.Encoding.ASCII)
+                        If Not sr.EndOfStream Then
+                            If bSkipFirstLine Then
+                                Call sr.ReadLine()
+                            End If
+                            Do Until sr.EndOfStream
+                                Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, sr.BaseStream.Position / sr.BaseStream.Length, GetLocalizedString("main.progress9"))
+
+                                sLine = sr.ReadLine
+
+                                If bCommentSymbols Then
+                                    For Each ch In sCommentSymbols
+                                        Dim chPos = sLine.IndexOf(ch)
+                                        If chPos >= 0 Then sLine = sLine.Remove(chPos, sLine.Length - chPos)
+                                    Next
+                                End If
+
+                                If sLine.Length = 0 Then Continue Do
+
+                                If bRemoveEmptyEntries Then
+                                    sLineParts = sLine.Split(sSeparator, StringSplitOptions.RemoveEmptyEntries)
+                                Else
+                                    sLineParts = sLine.Split(sSeparator, StringSplitOptions.None)
+                                End If
+
+                                Dim sFrom As String
+                                Dim sTo As String
+                                Dim dDist As Decimal
+                                Dim dDir As Decimal
+                                Dim dIncl As Decimal
+                                Dim dLeft As Decimal
+                                Dim dRight As Decimal
+                                Dim dUp As Decimal
+                                Dim dDown As Decimal
+                                Dim sNote As String
+
+                                sFrom = modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.From, sLineParts, ""))
+                                sTo = modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.To, sLineParts, ""))
+
+                                If bSplaySymbol And sTo = sSplaySymbol Then sTo = ""
+                                Dim cutSplay = False
+                                If bCutSplaySymbol And sTo = sCutSplaySymbol Then
+                                    sTo = ""
+                                    cutSplay = True
+                                End If
+
+                                If bZeroSymbol Then
+                                    For Each field In sLineParts
+                                        If field.Length = 1 And sZeroSymbol.Contains(field) Then
+                                            field = "0"
+                                        End If
+                                    Next
+                                End If
+
+                                If sPrefix.Length > 0 AndAlso sFrom.Length > 0 Then sFrom = sPrefix + sFrom
+                                If sPrefix.Length > 0 AndAlso sTo.Length > 0 Then sTo = sPrefix + sTo
+
+                                dDist = modNumbers.StringToDecimal(modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.Distance, sLineParts, 0)))
+                                dDir = modNumbers.StringToDecimal(modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.Direction, sLineParts, 0)))
+                                dIncl = modNumbers.StringToDecimal(modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.Inclination, sLineParts, 0)))
+
+                                If sTo.Length > 0 Then
+                                    dLeft = modNumbers.StringToDecimal(modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.Left, sLineParts, 0)))
+                                    dRight = modNumbers.StringToDecimal(modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.Right, sLineParts, 0)))
+                                    dUp = modNumbers.StringToDecimal(modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.Up, sLineParts, 0)))
+                                    dDown = modNumbers.StringToDecimal(modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.Down, sLineParts, 0)))
+                                    sNote = modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.Note, sLineParts, ""))
+                                End If
+
+                                Dim oSegment As cSegment = oSurvey.Segments.Append()
+                                Call oSegment.SetCave(sCaveName)
+                                oSegment.From = sFrom
+                                oSegment.To = sTo
+
+                                oSegment.Distance = dDist
+                                oSegment.Bearing = dDir
+                                oSegment.Inclination = dIncl
+
+                                oSegment.Left = dLeft
+                                oSegment.Right = dRight
+                                oSegment.Up = dUp
+                                oSegment.Down = dDown
+
+                                oSegment.Note = sNote
+
+                                oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Right
+                                oSegment.Exclude = False
+                                oSegment.Cut = cutSplay
+
+
+                                Call oSegment.DataProperties.SetValue("import_source", "text")
+                                Call oSegment.DataProperties.SetValue("import_date", dNow)
+
+                                Call oSegment.Save()
+                            Loop
                         End If
-                        Do Until sr.EndOfStream
-                            Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, sr.BaseStream.Position / sr.BaseStream.Length, GetLocalizedString("main.progress9"))
-
-                            sLine = sr.ReadLine
-
-                            If bCommentSymbols Then
-                                For Each ch In sCommentSymbols
-                                    Dim chPos = sLine.IndexOf(ch)
-                                    If chPos >= 0 Then sLine = sLine.Remove(chPos, sLine.Length - chPos)
-                                Next
-                            End If
-
-                            If sLine.Length = 0 Then Continue Do
-
-                            If bRemoveEmptyEntries Then
-                                sLineParts = sLine.Split(sSeparator, StringSplitOptions.RemoveEmptyEntries)
-                            Else
-                                sLineParts = sLine.Split(sSeparator, StringSplitOptions.None)
-                            End If
-
-                            Dim sFrom As String
-                            Dim sTo As String
-                            Dim dDist As Decimal
-                            Dim dDir As Decimal
-                            Dim dIncl As Decimal
-                            Dim dLeft As Decimal
-                            Dim dRight As Decimal
-                            Dim dUp As Decimal
-                            Dim dDown As Decimal
-                            Dim sNote As String
-
-                            sFrom = modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.From, sLineParts, ""))
-                            sTo = modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.To, sLineParts, ""))
-
-                            If bSplaySymbol And sTo = sSplaySymbol Then sTo = ""
-                            Dim cutSplay = False
-                            If bCutSplaySymbol And sTo = sCutSplaySymbol Then
-                                sTo = ""
-                                cutSplay = True
-                            End If
-
-                            If bZeroSymbol Then
-                                For Each field In sLineParts
-                                    If field.Length = 1 And sZeroSymbol.Contains(field) Then
-                                        field = "0"
-                                    End If
-                                Next
-                            End If
-
-                            If sPrefix.Length > 0 AndAlso sFrom.Length > 0 Then sFrom = sPrefix + sFrom
-                            If sPrefix.Length > 0 AndAlso sTo.Length > 0 Then sTo = sPrefix + sTo
-
-                            dDist = modNumbers.StringToDecimal(modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.Distance, sLineParts, 0)))
-                            dDir = modNumbers.StringToDecimal(modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.Direction, sLineParts, 0)))
-                            dIncl = modNumbers.StringToDecimal(modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.Inclination, sLineParts, 0)))
-
-                            If sTo.Length > 0 Then
-                                dLeft = modNumbers.StringToDecimal(modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.Left, sLineParts, 0)))
-                                dRight = modNumbers.StringToDecimal(modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.Right, sLineParts, 0)))
-                                dUp = modNumbers.StringToDecimal(modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.Up, sLineParts, 0)))
-                                dDown = modNumbers.StringToDecimal(modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.Down, sLineParts, 0)))
-                                sNote = modNumbers.FieldUnformat(oFields.GetValue(UIHelpers.Import.cSourceField.TextFieldIndexEnum.Note, sLineParts, ""))
-                            End If
-
-                            Dim oSegment As cSegment = oSurvey.Segments.Append()
-                            Call oSegment.SetCave(sCaveName)
-                            oSegment.From = sFrom
-                            oSegment.To = sTo
-
-                            oSegment.Distance = dDist
-                            oSegment.Bearing = dDir
-                            oSegment.Inclination = dIncl
-
-                            oSegment.Left = dLeft
-                            oSegment.Right = dRight
-                            oSegment.Up = dUp
-                            oSegment.Down = dDown
-
-                            oSegment.Note = sNote
-
-                            oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Right
-                            oSegment.Exclude = False
-                            oSegment.Cut = cutSplay
-
-
-                            Call oSegment.DataProperties.SetValue("import_source", "text")
-                            Call oSegment.DataProperties.SetValue("import_date", dNow)
-
-                            Call oSegment.Save()
-                        Loop
-                    End If
+                    End Using
                 Catch ex As Exception
                     Call pLogAdd(ex)
                 End Try
@@ -12066,201 +12098,202 @@ Friend Class frmMain2
                     Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, 0, GetLocalizedString("main.progressbegin6"), cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageImport Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
 
                     Dim fi As FileInfo = New FileInfo(Filename)
-                    Dim sr As StreamReader = New StreamReader(fi.FullName, System.Text.Encoding.ASCII)
-                    If Not sr.EndOfStream Then
-                        Do Until sr.EndOfStream
-                            sLine = sr.ReadLine
-                            If sLine <> "" Then
-                                sLineParts = sLine.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
-                                If sKeyWords.Contains(sLineParts(0)) Then
-                                    Select Case sLineParts(0)
-                                        Case "TRIP"
+                    Using sr As StreamReader = New StreamReader(fi.FullName, System.Text.Encoding.ASCII)
+                        If Not sr.EndOfStream Then
+                            Do Until sr.EndOfStream
+                                sLine = sr.ReadLine
+                                If sLine <> "" Then
+                                    sLineParts = sLine.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
+                                    If sKeyWords.Contains(sLineParts(0)) Then
+                                        Select Case sLineParts(0)
+                                            Case "TRIP"
                                         'grosso modo direi che coincide con le sessioni di csurvey
                                         'non faccio nulla ma uso il tag DATE per cominciare una sessione
-                                        Case "DATE"
-                                            Dim sDatePart As String() = sLineParts(1).Split("-")
-                                            Dim dSessionDate As Date = New Date(sDatePart(0), sDatePart(1), sDatePart(2))
-                                            oCurrentSession = oSurvey.Properties.Sessions.Add(dSessionDate, oSurvey.Properties.Sessions.GetUniqueID(dSessionDate, GetLocalizedString("main.textpart13")))
-                                        Case "FIX"
+                                            Case "DATE"
+                                                Dim sDatePart As String() = sLineParts(1).Split("-")
+                                                Dim dSessionDate As Date = New Date(sDatePart(0), sDatePart(1), sDatePart(2))
+                                                oCurrentSession = oSurvey.Properties.Sessions.Add(dSessionDate, oSurvey.Properties.Sessions.GetUniqueID(dSessionDate, GetLocalizedString("main.textpart13")))
+                                            Case "FIX"
                                         'coordinate GPS in formato metrico!
                                         'DA FARE!!!!!
                                         'bisogna chiedere i dati aggiuntivi per completare le coordinate UTM...
-                                        Case "DECLINATION"
-                                            sDeclination = modNumbers.StringToSingle(sLineParts(1))
-                                        Case "PLAN"
-                                            iDesign = cSurvey.Design.cIDesign.cDesignTypeEnum.Plan
-                                            bData = False
-                                            bPolyline = False
-                                            bStations = False
-                                        Case "ELEVATION"
-                                            iDesign = cSurvey.Design.cIDesign.cDesignTypeEnum.Profile
-                                            bData = False
-                                            bPolyline = False
-                                            bStations = False
-                                        Case "STATIONS"
-                                            bStations = True
-                                        Case "DATA"
-                                            bData = bImportData
-                                            bPolyline = False
-                                            bStations = False
-                                        Case "POLYLINE"
-                                            sColor = sLineParts(1)
-                                            Dim oColor As Color
-                                            Select Case iDesign
-                                                Case cIDesign.cDesignTypeEnum.Plan
-                                                    oItem = DirectCast(oSurvey.Plan.Layers(cLayers.LayerTypeEnum.Borders), cSurvey.Design.Layers.cLayerBorders).CreateBorder(sCaveName, "")
-                                                Case cIDesign.cDesignTypeEnum.Profile
-                                                    oItem = DirectCast(oSurvey.Profile.Layers(cLayers.LayerTypeEnum.Borders), cSurvey.Design.Layers.cLayerBorders).CreateBorder(sCaveName, "")
-                                            End Select
-                                            Select Case sColor
-                                                Case "ORANGE"
-                                                    oColor = Color.Orange
-                                                Case "BLUE"
-                                                    oColor = Color.Blue
-                                                Case "BLACK"
-                                                    oColor = Color.Black
-                                                Case "GREEN"
-                                                    oColor = Color.Green
-                                                Case "BROWN"
-                                                    oColor = Color.Brown
-                                                Case "GRAY"
-                                                    oColor = Color.Gray
-                                                Case "RED"
-                                                    oColor = Color.Red
-                                                Case Else
-                                                    'non so quanto colori siano gestibili
-                                                    Try
-                                                        oColor = Color.FromName(sColor)
-                                                    Catch
-                                                        oColor = Color.DimGray
-                                                    End Try
-                                            End Select
-                                            oItem.Pen.Color = oColor
-                                            Call oItem.DataProperties.SetValue("import_source", "pockettopo")
-                                            Call oItem.DataProperties.SetValue("import_date", dNow)
+                                            Case "DECLINATION"
+                                                sDeclination = modNumbers.StringToSingle(sLineParts(1))
+                                            Case "PLAN"
+                                                iDesign = cSurvey.Design.cIDesign.cDesignTypeEnum.Plan
+                                                bData = False
+                                                bPolyline = False
+                                                bStations = False
+                                            Case "ELEVATION"
+                                                iDesign = cSurvey.Design.cIDesign.cDesignTypeEnum.Profile
+                                                bData = False
+                                                bPolyline = False
+                                                bStations = False
+                                            Case "STATIONS"
+                                                bStations = True
+                                            Case "DATA"
+                                                bData = bImportData
+                                                bPolyline = False
+                                                bStations = False
+                                            Case "POLYLINE"
+                                                sColor = sLineParts(1)
+                                                Dim oColor As Color
+                                                Select Case iDesign
+                                                    Case cIDesign.cDesignTypeEnum.Plan
+                                                        oItem = DirectCast(oSurvey.Plan.Layers(cLayers.LayerTypeEnum.Borders), cSurvey.Design.Layers.cLayerBorders).CreateBorder(sCaveName, "")
+                                                    Case cIDesign.cDesignTypeEnum.Profile
+                                                        oItem = DirectCast(oSurvey.Profile.Layers(cLayers.LayerTypeEnum.Borders), cSurvey.Design.Layers.cLayerBorders).CreateBorder(sCaveName, "")
+                                                End Select
+                                                Select Case sColor
+                                                    Case "ORANGE"
+                                                        oColor = Color.Orange
+                                                    Case "BLUE"
+                                                        oColor = Color.Blue
+                                                    Case "BLACK"
+                                                        oColor = Color.Black
+                                                    Case "GREEN"
+                                                        oColor = Color.Green
+                                                    Case "BROWN"
+                                                        oColor = Color.Brown
+                                                    Case "GRAY"
+                                                        oColor = Color.Gray
+                                                    Case "RED"
+                                                        oColor = Color.Red
+                                                    Case Else
+                                                        'non so quanto colori siano gestibili
+                                                        Try
+                                                            oColor = Color.FromName(sColor)
+                                                        Catch
+                                                            oColor = Color.DimGray
+                                                        End Try
+                                                End Select
+                                                oItem.Pen.Color = oColor
+                                                Call oItem.DataProperties.SetValue("import_source", "pockettopo")
+                                                Call oItem.DataProperties.SetValue("import_date", dNow)
 
-                                            bData = False
-                                            bPolyline = bImportGraphics
-                                            bStations = False
-                                        Case Else
-                                            bData = False
-                                            bPolyline = False
-                                            bStations = False
-                                    End Select
-                                Else
-                                    If bStations Then
-                                        sLineParts = sLine.Split(vbTab)
-                                        If sOrigin = "" Then
-                                            sOrigin = sLineParts(2)
-                                            If iDesign = cIDesign.cDesignTypeEnum.Plan Then
-                                                oPlanTraslation = New SizeF(-modNumbers.StringToDecimal(sLineParts(0)), modNumbers.StringToDecimal(sLineParts(1)))
-                                            Else
-                                                oProfileTraslation = New SizeF(-modNumbers.StringToDecimal(sLineParts(0)), modNumbers.StringToDecimal(sLineParts(1)))
-                                            End If
-                                            bStations = False
-                                        Else
-                                            If sLineParts(2) = sOrigin Then
+                                                bData = False
+                                                bPolyline = bImportGraphics
+                                                bStations = False
+                                            Case Else
+                                                bData = False
+                                                bPolyline = False
+                                                bStations = False
+                                        End Select
+                                    Else
+                                        If bStations Then
+                                            sLineParts = sLine.Split(vbTab)
+                                            If sOrigin = "" Then
+                                                sOrigin = sLineParts(2)
                                                 If iDesign = cIDesign.cDesignTypeEnum.Plan Then
                                                     oPlanTraslation = New SizeF(-modNumbers.StringToDecimal(sLineParts(0)), modNumbers.StringToDecimal(sLineParts(1)))
                                                 Else
                                                     oProfileTraslation = New SizeF(-modNumbers.StringToDecimal(sLineParts(0)), modNumbers.StringToDecimal(sLineParts(1)))
                                                 End If
-                                            End If
-                                            bStations = False
-                                        End If
-                                    End If
-                                    If bPolyline Then
-                                        Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, sr.BaseStream.Position / sr.BaseStream.Length, GetLocalizedString("main.progress6b"))
-                                        sLineParts = sLine.Split(vbTab)
-                                        Dim oPoint As PointF = New PointF(modNumbers.StringToSingle(sLineParts(0)), -1 * modNumbers.StringToSingle(sLineParts(1)))
-                                        If iDesign = cIDesign.cDesignTypeEnum.Plan Then
-                                            oPoint.X += oPlanTraslation.Width
-                                            oPoint.Y += oPlanTraslation.Height
-                                            oPoint = modPaint.RotatePoint(oPoint, -sDeclination)
-                                        Else
-                                            oPoint.X += oProfileTraslation.Width
-                                            oPoint.Y += oProfileTraslation.Height
-                                        End If
-                                        Call oItem.Points.AddFromPaintPoint(oPoint)
-                                    End If
-                                    If bData Then
-                                        Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, sr.BaseStream.Position / sr.BaseStream.Length, GetLocalizedString("main.progress6a"))
-                                        sLineParts = sLine.Split(vbTab)
-                                        Try
-                                            Dim sFrom As String
-                                            Dim sTo As String
-                                            Dim dDist As Decimal
-                                            Dim dDir As Decimal
-                                            Dim dIncl As Decimal
-                                            Dim dLeft As Decimal
-                                            Dim dRight As Decimal
-                                            Dim dUp As Decimal
-                                            Dim dDown As Decimal
-                                            Dim iDirection As cSurvey.cSurvey.DirectionEnum
-                                            Dim sNote As String
-
-                                            Try : sFrom = sPrefix & sLineParts(0).Trim.ToUpper : Catch : sFrom = "" : End Try
-                                            Try : sTo = sLineParts(1).Trim.ToUpper : Catch : sTo = "" : End Try
-                                            If sTo <> "" Then sTo = sPrefix & sTo
-
-                                            Try : dDir = modNumbers.StringToDecimal(sLineParts(2)) : Catch : dDist = 0 : End Try
-                                            Try : dIncl = modNumbers.StringToDecimal(sLineParts(3)) : Catch : dDir = 0 : End Try
-                                            Try : dDist = modNumbers.StringToDecimal(sLineParts(4)) : Catch : dIncl = 0 : End Try
-
-                                            Try
-                                                If sLineParts(5) = "<" Then
-                                                    iDirection = cSurvey.cSurvey.DirectionEnum.Left
-                                                Else
-                                                    iDirection = cSurvey.cSurvey.DirectionEnum.Right
+                                                bStations = False
+                                            Else
+                                                If sLineParts(2) = sOrigin Then
+                                                    If iDesign = cIDesign.cDesignTypeEnum.Plan Then
+                                                        oPlanTraslation = New SizeF(-modNumbers.StringToDecimal(sLineParts(0)), modNumbers.StringToDecimal(sLineParts(1)))
+                                                    Else
+                                                        oProfileTraslation = New SizeF(-modNumbers.StringToDecimal(sLineParts(0)), modNumbers.StringToDecimal(sLineParts(1)))
+                                                    End If
                                                 End If
+                                                bStations = False
+                                            End If
+                                        End If
+                                        If bPolyline Then
+                                            Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, sr.BaseStream.Position / sr.BaseStream.Length, GetLocalizedString("main.progress6b"))
+                                            sLineParts = sLine.Split(vbTab)
+                                            Dim oPoint As PointF = New PointF(modNumbers.StringToSingle(sLineParts(0)), -1 * modNumbers.StringToSingle(sLineParts(1)))
+                                            If iDesign = cIDesign.cDesignTypeEnum.Plan Then
+                                                oPoint.X += oPlanTraslation.Width
+                                                oPoint.Y += oPlanTraslation.Height
+                                                oPoint = modPaint.RotatePoint(oPoint, -sDeclination)
+                                            Else
+                                                oPoint.X += oProfileTraslation.Width
+                                                oPoint.Y += oProfileTraslation.Height
+                                            End If
+                                            Call oItem.Points.AddFromPaintPoint(oPoint)
+                                        End If
+                                        If bData Then
+                                            Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, sr.BaseStream.Position / sr.BaseStream.Length, GetLocalizedString("main.progress6a"))
+                                            sLineParts = sLine.Split(vbTab)
+                                            Try
+                                                Dim sFrom As String
+                                                Dim sTo As String
+                                                Dim dDist As Decimal
+                                                Dim dDir As Decimal
+                                                Dim dIncl As Decimal
+                                                Dim dLeft As Decimal
+                                                Dim dRight As Decimal
+                                                Dim dUp As Decimal
+                                                Dim dDown As Decimal
+                                                Dim iDirection As cSurvey.cSurvey.DirectionEnum
+                                                Dim sNote As String
+
+                                                Try : sFrom = sPrefix & sLineParts(0).Trim.ToUpper : Catch : sFrom = "" : End Try
+                                                Try : sTo = sLineParts(1).Trim.ToUpper : Catch : sTo = "" : End Try
+                                                If sTo <> "" Then sTo = sPrefix & sTo
+
+                                                Try : dDir = modNumbers.StringToDecimal(sLineParts(2)) : Catch : dDist = 0 : End Try
+                                                Try : dIncl = modNumbers.StringToDecimal(sLineParts(3)) : Catch : dDir = 0 : End Try
+                                                Try : dDist = modNumbers.StringToDecimal(sLineParts(4)) : Catch : dIncl = 0 : End Try
+
+                                                Try
+                                                    If sLineParts(5) = "<" Then
+                                                        iDirection = cSurvey.cSurvey.DirectionEnum.Left
+                                                    Else
+                                                        iDirection = cSurvey.cSurvey.DirectionEnum.Right
+                                                    End If
+                                                Catch
+                                                    iDirection = cSurvey.cSurvey.DirectionEnum.Right
+                                                End Try
+
+                                                dLeft = 0
+                                                dRight = 0
+                                                dUp = 0
+                                                dDown = 0
+
+                                                sNote = ""
+
+                                                Call oTempSegments.Add(New cImportSegment(oCurrentSession, sFrom, sTo, dDist, dDir, dIncl, sNote, iDirection, dLeft, dRight, dUp, dDown))
                                             Catch
-                                                iDirection = cSurvey.cSurvey.DirectionEnum.Right
                                             End Try
-
-                                            dLeft = 0
-                                            dRight = 0
-                                            dUp = 0
-                                            dDown = 0
-
-                                            sNote = ""
-
-                                            Call oTempSegments.Add(New cImportSegment(oCurrentSession, sFrom, sTo, dDist, dDir, dIncl, sNote, iDirection, dLeft, dRight, dUp, dDown))
-                                        Catch
-                                        End Try
+                                        End If
                                     End If
                                 End If
+                            Loop
+
+                            Dim iIndex As Integer
+                            Dim iCount As Integer = oTempSegments.Count
+                            For Each oTempSegment As cImportSegment In oTempSegments
+                                Dim oSegment As cSegment = oSurvey.Segments.Append()
+                                Call oSegment.SetCave(sCaveName)
+                                Call oSegment.SetSession(oTempSegment.Session)
+                                oSegment.From = oTempSegment.From
+                                oSegment.To = oTempSegment.To
+                                oSegment.Distance = oTempSegment.Distance
+                                oSegment.Bearing = oTempSegment.Bearing
+                                oSegment.Inclination = oTempSegment.Inclination
+                                oSegment.Left = oTempSegment.Left
+                                oSegment.Right = oTempSegment.Right
+                                oSegment.Up = oTempSegment.Up
+                                oSegment.Down = oTempSegment.Down
+                                oSegment.Note = oTempSegment.Note
+                                oSegment.Direction = oTempSegment.Direction
+                                Call oSegment.DataProperties.SetValue("import_source", "pockettopo")
+                                Call oSegment.DataProperties.SetValue("import_date", dNow)
+                                Call oSegment.Save()
+
+                                iIndex += 1
+                                Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, iIndex / iCount, GetLocalizedString("main.progress6c"))
+                            Next
+
+                            If oSurvey.Properties.Origin = "" Then
+                                oSurvey.Properties.Origin = sOrigin
                             End If
-                        Loop
-
-                        Dim iIndex As Integer
-                        Dim iCount As Integer = oTempSegments.Count
-                        For Each oTempSegment As cImportSegment In oTempSegments
-                            Dim oSegment As cSegment = oSurvey.Segments.Append()
-                            Call oSegment.SetCave(sCaveName)
-                            Call oSegment.SetSession(oTempSegment.Session)
-                            oSegment.From = oTempSegment.From
-                            oSegment.To = oTempSegment.To
-                            oSegment.Distance = oTempSegment.Distance
-                            oSegment.Bearing = oTempSegment.Bearing
-                            oSegment.Inclination = oTempSegment.Inclination
-                            oSegment.Left = oTempSegment.Left
-                            oSegment.Right = oTempSegment.Right
-                            oSegment.Up = oTempSegment.Up
-                            oSegment.Down = oTempSegment.Down
-                            oSegment.Note = oTempSegment.Note
-                            oSegment.Direction = oTempSegment.Direction
-                            Call oSegment.DataProperties.SetValue("import_source", "pockettopo")
-                            Call oSegment.DataProperties.SetValue("import_date", dNow)
-                            Call oSegment.Save()
-
-                            iIndex += 1
-                            Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, iIndex / iCount, GetLocalizedString("main.progress6c"))
-                        Next
-
-                        If oSurvey.Properties.Origin = "" Then
-                            oSurvey.Properties.Origin = sOrigin
                         End If
-                    End If
+                    End Using
                 Catch ex As Exception
                     Call pLogAdd(ex)
                 End Try
@@ -12289,23 +12322,24 @@ Friend Class frmMain2
 
     Private Sub pSurveyImportCompass2(Filename As String, Append As Boolean)
         Dim fi As FileInfo = New FileInfo(Filename)
-        Dim sr As StreamReader = New StreamReader(fi.FullName, System.Text.Encoding.ASCII)
-        Dim sLine As String = ""
-        Dim iLineCount As Integer = 0
-        Dim iCaveLineCount As Integer = 0
-        Do Until sr.EndOfStream
-            Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, sr.BaseStream.Position / sr.BaseStream.Length, GetLocalizedString("main.progress7"))
-            Do Until sLine = Chr(&HFF) Or (sLine = "" And iCaveLineCount > 9) Or sr.EndOfStream
-                sLine = sr.ReadLine
-                sLine = sLine.Trim
-                Dim sLinePart() As String = sLine.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
-                If sLinePart(0) = "M" Then
+        Using sr As StreamReader = New StreamReader(fi.FullName, System.Text.Encoding.ASCII)
+            Dim sLine As String = ""
+            Dim iLineCount As Integer = 0
+            Dim iCaveLineCount As Integer = 0
+            Do Until sr.EndOfStream
+                Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, sr.BaseStream.Position / sr.BaseStream.Length, GetLocalizedString("main.progress7"))
+                Do Until sLine = Chr(&HFF) Or (sLine = "" And iCaveLineCount > 9) Or sr.EndOfStream
+                    sLine = sr.ReadLine
+                    sLine = sLine.Trim
+                    Dim sLinePart() As String = sLine.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
+                    If sLinePart(0) = "M" Then
 
-                ElseIf sLinePart(0) = "D" Then
+                    ElseIf sLinePart(0) = "D" Then
 
-                End If
+                    End If
+                Loop
             Loop
-        Loop
+        End Using
     End Sub
 
     Private Sub pSurveyImportCompass(Filename As String, Append As Boolean)
@@ -12367,224 +12401,225 @@ Friend Class frmMain2
                 Call oSurvey.Properties.DataTables.Segments.Add("import_date", Data.cDataFields.TypeEnum.Date)
 
                 Dim fi As FileInfo = New FileInfo(Filename)
-                Dim sr As StreamReader = New StreamReader(fi.FullName, System.Text.Encoding.ASCII)
-                Dim sLine As String = ""
-                Dim iLineCount As Integer = 0
-                Dim iCaveLineCount As Integer = 0
-                Do Until sr.EndOfStream
-                    Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, sr.BaseStream.Position / sr.BaseStream.Length, GetLocalizedString("main.progress7"))
-                    Do Until sLine = Chr(&HFF) Or (sLine = "" And iCaveLineCount > 9) Or sr.EndOfStream
-                        sLine = sr.ReadLine
-                        sLine = sLine.Trim
-                        If sLine.Length > 1 Then
-                            Select Case iCaveLineCount
-                                Case 0
-                                    'nome cavità...
-                                    sCaveBranchName = sLine
-                                    If oCurrentCave.Branches.Contains(sCaveBranchName) Then
-                                        oCurrentCaveBranch = oCurrentCave.Branches(sCaveBranchName)
-                                    Else
-                                        oCurrentCaveBranch = oCurrentCave.Branches.Add(sCaveBranchName)
-                                    End If
-                                Case 1
-                                    'nome sessione
-                                    sSessionDescription = sLine.Replace("SURVEY NAME: ", "")
-                                    If bBranchForSession Then
-                                        If oCurrentCaveBranch.Branches.Contains(sSessionDescription) Then
-                                            oCurrentCaveSubBranch = oCurrentCaveBranch.Branches(sSessionDescription)
+                Using sr As StreamReader = New StreamReader(fi.FullName, System.Text.Encoding.ASCII)
+                    Dim sLine As String = ""
+                    Dim iLineCount As Integer = 0
+                    Dim iCaveLineCount As Integer = 0
+                    Do Until sr.EndOfStream
+                        Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, sr.BaseStream.Position / sr.BaseStream.Length, GetLocalizedString("main.progress7"))
+                        Do Until sLine = Chr(&HFF) Or (sLine = "" And iCaveLineCount > 9) Or sr.EndOfStream
+                            sLine = sr.ReadLine
+                            sLine = sLine.Trim
+                            If sLine.Length > 1 Then
+                                Select Case iCaveLineCount
+                                    Case 0
+                                        'nome cavità...
+                                        sCaveBranchName = sLine
+                                        If oCurrentCave.Branches.Contains(sCaveBranchName) Then
+                                            oCurrentCaveBranch = oCurrentCave.Branches(sCaveBranchName)
                                         Else
-                                            oCurrentCaveSubBranch = oCurrentCaveBranch.Branches.Add(sSessionDescription)
+                                            oCurrentCaveBranch = oCurrentCave.Branches.Add(sCaveBranchName)
                                         End If
-                                    Else
-                                        oCurrentCaveSubBranch = oCurrentCaveBranch
-                                    End If
-                                Case 2
-                                    'data session
-                                    Dim sTemp As String = sLine.Replace("SURVEY DATE: ", "")
-                                    If sTemp.Contains("COMMENT:") Then
-                                        sTemp = sTemp.Substring(0, sTemp.IndexOf("COMMENT:"))
-                                    End If
-                                    Dim sDatePart() As String = sTemp.Trim.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
-                                    dSessionDate = New Date(sDatePart(2), sDatePart(0), sDatePart(1))
-                                    oCurrentsession = oSurvey.Properties.Sessions.Add(dSessionDate, sSessionDescription)
-                                    oCurrentsession.Note = sLine.Substring(sLine.IndexOf("COMMENT:") + 8).Trim
-                                Case 3
-                                    'team
-                                    sLine = sr.ReadLine.Trim
-                                    oCurrentsession.Team = sLine
-                                    iCaveLineCount += 1
-                                    iLineCount += 1
-                                Case 5
-                                    'parametri
-                                    'DECLINATION: 1.00  FORMAT: DDDDLUDRADLNT  CORRECTIONS: 2.00 3.00 4.00 CORRECTIONS2: 5.0 6.0 
-                                    Dim sLinePart() As String = sLine.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
-                                    If sLinePart.Contains("FORMAT:") Then
-                                        Dim sFormat As String = sLinePart(sLinePart.ToList.IndexOf("FORMAT:") + 1)
-                                        '--------------------
-                                        If sFormat.Length = 12 Then
-                                            bBackSight = sFormat(11) = "B"
-                                        ElseIf sFormat.Length = 13 Then
-                                            bBackSight = sFormat(11) = "B"
-                                            If sFormat(12) = "F" Then
-                                                iSideMeasureReferTo = cSegment.SideMeasuresReferToEnum.StartPoint
+                                    Case 1
+                                        'nome sessione
+                                        sSessionDescription = sLine.Replace("SURVEY NAME: ", "")
+                                        If bBranchForSession Then
+                                            If oCurrentCaveBranch.Branches.Contains(sSessionDescription) Then
+                                                oCurrentCaveSubBranch = oCurrentCaveBranch.Branches(sSessionDescription)
                                             Else
-                                                iSideMeasureReferTo = cSegment.SideMeasuresReferToEnum.EndPoint
+                                                oCurrentCaveSubBranch = oCurrentCaveBranch.Branches.Add(sSessionDescription)
                                             End If
-                                        ElseIf sFormat.Length = 15 Then
-                                            bBackSight = sFormat(13) = "B"
-                                            If sFormat(14) = "F" Then
-                                                iSideMeasureReferTo = cSegment.SideMeasuresReferToEnum.StartPoint
-                                            Else
-                                                iSideMeasureReferTo = cSegment.SideMeasuresReferToEnum.EndPoint
-                                            End If
-                                        End If
-                                        oCurrentsession.SideMeasuresReferTo = iSideMeasureReferTo
-
-                                        If bBackSight Then
-                                            iFlagsIndex = 11
                                         Else
-                                            iFlagsIndex = 9
+                                            oCurrentCaveSubBranch = oCurrentCaveBranch
                                         End If
-
-                                        'FORMAT: DMMD LRUD LDdAaNF
-                                        'I.	    Bearing Units: D = Degrees, Q = quads, R = Grads
-                                        'II.	Length Units: D = Decimal Feet, I = Feet and Inches M = Meters
-                                        'III.	Passage Units: Same as length
-                                        'IV.	Inclination Units: D = Degrees, G = Percent Grade M = Degrees and Minutes, R = Grads W = Depth Gauge
-
-                                        'V.	    Passage Dimension Order: U = Up, D = Down, R = Right L = Left
-                                        'VI.	Passage Dimension Order: U = Up, D = Down, R = Right L = Left
-                                        'VII.	Passage Dimension Order: U = Up, D = Down, R = Right L = Left
-                                        'VIII.	Passage Dimension Order: U = Up, D = Down, R = Right L = Left
-
-                                        'IX.	Shot Item Order: L = Length, A = Azimuth, D = Inclination, a = Back Azimuth, d = Back Inclination
-                                        'X.	    Shot Item Order: L = Length, A = Azimuth, D = Inclination, a = Back Azimuth, d = Back Inclination
-                                        'XI.	Shot Item Order: L = Length, A = Azimuth, D = Inclination, a = Back Azimuth, d = Back Inclination
-                                        'XII.	Shot Item Order: L = Length, A = Azimuth, D = Inclination, a = Back Azimuth, d = Back Inclination
-                                        'XIII.	Shot Item Order: L = Length, A = Azimuth, D = Inclination, a = Back Azimuth, d = Back Inclination
-
-                                        'XIV.	Backsight: B=Redundant, N or empty=No Redundant Backsights.
-                                        'XV.LRUD Association: F=From Station, T=To Station
-                                        'http://www.fountainware.com/compass/Documents/FileFormats/SurveyDataFormat.htm
-
-                                        'Compatibility Issues. Over time, the Compass Format string has changed to accommodate more format information. For backward compatibility, Compass can read all previous versions of the format. Here is detailed information about different versions of the Format strings:
-                                        '11-Character Format. The earliest version of the string had 11 characters like this: UUUUDDDDSSS
-                                        '12-Character Format. The next version had 12 characters, adding Backsight information: UUUUDDDDSSSB
-                                        '13-Character Format. The next version had 13 characters, adding information about the LRUD associations: UUUUDDDDSSSBL
-                                        '15-Character Format. Finally, the current version has 15 characters, adding backsights to order information: UUUUDDDDSSSSSBL
-                                        'U = Units, D = Dimension Order, S = Shot Order, B = Backsight Info, L = LRUD association
-                                    End If
-                                Case Is > 8
-                                    If sLine <> "" Then
-                                        Dim sLineParts() As String = sLine.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
-
-                                        Dim sFrom As String
-                                        Dim sTo As String
-                                        Dim dDist As Decimal
-                                        Dim dDir As Decimal
-                                        Dim dIncl As Decimal
-                                        Dim dLeft As Decimal
-                                        Dim dRight As Decimal
-                                        Dim dUp As Decimal
-                                        Dim dDown As Decimal
-                                        Dim sFlags As String
-                                        Dim sNote As String = ""
-
-                                        Try : sFrom = modNumbers.FieldUnformat(sLineParts(0)) : Catch : sFrom = "" : End Try
-                                        If sFrom <> "" Then sFrom = sPrefix & sFrom
-                                        Try : sTo = modNumbers.FieldUnformat(sLineParts(1)) : Catch : sTo = "" : End Try
-                                        If bImportSSShotAsSplay Then
-                                            If sTo.ToLower Like "*ss*" Then
-                                                sTo = ""
-                                            End If
+                                    Case 2
+                                        'data session
+                                        Dim sTemp As String = sLine.Replace("SURVEY DATE: ", "")
+                                        If sTemp.Contains("COMMENT:") Then
+                                            sTemp = sTemp.Substring(0, sTemp.IndexOf("COMMENT:"))
                                         End If
-                                        If sTo <> "" Then sTo = sPrefix & sTo
-
-                                        Try : dDist = modNumbers.MathRound(modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(2))) * 0.3048, 2) : Catch : dDist = 0 : End Try
-                                        Try : dDir = modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(3))) : Catch : dDir = 0 : End Try
-                                        Try : dIncl = modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(4))) : Catch : dIncl = 0 : End Try
-
-                                        Try : dLeft = modNumbers.MathRound(modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(5))) * 0.3048D, 2) : Catch : dLeft = 0 : End Try
-                                        If dLeft < 0D Then dLeft = 0
-                                        Try : dRight = modNumbers.MathRound(modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(8))) * 0.3048D, 2) : Catch : dRight = 0 : End Try
-                                        If dRight < 0D Then dRight = 0
-                                        Try : dUp = modNumbers.MathRound(modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(6))) * 0.3048D, 2) : Catch : dUp = 0 : End Try
-                                        If dUp < 0D Then dUp = 0
-                                        Try : dDown = modNumbers.MathRound(modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(7))) * 0.3048D, 2) : Catch : dDown = 0 : End Try
-                                        If dDown < 0D Then dDown = 0
-
-                                        sFlags = If(sLineParts.Count > iFlagsIndex, sLineParts(iFlagsIndex), "")
-                                        If sFlags.StartsWith("#|") Then
-                                            'L=escludi dai calcoli
-                                            'X=il tiro andrebbe inserito solo se nei parametri ho detto di inserirlo (va comunque impostato come escludi dai calcoli)
-                                            'P=non disegnare: si può importare come superficie o duplicato
-                                            'C=non gestibile in csurvey
-                                            sFlags = sFlags.Substring(2)
-                                            If sFlags.Contains("L") Then
-                                                bExcludeSegment = True
+                                        Dim sDatePart() As String = sTemp.Trim.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
+                                        dSessionDate = New Date(sDatePart(2), sDatePart(0), sDatePart(1))
+                                        oCurrentsession = oSurvey.Properties.Sessions.Add(dSessionDate, sSessionDescription)
+                                        oCurrentsession.Note = sLine.Substring(sLine.IndexOf("COMMENT:") + 8).Trim
+                                    Case 3
+                                        'team
+                                        sLine = sr.ReadLine.Trim
+                                        oCurrentsession.Team = sLine
+                                        iCaveLineCount += 1
+                                        iLineCount += 1
+                                    Case 5
+                                        'parametri
+                                        'DECLINATION: 1.00  FORMAT: DDDDLUDRADLNT  CORRECTIONS: 2.00 3.00 4.00 CORRECTIONS2: 5.0 6.0 
+                                        Dim sLinePart() As String = sLine.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
+                                        If sLinePart.Contains("FORMAT:") Then
+                                            Dim sFormat As String = sLinePart(sLinePart.ToList.IndexOf("FORMAT:") + 1)
+                                            '--------------------
+                                            If sFormat.Length = 12 Then
+                                                bBackSight = sFormat(11) = "B"
+                                            ElseIf sFormat.Length = 13 Then
+                                                bBackSight = sFormat(11) = "B"
+                                                If sFormat(12) = "F" Then
+                                                    iSideMeasureReferTo = cSegment.SideMeasuresReferToEnum.StartPoint
+                                                Else
+                                                    iSideMeasureReferTo = cSegment.SideMeasuresReferToEnum.EndPoint
+                                                End If
+                                            ElseIf sFormat.Length = 15 Then
+                                                bBackSight = sFormat(13) = "B"
+                                                If sFormat(14) = "F" Then
+                                                    iSideMeasureReferTo = cSegment.SideMeasuresReferToEnum.StartPoint
+                                                Else
+                                                    iSideMeasureReferTo = cSegment.SideMeasuresReferToEnum.EndPoint
+                                                End If
                                             End If
-                                            If sFlags.Contains("X") Then
-                                                bSkipSegment = True
+                                            oCurrentsession.SideMeasuresReferTo = iSideMeasureReferTo
+
+                                            If bBackSight Then
+                                                iFlagsIndex = 11
                                             Else
+                                                iFlagsIndex = 9
+                                            End If
+
+                                            'FORMAT: DMMD LRUD LDdAaNF
+                                            'I.	    Bearing Units: D = Degrees, Q = quads, R = Grads
+                                            'II.	Length Units: D = Decimal Feet, I = Feet and Inches M = Meters
+                                            'III.	Passage Units: Same as length
+                                            'IV.	Inclination Units: D = Degrees, G = Percent Grade M = Degrees and Minutes, R = Grads W = Depth Gauge
+
+                                            'V.	    Passage Dimension Order: U = Up, D = Down, R = Right L = Left
+                                            'VI.	Passage Dimension Order: U = Up, D = Down, R = Right L = Left
+                                            'VII.	Passage Dimension Order: U = Up, D = Down, R = Right L = Left
+                                            'VIII.	Passage Dimension Order: U = Up, D = Down, R = Right L = Left
+
+                                            'IX.	Shot Item Order: L = Length, A = Azimuth, D = Inclination, a = Back Azimuth, d = Back Inclination
+                                            'X.	    Shot Item Order: L = Length, A = Azimuth, D = Inclination, a = Back Azimuth, d = Back Inclination
+                                            'XI.	Shot Item Order: L = Length, A = Azimuth, D = Inclination, a = Back Azimuth, d = Back Inclination
+                                            'XII.	Shot Item Order: L = Length, A = Azimuth, D = Inclination, a = Back Azimuth, d = Back Inclination
+                                            'XIII.	Shot Item Order: L = Length, A = Azimuth, D = Inclination, a = Back Azimuth, d = Back Inclination
+
+                                            'XIV.	Backsight: B=Redundant, N or empty=No Redundant Backsights.
+                                            'XV.LRUD Association: F=From Station, T=To Station
+                                            'http://www.fountainware.com/compass/Documents/FileFormats/SurveyDataFormat.htm
+
+                                            'Compatibility Issues. Over time, the Compass Format string has changed to accommodate more format information. For backward compatibility, Compass can read all previous versions of the format. Here is detailed information about different versions of the Format strings:
+                                            '11-Character Format. The earliest version of the string had 11 characters like this: UUUUDDDDSSS
+                                            '12-Character Format. The next version had 12 characters, adding Backsight information: UUUUDDDDSSSB
+                                            '13-Character Format. The next version had 13 characters, adding information about the LRUD associations: UUUUDDDDSSSBL
+                                            '15-Character Format. Finally, the current version has 15 characters, adding backsights to order information: UUUUDDDDSSSSSBL
+                                            'U = Units, D = Dimension Order, S = Shot Order, B = Backsight Info, L = LRUD association
+                                        End If
+                                    Case Is > 8
+                                        If sLine <> "" Then
+                                            Dim sLineParts() As String = sLine.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
+
+                                            Dim sFrom As String
+                                            Dim sTo As String
+                                            Dim dDist As Decimal
+                                            Dim dDir As Decimal
+                                            Dim dIncl As Decimal
+                                            Dim dLeft As Decimal
+                                            Dim dRight As Decimal
+                                            Dim dUp As Decimal
+                                            Dim dDown As Decimal
+                                            Dim sFlags As String
+                                            Dim sNote As String = ""
+
+                                            Try : sFrom = modNumbers.FieldUnformat(sLineParts(0)) : Catch : sFrom = "" : End Try
+                                            If sFrom <> "" Then sFrom = sPrefix & sFrom
+                                            Try : sTo = modNumbers.FieldUnformat(sLineParts(1)) : Catch : sTo = "" : End Try
+                                            If bImportSSShotAsSplay Then
+                                                If sTo.ToLower Like "*ss*" Then
+                                                    sTo = ""
+                                                End If
+                                            End If
+                                            If sTo <> "" Then sTo = sPrefix & sTo
+
+                                            Try : dDist = modNumbers.MathRound(modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(2))) * 0.3048, 2) : Catch : dDist = 0 : End Try
+                                            Try : dDir = modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(3))) : Catch : dDir = 0 : End Try
+                                            Try : dIncl = modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(4))) : Catch : dIncl = 0 : End Try
+
+                                            Try : dLeft = modNumbers.MathRound(modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(5))) * 0.3048D, 2) : Catch : dLeft = 0 : End Try
+                                            If dLeft < 0D Then dLeft = 0
+                                            Try : dRight = modNumbers.MathRound(modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(8))) * 0.3048D, 2) : Catch : dRight = 0 : End Try
+                                            If dRight < 0D Then dRight = 0
+                                            Try : dUp = modNumbers.MathRound(modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(6))) * 0.3048D, 2) : Catch : dUp = 0 : End Try
+                                            If dUp < 0D Then dUp = 0
+                                            Try : dDown = modNumbers.MathRound(modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(7))) * 0.3048D, 2) : Catch : dDown = 0 : End Try
+                                            If dDown < 0D Then dDown = 0
+
+                                            sFlags = If(sLineParts.Count > iFlagsIndex, sLineParts(iFlagsIndex), "")
+                                            If sFlags.StartsWith("#|") Then
+                                                'L=escludi dai calcoli
+                                                'X=il tiro andrebbe inserito solo se nei parametri ho detto di inserirlo (va comunque impostato come escludi dai calcoli)
+                                                'P=non disegnare: si può importare come superficie o duplicato
+                                                'C=non gestibile in csurvey
+                                                sFlags = sFlags.Substring(2)
+                                                If sFlags.Contains("L") Then
+                                                    bExcludeSegment = True
+                                                End If
+                                                If sFlags.Contains("X") Then
+                                                    bSkipSegment = True
+                                                Else
+                                                    bSkipSegment = False
+                                                End If
+                                                If sFlags.Contains("P") Then
+                                                    bSurfaceSegment = True
+                                                Else
+                                                    bSurfaceSegment = False
+                                                End If
+                                            Else
+                                                sNote = sFlags.Substring(sFlags.IndexOf("#") + 1)
                                                 bSkipSegment = False
-                                            End If
-                                            If sFlags.Contains("P") Then
-                                                bSurfaceSegment = True
-                                            Else
+                                                bExcludeSegment = False
                                                 bSurfaceSegment = False
                                             End If
-                                        Else
-                                            sNote = sFlags.Substring(sFlags.IndexOf("#") + 1)
-                                            bSkipSegment = False
-                                            bExcludeSegment = False
-                                            bSurfaceSegment = False
-                                        End If
 
-                                        'cumulo alle note i campi successivi
-                                        For iNote As Integer = iFlagsIndex + 1 To sLineParts.Length - 1
-                                            sNote &= " " & sLineParts(iNote)
-                                        Next
-                                        sNote = sNote.Trim
+                                            'cumulo alle note i campi successivi
+                                            For iNote As Integer = iFlagsIndex + 1 To sLineParts.Length - 1
+                                                sNote &= " " & sLineParts(iNote)
+                                            Next
+                                            sNote = sNote.Trim
 
-                                        If (bImportFlagX) OrElse (Not bImportFlagX AndAlso Not bSkipSegment) Then
-                                            Dim oSegment As cSegment = oSurvey.Segments.Append()
-                                            Call oSegment.SetCave(oCurrentCave.Name, oCurrentCaveSubBranch.Path)
-                                            Call oSegment.SetSession(oCurrentsession)
-                                            oSegment.From = sFrom
-                                            oSegment.To = sTo
-                                            If sTo = "" Then
-                                                oSegment.Splay = True
-                                                oSegment.To = oSegment.GetSplayName()
+                                            If (bImportFlagX) OrElse (Not bImportFlagX AndAlso Not bSkipSegment) Then
+                                                Dim oSegment As cSegment = oSurvey.Segments.Append()
+                                                Call oSegment.SetCave(oCurrentCave.Name, oCurrentCaveSubBranch.Path)
+                                                Call oSegment.SetSession(oCurrentsession)
+                                                oSegment.From = sFrom
+                                                oSegment.To = sTo
+                                                If sTo = "" Then
+                                                    oSegment.Splay = True
+                                                    oSegment.To = oSegment.GetSplayName()
+                                                End If
+
+                                                oSegment.Distance = dDist
+                                                oSegment.Bearing = dDir
+                                                oSegment.Inclination = dIncl
+
+                                                oSegment.Left = dLeft
+                                                oSegment.Right = dRight
+                                                oSegment.Up = dUp
+                                                oSegment.Down = dDown
+
+                                                oSegment.Note = sNote
+
+                                                oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Right
+                                                oSegment.Exclude = bExcludeSegment
+                                                oSegment.Surface = bSurfaceSegment
+
+                                                Call oSegment.DataProperties.SetValue("import_source", "compass")
+                                                Call oSegment.DataProperties.SetValue("import_date", dNow)
+
+                                                Call oSegment.Save()
                                             End If
-
-                                            oSegment.Distance = dDist
-                                            oSegment.Bearing = dDir
-                                            oSegment.Inclination = dIncl
-
-                                            oSegment.Left = dLeft
-                                            oSegment.Right = dRight
-                                            oSegment.Up = dUp
-                                            oSegment.Down = dDown
-
-                                            oSegment.Note = sNote
-
-                                            oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Right
-                                            oSegment.Exclude = bExcludeSegment
-                                            oSegment.Surface = bSurfaceSegment
-
-                                            Call oSegment.DataProperties.SetValue("import_source", "compass")
-                                            Call oSegment.DataProperties.SetValue("import_date", dNow)
-
-                                            Call oSegment.Save()
                                         End If
-                                    End If
-                            End Select
-                        End If
-                        iCaveLineCount += 1
-                        iLineCount += 1
+                                End Select
+                            End If
+                            iCaveLineCount += 1
+                            iLineCount += 1
+                        Loop
+                        iCaveLineCount = 0
                     Loop
-                    iCaveLineCount = 0
-                Loop
+                End Using
 
                 bDisableSegmentsChangeEvent = False
                 bDisableTrigpointsChangeEvent = False

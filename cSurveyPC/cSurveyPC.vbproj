@@ -370,6 +370,7 @@
     <Compile Include="Calculate\cCalculate.Plot.cSplayPlanProjectedData.vb" />
     <Compile Include="cOptions.cSurfaceLochOptions.vb" />
     <Compile Include="cOptionsTherion.vb" />
+    <Compile Include="cTherion.vb" />
     <Compile Include="frmDistancesFilter.Designer.vb">
       <DependentUpon>frmDistancesFilter.vb</DependentUpon>
     </Compile>

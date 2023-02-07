@@ -101,7 +101,6 @@ Namespace My
             End Get
         End Property
 
-
         Private Sub MyApplication_UnhandledException(ByVal sender As Object, ByVal e As Microsoft.VisualBasic.ApplicationServices.UnhandledExceptionEventArgs) Handles Me.UnhandledException
             e.ExitApplication = ManageUnhandledException(e.Exception)
         End Sub

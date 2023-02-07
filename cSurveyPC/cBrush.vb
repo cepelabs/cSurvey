@@ -286,6 +286,30 @@ Namespace cSurvey.Design
             End Get
         End Property
 
+        Public Sub addRectangle(x As Single, y As Single, width As Single, height As Single)
+            Call oPath.AddRectangle(New RectangleF(x, y, width, height))
+        End Sub
+
+        Public Sub AddRectangle(rect As RectangleF)
+            Call oPath.AddRectangle(rect)
+        End Sub
+
+        Public Sub AddPie(x As Single, y As Single, width As Single, height As Single, startAngle As Single, sweepAngle As Single)
+            Call oPath.AddPie(x, y, width, height, startAngle, sweepAngle)
+        End Sub
+
+        Public Sub AddPie(rect As RectangleF, startAngle As Single, sweepAngle As Single)
+            Call AddPie(rect.X, rect.Y, rect.Width, rect.Height, startAngle, sweepAngle)
+        End Sub
+
+        Public Sub AddEllipse(x As Single, y As Single, width As Single, height As Single)
+            Call oPath.AddEllipse(x, y, width, height)
+        End Sub
+
+        Public Sub AddEllipse(rect As RectangleF)
+            Call oPath.AddEllipse(rect)
+        End Sub
+
         Public Sub AddBeziers(points As PointF())
             Call oPath.AddBeziers(points)
         End Sub
@@ -493,6 +517,7 @@ Namespace cSurvey.Design
 
         Friend Function Clone() As cPatternBrushes
             Dim oClone As cPatternBrushes = New cPatternBrushes(oSurvey)
+            Call oItems.Clear()
             For Each oItem As cPatternBrush In oItems
                 oClone.oItems.Add(oItem.Clone)
             Next

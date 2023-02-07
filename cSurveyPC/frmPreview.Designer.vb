@@ -1386,6 +1386,8 @@ Partial Class frmPreview
         'grpMain
         '
         Me.grpMain.AllowHtmlString = DevExpress.Utils.DefaultBoolean.[True]
+        Me.grpMain.Appearance.Options.UseTextOptions = True
+        Me.grpMain.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
         resources.ApplyResources(Me.grpMain, "grpMain")
         Me.grpMain.Expanded = True
         Me.grpMain.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsText

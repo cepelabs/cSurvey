@@ -10844,7 +10844,7 @@ Friend Class frmMain2
 
         Call oMousePointer.Push(Cursors.WaitCursor)
 
-        Call cTherion.SurveyImportTherionFile(oSurvey, Filename)
+        Call cTherion.Import(oSurvey, Filename)
 
         bDisableSegmentsChangeEvent = False
         bDisableTrigpointsChangeEvent = False

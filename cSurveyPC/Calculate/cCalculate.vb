@@ -672,7 +672,7 @@ Namespace cSurvey.Calculate
         Private Sub pCompassPltImportFrom(ByVal Filename As String, Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing)
             If My.Computer.FileSystem.FileExists(Filename) Then
                 'Dim bLogVerbose As Boolean = My.Application.Settings.GetSetting("debug.log.verbose", False)
-                Dim oProcessed As List(Of String) = New List(Of String)
+                Dim oProcessed As HashSet(Of String) = New HashSet(Of String)
                 Using sr As StreamReader = My.Computer.FileSystem.OpenTextFileReader(Filename)
                     Do Until sr.EndOfStream
                         Dim sPart As String() = sr.ReadLine.Trim.Split(vbTab)
@@ -693,20 +693,23 @@ Namespace cSurvey.Calculate
                                 sTrigPoint = DictionaryTranslate(Dictionary, sTrigPoint)
                                 If oTPs.Contains(sTrigPoint) AndAlso Not oProcessed.Contains(sTrigPoint) Then
                                     'If bLogVerbose Then Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, sTrigPoint & " -> " & sX & ";" & sY & ";" & sZ)
-                                    With oTPs.Item(sTrigPoint)
+                                    Dim oTp As Calculate.cTrigPoint = oTPs.Item(sTrigPoint)
+                                    With oTp
                                         Call .MoveTo(sX, sY, sZ)
+                                        If Not oProcessed.Contains(sTrigPoint) Then oProcessed.Add(sTrigPoint)
                                         If oSurvey.Properties.CalculateVersion > 2 Then
-                                            For Each sEquateTrigPoint In .Connections.GetEquateShots
-                                                If oTPs.Contains(sEquateTrigPoint) Then
-                                                    With oTPs.Item(sEquateTrigPoint)
-                                                        Call .MoveTo(sX, sY, sZ)
-                                                    End With
-                                                    If Not oProcessed.Contains(sEquateTrigPoint) Then oProcessed.Add(sEquateTrigPoint)
-                                                End If
-                                            Next
+                                            Call pCompassImportFromProcessEquate(oProcessed, oTp, sX, sY, sZ)
+                                            'For Each sEquateTrigPoint In .Connections.GetEquateShots
+                                            '    If oTPs.Contains(sEquateTrigPoint) Then
+                                            '        With oTPs.Item(sEquateTrigPoint)
+                                            '            Call .MoveTo(sX, sY, sZ)
+
+                                            '        End With
+                                            '        'If Not oProcessed.Contains(sEquateTrigPoint) Then oProcessed.Add(sEquateTrigPoint)
+                                            '    End If
+                                            'Next
                                         End If
                                     End With
-                                    If Not oProcessed.Contains(sTrigPoint) Then oProcessed.Add(sTrigPoint)
                                 End If
                         End Select
                     Loop
@@ -726,6 +729,21 @@ Namespace cSurvey.Calculate
                 '    Call oTPs(sProcessed).MoveBy(sOffSetX, sOffsetY, sOffsetZ)
                 'Next
             End If
+        End Sub
+
+        Private Sub pCompassImportFromProcessEquate(Processed As HashSet(Of String), TrigPoint As Calculate.cTrigPoint, X As Decimal, Y As Decimal, Z As Decimal)
+            With TrigPoint
+                For Each sEquateTrigPoint In .Connections.GetEquateShots
+                    If oTPs.Contains(sEquateTrigPoint) AndAlso Not Processed.Contains(sEquateTrigPoint) Then
+                        Dim oNextTp As Calculate.cTrigPoint = oTPs.Item(sEquateTrigPoint)
+                        With oNextTp
+                            Call .MoveTo(X, Y, Z)
+                            If Not Processed.Contains(sEquateTrigPoint) Then Processed.Add(sEquateTrigPoint)
+                            Call pCompassImportFromProcessEquate(Processed, oNextTp, X, Y, Z)
+                        End With
+                    End If
+                Next
+            End With
         End Sub
 
         Private Class cTrigPointCalculateItem

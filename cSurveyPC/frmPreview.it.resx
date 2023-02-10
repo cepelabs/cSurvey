@@ -1026,4 +1026,7 @@
   <data name="btnBaseRule.Caption" xml:space="preserve">
     <value>Impostazioni per scala...</value>
   </data>
+  <data name="btnProfileLargeBar.Caption" xml:space="preserve">
+    <value>Barra ingrandita</value>
+  </data>
 </root>

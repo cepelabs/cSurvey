@@ -149,6 +149,7 @@ Partial Class frmPreview
         Me.pbProgress = New DevExpress.XtraEditors.Repository.RepositoryItemProgressBar()
         Me.btnProfileImportFromFile = New DevExpress.XtraBars.BarButtonItem()
         Me.btnProfileExportToFile = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnProfileLargeBar = New DevExpress.XtraBars.BarCheckItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.grpProfiles = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.grpFile = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
@@ -1055,9 +1056,9 @@ Partial Class frmPreview
         Me.RibbonControl1.AutoHideEmptyItems = True
         Me.RibbonControl1.Categories.AddRange(New DevExpress.XtraBars.BarManagerCategory() {CType(resources.GetObject("RibbonControl1.Categories"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("RibbonControl1.Categories1"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("RibbonControl1.Categories2"), DevExpress.XtraBars.BarManagerCategory)})
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.btnProfilesAdd, Me.btnProfilesDelete, Me.btnProperties, Me.btnBaseRule, Me.btnPrint, Me.btnExport, Me.btnClose, Me.btnZoomIn, Me.btnZoomOut, Me.btnZoomToFit, Me.btnSidePanel, Me.btnDesignGraphicsQuality, Me.btnStop, Me.btnDesignGraphics0, Me.btnDesignGraphics1, Me.btnDesignGraphics2, Me.btnManualRefresh, Me.btnRefresh, Me.pnlStatusText, Me.pnlStatusDesignZoom, Me.btnStatusDesignZoom100, Me.btnStatusDesignZoom200, Me.btnStatusDesignZoom250, Me.btnStatusDesignZoom500, Me.btnStatusDesignZoom1000, Me.pnlStatusCurrentRule, Me.pnlStatusProgress, Me.btnProfileImportFromFile, Me.btnProfileExportToFile})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.btnProfilesAdd, Me.btnProfilesDelete, Me.btnProperties, Me.btnBaseRule, Me.btnPrint, Me.btnExport, Me.btnClose, Me.btnZoomIn, Me.btnZoomOut, Me.btnZoomToFit, Me.btnSidePanel, Me.btnDesignGraphicsQuality, Me.btnStop, Me.btnDesignGraphics0, Me.btnDesignGraphics1, Me.btnDesignGraphics2, Me.btnManualRefresh, Me.btnRefresh, Me.pnlStatusText, Me.pnlStatusDesignZoom, Me.btnStatusDesignZoom100, Me.btnStatusDesignZoom200, Me.btnStatusDesignZoom250, Me.btnStatusDesignZoom500, Me.btnStatusDesignZoom1000, Me.pnlStatusCurrentRule, Me.pnlStatusProgress, Me.btnProfileImportFromFile, Me.btnProfileExportToFile, Me.btnProfileLargeBar})
         resources.ApplyResources(Me.RibbonControl1, "RibbonControl1")
-        Me.RibbonControl1.MaxItemId = 30
+        Me.RibbonControl1.MaxItemId = 31
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
         Me.RibbonControl1.QuickToolbarItemLinks.Add(Me.btnExport)
@@ -1300,6 +1301,12 @@ Partial Class frmPreview
         Me.btnProfileExportToFile.Id = 29
         Me.btnProfileExportToFile.Name = "btnProfileExportToFile"
         '
+        'btnProfileLargeBar
+        '
+        resources.ApplyResources(Me.btnProfileLargeBar, "btnProfileLargeBar")
+        Me.btnProfileLargeBar.Id = 30
+        Me.btnProfileLargeBar.Name = "btnProfileLargeBar"
+        '
         'RibbonPage1
         '
         Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.grpProfiles, Me.grpFile, Me.grpView, Me.grpOptions, Me.RibbonPageGroup1})
@@ -1400,6 +1407,7 @@ Partial Class frmPreview
         Me.mnuProfiles.ItemLinks.Add(Me.btnProfilesDelete)
         Me.mnuProfiles.ItemLinks.Add(Me.btnProfileImportFromFile, True)
         Me.mnuProfiles.ItemLinks.Add(Me.btnProfileExportToFile)
+        Me.mnuProfiles.ItemLinks.Add(Me.btnProfileLargeBar, True)
         Me.mnuProfiles.Name = "mnuProfiles"
         Me.mnuProfiles.Ribbon = Me.RibbonControl1
         '
@@ -1690,4 +1698,5 @@ Partial Class frmPreview
     Friend WithEvents mnuProfiles As DevExpress.XtraBars.PopupMenu
     Friend WithEvents chkPrintTrigpointText As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents cMainMessageBar As cMessageBar
+    Friend WithEvents btnProfileLargeBar As DevExpress.XtraBars.BarCheckItem
 End Class

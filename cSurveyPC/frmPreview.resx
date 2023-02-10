@@ -2757,6 +2757,9 @@
   <data name="btnProfileExportToFile.Caption" xml:space="preserve">
     <value>Export to file...</value>
   </data>
+  <data name="btnProfileLargeBar.Caption" xml:space="preserve">
+    <value>Large bar</value>
+  </data>
   <data name="RibbonControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -3149,6 +3152,12 @@
   </data>
   <data name="&gt;&gt;btnProfileExportToFile.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnProfileLargeBar.Name" xml:space="preserve">
+    <value>btnProfileLargeBar</value>
+  </data>
+  <data name="&gt;&gt;btnProfileLargeBar.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;RibbonPage1.Name" xml:space="preserve">
     <value>RibbonPage1</value>

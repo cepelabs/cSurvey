@@ -308,6 +308,8 @@ Friend Class frmPreview
 
         End Select
 
+        btnProfileLargeBar.Checked = My.Application.Settings.GetSetting("preview.bar.large", "0")
+
         bEventDisabled = False
 
         'call pRefresh(False, True)
@@ -2354,13 +2356,13 @@ Friend Class frmPreview
         Call pRefresh()
     End Sub
 
-    Private Sub mnuLvContextAdd_Click(sender As System.Object, e As System.EventArgs)
-        Call pProfileAdd()
-    End Sub
+    'Private Sub mnuLvContextAdd_Click(sender As System.Object, e As System.EventArgs)
+    '    Call pProfileAdd()
+    'End Sub
 
-    Private Sub mnuLvContextDelete_Click(sender As System.Object, e As System.EventArgs)
-        Call pProfileDelete()
-    End Sub
+    'Private Sub mnuLvContextDelete_Click(sender As System.Object, e As System.EventArgs)
+    '    Call pProfileDelete()
+    'End Sub
 
     Private Sub chkPrintSketch_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkPrintSketches.CheckedChanged
         Call pRefresh()
@@ -3454,5 +3456,15 @@ Friend Class frmPreview
 
     Private Sub pPopupHide()
         Call cMainMessageBar.Hide()
+    End Sub
+
+    Private Sub btnProfileLargeBar_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnProfileLargeBar.CheckedChanged
+        If btnProfileLargeBar.Checked Then
+            NavBarControl1.Width = NavBarControl1.Width * 2.0F
+            Call My.Application.Settings.SetSetting("preview.bar.large", "1")
+        Else
+            NavBarControl1.Width = NavBarControl1.Width / 2.0F
+            Call My.Application.Settings.DeleteSetting("preview.bar.large")
+        End If
     End Sub
 End Class

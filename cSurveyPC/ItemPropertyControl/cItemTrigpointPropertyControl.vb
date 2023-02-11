@@ -6,11 +6,23 @@ Imports DevExpress.XtraVerticalGrid.Events
 Imports DevExpress.XtraVerticalGrid.Rows
 
 Friend Class cItemTrigpointPropertyControl
+    Private Sub pGetEquate(Equates As HashSet(Of String), Station As Calculate.cTrigPoint)
+        For Each sEquate As String In oCalculatedTrigpoint.Connections.GetEquateShots
+            If Equates.Add(sEquate) Then
+                Call pGetEquate(Equates, oTrigpoint.Survey.Calculate.TrigPoints(sEquate))
+            End If
+        Next
+    End Sub
+
     Private Sub grdTrigpointInfo_CustomUnboundData(sender As Object, e As CustomDataEventArgs) Handles grdTrigpointInfo.CustomUnboundData
         If e.IsGetData Then
             Select Case e.RowProperties.FieldName.ToLower
                 Case "name"
                     e.Value = oTrigpoint.Name
+                Case "equate"
+                    Dim oEquates As HashSet(Of String) = New HashSet(Of String)
+                    Call pGetEquate(oEquates, oCalculatedTrigpoint)
+                    e.Value = String.Join(";", oEquates)
                 Case "x"
                     e.Value = Strings.Format(modNumbers.MathRound(oTrigpoint.Data.X, 3), "0.00") & " m"
                 Case "y"
@@ -91,6 +103,7 @@ Friend Class cItemTrigpointPropertyControl
             grdTrigpointInfo.Rows.Clear()
 
             Call grdTrigpointInfo.RowAdd("name", GetLocalizedString("main.textpart25"), DevExpress.Data.UnboundColumnType.String)
+            Call grdTrigpointInfo.RowAdd("equate", GetLocalizedString("main.textpart166"), DevExpress.Data.UnboundColumnType.String)
             Call grdTrigpointInfo.RowAdd("x", GetLocalizedString("main.textpart26"), DevExpress.Data.UnboundColumnType.String)
             Call grdTrigpointInfo.RowAdd("y", GetLocalizedString("main.textpart27"), DevExpress.Data.UnboundColumnType.String)
             Call grdTrigpointInfo.RowAdd("z", GetLocalizedString("main.textpart28"), DevExpress.Data.UnboundColumnType.String)
@@ -110,7 +123,7 @@ Friend Class cItemTrigpointPropertyControl
             Call grdTrigpointInfo.RowAdd("note", GetLocalizedString("main.textpart93"), DevExpress.Data.UnboundColumnType.String)
         End If
 
-
+        Call grdTrigpointInfo.RowSetVisible("equate", oCalculatedTrigpoint.Connections.GetEquateShots.Count > 0)
         Call grdTrigpointInfo.RowSetVisible("calibration", oTrigpoint.Data.IsCalibration)
         Call grdTrigpointInfo.RowSetVisible("entrance", oTrigpoint.IsEntrance)
         If oTrigpoint.Survey.Calculate.TrigPoints.Contains(oTrigpoint.Name) Then

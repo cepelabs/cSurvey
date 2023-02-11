@@ -1615,9 +1615,11 @@ Friend Class frmMain2
                 Catch
                     cboSegmentSessionList.EditValue = oSurvey.Properties.Sessions.EmptySession
                 End Try
+                Call pSegmentSetSessionColor()
 
                 cboSegmentCaveList.EditValue = oSurvey.Properties.CaveInfos(.Cave)
                 cboSegmentCaveBranchList.EditValue = If(cboSegmentCaveList.EditValue Is Nothing, Nothing, DirectCast(cboSegmentCaveList.EditValue, cCaveInfo).Branches(.Branch))
+                Call pSegmentSetCaveBranchesColor()
 
                 txtSegmentFrom.EditValue = .From
                 txtSegmentTo.EditValue = .To
@@ -14940,9 +14942,7 @@ Friend Class frmMain2
         Dim sCave As String = cCaveInfo.EditToString(cboSegmentCaveList.EditValue)
         Dim sBranch As String = cCaveInfoBranch.EditToString(cboSegmentCaveBranchList.EditValue)
         Dim oColor As Color = oSurvey.Properties.CaveInfos.GetColor(sCave, sBranch, Color.LightGray)
-        'Dim oLightColor = modPaint.LightColor(oColor, 0.85)
         pnlSegmentCaveBranchesColor.BackColor = oColor
-        'pnlSegmentCaveBranches.BackColor = oLightColor
     End Sub
 
     Private Sub pSegmentSetSessionColor()

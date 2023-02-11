@@ -1073,3 +1073,4 @@ main.undo51=Sketch change
 main.undo52=Morphing for all
 main.undotextinfo1=Undo {0} actions
 preview.textpart6=The size exceed the limit of the preview. The preview is not rendered with the defined size.
+main.textpart166=Equate to

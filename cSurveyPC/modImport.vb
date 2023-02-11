@@ -509,333 +509,332 @@ Module modImport
         End If
         Dim sBranch As String
 
-        Dim sr As StreamReader = New StreamReader(fi.FullName, System.Text.Encoding.ASCII)
-        Dim bScrapStarted As Boolean
-        Dim bLineStarted As Boolean
-        Dim bAreaStarted As Boolean
-        Dim oDesign As cDesign
-        Dim oItem As cItem
-        Dim iLineType As cIItemLine.LineTypeEnum
-        Dim iLastLineType As cIItemLine.LineTypeEnum
-        Dim bBeginSequence As Boolean
-        Dim bReverse As Boolean
-        Dim bFirstPoint As Boolean
-        Dim sScaleFactor As Single = 1
-        Dim oPoint As cPoint
-        Dim olastpoint As cPoint
-        Do Until sr.EndOfStream
-            Dim sLine As String = sr.ReadLine
-            sLine = sLine.Trim
-            If sLine.Contains("#") Then
-                sLine = sLine.Substring(0, sLine.IndexOf("#"))
-            End If
-
-            If sLine Like "input *" Then
-                Dim oScrapLine As cTherionScrapLine = New cTherionScrapLine(sLine)
-                Dim sNextFilename As String = Path.Combine(Path.GetDirectoryName(Filename), oScrapLine.GetValue(1))
-                If My.Computer.FileSystem.FileExists(sNextFilename) Then
-                    Call TherionThImportFrom(Survey, sNextFilename, sCave, Options, ScaleFactor)
+        Using sr As StreamReader = New StreamReader(fi.FullName, System.Text.Encoding.ASCII)
+            Dim bScrapStarted As Boolean
+            Dim bLineStarted As Boolean
+            Dim bAreaStarted As Boolean
+            Dim oDesign As cDesign
+            Dim oItem As cItem
+            Dim iLineType As cIItemLine.LineTypeEnum
+            Dim iLastLineType As cIItemLine.LineTypeEnum
+            Dim bBeginSequence As Boolean
+            Dim bReverse As Boolean
+            Dim bFirstPoint As Boolean
+            Dim sScaleFactor As Single = 1
+            Dim oPoint As cPoint
+            Dim olastpoint As cPoint
+            Do Until sr.EndOfStream
+                Dim sLine As String = sr.ReadLine
+                sLine = sLine.Trim
+                If sLine.Contains("#") Then
+                    sLine = sLine.Substring(0, sLine.IndexOf("#"))
                 End If
-            End If
 
-            If sLine Like "scrap *" Then
-                Dim oScrapLine As cTherionScrapLine = New cTherionScrapLine(sLine)
-                sBranch = oScrapLine.GetValue(1) 'sLineParameters(1).ToLower
-                Dim oCurrentBranch As cCaveInfoBranch
-                If oCurrentCave.Branches.Contains(sBranch) Then
-                    oCurrentBranch = oCurrentCave.Branches(sBranch)
-                Else
-                    oCurrentBranch = oCurrentCave.Branches.Add(sBranch)
-                End If
-                Select Case oScrapLine.GetParameters("-projection", "")
-                    Case "extended"
-                        oDesign = Survey.Profile
-                    Case Else
-                        oDesign = Survey.Plan
-                End Select
-                Dim sScale As String = oScrapLine.GetParameters("-scale", "")
-                If sScale <> "" Then
-                    Dim sScaleItem() As String = sScale.Split({" "}, StringSplitOptions.None)
-                    If sScaleItem.Length > 7 Then
-                        Dim oPoint1a As PointF = New PointF(modNumbers.StringToSingle(sScaleItem(0)), modNumbers.StringToSingle(sScaleItem(1)))
-                        Dim oPoint2a As PointF = New PointF(modNumbers.StringToSingle(sScaleItem(2)), modNumbers.StringToSingle(sScaleItem(3)))
-                        Dim oPoint1b As PointF = New PointF(modNumbers.StringToSingle(sScaleItem(4)), modNumbers.StringToSingle(sScaleItem(5)))
-                        Dim oPoint2b As PointF = New PointF(modNumbers.StringToSingle(sScaleItem(6)), modNumbers.StringToSingle(sScaleItem(7)))
-                        Dim sScaleA As Single = modPaint.DistancePointToPoint(oPoint1a, oPoint2a)
-                        Dim sScaleB As Single = modPaint.DistancePointToPoint(oPoint1b, oPoint2b)
-                        sScaleFactor = ScaleFactor * (sScaleB / sScaleA)
-                    End If
-                End If
-                bScrapStarted = True
-            End If
-            If bScrapStarted Then
-                If sLine Like "endscrap" Then
-                    bScrapStarted = False
-
-                    If bMergeAndReorderBorders Then
-                        If oBorders.Count > 0 Then
-                            Dim oFirstborder As cItemInvertedFreeHandArea = oBorders(0)
-                            For i As Integer = 1 To oBorders.Count - 1
-                                'Call oDesign.Layers(cLayers.LayerTypeEnum.Borders).Items.Combine(oBorders(i), oFirstborder)
-                                oFirstborder.Combine(oBorders(i))
-                            Next
-                            Call oFirstborder.Points.ReorderSequences()
-                        End If
-                        Call oBorders.Clear()
+                If sLine Like "input *" Then
+                    Dim oScrapLine As cTherionScrapLine = New cTherionScrapLine(sLine)
+                    Dim sNextFilename As String = Path.Combine(Path.GetDirectoryName(Filename), oScrapLine.GetValue(1))
+                    If My.Computer.FileSystem.FileExists(sNextFilename) Then
+                        Call TherionThImportFrom(Survey, sNextFilename, sCave, Options, ScaleFactor)
                     End If
                 End If
 
-                If bLineStarted Then
-                    If sLine Like "endline" Then
-                        bLineStarted = False
-
-                        'If bReverse Then oItem.Points.Revert()
-                        'If bConvertBezierToSpline Then
-                        '    If oItem.HaveLineType Then
-                        '        Call modPaint.ConvertSequences(oItem)
-                        '    End If
-                        'End If
+                If sLine Like "scrap *" Then
+                    Dim oScrapLine As cTherionScrapLine = New cTherionScrapLine(sLine)
+                    sBranch = oScrapLine.GetValue(1) 'sLineParameters(1).ToLower
+                    Dim oCurrentBranch As cCaveInfoBranch
+                    If oCurrentCave.Branches.Contains(sBranch) Then
+                        oCurrentBranch = oCurrentCave.Branches(sBranch)
                     Else
-                        If Char.IsNumber(sLine.Substring(1, 1)) Then
-                            Dim sPointData() As String = sLine.Split({" "}, System.StringSplitOptions.RemoveEmptyEntries)
-                            If bFirstPoint Then
-                                oPoint = New cPoint(Survey, modNumbers.StringToSingle(sPointData(0)) * sScaleFactor, -1 * modNumbers.StringToSingle(sPointData(1)) * sScaleFactor)
-                                'Call oItem.Points.Add(oPoint)
-                                olastpoint = oPoint
-                                iLastLineType = -2
-                                bFirstPoint = False
-                            Else
-                                iLineType = IIf(sPointData.Length = 2, cIItemLine.LineTypeEnum.Lines, cIItemLine.LineTypeEnum.Beziers)
-                                If iLineType <> iLastLineType Then
-                                    bBeginSequence = True
+                        oCurrentBranch = oCurrentCave.Branches.Add(sBranch)
+                    End If
+                    Select Case oScrapLine.GetParameters("-projection", "")
+                        Case "extended"
+                            oDesign = Survey.Profile
+                        Case Else
+                            oDesign = Survey.Plan
+                    End Select
+                    Dim sScale As String = oScrapLine.GetParameters("-scale", "")
+                    If sScale <> "" Then
+                        Dim sScaleItem() As String = sScale.Split({" "}, StringSplitOptions.None)
+                        If sScaleItem.Length > 7 Then
+                            Dim oPoint1a As PointF = New PointF(modNumbers.StringToSingle(sScaleItem(0)), modNumbers.StringToSingle(sScaleItem(1)))
+                            Dim oPoint2a As PointF = New PointF(modNumbers.StringToSingle(sScaleItem(2)), modNumbers.StringToSingle(sScaleItem(3)))
+                            Dim oPoint1b As PointF = New PointF(modNumbers.StringToSingle(sScaleItem(4)), modNumbers.StringToSingle(sScaleItem(5)))
+                            Dim oPoint2b As PointF = New PointF(modNumbers.StringToSingle(sScaleItem(6)), modNumbers.StringToSingle(sScaleItem(7)))
+                            Dim sScaleA As Single = modPaint.DistancePointToPoint(oPoint1a, oPoint2a)
+                            Dim sScaleB As Single = modPaint.DistancePointToPoint(oPoint1b, oPoint2b)
+                            sScaleFactor = ScaleFactor * (sScaleB / sScaleA)
+                        End If
+                    End If
+                    bScrapStarted = True
+                End If
+                If bScrapStarted Then
+                    If sLine Like "endscrap" Then
+                        bScrapStarted = False
+
+                        If bMergeAndReorderBorders Then
+                            If oBorders.Count > 0 Then
+                                Dim oFirstborder As cItemInvertedFreeHandArea = oBorders(0)
+                                For i As Integer = 1 To oBorders.Count - 1
+                                    'Call oDesign.Layers(cLayers.LayerTypeEnum.Borders).Items.Combine(oBorders(i), oFirstborder)
+                                    oFirstborder.Combine(oBorders(i))
+                                Next
+                                Call oFirstborder.Points.ReorderSequences()
+                            End If
+                            Call oBorders.Clear()
+                        End If
+                    End If
+
+                    If bLineStarted Then
+                        If sLine Like "endline" Then
+                            bLineStarted = False
+
+                            'If bReverse Then oItem.Points.Revert()
+                            'If bConvertBezierToSpline Then
+                            '    If oItem.HaveLineType Then
+                            '        Call modPaint.ConvertSequences(oItem)
+                            '    End If
+                            'End If
+                        Else
+                            If Char.IsNumber(sLine.Substring(1, 1)) Then
+                                Dim sPointData() As String = sLine.Split({" "}, System.StringSplitOptions.RemoveEmptyEntries)
+                                If bFirstPoint Then
+                                    oPoint = New cPoint(Survey, modNumbers.StringToSingle(sPointData(0)) * sScaleFactor, -1 * modNumbers.StringToSingle(sPointData(1)) * sScaleFactor)
+                                    'Call oItem.Points.Add(oPoint)
+                                    olastpoint = oPoint
+                                    iLastLineType = -2
+                                    bFirstPoint = False
                                 Else
-                                    bBeginSequence = False
-                                End If
-                                For i As Integer = 0 To sPointData.Length - 1 Step 2
-                                    oPoint = New cPoint(Survey, modNumbers.StringToSingle(sPointData(i)) * sScaleFactor, -1 * modNumbers.StringToSingle(sPointData(i + 1)) * sScaleFactor)
-                                    If bBeginSequence Then
-                                        If oItem.Points.First Is olastpoint Then
-                                            DirectCast(oItem, cIItemLine).LineType = iLineType
-                                        End If
-                                        Dim oNewpoint As cPoint = olastpoint.Clone
-                                        oNewpoint.BeginSequence = bBeginSequence
-                                        oNewpoint.LineType = iLineType
-                                        Call oItem.Points.Add(oNewpoint)
-                                        iLastLineType = iLineType
+                                    iLineType = IIf(sPointData.Length = 2, cIItemLine.LineTypeEnum.Lines, cIItemLine.LineTypeEnum.Beziers)
+                                    If iLineType <> iLastLineType Then
+                                        bBeginSequence = True
+                                    Else
                                         bBeginSequence = False
                                     End If
-                                    Call oItem.Points.Add(oPoint)
-                                    olastpoint = oPoint
+                                    For i As Integer = 0 To sPointData.Length - 1 Step 2
+                                        oPoint = New cPoint(Survey, modNumbers.StringToSingle(sPointData(i)) * sScaleFactor, -1 * modNumbers.StringToSingle(sPointData(i + 1)) * sScaleFactor)
+                                        If bBeginSequence Then
+                                            If oItem.Points.First Is olastpoint Then
+                                                DirectCast(oItem, cIItemLine).LineType = iLineType
+                                            End If
+                                            Dim oNewpoint As cPoint = olastpoint.Clone
+                                            oNewpoint.BeginSequence = bBeginSequence
+                                            oNewpoint.LineType = iLineType
+                                            Call oItem.Points.Add(oNewpoint)
+                                            iLastLineType = iLineType
+                                            bBeginSequence = False
+                                        End If
+                                        Call oItem.Points.Add(oPoint)
+                                        olastpoint = oPoint
+                                    Next
+                                End If
+                            Else
+                            End If
+                        End If
+                    End If
+
+                    If bAreaStarted Then
+                        If sLine Like "endarea" Then
+                            'If bReverse Then oItem.Points.Revert()
+                            bAreaStarted = False
+                        Else
+                            Dim sID As String = sLine
+                            If oIds.ContainsKey(sID) Then
+                                For Each oSourcePoint As cPoint In oIds(sID).Points
+                                    Call oItem.Points.Add(oSourcePoint.Clone)
                                 Next
                             End If
-                        Else
                         End If
                     End If
-                End If
 
-                If bAreaStarted Then
-                    If sLine Like "endarea" Then
-                        'If bReverse Then oItem.Points.Revert()
-                        bAreaStarted = False
-                    Else
-                        Dim sID As String = sLine
-                        If oIds.ContainsKey(sID) Then
-                            For Each oSourcePoint As cPoint In oIds(sID).Points
-                                Call oItem.Points.Add(oSourcePoint.Clone)
-                            Next
-                        End If
-                    End If
-                End If
-
-                If sLine Like "point *" Then
-                    Dim oScrapLine As cTherionScrapLine = New cTherionScrapLine(sLine)
-                    Select Case oScrapLine.GetValue(3).ToLower
-                        Case "entrance"
-                            oPoint = New cPoint(Survey, modNumbers.StringToSingle(oScrapLine.GetValue(1)) * sScaleFactor, -1 * modNumbers.StringToSingle(oScrapLine.GetValue(2)) * sScaleFactor)
-                            Dim oLayerSigns As cLayerSigns = oDesign.Layers(cLayers.LayerTypeEnum.Signs)
-                            oItem = oLayerSigns.CreateSign(sCave, sBranch, "Objects\Cliparts\Signs\ingresso.svg", cIItemClipartBase.cClipartDataFormatEnum.SVGFile)
-                            Call oItem.DataProperties.SetValue("import_source", "therion")
-                            Call oItem.Points.Add(oPoint)
-                            Dim oItemSign As cItemSign = oItem
-                            oItemSign.Rotate(modNumbers.StringToSingle(oScrapLine.GetParameters("-orientation", "0")))
-                            oItemSign.SignSize = pTherionDrawingScaleToSignSize(oScrapLine.GetParameters("-scale", ""))
-                        Case "label"
-                            Dim sText As String = oScrapLine.GetParameters("-text", "")
-                            If sText <> "" Then
+                    If sLine Like "point *" Then
+                        Dim oScrapLine As cTherionScrapLine = New cTherionScrapLine(sLine)
+                        Select Case oScrapLine.GetValue(3).ToLower
+                            Case "entrance"
                                 oPoint = New cPoint(Survey, modNumbers.StringToSingle(oScrapLine.GetValue(1)) * sScaleFactor, -1 * modNumbers.StringToSingle(oScrapLine.GetValue(2)) * sScaleFactor)
                                 Dim oLayerSigns As cLayerSigns = oDesign.Layers(cLayers.LayerTypeEnum.Signs)
-                                oItem = oLayerSigns.CreateText(sCave, sBranch, sText)
+                                oItem = oLayerSigns.CreateSign(sCave, sBranch, "Objects\Cliparts\Signs\ingresso.svg", cIItemClipartBase.cClipartDataFormatEnum.SVGFile)
                                 Call oItem.DataProperties.SetValue("import_source", "therion")
                                 Call oItem.Points.Add(oPoint)
-                                Dim oItemText As cItemText = oItem
-                                Call oItemText.Rotate(modNumbers.StringToSingle(oScrapLine.GetParameters("-orientation", "0")))
-                                oItemText.TextSize = pTherionDrawingScaleToTextSize(oScrapLine.GetParameters("-scale", ""))
-                                DirectCast(oItemText, cIItemLineableText).TextAlignment = pTherionAlignToTextAlignment(oScrapLine.GetParameters("-align", ""))
-                                DirectCast(oItemText, cIItemVerticalLineableText).TextVerticalAlignment = pTherionAlignToTextVerticalAlignment(oScrapLine.GetParameters("-align", ""))
-                            End If
-                        Case "water-flow"
-                            oPoint = New cPoint(Survey, modNumbers.StringToSingle(oScrapLine.GetValue(1)) * sScaleFactor, -1 * modNumbers.StringToSingle(oScrapLine.GetValue(2)) * sScaleFactor)
-                            Dim oLayerSigns As cLayerSigns = oDesign.Layers(cLayers.LayerTypeEnum.Signs)
-                            oItem = oLayerSigns.CreateSign(sCave, sBranch, "Objects\Cliparts\Signs\acqua.svg", cIItemClipartBase.cClipartDataFormatEnum.SVGFile)
-                            Call oItem.DataProperties.SetValue("import_source", "therion")
-                            Call oItem.Points.Add(oPoint)
-                            Dim oItemSign As cItemSign = oItem
-                            oItemSign.Rotate(modNumbers.StringToSingle(oScrapLine.GetParameters("-orientation", "0")) + 90)
-                            oItemSign.SignSize = pTherionDrawingScaleToSignSize(oScrapLine.GetParameters("-scale", ""))
-                    End Select
-                End If
-
-                If sLine Like "area *" Then
-                    'inizia un oggetto area...
-                    Dim oScrapLine As cTherionScrapLine = New cTherionScrapLine(sLine)
-                    Dim sAreaType As String = oScrapLine.GetValue(1)
-                    Select Case sAreaType
-                        Case "water"
-                            Dim oLayerFloor As cLayerWaterAndFloorMorphologies = oDesign.Layers(cLayers.LayerTypeEnum.WaterAndFloorMorphologies)
-                            oItem = oLayerFloor.CreateWaterArea(sCave, sBranch)
-                            Call oItem.DataProperties.SetValue("import_source", "therion")
-                            bAreaStarted = True
-                        Case "sand", "clay"
-                            Dim oLayerSoil As cLayerSoil = oDesign.Layers(cLayers.LayerTypeEnum.Soil)
-                            oItem = oLayerSoil.CreateSandSoil(sCave, sBranch)
-                            Call oItem.DataProperties.SetValue("import_source", "therion")
-                            bAreaStarted = True
-                        Case "pebbles"
-                            Dim oLayerSoil As cLayerSoil = oDesign.Layers(cLayers.LayerTypeEnum.Soil)
-                            oItem = oLayerSoil.CreatePebblesSoil(sCave, sBranch)
-                            Call oItem.DataProperties.SetValue("import_source", "therion")
-                            bAreaStarted = True
-                        Case "debrits"
-                            Dim oLayerSoil As cLayerSoil = oDesign.Layers(cLayers.LayerTypeEnum.Soil)
-                            oItem = oLayerSoil.CreateSmallDebritsSoil(sCave, sBranch)
-                            Call oItem.DataProperties.SetValue("import_source", "therion")
-                            bAreaStarted = True
-                        Case "blocks"
-                            Dim oLayerSoil As cLayerSoil = oDesign.Layers(cLayers.LayerTypeEnum.Soil)
-                            oItem = oLayerSoil.CreateBigDebritsSoil(sCave, sBranch)
-                            Call oItem.DataProperties.SetValue("import_source", "therion")
-                            bAreaStarted = True
-                        Case "flowstone"
-                            Dim oLayerSoil As cLayerSoil = oDesign.Layers(cLayers.LayerTypeEnum.Soil)
-                            oItem = oLayerSoil.CreateFlowSoil(sCave, sBranch)
-                            Call oItem.DataProperties.SetValue("import_source", "therion")
-                            bAreaStarted = True
-                        Case Else
-                            Dim oLayerSoil As cLayerSoil = oDesign.Layers(cLayers.LayerTypeEnum.Soil)
-                            oItem = oLayerSoil.CreateSoil(sCave, sBranch)
-                            Call oItem.DataProperties.SetValue("import_source", "therion")
-                            bAreaStarted = True
-                    End Select
-                    If bAreaStarted Then
-                        Dim sPlace As String = oScrapLine.GetParameters("-place", "default")
-                        Select Case sPlace
-                            Case "bottom"
-                                Call oItem.Layer.Items.SendToBottom(oItem)
-                            Case "top"
-                                Call oItem.Layer.Items.BringToTop(oItem)
+                                Dim oItemSign As cItemSign = oItem
+                                oItemSign.Rotate(modNumbers.StringToSingle(oScrapLine.GetParameters("-orientation", "0")))
+                                oItemSign.SignSize = pTherionDrawingScaleToSignSize(oScrapLine.GetParameters("-scale", ""))
+                            Case "label"
+                                Dim sText As String = oScrapLine.GetParameters("-text", "")
+                                If sText <> "" Then
+                                    oPoint = New cPoint(Survey, modNumbers.StringToSingle(oScrapLine.GetValue(1)) * sScaleFactor, -1 * modNumbers.StringToSingle(oScrapLine.GetValue(2)) * sScaleFactor)
+                                    Dim oLayerSigns As cLayerSigns = oDesign.Layers(cLayers.LayerTypeEnum.Signs)
+                                    oItem = oLayerSigns.CreateText(sCave, sBranch, sText)
+                                    Call oItem.DataProperties.SetValue("import_source", "therion")
+                                    Call oItem.Points.Add(oPoint)
+                                    Dim oItemText As cItemText = oItem
+                                    Call oItemText.Rotate(modNumbers.StringToSingle(oScrapLine.GetParameters("-orientation", "0")))
+                                    oItemText.TextSize = pTherionDrawingScaleToTextSize(oScrapLine.GetParameters("-scale", ""))
+                                    DirectCast(oItemText, cIItemLineableText).TextAlignment = pTherionAlignToTextAlignment(oScrapLine.GetParameters("-align", ""))
+                                    DirectCast(oItemText, cIItemVerticalLineableText).TextVerticalAlignment = pTherionAlignToTextVerticalAlignment(oScrapLine.GetParameters("-align", ""))
+                                End If
+                            Case "water-flow"
+                                oPoint = New cPoint(Survey, modNumbers.StringToSingle(oScrapLine.GetValue(1)) * sScaleFactor, -1 * modNumbers.StringToSingle(oScrapLine.GetValue(2)) * sScaleFactor)
+                                Dim oLayerSigns As cLayerSigns = oDesign.Layers(cLayers.LayerTypeEnum.Signs)
+                                oItem = oLayerSigns.CreateSign(sCave, sBranch, "Objects\Cliparts\Signs\acqua.svg", cIItemClipartBase.cClipartDataFormatEnum.SVGFile)
+                                Call oItem.DataProperties.SetValue("import_source", "therion")
+                                Call oItem.Points.Add(oPoint)
+                                Dim oItemSign As cItemSign = oItem
+                                oItemSign.Rotate(modNumbers.StringToSingle(oScrapLine.GetParameters("-orientation", "0")) + 90)
+                                oItemSign.SignSize = pTherionDrawingScaleToSignSize(oScrapLine.GetParameters("-scale", ""))
                         End Select
-
-                        Dim bClipping As Boolean = oScrapLine.GetParameters("-clip", "on") = "on"
-                        If Not bClipping Then
-                            oItem.ClippingType = cItem.cItemClippingTypeEnum.None
-                        End If
-                        bFirstPoint = True
                     End If
-                End If
 
-                If sLine Like "line *" Then
-                    'inizia un oggetto linea...
-                    Dim oScrapLine As cTherionScrapLine = New cTherionScrapLine(sLine)
-                    Dim sLineType As String = oScrapLine.GetValue(1)
-                    Select Case sLineType
-                        Case "wall"
-                            Dim oLayerBorders As cLayerBorders = oDesign.Layers(cLayers.LayerTypeEnum.Borders)
-                            oItem = oLayerBorders.CreateCaveBorder(sCave, sBranch)
-                            bLineStarted = True
-                            Select Case oScrapLine.GetParameters("-subtype", "")
-                                Case "presumed"
-                                    oItem.Pen.Type = cPen.PenTypeEnum.PresumedCavePen
-                                Case "invisible"
-                                    oItem.Pen.Type = cPen.PenTypeEnum.None
-                                Case Else
+                    If sLine Like "area *" Then
+                        'inizia un oggetto area...
+                        Dim oScrapLine As cTherionScrapLine = New cTherionScrapLine(sLine)
+                        Dim sAreaType As String = oScrapLine.GetValue(1)
+                        Select Case sAreaType
+                            Case "water"
+                                Dim oLayerFloor As cLayerWaterAndFloorMorphologies = oDesign.Layers(cLayers.LayerTypeEnum.WaterAndFloorMorphologies)
+                                oItem = oLayerFloor.CreateWaterArea(sCave, sBranch)
+                                Call oItem.DataProperties.SetValue("import_source", "therion")
+                                bAreaStarted = True
+                            Case "sand", "clay"
+                                Dim oLayerSoil As cLayerSoil = oDesign.Layers(cLayers.LayerTypeEnum.Soil)
+                                oItem = oLayerSoil.CreateSandSoil(sCave, sBranch)
+                                Call oItem.DataProperties.SetValue("import_source", "therion")
+                                bAreaStarted = True
+                            Case "pebbles"
+                                Dim oLayerSoil As cLayerSoil = oDesign.Layers(cLayers.LayerTypeEnum.Soil)
+                                oItem = oLayerSoil.CreatePebblesSoil(sCave, sBranch)
+                                Call oItem.DataProperties.SetValue("import_source", "therion")
+                                bAreaStarted = True
+                            Case "debrits"
+                                Dim oLayerSoil As cLayerSoil = oDesign.Layers(cLayers.LayerTypeEnum.Soil)
+                                oItem = oLayerSoil.CreateSmallDebritsSoil(sCave, sBranch)
+                                Call oItem.DataProperties.SetValue("import_source", "therion")
+                                bAreaStarted = True
+                            Case "blocks"
+                                Dim oLayerSoil As cLayerSoil = oDesign.Layers(cLayers.LayerTypeEnum.Soil)
+                                oItem = oLayerSoil.CreateBigDebritsSoil(sCave, sBranch)
+                                Call oItem.DataProperties.SetValue("import_source", "therion")
+                                bAreaStarted = True
+                            Case "flowstone"
+                                Dim oLayerSoil As cLayerSoil = oDesign.Layers(cLayers.LayerTypeEnum.Soil)
+                                oItem = oLayerSoil.CreateFlowSoil(sCave, sBranch)
+                                Call oItem.DataProperties.SetValue("import_source", "therion")
+                                bAreaStarted = True
+                            Case Else
+                                Dim oLayerSoil As cLayerSoil = oDesign.Layers(cLayers.LayerTypeEnum.Soil)
+                                oItem = oLayerSoil.CreateSoil(sCave, sBranch)
+                                Call oItem.DataProperties.SetValue("import_source", "therion")
+                                bAreaStarted = True
+                        End Select
+                        If bAreaStarted Then
+                            Dim sPlace As String = oScrapLine.GetParameters("-place", "default")
+                            Select Case sPlace
+                                Case "bottom"
+                                    Call oItem.Layer.Items.SendToBottom(oItem)
+                                Case "top"
+                                    Call oItem.Layer.Items.BringToTop(oItem)
                             End Select
-                            Select Case oScrapLine.GetParameters("-outline", "out")
-                                Case "in"
-                                    Dim oCaveBorderItem As cItemInvertedFreeHandArea = oItem
-                                    oCaveBorderItem.MergeMode = cIItemMergeableArea.MergeModeEnum.Subtract
-                                Case "none"
-                                Case Else
-                                    If bMergeAndReorderBorders Then Call oBorders.Add(oItem)
-                            End Select
-                        Case "label"
+
+                            Dim bClipping As Boolean = oScrapLine.GetParameters("-clip", "on") = "on"
+                            If Not bClipping Then
+                                oItem.ClippingType = cItem.cItemClippingTypeEnum.None
+                            End If
+                            bFirstPoint = True
+                        End If
+                    End If
+
+                    If sLine Like "line *" Then
+                        'inizia un oggetto linea...
+                        Dim oScrapLine As cTherionScrapLine = New cTherionScrapLine(sLine)
+                        Dim sLineType As String = oScrapLine.GetValue(1)
+                        Select Case sLineType
+                            Case "wall"
+                                Dim oLayerBorders As cLayerBorders = oDesign.Layers(cLayers.LayerTypeEnum.Borders)
+                                oItem = oLayerBorders.CreateCaveBorder(sCave, sBranch)
+                                bLineStarted = True
+                                Select Case oScrapLine.GetParameters("-subtype", "")
+                                    Case "presumed"
+                                        oItem.Pen.Type = cPen.PenTypeEnum.PresumedCavePen
+                                    Case "invisible"
+                                        oItem.Pen.Type = cPen.PenTypeEnum.None
+                                    Case Else
+                                End Select
+                                Select Case oScrapLine.GetParameters("-outline", "out")
+                                    Case "in"
+                                        Dim oCaveBorderItem As cItemInvertedFreeHandArea = oItem
+                                        oCaveBorderItem.MergeMode = cIItemMergeableArea.MergeModeEnum.Subtract
+                                    Case "none"
+                                    Case Else
+                                        If bMergeAndReorderBorders Then Call oBorders.Add(oItem)
+                                End Select
+                            Case "label"
                             'azz...questo non ce l'ho...un testo sul tracciato...interessante...
-                        Case "border"
-                            Dim oLayerBorders As cLayerBorders = oDesign.Layers(cLayers.LayerTypeEnum.Borders)
-                            oItem = oLayerBorders.CreateBorder(sCave, sBranch)
-                            bLineStarted = True
-                            Select Case oScrapLine.GetParameters("-subtype", "")
-                                Case "presumed"
-                                    oItem.Pen.Type = cPen.PenTypeEnum.PresumedPen
-                                Case "invisible"
-                                    oItem.Pen.Type = cPen.PenTypeEnum.None
-                                Case Else
-                            End Select
-                        Case "rock-border"
-                            Dim oLayerFloor As cLayerWaterAndFloorMorphologies = oDesign.Layers(cLayers.LayerTypeEnum.WaterAndFloorMorphologies)
-                            oItem = oLayerFloor.CreateBorder(sCave, sBranch)
-                            bLineStarted = True
-                        Case "pit"
-                            Dim oLayerFloor As cLayerWaterAndFloorMorphologies = oDesign.Layers(cLayers.LayerTypeEnum.WaterAndFloorMorphologies)
-                            oItem = oLayerFloor.CreateCliffCurve(sCave, sBranch)
-                            bReverse = oScrapLine.GetParameters("-reverse", "on") <> "on"
-                            If bReverse Then
-                                oItem.Pen.Type = cPen.PenTypeEnum.CliffDownPen
-                            Else
-                                oItem.Pen.Type = cPen.PenTypeEnum.CliffUpPen
-                            End If
-                            Select Case oScrapLine.GetParameters("-subtype", "")
-                                Case "presumed"
-                                    oItem.Pen.Type = cPen.PenTypeEnum.PresumedPen
-                                Case "invisible"
-                                    oItem.Pen.Type = cPen.PenTypeEnum.None
-                                Case Else
-                            End Select
-                            bLineStarted = True
-                        Case "chimney"
-                            Dim oLayerFloor As cLayerWaterAndFloorMorphologies = oDesign.Layers(cLayers.LayerTypeEnum.WaterAndFloorMorphologies)
-                            oItem = oLayerFloor.CreateCliffCurve(sCave, sBranch)
-                            bReverse = oScrapLine.GetParameters("-reverse", "on") <> "on"
-                            If bReverse Then
-                                oItem.Pen.Type = cPen.PenTypeEnum.PresumedCliffDownPen
-                            Else
-                                oItem.Pen.Type = cPen.PenTypeEnum.PresumedCliffUpPen
-                            End If
-                            bLineStarted = True
-                    End Select
-                    If bLineStarted Then
-                        Dim sID As String = oScrapLine.GetParameters("-id", "")
-                        If sID <> "" Then
-                            Call oIds.Add(sID, oItem)
-                        End If
-
-                        Dim sPlace As String = oScrapLine.GetParameters("-place", "default")
-                        Select Case sPlace
-                            Case "bottom"
-                                Call oItem.Layer.Items.SendToBottom(oItem)
-                            Case "top"
-                                Call oItem.Layer.Items.BringToTop(oItem)
+                            Case "border"
+                                Dim oLayerBorders As cLayerBorders = oDesign.Layers(cLayers.LayerTypeEnum.Borders)
+                                oItem = oLayerBorders.CreateBorder(sCave, sBranch)
+                                bLineStarted = True
+                                Select Case oScrapLine.GetParameters("-subtype", "")
+                                    Case "presumed"
+                                        oItem.Pen.Type = cPen.PenTypeEnum.PresumedPen
+                                    Case "invisible"
+                                        oItem.Pen.Type = cPen.PenTypeEnum.None
+                                    Case Else
+                                End Select
+                            Case "rock-border"
+                                Dim oLayerFloor As cLayerWaterAndFloorMorphologies = oDesign.Layers(cLayers.LayerTypeEnum.WaterAndFloorMorphologies)
+                                oItem = oLayerFloor.CreateBorder(sCave, sBranch)
+                                bLineStarted = True
+                            Case "pit"
+                                Dim oLayerFloor As cLayerWaterAndFloorMorphologies = oDesign.Layers(cLayers.LayerTypeEnum.WaterAndFloorMorphologies)
+                                oItem = oLayerFloor.CreateCliffCurve(sCave, sBranch)
+                                bReverse = oScrapLine.GetParameters("-reverse", "on") <> "on"
+                                If bReverse Then
+                                    oItem.Pen.Type = cPen.PenTypeEnum.CliffDownPen
+                                Else
+                                    oItem.Pen.Type = cPen.PenTypeEnum.CliffUpPen
+                                End If
+                                Select Case oScrapLine.GetParameters("-subtype", "")
+                                    Case "presumed"
+                                        oItem.Pen.Type = cPen.PenTypeEnum.PresumedPen
+                                    Case "invisible"
+                                        oItem.Pen.Type = cPen.PenTypeEnum.None
+                                    Case Else
+                                End Select
+                                bLineStarted = True
+                            Case "chimney"
+                                Dim oLayerFloor As cLayerWaterAndFloorMorphologies = oDesign.Layers(cLayers.LayerTypeEnum.WaterAndFloorMorphologies)
+                                oItem = oLayerFloor.CreateCliffCurve(sCave, sBranch)
+                                bReverse = oScrapLine.GetParameters("-reverse", "on") <> "on"
+                                If bReverse Then
+                                    oItem.Pen.Type = cPen.PenTypeEnum.PresumedCliffDownPen
+                                Else
+                                    oItem.Pen.Type = cPen.PenTypeEnum.PresumedCliffUpPen
+                                End If
+                                bLineStarted = True
                         End Select
+                        If bLineStarted Then
+                            Dim sID As String = oScrapLine.GetParameters("-id", "")
+                            If sID <> "" Then
+                                Call oIds.Add(sID, oItem)
+                            End If
 
-                        Dim bClipping As Boolean = oScrapLine.GetParameters("-clip", "on") = "on"
-                        If Not bClipping Then
-                            oItem.ClippingType = cItem.cItemClippingTypeEnum.None
+                            Dim sPlace As String = oScrapLine.GetParameters("-place", "default")
+                            Select Case sPlace
+                                Case "bottom"
+                                    Call oItem.Layer.Items.SendToBottom(oItem)
+                                Case "top"
+                                    Call oItem.Layer.Items.BringToTop(oItem)
+                            End Select
+
+                            Dim bClipping As Boolean = oScrapLine.GetParameters("-clip", "on") = "on"
+                            If Not bClipping Then
+                                oItem.ClippingType = cItem.cItemClippingTypeEnum.None
+                            End If
+                            bFirstPoint = True
                         End If
-                        bFirstPoint = True
                     End If
                 End If
-            End If
-        Loop
-        Call sr.Close()
-        Call sr.Dispose()
+            Loop
+        End Using
     End Sub
 End Module

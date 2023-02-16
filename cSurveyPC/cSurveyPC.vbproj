@@ -390,6 +390,12 @@
     <Compile Include="frmImportExcelEron.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmImportTherion.Designer.vb">
+      <DependentUpon>frmImportTherion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportTherion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmInfoDepth.Designer.vb">
       <DependentUpon>frmInfoDepth.vb</DependentUpon>
     </Compile>
@@ -1160,10 +1166,10 @@
     <Compile Include="frmParametersDesign.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="frmImportTherion.Designer.vb">
-      <DependentUpon>frmImportTherion.vb</DependentUpon>
+    <Compile Include="frmImportTherion2.Designer.vb">
+      <DependentUpon>frmImportTherion2.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmImportTherion.vb">
+    <Compile Include="frmImportTherion2.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmImportCompass.Designer.vb">
@@ -1659,6 +1665,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmImportExcelEron.ru.resx">
       <DependentUpon>frmImportExcelEron.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportTherion.it.resx">
+      <DependentUpon>frmImportTherion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportTherion.resx">
+      <DependentUpon>frmImportTherion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportTherion.ru.resx">
+      <DependentUpon>frmImportTherion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInfoDepth.it.resx">
       <DependentUpon>frmInfoDepth.vb</DependentUpon>
@@ -2396,8 +2411,8 @@
       <DependentUpon>frmImportResurvey.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmImportTherion.ru.resx">
-      <DependentUpon>frmImportTherion.vb</DependentUpon>
+    <EmbeddedResource Include="frmImportTherion2.ru.resx">
+      <DependentUpon>frmImportTherion2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmImportVisualTopo.ru.resx">
       <DependentUpon>frmImportVisualTopo.vb</DependentUpon>
@@ -2665,11 +2680,11 @@
     <EmbeddedResource Include="frmParametersDesign.resx">
       <DependentUpon>frmParametersDesign.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmImportTherion.it.resx">
-      <DependentUpon>frmImportTherion.vb</DependentUpon>
+    <EmbeddedResource Include="frmImportTherion2.it.resx">
+      <DependentUpon>frmImportTherion2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmImportTherion.resx">
-      <DependentUpon>frmImportTherion.vb</DependentUpon>
+    <EmbeddedResource Include="frmImportTherion2.resx">
+      <DependentUpon>frmImportTherion2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmImportCompass.it.resx">
       <DependentUpon>frmImportCompass.vb</DependentUpon>

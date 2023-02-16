@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="txtPrefix.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 39</value>
+    <value>80, 40</value>
   </data>
   <data name="txtPrefix.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 20</value>
@@ -128,7 +128,13 @@
   <data name="txtPrefix.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <metadata name="tipDefault.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="txtPrefix.ToolTip" xml:space="preserve">
+    <value>Prefix that will be added to all stations names</value>
+  </data>
+  <data name="txtPrefix.ToolTip1" xml:space="preserve">
     <value>Prefix that will be added to all stations names</value>
   </data>
   <data name="&gt;&gt;txtPrefix.Name" xml:space="preserve">
@@ -141,13 +147,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtPrefix.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="lblPrefix.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblPrefix.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 42</value>
+    <value>13, 44</value>
   </data>
   <data name="lblPrefix.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 13</value>
@@ -168,22 +174,21 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPrefix.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="txtFilename.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+    <value>13</value>
   </data>
   <data name="txtFilename.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 12</value>
+    <value>80, 12</value>
   </data>
   <data name="txtFilename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>337, 20</value>
+    <value>198, 20</value>
   </data>
   <data name="txtFilename.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="txtFilename.ToolTip" xml:space="preserve">
+    <value>Therion file name</value>
+  </data>
+  <data name="txtFilename.ToolTip1" xml:space="preserve">
     <value>Therion file name</value>
   </data>
   <data name="&gt;&gt;txtFilename.Name" xml:space="preserve">
@@ -196,13 +201,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtFilename.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="lblFilename.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblFilename.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 15</value>
+    <value>13, 16</value>
   </data>
   <data name="lblFilename.Size" type="System.Drawing.Size, System.Drawing">
     <value>20, 13</value>
@@ -223,13 +228,14 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblFilename.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 281</value>
+    <value>225, 257</value>
   </data>
   <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -250,13 +256,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>278, 281</value>
+    <value>139, 257</value>
   </data>
   <data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -277,129 +283,226 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
-  <data name="chkcSurveyImportCreateNewBranch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 161</value>
+  <data name="txtCaveName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 68</value>
   </data>
-  <data name="chkcSurveyImportCreateNewBranch.Properties.Caption" xml:space="preserve">
-    <value>Import all as new cave/branch</value>
+  <data name="txtCaveName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 20</value>
   </data>
-  <data name="chkcSurveyImportCreateNewBranch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 20</value>
-  </data>
-  <data name="chkcSurveyImportCreateNewBranch.TabIndex" type="System.Int32, mscorlib">
-    <value>95</value>
-  </data>
-  <data name="&gt;&gt;chkcSurveyImportCreateNewBranch.Name" xml:space="preserve">
-    <value>chkcSurveyImportCreateNewBranch</value>
-  </data>
-  <data name="&gt;&gt;chkcSurveyImportCreateNewBranch.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkcSurveyImportCreateNewBranch.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;chkcSurveyImportCreateNewBranch.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="chkImportAsBranchOf.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkImportAsBranchOf.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 107</value>
-  </data>
-  <data name="chkImportAsBranchOf.Properties.Caption" xml:space="preserve">
-    <value>Import all as branch of:</value>
-  </data>
-  <data name="chkImportAsBranchOf.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 20</value>
-  </data>
-  <data name="chkImportAsBranchOf.TabIndex" type="System.Int32, mscorlib">
-    <value>94</value>
-  </data>
-  <data name="&gt;&gt;chkImportAsBranchOf.Name" xml:space="preserve">
-    <value>chkImportAsBranchOf</value>
-  </data>
-  <data name="&gt;&gt;chkImportAsBranchOf.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkImportAsBranchOf.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;chkImportAsBranchOf.ZOrder" xml:space="preserve">
+  <data name="txtCaveName.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="cboImportAsBranchOfCave.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="txtCaveName.ToolTip" xml:space="preserve">
+    <value>Cave name (leave empty if you want to import the name set in Therion files)</value>
   </data>
-  <data name="cboImportAsBranchOfCave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 107</value>
+  <data name="txtCaveName.ToolTip1" xml:space="preserve">
+    <value>Cave name (leave empty if you want to import the name set in Therion files)</value>
   </data>
-  <data name="cboImportAsBranchOfCave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 20</value>
+  <data name="&gt;&gt;txtCaveName.Name" xml:space="preserve">
+    <value>txtCaveName</value>
   </data>
-  <data name="cboImportAsBranchOfCave.TabIndex" type="System.Int32, mscorlib">
-    <value>96</value>
+  <data name="&gt;&gt;txtCaveName.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;cboImportAsBranchOfCave.Name" xml:space="preserve">
-    <value>cboImportAsBranchOfCave</value>
-  </data>
-  <data name="&gt;&gt;cboImportAsBranchOfCave.Type" xml:space="preserve">
-    <value>cSurveyPC.cCaveDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cboImportAsBranchOfCave.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txtCaveName.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;cboImportAsBranchOfCave.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;txtCaveName.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
-  <data name="cboImportAsBranchOfBranch.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="lblCaveName.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
   </data>
-  <data name="cboImportAsBranchOfBranch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 135</value>
+  <data name="lblCaveName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 72</value>
   </data>
-  <data name="cboImportAsBranchOfBranch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 20</value>
+  <data name="lblCaveName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
   </data>
-  <data name="cboImportAsBranchOfBranch.TabIndex" type="System.Int32, mscorlib">
-    <value>97</value>
+  <data name="lblCaveName.TabIndex" type="System.Int32, mscorlib">
+    <value>68</value>
   </data>
-  <data name="&gt;&gt;cboImportAsBranchOfBranch.Name" xml:space="preserve">
-    <value>cboImportAsBranchOfBranch</value>
+  <data name="lblCaveName.Text" xml:space="preserve">
+    <value>Cave:</value>
   </data>
-  <data name="&gt;&gt;cboImportAsBranchOfBranch.Type" xml:space="preserve">
-    <value>cSurveyPC.cCaveBranchDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;lblCaveName.Name" xml:space="preserve">
+    <value>lblCaveName</value>
   </data>
-  <data name="&gt;&gt;cboImportAsBranchOfBranch.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblCaveName.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblCaveName.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;cboImportAsBranchOfBranch.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblCaveName.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="chkTherionImportprofile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkTherionImportprofile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 125</value>
+  </data>
+  <data name="chkTherionImportprofile.Properties.Caption" xml:space="preserve">
+    <value>Import extended elevation</value>
+  </data>
+  <data name="chkTherionImportprofile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 20</value>
+  </data>
+  <data name="chkTherionImportprofile.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="chkProcessAllFiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 65</value>
+  <data name="&gt;&gt;chkTherionImportprofile.Name" xml:space="preserve">
+    <value>chkTherionImportprofile</value>
   </data>
-  <data name="CheckEdit1.Properties.Caption" xml:space="preserve">
-    <value>Import all input files</value>
-  </data>
-  <data name="chkProcessAllFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 20</value>
-  </data>
-  <data name="chkProcessAllFiles.TabIndex" type="System.Int32, mscorlib">
-    <value>98</value>
-  </data>
-  <data name="&gt;&gt;chkProcessAllFiles.Name" xml:space="preserve">
-    <value>chkProcessAllFiles</value>
-  </data>
-  <data name="&gt;&gt;chkProcessAllFiles.Type" xml:space="preserve">
+  <data name="&gt;&gt;chkTherionImportprofile.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;chkProcessAllFiles.Parent" xml:space="preserve">
+  <data name="&gt;&gt;chkTherionImportprofile.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;chkProcessAllFiles.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;chkTherionImportprofile.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="chkTherionImportplan.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkTherionImportplan.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 102</value>
+  </data>
+  <data name="chkTherionImportplan.Properties.Caption" xml:space="preserve">
+    <value>Import plan</value>
+  </data>
+  <data name="chkTherionImportplan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 20</value>
+  </data>
+  <data name="chkTherionImportplan.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;chkTherionImportplan.Name" xml:space="preserve">
+    <value>chkTherionImportplan</value>
+  </data>
+  <data name="&gt;&gt;chkTherionImportplan.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkTherionImportplan.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkTherionImportplan.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="chkTherionMergeAndReorderBorders.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkTherionMergeAndReorderBorders.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 160</value>
+  </data>
+  <data name="chkTherionMergeAndReorderBorders.Properties.Caption" xml:space="preserve">
+    <value>Merge and reorder borders</value>
+  </data>
+  <data name="chkTherionMergeAndReorderBorders.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 20</value>
+  </data>
+  <data name="chkTherionMergeAndReorderBorders.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;chkTherionMergeAndReorderBorders.Name" xml:space="preserve">
+    <value>chkTherionMergeAndReorderBorders</value>
+  </data>
+  <data name="&gt;&gt;chkTherionMergeAndReorderBorders.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkTherionMergeAndReorderBorders.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkTherionMergeAndReorderBorders.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="chktherionConvertBezierToSpline.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chktherionConvertBezierToSpline.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 183</value>
+  </data>
+  <data name="chktherionConvertBezierToSpline.Properties.Caption" xml:space="preserve">
+    <value>Convert beziers to splines</value>
+  </data>
+  <data name="chktherionConvertBezierToSpline.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 20</value>
+  </data>
+  <data name="chktherionConvertBezierToSpline.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="chktherionConvertBezierToSpline.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;chktherionConvertBezierToSpline.Name" xml:space="preserve">
+    <value>chktherionConvertBezierToSpline</value>
+  </data>
+  <data name="&gt;&gt;chktherionConvertBezierToSpline.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chktherionConvertBezierToSpline.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chktherionConvertBezierToSpline.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblTherionScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblTherionScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 105</value>
+  </data>
+  <data name="lblTherionScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
+  </data>
+  <data name="lblTherionScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>73</value>
+  </data>
+  <data name="lblTherionScaleFactor.Text" xml:space="preserve">
+    <value>Scale:</value>
+  </data>
+  <data name="&gt;&gt;lblTherionScaleFactor.Name" xml:space="preserve">
+    <value>lblTherionScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;lblTherionScaleFactor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblTherionScaleFactor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblTherionScaleFactor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtTherionScaleFactor.EditValue" type="System.Decimal, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtTherionScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>222, 102</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v22.2" name="DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="txtTherionScaleFactor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtTherionScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 20</value>
+  </data>
+  <data name="txtTherionScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>74</value>
+  </data>
+  <data name="&gt;&gt;txtTherionScaleFactor.Name" xml:space="preserve">
+    <value>txtTherionScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;txtTherionScaleFactor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtTherionScaleFactor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtTherionScaleFactor.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -409,7 +512,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>456, 318</value>
+    <value>317, 294</value>
   </data>
   <data name="frmImportTherion.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -476,17 +579,20 @@
         AAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAADwAAAB8AAAA/AAA=
 </value>
   </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>333, 237</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Import data from Therion:</value>
+    <value>Import design from Therion:</value>
+  </data>
+  <data name="&gt;&gt;tipDefault.Name" xml:space="preserve">
+    <value>tipDefault</value>
+  </data>
+  <data name="&gt;&gt;tipDefault.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>frmImportTherion</value>
+    <value>frmImportTherion2</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>

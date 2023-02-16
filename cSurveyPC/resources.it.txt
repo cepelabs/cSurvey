@@ -1076,3 +1076,4 @@ main.undo52=Morphing per tutti
 main.undotextinfo1=Annulla {0} azioni
 preview.textpart6=Le dimensioni specificate eccedono i limiti gestibili in anteprima. L'anteprima non risulterà conforme alle dimensioni specificate.
 main.textpart166=Equivalente a
+calculate.textpart17=Nome di oggetto duplicato

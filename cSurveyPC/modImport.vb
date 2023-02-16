@@ -483,7 +483,7 @@ Module modImport
         Next
     End Sub
 
-    Public Sub TherionThImportFrom(Survey As cSurvey.cSurvey, Filename As String, Optional CaveName As String = "", Optional Options As TherionImportOptionsEnum = TherionImportOptionsEnum.None, Optional ScaleFactor As Single = 1)
+    Public Sub TherionTh2ImportFrom(Survey As cSurvey.cSurvey, Filename As String, Optional CaveName As String = "", Optional Options As TherionImportOptionsEnum = TherionImportOptionsEnum.None, Optional ScaleFactor As Single = 1)
         Dim bImportPlan As Boolean = (Options And TherionImportOptionsEnum.ImportPlan) = TherionImportOptionsEnum.ImportPlan
         Dim bImportProfile As Boolean = (Options And TherionImportOptionsEnum.ImportProfile) = TherionImportOptionsEnum.ImportProfile
         Dim bMergeAndReorderBorders As Boolean = (Options And TherionImportOptionsEnum.MergeAndReorderBorders) = TherionImportOptionsEnum.MergeAndReorderBorders
@@ -534,7 +534,7 @@ Module modImport
                     Dim oScrapLine As cTherionScrapLine = New cTherionScrapLine(sLine)
                     Dim sNextFilename As String = Path.Combine(Path.GetDirectoryName(Filename), oScrapLine.GetValue(1))
                     If My.Computer.FileSystem.FileExists(sNextFilename) Then
-                        Call TherionThImportFrom(Survey, sNextFilename, sCave, Options, ScaleFactor)
+                        Call TherionTh2ImportFrom(Survey, sNextFilename, sCave, Options, ScaleFactor)
                     End If
                 End If
 
@@ -605,7 +605,7 @@ Module modImport
                                     iLastLineType = -2
                                     bFirstPoint = False
                                 Else
-                                    iLineType = IIf(sPointData.Length = 2, cIItemLine.LineTypeEnum.Lines, cIItemLine.LineTypeEnum.Beziers)
+                                    iLineType = If(sPointData.Length = 2, cIItemLine.LineTypeEnum.Lines, cIItemLine.LineTypeEnum.Beziers)
                                     If iLineType <> iLastLineType Then
                                         bBeginSequence = True
                                     Else

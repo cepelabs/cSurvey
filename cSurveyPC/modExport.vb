@@ -2643,7 +2643,7 @@ Module modExport
         Select Case Format
             Case FormatTextForEnum.Base
                 sText = UnAccent(Text)
-                sText = Web.HttpUtility.UrlEncode(Text)
+                'sText = Web.HttpUtility.UrlEncode(Text)
                 sText = sText.Replace("(", "")
                 sText = sText.Replace(")", "")
                 sText = sText.Replace(".", "")

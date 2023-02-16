@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="tipDefault.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtFilename.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -134,12 +131,6 @@
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtFilename.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="txtFilename.ToolTip" xml:space="preserve">
-    <value>VisualTopo file name</value>
-  </data>
-  <data name="txtFilename.ToolTip1" xml:space="preserve">
-    <value>VisualTopo file name</value>
   </data>
   <data name="&gt;&gt;txtFilename.Name" xml:space="preserve">
     <value>txtFilename</value>
@@ -216,15 +207,27 @@
   <data name="GroupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <metadata name="svgiml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>190, 17</value>
-  </metadata>
   <data name="tvLog.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="tvLogText.Caption" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="tvLogText.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tvLogText.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tvLogImageName.Caption" xml:space="preserve">
+    <value>ImageName</value>
   </data>
   <data name="tvLog.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 30</value>
   </data>
+  <metadata name="svgiml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>190, 17</value>
+  </metadata>
   <data name="tvLog.Size" type="System.Drawing.Size, System.Drawing">
     <value>416, 101</value>
   </data>
@@ -267,18 +270,6 @@
   <data name="&gt;&gt;GroupBox1.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="tvLogText.Caption" xml:space="preserve">
-    <value>Text</value>
-  </data>
-  <data name="tvLogText.Visible" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="tvLogText.VisibleIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <metadata name="svgiml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>190, 17</value>
-  </metadata>
   <metadata name="iml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>122, 17</value>
   </metadata>
@@ -287,7 +278,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAC2
-        CwAAAk1TRnQBSQFMAgEBBAEAAWwBAQFsAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBBAEAAXwBAQF8AQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -350,7 +341,7 @@
     <value>Import scale settings</value>
   </data>
   <data name="chkcSurveyImportScaleRules.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 20</value>
+    <value>123, 20</value>
   </data>
   <data name="chkcSurveyImportScaleRules.TabIndex" type="System.Int32, mscorlib">
     <value>70</value>
@@ -377,7 +368,7 @@
     <value>Import graphics settings</value>
   </data>
   <data name="chkcSurveyImportDesignProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 20</value>
+    <value>139, 20</value>
   </data>
   <data name="chkcSurveyImportDesignProperties.TabIndex" type="System.Int32, mscorlib">
     <value>69</value>
@@ -404,7 +395,7 @@
     <value>Import surface data</value>
   </data>
   <data name="chkcSurveyImportSurface.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 20</value>
+    <value>119, 20</value>
   </data>
   <data name="chkcSurveyImportSurface.TabIndex" type="System.Int32, mscorlib">
     <value>68</value>
@@ -434,7 +425,7 @@
     <value>Import profile</value>
   </data>
   <data name="chkcSurveyImportProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 20</value>
+    <value>88, 20</value>
   </data>
   <data name="chkcSurveyImportProfile.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -464,7 +455,7 @@
     <value>Import plan</value>
   </data>
   <data name="chkcSurveyImportPlan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 20</value>
+    <value>78, 20</value>
   </data>
   <data name="chkcSurveyImportPlan.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -488,7 +479,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblFilename.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 16</value>
+    <value>16, 15</value>
   </data>
   <data name="lblFilename.Size" type="System.Drawing.Size, System.Drawing">
     <value>20, 13</value>
@@ -521,7 +512,7 @@
     <value>Import data</value>
   </data>
   <data name="chkcSurveyImportData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 20</value>
+    <value>80, 20</value>
   </data>
   <data name="chkcSurveyImportData.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
@@ -548,7 +539,7 @@
     <value>Import graphics</value>
   </data>
   <data name="chkcSurveyImportGraphics.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 20</value>
+    <value>98, 20</value>
   </data>
   <data name="chkcSurveyImportGraphics.TabIndex" type="System.Int32, mscorlib">
     <value>67</value>
@@ -578,7 +569,7 @@
     <value>Import cave/branch binded to design object</value>
   </data>
   <data name="chkcSurveyImportCaveBranchFromDesign.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 20</value>
+    <value>233, 20</value>
   </data>
   <data name="chkcSurveyImportCaveBranchFromDesign.TabIndex" type="System.Int32, mscorlib">
     <value>72</value>
@@ -608,7 +599,7 @@
     <value>Import existing shots</value>
   </data>
   <data name="chkcSurveyImportDuplicates.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 20</value>
+    <value>124, 20</value>
   </data>
   <data name="chkcSurveyImportDuplicates.TabIndex" type="System.Int32, mscorlib">
     <value>73</value>
@@ -689,7 +680,7 @@
     <value>Overwrite duplicates</value>
   </data>
   <data name="chkcSurveyImportDuplicatesOverwrite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 20</value>
+    <value>122, 20</value>
   </data>
   <data name="chkcSurveyImportDuplicatesOverwrite.TabIndex" type="System.Int32, mscorlib">
     <value>76</value>
@@ -719,7 +710,7 @@
     <value>Import and overwrite existing stations</value>
   </data>
   <data name="chkcSurveyImportDuplicatesStations.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 20</value>
+    <value>206, 20</value>
   </data>
   <data name="chkcSurveyImportDuplicatesStations.TabIndex" type="System.Int32, mscorlib">
     <value>77</value>
@@ -773,7 +764,7 @@
     <value>Update cave/branch priority</value>
   </data>
   <data name="chkcSurveyImportUpdateCaveBranchPriority.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 20</value>
+    <value>158, 20</value>
   </data>
   <data name="chkcSurveyImportUpdateCaveBranchPriority.TabIndex" type="System.Int32, mscorlib">
     <value>82</value>
@@ -800,7 +791,7 @@
     <value>Import all as new cave/branch</value>
   </data>
   <data name="chkcSurveyImportCreateNewBranch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 20</value>
+    <value>168, 20</value>
   </data>
   <data name="chkcSurveyImportCreateNewBranch.TabIndex" type="System.Int32, mscorlib">
     <value>83</value>
@@ -830,7 +821,7 @@
     <value>Overwrite only design binded shots</value>
   </data>
   <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 20</value>
+    <value>192, 20</value>
   </data>
   <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.TabIndex" type="System.Int32, mscorlib">
     <value>84</value>
@@ -857,7 +848,7 @@
     <value>Do not set origin as extendstart</value>
   </data>
   <data name="chkcSurveyDisableOriginAsExtendstart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 20</value>
+    <value>176, 20</value>
   </data>
   <data name="chkcSurveyDisableOriginAsExtendstart.TabIndex" type="System.Int32, mscorlib">
     <value>85</value>
@@ -944,7 +935,7 @@
     <value>Linked surveys</value>
   </data>
   <data name="chkcsurveyimportlinkedsurvey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 20</value>
+    <value>94, 20</value>
   </data>
   <data name="chkcsurveyimportlinkedsurvey.TabIndex" type="System.Int32, mscorlib">
     <value>88</value>
@@ -1013,7 +1004,7 @@
     <value>Import shared texts</value>
   </data>
   <data name="chkcSurveyImportTexts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 20</value>
+    <value>119, 20</value>
   </data>
   <data name="chkcSurveyImportTexts.TabIndex" type="System.Int32, mscorlib">
     <value>91</value>
@@ -1029,9 +1020,6 @@
   </data>
   <data name="&gt;&gt;chkcSurveyImportTexts.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="tvLogImageName.Caption" xml:space="preserve">
-    <value>ImageName</value>
   </data>
   <data name="cboImportAsBranchOfCave.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1090,9 +1078,6 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>456, 665</value>
   </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>333, 237</value>
   </data>
@@ -1102,16 +1087,16 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Import from cSurvey:</value>
   </data>
-  <data name="&gt;&gt;tipDefault.Name" xml:space="preserve">
-    <value>tipDefault</value>
-  </data>
-  <data name="&gt;&gt;tipDefault.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;tvLogText.Name" xml:space="preserve">
     <value>tvLogText</value>
   </data>
   <data name="&gt;&gt;tvLogText.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tvLogImageName.Name" xml:space="preserve">
+    <value>tvLogImageName</value>
+  </data>
+  <data name="&gt;&gt;tvLogImageName.Type" xml:space="preserve">
     <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;svgiml.Name" xml:space="preserve">
@@ -1125,12 +1110,6 @@
   </data>
   <data name="&gt;&gt;iml.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tvLogImageName.Name" xml:space="preserve">
-    <value>tvLogImageName</value>
-  </data>
-  <data name="&gt;&gt;tvLogImageName.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmImportcSurvey</value>

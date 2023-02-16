@@ -24,13 +24,13 @@ Partial Class frmImportcSurvey
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmImportcSurvey))
-        Me.tipDefault = New System.Windows.Forms.ToolTip(Me.components)
         Me.txtFilename = New DevExpress.XtraEditors.TextEdit()
         Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupBox1 = New DevExpress.XtraEditors.GroupControl()
         Me.tvLog = New DevExpress.XtraTreeList.TreeList()
         Me.tvLogText = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.tvLogImageName = New DevExpress.XtraTreeList.Columns.TreeListColumn()
         Me.svgiml = New DevExpress.Utils.SvgImageCollection(Me.components)
         Me.iml = New System.Windows.Forms.ImageList(Me.components)
         Me.chkcSurveyImportScaleRules = New DevExpress.XtraEditors.CheckEdit()
@@ -58,7 +58,6 @@ Partial Class frmImportcSurvey
         Me.pnlcSurveyImportData = New DevExpress.XtraEditors.PanelControl()
         Me.pnlcSurveyImportGraphics = New DevExpress.XtraEditors.PanelControl()
         Me.chkcSurveyImportTexts = New DevExpress.XtraEditors.CheckEdit()
-        Me.tvLogImageName = New DevExpress.XtraTreeList.Columns.TreeListColumn()
         Me.cboImportAsBranchOfCave = New cSurveyPC.cCaveDropDown()
         Me.cboImportAsBranchOfBranch = New cSurveyPC.cCaveBranchDropDown()
         CType(Me.txtFilename.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -95,7 +94,6 @@ Partial Class frmImportcSurvey
         resources.ApplyResources(Me.txtFilename, "txtFilename")
         Me.txtFilename.Name = "txtFilename"
         Me.txtFilename.Properties.ReadOnly = True
-        Me.tipDefault.SetToolTip(Me.txtFilename, resources.GetString("txtFilename.ToolTip"))
         '
         'cmdOk
         '
@@ -138,6 +136,12 @@ Partial Class frmImportcSurvey
         Me.tvLogText.FieldName = "Text"
         Me.tvLogText.Name = "tvLogText"
         '
+        'tvLogImageName
+        '
+        resources.ApplyResources(Me.tvLogImageName, "tvLogImageName")
+        Me.tvLogImageName.FieldName = "ImageName"
+        Me.tvLogImageName.Name = "tvLogImageName"
+        '
         'svgiml
         '
         Me.svgiml.Add("actions_checkcircled", "actions_checkcircled", GetType(cSurveyPC.My.Resources.Resources))
@@ -158,30 +162,35 @@ Partial Class frmImportcSurvey
         '
         resources.ApplyResources(Me.chkcSurveyImportScaleRules, "chkcSurveyImportScaleRules")
         Me.chkcSurveyImportScaleRules.Name = "chkcSurveyImportScaleRules"
+        Me.chkcSurveyImportScaleRules.Properties.AutoWidth = True
         Me.chkcSurveyImportScaleRules.Properties.Caption = resources.GetString("chkcSurveyImportScaleRules.Properties.Caption")
         '
         'chkcSurveyImportDesignProperties
         '
         resources.ApplyResources(Me.chkcSurveyImportDesignProperties, "chkcSurveyImportDesignProperties")
         Me.chkcSurveyImportDesignProperties.Name = "chkcSurveyImportDesignProperties"
+        Me.chkcSurveyImportDesignProperties.Properties.AutoWidth = True
         Me.chkcSurveyImportDesignProperties.Properties.Caption = resources.GetString("chkcSurveyImportDesignProperties.Properties.Caption")
         '
         'chkcSurveyImportSurface
         '
         resources.ApplyResources(Me.chkcSurveyImportSurface, "chkcSurveyImportSurface")
         Me.chkcSurveyImportSurface.Name = "chkcSurveyImportSurface"
+        Me.chkcSurveyImportSurface.Properties.AutoWidth = True
         Me.chkcSurveyImportSurface.Properties.Caption = resources.GetString("chkcSurveyImportSurface.Properties.Caption")
         '
         'chkcSurveyImportProfile
         '
         resources.ApplyResources(Me.chkcSurveyImportProfile, "chkcSurveyImportProfile")
         Me.chkcSurveyImportProfile.Name = "chkcSurveyImportProfile"
+        Me.chkcSurveyImportProfile.Properties.AutoWidth = True
         Me.chkcSurveyImportProfile.Properties.Caption = resources.GetString("chkcSurveyImportProfile.Properties.Caption")
         '
         'chkcSurveyImportPlan
         '
         resources.ApplyResources(Me.chkcSurveyImportPlan, "chkcSurveyImportPlan")
         Me.chkcSurveyImportPlan.Name = "chkcSurveyImportPlan"
+        Me.chkcSurveyImportPlan.Properties.AutoWidth = True
         Me.chkcSurveyImportPlan.Properties.Caption = resources.GetString("chkcSurveyImportPlan.Properties.Caption")
         '
         'lblFilename
@@ -195,24 +204,28 @@ Partial Class frmImportcSurvey
         '
         resources.ApplyResources(Me.chkcSurveyImportData, "chkcSurveyImportData")
         Me.chkcSurveyImportData.Name = "chkcSurveyImportData"
+        Me.chkcSurveyImportData.Properties.AutoWidth = True
         Me.chkcSurveyImportData.Properties.Caption = resources.GetString("chkcSurveyImportData.Properties.Caption")
         '
         'chkcSurveyImportGraphics
         '
         resources.ApplyResources(Me.chkcSurveyImportGraphics, "chkcSurveyImportGraphics")
         Me.chkcSurveyImportGraphics.Name = "chkcSurveyImportGraphics"
+        Me.chkcSurveyImportGraphics.Properties.AutoWidth = True
         Me.chkcSurveyImportGraphics.Properties.Caption = resources.GetString("chkcSurveyImportGraphics.Properties.Caption")
         '
         'chkcSurveyImportCaveBranchFromDesign
         '
         resources.ApplyResources(Me.chkcSurveyImportCaveBranchFromDesign, "chkcSurveyImportCaveBranchFromDesign")
         Me.chkcSurveyImportCaveBranchFromDesign.Name = "chkcSurveyImportCaveBranchFromDesign"
+        Me.chkcSurveyImportCaveBranchFromDesign.Properties.AutoWidth = True
         Me.chkcSurveyImportCaveBranchFromDesign.Properties.Caption = resources.GetString("chkcSurveyImportCaveBranchFromDesign.Properties.Caption")
         '
         'chkcSurveyImportDuplicates
         '
         resources.ApplyResources(Me.chkcSurveyImportDuplicates, "chkcSurveyImportDuplicates")
         Me.chkcSurveyImportDuplicates.Name = "chkcSurveyImportDuplicates"
+        Me.chkcSurveyImportDuplicates.Properties.AutoWidth = True
         Me.chkcSurveyImportDuplicates.Properties.Caption = resources.GetString("chkcSurveyImportDuplicates.Properties.Caption")
         '
         'cbocSurveyImportDuplicatesMode
@@ -233,12 +246,14 @@ Partial Class frmImportcSurvey
         '
         resources.ApplyResources(Me.chkcSurveyImportDuplicatesOverwrite, "chkcSurveyImportDuplicatesOverwrite")
         Me.chkcSurveyImportDuplicatesOverwrite.Name = "chkcSurveyImportDuplicatesOverwrite"
+        Me.chkcSurveyImportDuplicatesOverwrite.Properties.AutoWidth = True
         Me.chkcSurveyImportDuplicatesOverwrite.Properties.Caption = resources.GetString("chkcSurveyImportDuplicatesOverwrite.Properties.Caption")
         '
         'chkcSurveyImportDuplicatesStations
         '
         resources.ApplyResources(Me.chkcSurveyImportDuplicatesStations, "chkcSurveyImportDuplicatesStations")
         Me.chkcSurveyImportDuplicatesStations.Name = "chkcSurveyImportDuplicatesStations"
+        Me.chkcSurveyImportDuplicatesStations.Properties.AutoWidth = True
         Me.chkcSurveyImportDuplicatesStations.Properties.Caption = resources.GetString("chkcSurveyImportDuplicatesStations.Properties.Caption")
         '
         'chkImportAsBranchOf
@@ -251,24 +266,28 @@ Partial Class frmImportcSurvey
         '
         resources.ApplyResources(Me.chkcSurveyImportUpdateCaveBranchPriority, "chkcSurveyImportUpdateCaveBranchPriority")
         Me.chkcSurveyImportUpdateCaveBranchPriority.Name = "chkcSurveyImportUpdateCaveBranchPriority"
+        Me.chkcSurveyImportUpdateCaveBranchPriority.Properties.AutoWidth = True
         Me.chkcSurveyImportUpdateCaveBranchPriority.Properties.Caption = resources.GetString("chkcSurveyImportUpdateCaveBranchPriority.Properties.Caption")
         '
         'chkcSurveyImportCreateNewBranch
         '
         resources.ApplyResources(Me.chkcSurveyImportCreateNewBranch, "chkcSurveyImportCreateNewBranch")
         Me.chkcSurveyImportCreateNewBranch.Name = "chkcSurveyImportCreateNewBranch"
+        Me.chkcSurveyImportCreateNewBranch.Properties.AutoWidth = True
         Me.chkcSurveyImportCreateNewBranch.Properties.Caption = resources.GetString("chkcSurveyImportCreateNewBranch.Properties.Caption")
         '
         'chkcSurveyImportDuplicatesOverwriteOnlyUsed
         '
         resources.ApplyResources(Me.chkcSurveyImportDuplicatesOverwriteOnlyUsed, "chkcSurveyImportDuplicatesOverwriteOnlyUsed")
         Me.chkcSurveyImportDuplicatesOverwriteOnlyUsed.Name = "chkcSurveyImportDuplicatesOverwriteOnlyUsed"
+        Me.chkcSurveyImportDuplicatesOverwriteOnlyUsed.Properties.AutoWidth = True
         Me.chkcSurveyImportDuplicatesOverwriteOnlyUsed.Properties.Caption = resources.GetString("chkcSurveyImportDuplicatesOverwriteOnlyUsed.Properties.Caption")
         '
         'chkcSurveyDisableOriginAsExtendstart
         '
         resources.ApplyResources(Me.chkcSurveyDisableOriginAsExtendstart, "chkcSurveyDisableOriginAsExtendstart")
         Me.chkcSurveyDisableOriginAsExtendstart.Name = "chkcSurveyDisableOriginAsExtendstart"
+        Me.chkcSurveyDisableOriginAsExtendstart.Properties.AutoWidth = True
         Me.chkcSurveyDisableOriginAsExtendstart.Properties.Caption = resources.GetString("chkcSurveyDisableOriginAsExtendstart.Properties.Caption")
         '
         'lblcSurveyImportWarpingMode
@@ -289,6 +308,7 @@ Partial Class frmImportcSurvey
         '
         resources.ApplyResources(Me.chkcsurveyimportlinkedsurvey, "chkcsurveyimportlinkedsurvey")
         Me.chkcsurveyimportlinkedsurvey.Name = "chkcsurveyimportlinkedsurvey"
+        Me.chkcsurveyimportlinkedsurvey.Properties.AutoWidth = True
         Me.chkcsurveyimportlinkedsurvey.Properties.Caption = resources.GetString("chkcsurveyimportlinkedsurvey.Properties.Caption")
         '
         'pnlcSurveyImportData
@@ -318,13 +338,8 @@ Partial Class frmImportcSurvey
         '
         resources.ApplyResources(Me.chkcSurveyImportTexts, "chkcSurveyImportTexts")
         Me.chkcSurveyImportTexts.Name = "chkcSurveyImportTexts"
+        Me.chkcSurveyImportTexts.Properties.AutoWidth = True
         Me.chkcSurveyImportTexts.Properties.Caption = resources.GetString("chkcSurveyImportTexts.Properties.Caption")
-        '
-        'tvLogImageName
-        '
-        resources.ApplyResources(Me.tvLogImageName, "tvLogImageName")
-        Me.tvLogImageName.FieldName = "ImageName"
-        Me.tvLogImageName.Name = "tvLogImageName"
         '
         'cboImportAsBranchOfCave
         '
@@ -408,7 +423,6 @@ Partial Class frmImportcSurvey
     Friend WithEvents lblFilename As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents tipDefault As System.Windows.Forms.ToolTip
     Friend WithEvents chkcSurveyImportPlan As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkcSurveyImportProfile As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkcSurveyImportData As DevExpress.XtraEditors.CheckEdit

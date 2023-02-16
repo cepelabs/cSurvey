@@ -1096,6 +1096,7 @@ Friend Class frmMain2
         Call oMousePointer.Push(Cursors.WaitCursor)
 
         Call cboSegmentCaveList.Rebind(oSurvey, Reset)
+        Call cboSegmentCaveBranchList.Rebind(oSurvey, cboSegmentCaveList, True)
         Call oPropCaveBranch.RefreshCavesAndBranches()
 
         Dim oMainCave As cCaveInfo = Nothing
@@ -4995,6 +4996,10 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pSurveyUpdateProperty()
+        Call pSurveyUpdateProperty(True)
+    End Sub
+
+    Private Sub pSurveyUpdateProperty(ObjectPropertyLoad As Boolean)
         Call pSurveyMainProperties()
         Call pSurveyFillSessionList(False)
         Call pSurveyFillCaveList(False)
@@ -5003,8 +5008,10 @@ Friend Class frmMain2
         Call btnMainCaveBranchList_EditValueChanged(btnMainCaveBranchList, EventArgs.Empty)
 
         Call pSurveyInvalidate()
-        Call grdViewSegments.RefreshData()
-        Call grdViewTrigpoints.RefreshData()
+        Call pSurveySegmentsRefresh()
+        Call pSurveyTrigpointsRefresh()
+        'Call grdViewSegments.RefreshData()
+        'Call grdViewTrigpoints.RefreshData()
 
         Call pSurveyDelayedRedraw()
         Call pSurveyMainPropertiesPanelsRefresh()
@@ -5012,7 +5019,7 @@ Friend Class frmMain2
 
         Call oHolos.Invalidate()
 
-        Call pObjectPropertyLoad()
+        If ObjectPropertyLoad Then Call pObjectPropertyLoad()
     End Sub
 
     Private Sub pSurveyPenTypeRefresh()
@@ -7317,7 +7324,7 @@ Friend Class frmMain2
 
     Private Sub pSegmentItemSelect()
         If oTools IsNot Nothing Then
-            If Not oTools.CurrentSegment Is Nothing Then
+            If oCurrentDesign IsNot Nothing AndAlso oTools.CurrentSegment IsNot Nothing Then
                 If TypeOf pGetCurrentDesignTools.CurrentItem Is cItemSegment Then
                     Dim oItemSegment As cItemSegment = pGetCurrentDesignTools.CurrentItem
                     oItemSegment.Segment = oTools.CurrentSegment
@@ -9855,7 +9862,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pSurveyImportTherionGraphics(Filename As String, Append As Boolean)
-        Using frmIT As frmImportTherion = New frmImportTherion
+        Using frmIT As frmImportTherion2 = New frmImportTherion2
             frmIT.txtFilename.Text = Filename
 
             If frmIT.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
@@ -9872,7 +9879,7 @@ Friend Class frmMain2
 
                 Call oSurvey.Properties.DataTables.DesignItems.Add("import_source", Data.cDataFields.TypeEnum.Text)
 
-                Call modImport.TherionThImportFrom(oSurvey, Filename, sForcedCaveName, iOptions, sScaleFactor)
+                Call modImport.TherionTh2ImportFrom(oSurvey, Filename, sForcedCaveName, iOptions, sScaleFactor)
 
                 Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, 0, GetLocalizedString("main.progressend11"))
                 Call oMousePointer.Pop()
@@ -11551,7 +11558,7 @@ Friend Class frmMain2
                         Try
                             Dim oCaveInfos As cCaveInfos = oImportSurvey.Properties.CaveInfos
                             If frmIS.chkImportAsBranchOf.Checked Then
-                                Dim oCaveBranch As cICaveInfoBranches = If(frmIS.cboImportAsBranchOfBranch.EditValue Is Nothing, frmIS.cboImportAsBranchOfCave.EditValue, frmIS.cboImportAsBranchOfBranch.EditValue)
+                                Dim oCaveBranch As cICaveInfoBranches = If(cCaveInfoBranch.EditToString(frmIS.cboImportAsBranchOfBranch.EditValue) = "", frmIS.cboImportAsBranchOfCave.EditValue, frmIS.cboImportAsBranchOfBranch.EditValue)
                                 If frmIS.chkcSurveyImportCreateNewBranch.Checked Then
                                     oCaveBranch = oCaveBranch.Branches.Add(oCaveBranch.Branches.GetUniqueName(If(oImportSurvey.Properties.Name = "", IO.Path.GetFileNameWithoutExtension(Filename), oImportSurvey.Properties.Name)))
                                     If Not frmIS.chkcSurveyDisableOriginAsExtendstart.Checked Then
@@ -11642,7 +11649,7 @@ Friend Class frmMain2
                                     Dim oXML As XmlDocument = oFile.Document
                                     Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
                                     Call oImportSegment.SaveTo(oFile, oXML, oXMLParent, cSurvey.cSurvey.SaveOptionsEnum.Silent Or cSurvey.cSurvey.SaveOptionsEnum.ForClipboard)
-                                    DirectCast(oXMLParent.ChildNodes(0), XmlElement).SetAttribute("id", "")
+                                    'DirectCast(oXMLParent.ChildNodes(0), XmlElement).SetAttribute("id", "")
                                     Dim oNewSegment As cSegment = New cSegment(oSurvey, oFile, oXMLParent.ChildNodes(0))
                                     Dim iFindDuplicateMode As Integer = 0
                                     Dim bIsDuplicated As Boolean
@@ -11698,6 +11705,7 @@ Friend Class frmMain2
                                             Call oDuplicatedSegments.Add(oNewSegment.ID, oOldSegment.ID)
                                         End If
                                     Else
+                                        'Call oSurvey.Segments.Append(New cSegment(oSurvey, oNewSegment))
                                         Call oSurvey.Segments.Append(oNewSegment)
                                     End If
                                 End Using
@@ -12005,12 +12013,14 @@ Friend Class frmMain2
                         'Call oDockLS.tvLinkedSurveys.BuildList()
                     End If
 
-                    Call pSurveyFillSessionList(False)
-                    Call pSurveyFillCaveList(False)
+                    Call pSurveyUpdateProperty(False)
 
-                    Call pSurveyCaption()
-                    Call pSurveySegmentsRefresh()
-                    Call pSurveyTrigpointsRefresh()
+                    'Call pSurveyFillSessionList(False)
+                    'Call pSurveyFillCaveList(False)
+
+                    'Call pSurveyCaption()
+                    'Call pSurveySegmentsRefresh()
+                    'Call pSurveyTrigpointsRefresh()
 
                     Call pSurveyCalculate(True)
 
@@ -12424,7 +12434,7 @@ Friend Class frmMain2
                                         End If
                                     Case 1
                                         'nome sessione
-                                        sSessionDescription = sLine.Replace("SURVEY NAME: ", "")
+                                        sSessionDescription = sLine.Replace("SURVEY NAME: ", "").Trim
                                         If bBranchForSession Then
                                             If oCurrentCaveBranch.Branches.Contains(sSessionDescription) Then
                                                 oCurrentCaveSubBranch = oCurrentCaveBranch.Branches(sSessionDescription)
@@ -12442,6 +12452,13 @@ Friend Class frmMain2
                                         End If
                                         Dim sDatePart() As String = sTemp.Trim.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
                                         dSessionDate = New Date(sDatePart(2), sDatePart(0), sDatePart(1))
+                                        If oSurvey.Properties.Sessions.Contains(dSessionDate, sSessionDescription) Then
+                                            Dim iSessionCount As Integer = 1
+                                            Do While oSurvey.Properties.Sessions.Contains(dSessionDate, sSessionDescription & " " & iSessionCount)
+                                                iSessionCount += 1
+                                            Loop
+                                            sSessionDescription &= " " & iSessionCount
+                                        End If
                                         oCurrentsession = oSurvey.Properties.Sessions.Add(dSessionDate, sSessionDescription)
                                         oCurrentsession.Note = sLine.Substring(sLine.IndexOf("COMMENT:") + 8).Trim
                                     Case 3

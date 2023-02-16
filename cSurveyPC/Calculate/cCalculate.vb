@@ -1099,6 +1099,7 @@ Namespace cSurvey.Calculate
                 Return ""
             End If
         End Function
+
         Private Function pTranslateErrorMessage(Message As String, Dictionary As Dictionary(Of String, String)) As cTranslateErrorMessageResult
             If Message.StartsWith("[") Then
                 Dim sTranslatedMessage As String
@@ -1106,6 +1107,8 @@ Namespace cSurvey.Calculate
                 Dim iLine As Integer = sMessageParts(0).Replace("[", "").Replace("]", "")
                 Dim sMessage As String = sMessageParts(1).Trim
                 Select Case sMessage
+                    Case "duplicated object name"
+                        sTranslatedMessage = GetLocalizedString("calculate.textpart17")
                     Case "length reading is less than change in depth"
                         sTranslatedMessage = GetLocalizedString("calculate.textpart15")
                         'Case "[8]"
@@ -1670,9 +1673,13 @@ Namespace cSurvey.Calculate
                                     If oTEM.Line.HasValue Then
                                         If oInputLines Is Nothing Then oInputLines = My.Computer.FileSystem.ReadAllText(sTempThInputFilename).Split({vbCrLf}, StringSplitOptions.None).ToList
                                         Dim sSegmentID As String = pGetSegmentIDFromInputFileLine(oInputLines(oTEM.Line - 1))
-                                        Dim oSegment As cSegment = oSurvey.Segments.Item(sSegmentID)
+                                        Dim oSegment As cSegment = If(oSurvey.Segments.Contains(sSegmentID), oSurvey.Segments.Item(sSegmentID), Nothing)
+                                        If oSegment Is Nothing Then
+                                            Throw New cCalculateTherionException(oTEM.Message)
+                                        Else
+                                            Throw New cCalculateSegmentException(oTEM.Message, oSegment)
+                                        End If
                                         'Call oCalculateData.Add(New cCalculateDataItem(Now, cCalculateDataItem.CalculateDataItemTypeEnum.Error, oTEM.Message, oSegment))
-                                        Throw New cCalculateSegmentException(oTEM.Message, oSegment)
                                     Else
                                         'Call oCalculateData.Add(New cCalculateDataItem(Now, cCalculateDataItem.CalculateDataItemTypeEnum.Error, oTEM.Message))
                                         Throw New cCalculateTherionException(oTEM.Message)

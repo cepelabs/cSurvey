@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmImportTherion
     Inherits cForm
 
     'Form esegue l'override del metodo Dispose per pulire l'elenco dei componenti.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,9 +20,8 @@ Partial Class frmImportTherion
     'NOTA: la procedura che segue è richiesta da Progettazione Windows Form
     'Può essere modificata in Progettazione Windows Form.  
     'Non modificarla nell'editor del codice.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmImportTherion))
         Me.txtPrefix = New DevExpress.XtraEditors.TextEdit()
         Me.lblPrefix = New DevExpress.XtraEditors.LabelControl()
@@ -30,23 +29,16 @@ Partial Class frmImportTherion
         Me.lblFilename = New DevExpress.XtraEditors.LabelControl()
         Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
-        Me.tipDefault = New System.Windows.Forms.ToolTip(Me.components)
-        Me.txtCaveName = New DevExpress.XtraEditors.TextEdit()
-        Me.lblCaveName = New DevExpress.XtraEditors.LabelControl()
-        Me.chkTherionImportprofile = New DevExpress.XtraEditors.CheckEdit()
-        Me.chkTherionImportplan = New DevExpress.XtraEditors.CheckEdit()
-        Me.chkTherionMergeAndReorderBorders = New DevExpress.XtraEditors.CheckEdit()
-        Me.chktherionConvertBezierToSpline = New DevExpress.XtraEditors.CheckEdit()
-        Me.lblTherionScaleFactor = New DevExpress.XtraEditors.LabelControl()
-        Me.txtTherionScaleFactor = New DevExpress.XtraEditors.SpinEdit()
+        Me.chkcSurveyImportCreateNewBranch = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkImportAsBranchOf = New DevExpress.XtraEditors.CheckEdit()
+        Me.cboImportAsBranchOfCave = New cSurveyPC.cCaveDropDown()
+        Me.cboImportAsBranchOfBranch = New cSurveyPC.cCaveBranchDropDown()
+        Me.chkProcessAllFiles = New DevExpress.XtraEditors.CheckEdit()
         CType(Me.txtPrefix.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtFilename.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCaveName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkTherionImportprofile.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkTherionImportplan.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkTherionMergeAndReorderBorders.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chktherionConvertBezierToSpline.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTherionScaleFactor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkcSurveyImportCreateNewBranch.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkImportAsBranchOf.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkProcessAllFiles.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtPrefix
@@ -54,7 +46,6 @@ Partial Class frmImportTherion
         resources.ApplyResources(Me.txtPrefix, "txtPrefix")
         Me.txtPrefix.Name = "txtPrefix"
         Me.txtPrefix.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.tipDefault.SetToolTip(Me.txtPrefix, resources.GetString("txtPrefix.ToolTip"))
         '
         'lblPrefix
         '
@@ -68,7 +59,6 @@ Partial Class frmImportTherion
         resources.ApplyResources(Me.txtFilename, "txtFilename")
         Me.txtFilename.Name = "txtFilename"
         Me.txtFilename.Properties.ReadOnly = True
-        Me.tipDefault.SetToolTip(Me.txtFilename, resources.GetString("txtFilename.ToolTip"))
         '
         'lblFilename
         '
@@ -89,60 +79,40 @@ Partial Class frmImportTherion
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
         '
-        'txtCaveName
+        'chkcSurveyImportCreateNewBranch
         '
-        resources.ApplyResources(Me.txtCaveName, "txtCaveName")
-        Me.txtCaveName.Name = "txtCaveName"
-        Me.tipDefault.SetToolTip(Me.txtCaveName, resources.GetString("txtCaveName.ToolTip"))
+        resources.ApplyResources(Me.chkcSurveyImportCreateNewBranch, "chkcSurveyImportCreateNewBranch")
+        Me.chkcSurveyImportCreateNewBranch.Name = "chkcSurveyImportCreateNewBranch"
+        Me.chkcSurveyImportCreateNewBranch.Properties.AutoWidth = True
+        Me.chkcSurveyImportCreateNewBranch.Properties.Caption = resources.GetString("chkcSurveyImportCreateNewBranch.Properties.Caption")
         '
-        'lblCaveName
+        'chkImportAsBranchOf
         '
-        Me.lblCaveName.Appearance.Font = CType(resources.GetObject("lblCaveName.Appearance.Font"), System.Drawing.Font)
-        Me.lblCaveName.Appearance.Options.UseFont = True
-        resources.ApplyResources(Me.lblCaveName, "lblCaveName")
-        Me.lblCaveName.Name = "lblCaveName"
+        resources.ApplyResources(Me.chkImportAsBranchOf, "chkImportAsBranchOf")
+        Me.chkImportAsBranchOf.Name = "chkImportAsBranchOf"
+        Me.chkImportAsBranchOf.Properties.AutoWidth = True
+        Me.chkImportAsBranchOf.Properties.Caption = resources.GetString("chkImportAsBranchOf.Properties.Caption")
         '
-        'chkTherionImportprofile
+        'cboImportAsBranchOfCave
         '
-        resources.ApplyResources(Me.chkTherionImportprofile, "chkTherionImportprofile")
-        Me.chkTherionImportprofile.Name = "chkTherionImportprofile"
-        Me.chkTherionImportprofile.Properties.Caption = resources.GetString("chkTherionImportprofile.Properties.Caption")
+        Me.cboImportAsBranchOfCave.EditValue = Nothing
+        resources.ApplyResources(Me.cboImportAsBranchOfCave, "cboImportAsBranchOfCave")
+        Me.cboImportAsBranchOfCave.Name = "cboImportAsBranchOfCave"
+        Me.cboImportAsBranchOfCave.Workmode = cSurveyPC.cCaveDropDown.WorkmodeEnum.View
         '
-        'chkTherionImportplan
+        'cboImportAsBranchOfBranch
         '
-        resources.ApplyResources(Me.chkTherionImportplan, "chkTherionImportplan")
-        Me.chkTherionImportplan.Name = "chkTherionImportplan"
-        Me.chkTherionImportplan.Properties.Caption = resources.GetString("chkTherionImportplan.Properties.Caption")
+        Me.cboImportAsBranchOfBranch.EditValue = Nothing
+        resources.ApplyResources(Me.cboImportAsBranchOfBranch, "cboImportAsBranchOfBranch")
+        Me.cboImportAsBranchOfBranch.Name = "cboImportAsBranchOfBranch"
+        Me.cboImportAsBranchOfBranch.Workmode = cSurveyPC.cCaveDropDown.WorkmodeEnum.View
         '
-        'chkTherionMergeAndReorderBorders
+        'chkProcessAllFiles
         '
-        resources.ApplyResources(Me.chkTherionMergeAndReorderBorders, "chkTherionMergeAndReorderBorders")
-        Me.chkTherionMergeAndReorderBorders.Name = "chkTherionMergeAndReorderBorders"
-        Me.chkTherionMergeAndReorderBorders.Properties.Caption = resources.GetString("chkTherionMergeAndReorderBorders.Properties.Caption")
-        '
-        'chktherionConvertBezierToSpline
-        '
-        resources.ApplyResources(Me.chktherionConvertBezierToSpline, "chktherionConvertBezierToSpline")
-        Me.chktherionConvertBezierToSpline.Name = "chktherionConvertBezierToSpline"
-        Me.chktherionConvertBezierToSpline.Properties.Caption = resources.GetString("chktherionConvertBezierToSpline.Properties.Caption")
-        '
-        'lblTherionScaleFactor
-        '
-        resources.ApplyResources(Me.lblTherionScaleFactor, "lblTherionScaleFactor")
-        Me.lblTherionScaleFactor.Name = "lblTherionScaleFactor"
-        '
-        'txtTherionScaleFactor
-        '
-        resources.ApplyResources(Me.txtTherionScaleFactor, "txtTherionScaleFactor")
-        Me.txtTherionScaleFactor.Name = "txtTherionScaleFactor"
-        Me.txtTherionScaleFactor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtTherionScaleFactor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txtTherionScaleFactor.Properties.DisplayFormat.FormatString = "N2"
-        Me.txtTherionScaleFactor.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtTherionScaleFactor.Properties.EditFormat.FormatString = "N2"
-        Me.txtTherionScaleFactor.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtTherionScaleFactor.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
-        Me.txtTherionScaleFactor.Properties.MaxValue = New Decimal(New Integer() {500, 0, 0, 0})
-        Me.txtTherionScaleFactor.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
+        resources.ApplyResources(Me.chkProcessAllFiles, "chkProcessAllFiles")
+        Me.chkProcessAllFiles.Name = "chkProcessAllFiles"
+        Me.chkProcessAllFiles.Properties.AutoWidth = True
+        Me.chkProcessAllFiles.Properties.Caption = resources.GetString("CheckEdit1.Properties.Caption")
         '
         'frmImportTherion
         '
@@ -150,14 +120,11 @@ Partial Class frmImportTherion
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
-        Me.Controls.Add(Me.txtTherionScaleFactor)
-        Me.Controls.Add(Me.lblTherionScaleFactor)
-        Me.Controls.Add(Me.chktherionConvertBezierToSpline)
-        Me.Controls.Add(Me.chkTherionMergeAndReorderBorders)
-        Me.Controls.Add(Me.chkTherionImportprofile)
-        Me.Controls.Add(Me.chkTherionImportplan)
-        Me.Controls.Add(Me.txtCaveName)
-        Me.Controls.Add(Me.lblCaveName)
+        Me.Controls.Add(Me.chkProcessAllFiles)
+        Me.Controls.Add(Me.chkcSurveyImportCreateNewBranch)
+        Me.Controls.Add(Me.chkImportAsBranchOf)
+        Me.Controls.Add(Me.cboImportAsBranchOfCave)
+        Me.Controls.Add(Me.cboImportAsBranchOfBranch)
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdOk)
         Me.Controls.Add(Me.txtFilename)
@@ -172,12 +139,9 @@ Partial Class frmImportTherion
         Me.Name = "frmImportTherion"
         CType(Me.txtPrefix.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtFilename.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCaveName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkTherionImportprofile.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkTherionImportplan.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkTherionMergeAndReorderBorders.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chktherionConvertBezierToSpline.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTherionScaleFactor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkcSurveyImportCreateNewBranch.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkImportAsBranchOf.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkProcessAllFiles.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -188,13 +152,9 @@ Partial Class frmImportTherion
     Friend WithEvents lblFilename As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents tipDefault As System.Windows.Forms.ToolTip
-    Friend WithEvents txtCaveName As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents lblCaveName As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents chkTherionImportprofile As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents chkTherionImportplan As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents chkTherionMergeAndReorderBorders As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents chktherionConvertBezierToSpline As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents lblTherionScaleFactor As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents txtTherionScaleFactor As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents chkcSurveyImportCreateNewBranch As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkImportAsBranchOf As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents cboImportAsBranchOfCave As cCaveDropDown
+    Friend WithEvents cboImportAsBranchOfBranch As cCaveBranchDropDown
+    Friend WithEvents chkProcessAllFiles As DevExpress.XtraEditors.CheckEdit
 End Class

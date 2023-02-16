@@ -11,6 +11,7 @@ Friend Class frmImportcSurvey
         tvLog.MakeNodeVisible(oNode)
         tvLog.EndUpdate()
     End Sub
+
     Private Sub pSettingsLoad()
         chkcSurveyImportData.Checked = My.Application.Settings.GetSetting("data.import.csurvey.data", 1)
         chkcSurveyImportDuplicates.Checked = My.Application.Settings.GetSetting("data.import.csurvey.duplicates", 1)
@@ -157,6 +158,6 @@ Friend Class frmImportcSurvey
         Dim oBranch As cCaveInfoBranch = cboImportAsBranchOfBranch.EditValue
         Dim sCave As String = "" & If(cboImportAsBranchOfCave.EditValue Is Nothing, "", cboImportAsBranchOfCave.EditValue.Name)
         Dim sCurrentBranch As String = "" & If(cboImportAsBranchOfBranch.EditValue Is Nothing, "", cboImportAsBranchOfBranch.EditValue.Path)
-        Call cboImportAsBranchOfBranch.Rebind(oSurvey, cboImportAsBranchOfCave, False)
+        Call cboImportAsBranchOfBranch.Rebind(oSurvey, cboImportAsBranchOfCave, True)
     End Sub
 End Class

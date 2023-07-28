@@ -228,4 +228,10 @@
   <data name="cboDirection.ToolTip" xml:space="preserve">
     <value>Specifica la direzione della battuta in sezione</value>
   </data>
+  <data name="cmdEditOtherProperties.ToolTip" xml:space="preserve">
+    <value>Modifica le proprietà aggiuntive da replicare</value>
+  </data>
+  <data name="CheckEdit1.Properties.Caption" xml:space="preserve">
+    <value>Altre proprietà</value>
+  </data>
 </root>

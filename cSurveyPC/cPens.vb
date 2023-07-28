@@ -41,6 +41,157 @@ Namespace cSurvey.Design
         Private oPenIcePen As cCustomPen
         Private oPenPresumedIcePen As cCustomPen
 
+        Private oPenGenericFault As cCustomPen
+        Private oPenGenericPresumedFault As cCustomPen
+        Private oPenNormalFault As cCustomPen
+        Private oPenReverseFault As cCustomPen
+        Private oPenVerticalFault As cCustomPen
+        Private oPenStrikeFaultDx As cCustomPen
+        Private oPenStrikeFaultSx As cCustomPen
+        Private oPenStrikeFaultUnknown As cCustomPen
+        Private oPenThrustTectonics As cCustomPen
+        Private oPenAnticline As cCustomPen
+        Private oPenSyncline As cCustomPen
+
+        Public ReadOnly Property SynclinePen() As cCustomPen
+            Get
+                If oPenSyncline Is Nothing Then
+                    oPenSyncline = New cCustomPen(oSurvey, cPen.PenTypeEnum.SynclinePen, "", GetLocalizedString("pens.syncline"), Color.Black, 40, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.DownUpTriangle, 4000, cPen.DecorationAlignmentEnum.Center, 2)
+                    oPenSyncline.ClipartPenMode = cPen.ClipartPenModeEnum.Custom
+                    oPenSyncline.ClipartPenStyle = cPen.PenStylesEnum.None
+                End If
+                Return oPenSyncline
+            End Get
+        End Property
+
+        Public ReadOnly Property AnticlinePen() As cCustomPen
+            Get
+                If oPenAnticline Is Nothing Then
+                    oPenAnticline = New cCustomPen(oSurvey, cPen.PenTypeEnum.AnticlinePen, "", GetLocalizedString("pens.anticline"), Color.Black, 40, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.UpDownTriangle, 4000, cPen.DecorationAlignmentEnum.Center, 2)
+                    oPenAnticline.ClipartPenMode = cPen.ClipartPenModeEnum.Custom
+                    oPenAnticline.ClipartPenStyle = cPen.PenStylesEnum.None
+                End If
+                Return oPenAnticline
+            End Get
+        End Property
+
+        Public ReadOnly Property GenericFaultPen() As cCustomPen
+            Get
+                If oPenGenericFault Is Nothing Then
+                    oPenGenericFault = New cCustomPen(oSurvey, cPen.PenTypeEnum.GenericFaultPen, "", GetLocalizedString("pens.genericfaultpen"), Color.Red, 40)
+                    oPenGenericFault.LineJoin = cPen.PenLineJoinEnum.Mitered
+                    oPenGenericFault.LineCap = cPen.PenLineCapEnum.Flat
+                End If
+                Return oPenGenericFault
+            End Get
+        End Property
+
+        Public ReadOnly Property GenericPresumedFaultPen() As cCustomPen
+            Get
+                If oPenGenericPresumedFault Is Nothing Then
+                    oPenGenericPresumedFault = New cCustomPen(oSurvey, cPen.PenTypeEnum.GenericPresumedFaultPen, "", GetLocalizedString("pens.genericpresumedfaultpen"), Color.Red, 40, cPen.PenStylesEnum.LargeDashSmallSpace)
+                    oPenGenericPresumedFault.LineJoin = cPen.PenLineJoinEnum.Mitered
+                    oPenGenericPresumedFault.LineCap = cPen.PenLineCapEnum.Flat
+                End If
+                Return oPenGenericPresumedFault
+            End Get
+        End Property
+
+        Public ReadOnly Property ReverseFaultPen() As cCustomPen
+            Get
+                If oPenReverseFault Is Nothing Then
+                    oPenReverseFault = New cCustomPen(oSurvey, cPen.PenTypeEnum.ReverseFaultpen, "", GetLocalizedString("pens.reversefaultpen"), Color.Red, 40, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.Dash, 60000, cPen.DecorationAlignmentEnum.Outer, 5)
+                    oPenReverseFault.LineJoin = cPen.PenLineJoinEnum.Mitered
+                    oPenReverseFault.LineCap = cPen.PenLineCapEnum.Flat
+                    oPenReverseFault.ClipartPenLineJoin = cPen.PenLineJoinEnum.Mitered
+                    oPenReverseFault.ClipartPenLineCap = cPen.PenLineCapEnum.Flat
+                    oPenReverseFault.ClipartPenMode = cPen.ClipartPenModeEnum.Custom
+                    oPenReverseFault.ClipartPenWidth = 80
+                    oPenReverseFault.ClipartPenColor = Color.Red
+                End If
+                Return oPenReverseFault
+            End Get
+        End Property
+
+        Public ReadOnly Property StrikeFaultSxPen() As cCustomPen
+            Get
+                If oPenStrikeFaultSx Is Nothing Then
+                    oPenStrikeFaultSx = New cCustomPen(oSurvey, cPen.PenTypeEnum.StrikeFaultSxPen, "", GetLocalizedString("pens.strikefaultsxpen"), Color.Red, 40, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.LeftHalfArrow, 1000, cPen.DecorationAlignmentEnum.Outer, 5)
+                    oPenStrikeFaultSx.LineJoin = cPen.PenLineJoinEnum.Mitered
+                    oPenStrikeFaultSx.LineCap = cPen.PenLineCapEnum.Flat
+                    oPenStrikeFaultSx.DecorationDistancePercentage = 100
+                    oPenStrikeFaultSx.ClipartPenLineJoin = cPen.PenLineJoinEnum.Mitered
+                    oPenStrikeFaultSx.ClipartPenLineCap = cPen.PenLineCapEnum.Squared
+                    oPenStrikeFaultSx.ClipartPenMode = cPen.ClipartPenModeEnum.Custom
+                    oPenStrikeFaultSx.ClipartPenWidth = 20
+                    oPenStrikeFaultSx.ClipartPenColor = Color.Red
+                    oPenStrikeFaultSx.ClipartBrushMode = cPen.ClipartBrushModeEnum.Custom
+                    oPenStrikeFaultSx.ClipartBrushStyle = cPen.BrushStylesEnum.None
+                End If
+                Return oPenStrikeFaultSx
+            End Get
+        End Property
+
+        Public ReadOnly Property StrikeFaultDxPen() As cCustomPen
+            Get
+                If oPenStrikeFaultDx Is Nothing Then
+                    oPenStrikeFaultDx = New cCustomPen(oSurvey, cPen.PenTypeEnum.StrikeFaultDxPen, "", GetLocalizedString("pens.strikefaultdxpen"), Color.Red, 40, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.RightHalfArrow, 1000, cPen.DecorationAlignmentEnum.Outer, 5)
+                    oPenStrikeFaultDx.LineJoin = cPen.PenLineJoinEnum.Mitered
+                    oPenStrikeFaultDx.LineCap = cPen.PenLineCapEnum.Flat
+                    oPenStrikeFaultDx.DecorationDistancePercentage = 100
+                    oPenStrikeFaultDx.ClipartPenLineJoin = cPen.PenLineJoinEnum.Mitered
+                    oPenStrikeFaultDx.ClipartPenLineCap = cPen.PenLineCapEnum.Squared
+                    oPenStrikeFaultDx.ClipartPenMode = cPen.ClipartPenModeEnum.Custom
+                    oPenStrikeFaultDx.ClipartPenWidth = 20
+                    oPenStrikeFaultDx.ClipartPenColor = Color.Red
+                    oPenStrikeFaultDx.ClipartBrushMode = cPen.ClipartBrushModeEnum.Custom
+                    oPenStrikeFaultDx.ClipartBrushStyle = cPen.BrushStylesEnum.None
+                End If
+                Return oPenStrikeFaultDx
+            End Get
+        End Property
+
+        Public ReadOnly Property StrikeFaultUnknownPen() As cCustomPen
+            Get
+                If oPenStrikeFaultUnknown Is Nothing Then
+                    oPenStrikeFaultUnknown = New cCustomPen(oSurvey, cPen.PenTypeEnum.StrikeFaultUnknownPen, "", GetLocalizedString("pens.strikefaultunknownpen"), Color.Red, 40, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.DoubleHalfArrow, 1000, cPen.DecorationAlignmentEnum.Outer, 5)
+                    oPenStrikeFaultUnknown.LineJoin = cPen.PenLineJoinEnum.Mitered
+                    oPenStrikeFaultUnknown.LineCap = cPen.PenLineCapEnum.Flat
+                    oPenStrikeFaultUnknown.DecorationDistancePercentage = 100
+                    oPenStrikeFaultUnknown.ClipartPenLineJoin = cPen.PenLineJoinEnum.Mitered
+                    oPenStrikeFaultUnknown.ClipartPenLineCap = cPen.PenLineCapEnum.Squared
+                    oPenStrikeFaultUnknown.ClipartPenMode = cPen.ClipartPenModeEnum.Custom
+                    oPenStrikeFaultUnknown.ClipartPenWidth = 20
+                    oPenStrikeFaultUnknown.ClipartPenColor = Color.Red
+                    oPenStrikeFaultUnknown.ClipartBrushMode = cPen.ClipartBrushModeEnum.Custom
+                    oPenStrikeFaultUnknown.ClipartBrushStyle = cPen.BrushStylesEnum.None
+                End If
+                Return oPenStrikeFaultUnknown
+            End Get
+        End Property
+
+        Public ReadOnly Property NormalFaultPen() As cCustomPen
+            Get
+                If oPenNormalFault Is Nothing Then
+                    oPenNormalFault = New cCustomPen(oSurvey, cPen.PenTypeEnum.NormalFaultPen, "", GetLocalizedString("pens.normalfaultpen"), Color.Red, 40, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.Dash, 60000, cPen.DecorationAlignmentEnum.Outer, 5)
+                    oPenNormalFault.LineJoin = cPen.PenLineJoinEnum.Mitered
+                    oPenNormalFault.LineCap = cPen.PenLineCapEnum.Flat
+                End If
+                Return oPenNormalFault
+            End Get
+        End Property
+
+        Public ReadOnly Property VerticalFaultPen() As cCustomPen
+            Get
+                If oPenVerticalFault Is Nothing Then
+                    oPenVerticalFault = New cCustomPen(oSurvey, cPen.PenTypeEnum.VerticalFaultPen, "", GetLocalizedString("pens.verticalfaultpen"), Color.Red, 40, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.Dash, 60000, cPen.DecorationAlignmentEnum.Center, 5)
+                    oPenVerticalFault.LineJoin = cPen.PenLineJoinEnum.Mitered
+                    oPenVerticalFault.LineCap = cPen.PenLineCapEnum.Flat
+                End If
+                Return oPenVerticalFault
+            End Get
+        End Property
+
         Public ReadOnly Property None() As cCustomPen
             Get
                 If oPenNone Is Nothing Then
@@ -354,6 +505,28 @@ Namespace cSurvey.Design
                     Return IcePen
                 Case cPen.PenTypeEnum.PresumedIcePen
                     Return PresumedIcePen
+
+                Case cPen.PenTypeEnum.GenericFaultPen
+                    Return GenericFaultPen
+                Case cPen.PenTypeEnum.GenericPresumedFaultPen
+                    Return GenericPresumedFaultPen
+                Case cPen.PenTypeEnum.NormalFaultPen
+                    Return NormalFaultPen
+                Case cPen.PenTypeEnum.ReverseFaultpen
+                    Return ReverseFaultPen
+                Case cPen.PenTypeEnum.VerticalFaultPen
+                    Return VerticalFaultPen
+                Case cPen.PenTypeEnum.StrikeFaultSxPen
+                    Return StrikeFaultSxPen
+                Case cPen.PenTypeEnum.StrikeFaultDxPen
+                    Return StrikeFaultDxPen
+                Case cPen.PenTypeEnum.StrikeFaultUnknownPen
+                    Return StrikeFaultUnknownPen
+
+                Case cPen.PenTypeEnum.SynclinePen
+                    Return SynclinePen
+                Case cPen.PenTypeEnum.AnticlinePen
+                    Return AnticlinePen
 
                 Case Else
                     'is usefull?

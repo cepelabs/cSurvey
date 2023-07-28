@@ -1,7 +1,9 @@
-﻿Imports cSurveyPC.cSurvey
+﻿Imports System.ComponentModel
+Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Scripting
+Imports DevExpress.XtraRichEdit.Design.Internal
 
-friend Class frmSegmentsReplicateInfo
+Friend Class frmSegmentsReplicateInfo
     Private oSurvey As cSurvey.cSurvey
     Private oSession As cSession
     Private oCave As cCaveInfo
@@ -15,12 +17,18 @@ friend Class frmSegmentsReplicateInfo
         End Get
     End Property
 
+    Public ReadOnly Property PropertiesBag As BindingList(Of UIHelpers.Reflection.cObjectPropertyBag)
+        Get
+            Return oPropertiesBag
+        End Get
+    End Property
+
     Private Sub chkSession_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkSession.CheckedChanged
         Call pValidateOk()
     End Sub
 
     Private Sub pValidateOk()
-        cmdOk.Enabled = chkSession.Checked Or chkCave.Checked Or chkFormula.Checked Or chkDirection.Checked
+        cmdOk.Enabled = chkSession.Checked OrElse chkCave.Checked OrElse chkFormula.Checked OrElse chkDirection.Checked OrElse chkOtherProperties.Checked
     End Sub
 
     Private Sub chkCave_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCave.CheckedChanged
@@ -224,5 +232,20 @@ friend Class frmSegmentsReplicateInfo
 
     Private Sub cboCaveBranchList_EditValueChanged(sender As Object, e As EventArgs) Handles cboCaveBranchList.EditValueChanged
         chkCave.Checked = True
+    End Sub
+
+    Private oPropertiesBag As BindingList(Of UIHelpers.Reflection.cObjectPropertyBag)
+
+    Private Sub cmdEditOtherProperties_Click(sender As Object, e As EventArgs) Handles cmdEditOtherProperties.Click
+        Using frmR As frmSegmentsReplicateDataFieldEditor = New frmSegmentsReplicateDataFieldEditor(oPropertiesBag)
+            If frmR.ShowDialog(Me) = DialogResult.OK Then
+                oPropertiesBag = frmR.Items
+                chkOtherProperties.Checked = True
+            End If
+        End Using
+    End Sub
+
+    Private Sub chkOtherProperties_CheckedChanged(sender As Object, e As EventArgs) Handles chkOtherProperties.CheckedChanged
+        Call pValidateOk()
     End Sub
 End Class

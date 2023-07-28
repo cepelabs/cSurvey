@@ -115,6 +115,7 @@ Partial Class frmManageLRUD
         '
         resources.ApplyResources(Me.chkRestoreDeleteBackupAfterRestore, "chkRestoreDeleteBackupAfterRestore")
         Me.chkRestoreDeleteBackupAfterRestore.Name = "chkRestoreDeleteBackupAfterRestore"
+        Me.chkRestoreDeleteBackupAfterRestore.Properties.AutoWidth = True
         Me.chkRestoreDeleteBackupAfterRestore.Properties.Caption = resources.GetString("chkRestoreDeleteBackupAfterRestore.Properties.Caption")
         '
         'Label4
@@ -162,6 +163,7 @@ Partial Class frmManageLRUD
         '
         resources.ApplyResources(Me.chkBackup, "chkBackup")
         Me.chkBackup.Name = "chkBackup"
+        Me.chkBackup.Properties.AutoWidth = True
         Me.chkBackup.Properties.Caption = resources.GetString("chkBackup.Properties.Caption")
         '
         'cmdOk
@@ -207,6 +209,7 @@ Partial Class frmManageLRUD
         Me.chkShotWithLRUD.Name = "chkShotWithLRUD"
         Me.chkShotWithLRUD.Properties.Appearance.BackColor = System.Drawing.Color.Transparent
         Me.chkShotWithLRUD.Properties.Appearance.Options.UseBackColor = True
+        Me.chkShotWithLRUD.Properties.AutoWidth = True
         Me.chkShotWithLRUD.Properties.Caption = resources.GetString("chkShotWithLRUD.Properties.Caption")
         '
         'cboReplicateTo
@@ -223,6 +226,7 @@ Partial Class frmManageLRUD
         Me.chkShotWithCalculatedLRUD.Name = "chkShotWithCalculatedLRUD"
         Me.chkShotWithCalculatedLRUD.Properties.Appearance.BackColor = System.Drawing.Color.Transparent
         Me.chkShotWithCalculatedLRUD.Properties.Appearance.Options.UseBackColor = True
+        Me.chkShotWithCalculatedLRUD.Properties.AutoWidth = True
         Me.chkShotWithCalculatedLRUD.Properties.Caption = resources.GetString("chkShotWithCalculatedLRUD.Properties.Caption")
         '
         'Label1
@@ -238,6 +242,7 @@ Partial Class frmManageLRUD
         Me.chkShotWithoutLRUD.Name = "chkShotWithoutLRUD"
         Me.chkShotWithoutLRUD.Properties.Appearance.BackColor = System.Drawing.Color.Transparent
         Me.chkShotWithoutLRUD.Properties.Appearance.Options.UseBackColor = True
+        Me.chkShotWithoutLRUD.Properties.AutoWidth = True
         Me.chkShotWithoutLRUD.Properties.Caption = resources.GetString("chkShotWithoutLRUD.Properties.Caption")
         '
         'frmMode2
@@ -295,12 +300,14 @@ Partial Class frmManageLRUD
         '
         resources.ApplyResources(Me.chkMode2OnlyCutSplay, "chkMode2OnlyCutSplay")
         Me.chkMode2OnlyCutSplay.Name = "chkMode2OnlyCutSplay"
+        Me.chkMode2OnlyCutSplay.Properties.AutoWidth = True
         Me.chkMode2OnlyCutSplay.Properties.Caption = resources.GetString("chkMode2OnlyCutSplay.Properties.Caption")
         '
         'chkMarkAsCalculated
         '
         resources.ApplyResources(Me.chkMarkAsCalculated, "chkMarkAsCalculated")
         Me.chkMarkAsCalculated.Name = "chkMarkAsCalculated"
+        Me.chkMarkAsCalculated.Properties.AutoWidth = True
         Me.chkMarkAsCalculated.Properties.Caption = resources.GetString("chkMarkAsCalculated.Properties.Caption")
         '
         'cboAction
@@ -423,6 +430,7 @@ Partial Class frmManageLRUD
         Me.pnlOption3.ResumeLayout(False)
         CType(Me.pnlOptionOther, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlOptionOther.ResumeLayout(False)
+        Me.pnlOptionOther.PerformLayout()
         CType(Me.pnlBottom, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlBottom.ResumeLayout(False)
         Me.ResumeLayout(False)

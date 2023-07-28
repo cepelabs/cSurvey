@@ -32,8 +32,8 @@ Partial Class cItemSignPropertyControl
         Me.cboPropSignRotateMode = New System.Windows.Forms.ComboBox()
         Me.lblPropSignRotateMode = New DevExpress.XtraEditors.LabelControl()
         Me.lblPropSignRotationAngleDelta = New System.Windows.Forms.Label()
-        Me.txtPropSignRotationAngleDelta = New System.Windows.Forms.NumericUpDown()
-        CType(Me.txtPropSignRotationAngleDelta, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.txtPropSignRotationAngleDelta = New DevExpress.XtraEditors.SpinEdit()
+        CType(Me.txtPropSignRotationAngleDelta.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cboPropSignFlip
@@ -96,18 +96,22 @@ Partial Class cItemSignPropertyControl
         '
         'txtPropSignRotationAngleDelta
         '
-        Me.txtPropSignRotationAngleDelta.DecimalPlaces = 1
-        Me.txtPropSignRotationAngleDelta.Increment = New Decimal(New Integer() {5, 0, 0, 65536})
         resources.ApplyResources(Me.txtPropSignRotationAngleDelta, "txtPropSignRotationAngleDelta")
-        Me.txtPropSignRotationAngleDelta.Maximum = New Decimal(New Integer() {3599, 0, 0, 65536})
         Me.txtPropSignRotationAngleDelta.Name = "txtPropSignRotationAngleDelta"
+        Me.txtPropSignRotationAngleDelta.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPropBrushClipartAngle.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtPropSignRotationAngleDelta.Properties.DisplayFormat.FormatString = "N2"
+        Me.txtPropSignRotationAngleDelta.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPropSignRotationAngleDelta.Properties.EditFormat.FormatString = "N2"
+        Me.txtPropSignRotationAngleDelta.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPropSignRotationAngleDelta.Properties.MaskSettings.Set("mask", "N2")
+        Me.txtPropSignRotationAngleDelta.Properties.MaxValue = New Decimal(New Integer() {35999, 0, 0, 131072})
         '
         'cItemSignPropertyControl
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.Controls.Add(Me.lblPropSignRotationAngleDelta)
         Me.Controls.Add(Me.txtPropSignRotationAngleDelta)
+        Me.Controls.Add(Me.lblPropSignRotationAngleDelta)
         Me.Controls.Add(Me.cboPropSignFlip)
         Me.Controls.Add(Me.lblPropSignFlip)
         Me.Controls.Add(Me.cboPropSign)
@@ -117,7 +121,7 @@ Partial Class cItemSignPropertyControl
         Me.Controls.Add(Me.cboPropSignRotateMode)
         Me.Controls.Add(Me.lblPropSignRotateMode)
         Me.Name = "cItemSignPropertyControl"
-        CType(Me.txtPropSignRotationAngleDelta, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPropSignRotationAngleDelta.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -131,5 +135,5 @@ Partial Class cItemSignPropertyControl
     Friend WithEvents cboPropSignRotateMode As ComboBox
     Friend WithEvents lblPropSignRotateMode As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lblPropSignRotationAngleDelta As Label
-    Friend WithEvents txtPropSignRotationAngleDelta As NumericUpDown
+    Friend WithEvents txtPropSignRotationAngleDelta As DevExpress.XtraEditors.SpinEdit
 End Class

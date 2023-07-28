@@ -32,6 +32,7 @@ Namespace cSurvey
         End Function
 
         Public Sub CopyFrom(ByVal Font As cFont)
+            oSurvey = Font.Survey
             sFontName = Font.sFontName
             sFontSize = Font.sFontSize
             bFontBold = Font.bFontBold
@@ -169,7 +170,7 @@ Namespace cSurvey
                 Return sFontSize
             End Get
             Set(ByVal value As Single)
-                If sFontSize <> value Then
+                If sFontSize <> value AndAlso sFontSize > 0 Then
                     sFontSize = value
                     Call pInvalidate()
                 End If
@@ -225,6 +226,7 @@ Namespace cSurvey
             End If
             If sFontSize <= 0 Then
                 sFontSize = oSurvey.Properties.DesignProperties.GetValue("DefaultFontSize", 8)
+                If sFontSize <= 0 Then sFontSize = 8
             End If
             Dim iFontStyle As FontStyle = FontStyle
             oFont = New Font(sFontName, sFontSize, iFontStyle)

@@ -17,6 +17,7 @@ cSurveyUpdateVersion.exe
 ..\..\..\..\7za a -tzip csurvey64 resources.it.resources
 ..\..\..\..\7za a -tzip csurvey64 resources.ru.resources
 ..\..\..\..\7za a -tzip csurvey64 version.xml
+..\..\..\..\7za a -tzip csurvey64 therion.ini
 move csurvey64.zip ..\..\..\..\
 cd ..\..\..\..\
 

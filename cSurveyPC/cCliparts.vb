@@ -474,6 +474,15 @@ Namespace cSurvey
             sID = modMain.CalculateHash(oData)
         End Sub
 
+        Friend Sub Replace(Name As String, Data As Byte())
+            sName = Name
+            oData = New MemoryStream()
+            Call oData.Write(Data, 0, Data.Length)
+            Call oData.Seek(0, SeekOrigin.Begin)
+            oClipart = New Drawings.cDrawClipArt(oData)
+            sID = modMain.CalculateHash(oData)
+        End Sub
+
         Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oItem As XmlElement = Document.CreateElement("clipart")
             Call oItem.SetAttribute("id", sID)

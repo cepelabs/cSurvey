@@ -42,10 +42,18 @@ Friend Class cItemPenStylePropertyControl
         oPoint = pGetPoint(Point)
 
         If oPoint Is Nothing Then
-            cboPropPenPattern.EditValue = Item.Pen.ID
+            If cboPropPenPattern.EditValue = Item.Pen.ID Then
+                cboPropPenPattern_EditValueChanged(cboPropPenPattern, EventArgs.Empty)
+            Else
+                cboPropPenPattern.EditValue = Item.Pen.ID
+            End If
         Else
             Dim oPen As cPen = pGetPointPen()
-            cboPropPenPattern.EditValue = oPen.ID
+            If cboPropPenPattern.EditValue = oPen.ID Then
+                cboPropPenPattern_EditValueChanged(cboPropPenPattern, EventArgs.Empty)
+            Else
+                cboPropPenPattern.EditValue = oPen.ID
+            End If
         End If
     End Sub
 
@@ -101,6 +109,21 @@ Friend Class cItemPenStylePropertyControl
                 txtPropPenWidth.Value = oPen.Width
                 txtPropPenColor.EditValue = oPen.Color
                 cboPropPenStyle.SelectedIndex = pPenStyleToSelectedIndex(cboPropPenStyle, oPen.Style)
+                If oPen.LineJoin = cPen.PenLineJoinEnum.Rounded Then
+                    chkPropPenLineJoin2.Checked = True
+                ElseIf oPen.LineJoin = cPen.PenLineJoinEnum.Mitered Then
+                    chkPropPenLineJoin0.Checked = True
+                Else
+                    chkPropPenLineJoin1.Checked = True
+                End If
+                If oPen.LineCap = cPen.PenLineCapEnum.Rounded Then
+                    chkPropPenLineCap2.Checked = True
+                ElseIf oPen.LineCap = cPen.PenLineCapEnum.Squared Then
+                    chkPropPenLineCap1.Checked = True
+                Else
+                    chkPropPenLineCap0.Checked = True
+                End If
+                cmdDashStyle.Visible = oPen.Style = cPen.PenStylesEnum.Custom
                 cboPropPenDecoration.SelectedIndex = oPen.DecorationStyle
                 cboPropPenDecorationAlignment.SelectedIndex = oPen.DecorationAlignment
                 cboPropPenDecorationPosition.SelectedIndex = oPen.DecorationPosition
@@ -115,8 +138,23 @@ Friend Class cItemPenStylePropertyControl
                 cboPropPenClipartPenMode.SelectedIndex = oPen.ClipartPenMode
 
                 cboPropPenClipartPenStyle.SelectedIndex = pPenStyleToSelectedIndex(cboPropPenClipartPenStyle, oPen.ClipartPenStyle)
+                cmdClipartDashStyle.Visible = oPen.ClipartPenStyle = cPen.PenStylesEnum.Custom
                 txtPropPenClipartPenWidth.EditValue = oPen.ClipartPenWidth
                 txtPropPenClipartPenColor.EditValue = oPen.ClipartPenColor
+                If oPen.ClipartPenLineJoin = cPen.PenLineJoinEnum.Rounded Then
+                    chkPropPenClipartPenLineJoin2.Checked = True
+                ElseIf oPen.ClipartPenLineJoin = cPen.PenLineJoinEnum.Mitered Then
+                    chkPropPenClipartPenLineJoin0.Checked = True
+                Else
+                    chkPropPenClipartPenLineJoin1.Checked = True
+                End If
+                If oPen.ClipartPenLineCap = cPen.PenLineCapEnum.Rounded Then
+                    chkPropPenClipartPenLineCap2.Checked = True
+                ElseIf oPen.ClipartPenLineCap = cPen.PenLineCapEnum.Squared Then
+                    chkPropPenClipartPenLineCap1.Checked = True
+                Else
+                    chkPropPenClipartPenLineCap0.Checked = True
+                End If
 
                 cboPropPenClipartBrushMode.SelectedIndex = oPen.ClipartBrushMode
                 cboPropPenClipartBrushStyle.SelectedIndex = pPenStyleToSelectedIndex(cboPropPenClipartBrushStyle, oPen.ClipartBrushStyle)
@@ -377,9 +415,11 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
             If oPoint Is Nothing Then
                 Item.Pen.Style = pSelectedIndexToPenStyle(cboPropPenStyle)
+                cmdDashStyle.Visible = Item.Pen.Style = cPen.PenStylesEnum.Custom
             Else
                 Call pObjectSetSequencePen()
                 oPoint.Pen.Style = pSelectedIndexToPenStyle(cboPropPenStyle)
+                cmdDashStyle.Visible = oPoint.Pen.Style = cPen.PenStylesEnum.Custom
             End If
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenStyle")
@@ -522,6 +562,8 @@ Friend Class cItemPenStylePropertyControl
         'for now custom pens are not managed
         Dim iCount As Integer = ComboBoxEdit.Properties.Items.Count
         If PenStyle = cPen.PenStylesEnum.None Then
+            Return iCount - 2
+        ElseIf PenStyle = cPen.PenStylesEnum.custom Then
             Return iCount - 1
         Else
             Return PenStyle
@@ -542,7 +584,7 @@ Friend Class cItemPenStylePropertyControl
         'for now custom brushes are not managed
         Dim iCount As Integer = ComboBoxEdit.Properties.Items.Count
         Dim iSelected As Integer = ComboBoxEdit.SelectedIndex
-        If iSelected < iCount - 1 Then
+        If iSelected < iCount - 2 Then
             Return iSelected
         Else
             Return cPen.BrushStylesEnum.None
@@ -553,20 +595,13 @@ Friend Class cItemPenStylePropertyControl
         'for now custom pens are not managed
         Dim iCount As Integer = ComboBoxEdit.Properties.Items.Count
         Dim iSelected As Integer = ComboBoxEdit.SelectedIndex
-        If iSelected < iCount - 1 Then
+        If iSelected < iCount - 2 Then
             Return iSelected
-        Else
+        ElseIf iSelected = iCount - 2 Then
             Return cPen.PenStylesEnum.None
+        ElseIf iSelected = iCount - 1 Then
+            Return cPen.PenStylesEnum.Custom
         End If
-        'If iSelected < iCount - 2 Then
-        '    Return iSelected
-        'Else
-        '    If iSelected = iCount - 1 Then
-        '        Return cPen.PenStylesEnum.Custom
-        '    Else
-        '        Return cPen.PenStylesEnum.None
-        '    End If
-        'End If
     End Function
 
     Private Sub cboPropPenClipartPenStyle_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropPenClipartPenStyle.EditValueChanged
@@ -574,15 +609,17 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
             If oPoint Is Nothing Then
                 Item.Pen.ClipartPenStyle = pSelectedIndexToPenStyle(cboPropPenClipartPenStyle)
+                cmdClipartDashStyle.Visible = Item.Pen.ClipartPenStyle = cPen.PenStylesEnum.Custom
             Else
                 Call pObjectSetSequencePen()
                 oPoint.Pen.ClipartPenStyle = pSelectedIndexToPenStyle(cboPropPenClipartPenStyle)
+                cmdClipartDashStyle.Visible = Item.Pen.ClipartPenStyle = cPen.PenStylesEnum.Custom
             End If
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("ClipartPenStyle")
             Call MyBase.MapInvalidate()
         End If
-        If pSelectedIndexToPenStyle(cboPropPenClipartPenStyle) = cPen.PenStylesEnum.None Then
+        If pSelectedIndexToPenStyle(cboPropPenClipartPenStyle) = cPen.PenStylesEnum.None OrElse pSelectedIndexToPenStyle(cboPropPenClipartPenStyle) = cPen.PenStylesEnum.Custom Then
             lblPropPenClipartPenColor.Enabled = False
             txtPropPenClipartPenColor.Enabled = False
             lblPropPenClipartPenWidth.Enabled = False
@@ -647,6 +684,252 @@ Friend Class cItemPenStylePropertyControl
         Else
             lblPropPenClipartBrushColor.Enabled = True
             txtPropPenClipartBrushColor.Enabled = True
+        End If
+    End Sub
+
+    Private Sub oDashEditor_OnMapInvalidate(Sender As Object, e As EventArgs)
+        Call MyBase.MapInvalidate()
+    End Sub
+
+    Private Sub cmdDashStyle_Click(sender As Object, e As EventArgs) Handles cmdDashStyle.Click
+        If Not DisabledObjectProperty() Then
+            Dim oParameters As frmDashPatternEditor
+            If pnlParameters.Controls.Count = 0 Then
+                oParameters = New frmDashPatternEditor()
+                pnlParameters.Controls.Add(oParameters)
+                AddHandler oParameters.OnMapInvalidate, AddressOf oDashEditor_OnMapInvalidate
+            Else
+                oParameters = pnlParameters.Controls(0)
+            End If
+            flyParameters.OwnerControl = cmdDashStyle
+            oParameters.Dock = DockStyle.None
+            Call oParameters.Rebind(Me.Item, frmDashPatternEditor.PenDashContextEnum.MainPen)
+            flyParameters.Size = oParameters.Size
+            oParameters.Dock = DockStyle.Fill
+            flyParameters.ShowBeakForm(True)
+        End If
+    End Sub
+
+    Private Sub cmdClipartDashStyle_Click(sender As Object, e As EventArgs) Handles cmdClipartDashStyle.Click
+        If Not DisabledObjectProperty() Then
+            Dim oParameters As frmDashPatternEditor
+            If pnlParameters.Controls.Count = 0 Then
+                oParameters = New frmDashPatternEditor()
+                pnlParameters.Controls.Add(oParameters)
+                AddHandler oParameters.OnMapInvalidate, AddressOf oDashEditor_OnMapInvalidate
+            Else
+                oParameters = pnlParameters.Controls(0)
+            End If
+            flyParameters.OwnerControl = cmdClipartDashStyle
+            oParameters.Dock = DockStyle.None
+            Call oParameters.Rebind(Me.Item, frmDashPatternEditor.PenDashContextEnum.ClipartPen)
+            flyParameters.Size = oParameters.Size
+            oParameters.Dock = DockStyle.Fill
+            flyParameters.ShowBeakForm(True)
+        End If
+    End Sub
+
+    Private Sub chkPropPenLineJoin2_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropPenLineJoin2.CheckedChanged
+        If chkPropPenLineJoin2.Checked Then
+            If Not DisabledObjectProperty() Then
+                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
+                If oPoint Is Nothing Then
+                    Item.Pen.LineJoin = cPen.PenLineJoinEnum.Rounded
+                Else
+                    Call pObjectSetSequencePen()
+                    oPoint.Pen.LineJoin = cPen.PenLineJoinEnum.Rounded
+                End If
+                Call MyBase.CommitUndoSnapshot()
+                Call MyBase.PropertyChanged("LineJoin")
+                Call MyBase.MapInvalidate()
+            End If
+        End If
+    End Sub
+
+    Private Sub chkPropPenLineJoin0_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropPenLineJoin0.CheckedChanged
+        If chkPropPenLineJoin0.Checked Then
+            If Not DisabledObjectProperty() Then
+                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
+                If oPoint Is Nothing Then
+                    Item.Pen.LineJoin = cPen.PenLineJoinEnum.Mitered
+                Else
+                    Call pObjectSetSequencePen()
+                    oPoint.Pen.LineJoin = cPen.PenLineJoinEnum.Mitered
+                End If
+                Call MyBase.CommitUndoSnapshot()
+                Call MyBase.PropertyChanged("LineJoin")
+                Call MyBase.MapInvalidate()
+            End If
+        End If
+    End Sub
+
+    Private Sub chkPropPenLineJoin1_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropPenLineJoin1.CheckedChanged
+        If chkPropPenLineJoin1.Checked Then
+            If Not DisabledObjectProperty() Then
+                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
+                If oPoint Is Nothing Then
+                    Item.Pen.LineJoin = cPen.PenLineJoinEnum.Bevelled
+                Else
+                    Call pObjectSetSequencePen()
+                    oPoint.Pen.LineJoin = cPen.PenLineJoinEnum.Bevelled
+                End If
+                Call MyBase.CommitUndoSnapshot()
+                Call MyBase.PropertyChanged("LineJoin")
+                Call MyBase.MapInvalidate()
+            End If
+        End If
+    End Sub
+
+    Private Sub chkPropPenLineCap2_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropPenLineCap2.CheckedChanged
+        If chkPropPenLineCap2.Checked Then
+            If Not DisabledObjectProperty() Then
+                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
+                If oPoint Is Nothing Then
+                    Item.Pen.LineCap = cPen.PenLineCapEnum.Rounded
+                Else
+                    Call pObjectSetSequencePen()
+                    oPoint.Pen.LineCap = cPen.PenLineCapEnum.Rounded
+                End If
+                Call MyBase.CommitUndoSnapshot()
+                Call MyBase.PropertyChanged("LineCap")
+                Call MyBase.MapInvalidate()
+            End If
+        End If
+    End Sub
+
+    Private Sub chkPropPenLineCap1_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropPenLineCap1.CheckedChanged
+        If chkPropPenLineCap1.Checked Then
+            If Not DisabledObjectProperty() Then
+                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
+                If oPoint Is Nothing Then
+                    Item.Pen.LineCap = cPen.PenLineCapEnum.Squared
+                Else
+                    Call pObjectSetSequencePen()
+                    oPoint.Pen.LineCap = cPen.PenLineCapEnum.Squared
+                End If
+                Call MyBase.CommitUndoSnapshot()
+                Call MyBase.PropertyChanged("LineCap")
+                Call MyBase.MapInvalidate()
+            End If
+        End If
+    End Sub
+
+    Private Sub chkPropPenLineCap0_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropPenLineCap0.CheckedChanged
+        If chkPropPenLineCap0.Checked Then
+            If Not DisabledObjectProperty() Then
+                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
+                If oPoint Is Nothing Then
+                    Item.Pen.LineCap = cPen.PenLineCapEnum.Flat
+                Else
+                    Call pObjectSetSequencePen()
+                    oPoint.Pen.LineCap = cPen.PenLineCapEnum.Flat
+                End If
+                Call MyBase.CommitUndoSnapshot()
+                Call MyBase.PropertyChanged("LineCap")
+                Call MyBase.MapInvalidate()
+            End If
+        End If
+    End Sub
+
+    Private Sub chkPropPenClipartPenLineJoin2_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropPenClipartPenLineJoin2.CheckedChanged
+        If chkPropPenClipartPenLineJoin2.Checked Then
+            If Not DisabledObjectProperty() Then
+                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
+                If oPoint Is Nothing Then
+                    Item.Pen.ClipartPenLineJoin = cPen.PenLineJoinEnum.Rounded
+                Else
+                    Call pObjectSetSequencePen()
+                    oPoint.Pen.ClipartPenLineJoin = cPen.PenLineJoinEnum.Rounded
+                End If
+                Call MyBase.CommitUndoSnapshot()
+                Call MyBase.PropertyChanged("ClipartPenLineJoin")
+                Call MyBase.MapInvalidate()
+            End If
+        End If
+    End Sub
+
+    Private Sub chkPropPenClipartPenLineJoin0_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropPenClipartPenLineJoin0.CheckedChanged
+        If chkPropPenClipartPenLineJoin0.Checked Then
+            If Not DisabledObjectProperty() Then
+                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
+                If oPoint Is Nothing Then
+                    Item.Pen.ClipartPenLineJoin = cPen.PenLineJoinEnum.Mitered
+                Else
+                    Call pObjectSetSequencePen()
+                    oPoint.Pen.ClipartPenLineJoin = cPen.PenLineJoinEnum.Mitered
+                End If
+                Call MyBase.CommitUndoSnapshot()
+                Call MyBase.PropertyChanged("ClipartPenLineJoin")
+                Call MyBase.MapInvalidate()
+            End If
+        End If
+    End Sub
+
+    Private Sub chkPropPenClipartPenLineJoin1_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropPenClipartPenLineJoin1.CheckedChanged
+        If chkPropPenClipartPenLineJoin1.Checked Then
+            If Not DisabledObjectProperty() Then
+                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
+                If oPoint Is Nothing Then
+                    Item.Pen.ClipartPenLineJoin = cPen.PenLineJoinEnum.Bevelled
+                Else
+                    Call pObjectSetSequencePen()
+                    oPoint.Pen.ClipartPenLineJoin = cPen.PenLineJoinEnum.Bevelled
+                End If
+                Call MyBase.CommitUndoSnapshot()
+                Call MyBase.PropertyChanged("ClipartPenLineJoin")
+                Call MyBase.MapInvalidate()
+            End If
+        End If
+    End Sub
+
+    Private Sub chkPropPenClipartPenLineCap2_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropPenClipartPenLineCap2.CheckedChanged
+        If chkPropPenClipartPenLineCap2.Checked Then
+            If Not DisabledObjectProperty() Then
+                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
+                If oPoint Is Nothing Then
+                    Item.Pen.ClipartPenLineCap = cPen.PenLineCapEnum.Rounded
+                Else
+                    Call pObjectSetSequencePen()
+                    oPoint.Pen.ClipartPenLineCap = cPen.PenLineCapEnum.Rounded
+                End If
+                Call MyBase.CommitUndoSnapshot()
+                Call MyBase.PropertyChanged("ClipartPenLineCap")
+                Call MyBase.MapInvalidate()
+            End If
+        End If
+    End Sub
+
+    Private Sub chkPropPenClipartPenLineCap1_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropPenClipartPenLineCap1.CheckedChanged
+        If chkPropPenClipartPenLineCap1.Checked Then
+            If Not DisabledObjectProperty() Then
+                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
+                If oPoint Is Nothing Then
+                    Item.Pen.ClipartPenLineCap = cPen.PenLineCapEnum.Squared
+                Else
+                    Call pObjectSetSequencePen()
+                    oPoint.Pen.ClipartPenLineCap = cPen.PenLineCapEnum.Squared
+                End If
+                Call MyBase.CommitUndoSnapshot()
+                Call MyBase.PropertyChanged("ClipartPenLineCap")
+                Call MyBase.MapInvalidate()
+            End If
+        End If
+    End Sub
+
+    Private Sub chkPropPenClipartPenLineCap0_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropPenClipartPenLineCap0.CheckedChanged
+        If chkPropPenClipartPenLineCap0.Checked Then
+            If Not DisabledObjectProperty() Then
+                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
+                If oPoint Is Nothing Then
+                    Item.Pen.ClipartPenLineCap = cPen.PenLineCapEnum.Flat
+                Else
+                    Call pObjectSetSequencePen()
+                    oPoint.Pen.ClipartPenLineCap = cPen.PenLineCapEnum.Flat
+                End If
+                Call MyBase.CommitUndoSnapshot()
+                Call MyBase.PropertyChanged("ClipartPenLineCap")
+                Call MyBase.MapInvalidate()
+            End If
         End If
     End Sub
 End Class

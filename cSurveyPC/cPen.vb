@@ -25,6 +25,8 @@ Namespace cSurvey.Design
         Private oAlternativeColor As Color
         Private sWidth As Single
         Private iStyle As cPen.PenStylesEnum
+        Private iLineJoin As cPen.PenLineJoinEnum
+        Private iLineCap As cPen.PenLineCapEnum
         Private sStylePattern As Single()
         Private iDecorationStyle As cPen.DecorationStylesEnum
         Private iDecorationPosition As cPen.DecorationPositionEnum
@@ -38,6 +40,8 @@ Namespace cSurvey.Design
         Private iClipartPenStyle As cPen.PenStylesEnum
         Private sClipartStylePattern As Single()
         Private oClipartPenColor As Color
+        Private iClipartPenLineJoin As cPen.PenLineJoinEnum
+        Private iClipartPenLineCap As cPen.PenLineCapEnum
 
         Private iClipartBrushMode As cPen.ClipartBrushModeEnum
         Private iClipartBrushStyle As cPen.BrushStylesEnum
@@ -80,7 +84,7 @@ Namespace cSurvey.Design
 
                             Using oBackgroundBrush As SolidBrush = New SolidBrush(Backcolor)
                                 Using oForegroundPen As Pen = New Pen(ForeColor, 2)
-                                    oForegroundPen.LineJoin = LineJoin.Miter
+                                    oForegroundPen.LineJoin = Drawing2D.LineJoin.Miter
                                     Call modSVG.AppendRectangle(oSVG, oSVG.DocumentElement, oBounds, oBackgroundBrush, Nothing)
                                     Call oSVG.DocumentElement.AppendChild(oCache.ToSvgItem(oSVG, PaintOptions, cItem.SVGOptionsEnum.ClipartBrushes))
                                     If iType = cPen.PenTypeEnum.User Then
@@ -168,6 +172,8 @@ Namespace cSurvey.Design
             oColor = Pen.oColor
             sWidth = Pen.sWidth
             iStyle = Pen.iStyle
+            iLineJoin = Pen.iLineJoin
+            iLineCap = Pen.iLineCap
             sStylePattern = Pen.sStylePattern
             If IsNothing(Pen.Clipart) Then
                 oClipart = Nothing
@@ -187,6 +193,8 @@ Namespace cSurvey.Design
             sClipartStylePattern = Pen.sClipartStylePattern
             sClipartPenWidth = Pen.sClipartPenWidth
             oClipartPenColor = Pen.oClipartPenColor
+            iClipartPenLineJoin = Pen.iClipartPenLineJoin
+            iClipartPenLineCap = Pen.iClipartPenLineCap
 
             iClipartBrushMode = Pen.iClipartBrushMode
             iClipartBrushStyle = Pen.iClipartBrushStyle
@@ -303,10 +311,12 @@ Namespace cSurvey.Design
             iType = Type
             oColor = Color
             sWidth = Width
+            iLineJoin = PenLineJoinEnum.Rounded
+            iLineCap = PenLineCapEnum.Rounded
             iStyle = Style
             If iStyle = cPen.PenStylesEnum.Custom Then
                 If StylePattern Is Nothing Then
-                    sStylePattern = {2, 2}
+                    sStylePattern = {2.0F, 2.0F}
                 Else
                     sStylePattern = StylePattern
                 End If
@@ -320,6 +330,8 @@ Namespace cSurvey.Design
             sDecorationScale = DecorationScale
             iClipartPenMode = cPen.ClipartPenModeEnum.AsParent
             oClipartPenColor = Color.Black
+            iClipartPenLineJoin = PenLineJoinEnum.Rounded
+            iClipartPenLineCap = PenLineCapEnum.Rounded
 
             iClipartBrushMode = ClipartBrushModeEnum.Default
             iClipartBrushStyle = BrushStylesEnum.Solid
@@ -341,6 +353,8 @@ Namespace cSurvey.Design
             iType = cPen.PenTypeEnum.Custom
             oColor = Color.Black
             sWidth = 1
+            iLineJoin = PenLineJoinEnum.Rounded
+            iLineCap = PenLineCapEnum.Rounded
             sDecorationSpacePercentage = 100
             sDecorationDistancePercentage = 0
             sDecorationScale = 1
@@ -350,6 +364,8 @@ Namespace cSurvey.Design
             iClipartBrushMode = ClipartBrushModeEnum.Default
             iClipartBrushStyle = BrushStylesEnum.Solid
             oClipartBrushColor = Color.Black
+            iClipartPenLineJoin = PenLineJoinEnum.Rounded
+            iClipartPenLineCap = PenLineCapEnum.Rounded
             bInvalidated = True
         End Sub
 
@@ -366,6 +382,8 @@ Namespace cSurvey.Design
             If iStyle = cPen.PenStylesEnum.Custom Then
                 sStylePattern = modPaint.StringToPenStylePattern(modXML.GetAttributeValue(item, "stylepattern"))
             End If
+            iLineJoin = modXML.GetAttributeValue(item, "linejoin", cPen.PenLineJoinEnum.Rounded)
+            iLineCap = modXML.GetAttributeValue(item, "linecap", cPen.PenLineCapEnum.Rounded)
             sWidth = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "width"))
             Dim oXMLClipart As XmlElement = item.Item("clipart")
             If oXMLClipart Is Nothing Then
@@ -400,6 +418,8 @@ Namespace cSurvey.Design
             Else
                 oClipartBrushColor = Color.Black
             End If
+            iClipartPenLineJoin = modXML.GetAttributeValue(item, "clipartpenlinejoin", cPen.PenLineJoinEnum.Rounded)
+            iClipartPenLineCap = modXML.GetAttributeValue(item, "clipartpenlinecap", cPen.PenLineCapEnum.Rounded)
 
             Call Invalidate()
         End Sub
@@ -434,8 +454,14 @@ Namespace cSurvey.Design
             End If
             Call oItem.SetAttribute("color", oColor.ToArgb)
             Call oItem.SetAttribute("style", iStyle.ToString("D"))
-            If iStyle = cPen.PenStylesEnum.Custom Then
+            If iStyle = cPen.PenStylesEnum.Custom AndAlso sStylePattern IsNot Nothing Then
                 Call oItem.SetAttribute("stylepattern", modPaint.PenStylePatternToString(sStylePattern))
+            End If
+            If iLineJoin <> PenLineJoinEnum.Rounded Then
+                Call oItem.SetAttribute("linejoin", iLineJoin.ToString("D"))
+            End If
+            If iLineCap <> PenLineCapEnum.Rounded Then
+                Call oItem.SetAttribute("linecap", iLineCap.ToString("D"))
             End If
             Call oItem.SetAttribute("width", modNumbers.NumberToString(sWidth, "0.00"))
             If Not oClipart Is Nothing Then Call oClipart.SaveTo(File, Document, oItem)
@@ -450,10 +476,16 @@ Namespace cSurvey.Design
                 Call oItem.SetAttribute("clipartpenmode", iClipartPenMode.ToString("D"))
                 Call oItem.SetAttribute("clipartpenwidth", modNumbers.NumberToString(sClipartPenWidth, "0.00"))
                 Call oItem.SetAttribute("clipartpenstyle", iClipartPenStyle.ToString("D"))
-                If iClipartPenStyle = cPen.PenStylesEnum.Custom Then
+                If iClipartPenStyle = cPen.PenStylesEnum.Custom AndAlso sClipartStylePattern IsNot Nothing Then
                     Call oItem.SetAttribute("clipartstylepattern", modPaint.PenStylePatternToString(sClipartStylePattern))
                 End If
                 Call oItem.SetAttribute("clipartpencolor", oClipartPenColor.ToArgb)
+                If iClipartPenLineJoin <> PenLineJoinEnum.Rounded Then
+                    Call oItem.SetAttribute("clipartpenlinejoin", iClipartPenLineJoin.ToString("D"))
+                End If
+                If iClipartPenLineCap <> PenLineCapEnum.Rounded Then
+                    Call oItem.SetAttribute("clipartpenlinecap", iClipartPenLineCap.ToString("D"))
+                End If
             End If
             If iClipartBrushMode = ClipartBrushModeEnum.Custom Then
                 Call oItem.SetAttribute("clipartbrushmode", iClipartBrushMode.ToString("D"))
@@ -503,6 +535,26 @@ Namespace cSurvey.Design
             End Set
         End Property
 
+        Public Property ClipartStylePattern As Single()
+            Get
+                Return sClipartStylePattern
+            End Get
+            Set(value As Single())
+                sClipartStylePattern = value
+                Call Invalidate()
+            End Set
+        End Property
+
+        Public Property StylePattern As Single()
+            Get
+                Return sStylePattern
+            End Get
+            Set(value As Single())
+                sStylePattern = value
+                Call Invalidate()
+            End Set
+        End Property
+
         Public Property ClipartPenStyle() As cPen.PenStylesEnum
             Get
                 Return iClipartPenStyle
@@ -526,6 +578,7 @@ Namespace cSurvey.Design
                 End If
             End Set
         End Property
+
         Public Property Width() As Single
             Get
                 Return sWidth
@@ -533,6 +586,54 @@ Namespace cSurvey.Design
             Set(ByVal value As Single)
                 If sWidth <> value Then
                     sWidth = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property ClipartPenLineCap() As cPen.PenLineCapEnum
+            Get
+                Return iClipartPenLineCap
+            End Get
+            Set(ByVal value As cPen.PenLineCapEnum)
+                If iClipartPenLineCap <> value Then
+                    iClipartPenLineCap = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property LineCap() As cPen.PenLineCapEnum
+            Get
+                Return iLineCap
+            End Get
+            Set(ByVal value As cPen.PenLineCapEnum)
+                If ilinecap <> value Then
+                    ilinecap = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property LineJoin() As cPen.PenLineJoinEnum
+            Get
+                Return iLineJoin
+            End Get
+            Set(ByVal value As cPen.PenLineJoinEnum)
+                If iLineJoin <> value Then
+                    iLineJoin = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property ClipartPenLineJoin() As cPen.PenLineJoinEnum
+            Get
+                Return iClipartPenLineJoin
+            End Get
+            Set(ByVal value As cPen.PenLineJoinEnum)
+                If iClipartPenLineJoin <> value Then
+                    iClipartPenLineJoin = value
                     Call Invalidate()
                 End If
             End Set
@@ -728,8 +829,15 @@ Namespace cSurvey.Design
             Else
                 Dim sTempPenWidth As Single = GetPaintPenWidth(PaintOptions, sWidth)
                 oPen = New Pen(oTempPenColor, sTempPenWidth)
-                Call oPen.SetLineCap(Drawing2D.LineCap.Round, Drawing2D.LineCap.Round, Drawing2D.DashCap.Round)
-                oPen.LineJoin = Drawing2D.LineJoin.Round
+
+                If iLineCap = PenLineCapEnum.Rounded Then
+                    Call oPen.SetLineCap(Drawing2D.LineCap.Round, Drawing2D.LineCap.Round, Drawing2D.DashCap.Round)
+                ElseIf iLineCap = PenLineCapEnum.Squared Then
+                    Call oPen.SetLineCap(Drawing2D.LineCap.Square, Drawing2D.LineCap.Square, Drawing2D.DashCap.Flat)
+                Else
+                    Call oPen.SetLineCap(Drawing2D.LineCap.Flat, Drawing2D.LineCap.Flat, Drawing2D.DashCap.Flat)
+                End If
+                oPen.LineJoin = iLineJoin
                 Select Case iStyle
                     Case cPen.PenStylesEnum.Solid
                         oPen.DashStyle = DashStyle.Solid
@@ -741,12 +849,23 @@ Namespace cSurvey.Design
                         oPen.DashStyle = DashStyle.DashDot
 
                     Case cPen.PenStylesEnum.LargeDashLargeSpace
-                        oPen.DashPattern = {6.0F, 6.0F}
+                        If oSurvey.Properties.DesignProperties.HasValue("penstylepattern.underlyingcavepen") Then
+                            oPen.DashPattern = oSurvey.Properties.DesignProperties.GetValue("penstylepattern.underlyingcavepen").ToString.Split(" ").Select(Function(sItem) modNumbers.StringToSingle(sItem)).ToArray
+                        Else
+                            oPen.DashPattern = {6.0F, 6.0F}
+                        End If
                     Case cPen.PenStylesEnum.LargeDashMediumSpace
-                        oPen.DashPattern = {6.0F, 4.0F}
+                        If oSurvey.Properties.DesignProperties.HasValue("penstylepattern.toonarrowcavepen") Then
+                            oPen.DashPattern = oSurvey.Properties.DesignProperties.GetValue("penstylepattern.toonarrowcavepen").ToString.Split(" ").Select(Function(sItem) modNumbers.StringToSingle(sItem)).ToArray
+                        Else
+                            oPen.DashPattern = {6.0F, 4.0F}
+                        End If
                     Case cPen.PenStylesEnum.LargeDashSmallSpace
-                        oPen.DashPattern = {6.0F, 2.0F}
-
+                        If oSurvey.Properties.DesignProperties.HasValue("penstylepattern.presumedcavepen") Then
+                            oPen.DashPattern = oSurvey.Properties.DesignProperties.GetValue("penstylepattern.presumedcavepen").ToString.Split(" ").Select(Function(sItem) modNumbers.StringToSingle(sItem)).ToArray
+                        Else
+                            oPen.DashPattern = {6.0F, 2.0F}
+                        End If
                     Case cPen.PenStylesEnum.Custom
                         oPen.DashPattern = sStylePattern
                 End Select
@@ -754,12 +873,17 @@ Namespace cSurvey.Design
 
             If iClipartPenMode = cPen.ClipartPenModeEnum.Custom Then
                 Dim oTempClipartPenColor As Color = If(oAlternativeColor.IsEmpty, oClipartPenColor, oAlternativeColor)
-                'oTempClipartPenColor = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oTempClipartPenColor)
                 If iClipartPenStyle <> cPen.PenStylesEnum.None Then
                     Dim sTempClipartPenWidth As Single = GetPaintPenWidth(PaintOptions, sClipartPenWidth)
                     oClipartPen = New Pen(oTempClipartPenColor, sTempClipartPenWidth)
-                    Call oClipartPen.SetLineCap(Drawing2D.LineCap.Round, Drawing2D.LineCap.Round, Drawing2D.DashCap.Round)
-                    oClipartPen.LineJoin = Drawing2D.LineJoin.Round
+                    If iClipartPenLineCap = PenLineCapEnum.Rounded Then
+                        Call oClipartPen.SetLineCap(Drawing2D.LineCap.Round, Drawing2D.LineCap.Round, Drawing2D.DashCap.Round)
+                    ElseIf iClipartPenLineCap = PenLineCapEnum.Squared Then
+                        Call oClipartPen.SetLineCap(Drawing2D.LineCap.Square, Drawing2D.LineCap.Square, Drawing2D.DashCap.Flat)
+                    Else
+                        Call oClipartPen.SetLineCap(Drawing2D.LineCap.Flat, Drawing2D.LineCap.Flat, Drawing2D.DashCap.Flat)
+                    End If
+                    oClipartPen.LineJoin = iClipartPenLineJoin
                     Select Case iClipartPenStyle
                         Case cPen.PenStylesEnum.Solid
                             oClipartPen.DashStyle = DashStyle.Solid
@@ -778,8 +902,10 @@ Namespace cSurvey.Design
                             oClipartPen.DashPattern = {6.0F, 2.0F}
 
                         Case cPen.PenStylesEnum.Custom
-                            oClipartPen.DashPattern = sStylePattern
+                            oClipartPen.DashPattern = sClipartStylePattern
                     End Select
+                Else
+                    oClipartPen = Nothing
                 End If
             Else
                 If oPen Is Nothing Then
@@ -881,6 +1007,32 @@ Namespace cSurvey.Design
                             Case cPen.DecorationStylesEnum.EmptyUpTriangle
                                 oTmpClipart = modPenClipart.ClipartTriangleUp
                                 bUseBrush = False
+
+                            Case cPen.DecorationStylesEnum.UpDownTriangle
+                                oTmpClipart = modPenClipart.ClipartTriangleUpDown
+                                bUseBrush = True
+                            Case cPen.DecorationStylesEnum.DownUpTriangle
+                                oTmpClipart = modPenClipart.ClipartTriangleDownUp
+                                bUseBrush = True
+                            Case cPen.DecorationStylesEnum.LeftHalfArrow
+                                oTmpClipart = modPenClipart.ClipartLeftHalfArrow
+                                bUseBrush = False
+                            Case cPen.DecorationStylesEnum.RightHalfArrow
+                                oTmpClipart = modPenClipart.ClipartRightHalfArrow
+                                bUseBrush = False
+                            Case cPen.DecorationStylesEnum.DoubleHalfArrow
+                                oTmpClipart = modPenClipart.ClipartDoubleHalfArrow
+                                bUseBrush = False
+                            Case cPen.DecorationStylesEnum.LeftArrow
+                                oTmpClipart = modPenClipart.ClipartLeftArrow
+                                bUseBrush = False
+                            Case cPen.DecorationStylesEnum.RightArrow
+                                oTmpClipart = modPenClipart.ClipartRightArrow
+                                bUseBrush = False
+                            Case cPen.DecorationStylesEnum.DoubleArrow
+                                oTmpClipart = modPenClipart.ClipartDoubleArrow
+                                bUseBrush = False
+
                             Case Else
                                 oTmpClipart = oClipart
                                 bUseBrush = True
@@ -987,6 +1139,17 @@ Namespace cSurvey.Design
             IcePen = 23
             PresumedIcePen = 24
 
+            GenericFaultPen = 31
+            GenericPresumedFaultPen = 32
+            NormalFaultPen = 33
+            ReverseFaultpen = 34
+            VerticalFaultPen = 35
+            StrikeFaultDxPen = 36
+            StrikeFaultSxPen = 37
+            StrikeFaultUnknownPen = 38
+            AnticlinePen = 40
+            SynclinePen = 41
+
             User = 98
             Custom = 99
         End Enum
@@ -1004,6 +1167,18 @@ Namespace cSurvey.Design
         Public Enum BrushStylesEnum
             Solid = 0
             None = 98
+        End Enum
+
+        Public Enum PenLineJoinEnum
+            Rounded = 2
+            Mitered = 0
+            Bevelled = 1
+        End Enum
+
+        Public Enum PenLineCapEnum
+            Rounded = 2
+            Squared = 1
+            Flat = 0
         End Enum
 
         Public Enum PenStylesEnum
@@ -1037,6 +1212,14 @@ Namespace cSurvey.Design
             Ice = 7
             EmptyUpTriangle = 8
             EmptyDownTriangle = 9
+            UpDownTriangle = 10
+            DownUpTriangle = 11
+            LeftHalfArrow = 12
+            RightHalfArrow = 13
+            DoubleHalfArrow = 14
+            LeftArrow = 15
+            RightArrow = 16
+            DoubleArrow = 17
 
             Custom = 99
         End Enum
@@ -1255,6 +1438,72 @@ Namespace cSurvey.Design
             Set(value As cPen.BrushStylesEnum)
                 If oBasePen.IsWriteable Then
                     oBasePen.ClipartBrushStyle = value
+                End If
+            End Set
+        End Property
+
+        Public Property ClipartPenLineCap() As cPen.PenLineCapEnum
+            Get
+                Return oBasePen.ClipartPenLineCap
+            End Get
+            Set(ByVal value As cPen.PenLineCapEnum)
+                If oBasePen.IsWriteable Then
+                    oBasePen.ClipartPenLineCap = value
+                End If
+            End Set
+        End Property
+
+        Public Property LineCap() As cPen.PenLineCapEnum
+            Get
+                Return oBasePen.LineCap
+            End Get
+            Set(ByVal value As cPen.PenLineCapEnum)
+                If oBasePen.IsWriteable Then
+                    oBasePen.LineCap = value
+                End If
+            End Set
+        End Property
+
+        Public Property LineJoin() As cPen.PenLineJoinEnum
+            Get
+                Return oBasePen.LineJoin
+            End Get
+            Set(ByVal value As cPen.PenLineJoinEnum)
+                If oBasePen.IsWriteable Then
+                    oBasePen.LineJoin = value
+                End If
+            End Set
+        End Property
+
+        Public Property ClipartPenLineJoin() As cPen.PenLineJoinEnum
+            Get
+                Return oBasePen.ClipartPenLineJoin
+            End Get
+            Set(ByVal value As cPen.PenLineJoinEnum)
+                If oBasePen.IsWriteable Then
+                    oBasePen.ClipartPenLineJoin = value
+                End If
+            End Set
+        End Property
+
+        Public Property StylePattern As Single()
+            Get
+                Return oBasePen.StylePattern
+            End Get
+            Set(value As Single())
+                If oBasePen.IsWriteable Then
+                    oBasePen.StylePattern = value
+                End If
+            End Set
+        End Property
+
+        Public Property ClipartStylePattern As Single()
+            Get
+                Return oBasePen.ClipartStylePattern
+            End Get
+            Set(value As Single())
+                If oBasePen.IsWriteable Then
+                    oBasePen.ClipartStylePattern = value
                 End If
             End Set
         End Property

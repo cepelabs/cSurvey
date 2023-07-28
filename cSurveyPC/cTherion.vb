@@ -264,7 +264,55 @@ Public Class cTherion
         Return Palette(iIndex).Color
     End Function
 
-    Private Shared Sub pImport(Survey As cSurveyPC.cSurvey.cSurvey, Importer As cTherionImporter, Filename As String)
+    Public Class cTherionImportOptions
+        Private oCave As cCaveInfo
+        Private oBranch As cCaveInfoBranch
+
+        Private bImportAsNewcave As Boolean
+        Private bImportLineOfComment As Boolean
+
+        Private sStationPrefix As String
+
+        Public Sub New(StationPrefix As String, Cave As cCaveInfo, Branch As cCaveInfoBranch, ImportAsNewcave As Boolean, ImportLineOfComment As Boolean)
+            sStationPrefix = StationPrefix
+            oCave = Cave
+            oBranch = Branch
+            bImportAsNewcave = ImportAsNewcave
+            bImportLineOfComment = ImportLineOfComment
+        End Sub
+
+        Public ReadOnly Property StationPrefix As String
+            Get
+                Return sStationPrefix
+            End Get
+        End Property
+
+        Public ReadOnly Property ImportAsNewcave As Boolean
+            Get
+                Return bImportAsNewcave
+            End Get
+        End Property
+
+        Public ReadOnly Property ImportLineOfComment As Boolean
+            Get
+                Return bImportLineOfComment
+            End Get
+        End Property
+
+        Public ReadOnly Property Cave As cCaveInfo
+            Get
+                Return oCave
+            End Get
+        End Property
+
+        Public ReadOnly Property Branch As cCaveInfoBranch
+            Get
+                Return oBranch
+            End Get
+        End Property
+    End Class
+
+    Private Shared Sub pImport(Survey As cSurveyPC.cSurvey.cSurvey, Importer As cTherionImporter, Filename As String, Options As cTherionImportOptions)
         Debug.Print("TH:IMPORT filename: " & Filename)
         Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Warning, "Processing " & Filename & "")
         Dim iRow As Integer = 0
@@ -272,14 +320,16 @@ Public Class cTherion
             Do Until sr.EndOfStream
                 Dim sLine As String = sr.ReadLine.TrimStart({" "c, Chr(9)}).Trim
                 If sLine.StartsWith("#") Then
-                    Dim sComment As String = sLine.TrimStart({"#"c}).Trim
-                    If Importer.InCenterline > 0 AndAlso sComment <> "" Then
-                        If Importer.LastSegment IsNot Nothing Then
-                            If Importer.LastSegment.Note <> "" Then Importer.LastSegment.Note &= vbCrLf
-                            Importer.LastSegment.Note &= sComment
-                        Else
-                            If Importer.LastComment IsNot Nothing Then Importer.LastComment &= vbCrLf
-                            Importer.LastComment = sComment
+                    If Options.ImportLineOfComment Then
+                        Dim sComment As String = sLine.TrimStart({"#"c}).Trim
+                        If Importer.InCenterline > 0 AndAlso sComment <> "" Then
+                            If Importer.LastSegment IsNot Nothing Then
+                                If Importer.LastSegment.Note <> "" Then Importer.LastSegment.Note &= vbCrLf
+                                Importer.LastSegment.Note &= sComment
+                            Else
+                                If Importer.LastComment IsNot Nothing Then Importer.LastComment &= vbCrLf
+                                Importer.LastComment = sComment
+                            End If
                         End If
                     End If
                 Else
@@ -319,10 +369,46 @@ Public Class cTherion
                                     oBranch.Color = pGetColor(Palettes.NatureColors, Importer.CaveCount)
                                     Call Importer.CaveBranchStack.Push(oBranch)
                                 Else
-                                    Dim oCave As cCaveInfo = Survey.Properties.CaveInfos.Add(sName)
+                                    Dim oCave As cICaveInfoBranches
+                                    If Options.Cave Is Nothing Then
+                                        If Options.ImportAsNewcave Then
+                                            Dim sFinalName As String = Options.Cave.Branches.GetUniqueName(sName)
+                                            oCave = Survey.Properties.CaveInfos.Add(sFinalName)
+                                        Else
+                                            If Survey.Properties.CaveInfos.Contains(sName) Then
+                                                oCave = Survey.Properties.CaveInfos(sName)
+                                            Else
+                                                oCave = Survey.Properties.CaveInfos.Add(sName)
+                                            End If
+                                        End If
+                                    Else
+                                        If Options.ImportAsNewcave Then
+                                            If Options.Branch Is Nothing Then
+                                                Dim sFinalName As String = Options.Cave.Branches.GetUniqueName(sName)
+                                                oCave = Options.Cave.Branches.Add(sFinalName)
+                                            Else
+                                                Dim sFinalName As String = Options.Branch.Branches.GetUniqueName(sName)
+                                                oCave = Options.Branch.Branches.Add(sFinalName)
+                                            End If
+                                        Else
+                                            If Options.Branch Is Nothing Then
+                                                If Options.Cave.Branches.Contains(sName) Then
+                                                    oCave = Options.Cave.Branches(sName)
+                                                Else
+                                                    oCave = Options.Cave.Branches.Add(sName)
+                                                End If
+                                            Else
+                                                If Options.Branch.Branches.Contains(sName) Then
+                                                    oCave = Options.Branch.Branches(sName)
+                                                Else
+                                                    oCave = Options.Branch.Branches.Add(sName)
+                                                End If
+                                            End If
+                                        End If
+                                    End If
                                     oCave.Description = sTitle
-                                    Importer.CaveCount += 1
                                     oCave.Color = pGetColor(Palettes.NatureColors, Importer.CaveCount)
+                                    Importer.CaveCount += 1
                                     Call Importer.CaveBranchStack.Push(oCave)
                                 End If
                                 Importer.IsInSurvey += 1
@@ -344,6 +430,8 @@ Public Class cTherion
                                 Importer.InCenterline -= 1
 
                             Case "explo-date"
+                                'not supported
+                                Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Warning, "Unsupported tag " & sFirstTag & " in " & Filename & "[" & iRow & "]")
 
                             Case "date"
                                 Dim oSession As cSession = Importer.SessionStack.Peek
@@ -375,8 +463,9 @@ Public Class cTherion
                                     Next
                                     Call Importer.DataBySession.Add(oSession, oData)
                                 End If
-
                             Case "explo-team"
+                                'not supported
+                                Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Warning, "Unsupported tag " & sFirstTag & " in " & Filename & "[" & iRow & "]")
 
                             Case "team"
                                 If sLineParts.Count > 0 Then
@@ -468,7 +557,7 @@ Public Class cTherion
                                 If sFilename.EndsWith(".") Then sFilename = sFilename.TrimEnd({"."c})
                                 If IO.Path.GetExtension(sFilename) = "" Then sFilename &= ".th"
                                 sFilename = IO.Path.Combine(IO.Path.GetDirectoryName(Filename), sFilename)
-                                Call pImport(Survey, Importer, sFilename)
+                                Call pImport(Survey, Importer, sFilename, Options)
                             Case "equate"
                                 Dim sName As String = Importer.CaveNamesStack.Peek
                                 Dim oSegment As cSegment = Survey.Segments.Append()
@@ -476,8 +565,8 @@ Public Class cTherion
                                 Dim sTo As String = sLineParts(2)
                                 If Not sFrom.Contains("@") Then sFrom = sFrom & "@" & sName
                                 If Not sTo.Contains("@") Then sTo = sTo & "@" & sName
-                                oSegment.From = sFrom
-                                oSegment.To = sTo
+                                oSegment.From = Options.StationPrefix & sFrom
+                                oSegment.To = Options.StationPrefix & sTo
 
                                 Call oSegment.DataProperties.SetValue("import_source", "therion")
                                 Call oSegment.DataProperties.SetValue("import_date", Importer.Now)
@@ -518,7 +607,7 @@ Public Class cTherion
                                 End Select
                             Case "fix"
                                 'station's position
-                                Dim sStation As String = sLineParts(1).ToUpper
+                                Dim sStation As String = Options.StationPrefix & sLineParts(1).ToUpper
                                 Select Case Importer.LastCoordinateSystem
                                     Case TherionCoordinateSystem.WGS84UTM
                                         Dim sX As String = sLineParts(2)
@@ -572,8 +661,8 @@ Public Class cTherion
                                             If sFrom = "" AndAlso sTo = "" Then
                                                 'invalid splay...
                                             Else
-                                                oSegment.From = If(sFrom <> "", sFrom & "@" & sName, sTo & "@" & sTo & "(" & Importer.GetSplayCount & ")")
-                                                oSegment.To = If(sTo <> "", sTo & "@" & sName, sFrom & "@" & sName & "(" & Importer.GetSplayCount & ")")
+                                                oSegment.From = Options.StationPrefix & If(sFrom <> "", sFrom & "@" & sName, sTo & "@" & sTo & "(" & Importer.GetSplayCount & ")")
+                                                oSegment.To = Options.StationPrefix & If(sTo <> "", sTo & "@" & sName, sFrom & "@" & sName & "(" & Importer.GetSplayCount & ")")
                                                 oSegment.Distance = modNumbers.StringToDecimal(sData(oData.Fields.IndexOf("length"))) * oFactor.GetFactor("distance")
                                                 If oData.Fields.Contains("compass") Then
                                                     oSegment.Bearing = modNumbers.StringToDecimal(sData(oData.Fields.IndexOf("compass"))) * oFactor.GetFactor("bearing")
@@ -588,8 +677,8 @@ Public Class cTherion
                                                 oSegment.Splay = True
                                             End If
                                         Else
-                                            oSegment.From = sFrom & "@" & sName
-                                            oSegment.To = sTo & "@" & sName
+                                            oSegment.From = Options.StationPrefix & sFrom & "@" & sName
+                                            oSegment.To = Options.StationPrefix & sTo & "@" & sName
                                             oSegment.Distance = modNumbers.StringToDecimal(sData(oData.Fields.IndexOf("length"))) * oFactor.GetFactor("distance")
                                             If oData.Fields.Contains("compass") Then
                                                 oSegment.Bearing = modNumbers.StringToDecimal(sData(oData.Fields.IndexOf("compass"))) * oFactor.GetFactor("bearing")
@@ -629,8 +718,8 @@ Public Class cTherion
                                             Importer.LastSurface = False
                                         End If
                                     ElseIf oData.Type = TherionDataType.Dimensions Then
-                                        oSegment.From = sData(oData.Fields.IndexOf("station")) & "@" & sName
-                                        oSegment.To = oSegment.From
+                                        oSegment.From = Options.StationPrefix & sData(oData.Fields.IndexOf("station")) & "@" & sName
+                                        oSegment.To = Options.StationPrefix & oSegment.From
                                         If oData.Fields.Contains("left") Then
                                             oSegment.Left = modNumbers.StringToDecimal(sData(oData.Fields.IndexOf("left"))) * oFactor.GetFactor("distance")
                                         End If
@@ -686,13 +775,13 @@ Public Class cTherion
         End If
     End Function
 
-    Public Shared Sub Import(Survey As cSurveyPC.cSurvey.cSurvey, Filename As String)
+    Public Shared Sub Import(Survey As cSurveyPC.cSurvey.cSurvey, Filename As String, Options As cTherionImportOptions)
         Call Survey.Properties.DataTables.Segments.Add("import_source", Data.cDataFields.TypeEnum.Text)
         Call Survey.Properties.DataTables.Segments.Add("import_date", Data.cDataFields.TypeEnum.Date)
         Call Survey.Properties.DataTables.Segments.Add("import_filename", Data.cDataFields.TypeEnum.Text)
         Call Survey.Properties.DataTables.Segments.Add("import_row", Data.cDataFields.TypeEnum.Integer)
 
-        Call pImport(Survey, New cTherionImporter, Filename)
+        Call pImport(Survey, New cTherionImporter, Filename, Options)
         'Debug.Print("TH:IMPORT filename: " & Filename)
         'Dim iIsInSurvey As Integer
         'Dim iInCenterline As Integer

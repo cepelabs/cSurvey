@@ -23,7 +23,7 @@ Friend Class cItemLineTypePropertyControl2
         Dim oItem As cIItemLine = DirectCast(Item, cIItemLine)
         If oItem.LineType = cIItemLine.LineTypeEnum.Splines Then
             chkStyleSpline.Checked = True
-        ElseIf oItem.LineType = cIItemLine.LineTypeEnum.Splines Then
+        ElseIf oItem.LineType = cIItemLine.LineTypeEnum.Lines Then
             chkStyleStraightLine.Checked = True
         ElseIf oItem.LineType = cIItemLine.LineTypeEnum.Beziers Then
             chkStyleBezier.Checked = True

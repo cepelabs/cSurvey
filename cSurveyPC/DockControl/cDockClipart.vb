@@ -152,27 +152,6 @@ Friend Class cDockClipart
 
         AddHandler oExplorerView.FocusedRowObjectChanged, AddressOf oExplorerview_FocusedRowObjectChanged
 
-        'Dim oLv As ListView = New ListView
-        'oLv.Name = "listview_" & Name
-        'oLv.LargeImageList = iml
-        'oLv.SmallImageList = iml
-        'oLv.BorderStyle = BorderStyle.None
-        'oLv.Tag = Bag
-        'AddHandler oLv.DoubleClick, AddressOf lv_DoubleClick
-        'AddHandler oLv.MouseDown, AddressOf lv_MouseDown
-        'AddHandler oLv.MouseMove, AddressOf lv_MouseMove
-        'AddHandler oLv.MouseUp, AddressOf lv_MouseUp
-        'AddHandler oLv.SelectedIndexChanged, AddressOf lv_SelectedIndexChanged
-        'Call oTabPage.Controls.Add(oLv)
-        'oLv.MultiSelect = False
-        'oLv.HideSelection = False
-        'oLv.Dock = DockStyle.Fill
-        'oLv.ContextMenuStrip = mnuLvContext
-
-        'Call oTabPage.Controls.Add(oGrid)
-        'Call spMain.Panel1.Controls.Add(oGrid)
-
-
         Dim oPage As TabNavigationPage = New TabNavigationPage
         oPage.PageText = Text
         oPage.Name = "tabpage_" & Name
@@ -300,75 +279,6 @@ Friend Class cDockClipart
                 Call pLoadGridItems(oItems, oBag)
         End Select
         Call oExplorerView.EndUpdate()
-
-        'Dim oLv As ListView = Controls.Find("listview_" & Name, True)(0)
-        'oLv.Enabled = False
-        'Call oLv.BeginUpdate()
-        'Call oLv.Items.Clear()
-        'Select Case iView
-        '    Case ViewModeEnum.Gallery
-        '        If Groupable Then Call pAddGroups(oLv)
-        '        Dim fd As DirectoryInfo = New DirectoryInfo(IO.Path.Combine(Path, Name))
-        '        If fd.Exists Then
-        '            For Each fl As FileInfo In fd.GetFiles("*.svg")
-        '                If Not fl.Name Like "_*" Then
-        '                    Try
-        '                        Dim oClipart As cDrawClipArt = New cDrawClipArt(fl.FullName)
-        '                        Dim oPreview As Image = oClipart.GetThumbnailImage(48, 48)
-        '                        Dim oMetadata As cMetadata = New cMetadata(oClipart, fl.FullName)
-
-        '                       Dim oItem As ListViewItem = New ListViewItem
-        '                        Dim sName As String = oClipart.UserData.GetValue("caption" & "." & My.Application.CurrentLanguage, oClipart.UserData.GetValue("caption", IO.Path.GetFileNameWithoutExtension(fl.Name)))
-        '                        Dim sImageName As String = Name & "_" & sName
-        '                        If iml.Images.ContainsKey(sImageName) Then
-        '                            Call iml.Images.RemoveByKey(sImageName)
-        '                        End If
-        '                        Call iml.Images.Add(sImageName, oPreview)
-
-        '                        oItem.Text = sName
-        '                        oItem.ImageKey = sImageName
-        '                        oItem.Tag = {"file://" & fl.FullName, oClipart, oMetadata}
-        '                        oItem.ToolTipText = fl.FullName
-        '                        If Groupable Then
-        '                            Dim sGroup As String = oMetadata.Sign And Items.cIItemSign.SignCategoryEnum.Mask
-        '                            oItem.Group = oLv.Groups(sGroup)
-        '                        End If
-        '                        Call oLv.Items.Add(oItem)
-        '                    Catch ex As Exception
-        '                    End Try
-        '                End If
-        '            Next
-        '        End If
-        '    Case ViewModeEnum.Survey
-        '        If Groupable Then Call pAddGroups(oLv)
-        '        Dim oBase As Object = oSurvey.GetType.InvokeMember(oLv.Tag.cliparts, Reflection.BindingFlags.GetProperty Or Reflection.BindingFlags.Public Or Reflection.BindingFlags.IgnoreCase Or Reflection.BindingFlags.Instance, Nothing, oSurvey, Nothing)
-        '        Dim oCliparts As List(Of cSurvey.cClipart) = oBase.getcliparts(oLv.Tag.category)
-        '        For Each oBaseItem As cSurvey.cClipart In oCliparts
-        '            Dim oClipart As cDrawClipArt = oBaseItem.Clipart
-        '            Dim oPreview As Image = oClipart.GetThumbnailImage(48, 48)
-        '            Dim oMetadata As cMetadata = New cMetadata(oClipart, oBaseItem.ID)
-
-        '            Dim oItem As ListViewItem = New ListViewItem
-        '            Dim sName As String = oClipart.UserData.GetValue("caption" & "." & My.Application.CurrentLanguage, oClipart.UserData.GetValue("caption", IO.Path.GetFileNameWithoutExtension(oBaseItem.Name)))
-        '            Dim sImageName As String = Name & "_" & oBaseItem.ID
-        '            If iml.Images.ContainsKey(sImageName) Then
-        '                Call iml.Images.RemoveByKey(sImageName)
-        '            End If
-        '            Call iml.Images.Add(sImageName, oPreview)
-
-        '            oItem.Text = sName
-        '            oItem.ImageKey = sImageName
-        '            oItem.Tag = {"id://" & oBaseItem.ID, oClipart, oMetadata}
-        '            oItem.ToolTipText = sName
-        '            If Groupable Then
-        '                Dim sGroup As String = oMetadata.Sign And Items.cIItemSign.SignCategoryEnum.Mask
-        '                oItem.Group = oLv.Groups(sGroup)
-        '            End If
-        '            Call oLv.Items.Add(oItem)
-        '        Next
-        'End Select
-        'Call oLv.EndUpdate()
-        'oLv.Enabled = True
         Call oMousePointer.Pop()
     End Sub
 
@@ -470,11 +380,15 @@ Friend Class cDockClipart
                     btnViewSurvey.Checked = False
                     btnAdd.Enabled = False
                     btnRemove.Enabled = False
+                    btnReplaceWith.Visibility = BarItemVisibility.Never
+                    btnReplaceWith.Enabled = False
                 Case ViewModeEnum.Survey
                     btnViewGallery.Checked = False
                     btnViewSurvey.Checked = True
                     btnAdd.Enabled = False
                     btnRemove.Enabled = False
+                    btnReplaceWith.Visibility = BarItemVisibility.Always
+                    btnReplaceWith.Enabled = True
             End Select
 
             For Each oItem As TabNavigationPage In tabGallery.Pages
@@ -576,6 +490,24 @@ Friend Class cDockClipart
                 bFirstShown = False
                 Call pClipartLoad()
             End If
+        End If
+    End Sub
+
+    Private Sub btnReplaceWith_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnReplaceWith.ItemClick
+        Dim oItem As cGalleryItem = pGetCurrentItem()
+        If oItem IsNot Nothing Then
+            Dim oTabItem As TabNavigationPage = tabGallery.SelectedPage
+            Dim oGallery As cGallery = oTabItem.Tag
+            Dim oBag As cSurvey.Helper.Editor.cEditToolsBag = oGallery.Grid.Tag
+            Dim oBase As Object = oSurvey.GetType.InvokeMember(oBag.Cliparts, Reflection.BindingFlags.GetProperty Or Reflection.BindingFlags.Public Or Reflection.BindingFlags.IgnoreCase Or Reflection.BindingFlags.Instance, Nothing, oSurvey, Nothing)
+            Dim oCliparts As List(Of cSurvey.cClipart) = oBase.getcliparts(oBag.Category)
+            Using frmRW As frmClipartReplaceWith = New frmClipartReplaceWith(oSurvey, IO.Path.Combine(oGallery.ParentPath, oGallery.Name))
+                If frmRW.ShowDialog(Me) = DialogResult.OK Then
+                    Dim oNewItem As cGalleryItem = frmRW.SelectedItem
+                    Dim oClipart As cClipart = oCliparts.FirstOrDefault(Function(oFindItem) oFindItem.Clipart Is oItem.Clipart)
+                    oClipart.Replace(oNewItem.Name, My.Computer.FileSystem.ReadAllBytes(oNewItem.File.FullName))
+                End If
+            End Using
         End If
     End Sub
 End Class

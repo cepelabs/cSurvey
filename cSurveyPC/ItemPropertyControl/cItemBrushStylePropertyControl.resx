@@ -142,7 +142,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cboPropBrushPattern.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>3</value>
   </data>
   <data name="cmdPropBrushReseed.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -169,13 +169,13 @@
     <value>cmdPropBrushReseed</value>
   </data>
   <data name="&gt;&gt;cmdPropBrushReseed.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPropBrushReseed.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdPropBrushReseed.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>2</value>
   </data>
   <data name="lblPropBrushClipartPosition.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -196,7 +196,7 @@
     <value>lblPropBrushClipartPosition</value>
   </data>
   <data name="&gt;&gt;lblPropBrushClipartPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBrushClipartPosition.Parent" xml:space="preserve">
     <value>pnlBrushClipartSettings</value>
@@ -250,7 +250,7 @@
     <value>lblPropBrushClipartImage</value>
   </data>
   <data name="&gt;&gt;lblPropBrushClipartImage.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBrushClipartImage.Parent" xml:space="preserve">
     <value>pnlBrushClipart</value>
@@ -277,7 +277,7 @@
     <value>lblPropBrushAlternativeBrushColor</value>
   </data>
   <data name="&gt;&gt;lblPropBrushAlternativeBrushColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBrushAlternativeBrushColor.Parent" xml:space="preserve">
     <value>pnlBrushAlternativeColor</value>
@@ -304,7 +304,7 @@
     <value>lblPropBrushColor</value>
   </data>
   <data name="&gt;&gt;lblPropBrushColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBrushColor.Parent" xml:space="preserve">
     <value>pnlBrushStyle</value>
@@ -334,7 +334,7 @@
     <value>lblPropBrushClipartAngle</value>
   </data>
   <data name="&gt;&gt;lblPropBrushClipartAngle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBrushClipartAngle.Parent" xml:space="preserve">
     <value>pnlBrushClipartSettings</value>
@@ -361,7 +361,7 @@
     <value>lblPropBrushClipartAngleMode</value>
   </data>
   <data name="&gt;&gt;lblPropBrushClipartAngleMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBrushClipartAngleMode.Parent" xml:space="preserve">
     <value>pnlBrushClipartSettings</value>
@@ -415,7 +415,7 @@
     <value>lblPattern</value>
   </data>
   <data name="&gt;&gt;lblPattern.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPattern.Parent" xml:space="preserve">
     <value>pnlBrushStyle</value>
@@ -442,7 +442,7 @@
     <value>lblPropBrushClipartZoomFactor</value>
   </data>
   <data name="&gt;&gt;lblPropBrushClipartZoomFactor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBrushClipartZoomFactor.Parent" xml:space="preserve">
     <value>pnlBrushClipartSettings</value>
@@ -469,7 +469,7 @@
     <value>lblPropBrushClipartDensity</value>
   </data>
   <data name="&gt;&gt;lblPropBrushClipartDensity.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBrushClipartDensity.Parent" xml:space="preserve">
     <value>pnlBrushClipartSettings</value>
@@ -481,7 +481,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPropBrushPatternType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 3</value>
+    <value>82, 33</value>
   </data>
   <data name="lblPropBrushPatternType.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 13</value>
@@ -496,13 +496,13 @@
     <value>lblPropBrushPatternType</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternType.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternType.Parent" xml:space="preserve">
     <value>pnlBrushPattern</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternType.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>2</value>
   </data>
   <data name="cboPropBrushPatternType.Items" xml:space="preserve">
     <value>Single lines</value>
@@ -556,7 +556,7 @@
     <value>Wavy segment</value>
   </data>
   <data name="cboPropBrushPatternType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 0</value>
+    <value>154, 30</value>
   </data>
   <data name="cboPropBrushPatternType.Size" type="System.Drawing.Size, System.Drawing">
     <value>193, 21</value>
@@ -574,7 +574,7 @@
     <value>pnlBrushPattern</value>
   </data>
   <data name="&gt;&gt;cboPropBrushPatternType.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>1</value>
   </data>
   <data name="cboPropBrushClipartCrop.Items" xml:space="preserve">
     <value>Do not cut</value>
@@ -625,7 +625,7 @@
     <value>lblPropBrushClipartCrop</value>
   </data>
   <data name="&gt;&gt;lblPropBrushClipartCrop.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBrushClipartCrop.Parent" xml:space="preserve">
     <value>pnlBrushClipartSettings</value>
@@ -637,7 +637,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPropBrushPatternPen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 31</value>
+    <value>82, 61</value>
   </data>
   <data name="lblPropBrushPatternPen.Size" type="System.Drawing.Size, System.Drawing">
     <value>28, 13</value>
@@ -652,13 +652,13 @@
     <value>lblPropBrushPatternPen</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternPen.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternPen.Parent" xml:space="preserve">
     <value>pnlBrushPattern</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternPen.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>4</value>
   </data>
   <data name="cboPropBrushPatternPen.Items" xml:space="preserve">
     <value>Solid</value>
@@ -676,7 +676,7 @@
     <value>Dash dot dot</value>
   </data>
   <data name="cboPropBrushPatternPen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 27</value>
+    <value>154, 57</value>
   </data>
   <data name="cboPropBrushPatternPen.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 21</value>
@@ -694,7 +694,7 @@
     <value>pnlBrushPattern</value>
   </data>
   <data name="&gt;&gt;cboPropBrushPatternPen.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>3</value>
   </data>
   <data name="txtPropBrushColor.EditValue" type="System.Drawing.Color, System.Drawing">
     <value />
@@ -702,7 +702,7 @@
   <data name="txtPropBrushColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>349, 0</value>
   </data>
-  <assembly alias="DevExpress.Utils.v22.2" name="DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Utils.v22.2" name="DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="txtPropBrushColor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.2">
     <value>Combo</value>
   </data>
@@ -770,13 +770,13 @@
     <value>lblBrush</value>
   </data>
   <data name="&gt;&gt;lblBrush.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblBrush.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblBrush.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>4</value>
   </data>
   <data name="cmdPropBrushBrowseClipart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -797,7 +797,7 @@
     <value>cmdPropBrushBrowseClipart</value>
   </data>
   <data name="&gt;&gt;cmdPropBrushBrowseClipart.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPropBrushBrowseClipart.Parent" xml:space="preserve">
     <value>pnlBrushClipart</value>
@@ -821,7 +821,7 @@
     <value>picPropBrushClipartImage</value>
   </data>
   <data name="&gt;&gt;picPropBrushClipartImage.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;picPropBrushClipartImage.Parent" xml:space="preserve">
     <value>pnlBrushClipart</value>
@@ -847,6 +847,54 @@
   <metadata name="BarManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
   </metadata>
+  <data name="btnPropPatternAdd.Caption" xml:space="preserve">
+    <value>Add new pattern over</value>
+  </data>
+  <data name="btnPropPatternDelete.Caption" xml:space="preserve">
+    <value>Delete current pattern</value>
+  </data>
+  <data name="btnPropPatternPrevious.Caption" xml:space="preserve">
+    <value>Select previous pattern</value>
+  </data>
+  <data name="btnPropPatternNext.Caption" xml:space="preserve">
+    <value>Select next pattern</value>
+  </data>
+  <data name="btnPropPatternMoveDown.Caption" xml:space="preserve">
+    <value>Move pattern down</value>
+  </data>
+  <data name="btnPropPatternMoveUp.Caption" xml:space="preserve">
+    <value>Move pattern up</value>
+  </data>
+  <data name="StandaloneBarDockControl1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="StandaloneBarDockControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="StandaloneBarDockControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="StandaloneBarDockControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 28</value>
+  </data>
+  <data name="StandaloneBarDockControl1.Text" xml:space="preserve">
+    <value>StandaloneBarDockControl1</value>
+  </data>
+  <data name="&gt;&gt;StandaloneBarDockControl1.Name" xml:space="preserve">
+    <value>StandaloneBarDockControl1</value>
+  </data>
+  <data name="&gt;&gt;StandaloneBarDockControl1.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.StandaloneBarDockControl, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;StandaloneBarDockControl1.Parent" xml:space="preserve">
+    <value>pnlBrushPattern</value>
+  </data>
+  <data name="&gt;&gt;StandaloneBarDockControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="barPattern.Text" xml:space="preserve">
+    <value>Pattern</value>
+  </data>
   <data name="barDockControlTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -863,19 +911,19 @@
     <value>barDockControlTop</value>
   </data>
   <data name="&gt;&gt;barDockControlTop.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;barDockControlTop.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;barDockControlTop.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="barDockControlBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="barDockControlBottom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 594</value>
+    <value>0, 646</value>
   </data>
   <data name="barDockControlBottom.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -887,13 +935,13 @@
     <value>barDockControlBottom</value>
   </data>
   <data name="&gt;&gt;barDockControlBottom.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;barDockControlBottom.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;barDockControlBottom.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="barDockControlLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -905,19 +953,19 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="barDockControlLeft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 594</value>
+    <value>0, 646</value>
   </data>
   <data name="&gt;&gt;barDockControlLeft.Name" xml:space="preserve">
     <value>barDockControlLeft</value>
   </data>
   <data name="&gt;&gt;barDockControlLeft.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;barDockControlLeft.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;barDockControlLeft.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="barDockControlRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -929,25 +977,727 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="barDockControlRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 594</value>
+    <value>0, 646</value>
   </data>
   <data name="&gt;&gt;barDockControlRight.Name" xml:space="preserve">
     <value>barDockControlRight</value>
   </data>
   <data name="&gt;&gt;barDockControlRight.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;barDockControlRight.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;barDockControlRight.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>96, 96</value>
+  </data>
+  <data name="&gt;&gt;cboPropBrushHatch.Name" xml:space="preserve">
+    <value>cboPropBrushHatch</value>
+  </data>
+  <data name="&gt;&gt;cboPropBrushHatch.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboPropBrushHatch.Parent" xml:space="preserve">
+    <value>pnlBrushStyle</value>
+  </data>
+  <data name="&gt;&gt;cboPropBrushHatch.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="pnlBrushStyle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="pnlBrushStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 46</value>
+  </data>
+  <data name="pnlBrushStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 24</value>
+  </data>
+  <data name="pnlBrushStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>259</value>
+  </data>
+  <data name="pnlBrushStyle.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushStyle.Name" xml:space="preserve">
+    <value>pnlBrushStyle</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushStyle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushStyle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushStyle.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pnlBrushAlternativeColor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="pnlBrushAlternativeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 70</value>
+  </data>
+  <data name="pnlBrushAlternativeColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 24</value>
+  </data>
+  <data name="pnlBrushAlternativeColor.TabIndex" type="System.Int32, mscorlib">
+    <value>262</value>
+  </data>
+  <data name="pnlBrushAlternativeColor.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushAlternativeColor.Name" xml:space="preserve">
+    <value>pnlBrushAlternativeColor</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushAlternativeColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushAlternativeColor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushAlternativeColor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cmdPropSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdPropSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>457, 6</value>
+  </data>
+  <data name="cmdPropSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 24</value>
+  </data>
+  <data name="cmdPropSave.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="cmdPropSave.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;cmdPropSave.Name" xml:space="preserve">
+    <value>cmdPropSave</value>
+  </data>
+  <data name="&gt;&gt;cmdPropSave.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.DropDownButton, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropSave.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdPropSave.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtPropBrushBackcolor.EditValue" type="System.Drawing.Color, System.Drawing">
+    <value />
+  </data>
+  <data name="txtPropBrushBackcolor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 1</value>
+  </data>
+  <data name="txtPropBrushPatternBackcolor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtPropBrushBackcolor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="txtPropBrushBackcolor.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushBackcolor.Name" xml:space="preserve">
+    <value>txtPropBrushBackcolor</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushBackcolor.Type" xml:space="preserve">
+    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushBackcolor.Parent" xml:space="preserve">
+    <value>pnlBrushBackgroundColor</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushBackcolor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblPropBrushPatternBackcolor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropBrushPatternBackcolor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>261, 3</value>
+  </data>
+  <data name="lblPropBrushPatternBackcolor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 13</value>
+  </data>
+  <data name="lblPropBrushPatternBackcolor.TabIndex" type="System.Int32, mscorlib">
+    <value>231</value>
+  </data>
+  <data name="lblPropBrushPatternBackcolor.Text" xml:space="preserve">
+    <value>Background color:</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternBackcolor.Name" xml:space="preserve">
+    <value>lblPropBrushPatternBackcolor</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternBackcolor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternBackcolor.Parent" xml:space="preserve">
+    <value>pnlBrushBackgroundColor</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternBackcolor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlBrushBackgroundColor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="pnlBrushBackgroundColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 94</value>
+  </data>
+  <data name="pnlBrushBackgroundColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 24</value>
+  </data>
+  <data name="pnlBrushBackgroundColor.TabIndex" type="System.Int32, mscorlib">
+    <value>282</value>
+  </data>
+  <data name="pnlBrushBackgroundColor.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushBackgroundColor.Name" xml:space="preserve">
+    <value>pnlBrushBackgroundColor</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushBackgroundColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushBackgroundColor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushBackgroundColor.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="pnlBrushPattern.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="pnlBrushPattern.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 118</value>
+  </data>
+  <data name="pnlBrushPattern.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 82</value>
+  </data>
+  <data name="pnlBrushPattern.TabIndex" type="System.Int32, mscorlib">
+    <value>261</value>
+  </data>
+  <data name="pnlBrushPattern.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushPattern.Name" xml:space="preserve">
+    <value>pnlBrushPattern</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushPattern.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushPattern.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushPattern.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;picPropBrushTextureImage.Name" xml:space="preserve">
+    <value>picPropBrushTextureImage</value>
+  </data>
+  <data name="&gt;&gt;picPropBrushTextureImage.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;picPropBrushTextureImage.Parent" xml:space="preserve">
+    <value>pnlBrushTexture</value>
+  </data>
+  <data name="&gt;&gt;picPropBrushTextureImage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushTextureImage.Name" xml:space="preserve">
+    <value>lblPropBrushTextureImage</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushTextureImage.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushTextureImage.Parent" xml:space="preserve">
+    <value>pnlBrushTexture</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushTextureImage.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cmdPropBrushBrowseTexture.Name" xml:space="preserve">
+    <value>cmdPropBrushBrowseTexture</value>
+  </data>
+  <data name="&gt;&gt;cmdPropBrushBrowseTexture.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropBrushBrowseTexture.Parent" xml:space="preserve">
+    <value>pnlBrushTexture</value>
+  </data>
+  <data name="&gt;&gt;cmdPropBrushBrowseTexture.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pnlBrushTexture.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="pnlBrushTexture.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 200</value>
+  </data>
+  <data name="pnlBrushTexture.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 70</value>
+  </data>
+  <data name="pnlBrushTexture.TabIndex" type="System.Int32, mscorlib">
+    <value>277</value>
+  </data>
+  <data name="pnlBrushTexture.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushTexture.Name" xml:space="preserve">
+    <value>pnlBrushTexture</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushTexture.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushTexture.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushTexture.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="pnlBrushClipart.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="pnlBrushClipart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 270</value>
+  </data>
+  <data name="pnlBrushClipart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 70</value>
+  </data>
+  <data name="pnlBrushClipart.TabIndex" type="System.Int32, mscorlib">
+    <value>260</value>
+  </data>
+  <data name="pnlBrushClipart.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushClipart.Name" xml:space="preserve">
+    <value>pnlBrushClipart</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushClipart.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushClipart.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushClipart.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartDensity.Name" xml:space="preserve">
+    <value>txtPropBrushClipartDensity</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartDensity.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartDensity.Parent" xml:space="preserve">
+    <value>pnlBrushClipartSettings</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartDensity.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartZoomFactor.Name" xml:space="preserve">
+    <value>txtPropBrushClipartZoomFactor</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartZoomFactor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartZoomFactor.Parent" xml:space="preserve">
+    <value>pnlBrushClipartSettings</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartZoomFactor.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartAngle.Name" xml:space="preserve">
+    <value>txtPropBrushClipartAngle</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartAngle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartAngle.Parent" xml:space="preserve">
+    <value>pnlBrushClipartSettings</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartAngle.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="pnlBrushClipartSettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="pnlBrushClipartSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 340</value>
+  </data>
+  <data name="pnlBrushClipartSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 108</value>
+  </data>
+  <data name="pnlBrushClipartSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>267</value>
+  </data>
+  <data name="pnlBrushClipartSettings.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushClipartSettings.Name" xml:space="preserve">
+    <value>pnlBrushClipartSettings</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushClipartSettings.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushClipartSettings.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushClipartSettings.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternParameters.Name" xml:space="preserve">
+    <value>lblPropBrushPatternParameters</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternParameters.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternParameters.Parent" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternParameters.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;prpPropBrushPatterParameters.Name" xml:space="preserve">
+    <value>prpPropBrushPatterParameters</value>
+  </data>
+  <data name="&gt;&gt;prpPropBrushPatterParameters.Type" xml:space="preserve">
+    <value>DevExpress.XtraVerticalGrid.PropertyGridControl, DevExpress.XtraVerticalGrid.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;prpPropBrushPatterParameters.Parent" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;prpPropBrushPatterParameters.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDeltaY.Name" xml:space="preserve">
+    <value>txtPropBrushPatternDeltaY</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDeltaY.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDeltaY.Parent" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDeltaY.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternDeltaXY.Name" xml:space="preserve">
+    <value>lblPropBrushPatternDeltaXY</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternDeltaXY.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternDeltaXY.Parent" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternDeltaXY.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDeltaX.Name" xml:space="preserve">
+    <value>txtPropBrushPatternDeltaX</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDeltaX.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDeltaX.Parent" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDeltaX.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternZoomFactor.Name" xml:space="preserve">
+    <value>lblPropBrushPatternZoomFactor</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternZoomFactor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternZoomFactor.Parent" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternZoomFactor.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternZoomFactor.Name" xml:space="preserve">
+    <value>txtPropBrushPatternZoomFactor</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternZoomFactor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternZoomFactor.Parent" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternZoomFactor.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDensity.Name" xml:space="preserve">
+    <value>txtPropBrushPatternDensity</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDensity.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDensity.Parent" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternDensity.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternAngleMode.Name" xml:space="preserve">
+    <value>lblPropBrushPatternAngleMode</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternAngleMode.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternAngleMode.Parent" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternAngleMode.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;cboPropBrushPatternAngleMode.Name" xml:space="preserve">
+    <value>cboPropBrushPatternAngleMode</value>
+  </data>
+  <data name="&gt;&gt;cboPropBrushPatternAngleMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropBrushPatternAngleMode.Parent" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;cboPropBrushPatternAngleMode.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternAngle.Name" xml:space="preserve">
+    <value>txtPropBrushPatternAngle</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternAngle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternAngle.Parent" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushPatternAngle.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternDensity.Name" xml:space="preserve">
+    <value>lblPropBrushPatternDensity</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternDensity.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternDensity.Parent" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternDensity.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternAngle.Name" xml:space="preserve">
+    <value>lblPropBrushPatternAngle</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternAngle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternAngle.Parent" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;lblPropBrushPatternAngle.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="pnlBrushPatternSettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="pnlBrushPatternSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 448</value>
+  </data>
+  <data name="pnlBrushPatternSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 198</value>
+  </data>
+  <data name="pnlBrushPatternSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>273</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushPatternSettings.Name" xml:space="preserve">
+    <value>pnlBrushPatternSettings</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushPatternSettings.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushPatternSettings.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlBrushPatternSettings.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 646</value>
+  </data>
+  <data name="&gt;&gt;mnuSaveAs.Name" xml:space="preserve">
+    <value>mnuSaveAs</value>
+  </data>
+  <data name="&gt;&gt;mnuSaveAs.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropSaveToFile.Name" xml:space="preserve">
+    <value>btnPropSaveToFile</value>
+  </data>
+  <data name="&gt;&gt;btnPropSaveToFile.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropSaveToSurvey.Name" xml:space="preserve">
+    <value>btnPropSaveToSurvey</value>
+  </data>
+  <data name="&gt;&gt;btnPropSaveToSurvey.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropImport.Name" xml:space="preserve">
+    <value>btnPropImport</value>
+  </data>
+  <data name="&gt;&gt;btnPropImport.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropExport.Name" xml:space="preserve">
+    <value>btnPropExport</value>
+  </data>
+  <data name="&gt;&gt;btnPropExport.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;BarManager.Name" xml:space="preserve">
+    <value>BarManager</value>
+  </data>
+  <data name="&gt;&gt;BarManager.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barPattern.Name" xml:space="preserve">
+    <value>barPattern</value>
+  </data>
+  <data name="&gt;&gt;barPattern.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Bar, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropPatternAdd.Name" xml:space="preserve">
+    <value>btnPropPatternAdd</value>
+  </data>
+  <data name="&gt;&gt;btnPropPatternAdd.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropPatternDelete.Name" xml:space="preserve">
+    <value>btnPropPatternDelete</value>
+  </data>
+  <data name="&gt;&gt;btnPropPatternDelete.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropPatternPrevious.Name" xml:space="preserve">
+    <value>btnPropPatternPrevious</value>
+  </data>
+  <data name="&gt;&gt;btnPropPatternPrevious.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropPatternNext.Name" xml:space="preserve">
+    <value>btnPropPatternNext</value>
+  </data>
+  <data name="&gt;&gt;btnPropPatternNext.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropPatternMoveDown.Name" xml:space="preserve">
+    <value>btnPropPatternMoveDown</value>
+  </data>
+  <data name="&gt;&gt;btnPropPatternMoveDown.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropPatternMoveUp.Name" xml:space="preserve">
+    <value>btnPropPatternMoveUp</value>
+  </data>
+  <data name="&gt;&gt;btnPropPatternMoveUp.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>cItemBrushStylePropertyControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="txtPropBrushClipartZoomFactor.EditValue" type="System.Decimal, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtPropBrushClipartZoomFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>154, 0</value>
+  </data>
+  <data name="txtPropBrushClipartZoomFactor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtPropBrushClipartZoomFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="txtPropBrushClipartZoomFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartZoomFactor.Name" xml:space="preserve">
+    <value>txtPropBrushClipartZoomFactor</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartZoomFactor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartZoomFactor.Parent" xml:space="preserve">
+    <value>pnlBrushClipartSettings</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartZoomFactor.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtPropBrushClipartDensity.EditValue" type="System.Decimal, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="txtPropBrushClipartDensity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>299, 0</value>
+  </data>
+  <data name="txtPropBrushClipartDensity.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtPropBrushClipartDensity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="txtPropBrushClipartDensity.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartDensity.Name" xml:space="preserve">
+    <value>txtPropBrushClipartDensity</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartDensity.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartDensity.Parent" xml:space="preserve">
+    <value>pnlBrushClipartSettings</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartDensity.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtPropBrushClipartAngle.EditValue" type="System.Decimal, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="txtPropBrushClipartAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>299, 27</value>
+  </data>
+  <data name="txtPropBrushClipartAngle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtPropBrushClipartAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="txtPropBrushClipartAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartAngle.Name" xml:space="preserve">
+    <value>txtPropBrushClipartAngle</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartAngle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartAngle.Parent" xml:space="preserve">
+    <value>pnlBrushClipartSettings</value>
+  </data>
+  <data name="&gt;&gt;txtPropBrushClipartAngle.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="cboPropBrushHatch.Location" type="System.Drawing.Point, System.Drawing">
     <value>154, 0</value>
@@ -980,289 +1730,13 @@
     <value>cboPropBrushHatch</value>
   </data>
   <data name="&gt;&gt;cboPropBrushHatch.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPropBrushHatch.Parent" xml:space="preserve">
     <value>pnlBrushStyle</value>
   </data>
   <data name="&gt;&gt;cboPropBrushHatch.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="pnlBrushStyle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="pnlBrushStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 46</value>
-  </data>
-  <data name="pnlBrushStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 24</value>
-  </data>
-  <data name="pnlBrushStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>259</value>
-  </data>
-  <data name="pnlBrushStyle.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushStyle.Name" xml:space="preserve">
-    <value>pnlBrushStyle</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushStyle.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushStyle.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="pnlBrushAlternativeColor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="pnlBrushAlternativeColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 70</value>
-  </data>
-  <data name="pnlBrushAlternativeColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 24</value>
-  </data>
-  <data name="pnlBrushAlternativeColor.TabIndex" type="System.Int32, mscorlib">
-    <value>262</value>
-  </data>
-  <data name="pnlBrushAlternativeColor.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushAlternativeColor.Name" xml:space="preserve">
-    <value>pnlBrushAlternativeColor</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushAlternativeColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushAlternativeColor.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushAlternativeColor.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="cmdPropPatternMoveUp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="cmdPropPatternMoveUp.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="cmdPropPatternMoveUp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmdPropPatternMoveUp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>474, 29</value>
-  </data>
-  <data name="cmdPropPatternMoveUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="cmdPropPatternMoveUp.TabIndex" type="System.Int32, mscorlib">
-    <value>237</value>
-  </data>
-  <data name="cmdPropPatternMoveUp.ToolTip" xml:space="preserve">
-    <value>Move pattern up</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternMoveUp.Name" xml:space="preserve">
-    <value>cmdPropPatternMoveUp</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternMoveUp.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternMoveUp.Parent" xml:space="preserve">
-    <value>pnlBrushPattern</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternMoveUp.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cmdPropPatternMoveDown.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="cmdPropPatternMoveDown.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="cmdPropPatternMoveDown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmdPropPatternMoveDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>444, 29</value>
-  </data>
-  <data name="cmdPropPatternMoveDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="cmdPropPatternMoveDown.TabIndex" type="System.Int32, mscorlib">
-    <value>236</value>
-  </data>
-  <data name="cmdPropPatternMoveDown.ToolTip" xml:space="preserve">
-    <value>Move pattern down</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternMoveDown.Name" xml:space="preserve">
-    <value>cmdPropPatternMoveDown</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternMoveDown.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternMoveDown.Parent" xml:space="preserve">
-    <value>pnlBrushPattern</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternMoveDown.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="cmdPropPatternNext.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="cmdPropPatternNext.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="cmdPropPatternNext.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmdPropPatternNext.Location" type="System.Drawing.Point, System.Drawing">
-    <value>474, 1</value>
-  </data>
-  <data name="cmdPropPatternNext.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="cmdPropPatternNext.TabIndex" type="System.Int32, mscorlib">
-    <value>235</value>
-  </data>
-  <data name="cmdPropPatternNext.ToolTip" xml:space="preserve">
-    <value>Select next pattern</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternNext.Name" xml:space="preserve">
-    <value>cmdPropPatternNext</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternNext.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternNext.Parent" xml:space="preserve">
-    <value>pnlBrushPattern</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternNext.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="cmdPropPatternPrevious.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="cmdPropPatternPrevious.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="cmdPropPatternPrevious.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmdPropPatternPrevious.Location" type="System.Drawing.Point, System.Drawing">
-    <value>444, 1</value>
-  </data>
-  <data name="cmdPropPatternPrevious.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="cmdPropPatternPrevious.TabIndex" type="System.Int32, mscorlib">
-    <value>234</value>
-  </data>
-  <data name="cmdPropPatternPrevious.ToolTip" xml:space="preserve">
-    <value>Select previous pattern</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternPrevious.Name" xml:space="preserve">
-    <value>cmdPropPatternPrevious</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternPrevious.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternPrevious.Parent" xml:space="preserve">
-    <value>pnlBrushPattern</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternPrevious.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="cmdPropPatternDelete.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="cmdPropPatternDelete.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="cmdPropPatternDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmdPropPatternDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>414, 1</value>
-  </data>
-  <data name="cmdPropPatternDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="cmdPropPatternDelete.TabIndex" type="System.Int32, mscorlib">
-    <value>233</value>
-  </data>
-  <data name="cmdPropPatternDelete.ToolTip" xml:space="preserve">
-    <value>Delete current pattern</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternDelete.Name" xml:space="preserve">
-    <value>cmdPropPatternDelete</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternDelete.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternDelete.Parent" xml:space="preserve">
-    <value>pnlBrushPattern</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternDelete.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="cmdPropPatternAdd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="cmdPropPatternAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmdPropPatternAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>384, 1</value>
-  </data>
-  <data name="cmdPropPatternAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="cmdPropPatternAdd.TabIndex" type="System.Int32, mscorlib">
-    <value>232</value>
-  </data>
-  <data name="cmdPropPatternAdd.ToolTip" xml:space="preserve">
-    <value>Add new pattern over</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternAdd.Name" xml:space="preserve">
-    <value>cmdPropPatternAdd</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternAdd.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternAdd.Parent" xml:space="preserve">
-    <value>pnlBrushPattern</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPatternAdd.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="pnlBrushPattern.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="pnlBrushPattern.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 94</value>
-  </data>
-  <data name="pnlBrushPattern.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 54</value>
-  </data>
-  <data name="pnlBrushPattern.TabIndex" type="System.Int32, mscorlib">
-    <value>261</value>
-  </data>
-  <data name="pnlBrushPattern.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushPattern.Name" xml:space="preserve">
-    <value>pnlBrushPattern</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushPattern.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushPattern.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushPattern.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="picPropBrushTextureImage.Location" type="System.Drawing.Point, System.Drawing">
     <value>154, 0</value>
@@ -1280,7 +1754,7 @@
     <value>picPropBrushTextureImage</value>
   </data>
   <data name="&gt;&gt;picPropBrushTextureImage.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;picPropBrushTextureImage.Parent" xml:space="preserve">
     <value>pnlBrushTexture</value>
@@ -1307,7 +1781,7 @@
     <value>lblPropBrushTextureImage</value>
   </data>
   <data name="&gt;&gt;lblPropBrushTextureImage.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBrushTextureImage.Parent" xml:space="preserve">
     <value>pnlBrushTexture</value>
@@ -1334,202 +1808,13 @@
     <value>cmdPropBrushBrowseTexture</value>
   </data>
   <data name="&gt;&gt;cmdPropBrushBrowseTexture.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPropBrushBrowseTexture.Parent" xml:space="preserve">
     <value>pnlBrushTexture</value>
   </data>
   <data name="&gt;&gt;cmdPropBrushBrowseTexture.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="pnlBrushTexture.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="pnlBrushTexture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 148</value>
-  </data>
-  <data name="pnlBrushTexture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 70</value>
-  </data>
-  <data name="pnlBrushTexture.TabIndex" type="System.Int32, mscorlib">
-    <value>277</value>
-  </data>
-  <data name="pnlBrushTexture.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushTexture.Name" xml:space="preserve">
-    <value>pnlBrushTexture</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushTexture.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushTexture.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushTexture.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="pnlBrushClipart.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="pnlBrushClipart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 218</value>
-  </data>
-  <data name="pnlBrushClipart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 70</value>
-  </data>
-  <data name="pnlBrushClipart.TabIndex" type="System.Int32, mscorlib">
-    <value>260</value>
-  </data>
-  <data name="pnlBrushClipart.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushClipart.Name" xml:space="preserve">
-    <value>pnlBrushClipart</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushClipart.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushClipart.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushClipart.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="cmdPropSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="cmdPropSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>457, 6</value>
-  </data>
-  <data name="cmdPropSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 24</value>
-  </data>
-  <data name="cmdPropSave.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="cmdPropSave.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;cmdPropSave.Name" xml:space="preserve">
-    <value>cmdPropSave</value>
-  </data>
-  <data name="&gt;&gt;cmdPropSave.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.DropDownButton, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdPropSave.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;cmdPropSave.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="txtPropBrushClipartDensity.EditValue" type="System.Decimal, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="txtPropBrushClipartDensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>299, 0</value>
-  </data>
-  <data name="txtPropBrushClipartDensity.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.2">
-    <value>Combo</value>
-  </data>
-  <data name="txtPropBrushClipartDensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 20</value>
-  </data>
-  <data name="txtPropBrushClipartDensity.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtPropBrushClipartDensity.Name" xml:space="preserve">
-    <value>txtPropBrushClipartDensity</value>
-  </data>
-  <data name="&gt;&gt;txtPropBrushClipartDensity.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtPropBrushClipartDensity.Parent" xml:space="preserve">
-    <value>pnlBrushClipartSettings</value>
-  </data>
-  <data name="&gt;&gt;txtPropBrushClipartDensity.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtPropBrushClipartZoomFactor.EditValue" type="System.Decimal, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="txtPropBrushClipartZoomFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 0</value>
-  </data>
-  <data name="txtPropBrushClipartZoomFactor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.2">
-    <value>Combo</value>
-  </data>
-  <data name="txtPropBrushClipartZoomFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 20</value>
-  </data>
-  <data name="txtPropBrushClipartZoomFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;txtPropBrushClipartZoomFactor.Name" xml:space="preserve">
-    <value>txtPropBrushClipartZoomFactor</value>
-  </data>
-  <data name="&gt;&gt;txtPropBrushClipartZoomFactor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtPropBrushClipartZoomFactor.Parent" xml:space="preserve">
-    <value>pnlBrushClipartSettings</value>
-  </data>
-  <data name="&gt;&gt;txtPropBrushClipartZoomFactor.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="txtPropBrushClipartAngle.EditValue" type="System.Decimal, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="txtPropBrushClipartAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>299, 27</value>
-  </data>
-  <data name="txtPropBrushClipartAngle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.2">
-    <value>Combo</value>
-  </data>
-  <data name="txtPropBrushClipartAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 20</value>
-  </data>
-  <data name="txtPropBrushClipartAngle.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txtPropBrushClipartAngle.Name" xml:space="preserve">
-    <value>txtPropBrushClipartAngle</value>
-  </data>
-  <data name="&gt;&gt;txtPropBrushClipartAngle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtPropBrushClipartAngle.Parent" xml:space="preserve">
-    <value>pnlBrushClipartSettings</value>
-  </data>
-  <data name="&gt;&gt;txtPropBrushClipartAngle.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="pnlBrushClipartSettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="pnlBrushClipartSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 288</value>
-  </data>
-  <data name="pnlBrushClipartSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 108</value>
-  </data>
-  <data name="pnlBrushClipartSettings.TabIndex" type="System.Int32, mscorlib">
-    <value>267</value>
-  </data>
-  <data name="pnlBrushClipartSettings.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushClipartSettings.Name" xml:space="preserve">
-    <value>pnlBrushClipartSettings</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushClipartSettings.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushClipartSettings.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushClipartSettings.ZOrder" xml:space="preserve">
-    <value>9</value>
   </data>
   <data name="lblPropBrushPatternParameters.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1550,7 +1835,7 @@
     <value>lblPropBrushPatternParameters</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternParameters.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternParameters.Parent" xml:space="preserve">
     <value>pnlBrushPatternSettings</value>
@@ -1565,13 +1850,13 @@
     <value>206, 114</value>
   </data>
   <data name="prpPropBrushPatterParameters.TabIndex" type="System.Int32, mscorlib">
-    <value>228</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;prpPropBrushPatterParameters.Name" xml:space="preserve">
     <value>prpPropBrushPatterParameters</value>
   </data>
   <data name="&gt;&gt;prpPropBrushPatterParameters.Type" xml:space="preserve">
-    <value>DevExpress.XtraVerticalGrid.PropertyGridControl, DevExpress.XtraVerticalGrid.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraVerticalGrid.PropertyGridControl, DevExpress.XtraVerticalGrid.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;prpPropBrushPatterParameters.Parent" xml:space="preserve">
     <value>pnlBrushPatternSettings</value>
@@ -1592,7 +1877,7 @@
     <value>61, 20</value>
   </data>
   <data name="txtPropBrushPatternDeltaY.TabIndex" type="System.Int32, mscorlib">
-    <value>227</value>
+    <value>6</value>
   </data>
   <data name="txtPropBrushPatternDeltaY.ToolTip" xml:space="preserve">
     <value>Delta percentage for shift on Y axis</value>
@@ -1601,7 +1886,7 @@
     <value>txtPropBrushPatternDeltaY</value>
   </data>
   <data name="&gt;&gt;txtPropBrushPatternDeltaY.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtPropBrushPatternDeltaY.Parent" xml:space="preserve">
     <value>pnlBrushPatternSettings</value>
@@ -1628,7 +1913,7 @@
     <value>lblPropBrushPatternDeltaXY</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternDeltaXY.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternDeltaXY.Parent" xml:space="preserve">
     <value>pnlBrushPatternSettings</value>
@@ -1649,7 +1934,7 @@
     <value>61, 20</value>
   </data>
   <data name="txtPropBrushPatternDeltaX.TabIndex" type="System.Int32, mscorlib">
-    <value>225</value>
+    <value>5</value>
   </data>
   <data name="txtPropBrushPatternDeltaX.ToolTip" xml:space="preserve">
     <value>Delta percentage for shift on X axis</value>
@@ -1658,7 +1943,7 @@
     <value>txtPropBrushPatternDeltaX</value>
   </data>
   <data name="&gt;&gt;txtPropBrushPatternDeltaX.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtPropBrushPatternDeltaX.Parent" xml:space="preserve">
     <value>pnlBrushPatternSettings</value>
@@ -1685,7 +1970,7 @@
     <value>lblPropBrushPatternZoomFactor</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternZoomFactor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternZoomFactor.Parent" xml:space="preserve">
     <value>pnlBrushPatternSettings</value>
@@ -1706,13 +1991,13 @@
     <value>61, 20</value>
   </data>
   <data name="txtPropBrushPatternZoomFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;txtPropBrushPatternZoomFactor.Name" xml:space="preserve">
     <value>txtPropBrushPatternZoomFactor</value>
   </data>
   <data name="&gt;&gt;txtPropBrushPatternZoomFactor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtPropBrushPatternZoomFactor.Parent" xml:space="preserve">
     <value>pnlBrushPatternSettings</value>
@@ -1733,13 +2018,13 @@
     <value>61, 20</value>
   </data>
   <data name="txtPropBrushPatternDensity.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;txtPropBrushPatternDensity.Name" xml:space="preserve">
     <value>txtPropBrushPatternDensity</value>
   </data>
   <data name="&gt;&gt;txtPropBrushPatternDensity.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtPropBrushPatternDensity.Parent" xml:space="preserve">
     <value>pnlBrushPatternSettings</value>
@@ -1766,7 +2051,7 @@
     <value>lblPropBrushPatternAngleMode</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternAngleMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternAngleMode.Parent" xml:space="preserve">
     <value>pnlBrushPatternSettings</value>
@@ -1784,7 +2069,7 @@
     <value>123, 21</value>
   </data>
   <data name="cboPropBrushPatternAngleMode.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;cboPropBrushPatternAngleMode.Name" xml:space="preserve">
     <value>cboPropBrushPatternAngleMode</value>
@@ -1811,13 +2096,13 @@
     <value>61, 20</value>
   </data>
   <data name="txtPropBrushPatternAngle.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;txtPropBrushPatternAngle.Name" xml:space="preserve">
     <value>txtPropBrushPatternAngle</value>
   </data>
   <data name="&gt;&gt;txtPropBrushPatternAngle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtPropBrushPatternAngle.Parent" xml:space="preserve">
     <value>pnlBrushPatternSettings</value>
@@ -1829,7 +2114,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPropBrushPatternDensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 4</value>
+    <value>253, 4</value>
   </data>
   <data name="lblPropBrushPatternDensity.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 13</value>
@@ -1844,7 +2129,7 @@
     <value>lblPropBrushPatternDensity</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternDensity.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternDensity.Parent" xml:space="preserve">
     <value>pnlBrushPatternSettings</value>
@@ -1874,81 +2159,12 @@
     <value>lblPropBrushPatternAngle</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternAngle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternAngle.Parent" xml:space="preserve">
     <value>pnlBrushPatternSettings</value>
   </data>
   <data name="&gt;&gt;lblPropBrushPatternAngle.ZOrder" xml:space="preserve">
     <value>12</value>
-  </data>
-  <data name="pnlBrushPatternSettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="pnlBrushPatternSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 396</value>
-  </data>
-  <data name="pnlBrushPatternSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 198</value>
-  </data>
-  <data name="pnlBrushPatternSettings.TabIndex" type="System.Int32, mscorlib">
-    <value>273</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushPatternSettings.Name" xml:space="preserve">
-    <value>pnlBrushPatternSettings</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushPatternSettings.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushPatternSettings.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlBrushPatternSettings.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 594</value>
-  </data>
-  <data name="&gt;&gt;mnuSaveAs.Name" xml:space="preserve">
-    <value>mnuSaveAs</value>
-  </data>
-  <data name="&gt;&gt;mnuSaveAs.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnPropSaveToFile.Name" xml:space="preserve">
-    <value>btnPropSaveToFile</value>
-  </data>
-  <data name="&gt;&gt;btnPropSaveToFile.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnPropSaveToSurvey.Name" xml:space="preserve">
-    <value>btnPropSaveToSurvey</value>
-  </data>
-  <data name="&gt;&gt;btnPropSaveToSurvey.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnPropImport.Name" xml:space="preserve">
-    <value>btnPropImport</value>
-  </data>
-  <data name="&gt;&gt;btnPropImport.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnPropExport.Name" xml:space="preserve">
-    <value>btnPropExport</value>
-  </data>
-  <data name="&gt;&gt;btnPropExport.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;BarManager.Name" xml:space="preserve">
-    <value>BarManager</value>
-  </data>
-  <data name="&gt;&gt;BarManager.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>cItemBrushStylePropertyControl</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <design>
+<penstylepattern>
+	<underlyingcavepen pattern="6.0 6.0" />
+	<toonarrowcavepen pattern="6.0 4.0" />
+	<presumedcavepen pattern="6.0 2.0" />
+</penstylepattern>	
   <tools>
     <tool type="image" name="btnDesignTools_Base_Image" svgimage="item_image.svg" image="icon_image_small.ico" style="2" caption="Immagine" tooltip="Inserisce nel rilievo un immagine generica da ricalcare..." layer="0" method="CreateImage" parameters="cave,branch,image">
       <caption lang="it" caption="Immagine" tooltip="Inserisce nel rilievo un immagine generica da ricalcare..."/>

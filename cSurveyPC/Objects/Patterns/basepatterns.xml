@@ -19,7 +19,7 @@
 		<caption lang="it" caption="Linee incrociate" tooltip="Motivo a linee incrociate"/>
 		<caption lang="en" caption="Crossed lines" tooltip="Crossed lines pattern"/>
 		<parameters>
-			<parameter name="HorizontalDistanceRatio" type="single" min="0.01" max="400" default="200"></parameter>
+			<parameter name="HorizontalDistanceRatio" type="single" min="0.01" max="40" default="1"></parameter>
 		</parameters>
 		<code lang="vb#">
 			public sub OnPaint(Painter)
@@ -27,7 +27,7 @@
                     Call Painter.StartFigure()
                     Call Painter.AddLine(New PointF(Painter.Bounds.Left, r), New PointF(Painter.Bounds.Right, r))
                 Next
-                For r as single= Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density*Painter.Parameters.HorizontalDistanceRatio/100F
+                For r as single= Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density*Painter.Parameters.HorizontalDistanceRatio
                     Call Painter.StartFigure()
                     Call Painter.AddLine(New PointF(r, Painter.Bounds.Top), New PointF(r, Painter.Bounds.Bottom))
                 Next
@@ -43,7 +43,7 @@
 		</parameters>
 		<code lang="vb#">
 			public sub OnPaint(Painter)
-				dim sCurrentSize as single=Painter.Parameters.size
+				dim sCurrentSize as single=Painter.Parameters.size*Painter.ZoomFactor
                 For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density / 2.0F
                     Call Painter.StartFigure()
                     For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step sCurrentSize * 2.0F
@@ -63,7 +63,7 @@
 		</parameters>
 		<code lang="vb#">
 			public sub OnPaint(Painter)
-				dim sCurrentSize as single=Painter.Parameters.size
+				dim sCurrentSize as single=Painter.Parameters.size*Painter.ZoomFactor
 				For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
                     Call Painter.StartFigure()
                     For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step sCurrentSize * 2.0F
@@ -83,7 +83,7 @@
 		</parameters>
 		<code lang="vb#">
 			public sub OnPaint(Painter)
-				dim sCurrentSize as single=Painter.Parameters.size
+				dim sCurrentSize as single=Painter.Parameters.size*Painter.ZoomFactor
 				For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
 					Call Painter.StartFigure()
 					For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step sCurrentSize * 2.0F
@@ -102,11 +102,11 @@
 		</parameters>
 		<code lang="vb#">
 			public sub OnPaint(Painter)
-				dim sCurrentSize as single=Painter.Parameters.size
-				For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+				dim sCurrentSize as single=Painter.Parameters.size*Painter.ZoomFactor
+				For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom+Painter.Density Step Painter.Density
                     Call Painter.StartFigure()
                     For s As Single = Painter.Bounds.Left - Painter.Density - Painter.DeltaX To Painter.Bounds.Right Step sCurrentSize * 2
-                        Call Painter.AddLines({New PointF(s, r), New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+                        Call Painter.AddLines({New PointF(s, r), New PointF(s, r + Painter.Density), New PointF(s + sCurrentSize, r + Painter.Density-sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize, r + Painter.Density)})
                     Next
                 Next
 				Painter.IsFilled = False
@@ -121,12 +121,14 @@
 		</parameters>
 		<code lang="vb#">
 			public sub OnPaint(Painter)
-				dim sCurrentSize as single=Painter.Parameters.size
-                For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
+				dim sCurrentSize as single=Painter.Parameters.size*Painter.ZoomFactor
+                For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom+Painter.Density Step Painter.Density
                     Call Painter.StartFigure()
                     For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step sCurrentSize * 2
-                        Call Painter.AddLines({New PointF(s, r), New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize, r + sCurrentSize)})
-                        Call Painter.AddLines({New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+                        Call Painter.StartFigure()
+						Call Painter.AddLines({New PointF(s, r), New PointF(s, r + Painter.Density), New PointF(s + sCurrentSize, r + Painter.Density-sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize, r + Painter.Density)})
+						Call Painter.StartFigure()
+                        Call Painter.AddLines({New PointF(s + sCurrentSize, r), New PointF(s + sCurrentSize, r + Painter.Density)})
                     Next
                 Next
 				Painter.IsFilled = False
@@ -142,28 +144,28 @@
 		</parameters>
 		<code lang="vb#">
 			public sub OnPaint(Painter)
-				dim sCurrentSize as single=Painter.Parameters.size
+				dim sCurrentSize as single=Painter.Parameters.size*Painter.ZoomFactor
 				if Painter.Parameters.EvenAndOdd then
 					Dim iEven As Integer = 0
 					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
 						iEven += 1
 						If iEven Mod 2 = 0 Then
-							For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
+							For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2F
 								Call Painter.StartFigure()
-								Call Painter.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize / 2, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+								Call Painter.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize / 2F, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
 							Next
 						Else
-							For s As Single = Painter.Bounds.Left - Painter.Density - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
+							For s As Single = Painter.Bounds.Left - Painter.Density - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2F
 								Call Painter.StartFigure()
-								Call Painter.AddLines({New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize / 2, r), New PointF(s + sCurrentSize, r + sCurrentSize)})
+								Call Painter.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize / 2F, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
 							Next
 						End If
 					Next
 				else
 					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
-						For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
+						For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2F
 							Call Painter.StartFigure()
-							Call Painter.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize / 2, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
+							Call Painter.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize / 2F, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
 						Next
 					Next	
 				end if
@@ -180,7 +182,7 @@
 		</parameters>
 		<code lang="vb#">
 			public sub OnPaint(Painter)
-				dim sCurrentSize as single=Painter.Parameters.size
+				dim sCurrentSize as single=Painter.Parameters.size*Painter.ZoomFactor
 				if Painter.Parameters.EvenAndOdd then
 					Dim iEven As Integer = 0
 					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
@@ -194,7 +196,7 @@
 						Else
 							For s As Single = Painter.Bounds.Left - Painter.Density - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
 								Call Painter.StartFigure()
-								Call Painter.AddLines({New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize / 2, r), New PointF(s + sCurrentSize, r + sCurrentSize)})
+								Call Painter.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize / 2, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
 								call Painter.CloseFigure()
 							Next
 						End If
@@ -221,7 +223,7 @@
 		</parameters>
 		<code lang="vb#">
 			public sub OnPaint(Painter)
-				dim sCurrentSize as single=Painter.Parameters.size
+				dim sCurrentSize as single=Painter.Parameters.size*Painter.ZoomFactor
 				if Painter.Parameters.EvenAndOdd then
 					Dim iEven As Integer = 0
 					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
@@ -235,7 +237,7 @@
 						Else
 							For s As Single = Painter.Bounds.Left - Painter.Density - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
 								Call Painter.StartFigure()
-								Call Painter.AddLines({New PointF(s, r + sCurrentSize), New PointF(s + sCurrentSize / 2, r), New PointF(s + sCurrentSize, r + sCurrentSize)})
+								Call Painter.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize), New PointF(s + sCurrentSize + sCurrentSize / 2, r), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize)})
 								call Painter.CloseFigure()
 							Next
 						End If
@@ -262,7 +264,7 @@
 		</parameters>
 		<code lang="vb#">
 			public sub OnPaint(Painter)
-				dim sCurrentSize as single=Painter.Parameters.size
+				dim sCurrentSize as single=Painter.Parameters.size*Painter.ZoomFactor
 				if Painter.Parameters.EvenAndOdd then
 					Dim iEven As Integer = 0
 						For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
@@ -277,9 +279,9 @@
                             Else
                                 For s As Single = Painter.Bounds.Left - Painter.Density - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
                                     Call Painter.StartFigure()
-                                    Call Painter.AddLines({New PointF(s + sCurrentSize, r + sCurrentSize / 2.0F), New PointF(s + sCurrentSize + sCurrentSize, r + sCurrentSize / 2.0F)})
+                                    Call Painter.AddLines({New PointF(s, r + sCurrentSize / 2.0F), New PointF(s + sCurrentSize, r + sCurrentSize / 2.0F)})
                                     Call Painter.StartFigure()
-                                    Call Painter.AddLines({New PointF(s + sCurrentSize + sCurrentSize / 2.0F, r), New PointF(s + sCurrentSize + sCurrentSize / 2.0F, r + sCurrentSize)})
+                                    Call Painter.AddLines({New PointF(s + sCurrentSize / 2.0F, r), New PointF(s + sCurrentSize / 2.0F, r + sCurrentSize)})
                                 Next
                             End If
                         Next
@@ -306,7 +308,7 @@
 		</parameters>
 		<code lang="vb#">
 			public sub OnPaint(Painter)
-				dim sCurrentSize as single=Painter.Parameters.size
+				dim sCurrentSize as single=Painter.Parameters.size*Painter.ZoomFactor
 				if Painter.Parameters.EvenAndOdd then
 					Dim iEven As Integer = 0
 						For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
@@ -319,7 +321,7 @@
                             Else
                                 For s As Single = Painter.Bounds.Left - Painter.Density - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
                                     Call Painter.StartFigure()
-                                    Call Painter.AddEllipse(New RectangleF(s + Painter.Density, r, sCurrentSize, sCurrentSize))
+                                    Call Painter.AddEllipse(New RectangleF(s, r, sCurrentSize, sCurrentSize))
                                 Next
                             End If
                         Next
@@ -327,7 +329,7 @@
 					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
 						For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
 							Call Painter.StartFigure()
-							Call Painter.AddEllipse(New RectangleF(s + Painter.Density, r, sCurrentSize, sCurrentSize))						
+							Call Painter.AddEllipse(New RectangleF(s, r, sCurrentSize, sCurrentSize))					
 						Next	
 					Next	
 				end if
@@ -344,7 +346,7 @@
 		</parameters>
 		<code lang="vb#">
 			public sub OnPaint(Painter)
-				dim sCurrentSize as single=Painter.Parameters.size
+				dim sCurrentSize as single=Painter.Parameters.size*Painter.ZoomFactor
 				if Painter.Parameters.EvenAndOdd then
 					Dim iEven As Integer = 0
 						For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
@@ -357,7 +359,7 @@
                             Else
                                 For s As Single = Painter.Bounds.Left - Painter.Density - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2.0F
                                     Call Painter.StartFigure()
-                                    Call Painter.AddEllipse(New RectangleF(s + Painter.Density, r, sCurrentSize, sCurrentSize))
+                                    Call Painter.AddEllipse(New RectangleF(s, r, sCurrentSize, sCurrentSize))
                                 Next
                             End If
                         Next
@@ -365,7 +367,7 @@
 					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density
 						For s As Single = Painter.Bounds.Left - Painter.DeltaX To Painter.Bounds.Right Step Painter.Density * 2
 							Call Painter.StartFigure()
-							Call Painter.AddEllipse(New RectangleF(s + Painter.Density, r, sCurrentSize, sCurrentSize))						
+							Call Painter.AddEllipse(New RectangleF(s, r, sCurrentSize, sCurrentSize))				
 						Next	
 					Next	
 				end if
@@ -457,7 +459,7 @@
 		</parameters>
 		<code lang="vb#">
 			public sub OnPaint(Painter)
-				dim sCurrentSize as single=Painter.Parameters.size
+				dim sCurrentSize as single=Painter.Parameters.size*Painter.ZoomFactor
 				if Painter.Parameters.EvenAndOdd then
 					Dim iEven As Integer = 0
 					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom step Painter.Density
@@ -495,7 +497,7 @@
 		</parameters>
 		<code lang="vb#">
 			public sub OnPaint(Painter)
-				dim sCurrentSize as single=Painter.Parameters.size
+				dim sCurrentSize as single=Painter.Parameters.size*Painter.ZoomFactor
 				if Painter.Parameters.EvenAndOdd then
 					Dim iEven As Integer = 0
 					For r As Single = Painter.Bounds.Top - Painter.DeltaY To Painter.Bounds.Bottom Step Painter.Density

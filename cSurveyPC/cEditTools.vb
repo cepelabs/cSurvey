@@ -6,6 +6,7 @@ Imports cSurveyPC.cSurvey.Design.Items
 Imports cSurveyPC.cSurvey.Helper.Editor.cUndo
 Imports System.Windows.Input
 Imports DevExpress.XtraRichEdit.Commands.Internal
+Imports DevExpress.XtraRichEdit.API.Native
 
 Namespace cSurvey.Helper.Editor
     Public Class cEnvironmentSettingsFolder
@@ -106,7 +107,7 @@ Namespace cSurvey.Helper.Editor
 
         Public Sub SetSetting(Key As String, Value As Object, DefaultValue As Object)
             If oValues.ContainsKey(Key) Then Call oValues.Remove(Key)
-            If Value.Equals(DefaultValue) Then
+            If Not Value.Equals(DefaultValue) Then
                 Call oValues.Add(Key, Value)
             End If
             RaiseEvent OnPropertyChanged(Me, New cEnvironmentSettingsFolderPropertyChangedEventArgs(sPath, Key))
@@ -2119,6 +2120,8 @@ Namespace cSurvey.Helper.Editor
         Public Method As String
         Public Parameters As String
 
+        Public LineType As cIItemLine.LineTypeEnum
+
         Public AvaiableInPlan As Boolean
         Public AvaiableInProfile As Boolean
 
@@ -2247,6 +2250,8 @@ Namespace cSurvey.Helper.Editor
                         Image = .GetAttribute("image")
                         SvgImage = modXML.GetAttributeValue(Tool, "svgimage", "")
                         Style = .GetAttribute("style")
+
+                        LineType = modXML.GetAttributeValue(Tool, "linetype", -1)
 
                         Layer = .GetAttribute("layer")
 

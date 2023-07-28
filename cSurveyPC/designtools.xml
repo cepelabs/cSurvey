@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <design>
-  <tools>
+    <penstylepattern>
+	    <underlyingcavepen pattern="6.0 6.0" />
+	    <toonarrowcavepen pattern="6.0 4.0" />
+	    <presumedcavepen pattern="6.0 2.0" />
+    </penstylepattern>
+    <tools>
     <tool type="image" convertto="2" name="btnDesignTools_Base_Image" svgimage="item_image.svg" image="icon_image_small.ico" style="2" caption="Immagine" tooltip="Inserisce nel rilievo un immagine generica da ricalcare..." layer="0" method="CreateImage" parameters="cave,branch,image">
       <caption lang="it" caption="Immagine" tooltip="Inserisce nel rilievo un immagine generica da ricalcare..."/>
       <caption lang="en" caption="Image" tooltip="Add a generic image in the survey..."/>
@@ -224,6 +229,67 @@
       </tool>
     </tool>
     <tool type="separator" />
+			
+<tool type="dropdown" name="btnDesignTools_Borders_Geology" svgimage="item_genericfault.svg" image="icon_border_small.ico" style="2" caption="Geology" tooltip="Tools for draw geology elements" layer="6">
+      <caption lang="it" caption="Geologia" tooltip="Raccoglie gli oggetti per disegnare elementi geologici"/>
+      <caption lang="en" caption="Geology" tooltip="Tools for draw geology elements"/>
+      <caption lang="ru" caption="Geology" tooltip="Tools for draw geology elements"/>
+      <tool type="freehandline" convertto="1" linetype="0" name="btnDesignTools_Borders_GenericFault" svgimage="item_genericfault.svg" image="icon_border_small.ico" style="3" caption="Fault" tooltip="Generic fault" layer="6" method="CreateGenericFault" parameters="cave,branch">
+        <caption lang="it" caption="Faglia" tooltip="Disegna una faglia generica"/>
+        <caption lang="en" caption="Fault" tooltip="Generic fault"/>
+        <caption lang="ru" caption="Fault" tooltip="Generic fault"/>
+      </tool>
+      <tool type="freehandline" convertto="1" linetype="0" name="btnDesignTools_Borders_GenericPresumedFault" svgimage="item_genericpresumedfault.svg" image="icon_border_small.ico" style="3" caption="Uncertain fault" tooltip="Uncertain generic fault" layer="6" method="CreatePresumedFault" parameters="cave,branch">
+        <caption lang="it" caption="Faglia incerta" tooltip="Faglia generica incerta o sepolta"/>
+        <caption lang="en" caption="Uncertain fault" tooltip="Uncertain fault"/>
+        <caption lang="ru" caption="Uncertain fault" tooltip="Uncertain fault"/>
+      </tool>
+      <tool type="freehandline" convertto="1" linetype="0" name="btnDesignTools_Borders_NormalFault" svgimage="item_normalfault.svg" image="icon_border_small.ico" style="3" caption="Normal fault" tooltip="Normal fault" layer="6" method="CreateNormalFault" parameters="cave,branch">
+        <caption lang="it" caption="Faglia diretta" tooltip="Faglia diretta"/>
+        <caption lang="en" caption="Normal fault" tooltip="Normal fault"/>
+        <caption lang="ru" caption="Normal fault" tooltip="Normal fault"/>
+      </tool>	
+      <tool type="freehandline" convertto="1" linetype="0" name="btnDesignTools_Borders_ReverseFault" svgimage="item_reversefault.svg" image="icon_border_small.ico" style="3" caption="Reverse fault" tooltip="Reverse fault" layer="6" method="CreateReverseFault" parameters="cave,branch">
+        <caption lang="it" caption="Faglia inversa" tooltip="Faglia inversa"/>
+        <caption lang="en" caption="Reverse fault" tooltip="Reverse fault"/>
+        <caption lang="ru" caption="Reverse fault" tooltip="Reverse fault"/>
+      </tool>		
+      <tool type="freehandline" convertto="1" linetype="0" name="btnDesignTools_Borders_VerticalFault" svgimage="item_verticalfault.svg" image="icon_border_small.ico" style="3" caption="Vertical fault" tooltip="Vertical fault" layer="6" method="CreateVerticalFault" parameters="cave,branch">
+        <caption lang="it" caption="Faglia verticale" tooltip="Faglia verticale"/>
+        <caption lang="en" caption="Vertical fault" tooltip="Vertical fault"/>
+        <caption lang="ru" caption="Vertical fault" tooltip="Vertical fault"/>
+      </tool>
+	
+	      <tool type="freehandline" convertto="1" linetype="0" name="btnDesignTools_Borders_StrikeFaultSx" svgimage="item_strikefaultsx.svg" image="icon_border_small.ico" style="3" caption="Left strike fault" tooltip="Left strike fault" layer="6" method="CreateStrikeFaultSx" parameters="cave,branch">
+        <caption lang="it" caption="Faglia trascorrente sinistra" tooltip="Faglia trascorrente sinistra"/>
+        <caption lang="en" caption="Left strike fault" tooltip="Left strike fault"/>
+        <caption lang="ru" caption="Left strike fault" tooltip="Left strike fault"/>
+      </tool>
+	      <tool type="freehandline" convertto="1" linetype="0" name="btnDesignTools_Borders_StrikeFaultDx" svgimage="item_strikefaultdx.svg" image="icon_border_small.ico" style="3" caption="Right strike fault" tooltip="Right strike fault" layer="6" method="CreateStrikeFaultDx" parameters="cave,branch">
+        <caption lang="it" caption="Faglia trascorrente destra" tooltip="Faglia trascorrente destra"/>
+        <caption lang="en" caption="Right strike fault" tooltip="Right strike fault"/>
+        <caption lang="ru" caption="Right strike fault" tooltip="Right strike fault"/>
+      </tool>
+	      <tool type="freehandline" convertto="1" linetype="0" name="btnDesignTools_Borders_StrikeFaultUnknown" svgimage="item_strikefaultunknown.svg" image="icon_border_small.ico" style="3" caption="Unknown strike fault" tooltip="Unknown direction strike fault" layer="6" method="CreateStrikeFaultUnknown" parameters="cave,branch">
+        <caption lang="it" caption="Faglia trascorrente non determinabile" tooltip="Faglia trascorrente con direzione ignota"/>
+        <caption lang="en" caption="Unknown strike fault" tooltip="Unknown direction strike fault"/>
+        <caption lang="ru" caption="Unknown strike fault" tooltip="Unknown direction strike fault"/>
+      </tool>
+	
+	  <tool type="separator" />
+      <tool type="freehandline" convertto="1" linetype="0" name="btnDesignTools_Borders_Anticline" svgimage="item_anticline.svg" image="icon_border_small.ico" style="3" caption="Anticline" tooltip="Anticline" layer="6" method="CreateAnticline" parameters="cave,branch">
+        <caption lang="it" caption="Asse di anticlinale" tooltip="Asse di anticlinale"/>
+        <caption lang="en" caption="Anticline" tooltip="Anticline"/>
+        <caption lang="ru" caption="Anticline" tooltip="Anticline"/>
+      </tool>	
+	  <tool type="freehandline" convertto="1" linetype="0" name="btnDesignTools_Borders_Syncline" svgimage="item_syncline.svg" image="icon_border_small.ico" style="3" caption="Syncline" tooltip="Syncline" layer="6" method="CreateSyncline" parameters="cave,branch">
+        <caption lang="it" caption="Asse di sinclinale" tooltip="Asse di sinclinale"/>
+        <caption lang="en" caption="Syncline" tooltip="Syncline"/>
+        <caption lang="ru" caption="Syncline" tooltip="Syncline"/>
+      </tool>	
+    </tool>		
+	
+	<tool type="separator" />
     <tool type="gallery" subtype="sign" name="btnDesignTools_Signs_Signs" svgimage="item_sign.svg" image="icon_symbols_small.ico" style="2" caption="Simboli" tooltip="Apre la gallery dei simboli" layer="6" category="80" cliparts="signs" gallery="signs,Simboli,1" method="CreateSign" parameters="cave,branch,data,dataformat">
       <caption lang="it" caption="Simboli" tooltip="Apre la gallery dei simboli"/>
       <caption lang="en" caption="Signs" tooltip="Open the signs gallery"/>

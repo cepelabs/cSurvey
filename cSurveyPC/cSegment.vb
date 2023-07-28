@@ -4,6 +4,8 @@ Imports cSurveyPC.cSurvey.Calculate
 Imports cSurveyPC.cSurvey.Design.Items
 
 Namespace cSurvey
+
+
     Public Class cSegment
         Implements cISegment
         Implements cIItemPlanSplayBorder
@@ -421,6 +423,7 @@ Namespace cSurvey
             Return Calibration OrElse oTempData.UnBindable OrElse oTempData.Splay OrElse IsEquate() OrElse IsSelfDefined() OrElse Not IsValid()
         End Function
 
+        <UIHelpers.Reflection.cReplicateDataAttribute(True, 100)>
         Public Property Unbindable As Boolean
             Get
                 Return oTempData.UnBindable
@@ -505,6 +508,11 @@ Namespace cSurvey
             bChanged = False
         End Sub
 
+        ''' <summary>
+        ''' Shot is tool's calibration shot
+        ''' </summary>
+        ''' <returns></returns>
+        <UIHelpers.Reflection.cReplicateDataAttribute(True, 104)>
         Public Property Calibration() As Boolean Implements cISegment.Calibration
             Get
                 Return oTempData.Calibration
@@ -522,6 +530,11 @@ Namespace cSurvey
             End Set
         End Property
 
+        ''' <summary>
+        ''' Shot is duplicated or define a part of cave also defined by one or more other shots
+        ''' </summary>
+        ''' <returns></returns>
+        <UIHelpers.Reflection.cReplicateDataAttribute(True, 1)>
         Public Property Duplicate() As Boolean Implements cISegment.Duplicate
             Get
                 Return oTempData.Duplicate
@@ -535,6 +548,11 @@ Namespace cSurvey
             End Set
         End Property
 
+        ''' <summary>
+        ''' Shot is on surface
+        ''' </summary>
+        ''' <returns></returns>
+        <UIHelpers.Reflection.cReplicateDataAttribute(True, 2)>
         Public Property Surface() As Boolean Implements cISegment.Surface
             Get
                 Return oTempData.Surface
@@ -548,6 +566,11 @@ Namespace cSurvey
             End Set
         End Property
 
+        ''' <summary>
+        ''' Shot is a cut splay
+        ''' </summary>
+        ''' <returns></returns>
+        <UIHelpers.Reflection.cReplicateDataAttribute(True, 3)>
         Public Property Cut() As Boolean
             Get
                 Return oTempData.Cut
@@ -564,6 +587,11 @@ Namespace cSurvey
             End Set
         End Property
 
+        ''' <summary>
+        ''' Shot is part of a zig-zag centerline
+        ''' </summary>
+        ''' <returns></returns>
+        <UIHelpers.Reflection.cReplicateDataAttribute(True, 101)>
         Public Property ZSurvey() As Boolean
             Get
                 Return oTempData.ZSurvey
@@ -574,13 +602,18 @@ Namespace cSurvey
                     If oTempData.ZSurvey Then
                         oTempData.Splay = False
                         oTempData.Cut = False
-                        oTempData.Exclude = (oTempData.Splay Or oTempData.Surface Or oTempData.Duplicate)
+                        oTempData.Exclude = (oTempData.Splay OrElse oTempData.Surface OrElse oTempData.Duplicate)
                     End If
                     bChanged = True
                 End If
             End Set
         End Property
 
+        ''' <summary>
+        ''' Shot is a splay
+        ''' </summary>
+        ''' <returns></returns>
+        <UIHelpers.Reflection.cReplicateDataAttribute(True, 3)>
         Public Property Splay() As Boolean Implements cISegment.Splay
             Get
                 Return oTempData.Splay
@@ -594,6 +627,12 @@ Namespace cSurvey
             End Set
         End Property
 
+
+        ''' <summary>
+        ''' Exclude shot from cave's metrics
+        ''' </summary>
+        ''' <returns></returns>
+        <UIHelpers.Reflection.cReplicateDataAttribute(True, 10)>
         Public Property Exclude() As Boolean Implements cISegment.Exclude
             Get
                 Return oTempData.Exclude
@@ -851,12 +890,12 @@ Namespace cSurvey
             End If
         End Function
 
-        Public Function GetCaveInfo() As cICaveInfoBranches Implements cISegment.getcaveinfo
+        Public Function GetCaveInfo() As cICaveInfoBranches Implements cISegment.GetCaveInfo
             Return oSurvey.Properties.GetCaveInfo(Me)
         End Function
 
         Public Function GetSession() As cSession
-            Return oSurvey.Properties.Sessions.getsession(Me)
+            Return oSurvey.Properties.Sessions.GetSession(Me)
         End Function
 
         Public ReadOnly Property Cave() As String Implements cISegment.Cave
@@ -1171,6 +1210,7 @@ Namespace cSurvey
             End Set
         End Property
 
+        <UIHelpers.Reflection.cReplicateDataAttribute(True, 102)>
         Public Property Virtual As Boolean Implements cISegment.Virtual
             Get
                 Return oTempData.Virtual

@@ -40,6 +40,8 @@ Partial Class frmSegmentsReplicateInfo
         Me.cboSessionList = New cSurveyPC.cSessionDropDown()
         Me.cboCaveList = New cSurveyPC.cCaveDropDown()
         Me.cboCaveBranchList = New cSurveyPC.cCaveBranchDropDown()
+        Me.cmdEditOtherProperties = New DevExpress.XtraEditors.SimpleButton()
+        Me.chkOtherProperties = New DevExpress.XtraEditors.CheckEdit()
         CType(Me.chkCave.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkSession.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkRebind.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -49,6 +51,7 @@ Partial Class frmSegmentsReplicateInfo
         CType(Me.chkDirection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.svgImages, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboDirection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkOtherProperties.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'chkCave
@@ -175,6 +178,21 @@ Partial Class frmSegmentsReplicateInfo
         Me.cboCaveBranchList.Name = "cboCaveBranchList"
         Me.cboCaveBranchList.Workmode = cSurveyPC.cCaveDropDown.WorkmodeEnum.View
         '
+        'cmdEditOtherProperties
+        '
+        Me.cmdEditOtherProperties.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdEditOtherProperties.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        Me.cmdEditOtherProperties.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.cmdEditOtherProperties, "cmdEditOtherProperties")
+        Me.cmdEditOtherProperties.Name = "cmdEditOtherProperties"
+        '
+        'chkOtherProperties
+        '
+        resources.ApplyResources(Me.chkOtherProperties, "chkOtherProperties")
+        Me.chkOtherProperties.Name = "chkOtherProperties"
+        Me.chkOtherProperties.Properties.AutoWidth = True
+        Me.chkOtherProperties.Properties.Caption = resources.GetString("CheckEdit1.Properties.Caption")
+        '
         'frmSegmentsReplicateInfo
         '
         Me.AcceptButton = Me.cmdOk
@@ -182,6 +200,8 @@ Partial Class frmSegmentsReplicateInfo
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
+        Me.Controls.Add(Me.chkOtherProperties)
+        Me.Controls.Add(Me.cmdEditOtherProperties)
         Me.Controls.Add(Me.chkDirection)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.cmdEditFormula)
@@ -210,6 +230,7 @@ Partial Class frmSegmentsReplicateInfo
         CType(Me.chkDirection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.svgImages, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboDirection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkOtherProperties.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -230,4 +251,6 @@ Partial Class frmSegmentsReplicateInfo
     Friend WithEvents cboSessionList As cSessionDropDown
     Friend WithEvents cboCaveList As cCaveDropDown
     Friend WithEvents cboCaveBranchList As cCaveBranchDropDown
+    Friend WithEvents cmdEditOtherProperties As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents chkOtherProperties As DevExpress.XtraEditors.CheckEdit
 End Class

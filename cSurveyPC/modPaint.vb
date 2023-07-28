@@ -12,6 +12,7 @@ Imports cSurveyPC.cSurvey.Design.Items
 Imports cSurveyPC.cSurvey.Drawings
 Imports System.IO
 Imports System.Runtime.CompilerServices
+Imports DevExpress.XtraRichEdit.Layout.Engine
 
 Module modPaint
     Public Const sMeterToPixelScale As Decimal = 1.0 / 3779.52768
@@ -206,16 +207,13 @@ Module modPaint
     End Function
 
     Public Function PenStylePatternToString(Pattern As Single()) As String
-        Dim sTemp As String = ""
-        For Each sValue As Single In Pattern
-            sTemp = sTemp & modNumbers.NumberToString(sValue) & " "
-        Next
-        Return sTemp
+        Return String.Join(" ", Pattern.Select(Function(sValue) modNumbers.NumberToString(sValue)))
     End Function
 
     Public Function StringToPenStylePattern(Text As String) As Single()
-        Dim sValues As String() = Text.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
-        Return sValues.Cast(Of Single)()
+        If "" & Text <> "" Then
+            Return Text.Split({" "}, StringSplitOptions.RemoveEmptyEntries).Select(Function(svalue) modNumbers.StringToSingle(svalue)).ToArray
+        End If
     End Function
 
     Public Function GetAngleDiff(Angle1 As Single, Angle2 As Single, CounterClockwise As Boolean) As Single

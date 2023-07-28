@@ -135,27 +135,51 @@
         End Select
     End Function
 
+    Public Function MetersToFeet(Value As Decimal) As Decimal
+        Return modNumbers.MathRound(Value * 3.2808399D, 3)
+    End Function
+
+    Public Function FeetToMeter(Value As Decimal) As Decimal
+        Return modNumbers.MathRound(Value / 3.2808399D, 3)
+    End Function
+
+    Public Function MetersToYards(Value As Decimal) As Decimal
+        Return modNumbers.MathRound(Value * 1.0936133D, 3)
+    End Function
+
+    Public Function YardsToMeter(Value As Decimal) As Decimal
+        Return modNumbers.MathRound(Value / 1.0936133D, 3)
+    End Function
+
+    Public Function DegreeToGrad(Value As Decimal) As Decimal
+        Return modNumbers.MathRound(Value * 10D / 9D, 3)
+    End Function
+
+    Public Function GradToDegree(Value As Decimal) As Decimal
+        Return modNumbers.MathRound(Value * 9D / 10D, 3)
+    End Function
+
     Public Function MetersToFeet(Value As Single) As Single
-        Return modNumbers.MathRound(Value * 3.2808399, 3)
+        Return modNumbers.MathRound(Value * 3.2808399D, 3)
     End Function
 
     Public Function FeetToMeter(Value As Single) As Single
-        Return modNumbers.MathRound(Value / 3.2808399, 3)
+        Return modNumbers.MathRound(Value / 3.2808399D, 3)
     End Function
 
     Public Function MetersToYards(Value As Single) As Single
-        Return modNumbers.MathRound(Value * 1.0936133, 3)
+        Return modNumbers.MathRound(Value * 1.0936133D, 3)
     End Function
 
     Public Function YardsToMeter(Value As Single) As Single
-        Return modNumbers.MathRound(Value / 1.0936133, 3)
+        Return modNumbers.MathRound(Value / 1.0936133D, 3)
     End Function
 
     Public Function DegreeToGrad(Value As Single) As Single
-        Return modNumbers.MathRound(Value * 10 / 9, 3)
+        Return modNumbers.MathRound(Value * 10S / 9S, 3)
     End Function
 
     Public Function GradToDegree(Value As Single) As Single
-        Return modNumbers.MathRound(Value * 9 / 10, 3)
+        Return modNumbers.MathRound(Value * 9S / 10S, 3)
     End Function
 End Module

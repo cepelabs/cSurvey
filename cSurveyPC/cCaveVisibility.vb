@@ -294,11 +294,19 @@ Namespace cSurvey
         End Sub
 
         Public Overridable Sub SetVisible(CaveInfo As cCaveInfo, Visible As Boolean)
-            Call SetVisible(CaveInfo.Name, "", Visible)
+            If CaveInfo Is Nothing Then
+                Call SetVisible("", "", Visible)
+            Else
+                Call SetVisible(CaveInfo.Name, "", Visible)
+            End If
         End Sub
 
         Public Overridable Sub SetVisible(CaveInfoBranch As cCaveInfoBranch, Visible As Boolean)
-            Call SetVisible(CaveInfoBranch.Cave, CaveInfoBranch.Path, Visible)
+            If CaveInfoBranch Is Nothing Then
+                Call SetVisible("", "", Visible)
+            Else
+                Call SetVisible(CaveInfoBranch.Cave, CaveInfoBranch.Path, Visible)
+            End If
         End Sub
 
         Public Overridable Sub SetVisible(CaveInfo As String, CaveInfoBranch As String, Visible As Boolean)
@@ -315,11 +323,19 @@ Namespace cSurvey
         End Sub
 
         Public Overridable Function GetVisible(CaveInfo As cCaveInfo) As Boolean
-            Return GetVisible(CaveInfo.Name, "")
+            If CaveInfo Is Nothing Then
+                Return GetVisible("", "")
+            Else
+                Return GetVisible(CaveInfo.Name, "")
+            End If
         End Function
 
         Public Overridable Function GetVisible(CaveInfoBranch As cCaveInfoBranch) As Boolean
-            Return GetVisible(CaveInfoBranch.Cave, CaveInfoBranch.Path)
+            If CaveInfoBranch Is Nothing Then
+                Return GetVisible("", "")
+            Else
+                Return GetVisible(CaveInfoBranch.Cave, CaveInfoBranch.Path)
+            End If
         End Function
 
         Public Overridable Function GetVisible(CaveInfo As String, CaveInfoBranch As String) As Boolean

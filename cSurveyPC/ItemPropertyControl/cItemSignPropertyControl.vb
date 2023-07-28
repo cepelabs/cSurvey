@@ -25,7 +25,7 @@ Friend Class cItemSignPropertyControl
 
         cboPropSignSize.SelectedIndex = Me.Item.SignSize
         cboPropSignRotateMode.SelectedIndex = Me.Item.SignRotateMode
-        txtPropSignRotationAngleDelta.Value = Me.Item.SignRotationAngleDelta
+        txtPropSignRotationAngleDelta.EditValue = Me.Item.SignRotationAngleDelta
         cboPropSignFlip.SelectedIndex = Me.Item.SignFlip
         cboPropSign.SelectedIndex = New List(Of Items.cIItemSign.SignEnum)(System.Enum.GetValues(GetType(Items.cIItemSign.SignEnum))).IndexOf(Me.Item.Sign)
     End Sub
@@ -66,10 +66,10 @@ Friend Class cItemSignPropertyControl
         End If
     End Sub
 
-    Private Sub txtPropSignRotationAngleDelta_ValueChanged(sender As Object, e As EventArgs) Handles txtPropSignRotationAngleDelta.ValueChanged
+    Private Sub txtPropSignRotationAngleDelta_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropSignRotationAngleDelta.EditValueChanged
         If Not DisabledObjectProperty() Then
             Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo50"), "SignRotationAngleDelta")
-            Me.Item.SignRotationAngleDelta = txtPropSignRotationAngleDelta.Value
+            Me.Item.SignRotationAngleDelta = txtPropSignRotationAngleDelta.EditValue
             Call MyBase.PropertyChanged("SignRotationAngleDelta")
             Call MyBase.MapInvalidate()
         End If

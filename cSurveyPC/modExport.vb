@@ -3032,7 +3032,8 @@ Module modExport
                             Call St.WriteLine(Space(iIndent) & "data normal from to compass clino length left right up down")
                         Case cSegment.DataFormatEnum.Cartesian
                             Call St.WriteLine(Space(iIndent) & "units length " & GetTherionDistanceUnit(oSession.DistanceType))
-                            Call St.WriteLine(Space(iIndent) & "data cartesian from to northing altitude easting left right up down")
+                            'Call St.WriteLine(Space(iIndent) & "data cartesian from to northing altitude easting left right up down")
+                            Call St.WriteLine(Space(iIndent) & "data cartesian from to dy dz dx left right up down")
                         Case cSegment.DataFormatEnum.Diving
                             Call St.WriteLine(Space(iIndent) & "units length " & GetTherionDistanceUnit(oSession.DistanceType))
                             Call St.WriteLine(Space(iIndent) & "units compass " & GetTherionBearingUnit(oSession.BearingType))
@@ -3108,6 +3109,8 @@ Module modExport
                                                     Case Else
                                                         Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
                                                 End Select
+                                            ElseIf oSession.DataFormat = cSegment.DataFormatEnum.Cartesian Then
+                                                Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(.Bearing, "0.00") & " " & modText.FormatNumber(.Inclination, "0.00") & " " & modText.FormatNumber(.Distance, "0.00") & " [" & modText.FormatNumber(.FromLeft, "0.00") & " " & modText.FormatNumber(.ToLeft, "0.00") & "] [" & modText.FormatNumber(.FromRight, "0.00") & " " & modText.FormatNumber(.ToRight, "0.00") & "] [" & modText.FormatNumber(.FromUp, "0.00") & " " & modText.FormatNumber(.ToUp, "0.00") & "] [" & modText.FormatNumber(.FromDown, "0.00") & " " & modText.FormatNumber(.ToDown, "0.00") & "]")
                                             Else
                                                 Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(.Bearing, "0.00") & " " & modText.FormatNumber(modPaint.NormalizeInclination(.Inclination), "0.00") & " " & modText.FormatNumber(.Distance, "0.00") & " [" & modText.FormatNumber(.FromLeft, "0.00") & " " & modText.FormatNumber(.ToLeft, "0.00") & "] [" & modText.FormatNumber(.FromRight, "0.00") & " " & modText.FormatNumber(.ToRight, "0.00") & "] [" & modText.FormatNumber(.FromUp, "0.00") & " " & modText.FormatNumber(.ToUp, "0.00") & "] [" & modText.FormatNumber(.FromDown, "0.00") & " " & modText.FormatNumber(.ToDown, "0.00") & "]")
                                             End If

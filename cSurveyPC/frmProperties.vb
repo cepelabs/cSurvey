@@ -292,7 +292,8 @@ Friend Class frmProperties
             Call pElevationsLoad()
             Call pOrthophotosLoad()
             Call pWMSsLoad()
-            'Call pGradesLoad()
+
+            Call pFillPenPatternItems()
 
             Call pElevationRebindSurfaceProfileCombo(.SurfaceProfileElevation)
         End With
@@ -812,6 +813,14 @@ Friend Class frmProperties
             .SurfaceProfile = chksurfaceprofile.Checked
             .SurfaceProfileShow = chkSurfaceProfileShow.Checked
 
+            For Each oValue As cNameAndValue In tvDefaultPenPattern.DataSource
+                If oValue.Value = "" OrElse oValue.Value = oValue.DefaultValue Then
+                    Call .DesignProperties.Remove("penstylepattern." & oValue.Name)
+                Else
+                    Call .DesignProperties.SetValue("penstylepattern." & oValue.Name, oValue.Value)
+                End If
+            Next
+
             Call pElevationRebindSurfaceProfileCombo()
             .SurfaceProfileElevation = cbosurfaceprofileelevation.GetSelectedElevation
 
@@ -831,41 +840,6 @@ Friend Class frmProperties
 
         Call oSurvey.RaiseOnPropertiesChanged(cSurvey.cSurvey.OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum.DefaultProperties)
     End Sub
-
-    'Private Sub pCaveBranchesSave(ParentBranches As cCaveInfoBranches, ParentNodes As TreeNodeCollection)
-    '    For Each oBranchNode As TreeNode In ParentNodes
-    '        Dim oCIB As cCaveInfoBranchPlaceHolder = oBranchNode.Tag
-    '        If oCIB.Deleted And Not oCIB.Created Then
-    '            Call ParentBranches.Remove(oCIB.Name, True)
-    '        ElseIf oCIB.Created Then
-    '            Dim oCaveInfoBranch As cCaveInfoBranch = ParentBranches.Add(oCIB.Name)
-    '            oCaveInfoBranch.Color = oCIB.Color
-    '            oCaveInfoBranch.Description = oCIB.Description
-    '            oCaveInfoBranch.SurfaceProfileShow = oCIB.SurfaceProfileShow
-    '            oCaveInfoBranch.Locked = oCIB.Locked
-    '            oCaveInfoBranch.ExtendStart = oCIB.ExtendStart
-    '            oCaveInfoBranch.Priority = oCIB.Priority
-    '            oCaveInfoBranch.ParentConnection = oCIB.ParentConnection
-    '            oCaveInfoBranch.Connection = oCIB.Connection
-    '            oCIB.Source = oCaveInfoBranch
-    '        Else
-    '            oCIB.Source.Color = oCIB.Color
-    '            oCIB.Source.Description = oCIB.Description
-    '            oCIB.Source.SurfaceProfileShow = oCIB.SurfaceProfileShow
-    '            oCIB.Source.Locked = oCIB.Locked
-    '            oCIB.Source.ExtendStart = oCIB.ExtendStart
-    '            oCIB.Source.Priority = oCIB.Priority
-    '            oCIB.Source.ParentConnection = oCIB.ParentConnection
-    '            oCIB.Source.Connection = oCIB.Connection
-    '            Dim sNewName As String = oCIB.Name
-    '            Dim sOldName As String = oCIB.Source.Name
-    '            If sNewName.ToLower <> sOldName.ToLower Then
-    '                Call ParentBranches.Rename(sOldName, sNewName, True)
-    '            End If
-    '        End If
-    '        Call pCaveBranchesSave(oCIB.Source.Branches, oBranchNode.Nodes)
-    '    Next
-    'End Sub
 
     Private Sub cmdCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancel.Click
         DialogResult = Windows.Forms.DialogResult.Cancel
@@ -3980,5 +3954,40 @@ Friend Class frmProperties
             Dim oItem As cSessionEditPlaceHolder = tvSessions.GetDataRecordByNode(e.Node)
             e.Appearance.BackColor = oItem.Color
         End If
+    End Sub
+
+    Private Sub pFillPenPatternItems()
+        Dim oList As List(Of UIHelpers.cNameAndValue) = New List(Of UIHelpers.cNameAndValue)
+        oList.Add(New UIHelpers.cNameAndValue("underlyingcavepen", oSurvey.Properties.DesignProperties.GetValue("penstylepattern.underlyingcavepen", "6.0 6.0"), "6.0 6.0"))
+        oList.Add(New UIHelpers.cNameAndValue("toonarrowcavepen", oSurvey.Properties.DesignProperties.GetValue("penstylepattern.toonarrowcavepen", "6.0 4.0"), "6.0 4.0"))
+        oList.Add(New UIHelpers.cNameAndValue("presumedcavepen", oSurvey.Properties.DesignProperties.GetValue("penstylepattern.presumedcavepen", "6.0 2.0"), "6.0 2.0"))
+        tvDefaultPenPattern.DataSource = oList
+    End Sub
+
+    Private Sub txtDefaultPenPattern_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles txtDefaultPenPattern.ButtonClick
+        Select Case e.Button.Index
+            Case 0
+                Dim oParameters As frmDashPatternEditor
+                If pnlParameters.Controls.Count = 0 Then
+                    oParameters = New frmDashPatternEditor()
+                    pnlParameters.Controls.Add(oParameters)
+                Else
+                    oParameters = pnlParameters.Controls(0)
+                End If
+                flyParameters.OwnerControl = tvDefaultPenPattern
+                oParameters.Dock = DockStyle.None
+
+                Dim oValue As cNameAndValue = tvDefaultPenPattern.GetFocusedObject
+                Dim sName As String = oValue.Name
+                Call oParameters.Rebind(cDashPatternBindingList.StringToValues(oValue.Value), Sub(Values As Single())
+                                                                                                  oValue.Value = cDashPatternBindingList.ValuesToString(Values)
+                                                                                              End Sub)
+                flyParameters.Size = oParameters.Size
+                oParameters.Dock = DockStyle.Fill
+                flyParameters.ShowBeakForm(True)
+            Case 1
+                Call DirectCast(tvDefaultPenPattern.GetFocusedObject, cNameAndValue).Reset()
+        End Select
+
     End Sub
 End Class

@@ -49,6 +49,8 @@ Partial Class cItemPenStylePropertyControl
         Me.picPropPenClipartImage = New DevExpress.XtraEditors.PictureEdit()
         Me.lblPropPenClipartImage = New DevExpress.XtraEditors.LabelControl()
         Me.pnlPenClipartSettings = New DevExpress.XtraEditors.PanelControl()
+        Me.lblPropPenDecorationSpacePercentageUM = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPropPenDecorationDistancePercentageUM = New DevExpress.XtraEditors.LabelControl()
         Me.txtPropPenDecorationDistancePercentage = New DevExpress.XtraEditors.SpinEdit()
         Me.lblPropPenDecorationDistancePercentage = New DevExpress.XtraEditors.LabelControl()
         Me.cboPropPenDecorationPosition = New DevExpress.XtraEditors.ComboBoxEdit()
@@ -70,7 +72,23 @@ Partial Class cItemPenStylePropertyControl
         Me.cboPropPenStyle = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.txtPropPenWidth = New DevExpress.XtraEditors.SpinEdit()
         Me.pnlPenStyle = New DevExpress.XtraEditors.PanelControl()
+        Me.chkPropPenLineCap0 = New DevExpress.XtraEditors.CheckButton()
+        Me.chkPropPenLineCap1 = New DevExpress.XtraEditors.CheckButton()
+        Me.chkPropPenLineCap2 = New DevExpress.XtraEditors.CheckButton()
+        Me.chkPropPenLineJoin1 = New DevExpress.XtraEditors.CheckButton()
+        Me.chkPropPenLineJoin0 = New DevExpress.XtraEditors.CheckButton()
+        Me.chkPropPenLineJoin2 = New DevExpress.XtraEditors.CheckButton()
+        Me.flyParameters = New DevExpress.Utils.FlyoutPanel()
+        Me.pnlParameters = New DevExpress.Utils.FlyoutPanelControl()
+        Me.cmdDashStyle = New DevExpress.XtraEditors.SimpleButton()
         Me.pnlPenClipartSettingsPen = New DevExpress.XtraEditors.PanelControl()
+        Me.chkPropPenClipartPenLineCap0 = New DevExpress.XtraEditors.CheckButton()
+        Me.chkPropPenClipartPenLineCap1 = New DevExpress.XtraEditors.CheckButton()
+        Me.chkPropPenClipartPenLineCap2 = New DevExpress.XtraEditors.CheckButton()
+        Me.chkPropPenClipartPenLineJoin1 = New DevExpress.XtraEditors.CheckButton()
+        Me.chkPropPenClipartPenLineJoin0 = New DevExpress.XtraEditors.CheckButton()
+        Me.chkPropPenClipartPenLineJoin2 = New DevExpress.XtraEditors.CheckButton()
+        Me.cmdClipartDashStyle = New DevExpress.XtraEditors.SimpleButton()
         Me.pnlPenClipartSettingsBrush = New DevExpress.XtraEditors.PanelControl()
         Me.cboPropPenClipartBrushStyle = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.lblPropPenClipartBrushStyle = New DevExpress.XtraEditors.LabelControl()
@@ -79,8 +97,6 @@ Partial Class cItemPenStylePropertyControl
         Me.pnlPenClipartSettings1 = New DevExpress.XtraEditors.PanelControl()
         Me.cboPropPenClipartBrushMode = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.lblPropPenClipartBrushMode = New DevExpress.XtraEditors.LabelControl()
-        Me.lblPropPenDecorationDistancePercentageUM = New DevExpress.XtraEditors.LabelControl()
-        Me.lblPropPenDecorationSpacePercentageUM = New DevExpress.XtraEditors.LabelControl()
         CType(Me.txtPropPenColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.mnuSaveAs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,6 +119,9 @@ Partial Class cItemPenStylePropertyControl
         CType(Me.txtPropPenWidth.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlPenStyle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlPenStyle.SuspendLayout()
+        CType(Me.flyParameters, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.flyParameters.SuspendLayout()
+        CType(Me.pnlParameters, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlPenClipartSettingsPen, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlPenClipartSettingsPen.SuspendLayout()
         CType(Me.pnlPenClipartSettingsBrush, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -292,6 +311,16 @@ Partial Class cItemPenStylePropertyControl
         resources.ApplyResources(Me.pnlPenClipartSettings, "pnlPenClipartSettings")
         Me.pnlPenClipartSettings.Name = "pnlPenClipartSettings"
         '
+        'lblPropPenDecorationSpacePercentageUM
+        '
+        resources.ApplyResources(Me.lblPropPenDecorationSpacePercentageUM, "lblPropPenDecorationSpacePercentageUM")
+        Me.lblPropPenDecorationSpacePercentageUM.Name = "lblPropPenDecorationSpacePercentageUM"
+        '
+        'lblPropPenDecorationDistancePercentageUM
+        '
+        resources.ApplyResources(Me.lblPropPenDecorationDistancePercentageUM, "lblPropPenDecorationDistancePercentageUM")
+        Me.lblPropPenDecorationDistancePercentageUM.Name = "lblPropPenDecorationDistancePercentageUM"
+        '
         'txtPropPenDecorationDistancePercentage
         '
         resources.ApplyResources(Me.txtPropPenDecorationDistancePercentage, "txtPropPenDecorationDistancePercentage")
@@ -384,7 +413,7 @@ Partial Class cItemPenStylePropertyControl
         Me.cboPropPenClipartPenStyle.MenuManager = Me.BarManager
         Me.cboPropPenClipartPenStyle.Name = "cboPropPenClipartPenStyle"
         Me.cboPropPenClipartPenStyle.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboPropPenClipartPenStyle.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.cboPropPenClipartPenStyle.Properties.Items.AddRange(New Object() {resources.GetString("cboPropPenClipartPenStyle.Properties.Items"), resources.GetString("cboPropPenClipartPenStyle.Properties.Items1"), resources.GetString("cboPropPenClipartPenStyle.Properties.Items2"), resources.GetString("cboPropPenClipartPenStyle.Properties.Items3"), resources.GetString("cboPropPenClipartPenStyle.Properties.Items4"), resources.GetString("cboPropPenClipartPenStyle.Properties.Items5"), resources.GetString("cboPropPenClipartPenStyle.Properties.Items6"), resources.GetString("cboPropPenClipartPenStyle.Properties.Items7"), resources.GetString("cboPropPenClipartPenStyle.Properties.Items8")})
+        Me.cboPropPenClipartPenStyle.Properties.Items.AddRange(New Object() {resources.GetString("cboPropPenClipartPenStyle.Properties.Items"), resources.GetString("cboPropPenClipartPenStyle.Properties.Items1"), resources.GetString("cboPropPenClipartPenStyle.Properties.Items2"), resources.GetString("cboPropPenClipartPenStyle.Properties.Items3"), resources.GetString("cboPropPenClipartPenStyle.Properties.Items4"), resources.GetString("cboPropPenClipartPenStyle.Properties.Items5"), resources.GetString("cboPropPenClipartPenStyle.Properties.Items6"), resources.GetString("cboPropPenClipartPenStyle.Properties.Items7"), resources.GetString("cboPropPenClipartPenStyle.Properties.Items8"), resources.GetString("cboPropPenClipartPenStyle.Properties.Items9")})
         Me.cboPropPenClipartPenStyle.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'lblPropPenClipartPenStyle
@@ -449,7 +478,7 @@ Partial Class cItemPenStylePropertyControl
         Me.cboPropPenDecoration.MenuManager = Me.BarManager
         Me.cboPropPenDecoration.Name = "cboPropPenDecoration"
         Me.cboPropPenDecoration.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboPropPenDecoration.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.cboPropPenDecoration.Properties.Items.AddRange(New Object() {resources.GetString("cboPropPenDecoration.Properties.Items"), resources.GetString("cboPropPenDecoration.Properties.Items1"), resources.GetString("cboPropPenDecoration.Properties.Items2"), resources.GetString("cboPropPenDecoration.Properties.Items3"), resources.GetString("cboPropPenDecoration.Properties.Items4"), resources.GetString("cboPropPenDecoration.Properties.Items5"), resources.GetString("cboPropPenDecoration.Properties.Items6"), resources.GetString("cboPropPenDecoration.Properties.Items7"), resources.GetString("cboPropPenDecoration.Properties.Items8"), resources.GetString("cboPropPenDecoration.Properties.Items9"), resources.GetString("cboPropPenDecoration.Properties.Items10")})
+        Me.cboPropPenDecoration.Properties.Items.AddRange(New Object() {resources.GetString("cboPropPenDecoration.Properties.Items"), resources.GetString("cboPropPenDecoration.Properties.Items1"), resources.GetString("cboPropPenDecoration.Properties.Items2"), resources.GetString("cboPropPenDecoration.Properties.Items3"), resources.GetString("cboPropPenDecoration.Properties.Items4"), resources.GetString("cboPropPenDecoration.Properties.Items5"), resources.GetString("cboPropPenDecoration.Properties.Items6"), resources.GetString("cboPropPenDecoration.Properties.Items7"), resources.GetString("cboPropPenDecoration.Properties.Items8"), resources.GetString("cboPropPenDecoration.Properties.Items9"), resources.GetString("cboPropPenDecoration.Properties.Items10"), resources.GetString("cboPropPenDecoration.Properties.Items11"), resources.GetString("cboPropPenDecoration.Properties.Items12"), resources.GetString("cboPropPenDecoration.Properties.Items13"), resources.GetString("cboPropPenDecoration.Properties.Items14"), resources.GetString("cboPropPenDecoration.Properties.Items15"), resources.GetString("cboPropPenDecoration.Properties.Items16"), resources.GetString("cboPropPenDecoration.Properties.Items17"), resources.GetString("cboPropPenDecoration.Properties.Items18")})
         Me.cboPropPenDecoration.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'cboPropPenStyle
@@ -458,7 +487,7 @@ Partial Class cItemPenStylePropertyControl
         Me.cboPropPenStyle.MenuManager = Me.BarManager
         Me.cboPropPenStyle.Name = "cboPropPenStyle"
         Me.cboPropPenStyle.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboPropPenStyle.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.cboPropPenStyle.Properties.Items.AddRange(New Object() {resources.GetString("cboPropPenStyle.Properties.Items"), resources.GetString("cboPropPenStyle.Properties.Items1"), resources.GetString("cboPropPenStyle.Properties.Items2"), resources.GetString("cboPropPenStyle.Properties.Items3"), resources.GetString("cboPropPenStyle.Properties.Items4"), resources.GetString("cboPropPenStyle.Properties.Items5"), resources.GetString("cboPropPenStyle.Properties.Items6"), resources.GetString("cboPropPenStyle.Properties.Items7"), resources.GetString("cboPropPenStyle.Properties.Items8")})
+        Me.cboPropPenStyle.Properties.Items.AddRange(New Object() {resources.GetString("cboPropPenStyle.Properties.Items"), resources.GetString("cboPropPenStyle.Properties.Items1"), resources.GetString("cboPropPenStyle.Properties.Items2"), resources.GetString("cboPropPenStyle.Properties.Items3"), resources.GetString("cboPropPenStyle.Properties.Items4"), resources.GetString("cboPropPenStyle.Properties.Items5"), resources.GetString("cboPropPenStyle.Properties.Items6"), resources.GetString("cboPropPenStyle.Properties.Items7"), resources.GetString("cboPropPenStyle.Properties.Items8"), resources.GetString("cboPropPenStyle.Properties.Items9")})
         Me.cboPropPenStyle.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'txtPropPenWidth
@@ -477,6 +506,14 @@ Partial Class cItemPenStylePropertyControl
         'pnlPenStyle
         '
         Me.pnlPenStyle.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlPenStyle.Controls.Add(Me.chkPropPenLineCap0)
+        Me.pnlPenStyle.Controls.Add(Me.chkPropPenLineCap1)
+        Me.pnlPenStyle.Controls.Add(Me.chkPropPenLineCap2)
+        Me.pnlPenStyle.Controls.Add(Me.chkPropPenLineJoin1)
+        Me.pnlPenStyle.Controls.Add(Me.chkPropPenLineJoin0)
+        Me.pnlPenStyle.Controls.Add(Me.chkPropPenLineJoin2)
+        Me.pnlPenStyle.Controls.Add(Me.flyParameters)
+        Me.pnlPenStyle.Controls.Add(Me.cmdDashStyle)
         Me.pnlPenStyle.Controls.Add(Me.cboPropPenStyle)
         Me.pnlPenStyle.Controls.Add(Me.lblPropPenStyle)
         Me.pnlPenStyle.Controls.Add(Me.txtPropPenWidth)
@@ -488,9 +525,85 @@ Partial Class cItemPenStylePropertyControl
         resources.ApplyResources(Me.pnlPenStyle, "pnlPenStyle")
         Me.pnlPenStyle.Name = "pnlPenStyle"
         '
+        'chkPropPenLineCap0
+        '
+        Me.chkPropPenLineCap0.GroupIndex = 201
+        Me.chkPropPenLineCap0.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.linecap_flat
+        resources.ApplyResources(Me.chkPropPenLineCap0, "chkPropPenLineCap0")
+        Me.chkPropPenLineCap0.Name = "chkPropPenLineCap0"
+        Me.chkPropPenLineCap0.TabStop = False
+        '
+        'chkPropPenLineCap1
+        '
+        Me.chkPropPenLineCap1.GroupIndex = 201
+        Me.chkPropPenLineCap1.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.linecap_square
+        resources.ApplyResources(Me.chkPropPenLineCap1, "chkPropPenLineCap1")
+        Me.chkPropPenLineCap1.Name = "chkPropPenLineCap1"
+        Me.chkPropPenLineCap1.TabStop = False
+        '
+        'chkPropPenLineCap2
+        '
+        Me.chkPropPenLineCap2.Checked = True
+        Me.chkPropPenLineCap2.GroupIndex = 201
+        Me.chkPropPenLineCap2.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.linecap_round
+        resources.ApplyResources(Me.chkPropPenLineCap2, "chkPropPenLineCap2")
+        Me.chkPropPenLineCap2.Name = "chkPropPenLineCap2"
+        '
+        'chkPropPenLineJoin1
+        '
+        Me.chkPropPenLineJoin1.GroupIndex = 200
+        Me.chkPropPenLineJoin1.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.linejoin_bevel
+        resources.ApplyResources(Me.chkPropPenLineJoin1, "chkPropPenLineJoin1")
+        Me.chkPropPenLineJoin1.Name = "chkPropPenLineJoin1"
+        Me.chkPropPenLineJoin1.TabStop = False
+        '
+        'chkPropPenLineJoin0
+        '
+        Me.chkPropPenLineJoin0.GroupIndex = 200
+        Me.chkPropPenLineJoin0.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.linejoin_miter
+        resources.ApplyResources(Me.chkPropPenLineJoin0, "chkPropPenLineJoin0")
+        Me.chkPropPenLineJoin0.Name = "chkPropPenLineJoin0"
+        Me.chkPropPenLineJoin0.TabStop = False
+        '
+        'chkPropPenLineJoin2
+        '
+        Me.chkPropPenLineJoin2.Checked = True
+        Me.chkPropPenLineJoin2.GroupIndex = 200
+        Me.chkPropPenLineJoin2.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.linejoin_round
+        resources.ApplyResources(Me.chkPropPenLineJoin2, "chkPropPenLineJoin2")
+        Me.chkPropPenLineJoin2.Name = "chkPropPenLineJoin2"
+        '
+        'flyParameters
+        '
+        Me.flyParameters.Controls.Add(Me.pnlParameters)
+        resources.ApplyResources(Me.flyParameters, "flyParameters")
+        Me.flyParameters.Name = "flyParameters"
+        '
+        'pnlParameters
+        '
+        Me.pnlParameters.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        resources.ApplyResources(Me.pnlParameters, "pnlParameters")
+        Me.pnlParameters.FlyoutPanel = Me.flyParameters
+        Me.pnlParameters.Name = "pnlParameters"
+        '
+        'cmdDashStyle
+        '
+        Me.cmdDashStyle.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdDashStyle.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        Me.cmdDashStyle.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.cmdDashStyle, "cmdDashStyle")
+        Me.cmdDashStyle.Name = "cmdDashStyle"
+        '
         'pnlPenClipartSettingsPen
         '
         Me.pnlPenClipartSettingsPen.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlPenClipartSettingsPen.Controls.Add(Me.chkPropPenClipartPenLineCap0)
+        Me.pnlPenClipartSettingsPen.Controls.Add(Me.chkPropPenClipartPenLineCap1)
+        Me.pnlPenClipartSettingsPen.Controls.Add(Me.chkPropPenClipartPenLineCap2)
+        Me.pnlPenClipartSettingsPen.Controls.Add(Me.chkPropPenClipartPenLineJoin1)
+        Me.pnlPenClipartSettingsPen.Controls.Add(Me.chkPropPenClipartPenLineJoin0)
+        Me.pnlPenClipartSettingsPen.Controls.Add(Me.chkPropPenClipartPenLineJoin2)
+        Me.pnlPenClipartSettingsPen.Controls.Add(Me.cmdClipartDashStyle)
         Me.pnlPenClipartSettingsPen.Controls.Add(Me.cboPropPenClipartPenStyle)
         Me.pnlPenClipartSettingsPen.Controls.Add(Me.lblPropPenClipartPenStyle)
         Me.pnlPenClipartSettingsPen.Controls.Add(Me.lblPropPenClipartPenColor)
@@ -499,6 +612,62 @@ Partial Class cItemPenStylePropertyControl
         Me.pnlPenClipartSettingsPen.Controls.Add(Me.txtPropPenClipartPenColor)
         resources.ApplyResources(Me.pnlPenClipartSettingsPen, "pnlPenClipartSettingsPen")
         Me.pnlPenClipartSettingsPen.Name = "pnlPenClipartSettingsPen"
+        '
+        'chkPropPenClipartPenLineCap0
+        '
+        Me.chkPropPenClipartPenLineCap0.GroupIndex = 201
+        Me.chkPropPenClipartPenLineCap0.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.linecap_flat
+        resources.ApplyResources(Me.chkPropPenClipartPenLineCap0, "chkPropPenClipartPenLineCap0")
+        Me.chkPropPenClipartPenLineCap0.Name = "chkPropPenClipartPenLineCap0"
+        Me.chkPropPenClipartPenLineCap0.TabStop = False
+        '
+        'chkPropPenClipartPenLineCap1
+        '
+        Me.chkPropPenClipartPenLineCap1.GroupIndex = 201
+        Me.chkPropPenClipartPenLineCap1.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.linecap_square
+        resources.ApplyResources(Me.chkPropPenClipartPenLineCap1, "chkPropPenClipartPenLineCap1")
+        Me.chkPropPenClipartPenLineCap1.Name = "chkPropPenClipartPenLineCap1"
+        Me.chkPropPenClipartPenLineCap1.TabStop = False
+        '
+        'chkPropPenClipartPenLineCap2
+        '
+        Me.chkPropPenClipartPenLineCap2.Checked = True
+        Me.chkPropPenClipartPenLineCap2.GroupIndex = 201
+        Me.chkPropPenClipartPenLineCap2.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.linecap_round
+        resources.ApplyResources(Me.chkPropPenClipartPenLineCap2, "chkPropPenClipartPenLineCap2")
+        Me.chkPropPenClipartPenLineCap2.Name = "chkPropPenClipartPenLineCap2"
+        '
+        'chkPropPenClipartPenLineJoin1
+        '
+        Me.chkPropPenClipartPenLineJoin1.GroupIndex = 200
+        Me.chkPropPenClipartPenLineJoin1.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.linejoin_bevel
+        resources.ApplyResources(Me.chkPropPenClipartPenLineJoin1, "chkPropPenClipartPenLineJoin1")
+        Me.chkPropPenClipartPenLineJoin1.Name = "chkPropPenClipartPenLineJoin1"
+        Me.chkPropPenClipartPenLineJoin1.TabStop = False
+        '
+        'chkPropPenClipartPenLineJoin0
+        '
+        Me.chkPropPenClipartPenLineJoin0.GroupIndex = 200
+        Me.chkPropPenClipartPenLineJoin0.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.linejoin_miter
+        resources.ApplyResources(Me.chkPropPenClipartPenLineJoin0, "chkPropPenClipartPenLineJoin0")
+        Me.chkPropPenClipartPenLineJoin0.Name = "chkPropPenClipartPenLineJoin0"
+        Me.chkPropPenClipartPenLineJoin0.TabStop = False
+        '
+        'chkPropPenClipartPenLineJoin2
+        '
+        Me.chkPropPenClipartPenLineJoin2.Checked = True
+        Me.chkPropPenClipartPenLineJoin2.GroupIndex = 200
+        Me.chkPropPenClipartPenLineJoin2.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.linejoin_round
+        resources.ApplyResources(Me.chkPropPenClipartPenLineJoin2, "chkPropPenClipartPenLineJoin2")
+        Me.chkPropPenClipartPenLineJoin2.Name = "chkPropPenClipartPenLineJoin2"
+        '
+        'cmdClipartDashStyle
+        '
+        Me.cmdClipartDashStyle.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdClipartDashStyle.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        Me.cmdClipartDashStyle.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.cmdClipartDashStyle, "cmdClipartDashStyle")
+        Me.cmdClipartDashStyle.Name = "cmdClipartDashStyle"
         '
         'pnlPenClipartSettingsBrush
         '
@@ -561,16 +730,6 @@ Partial Class cItemPenStylePropertyControl
         resources.ApplyResources(Me.lblPropPenClipartBrushMode, "lblPropPenClipartBrushMode")
         Me.lblPropPenClipartBrushMode.Name = "lblPropPenClipartBrushMode"
         '
-        'lblPropPenDecorationDistancePercentageUM
-        '
-        resources.ApplyResources(Me.lblPropPenDecorationDistancePercentageUM, "lblPropPenDecorationDistancePercentageUM")
-        Me.lblPropPenDecorationDistancePercentageUM.Name = "lblPropPenDecorationDistancePercentageUM"
-        '
-        'lblPropPenDecorationSpacePercentageUM
-        '
-        resources.ApplyResources(Me.lblPropPenDecorationSpacePercentageUM, "lblPropPenDecorationSpacePercentageUM")
-        Me.lblPropPenDecorationSpacePercentageUM.Name = "lblPropPenDecorationSpacePercentageUM"
-        '
         'cItemPenStylePropertyControl
         '
         resources.ApplyResources(Me, "$this")
@@ -614,6 +773,9 @@ Partial Class cItemPenStylePropertyControl
         CType(Me.pnlPenStyle, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlPenStyle.ResumeLayout(False)
         Me.pnlPenStyle.PerformLayout()
+        CType(Me.flyParameters, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.flyParameters.ResumeLayout(False)
+        CType(Me.pnlParameters, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pnlPenClipartSettingsPen, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlPenClipartSettingsPen.ResumeLayout(False)
         Me.pnlPenClipartSettingsPen.PerformLayout()
@@ -687,4 +849,20 @@ Partial Class cItemPenStylePropertyControl
     Friend WithEvents lblPropPenDecorationDistancePercentage As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lblPropPenDecorationSpacePercentageUM As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lblPropPenDecorationDistancePercentageUM As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cmdDashStyle As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents flyParameters As DevExpress.Utils.FlyoutPanel
+    Friend WithEvents pnlParameters As DevExpress.Utils.FlyoutPanelControl
+    Friend WithEvents cmdClipartDashStyle As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents chkPropPenLineJoin1 As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkPropPenLineJoin0 As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkPropPenLineJoin2 As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkPropPenLineCap0 As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkPropPenLineCap1 As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkPropPenLineCap2 As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkPropPenClipartPenLineCap0 As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkPropPenClipartPenLineCap1 As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkPropPenClipartPenLineCap2 As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkPropPenClipartPenLineJoin1 As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkPropPenClipartPenLineJoin0 As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkPropPenClipartPenLineJoin2 As DevExpress.XtraEditors.CheckButton
 End Class

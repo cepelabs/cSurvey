@@ -383,22 +383,31 @@ Module modSVG
                     sStyle = pSVGAppendStyle(sStyle, "stroke-dasharray", modNumbers.NumberToString(sPenWidth * 2.2, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, ""))' "0.1,0.01")
                 Case DashStyle.Dot
                     sStyle = pSVGAppendStyle(sStyle, "stroke-dasharray", modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, ""))' "0.01,0.01")
+                Case cPen.PenStylesEnum.DashDotDot
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-dasharray", modNumbers.NumberToString(sPenWidth * 2.2, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "")) ' "0.1,0.01")
                 Case DashStyle.Custom
-                    sStyle = pSVGAppendStyle(sStyle, "stroke-dasharray", String.Join(",", Pen.DashPattern.Select(Function(value) NumberToString(value / 10, "")).ToArray))
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-dasharray", String.Join(",", Pen.DashPattern.Select(Function(value) NumberToString(sPenWidth * value, "")).ToArray))
                 Case Else
             End Select
             sStyle = pSVGAppendStyle(sStyle, "stroke-width", modNumbers.NumberToString(sPenWidth, ""))
+            Select Case Pen.StartCap
+                Case LineCap.Flat
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-linecap", "butt ")
+                Case LineCap.Round
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-linecap", "round")
+                Case LineCap.Square
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-linecap", "square")
+            End Select
             Select Case Pen.LineJoin
                 Case LineJoin.Bevel
                     sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "bevel")
                 Case LineJoin.Miter
                     sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "miter")
                 Case LineJoin.MiterClipped
-                    sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "crop")
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "miter-clip")
                 Case LineJoin.Round
                     sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "round")
             End Select
-            sStyle = pSVGAppendStyle(sStyle, "stroke-linecap", "round")
             sStyle = pSVGAppendStyle(sStyle, "stroke-opacity", "1")
         Else
             sStyle = pSVGAppendStyle(sStyle, "stroke", "none")
@@ -437,24 +446,51 @@ Module modSVG
             sStyle = pSVGAppendStyle(sStyle, "fill", "none")
         End If
         If (Not Pen Is Nothing) Then
+            Dim oDrawingPen As Drawing.Pen = Pen.GetBasePen.Pen
             sStyle = pSVGAppendStyle(sStyle, "stroke", pGetHTMLColor(Pen.Color)) ' ColorTranslator.ToHtml(Item.Pen.Color).ToLower)
-            Dim sPenWidth As Single = modNumbers.MathRound(Pen.GetBasePen.Pen.Width, 2)
+            Dim sPenWidth As Single = modNumbers.MathRound(oDrawingPen.Width, 2)
             If sPenWidth = 0 Then
                 sPenWidth = 0.01
                 sStyle = pSVGAppendStyle(sStyle, "vector-effect", "none")
             End If
             Select Case Pen.Style
+                Case cPen.PenStylesEnum.Solid
                 Case DashStyle.Dash
                     sStyle = pSVGAppendStyle(sStyle, "stroke-dasharray", modNumbers.NumberToString(sPenWidth * 2.2, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "")) ' "0.1,0.1")
                 Case DashStyle.DashDot
                     sStyle = pSVGAppendStyle(sStyle, "stroke-dasharray", modNumbers.NumberToString(sPenWidth * 2.2, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, ""))' "0.1,0.01")
                 Case DashStyle.Dot
                     sStyle = pSVGAppendStyle(sStyle, "stroke-dasharray", modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "")) ' "0.01,0.01")
+                Case cPen.PenStylesEnum.DashDotDot
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-dasharray", modNumbers.NumberToString(sPenWidth * 2.2, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "")) ' "0.1,0.01")
+                    'Case cPen.PenStylesEnum.LargeDashLargeSpace
+                    '    sStyle = pSVGAppendStyle(sStyle, "stroke-dasharray", String.Join(",", oDrawingPen.DashPattern.Select(Function(sPatternItem) modNumbers.NumberToString(sPatternItem))))
+                    'Case cPen.PenStylesEnum.LargeDashMediumSpace
+                    '    sStyle = pSVGAppendStyle(sStyle, "stroke-dasharray", String.Join(",", oDrawingPen.DashPattern.Select(Function(sPatternItem) modNumbers.NumberToString(sPatternItem))))
+                    'Case cPen.PenStylesEnum.LargeDashSmallSpace
+                    '    sStyle = pSVGAppendStyle(sStyle, "stroke-dasharray", String.Join(",", oDrawingPen.DashPattern.Select(Function(sPatternItem) modNumbers.NumberToString(sPatternItem))))
                 Case Else
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-dasharray", String.Join(",", oDrawingPen.DashPattern.Select(Function(value) NumberToString(sPenWidth * value, "")).ToArray))
             End Select
             sStyle = pSVGAppendStyle(sStyle, "stroke-width", modNumbers.NumberToString(sPenWidth, ""))
-            sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "round")
-            sStyle = pSVGAppendStyle(sStyle, "stroke-linecap", "round")
+            Select Case oDrawingPen.StartCap
+                Case LineCap.Flat
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-linecap", "butt ")
+                Case LineCap.Round
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-linecap", "round")
+                Case LineCap.Square
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-linecap", "square")
+            End Select
+            Select Case oDrawingPen.LineJoin
+                Case LineJoin.Bevel
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "bevel")
+                Case LineJoin.Miter
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "miter")
+                Case LineJoin.MiterClipped
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "miter-clip")
+                Case LineJoin.Round
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "round")
+            End Select
             sStyle = pSVGAppendStyle(sStyle, "stroke-opacity", "1")
         Else
             sStyle = pSVGAppendStyle(sStyle, "stroke", "none")

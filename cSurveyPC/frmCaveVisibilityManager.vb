@@ -48,8 +48,8 @@ Friend Class frmCaveVisibilityManager
         sCurrentProfile = cboProfiles.Text
         Dim oProfile As cCaveVisibilityProfile = oCaveVisibilityProfiles(sCurrentProfile)
 
-        oItems = New UIHelpers.cCaveBranchSelectorList(Of Boolean)(oSurvey.Properties.CaveInfos, modMain.GetLocalizedString("translations.originalposition"), AddressOf pGetValue)
-        Call grdProfile.Rebind(oSurvey, oItems, DevExpress.Data.UnboundColumnType.Boolean, "Campo", "Value")
+        oItems = New UIHelpers.cCaveBranchSelectorList(Of Boolean)(oSurvey.Properties.CaveInfos, modMain.GetLocalizedString("cavevisibilitymanager.emptycavecaption"), AddressOf pGetValue)
+        Call grdProfile.Rebind(oSurvey, oItems, DevExpress.Data.UnboundColumnType.Boolean, GetLocalizedString("cavevisibilitymanager.fieldname"), "Value")
 
         txtSegments.Text = oProfile.SegmentsQuery
         tabSegment.PageVisible = txtSegments.Text <> ""

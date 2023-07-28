@@ -6886,7 +6886,7 @@ o ad una sezione trasversale</value>
     <value>Profili di visibilità Grotta/ramo</value>
   </data>
   <data name="btnPlotPrefixTrigpoints.Caption" xml:space="preserve">
-    <value>Aggiunti prefisso...</value>
+    <value>Aggiungi prefisso...</value>
   </data>
   <data name="btnPlotRenameTrigpoints.Caption" xml:space="preserve">
     <value>Rinomina caposaldo...</value>
@@ -7532,5 +7532,8 @@ o ad una sezione trasversale</value>
   </data>
   <data name="btnStatusWMSOnLine.Caption" xml:space="preserve">
     <value>Stato WMS</value>
+  </data>
+  <data name="cboTrigpointsListEntrance.Items" xml:space="preserve">
+    <value>Ingresso</value>
   </data>
 </root>

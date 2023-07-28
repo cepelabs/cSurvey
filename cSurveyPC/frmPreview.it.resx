@@ -1029,4 +1029,7 @@
   <data name="btnProfileLargeBar.Caption" xml:space="preserve">
     <value>Barra ingrandita</value>
   </data>
+  <data name="chkPrintTrigpointText.Properties.Caption" xml:space="preserve">
+    <value>Etichette capisaldi</value>
+  </data>
 </root>

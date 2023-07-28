@@ -1930,4 +1930,7 @@
   <data name="lblDesignBindingMode.Text" xml:space="preserve">
     <value>Collegamenti:</value>
   </data>
+  <data name="chkGPSAllowManualDeclinations.Properties.Caption" xml:space="preserve">
+    <value>Consenti declinazioni manuali</value>
+  </data>
 </root>

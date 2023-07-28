@@ -34,11 +34,13 @@ Partial Class frmImportTherion
         Me.cboImportAsBranchOfCave = New cSurveyPC.cCaveDropDown()
         Me.cboImportAsBranchOfBranch = New cSurveyPC.cCaveBranchDropDown()
         Me.chkProcessAllFiles = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkLineOfComment = New DevExpress.XtraEditors.CheckEdit()
         CType(Me.txtPrefix.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtFilename.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkcSurveyImportCreateNewBranch.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkImportAsBranchOf.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkProcessAllFiles.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkLineOfComment.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtPrefix
@@ -112,7 +114,14 @@ Partial Class frmImportTherion
         resources.ApplyResources(Me.chkProcessAllFiles, "chkProcessAllFiles")
         Me.chkProcessAllFiles.Name = "chkProcessAllFiles"
         Me.chkProcessAllFiles.Properties.AutoWidth = True
-        Me.chkProcessAllFiles.Properties.Caption = resources.GetString("CheckEdit1.Properties.Caption")
+        Me.chkProcessAllFiles.Properties.Caption = resources.GetString("chkProcessAllFiles.Properties.Caption")
+        '
+        'chkLineOfComment
+        '
+        resources.ApplyResources(Me.chkLineOfComment, "chkLineOfComment")
+        Me.chkLineOfComment.Name = "chkLineOfComment"
+        Me.chkLineOfComment.Properties.AutoWidth = True
+        Me.chkLineOfComment.Properties.Caption = resources.GetString("CheckEdit1.Properties.Caption")
         '
         'frmImportTherion
         '
@@ -120,6 +129,7 @@ Partial Class frmImportTherion
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
+        Me.Controls.Add(Me.chkLineOfComment)
         Me.Controls.Add(Me.chkProcessAllFiles)
         Me.Controls.Add(Me.chkcSurveyImportCreateNewBranch)
         Me.Controls.Add(Me.chkImportAsBranchOf)
@@ -142,6 +152,7 @@ Partial Class frmImportTherion
         CType(Me.chkcSurveyImportCreateNewBranch.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkImportAsBranchOf.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkProcessAllFiles.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkLineOfComment.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -157,4 +168,5 @@ Partial Class frmImportTherion
     Friend WithEvents cboImportAsBranchOfCave As cCaveDropDown
     Friend WithEvents cboImportAsBranchOfBranch As cCaveBranchDropDown
     Friend WithEvents chkProcessAllFiles As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkLineOfComment As DevExpress.XtraEditors.CheckEdit
 End Class

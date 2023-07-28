@@ -7,11 +7,13 @@ Imports DevExpress.XtraVerticalGrid.Rows
 
 Friend Class cItemTrigpointPropertyControl
     Private Sub pGetEquate(Equates As HashSet(Of String), Station As Calculate.cTrigPoint)
-        For Each sEquate As String In oCalculatedTrigpoint.Connections.GetEquateShots
-            If Equates.Add(sEquate) Then
-                Call pGetEquate(Equates, oTrigpoint.Survey.Calculate.TrigPoints(sEquate))
-            End If
-        Next
+        If oCalculatedTrigpoint IsNot Nothing Then
+            For Each sEquate As String In oCalculatedTrigpoint.Connections.GetEquateShots
+                If Equates.Add(sEquate) Then
+                    Call pGetEquate(Equates, oTrigpoint.Survey.Calculate.TrigPoints(sEquate))
+                End If
+            Next
+        End If
     End Sub
 
     Private Sub grdTrigpointInfo_CustomUnboundData(sender As Object, e As CustomDataEventArgs) Handles grdTrigpointInfo.CustomUnboundData
@@ -20,9 +22,11 @@ Friend Class cItemTrigpointPropertyControl
                 Case "name"
                     e.Value = oTrigpoint.Name
                 Case "equate"
-                    Dim oEquates As HashSet(Of String) = New HashSet(Of String)
-                    Call pGetEquate(oEquates, oCalculatedTrigpoint)
-                    e.Value = String.Join(";", oEquates)
+                    If oCalculatedTrigpoint IsNot Nothing Then
+                        Dim oEquates As HashSet(Of String) = New HashSet(Of String)
+                        Call pGetEquate(oEquates, oCalculatedTrigpoint)
+                        e.Value = String.Join(";", oEquates)
+                    End If
                 Case "x"
                     e.Value = Strings.Format(modNumbers.MathRound(oTrigpoint.Data.X, 3), "0.00") & " m"
                 Case "y"
@@ -30,7 +34,7 @@ Friend Class cItemTrigpointPropertyControl
                 Case "z"
                     e.Value = Strings.Format(modNumbers.MathRound(-oTrigpoint.Data.Z, 3), "0.00") & " m"
                 Case "depth"
-                    If oCalculatedTrigpoint.Depth.HasValue Then
+                    If oCalculatedTrigpoint IsNot Nothing AndAlso oCalculatedTrigpoint.Depth.HasValue Then
                         e.Value = Strings.Format(modNumbers.MathRound(oCalculatedTrigpoint.Depth.Value, 3), "0.00") & " m"
                     End If
                 Case "calibration"
@@ -44,18 +48,23 @@ Friend Class cItemTrigpointPropertyControl
                         e.Value = GetLocalizedString("main.textpart23")
                     End If
                 Case "lat"
-                    e.Value = modNumbers.NumberToCoordinate(oCalculatedTrigpoint.Coordinate.Latitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "N", "S")
+                    If oCalculatedTrigpoint IsNot Nothing Then
+                        e.Value = modNumbers.NumberToCoordinate(oCalculatedTrigpoint.Coordinate.Latitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "N", "S")
+                    End If
                 Case "lon"
-                    e.Value = modNumbers.NumberToCoordinate(oCalculatedTrigpoint.Coordinate.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "E", "W")
+                    If oCalculatedTrigpoint IsNot Nothing Then
+                        e.Value = modNumbers.NumberToCoordinate(oCalculatedTrigpoint.Coordinate.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "E", "W")
+                    End If
                 Case "alt"
-                    e.Value = modNumbers.MathRound(oCalculatedTrigpoint.Coordinate.Altitude, 0) & " m"
-
+                    If oCalculatedTrigpoint IsNot Nothing Then
+                        e.Value = modNumbers.MathRound(oCalculatedTrigpoint.Coordinate.Altitude, 0) & " m"
+                    End If
                 Case "surfacealt"
                     If sAltValue.HasValue Then
                         e.Value = modNumbers.MathRound(sAltValue.Value, 0) & " m"
                     End If
                 Case "surfacedelta"
-                    If sAltValue.HasValue Then
+                    If oCalculatedTrigpoint IsNot Nothing AndAlso sAltValue.HasValue Then
                         e.Value = modNumbers.MathRound(sAltValue.Value - oCalculatedTrigpoint.Coordinate.Altitude, 0) & " m"
                     End If
                 Case "note"
@@ -123,34 +132,39 @@ Friend Class cItemTrigpointPropertyControl
             Call grdTrigpointInfo.RowAdd("note", GetLocalizedString("main.textpart93"), DevExpress.Data.UnboundColumnType.String)
         End If
 
-        Call grdTrigpointInfo.RowSetVisible("equate", oCalculatedTrigpoint.Connections.GetEquateShots.Count > 0)
         Call grdTrigpointInfo.RowSetVisible("calibration", oTrigpoint.Data.IsCalibration)
         Call grdTrigpointInfo.RowSetVisible("entrance", oTrigpoint.IsEntrance)
-        If oTrigpoint.Survey.Calculate.TrigPoints.Contains(oTrigpoint.Name) Then
-            Dim oCalculatedTrigpoint As Calculate.cTrigPoint = oTrigpoint.Survey.Calculate.TrigPoints(oTrigpoint.Name)
 
-            Call grdTrigpointInfo.RowSetVisible("depth", oCalculatedTrigpoint.Depth.HasValue)
+        If oCalculatedTrigpoint IsNot Nothing Then
+            Call grdTrigpointInfo.RowSetVisible("equate", oCalculatedTrigpoint.Connections.GetEquateShots.Count > 0)
+            If oTrigpoint.Survey.Calculate.TrigPoints.Contains(oTrigpoint.Name) Then
+                Dim oCalculatedTrigpoint As Calculate.cTrigPoint = oTrigpoint.Survey.Calculate.TrigPoints(oTrigpoint.Name)
 
-            Dim bVisible As Boolean = Not oCalculatedTrigpoint Is Nothing AndAlso Not oCalculatedTrigpoint.Coordinate Is Nothing AndAlso Not oCalculatedTrigpoint.Coordinate.IsEmpty
-            Call grdTrigpointInfo.RowSetVisible("lat", bVisible)
-            Call grdTrigpointInfo.RowSetVisible("lon", bVisible)
-            Call grdTrigpointInfo.RowSetVisible("alt", bVisible)
-            If bVisible AndAlso Not oTrigpoint.Survey.Properties.SurfaceProfileElevation Is Nothing AndAlso modPaint.GetSurfaceElevation(oTrigpoint.Survey, oTrigpoint).HasValue Then
-                Call grdTrigpointInfo.RowSetVisible("surfacealt", True)
-                Call grdTrigpointInfo.RowSetVisible("surfacedelta", True)
+                Call grdTrigpointInfo.RowSetVisible("depth", oCalculatedTrigpoint.Depth.HasValue)
+
+                Dim bVisible As Boolean = Not oCalculatedTrigpoint Is Nothing AndAlso Not oCalculatedTrigpoint.Coordinate Is Nothing AndAlso Not oCalculatedTrigpoint.Coordinate.IsEmpty
+                Call grdTrigpointInfo.RowSetVisible("lat", bVisible)
+                Call grdTrigpointInfo.RowSetVisible("lon", bVisible)
+                Call grdTrigpointInfo.RowSetVisible("alt", bVisible)
+                If bVisible AndAlso Not oTrigpoint.Survey.Properties.SurfaceProfileElevation Is Nothing AndAlso modPaint.GetSurfaceElevation(oTrigpoint.Survey, oTrigpoint).HasValue Then
+                    Call grdTrigpointInfo.RowSetVisible("surfacealt", True)
+                    Call grdTrigpointInfo.RowSetVisible("surfacedelta", True)
+                Else
+                    Call grdTrigpointInfo.RowSetVisible("surfacealt", False)
+                    Call grdTrigpointInfo.RowSetVisible("surfacedelta", False)
+                End If
             Else
+                Call grdTrigpointInfo.RowSetVisible("equate", False)
+                Call grdTrigpointInfo.RowSetVisible("depth", False)
+
+                Call grdTrigpointInfo.RowSetVisible("lat", False)
+                Call grdTrigpointInfo.RowSetVisible("lon", False)
+                Call grdTrigpointInfo.RowSetVisible("alt", False)
                 Call grdTrigpointInfo.RowSetVisible("surfacealt", False)
                 Call grdTrigpointInfo.RowSetVisible("surfacedelta", False)
             End If
-        Else
-            Call grdTrigpointInfo.RowSetVisible("depth", False)
-
-            Call grdTrigpointInfo.RowSetVisible("lat", False)
-            Call grdTrigpointInfo.RowSetVisible("lon", False)
-            Call grdTrigpointInfo.RowSetVisible("alt", False)
-            Call grdTrigpointInfo.RowSetVisible("surfacealt", False)
-            Call grdTrigpointInfo.RowSetVisible("surfacedelta", False)
         End If
+
         Call grdTrigpointInfo.RowSetVisible("note", oTrigpoint.Note <> "")
 
         Call pRefresh()

@@ -146,7 +146,6 @@ Class cClipartOnPath
                 oPoint = Points(iCenter)
 
                 sAngle = pGetAngle(oPoint1, oPoint2)
-                Debug.Print(sAngle)
                 'Graphics.DrawLine(New Pen(Brushes.Red, 0.1), oPoint1, oPoint2)
                 Call oPath.AddPath(pDrawRotatedClipart(Graphics, TransformedPath, ClipartPosition, sAngle, oPoint, ClipartDistancePercentage), False)
                 'oPoint1 = Points(sCount)

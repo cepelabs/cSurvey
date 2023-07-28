@@ -1128,6 +1128,11 @@ Namespace cSurvey.Calculate
                     sTrigpoint = modExport.DictionaryTranslate(Dictionary, sTrigpoint)
                     sTranslatedMessage = String.Format(GetLocalizedString("calculate.textpart5"), sTrigpoint)
                     Return New cTranslateErrorMessageResult(sTranslatedMessage)
+                ElseIf Message.StartsWith("shot between two equal station") Then
+                    Dim sTranslatedMessage As String
+                    Dim sTrigpoints As String() = Message.Replace("shot between two equal stations -- ", "").Replace(" and ", "|").Trim.Split("|").Select(Function(sTrigpoint) modExport.DictionaryTranslate(Dictionary, sTrigpoint.Split("@")(0))).ToArray
+                    sTranslatedMessage = String.Format(GetLocalizedString("calculate.textpart18"), sTrigpoints(0), sTrigpoints(1))
+                    Return New cTranslateErrorMessageResult(sTranslatedMessage)
                 Else
                     Return New cTranslateErrorMessageResult(Message)
                 End If

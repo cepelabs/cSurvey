@@ -59,16 +59,13 @@ friend Class frmFontDialog
                 oFont.FontSize = cboFontSize.Text
                 Dim sText As String = "AbCdEfGhIi"
                 Using oGraphics As Graphics = pnlPreview.CreateGraphics
-                    'oGraphics.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
-                    'oGraphics.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
-                    'oGraphics.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
                     Call oGraphics.Clear(Color.White)
-                    Dim oSF As StringFormat = New StringFormat
-                    oSF.Alignment = StringAlignment.Center
-                    oSF.LineAlignment = StringAlignment.Center
-                    oSF.FormatFlags = StringFormatFlags.NoWrap
-                    Call oGraphics.DrawString(sText, oFont.GetSampleFont, Brushes.Black, pnlPreview.ClientRectangle, oSF)
-                    Call oSF.Dispose()
+                    Using oSF As StringFormat = New StringFormat
+                        oSF.Alignment = StringAlignment.Center
+                        oSF.LineAlignment = StringAlignment.Center
+                        oSF.FormatFlags = StringFormatFlags.NoWrap
+                        Call oGraphics.DrawString(sText, oFont.GetSampleFont, Brushes.Black, pnlPreview.ClientRectangle, oSF)
+                    End Using
                 End Using
             Catch ex As Exception
             End Try

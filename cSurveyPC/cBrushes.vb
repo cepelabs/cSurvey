@@ -54,7 +54,9 @@ Namespace cSurvey.Design
         Public ReadOnly Property Water() As cCustomBrush
             Get
                 If oBrushWater Is Nothing Then
-                    oBrushWater = New cCustomBrush(oSurvey, GetLocalizedString("brushes.water"), cBrush.BrushTypeEnum.Water, Color.Black, cBrush.HatchTypeEnum.Pattern, , 0.25, , Color.LightSkyBlue, cBrush.ClipartAngleModeEnum.Fixed, 45)
+                    oBrushWater = New cCustomBrush(oSurvey, GetLocalizedString("brushes.water"), cBrush.BrushTypeEnum.Water, Color.Black, cBrush.HatchTypeEnum.Pattern)
+                    oBrushWater.PatternType = cBrush.PatternTypeEnum.Lines
+                    oBrushWater.PatternAngle = 45
                 End If
                 Return oBrushWater
             End Get

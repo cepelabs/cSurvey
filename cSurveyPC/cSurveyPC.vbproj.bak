@@ -97,7 +97,7 @@
     <OutputPath>bin\x64\Release\</OutputPath>
     <RemoveIntegerChecks>true</RemoveIntegerChecks>
     <DocumentationFile>cSurveyPC.xml</DocumentationFile>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
     <DebugType>Full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
@@ -173,33 +173,33 @@
     <Reference Include="CsvHelper, Version=27.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
       <HintPath>packages\CsvHelper.27.2.1\lib\net47\CsvHelper.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.BonusSkins.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Charts.v22.1.Core, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Drawing.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Images.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Office.v22.1.Core, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Pdf.v22.1.Core, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Printing.v22.1.Core, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.Desktop.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.RichEdit.v22.1.Core, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Sparkline.v22.1.Core, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v22.1.UI, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraBars.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v22.1.UI, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v22.1.Wizard, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraEditors.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGauges.v22.1.Core, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraGauges.v22.1.Win, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraNavBar.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPrinting.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraRichEdit.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraTreeList.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraVerticalGrid.v22.1, Version=22.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.BonusSkins.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Charts.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Drawing.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Images.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.Desktop.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v22.2.UI, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v22.2.UI, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v22.2.Wizard, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v22.2.Win, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Diacritics, Version=3.3.10.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Diacritics.3.3.10\lib\net45\Diacritics.dll</HintPath>
     </Reference>
@@ -370,6 +370,13 @@
     <Compile Include="Calculate\cCalculate.Plot.cSplayPlanProjectedData.vb" />
     <Compile Include="cOptions.cSurfaceLochOptions.vb" />
     <Compile Include="cOptionsTherion.vb" />
+    <Compile Include="cTherion.vb" />
+    <Compile Include="frmClipartReplaceWith.Designer.vb">
+      <DependentUpon>frmClipartReplaceWith.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmClipartReplaceWith.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDistancesFilter.Designer.vb">
       <DependentUpon>frmDistancesFilter.vb</DependentUpon>
     </Compile>
@@ -389,10 +396,22 @@
     <Compile Include="frmImportExcelEron.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmImportTherion.Designer.vb">
+      <DependentUpon>frmImportTherion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportTherion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmInfoDepth.Designer.vb">
       <DependentUpon>frmInfoDepth.vb</DependentUpon>
     </Compile>
     <Compile Include="frmInfoDepth.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSegmentsReplicateDataFieldEditor.Designer.vb">
+      <DependentUpon>frmSegmentsReplicateDataFieldEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSegmentsReplicateDataFieldEditor.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ItemPropertyControl\cItemCrossSectionMarkerPropertyControl.Designer.vb">
@@ -1159,10 +1178,10 @@
     <Compile Include="frmParametersDesign.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="frmImportTherion.Designer.vb">
-      <DependentUpon>frmImportTherion.vb</DependentUpon>
+    <Compile Include="frmImportTherion2.Designer.vb">
+      <DependentUpon>frmImportTherion2.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmImportTherion.vb">
+    <Compile Include="frmImportTherion2.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmImportCompass.Designer.vb">
@@ -1633,6 +1652,9 @@
     <EmbeddedResource Include="DockControl\cDockLevels.en.resx">
       <DependentUpon>cDockLevels.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmClipartReplaceWith.resx">
+      <DependentUpon>frmClipartReplaceWith.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDistancesFilter.it.resx">
       <DependentUpon>frmDistancesFilter.vb</DependentUpon>
     </EmbeddedResource>
@@ -1659,6 +1681,15 @@
     <EmbeddedResource Include="frmImportExcelEron.ru.resx">
       <DependentUpon>frmImportExcelEron.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmImportTherion.it.resx">
+      <DependentUpon>frmImportTherion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportTherion.resx">
+      <DependentUpon>frmImportTherion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportTherion.ru.resx">
+      <DependentUpon>frmImportTherion.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmInfoDepth.it.resx">
       <DependentUpon>frmInfoDepth.vb</DependentUpon>
     </EmbeddedResource>
@@ -1667,6 +1698,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmInfoDepth.ru.resx">
       <DependentUpon>frmInfoDepth.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSegmentsReplicateDataFieldEditor.it.resx">
+      <DependentUpon>frmSegmentsReplicateDataFieldEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSegmentsReplicateDataFieldEditor.resx">
+      <DependentUpon>frmSegmentsReplicateDataFieldEditor.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain2.en.resx">
       <DependentUpon>frmMain2.vb</DependentUpon>
@@ -2395,8 +2432,8 @@
       <DependentUpon>frmImportResurvey.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmImportTherion.ru.resx">
-      <DependentUpon>frmImportTherion.vb</DependentUpon>
+    <EmbeddedResource Include="frmImportTherion2.ru.resx">
+      <DependentUpon>frmImportTherion2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmImportVisualTopo.ru.resx">
       <DependentUpon>frmImportVisualTopo.vb</DependentUpon>
@@ -2664,11 +2701,11 @@
     <EmbeddedResource Include="frmParametersDesign.resx">
       <DependentUpon>frmParametersDesign.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmImportTherion.it.resx">
-      <DependentUpon>frmImportTherion.vb</DependentUpon>
+    <EmbeddedResource Include="frmImportTherion2.it.resx">
+      <DependentUpon>frmImportTherion2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmImportTherion.resx">
-      <DependentUpon>frmImportTherion.vb</DependentUpon>
+    <EmbeddedResource Include="frmImportTherion2.resx">
+      <DependentUpon>frmImportTherion2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmImportCompass.it.resx">
       <DependentUpon>frmImportCompass.vb</DependentUpon>
@@ -3042,6 +3079,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="therion.ini" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
@@ -3120,10 +3158,19 @@
     <Content Include="Objects\Brushes\Water.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Objects\Cliparts\Signs\debrits2.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Cliparts\Signs\pebbles1.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Objects\Icons\icon_logoimage_small.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Objects\Icons\item_logoimage.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Patterns\basepatterns.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Objects\Pens\CavePen.svg">
@@ -4681,6 +4728,7 @@
     <None Include="Resources\Context_Menu_Show_In_Popup.svg" />
     <None Include="Resources\chart.svg" />
     <None Include="Resources\Chart_rotated.svg" />
+    <None Include="Resources\replace.svg" />
     <Content Include="version.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

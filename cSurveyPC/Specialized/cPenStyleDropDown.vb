@@ -55,6 +55,17 @@ Public Class cPenStyleDropDown
         pAppendItem(oSurvey.Pens.IcePen)
         pAppendItem(oSurvey.Pens.PresumedIcePen)
 
+        pAppendItem(oSurvey.Pens.GenericFaultPen)
+        pAppendItem(oSurvey.Pens.GenericPresumedFaultPen)
+        pAppendItem(oSurvey.Pens.NormalFaultPen)
+        pAppendItem(oSurvey.Pens.ReverseFaultPen)
+        pAppendItem(oSurvey.Pens.VerticalFaultPen)
+        pAppendItem(oSurvey.Pens.StrikeFaultSxPen)
+        pAppendItem(oSurvey.Pens.StrikeFaultDxPen)
+        pAppendItem(oSurvey.Pens.StrikeFaultUnknownPen)
+        pAppendItem(oSurvey.Pens.SynclinePen)
+        pAppendItem(oSurvey.Pens.AnticlinePen)
+
         For Each oPen In oSurvey.Pens
             Call pAppendItem(oPen)
         Next

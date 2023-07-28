@@ -173,4 +173,7 @@
   <data name="colHLName.Caption" xml:space="preserve">
     <value>Nome</value>
   </data>
+  <data name="chkShowSplayLabel.Properties.Caption" xml:space="preserve">
+    <value>Etichette capisaldi</value>
+  </data>
 </root>

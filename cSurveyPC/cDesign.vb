@@ -1180,7 +1180,9 @@ Namespace cSurvey.Design
                                         If oLayer.Type > cLayers.LayerTypeEnum.Base Then
                                             If oLayer.Survey Is Selection.CurrentSurvey Then
                                                 If iLowerLayersDesignTransparencyThreshold > 0 Then
-                                                    Call Graphics.FillRectangle(New SolidBrush(Color.FromArgb(iLowerLayersDesignTransparencyThreshold, My.Application.Settings.GetSetting("design.lowerlayersdesignbackcolor", Color.White))), Graphics.ClipBounds)
+                                                    'Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, "LowerLayersDesignTransparencyThreshold=" & iLowerLayersDesignTransparencyThreshold.ToString)
+                                                    'Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, "Graphics.ClipBounds=" & Graphics.ClipBounds.ToString)
+                                                    Call Graphics.FillRectangle(New SolidBrush(Color.FromArgb(iLowerLayersDesignTransparencyThreshold, My.Application.RuntimeSettings.GetSetting("design.lowerlayersdesignbackcolor", Color.White))), Graphics.ClipBounds)
                                                 End If
                                             End If
                                         End If
@@ -1414,7 +1416,9 @@ Namespace cSurvey.Design
                 End If
             Catch ex As Exception
                 Debug.Print("cDesign.Paint>" & ex.Message)
-                Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, ex.Message)
+                Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, ex.Message & vbCrLf & ex.StackTrace)
+                'Dim o As StackTrace = New StackTrace(ex)
+                'Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, ex.Message & vbCrLf & o.GetFrame(0).ToString)
             End Try
         End Sub
 

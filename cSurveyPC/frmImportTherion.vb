@@ -4,10 +4,14 @@ Friend Class frmImportTherion
 
     Private Sub pSettingsLoad()
         txtPrefix.Text = My.Application.Settings.GetSetting("data.import.therion.prefix", "")
+        chkProcessAllFiles.Checked = My.Application.Settings.GetSetting("data.import.therion.allfiles", 0)
+        chkLineOfComment.Checked = My.Application.Settings.GetSetting("data.import.therion.lineofcomment", 0)
     End Sub
 
     Private Sub pSettingsSave()
         Call My.Application.Settings.SetSetting("data.import.therion.prefix", txtPrefix.Text)
+        Call My.Application.Settings.SetSetting("data.import.therion.allfiles", If(chkProcessAllFiles.Checked, "1", "0"))
+        Call My.Application.Settings.SetSetting("data.import.therion.lineofcomment", If(chkLineOfComment.Checked, "1", "0"))
     End Sub
 
     Public Sub New(Survey As cSurvey.cSurvey)

@@ -156,7 +156,7 @@ Namespace cSurvey
                             Call oSw.WriteLine("cs lat-long")
                         Else
                             Dim oWGS84UTM As modUTM.UTM = New modUTM.UTM(oOrthoPhoto.Coordinate)
-                            Call oSw.WriteLine("cs utm" & oWGS84UTM.Zone & IIf(oWGS84UTM.Band < "N", "S", ""))
+                            Call oSw.WriteLine("cs utm" & oWGS84UTM.Zone & If(oWGS84UTM.Band < "N", "S", ""))
                         End If
                         Dim sBitmapBaseFilename As String = "_therion_" & Path.GetFileNameWithoutExtension(BaseFilename) & "_" & oOrthoPhoto.ID & ".jpg"
                         Dim sBitmapFilename As String = Path.Combine(BasePath, sBitmapBaseFilename)
@@ -202,7 +202,7 @@ Namespace cSurvey
                             Call oSw.WriteLine("grid " & modText.FormatNumber(oWGS84.Latitude, "0.0000000") & " " & modText.FormatNumber(oWGS84.Longitude, "0.0000000") & " " & modText.FormatNumber(oElevation.XSize, "0.000000000") & " " & modText.FormatNumber(oElevation.YSize, "0.000000000") & " " & oElevation.Columns & " " & oElevation.Rows)
                         Else
                             Dim oWGS84UTM As modUTM.UTM = New modUTM.UTM(oElevation.Coordinate)
-                            Call oSw.WriteLine("cs utm" & oWGS84UTM.Zone & IIf(oWGS84UTM.Band < "N", "S", ""))
+                            Call oSw.WriteLine("cs utm" & oWGS84UTM.Zone & If(oWGS84UTM.Band < "N", "S", ""))
                             Call oSw.WriteLine("grid " & modText.FormatNumber(oWGS84UTM.East, "0.0000000") & " " & modText.FormatNumber(oWGS84UTM.North, "0.0000000") & " " & modText.FormatNumber(oElevation.XSize, "0.000000000") & " " & modText.FormatNumber(oElevation.YSize, "0.000000000") & " " & oElevation.Columns & " " & oElevation.Rows)
                         End If
                         For iRow As Integer = 0 To oElevation.Rows - 1

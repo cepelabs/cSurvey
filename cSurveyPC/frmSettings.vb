@@ -1,7 +1,7 @@
-﻿Imports BrendanGrant.Helpers.FileAssociation
-Imports cSurveyPC.cSurvey
+﻿Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Helper.Editor
 Imports cSurveyPC.cSurvey.Net
+Imports cSurveyPC.cSurvey.UIHelpers
 Imports DevExpress.XtraCharts.Sankey
 
 Friend Class frmSettings
@@ -142,6 +142,12 @@ Friend Class frmSettings
         Call My.Application.Settings.SetSetting("keys.changedecimalkey", If(chkITChangeDecimalKey.Checked, "1", "0"))
         Call My.Application.Settings.SetSetting("keys.changeperiodkey", If(chkITChangePeriodKey.Checked, "1", "0"))
 
+        For Each oValue As cNameAndValue In tvDefaultPenPattern.DataSource
+            If oValue.Value <> "" Then
+                Call My.Application.Settings.SetSetting("design.penstylepattern." & oValue.Name, oValue.Value, oValue.DefaultValue)
+            End If
+        Next
+
         Call My.Application.Settings.Save()
     End Sub
 
@@ -239,6 +245,8 @@ Friend Class frmSettings
         Call tabMain.EndUpdate()
 
         Call pFillClipboardItems()
+
+        Call pFillPenPatternItems()
 
         'preparo la tab delle impostazioni di history
         oTabHistory0 = tabHistorySettings.TabPages(0)
@@ -552,13 +560,48 @@ Friend Class frmSettings
     End Sub
 
     Private Sub cboLanguage_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboLanguage.SelectedIndexChanged
-        Call pVisibilityByLanguage
+        Call pVisibilityByLanguage()
     End Sub
 
     Private Sub pVisibilityByLanguage()
         Dim bITVisible As Boolean = (cboLanguage.SelectedIndex = 0 AndAlso My.Application.CurrentLanguage = "it") OrElse (cboLanguage.SelectedIndex = 3)
         chkITChangeDecimalKey.Visible = bITVisible
         chkITChangePeriodKey.Visible = bITVisible
+    End Sub
+
+    Private Sub pFillPenPatternItems()
+        Dim oList As List(Of UIHelpers.cNameAndValue) = New List(Of UIHelpers.cNameAndValue)
+        oList.Add(New UIHelpers.cNameAndValue("underlyingcavepen", My.Application.Settings.GetSetting("design.penstylepattern.underlyingcavepen", "6.0 6.0"), "6.0 6.0"))
+        oList.Add(New UIHelpers.cNameAndValue("toonarrowcavepen", My.Application.Settings.GetSetting("design.penstylepattern.toonarrowcavepen", "6.0 4.0"), "6.0 4.0"))
+        oList.Add(New UIHelpers.cNameAndValue("presumedcavepen", My.Application.Settings.GetSetting("design.penstylepattern.presumedcavepen", "6.0 2.0"), "6.0 2.0"))
+        tvDefaultPenPattern.DataSource = oList
+    End Sub
+
+    Private Sub txtDefaultPenPattern_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles txtDefaultPenPattern.ButtonClick
+        Select Case e.Button.Index
+            Case 0
+                Dim oParameters As frmDashPatternEditor
+                If pnlParameters.Controls.Count = 0 Then
+                    oParameters = New frmDashPatternEditor()
+                    pnlParameters.Controls.Add(oParameters)
+                Else
+                    oParameters = pnlParameters.Controls(0)
+                End If
+                flyParameters.OwnerControl = tvDefaultPenPattern
+                oParameters.Dock = DockStyle.None
+
+                Dim oValue As cNameAndValue = tvDefaultPenPattern.GetFocusedObject
+                Dim sName As String = oValue.Name
+                Call oParameters.Rebind(cDashPatternBindingList.StringToValues(oValue.Value), Sub(Values As Single())
+                                                                                                  oValue.Value = cDashPatternBindingList.ValuesToString(Values)
+                                                                                              End Sub)
+                flyParameters.Size = oParameters.Size
+                oParameters.Dock = DockStyle.Fill
+                flyParameters.ShowBeakForm(True)
+            Case 1
+                Call DirectCast(tvDefaultPenPattern.GetFocusedObject, cNameAndValue).Reset()
+        End Select
+
     End Sub
 
 End Class

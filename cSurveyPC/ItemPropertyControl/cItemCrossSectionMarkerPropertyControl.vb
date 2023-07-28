@@ -150,7 +150,6 @@ Friend Class cItemCrossSectionMarkerPropertyControl
         If Not DisabledObjectProperty() Then
             Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo46"), "CrossSectionItem.Direction")
             Me.Item.CrossSectionItem.Direction = cboPropCrossSectionMarkerDirection.SelectedIndex
-            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("CrossSectionMarkerDirection")
             Call MyBase.MapInvalidate()
         End If
@@ -161,7 +160,6 @@ Friend Class cItemCrossSectionMarkerPropertyControl
             Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo46"), "TextSizeEnabled")
             Me.Item.TextSizeEnabled = chkPropCrossSectionMarkerScaleEnabled.Checked
             cboPropCrossSectionMarkerScale.Enabled = chkPropCrossSectionMarkerScaleEnabled.Checked
-            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("CrossSectionMarkerScaleEnabled")
             Call MyBase.MapInvalidate()
         End If
@@ -171,7 +169,6 @@ Friend Class cItemCrossSectionMarkerPropertyControl
         If Not DisabledObjectProperty() Then
             Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo46"), "TextSize")
             Me.Item.TextSize = cboPropCrossSectionMarkerScale.SelectedIndex
-            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("CrossSectionMarkerScale")
             Call MyBase.MapInvalidate()
         End If
@@ -181,7 +178,6 @@ Friend Class cItemCrossSectionMarkerPropertyControl
         If Not DisabledObjectProperty() Then
             Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo46"), "CrossSectionItem.MarkerPosition")
             Me.Item.CrossSectionItem.MarkerPosition = txtPropCrossSectionMarkerPosition.Value / 100
-            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("CrossSectionMarkerPosition")
             Call MyBase.MapInvalidate()
         End If

@@ -24,6 +24,7 @@
         Property Splay() As Boolean
         Property Surface() As Boolean
         Property Duplicate() As Boolean
+
         Property Calibration() As Boolean
         Property Virtual() As Boolean
 

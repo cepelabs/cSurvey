@@ -206,6 +206,10 @@ Module modMain
                     .StartInfo.RedirectStandardInput = True
                     .StartInfo.RedirectStandardOutput = True
                     .StartInfo.UseShellExecute = False
+                    'usefull to allow special settings for therion launced from csurvey
+                    '2023-06-05: this fix error with therion 6.1.7
+                    Dim sCustomTherionIniPath As String = My.Application.Settings.GetSetting("therion.inipath", "")
+                    If sCustomTherionIniPath <> "" Then .StartInfo.EnvironmentVariables.Add("THERION", sCustomTherionIniPath)
                 End If
                 Call .Start()
                 'If Background Then
@@ -249,6 +253,9 @@ Module modMain
                     .StartInfo.RedirectStandardInput = True
                     .StartInfo.RedirectStandardOutput = True
                     .StartInfo.UseShellExecute = False
+                    'usefull to allow special settings for therion launced from csurvey
+                    Dim sCustomTherionIniPath As String = My.Application.Settings.GetSetting("therion.inipath", "")
+                    If sCustomTherionIniPath <> "" Then .StartInfo.EnvironmentVariables.Add("THERION", sCustomTherionIniPath)
                 End If
                 Call .Start()
                 If Background Then

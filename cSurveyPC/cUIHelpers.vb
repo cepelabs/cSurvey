@@ -7,6 +7,77 @@ Imports DevExpress.XtraEditors
 
 Namespace cSurvey.UIHelpers
 
+    Namespace Reflection
+        <System.AttributeUsage(System.AttributeTargets.Property Or System.AttributeTargets.Struct)>
+        Public Class cReplicateDataAttribute
+
+            Inherits System.Attribute
+
+            Public Enabled As Boolean
+            Private iSetOrder
+
+            Private ReadOnly Property SetOrder As Integer
+                Get
+                    Return iSetOrder
+                End Get
+            End Property
+
+            Sub New(ByVal Enabled As Boolean, SetOrder As Integer)
+                Me.Enabled = Enabled
+                iSetOrder = SetOrder
+            End Sub
+        End Class
+
+        Public Class cObjectPropertyBag
+            Private oProperty As System.Reflection.PropertyInfo
+
+            Private bSet As Boolean
+            Private oValue As Object
+            Private iSetOrder As Integer
+
+            Public ReadOnly Property SetOrder As Integer
+                Get
+                    Return iSetOrder
+                End Get
+            End Property
+
+            Public ReadOnly Property [Property] As System.Reflection.PropertyInfo
+                Get
+                    Return oProperty
+                End Get
+            End Property
+
+            Public Property [Set] As Boolean
+                Get
+                    Return bSet
+                End Get
+                Set(value As Boolean)
+                    bSet = value
+                End Set
+            End Property
+
+            Public ReadOnly Property Name As String
+                Get
+                    Return oProperty.Name
+                End Get
+            End Property
+
+            Public Property Value As Object
+                Get
+                    Return oValue
+                End Get
+                Set(value As Object)
+                    oValue = value
+                End Set
+            End Property
+
+            Public Sub New([Property] As System.Reflection.PropertyInfo, SetOrder As Integer)
+                oProperty = [Property]
+                iSetOrder = SetOrder
+            End Sub
+        End Class
+    End Namespace
+
 
     Namespace Import
         Public Class cDestFields
@@ -1259,11 +1330,19 @@ Namespace cSurvey.UIHelpers
         Public Delegate Function GetValueDelegate(CaveInfo As cICaveInfoBranches) As T
         Public Delegate Sub SetValueDelegate(CaveInfo As cICaveInfoBranches, Value As T)
 
-        Public Sub New(CaveInfos As cSurveyPC.cSurvey.cCaveInfos, EmptyCaveCaption As String, GetValue As GetValueDelegate)
+        Public Sub New(CaveInfos As cSurveyPC.cSurvey.cCaveInfos, GetValue As GetValueDelegate)
             'MyBase.Add(New cCaveBranchSelectorPlaceholder(Of T)(Nothing, EmptyCaveCaption, GetValue(Nothing)))
             For Each oCaveInfo As cICaveInfoBranches In CaveInfos
-                MyBase.Add(New cCaveBranchSelectorPlaceholder(Of T)(oCaveInfo, EmptyCaveCaption, GetValue(oCaveInfo)))
-                Call pAppendBranches(oCaveInfo.Branches, EmptyCaveCaption, GetValue)
+                MyBase.Add(New cCaveBranchSelectorPlaceholder(Of T)(oCaveInfo, "", GetValue(oCaveInfo)))
+                Call pAppendBranches(oCaveInfo.Branches, "", GetValue)
+            Next
+        End Sub
+
+        Public Sub New(CaveInfos As cSurveyPC.cSurvey.cCaveInfos, EmptyCaveCaption As String, GetValue As GetValueDelegate)
+            MyBase.Add(New cCaveBranchSelectorPlaceholder(Of T)(Nothing, EmptyCaveCaption, GetValue(Nothing)))
+            For Each oCaveInfo As cICaveInfoBranches In CaveInfos
+                MyBase.Add(New cCaveBranchSelectorPlaceholder(Of T)(oCaveInfo, "", GetValue(oCaveInfo)))
+                Call pAppendBranches(oCaveInfo.Branches, "", GetValue)
             Next
         End Sub
 
@@ -3671,5 +3750,108 @@ Namespace cSurvey.UIHelpers
         Public Function [Get]() As List(Of cLinkedSurvey)
             Return MyBase.Select(Function(oitem) oitem.LinkedSurvey).ToList
         End Function
+    End Class
+
+    Public Class cDashPatternBindingList
+        Inherits BindingList(Of cDashPatternBlock)
+
+        Public Function GetValues() As Single()
+            Return MyBase.Select(Function(oitem) oitem.Value).ToArray
+        End Function
+
+        Public Shadows Function Add() As cDashPatternBlock
+            Dim oItem As cDashPatternBlock = New cDashPatternBlock
+            Call MyBase.Add(oItem)
+            Return oItem
+        End Function
+
+        Public Sub New(Values As Single())
+            MyBase.New
+            If Values IsNot Nothing Then
+                For Each sValue As Single In Values
+                    MyBase.Add(New cDashPatternBlock(sValue))
+                Next
+            End If
+        End Sub
+
+        Public Shared Function ValuesToString(Values As Single()) As String
+            Return String.Join(" ", Values.Select(Function(sValue As Single) modNumbers.NumberToString(sValue)).ToArray)
+        End Function
+
+        Public Shared Function StringToValues(Value As String) As Single()
+            If Value Is Nothing OrElse Value = "" Then
+                Return New Single() {}
+            Else
+                Return Value.Split({" "c}, StringSplitOptions.RemoveEmptyEntries).Select(Function(sValue) modNumbers.StringToSingle(sValue)).ToArray
+            End If
+        End Function
+    End Class
+
+    Public Class cDashPatternBlock
+        Private sValue As Single
+
+        Public Sub New()
+            sValue = 1.0F
+        End Sub
+
+        Public Sub New(Value As Single)
+            sValue = Value
+        End Sub
+
+        Public Property Value As Single
+            Get
+                Return sValue
+            End Get
+            Set(value As Single)
+                sValue = value
+            End Set
+        End Property
+
+    End Class
+
+    Public Class cNameAndValue
+        Private sName As String
+        Private oValue As Object
+        Private oDefaultValue As Object
+
+        Public ReadOnly Property DefaultValue As Object
+            Get
+                Return oDefaultValue
+            End Get
+        End Property
+
+        Public Property Value As Object
+            Get
+                Return oValue
+            End Get
+            Set(value As Object)
+                oValue = value
+            End Set
+        End Property
+
+        Public ReadOnly Property Name As String
+            Get
+                Return sName
+            End Get
+        End Property
+
+        Public Sub Reset()
+            oValue = oDefaultValue
+        End Sub
+
+        Public Sub New(Name As String, Value As Object, DefaultValue As Object)
+            sName = Name
+            oValue = Value
+            oDefaultValue = DefaultValue
+        End Sub
+
+        Public Sub New(Name As String, Value As Object)
+            sName = Name
+            oValue = Value
+        End Sub
+
+        Public Sub New(Name As String)
+            sName = Name
+        End Sub
     End Class
 End Namespace

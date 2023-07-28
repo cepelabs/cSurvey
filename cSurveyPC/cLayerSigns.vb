@@ -94,10 +94,91 @@ Namespace cSurvey.Design.Layers
             oItem.DesignAffinity = cItem.DesignAffinityEnum.Extra
             Return oItem
         End Function
+
         Public Function CreateCompass(ByVal Cave As String, ByVal Branch As String, ByVal Data As Object, ByVal DataFormat As cIItemClipartBase.cClipartDataFormatEnum) As cItemCompass
             Dim oItem As cItemCompass = MyBase.CreateItem(cIItem.cItemTypeEnum.Compass, cIItem.cItemCategoryEnum.Compass, Data, DataFormat)
             oItem.Pen.Type = cPen.PenTypeEnum.TightPen
             oItem.Brush.Type = cBrush.BrushTypeEnum.SignSolid
+            Call oItem.SetCave(Cave, Branch)
+            Return oItem
+        End Function
+
+        Public Function CreateAnticline(ByVal Cave As String, ByVal Branch As String) As cItemFreeHandLine
+            Dim oItem As cItemFreeHandLine = MyBase.CreateItem(cIItem.cItemTypeEnum.FreeHandLine, cIItem.cItemCategoryEnum.Geology)
+            oItem.Pen.Type = cPen.PenTypeEnum.AnticlinePen
+            oItem.Brush.Type = cBrush.BrushTypeEnum.None
+            Call oItem.SetCave(Cave, Branch)
+            Return oItem
+        End Function
+
+        Public Function CreateSyncline(ByVal Cave As String, ByVal Branch As String) As cItemFreeHandLine
+            Dim oItem As cItemFreeHandLine = MyBase.CreateItem(cIItem.cItemTypeEnum.FreeHandLine, cIItem.cItemCategoryEnum.Geology)
+            oItem.Pen.Type = cPen.PenTypeEnum.SynclinePen
+            oItem.Brush.Type = cBrush.BrushTypeEnum.None
+            Call oItem.SetCave(Cave, Branch)
+            Return oItem
+        End Function
+
+        Public Function CreateGenericFault(ByVal Cave As String, ByVal Branch As String) As cItemFreeHandLine
+            Dim oItem As cItemFreeHandLine = MyBase.CreateItem(cIItem.cItemTypeEnum.FreeHandLine, cIItem.cItemCategoryEnum.Geology)
+            oItem.Pen.Type = cPen.PenTypeEnum.GenericFaultPen
+            oItem.Brush.Type = cBrush.BrushTypeEnum.None
+            Call oItem.SetCave(Cave, Branch)
+            Return oItem
+        End Function
+
+        Public Function CreatePresumedFault(ByVal Cave As String, ByVal Branch As String) As cItemFreeHandLine
+            Dim oItem As cItemFreeHandLine = MyBase.CreateItem(cIItem.cItemTypeEnum.FreeHandLine, cIItem.cItemCategoryEnum.Geology)
+            oItem.Pen.Type = cPen.PenTypeEnum.GenericPresumedFaultPen
+            oItem.Brush.Type = cBrush.BrushTypeEnum.None
+            Call oItem.SetCave(Cave, Branch)
+            Return oItem
+        End Function
+
+        Public Function CreateNormalFault(ByVal Cave As String, ByVal Branch As String) As cItemFreeHandLine
+            Dim oItem As cItemFreeHandLine = MyBase.CreateItem(cIItem.cItemTypeEnum.FreeHandLine, cIItem.cItemCategoryEnum.Geology)
+            oItem.Pen.Type = cPen.PenTypeEnum.NormalFaultPen
+            oItem.Brush.Type = cBrush.BrushTypeEnum.None
+            Call oItem.SetCave(Cave, Branch)
+            Return oItem
+        End Function
+
+        Public Function CreateReverseFault(ByVal Cave As String, ByVal Branch As String) As cItemFreeHandLine
+            Dim oItem As cItemFreeHandLine = MyBase.CreateItem(cIItem.cItemTypeEnum.FreeHandLine, cIItem.cItemCategoryEnum.Geology)
+            oItem.Pen.Type = cPen.PenTypeEnum.ReverseFaultpen
+            oItem.Brush.Type = cBrush.BrushTypeEnum.None
+            Call oItem.SetCave(Cave, Branch)
+            Return oItem
+        End Function
+
+        Public Function CreateVerticalFault(ByVal Cave As String, ByVal Branch As String) As cItemFreeHandLine
+            Dim oItem As cItemFreeHandLine = MyBase.CreateItem(cIItem.cItemTypeEnum.FreeHandLine, cIItem.cItemCategoryEnum.Geology)
+            oItem.Pen.Type = cPen.PenTypeEnum.VerticalFaultPen
+            oItem.Brush.Type = cBrush.BrushTypeEnum.None
+            Call oItem.SetCave(Cave, Branch)
+            Return oItem
+        End Function
+
+        Public Function CreateStrikeFaultDx(ByVal Cave As String, ByVal Branch As String) As cItemFreeHandLine
+            Dim oItem As cItemFreeHandLine = MyBase.CreateItem(cIItem.cItemTypeEnum.FreeHandLine, cIItem.cItemCategoryEnum.Geology)
+            oItem.Pen.Type = cPen.PenTypeEnum.StrikeFaultDxPen
+            oItem.Brush.Type = cBrush.BrushTypeEnum.None
+            Call oItem.SetCave(Cave, Branch)
+            Return oItem
+        End Function
+
+        Public Function CreateStrikeFaultSx(ByVal Cave As String, ByVal Branch As String) As cItemFreeHandLine
+            Dim oItem As cItemFreeHandLine = MyBase.CreateItem(cIItem.cItemTypeEnum.FreeHandLine, cIItem.cItemCategoryEnum.Geology)
+            oItem.Pen.Type = cPen.PenTypeEnum.StrikeFaultSxPen
+            oItem.Brush.Type = cBrush.BrushTypeEnum.None
+            Call oItem.SetCave(Cave, Branch)
+            Return oItem
+        End Function
+
+        Public Function CreateStrikeFaultUnknown(ByVal Cave As String, ByVal Branch As String) As cItemFreeHandLine
+            Dim oItem As cItemFreeHandLine = MyBase.CreateItem(cIItem.cItemTypeEnum.FreeHandLine, cIItem.cItemCategoryEnum.Geology)
+            oItem.Pen.Type = cPen.PenTypeEnum.StrikeFaultUnknownPen
+            oItem.Brush.Type = cBrush.BrushTypeEnum.None
             Call oItem.SetCave(Cave, Branch)
             Return oItem
         End Function

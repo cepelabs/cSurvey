@@ -8,7 +8,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
-   sodipodi:docname="geo_faultsx.svg"
+   sodipodi:docname="halfarrow.svg"
    xml:space="preserve"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="145.17857"
-     inkscape:cy="-2.8571428"
+     inkscape:zoom="1.979899"
+     inkscape:cx="113.13708"
+     inkscape:cy="44.446712"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -49,12 +49,6 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-24.220573,-31.828326)"><path
-       style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-dasharray:none"
-       d="M 80.213161,38.753492 H 24.272685 l 15.875,-6.803571"
-       id="path973" /><rect
-       style="fill:none;stroke:#000000;stroke-width:0"
-       id="rect1027"
-       width="55.656994"
-       height="3.6852679"
-       x="24.461674"
-       y="40.265396" /></g></svg>
+       id="path973-5"
+       style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="m 80.189853,38.768751 -15.875,-6.80357 m 15.898308,6.788311 H 24.272685 l 15.875,-6.803571" /></g></svg>

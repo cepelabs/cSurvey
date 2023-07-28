@@ -47,6 +47,7 @@ Partial Class cDockClipart
         Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
         Me.btnOpenInExplorer = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnReplaceWith = New DevExpress.XtraBars.BarButtonItem()
         Me.mnuGridContext = New DevExpress.XtraBars.PopupMenu(Me.components)
         CType(Me.spMain, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.spMain.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,8 +104,8 @@ Partial Class cDockClipart
         Me.BarManager.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager.DockControls.Add(Me.barDockControlRight)
         Me.BarManager.Form = Me
-        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnAdd, Me.btnRemove, Me.btnRefresh, Me.btnEditMetadata, Me.btnViewGallery, Me.btnViewSurvey, Me.btnOpenInExplorer})
-        Me.BarManager.MaxItemId = 8
+        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnAdd, Me.btnRemove, Me.btnRefresh, Me.btnEditMetadata, Me.btnViewGallery, Me.btnViewSurvey, Me.btnOpenInExplorer, Me.btnReplaceWith})
+        Me.BarManager.MaxItemId = 9
         '
         'barMain
         '
@@ -197,9 +198,18 @@ Partial Class cDockClipart
         Me.btnOpenInExplorer.Id = 7
         Me.btnOpenInExplorer.Name = "btnOpenInExplorer"
         '
+        'btnReplaceWith
+        '
+        resources.ApplyResources(Me.btnReplaceWith, "btnReplaceWith")
+        Me.btnReplaceWith.Enabled = False
+        Me.btnReplaceWith.Id = 8
+        Me.btnReplaceWith.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.replace
+        Me.btnReplaceWith.Name = "btnReplaceWith"
+        Me.btnReplaceWith.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+        '
         'mnuGridContext
         '
-        Me.mnuGridContext.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnAdd), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRemove, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnEditMetadata, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnOpenInExplorer, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRefresh, True)})
+        Me.mnuGridContext.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnAdd), New DevExpress.XtraBars.LinkPersistInfo(Me.btnReplaceWith), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRemove, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnEditMetadata, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnOpenInExplorer, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRefresh, True)})
         Me.mnuGridContext.Manager = Me.BarManager
         Me.mnuGridContext.Name = "mnuGridContext"
         '
@@ -244,4 +254,5 @@ Partial Class cDockClipart
     Friend WithEvents btnOpenInExplorer As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents mnuGridContext As DevExpress.XtraBars.PopupMenu
     Friend WithEvents tabGallery As DevExpress.XtraBars.Navigation.TabPane
+    Friend WithEvents btnReplaceWith As DevExpress.XtraBars.BarButtonItem
 End Class

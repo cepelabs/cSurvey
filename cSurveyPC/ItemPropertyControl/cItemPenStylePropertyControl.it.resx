@@ -154,16 +154,16 @@
     <value>Triangoli (su)</value>
   </data>
   <data name="cboPropPenDecoration.Properties.Items4" xml:space="preserve">
-    <value>Freccie  (giù)</value>
+    <value>Frecce  (giù)</value>
   </data>
   <data name="cboPropPenDecoration.Properties.Items3" xml:space="preserve">
-    <value>Freccie (su)</value>
+    <value>Frecce (su)</value>
   </data>
   <data name="cboPropPenDecoration.Properties.Items2" xml:space="preserve">
     <value>Triangoli</value>
   </data>
   <data name="cboPropPenDecoration.Properties.Items10" xml:space="preserve">
-    <value>Personalizzato</value>
+    <value>Triangoli (giù e su)</value>
   </data>
   <data name="cboPropPenDecoration.Properties.Items1" xml:space="preserve">
     <value>Trattini</value>
@@ -275,5 +275,68 @@
   </data>
   <data name="cboPropPenDecorationPosition.Properties.Items1" xml:space="preserve">
     <value>Sopra</value>
+  </data>
+  <data name="cboPropPenClipartBrushMode.Properties.Items" xml:space="preserve">
+    <value>Predefinito</value>
+  </data>
+  <data name="cboPropPenClipartBrushMode.Properties.Items1" xml:space="preserve">
+    <value>Personalizzato</value>
+  </data>
+  <data name="cboPropPenClipartBrushStyle.Properties.Items" xml:space="preserve">
+    <value>Pieno</value>
+  </data>
+  <data name="cboPropPenClipartBrushStyle.Properties.Items1" xml:space="preserve">
+    <value>Nessuno</value>
+  </data>
+  <data name="cboPropPenClipartPenStyle.Properties.Items9" xml:space="preserve">
+    <value>Personalizzato</value>
+  </data>
+  <data name="cboPropPenStyle.Properties.Items9" xml:space="preserve">
+    <value>Personalizzato</value>
+  </data>
+  <data name="cmdClipartDashStyle.ToolTip" xml:space="preserve">
+    <value>Modifica stile tratteggio...</value>
+  </data>
+  <data name="cmdDashStyle.ToolTip" xml:space="preserve">
+    <value>Modifica stile tratteggio...</value>
+  </data>
+  <data name="lblPropPenClipartBrushColor.Text" xml:space="preserve">
+    <value>Colore:</value>
+  </data>
+  <data name="lblPropPenClipartBrushMode.Text" xml:space="preserve">
+    <value>Pennello:</value>
+  </data>
+  <data name="lblPropPenClipartBrushStyle.Text" xml:space="preserve">
+    <value>Stile:</value>
+  </data>
+  <data name="lblPropPenClipartImage.Text" xml:space="preserve">
+    <value>Clipart:</value>
+  </data>
+  <data name="lblPropPenDecorationDistancePercentage.Text" xml:space="preserve">
+    <value>Distanza:</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items11" xml:space="preserve">
+    <value>Triangoli (su e giù)</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items12" xml:space="preserve">
+    <value>Mezza frecce (sinistra)</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items13" xml:space="preserve">
+    <value>Mezza frecce (destra)</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items18" xml:space="preserve">
+    <value>Personalizzata</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items16" xml:space="preserve">
+    <value>Frecce (destra)</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items15" xml:space="preserve">
+    <value>Frecce (sinistra)</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items14" xml:space="preserve">
+    <value>Mezza frecce (doppia)</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items17" xml:space="preserve">
+    <value>Frecce (doppia)</value>
   </data>
 </root>

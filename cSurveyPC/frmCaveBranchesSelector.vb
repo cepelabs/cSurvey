@@ -41,8 +41,8 @@ friend Class frmCaveBranchesSelector
     End Sub
 
     Private Sub pListToGrid()
-        oItems = New UIHelpers.cCaveBranchSelectorList(Of Boolean)(oSurvey.Properties.CaveInfos, modMain.GetLocalizedString("translations.originalposition"), AddressOf pGetValue)
-        Call cGrid.Rebind(oSurvey, oItems, DevExpress.Data.UnboundColumnType.Boolean, "Campo", "Value")
+        oItems = New UIHelpers.cCaveBranchSelectorList(Of Boolean)(oSurvey.Properties.CaveInfos, modMain.GetLocalizedString("cavebranchesselector.emptycavecaption"), AddressOf pGetValue)
+        Call cGrid.Rebind(oSurvey, oItems, DevExpress.Data.UnboundColumnType.Boolean, modMain.GetLocalizedString("cavebranchesselector.fieldname"), "Value")
         'For Each oRow As DataGridViewRow In grdProfile.Rows
         '    Dim sCaveInfo As String = oRow.Cells(0).Value
         '    Dim sCaveInfoBranch As String = oRow.Cells(1).Value

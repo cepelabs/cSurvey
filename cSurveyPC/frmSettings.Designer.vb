@@ -23,6 +23,11 @@ Partial Class frmSettings
     '<System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSettings))
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.tabHistorySettings = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.chkHistoryArchiveOnSave = New DevExpress.XtraEditors.CheckEdit()
@@ -194,6 +199,12 @@ Partial Class frmSettings
         Me.chkITChangeDecimalKey = New DevExpress.XtraEditors.CheckEdit()
         Me.cboLanguage = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.tabInfoDesign = New DevExpress.XtraTab.XtraTabPage()
+        Me.flyParameters = New DevExpress.Utils.FlyoutPanel()
+        Me.pnlParameters = New DevExpress.Utils.FlyoutPanelControl()
+        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
+        Me.tvDefaultPenPattern = New DevExpress.XtraTreeList.TreeList()
+        Me.colDefaultPenPattern = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.txtDefaultPenPattern = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.cboDesignBarPosition = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.tabInfoData = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoSVG = New DevExpress.XtraTab.XtraTabPage()
@@ -298,6 +309,11 @@ Partial Class frmSettings
         CType(Me.chkITChangeDecimalKey.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboLanguage.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabInfoDesign.SuspendLayout()
+        CType(Me.flyParameters, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.flyParameters.SuspendLayout()
+        CType(Me.pnlParameters, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tvDefaultPenPattern, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDefaultPenPattern, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboDesignBarPosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabInfoData.SuspendLayout()
         Me.tabInfoSVG.SuspendLayout()
@@ -1512,6 +1528,9 @@ Partial Class frmSettings
         'tabInfoDesign
         '
         resources.ApplyResources(Me.tabInfoDesign, "tabInfoDesign")
+        Me.tabInfoDesign.Controls.Add(Me.flyParameters)
+        Me.tabInfoDesign.Controls.Add(Me.LabelControl1)
+        Me.tabInfoDesign.Controls.Add(Me.tvDefaultPenPattern)
         Me.tabInfoDesign.Controls.Add(Me.cboDesignSelectionMode)
         Me.tabInfoDesign.Controls.Add(Me.cboDesignMode)
         Me.tabInfoDesign.Controls.Add(Me.lblDesignSelectionMode)
@@ -1544,6 +1563,52 @@ Partial Class frmSettings
         Me.tabInfoDesign.Controls.Add(Me.lblDesignZoomType)
         Me.tabInfoDesign.Controls.Add(Me.cboDesignZoomType)
         Me.tabInfoDesign.Name = "tabInfoDesign"
+        '
+        'flyParameters
+        '
+        Me.flyParameters.Controls.Add(Me.pnlParameters)
+        resources.ApplyResources(Me.flyParameters, "flyParameters")
+        Me.flyParameters.Name = "flyParameters"
+        '
+        'pnlParameters
+        '
+        Me.pnlParameters.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        resources.ApplyResources(Me.pnlParameters, "pnlParameters")
+        Me.pnlParameters.FlyoutPanel = Me.flyParameters
+        Me.pnlParameters.Name = "pnlParameters"
+        '
+        'LabelControl1
+        '
+        Me.LabelControl1.Appearance.Font = CType(resources.GetObject("LabelControl1.Appearance.Font"), System.Drawing.Font)
+        Me.LabelControl1.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.LabelControl1, "LabelControl1")
+        Me.LabelControl1.Name = "LabelControl1"
+        '
+        'tvDefaultPenPattern
+        '
+        Me.tvDefaultPenPattern.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colDefaultPenPattern})
+        resources.ApplyResources(Me.tvDefaultPenPattern, "tvDefaultPenPattern")
+        Me.tvDefaultPenPattern.Name = "tvDefaultPenPattern"
+        Me.tvDefaultPenPattern.OptionsView.ShowIndentAsRowStyle = True
+        Me.tvDefaultPenPattern.OptionsView.ShowIndicator = False
+        Me.tvDefaultPenPattern.OptionsView.ShowRoot = False
+        Me.tvDefaultPenPattern.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.txtDefaultPenPattern})
+        '
+        'colDefaultPenPattern
+        '
+        resources.ApplyResources(Me.colDefaultPenPattern, "colDefaultPenPattern")
+        Me.colDefaultPenPattern.ColumnEdit = Me.txtDefaultPenPattern
+        Me.colDefaultPenPattern.FieldName = "Name"
+        Me.colDefaultPenPattern.Name = "colDefaultPenPattern"
+        '
+        'txtDefaultPenPattern
+        '
+        resources.ApplyResources(Me.txtDefaultPenPattern, "txtDefaultPenPattern")
+        EditorButtonImageOptions1.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        EditorButtonImageOptions1.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.txtDefaultPenPattern.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtDefaultPenPattern.Buttons1"), CType(resources.GetObject("txtDefaultPenPattern.Buttons2"), Integer), CType(resources.GetObject("txtDefaultPenPattern.Buttons3"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons4"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons5"), Boolean), EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, resources.GetString("txtDefaultPenPattern.Buttons6"), CType(resources.GetObject("txtDefaultPenPattern.Buttons7"), Object), CType(resources.GetObject("txtDefaultPenPattern.Buttons8"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtDefaultPenPattern.Buttons9"), DevExpress.Utils.ToolTipAnchor)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons10"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtDefaultPenPattern.Name = "txtDefaultPenPattern"
+        Me.txtDefaultPenPattern.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'cboDesignBarPosition
         '
@@ -1772,6 +1837,11 @@ Partial Class frmSettings
         CType(Me.cboLanguage.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabInfoDesign.ResumeLayout(False)
         Me.tabInfoDesign.PerformLayout()
+        CType(Me.flyParameters, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.flyParameters.ResumeLayout(False)
+        CType(Me.pnlParameters, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tvDefaultPenPattern, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDefaultPenPattern, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboDesignBarPosition.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabInfoData.ResumeLayout(False)
         Me.tabInfoSVG.ResumeLayout(False)
@@ -1972,4 +2042,10 @@ Partial Class frmSettings
     Friend WithEvents cboLanguage As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents chkITChangeDecimalKey As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkITChangePeriodKey As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents tvDefaultPenPattern As DevExpress.XtraTreeList.TreeList
+    Friend WithEvents colDefaultPenPattern As DevExpress.XtraTreeList.Columns.TreeListColumn
+    Friend WithEvents txtDefaultPenPattern As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
+    Friend WithEvents flyParameters As DevExpress.Utils.FlyoutPanel
+    Friend WithEvents pnlParameters As DevExpress.Utils.FlyoutPanelControl
 End Class

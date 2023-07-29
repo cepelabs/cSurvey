@@ -57,7 +57,7 @@ Partial Class frmAbout
         resources.ApplyResources(Me.TabPane1, "TabPane1")
         Me.TabPane1.Name = "TabPane1"
         Me.TabPane1.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.TabNavigationPage1, Me.TabNavigationPage2, Me.TabNavigationPage3})
-        Me.TabPane1.RegularSize = New System.Drawing.Size(531, 379)
+        Me.TabPane1.RegularSize = New System.Drawing.Size(531, 495)
         Me.TabPane1.SelectedPage = Me.TabNavigationPage1
         '
         'TabNavigationPage1
@@ -72,9 +72,6 @@ Partial Class frmAbout
         Me.htmlMainInfo.Cursor = System.Windows.Forms.Cursors.Default
         resources.ApplyResources(Me.htmlMainInfo, "htmlMainInfo")
         Me.htmlMainInfo.HtmlImages = Me.ImageCollection1
-        '
-        '
-        '
         Me.htmlMainInfo.HtmlTemplate.Styles = resources.GetString("htmlMainInfo.HtmlTemplate.Styles")
         Me.htmlMainInfo.HtmlTemplate.Template = resources.GetString("htmlMainInfo.HtmlTemplate.Template")
         Me.htmlMainInfo.Name = "htmlMainInfo"
@@ -110,9 +107,6 @@ Partial Class frmAbout
         '
         Me.htmlCopyright.Cursor = System.Windows.Forms.Cursors.Default
         resources.ApplyResources(Me.htmlCopyright, "htmlCopyright")
-        '
-        '
-        '
         Me.htmlCopyright.HtmlTemplate.Styles = resources.GetString("htmlCopyright.HtmlTemplate.Styles")
         Me.htmlCopyright.HtmlTemplate.Template = resources.GetString("htmlCopyright.HtmlTemplate.Template")
         Me.htmlCopyright.Name = "htmlCopyright"
@@ -127,9 +121,6 @@ Partial Class frmAbout
         '
         Me.htmlLicence.Cursor = System.Windows.Forms.Cursors.Default
         resources.ApplyResources(Me.htmlLicence, "htmlLicence")
-        '
-        '
-        '
         Me.htmlLicence.HtmlTemplate.Styles = resources.GetString("htmlLicence.HtmlTemplate.Styles")
         Me.htmlLicence.HtmlTemplate.Template = resources.GetString("htmlLicence.HtmlTemplate.Template")
         Me.htmlLicence.Name = "htmlLicence"

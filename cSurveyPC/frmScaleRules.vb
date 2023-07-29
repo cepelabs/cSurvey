@@ -175,6 +175,7 @@ Friend Class frmScaleRules
         Call pSetDesignNumericValue(DesignProperties, "BaseMediumLinesScaleFactor", 3, txtBaseMediumLinesScaleFactor)
         Call pSetDesignNumericValue(DesignProperties, "BaseLightLinesScaleFactor", 1, txtBaseLightLinesScaleFactor)
         Call pSetDesignNumericValue(DesignProperties, "BaseUltraLightLinesScaleFactor", 0.3, txtBaseUltraLightLinesScaleFactor)
+        Call pSetDesignNumericValue(DesignProperties, "BaseGeologyLinesScaleFactor", 0.3, txtBaseGeologyLinesScaleFactor)
         'clipart, simboli e testo
         Call pSetDesignNumericValue(DesignProperties, "DesignSoilScaleFactor", 1, txtDesignSoilScaleFactor)
         Call pSetDesignNumericValue(DesignProperties, "DesignTextureScaleFactor", 0.2, txtDesignTextureScaleFactor)
@@ -246,6 +247,7 @@ Friend Class frmScaleRules
             If txtBaseMediumLinesScaleFactor.Enabled Then Call DesignProperties.SetValue("BaseMediumLinesScaleFactor", txtBaseMediumLinesScaleFactor.Value)
             If txtBaseLightLinesScaleFactor.Enabled Then Call DesignProperties.SetValue("BaseLightLinesScaleFactor", txtBaseLightLinesScaleFactor.Value)
             If txtBaseUltraLightLinesScaleFactor.Enabled Then Call DesignProperties.SetValue("BaseUltraLightLinesScaleFactor", txtBaseUltraLightLinesScaleFactor.Value)
+            If txtBaseGeologyLinesScaleFactor.Enabled Then Call DesignProperties.SetValue("BaseGeologyLinesScaleFactor", txtBaseGeologyLinesScaleFactor.Value)
 
             If txtDesignSoilScaleFactor.Enabled Then Call DesignProperties.SetValue("DesignSoilScaleFactor", txtDesignSoilScaleFactor.Value)
             If txtDesignTextureScaleFactor.Enabled Then Call DesignProperties.SetValue("DesignTextureScaleFactor", txtDesignTextureScaleFactor.Value)

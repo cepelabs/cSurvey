@@ -161,6 +161,8 @@ Partial Class frmScaleRules
         Me.tabInfoDesign = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoPlot = New DevExpress.XtraTab.XtraTabPage()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
+        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtBaseGeologyLinesScaleFactor = New System.Windows.Forms.NumericUpDown()
         CType(Me.GroupBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.txtBaseMediumLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -233,6 +235,7 @@ Partial Class frmScaleRules
         Me.tabInfoPlot.SuspendLayout()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl2.SuspendLayout()
+        CType(Me.txtBaseGeologyLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdApply
@@ -254,6 +257,8 @@ Partial Class frmScaleRules
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.LabelControl2)
+        Me.GroupBox1.Controls.Add(Me.txtBaseGeologyLinesScaleFactor)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.Label4)
@@ -1287,6 +1292,20 @@ Partial Class frmScaleRules
         resources.ApplyResources(Me.PanelControl2, "PanelControl2")
         Me.PanelControl2.Name = "PanelControl2"
         '
+        'LabelControl2
+        '
+        resources.ApplyResources(Me.LabelControl2, "LabelControl2")
+        Me.LabelControl2.Name = "LabelControl2"
+        '
+        'txtBaseGeologyLinesScaleFactor
+        '
+        Me.txtBaseGeologyLinesScaleFactor.DecimalPlaces = 1
+        Me.txtBaseGeologyLinesScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
+        resources.ApplyResources(Me.txtBaseGeologyLinesScaleFactor, "txtBaseGeologyLinesScaleFactor")
+        Me.txtBaseGeologyLinesScaleFactor.Minimum = New Decimal(New Integer() {1, 0, 0, 65536})
+        Me.txtBaseGeologyLinesScaleFactor.Name = "txtBaseGeologyLinesScaleFactor"
+        Me.txtBaseGeologyLinesScaleFactor.Value = New Decimal(New Integer() {1, 0, 0, 65536})
+        '
         'frmScaleRules
         '
         resources.ApplyResources(Me, "$this")
@@ -1389,6 +1408,7 @@ Partial Class frmScaleRules
         Me.tabInfoPlot.ResumeLayout(False)
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl2.ResumeLayout(False)
+        CType(Me.txtBaseGeologyLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1530,4 +1550,6 @@ Partial Class frmScaleRules
     Friend WithEvents PanelControl2 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents lblPlotSplayCrossScale As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtPlotSplayCrossScale As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtBaseGeologyLinesScaleFactor As NumericUpDown
 End Class

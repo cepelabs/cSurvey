@@ -874,7 +874,16 @@ Namespace cSurvey.Design
             If iClipartPenMode = cPen.ClipartPenModeEnum.Custom Then
                 Dim oTempClipartPenColor As Color = If(oAlternativeColor.IsEmpty, oClipartPenColor, oAlternativeColor)
                 If iClipartPenStyle <> cPen.PenStylesEnum.None Then
-                    Dim sTempClipartPenWidth As Single = GetPaintPenWidth(PaintOptions, sClipartPenWidth)
+                    Dim sTempClipartPenWidth As Single
+                    If iType = PenTypeEnum.ReverseFaultpen Then
+                        If sClipartPenWidth = 0 AndAlso oPen IsNot Nothing Then
+                            sTempClipartPenWidth = oPen.Width * 6.0F
+                        Else
+                            sTempClipartPenWidth = sClipartPenWidth
+                        End If
+                    Else
+                        sTempClipartPenWidth = GetPaintPenWidth(PaintOptions, sClipartPenWidth)
+                    End If
                     oClipartPen = New Pen(oTempClipartPenColor, sTempClipartPenWidth)
                     If iClipartPenLineCap = PenLineCapEnum.Rounded Then
                         Call oClipartPen.SetLineCap(Drawing2D.LineCap.Round, Drawing2D.LineCap.Round, Drawing2D.DashCap.Round)

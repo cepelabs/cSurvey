@@ -24,11 +24,11 @@ Partial Class frmProperties
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmProperties))
-        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
         Me.mnuInfoBoxTags = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -351,6 +351,8 @@ Partial Class frmProperties
         Me.lblDesignSignScaleFactor = New DevExpress.XtraEditors.LabelControl()
         Me.lblDesignTerrainLevelScaleFactor = New DevExpress.XtraEditors.LabelControl()
         Me.GroupBox1 = New DevExpress.XtraEditors.GroupControl()
+        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtBaseGeologyLinesScaleFactor = New System.Windows.Forms.NumericUpDown()
         Me.Label8 = New DevExpress.XtraEditors.LabelControl()
         Me.Label7 = New DevExpress.XtraEditors.LabelControl()
         Me.Label4 = New DevExpress.XtraEditors.LabelControl()
@@ -520,6 +522,12 @@ Partial Class frmProperties
         Me.tabInfoInfoBox1 = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoDesign1 = New DevExpress.XtraTab.XtraTabPage()
         Me.XtraScrollableControl1 = New DevExpress.XtraEditors.XtraScrollableControl()
+        Me.flyParameters = New DevExpress.Utils.FlyoutPanel()
+        Me.pnlParameters = New DevExpress.Utils.FlyoutPanelControl()
+        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
+        Me.tvDefaultPenPattern = New DevExpress.XtraTreeList.TreeList()
+        Me.colDefaultPenPattern = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.txtDefaultPenPattern = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.tabInfoPlot1 = New DevExpress.XtraTab.XtraTabPage()
         Me.XtraScrollableControl2 = New DevExpress.XtraEditors.XtraScrollableControl()
         Me.tabInfo3D1 = New DevExpress.XtraTab.XtraTabPage()
@@ -627,12 +635,6 @@ Partial Class frmProperties
         Me.AccordionControlElement9 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlElement15 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.Bar1 = New DevExpress.XtraBars.Bar()
-        Me.flyParameters = New DevExpress.Utils.FlyoutPanel()
-        Me.pnlParameters = New DevExpress.Utils.FlyoutPanelControl()
-        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
-        Me.tvDefaultPenPattern = New DevExpress.XtraTreeList.TreeList()
-        Me.colDefaultPenPattern = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.txtDefaultPenPattern = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.mnuInfoBoxTags.SuspendLayout()
         CType(Me.txtPlotSelectedPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPlotPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -767,6 +769,7 @@ Partial Class frmProperties
         Me.GroupBox10.SuspendLayout()
         CType(Me.GroupBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.txtBaseGeologyLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtSpecialTrigPointStructure.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTrigPointStructure.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtInfoBoxStructure.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -840,6 +843,11 @@ Partial Class frmProperties
         Me.tabInfoInfoBox1.SuspendLayout()
         Me.tabInfoDesign1.SuspendLayout()
         Me.XtraScrollableControl1.SuspendLayout()
+        CType(Me.flyParameters, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.flyParameters.SuspendLayout()
+        CType(Me.pnlParameters, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tvDefaultPenPattern, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDefaultPenPattern, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabInfoPlot1.SuspendLayout()
         Me.XtraScrollableControl2.SuspendLayout()
         Me.tabInfo3D1.SuspendLayout()
@@ -891,11 +899,6 @@ Partial Class frmProperties
         CType(Me.pnlFooter, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlFooter.SuspendLayout()
         CType(Me.AccordionControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.flyParameters, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.flyParameters.SuspendLayout()
-        CType(Me.pnlParameters, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tvDefaultPenPattern, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDefaultPenPattern, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdOk
@@ -3202,6 +3205,8 @@ Partial Class frmProperties
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.LabelControl2)
+        Me.GroupBox1.Controls.Add(Me.txtBaseGeologyLinesScaleFactor)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.Label4)
@@ -3214,6 +3219,20 @@ Partial Class frmProperties
         Me.GroupBox1.Controls.Add(Me.lblBaseLineWidthScaleFactor)
         resources.ApplyResources(Me.GroupBox1, "GroupBox1")
         Me.GroupBox1.Name = "GroupBox1"
+        '
+        'LabelControl2
+        '
+        resources.ApplyResources(Me.LabelControl2, "LabelControl2")
+        Me.LabelControl2.Name = "LabelControl2"
+        '
+        'txtBaseGeologyLinesScaleFactor
+        '
+        Me.txtBaseGeologyLinesScaleFactor.DecimalPlaces = 1
+        Me.txtBaseGeologyLinesScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
+        resources.ApplyResources(Me.txtBaseGeologyLinesScaleFactor, "txtBaseGeologyLinesScaleFactor")
+        Me.txtBaseGeologyLinesScaleFactor.Minimum = New Decimal(New Integer() {1, 0, 0, 65536})
+        Me.txtBaseGeologyLinesScaleFactor.Name = "txtBaseGeologyLinesScaleFactor"
+        Me.txtBaseGeologyLinesScaleFactor.Value = New Decimal(New Integer() {1, 0, 0, 65536})
         '
         'Label8
         '
@@ -4431,6 +4450,52 @@ Partial Class frmProperties
         Me.XtraScrollableControl1.Controls.Add(Me.Label27)
         Me.XtraScrollableControl1.Name = "XtraScrollableControl1"
         '
+        'flyParameters
+        '
+        Me.flyParameters.Controls.Add(Me.pnlParameters)
+        resources.ApplyResources(Me.flyParameters, "flyParameters")
+        Me.flyParameters.Name = "flyParameters"
+        '
+        'pnlParameters
+        '
+        Me.pnlParameters.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        resources.ApplyResources(Me.pnlParameters, "pnlParameters")
+        Me.pnlParameters.FlyoutPanel = Me.flyParameters
+        Me.pnlParameters.Name = "pnlParameters"
+        '
+        'LabelControl1
+        '
+        Me.LabelControl1.Appearance.Font = CType(resources.GetObject("LabelControl1.Appearance.Font"), System.Drawing.Font)
+        Me.LabelControl1.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.LabelControl1, "LabelControl1")
+        Me.LabelControl1.Name = "LabelControl1"
+        '
+        'tvDefaultPenPattern
+        '
+        Me.tvDefaultPenPattern.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colDefaultPenPattern})
+        resources.ApplyResources(Me.tvDefaultPenPattern, "tvDefaultPenPattern")
+        Me.tvDefaultPenPattern.Name = "tvDefaultPenPattern"
+        Me.tvDefaultPenPattern.OptionsView.ShowIndentAsRowStyle = True
+        Me.tvDefaultPenPattern.OptionsView.ShowIndicator = False
+        Me.tvDefaultPenPattern.OptionsView.ShowRoot = False
+        Me.tvDefaultPenPattern.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.txtDefaultPenPattern})
+        '
+        'colDefaultPenPattern
+        '
+        resources.ApplyResources(Me.colDefaultPenPattern, "colDefaultPenPattern")
+        Me.colDefaultPenPattern.ColumnEdit = Me.txtDefaultPenPattern
+        Me.colDefaultPenPattern.FieldName = "Name"
+        Me.colDefaultPenPattern.Name = "colDefaultPenPattern"
+        '
+        'txtDefaultPenPattern
+        '
+        resources.ApplyResources(Me.txtDefaultPenPattern, "txtDefaultPenPattern")
+        EditorButtonImageOptions1.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        EditorButtonImageOptions1.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.txtDefaultPenPattern.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtDefaultPenPattern.Buttons1"), CType(resources.GetObject("txtDefaultPenPattern.Buttons2"), Integer), CType(resources.GetObject("txtDefaultPenPattern.Buttons3"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons4"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons5"), Boolean), EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, resources.GetString("txtDefaultPenPattern.Buttons6"), CType(resources.GetObject("txtDefaultPenPattern.Buttons7"), Object), CType(resources.GetObject("txtDefaultPenPattern.Buttons8"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtDefaultPenPattern.Buttons9"), DevExpress.Utils.ToolTipAnchor)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons10"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtDefaultPenPattern.Name = "txtDefaultPenPattern"
+        Me.txtDefaultPenPattern.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
         'tabInfoPlot1
         '
         Me.tabInfoPlot1.Controls.Add(Me.XtraScrollableControl2)
@@ -5349,52 +5414,6 @@ Partial Class frmProperties
         Me.Bar1.StandaloneBarDockControl = Me.StandaloneBarDockControl3
         resources.ApplyResources(Me.Bar1, "Bar1")
         '
-        'flyParameters
-        '
-        Me.flyParameters.Controls.Add(Me.pnlParameters)
-        resources.ApplyResources(Me.flyParameters, "flyParameters")
-        Me.flyParameters.Name = "flyParameters"
-        '
-        'pnlParameters
-        '
-        Me.pnlParameters.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        resources.ApplyResources(Me.pnlParameters, "pnlParameters")
-        Me.pnlParameters.FlyoutPanel = Me.flyParameters
-        Me.pnlParameters.Name = "pnlParameters"
-        '
-        'LabelControl1
-        '
-        Me.LabelControl1.Appearance.Font = CType(resources.GetObject("LabelControl1.Appearance.Font"), System.Drawing.Font)
-        Me.LabelControl1.Appearance.Options.UseFont = True
-        resources.ApplyResources(Me.LabelControl1, "LabelControl1")
-        Me.LabelControl1.Name = "LabelControl1"
-        '
-        'tvDefaultPenPattern
-        '
-        Me.tvDefaultPenPattern.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colDefaultPenPattern})
-        resources.ApplyResources(Me.tvDefaultPenPattern, "tvDefaultPenPattern")
-        Me.tvDefaultPenPattern.Name = "tvDefaultPenPattern"
-        Me.tvDefaultPenPattern.OptionsView.ShowIndentAsRowStyle = True
-        Me.tvDefaultPenPattern.OptionsView.ShowIndicator = False
-        Me.tvDefaultPenPattern.OptionsView.ShowRoot = False
-        Me.tvDefaultPenPattern.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.txtDefaultPenPattern})
-        '
-        'colDefaultPenPattern
-        '
-        resources.ApplyResources(Me.colDefaultPenPattern, "colDefaultPenPattern")
-        Me.colDefaultPenPattern.ColumnEdit = Me.txtDefaultPenPattern
-        Me.colDefaultPenPattern.FieldName = "Name"
-        Me.colDefaultPenPattern.Name = "colDefaultPenPattern"
-        '
-        'txtDefaultPenPattern
-        '
-        resources.ApplyResources(Me.txtDefaultPenPattern, "txtDefaultPenPattern")
-        EditorButtonImageOptions2.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
-        EditorButtonImageOptions2.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.txtDefaultPenPattern.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtDefaultPenPattern.Buttons1"), CType(resources.GetObject("txtDefaultPenPattern.Buttons2"), Integer), CType(resources.GetObject("txtDefaultPenPattern.Buttons3"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons4"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons5"), Boolean), EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, resources.GetString("txtDefaultPenPattern.Buttons6"), CType(resources.GetObject("txtDefaultPenPattern.Buttons7"), Object), CType(resources.GetObject("txtDefaultPenPattern.Buttons8"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtDefaultPenPattern.Buttons9"), DevExpress.Utils.ToolTipAnchor)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons10"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txtDefaultPenPattern.Name = "txtDefaultPenPattern"
-        Me.txtDefaultPenPattern.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        '
         'frmProperties
         '
         resources.ApplyResources(Me, "$this")
@@ -5566,6 +5585,7 @@ Partial Class frmProperties
         CType(Me.GroupBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.txtBaseGeologyLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtSpecialTrigPointStructure.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTrigPointStructure.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtInfoBoxStructure.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -5662,6 +5682,11 @@ Partial Class frmProperties
         Me.tabInfoDesign1.ResumeLayout(False)
         Me.XtraScrollableControl1.ResumeLayout(False)
         Me.XtraScrollableControl1.PerformLayout()
+        CType(Me.flyParameters, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.flyParameters.ResumeLayout(False)
+        CType(Me.pnlParameters, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tvDefaultPenPattern, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDefaultPenPattern, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabInfoPlot1.ResumeLayout(False)
         Me.XtraScrollableControl2.ResumeLayout(False)
         Me.tabInfo3D1.ResumeLayout(False)
@@ -5720,11 +5745,6 @@ Partial Class frmProperties
         CType(Me.pnlFooter, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlFooter.ResumeLayout(False)
         CType(Me.AccordionControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.flyParameters, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.flyParameters.ResumeLayout(False)
-        CType(Me.pnlParameters, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tvDefaultPenPattern, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDefaultPenPattern, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -6333,4 +6353,6 @@ Partial Class frmProperties
     Friend WithEvents tvDefaultPenPattern As DevExpress.XtraTreeList.TreeList
     Friend WithEvents colDefaultPenPattern As DevExpress.XtraTreeList.Columns.TreeListColumn
     Friend WithEvents txtDefaultPenPattern As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
+    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtBaseGeologyLinesScaleFactor As NumericUpDown
 End Class

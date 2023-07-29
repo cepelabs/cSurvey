@@ -204,6 +204,54 @@
   <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="LabelControl2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LabelControl2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 86</value>
+  </data>
+  <data name="LabelControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 13</value>
+  </data>
+  <data name="LabelControl2.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="LabelControl2.Text" xml:space="preserve">
+    <value>Geology lines:</value>
+  </data>
+  <data name="&gt;&gt;LabelControl2.Name" xml:space="preserve">
+    <value>LabelControl2</value>
+  </data>
+  <data name="&gt;&gt;LabelControl2.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;LabelControl2.Parent" xml:space="preserve">
+    <value>GroupBox1</value>
+  </data>
+  <data name="&gt;&gt;LabelControl2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtBaseGeologyLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>323, 84</value>
+  </data>
+  <data name="txtBaseGeologyLinesScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtBaseGeologyLinesScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;txtBaseGeologyLinesScaleFactor.Name" xml:space="preserve">
+    <value>txtBaseGeologyLinesScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;txtBaseGeologyLinesScaleFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtBaseGeologyLinesScaleFactor.Parent" xml:space="preserve">
+    <value>GroupBox1</value>
+  </data>
+  <data name="&gt;&gt;txtBaseGeologyLinesScaleFactor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="Label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -229,7 +277,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;Label8.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="Label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -256,7 +304,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;Label7.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="Label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -283,7 +331,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;Label4.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="txtBaseMediumLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>323, 57</value>
@@ -304,7 +352,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;txtBaseMediumLinesScaleFactor.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="txtBaseUltraLightLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 57</value>
@@ -325,7 +373,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;txtBaseUltraLightLinesScaleFactor.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="txtBaseLightLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 30</value>
@@ -346,7 +394,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;txtBaseLightLinesScaleFactor.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="txtBaseHeavyLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>323, 30</value>
@@ -367,7 +415,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;txtBaseHeavyLinesScaleFactor.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="lblBaseLinesScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -394,7 +442,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;lblBaseLinesScaleFactor.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="txtBaseLineWidthScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 30</value>
@@ -415,7 +463,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;txtBaseLineWidthScaleFactor.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="lblBaseLineWidthScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -442,13 +490,13 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;lblBaseLineWidthScaleFactor.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="GroupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 12</value>
   </data>
   <data name="GroupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>588, 96</value>
+    <value>588, 126</value>
   </data>
   <data name="GroupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>140</value>
@@ -1147,7 +1195,7 @@
     <value>16</value>
   </data>
   <data name="frrmDesign.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 114</value>
+    <value>11, 144</value>
   </data>
   <data name="frrmDesign.Size" type="System.Drawing.Size, System.Drawing">
     <value>588, 268</value>
@@ -1437,36 +1485,6 @@
   <metadata name="BarManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>192, 17</value>
   </metadata>
-  <data name="btnAddScale.Caption" xml:space="preserve">
-    <value>Scale:</value>
-  </data>
-  <data name="txtAddScale.AutoHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnAddScale.EditWidth" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="btnAdd.Caption" xml:space="preserve">
-    <value>Add</value>
-  </data>
-  <data name="btnAddAsCopy.Caption" xml:space="preserve">
-    <value>Add as copy</value>
-  </data>
-  <data name="btnRemove.Caption" xml:space="preserve">
-    <value>Remove</value>
-  </data>
-  <data name="btnRemoveAll.Caption" xml:space="preserve">
-    <value>Remove all</value>
-  </data>
-  <data name="btnClear.Caption" xml:space="preserve">
-    <value>Reset</value>
-  </data>
-  <data name="btnExport.Caption" xml:space="preserve">
-    <value>Export...</value>
-  </data>
-  <data name="btnImport.Caption" xml:space="preserve">
-    <value>Import...</value>
-  </data>
   <data name="barMain.Text" xml:space="preserve">
     <value>Tools</value>
   </data>
@@ -1572,30 +1590,6 @@
   <data name="tabMain.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 8</value>
   </data>
-  <data name="lblScaleWarning.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <assembly alias="DevExpress.XtraEditors.v22.2" name="DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="lblScaleWarning.AutoSizeMode" type="DevExpress.XtraEditors.LabelAutoSizeMode, DevExpress.XtraEditors.v22.2">
-    <value>None</value>
-  </data>
-  <metadata name="iml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>310, 17</value>
-  </metadata>
-  <data name="lblScaleWarning.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 43</value>
-  </data>
-  <data name="lblScaleWarning.Size" type="System.Drawing.Size, System.Drawing">
-    <value>599, 51</value>
-  </data>
-  <data name="lblScaleWarning.TabIndex" type="System.Int32, mscorlib">
-    <value>109</value>
-  </data>
-  <data name="lblScaleWarning.Text" xml:space="preserve">
-    <value>&lt;image=#warning;size=16,16&gt; &lt;b&gt;Attention:&lt;/b&gt; the scale factor define the factor above this settings will applied (until the next factor).
-For scale under the minimum defined factor will be used the default design and centerline properties.
-</value>
-  </data>
   <data name="&gt;&gt;lblScaleWarning.Name" xml:space="preserve">
     <value>lblScaleWarning</value>
   </data>
@@ -1608,21 +1602,6 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;lblScaleWarning.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="txtScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 11</value>
-  </data>
-  <data name="txtScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 21</value>
-  </data>
-  <data name="txtScale.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="txtScale.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="txtScale.ThousandsSeparator" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="&gt;&gt;txtScale.Name" xml:space="preserve">
     <value>txtScale</value>
   </data>
@@ -1634,18 +1613,6 @@ For scale under the minimum defined factor will be used the default design and c
   </data>
   <data name="&gt;&gt;txtScale.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="lblScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 13</value>
-  </data>
-  <data name="lblScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 13</value>
-  </data>
-  <data name="lblScale.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblScale.Text" xml:space="preserve">
-    <value>Scale:</value>
   </data>
   <data name="&gt;&gt;lblScale.Name" xml:space="preserve">
     <value>lblScale</value>
@@ -1682,66 +1649,6 @@ For scale under the minimum defined factor will be used the default design and c
   </data>
   <data name="tabMain.TabIndex" type="System.Int32, mscorlib">
     <value>144</value>
-  </data>
-  <data name="colCategoriesVisibilityIndex.Caption" xml:space="preserve">
-    <value>Index</value>
-  </data>
-  <data name="colCategoriesVisibilityIndex.MaxWidth" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="colCategoriesVisibilityIndex.Visible" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="colCategoriesVisibilityIndex.VisibleIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="colCategoriesVisibilityIndex.Width" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="colCategoriesVisibilityCategory.Caption" xml:space="preserve">
-    <value>Category</value>
-  </data>
-  <data name="colCategoriesVisibilityCategory.MinWidth" type="System.Int32, mscorlib">
-    <value>90</value>
-  </data>
-  <data name="colCategoriesVisibilityCategory.Visible" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="colCategoriesVisibilityCategory.VisibleIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="colCategoriesVisibilityCategory.Width" type="System.Int32, mscorlib">
-    <value>144</value>
-  </data>
-  <data name="colCategoriesVisibilityVisible.Caption" xml:space="preserve">
-    <value>Visible</value>
-  </data>
-  <data name="chkCategoriesVisibilityVisible.AutoHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="colCategoriesVisibilityVisible.MaxWidth" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="colCategoriesVisibilityVisible.Visible" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="colCategoriesVisibilityVisible.VisibleIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="colCategoriesVisibilityVisible.Width" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="tvCategoriesVisibility.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tvCategoriesVisibility.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tvCategoriesVisibility.Size" type="System.Drawing.Size, System.Drawing">
-    <value>627, 401</value>
-  </data>
-  <data name="tvCategoriesVisibility.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
   </data>
   <data name="&gt;&gt;tvCategoriesVisibility.Name" xml:space="preserve">
     <value>tvCategoriesVisibility</value>
@@ -1797,258 +1704,6 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="tabInfoPlot.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="cmdPlotPenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmdPlotPenColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 113</value>
-  </data>
-  <data name="cmdPlotPenColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 21</value>
-  </data>
-  <data name="cmdPlotPenColor.TabIndex" type="System.Int32, mscorlib">
-    <value>124</value>
-  </data>
-  <data name="cmdPlotPenColor.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotPenColor.Name" xml:space="preserve">
-    <value>cmdPlotPenColor</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotPenColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotPenColor.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotPenColor.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblPlotPenColor.Appearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
-  <data name="lblPlotPenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblPlotPenColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 117</value>
-  </data>
-  <data name="lblPlotPenColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 13</value>
-  </data>
-  <data name="lblPlotPenColor.TabIndex" type="System.Int32, mscorlib">
-    <value>125</value>
-  </data>
-  <data name="lblPlotPenColor.Text" xml:space="preserve">
-    <value>Color:</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenColor.Name" xml:space="preserve">
-    <value>lblPlotPenColor</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenColor.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenColor.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="picPlotPenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="picPlotPenColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 113</value>
-  </data>
-  <data name="picPlotPenColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 21</value>
-  </data>
-  <data name="picPlotPenColor.TabIndex" type="System.Int32, mscorlib">
-    <value>126</value>
-  </data>
-  <data name="&gt;&gt;picPlotPenColor.Name" xml:space="preserve">
-    <value>picPlotPenColor</value>
-  </data>
-  <data name="&gt;&gt;picPlotPenColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;picPlotPenColor.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;picPlotPenColor.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="txtPlotPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 30</value>
-  </data>
-  <data name="txtPlotPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 21</value>
-  </data>
-  <data name="txtPlotPenWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtPlotPenWidth.Name" xml:space="preserve">
-    <value>txtPlotPenWidth</value>
-  </data>
-  <data name="&gt;&gt;txtPlotPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPlotPenWidth.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;txtPlotPenWidth.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="lblPlotPenWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblPlotPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 34</value>
-  </data>
-  <data name="lblPlotPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 13</value>
-  </data>
-  <data name="lblPlotPenWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="lblPlotPenWidth.Text" xml:space="preserve">
-    <value>Size:</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenWidth.Name" xml:space="preserve">
-    <value>lblPlotPenWidth</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenWidth.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenWidth.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenWidth.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="lblPlotSelectedPenWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblPlotSelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 61</value>
-  </data>
-  <data name="lblPlotSelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 13</value>
-  </data>
-  <data name="lblPlotSelectedPenWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="lblPlotSelectedPenWidth.Text" xml:space="preserve">
-    <value>Size (sel.):</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSelectedPenWidth.Name" xml:space="preserve">
-    <value>lblPlotSelectedPenWidth</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSelectedPenWidth.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSelectedPenWidth.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSelectedPenWidth.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="cboPlotPenStyle.Items" xml:space="preserve">
-    <value>Continuous</value>
-  </data>
-  <data name="cboPlotPenStyle.Items1" xml:space="preserve">
-    <value>Dash</value>
-  </data>
-  <data name="cboPlotPenStyle.Items2" xml:space="preserve">
-    <value>Points</value>
-  </data>
-  <data name="cboPlotPenStyle.Items3" xml:space="preserve">
-    <value>Line with dot</value>
-  </data>
-  <data name="cboPlotPenStyle.Items4" xml:space="preserve">
-    <value>Line with 2 dots</value>
-  </data>
-  <data name="cboPlotPenStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 86</value>
-  </data>
-  <data name="cboPlotPenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
-  </data>
-  <data name="cboPlotPenStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>121</value>
-  </data>
-  <data name="&gt;&gt;cboPlotPenStyle.Name" xml:space="preserve">
-    <value>cboPlotPenStyle</value>
-  </data>
-  <data name="&gt;&gt;cboPlotPenStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboPlotPenStyle.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;cboPlotPenStyle.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="txtPlotSelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 59</value>
-  </data>
-  <data name="txtPlotSelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 21</value>
-  </data>
-  <data name="txtPlotSelectedPenWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSelectedPenWidth.Name" xml:space="preserve">
-    <value>txtPlotSelectedPenWidth</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSelectedPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSelectedPenWidth.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSelectedPenWidth.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="lblPlotPenStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblPlotPenStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 89</value>
-  </data>
-  <data name="lblPlotPenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 13</value>
-  </data>
-  <data name="lblPlotPenStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>122</value>
-  </data>
-  <data name="lblPlotPenStyle.Text" xml:space="preserve">
-    <value>Style:</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenStyle.Name" xml:space="preserve">
-    <value>lblPlotPenStyle</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenStyle.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenStyle.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="frmPlotPen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 161</value>
-  </data>
-  <data name="frmPlotPen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 194</value>
-  </data>
-  <data name="frmPlotPen.TabIndex" type="System.Int32, mscorlib">
-    <value>133</value>
-  </data>
-  <data name="frmPlotPen.Text" xml:space="preserve">
-    <value>Shots:</value>
-  </data>
   <data name="&gt;&gt;frmPlotPen.Name" xml:space="preserve">
     <value>frmPlotPen</value>
   </data>
@@ -2060,6 +1715,561 @@ For scale under the minimum defined factor will be used the default design and c
   </data>
   <data name="&gt;&gt;frmPlotPen.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;frmPlotLRUD.Name" xml:space="preserve">
+    <value>frmPlotLRUD</value>
+  </data>
+  <data name="&gt;&gt;frmPlotLRUD.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;frmPlotLRUD.Parent" xml:space="preserve">
+    <value>tabInfoPlot</value>
+  </data>
+  <data name="&gt;&gt;frmPlotLRUD.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;frmPlotPoint.Name" xml:space="preserve">
+    <value>frmPlotPoint</value>
+  </data>
+  <data name="&gt;&gt;frmPlotPoint.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;frmPlotPoint.Parent" xml:space="preserve">
+    <value>tabInfoPlot</value>
+  </data>
+  <data name="&gt;&gt;frmPlotPoint.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;frmPlotTranslationLine.Name" xml:space="preserve">
+    <value>frmPlotTranslationLine</value>
+  </data>
+  <data name="&gt;&gt;frmPlotTranslationLine.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;frmPlotTranslationLine.Parent" xml:space="preserve">
+    <value>tabInfoPlot</value>
+  </data>
+  <data name="&gt;&gt;frmPlotTranslationLine.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tabInfoPlot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>627, 401</value>
+  </data>
+  <data name="tabInfoPlot.Text" xml:space="preserve">
+    <value>Centreline</value>
+  </data>
+  <data name="&gt;&gt;tabInfoPlot.Name" xml:space="preserve">
+    <value>tabInfoPlot</value>
+  </data>
+  <data name="&gt;&gt;tabInfoPlot.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabInfoPlot.Parent" xml:space="preserve">
+    <value>tabMain</value>
+  </data>
+  <data name="&gt;&gt;tabInfoPlot.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tabMain.Name" xml:space="preserve">
+    <value>tabMain</value>
+  </data>
+  <data name="&gt;&gt;tabMain.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabMain.Parent" xml:space="preserve">
+    <value>PanelControl2</value>
+  </data>
+  <data name="&gt;&gt;tabMain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="PanelControl2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="PanelControl2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>180, 28</value>
+  </data>
+  <data name="PanelControl2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 8, 8, 8</value>
+  </data>
+  <data name="PanelControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>645, 446</value>
+  </data>
+  <data name="PanelControl2.TabIndex" type="System.Int32, mscorlib">
+    <value>149</value>
+  </data>
+  <data name="&gt;&gt;PanelControl2.Name" xml:space="preserve">
+    <value>PanelControl2</value>
+  </data>
+  <data name="&gt;&gt;PanelControl2.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;PanelControl2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PanelControl2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tvScales.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="tvScales.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="tvScales.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 446</value>
+  </data>
+  <data name="tvScales.TabIndex" type="System.Int32, mscorlib">
+    <value>139</value>
+  </data>
+  <data name="&gt;&gt;tvScales.Name" xml:space="preserve">
+    <value>tvScales</value>
+  </data>
+  <data name="&gt;&gt;tvScales.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tvScales.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tvScales.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="PanelControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="PanelControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 474</value>
+  </data>
+  <data name="PanelControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>825, 40</value>
+  </data>
+  <data name="PanelControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>138</value>
+  </data>
+  <data name="&gt;&gt;PanelControl1.Name" xml:space="preserve">
+    <value>PanelControl1</value>
+  </data>
+  <data name="&gt;&gt;PanelControl1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;PanelControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PanelControl1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="frmScaleRules.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAKZYAACoXwgAqmELAL1nGAC7aR8As2UnALRmJwC3aycAuGslALpu
+        LgCzdSwAu3EsALxzLwC9dDEAwWcaAMVoHQDEaSQAymghAMxpIgDAcSoAw30yAMR+MgDBeDsAxH0/AKl9
+        TADEfUAATLB6AMiDKwDLhisAyIUtAMyHLADEgTYAzIo2AMyMNwDGgzkAyIg5AM2MOADbhTQA1Y8/ANyL
+        OgDfjDoA4Iw7ALWGTgC9hEgAuYZNAL2KUAC9jFMAvY1UALmRZQDFgEIAyYRFAMaJRgDOj0AAz4tHAMqI
+        SADNiUoAz41NANCNTgDPkEEA0JFCANOUTQDVmEoA1ZhNANibSwDAi1EA0ZFQANOXUwDWm1YA3Z1QANiY
+        VQDYm1gA2ZxYANugWQDepFgA3KBdAN2mXgDkolEA4KFVAOSmVgDhploA5KhZAOKpXQDkql0AyJ1tANul
+        YQDfpWAA3qhhAM+icgDQo3QA4KljAOOsYADlrWEA4apkAOizZgDns2oA57VsAOixawDptW0A9b9vAOm3
+        cQDruHIA7blyAO+8cADquHUA7bp0AO+9dADoun4A6Lx+APC9cwDwvnQA+sJsAPXAcADxwHUA9sV5APnK
+        fgD7zH4A/M1/AHJnvwBxaL8AAAzeAAAT3gAADeEAFyXmABkl5AByasMAc2/JAHRwygBDav4AVX3/AAC3
+        iAAAuIoAALmMAAzGlAAKyp8AFceaABbImwAUyJwAI9moACvarQAt2q8AIN61ACrbsQBiyJoAc9mtAH7l
+        vABXgP8ANuvAADzrwwA77MYAPuzFADLwywA9/+UAXc/IAF3dyQBXx9MATezLAEL/2gBG/94ASP/dALK2
+        pADeuYEA6byAAPnLgAD7zYEA/M6CAPLEigD3xIsA+8eKAPnGjQD+xI4A/cqLAP7RhADnwZUA6cCRAOjB
+        lADuyZcA78ubAO3LnQDuzZ8A8seQAP7GkQDyypcA+smQAPnKlQDwy5kA8cyZAPvNmQD/0JcA/9qVAP3S
+        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
+</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Scale settings:</value>
+  </data>
+  <data name="&gt;&gt;BarManager.Name" xml:space="preserve">
+    <value>BarManager</value>
+  </data>
+  <data name="&gt;&gt;BarManager.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barMain.Name" xml:space="preserve">
+    <value>barMain</value>
+  </data>
+  <data name="&gt;&gt;barMain.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Bar, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnAddScale.Name" xml:space="preserve">
+    <value>btnAddScale</value>
+  </data>
+  <data name="&gt;&gt;btnAddScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarEditItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtAddScale.Name" xml:space="preserve">
+    <value>txtAddScale</value>
+  </data>
+  <data name="&gt;&gt;txtAddScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemTextEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnAdd.Name" xml:space="preserve">
+    <value>btnAdd</value>
+  </data>
+  <data name="&gt;&gt;btnAdd.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnAddAsCopy.Name" xml:space="preserve">
+    <value>btnAddAsCopy</value>
+  </data>
+  <data name="&gt;&gt;btnAddAsCopy.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnRemove.Name" xml:space="preserve">
+    <value>btnRemove</value>
+  </data>
+  <data name="&gt;&gt;btnRemove.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveAll.Name" xml:space="preserve">
+    <value>btnRemoveAll</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveAll.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnClear.Name" xml:space="preserve">
+    <value>btnClear</value>
+  </data>
+  <data name="&gt;&gt;btnClear.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnExport.Name" xml:space="preserve">
+    <value>btnExport</value>
+  </data>
+  <data name="&gt;&gt;btnExport.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnImport.Name" xml:space="preserve">
+    <value>btnImport</value>
+  </data>
+  <data name="&gt;&gt;btnImport.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;iml.Name" xml:space="preserve">
+    <value>iml</value>
+  </data>
+  <data name="&gt;&gt;iml.Type" xml:space="preserve">
+    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colScalesScale.Name" xml:space="preserve">
+    <value>colScalesScale</value>
+  </data>
+  <data name="&gt;&gt;colScalesScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colCategoriesVisibilityIndex.Name" xml:space="preserve">
+    <value>colCategoriesVisibilityIndex</value>
+  </data>
+  <data name="&gt;&gt;colCategoriesVisibilityIndex.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colCategoriesVisibilityCategory.Name" xml:space="preserve">
+    <value>colCategoriesVisibilityCategory</value>
+  </data>
+  <data name="&gt;&gt;colCategoriesVisibilityCategory.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colCategoriesVisibilityVisible.Name" xml:space="preserve">
+    <value>colCategoriesVisibilityVisible</value>
+  </data>
+  <data name="&gt;&gt;colCategoriesVisibilityVisible.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkCategoriesVisibilityVisible.Name" xml:space="preserve">
+    <value>chkCategoriesVisibilityVisible</value>
+  </data>
+  <data name="&gt;&gt;chkCategoriesVisibilityVisible.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmScaleRules</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="btnAddScale.Caption" xml:space="preserve">
+    <value>Scale:</value>
+  </data>
+  <data name="txtAddScale.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnAddScale.EditWidth" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="btnAdd.Caption" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="btnAddAsCopy.Caption" xml:space="preserve">
+    <value>Add as copy</value>
+  </data>
+  <data name="btnRemove.Caption" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="btnRemoveAll.Caption" xml:space="preserve">
+    <value>Remove all</value>
+  </data>
+  <data name="btnClear.Caption" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="btnExport.Caption" xml:space="preserve">
+    <value>Export...</value>
+  </data>
+  <data name="btnImport.Caption" xml:space="preserve">
+    <value>Import...</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v22.2" name="DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="txtPlotSplayCrossScale.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtPlotSplayCrossScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 20</value>
+  </data>
+  <data name="txtPlotSplayCrossScale.TabIndex" type="System.Int32, mscorlib">
+    <value>133</value>
+  </data>
+  <data name="&gt;&gt;txtPlotSplayCrossScale.Name" xml:space="preserve">
+    <value>txtPlotSplayCrossScale</value>
+  </data>
+  <data name="&gt;&gt;txtPlotSplayCrossScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPlotSplayCrossScale.Parent" xml:space="preserve">
+    <value>GroupBox6</value>
+  </data>
+  <data name="&gt;&gt;txtPlotSplayCrossScale.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblPlotSplaySelectedPenWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPlotSplaySelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 61</value>
+  </data>
+  <data name="lblPlotSplaySelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 13</value>
+  </data>
+  <data name="lblPlotSplaySelectedPenWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>130</value>
+  </data>
+  <data name="lblPlotSplaySelectedPenWidth.Text" xml:space="preserve">
+    <value>Size (sel.):</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSplaySelectedPenWidth.Name" xml:space="preserve">
+    <value>lblPlotSplaySelectedPenWidth</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSplaySelectedPenWidth.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSplaySelectedPenWidth.Parent" xml:space="preserve">
+    <value>GroupBox6</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSplaySelectedPenWidth.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtPlotSplaySelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 59</value>
+  </data>
+  <data name="txtPlotSplaySelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtPlotSplaySelectedPenWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>129</value>
+  </data>
+  <data name="&gt;&gt;txtPlotSplaySelectedPenWidth.Name" xml:space="preserve">
+    <value>txtPlotSplaySelectedPenWidth</value>
+  </data>
+  <data name="&gt;&gt;txtPlotSplaySelectedPenWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPlotSplaySelectedPenWidth.Parent" xml:space="preserve">
+    <value>GroupBox6</value>
+  </data>
+  <data name="&gt;&gt;txtPlotSplaySelectedPenWidth.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtPlotSplayPenWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 30</value>
+  </data>
+  <data name="txtPlotSplayPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtPlotSplayPenWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtPlotSplayPenWidth.Name" xml:space="preserve">
+    <value>txtPlotSplayPenWidth</value>
+  </data>
+  <data name="&gt;&gt;txtPlotSplayPenWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPlotSplayPenWidth.Parent" xml:space="preserve">
+    <value>GroupBox6</value>
+  </data>
+  <data name="&gt;&gt;txtPlotSplayPenWidth.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblPlotSplayPenWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPlotSplayPenWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 34</value>
+  </data>
+  <data name="lblPlotSplayPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 13</value>
+  </data>
+  <data name="lblPlotSplayPenWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lblPlotSplayPenWidth.Text" xml:space="preserve">
+    <value>Size:</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSplayPenWidth.Name" xml:space="preserve">
+    <value>lblPlotSplayPenWidth</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSplayPenWidth.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSplayPenWidth.Parent" xml:space="preserve">
+    <value>GroupBox6</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSplayPenWidth.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cboPlotSplayPenStyle.Items" xml:space="preserve">
+    <value>Continuous</value>
+  </data>
+  <data name="cboPlotSplayPenStyle.Items1" xml:space="preserve">
+    <value>Dash</value>
+  </data>
+  <data name="cboPlotSplayPenStyle.Items2" xml:space="preserve">
+    <value>Dots</value>
+  </data>
+  <data name="cboPlotSplayPenStyle.Items3" xml:space="preserve">
+    <value>Line with dot</value>
+  </data>
+  <data name="cboPlotSplayPenStyle.Items4" xml:space="preserve">
+    <value>Line with 2 dots</value>
+  </data>
+  <data name="cboPlotSplayPenStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>94, 86</value>
+  </data>
+  <data name="cboPlotSplayPenStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 21</value>
+  </data>
+  <data name="cboPlotSplayPenStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>121</value>
+  </data>
+  <data name="&gt;&gt;cboPlotSplayPenStyle.Name" xml:space="preserve">
+    <value>cboPlotSplayPenStyle</value>
+  </data>
+  <data name="&gt;&gt;cboPlotSplayPenStyle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPlotSplayPenStyle.Parent" xml:space="preserve">
+    <value>GroupBox6</value>
+  </data>
+  <data name="&gt;&gt;cboPlotSplayPenStyle.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lblPlotSplayPenStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPlotSplayPenStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 89</value>
+  </data>
+  <data name="lblPlotSplayPenStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="lblPlotSplayPenStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>122</value>
+  </data>
+  <data name="lblPlotSplayPenStyle.Text" xml:space="preserve">
+    <value>Style:</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSplayPenStyle.Name" xml:space="preserve">
+    <value>lblPlotSplayPenStyle</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSplayPenStyle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSplayPenStyle.Parent" xml:space="preserve">
+    <value>GroupBox6</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSplayPenStyle.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="GroupBox6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>407, 271</value>
+  </data>
+  <data name="GroupBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 144</value>
+  </data>
+  <data name="GroupBox6.TabIndex" type="System.Int32, mscorlib">
+    <value>137</value>
+  </data>
+  <data name="GroupBox6.Text" xml:space="preserve">
+    <value>Splay:</value>
+  </data>
+  <data name="&gt;&gt;GroupBox6.Name" xml:space="preserve">
+    <value>GroupBox6</value>
+  </data>
+  <data name="&gt;&gt;GroupBox6.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GroupBox6.Parent" xml:space="preserve">
+    <value>tabInfoPlot</value>
+  </data>
+  <data name="&gt;&gt;GroupBox6.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="lblPlotLRUDSelectedPenWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2243,6 +2453,222 @@ For scale under the minimum defined factor will be used the default design and c
   </data>
   <data name="&gt;&gt;frmPlotLRUD.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="cmdPlotTranslationLinePenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPlotTranslationLinePenColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 86</value>
+  </data>
+  <data name="cmdPlotTranslationLinePenColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 21</value>
+  </data>
+  <data name="cmdPlotTranslationLinePenColor.TabIndex" type="System.Int32, mscorlib">
+    <value>124</value>
+  </data>
+  <data name="cmdPlotTranslationLinePenColor.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;cmdPlotTranslationLinePenColor.Name" xml:space="preserve">
+    <value>cmdPlotTranslationLinePenColor</value>
+  </data>
+  <data name="&gt;&gt;cmdPlotTranslationLinePenColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPlotTranslationLinePenColor.Parent" xml:space="preserve">
+    <value>frmPlotTranslationLine</value>
+  </data>
+  <data name="&gt;&gt;cmdPlotTranslationLinePenColor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblPlotTranslationLinePenColor.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPlotTranslationLinePenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPlotTranslationLinePenColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 90</value>
+  </data>
+  <data name="lblPlotTranslationLinePenColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
+  </data>
+  <data name="lblPlotTranslationLinePenColor.TabIndex" type="System.Int32, mscorlib">
+    <value>125</value>
+  </data>
+  <data name="lblPlotTranslationLinePenColor.Text" xml:space="preserve">
+    <value>Color:</value>
+  </data>
+  <data name="&gt;&gt;lblPlotTranslationLinePenColor.Name" xml:space="preserve">
+    <value>lblPlotTranslationLinePenColor</value>
+  </data>
+  <data name="&gt;&gt;lblPlotTranslationLinePenColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPlotTranslationLinePenColor.Parent" xml:space="preserve">
+    <value>frmPlotTranslationLine</value>
+  </data>
+  <data name="&gt;&gt;lblPlotTranslationLinePenColor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="picPlotTranslationLinePenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="picPlotTranslationLinePenColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 86</value>
+  </data>
+  <data name="picPlotTranslationLinePenColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 21</value>
+  </data>
+  <data name="picPlotTranslationLinePenColor.TabIndex" type="System.Int32, mscorlib">
+    <value>126</value>
+  </data>
+  <data name="&gt;&gt;picPlotTranslationLinePenColor.Name" xml:space="preserve">
+    <value>picPlotTranslationLinePenColor</value>
+  </data>
+  <data name="&gt;&gt;picPlotTranslationLinePenColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;picPlotTranslationLinePenColor.Parent" xml:space="preserve">
+    <value>frmPlotTranslationLine</value>
+  </data>
+  <data name="&gt;&gt;picPlotTranslationLinePenColor.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtPlotTranslationLinePenWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 30</value>
+  </data>
+  <data name="txtPlotTranslationLinePenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtPlotTranslationLinePenWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtPlotTranslationLinePenWidth.Name" xml:space="preserve">
+    <value>txtPlotTranslationLinePenWidth</value>
+  </data>
+  <data name="&gt;&gt;txtPlotTranslationLinePenWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPlotTranslationLinePenWidth.Parent" xml:space="preserve">
+    <value>frmPlotTranslationLine</value>
+  </data>
+  <data name="&gt;&gt;txtPlotTranslationLinePenWidth.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblPlotTranslationLinePenSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPlotTranslationLinePenSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 34</value>
+  </data>
+  <data name="lblPlotTranslationLinePenSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 13</value>
+  </data>
+  <data name="lblPlotTranslationLinePenSize.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lblPlotTranslationLinePenSize.Text" xml:space="preserve">
+    <value>Size:</value>
+  </data>
+  <data name="&gt;&gt;lblPlotTranslationLinePenSize.Name" xml:space="preserve">
+    <value>lblPlotTranslationLinePenSize</value>
+  </data>
+  <data name="&gt;&gt;lblPlotTranslationLinePenSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPlotTranslationLinePenSize.Parent" xml:space="preserve">
+    <value>frmPlotTranslationLine</value>
+  </data>
+  <data name="&gt;&gt;lblPlotTranslationLinePenSize.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cboPlotTranslationLinePenStyle.Items" xml:space="preserve">
+    <value>Continuous</value>
+  </data>
+  <data name="cboPlotTranslationLinePenStyle.Items1" xml:space="preserve">
+    <value>Dash</value>
+  </data>
+  <data name="cboPlotTranslationLinePenStyle.Items2" xml:space="preserve">
+    <value>Dots</value>
+  </data>
+  <data name="cboPlotTranslationLinePenStyle.Items3" xml:space="preserve">
+    <value>Line with dot</value>
+  </data>
+  <data name="cboPlotTranslationLinePenStyle.Items4" xml:space="preserve">
+    <value>Line with 2 dots</value>
+  </data>
+  <data name="cboPlotTranslationLinePenStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>94, 59</value>
+  </data>
+  <data name="cboPlotTranslationLinePenStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 21</value>
+  </data>
+  <data name="cboPlotTranslationLinePenStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>121</value>
+  </data>
+  <data name="&gt;&gt;cboPlotTranslationLinePenStyle.Name" xml:space="preserve">
+    <value>cboPlotTranslationLinePenStyle</value>
+  </data>
+  <data name="&gt;&gt;cboPlotTranslationLinePenStyle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPlotTranslationLinePenStyle.Parent" xml:space="preserve">
+    <value>frmPlotTranslationLine</value>
+  </data>
+  <data name="&gt;&gt;cboPlotTranslationLinePenStyle.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblPlotTranslationLinePenStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPlotTranslationLinePenStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 62</value>
+  </data>
+  <data name="lblPlotTranslationLinePenStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="lblPlotTranslationLinePenStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>122</value>
+  </data>
+  <data name="lblPlotTranslationLinePenStyle.Text" xml:space="preserve">
+    <value>Style:</value>
+  </data>
+  <data name="&gt;&gt;lblPlotTranslationLinePenStyle.Name" xml:space="preserve">
+    <value>lblPlotTranslationLinePenStyle</value>
+  </data>
+  <data name="&gt;&gt;lblPlotTranslationLinePenStyle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPlotTranslationLinePenStyle.Parent" xml:space="preserve">
+    <value>frmPlotTranslationLine</value>
+  </data>
+  <data name="&gt;&gt;lblPlotTranslationLinePenStyle.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="frmPlotTranslationLine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>209, 161</value>
+  </data>
+  <data name="frmPlotTranslationLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 130</value>
+  </data>
+  <data name="frmPlotTranslationLine.TabIndex" type="System.Int32, mscorlib">
+    <value>135</value>
+  </data>
+  <data name="frmPlotTranslationLine.Text" xml:space="preserve">
+    <value>Translation lines:</value>
+  </data>
+  <data name="&gt;&gt;frmPlotTranslationLine.Name" xml:space="preserve">
+    <value>frmPlotTranslationLine</value>
+  </data>
+  <data name="&gt;&gt;frmPlotTranslationLine.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;frmPlotTranslationLine.Parent" xml:space="preserve">
+    <value>tabInfoPlot</value>
+  </data>
+  <data name="&gt;&gt;frmPlotTranslationLine.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="txtPlotTextFont.Location" type="System.Drawing.Point, System.Drawing">
     <value>268, 59</value>
@@ -2730,278 +3156,359 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;frmPlotPoint.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="cmdPlotTranslationLinePenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="cmdPlotPenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="cmdPlotTranslationLinePenColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 86</value>
+  <data name="cmdPlotPenColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 113</value>
   </data>
-  <data name="cmdPlotTranslationLinePenColor.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="cmdPlotPenColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 21</value>
   </data>
-  <data name="cmdPlotTranslationLinePenColor.TabIndex" type="System.Int32, mscorlib">
+  <data name="cmdPlotPenColor.TabIndex" type="System.Int32, mscorlib">
     <value>124</value>
   </data>
-  <data name="cmdPlotTranslationLinePenColor.Text" xml:space="preserve">
+  <data name="cmdPlotPenColor.Text" xml:space="preserve">
     <value>...</value>
   </data>
-  <data name="&gt;&gt;cmdPlotTranslationLinePenColor.Name" xml:space="preserve">
-    <value>cmdPlotTranslationLinePenColor</value>
+  <data name="&gt;&gt;cmdPlotPenColor.Name" xml:space="preserve">
+    <value>cmdPlotPenColor</value>
   </data>
-  <data name="&gt;&gt;cmdPlotTranslationLinePenColor.Type" xml:space="preserve">
+  <data name="&gt;&gt;cmdPlotPenColor.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;cmdPlotTranslationLinePenColor.Parent" xml:space="preserve">
-    <value>frmPlotTranslationLine</value>
+  <data name="&gt;&gt;cmdPlotPenColor.Parent" xml:space="preserve">
+    <value>frmPlotPen</value>
   </data>
-  <data name="&gt;&gt;cmdPlotTranslationLinePenColor.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cmdPlotPenColor.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="lblPlotTranslationLinePenColor.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblPlotPenColor.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
-  <data name="lblPlotTranslationLinePenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblPlotPenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="lblPlotTranslationLinePenColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 90</value>
+  <data name="lblPlotPenColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 117</value>
   </data>
-  <data name="lblPlotTranslationLinePenColor.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblPlotPenColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 13</value>
   </data>
-  <data name="lblPlotTranslationLinePenColor.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblPlotPenColor.TabIndex" type="System.Int32, mscorlib">
     <value>125</value>
   </data>
-  <data name="lblPlotTranslationLinePenColor.Text" xml:space="preserve">
+  <data name="lblPlotPenColor.Text" xml:space="preserve">
     <value>Color:</value>
   </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenColor.Name" xml:space="preserve">
-    <value>lblPlotTranslationLinePenColor</value>
+  <data name="&gt;&gt;lblPlotPenColor.Name" xml:space="preserve">
+    <value>lblPlotPenColor</value>
   </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenColor.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblPlotPenColor.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenColor.Parent" xml:space="preserve">
-    <value>frmPlotTranslationLine</value>
+  <data name="&gt;&gt;lblPlotPenColor.Parent" xml:space="preserve">
+    <value>frmPlotPen</value>
   </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenColor.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblPlotPenColor.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="picPlotTranslationLinePenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="picPlotPenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="picPlotTranslationLinePenColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 86</value>
+  <data name="picPlotPenColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 113</value>
   </data>
-  <data name="picPlotTranslationLinePenColor.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="picPlotPenColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 21</value>
   </data>
-  <data name="picPlotTranslationLinePenColor.TabIndex" type="System.Int32, mscorlib">
+  <data name="picPlotPenColor.TabIndex" type="System.Int32, mscorlib">
     <value>126</value>
   </data>
-  <data name="&gt;&gt;picPlotTranslationLinePenColor.Name" xml:space="preserve">
-    <value>picPlotTranslationLinePenColor</value>
+  <data name="&gt;&gt;picPlotPenColor.Name" xml:space="preserve">
+    <value>picPlotPenColor</value>
   </data>
-  <data name="&gt;&gt;picPlotTranslationLinePenColor.Type" xml:space="preserve">
+  <data name="&gt;&gt;picPlotPenColor.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;picPlotTranslationLinePenColor.Parent" xml:space="preserve">
-    <value>frmPlotTranslationLine</value>
+  <data name="&gt;&gt;picPlotPenColor.Parent" xml:space="preserve">
+    <value>frmPlotPen</value>
   </data>
-  <data name="&gt;&gt;picPlotTranslationLinePenColor.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;picPlotPenColor.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="txtPlotTranslationLinePenWidth.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txtPlotPenWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 30</value>
   </data>
-  <data name="txtPlotTranslationLinePenWidth.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txtPlotPenWidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
   </data>
-  <data name="txtPlotTranslationLinePenWidth.TabIndex" type="System.Int32, mscorlib">
+  <data name="txtPlotPenWidth.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;txtPlotTranslationLinePenWidth.Name" xml:space="preserve">
-    <value>txtPlotTranslationLinePenWidth</value>
+  <data name="&gt;&gt;txtPlotPenWidth.Name" xml:space="preserve">
+    <value>txtPlotPenWidth</value>
   </data>
-  <data name="&gt;&gt;txtPlotTranslationLinePenWidth.Type" xml:space="preserve">
+  <data name="&gt;&gt;txtPlotPenWidth.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txtPlotTranslationLinePenWidth.Parent" xml:space="preserve">
-    <value>frmPlotTranslationLine</value>
+  <data name="&gt;&gt;txtPlotPenWidth.Parent" xml:space="preserve">
+    <value>frmPlotPen</value>
   </data>
-  <data name="&gt;&gt;txtPlotTranslationLinePenWidth.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txtPlotPenWidth.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="lblPlotTranslationLinePenSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblPlotPenWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="lblPlotTranslationLinePenSize.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblPlotPenWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 34</value>
   </data>
-  <data name="lblPlotTranslationLinePenSize.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblPlotPenWidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 13</value>
   </data>
-  <data name="lblPlotTranslationLinePenSize.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblPlotPenWidth.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="lblPlotTranslationLinePenSize.Text" xml:space="preserve">
+  <data name="lblPlotPenWidth.Text" xml:space="preserve">
     <value>Size:</value>
   </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenSize.Name" xml:space="preserve">
-    <value>lblPlotTranslationLinePenSize</value>
+  <data name="&gt;&gt;lblPlotPenWidth.Name" xml:space="preserve">
+    <value>lblPlotPenWidth</value>
   </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenSize.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblPlotPenWidth.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenSize.Parent" xml:space="preserve">
-    <value>frmPlotTranslationLine</value>
+  <data name="&gt;&gt;lblPlotPenWidth.Parent" xml:space="preserve">
+    <value>frmPlotPen</value>
   </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenSize.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblPlotPenWidth.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="cboPlotTranslationLinePenStyle.Items" xml:space="preserve">
-    <value>Continuous</value>
-  </data>
-  <data name="cboPlotTranslationLinePenStyle.Items1" xml:space="preserve">
-    <value>Dash</value>
-  </data>
-  <data name="cboPlotTranslationLinePenStyle.Items2" xml:space="preserve">
-    <value>Dots</value>
-  </data>
-  <data name="cboPlotTranslationLinePenStyle.Items3" xml:space="preserve">
-    <value>Line with dot</value>
-  </data>
-  <data name="cboPlotTranslationLinePenStyle.Items4" xml:space="preserve">
-    <value>Line with 2 dots</value>
-  </data>
-  <data name="cboPlotTranslationLinePenStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 59</value>
-  </data>
-  <data name="cboPlotTranslationLinePenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
-  </data>
-  <data name="cboPlotTranslationLinePenStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>121</value>
-  </data>
-  <data name="&gt;&gt;cboPlotTranslationLinePenStyle.Name" xml:space="preserve">
-    <value>cboPlotTranslationLinePenStyle</value>
-  </data>
-  <data name="&gt;&gt;cboPlotTranslationLinePenStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboPlotTranslationLinePenStyle.Parent" xml:space="preserve">
-    <value>frmPlotTranslationLine</value>
-  </data>
-  <data name="&gt;&gt;cboPlotTranslationLinePenStyle.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="lblPlotTranslationLinePenStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblPlotSelectedPenWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="lblPlotTranslationLinePenStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 62</value>
+  <data name="lblPlotSelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 61</value>
   </data>
-  <data name="lblPlotTranslationLinePenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 13</value>
+  <data name="lblPlotSelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 13</value>
   </data>
-  <data name="lblPlotTranslationLinePenStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>122</value>
-  </data>
-  <data name="lblPlotTranslationLinePenStyle.Text" xml:space="preserve">
-    <value>Style:</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenStyle.Name" xml:space="preserve">
-    <value>lblPlotTranslationLinePenStyle</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenStyle.Parent" xml:space="preserve">
-    <value>frmPlotTranslationLine</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenStyle.ZOrder" xml:space="preserve">
+  <data name="lblPlotSelectedPenWidth.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="frmPlotTranslationLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 161</value>
+  <data name="lblPlotSelectedPenWidth.Text" xml:space="preserve">
+    <value>Size (sel.):</value>
   </data>
-  <data name="frmPlotTranslationLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 130</value>
+  <data name="&gt;&gt;lblPlotSelectedPenWidth.Name" xml:space="preserve">
+    <value>lblPlotSelectedPenWidth</value>
   </data>
-  <data name="frmPlotTranslationLine.TabIndex" type="System.Int32, mscorlib">
-    <value>135</value>
+  <data name="&gt;&gt;lblPlotSelectedPenWidth.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="frmPlotTranslationLine.Text" xml:space="preserve">
-    <value>Translation lines:</value>
+  <data name="&gt;&gt;lblPlotSelectedPenWidth.Parent" xml:space="preserve">
+    <value>frmPlotPen</value>
   </data>
-  <data name="&gt;&gt;frmPlotTranslationLine.Name" xml:space="preserve">
-    <value>frmPlotTranslationLine</value>
-  </data>
-  <data name="&gt;&gt;frmPlotTranslationLine.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;frmPlotTranslationLine.Parent" xml:space="preserve">
-    <value>tabInfoPlot</value>
-  </data>
-  <data name="&gt;&gt;frmPlotTranslationLine.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblPlotSelectedPenWidth.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="tabInfoPlot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>627, 401</value>
+  <data name="cboPlotPenStyle.Items" xml:space="preserve">
+    <value>Continuous</value>
   </data>
-  <data name="tabInfoPlot.Text" xml:space="preserve">
-    <value>Centreline</value>
+  <data name="cboPlotPenStyle.Items1" xml:space="preserve">
+    <value>Dash</value>
   </data>
-  <data name="&gt;&gt;tabInfoPlot.Name" xml:space="preserve">
-    <value>tabInfoPlot</value>
+  <data name="cboPlotPenStyle.Items2" xml:space="preserve">
+    <value>Points</value>
   </data>
-  <data name="&gt;&gt;tabInfoPlot.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="cboPlotPenStyle.Items3" xml:space="preserve">
+    <value>Line with dot</value>
   </data>
-  <data name="&gt;&gt;tabInfoPlot.Parent" xml:space="preserve">
-    <value>tabMain</value>
+  <data name="cboPlotPenStyle.Items4" xml:space="preserve">
+    <value>Line with 2 dots</value>
   </data>
-  <data name="&gt;&gt;tabInfoPlot.ZOrder" xml:space="preserve">
+  <data name="cboPlotPenStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>94, 86</value>
+  </data>
+  <data name="cboPlotPenStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 21</value>
+  </data>
+  <data name="cboPlotPenStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>121</value>
+  </data>
+  <data name="&gt;&gt;cboPlotPenStyle.Name" xml:space="preserve">
+    <value>cboPlotPenStyle</value>
+  </data>
+  <data name="&gt;&gt;cboPlotPenStyle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPlotPenStyle.Parent" xml:space="preserve">
+    <value>frmPlotPen</value>
+  </data>
+  <data name="&gt;&gt;cboPlotPenStyle.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="txtPlotSelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 59</value>
+  </data>
+  <data name="txtPlotSelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtPlotSelectedPenWidth.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;tabMain.Name" xml:space="preserve">
-    <value>tabMain</value>
+  <data name="&gt;&gt;txtPlotSelectedPenWidth.Name" xml:space="preserve">
+    <value>txtPlotSelectedPenWidth</value>
   </data>
-  <data name="&gt;&gt;tabMain.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="&gt;&gt;txtPlotSelectedPenWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabMain.Parent" xml:space="preserve">
-    <value>PanelControl2</value>
+  <data name="&gt;&gt;txtPlotSelectedPenWidth.Parent" xml:space="preserve">
+    <value>frmPlotPen</value>
   </data>
-  <data name="&gt;&gt;tabMain.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txtPlotSelectedPenWidth.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="lblPlotPenStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPlotPenStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 89</value>
+  </data>
+  <data name="lblPlotPenStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="lblPlotPenStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>122</value>
+  </data>
+  <data name="lblPlotPenStyle.Text" xml:space="preserve">
+    <value>Style:</value>
+  </data>
+  <data name="&gt;&gt;lblPlotPenStyle.Name" xml:space="preserve">
+    <value>lblPlotPenStyle</value>
+  </data>
+  <data name="&gt;&gt;lblPlotPenStyle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPlotPenStyle.Parent" xml:space="preserve">
+    <value>frmPlotPen</value>
+  </data>
+  <data name="&gt;&gt;lblPlotPenStyle.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="frmPlotPen.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 161</value>
+  </data>
+  <data name="frmPlotPen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 194</value>
+  </data>
+  <data name="frmPlotPen.TabIndex" type="System.Int32, mscorlib">
+    <value>133</value>
+  </data>
+  <data name="frmPlotPen.Text" xml:space="preserve">
+    <value>Shots:</value>
+  </data>
+  <data name="&gt;&gt;frmPlotPen.Name" xml:space="preserve">
+    <value>frmPlotPen</value>
+  </data>
+  <data name="&gt;&gt;frmPlotPen.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;frmPlotPen.Parent" xml:space="preserve">
+    <value>tabInfoPlot</value>
+  </data>
+  <data name="&gt;&gt;frmPlotPen.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="iml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>310, 17</value>
+  </metadata>
+  <data name="lblScaleWarning.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <assembly alias="DevExpress.XtraEditors.v22.2" name="DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="lblScaleWarning.AutoSizeMode" type="DevExpress.XtraEditors.LabelAutoSizeMode, DevExpress.XtraEditors.v22.2">
+    <value>None</value>
+  </data>
+  <data name="lblScaleWarning.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 43</value>
+  </data>
+  <data name="lblScaleWarning.Size" type="System.Drawing.Size, System.Drawing">
+    <value>599, 51</value>
+  </data>
+  <data name="lblScaleWarning.TabIndex" type="System.Int32, mscorlib">
+    <value>109</value>
+  </data>
+  <data name="lblScaleWarning.Text" xml:space="preserve">
+    <value>&lt;image=#warning;size=16,16&gt; &lt;b&gt;Attention:&lt;/b&gt; the scale factor define the factor above this settings will applied (until the next factor).
+For scale under the minimum defined factor will be used the default design and centerline properties.
+</value>
+  </data>
+  <data name="&gt;&gt;lblScaleWarning.Name" xml:space="preserve">
+    <value>lblScaleWarning</value>
+  </data>
+  <data name="&gt;&gt;lblScaleWarning.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblScaleWarning.Parent" xml:space="preserve">
+    <value>tabInfoMain</value>
+  </data>
+  <data name="&gt;&gt;lblScaleWarning.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="PanelControl2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <metadata name="iml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>310, 17</value>
+  </metadata>
+  <data name="txtScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 11</value>
   </data>
-  <data name="PanelControl2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>180, 28</value>
+  <data name="txtScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 21</value>
   </data>
-  <data name="PanelControl2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>8, 8, 8, 8</value>
+  <data name="txtScale.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="PanelControl2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>645, 446</value>
+  <data name="txtScale.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
   </data>
-  <data name="PanelControl2.TabIndex" type="System.Int32, mscorlib">
-    <value>149</value>
+  <data name="txtScale.ThousandsSeparator" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;PanelControl2.Name" xml:space="preserve">
-    <value>PanelControl2</value>
+  <data name="&gt;&gt;txtScale.Name" xml:space="preserve">
+    <value>txtScale</value>
   </data>
-  <data name="&gt;&gt;PanelControl2.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="&gt;&gt;txtScale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;PanelControl2.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;txtScale.Parent" xml:space="preserve">
+    <value>tabInfoMain</value>
   </data>
-  <data name="&gt;&gt;PanelControl2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txtScale.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 13</value>
+  </data>
+  <data name="lblScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
+  </data>
+  <data name="lblScale.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="lblScale.Text" xml:space="preserve">
+    <value>Scale:</value>
+  </data>
+  <data name="&gt;&gt;lblScale.Name" xml:space="preserve">
+    <value>lblScale</value>
+  </data>
+  <data name="&gt;&gt;lblScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblScale.Parent" xml:space="preserve">
+    <value>tabInfoMain</value>
+  </data>
+  <data name="&gt;&gt;lblScale.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="colScalesScale.Caption" xml:space="preserve">
     <value>Scale</value>
@@ -3015,436 +3522,76 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="colScalesScale.VisibleIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="tvScales.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
+  <data name="tvCategoriesVisibility.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="tvScales.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 28</value>
+  <data name="tvCategoriesVisibility.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="tvScales.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 446</value>
+  <data name="tvCategoriesVisibility.Size" type="System.Drawing.Size, System.Drawing">
+    <value>627, 401</value>
   </data>
-  <data name="tvScales.TabIndex" type="System.Int32, mscorlib">
-    <value>139</value>
-  </data>
-  <data name="&gt;&gt;tvScales.Name" xml:space="preserve">
-    <value>tvScales</value>
-  </data>
-  <data name="&gt;&gt;tvScales.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;tvScales.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tvScales.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="PanelControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="PanelControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 474</value>
-  </data>
-  <data name="PanelControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>825, 40</value>
-  </data>
-  <data name="PanelControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>138</value>
-  </data>
-  <data name="&gt;&gt;PanelControl1.Name" xml:space="preserve">
-    <value>PanelControl1</value>
-  </data>
-  <data name="&gt;&gt;PanelControl1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;PanelControl1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PanelControl1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="frmScaleRules.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAKZYAACoXwgAqmELAL1nGAC7aR8As2UnALRmJwC3aycAuGslALpu
-        LgCzdSwAu3EsALxzLwC9dDEAwWcaAMVoHQDEaSQAymghAMxpIgDAcSoAw30yAMR+MgDBeDsAxH0/AKl9
-        TADEfUAATLB6AMiDKwDLhisAyIUtAMyHLADEgTYAzIo2AMyMNwDGgzkAyIg5AM2MOADbhTQA1Y8/ANyL
-        OgDfjDoA4Iw7ALWGTgC9hEgAuYZNAL2KUAC9jFMAvY1UALmRZQDFgEIAyYRFAMaJRgDOj0AAz4tHAMqI
-        SADNiUoAz41NANCNTgDPkEEA0JFCANOUTQDVmEoA1ZhNANibSwDAi1EA0ZFQANOXUwDWm1YA3Z1QANiY
-        VQDYm1gA2ZxYANugWQDepFgA3KBdAN2mXgDkolEA4KFVAOSmVgDhploA5KhZAOKpXQDkql0AyJ1tANul
-        YQDfpWAA3qhhAM+icgDQo3QA4KljAOOsYADlrWEA4apkAOizZgDns2oA57VsAOixawDptW0A9b9vAOm3
-        cQDruHIA7blyAO+8cADquHUA7bp0AO+9dADoun4A6Lx+APC9cwDwvnQA+sJsAPXAcADxwHUA9sV5APnK
-        fgD7zH4A/M1/AHJnvwBxaL8AAAzeAAAT3gAADeEAFyXmABkl5AByasMAc2/JAHRwygBDav4AVX3/AAC3
-        iAAAuIoAALmMAAzGlAAKyp8AFceaABbImwAUyJwAI9moACvarQAt2q8AIN61ACrbsQBiyJoAc9mtAH7l
-        vABXgP8ANuvAADzrwwA77MYAPuzFADLwywA9/+UAXc/IAF3dyQBXx9MATezLAEL/2gBG/94ASP/dALK2
-        pADeuYEA6byAAPnLgAD7zYEA/M6CAPLEigD3xIsA+8eKAPnGjQD+xI4A/cqLAP7RhADnwZUA6cCRAOjB
-        lADuyZcA78ubAO3LnQDuzZ8A8seQAP7GkQDyypcA+smQAPnKlQDwy5kA8cyZAPvNmQD/0JcA/9qVAP3S
-        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
-</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Scale settings:</value>
-  </data>
-  <data name="&gt;&gt;BarManager.Name" xml:space="preserve">
-    <value>BarManager</value>
-  </data>
-  <data name="&gt;&gt;BarManager.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;barMain.Name" xml:space="preserve">
-    <value>barMain</value>
-  </data>
-  <data name="&gt;&gt;barMain.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Bar, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnAddScale.Name" xml:space="preserve">
-    <value>btnAddScale</value>
-  </data>
-  <data name="&gt;&gt;btnAddScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarEditItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtAddScale.Name" xml:space="preserve">
-    <value>txtAddScale</value>
-  </data>
-  <data name="&gt;&gt;txtAddScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.Repository.RepositoryItemTextEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnAdd.Name" xml:space="preserve">
-    <value>btnAdd</value>
-  </data>
-  <data name="&gt;&gt;btnAdd.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnAddAsCopy.Name" xml:space="preserve">
-    <value>btnAddAsCopy</value>
-  </data>
-  <data name="&gt;&gt;btnAddAsCopy.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnRemove.Name" xml:space="preserve">
-    <value>btnRemove</value>
-  </data>
-  <data name="&gt;&gt;btnRemove.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnRemoveAll.Name" xml:space="preserve">
-    <value>btnRemoveAll</value>
-  </data>
-  <data name="&gt;&gt;btnRemoveAll.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnClear.Name" xml:space="preserve">
-    <value>btnClear</value>
-  </data>
-  <data name="&gt;&gt;btnClear.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnExport.Name" xml:space="preserve">
-    <value>btnExport</value>
-  </data>
-  <data name="&gt;&gt;btnExport.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnImport.Name" xml:space="preserve">
-    <value>btnImport</value>
-  </data>
-  <data name="&gt;&gt;btnImport.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;iml.Name" xml:space="preserve">
-    <value>iml</value>
-  </data>
-  <data name="&gt;&gt;iml.Type" xml:space="preserve">
-    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colScalesScale.Name" xml:space="preserve">
-    <value>colScalesScale</value>
-  </data>
-  <data name="&gt;&gt;colScalesScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colCategoriesVisibilityIndex.Name" xml:space="preserve">
-    <value>colCategoriesVisibilityIndex</value>
-  </data>
-  <data name="&gt;&gt;colCategoriesVisibilityIndex.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colCategoriesVisibilityCategory.Name" xml:space="preserve">
-    <value>colCategoriesVisibilityCategory</value>
-  </data>
-  <data name="&gt;&gt;colCategoriesVisibilityCategory.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colCategoriesVisibilityVisible.Name" xml:space="preserve">
-    <value>colCategoriesVisibilityVisible</value>
-  </data>
-  <data name="&gt;&gt;colCategoriesVisibilityVisible.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkCategoriesVisibilityVisible.Name" xml:space="preserve">
-    <value>chkCategoriesVisibilityVisible</value>
-  </data>
-  <data name="&gt;&gt;chkCategoriesVisibilityVisible.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>frmScaleRules</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <assembly alias="DevExpress.Utils.v22.2" name="DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="txtPlotSplayCrossScale.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.2">
-    <value>Combo</value>
-  </data>
-  <data name="txtPlotSplayCrossScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 20</value>
-  </data>
-  <data name="txtPlotSplayCrossScale.TabIndex" type="System.Int32, mscorlib">
-    <value>133</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSplayCrossScale.Name" xml:space="preserve">
-    <value>txtPlotSplayCrossScale</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSplayCrossScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSplayCrossScale.Parent" xml:space="preserve">
-    <value>GroupBox6</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSplayCrossScale.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lblPlotSplaySelectedPenWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblPlotSplaySelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 61</value>
-  </data>
-  <data name="lblPlotSplaySelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 13</value>
-  </data>
-  <data name="lblPlotSplaySelectedPenWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>130</value>
-  </data>
-  <data name="lblPlotSplaySelectedPenWidth.Text" xml:space="preserve">
-    <value>Size (sel.):</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplaySelectedPenWidth.Name" xml:space="preserve">
-    <value>lblPlotSplaySelectedPenWidth</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplaySelectedPenWidth.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplaySelectedPenWidth.Parent" xml:space="preserve">
-    <value>GroupBox6</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplaySelectedPenWidth.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="txtPlotSplaySelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 59</value>
-  </data>
-  <data name="txtPlotSplaySelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 21</value>
-  </data>
-  <data name="txtPlotSplaySelectedPenWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>129</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSplaySelectedPenWidth.Name" xml:space="preserve">
-    <value>txtPlotSplaySelectedPenWidth</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSplaySelectedPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSplaySelectedPenWidth.Parent" xml:space="preserve">
-    <value>GroupBox6</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSplaySelectedPenWidth.ZOrder" xml:space="preserve">
+  <data name="tvCategoriesVisibility.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="txtPlotSplayPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 30</value>
+  <data name="&gt;&gt;tvCategoriesVisibility.Name" xml:space="preserve">
+    <value>tvCategoriesVisibility</value>
   </data>
-  <data name="txtPlotSplayPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 21</value>
+  <data name="&gt;&gt;tvCategoriesVisibility.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="txtPlotSplayPenWidth.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;tvCategoriesVisibility.Parent" xml:space="preserve">
+    <value>tabInfoCategories</value>
+  </data>
+  <data name="&gt;&gt;tvCategoriesVisibility.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="colCategoriesVisibilityIndex.Caption" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="colCategoriesVisibilityIndex.MaxWidth" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="colCategoriesVisibilityIndex.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colCategoriesVisibilityIndex.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="colCategoriesVisibilityIndex.Width" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="colCategoriesVisibilityCategory.Caption" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="colCategoriesVisibilityCategory.MinWidth" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="colCategoriesVisibilityCategory.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colCategoriesVisibilityCategory.VisibleIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="colCategoriesVisibilityCategory.Width" type="System.Int32, mscorlib">
+    <value>144</value>
+  </data>
+  <data name="colCategoriesVisibilityVisible.Caption" xml:space="preserve">
+    <value>Visible</value>
+  </data>
+  <data name="chkCategoriesVisibilityVisible.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="colCategoriesVisibilityVisible.MaxWidth" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="colCategoriesVisibilityVisible.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colCategoriesVisibilityVisible.VisibleIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;txtPlotSplayPenWidth.Name" xml:space="preserve">
-    <value>txtPlotSplayPenWidth</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSplayPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSplayPenWidth.Parent" xml:space="preserve">
-    <value>GroupBox6</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSplayPenWidth.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="lblPlotSplayPenWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblPlotSplayPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 34</value>
-  </data>
-  <data name="lblPlotSplayPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 13</value>
-  </data>
-  <data name="lblPlotSplayPenWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="lblPlotSplayPenWidth.Text" xml:space="preserve">
-    <value>Size:</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplayPenWidth.Name" xml:space="preserve">
-    <value>lblPlotSplayPenWidth</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplayPenWidth.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplayPenWidth.Parent" xml:space="preserve">
-    <value>GroupBox6</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplayPenWidth.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="cboPlotSplayPenStyle.Items" xml:space="preserve">
-    <value>Continuous</value>
-  </data>
-  <data name="cboPlotSplayPenStyle.Items1" xml:space="preserve">
-    <value>Dash</value>
-  </data>
-  <data name="cboPlotSplayPenStyle.Items2" xml:space="preserve">
-    <value>Dots</value>
-  </data>
-  <data name="cboPlotSplayPenStyle.Items3" xml:space="preserve">
-    <value>Line with dot</value>
-  </data>
-  <data name="cboPlotSplayPenStyle.Items4" xml:space="preserve">
-    <value>Line with 2 dots</value>
-  </data>
-  <data name="cboPlotSplayPenStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 86</value>
-  </data>
-  <data name="cboPlotSplayPenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
-  </data>
-  <data name="cboPlotSplayPenStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>121</value>
-  </data>
-  <data name="&gt;&gt;cboPlotSplayPenStyle.Name" xml:space="preserve">
-    <value>cboPlotSplayPenStyle</value>
-  </data>
-  <data name="&gt;&gt;cboPlotSplayPenStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboPlotSplayPenStyle.Parent" xml:space="preserve">
-    <value>GroupBox6</value>
-  </data>
-  <data name="&gt;&gt;cboPlotSplayPenStyle.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="lblPlotSplayPenStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblPlotSplayPenStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 89</value>
-  </data>
-  <data name="lblPlotSplayPenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 13</value>
-  </data>
-  <data name="lblPlotSplayPenStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>122</value>
-  </data>
-  <data name="lblPlotSplayPenStyle.Text" xml:space="preserve">
-    <value>Style:</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplayPenStyle.Name" xml:space="preserve">
-    <value>lblPlotSplayPenStyle</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplayPenStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplayPenStyle.Parent" xml:space="preserve">
-    <value>GroupBox6</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplayPenStyle.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="GroupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>407, 271</value>
-  </data>
-  <data name="GroupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 144</value>
-  </data>
-  <data name="GroupBox6.TabIndex" type="System.Int32, mscorlib">
-    <value>137</value>
-  </data>
-  <data name="GroupBox6.Text" xml:space="preserve">
-    <value>Splay:</value>
-  </data>
-  <data name="&gt;&gt;GroupBox6.Name" xml:space="preserve">
-    <value>GroupBox6</value>
-  </data>
-  <data name="&gt;&gt;GroupBox6.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;GroupBox6.Parent" xml:space="preserve">
-    <value>tabInfoPlot</value>
-  </data>
-  <data name="&gt;&gt;GroupBox6.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="colCategoriesVisibilityVisible.Width" type="System.Int32, mscorlib">
+    <value>32</value>
   </data>
 </root>

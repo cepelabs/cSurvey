@@ -1334,6 +1334,10 @@ Namespace cSurvey.Design
             Return oDesignProperties.GetValue(Name, CurrentRule.DesignProperties.GetValue(Name, oSurvey.Properties.DesignProperties.GetValue(Name, DefaultValue)))
         End Function
 
+        Public Function GetPenGeologyLineWidth() As Single
+            Return oDesignProperties.GetValue("BaseGeologyLinesScaleFactor", 10.0)
+        End Function
+
         Public Function GetPenHeavyWidth() As Single
             Return oDesignProperties.GetValue("BaseHeavyLinesScaleFactor", 8.0)
         End Function
@@ -1401,6 +1405,8 @@ Namespace cSurvey.Design
                     Return GetPenMediumWidth()
                 Case cPen.PenTypeEnum.IcePen, cPen.PenTypeEnum.PresumedIcePen
                     Return GetPenMediumWidth()
+                Case cPen.PenTypeEnum.AnticlinePen, cPen.PenTypeEnum.SynclinePen, cPen.PenTypeEnum.GenericFaultPen, cPen.PenTypeEnum.ReverseFaultpen, cPen.PenTypeEnum.GenericPresumedFaultPen, cPen.PenTypeEnum.NormalFaultPen, cPen.PenTypeEnum.StrikeFaultDxPen, cPen.PenTypeEnum.StrikeFaultSxPen, cPen.PenTypeEnum.StrikeFaultUnknownPen, cPen.PenTypeEnum.VerticalFaultPen
+                    Return GetPenGeologyLineWidth()
                 Case cPen.PenTypeEnum.Custom
                     Return cEditPaintObjects.FilettoPenWidth
             End Select

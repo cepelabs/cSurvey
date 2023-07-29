@@ -134,8 +134,8 @@
   <assembly alias="DevExpress.Utils.v22.2" name="DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="ImageCollection1.ImageStream" type="DevExpress.Utils.ImageCollectionStreamer, DevExpress.Utils.v22.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFpEZXZFeHByZXNzLlV0aWxzLnYyMS4yLCBWZXJzaW9uPTIxLjIu
-        Ny4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEMAwAAAFFT
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFpEZXZFeHByZXNzLlV0aWxzLnYyMi4yLCBWZXJzaW9uPTIyLjIu
+        Ni4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEMAwAAAFFT
         eXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRv
         a2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAAChEZXZFeHByZXNzLlV0aWxzLkltYWdlQ29sbGVjdGlvblN0
         cmVhbWVyAgAAAAlJbWFnZVNpemUERGF0YQQHE1N5c3RlbS5EcmF3aW5nLlNpemUDAAAAAgIAAAAF/P//
@@ -185,7 +185,7 @@
         davrXTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6Ue
         VjxSfNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYK
         f5X+tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x
-        7ys/6H7o/ujz8cGn1E+f/gUDmPP8bybcDwAAAAlwSFlzAAALDgAACw4BQL7hQQAAC+JJREFUeF7tXAl0
+        7ys/6H7o/ujz8cGn1E+f/gUDmPP8bybcDwAAAAlwSFlzAAALDQAACw0B7QfALAAAC+JJREFUeF7tXAl0
         jlcaRktnykypPSESexARIrFFNSWoBKkQOyVBKbUldmmlemS1t4mZIa1UBJ2x79IeS+3lIGodpeWojhF7
         E+LO89zem/75fZJfRJn4nnOek+97v/duz3eX997vPylkwoQJEyZMmLBC1SpViqlLE/kBCNpLXZp4UlRz
         dHylqqNjspODQ3VlMvEkcLCz81+3bp3o0b37CvTUospsIi9wsLcv+cHw4RkHDx4UyUuXivZt285Wj0zk
@@ -237,8 +237,8 @@
         npEYT8JT4FDQ5h9PFBig0fyI9gYYCzIce5JjRO7u+EHuFZX9iw0IwQ2EqxKFP895nE8Zt8EOKisTRoBA
         5cAwMA00ElGTwhfcH4jlNyAWf7E3XwlnJGiIcjXxOIBwLqDcoVmQ390f/rZjwjZAPM6zfcD/gBT0LfXI
         xJMAQjqAy8H8PVp7kQExzX9cYMKECRMmTJh4aihU6H9LURIE4DC36AAAAABJRU5ErkJggrQcAACJUE5H
-        DQoaCgAAAA1JSERSAAAAVAAAAEAIBgAAAIQsUEwAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA6/AAAO
-        vwE4BVMkAAAcVklEQVR4Xt1cB3wVVb627qJr17fWJ7rL2nVdSbtJIBB6QoAAAUJCCJEACaF3EgiQkITe
+        DQoaCgAAAA1JSERSAAAAVAAAAEAIBgAAAIQsUEwAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA6+AAAO
+        vgHqQrHAAAAcVklEQVR4Xt1cB3wVVb627qJr17fWJ7rL2nVdSbtJIBB6QoAAAUJCCJEACaF3EgiQkITe
         QSkKShcpKiAC0pQgJUpd6SKCBhBCCZB2zvu+M3PunXu5NwmIuPvm9/syM2fOnDnnO/96Zm5u+yM3KeUd
         QoiK2FfGPhj7WOw7Ac1w3K6wsHBeUVHR+itXrmwoKSn5Auef4lpb4AEgGogHGgK+qF8B+BOO/4L9HeYj
         /n9tGNjtHBzx888///XkyZMv4/g+89odBQUFkWvWrNmzdevW06tWrTofHR19tUmTJoW9e/e+gvpXX3vt
@@ -360,7 +360,7 @@
         rmzO/uriwUP7T4G4g5i0jadPn34PBPa8cuUKf8f+EvAYcC9w6/651a3aMCj93xrvBvjvKR+C9FYEyZWv
         Xr1aDyS0QdjSJz8/fzgwA8ebgO9R5yCwB9iC84UMbYBU1O+Iek0xYQEAbeH/APwvC/xnhuq/LpiPvkXb
         bbf9HyIiFjpKbKDvAAAAAElFTkSuQmCC4RYAAIlQTkcNChoKAAAADUlIRFIAAABUAAAAQAgGAAAAhCxQ
-        TAAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADr8AAA6/ATgFUyQAABaDSURBVHhe7VsJVFNX3redfTrz
+        TAAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADr4AAA6+AepCscAAABaDSURBVHhe7VsJVFNX3redfTrz
         zUy/03ZO54w9X+uMM7S4DKDsEQiQkIQAWSEQCIQkhCysgYRskI0tEAg7FBUUtaK1Vu32TRdrnbZW22rd
         tS51H61O1W/c73f/4YUGREGroz3ld87vQO69773c37v3v72XKZOYxCQmMYlJTGISk7hXeCQ2lhfH46n/
         6j/dfzrRNhqPcDicHwGJz98bBAQE/CQ8LjuJ+Hh/gC/yy0iqNDacIonx8/N7XMwRrx00mVfaJIpBP7/g
@@ -488,10 +488,12 @@ text-align:center;
 &lt;div class="row"&gt;
 	&lt;div class="text cell"&gt;
 		With the sponsorship of:
-		&lt;div class="text"&gt;
-				&lt;a id="src:https://www.fsrer.it"&gt;&lt;img src="fsrer.png" class="logo"&gt;&lt;br&gt;Federazione Speleologica&lt;br&gt;dell'Emilia-Romagna&lt;/a&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="text cell"&gt;&lt;a id="src:https://www.fsrer.it"&gt;&lt;img src="fsrer.png" class="logo"&gt;&lt;br&gt;Federazione Speleologica&lt;br&gt;dell'Emilia-Romagna&lt;/a&gt;&lt;/div&gt;
 		&lt;/div&gt;
 	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
 	&lt;div class="text cell"&gt;
 		With the help and support of:
 		&lt;div class="row"&gt;
@@ -505,7 +507,7 @@ text-align:center;
     <value>0, 175</value>
   </data>
   <data name="htmlMainInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>531, 177</value>
+    <value>531, 293</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="htmlMainInfo.TabIndex" type="System.Int32, mscorlib">
@@ -551,7 +553,7 @@ text-align:center;
     <value>Main</value>
   </data>
   <data name="TabNavigationPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>531, 352</value>
+    <value>531, 468</value>
   </data>
   <data name="&gt;&gt;TabNavigationPage1.Name" xml:space="preserve">
     <value>TabNavigationPage1</value>
@@ -695,7 +697,7 @@ See the GNU General Public License for more details.&lt;br&gt;
     <value>9, 9</value>
   </data>
   <data name="TabPane1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>531, 379</value>
+    <value>531, 495</value>
   </data>
   <data name="TabPane1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -756,7 +758,7 @@ See the GNU General Public License for more details.&lt;br&gt;
     <value>Bottom</value>
   </data>
   <data name="PanelControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 388</value>
+    <value>9, 504</value>
   </data>
   <data name="PanelControl1.Size" type="System.Drawing.Size, System.Drawing">
     <value>531, 51</value>
@@ -783,10 +785,7 @@ See the GNU General Public License for more details.&lt;br&gt;
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>549, 448</value>
-  </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>549, 564</value>
   </data>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>9, 9, 9, 9</value>

@@ -1952,14 +1952,16 @@ Namespace cSurvey.Calculate
                             oTo = oTPs(oSegment.Data.SourceData.To).Connections(oSegment.Data.SourceData.From).GetPoint
                         End If
 
-                        Dim oFromPoint As PointD
-                        Dim oToPoint As PointD
+                        Dim sDistance As Decimal = ((oFrom.X - oTo.X) ^ 2D + (oFrom.Y - oTo.Y) ^ 2D + (oFrom.Z - oTo.Z) ^ 2D) ^ 0.5D
 
-                        oFromPoint = oFrom.To2DPoint(cTrigPointPoint.ProjectionEnum.Perpendicular)
-                        oToPoint = oTo.To2DPoint(cTrigPointPoint.ProjectionEnum.Perpendicular)
+                        Dim oFromPoint As PointD = oFrom.To2DPoint(cTrigPointPoint.ProjectionEnum.Perpendicular)
+                        Dim oToPoint As PointD = oTo.To2DPoint(cTrigPointPoint.ProjectionEnum.Perpendicular)
 
-                        'distance
-                        Dim sDistance As Decimal = modNumbers.MathRound(modPaint.DistancePointToPoint(oFromPoint, oToPoint), 3)
+                        'oFromPoint = oFrom.To2DPoint(cTrigPointPoint.ProjectionEnum.Perpendicular)
+                        'oToPoint = oTo.To2DPoint(cTrigPointPoint.ProjectionEnum.Perpendicular)
+
+                        ''distance
+                        'Dim sDistance As Decimal = modNumbers.MathRound(modPaint.DistancePointToPoint(oFromPoint, oToPoint), 3)
 
                         'inclination
                         Dim sInclination As Decimal = 0

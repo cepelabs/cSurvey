@@ -170,7 +170,7 @@ Namespace cSurvey
                 Return sFontSize
             End Get
             Set(ByVal value As Single)
-                If sFontSize <> value AndAlso sFontSize > 0 Then
+                If sFontSize <> value AndAlso value > 0F Then
                     sFontSize = value
                     Call pInvalidate()
                 End If

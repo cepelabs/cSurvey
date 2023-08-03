@@ -172,7 +172,7 @@ Namespace cSurvey.Design
             sName = ""
             iType = FontTypeEnum.Generic
             sFontName = ""
-            sFontSize = 0
+            sFontSize = 8
             oColor = Color.Black
             Call pInvalidate()
         End Sub
@@ -184,7 +184,7 @@ Namespace cSurvey.Design
                 sName = modXML.GetAttributeValue(item, "name")
                 oColor = modXML.GetAttributeColor(item, "color", Color.Black)
                 sFontName = modXML.GetAttributeValue(item, "fontname")
-                sFontSize = modNumbers.StringToDecimal(modXML.GetAttributeValue(item, "fontsize"))
+                sFontSize = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "fontsize", "8"))
                 bFontBold = modXML.GetAttributeValue(item, "fontbold")
                 bFontItalic = modXML.GetAttributeValue(item, "fontitalic")
                 bFontUnderline = modXML.GetAttributeValue(item, "fontunderline")
@@ -242,13 +242,13 @@ Namespace cSurvey.Design
                 Call oItem.SetAttribute("fontname", sFontName)
                 Call oItem.SetAttribute("fontsize", modNumbers.NumberToString(sFontSize))
                 If bFontBold Then
-                    Call oItem.SetAttribute("fontbold", If(bFontBold, 1, 0))
+                    Call oItem.SetAttribute("fontbold", If(bFontBold, "1", "0"))
                 End If
                 If bFontItalic Then
-                    Call oItem.SetAttribute("fontitalic", If(bFontBold, 1, 0))
+                    Call oItem.SetAttribute("fontitalic", If(bFontBold, "1", "0"))
                 End If
                 If bFontUnderline Then
-                    Call oItem.SetAttribute("fontunderline", If(bFontBold, 1, 0))
+                    Call oItem.SetAttribute("fontunderline", If(bFontBold, "1", "0"))
                 End If
             End If
             Call Parent.AppendChild(oItem)
@@ -335,7 +335,7 @@ Namespace cSurvey.Design
                 Return sFontSize
             End Get
             Set(ByVal value As Single)
-                If sFontSize <> value Then
+                If sFontSize <> value AndAlso value > 0F Then
                     iType = FontTypeEnum.Custom
                     sFontSize = value
                     Call pInvalidate()
@@ -351,8 +351,8 @@ Namespace cSurvey.Design
                 If sTempFontName = "" Then
                     sTempFontName = oDesignTextFont.FontName
                 End If
-                If sTempFontSize <= 0 Then
-                    sTempFontSize = 8
+                If sTempFontSize <= 0F Then
+                    sTempFontSize = 8.0F
                 End If
             End If
             Dim iFontStyle As FontStyle = FontStyle
@@ -419,6 +419,9 @@ Namespace cSurvey.Design
                 End If
                 If sTempFontSize <= 0 Then
                     sTempFontSize = PaintOptions.GetFontDefaultSize(iType)
+                End If
+                If sTempFontSize <= 0 Then
+                    sTempFontSize = 8
                 End If
             End If
 

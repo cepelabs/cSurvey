@@ -49,9 +49,9 @@ Partial Class frmFontDialog
         '
         'cboFontChar
         '
-        resources.ApplyResources(Me.cboFontChar, "cboFontChar")
         Me.cboFontChar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboFontChar.FormattingEnabled = True
+        resources.ApplyResources(Me.cboFontChar, "cboFontChar")
         Me.cboFontChar.Name = "cboFontChar"
         '
         'chkFontBold
@@ -68,9 +68,9 @@ Partial Class frmFontDialog
         '
         'cboFontSize
         '
-        resources.ApplyResources(Me.cboFontSize, "cboFontSize")
         Me.cboFontSize.FormattingEnabled = True
         Me.cboFontSize.Items.AddRange(New Object() {resources.GetString("cboFontSize.Items"), resources.GetString("cboFontSize.Items1"), resources.GetString("cboFontSize.Items2"), resources.GetString("cboFontSize.Items3"), resources.GetString("cboFontSize.Items4"), resources.GetString("cboFontSize.Items5"), resources.GetString("cboFontSize.Items6"), resources.GetString("cboFontSize.Items7"), resources.GetString("cboFontSize.Items8"), resources.GetString("cboFontSize.Items9"), resources.GetString("cboFontSize.Items10"), resources.GetString("cboFontSize.Items11"), resources.GetString("cboFontSize.Items12"), resources.GetString("cboFontSize.Items13"), resources.GetString("cboFontSize.Items14"), resources.GetString("cboFontSize.Items15"), resources.GetString("cboFontSize.Items16")})
+        resources.ApplyResources(Me.cboFontSize, "cboFontSize")
         Me.cboFontSize.Name = "cboFontSize"
         '
         'chkFontItalic
@@ -82,15 +82,14 @@ Partial Class frmFontDialog
         '
         'pnlPreview
         '
-        resources.ApplyResources(Me.pnlPreview, "pnlPreview")
         Me.pnlPreview.BackColor = System.Drawing.Color.White
         Me.pnlPreview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        resources.ApplyResources(Me.pnlPreview, "pnlPreview")
         Me.pnlPreview.Name = "pnlPreview"
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
-        Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
         Me.cmdOk.UseVisualStyleBackColor = True
         '

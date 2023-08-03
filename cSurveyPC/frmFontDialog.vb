@@ -38,8 +38,19 @@ friend Class frmFontDialog
     End Property
 
     Private Sub cmdOk_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdOk.Click
-        Call Close()
+        If pValidate() Then
+            DialogResult = DialogResult.OK
+            Call Close()
+        End If
     End Sub
+
+    Private Function pValidate() As Boolean
+        If modNumbers.ToDecimal(cboFontSize.Text) <= 0 Then
+            Return False
+        Else
+            Return True
+        End If
+    End Function
 
     Private Sub cmdCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancel.Click
         Call Close()
@@ -56,7 +67,7 @@ friend Class frmFontDialog
                 oFont.FontBold = chkFontBold.Checked
                 oFont.FontItalic = chkFontItalic.Checked
                 oFont.FontUnderline = chkFontUnderline.Checked
-                oFont.FontSize = cboFontSize.Text
+                oFont.FontSize = Convert.ToSingle(cboFontSize.Text)
                 Dim sText As String = "AbCdEfGhIi"
                 Using oGraphics As Graphics = pnlPreview.CreateGraphics
                     Call oGraphics.Clear(Color.White)

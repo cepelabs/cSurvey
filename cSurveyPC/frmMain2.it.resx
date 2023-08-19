@@ -7536,4 +7536,13 @@ o ad una sezione trasversale</value>
   <data name="cboTrigpointsListEntrance.Items" xml:space="preserve">
     <value>Ingresso</value>
   </data>
+  <data name="colMainCaveCrossSectionFrom.Caption" xml:space="preserve">
+    <value>Da</value>
+  </data>
+  <data name="colMainCaveCrossSectionName.Caption" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="colMainCaveCrossSectionTo.Caption" xml:space="preserve">
+    <value>A</value>
+  </data>
 </root>

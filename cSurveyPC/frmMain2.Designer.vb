@@ -218,7 +218,11 @@ Partial Class frmMain2
         Me.btnMainBindDesignType = New DevExpress.XtraBars.BarEditItem()
         Me.cboMainBindDesignType = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
         Me.btnMainBindCrossSections = New DevExpress.XtraBars.BarEditItem()
-        Me.cboMainBindCrossSections = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
+        Me.cboMainBindCrossSections = New DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit()
+        Me.RepositoryItemGridLookUpEdit1View = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colMainCaveCrossSectionName = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colMainCaveCrossSectionFrom = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colMainCaveCrossSectionTo = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.btnObjectSetCaveBranch = New DevExpress.XtraBars.BarButtonItem()
         Me.btnGroupCaveFilters = New DevExpress.XtraBars.BarButtonGroup()
         Me.btnDesignHighlight0 = New DevExpress.XtraBars.BarCheckItem()
@@ -857,6 +861,7 @@ Partial Class frmMain2
         CType(Me.cboMainCaveBranchListLocked, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.cboMainBindDesignType, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.cboMainBindCrossSections, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemGridLookUpEdit1View, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtPenSmootingFactor, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.barStatusProgress, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtCurrentItemX, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1140,7 +1145,7 @@ Partial Class frmMain2
         Me.RibbonControl.QuickToolbarItemLinks.Add(Me.btnSurface)
         Me.RibbonControl.QuickToolbarItemLinks.Add(Me.btnPlotInfoCave, True)
         Me.RibbonControl.QuickToolbarItemLinks.Add(Me.btnPlotCalculate, True)
-        Me.RibbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.cboMainBindCrossSections, Me.cboMainSessionList, Me.cboMainCaveBranchList, Me.cboMainCaveList, Me.cboPensSmooting1, Me.txtPenSmootingFactor, Me.barStatusProgress, Me.cboMainBindDesignType, Me.RepositoryItemPopupContainerEdit1, Me.txtCurrentItemX, Me.txtCurrentItemY, Me.txtCurrentItemH, Me.txtCurrentItemW, Me.txtCurrentItemScaleW, Me.txtCurrentItemScaleH, Me.txtCurrentItemRotateBy, Me.chkCurrentItemRotateCenteredOnOrigin, Me.txtCurrentItemTransparency, Me.txtCurrentItemGenericReducePointFactor, Me.trkZoom, Me.txtAlignToGridSize, Me.RepositoryItemImageComboBox1})
+        Me.RibbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.cboMainSessionList, Me.cboMainCaveBranchList, Me.cboMainCaveList, Me.cboPensSmooting1, Me.txtPenSmootingFactor, Me.barStatusProgress, Me.cboMainBindDesignType, Me.RepositoryItemPopupContainerEdit1, Me.txtCurrentItemX, Me.txtCurrentItemY, Me.txtCurrentItemH, Me.txtCurrentItemW, Me.txtCurrentItemScaleW, Me.txtCurrentItemScaleH, Me.txtCurrentItemRotateBy, Me.chkCurrentItemRotateCenteredOnOrigin, Me.txtCurrentItemTransparency, Me.txtCurrentItemGenericReducePointFactor, Me.trkZoom, Me.txtAlignToGridSize, Me.RepositoryItemImageComboBox1, Me.cboMainBindCrossSections})
         Me.RibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.[False]
         Me.RibbonControl.ShowSearchItem = True
         Me.RibbonControl.StatusBar = Me.RibbonStatusBar1
@@ -2069,8 +2074,36 @@ Partial Class frmMain2
         '
         resources.ApplyResources(Me.cboMainBindCrossSections, "cboMainBindCrossSections")
         Me.cboMainBindCrossSections.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainBindCrossSections.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.cboMainBindCrossSections.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo(resources.GetString("cboMainBindCrossSections.Columns"), resources.GetString("cboMainBindCrossSections.Columns1")), New DevExpress.XtraEditors.Controls.LookUpColumnInfo(resources.GetString("cboMainBindCrossSections.Columns2"), resources.GetString("cboMainBindCrossSections.Columns3")), New DevExpress.XtraEditors.Controls.LookUpColumnInfo(resources.GetString("cboMainBindCrossSections.Columns4"), resources.GetString("cboMainBindCrossSections.Columns5"))})
         Me.cboMainBindCrossSections.Name = "cboMainBindCrossSections"
+        Me.cboMainBindCrossSections.PopupView = Me.RepositoryItemGridLookUpEdit1View
+        '
+        'RepositoryItemGridLookUpEdit1View
+        '
+        Me.RepositoryItemGridLookUpEdit1View.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colMainCaveCrossSectionName, Me.colMainCaveCrossSectionFrom, Me.colMainCaveCrossSectionTo})
+        Me.RepositoryItemGridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+        Me.RepositoryItemGridLookUpEdit1View.Name = "RepositoryItemGridLookUpEdit1View"
+        Me.RepositoryItemGridLookUpEdit1View.OptionsBehavior.Editable = False
+        Me.RepositoryItemGridLookUpEdit1View.OptionsBehavior.ReadOnly = True
+        Me.RepositoryItemGridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.RepositoryItemGridLookUpEdit1View.OptionsView.ShowGroupPanel = False
+        '
+        'colMainCaveCrossSectionName
+        '
+        resources.ApplyResources(Me.colMainCaveCrossSectionName, "colMainCaveCrossSectionName")
+        Me.colMainCaveCrossSectionName.FieldName = "Name"
+        Me.colMainCaveCrossSectionName.Name = "colMainCaveCrossSectionName"
+        '
+        'colMainCaveCrossSectionFrom
+        '
+        resources.ApplyResources(Me.colMainCaveCrossSectionFrom, "colMainCaveCrossSectionFrom")
+        Me.colMainCaveCrossSectionFrom.FieldName = "From"
+        Me.colMainCaveCrossSectionFrom.Name = "colMainCaveCrossSectionFrom"
+        '
+        'colMainCaveCrossSectionTo
+        '
+        resources.ApplyResources(Me.colMainCaveCrossSectionTo, "colMainCaveCrossSectionTo")
+        Me.colMainCaveCrossSectionTo.FieldName = "To"
+        Me.colMainCaveCrossSectionTo.Name = "colMainCaveCrossSectionTo"
         '
         'btnObjectSetCaveBranch
         '
@@ -7333,7 +7366,9 @@ Partial Class frmMain2
         Me.docView.DocumentProperties.AllowClose = False
         Me.docView.Documents.AddRange(New DevExpress.XtraBars.Docking2010.Views.BaseDocument() {Me.Document1, Me.Document2})
         DockingContainer1.Element = Me.DocumentGroup1
+        DockingContainer1.Length.UnitValue = 0.76215277777777779R
         DockingContainer2.Element = Me.DocumentGroup2
+        DockingContainer2.Length.UnitValue = 1.2378472222222223R
         Me.docView.RootContainer.Nodes.AddRange(New DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer() {DockingContainer1, DockingContainer2})
         '
         'mnuSegments
@@ -7512,6 +7547,7 @@ Partial Class frmMain2
         CType(Me.cboMainCaveBranchListLocked, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.cboMainBindDesignType, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.cboMainBindCrossSections, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemGridLookUpEdit1View, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.txtPenSmootingFactor, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.barStatusProgress, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.txtCurrentItemX, System.ComponentModel.ISupportInitialize).EndInit
@@ -7953,7 +7989,6 @@ Partial Class frmMain2
     Friend WithEvents btnMainCaveBranchList As DevExpress.XtraBars.BarEditItem
     Friend WithEvents btnMainBindDesignType As DevExpress.XtraBars.BarEditItem
     Friend WithEvents btnMainBindCrossSections As DevExpress.XtraBars.BarEditItem
-    Friend WithEvents cboMainBindCrossSections As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
     Friend WithEvents grpHomeFilters As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents cboMainSessionList As DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit
     Friend WithEvents cboMainCaveBranchList As DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit
@@ -8466,4 +8501,9 @@ Partial Class frmMain2
     Friend WithEvents DocumentGroup1 As DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup
     Friend WithEvents btnCurrentItemSignReplaceByCategory As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnCurrentItemSignReplaceByClipart As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents cboMainBindCrossSections As DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit
+    Friend WithEvents RepositoryItemGridLookUpEdit1View As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colMainCaveCrossSectionName As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colMainCaveCrossSectionFrom As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colMainCaveCrossSectionTo As DevExpress.XtraGrid.Columns.GridColumn
 End Class

@@ -832,7 +832,7 @@ Namespace cSurvey.Design
             Dim oEditPoint As cPoint = Point
             Dim iType As cPoint.PointTypeEnum = oEditPoint.Type
             Dim oItem As Items.cIItemLine = Point.Item
-            If Not (cPoint.IsFirstOfAll(iType) Or cPoint.IsLastOfAll(iType)) Then
+            If Not (cPoint.IsFirstOfAll(iType) OrElse cPoint.IsLastOfAll(iType)) Then
                 If cPoint.IsFirst(iType) Then
                     Dim oPreviousPoint As cPoint = oEditPoint.GetPrevious
                     If Not IsNothing(oPreviousPoint) Then
@@ -849,11 +849,18 @@ Namespace cSurvey.Design
                         End Select
                         oPreviousPoint = oEditPoint.GetPrevious
                         Dim oOldPen As cPen = oEditPoint.Pen
-                        Dim oNewEditPoint As cPoint = New cPoint(oSurvey, modPaint.GetMediumPoint(oEditPoint.Point, oPreviousPoint.Point))
-                        Call Insert(oEditPoint.GetIndex, oNewEditPoint)
-                        oEditPoint.BeginSequence = False
-                        Call Remove(oEditPoint)
-                        Call Remove(oPreviousPoint)
+                        Dim oNewEditPoint As cPoint
+                        If oEditPoint.Point.Equals(oPreviousPoint.Point) Then
+                            oEditPoint.BeginSequence = False
+                            oNewEditPoint = oEditPoint
+                            Call Remove(oPreviousPoint)
+                        Else
+                            oNewEditPoint = New cPoint(oSurvey, modPaint.GetMediumPoint(oEditPoint.Point, oPreviousPoint.Point))
+                            Call Insert(oEditPoint.GetIndex, oNewEditPoint)
+                            oEditPoint.BeginSequence = False
+                            Call Remove(oEditPoint)
+                            Call Remove(oPreviousPoint)
+                        End If
                         Dim oNewSequence As cSequence = oNewEditPoint.GetSequence
                         oNewSequence.First.Pen = oOldPen
                         Call EndUpdate()
@@ -875,11 +882,18 @@ Namespace cSurvey.Design
                         End Select
                         oNextPoint = oEditPoint.GetNext
                         Dim oOldPen As cPen = oEditPoint.Pen
-                        Dim oNewEditPoint As cPoint = New cPoint(oSurvey, modPaint.GetMediumPoint(oEditPoint.Point, oNextPoint.Point))
-                        Call Insert(oEditPoint.GetIndex, oNewEditPoint)
-                        oNextPoint.BeginSequence = False
-                        Call Remove(oNextPoint)
-                        Call Remove(oEditPoint)
+                        Dim oNewEditPoint As cPoint
+                        If oEditPoint.Point.Equals(oNextPoint.Point) Then
+                            oNextPoint.BeginSequence = False
+                            oNewEditPoint = oNextPoint
+                            Call Remove(oEditPoint)
+                        Else
+                            oNewEditPoint = New cPoint(oSurvey, modPaint.GetMediumPoint(oEditPoint.Point, oNextPoint.Point))
+                            Call Insert(oEditPoint.GetIndex, oNewEditPoint)
+                            oNextPoint.BeginSequence = False
+                            Call Remove(oNextPoint)
+                            Call Remove(oEditPoint)
+                        End If
                         Dim oNewSequence As cSequence = oNewEditPoint.GetSequence
                         oNewSequence.First.Pen = oOldPen
                         Call EndUpdate()

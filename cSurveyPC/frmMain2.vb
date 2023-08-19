@@ -954,7 +954,7 @@ Friend Class frmMain2
     Private Sub pSurveyFillCrossSectionsList(ByVal Cave As String, Branch As String, ByVal BindTypeCombo As BarEditItem, ByVal CrossSectionsCombo As BarEditItem)
         Call oMousePointer.Push(Cursors.WaitCursor)
         Dim oCurrentCrossSection As cDesignCrossSection = CrossSectionsCombo.EditValue
-        Dim oEditCrossSectionsCombo As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit = CrossSectionsCombo.Edit
+        Dim oEditCrossSectionsCombo As DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit = CrossSectionsCombo.Edit
         If Not IsNothing(oCurrentDesign) AndAlso oCurrentDesign.Type <= cIDesign.cDesignTypeEnum.Profile Then
             Dim oList As List(Of cDesignCrossSection) = New List(Of cDesignCrossSection)({oSurvey.CrossSections.GetEmptyCrossSection})
             oList.AddRange(oSurvey.CrossSections.GetAllItems(oCurrentDesign.Type).Where(Function(oCrossSection) Cave = "" OrElse (oCrossSection.Cave = Cave AndAlso (Branch = "" OrElse oCrossSection.Branch = Branch))).ToList)
@@ -3823,7 +3823,8 @@ Friend Class frmMain2
                                         If Not oFirstPoint Is .CurrentItem.Points.First Then
                                             'the snap is in the same object
                                             'oFirstPoint.BeginSequence = False
-                                            Call .CurrentItem.Points.Remove(oFirstPoint)
+                                            oFirstPoint = .CurrentItem.Points.CombineSequences(oFirstPoint)
+                                            'Call .CurrentItem.Points.Remove(oFirstPoint)
                                         End If
                                     Else
                                         If oLastItem.Type = .LastItemPoint.Item.Type Then
@@ -6822,6 +6823,7 @@ Friend Class frmMain2
                         oSegment = frmSB.SelectedItem
                         oItem = oLayer.GetType.GetMethod(Bag.Method).Invoke(oLayer, Bag.GetInvokeParameters("cave", sCave, "branch", sBranch, "segment", oSegment))
                         Call oItem.SetBindDesignType(iBindDesignType, oSurvey.CrossSections.GetBindItem(btnMainBindCrossSections.EditValue), False)
+                        Call pSurveyFillCrossSectionsList(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch, btnMainBindDesignType, btnMainBindCrossSections)
                         Call pGetCurrentDesignTools.EditItem(oItem, True)
                     End If
                 End Using
@@ -15430,6 +15432,12 @@ Friend Class frmMain2
 
     Private Sub ObjectProperty_OnPropertyChanged(Sender As Object, e As PropertyChangeEventArgs)
         Select Case e.Name
+            Case "CrossSectionSegment"
+                Call pSurveyFillCrossSectionsList(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch, btnMainBindDesignType, btnMainBindCrossSections)
+            Case "Name"
+                If TypeOf pGetCurrentDesignTools.CurrentItem Is cItemCrossSection Then
+                    Call pSurveyFillCrossSectionsList(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch, btnMainBindDesignType, btnMainBindCrossSections)
+                End If
             Case "PlotShowSplay"
                 chkViewShowSplay.Checked = oCurrentOptions.DrawSplay
             Case "PlotShowLRUD"
@@ -19424,6 +19432,9 @@ Friend Class frmMain2
         Next
     End Sub
 
+    Private Sub cboMainBindCrossSections_QueryPopUp(sender As Object, e As CancelEventArgs) Handles cboMainBindCrossSections.QueryPopUp
+        cboMainBindCrossSections.PopupView.RefreshData()
+    End Sub
 End Class
 
 

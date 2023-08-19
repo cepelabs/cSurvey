@@ -7,6 +7,7 @@ Imports cSurveyPC.cSurvey.Calculate.Plot
 Imports cSurveyPC.cSurvey.Design.Items
 Imports cSurveyPC.cSurvey.Design.Layers
 Imports cSurveyPC.cSurvey.Calculate.Plot.cData
+Imports System.Windows.Navigation
 
 Namespace cSurvey.Design
     Public Class cDesignCrossSection
@@ -291,18 +292,38 @@ Namespace cSurvey.Design
             End Get
         End Property
 
+        Public ReadOnly Property Name As String
+            Get
+                If oCrossSection Is Nothing Then
+                    Return ""
+                Else
+                    Return oCrossSection.Name
+                End If
+            End Get
+        End Property
+
         Public Property From As String Implements cISegment.From
             Get
-                Return oCrossSection.Segment.[From]
+                If oCrossSection Is Nothing OrElse oCrossSection.Segment Is Nothing Then
+                    Return ""
+                Else
+                    Return oCrossSection.Segment.[From]
+                End If
             End Get
             Set(ByVal value As String)
-                oCrossSection.Segment.[From] = value
+                'If oCrossSection.Segment IsNot Nothing Then
+                '    oCrossSection.Segment.[From] = value
+                'End If
             End Set
         End Property
 
         Public Property Session As String Implements cISegment.Session
             Get
-                Return oCrossSection.Segment.Session
+                If oCrossSection Is Nothing OrElse oCrossSection.Segment Is Nothing Then
+                    Return ""
+                Else
+                    Return oCrossSection.Segment.Session
+                End If
             End Get
             Set(ByVal value As String)
                 'nothing...is readonly
@@ -311,10 +332,16 @@ Namespace cSurvey.Design
 
         Public Property [To] As String Implements cISegment.To
             Get
-                Return oCrossSection.Segment.[To]
+                If oCrossSection Is Nothing OrElse oCrossSection.Segment Is Nothing Then
+                    Return ""
+                Else
+                    Return oCrossSection.Segment.[To]
+                End If
             End Get
             Set(ByVal value As String)
-                oCrossSection.Segment.[To] = value
+                'If Not oCrossSection.Segment.To IsNot Nothing Then
+                '    oCrossSection.Segment.[To] = value
+                'End If
             End Set
         End Property
 

@@ -993,7 +993,7 @@ Namespace cSurvey.Design
             Return False
         End Function
 
-        Public Overridable Sub Combine(ByVal Item As cItem)
+        Public Overridable Sub Combine(ByVal Item As cItem, Optional Append As Boolean = True)
             If Item IsNot Me Then
                 If oLayer.Items.Contains(Item) Then
                     If Item.GetType Is Me.GetType Then
@@ -1019,6 +1019,7 @@ Namespace cSurvey.Design
                             End If
 
                             Dim bFirst As Boolean = True
+                            Dim iNewIndex As Integer = 0
                             For Each oPoint As cPoint In Item.Points
                                 Dim oNewPoint As cPoint = oPoint.Clone
                                 If bFirst Then
@@ -1031,7 +1032,12 @@ Namespace cSurvey.Design
                                 If bSetPen And oNewPoint.Pen Is Nothing Then
                                     oNewPoint.Pen = oItemPen
                                 End If
-                                Call Me.Points.Add(oNewPoint)
+                                If Append Then
+                                    Call Me.Points.Add(oNewPoint)
+                                Else
+                                    Call Me.Points.Insert(iNewIndex, oNewPoint)
+                                    iNewIndex += 1
+                                End If
                             Next
                             Call oLayer.Items.Remove(Item)
                         End If

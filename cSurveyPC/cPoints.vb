@@ -762,6 +762,14 @@ Namespace cSurvey.Design
             Call pBindPoints()
         End Sub
 
+        Public Function LastSequence() As cSequence
+            Return GetSequences().Last
+        End Function
+
+        Public Function FirstSequence() As cSequence
+            Return GetSequences().First
+        End Function
+
         Public Function GetSequence(ByVal Point As cPoint) As cSequence
             Dim oSequences As List(Of cSequence) = GetSequences()
             For Each oSequence As cSequence In oSequences

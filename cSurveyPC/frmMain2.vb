@@ -3822,15 +3822,21 @@ Friend Class frmMain2
                                         Dim oFirstPoint As cPoint = .CurrentItem.Points.GetSequence(.LastItemPoint).First
                                         If Not oFirstPoint Is .CurrentItem.Points.First Then
                                             'the snap is in the same object
-                                            'oFirstPoint.BeginSequence = False
                                             oFirstPoint = .CurrentItem.Points.CombineSequences(oFirstPoint)
-                                            'Call .CurrentItem.Points.Remove(oFirstPoint)
                                         End If
                                     Else
                                         If oLastItem.Type = .LastItemPoint.Item.Type Then
-                                            'same object type...merge
+                                            'same object type...merge and then combine...
+                                            'TODO: undo!!!
+                                            Dim oFirstPoint As cPoint = .CurrentItem.Points.GetSequence(.LastItemPoint).First
+                                            Dim oItem As cItem = .LastItemPoint.Item
+                                            pGetCurrentDesignTools.ResetNewItem()
+                                            pGetCurrentDesignTools.BeginUndoSnapshot("TEST", {oLastItem})
+                                            oItem.Combine(oLastItem, False)
+                                            Call oItem.Points.CombineSequences(oFirstPoint)
+                                            pGetCurrentDesignTools.CommitUndoSnapshot()
+                                        Else
                                             'if different object type...only snap, just done in mousedown, so nothing to do
-                                            .LastItemPoint.Item.Combine(oLastItem)
                                         End If
                                     End If
                                 End If
@@ -15392,6 +15398,8 @@ Friend Class frmMain2
                 Call pSegmentSelect(e.Args(0), True, True)
             Case "segmentsetcavebranchtocurrent"
                 Call pSegmentSetCaveBranchToCurrent()
+            Case "currentcaveandbranchgettocurrent"
+                Call btnObjectSetCaveBranch.PerformClick()
             Case "currentcaveandbranchsettocurrent"
                 Call btnDesignSetCurrentCaveBranch.PerformClick()
             Case "trigpointsetcoordinate"

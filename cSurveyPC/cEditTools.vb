@@ -1378,14 +1378,15 @@ Namespace cSurvey.Helper.Editor
                 Else
                     RaiseEvent OnItemSelect(Me, New cEditDesignToolsEventArgs(Me))
                 End If
-                'If Not oCurrentItem Is Nothing Then
-                '    Call oParent.Undo.Push("Modifica oggetto", cUndo.ActionEnum.Update, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
-                'End If
             Else
                 Dim oNewTools As cEditDesignTools = oParent.GetDesignTools(Item)
                 Call oNewTools.pRaiseOnChange()
                 Call oNewTools.[SelectItem](Item)
             End If
+        End Sub
+
+        Friend Sub ResetNewItem()
+            bIsNewItem = False
         End Sub
 
         Private Sub pRaiseOnChange()
@@ -1792,7 +1793,6 @@ Namespace cSurvey.Helper.Editor
         Public Sub CreateUndoSnapshot(Description As String, BackupDelegate As cUndoItemBackupValueDelegate, RestoreDelegate As cUndoItemRestoreValueDelegate)
             oParent.Undo.CreateSnapshot(Description, If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, cUndo.cAreaEnum.DesignPlan, cUndo.cAreaEnum.DesignProfile), BackupDelegate, RestoreDelegate)
         End Sub
-
 
         Public Sub CreateUndoSnapshot(Description As String)
             oParent.Undo.CreateSnapshot(Description, If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, cUndo.cAreaEnum.DesignPlan, cUndo.cAreaEnum.DesignProfile))

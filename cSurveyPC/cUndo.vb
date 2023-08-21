@@ -1302,6 +1302,10 @@ Namespace cSurvey.Helper.Editor
             End If
         End Sub
 
+        Public Sub RemoveSnapshot()
+            Call oItems.Pop()
+        End Sub
+
         ''' <summary>
         ''' Delete the current undo snapshot without saving it
         ''' </summary>

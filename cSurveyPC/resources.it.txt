@@ -1092,3 +1092,4 @@ pens.verticalfaultpen=Faglia verticale
 pens.strikefaultdxpen=Faglia trascorrente destra
 pens.strikefaultsxpen=Faglia trascorrente sinistra
 pens.strikefaultunknownpen=Faglia trascorrente con direzione ignota
+main.undo53=Combine items

@@ -1090,3 +1090,4 @@ pens.verticalfaultpen=Vertical fault
 pens.strikefaultdxpen=Right strike fault
 pens.strikefaultsxpen=Left strike fault
 pens.strikefaultunknownpen=Unknown strike fault
+main.undo53=Combine items

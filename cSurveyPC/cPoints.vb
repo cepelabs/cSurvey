@@ -73,7 +73,7 @@ Namespace cSurvey.Design
             bStartSequence = True
         End Sub
 
-#Region "Add e Insert pubbliche"
+#Region "public add and insert"
 
         Public Function AddFromPaintPoint(ByVal PaintPoint As PointF) As cPoint
             Dim oPoint As cPoint = New cPoint(oSurvey, PaintPoint)
@@ -836,7 +836,12 @@ Namespace cSurvey.Design
             Call pBindPoints()
         End Sub
 
-        Public Function CombineSequences(Point As cPoint) As cPoint
+        Public Enum cCombineSequenceParametersEnum
+            None = 0
+            PreservePoints = 1
+        End Enum
+
+        Public Function CombineSequences(Point As cPoint, Optional Parameters As cCombineSequenceParametersEnum = cCombineSequenceParametersEnum.None) As cPoint
             Dim oEditPoint As cPoint = Point
             Dim iType As cPoint.PointTypeEnum = oEditPoint.Type
             Dim oItem As Items.cIItemLine = Point.Item
@@ -866,8 +871,10 @@ Namespace cSurvey.Design
                             oNewEditPoint = New cPoint(oSurvey, modPaint.GetMediumPoint(oEditPoint.Point, oPreviousPoint.Point))
                             Call Insert(oEditPoint.GetIndex, oNewEditPoint)
                             oEditPoint.BeginSequence = False
-                            Call Remove(oEditPoint)
-                            Call Remove(oPreviousPoint)
+                            If (Parameters And cCombineSequenceParametersEnum.PreservePoints) = 0 Then
+                                Call Remove(oEditPoint)
+                                Call Remove(oPreviousPoint)
+                            End If
                         End If
                         Dim oNewSequence As cSequence = oNewEditPoint.GetSequence
                         oNewSequence.First.Pen = oOldPen

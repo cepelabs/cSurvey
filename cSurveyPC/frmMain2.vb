@@ -2988,7 +2988,12 @@ Friend Class frmMain2
     Private Sub picMap_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles picMap.MouseDown
         Call picMap.Focus()
 
-        Dim bCtrl As Boolean = My.Computer.Keyboard.CtrlKeyDown Or btnScrollMode.Down Or (e.Button And Windows.Forms.MouseButtons.Middle) = Windows.Forms.MouseButtons.Middle
+        Dim iButton As MouseButtons = e.Button
+        If My.Computer.Keyboard.CtrlKeyDown And Not My.Computer.Keyboard.AltKeyDown And Not My.Computer.Keyboard.ShiftKeyDown Then
+            If iButton = MouseButtons.Left Then iButton = MouseButtons.Middle
+        End If
+
+        Dim bCtrl As Boolean = My.Computer.Keyboard.CtrlKeyDown Or btnScrollMode.Down Or (iButton And Windows.Forms.MouseButtons.Middle) = Windows.Forms.MouseButtons.Middle
         Dim bShift As Boolean = My.Computer.Keyboard.ShiftKeyDown Or btnMultiSelMode1.Down Or btnMultiSelMode2.Down
         Dim bAlt As Boolean = My.Computer.Keyboard.AltKeyDown Or btnAltMode.Down Or btnMultiSelMode2.Down
 
@@ -2997,7 +3002,7 @@ Friend Class frmMain2
         If iSnapToPoint = 0 Then iSnapToPoint = If(System.Windows.Input.Keyboard.IsKeyDown(Windows.Input.Key.D) OrElse btnSnapToPoint2.Down, 3, iSnapToPoint)
         Debug.Print("snaptopoint:" & iSnapToPoint)
 
-        Call pMapSetCursor(bCtrl, bShift, bAlt, e.Button)
+        Call pMapSetCursor(bCtrl, bShift, bAlt, iButton)
 
         bMousePressed = True
 
@@ -3024,7 +3029,7 @@ Friend Class frmMain2
             bInvalidate = True
         Else
             If bAlt And Not bCtrl Then
-                If (e.Button And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
+                If (iButton And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
                     With oCurrentDesign
                         'controllo se c'è un marker e se sono li vicino...
                         If pGetCurrentDesignTools.CurrentMarkedDesktopPoint.IsSet AndAlso modPaint.DistancePointToPoint(pGetCurrentDesignTools.CurrentMarkedDesktopPoint.Point, oMousePoint) < 10 / sPaintZoom Then
@@ -3063,7 +3068,7 @@ Friend Class frmMain2
                     iMultiSelEnabled = MultiSelTypeEnum.None
                     bInvalidate = True
                 End If
-                If (e.Button And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
+                If (iButton And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
                     With oCurrentDesign
                         If pGetCurrentDesignTools.IsInEdit Then
                             'ho un tool attivo...imposto il punto
@@ -3324,7 +3329,7 @@ Friend Class frmMain2
                             End If
                         End If
                     End With
-                ElseIf (e.Button And Windows.Forms.MouseButtons.Right) = Windows.Forms.MouseButtons.Right Then
+                ElseIf (iButton And Windows.Forms.MouseButtons.Right) = Windows.Forms.MouseButtons.Right Then
                     With oCurrentDesign
                         If pGetCurrentDesignTools.IsInEdit Then
                             Call pGetCurrentDesignTools.EndAndSelectItem()
@@ -3357,12 +3362,9 @@ Friend Class frmMain2
                             End With
                         End If
                     End With
-                ElseIf (e.Button And Windows.Forms.MouseButtons.Middle) = Windows.Forms.MouseButtons.Middle Then
+                ElseIf (iButton And Windows.Forms.MouseButtons.Middle) = Windows.Forms.MouseButtons.Middle Then
                     With oCurrentDesign
                         If bCtrl Then
-                            'If pGetCurrentDesignTools.IsInEdit Then
-                            'Call pGetCurrentDesignTools.EndItem()
-                            'End If
                             bInvalidate = True
                             oStartPaintDrawPosition = New PointF(-oPaintTranslation.X + e.X, -oPaintTranslation.Y + e.Y)
                         End If
@@ -3451,17 +3453,22 @@ Friend Class frmMain2
     Private oTemplates As UIHelpers.cTemplatesBindingList
 
     Private Sub picMap_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles picMap.MouseMove
-        Dim bCtrl As Boolean = My.Computer.Keyboard.CtrlKeyDown Or btnScrollMode.Down Or (e.Button And Windows.Forms.MouseButtons.Middle) = Windows.Forms.MouseButtons.Middle
+        Dim iButton As MouseButtons = e.Button
+        If My.Computer.Keyboard.CtrlKeyDown And Not My.Computer.Keyboard.AltKeyDown And Not My.Computer.Keyboard.ShiftKeyDown Then
+            If iButton = MouseButtons.Left Then iButton = MouseButtons.Middle
+        End If
+
+        Dim bCtrl As Boolean = My.Computer.Keyboard.CtrlKeyDown Or btnScrollMode.Down Or (iButton And Windows.Forms.MouseButtons.Middle) = Windows.Forms.MouseButtons.Middle
         Dim bShift As Boolean = My.Computer.Keyboard.ShiftKeyDown Or btnMultiSelMode1.Down Or btnMultiSelMode2.Down
         Dim bAlt As Boolean = My.Computer.Keyboard.AltKeyDown Or btnAltMode.Down Or btnMultiSelMode2.Down
 
         If pGetCurrentDesignTools.IsInCombine Then
             picMap.Cursor = Cursors.Help
         Else
-            Call pMapSetCursor(bCtrl, bShift, bAlt, e.Button)
+            Call pMapSetCursor(bCtrl, bShift, bAlt, iButton)
         End If
 
-        If e.Button <> Windows.Forms.MouseButtons.None Then
+        If iButton <> Windows.Forms.MouseButtons.None Then
             bMousePressed = True
         End If
 
@@ -3471,7 +3478,7 @@ Friend Class frmMain2
         pnlStatusDesignInfo.Caption = "x: " & Strings.Format(oMousePoint.X, "0.00") & " m - y: " & Strings.Format(-1 * oMousePoint.Y, "0.00") & " m"
 
         Dim bInvalidate As Boolean = False
-        If iMultiSelEnabled <> MultiSelTypeEnum.None And bShift And (e.Button And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
+        If iMultiSelEnabled <> MultiSelTypeEnum.None And bShift And (iButton And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
             If bCtrl Then
                 iMultiSelEnabled = MultiSelTypeEnum.Zoom
                 oEndMultiselPosition = oPoint
@@ -3493,7 +3500,7 @@ Friend Class frmMain2
                 End If
                 With oCurrentDesign
                     If pGetCurrentDesignTools.IsInEdit Then
-                        If (e.Button And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left OrElse bEditPointByPoint Then
+                        If (iButton And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left OrElse bEditPointByPoint Then
                             With pGetCurrentDesignTools()
                                 If .Started Then
                                     If btnAlignToGrid.Checked Then modPaint.PointToGrid(oMousePoint, btnAlignToGridSize.EditValue)
@@ -3535,7 +3542,7 @@ Friend Class frmMain2
                                     End If
                                 End If
                             End With
-                        ElseIf ((e.Button And Windows.Forms.MouseButtons.Middle) = Windows.Forms.MouseButtons.Middle) Then
+                        ElseIf ((iButton And Windows.Forms.MouseButtons.Middle) = Windows.Forms.MouseButtons.Middle) Then
                             Dim oOldPaintTranslation As PointF = oPaintTranslation
                             oPaintTranslation = New PointF(e.X - oStartPaintDrawPosition.X, e.Y - oStartPaintDrawPosition.Y)
                             If oOldPaintTranslation <> oPaintTranslation Then
@@ -3552,7 +3559,7 @@ Friend Class frmMain2
                                     bLocked = .CurrentItem.Locked Or Not .CurrentItem.CanBeMoved
                                 End If
                                 If Not .CurrentItem Is Nothing Then
-                                    If (e.Button And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
+                                    If (iButton And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
                                         If btnAlignToGrid.Checked Then modPaint.PointToGrid(oMousePoint, btnAlignToGridSize.EditValue)
                                         If bLocked Then
                                             Select Case .LastAnchor
@@ -3700,7 +3707,7 @@ Friend Class frmMain2
                                     End If
                                 End If
                             End If
-                            If (((e.Button And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left) And .CurrentItem Is Nothing) Or ((e.Button And Windows.Forms.MouseButtons.Middle) = Windows.Forms.MouseButtons.Middle) Then
+                            If (((iButton And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left) And .CurrentItem Is Nothing) Or ((iButton And Windows.Forms.MouseButtons.Middle) = Windows.Forms.MouseButtons.Middle) Then
                                 Dim oOldPaintTranslation As PointF = oPaintTranslation
                                 oPaintTranslation = New PointF(e.X - oStartPaintDrawPosition.X, e.Y - oStartPaintDrawPosition.Y)
                                 If oOldPaintTranslation <> oPaintTranslation Then
@@ -3719,11 +3726,16 @@ Friend Class frmMain2
     End Sub
 
     Private Sub picMap_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles picMap.MouseUp
-        Dim bCtrl As Boolean = My.Computer.Keyboard.CtrlKeyDown Or btnScrollMode.Down Or (e.Button And Windows.Forms.MouseButtons.Middle) = Windows.Forms.MouseButtons.Middle
+        Dim iButton As MouseButtons = e.Button
+        If My.Computer.Keyboard.CtrlKeyDown And Not My.Computer.Keyboard.AltKeyDown And Not My.Computer.Keyboard.ShiftKeyDown Then
+            If iButton = MouseButtons.Left Then iButton = MouseButtons.Middle
+        End If
+
+        Dim bCtrl As Boolean = My.Computer.Keyboard.CtrlKeyDown Or btnScrollMode.Down Or (iButton And Windows.Forms.MouseButtons.Middle) = Windows.Forms.MouseButtons.Middle
         Dim bShift As Boolean = My.Computer.Keyboard.ShiftKeyDown Or btnMultiSelMode1.Down Or btnMultiSelMode2.Down
         Dim bAlt As Boolean = My.Computer.Keyboard.AltKeyDown Or btnAltMode.Down Or btnMultiSelMode2.Down
 
-        Call pMapSetCursor(bCtrl, bShift, bAlt, e.Button)
+        Call pMapSetCursor(bCtrl, bShift, bAlt, iButton)
 
         bMousePressed = False
 
@@ -3731,7 +3743,7 @@ Friend Class frmMain2
         Dim oMousePoint As PointF = modPaint.FromPaintPoint(oPoint, sPaintZoom, oPaintTranslation)
 
         Dim bInvalidate As Boolean = False
-        If iMultiSelEnabled <> MultiSelTypeEnum.None And bShift And (e.Button And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
+        If iMultiSelEnabled <> MultiSelTypeEnum.None And bShift And (iButton And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
             If bCtrl Then
                 'zoom al rettangolo...
                 Dim oZoomRect As RectangleF = pGetMultiSelRect()
@@ -3765,7 +3777,7 @@ Friend Class frmMain2
             bInvalidate = True
         Else
             If bAlt Then
-                'If (e.Button And Windows.Forms.MouseButtons.Right) = Windows.Forms.MouseButtons.Right Then
+                'If (iButton And Windows.Forms.MouseButtons.Right) = Windows.Forms.MouseButtons.Right Then
                 '    Call mnuDesignSegment.Show(picMap, e.Location)
                 'End If
             Else
@@ -3777,7 +3789,7 @@ Friend Class frmMain2
                 'Dim bUndoSnapshot As Boolean = False
                 With oCurrentDesign
                     If pGetCurrentDesignTools.IsInEdit Then
-                        If (e.Button And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
+                        If (iButton And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
                             With pGetCurrentDesignTools()
                                 If btnAlignToGrid.Checked Then modPaint.PointToGrid(oMousePoint, btnAlignToGridSize.EditValue)
                                 'If bSnapToPoint Then modPaint.PointSnap(oMousePoint, oCurrentDesign, sGridSnap)
@@ -3831,10 +3843,11 @@ Friend Class frmMain2
                                             Dim oFirstPoint As cPoint = .CurrentItem.Points.GetSequence(.LastItemPoint).First
                                             Dim oItem As cItem = .LastItemPoint.Item
                                             pGetCurrentDesignTools.ResetNewItem()
-                                            pGetCurrentDesignTools.BeginUndoSnapshot("TEST", {oLastItem})
+                                            pGetCurrentDesignTools.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo53"), {oLastItem})
                                             oItem.Combine(oLastItem, False)
-                                            Call oItem.Points.CombineSequences(oFirstPoint)
+                                            Call oItem.Points.CombineSequences(oFirstPoint, If(bEditPointByPoint, cPoints.cCombineSequenceParametersEnum.PreservePoints, cPoints.cCombineSequenceParametersEnum.None))
                                             pGetCurrentDesignTools.CommitUndoSnapshot()
+                                            Call pUnfrozeDesktopImage()
                                         Else
                                             'if different object type...only snap, just done in mousedown, so nothing to do
                                         End If
@@ -3846,10 +3859,10 @@ Friend Class frmMain2
                                 btnSnapToPoint1.Down = False
                                 btnSnapToPoint2.Down = False
                             End With
-                        ElseIf (e.Button And Windows.Forms.MouseButtons.Right) = Windows.Forms.MouseButtons.Right Then
+                        ElseIf (iButton And Windows.Forms.MouseButtons.Right) = Windows.Forms.MouseButtons.Right Then
                             Call pMapInfoMenu(e.Location)
                             Call mnuDesignItem.ShowPopup(picMap.PointToScreen(e.Location))
-                        ElseIf (e.Button = 0) Then
+                        ElseIf (iButton = 0) Then
                             With pGetCurrentDesignTools()
                                 If .Started Then
                                     .LastPoint = oPoint
@@ -3870,14 +3883,14 @@ Friend Class frmMain2
                         End If
                     Else
                         With pGetCurrentDesignTools()
-                            If (e.Button And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
+                            If (iButton And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
                                 .LastAnchor = AnchorRectangleTypeEnum.None
                                 'bUndoSnapshot = True
                                 If .Undo.IsBeginned Then
                                     .CommitUndoSnapshot()
                                 End If
 
-                            ElseIf (e.Button And Windows.Forms.MouseButtons.Right) = Windows.Forms.MouseButtons.Right Then
+                            ElseIf (iButton And Windows.Forms.MouseButtons.Right) = Windows.Forms.MouseButtons.Right Then
                                 If .CurrentItem Is Nothing Then
                                     Call pMapInfoMenu(e.Location)
                                     Call mnuDesignNone.ShowPopup(picMap.PointToScreen(e.Location))
@@ -3891,7 +3904,7 @@ Friend Class frmMain2
                                     End If
                                     .LastAnchor = AnchorRectangleTypeEnum.None
                                 End If
-                            ElseIf (e.Button = 0) Then
+                            ElseIf (iButton = 0) Then
                             End If
                         End With
                     End If
@@ -7179,11 +7192,15 @@ Friend Class frmMain2
         btnUndo.Enabled = bIsUndoable
     End Sub
 
-    Private Sub pFrozeDesktopImage()
+    Private Sub pUnfrozeDesktopImage()
         If Not IsNothing(oFrozenDesktop) Then
             Call oFrozenDesktop.Dispose()
             oFrozenDesktop = Nothing
         End If
+    End Sub
+
+    Private Sub pFrozeDesktopImage()
+        Call pUnfrozeDesktopImage()
         Dim oTempFrozenDesktop As Image = New Bitmap(picMap.Width, picMap.Height)
         Call pSurveyDraw(Graphics.FromImage(oTempFrozenDesktop), True)
         oFrozenDesktop = oTempFrozenDesktop
@@ -7250,7 +7267,7 @@ Friend Class frmMain2
                 End If
             End If
         End If
-        oFrozenDesktop = Nothing
+        Call pUnfrozeDesktopImage()
 
         If bValidItem Then
             With ToolEventArgs.CurrentItem
@@ -17266,10 +17283,12 @@ Friend Class frmMain2
                 e.Cancel = True
             Else
                 If grdViewSegments.FocusedColumn Is colSegmentsListFrom OrElse grdViewSegments.FocusedColumn Is colSegmentsListTo Then
-                    With oTools.CurrentSegment
-                        Dim bDisabledEdit As Boolean = (.IsBinded)
-                        e.Cancel = bDisabledEdit
-                    End With
+                    If Not oTools.CurrentSegment Is Nothing Then
+                        With oTools.CurrentSegment
+                            Dim bDisabledEdit As Boolean = (.IsBinded)
+                            e.Cancel = bDisabledEdit
+                        End With
+                    End If
                 ElseIf grdViewSegments.FocusedColumn Is colSegmentsListProfileDirection Then
                     e.Cancel = oSegment.Splay OrElse oSegment.IsProfileBinded
                 End If

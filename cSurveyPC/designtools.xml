@@ -234,7 +234,7 @@
       <caption lang="it" caption="Geologia" tooltip="Raccoglie gli oggetti per disegnare elementi geologici"/>
       <caption lang="en" caption="Geology" tooltip="Tools for draw geology elements"/>
       <caption lang="ru" caption="Geology" tooltip="Tools for draw geology elements"/>
-      <tool type="freehandline" convertto="1" linetype="0" name="btnDesignTools_Borders_GenericFault" svgimage="item_genericfault.svg" image="icon_border_small.ico" style="3" caption="Fault" tooltip="Generic fault" layer="6" method="CreateGenericFault" parameters="cave,branch">
+      <tool type="freehandline" convertto="1" name="btnDesignTools_Borders_GenericFault" svgimage="item_genericfault.svg" image="icon_border_small.ico" style="3" caption="Fault" tooltip="Generic fault" layer="6" method="CreateGenericFault" parameters="cave,branch">
         <caption lang="it" caption="Faglia" tooltip="Disegna una faglia generica"/>
         <caption lang="en" caption="Fault" tooltip="Generic fault"/>
         <caption lang="ru" caption="Fault" tooltip="Generic fault"/>

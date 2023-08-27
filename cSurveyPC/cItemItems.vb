@@ -5,6 +5,7 @@ Imports cSurveyPC.cSurvey.Design.Layers
 Imports cSurveyPC.cSurvey.Design.cLayers
 Imports cSurveyPC.cSurvey.Data
 Imports DevExpress.Office
+Imports DevExpress.Pdf
 
 Namespace cSurvey.Design.Items
     Public Class cItemItems
@@ -234,23 +235,31 @@ Namespace cSurvey.Design.Items
 
         Public Overrides ReadOnly Property HaveTransparency As Boolean
             Get
-                For Each oItem As cItem In oItems
-                    If Not oItem.HaveTransparency Then
-                        Return False
-                    End If
-                Next
-                Return True
+                If oItems Is Nothing Then
+                    Return False
+                Else
+                    For Each oItem As cItem In oItems
+                        If Not oItem.HaveTransparency Then
+                            Return False
+                        End If
+                    Next
+                    Return True
+                End If
             End Get
         End Property
 
         Public Overrides ReadOnly Property CanBeConverted As Boolean
             Get
-                For Each oItem As cItem In oItems
-                    If Not oItem.CanBeConverted Then
-                        Return False
-                    End If
-                Next
-                Return True
+                If oItems Is Nothing Then
+                    Return False
+                Else
+                    For Each oItem As cItem In oItems
+                        If Not oItem.CanBeConverted Then
+                            Return False
+                        End If
+                    Next
+                    Return True
+                End If
             End Get
         End Property
 
@@ -351,7 +360,7 @@ Namespace cSurvey.Design.Items
         End Property
 
         Public Sub Add(ByVal Item As cItem)
-            If Not  IsNothing(Item) andalso Not oItems.Contains(Item) Then
+            If Not IsNothing(Item) AndAlso Not oItems.Contains(Item) Then
                 Call oItems.Add(Item)
             End If
         End Sub
@@ -415,6 +424,10 @@ Namespace cSurvey.Design.Items
             Call MyBase.New(Survey, Design, Layer, File, item)
             oItems = New List(Of cItem)
             oDataProperties = New Data.cDataProperties(Survey, Survey.Properties.DataTables.DesignItems)
+            For Each oXMLItem As XmlElement In item.Item("items")
+                Dim iLayer As cLayers.LayerTypeEnum = oXMLItem.GetAttribute("layer")
+                Call oItems.Add(cLayer.CreateItem(Survey, Design, Design.Layers.Item(iLayer), File, oXMLItem))
+            Next
         End Sub
 
         Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement

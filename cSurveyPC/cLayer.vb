@@ -209,53 +209,73 @@ Namespace cSurvey.Design
             'Return oResultItems
         End Function
 
-        Friend Function CreateItem(ByVal File As cFile, ByVal Item As XmlElement) As cItem
+        Friend Shared Function CreateItem(Survey As cSurvey, Design As cDesign, Layer As cLayer, File As cFile, Item As XmlElement) As cItem
             Dim oItem As cItem = Nothing
             Select Case Item.GetAttribute("type")
                 Case cIItem.cItemTypeEnum.Generic
-                    oItem = New cItemGeneric(oSurvey, oDesign, Me, File, Item)
+                    oItem = New cItemGeneric(Survey, Design, Layer, File, Item)
                 Case cIItem.cItemTypeEnum.FreeHandArea
-                    oItem = New cItemFreeHandArea(oSurvey, oDesign, Me, File, Item)
+                    oItem = New cItemFreeHandArea(Survey, Design, Layer, File, Item)
                 Case cIItem.cItemTypeEnum.FreeHandLine
-                    oItem = New cItemFreeHandLine(oSurvey, oDesign, Me, File, Item)
+                    oItem = New cItemFreeHandLine(Survey, Design, Layer, File, Item)
                 Case cIItem.cItemTypeEnum.InvertedFreeHandArea
-                    oItem = New cItemInvertedFreeHandArea(oSurvey, oDesign, Me, File, Item)
+                    oItem = New cItemInvertedFreeHandArea(Survey, Design, Layer, File, Item)
                 Case cIItem.cItemTypeEnum.Sign
-                    oItem = New cItemSign(oSurvey, oDesign, Me, File, Item)
+                    oItem = New cItemSign(Survey, Design, Layer, File, Item)
                 Case cIItem.cItemTypeEnum.Clipart
-                    oItem = New cItemClipart(oSurvey, oDesign, Me, File, Item)
+                    oItem = New cItemClipart(Survey, Design, Layer, File, Item)
                 Case cIItem.cItemTypeEnum.Text
-                    oItem = New cItemText(oSurvey, oDesign, Me, File, Item)
+                    oItem = New cItemText(Survey, Design, Layer, File, Item)
                 Case cIItem.cItemTypeEnum.Image
-                    oItem = New cItemImage(oSurvey, oDesign, Me, File, Item)
+                    oItem = New cItemImage(Survey, Design, Layer, File, Item)
                 Case cIItem.cItemTypeEnum.CrossSection
-                    oItem = New cItemCrossSection(oSurvey, oDesign, Me, File, Item)
+                    oItem = New cItemCrossSection(Survey, Design, Layer, File, Item)
                 Case cIItem.cItemTypeEnum.CrossSectionMarker
-                    If oDesign.Type = cIDesign.cDesignTypeEnum.Plan Then
-                        oItem = New cItemPlanCrossSectionMarker(oSurvey, oDesign, Me, File, Item)
+                    If Design.Type = cIDesign.cDesignTypeEnum.Plan Then
+                        oItem = New cItemPlanCrossSectionMarker(Survey, Design, Layer, File, Item)
                     Else
-                        oItem = New cItemProfileCrossSectionMarker(oSurvey, oDesign, Me, File, Item)
+                        oItem = New cItemProfileCrossSectionMarker(Survey, Design, Layer, File, Item)
                     End If
                 Case cIItem.cItemTypeEnum.Quota
-                    oItem = New cItemQuota(oSurvey, oDesign, Me, File, Item)
+                    oItem = New cItemQuota(Survey, Design, Layer, File, Item)
                 Case cIItem.cItemTypeEnum.Legend
-                    oItem = New cItemLegend(oSurvey, oDesign, Me, File, Item)
+                    oItem = New cItemLegend(Survey, Design, Layer, File, Item)
                 Case cIItem.cItemTypeEnum.Scale
-                    oItem = New cItemScale(oSurvey, oDesign, Me, File, Item)
+                    oItem = New cItemScale(Survey, Design, Layer, File, Item)
                 Case cIItem.cItemTypeEnum.Compass
-                    oItem = New cItemCompass(oSurvey, oDesign, Me, File, Item)
+                    oItem = New cItemCompass(Survey, Design, Layer, File, Item)
                 Case cIItem.cItemTypeEnum.InformationBoxText
-                    oItem = New cItemInformationBoxText(oSurvey, oDesign, Me, File, Item)
+                    oItem = New cItemInformationBoxText(Survey, Design, Layer, File, Item)
                 Case cIItem.cItemTypeEnum.Sketch
-                    oItem = New cItemSketch(oSurvey, oDesign, Me, File, Item)
+                    oItem = New cItemSketch(Survey, Design, Layer, File, Item)
                 Case cIItem.cItemTypeEnum.Attachment
-                    oItem = New cItemAttachment(oSurvey, oDesign, Me, File, Item)
+                    oItem = New cItemAttachment(Survey, Design, Layer, File, Item)
                     If DirectCast(oItem, cItemAttachment).Attachment Is Nothing Then
                         oItem = Nothing
                     End If
+                Case cIItem.cItemTypeEnum.Items
+                    oItem = New cItemItems(Survey, Design, Layer, File, Item)
             End Select
+            Return oItem
+        End Function
+
+        ''' <summary>
+        ''' Create a design item from xml
+        ''' </summary>
+        ''' <param name="File">File container</param>
+        ''' <param name="Item">XML Element</param>
+        ''' <returns>The new design item</returns>
+        Friend Function CreateItem(ByVal File As cFile, ByVal Item As XmlElement) As cItem
+            Dim oItem As cItem = cLayer.CreateItem(oSurvey, oDesign, Me, File, Item)
             If Not oItem Is Nothing Then
-                Call oItems.Add(oItem)
+                If TypeOf oItem Is cItemItems Then
+                    For Each oSubItem As cItem In DirectCast(oItem, cItemItems)
+                        oSubItem.Layer.Items.Add(oSubItem)
+                        'oItems.Add(oSubItem)
+                    Next
+                Else
+                    Call oItems.Add(oItem)
+                End If
             End If
             Return oItem
         End Function

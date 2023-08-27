@@ -522,6 +522,8 @@ Partial Class frmProperties
         Me.tabInfoInfoBox1 = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoDesign1 = New DevExpress.XtraTab.XtraTabPage()
         Me.XtraScrollableControl1 = New DevExpress.XtraEditors.XtraScrollableControl()
+        Me.cboGeologicalLineType = New System.Windows.Forms.ComboBox()
+        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
         Me.flyParameters = New DevExpress.Utils.FlyoutPanel()
         Me.pnlParameters = New DevExpress.Utils.FlyoutPanelControl()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
@@ -4433,6 +4435,8 @@ Partial Class frmProperties
         'XtraScrollableControl1
         '
         resources.ApplyResources(Me.XtraScrollableControl1, "XtraScrollableControl1")
+        Me.XtraScrollableControl1.Controls.Add(Me.cboGeologicalLineType)
+        Me.XtraScrollableControl1.Controls.Add(Me.LabelControl3)
         Me.XtraScrollableControl1.Controls.Add(Me.flyParameters)
         Me.XtraScrollableControl1.Controls.Add(Me.LabelControl1)
         Me.XtraScrollableControl1.Controls.Add(Me.tvDefaultPenPattern)
@@ -4449,6 +4453,19 @@ Partial Class frmProperties
         Me.XtraScrollableControl1.Controls.Add(Me.cboLineType)
         Me.XtraScrollableControl1.Controls.Add(Me.Label27)
         Me.XtraScrollableControl1.Name = "XtraScrollableControl1"
+        '
+        'cboGeologicalLineType
+        '
+        Me.cboGeologicalLineType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboGeologicalLineType.FormattingEnabled = True
+        Me.cboGeologicalLineType.Items.AddRange(New Object() {resources.GetString("cboGeologicalLineType.Items"), resources.GetString("cboGeologicalLineType.Items1"), resources.GetString("cboGeologicalLineType.Items2")})
+        resources.ApplyResources(Me.cboGeologicalLineType, "cboGeologicalLineType")
+        Me.cboGeologicalLineType.Name = "cboGeologicalLineType"
+        '
+        'LabelControl3
+        '
+        resources.ApplyResources(Me.LabelControl3, "LabelControl3")
+        Me.LabelControl3.Name = "LabelControl3"
         '
         'flyParameters
         '
@@ -6355,4 +6372,6 @@ Partial Class frmProperties
     Friend WithEvents txtDefaultPenPattern As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
     Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtBaseGeologyLinesScaleFactor As NumericUpDown
+    Friend WithEvents cboGeologicalLineType As ComboBox
+    Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
 End Class

@@ -174,6 +174,7 @@ Friend Class frmProperties
             End If
 
             cboLineType.SelectedIndex = .DesignProperties.GetValue("LineType", My.Application.Settings.GetSetting("design.linetype", cSurvey.Design.Items.cIItemLine.LineTypeEnum.Splines))
+            cboGeologicalLineType.SelectedIndex = .DesignProperties.GetValue("GeoLineType", My.Application.Settings.GetSetting("design.geolinetype", cSurvey.Design.Items.cIItemLine.LineTypeEnum.Lines))
 
             cboSplayMode.SelectedIndex = .SplayMode
             'chkBindSplaySegment.Checked = .BindSplaySegment
@@ -721,6 +722,7 @@ Friend Class frmProperties
             Call .DesignProperties.SetValue("clippingforadvancedbrush", cboClipAdvancedClipart.SelectedIndex)
 
             Call .DesignProperties.SetValue("LineType", cboLineType.SelectedIndex)
+            Call .DesignProperties.SetValue("GeoLineType", cboGeologicalLineType.SelectedIndex)
 
             Call .DesignProperties.SetValue("BaseLineWidthScaleFactor", txtBaseLineWidthScaleFactor.Value)
             Call .DesignProperties.SetValue("BaseHeavyLinesScaleFactor", txtBaseHeavyLinesScaleFactor.Value)

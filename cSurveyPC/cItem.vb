@@ -470,6 +470,14 @@ Namespace cSurvey.Design
             iDesignAffinity = DesignAffinityEnum.Design
         End Sub
 
+        Friend Shared Function GetDefaultLineType(Survey As cSurvey, Category As cIItem.cItemCategoryEnum) As cIItemLine.LineTypeEnum
+            If Category = cIItem.cItemCategoryEnum.Geology Then
+                Return Survey.Properties.DesignProperties.GetValue("GeoLineType", My.Application.Settings.GetSetting("design.geolinetype", cIItemLine.LineTypeEnum.Lines))
+            Else
+                Return Survey.Properties.DesignProperties.GetValue("LineType", My.Application.Settings.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
+            End If
+        End Function
+
         Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As cFile, ByVal Item As XmlElement)
             oSurvey = Survey
             oDesign = Design

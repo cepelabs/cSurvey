@@ -3132,10 +3132,12 @@ Friend Class frmMain2
                                 Call pGetCurrentDesignTools.EndAndSelectItem()
                                 picMap.Cursor = Cursors.Default
                             Else
+                                pGetCurrentDesignTools.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo53"), {pGetCurrentDesignTools.CurrentItem, oCombineItem})
                                 Call oCombineItem.Combine(pGetCurrentDesignTools.CurrentItem)
                                 Call pGetCurrentDesignTools.EndItem()
                                 Call pGetCurrentDesignTools.SelectItem(oCombineItem)
                                 Call oCombineItem.Points.ReorderSequences()
+                                Call pGetCurrentDesignTools.CommitUndoSnapshot()
                             End If
                             bInvalidate = True
                         Else
@@ -3839,7 +3841,6 @@ Friend Class frmMain2
                                     Else
                                         If oLastItem.Type = .LastItemPoint.Item.Type Then
                                             'same object type...merge and then combine...
-                                            'TODO: undo!!!
                                             Dim oFirstPoint As cPoint = .CurrentItem.Points.GetSequence(.LastItemPoint).First
                                             Dim oItem As cItem = .LastItemPoint.Item
                                             pGetCurrentDesignTools.ResetNewItem()
@@ -6881,11 +6882,12 @@ Friend Class frmMain2
                 Dim oLayer As cLayer = oCurrentDesign.Layers(Bag.Layer)
                 Call pGetCurrentDesignTools.SelectLayer(oLayer)
                 oItem = oLayer.GetType.GetMethod(Bag.Method).Invoke(oLayer, Bag.GetInvokeParameters("cave", sCave, "branch", sBranch))
-                If Bag.LineType = cIItemLine.LineTypeEnum.Undefined Then
-                    If oItem.HaveLineType Then
-                        DirectCast(oItem, cIItemLine).LineType = oSurvey.Properties.DesignProperties.GetValue("LineType", My.Application.Settings.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
-                    End If
-                Else
+                If Bag.LineType <> cIItemLine.LineTypeEnum.Undefined Then
+                    '    If oItem.HaveLineType Then
+                    '        DirectCast(oItem, cIItemLine).LineType = oSurvey.Properties.DesignProperties.GetValue("LineType", My.Application.Settings.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
+                    '    End If
+                    'Else
+                    'if linetype is set from xml definition this linetype is used
                     If oItem.HaveLineType Then
                         DirectCast(oItem, cIItemLine).LineType = Bag.LineType
                     End If

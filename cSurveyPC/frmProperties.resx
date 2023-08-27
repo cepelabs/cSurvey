@@ -8282,6 +8282,63 @@
   <data name="XtraScrollableControl1.AutoScrollMargin" type="System.Drawing.Size, System.Drawing">
     <value>0, 200</value>
   </data>
+  <data name="cboGeologicalLineType.Items" xml:space="preserve">
+    <value>Straight lines</value>
+  </data>
+  <data name="cboGeologicalLineType.Items1" xml:space="preserve">
+    <value>Splines</value>
+  </data>
+  <data name="cboGeologicalLineType.Items2" xml:space="preserve">
+    <value>Beziers</value>
+  </data>
+  <data name="cboGeologicalLineType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 549</value>
+  </data>
+  <data name="cboGeologicalLineType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 21</value>
+  </data>
+  <data name="cboGeologicalLineType.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;cboGeologicalLineType.Name" xml:space="preserve">
+    <value>cboGeologicalLineType</value>
+  </data>
+  <data name="&gt;&gt;cboGeologicalLineType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboGeologicalLineType.Parent" xml:space="preserve">
+    <value>XtraScrollableControl1</value>
+  </data>
+  <data name="&gt;&gt;cboGeologicalLineType.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LabelControl3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LabelControl3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 552</value>
+  </data>
+  <data name="LabelControl3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 13</value>
+  </data>
+  <data name="LabelControl3.TabIndex" type="System.Int32, mscorlib">
+    <value>247</value>
+  </data>
+  <data name="LabelControl3.Text" xml:space="preserve">
+    <value>Lines (geological):</value>
+  </data>
+  <data name="&gt;&gt;LabelControl3.Name" xml:space="preserve">
+    <value>LabelControl3</value>
+  </data>
+  <data name="&gt;&gt;LabelControl3.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;LabelControl3.Parent" xml:space="preserve">
+    <value>XtraScrollableControl1</value>
+  </data>
+  <data name="&gt;&gt;LabelControl3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="pnlParameters.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -8325,7 +8382,7 @@
     <value>XtraScrollableControl1</value>
   </data>
   <data name="&gt;&gt;flyParameters.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="LabelControl1.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -8355,7 +8412,7 @@
     <value>XtraScrollableControl1</value>
   </data>
   <data name="&gt;&gt;LabelControl1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="colDefaultPenPattern.Caption" xml:space="preserve">
     <value>Name</value>
@@ -8421,7 +8478,7 @@
     <value>XtraScrollableControl1</value>
   </data>
   <data name="&gt;&gt;tvDefaultPenPattern.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="txtDesignItemNamePattern.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -8436,7 +8493,7 @@
     <value>Both</value>
   </data>
   <data name="txtDesignItemNamePattern.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 21</value>
+    <value>20, 21</value>
   </data>
   <data name="txtDesignItemNamePattern.TabIndex" type="System.Int32, mscorlib">
     <value>124</value>
@@ -8451,7 +8508,7 @@
     <value>XtraScrollableControl1</value>
   </data>
   <data name="&gt;&gt;txtDesignItemNamePattern.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="lblDesignCrossSectionTextScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -8961,7 +9018,7 @@
     <value>XtraScrollableControl1</value>
   </data>
   <data name="&gt;&gt;frrmDesign.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="chkShowLegacyExtraPrintAndExportObjects.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 703</value>
@@ -8985,7 +9042,7 @@
     <value>XtraScrollableControl1</value>
   </data>
   <data name="&gt;&gt;chkShowLegacyExtraPrintAndExportObjects.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="cmdItemNamePatternAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -9012,7 +9069,7 @@
     <value>XtraScrollableControl1</value>
   </data>
   <data name="&gt;&gt;cmdItemNamePatternAdd.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="LabelControl2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -9219,7 +9276,7 @@
     <value>XtraScrollableControl1</value>
   </data>
   <data name="&gt;&gt;GroupBox1.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="lblDesignItemNamePattern.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -9246,7 +9303,7 @@
     <value>XtraScrollableControl1</value>
   </data>
   <data name="&gt;&gt;lblDesignItemNamePattern.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="cboClipAdvancedClipart.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -9372,7 +9429,7 @@
     <value>281, 89</value>
   </data>
   <data name="GroupBox8.TabIndex" type="System.Int32, mscorlib">
-    <value>122</value>
+    <value>2</value>
   </data>
   <data name="GroupBox8.Text" xml:space="preserve">
     <value>Clipping:</value>
@@ -9387,7 +9444,7 @@
     <value>XtraScrollableControl1</value>
   </data>
   <data name="&gt;&gt;GroupBox8.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="lblDesignLowerLayersTransparencyThreshold.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -9558,7 +9615,7 @@
     <value>301, 161</value>
   </data>
   <data name="GroupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>121</value>
+    <value>3</value>
   </data>
   <data name="GroupBox3.Text" xml:space="preserve">
     <value>Transparencies:</value>
@@ -9573,7 +9630,7 @@
     <value>XtraScrollableControl1</value>
   </data>
   <data name="&gt;&gt;GroupBox3.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="lblSketchProfileCorrectionScale.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -9756,7 +9813,7 @@
     <value>XtraScrollableControl1</value>
   </data>
   <data name="&gt;&gt;frmSketch.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="lblTextRotateMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -9834,7 +9891,7 @@
     <value>XtraScrollableControl1</value>
   </data>
   <data name="&gt;&gt;GroupBox5.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="cboLineType.Items" xml:space="preserve">
     <value>Straight lines</value>
@@ -9852,7 +9909,7 @@
     <value>162, 21</value>
   </data>
   <data name="cboLineType.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;cboLineType.Name" xml:space="preserve">
     <value>cboLineType</value>
@@ -9864,7 +9921,7 @@
     <value>XtraScrollableControl1</value>
   </data>
   <data name="&gt;&gt;cboLineType.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="Label27.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -9891,7 +9948,7 @@
     <value>XtraScrollableControl1</value>
   </data>
   <data name="&gt;&gt;Label27.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="XtraScrollableControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

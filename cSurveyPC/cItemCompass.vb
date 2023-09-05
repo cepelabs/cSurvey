@@ -33,6 +33,12 @@ Namespace cSurvey.Design.Items
 
         Private bHideNorthValue As Boolean
 
+        Public Overrides ReadOnly Property CanBeCopied As Boolean
+            Get
+                Return True
+            End Get
+        End Property
+
         Private Sub oFont_OnChanged(ByVal Sender As cItemFont) Handles oFont.OnChanged
             Call MyBase.Caches.Invalidate()
         End Sub

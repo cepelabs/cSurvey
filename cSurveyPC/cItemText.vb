@@ -25,6 +25,11 @@ Namespace cSurvey.Design.Items
         Private sAngle As Single
 
         'Private bUnscalableSize As Boolean
+        Public Overrides ReadOnly Property CanBeCopied As Boolean
+            Get
+                Return True
+            End Get
+        End Property
 
         Public Overrides ReadOnly Property CanBeHiddenInDesign As Boolean
             Get

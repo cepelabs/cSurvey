@@ -18,6 +18,12 @@ Namespace cSurvey.Design.Items
         Private sRotateBy As Single
         Private oRotatedImage As Bitmap
 
+        Public Overrides ReadOnly Property CanBeCopied As Boolean
+            Get
+                Return True
+            End Get
+        End Property
+
         Public Property RotateBy As Single Implements cIItemImage.RotateBy
             Get
                 Return sRotateBy

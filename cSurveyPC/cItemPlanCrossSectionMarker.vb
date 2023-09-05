@@ -37,6 +37,12 @@ Namespace cSurvey.Design.Items
         Private bArrowSizeEnabled As Boolean
         Private iArrowSize As cIItemSizable.SizeEnum
 
+        Public Overrides ReadOnly Property CanBeCopied As Boolean
+            Get
+                Return False
+            End Get
+        End Property
+
         Public Property TextRotateMode As cIItemPlanCrossSectionMarker.RotateModeEnum Implements cIItemPlanCrossSectionMarker.RotateMode
             Get
                 Return iTextRotateMode
@@ -912,7 +918,7 @@ Namespace cSurvey.Design.Items
         End Property
 
         Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
-            If (File.Options And cFile.FileOptionsEnum.EmbedResource) <> cFile.FileOptionsEnum.EmbedResource Then
+            If (Options And cSurvey.SaveOptionsEnum.ForClipboard) <> cSurvey.SaveOptionsEnum.ForClipboard Then
                 Dim oItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
 
                 If iTextPosition <> cIItemCrossSectionMarker.TextPositionEnum.AsArrow Then Call oItem.SetAttribute("textposition", iTextPosition.ToString("D"))

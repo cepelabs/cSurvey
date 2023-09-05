@@ -17,6 +17,18 @@ Namespace cSurvey.Design.Items
         Private oItems As List(Of cItem)
         Private WithEvents oDataProperties As Data.cDataProperties
 
+        Public Overrides ReadOnly Property CanBeCopied As Boolean
+            Get
+                For Each oItem As cItem In oItems
+                    If oItem.CanBeCopied Then
+                        'if only one item is copiable...return true
+                        Return True
+                    End If
+                Next
+                Return False
+            End Get
+        End Property
+
         Public Overrides ReadOnly Property DataProperties As Data.cDataProperties
             Get
                 For Each ofield As cDataField In oDataProperties.Fields
@@ -426,7 +438,11 @@ Namespace cSurvey.Design.Items
             oDataProperties = New Data.cDataProperties(Survey, Survey.Properties.DataTables.DesignItems)
             For Each oXMLItem As XmlElement In item.Item("items")
                 Dim iLayer As cLayers.LayerTypeEnum = oXMLItem.GetAttribute("layer")
-                Call oItems.Add(cLayer.CreateItem(Survey, Design, Design.Layers.Item(iLayer), File, oXMLItem))
+                Dim oItem As cItem = cLayer.CreateItem(Survey, Design, Design.Layers.Item(iLayer), File, oXMLItem)
+                Call oItems.Add(oitem)
+                If oItem.Type = cIItem.cItemTypeEnum.CrossSection Then
+                    Call MyBase.Survey.CrossSections.Add(oItem)
+                End If
             Next
         End Sub
 

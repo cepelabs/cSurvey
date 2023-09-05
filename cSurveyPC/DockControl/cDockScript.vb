@@ -130,6 +130,7 @@ Friend Class cDockScript
 
     Private Sub pPrint(Text As String)
         Call txtDebug.Document.AppendText(Text)
+        If Not Text.EndsWith(vbCrLf) Then Call txtDebug.Document.AppendText(vbCrLf)
         txtDebug.ScrollToCaret()
         'Call txtDebug.AppendText(Text & vbCrLf)
         'txtDebug.SelectionStart = txtDebug.TextLength

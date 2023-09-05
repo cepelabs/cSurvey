@@ -151,7 +151,7 @@ Namespace cSurvey.Data
 
         Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oXMLDataRow As XmlElement = Document.CreateElement("datarow")
-            If (Options And cSurvey.SaveOptionsEnum.ForClipboard) = cSurvey.SaveOptionsEnum.ForClipboard Then
+            If (Options And cSurvey.SaveOptionsEnum.ForImport) = cSurvey.SaveOptionsEnum.ForImport OrElse (Options And cSurvey.SaveOptionsEnum.ForClipboard) = cSurvey.SaveOptionsEnum.ForClipboard Then
                 oXMLDataRow.SetAttribute("fields", Strings.Join(oDataFields.ToList.Select(Function(item) item.Name).ToArray, "|"))
             End If
             Dim oValues As List(Of String) = New List(Of String)

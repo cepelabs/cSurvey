@@ -93,6 +93,12 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
+        Public Overrides ReadOnly Property CanBeCopied As Boolean
+            Get
+                Return True
+            End Get
+        End Property
+
         Public Overrides ReadOnly Property CanBeDeleted As Boolean
             Get
                 Return Not oCrossSection.IsBinded

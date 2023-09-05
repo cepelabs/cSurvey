@@ -13,6 +13,12 @@ Namespace cSurvey.Design.Items
 
         Private oSegment As cSegment
 
+        Public Overrides ReadOnly Property CanBeCopied As Boolean
+            Get
+                Return False
+            End Get
+        End Property
+
         Public Overrides Property DesignAffinity As DesignAffinityEnum
             Get
                 Return DesignAffinityEnum.Design

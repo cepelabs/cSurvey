@@ -1678,7 +1678,7 @@ Namespace cSurvey.Helper.Editor
             Dim oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)
             Dim oXML As XmlDocument = oFile.Document
             Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
-            Call oCurrentItem.SaveTo(oFile, oXML, oXMLParent, cSurvey.SaveOptionsEnum.Silent)
+            Call oCurrentItem.SaveTo(oFile, oXML, oXMLParent, cSurvey.SaveOptionsEnum.Silent OrElse cSurvey.SaveOptionsEnum.ForClipboard)
             Call oXML.AppendChild(oXMLParent)
             Return oXML
         End Function

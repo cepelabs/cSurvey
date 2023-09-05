@@ -37,6 +37,12 @@ Namespace cSurvey.Design.Items
         Private sQuotaLeftRefPercent As Single
         Private sQuotaRightRefPercent As Single
 
+        Public Overrides ReadOnly Property CanBeCopied As Boolean
+            Get
+                Return True
+            End Get
+        End Property
+
         Public Overrides ReadOnly Property CanBeHiddenInDesign As Boolean
             Get
                 Return True

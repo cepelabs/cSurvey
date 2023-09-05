@@ -61,6 +61,7 @@ Namespace cSurvey
             None = 0
             Silent = &H1
             ForClipboard = &H2
+            ForImport = &H4
             NoHistory = &H10
         End Enum
 

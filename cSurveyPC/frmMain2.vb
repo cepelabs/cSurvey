@@ -3145,7 +3145,7 @@ Friend Class frmMain2
                             Dim oSelectedItem As cItem = Nothing
                             Dim bLocked As Boolean = False
 
-                            If Not bCtrl Or (bCtrl And bAlt) Then
+                            If Not bCtrl OrElse (bCtrl AndAlso bAlt) Then
                                 'verifico se ho cliccato su un anchorpoint dell'oggetto selezionato (se esiste...)
                                 Dim bNotClickedOnAnchor As Boolean
                                 Try
@@ -9864,9 +9864,10 @@ Friend Class frmMain2
                             btnDesignSetCurrentCaveBranch.Enabled = False
                         End If
 
+                        Dim bItemCanBeCopied As Boolean = oItem.CanBeCopied
                         Dim bCanBeDeleted As Boolean = bEnabledEdit AndAlso oItem.CanBeDeleted 'AndAlso bLocked
-                        Dim bCanBeCutted As Boolean = bCanBeDeleted
-                        Dim bCanBeCopied As Boolean = bEnabledEdit
+                        Dim bCanBeCutted As Boolean = bCanBeDeleted AndAlso bItemCanBeCopied
+                        Dim bCanBeCopied As Boolean = bEnabledEdit AndAlso bItemCanBeCopied
 
                         btnCut.Enabled = bCanBeCutted
                         btnCopy.Enabled = bCanBeCopied
@@ -11794,8 +11795,8 @@ Friend Class frmMain2
                                             Call oDuplicatedSegments.Add(oNewSegment.ID, oOldSegment.ID)
                                         End If
                                     Else
-                                        'Call oSurvey.Segments.Append(New cSegment(oSurvey, oNewSegment))
                                         Call oSurvey.Segments.Append(oNewSegment)
+                                        Call oDuplicatedSegments.Add(oNewSegment.ID, oNewSegment.ID)
                                     End If
                                 End Using
                             Next
@@ -11931,7 +11932,7 @@ Friend Class frmMain2
                                 Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)
                                     Dim oXML As XmlDocument = oFile.Document
                                     Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
-                                    Call oImportItem.SaveTo(oFile, oXML, oXMLParent, cSurvey.cSurvey.SaveOptionsEnum.Silent Or cSurvey.cSurvey.SaveOptionsEnum.ForClipboard)
+                                    Call oImportItem.SaveTo(oFile, oXML, oXMLParent, cSurvey.cSurvey.SaveOptionsEnum.Silent Or cSurvey.cSurvey.SaveOptionsEnum.ForImport)
                                     Dim oXMLItem As XmlElement = oXMLParent.ChildNodes(0)
                                     Call modImport.ReplaceIDItem(oXMLItem, oDuplicatedSegments)
 
@@ -12638,6 +12639,16 @@ Friend Class frmMain2
                                             'parametri
                                             'DECLINATION: 1.00  FORMAT: DDDDLUDRADLNT  CORRECTIONS: 2.00 3.00 4.00 CORRECTIONS2: 5.0 6.0 
                                             Dim sLinePart() As String = sLine.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
+                                            If sLinePart.Contains("DECLINATION:") Then
+                                                Dim sDeclination As String = sLinePart(sLinePart.ToList.IndexOf("DECLINATION:") + 1)
+                                                Dim dDeclination As Decimal = modNumbers.StringToDecimal(sDeclination)
+                                                If dDeclination <> 0 Then
+                                                    'oSurvey.Properties.DeclinationEnabled = True
+                                                    oCurrentsession.NordType = cSegment.NordTypeEnum.Magnetic
+                                                    oCurrentsession.DeclinationEnabled = True
+                                                    oCurrentsession.Declination = dDeclination
+                                                End If
+                                            End If
                                             If sLinePart.Contains("FORMAT:") Then
                                                 Dim sFormat As String = sLinePart(sLinePart.ToList.IndexOf("FORMAT:") + 1)
                                                 '--------------------
@@ -16219,6 +16230,7 @@ Friend Class frmMain2
     Private Sub btnSurveyInfoRing_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnSurveyInfoRing.ItemClick
         Call pSurveyInfoRing()
     End Sub
+
     Private Sub btnCopy_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCopy.ItemClick
         Call pClipboardCopy()
     End Sub

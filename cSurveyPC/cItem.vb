@@ -338,6 +338,7 @@ Namespace cSurvey.Design
         Public MustOverride ReadOnly Property CanBeCombined() As Boolean
         Public MustOverride ReadOnly Property CanBeDivided() As Boolean
         Public MustOverride ReadOnly Property CanBeDeleted() As Boolean
+        Public MustOverride ReadOnly Property CanBeCopied() As Boolean
         Public MustOverride ReadOnly Property CanBeMoved() As Boolean
         Public MustOverride ReadOnly Property CanBeResized() As Boolean
         Public MustOverride ReadOnly Property CanBeRotated() As Boolean

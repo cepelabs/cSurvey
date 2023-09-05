@@ -29,6 +29,12 @@ Namespace cSurvey.Design.Items
         Private sScaleHeightFactor As Single
         Private iScaleFillStyle As cIItemScale.ScaleFillStyleEnum
 
+        Public Overrides ReadOnly Property CanBeCopied As Boolean
+            Get
+                Return True
+            End Get
+        End Property
+
         Public Overrides ReadOnly Property CanBeHiddenInDesign As Boolean
             Get
                 Return True

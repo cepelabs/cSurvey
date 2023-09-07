@@ -14,7 +14,9 @@ Namespace cSurvey.Design.Layers
         End Sub
 
         Friend Sub CreateCrossSectionMarker(Marker As cIItemCrossSectionMarker)
-            Call MyBase.Items.Add(Marker)
+            If Not MyBase.Items.Contains(Marker) Then
+                Call MyBase.Items.Add(Marker)
+            End If
         End Sub
 
         Public Function CreateCrossSection(ByVal Cave As String, ByVal Branch As String, ByVal Segment As cSegment) As cItemCrossSection

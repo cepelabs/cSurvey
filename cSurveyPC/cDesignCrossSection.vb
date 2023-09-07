@@ -213,12 +213,14 @@ Namespace cSurvey.Design
         End Function
 
         Friend Sub AddPlanMarker(Item As cItemPlanCrossSectionMarker)
+            oPlanCrossSectionMarker = Item
             Dim oLayer As cLayerSigns = oSurvey.Plan.Layers.Item(cLayers.LayerTypeEnum.Signs)
             Call oLayer.CreateCrossSectionMarker(Item)
             Call Item.RebindCrossSection(Me)
         End Sub
 
         Friend Sub AddProfileMarker(Item As cItemProfileCrossSectionMarker)
+            oProfileCrossSectionMarker = Item
             Dim oLayer As cLayerSigns = oSurvey.Profile.Layers.Item(cLayers.LayerTypeEnum.Signs)
             Call oLayer.CreateCrossSectionMarker(Item)
             Call Item.RebindCrossSection(Me)

@@ -8,6 +8,7 @@ Imports System.Drawing.Drawing2D
 Imports System.Text.RegularExpressions
 Imports Diacritics.Extensions
 Imports BrightIdeasSoftware
+Imports DevExpress.XtraVerticalGrid.ViewInfo
 
 Module modExport
     Public Sub CreateStationDictionary(TrigPointsToElaborate As List(Of String), KeyToExclude As List(Of Integer), ByRef InputDictionary As Dictionary(Of String, String), ByRef OutputDictionary As Dictionary(Of String, String))
@@ -2961,6 +2962,12 @@ Module modExport
         End If
     End Function
 
+    Private Sub pTherionThExportCalibration(St As StreamWriter, Indent As Integer, MeasureName As String, Calibration As cCalibration)
+        If Calibration.IsUsed Then
+            Call St.WriteLine(Space(Indent) & "calibration " & MeasureName & " " & modNumbers.NumberToString(Calibration.Error) & If(Calibration.ErrorScale <> 1.0F, " " & modNumbers.NumberToString(Calibration.ErrorScale), ""))
+        End If
+    End Sub
+
     Private Sub pTherionThExportToCaveBranch(ByVal Survey As cSurveyPC.cSurvey.cSurvey, St As StreamWriter, Indent As Integer, Dictionary As IDictionary(Of String, String), Branch As cICaveInfoBranches, TrigpointFirstSession As Dictionary(Of String, String), TrigpointOtherSessions As Dictionary(Of String, List(Of String)), Depths As Dictionary(Of String, Decimal), ByVal Options As TherionExportOptionsEnum)
         Dim iIndent As Integer = Indent
         Dim oBranchSegments As cSegmentCollection = Branch.GetSegments(cOptionsCenterline.HighlightModeEnum.ExactMatch)
@@ -3030,6 +3037,11 @@ Module modExport
                             Call St.WriteLine(Space(iIndent) & "units compass " & GetTherionBearingUnit(oSession.BearingType))
                             Call St.WriteLine(Space(iIndent) & "units clino " & GetTherionInclinationUnit(oSession.InclinationType))
                             Call St.WriteLine(Space(iIndent) & "data normal from to compass clino length left right up down")
+
+                            Call pTherionThExportCalibration(St, iIndent, "length", oSession.DistanceCalibration)
+                            Call pTherionThExportCalibration(St, iIndent, "compass", oSession.BearingCalibration)
+                            Call pTherionThExportCalibration(St, iIndent, "clino", oSession.InclinationCalibration)
+                            'Call St.WriteLine(Space(iIndent) & "calibrate length 1")
                         Case cSegment.DataFormatEnum.Cartesian
                             Call St.WriteLine(Space(iIndent) & "units length " & GetTherionDistanceUnit(oSession.DistanceType))
                             'Call St.WriteLine(Space(iIndent) & "data cartesian from to northing altitude easting left right up down")
@@ -3038,6 +3050,9 @@ Module modExport
                             Call St.WriteLine(Space(iIndent) & "units length " & GetTherionDistanceUnit(oSession.DistanceType))
                             Call St.WriteLine(Space(iIndent) & "units compass " & GetTherionBearingUnit(oSession.BearingType))
                             Call St.WriteLine(Space(iIndent) & "units depth " & GetTherionDepthUnit(oSession.DistanceType))
+                            Call pTherionThExportCalibration(St, iIndent, "length", oSession.DistanceCalibration)
+                            Call pTherionThExportCalibration(St, iIndent, "compass", oSession.BearingCalibration)
+                            Call pTherionThExportCalibration(St, iIndent, "depth", oSession.DepthCalibration)
                             Select Case oSession.DepthType
                                 Case cSegment.DepthTypeEnum.AbsoluteAtBegin
                                     Call St.WriteLine(Space(iIndent) & "data diving from to compass fromdepth todepth length left right up down")
@@ -3600,7 +3615,7 @@ Module modExport
 
     Private Function pGetGoogleColor(ByVal Color As System.Drawing.Color) As String
         Dim sA As String = Hex(Color.A)
-        If sA.Length < 2 Then sA = "0" & sA
+        If sA.Length <2 Then sA="0" & sA
 
         Dim sR As String = Hex(Color.R)
         If sR.Length < 2 Then sR = "0" & sR

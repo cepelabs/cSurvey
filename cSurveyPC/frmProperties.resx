@@ -6437,213 +6437,6 @@
   <data name="&gt;&gt;chkSessionVthreshold.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="cboSessionInclinationType.Items" xml:space="preserve">
-    <value>Degree</value>
-  </data>
-  <data name="cboSessionInclinationType.Items1" xml:space="preserve">
-    <value>Grads</value>
-  </data>
-  <data name="cboSessionInclinationType.Items2" xml:space="preserve">
-    <value>Percent</value>
-  </data>
-  <data name="cboSessionInclinationType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 6</value>
-  </data>
-  <data name="cboSessionInclinationType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 21</value>
-  </data>
-  <data name="cboSessionInclinationType.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cboSessionInclinationType.Name" xml:space="preserve">
-    <value>cboSessionInclinationType</value>
-  </data>
-  <data name="&gt;&gt;cboSessionInclinationType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboSessionInclinationType.Parent" xml:space="preserve">
-    <value>pnlSessionInclination</value>
-  </data>
-  <data name="&gt;&gt;cboSessionInclinationType.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblSessionInclinationType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblSessionInclinationType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 9</value>
-  </data>
-  <data name="lblSessionInclinationType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 13</value>
-  </data>
-  <data name="lblSessionInclinationType.TabIndex" type="System.Int32, mscorlib">
-    <value>113</value>
-  </data>
-  <data name="lblSessionInclinationType.Text" xml:space="preserve">
-    <value>Inclination:</value>
-  </data>
-  <data name="&gt;&gt;lblSessionInclinationType.Name" xml:space="preserve">
-    <value>lblSessionInclinationType</value>
-  </data>
-  <data name="&gt;&gt;lblSessionInclinationType.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblSessionInclinationType.Parent" xml:space="preserve">
-    <value>pnlSessionInclination</value>
-  </data>
-  <data name="&gt;&gt;lblSessionInclinationType.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="chkSessionInclinationDirection.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkSessionInclinationDirection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 6</value>
-  </data>
-  <data name="chkSessionInclinationDirection.Properties.Caption" xml:space="preserve">
-    <value>Reverse</value>
-  </data>
-  <data name="chkSessionInclinationDirection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 20</value>
-  </data>
-  <data name="chkSessionInclinationDirection.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;chkSessionInclinationDirection.Name" xml:space="preserve">
-    <value>chkSessionInclinationDirection</value>
-  </data>
-  <data name="&gt;&gt;chkSessionInclinationDirection.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkSessionInclinationDirection.Parent" xml:space="preserve">
-    <value>pnlSessionInclination</value>
-  </data>
-  <data name="&gt;&gt;chkSessionInclinationDirection.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="pnlSessionInclination.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 84</value>
-  </data>
-  <data name="pnlSessionInclination.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 28</value>
-  </data>
-  <data name="pnlSessionInclination.TabIndex" type="System.Int32, mscorlib">
-    <value>135</value>
-  </data>
-  <data name="&gt;&gt;pnlSessionInclination.Name" xml:space="preserve">
-    <value>pnlSessionInclination</value>
-  </data>
-  <data name="&gt;&gt;pnlSessionInclination.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlSessionInclination.Parent" xml:space="preserve">
-    <value>tabSessionMeasure1</value>
-  </data>
-  <data name="&gt;&gt;pnlSessionInclination.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="cboSessionBearingType.Items" xml:space="preserve">
-    <value>Degree</value>
-  </data>
-  <data name="cboSessionBearingType.Items1" xml:space="preserve">
-    <value>Grads</value>
-  </data>
-  <data name="cboSessionBearingType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 6</value>
-  </data>
-  <data name="cboSessionBearingType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 21</value>
-  </data>
-  <data name="cboSessionBearingType.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cboSessionBearingType.Name" xml:space="preserve">
-    <value>cboSessionBearingType</value>
-  </data>
-  <data name="&gt;&gt;cboSessionBearingType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboSessionBearingType.Parent" xml:space="preserve">
-    <value>pnlSessionBearing</value>
-  </data>
-  <data name="&gt;&gt;cboSessionBearingType.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblSessionBearingType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblSessionBearingType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 9</value>
-  </data>
-  <data name="lblSessionBearingType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 13</value>
-  </data>
-  <data name="lblSessionBearingType.TabIndex" type="System.Int32, mscorlib">
-    <value>111</value>
-  </data>
-  <data name="lblSessionBearingType.Text" xml:space="preserve">
-    <value>Bearing:</value>
-  </data>
-  <data name="&gt;&gt;lblSessionBearingType.Name" xml:space="preserve">
-    <value>lblSessionBearingType</value>
-  </data>
-  <data name="&gt;&gt;lblSessionBearingType.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblSessionBearingType.Parent" xml:space="preserve">
-    <value>pnlSessionBearing</value>
-  </data>
-  <data name="&gt;&gt;lblSessionBearingType.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="chkSessionBearingDirection.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkSessionBearingDirection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 6</value>
-  </data>
-  <data name="chkSessionBearingDirection.Properties.Caption" xml:space="preserve">
-    <value>Reverse</value>
-  </data>
-  <data name="chkSessionBearingDirection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 20</value>
-  </data>
-  <data name="chkSessionBearingDirection.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;chkSessionBearingDirection.Name" xml:space="preserve">
-    <value>chkSessionBearingDirection</value>
-  </data>
-  <data name="&gt;&gt;chkSessionBearingDirection.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkSessionBearingDirection.Parent" xml:space="preserve">
-    <value>pnlSessionBearing</value>
-  </data>
-  <data name="&gt;&gt;chkSessionBearingDirection.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="pnlSessionBearing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 57</value>
-  </data>
-  <data name="pnlSessionBearing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 28</value>
-  </data>
-  <data name="pnlSessionBearing.TabIndex" type="System.Int32, mscorlib">
-    <value>134</value>
-  </data>
-  <data name="&gt;&gt;pnlSessionBearing.Name" xml:space="preserve">
-    <value>pnlSessionBearing</value>
-  </data>
-  <data name="&gt;&gt;pnlSessionBearing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlSessionBearing.Parent" xml:space="preserve">
-    <value>tabSessionMeasure1</value>
-  </data>
-  <data name="&gt;&gt;pnlSessionBearing.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="chkSessionDecMag.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -6768,7 +6561,7 @@
     <value>tabSessionMeasure1</value>
   </data>
   <data name="&gt;&gt;pnlSessionNorth.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>4</value>
   </data>
   <data name="lblSessionSideMeasureType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6795,7 +6588,7 @@
     <value>tabSessionMeasure1</value>
   </data>
   <data name="&gt;&gt;lblSessionSideMeasureType.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>5</value>
   </data>
   <data name="cboSessionSideMeasuresType.Items" xml:space="preserve">
     <value>Perpendicular to the previous shot</value>
@@ -6825,7 +6618,7 @@
     <value>tabSessionMeasure1</value>
   </data>
   <data name="&gt;&gt;cboSessionSideMeasuresType.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>6</value>
   </data>
   <data name="lblSessionDataFormat.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6852,7 +6645,7 @@
     <value>tabSessionMeasure1</value>
   </data>
   <data name="&gt;&gt;lblSessionDataFormat.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>7</value>
   </data>
   <data name="lblSessionDistanceType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6879,7 +6672,7 @@
     <value>tabSessionMeasure1</value>
   </data>
   <data name="&gt;&gt;lblSessionDistanceType.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>8</value>
   </data>
   <data name="cboSessionGrade.Location" type="System.Drawing.Point, System.Drawing">
     <value>107, 124</value>
@@ -6900,7 +6693,7 @@
     <value>tabSessionMeasure1</value>
   </data>
   <data name="&gt;&gt;cboSessionGrade.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>9</value>
   </data>
   <data name="cboSessionDistanceType.Items" xml:space="preserve">
     <value>Meters</value>
@@ -6930,7 +6723,7 @@
     <value>tabSessionMeasure1</value>
   </data>
   <data name="&gt;&gt;cboSessionDistanceType.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>10</value>
   </data>
   <data name="lblSessionGrade.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6957,7 +6750,7 @@
     <value>tabSessionMeasure1</value>
   </data>
   <data name="&gt;&gt;lblSessionGrade.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>11</value>
   </data>
   <data name="cboSessionSideMeasuresReferTo.Items" xml:space="preserve">
     <value>Ending station</value>
@@ -6984,6 +6777,213 @@
     <value>tabSessionMeasure1</value>
   </data>
   <data name="&gt;&gt;cboSessionSideMeasuresReferTo.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="cboSessionBearingType.Items" xml:space="preserve">
+    <value>Degree</value>
+  </data>
+  <data name="cboSessionBearingType.Items1" xml:space="preserve">
+    <value>Grads</value>
+  </data>
+  <data name="cboSessionBearingType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 6</value>
+  </data>
+  <data name="cboSessionBearingType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 21</value>
+  </data>
+  <data name="cboSessionBearingType.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cboSessionBearingType.Name" xml:space="preserve">
+    <value>cboSessionBearingType</value>
+  </data>
+  <data name="&gt;&gt;cboSessionBearingType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboSessionBearingType.Parent" xml:space="preserve">
+    <value>pnlSessionBearing</value>
+  </data>
+  <data name="&gt;&gt;cboSessionBearingType.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblSessionBearingType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblSessionBearingType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 9</value>
+  </data>
+  <data name="lblSessionBearingType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
+  </data>
+  <data name="lblSessionBearingType.TabIndex" type="System.Int32, mscorlib">
+    <value>111</value>
+  </data>
+  <data name="lblSessionBearingType.Text" xml:space="preserve">
+    <value>Bearing:</value>
+  </data>
+  <data name="&gt;&gt;lblSessionBearingType.Name" xml:space="preserve">
+    <value>lblSessionBearingType</value>
+  </data>
+  <data name="&gt;&gt;lblSessionBearingType.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblSessionBearingType.Parent" xml:space="preserve">
+    <value>pnlSessionBearing</value>
+  </data>
+  <data name="&gt;&gt;lblSessionBearingType.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkSessionBearingDirection.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkSessionBearingDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>239, 6</value>
+  </data>
+  <data name="chkSessionBearingDirection.Properties.Caption" xml:space="preserve">
+    <value>Reverse</value>
+  </data>
+  <data name="chkSessionBearingDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 20</value>
+  </data>
+  <data name="chkSessionBearingDirection.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;chkSessionBearingDirection.Name" xml:space="preserve">
+    <value>chkSessionBearingDirection</value>
+  </data>
+  <data name="&gt;&gt;chkSessionBearingDirection.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkSessionBearingDirection.Parent" xml:space="preserve">
+    <value>pnlSessionBearing</value>
+  </data>
+  <data name="&gt;&gt;chkSessionBearingDirection.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pnlSessionBearing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 57</value>
+  </data>
+  <data name="pnlSessionBearing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>411, 28</value>
+  </data>
+  <data name="pnlSessionBearing.TabIndex" type="System.Int32, mscorlib">
+    <value>134</value>
+  </data>
+  <data name="&gt;&gt;pnlSessionBearing.Name" xml:space="preserve">
+    <value>pnlSessionBearing</value>
+  </data>
+  <data name="&gt;&gt;pnlSessionBearing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlSessionBearing.Parent" xml:space="preserve">
+    <value>tabSessionMeasure1</value>
+  </data>
+  <data name="&gt;&gt;pnlSessionBearing.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="cboSessionInclinationType.Items" xml:space="preserve">
+    <value>Degree</value>
+  </data>
+  <data name="cboSessionInclinationType.Items1" xml:space="preserve">
+    <value>Grads</value>
+  </data>
+  <data name="cboSessionInclinationType.Items2" xml:space="preserve">
+    <value>Percent</value>
+  </data>
+  <data name="cboSessionInclinationType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 6</value>
+  </data>
+  <data name="cboSessionInclinationType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 21</value>
+  </data>
+  <data name="cboSessionInclinationType.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cboSessionInclinationType.Name" xml:space="preserve">
+    <value>cboSessionInclinationType</value>
+  </data>
+  <data name="&gt;&gt;cboSessionInclinationType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboSessionInclinationType.Parent" xml:space="preserve">
+    <value>pnlSessionInclination</value>
+  </data>
+  <data name="&gt;&gt;cboSessionInclinationType.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblSessionInclinationType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblSessionInclinationType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 9</value>
+  </data>
+  <data name="lblSessionInclinationType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 13</value>
+  </data>
+  <data name="lblSessionInclinationType.TabIndex" type="System.Int32, mscorlib">
+    <value>113</value>
+  </data>
+  <data name="lblSessionInclinationType.Text" xml:space="preserve">
+    <value>Inclination:</value>
+  </data>
+  <data name="&gt;&gt;lblSessionInclinationType.Name" xml:space="preserve">
+    <value>lblSessionInclinationType</value>
+  </data>
+  <data name="&gt;&gt;lblSessionInclinationType.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblSessionInclinationType.Parent" xml:space="preserve">
+    <value>pnlSessionInclination</value>
+  </data>
+  <data name="&gt;&gt;lblSessionInclinationType.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkSessionInclinationDirection.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkSessionInclinationDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>239, 6</value>
+  </data>
+  <data name="chkSessionInclinationDirection.Properties.Caption" xml:space="preserve">
+    <value>Reverse</value>
+  </data>
+  <data name="chkSessionInclinationDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 20</value>
+  </data>
+  <data name="chkSessionInclinationDirection.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;chkSessionInclinationDirection.Name" xml:space="preserve">
+    <value>chkSessionInclinationDirection</value>
+  </data>
+  <data name="&gt;&gt;chkSessionInclinationDirection.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkSessionInclinationDirection.Parent" xml:space="preserve">
+    <value>pnlSessionInclination</value>
+  </data>
+  <data name="&gt;&gt;chkSessionInclinationDirection.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pnlSessionInclination.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 84</value>
+  </data>
+  <data name="pnlSessionInclination.Size" type="System.Drawing.Size, System.Drawing">
+    <value>411, 28</value>
+  </data>
+  <data name="pnlSessionInclination.TabIndex" type="System.Int32, mscorlib">
+    <value>135</value>
+  </data>
+  <data name="&gt;&gt;pnlSessionInclination.Name" xml:space="preserve">
+    <value>pnlSessionInclination</value>
+  </data>
+  <data name="&gt;&gt;pnlSessionInclination.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlSessionInclination.Parent" xml:space="preserve">
+    <value>tabSessionMeasure1</value>
+  </data>
+  <data name="&gt;&gt;pnlSessionInclination.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
   <data name="tabSessionMeasure1.Size" type="System.Drawing.Size, System.Drawing">

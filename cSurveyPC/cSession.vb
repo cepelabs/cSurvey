@@ -1,6 +1,74 @@
 ﻿Imports System.Xml
 
 Namespace cSurvey
+    Public Class cCalibration
+        Private sError As Single = 0F
+        Private sErrorScale As Single = 1.0F
+
+        Friend Sub New(Calibration As cCalibration)
+            sError = Calibration.sError
+            sErrorScale = Calibration.sErrorScale
+        End Sub
+
+        Friend Sub New()
+            sError = 0F
+            sErrorScale = 1.0F
+        End Sub
+
+        Friend Sub New([Error] As Single, Optional ErrorScale As Single = 1.0F)
+            sError = [Error]
+            If ErrorScale <> 1.0F Then
+                If ErrorScale = 0 Then
+                    Throw New InvalidOperationException
+                Else
+                    sErrorScale = ErrorScale
+                End If
+            End If
+        End Sub
+
+        Friend Sub New(ByVal Calibration As XmlElement)
+            sError = modXML.GetAttributeValue(Calibration, "e", 0)
+            sErrorScale = modXML.GetAttributeValue(Calibration, "es", 1)
+            If sErrorScale = 0F Then sErrorScale = 1.0F
+        End Sub
+
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal document As XmlDocument, ByVal Parent As XmlElement, ByVal Name As String) As XmlElement
+            If sError <> 0F OrElse sErrorScale <> 1.0F Then
+                Dim oXmlCalibration As XmlElement = document.CreateElement(Name)
+                If sError <> 0F Then oXmlCalibration.SetAttribute("e", modNumbers.NumberToString(sError))
+                If sErrorScale <> 0F Then oXmlCalibration.SetAttribute("es", modNumbers.NumberToString(sErrorScale))
+                Call Parent.AppendChild(oXmlCalibration)
+                Return oXmlCalibration
+            End If
+        End Function
+
+        Public Function IsUsed() As Boolean
+            Return sError <> 0F OrElse sErrorScale <> 1.0F
+        End Function
+
+        Public Property ErrorScale As Single
+            Get
+                Return sErrorScale
+            End Get
+            Set(value As Single)
+                If value = 0F Then
+                    Throw New InvalidOperationException
+                Else
+                    sErrorScale = value
+                End If
+            End Set
+        End Property
+
+        Public Property [Error] As Single
+            Get
+                Return sError
+            End Get
+            Set(value As Single)
+                sError = value
+            End Set
+        End Property
+    End Class
+
     Public Class cSession
         Implements cIMeasure
         Implements cISurveyInfo
@@ -21,6 +89,11 @@ Namespace cSurvey
         Private iInclinationType As cSegment.InclinationTypeEnum
         Private iInclinationDirection As cSegment.MeasureDirectionEnum
         Private iDepthType As cSegment.DepthTypeEnum
+
+        Private oDepthCalibration As cCalibration
+        Private oDistanceCalibration As cCalibration
+        Private oBearingCalibration As cCalibration
+        Private oInclinationCalibration As cCalibration
 
         Private iNordType As cSegment.NordTypeEnum
         Private sDeclination As Single
@@ -96,7 +169,7 @@ Namespace cSurvey
 
             iNordType = cSegment.NordTypeEnum.Magnetic
             sDeclination = 0
-            bdeclinationenabled = False
+            bDeclinationEnabled = False
 
             iSideMeasuresType = cSegment.SideMeasuresTypeEnum.PerpendicularToPrevious
             iSideMeasuresReferTo = cSegment.SideMeasuresReferToEnum.EndPoint
@@ -152,7 +225,7 @@ Namespace cSurvey
                 Return iDataFormat
             End Get
             Set(value As cSegment.DataFormatEnum)
-                idataformat = value
+                iDataFormat = value
             End Set
         End Property
 
@@ -266,7 +339,7 @@ Namespace cSurvey
                 Return oColor
             End Get
             Set(value As Color)
-                ocolor = value
+                oColor = value
             End Set
         End Property
 
@@ -295,9 +368,14 @@ Namespace cSurvey
             iInclinationDirection = Session.iInclinationDirection
             iDepthType = Session.iDepthType
 
+            oDepthCalibration = New cCalibration(Session.oDepthCalibration)
+            oDistanceCalibration = New cCalibration(Session.oDistanceCalibration)
+            oBearingCalibration = New cCalibration(Session.oBearingCalibration)
+            oInclinationCalibration = New cCalibration(Session.oInclinationCalibration)
+
             iNordType = Session.iNordType
             sDeclination = Session.sDeclination
-            bdeclinationenabled = Session.bdeclinationenabled
+            bDeclinationEnabled = Session.bDeclinationEnabled
 
             iSideMeasuresType = Session.iSideMeasuresType
             iSideMeasuresReferTo = Session.iSideMeasuresReferTo
@@ -331,11 +409,32 @@ Namespace cSurvey
             iInclinationDirection = modXML.GetAttributeValue(Session, "inclinationdirection", cSegment.MeasureDirectionEnum.Direct)
             iDepthType = modXML.GetAttributeValue(Session, "depthtype", cSegment.DepthTypeEnum.AbsoluteAtEnd)
 
+            If modXML.ChildElementExist(Session, "depthcal") Then
+                oDepthCalibration = New cCalibration(Session.Item("depthcal"))
+            Else
+                oDepthCalibration = New cCalibration
+            End If
+            If modXML.ChildElementExist(Session, "distancecal") Then
+                oDistanceCalibration = New cCalibration(Session.Item("distancecal"))
+            Else
+                oDistanceCalibration = New cCalibration
+            End If
+            If modXML.ChildElementExist(Session, "bearingcal") Then
+                oBearingCalibration = New cCalibration(Session.Item("bearingcal"))
+            Else
+                oBearingCalibration = New cCalibration
+            End If
+            If modXML.ChildElementExist(Session, "inclinationcal") Then
+                oInclinationCalibration = New cCalibration(Session.Item("inclinationcal"))
+            Else
+                oInclinationCalibration = New cCalibration
+            End If
+
             sGrade = modXML.GetAttributeValue(Session, "grade", "")
 
             iNordType = modXML.GetAttributeValue(Session, "nordtype")
             sDeclination = modNumbers.StringToDecimal(modXML.GetAttributeValue(Session, "declination", 0))
-            bdeclinationenabled = modXML.GetAttributeValue(Session, "declinationenabled")
+            bDeclinationEnabled = modXML.GetAttributeValue(Session, "declinationenabled")
 
             iSideMeasuresType = modXML.GetAttributeValue(Session, "sidemeasurestype", cSegment.SideMeasuresTypeEnum.PerpendicularToPrevious)
             iSideMeasuresReferTo = modXML.GetAttributeValue(Session, "sidemeasuresreferto", cSegment.SideMeasuresReferToEnum.EndPoint)
@@ -343,6 +442,30 @@ Namespace cSurvey
             sVThreshold = modNumbers.StringToSingle(modXML.GetAttributeValue(Session, "vthreshold", 0))
             bVThresholdEnabled = modXML.GetAttributeValue(Session, "vthresholdenabled", False)
         End Sub
+
+        Public ReadOnly Property BearingCalibration As cCalibration
+            Get
+                Return oBearingCalibration
+            End Get
+        End Property
+
+        Public ReadOnly Property DistanceCalibration As cCalibration
+            Get
+                Return oDistanceCalibration
+            End Get
+        End Property
+
+        Public ReadOnly Property InclinationCalibration As cCalibration
+            Get
+                Return oInclinationCalibration
+            End Get
+        End Property
+
+        Public ReadOnly Property DepthCalibration As cCalibration
+            Get
+                Return oDepthCalibration
+            End Get
+        End Property
 
         Friend Overridable Function SaveTo(ByVal File As cFile, ByVal document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlSession As XmlElement = document.CreateElement("session")
@@ -386,12 +509,17 @@ Namespace cSurvey
                 Call oXmlSession.SetAttribute("depthtype", iDepthType.ToString("D"))
             End If
 
+            Call oDepthCalibration.SaveTo(File, document, oXmlSession, "depthcal")
+            Call oDistanceCalibration.SaveTo(File, document, oXmlSession, "distancecal")
+            Call oBearingCalibration.SaveTo(File, document, oXmlSession, "bearingcal")
+            Call oInclinationCalibration.SaveTo(File, document, oXmlSession, "inclinationcal")
+
             If sGrade <> "" Then
                 Call oXmlSession.SetAttribute("grade", sGrade)
             End If
 
             Call oXmlSession.SetAttribute("nordtype", iNordType)
-            Call oXmlSession.SetAttribute("declinationenabled", IIf(bdeclinationenabled, 1, 0))
+            Call oXmlSession.SetAttribute("declinationenabled", IIf(bDeclinationEnabled, 1, 0))
             Call oXmlSession.SetAttribute("declination", modNumbers.NumberToString(sDeclination))
             'End If
             If iSideMeasuresType <> cSegment.SideMeasuresTypeEnum.PerpendicularToPrevious Then
@@ -423,7 +551,7 @@ Namespace cSurvey
 
         Public Property DeclinationEnabled() As Boolean Implements cIMeasure.DeclinationEnabled
             Get
-                Return bDeclinationenabled
+                Return bDeclinationEnabled
             End Get
             Set(ByVal Value As Boolean)
                 bDeclinationEnabled = Value

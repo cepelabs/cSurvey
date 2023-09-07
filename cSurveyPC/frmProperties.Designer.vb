@@ -3524,8 +3524,6 @@ Partial Class frmProperties
         Me.tabSessionMeasure1.Controls.Add(Me.txtSessionVthreshold)
         Me.tabSessionMeasure1.Controls.Add(Me.cboSessionDataFormat)
         Me.tabSessionMeasure1.Controls.Add(Me.chkSessionVthreshold)
-        Me.tabSessionMeasure1.Controls.Add(Me.pnlSessionInclination)
-        Me.tabSessionMeasure1.Controls.Add(Me.pnlSessionBearing)
         Me.tabSessionMeasure1.Controls.Add(Me.pnlSessionNorth)
         Me.tabSessionMeasure1.Controls.Add(Me.lblSessionSideMeasureType)
         Me.tabSessionMeasure1.Controls.Add(Me.cboSessionSideMeasuresType)
@@ -3535,6 +3533,8 @@ Partial Class frmProperties
         Me.tabSessionMeasure1.Controls.Add(Me.cboSessionDistanceType)
         Me.tabSessionMeasure1.Controls.Add(Me.lblSessionGrade)
         Me.tabSessionMeasure1.Controls.Add(Me.cboSessionSideMeasuresReferTo)
+        Me.tabSessionMeasure1.Controls.Add(Me.pnlSessionBearing)
+        Me.tabSessionMeasure1.Controls.Add(Me.pnlSessionInclination)
         Me.tabSessionMeasure1.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.rulerhorizontal
         Me.tabSessionMeasure1.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.tabSessionMeasure1.Name = "tabSessionMeasure1"

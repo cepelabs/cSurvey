@@ -1641,7 +1641,7 @@
     <value>tabInfoSessions1</value>
   </data>
   <data name="&gt;&gt;txtSessionDate.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="cboGPSCustomRefPoint.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -4101,7 +4101,7 @@
     <value>tabInfoSessions1</value>
   </data>
   <data name="&gt;&gt;StandaloneBarDockControl1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="barSessions.Text" xml:space="preserve">
     <value>Sessions</value>
@@ -6119,6 +6119,99 @@
   <data name="&gt;&gt;tabInfoSurface1.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="colSessionCalibrateDesc.Caption" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="colSessionCalibrateDesc.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colSessionCalibrateDesc.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="colSessionCalibrateValue.Caption" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="txtSessionCalibrateValue.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="colSessionCalibrateValue.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colSessionCalibrateValue.VisibleIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="colSessionCalibrateIndex.Caption" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="tvSessionCalibration.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tvSessionCalibration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tvSessionCalibration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 70</value>
+  </data>
+  <data name="tvSessionCalibration.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tvSessionCalibration.Name" xml:space="preserve">
+    <value>tvSessionCalibration</value>
+  </data>
+  <data name="&gt;&gt;tvSessionCalibration.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tvSessionCalibration.Parent" xml:space="preserve">
+    <value>pnlCalibration</value>
+  </data>
+  <data name="&gt;&gt;tvSessionCalibration.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pnlCalibration.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pnlCalibration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pnlCalibration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 70</value>
+  </data>
+  <data name="pnlCalibration.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pnlCalibration.Name" xml:space="preserve">
+    <value>pnlCalibration</value>
+  </data>
+  <data name="&gt;&gt;pnlCalibration.Type" xml:space="preserve">
+    <value>DevExpress.Utils.FlyoutPanelControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlCalibration.Parent" xml:space="preserve">
+    <value>flyCalibration</value>
+  </data>
+  <data name="&gt;&gt;pnlCalibration.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flyCalibration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>435, 37</value>
+  </data>
+  <data name="flyCalibration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 70</value>
+  </data>
+  <data name="flyCalibration.TabIndex" type="System.Int32, mscorlib">
+    <value>246</value>
+  </data>
+  <data name="&gt;&gt;flyCalibration.Name" xml:space="preserve">
+    <value>flyCalibration</value>
+  </data>
+  <data name="&gt;&gt;flyCalibration.Type" xml:space="preserve">
+    <value>DevExpress.Utils.FlyoutPanel, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;flyCalibration.Parent" xml:space="preserve">
+    <value>tabInfoSessions1</value>
+  </data>
+  <data name="&gt;&gt;flyCalibration.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="txtSessionColor.EditValue" type="System.Drawing.Color, System.Drawing">
     <value />
   </data>
@@ -6144,7 +6237,7 @@
     <value>tabInfoSessions1</value>
   </data>
   <data name="&gt;&gt;txtSessionColor.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="tabSession.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -6302,82 +6395,31 @@
   <data name="&gt;&gt;tabSessionNote1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="cboSessionDepthType.Items" xml:space="preserve">
-    <value>Depth (at end station)</value>
+  <data name="btnSessionCalibration.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
-  <data name="cboSessionDepthType.Items1" xml:space="preserve">
-    <value>Depth (at from station)</value>
+  <data name="btnSessionCalibration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>421, 7</value>
   </data>
-  <data name="cboSessionDepthType.Items2" xml:space="preserve">
-    <value>Depth delta</value>
+  <data name="btnSessionCalibration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
   </data>
-  <data name="cboSessionDepthType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 6</value>
+  <data name="btnSessionCalibration.TabIndex" type="System.Int32, mscorlib">
+    <value>137</value>
   </data>
-  <data name="cboSessionDepthType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 21</value>
+  <data name="btnSessionCalibration.ToolTip" xml:space="preserve">
+    <value>Calibration...</value>
   </data>
-  <data name="cboSessionDepthType.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;btnSessionCalibration.Name" xml:space="preserve">
+    <value>btnSessionCalibration</value>
   </data>
-  <data name="&gt;&gt;cboSessionDepthType.Name" xml:space="preserve">
-    <value>cboSessionDepthType</value>
+  <data name="&gt;&gt;btnSessionCalibration.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;cboSessionDepthType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboSessionDepthType.Parent" xml:space="preserve">
-    <value>pnlSessionDepth</value>
-  </data>
-  <data name="&gt;&gt;cboSessionDepthType.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblSessionDepthType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblSessionDepthType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 9</value>
-  </data>
-  <data name="lblSessionDepthType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
-  </data>
-  <data name="lblSessionDepthType.TabIndex" type="System.Int32, mscorlib">
-    <value>131</value>
-  </data>
-  <data name="lblSessionDepthType.Text" xml:space="preserve">
-    <value>Depth:</value>
-  </data>
-  <data name="&gt;&gt;lblSessionDepthType.Name" xml:space="preserve">
-    <value>lblSessionDepthType</value>
-  </data>
-  <data name="&gt;&gt;lblSessionDepthType.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblSessionDepthType.Parent" xml:space="preserve">
-    <value>pnlSessionDepth</value>
-  </data>
-  <data name="&gt;&gt;lblSessionDepthType.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="pnlSessionDepth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 29</value>
-  </data>
-  <data name="pnlSessionDepth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 28</value>
-  </data>
-  <data name="pnlSessionDepth.TabIndex" type="System.Int32, mscorlib">
-    <value>136</value>
-  </data>
-  <data name="&gt;&gt;pnlSessionDepth.Name" xml:space="preserve">
-    <value>pnlSessionDepth</value>
-  </data>
-  <data name="&gt;&gt;pnlSessionDepth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlSessionDepth.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnSessionCalibration.Parent" xml:space="preserve">
     <value>tabSessionMeasure1</value>
   </data>
-  <data name="&gt;&gt;pnlSessionDepth.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnSessionCalibration.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="cboSessionDataFormat.Items" xml:space="preserve">
@@ -6864,7 +6906,7 @@
     <value>8, 57</value>
   </data>
   <data name="pnlSessionBearing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 28</value>
+    <value>437, 28</value>
   </data>
   <data name="pnlSessionBearing.TabIndex" type="System.Int32, mscorlib">
     <value>134</value>
@@ -6969,7 +7011,7 @@
     <value>8, 84</value>
   </data>
   <data name="pnlSessionInclination.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 28</value>
+    <value>437, 28</value>
   </data>
   <data name="pnlSessionInclination.TabIndex" type="System.Int32, mscorlib">
     <value>135</value>
@@ -6985,6 +7027,84 @@
   </data>
   <data name="&gt;&gt;pnlSessionInclination.ZOrder" xml:space="preserve">
     <value>14</value>
+  </data>
+  <data name="cboSessionDepthType.Items" xml:space="preserve">
+    <value>Depth (at end station)</value>
+  </data>
+  <data name="cboSessionDepthType.Items1" xml:space="preserve">
+    <value>Depth (at from station)</value>
+  </data>
+  <data name="cboSessionDepthType.Items2" xml:space="preserve">
+    <value>Depth delta</value>
+  </data>
+  <data name="cboSessionDepthType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 6</value>
+  </data>
+  <data name="cboSessionDepthType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 21</value>
+  </data>
+  <data name="cboSessionDepthType.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cboSessionDepthType.Name" xml:space="preserve">
+    <value>cboSessionDepthType</value>
+  </data>
+  <data name="&gt;&gt;cboSessionDepthType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboSessionDepthType.Parent" xml:space="preserve">
+    <value>pnlSessionDepth</value>
+  </data>
+  <data name="&gt;&gt;cboSessionDepthType.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblSessionDepthType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblSessionDepthType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 9</value>
+  </data>
+  <data name="lblSessionDepthType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 13</value>
+  </data>
+  <data name="lblSessionDepthType.TabIndex" type="System.Int32, mscorlib">
+    <value>131</value>
+  </data>
+  <data name="lblSessionDepthType.Text" xml:space="preserve">
+    <value>Depth:</value>
+  </data>
+  <data name="&gt;&gt;lblSessionDepthType.Name" xml:space="preserve">
+    <value>lblSessionDepthType</value>
+  </data>
+  <data name="&gt;&gt;lblSessionDepthType.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblSessionDepthType.Parent" xml:space="preserve">
+    <value>pnlSessionDepth</value>
+  </data>
+  <data name="&gt;&gt;lblSessionDepthType.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlSessionDepth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 29</value>
+  </data>
+  <data name="pnlSessionDepth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>437, 28</value>
+  </data>
+  <data name="pnlSessionDepth.TabIndex" type="System.Int32, mscorlib">
+    <value>136</value>
+  </data>
+  <data name="&gt;&gt;pnlSessionDepth.Name" xml:space="preserve">
+    <value>pnlSessionDepth</value>
+  </data>
+  <data name="&gt;&gt;pnlSessionDepth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlSessionDepth.Parent" xml:space="preserve">
+    <value>tabSessionMeasure1</value>
+  </data>
+  <data name="&gt;&gt;pnlSessionDepth.ZOrder" xml:space="preserve">
+    <value>15</value>
   </data>
   <data name="tabSessionMeasure1.Size" type="System.Drawing.Size, System.Drawing">
     <value>448, 278</value>
@@ -7146,7 +7266,7 @@
     <value>tabInfoSessions1</value>
   </data>
   <data name="&gt;&gt;tabSession.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="pnlSessionDate.EditValue" xml:space="preserve">
     <value>N/D</value>
@@ -7176,7 +7296,7 @@
     <value>tabInfoSessions1</value>
   </data>
   <data name="&gt;&gt;pnlSessionDate.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="colSessionsName.Caption" xml:space="preserve">
     <value>Name</value>
@@ -7233,7 +7353,7 @@
     <value>tabInfoSessions1</value>
   </data>
   <data name="&gt;&gt;tvSessions.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="lblSessionColor.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -7263,7 +7383,7 @@
     <value>tabInfoSessions1</value>
   </data>
   <data name="&gt;&gt;lblSessionColor.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="lblSessionDate.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -7293,7 +7413,7 @@
     <value>tabInfoSessions1</value>
   </data>
   <data name="&gt;&gt;lblSessionDate.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="lblSessionDescription.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -7323,7 +7443,7 @@
     <value>tabInfoSessions1</value>
   </data>
   <data name="&gt;&gt;lblSessionDescription.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="txtSessionDescription.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -7350,7 +7470,7 @@
     <value>tabInfoSessions1</value>
   </data>
   <data name="&gt;&gt;txtSessionDescription.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="tabInfoSessions1.Size" type="System.Drawing.Size, System.Drawing">
     <value>664, 445</value>
@@ -8493,7 +8613,7 @@
     <value>Both</value>
   </data>
   <data name="txtDesignItemNamePattern.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 21</value>
+    <value>0, 21</value>
   </data>
   <data name="txtDesignItemNamePattern.TabIndex" type="System.Int32, mscorlib">
     <value>124</value>
@@ -13738,6 +13858,30 @@
   </data>
   <data name="&gt;&gt;mnuItemNamePatternTagsIndex.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colSessionCalibrateDesc.Name" xml:space="preserve">
+    <value>colSessionCalibrateDesc</value>
+  </data>
+  <data name="&gt;&gt;colSessionCalibrateDesc.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colSessionCalibrateValue.Name" xml:space="preserve">
+    <value>colSessionCalibrateValue</value>
+  </data>
+  <data name="&gt;&gt;colSessionCalibrateValue.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtSessionCalibrateValue.Name" xml:space="preserve">
+    <value>txtSessionCalibrateValue</value>
+  </data>
+  <data name="&gt;&gt;txtSessionCalibrateValue.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colSessionCalibrateIndex.Name" xml:space="preserve">
+    <value>colSessionCalibrateIndex</value>
+  </data>
+  <data name="&gt;&gt;colSessionCalibrateIndex.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colSessionsName.Name" xml:space="preserve">
     <value>colSessionsName</value>

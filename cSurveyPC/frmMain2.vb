@@ -12639,6 +12639,15 @@ Friend Class frmMain2
                                             'parametri
                                             'DECLINATION: 1.00  FORMAT: DDDDLUDRADLNT  CORRECTIONS: 2.00 3.00 4.00 CORRECTIONS2: 5.0 6.0 
                                             Dim sLinePart() As String = sLine.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
+                                            If sLinePart.Contains("CORRECTIONS:") Then
+                                                Dim dBearingCorrection As Decimal = modNumbers.StringToDecimal(sLinePart(sLinePart.ToList.IndexOf("CORRECTIONS:") + 1))
+                                                Dim dInclinationCorrection As Decimal = modNumbers.StringToDecimal(sLinePart(sLinePart.ToList.IndexOf("CORRECTIONS:") + 2))
+                                                Dim dDistanceCorrection As Decimal = modNumbers.StringToDecimal(sLinePart(sLinePart.ToList.IndexOf("CORRECTIONS:") + 3))
+
+                                                If dDistanceCorrection <> 0 Then oCurrentsession.DistanceCalibration.Error = -dDistanceCorrection * 0.3048D
+                                                If dInclinationCorrection <> 0 Then oCurrentsession.InclinationCalibration.Error = -dInclinationCorrection
+                                                If dBearingCorrection <> 0 Then oCurrentsession.BearingCalibration.Error = -dBearingCorrection
+                                            End If
                                             If sLinePart.Contains("DECLINATION:") Then
                                                 Dim sDeclination As String = sLinePart(sLinePart.ToList.IndexOf("DECLINATION:") + 1)
                                                 Dim dDeclination As Decimal = modNumbers.StringToDecimal(sDeclination)
@@ -12731,7 +12740,7 @@ Friend Class frmMain2
                                                 End If
                                                 If sTo <> "" Then sTo = sPrefix & sTo
 
-                                                Try : dDist = modNumbers.MathRound(modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(2))) * 0.3048, 2) : Catch : dDist = 0 : End Try
+                                                Try : dDist = modNumbers.MathRound(modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(2))) * 0.3048D, 2) : Catch : dDist = 0 : End Try
                                                 Try : dDir = modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(3))) : Catch : dDir = 0 : End Try
                                                 Try : dIncl = modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(4))) : Catch : dIncl = 0 : End Try
 

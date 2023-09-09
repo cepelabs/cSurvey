@@ -2964,7 +2964,7 @@ Module modExport
 
     Private Sub pTherionThExportCalibration(St As StreamWriter, Indent As Integer, MeasureName As String, Calibration As cCalibration)
         If Calibration.IsUsed Then
-            Call St.WriteLine(Space(Indent) & "calibration " & MeasureName & " " & modNumbers.NumberToString(Calibration.Error) & If(Calibration.ErrorScale <> 1.0F, " " & modNumbers.NumberToString(Calibration.ErrorScale), ""))
+            Call St.WriteLine(Space(Indent) & "calibrate " & MeasureName & " " & modNumbers.NumberToString(Calibration.Error) & If(Calibration.ErrorScale <> 1.0F, " " & modNumbers.NumberToString(Calibration.ErrorScale), ""))
         End If
     End Sub
 

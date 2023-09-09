@@ -11,6 +11,8 @@ Imports cSurveyPC.cSurvey.Surface
 Imports cSurveyPC.cTrigpointDropDown
 Imports DevExpress.Drawing.Internal
 Imports System.Diagnostics.Eventing.Reader
+Imports DevExpress.XtraTreeList.Nodes
+Imports NAudio.Wave
 
 Friend Class frmProperties
     Private oSurvey As cSurvey.cSurvey
@@ -1611,6 +1613,7 @@ Friend Class frmProperties
     'End Sub
 
     Private Sub cboSessionDataFormat_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cboSessionDataFormat.SelectedIndexChanged
+        Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
         Select Case cboSessionDataFormat.SelectedIndex
             Case 0  'default
                 pnlSessionBearing.Enabled = True
@@ -1623,6 +1626,7 @@ Friend Class frmProperties
                 lblSessionDistanceType.Text = modMain.GetLocalizedString("main.textpart34") & ":"
                 chkSessionInclinationDirection.Parent = pnlSessionInclination
                 chkSessionInclinationDirection.Location = New Point(cboSessionInclinationType.Location.X + cboSessionInclinationType.Width + 8 * Me.CurrentAutoScaleDimensions.Height / 96.0F, chkSessionInclinationDirection.Location.Y)
+                btnSessionCalibration.Visible = oCI.Type = "session"
             Case 1  'xyz
                 pnlSessionBearing.Enabled = False
                 pnlSessionBearing.Visible = False
@@ -1632,6 +1636,7 @@ Friend Class frmProperties
                 pnlSessionDepth.Visible = False
                 pnlSessionNorth.Enabled = False
                 lblSessionDistanceType.Text = modMain.GetLocalizedString("main.textpart70") & ":"
+                btnSessionCalibration.Visible = False
             Case 2  'diving
                 pnlSessionBearing.Enabled = True
                 pnlSessionBearing.Visible = True
@@ -1643,6 +1648,7 @@ Friend Class frmProperties
                 lblSessionDistanceType.Text = modMain.GetLocalizedString("main.textpart69") & ":"
                 chkSessionInclinationDirection.Parent = pnlSessionDepth
                 chkSessionInclinationDirection.Location = New Point(cboSessionDepthType.Location.X + cboSessionDepthType.Width + 8 * Me.CurrentAutoScaleDimensions.Height / 96.0F, chkSessionInclinationDirection.Location.Y)
+                btnSessionCalibration.Visible = oCI.Type = "session"
         End Select
     End Sub
 
@@ -2431,6 +2437,7 @@ Friend Class frmProperties
                     txtSessionColor.EditValue = Nothing
 
                     cboSessionDataFormat.SelectedIndex = oCI.DataFormat
+                    btnSessionCalibration.Visible = False
                     cboSessionDistanceType.SelectedIndex = oCI.DistanceType
                     cboSessionBearingType.SelectedIndex = oCI.BearingType
                     chkSessionBearingDirection.Checked = oCI.BearingDirection = cSegment.MeasureDirectionEnum.Inverted
@@ -2483,6 +2490,7 @@ Friend Class frmProperties
                     txtSessionColor.EditValue = oCI.Color
 
                     cboSessionDataFormat.SelectedIndex = oCI.DataFormat
+                    btnSessionCalibration.Visible = oCI.Type = "session" AndAlso (cboSessionDataFormat.SelectedIndex = 0 OrElse cboSessionDataFormat.SelectedIndex = 2)
                     cboSessionDistanceType.SelectedIndex = oCI.DistanceType
                     cboSessionBearingType.SelectedIndex = oCI.BearingType
                     chkSessionBearingDirection.Checked = oCI.BearingDirection = cSegment.MeasureDirectionEnum.Inverted
@@ -2522,6 +2530,8 @@ Friend Class frmProperties
 
                     lvSessionCalibartionSegments.Unbind()
                     btnSessionCalibrationSegmentsRefresh.Enabled = True
+
+                    Call pSessionCalibrationRefresh()
             End Select
             btnSessionAdd.Enabled = True
         Catch ex As Exception
@@ -3994,4 +4004,100 @@ Friend Class frmProperties
         End Select
 
     End Sub
+
+    Private Sub pEditSessionCalibration(SessionPlaceHolder As cSessionEditPlaceHolder, Owner As Control)
+        tvSessionCalibration.Nodes.Clear()
+        Select Case cboSessionDataFormat.SelectedIndex
+            Case 0
+                Dim oDistanceNode As TreeListNode = tvSessionCalibration.Nodes.Add({modMain.GetLocalizedString("main.textpart63"), Nothing, SessionPlaceHolder.DistanceCalibration})
+                Call oDistanceNode.Nodes.Add({modMain.GetLocalizedString("calibration.error"), SessionPlaceHolder.DistanceCalibration.Error, 0})
+                Call oDistanceNode.Nodes.Add({modMain.GetLocalizedString("calibration.errorscale"), SessionPlaceHolder.DistanceCalibration.ErrorScale, 1})
+                Dim oBearingNode As TreeListNode = tvSessionCalibration.Nodes.Add({modMain.GetLocalizedString("main.textpart64"), Nothing, SessionPlaceHolder.BearingCalibration})
+                Call oBearingNode.Nodes.Add({modMain.GetLocalizedString("calibration.error"), SessionPlaceHolder.BearingCalibration.Error, 0})
+                Call oBearingNode.Nodes.Add({modMain.GetLocalizedString("calibration.errorscale"), SessionPlaceHolder.BearingCalibration.ErrorScale, 1})
+                Dim oInclinationNode As TreeListNode = tvSessionCalibration.Nodes.Add({modMain.GetLocalizedString("main.textpart36"), Nothing, SessionPlaceHolder.InclinationCalibration})
+                Call oInclinationNode.Nodes.Add({modMain.GetLocalizedString("calibration.error"), SessionPlaceHolder.InclinationCalibration.Error, 0})
+                Call oInclinationNode.Nodes.Add({modMain.GetLocalizedString("calibration.errorscale"), SessionPlaceHolder.InclinationCalibration.ErrorScale, 1})
+            Case 1
+                'nothing...csurvey does not support calibration for xyz data at now
+            Case 2
+                Dim oDistanceNode As TreeListNode = tvSessionCalibration.Nodes.Add({modMain.GetLocalizedString("main.textpart63"), Nothing, SessionPlaceHolder.DistanceCalibration})
+                Call oDistanceNode.Nodes.Add({modMain.GetLocalizedString("calibration.error"), SessionPlaceHolder.DistanceCalibration.Error, 0})
+                Call oDistanceNode.Nodes.Add({modMain.GetLocalizedString("calibration.errorscale"), SessionPlaceHolder.DistanceCalibration.ErrorScale, 1})
+                Dim oBearingNode As TreeListNode = tvSessionCalibration.Nodes.Add({modMain.GetLocalizedString("main.textpart64"), Nothing, SessionPlaceHolder.BearingCalibration})
+                Call oBearingNode.Nodes.Add({modMain.GetLocalizedString("calibration.error"), SessionPlaceHolder.BearingCalibration.Error, 0})
+                Call oBearingNode.Nodes.Add({modMain.GetLocalizedString("calibration.errorscale"), SessionPlaceHolder.BearingCalibration.ErrorScale, 1})
+                Dim oDepthNode As TreeListNode = tvSessionCalibration.Nodes.Add({modMain.GetLocalizedString("main.textpart65"), Nothing, SessionPlaceHolder.DepthCalibration})
+                Call oDepthNode.Nodes.Add({modMain.GetLocalizedString("calibration.error"), SessionPlaceHolder.DepthCalibration.Error, 0})
+                Call oDepthNode.Nodes.Add({modMain.GetLocalizedString("calibration.errorscale"), SessionPlaceHolder.DepthCalibration.ErrorScale, 1})
+        End Select
+        tvSessionCalibration.ExpandAll()
+        flyCalibration.Size = New Size(240, 240)
+        flyCalibration.OwnerControl = Owner
+        flyCalibration.ShowBeakForm(True)
+    End Sub
+
+    Private Sub tvSessionCalibration_ValidatingEditor(sender As Object, e As DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs) Handles tvSessionCalibration.ValidatingEditor
+        Dim oNode As TreeListNode = tvSessionCalibration.FocusedNode
+        Dim oCalibration As cCalibration = oNode.ParentNode.Tag
+        Dim iIndex As Integer = tvSessionCalibration.FocusedNode.Item(2)
+        If iIndex = 1 Then
+            e.Valid = e.Value <> 0F
+        End If
+    End Sub
+
+    Private Sub btnSessionCalibration_Click(sender As Object, e As EventArgs) Handles btnSessionCalibration.Click
+        Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+        Select Case oCI.Type
+            Case "session", "defaultsession"
+                pEditSessionCalibration(oCI, btnSessionCalibration)
+        End Select
+    End Sub
+
+    Private Sub tvSessionCalibration_ShowingEditor(sender As Object, e As CancelEventArgs) Handles tvSessionCalibration.ShowingEditor
+        e.Cancel = tvSessionCalibration.FocusedNode.ParentNode Is Nothing
+    End Sub
+
+    Private Sub tvSessionCalibration_ValidateNode(sender As Object, e As DevExpress.XtraTreeList.ValidateNodeEventArgs) Handles tvSessionCalibration.ValidateNode
+        Dim oNode As TreeListNode = e.Node
+        If oNode.ParentNode IsNot Nothing Then
+            Dim oCalibration As cCalibration = oNode.ParentNode.Item(2)
+            Dim iIndex As Integer = tvSessionCalibration.FocusedNode.Item(2)
+            Select Case iIndex
+                Case 0
+                    oCalibration.Error = tvSessionCalibration.FocusedNode.Item(1)
+                Case 1
+                    oCalibration.ErrorScale = tvSessionCalibration.FocusedNode.Item(1)
+            End Select
+            Call pSessionCalibrationRefresh()
+        End If
+    End Sub
+
+    Private Sub pSessionCalibrationRefresh()
+        Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+        Select Case cboSessionDataFormat.SelectedIndex
+            Case 0
+                If oCI.DistanceCalibration.IsUsed OrElse oCI.BearingCalibration.IsUsed OrElse oCI.InclinationCalibration.IsUsed Then
+                    btnSessionCalibration.ImageOptions.SvgImage = My.Resources.calibrate
+                Else
+                    btnSessionCalibration.ImageOptions.SvgImage = My.Resources.calibrate_bn
+                End If
+            Case 1
+                'nothing to do
+            Case 2
+                If oCI.DistanceCalibration.IsUsed OrElse oCI.BearingCalibration.IsUsed OrElse oCI.DepthCalibration.IsUsed Then
+                    btnSessionCalibration.ImageOptions.SvgImage = My.Resources.calibrate
+                Else
+                    btnSessionCalibration.ImageOptions.SvgImage = My.Resources.calibrate_bn
+                End If
+        End Select
+    End Sub
+
+    'Private Sub tvSessionCalibration_CustomNodeCellEditForEditing(sender As Object, e As DevExpress.XtraTreeList.GetCustomNodeCellEditEventArgs) Handles tvSessionCalibration.CustomNodeCellEditForEditing
+    '    If e.Node.ParentNode Is Nothing Then
+    '        If e.Column Is colSessionCalibrateValue Then
+    '            e.RepositoryItem = Nothing
+    '        End If
+    '    End If
+    'End Sub
 End Class

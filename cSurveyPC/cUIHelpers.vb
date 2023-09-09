@@ -2263,6 +2263,11 @@ Namespace cSurvey.UIHelpers
         Public InclinationDirection As cSegment.MeasureDirectionEnum
         Public DepthType As cSegment.DepthTypeEnum
 
+        Public DepthCalibration As cCalibration
+        Public DistanceCalibration As cCalibration
+        Public BearingCalibration As cCalibration
+        Public InclinationCalibration As cCalibration
+
         Public Grade As String
 
         Public NordType As cSegment.NordTypeEnum
@@ -2335,6 +2340,11 @@ Namespace cSurvey.UIHelpers
                             oSession.InclinationDirection = oCI.InclinationDirection
                             oSession.DepthType = oCI.DepthType
 
+                            oSession.DepthCalibration.CopyFrom(oCI.DepthCalibration)
+                            oSession.DistanceCalibration.CopyFrom(oCI.DistanceCalibration)
+                            oSession.BearingCalibration.CopyFrom(oCI.BearingCalibration)
+                            oSession.InclinationCalibration.CopyFrom(oCI.InclinationCalibration)
+
                             oSession.Grade = oCI.Grade
 
                             oSession.NordType = oCI.NordType
@@ -2367,6 +2377,11 @@ Namespace cSurvey.UIHelpers
                             oSession.InclinationType = oCI.InclinationType
                             oSession.InclinationDirection = oCI.InclinationDirection
                             oSession.DepthType = oCI.DepthType
+
+                            oSession.DepthCalibration.CopyFrom(oCI.DepthCalibration)
+                            oSession.DistanceCalibration.CopyFrom(oCI.DistanceCalibration)
+                            oSession.BearingCalibration.CopyFrom(oCI.BearingCalibration)
+                            oSession.InclinationCalibration.CopyFrom(oCI.InclinationCalibration)
 
                             oSession.Grade = oCI.Grade
 
@@ -2431,6 +2446,11 @@ Namespace cSurvey.UIHelpers
             oCI.InclinationType = Session.InclinationType
             oCI.InclinationDirection = Session.InclinationDirection
             oCI.DepthType = Session.DepthType
+
+            oCI.DepthCalibration = New cCalibration(Session.DepthCalibration)
+            oCI.DistanceCalibration = New cCalibration(Session.DistanceCalibration)
+            oCI.BearingCalibration = New cCalibration(Session.BearingCalibration)
+            oCI.InclinationCalibration = New cCalibration(Session.InclinationCalibration)
 
             oCI.Grade = Session.Grade
 

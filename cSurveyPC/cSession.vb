@@ -5,9 +5,13 @@ Namespace cSurvey
         Private sError As Single = 0F
         Private sErrorScale As Single = 1.0F
 
-        Friend Sub New(Calibration As cCalibration)
+        Public Sub CopyFrom(Calibration As cCalibration)
             sError = Calibration.sError
             sErrorScale = Calibration.sErrorScale
+        End Sub
+
+        Friend Sub New(Calibration As cCalibration)
+            Call CopyFrom(Calibration)
         End Sub
 
         Friend Sub New()
@@ -27,8 +31,8 @@ Namespace cSurvey
         End Sub
 
         Friend Sub New(ByVal Calibration As XmlElement)
-            sError = modXML.GetAttributeValue(Calibration, "e", 0)
-            sErrorScale = modXML.GetAttributeValue(Calibration, "es", 1)
+            sError = modNumbers.StringToSingle(modXML.GetAttributeValue(Calibration, "e", 0F))
+            sErrorScale = modNumbers.StringToSingle(modXML.GetAttributeValue(Calibration, "es", 1.0F))
             If sErrorScale = 0F Then sErrorScale = 1.0F
         End Sub
 
@@ -164,6 +168,11 @@ Namespace cSurvey
             iDistanceType = cSegment.DistanceTypeEnum.Meters
             iInclinationType = cSegment.InclinationTypeEnum.DecimalDegree
             iDepthType = cSegment.DepthTypeEnum.AbsoluteAtEnd
+
+            oDepthCalibration = New cCalibration
+            oDistanceCalibration = New cCalibration
+            oBearingCalibration = New cCalibration
+            oInclinationCalibration = New cCalibration
 
             sGrade = ""
 

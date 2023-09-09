@@ -4840,6 +4840,9 @@
     <None Include="Resources\linecap_round.svg" />
     <None Include="Resources\linecap_square.svg" />
     <None Include="Resources\linecap_flat.svg" />
+    <None Include="Resources\charttype_polarpoint1.svg" />
+    <None Include="Resources\calibrate.svg" />
+    <None Include="Resources\calibrate_bn.svg" />
     <Content Include="version.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

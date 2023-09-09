@@ -1093,3 +1093,5 @@ pens.strikefaultdxpen=Faglia trascorrente destra
 pens.strikefaultsxpen=Faglia trascorrente sinistra
 pens.strikefaultunknownpen=Faglia trascorrente con direzione ignota
 main.undo53=Combine items
+calibration.error=Errore (valore)
+calibration.errorscale=Errore (scala)

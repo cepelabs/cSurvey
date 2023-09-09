@@ -398,19 +398,9 @@ Partial Class frmProperties
         Me.tabSessionNote1 = New DevExpress.XtraTab.XtraTabPage()
         Me.txtSessionNote = New DevExpress.XtraEditors.MemoEdit()
         Me.tabSessionMeasure1 = New DevExpress.XtraTab.XtraTabPage()
-        Me.pnlSessionDepth = New System.Windows.Forms.Panel()
-        Me.cboSessionDepthType = New System.Windows.Forms.ComboBox()
-        Me.lblSessionDepthType = New DevExpress.XtraEditors.LabelControl()
+        Me.btnSessionCalibration = New DevExpress.XtraEditors.SimpleButton()
         Me.cboSessionDataFormat = New System.Windows.Forms.ComboBox()
         Me.chkSessionVthreshold = New DevExpress.XtraEditors.CheckEdit()
-        Me.pnlSessionInclination = New System.Windows.Forms.Panel()
-        Me.cboSessionInclinationType = New System.Windows.Forms.ComboBox()
-        Me.lblSessionInclinationType = New DevExpress.XtraEditors.LabelControl()
-        Me.chkSessionInclinationDirection = New DevExpress.XtraEditors.CheckEdit()
-        Me.pnlSessionBearing = New System.Windows.Forms.Panel()
-        Me.cboSessionBearingType = New System.Windows.Forms.ComboBox()
-        Me.lblSessionBearingType = New DevExpress.XtraEditors.LabelControl()
-        Me.chkSessionBearingDirection = New DevExpress.XtraEditors.CheckEdit()
         Me.pnlSessionNorth = New System.Windows.Forms.Panel()
         Me.chkSessionDecMag = New DevExpress.XtraEditors.CheckEdit()
         Me.txtSessionDecMag = New System.Windows.Forms.TextBox()
@@ -424,6 +414,17 @@ Partial Class frmProperties
         Me.cboSessionDistanceType = New System.Windows.Forms.ComboBox()
         Me.lblSessionGrade = New DevExpress.XtraEditors.LabelControl()
         Me.cboSessionSideMeasuresReferTo = New System.Windows.Forms.ComboBox()
+        Me.pnlSessionBearing = New System.Windows.Forms.Panel()
+        Me.cboSessionBearingType = New System.Windows.Forms.ComboBox()
+        Me.lblSessionBearingType = New DevExpress.XtraEditors.LabelControl()
+        Me.chkSessionBearingDirection = New DevExpress.XtraEditors.CheckEdit()
+        Me.pnlSessionInclination = New System.Windows.Forms.Panel()
+        Me.cboSessionInclinationType = New System.Windows.Forms.ComboBox()
+        Me.lblSessionInclinationType = New DevExpress.XtraEditors.LabelControl()
+        Me.chkSessionInclinationDirection = New DevExpress.XtraEditors.CheckEdit()
+        Me.pnlSessionDepth = New System.Windows.Forms.Panel()
+        Me.cboSessionDepthType = New System.Windows.Forms.ComboBox()
+        Me.lblSessionDepthType = New DevExpress.XtraEditors.LabelControl()
         Me.tabSessionDefault1 = New DevExpress.XtraTab.XtraTabPage()
         Me.chkGlobalDecMag = New DevExpress.XtraEditors.CheckEdit()
         Me.chkGlobalVthreshold = New DevExpress.XtraEditors.CheckEdit()
@@ -510,6 +511,13 @@ Partial Class frmProperties
         Me.tabInfoGPS1 = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoSurface1 = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoSessions1 = New DevExpress.XtraTab.XtraTabPage()
+        Me.flyCalibration = New DevExpress.Utils.FlyoutPanel()
+        Me.pnlCalibration = New DevExpress.Utils.FlyoutPanelControl()
+        Me.tvSessionCalibration = New DevExpress.XtraTreeList.TreeList()
+        Me.colSessionCalibrateDesc = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.colSessionCalibrateValue = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.txtSessionCalibrateValue = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
+        Me.colSessionCalibrateIndex = New DevExpress.XtraTreeList.Columns.TreeListColumn()
         Me.txtSessionColor = New cSurveyPC.cColorSelector()
         Me.tvSessions = New DevExpress.XtraTreeList.TreeList()
         Me.colSessionsName = New DevExpress.XtraTreeList.Columns.TreeListColumn()
@@ -793,14 +801,14 @@ Partial Class frmProperties
         Me.tabSessionNote1.SuspendLayout()
         CType(Me.txtSessionNote.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabSessionMeasure1.SuspendLayout()
-        Me.pnlSessionDepth.SuspendLayout()
         CType(Me.chkSessionVthreshold.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlSessionInclination.SuspendLayout()
-        CType(Me.chkSessionInclinationDirection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlSessionBearing.SuspendLayout()
-        CType(Me.chkSessionBearingDirection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlSessionNorth.SuspendLayout()
         CType(Me.chkSessionDecMag.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlSessionBearing.SuspendLayout()
+        CType(Me.chkSessionBearingDirection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlSessionInclination.SuspendLayout()
+        CType(Me.chkSessionInclinationDirection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlSessionDepth.SuspendLayout()
         Me.tabSessionDefault1.SuspendLayout()
         CType(Me.chkGlobalDecMag.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkGlobalVthreshold.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -837,6 +845,12 @@ Partial Class frmProperties
         Me.tabInfoGPS1.SuspendLayout()
         Me.tabInfoSurface1.SuspendLayout()
         Me.tabInfoSessions1.SuspendLayout()
+        CType(Me.flyCalibration, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.flyCalibration.SuspendLayout()
+        CType(Me.pnlCalibration, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlCalibration.SuspendLayout()
+        CType(Me.tvSessionCalibration, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtSessionCalibrateValue, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtSessionColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tvSessions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imlsvg, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -3520,7 +3534,7 @@ Partial Class frmProperties
         '
         'tabSessionMeasure1
         '
-        Me.tabSessionMeasure1.Controls.Add(Me.pnlSessionDepth)
+        Me.tabSessionMeasure1.Controls.Add(Me.btnSessionCalibration)
         Me.tabSessionMeasure1.Controls.Add(Me.txtSessionVthreshold)
         Me.tabSessionMeasure1.Controls.Add(Me.cboSessionDataFormat)
         Me.tabSessionMeasure1.Controls.Add(Me.chkSessionVthreshold)
@@ -3535,30 +3549,19 @@ Partial Class frmProperties
         Me.tabSessionMeasure1.Controls.Add(Me.cboSessionSideMeasuresReferTo)
         Me.tabSessionMeasure1.Controls.Add(Me.pnlSessionBearing)
         Me.tabSessionMeasure1.Controls.Add(Me.pnlSessionInclination)
+        Me.tabSessionMeasure1.Controls.Add(Me.pnlSessionDepth)
         Me.tabSessionMeasure1.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.rulerhorizontal
         Me.tabSessionMeasure1.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.tabSessionMeasure1.Name = "tabSessionMeasure1"
         resources.ApplyResources(Me.tabSessionMeasure1, "tabSessionMeasure1")
         '
-        'pnlSessionDepth
+        'btnSessionCalibration
         '
-        Me.pnlSessionDepth.Controls.Add(Me.cboSessionDepthType)
-        Me.pnlSessionDepth.Controls.Add(Me.lblSessionDepthType)
-        resources.ApplyResources(Me.pnlSessionDepth, "pnlSessionDepth")
-        Me.pnlSessionDepth.Name = "pnlSessionDepth"
-        '
-        'cboSessionDepthType
-        '
-        Me.cboSessionDepthType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboSessionDepthType.DropDownWidth = 240
-        Me.cboSessionDepthType.Items.AddRange(New Object() {resources.GetString("cboSessionDepthType.Items"), resources.GetString("cboSessionDepthType.Items1"), resources.GetString("cboSessionDepthType.Items2")})
-        resources.ApplyResources(Me.cboSessionDepthType, "cboSessionDepthType")
-        Me.cboSessionDepthType.Name = "cboSessionDepthType"
-        '
-        'lblSessionDepthType
-        '
-        resources.ApplyResources(Me.lblSessionDepthType, "lblSessionDepthType")
-        Me.lblSessionDepthType.Name = "lblSessionDepthType"
+        resources.ApplyResources(Me.btnSessionCalibration, "btnSessionCalibration")
+        Me.btnSessionCalibration.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.btnSessionCalibration.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.calibrate_bn
+        Me.btnSessionCalibration.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.btnSessionCalibration.Name = "btnSessionCalibration"
         '
         'cboSessionDataFormat
         '
@@ -3573,58 +3576,6 @@ Partial Class frmProperties
         resources.ApplyResources(Me.chkSessionVthreshold, "chkSessionVthreshold")
         Me.chkSessionVthreshold.Name = "chkSessionVthreshold"
         Me.chkSessionVthreshold.Properties.Caption = resources.GetString("chkSessionVthreshold.Properties.Caption")
-        '
-        'pnlSessionInclination
-        '
-        Me.pnlSessionInclination.Controls.Add(Me.cboSessionInclinationType)
-        Me.pnlSessionInclination.Controls.Add(Me.lblSessionInclinationType)
-        Me.pnlSessionInclination.Controls.Add(Me.chkSessionInclinationDirection)
-        resources.ApplyResources(Me.pnlSessionInclination, "pnlSessionInclination")
-        Me.pnlSessionInclination.Name = "pnlSessionInclination"
-        '
-        'cboSessionInclinationType
-        '
-        Me.cboSessionInclinationType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboSessionInclinationType.Items.AddRange(New Object() {resources.GetString("cboSessionInclinationType.Items"), resources.GetString("cboSessionInclinationType.Items1"), resources.GetString("cboSessionInclinationType.Items2")})
-        resources.ApplyResources(Me.cboSessionInclinationType, "cboSessionInclinationType")
-        Me.cboSessionInclinationType.Name = "cboSessionInclinationType"
-        '
-        'lblSessionInclinationType
-        '
-        resources.ApplyResources(Me.lblSessionInclinationType, "lblSessionInclinationType")
-        Me.lblSessionInclinationType.Name = "lblSessionInclinationType"
-        '
-        'chkSessionInclinationDirection
-        '
-        resources.ApplyResources(Me.chkSessionInclinationDirection, "chkSessionInclinationDirection")
-        Me.chkSessionInclinationDirection.Name = "chkSessionInclinationDirection"
-        Me.chkSessionInclinationDirection.Properties.Caption = resources.GetString("chkSessionInclinationDirection.Properties.Caption")
-        '
-        'pnlSessionBearing
-        '
-        Me.pnlSessionBearing.Controls.Add(Me.cboSessionBearingType)
-        Me.pnlSessionBearing.Controls.Add(Me.lblSessionBearingType)
-        Me.pnlSessionBearing.Controls.Add(Me.chkSessionBearingDirection)
-        resources.ApplyResources(Me.pnlSessionBearing, "pnlSessionBearing")
-        Me.pnlSessionBearing.Name = "pnlSessionBearing"
-        '
-        'cboSessionBearingType
-        '
-        Me.cboSessionBearingType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboSessionBearingType.Items.AddRange(New Object() {resources.GetString("cboSessionBearingType.Items"), resources.GetString("cboSessionBearingType.Items1")})
-        resources.ApplyResources(Me.cboSessionBearingType, "cboSessionBearingType")
-        Me.cboSessionBearingType.Name = "cboSessionBearingType"
-        '
-        'lblSessionBearingType
-        '
-        resources.ApplyResources(Me.lblSessionBearingType, "lblSessionBearingType")
-        Me.lblSessionBearingType.Name = "lblSessionBearingType"
-        '
-        'chkSessionBearingDirection
-        '
-        resources.ApplyResources(Me.chkSessionBearingDirection, "chkSessionBearingDirection")
-        Me.chkSessionBearingDirection.Name = "chkSessionBearingDirection"
-        Me.chkSessionBearingDirection.Properties.Caption = resources.GetString("chkSessionBearingDirection.Properties.Caption")
         '
         'pnlSessionNorth
         '
@@ -3704,6 +3655,78 @@ Partial Class frmProperties
         Me.cboSessionSideMeasuresReferTo.Items.AddRange(New Object() {resources.GetString("cboSessionSideMeasuresReferTo.Items"), resources.GetString("cboSessionSideMeasuresReferTo.Items1")})
         resources.ApplyResources(Me.cboSessionSideMeasuresReferTo, "cboSessionSideMeasuresReferTo")
         Me.cboSessionSideMeasuresReferTo.Name = "cboSessionSideMeasuresReferTo"
+        '
+        'pnlSessionBearing
+        '
+        Me.pnlSessionBearing.Controls.Add(Me.cboSessionBearingType)
+        Me.pnlSessionBearing.Controls.Add(Me.lblSessionBearingType)
+        Me.pnlSessionBearing.Controls.Add(Me.chkSessionBearingDirection)
+        resources.ApplyResources(Me.pnlSessionBearing, "pnlSessionBearing")
+        Me.pnlSessionBearing.Name = "pnlSessionBearing"
+        '
+        'cboSessionBearingType
+        '
+        Me.cboSessionBearingType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboSessionBearingType.Items.AddRange(New Object() {resources.GetString("cboSessionBearingType.Items"), resources.GetString("cboSessionBearingType.Items1")})
+        resources.ApplyResources(Me.cboSessionBearingType, "cboSessionBearingType")
+        Me.cboSessionBearingType.Name = "cboSessionBearingType"
+        '
+        'lblSessionBearingType
+        '
+        resources.ApplyResources(Me.lblSessionBearingType, "lblSessionBearingType")
+        Me.lblSessionBearingType.Name = "lblSessionBearingType"
+        '
+        'chkSessionBearingDirection
+        '
+        resources.ApplyResources(Me.chkSessionBearingDirection, "chkSessionBearingDirection")
+        Me.chkSessionBearingDirection.Name = "chkSessionBearingDirection"
+        Me.chkSessionBearingDirection.Properties.Caption = resources.GetString("chkSessionBearingDirection.Properties.Caption")
+        '
+        'pnlSessionInclination
+        '
+        Me.pnlSessionInclination.Controls.Add(Me.cboSessionInclinationType)
+        Me.pnlSessionInclination.Controls.Add(Me.lblSessionInclinationType)
+        Me.pnlSessionInclination.Controls.Add(Me.chkSessionInclinationDirection)
+        resources.ApplyResources(Me.pnlSessionInclination, "pnlSessionInclination")
+        Me.pnlSessionInclination.Name = "pnlSessionInclination"
+        '
+        'cboSessionInclinationType
+        '
+        Me.cboSessionInclinationType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboSessionInclinationType.Items.AddRange(New Object() {resources.GetString("cboSessionInclinationType.Items"), resources.GetString("cboSessionInclinationType.Items1"), resources.GetString("cboSessionInclinationType.Items2")})
+        resources.ApplyResources(Me.cboSessionInclinationType, "cboSessionInclinationType")
+        Me.cboSessionInclinationType.Name = "cboSessionInclinationType"
+        '
+        'lblSessionInclinationType
+        '
+        resources.ApplyResources(Me.lblSessionInclinationType, "lblSessionInclinationType")
+        Me.lblSessionInclinationType.Name = "lblSessionInclinationType"
+        '
+        'chkSessionInclinationDirection
+        '
+        resources.ApplyResources(Me.chkSessionInclinationDirection, "chkSessionInclinationDirection")
+        Me.chkSessionInclinationDirection.Name = "chkSessionInclinationDirection"
+        Me.chkSessionInclinationDirection.Properties.Caption = resources.GetString("chkSessionInclinationDirection.Properties.Caption")
+        '
+        'pnlSessionDepth
+        '
+        Me.pnlSessionDepth.Controls.Add(Me.cboSessionDepthType)
+        Me.pnlSessionDepth.Controls.Add(Me.lblSessionDepthType)
+        resources.ApplyResources(Me.pnlSessionDepth, "pnlSessionDepth")
+        Me.pnlSessionDepth.Name = "pnlSessionDepth"
+        '
+        'cboSessionDepthType
+        '
+        Me.cboSessionDepthType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboSessionDepthType.DropDownWidth = 240
+        Me.cboSessionDepthType.Items.AddRange(New Object() {resources.GetString("cboSessionDepthType.Items"), resources.GetString("cboSessionDepthType.Items1"), resources.GetString("cboSessionDepthType.Items2")})
+        resources.ApplyResources(Me.cboSessionDepthType, "cboSessionDepthType")
+        Me.cboSessionDepthType.Name = "cboSessionDepthType"
+        '
+        'lblSessionDepthType
+        '
+        resources.ApplyResources(Me.lblSessionDepthType, "lblSessionDepthType")
+        Me.lblSessionDepthType.Name = "lblSessionDepthType"
         '
         'tabSessionDefault1
         '
@@ -4295,6 +4318,7 @@ Partial Class frmProperties
         '
         'tabInfoSessions1
         '
+        Me.tabInfoSessions1.Controls.Add(Me.flyCalibration)
         Me.tabInfoSessions1.Controls.Add(Me.txtSessionColor)
         Me.tabInfoSessions1.Controls.Add(Me.tabSession)
         Me.tabInfoSessions1.Controls.Add(Me.pnlSessionDate)
@@ -4307,6 +4331,64 @@ Partial Class frmProperties
         Me.tabInfoSessions1.Controls.Add(Me.txtSessionDate)
         Me.tabInfoSessions1.Name = "tabInfoSessions1"
         resources.ApplyResources(Me.tabInfoSessions1, "tabInfoSessions1")
+        '
+        'flyCalibration
+        '
+        Me.flyCalibration.Controls.Add(Me.pnlCalibration)
+        resources.ApplyResources(Me.flyCalibration, "flyCalibration")
+        Me.flyCalibration.Name = "flyCalibration"
+        '
+        'pnlCalibration
+        '
+        Me.pnlCalibration.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlCalibration.Controls.Add(Me.tvSessionCalibration)
+        resources.ApplyResources(Me.pnlCalibration, "pnlCalibration")
+        Me.pnlCalibration.FlyoutPanel = Me.flyCalibration
+        Me.pnlCalibration.Name = "pnlCalibration"
+        '
+        'tvSessionCalibration
+        '
+        Me.tvSessionCalibration.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colSessionCalibrateDesc, Me.colSessionCalibrateValue, Me.colSessionCalibrateIndex})
+        resources.ApplyResources(Me.tvSessionCalibration, "tvSessionCalibration")
+        Me.tvSessionCalibration.MenuManager = Me.BarManager
+        Me.tvSessionCalibration.Name = "tvSessionCalibration"
+        Me.tvSessionCalibration.OptionsCustomization.AllowFilter = False
+        Me.tvSessionCalibration.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
+        Me.tvSessionCalibration.OptionsView.ShowIndicator = False
+        Me.tvSessionCalibration.OptionsView.ShowRoot = False
+        Me.tvSessionCalibration.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.txtSessionCalibrateValue})
+        '
+        'colSessionCalibrateDesc
+        '
+        resources.ApplyResources(Me.colSessionCalibrateDesc, "colSessionCalibrateDesc")
+        Me.colSessionCalibrateDesc.FieldName = "Description"
+        Me.colSessionCalibrateDesc.Name = "colSessionCalibrateDesc"
+        Me.colSessionCalibrateDesc.OptionsColumn.AllowEdit = False
+        Me.colSessionCalibrateDesc.OptionsColumn.ReadOnly = True
+        '
+        'colSessionCalibrateValue
+        '
+        resources.ApplyResources(Me.colSessionCalibrateValue, "colSessionCalibrateValue")
+        Me.colSessionCalibrateValue.ColumnEdit = Me.txtSessionCalibrateValue
+        Me.colSessionCalibrateValue.FieldName = "Value"
+        Me.colSessionCalibrateValue.Name = "colSessionCalibrateValue"
+        '
+        'txtSessionCalibrateValue
+        '
+        resources.ApplyResources(Me.txtSessionCalibrateValue, "txtSessionCalibrateValue")
+        Me.txtSessionCalibrateValue.DisplayFormat.FormatString = "N2"
+        Me.txtSessionCalibrateValue.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtSessionCalibrateValue.EditFormat.FormatString = "N2"
+        Me.txtSessionCalibrateValue.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtSessionCalibrateValue.MaskSettings.Set("mask", "f")
+        Me.txtSessionCalibrateValue.Name = "txtSessionCalibrateValue"
+        Me.txtSessionCalibrateValue.ValidateOnEnterKey = True
+        '
+        'colSessionCalibrateIndex
+        '
+        resources.ApplyResources(Me.colSessionCalibrateIndex, "colSessionCalibrateIndex")
+        Me.colSessionCalibrateIndex.FieldName = "Index"
+        Me.colSessionCalibrateIndex.Name = "colSessionCalibrateIndex"
         '
         'txtSessionColor
         '
@@ -5630,18 +5712,18 @@ Partial Class frmProperties
         CType(Me.txtSessionNote.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabSessionMeasure1.ResumeLayout(False)
         Me.tabSessionMeasure1.PerformLayout()
-        Me.pnlSessionDepth.ResumeLayout(False)
-        Me.pnlSessionDepth.PerformLayout()
         CType(Me.chkSessionVthreshold.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlSessionInclination.ResumeLayout(False)
-        Me.pnlSessionInclination.PerformLayout()
-        CType(Me.chkSessionInclinationDirection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlSessionBearing.ResumeLayout(False)
-        Me.pnlSessionBearing.PerformLayout()
-        CType(Me.chkSessionBearingDirection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlSessionNorth.ResumeLayout(False)
         Me.pnlSessionNorth.PerformLayout()
         CType(Me.chkSessionDecMag.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlSessionBearing.ResumeLayout(False)
+        Me.pnlSessionBearing.PerformLayout()
+        CType(Me.chkSessionBearingDirection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlSessionInclination.ResumeLayout(False)
+        Me.pnlSessionInclination.PerformLayout()
+        CType(Me.chkSessionInclinationDirection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlSessionDepth.ResumeLayout(False)
+        Me.pnlSessionDepth.PerformLayout()
         Me.tabSessionDefault1.ResumeLayout(False)
         Me.tabSessionDefault1.PerformLayout()
         CType(Me.chkGlobalDecMag.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -5688,6 +5770,12 @@ Partial Class frmProperties
         Me.tabInfoSurface1.ResumeLayout(False)
         Me.tabInfoSessions1.ResumeLayout(False)
         Me.tabInfoSessions1.PerformLayout()
+        CType(Me.flyCalibration, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.flyCalibration.ResumeLayout(False)
+        CType(Me.pnlCalibration, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlCalibration.ResumeLayout(False)
+        CType(Me.tvSessionCalibration, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtSessionCalibrateValue, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtSessionColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tvSessions, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imlsvg, System.ComponentModel.ISupportInitialize).EndInit()
@@ -6374,4 +6462,12 @@ Partial Class frmProperties
     Friend WithEvents txtBaseGeologyLinesScaleFactor As NumericUpDown
     Friend WithEvents cboGeologicalLineType As ComboBox
     Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents flyCalibration As DevExpress.Utils.FlyoutPanel
+    Friend WithEvents pnlCalibration As DevExpress.Utils.FlyoutPanelControl
+    Friend WithEvents tvSessionCalibration As DevExpress.XtraTreeList.TreeList
+    Friend WithEvents colSessionCalibrateDesc As DevExpress.XtraTreeList.Columns.TreeListColumn
+    Friend WithEvents colSessionCalibrateValue As DevExpress.XtraTreeList.Columns.TreeListColumn
+    Friend WithEvents colSessionCalibrateIndex As DevExpress.XtraTreeList.Columns.TreeListColumn
+    Friend WithEvents txtSessionCalibrateValue As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
+    Friend WithEvents btnSessionCalibration As DevExpress.XtraEditors.SimpleButton
 End Class

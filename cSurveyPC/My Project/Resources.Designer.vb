@@ -1083,6 +1083,26 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         '''</summary>
+        Friend ReadOnly Property calibrate() As DevExpress.Utils.Svg.SvgImage
+            Get
+                Dim obj As Object = ResourceManager.GetObject("calibrate", resourceCulture)
+                Return CType(obj,DevExpress.Utils.Svg.SvgImage)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        '''</summary>
+        Friend ReadOnly Property calibrate_bn() As DevExpress.Utils.Svg.SvgImage
+            Get
+                Dim obj As Object = ResourceManager.GetObject("calibrate_bn", resourceCulture)
+                Return CType(obj,DevExpress.Utils.Svg.SvgImage)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        '''</summary>
         Friend ReadOnly Property calibrationshot() As DevExpress.Utils.Svg.SvgImage
             Get
                 Dim obj As Object = ResourceManager.GetObject("calibrationshot", resourceCulture)
@@ -1236,6 +1256,16 @@ Namespace My.Resources
         Friend ReadOnly Property charttype_polarpoint() As DevExpress.Utils.Svg.SvgImage
             Get
                 Dim obj As Object = ResourceManager.GetObject("charttype_polarpoint", resourceCulture)
+                Return CType(obj,DevExpress.Utils.Svg.SvgImage)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        '''</summary>
+        Friend ReadOnly Property charttype_polarpoint1() As DevExpress.Utils.Svg.SvgImage
+            Get
+                Dim obj As Object = ResourceManager.GetObject("charttype_polarpoint1", resourceCulture)
                 Return CType(obj,DevExpress.Utils.Svg.SvgImage)
             End Get
         End Property

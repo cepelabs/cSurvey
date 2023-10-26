@@ -463,7 +463,6 @@ Namespace cSurvey.Design
                     End If
 
                     For Each oItem As cItem In oItems
-                        'If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
                         If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, Selection.CurrentCave, Selection.CurrentBranch) Then
                             Dim iSelectionMode As cItem.SelectionModeEnum
                             If PaintOptions.IsDesign Then

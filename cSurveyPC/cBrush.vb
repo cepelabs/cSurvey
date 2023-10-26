@@ -2052,7 +2052,7 @@ Namespace cSurvey.Design
                     Dim oRenderArgs As cBrush.cRenderEventArgs = New cBrush.cRenderEventArgs
                     RaiseEvent OnRender(Me, oRenderArgs)
 
-                    Dim oBackupColors(6) As Color
+                    Dim oBackupColors(7) As Color
                     If oRenderArgs.Transparency <> 0 Then
                         oBackupColors(0) = oPen.Color
                         oPen.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oPen.Color)

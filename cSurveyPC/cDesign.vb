@@ -1416,9 +1416,7 @@ Namespace cSurvey.Design
                 End If
             Catch ex As Exception
                 Debug.Print("cDesign.Paint>" & ex.Message)
-                Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, ex.Message & vbCrLf & ex.StackTrace)
-                'Dim o As StackTrace = New StackTrace(ex)
-                'Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, ex.Message & vbCrLf & o.GetFrame(0).ToString)
+            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, ex.Message & vbCrLf & ex.StackTrace)
             End Try
         End Sub
 

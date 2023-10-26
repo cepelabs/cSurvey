@@ -2634,7 +2634,7 @@ Friend Class frmMain2
         sAdvancedSelectionPrecision = modNumbers.StringToSingle(My.Application.Settings.GetSetting("design.selectionmode.precision", 1000.0F))
         sAdvancedSelectionWide = modNumbers.StringToSingle(My.Application.Settings.GetSetting("design.selectionmode.wide", 4.0F))
 
-        Dim sAnchorScale As Single = modNumbers.StringToSingle(My.Application.Settings.GetSetting("design.anchorscale", 1))
+        Dim sAnchorScale As Single = modNumbers.StringToSingle(My.Application.Settings.GetSetting("design.anchorscale", 1.0F))
         If sAnchorScale < 1.0F Then sAnchorScale = 1.0F
         modPaint.AnchorsScale = sAnchorScale
 
@@ -5318,6 +5318,7 @@ Friend Class frmMain2
             Else
                 If TypeOf oResult.Exception Is Calculate.cCalculate.cCalculateSegmentsException Then
                     Dim oSegments As List(Of cSegment) = DirectCast(oResult.Exception, Calculate.cCalculate.cCalculateSegmentsException).Segments
+                    'oSurvey.Segments.RemoveRange(oSegments)
                     Call pPopupShow("error", oResult.Exception.Message & " " & String.Join(", ", oSegments.Select(Function(oSegment) "<href=""sg:" & oSegment.ID & """><color=" & ColorTranslator.ToHtml(My.Application.RuntimeSettings.GetSetting("messagebar.forecolor", Color.Black)) & ">" & oSegment.From & " - " & oSegment.To & "</color></href>")))
                     Call DirectCast(grdSegments.DataSource, UIHelpers.cSegmentsBindingList).SetCalculateException(oSegments, oResult.Exception.Message)
                 ElseIf TypeOf oResult.Exception Is Calculate.cCalculate.cCalculateSegmentException Then
@@ -13236,11 +13237,55 @@ Friend Class frmMain2
         Call pDesignEnvironmentSet()
     End Sub
 
+    Private Sub pFix(Parent As Control)
+        For Each oChild As Control In Parent.Controls
+            oChild.Location = New Point(oChild.Location.X * My.Application.CurrentDPIRatio, oChild.Location.Y * My.Application.CurrentDPIRatio)
+            If (oChild.Anchor And AnchorStyles.Right) = AnchorStyles.None Then
+                oChild.Size = New Size(oChild.Size.Width * My.Application.CurrentDPIRatio, oChild.Size.Height)
+            End If
+            Call pFix(oChild)
+        Next
+    End Sub
+
     Public Sub New()
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlSegment, False)
+        LayoutControlItem2.TextVisible = False
+        LayoutControlItem2.Padding = New DevExpress.XtraLayout.Utils.Padding(0)
+        LayoutControlItem2.Control = pnlSegmentSession
+        LayoutControlItem2.ControlMaxSize = New Size(0, 32 * My.Application.CurrentDPIRatio)
+        LayoutControlItem2.ControlMinSize = New Size(0, 32 * My.Application.CurrentDPIRatio)
+        LayoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+
+        LayoutControlItem1.TextVisible = False
+        LayoutControlItem1.Padding = New DevExpress.XtraLayout.Utils.Padding(0)
+        LayoutControlItem1.Control = pnlSegmentCaveBranches
+        LayoutControlItem1.ControlMaxSize = New Size(0, 56 * My.Application.CurrentDPIRatio)
+        LayoutControlItem1.ControlMinSize = New Size(0, 56 * My.Application.CurrentDPIRatio)
+        LayoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+
+        LayoutControlItem4.TextVisible = False
+        LayoutControlItem4.Padding = New DevExpress.XtraLayout.Utils.Padding(0)
+        LayoutControlItem4.Control = pnlSegmentCaveBranches
+        LayoutControlItem4.ControlMaxSize = New Size(0, 36 * My.Application.CurrentDPIRatio)
+        LayoutControlItem4.ControlMinSize = New Size(0, 36 * My.Application.CurrentDPIRatio)
+        LayoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Call pFix(pnlSegment)
+
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlTrigPoint, False)
+        LayoutControlItem8.TextVisible = False
+        LayoutControlItem8.Padding = New DevExpress.XtraLayout.Utils.Padding(0)
+        LayoutControlItem8.Control = pnlTrigpointName
+        LayoutControlItem8.ControlMaxSize = New Size(0, 36 * My.Application.CurrentDPIRatio)
+        LayoutControlItem8.ControlMinSize = New Size(0, 36 * My.Application.CurrentDPIRatio)
+        LayoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Call pFix(pnlTrigPoint)
+
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlTrigpointCoordinate, False)
+
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(RibbonControl, False)
 
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlDesignProp, False)
@@ -14617,8 +14662,8 @@ Friend Class frmMain2
     Private Sub cboTrigpointCoordinateGeo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTrigpointCoordinateGeo.SelectedIndexChanged
         Select Case cboTrigpointCoordinateGeo.SelectedIndex
             Case 0
-                pnlTrigpointCoordinateWGS84.Visible = True
-                pnlTrigpointCoordinateUTM.Visible = False
+                pnlTrigpointCoordinateWGS84.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                pnlTrigpointCoordinateUTM.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 If Not bDisableTrigpointsChangeEvent Then
                     Dim oCoordinate As cCoordinate = New cCoordinate(txtTrigpointCoordinateX.Text, txtTrigpointCoordinateY.Text, cboTrigpointCoordinateBand.Text, cboTrigpointCoordinateZone.Text, txtTrigpointCoordinateAlt.Text)
                     Call oCoordinate.Convert("WGS84", oSurvey.Properties.GPS.Format)
@@ -14628,8 +14673,8 @@ Friend Class frmMain2
                     txtTrigpointCoordinateAlt.Text = oCoordinate.Altitude
                 End If
             Case Else
-                pnlTrigpointCoordinateWGS84.Visible = False
-                pnlTrigpointCoordinateUTM.Visible = True
+                pnlTrigpointCoordinateWGS84.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                pnlTrigpointCoordinateUTM.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 If Not bDisableTrigpointsChangeEvent Then
                     Dim oCoordinate As cCoordinate = New cCoordinate(txtTrigpointCoordinateLat.Text, txtTrigpointCoordinateLong.Text, txtTrigpointCoordinateAlt.Text, cboTrigpointCoordinateFormat.Text)
                     Call oCoordinate.Convert("WGS84/UTM")
@@ -14686,6 +14731,7 @@ Friend Class frmMain2
                 End If
             End If
             If RefreshTreeLayers Then
+                If Not oFrozenDesktop Is Nothing Then Call pFrozeDesktopImage()
                 Call pMapInvalidate()
             End If
             bDisableFilterItemEvent = False
@@ -15494,7 +15540,7 @@ Friend Class frmMain2
             Case "PlotShowTrigpoint"
                 chkViewShowShots.Checked = oCurrentOptions.DrawPoints
             Case "PlotShowTrigpointText"
-                chkViewShowStationLabel.Checked = oCurrentOptions.DrawPointNames
+                chkViewShowStationLabel.Checked = oCurrentOptions.ShowPointText
             Case "QuotaType"
                 Call pObjectPropertyLoad()
             Case "LineStyle"
@@ -17222,12 +17268,13 @@ Friend Class frmMain2
             If e.FocusedRowHandle = DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
                 Dim oSegment As cSegment = oSurvey.Segments.Append
                 Call oSegment.SetCave(btnMainCaveList.EditValue, btnMainCaveBranchList.EditValue)
-                pSurveyCheckSession()
+                Call pSurveyCheckSession()
                 Call oSegment.SetSession(DirectCast(btnMainSessionList.EditValue, cSession))
                 Call oSegment.Save()
                 grdViewSegments.RefreshData()
                 Dim iRowHandle As Integer = grdViewSegments.FindRow(oSegment)
                 Call grdViewSegments.FullFocusRow(iRowHandle)
+                Call pSegmentLoad(oSegment)
             Else
                 Dim oSegmentPlaceholder As UIHelpers.cSegmentPlaceholder = grdViewSegments.GetFocusedRow
                 If oSegmentPlaceholder Is Nothing Then

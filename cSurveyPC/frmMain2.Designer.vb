@@ -33,6 +33,11 @@ Partial Class frmMain2
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain2))
+        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
         Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
@@ -43,63 +48,58 @@ Partial Class frmMain2
         Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim GalleryItemGroup1 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
-        Dim GalleryItem1 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem2 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem3 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem4 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem5 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem6 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItemGroup2 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
-        Dim GalleryItem7 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem8 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem9 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem10 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem11 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem12 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem13 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem14 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItemGroup3 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
-        Dim GalleryItem15 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem16 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem17 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem18 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem19 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem20 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem21 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem22 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem23 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem24 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem25 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem26 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem27 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem28 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem29 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItemGroup4 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
-        Dim GalleryItem30 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem31 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem32 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem33 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem34 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem35 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem36 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem37 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem38 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem39 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem40 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem41 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem42 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItemGroup5 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
-        Dim GalleryItem43 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem44 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim FadeTransition1 As DevExpress.Utils.Animation.FadeTransition = New DevExpress.Utils.Animation.FadeTransition()
-        Dim DockingContainer1 As DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer = New DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer()
-        Dim DockingContainer2 As DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer = New DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer()
+        Dim GalleryItemGroup6 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
+        Dim GalleryItem45 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem46 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem47 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem48 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem49 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem50 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItemGroup7 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
+        Dim GalleryItem51 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem52 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem53 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem54 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem55 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem56 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem57 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem58 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItemGroup8 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
+        Dim GalleryItem59 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem60 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem61 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem62 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem63 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem64 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem65 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem66 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem67 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem68 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem69 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem70 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem71 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem72 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem73 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItemGroup9 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
+        Dim GalleryItem74 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem75 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem76 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem77 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem78 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem79 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem80 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem81 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem82 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem83 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem84 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem85 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem86 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItemGroup10 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
+        Dim GalleryItem87 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem88 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim FadeTransition2 As DevExpress.Utils.Animation.FadeTransition = New DevExpress.Utils.Animation.FadeTransition()
+        Dim DockingContainer3 As DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer = New DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer()
+        Dim DockingContainer4 As DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer = New DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer()
         Me.DocumentGroup1 = New DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(Me.components)
         Me.Document2 = New DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(Me.components)
         Me.DocumentGroup2 = New DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(Me.components)
@@ -550,7 +550,7 @@ Partial Class frmMain2
         Me.h3D = New System.Windows.Forms.Integration.ElementHost()
         Me.picMap = New System.Windows.Forms.PictureBox()
         Me.mnuUndo = New DevExpress.XtraBars.PopupMenu(Me.components)
-        Me.pnlTrigpointsDataMain = New cSurveyPC.cPanelControl()
+        Me.pnlTrigpointsDataMain = New DevExpress.XtraEditors.PanelControl()
         Me.grdTrigPointAliases = New DevExpress.XtraGrid.GridControl()
         Me.grdViewTrigPointAliases = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colTrigPointAliasesAlias = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -562,7 +562,7 @@ Partial Class frmMain2
         Me.lblTrigpointType = New DevExpress.XtraEditors.LabelControl()
         Me.chkTrigpointIsSpecial = New DevExpress.XtraEditors.CheckEdit()
         Me.cboTrigPointType = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.pnlTrigpointsDataLayout = New cSurveyPC.cPanelControl()
+        Me.pnlTrigpointsDataLayout = New DevExpress.XtraEditors.PanelControl()
         Me.txtTrigpointFontColor = New DevExpress.XtraEditors.ColorPickEdit()
         Me.chkTrigpointDrawTranslationsLine = New DevExpress.XtraEditors.CheckEdit()
         Me.cboTrigPointLabelPosition = New DevExpress.XtraEditors.ComboBoxEdit()
@@ -586,31 +586,36 @@ Partial Class frmMain2
         Me.prpTrigpointDataProperties = New DevExpress.XtraVerticalGrid.PropertyGridControl()
         Me.txtTrigpointNote = New DevExpress.XtraEditors.MemoEdit()
         Me.pnlTrigPoint = New DevExpress.XtraLayout.LayoutControl()
-        Me.pnlTrigpointsDataCoordinate = New cSurveyPC.cPanelControl()
+        Me.pnlTrigpointsDataCoordinate = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlTrigpointCoordinate = New DevExpress.XtraLayout.LayoutControl()
         Me.btnTrigpointCoordinateClear = New DevExpress.XtraEditors.SimpleButton()
-        Me.cboTrigpointCoordinateGeo = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.lblTrigpointCoordinateFix = New DevExpress.XtraEditors.LabelControl()
         Me.cboTrigpointCoordinateFix = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.lblTrigpointCoordinateGeo = New DevExpress.XtraEditors.LabelControl()
-        Me.lblTrigpointCoordinateAlt = New DevExpress.XtraEditors.LabelControl()
+        Me.cboTrigpointCoordinateBand = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.cboTrigpointCoordinateZone = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.txtTrigpointCoordinateY = New DevExpress.XtraEditors.TextEdit()
         Me.txtTrigpointCoordinateAlt = New DevExpress.XtraEditors.TextEdit()
-        Me.pnlTrigpointCoordinateWGS84 = New DevExpress.XtraEditors.PanelControl()
         Me.txtTrigpointCoordinateLong = New DevExpress.XtraEditors.TextEdit()
         Me.txtTrigpointCoordinateLat = New DevExpress.XtraEditors.TextEdit()
-        Me.lblTrigpointCoordinateLat = New DevExpress.XtraEditors.LabelControl()
-        Me.lblTrigpointCoordinateLong = New DevExpress.XtraEditors.LabelControl()
-        Me.lblTrigpointCoordinateFormat = New DevExpress.XtraEditors.LabelControl()
         Me.cboTrigpointCoordinateFormat = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.pnlTrigpointCoordinateUTM = New DevExpress.XtraEditors.PanelControl()
-        Me.Label5 = New DevExpress.XtraEditors.LabelControl()
-        Me.cboTrigpointCoordinateBand = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.lblTrigpointCoordinateZone = New DevExpress.XtraEditors.LabelControl()
-        Me.txtTrigpointCoordinateY = New DevExpress.XtraEditors.TextEdit()
-        Me.cboTrigpointCoordinateZone = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.txtTrigpointCoordinateX = New DevExpress.XtraEditors.TextEdit()
-        Me.lblTrigpointCoordinateY = New DevExpress.XtraEditors.LabelControl()
-        Me.lblTrigpointCoordinateX = New DevExpress.XtraEditors.LabelControl()
-        Me.pnlTrigpointName = New cSurveyPC.cPanelControl()
+        Me.cboTrigpointCoordinateGeo = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.pnlTrigpointCoordinateWGS84 = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.pnlTrigpointCoordinateLat = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.pnlTrigpointCoordinateLong = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.pnlTrigpointCoordinateFormat = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.pnlTrigpointCoordinateGeo = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.pnlTrigpointCoordinateUTM = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.pnlTrigpointCoordinateX = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.pnlTrigpointCoordinateY = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.pnlTrigpointCoordinateZone = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.lblTrigpointCoordinateBand = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.pnlTrigpointCoordinateAlt = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.pnlTrigpointCoordinateFix = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.pnlTrigpointName = New DevExpress.XtraEditors.PanelControl()
         Me.lblTrigPointName = New DevExpress.XtraEditors.LabelControl()
         Me.txtTrigPointName = New DevExpress.XtraEditors.TextEdit()
         Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
@@ -629,7 +634,7 @@ Partial Class frmMain2
         Me.txtTrigpointNoteitem = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.WorkspaceManager = New DevExpress.Utils.WorkspaceManager(Me.components)
-        Me.pnlSegmentDataMain = New cSurveyPC.cPanelControl()
+        Me.pnlSegmentDataMain = New DevExpress.XtraEditors.PanelControl()
         Me.chkSegmentCalibration = New DevExpress.XtraEditors.CheckEdit()
         Me.lblSegmentDistance = New DevExpress.XtraEditors.LabelControl()
         Me.chkSegmentCutSplay = New DevExpress.XtraEditors.CheckEdit()
@@ -672,19 +677,19 @@ Partial Class frmMain2
         Me.colSegmentAttachmentsName = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSegmentAttachmentsNote = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.txtSegmentAttachmentsNote = New DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit()
-        Me.pnlSegmentDataLayout = New cSurveyPC.cPanelControl()
-        Me.pnlSegmentFromAndTo = New cSurveyPC.cPanelControl()
+        Me.pnlSegmentDataLayout = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlSegmentFromAndTo = New DevExpress.XtraEditors.PanelControl()
         Me.txtSegmentTo = New DevExpress.XtraEditors.TextEdit()
         Me.txtSegmentFrom = New DevExpress.XtraEditors.TextEdit()
         Me.lblSegmentFrom = New DevExpress.XtraEditors.LabelControl()
         Me.lblSegmentTo = New DevExpress.XtraEditors.LabelControl()
-        Me.pnlSegmentCaveBranches = New cSurveyPC.cPanelControl()
+        Me.pnlSegmentCaveBranches = New DevExpress.XtraEditors.PanelControl()
         Me.pnlSegmentCaveBranchesColor = New DevExpress.XtraEditors.PanelControl()
         Me.lblSegmentCave = New DevExpress.XtraEditors.LabelControl()
         Me.lblSegmentBranch = New DevExpress.XtraEditors.LabelControl()
         Me.cboSegmentCaveList = New cSurveyPC.cCaveDropDown()
         Me.cboSegmentCaveBranchList = New cSurveyPC.cCaveBranchDropDown()
-        Me.pnlSegmentSession = New cSurveyPC.cPanelControl()
+        Me.pnlSegmentSession = New DevExpress.XtraEditors.PanelControl()
         Me.pnlSegmentSessionColor = New DevExpress.XtraEditors.PanelControl()
         Me.lblSegmentSession = New DevExpress.XtraEditors.LabelControl()
         Me.cboSegmentSessionList = New cSurveyPC.cSessionDropDown()
@@ -832,245 +837,268 @@ Partial Class frmMain2
         Me.svgItemImages = New DevExpress.Utils.SvgImageCollection(Me.components)
         Me.TaskbarAssistant = New DevExpress.Utils.Taskbar.TaskbarAssistant()
         Me.LayoutConverter1 = New DevExpress.XtraLayout.Converter.LayoutConverter(Me.components)
-        CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Document2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DocumentGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Document1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlDesigner, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlDesigner.SuspendLayout()
-        CType(Me.pnlUndoPopup, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BarAndDockingController, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuTemplates, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuRecents, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuTherionPad, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuPasteSpecial, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuPlotManageStations, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuZoom, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainSessionList, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainSessionListView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtMainSessionListName, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainCaveList, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainCaveListView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtMainCaveListName, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainCaveListLocked, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.svgImages, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainCaveBranchList, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainCaveBranchListView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtMainCaveBranchName, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainCaveBranchListLocked, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainBindDesignType, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMainBindCrossSections, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemGridLookUpEdit1View, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPenSmootingFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.barStatusProgress, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCurrentItemX, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCurrentItemY, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCurrentItemW, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCurrentItemH, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCurrentItemScaleW, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCurrentItemScaleH, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCurrentItemRotateBy, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkCurrentItemRotateCenteredOnOrigin, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCurrentItemGenericReducePointFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.trkZoom, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuSegmentDirection, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuConvertTo, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtAlignToGridSize, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuWorkspaces, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuBar, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboPensSmooting1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemPopupContainerEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCurrentItemTransparency, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnl3D, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnl3D.SuspendLayout()
-        CType(Me.picMap, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuUndo, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlTrigpointsDataMain.SuspendLayout()
-        CType(Me.grdTrigPointAliases, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdViewTrigPointAliases, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkTrigpointZTurn.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointEntrance.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkTrigpointIsInExploration.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkTrigpointShowEntrance.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkTrigpointIsSpecial.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigPointType.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlTrigpointsDataLayout.SuspendLayout()
-        CType(Me.txtTrigpointFontColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkTrigpointDrawTranslationsLine.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigPointLabelPosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTrigPointLabelDistance, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigPointLabelSymbol.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdTrigpointConnections, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdViewTrigpointConnections, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.prpTrigpointDataProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTrigpointNote.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlTrigPoint, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlTrigPoint.SuspendLayout()
-        Me.pnlTrigpointsDataCoordinate.SuspendLayout()
-        CType(Me.cboTrigpointCoordinateGeo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointCoordinateFix.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTrigpointCoordinateAlt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlTrigpointCoordinateWGS84, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlTrigpointCoordinateWGS84.SuspendLayout()
-        CType(Me.txtTrigpointCoordinateLong.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTrigpointCoordinateLat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointCoordinateFormat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlTrigpointCoordinateUTM, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlTrigpointCoordinateUTM.SuspendLayout()
-        CType(Me.cboTrigpointCoordinateBand.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTrigpointCoordinateY.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointCoordinateZone.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTrigpointCoordinateX.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlTrigpointName.SuspendLayout()
-        CType(Me.txtTrigPointName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tabTrigpointsPropertyitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tabTrigpointsCoordinateitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tabTrigpointsMainitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tabTrigpointsLayoutitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tabTrigpointsConnectionsitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdTrigpointConnectionsitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tabTrigpointsDataitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.prpTrigpointDataPropertiesitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tabTrigpointsNoteitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTrigpointNoteitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlSegmentDataMain.SuspendLayout()
-        CType(Me.chkSegmentCalibration.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSegmentCutSplay.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSegmentZSurvey.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlSegmentSurfaceProfile, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlSegmentSurfaceProfile.SuspendLayout()
-        CType(Me.cboSegmentSurfaceProfileShow.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSegmentVirtual.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentInclination.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSegmentUnbindable.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSegmentSurface.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSegmentDuplicate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSegmentSplay.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentDistance.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentRight.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentUp.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentDown.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentLeft.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentBearing.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSegmentExclude.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSegmentInverted.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboSegmentDirection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.prpSegmentDataProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentNote.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlSegment, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlSegment.SuspendLayout()
-        CType(Me.grdSegmentAttachments, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdViewSegmentAttachments, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picSegmentAttachmentsImage, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentAttachmentsNote, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlSegmentDataLayout.SuspendLayout()
-        Me.pnlSegmentFromAndTo.SuspendLayout()
-        CType(Me.txtSegmentTo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentFrom.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlSegmentCaveBranches.SuspendLayout()
-        CType(Me.pnlSegmentCaveBranchesColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlSegmentSession.SuspendLayout()
-        CType(Me.pnlSegmentSessionColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tabSegmentsPropertyitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tabSegmentsMainitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tabSegmentsLayoutitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlSegmentDataLayoutitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tabSegmentsDataitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.prpSegmentDataPropertiesitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tabSegmentsNoteitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentNoteitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tabSegmentsAttachmentsitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdSegmentAttachmentsitem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.spSegmentsAndTrigpoints, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.spSegmentsAndTrigpoints.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.spSegmentsAndTrigpoints.Panel1.SuspendLayout()
-        CType(Me.spSegmentsAndTrigpoints.Panel2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.spSegmentsAndTrigpoints.Panel2.SuspendLayout()
-        Me.spSegmentsAndTrigpoints.SuspendLayout()
-        CType(Me.spSegments, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.spSegments.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.spSegments.Panel1.SuspendLayout()
-        CType(Me.spSegments.Panel2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.spSegments.Panel2.SuspendLayout()
-        Me.spSegments.SuspendLayout()
-        CType(Me.grdSegments, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdViewSegments, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentsListNumericEdit, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboSegmentListProfileDirection2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboSegmentsListNote, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboSegmentsListAttachment, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSegmentsListBearing, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.mnuDesignItemOLD.SuspendLayout()
-        Me.pnlForm.SuspendLayout()
-        Me.panelContainer1.SuspendLayout()
-        Me.dockProperties.SuspendLayout()
-        Me.ControlContainer10.SuspendLayout()
-        CType(Me.pnlDesignProp, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grpDesignProp, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnl3DProp, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grp3DProp, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlObjectProp, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlObjectProp.SuspendLayout()
-        CType(Me.pnlObjectSubProp, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grpObjectProp, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.dockLevels.SuspendLayout()
-        Me.dockClipart.SuspendLayout()
-        Me.ControlContainer6.SuspendLayout()
-        Me.DockPanel1_Container.SuspendLayout()
-        CType(Me.spTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.spTrigPoints.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.spTrigPoints.Panel1.SuspendLayout()
-        CType(Me.spTrigPoints.Panel2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.spTrigPoints.Panel2.SuspendLayout()
-        Me.spTrigPoints.SuspendLayout()
-        CType(Me.grdTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdViewTrigpoints, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointsListSpecial, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointsListEntrance, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointsListCoordinate, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointsListNote, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointsListInExploration, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picTrigpointsIcons, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigPointListsSplay, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DockManager, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.dockScript.SuspendLayout()
-        Me.dockIV.SuspendLayout()
-        Me.dockAV.SuspendLayout()
-        Me.dockJoinPoints.SuspendLayout()
-        Me.dockTexts.SuspendLayout()
-        Me.dockText.SuspendLayout()
-        Me.dockLS.SuspendLayout()
-        Me.dockConsole.SuspendLayout()
-        Me.dockDistances.SuspendLayout()
-        Me.dockData.SuspendLayout()
-        Me.dockDesigner.SuspendLayout()
-        CType(Me.DocumentManager, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.docView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuSegments, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuTrigpoint, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuDataProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuAliases, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuAttachments, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuDesignItemPoint, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuMapDrop, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuDesignItem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuDesignNone, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuTray, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.svgItemImages, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
+        CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Document2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DocumentGroup2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Document1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlDesigner, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlDesigner.SuspendLayout
+        CType(Me.pnlUndoPopup, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.BarAndDockingController, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuTemplates, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuRecents, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuTherionPad, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuPasteSpecial, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuPlotManageStations, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuZoom, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainSessionList, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainSessionListView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtMainSessionListName, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainCaveList, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainCaveListView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtMainCaveListName, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainCaveListLocked, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.svgImages, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainCaveBranchList, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainCaveBranchListView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtMainCaveBranchName, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainCaveBranchListLocked, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainBindDesignType, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMainBindCrossSections, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemGridLookUpEdit1View, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPenSmootingFactor, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.barStatusProgress, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCurrentItemX, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCurrentItemY, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCurrentItemW, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCurrentItemH, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCurrentItemScaleW, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCurrentItemScaleH, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCurrentItemRotateBy, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkCurrentItemRotateCenteredOnOrigin, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCurrentItemGenericReducePointFactor, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.trkZoom, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuSegmentDirection, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuConvertTo, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtAlignToGridSize, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuWorkspaces, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuBar, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboPensSmooting1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemPopupContainerEdit1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCurrentItemTransparency, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnl3D, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnl3D.SuspendLayout
+        CType(Me.picMap, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuUndo, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlTrigpointsDataMain, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlTrigpointsDataMain.SuspendLayout
+        CType(Me.grdTrigPointAliases, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdViewTrigPointAliases, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkTrigpointZTurn.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointEntrance.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkTrigpointIsInExploration.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkTrigpointShowEntrance.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkTrigpointIsSpecial.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigPointType.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlTrigpointsDataLayout, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlTrigpointsDataLayout.SuspendLayout
+        CType(Me.txtTrigpointFontColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkTrigpointDrawTranslationsLine.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigPointLabelPosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTrigPointLabelDistance, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigPointLabelSymbol.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdTrigpointConnections, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdViewTrigpointConnections, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.prpTrigpointDataProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTrigpointNote.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlTrigPoint, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlTrigPoint.SuspendLayout
+        CType(Me.pnlTrigpointsDataCoordinate, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlTrigpointsDataCoordinate.SuspendLayout
+        CType(Me.pnlTrigpointCoordinate, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlTrigpointCoordinate.SuspendLayout
+        CType(Me.cboTrigpointCoordinateFix.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointCoordinateBand.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointCoordinateZone.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTrigpointCoordinateY.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTrigpointCoordinateAlt.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTrigpointCoordinateLong.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTrigpointCoordinateLat.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointCoordinateFormat.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTrigpointCoordinateX.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointCoordinateGeo.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlTrigpointCoordinateWGS84, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlTrigpointCoordinateLat, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlTrigpointCoordinateLong, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlTrigpointCoordinateFormat, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlTrigpointCoordinateGeo, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlTrigpointCoordinateUTM, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlTrigpointCoordinateX, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlTrigpointCoordinateY, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlTrigpointCoordinateZone, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.lblTrigpointCoordinateBand, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlTrigpointCoordinateAlt, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlTrigpointCoordinateFix, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlTrigpointName, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlTrigpointName.SuspendLayout
+        CType(Me.txtTrigPointName.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabTrigpointsPropertyitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabTrigpointsCoordinateitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabTrigpointsMainitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabTrigpointsLayoutitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabTrigpointsConnectionsitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdTrigpointConnectionsitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabTrigpointsDataitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.prpTrigpointDataPropertiesitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabTrigpointsNoteitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTrigpointNoteitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlSegmentDataMain, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlSegmentDataMain.SuspendLayout
+        CType(Me.chkSegmentCalibration.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkSegmentCutSplay.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkSegmentZSurvey.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlSegmentSurfaceProfile, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlSegmentSurfaceProfile.SuspendLayout
+        CType(Me.cboSegmentSurfaceProfileShow.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkSegmentVirtual.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentInclination.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkSegmentUnbindable.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkSegmentSurface.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkSegmentDuplicate.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkSegmentSplay.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentDistance.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentRight.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentUp.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentDown.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentLeft.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentBearing.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkSegmentExclude.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkSegmentInverted.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboSegmentDirection.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.prpSegmentDataProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentNote.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlSegment, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlSegment.SuspendLayout
+        CType(Me.grdSegmentAttachments, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdViewSegmentAttachments, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.picSegmentAttachmentsImage, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentAttachmentsNote, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlSegmentDataLayout, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlSegmentDataLayout.SuspendLayout
+        CType(Me.pnlSegmentFromAndTo, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlSegmentFromAndTo.SuspendLayout
+        CType(Me.txtSegmentTo.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentFrom.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlSegmentCaveBranches, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlSegmentCaveBranches.SuspendLayout
+        CType(Me.pnlSegmentCaveBranchesColor, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlSegmentSession, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlSegmentSession.SuspendLayout
+        CType(Me.pnlSegmentSessionColor, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabSegmentsPropertyitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabSegmentsMainitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabSegmentsLayoutitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlSegmentDataLayoutitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabSegmentsDataitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.prpSegmentDataPropertiesitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabSegmentsNoteitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentNoteitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabSegmentsAttachmentsitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdSegmentAttachmentsitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.spSegmentsAndTrigpoints, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.spSegmentsAndTrigpoints.Panel1, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.spSegmentsAndTrigpoints.Panel1.SuspendLayout
+        CType(Me.spSegmentsAndTrigpoints.Panel2, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.spSegmentsAndTrigpoints.Panel2.SuspendLayout
+        Me.spSegmentsAndTrigpoints.SuspendLayout
+        CType(Me.spSegments, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.spSegments.Panel1, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.spSegments.Panel1.SuspendLayout
+        CType(Me.spSegments.Panel2, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.spSegments.Panel2.SuspendLayout
+        Me.spSegments.SuspendLayout
+        CType(Me.grdSegments, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdViewSegments, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentsListNumericEdit, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboSegmentListProfileDirection2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboSegmentsListNote, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboSegmentsListAttachment, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentsListBearing, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.mnuDesignItemOLD.SuspendLayout
+        Me.pnlForm.SuspendLayout
+        Me.panelContainer1.SuspendLayout
+        Me.dockProperties.SuspendLayout
+        Me.ControlContainer10.SuspendLayout
+        CType(Me.pnlDesignProp, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grpDesignProp, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnl3DProp, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grp3DProp, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlObjectProp, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlObjectProp.SuspendLayout
+        CType(Me.pnlObjectSubProp, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grpObjectProp, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.dockLevels.SuspendLayout
+        Me.dockClipart.SuspendLayout
+        Me.ControlContainer6.SuspendLayout
+        Me.DockPanel1_Container.SuspendLayout
+        CType(Me.spTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.spTrigPoints.Panel1, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.spTrigPoints.Panel1.SuspendLayout
+        CType(Me.spTrigPoints.Panel2, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.spTrigPoints.Panel2.SuspendLayout
+        Me.spTrigPoints.SuspendLayout
+        CType(Me.grdTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdViewTrigpoints, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointsListSpecial, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointsListEntrance, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointsListCoordinate, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointsListNote, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigpointsListInExploration, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.picTrigpointsIcons, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboTrigPointListsSplay, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DockManager, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.dockScript.SuspendLayout
+        Me.dockIV.SuspendLayout
+        Me.dockAV.SuspendLayout
+        Me.dockJoinPoints.SuspendLayout
+        Me.dockTexts.SuspendLayout
+        Me.dockText.SuspendLayout
+        Me.dockLS.SuspendLayout
+        Me.dockConsole.SuspendLayout
+        Me.dockDistances.SuspendLayout
+        Me.dockData.SuspendLayout
+        Me.dockDesigner.SuspendLayout
+        CType(Me.DocumentManager, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.docView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuSegments, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuTrigpoint, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuDataProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuAliases, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuAttachments, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuDesignItemPoint, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuMapDrop, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuDesignItem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuDesignNone, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuTray, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.svgItemImages, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.SuspendLayout
         '
         'DocumentGroup1
         '
@@ -1126,7 +1154,7 @@ Partial Class frmMain2
         Me.RibbonControl.Categories.AddRange(New DevExpress.XtraBars.BarManagerCategory() {CType(resources.GetObject("RibbonControl.Categories"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("RibbonControl.Categories1"), DevExpress.XtraBars.BarManagerCategory)})
         Me.RibbonControl.Controller = Me.BarAndDockingController
         Me.RibbonControl.ExpandCollapseItem.Id = 0
-        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.RibbonControl.SearchEditItem, Me.btnNew, Me.btnLoad, Me.btnSave, Me.btnSaveAs, Me.btnRollback, Me.btnSaveAsTemplate, Me.btnHistory, Me.btnCleanUp, Me.btnResurvey, Me.btnLoch, Me.btnTherionPad, Me.btnImport, Me.btnExport, Me.btnPrint, Me.btnProperties, Me.btnSurface, Me.btnHide, Me.btnExit, Me.btnExportData, Me.btnExportTrack, Me.btnExportImage, Me.btnExport3D, Me.btnImportData, Me.btnImportTrack, Me.btnImportDesign, Me.btnUndo, Me.btnCut, Me.btnCopy, Me.btnPasteService, Me.btnDelete, Me.btnPlotCalculate, Me.btnPlotRebind, Me.btnRefreshStations, Me.btnRemoveOrphans, Me.btnPlotInfoCave, Me.btnZoomIn, Me.btnZoomOut, Me.btnZoomToFit, Me.btnLayer_Base, Me.btnLayer_Soil, Me.btnLayer_Water, Me.btnLayer_Rocks, Me.btnLayer_TerrainLevel, Me.btnLayer_Borders, Me.btnLayer_Signs, Me.btnLayerManageLevels, Me.btnItemsEndEdit, Me.btnItemsObjectProperties, Me.btnSurveyInfoSession, Me.btnSurveyInfoEntrance, Me.btnSurveyInfoRing, Me.btnSurveyInfoOrientation, Me.btnViewDistances, Me.btnSettings, Me.btnDesignDeleteAll, Me.btnDesignPlotRebindAll, Me.btnDesignPlotRemoveBindings, Me.btnDesignPlotUnlockAll, Me.btnDesignPlotLockAll, Me.btnDesignPlotShowBindings, Me.btnDesignEditScaleRules, Me.btnViewFieldData, Me.btnViewObjectProp, Me.btnViewDesignArea, Me.btnViewPlan, Me.btnViewProfile, Me.btnView3D, Me.btnViewViewer, Me.btnViewScript, Me.btnViewSharedTexts, Me.btnViewLinkedSurveys, Me.btnViewConsole, Me.btnMainSessionList, Me.btnMainCaveList, Me.btnMainCaveBranchList, Me.btnMainBindDesignType, Me.btnMainBindCrossSections, Me.btnObjectSetCaveBranch, Me.btnGroupCaveFilters, Me.btnDesignHighlight0, Me.btnDesignHighlight1, Me.btnDesignHighlightMode, Me.btnDesignHighlightMode0, Me.btnDesignHighlightMode1, Me.btnDesignHighlightMode2, Me.btnDesignHighlightSegmentsAndTrigpoints, Me.btnViewSplayShowMode, Me.btnViewSplayShowMode1, Me.btnViewSplayShowMode0, Me.btnSegmentAdd, Me.btnSegmentDelete, Me.btnPenSmooting, Me.btnPenSmootingFactor, Me.btnPenLine, Me.btnPenSpline, Me.btnPenBezier, Me.btnGrpPensType, Me.btnGrpPenSmooting, Me.btnPlotGrades, Me.btnPlotPrefixTrigpoints, Me.btnPlotRenameTrigpoints, Me.btnPlotReplicateData, Me.btnPlotManageLRUD, Me.btnPlotSplayReplicate, Me.btnPlotDeleteAll, Me.btnPlotManageVisibility, Me.btnEditFind, Me.btnZoomZoomCenter, Me.btnZoomZoomToSelection, Me.btnZoomZoomToFitCaveBranch, Me.btnZoomAutoZoomToFit, Me.btnHelpInfo, Me.btnHelpCheckUpdate, Me.btnViewWorkspaceData, Me.btnViewWorkspaceDesign, Me.btnViewWorkspaceAll, Me.btnEditSelectAll, Me.pnlStatusText, Me.pnlStatusProgress, Me.pnlStatusCurrentRule, Me.btnStatusWMSOnLine, Me.btnStatusHistoryEnabled, Me.pnlStatusDesignSnapToGrid, Me.pnlStatusDesignInfo, Me.pnlStatusDesignZoom, Me.btnStatusDesignWarping, Me.btnStatusDesignWarpingState, Me.btnStatusDesignGeographicState, Me.pnlStatusMasterSlave, Me.btnGrpDesignPlotRebindCommands, Me.btnGrpDesignPlotRebindActions, Me.btnDesignGraphicsQuality, Me.btnDesignGraphics0, Me.btnDesignGraphics1, Me.btnDesignGraphics2, Me.btnCursorMode, Me.btnScrollMode, Me.btnAltMode, Me.btnMultiSelMode1, Me.btnMultiSelMode2, Me.btnSnapToPointNone, Me.btnSnapToPoint0, Me.btnSnapToPoint1, Me.btnSnapToPoint2, Me.btnViewRulers, Me.btnEditDrawing, Me.btnEditPointToPoint, Me.btn3DViewTop, Me.btn3DViewBottom, Me.btnFilterEdit, Me.btnFilterFiltered, Me.btnFilterWhiteboard, Me.btnFilterInvertFilter, Me.btn3dViewSN, Me.btn3dViewNS, Me.btn3dViewEW, Me.btn3dViewWE, Me.btnViewMetricGrid, Me.btnViewMetricGrid0, Me.btnViewMetricGrid1, Me.btnViewMetricGrid2, Me.btn3DCameraType, Me.btn3DCameraType1, Me.btn3DCameraType0, Me.btn3DCameraMode, Me.btn3DCameraMode0, Me.btn3DCameraMode1, Me.btnGroupDesignFilters, Me.btnSegments, Me.btnTrigpoints, Me.btnSegmentsAndTrigPoints, Me.btnSegmentGridColor, Me.btnSegmentGridColor0, Me.btnSegmentGridColor1, Me.btnSegmentGridColor2, Me.btnSegmentGridColor3, Me.btnSegmentInsert, Me.btnSegmentMoveUp, Me.btnSegmentMoveDown, Me.btnGridExport, Me.btnGridRefresh, Me.btnDataPropertiesEdit, Me.btnDataPropertiesDelete, Me.btnAliasDelete, Me.btnAliasDeleteAll, Me.btnAttachmentsOpen, Me.btnAttachmentsAdd, Me.btnAttachmentsDelete, Me.btnAttachmentsDeleteAll, Me.btnItemsSendToBottom, Me.btnItemsSendBehind, Me.btnItemsBringAhead, Me.btnItemsBringOnTop, Me.btnItemsLayouts, Me.btnCurrentItemSignSaveInGallery, Me.btnCurrentItemSignExport, Me.btnCurrentItemGenericCombine, Me.btnCurrentItemGenericDivide, Me.btnCurrentItemGenericCombineAllSequences, Me.btnCurrentItemGenericCloseAllSequences, Me.btnCurrentItemGenericReorderSequence, Me.btnCurrentItemGenericRevertAllSequences, Me.btnCurrentItemGenericRestorePointPen, Me.btnCurrentItemGenericReducePoint, Me.btnCurrentItemItemsCombine, Me.btnCurrentItemItemsCombineRockClipart, Me.btnCurrentItemItemsCombineConcretionClipart, Me.btnCurrentItemItemsCombineSignClipart, Me.btnCurrentItemPointAdd, Me.btnCurrentItemPointDelete, Me.btnCurrentItemPointSequenceDivide, Me.btnCurrentItemPointSequenceDivideAndJoin, Me.btnCurrentItemPointSequenceCombine, Me.btnCurrentItemPointCloseSequence, Me.btnCurrentItemPointDeleteSequence, Me.btnCurrentItemPointRevertSequence, Me.btnCurrentItemPointNewFromSequence0, Me.btnCurrentItemPointNewFromSequence1, Me.btnCurrentItemPlotLockSegment, Me.btnCurrentItemPlotBindSegment, Me.btnCurrentItemPointConvertToLines, Me.btnCurrentItemPointConvertToSpline, Me.btnCurrentItemPointConvertToBezier, Me.btnCurrentItemClipartSaveInGallery, Me.btnCurrentItemClipartExport, Me.btnCurrentItemLegendAddTo, Me.btnCurrentItemSendCopyTo, Me.btnCurrentItemX, Me.btnCurrentItemY, Me.btnCurrentItemW, Me.btnCurrentItemH, Me.btnCurrentItemScaleW, Me.btnCurrentItemScaleH, Me.btnCurrentItemFlipH, Me.btnCurrentItemFlipV, Me.btnCurrentItemRotateBy, Me.btnCurrentItemRotateCenteredOnOrigin, Me.btnCurrentItemRotateRight, Me.btnCurrentItemRotateLeft, Me.btnCurrentItemHAlignLeft, Me.btnCurrentItemHAlignCenter, Me.btnCurrentItemHAlignRight, Me.btnCurrenItemVAlignTop, Me.btnCurrenItemVAlignCenter, Me.btnCurrenItemVAlignBottom, Me.btnCurrentItemAlignH, Me.btnCurrentItemAlignV, Me.btnCurrentItemSpacing, Me.cmdCurrentItemHSpace, Me.cmdCurrentItemVSpace, Me.btnCurrentItemLock, Me.btnCurrentItemPointsJoin, Me.btnCurrentItemPointsJoinAndConnect, Me.btnCurrentItemPointsUnjoin, Me.btnCurrentItemPointsUnjoinAll, Me.btnCurrentItemPointResetAsParent, Me.btnCurrentItemGenericReducePointFactor, Me.btnCurrentItemConvertToLines, Me.btnCurrentItemConvertToSpline, Me.btnCurrentItemConvertToBezier, Me.btnViewImageViewer, Me.pnlStatusZoomBar, Me.btnViewAudioListener, Me.btnCurrentItemBindings, Me.btnMapDropImage, Me.btnMapDropSketch, Me.btnMapDropPocketTopo, Me.btnMapDropCaveExplorer, Me.btnMapDropGenericText, Me.btnMapDropAttachment, Me.btnCurrentItemPointInfo, Me.btnPasteStyleBrush, Me.btnPasteStylePen, Me.btnPaste, Me.btnCurrentItemSketchEdit, Me.btnCurrentItemSketchView, Me.btnCurrentItemSketchDisableMorphingForAll, Me.btnCurrentItemSketchEnableMorphingForAll, Me.btnCurrentItemSketchHideAll, Me.btnCurrentItemImageEdit, Me.btnCurrentItemImageView, Me.btnCurrentItemUnderItems, Me.btnCurrentItemSegmentDirection, Me.btnCurrentItemSegmentDirection0, Me.btnCurrentItemSegmentDirection1, Me.btnCurrentItemSegmentDirection2, Me.btnCurrentItemSegmentDirection3, Me.btnCurrentItemSegmentDirection4, Me.btnCurrentItemSegmentFromProperty, Me.btnCurrentItemSegmentToProperty, Me.btnCurrentItemShot, Me.btnCurrentItemStationSetCoordinate, Me.btnCurrentItemStationSetCoordinateCP, Me.btnCurrentItemStation, Me.btnShow, Me.btnCurrentItemConvertTo, Me.btnItemsSendAndConvert, Me.btnDesignSetCurrentCaveBranch, Me.SkinPaletteRibbonGalleryBarItem1, Me.btnAlignToGrid, Me.btnAlignToGridSize, Me.btnAlignToGridOptions, Me.btnAutoSettings, Me.btnDesignBar3DRefresh, Me.btnDesignBarPlotCalculate, Me.btnWorkspacesCapture, Me.btnWorkspacesManage, Me.btnWorkspacesList, Me.btnTrigpointGridColor, Me.btnTrigpointGridColor0, Me.btnTrigpointGridColor1, Me.btnSurveyInfoDepths, Me.btnTherionPadExportPlan, Me.btnTherionPadExportProfile, Me.btnTherionPadExport3D, Me.SkinDropDownButtonItem1, Me.btnQATBeginGroup, Me.btnQATMovePrev, Me.btnQATMoveNext, Me.btnQATRestore, Me.chkViewShowLRUD, Me.chkViewShowSplay, Me.chkViewShowShots, Me.chkViewShowStation, Me.chkViewShowStationLabel, Me.btnViewShowCenterline, Me.btnCurrentItemPlotUnlockSegment, Me.btnCurrentItemLegendAddToFakeItem, Me.btnContextMenu, Me.btnToolsMostUsed, Me.btnToolsLastUsed, Me.btnViewToolbarLevels, Me.btnViewToolbarItems, Me.btnViewToolbarLastUsedTools, Me.btnViewToolbarsDesign, Me.btnViewToolbarFloatingBar, Me.btnCurrentItemSignReplaceByCategory, Me.btnCurrentItemSignReplaceByClipart})
+        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.btnNew, Me.btnLoad, Me.btnSave, Me.btnSaveAs, Me.btnRollback, Me.btnSaveAsTemplate, Me.btnHistory, Me.btnCleanUp, Me.btnResurvey, Me.btnLoch, Me.btnTherionPad, Me.btnImport, Me.btnExport, Me.btnPrint, Me.btnProperties, Me.btnSurface, Me.btnHide, Me.btnExit, Me.btnExportData, Me.btnExportTrack, Me.btnExportImage, Me.btnExport3D, Me.btnImportData, Me.btnImportTrack, Me.btnImportDesign, Me.btnUndo, Me.btnCut, Me.btnCopy, Me.btnPasteService, Me.btnDelete, Me.btnPlotCalculate, Me.btnPlotRebind, Me.btnRefreshStations, Me.btnRemoveOrphans, Me.btnPlotInfoCave, Me.btnZoomIn, Me.btnZoomOut, Me.btnZoomToFit, Me.btnLayer_Base, Me.btnLayer_Soil, Me.btnLayer_Water, Me.btnLayer_Rocks, Me.btnLayer_TerrainLevel, Me.btnLayer_Borders, Me.btnLayer_Signs, Me.btnLayerManageLevels, Me.btnItemsEndEdit, Me.btnItemsObjectProperties, Me.btnSurveyInfoSession, Me.btnSurveyInfoEntrance, Me.btnSurveyInfoRing, Me.btnSurveyInfoOrientation, Me.btnViewDistances, Me.btnSettings, Me.btnDesignDeleteAll, Me.btnDesignPlotRebindAll, Me.btnDesignPlotRemoveBindings, Me.btnDesignPlotUnlockAll, Me.btnDesignPlotLockAll, Me.btnDesignPlotShowBindings, Me.btnDesignEditScaleRules, Me.btnViewFieldData, Me.btnViewObjectProp, Me.btnViewDesignArea, Me.btnViewPlan, Me.btnViewProfile, Me.btnView3D, Me.btnViewViewer, Me.btnViewScript, Me.btnViewSharedTexts, Me.btnViewLinkedSurveys, Me.btnViewConsole, Me.btnMainSessionList, Me.btnMainCaveList, Me.btnMainCaveBranchList, Me.btnMainBindDesignType, Me.btnMainBindCrossSections, Me.btnObjectSetCaveBranch, Me.btnGroupCaveFilters, Me.btnDesignHighlight0, Me.btnDesignHighlight1, Me.btnDesignHighlightMode, Me.btnDesignHighlightMode0, Me.btnDesignHighlightMode1, Me.btnDesignHighlightMode2, Me.btnDesignHighlightSegmentsAndTrigpoints, Me.btnViewSplayShowMode, Me.btnViewSplayShowMode1, Me.btnViewSplayShowMode0, Me.btnSegmentAdd, Me.btnSegmentDelete, Me.btnPenSmooting, Me.btnPenSmootingFactor, Me.btnPenLine, Me.btnPenSpline, Me.btnPenBezier, Me.btnGrpPensType, Me.btnGrpPenSmooting, Me.btnPlotGrades, Me.btnPlotPrefixTrigpoints, Me.btnPlotRenameTrigpoints, Me.btnPlotReplicateData, Me.btnPlotManageLRUD, Me.btnPlotSplayReplicate, Me.btnPlotDeleteAll, Me.btnPlotManageVisibility, Me.btnEditFind, Me.btnZoomZoomCenter, Me.btnZoomZoomToSelection, Me.btnZoomZoomToFitCaveBranch, Me.btnZoomAutoZoomToFit, Me.btnHelpInfo, Me.btnHelpCheckUpdate, Me.btnViewWorkspaceData, Me.btnViewWorkspaceDesign, Me.btnViewWorkspaceAll, Me.btnEditSelectAll, Me.pnlStatusText, Me.pnlStatusProgress, Me.pnlStatusCurrentRule, Me.btnStatusWMSOnLine, Me.btnStatusHistoryEnabled, Me.pnlStatusDesignSnapToGrid, Me.pnlStatusDesignInfo, Me.pnlStatusDesignZoom, Me.btnStatusDesignWarping, Me.btnStatusDesignWarpingState, Me.btnStatusDesignGeographicState, Me.pnlStatusMasterSlave, Me.btnGrpDesignPlotRebindCommands, Me.btnGrpDesignPlotRebindActions, Me.btnDesignGraphicsQuality, Me.btnDesignGraphics0, Me.btnDesignGraphics1, Me.btnDesignGraphics2, Me.btnCursorMode, Me.btnScrollMode, Me.btnAltMode, Me.btnMultiSelMode1, Me.btnMultiSelMode2, Me.btnSnapToPointNone, Me.btnSnapToPoint0, Me.btnSnapToPoint1, Me.btnSnapToPoint2, Me.btnViewRulers, Me.btnEditDrawing, Me.btnEditPointToPoint, Me.btn3DViewTop, Me.btn3DViewBottom, Me.btnFilterEdit, Me.btnFilterFiltered, Me.btnFilterWhiteboard, Me.btnFilterInvertFilter, Me.btn3dViewSN, Me.btn3dViewNS, Me.btn3dViewEW, Me.btn3dViewWE, Me.btnViewMetricGrid, Me.btnViewMetricGrid0, Me.btnViewMetricGrid1, Me.btnViewMetricGrid2, Me.btn3DCameraType, Me.btn3DCameraType1, Me.btn3DCameraType0, Me.btn3DCameraMode, Me.btn3DCameraMode0, Me.btn3DCameraMode1, Me.btnGroupDesignFilters, Me.btnSegments, Me.btnTrigpoints, Me.btnSegmentsAndTrigPoints, Me.btnSegmentGridColor, Me.btnSegmentGridColor0, Me.btnSegmentGridColor1, Me.btnSegmentGridColor2, Me.btnSegmentGridColor3, Me.btnSegmentInsert, Me.btnSegmentMoveUp, Me.btnSegmentMoveDown, Me.btnGridExport, Me.btnGridRefresh, Me.btnDataPropertiesEdit, Me.btnDataPropertiesDelete, Me.btnAliasDelete, Me.btnAliasDeleteAll, Me.btnAttachmentsOpen, Me.btnAttachmentsAdd, Me.btnAttachmentsDelete, Me.btnAttachmentsDeleteAll, Me.btnItemsSendToBottom, Me.btnItemsSendBehind, Me.btnItemsBringAhead, Me.btnItemsBringOnTop, Me.btnItemsLayouts, Me.btnCurrentItemSignSaveInGallery, Me.btnCurrentItemSignExport, Me.btnCurrentItemGenericCombine, Me.btnCurrentItemGenericDivide, Me.btnCurrentItemGenericCombineAllSequences, Me.btnCurrentItemGenericCloseAllSequences, Me.btnCurrentItemGenericReorderSequence, Me.btnCurrentItemGenericRevertAllSequences, Me.btnCurrentItemGenericRestorePointPen, Me.btnCurrentItemGenericReducePoint, Me.btnCurrentItemItemsCombine, Me.btnCurrentItemItemsCombineRockClipart, Me.btnCurrentItemItemsCombineConcretionClipart, Me.btnCurrentItemItemsCombineSignClipart, Me.btnCurrentItemPointAdd, Me.btnCurrentItemPointDelete, Me.btnCurrentItemPointSequenceDivide, Me.btnCurrentItemPointSequenceDivideAndJoin, Me.btnCurrentItemPointSequenceCombine, Me.btnCurrentItemPointCloseSequence, Me.btnCurrentItemPointDeleteSequence, Me.btnCurrentItemPointRevertSequence, Me.btnCurrentItemPointNewFromSequence0, Me.btnCurrentItemPointNewFromSequence1, Me.btnCurrentItemPlotLockSegment, Me.btnCurrentItemPlotBindSegment, Me.btnCurrentItemPointConvertToLines, Me.btnCurrentItemPointConvertToSpline, Me.btnCurrentItemPointConvertToBezier, Me.btnCurrentItemClipartSaveInGallery, Me.btnCurrentItemClipartExport, Me.btnCurrentItemLegendAddTo, Me.btnCurrentItemSendCopyTo, Me.btnCurrentItemX, Me.btnCurrentItemY, Me.btnCurrentItemW, Me.btnCurrentItemH, Me.btnCurrentItemScaleW, Me.btnCurrentItemScaleH, Me.btnCurrentItemFlipH, Me.btnCurrentItemFlipV, Me.btnCurrentItemRotateBy, Me.btnCurrentItemRotateCenteredOnOrigin, Me.btnCurrentItemRotateRight, Me.btnCurrentItemRotateLeft, Me.btnCurrentItemHAlignLeft, Me.btnCurrentItemHAlignCenter, Me.btnCurrentItemHAlignRight, Me.btnCurrenItemVAlignTop, Me.btnCurrenItemVAlignCenter, Me.btnCurrenItemVAlignBottom, Me.btnCurrentItemAlignH, Me.btnCurrentItemAlignV, Me.btnCurrentItemSpacing, Me.cmdCurrentItemHSpace, Me.cmdCurrentItemVSpace, Me.btnCurrentItemLock, Me.btnCurrentItemPointsJoin, Me.btnCurrentItemPointsJoinAndConnect, Me.btnCurrentItemPointsUnjoin, Me.btnCurrentItemPointsUnjoinAll, Me.btnCurrentItemPointResetAsParent, Me.btnCurrentItemGenericReducePointFactor, Me.btnCurrentItemConvertToLines, Me.btnCurrentItemConvertToSpline, Me.btnCurrentItemConvertToBezier, Me.btnViewImageViewer, Me.pnlStatusZoomBar, Me.btnViewAudioListener, Me.btnCurrentItemBindings, Me.btnMapDropImage, Me.btnMapDropSketch, Me.btnMapDropPocketTopo, Me.btnMapDropCaveExplorer, Me.btnMapDropGenericText, Me.btnMapDropAttachment, Me.btnCurrentItemPointInfo, Me.btnPasteStyleBrush, Me.btnPasteStylePen, Me.btnPaste, Me.btnCurrentItemSketchEdit, Me.btnCurrentItemSketchView, Me.btnCurrentItemSketchDisableMorphingForAll, Me.btnCurrentItemSketchEnableMorphingForAll, Me.btnCurrentItemSketchHideAll, Me.btnCurrentItemImageEdit, Me.btnCurrentItemImageView, Me.btnCurrentItemUnderItems, Me.btnCurrentItemSegmentDirection, Me.btnCurrentItemSegmentDirection0, Me.btnCurrentItemSegmentDirection1, Me.btnCurrentItemSegmentDirection2, Me.btnCurrentItemSegmentDirection3, Me.btnCurrentItemSegmentDirection4, Me.btnCurrentItemSegmentFromProperty, Me.btnCurrentItemSegmentToProperty, Me.btnCurrentItemShot, Me.btnCurrentItemStationSetCoordinate, Me.btnCurrentItemStationSetCoordinateCP, Me.btnCurrentItemStation, Me.btnShow, Me.btnCurrentItemConvertTo, Me.btnItemsSendAndConvert, Me.btnDesignSetCurrentCaveBranch, Me.SkinPaletteRibbonGalleryBarItem1, Me.btnAlignToGrid, Me.btnAlignToGridSize, Me.btnAlignToGridOptions, Me.btnAutoSettings, Me.btnDesignBar3DRefresh, Me.btnDesignBarPlotCalculate, Me.btnWorkspacesCapture, Me.btnWorkspacesManage, Me.btnWorkspacesList, Me.btnTrigpointGridColor, Me.btnTrigpointGridColor0, Me.btnTrigpointGridColor1, Me.btnSurveyInfoDepths, Me.btnTherionPadExportPlan, Me.btnTherionPadExportProfile, Me.btnTherionPadExport3D, Me.SkinDropDownButtonItem1, Me.btnQATBeginGroup, Me.btnQATMovePrev, Me.btnQATMoveNext, Me.btnQATRestore, Me.chkViewShowLRUD, Me.chkViewShowSplay, Me.chkViewShowShots, Me.chkViewShowStation, Me.chkViewShowStationLabel, Me.btnViewShowCenterline, Me.btnCurrentItemPlotUnlockSegment, Me.btnCurrentItemLegendAddToFakeItem, Me.btnContextMenu, Me.btnToolsMostUsed, Me.btnToolsLastUsed, Me.btnViewToolbarLevels, Me.btnViewToolbarItems, Me.btnViewToolbarLastUsedTools, Me.btnViewToolbarsDesign, Me.btnViewToolbarFloatingBar, Me.btnCurrentItemSignReplaceByCategory, Me.btnCurrentItemSignReplaceByClipart})
         resources.ApplyResources(Me.RibbonControl, "RibbonControl")
         Me.RibbonControl.MaxItemId = 373
         Me.RibbonControl.Name = "RibbonControl"
@@ -1864,7 +1892,7 @@ Partial Class frmMain2
         '
         Me.cboMainSessionList.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.[True]
         resources.ApplyResources(Me.cboMainSessionList, "cboMainSessionList")
-        Me.cboMainSessionList.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainSessionList.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainSessionList.Buttons1"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("cboMainSessionList.Buttons2"), CType(resources.GetObject("cboMainSessionList.Buttons3"), Integer), CType(resources.GetObject("cboMainSessionList.Buttons4"), Boolean), CType(resources.GetObject("cboMainSessionList.Buttons5"), Boolean), CType(resources.GetObject("cboMainSessionList.Buttons6"), Boolean), EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, resources.GetString("cboMainSessionList.Buttons7"), CType(resources.GetObject("cboMainSessionList.Buttons8"), Object), CType(resources.GetObject("cboMainSessionList.Buttons9"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("cboMainSessionList.Buttons10"), DevExpress.Utils.ToolTipAnchor))})
+        Me.cboMainSessionList.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainSessionList.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainSessionList.Buttons1"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("cboMainSessionList.Buttons2"), CType(resources.GetObject("cboMainSessionList.Buttons3"), Integer), CType(resources.GetObject("cboMainSessionList.Buttons4"), Boolean), CType(resources.GetObject("cboMainSessionList.Buttons5"), Boolean), CType(resources.GetObject("cboMainSessionList.Buttons6"), Boolean), EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, resources.GetString("cboMainSessionList.Buttons7"), CType(resources.GetObject("cboMainSessionList.Buttons8"), Object), CType(resources.GetObject("cboMainSessionList.Buttons9"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("cboMainSessionList.Buttons10"), DevExpress.Utils.ToolTipAnchor))})
         Me.cboMainSessionList.DisplayMember = "ToHTMLString"
         Me.cboMainSessionList.Name = "cboMainSessionList"
         Me.cboMainSessionList.PopupView = Me.cboMainSessionListView
@@ -1909,7 +1937,7 @@ Partial Class frmMain2
         '
         Me.cboMainCaveList.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.[True]
         resources.ApplyResources(Me.cboMainCaveList, "cboMainCaveList")
-        Me.cboMainCaveList.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainCaveList.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainCaveList.Buttons1"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("cboMainCaveList.Buttons2"), CType(resources.GetObject("cboMainCaveList.Buttons3"), Integer), CType(resources.GetObject("cboMainCaveList.Buttons4"), Boolean), CType(resources.GetObject("cboMainCaveList.Buttons5"), Boolean), CType(resources.GetObject("cboMainCaveList.Buttons6"), Boolean), EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, resources.GetString("cboMainCaveList.Buttons7"), CType(resources.GetObject("cboMainCaveList.Buttons8"), Object), CType(resources.GetObject("cboMainCaveList.Buttons9"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("cboMainCaveList.Buttons10"), DevExpress.Utils.ToolTipAnchor))})
+        Me.cboMainCaveList.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainCaveList.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainCaveList.Buttons1"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("cboMainCaveList.Buttons2"), CType(resources.GetObject("cboMainCaveList.Buttons3"), Integer), CType(resources.GetObject("cboMainCaveList.Buttons4"), Boolean), CType(resources.GetObject("cboMainCaveList.Buttons5"), Boolean), CType(resources.GetObject("cboMainCaveList.Buttons6"), Boolean), EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, resources.GetString("cboMainCaveList.Buttons7"), CType(resources.GetObject("cboMainCaveList.Buttons8"), Object), CType(resources.GetObject("cboMainCaveList.Buttons9"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("cboMainCaveList.Buttons10"), DevExpress.Utils.ToolTipAnchor))})
         Me.cboMainCaveList.DisplayMember = "ToHTMLString"
         Me.cboMainCaveList.Name = "cboMainCaveList"
         Me.cboMainCaveList.PopupView = Me.cboMainCaveListView
@@ -1992,7 +2020,7 @@ Partial Class frmMain2
         '
         Me.cboMainCaveBranchList.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.[True]
         resources.ApplyResources(Me.cboMainCaveBranchList, "cboMainCaveBranchList")
-        Me.cboMainCaveBranchList.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainCaveBranchList.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainCaveBranchList.Buttons1"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("cboMainCaveBranchList.Buttons2"), CType(resources.GetObject("cboMainCaveBranchList.Buttons3"), Integer), CType(resources.GetObject("cboMainCaveBranchList.Buttons4"), Boolean), CType(resources.GetObject("cboMainCaveBranchList.Buttons5"), Boolean), CType(resources.GetObject("cboMainCaveBranchList.Buttons6"), Boolean), EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, resources.GetString("cboMainCaveBranchList.Buttons7"), CType(resources.GetObject("cboMainCaveBranchList.Buttons8"), Object), CType(resources.GetObject("cboMainCaveBranchList.Buttons9"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("cboMainCaveBranchList.Buttons10"), DevExpress.Utils.ToolTipAnchor))})
+        Me.cboMainCaveBranchList.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainCaveBranchList.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainCaveBranchList.Buttons1"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("cboMainCaveBranchList.Buttons2"), CType(resources.GetObject("cboMainCaveBranchList.Buttons3"), Integer), CType(resources.GetObject("cboMainCaveBranchList.Buttons4"), Boolean), CType(resources.GetObject("cboMainCaveBranchList.Buttons5"), Boolean), CType(resources.GetObject("cboMainCaveBranchList.Buttons6"), Boolean), EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, resources.GetString("cboMainCaveBranchList.Buttons7"), CType(resources.GetObject("cboMainCaveBranchList.Buttons8"), Object), CType(resources.GetObject("cboMainCaveBranchList.Buttons9"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("cboMainCaveBranchList.Buttons10"), DevExpress.Utils.ToolTipAnchor))})
         Me.cboMainCaveBranchList.DisplayMember = "ToHTMLString"
         Me.cboMainCaveBranchList.Name = "cboMainCaveBranchList"
         Me.cboMainCaveBranchList.PopupView = Me.cboMainCaveBranchListView
@@ -3910,145 +3938,145 @@ Partial Class frmMain2
         '
         Me.SkinPaletteRibbonGalleryBarItem1.Gallery.AllowHtmlText = True
         Me.SkinPaletteRibbonGalleryBarItem1.Gallery.ColumnCount = 4
-        GalleryItem1.ImageOptions.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
-        GalleryItem1.Tag = "DefaultSkinPalette"
-        GalleryItem1.Value = "DefaultSkinPalette"
-        GalleryItem2.ImageOptions.Image = CType(resources.GetObject("resource.Image1"), System.Drawing.Image)
-        GalleryItem2.Tag = "Art House"
-        GalleryItem2.Value = "Art House"
-        GalleryItem3.ImageOptions.Image = CType(resources.GetObject("resource.Image2"), System.Drawing.Image)
-        GalleryItem3.Tag = "Twenty"
-        GalleryItem3.Value = "Twenty"
-        GalleryItem4.ImageOptions.Image = CType(resources.GetObject("resource.Image3"), System.Drawing.Image)
-        GalleryItem4.Tag = "Twenty Gold"
-        GalleryItem4.Value = "Twenty Gold"
-        GalleryItem5.Checked = True
-        GalleryItem5.ImageOptions.Image = CType(resources.GetObject("resource.Image4"), System.Drawing.Image)
-        GalleryItem5.Tag = "cSurvey (red)"
-        GalleryItem5.Value = "cSurvey (red)"
-        GalleryItem6.ImageOptions.Image = CType(resources.GetObject("resource.Image5"), System.Drawing.Image)
-        GalleryItem6.Tag = "cSurvey (red dark)"
-        GalleryItem6.Value = "cSurvey (red dark)"
-        GalleryItemGroup1.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem1, GalleryItem2, GalleryItem3, GalleryItem4, GalleryItem5, GalleryItem6})
-        GalleryItem7.ImageOptions.Image = CType(resources.GetObject("resource.Image6"), System.Drawing.Image)
-        GalleryItem7.Tag = "Office Colorful"
-        GalleryItem7.Value = "Office Colorful"
-        GalleryItem8.ImageOptions.Image = CType(resources.GetObject("resource.Image7"), System.Drawing.Image)
-        GalleryItem8.Tag = "Office Black"
-        GalleryItem8.Value = "Office Black"
-        GalleryItem9.ImageOptions.Image = CType(resources.GetObject("resource.Image8"), System.Drawing.Image)
-        GalleryItem9.Tag = "Office White"
-        GalleryItem9.Value = "Office White"
-        GalleryItem10.ImageOptions.Image = CType(resources.GetObject("resource.Image9"), System.Drawing.Image)
-        GalleryItem10.Tag = "Office Dark Gray"
-        GalleryItem10.Value = "Office Dark Gray"
-        GalleryItem11.ImageOptions.Image = CType(resources.GetObject("resource.Image10"), System.Drawing.Image)
-        GalleryItem11.Tag = "VS Light"
-        GalleryItem11.Value = "VS Light"
-        GalleryItem12.ImageOptions.Image = CType(resources.GetObject("resource.Image11"), System.Drawing.Image)
-        GalleryItem12.Tag = "VS Blue"
-        GalleryItem12.Value = "VS Blue"
-        GalleryItem13.ImageOptions.Image = CType(resources.GetObject("resource.Image12"), System.Drawing.Image)
-        GalleryItem13.Tag = "VS Dark"
-        GalleryItem13.Value = "VS Dark"
-        GalleryItem14.ImageOptions.Image = CType(resources.GetObject("resource.Image13"), System.Drawing.Image)
-        GalleryItem14.Tag = "VS 2019 Blue"
-        GalleryItem14.Value = "VS 2019 Blue"
-        GalleryItemGroup2.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem7, GalleryItem8, GalleryItem9, GalleryItem10, GalleryItem11, GalleryItem12, GalleryItem13, GalleryItem14})
-        GalleryItem15.ImageOptions.Image = CType(resources.GetObject("resource.Image14"), System.Drawing.Image)
-        GalleryItem15.Tag = "Leaf Rustle"
-        GalleryItem15.Value = "Leaf Rustle"
-        GalleryItem16.ImageOptions.Image = CType(resources.GetObject("resource.Image15"), System.Drawing.Image)
-        GalleryItem16.Tag = "Neon Lollipop"
-        GalleryItem16.Value = "Neon Lollipop"
-        GalleryItem17.ImageOptions.Image = CType(resources.GetObject("resource.Image16"), System.Drawing.Image)
-        GalleryItem17.Tag = "Tokyo"
-        GalleryItem17.Value = "Tokyo"
-        GalleryItem18.ImageOptions.Image = CType(resources.GetObject("resource.Image17"), System.Drawing.Image)
-        GalleryItem18.Tag = "Grasshopper"
-        GalleryItem18.Value = "Grasshopper"
-        GalleryItem19.ImageOptions.Image = CType(resources.GetObject("resource.Image18"), System.Drawing.Image)
-        GalleryItem19.Tag = "BW"
-        GalleryItem19.Value = "BW"
-        GalleryItem20.ImageOptions.Image = CType(resources.GetObject("resource.Image19"), System.Drawing.Image)
-        GalleryItem20.Tag = "Norwegian Wood"
-        GalleryItem20.Value = "Norwegian Wood"
-        GalleryItem21.ImageOptions.Image = CType(resources.GetObject("resource.Image20"), System.Drawing.Image)
-        GalleryItem21.Tag = "Date Fruit"
-        GalleryItem21.Value = "Date Fruit"
-        GalleryItem22.ImageOptions.Image = CType(resources.GetObject("resource.Image21"), System.Drawing.Image)
-        GalleryItem22.Tag = "Dragonfly"
-        GalleryItem22.Value = "Dragonfly"
-        GalleryItem23.ImageOptions.Image = CType(resources.GetObject("resource.Image22"), System.Drawing.Image)
-        GalleryItem23.Tag = "Plastic Space"
-        GalleryItem23.Value = "Plastic Space"
-        GalleryItem24.ImageOptions.Image = CType(resources.GetObject("resource.Image23"), System.Drawing.Image)
-        GalleryItem24.Tag = "Gloom Gloom"
-        GalleryItem24.Value = "Gloom Gloom"
-        GalleryItem25.ImageOptions.Image = CType(resources.GetObject("resource.Image24"), System.Drawing.Image)
-        GalleryItem25.Tag = "Aquarelle"
-        GalleryItem25.Value = "Aquarelle"
-        GalleryItem26.ImageOptions.Image = CType(resources.GetObject("resource.Image25"), System.Drawing.Image)
-        GalleryItem26.Tag = "Oxygen 3"
-        GalleryItem26.Value = "Oxygen 3"
-        GalleryItem27.ImageOptions.Image = CType(resources.GetObject("resource.Image26"), System.Drawing.Image)
-        GalleryItem27.Tag = "Moray Eel"
-        GalleryItem27.Value = "Moray Eel"
-        GalleryItem28.ImageOptions.Image = CType(resources.GetObject("resource.Image27"), System.Drawing.Image)
-        GalleryItem28.Tag = "Blackberry Shake"
-        GalleryItem28.Value = "Blackberry Shake"
-        GalleryItem29.ImageOptions.Image = CType(resources.GetObject("resource.Image28"), System.Drawing.Image)
-        GalleryItem29.Tag = "Vacuum"
-        GalleryItem29.Value = "Vacuum"
-        GalleryItemGroup3.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem15, GalleryItem16, GalleryItem17, GalleryItem18, GalleryItem19, GalleryItem20, GalleryItem21, GalleryItem22, GalleryItem23, GalleryItem24, GalleryItem25, GalleryItem26, GalleryItem27, GalleryItem28, GalleryItem29})
-        GalleryItem30.ImageOptions.Image = CType(resources.GetObject("resource.Image29"), System.Drawing.Image)
-        GalleryItem30.Tag = "Fireball"
-        GalleryItem30.Value = "Fireball"
-        GalleryItem31.ImageOptions.Image = CType(resources.GetObject("resource.Image30"), System.Drawing.Image)
-        GalleryItem31.Tag = "Crambe"
-        GalleryItem31.Value = "Crambe"
-        GalleryItem32.ImageOptions.Image = CType(resources.GetObject("resource.Image31"), System.Drawing.Image)
-        GalleryItem32.Tag = "Cherry Ink"
-        GalleryItem32.Value = "Cherry Ink"
-        GalleryItem33.ImageOptions.Image = CType(resources.GetObject("resource.Image32"), System.Drawing.Image)
-        GalleryItem33.Tag = "Starshine"
-        GalleryItem33.Value = "Starshine"
-        GalleryItem34.ImageOptions.Image = CType(resources.GetObject("resource.Image33"), System.Drawing.Image)
-        GalleryItem34.Tag = "Dark Turquoise"
-        GalleryItem34.Value = "Dark Turquoise"
-        GalleryItem35.ImageOptions.Image = CType(resources.GetObject("resource.Image34"), System.Drawing.Image)
-        GalleryItem35.Tag = "Prometheus"
-        GalleryItem35.Value = "Prometheus"
-        GalleryItem36.ImageOptions.Image = CType(resources.GetObject("resource.Image35"), System.Drawing.Image)
-        GalleryItem36.Tag = "Ghost Shark"
-        GalleryItem36.Value = "Ghost Shark"
-        GalleryItem37.ImageOptions.Image = CType(resources.GetObject("resource.Image36"), System.Drawing.Image)
-        GalleryItem37.Tag = "Blue Velvet"
-        GalleryItem37.Value = "Blue Velvet"
-        GalleryItem38.ImageOptions.Image = CType(resources.GetObject("resource.Image37"), System.Drawing.Image)
-        GalleryItem38.Tag = "Milk Snake"
-        GalleryItem38.Value = "Milk Snake"
-        GalleryItem39.ImageOptions.Image = CType(resources.GetObject("resource.Image38"), System.Drawing.Image)
-        GalleryItem39.Tag = "Mercury Ice"
-        GalleryItem39.Value = "Mercury Ice"
-        GalleryItem40.ImageOptions.Image = CType(resources.GetObject("resource.Image39"), System.Drawing.Image)
-        GalleryItem40.Tag = "Volcano"
-        GalleryItem40.Value = "Volcano"
-        GalleryItem41.ImageOptions.Image = CType(resources.GetObject("resource.Image40"), System.Drawing.Image)
-        GalleryItem41.Tag = "Witch Rave"
-        GalleryItem41.Value = "Witch Rave"
-        GalleryItem42.ImageOptions.Image = CType(resources.GetObject("resource.Image41"), System.Drawing.Image)
-        GalleryItem42.Tag = "Nebula"
-        GalleryItem42.Value = "Nebula"
-        GalleryItemGroup4.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem30, GalleryItem31, GalleryItem32, GalleryItem33, GalleryItem34, GalleryItem35, GalleryItem36, GalleryItem37, GalleryItem38, GalleryItem39, GalleryItem40, GalleryItem41, GalleryItem42})
-        GalleryItem43.ImageOptions.Image = CType(resources.GetObject("resource.Image42"), System.Drawing.Image)
-        GalleryItem43.Tag = "High Contrast White"
-        GalleryItem43.Value = "High Contrast White"
-        GalleryItem44.ImageOptions.Image = CType(resources.GetObject("resource.Image43"), System.Drawing.Image)
-        GalleryItem44.Tag = "High Contrast Black"
-        GalleryItem44.Value = "High Contrast Black"
-        GalleryItemGroup5.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem43, GalleryItem44})
-        Me.SkinPaletteRibbonGalleryBarItem1.Gallery.Groups.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItemGroup() {GalleryItemGroup1, GalleryItemGroup2, GalleryItemGroup3, GalleryItemGroup4, GalleryItemGroup5})
+        GalleryItem45.ImageOptions.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
+        GalleryItem45.Tag = "DefaultSkinPalette"
+        GalleryItem45.Value = "DefaultSkinPalette"
+        GalleryItem46.ImageOptions.Image = CType(resources.GetObject("resource.Image1"), System.Drawing.Image)
+        GalleryItem46.Tag = "Art House"
+        GalleryItem46.Value = "Art House"
+        GalleryItem47.ImageOptions.Image = CType(resources.GetObject("resource.Image2"), System.Drawing.Image)
+        GalleryItem47.Tag = "Twenty"
+        GalleryItem47.Value = "Twenty"
+        GalleryItem48.ImageOptions.Image = CType(resources.GetObject("resource.Image3"), System.Drawing.Image)
+        GalleryItem48.Tag = "Twenty Gold"
+        GalleryItem48.Value = "Twenty Gold"
+        GalleryItem49.Checked = True
+        GalleryItem49.ImageOptions.Image = CType(resources.GetObject("resource.Image4"), System.Drawing.Image)
+        GalleryItem49.Tag = "cSurvey (red)"
+        GalleryItem49.Value = "cSurvey (red)"
+        GalleryItem50.ImageOptions.Image = CType(resources.GetObject("resource.Image5"), System.Drawing.Image)
+        GalleryItem50.Tag = "cSurvey (red dark)"
+        GalleryItem50.Value = "cSurvey (red dark)"
+        GalleryItemGroup6.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem45, GalleryItem46, GalleryItem47, GalleryItem48, GalleryItem49, GalleryItem50})
+        GalleryItem51.ImageOptions.Image = CType(resources.GetObject("resource.Image6"), System.Drawing.Image)
+        GalleryItem51.Tag = "Office Colorful"
+        GalleryItem51.Value = "Office Colorful"
+        GalleryItem52.ImageOptions.Image = CType(resources.GetObject("resource.Image7"), System.Drawing.Image)
+        GalleryItem52.Tag = "Office Black"
+        GalleryItem52.Value = "Office Black"
+        GalleryItem53.ImageOptions.Image = CType(resources.GetObject("resource.Image8"), System.Drawing.Image)
+        GalleryItem53.Tag = "Office White"
+        GalleryItem53.Value = "Office White"
+        GalleryItem54.ImageOptions.Image = CType(resources.GetObject("resource.Image9"), System.Drawing.Image)
+        GalleryItem54.Tag = "Office Dark Gray"
+        GalleryItem54.Value = "Office Dark Gray"
+        GalleryItem55.ImageOptions.Image = CType(resources.GetObject("resource.Image10"), System.Drawing.Image)
+        GalleryItem55.Tag = "VS Light"
+        GalleryItem55.Value = "VS Light"
+        GalleryItem56.ImageOptions.Image = CType(resources.GetObject("resource.Image11"), System.Drawing.Image)
+        GalleryItem56.Tag = "VS Blue"
+        GalleryItem56.Value = "VS Blue"
+        GalleryItem57.ImageOptions.Image = CType(resources.GetObject("resource.Image12"), System.Drawing.Image)
+        GalleryItem57.Tag = "VS Dark"
+        GalleryItem57.Value = "VS Dark"
+        GalleryItem58.ImageOptions.Image = CType(resources.GetObject("resource.Image13"), System.Drawing.Image)
+        GalleryItem58.Tag = "VS 2019 Blue"
+        GalleryItem58.Value = "VS 2019 Blue"
+        GalleryItemGroup7.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem51, GalleryItem52, GalleryItem53, GalleryItem54, GalleryItem55, GalleryItem56, GalleryItem57, GalleryItem58})
+        GalleryItem59.ImageOptions.Image = CType(resources.GetObject("resource.Image14"), System.Drawing.Image)
+        GalleryItem59.Tag = "Leaf Rustle"
+        GalleryItem59.Value = "Leaf Rustle"
+        GalleryItem60.ImageOptions.Image = CType(resources.GetObject("resource.Image15"), System.Drawing.Image)
+        GalleryItem60.Tag = "Neon Lollipop"
+        GalleryItem60.Value = "Neon Lollipop"
+        GalleryItem61.ImageOptions.Image = CType(resources.GetObject("resource.Image16"), System.Drawing.Image)
+        GalleryItem61.Tag = "Tokyo"
+        GalleryItem61.Value = "Tokyo"
+        GalleryItem62.ImageOptions.Image = CType(resources.GetObject("resource.Image17"), System.Drawing.Image)
+        GalleryItem62.Tag = "Grasshopper"
+        GalleryItem62.Value = "Grasshopper"
+        GalleryItem63.ImageOptions.Image = CType(resources.GetObject("resource.Image18"), System.Drawing.Image)
+        GalleryItem63.Tag = "BW"
+        GalleryItem63.Value = "BW"
+        GalleryItem64.ImageOptions.Image = CType(resources.GetObject("resource.Image19"), System.Drawing.Image)
+        GalleryItem64.Tag = "Norwegian Wood"
+        GalleryItem64.Value = "Norwegian Wood"
+        GalleryItem65.ImageOptions.Image = CType(resources.GetObject("resource.Image20"), System.Drawing.Image)
+        GalleryItem65.Tag = "Date Fruit"
+        GalleryItem65.Value = "Date Fruit"
+        GalleryItem66.ImageOptions.Image = CType(resources.GetObject("resource.Image21"), System.Drawing.Image)
+        GalleryItem66.Tag = "Dragonfly"
+        GalleryItem66.Value = "Dragonfly"
+        GalleryItem67.ImageOptions.Image = CType(resources.GetObject("resource.Image22"), System.Drawing.Image)
+        GalleryItem67.Tag = "Plastic Space"
+        GalleryItem67.Value = "Plastic Space"
+        GalleryItem68.ImageOptions.Image = CType(resources.GetObject("resource.Image23"), System.Drawing.Image)
+        GalleryItem68.Tag = "Gloom Gloom"
+        GalleryItem68.Value = "Gloom Gloom"
+        GalleryItem69.ImageOptions.Image = CType(resources.GetObject("resource.Image24"), System.Drawing.Image)
+        GalleryItem69.Tag = "Aquarelle"
+        GalleryItem69.Value = "Aquarelle"
+        GalleryItem70.ImageOptions.Image = CType(resources.GetObject("resource.Image25"), System.Drawing.Image)
+        GalleryItem70.Tag = "Oxygen 3"
+        GalleryItem70.Value = "Oxygen 3"
+        GalleryItem71.ImageOptions.Image = CType(resources.GetObject("resource.Image26"), System.Drawing.Image)
+        GalleryItem71.Tag = "Moray Eel"
+        GalleryItem71.Value = "Moray Eel"
+        GalleryItem72.ImageOptions.Image = CType(resources.GetObject("resource.Image27"), System.Drawing.Image)
+        GalleryItem72.Tag = "Blackberry Shake"
+        GalleryItem72.Value = "Blackberry Shake"
+        GalleryItem73.ImageOptions.Image = CType(resources.GetObject("resource.Image28"), System.Drawing.Image)
+        GalleryItem73.Tag = "Vacuum"
+        GalleryItem73.Value = "Vacuum"
+        GalleryItemGroup8.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem59, GalleryItem60, GalleryItem61, GalleryItem62, GalleryItem63, GalleryItem64, GalleryItem65, GalleryItem66, GalleryItem67, GalleryItem68, GalleryItem69, GalleryItem70, GalleryItem71, GalleryItem72, GalleryItem73})
+        GalleryItem74.ImageOptions.Image = CType(resources.GetObject("resource.Image29"), System.Drawing.Image)
+        GalleryItem74.Tag = "Fireball"
+        GalleryItem74.Value = "Fireball"
+        GalleryItem75.ImageOptions.Image = CType(resources.GetObject("resource.Image30"), System.Drawing.Image)
+        GalleryItem75.Tag = "Crambe"
+        GalleryItem75.Value = "Crambe"
+        GalleryItem76.ImageOptions.Image = CType(resources.GetObject("resource.Image31"), System.Drawing.Image)
+        GalleryItem76.Tag = "Cherry Ink"
+        GalleryItem76.Value = "Cherry Ink"
+        GalleryItem77.ImageOptions.Image = CType(resources.GetObject("resource.Image32"), System.Drawing.Image)
+        GalleryItem77.Tag = "Starshine"
+        GalleryItem77.Value = "Starshine"
+        GalleryItem78.ImageOptions.Image = CType(resources.GetObject("resource.Image33"), System.Drawing.Image)
+        GalleryItem78.Tag = "Dark Turquoise"
+        GalleryItem78.Value = "Dark Turquoise"
+        GalleryItem79.ImageOptions.Image = CType(resources.GetObject("resource.Image34"), System.Drawing.Image)
+        GalleryItem79.Tag = "Prometheus"
+        GalleryItem79.Value = "Prometheus"
+        GalleryItem80.ImageOptions.Image = CType(resources.GetObject("resource.Image35"), System.Drawing.Image)
+        GalleryItem80.Tag = "Ghost Shark"
+        GalleryItem80.Value = "Ghost Shark"
+        GalleryItem81.ImageOptions.Image = CType(resources.GetObject("resource.Image36"), System.Drawing.Image)
+        GalleryItem81.Tag = "Blue Velvet"
+        GalleryItem81.Value = "Blue Velvet"
+        GalleryItem82.ImageOptions.Image = CType(resources.GetObject("resource.Image37"), System.Drawing.Image)
+        GalleryItem82.Tag = "Milk Snake"
+        GalleryItem82.Value = "Milk Snake"
+        GalleryItem83.ImageOptions.Image = CType(resources.GetObject("resource.Image38"), System.Drawing.Image)
+        GalleryItem83.Tag = "Mercury Ice"
+        GalleryItem83.Value = "Mercury Ice"
+        GalleryItem84.ImageOptions.Image = CType(resources.GetObject("resource.Image39"), System.Drawing.Image)
+        GalleryItem84.Tag = "Volcano"
+        GalleryItem84.Value = "Volcano"
+        GalleryItem85.ImageOptions.Image = CType(resources.GetObject("resource.Image40"), System.Drawing.Image)
+        GalleryItem85.Tag = "Witch Rave"
+        GalleryItem85.Value = "Witch Rave"
+        GalleryItem86.ImageOptions.Image = CType(resources.GetObject("resource.Image41"), System.Drawing.Image)
+        GalleryItem86.Tag = "Nebula"
+        GalleryItem86.Value = "Nebula"
+        GalleryItemGroup9.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem74, GalleryItem75, GalleryItem76, GalleryItem77, GalleryItem78, GalleryItem79, GalleryItem80, GalleryItem81, GalleryItem82, GalleryItem83, GalleryItem84, GalleryItem85, GalleryItem86})
+        GalleryItem87.ImageOptions.Image = CType(resources.GetObject("resource.Image42"), System.Drawing.Image)
+        GalleryItem87.Tag = "High Contrast White"
+        GalleryItem87.Value = "High Contrast White"
+        GalleryItem88.ImageOptions.Image = CType(resources.GetObject("resource.Image43"), System.Drawing.Image)
+        GalleryItem88.Tag = "High Contrast Black"
+        GalleryItem88.Value = "High Contrast Black"
+        GalleryItemGroup10.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem87, GalleryItem88})
+        Me.SkinPaletteRibbonGalleryBarItem1.Gallery.Groups.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItemGroup() {GalleryItemGroup6, GalleryItemGroup7, GalleryItemGroup8, GalleryItemGroup9, GalleryItemGroup10})
         Me.SkinPaletteRibbonGalleryBarItem1.Gallery.ImageSize = New System.Drawing.Size(80, 56)
         Me.SkinPaletteRibbonGalleryBarItem1.Gallery.ItemCheckMode = DevExpress.XtraBars.Ribbon.Gallery.ItemCheckMode.SingleRadio
         Me.SkinPaletteRibbonGalleryBarItem1.Gallery.ItemImageLayout = DevExpress.Utils.Drawing.ImageLayoutMode.Stretch
@@ -4928,6 +4956,7 @@ Partial Class frmMain2
         'pnlTrigpointsDataMain
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlTrigpointsDataMain, CType(resources.GetObject("pnlTrigpointsDataMain.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlTrigpointsDataMain.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlTrigpointsDataMain.Controls.Add(Me.grdTrigPointAliases)
         Me.pnlTrigpointsDataMain.Controls.Add(Me.chkTrigpointZTurn)
         Me.pnlTrigpointsDataMain.Controls.Add(Me.cboTrigpointEntrance)
@@ -5038,6 +5067,7 @@ Partial Class frmMain2
         'pnlTrigpointsDataLayout
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlTrigpointsDataLayout, CType(resources.GetObject("pnlTrigpointsDataLayout.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlTrigpointsDataLayout.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlTrigpointsDataLayout.Controls.Add(Me.txtTrigpointFontColor)
         Me.pnlTrigpointsDataLayout.Controls.Add(Me.chkTrigpointDrawTranslationsLine)
         Me.pnlTrigpointsDataLayout.Controls.Add(Me.cboTrigPointLabelPosition)
@@ -5064,6 +5094,7 @@ Partial Class frmMain2
         Me.txtTrigpointFontColor.Properties.AutomaticColor = System.Drawing.Color.Black
         Me.txtTrigpointFontColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtTrigpointFontColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtTrigpointFontColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txtTrigpointFontColor.Properties.NullColor = System.Drawing.Color.Empty
         Me.txtTrigpointFontColor.Properties.ShowSystemColors = False
         Me.txtTrigpointFontColor.Properties.ShowWebColors = False
         '
@@ -5250,17 +5281,29 @@ Partial Class frmMain2
         'pnlTrigpointsDataCoordinate
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlTrigpointsDataCoordinate, CType(resources.GetObject("pnlTrigpointsDataCoordinate.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.btnTrigpointCoordinateClear)
-        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.cboTrigpointCoordinateGeo)
-        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.lblTrigpointCoordinateFix)
-        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.cboTrigpointCoordinateFix)
-        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.lblTrigpointCoordinateGeo)
-        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.lblTrigpointCoordinateAlt)
-        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.txtTrigpointCoordinateAlt)
-        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.pnlTrigpointCoordinateWGS84)
-        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.pnlTrigpointCoordinateUTM)
+        Me.pnlTrigpointsDataCoordinate.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlTrigpointsDataCoordinate.Controls.Add(Me.pnlTrigpointCoordinate)
         resources.ApplyResources(Me.pnlTrigpointsDataCoordinate, "pnlTrigpointsDataCoordinate")
         Me.pnlTrigpointsDataCoordinate.Name = "pnlTrigpointsDataCoordinate"
+        '
+        'pnlTrigpointCoordinate
+        '
+        Me.pnlTrigpointCoordinate.AllowCustomization = False
+        Me.pnlTrigpointCoordinate.Controls.Add(Me.btnTrigpointCoordinateClear)
+        Me.pnlTrigpointCoordinate.Controls.Add(Me.cboTrigpointCoordinateFix)
+        Me.pnlTrigpointCoordinate.Controls.Add(Me.cboTrigpointCoordinateBand)
+        Me.pnlTrigpointCoordinate.Controls.Add(Me.cboTrigpointCoordinateZone)
+        Me.pnlTrigpointCoordinate.Controls.Add(Me.txtTrigpointCoordinateY)
+        Me.pnlTrigpointCoordinate.Controls.Add(Me.txtTrigpointCoordinateAlt)
+        Me.pnlTrigpointCoordinate.Controls.Add(Me.txtTrigpointCoordinateLong)
+        Me.pnlTrigpointCoordinate.Controls.Add(Me.txtTrigpointCoordinateLat)
+        Me.pnlTrigpointCoordinate.Controls.Add(Me.cboTrigpointCoordinateFormat)
+        Me.pnlTrigpointCoordinate.Controls.Add(Me.txtTrigpointCoordinateX)
+        Me.pnlTrigpointCoordinate.Controls.Add(Me.cboTrigpointCoordinateGeo)
+        resources.ApplyResources(Me.pnlTrigpointCoordinate, "pnlTrigpointCoordinate")
+        Me.pnlTrigpointCoordinate.Name = "pnlTrigpointCoordinate"
+        Me.pnlTrigpointCoordinate.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(675, 66, 650, 400)
+        Me.pnlTrigpointCoordinate.Root = Me.Root
         '
         'btnTrigpointCoordinateClear
         '
@@ -5269,23 +5312,7 @@ Partial Class frmMain2
         Me.btnTrigpointCoordinateClear.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         resources.ApplyResources(Me.btnTrigpointCoordinateClear, "btnTrigpointCoordinateClear")
         Me.btnTrigpointCoordinateClear.Name = "btnTrigpointCoordinateClear"
-        '
-        'cboTrigpointCoordinateGeo
-        '
-        resources.ApplyResources(Me.cboTrigpointCoordinateGeo, "cboTrigpointCoordinateGeo")
-        Me.cboTrigpointCoordinateGeo.Name = "cboTrigpointCoordinateGeo"
-        Me.cboTrigpointCoordinateGeo.Properties.Appearance.Font = CType(resources.GetObject("cboTrigpointCoordinateGeo.Properties.Appearance.Font"), System.Drawing.Font)
-        Me.cboTrigpointCoordinateGeo.Properties.Appearance.Options.UseFont = True
-        Me.cboTrigpointCoordinateGeo.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboTrigpointCoordinateGeo.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.cboTrigpointCoordinateGeo.Properties.Items.AddRange(New Object() {resources.GetString("cboTrigpointCoordinateGeo.Properties.Items"), resources.GetString("cboTrigpointCoordinateGeo.Properties.Items1")})
-        Me.cboTrigpointCoordinateGeo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        '
-        'lblTrigpointCoordinateFix
-        '
-        Me.lblTrigpointCoordinateFix.Appearance.Font = CType(resources.GetObject("lblTrigpointCoordinateFix.Appearance.Font"), System.Drawing.Font)
-        Me.lblTrigpointCoordinateFix.Appearance.Options.UseFont = True
-        resources.ApplyResources(Me.lblTrigpointCoordinateFix, "lblTrigpointCoordinateFix")
-        Me.lblTrigpointCoordinateFix.Name = "lblTrigpointCoordinateFix"
+        Me.btnTrigpointCoordinateClear.StyleController = Me.pnlTrigpointCoordinate
         '
         'cboTrigpointCoordinateFix
         '
@@ -5296,20 +5323,35 @@ Partial Class frmMain2
         Me.cboTrigpointCoordinateFix.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboTrigpointCoordinateFix.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.cboTrigpointCoordinateFix.Properties.Items.AddRange(New Object() {resources.GetString("cboTrigpointCoordinateFix.Properties.Items"), resources.GetString("cboTrigpointCoordinateFix.Properties.Items1")})
         Me.cboTrigpointCoordinateFix.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.cboTrigpointCoordinateFix.StyleController = Me.pnlTrigpointCoordinate
         '
-        'lblTrigpointCoordinateGeo
+        'cboTrigpointCoordinateBand
         '
-        Me.lblTrigpointCoordinateGeo.Appearance.Font = CType(resources.GetObject("lblTrigpointCoordinateGeo.Appearance.Font"), System.Drawing.Font)
-        Me.lblTrigpointCoordinateGeo.Appearance.Options.UseFont = True
-        resources.ApplyResources(Me.lblTrigpointCoordinateGeo, "lblTrigpointCoordinateGeo")
-        Me.lblTrigpointCoordinateGeo.Name = "lblTrigpointCoordinateGeo"
+        resources.ApplyResources(Me.cboTrigpointCoordinateBand, "cboTrigpointCoordinateBand")
+        Me.cboTrigpointCoordinateBand.Name = "cboTrigpointCoordinateBand"
+        Me.cboTrigpointCoordinateBand.Properties.Appearance.Font = CType(resources.GetObject("cboTrigpointCoordinateBand.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.cboTrigpointCoordinateBand.Properties.Appearance.Options.UseFont = True
+        Me.cboTrigpointCoordinateBand.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboTrigpointCoordinateBand.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboTrigpointCoordinateBand.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.cboTrigpointCoordinateBand.StyleController = Me.pnlTrigpointCoordinate
         '
-        'lblTrigpointCoordinateAlt
+        'cboTrigpointCoordinateZone
         '
-        Me.lblTrigpointCoordinateAlt.Appearance.Font = CType(resources.GetObject("lblTrigpointCoordinateAlt.Appearance.Font"), System.Drawing.Font)
-        Me.lblTrigpointCoordinateAlt.Appearance.Options.UseFont = True
-        resources.ApplyResources(Me.lblTrigpointCoordinateAlt, "lblTrigpointCoordinateAlt")
-        Me.lblTrigpointCoordinateAlt.Name = "lblTrigpointCoordinateAlt"
+        resources.ApplyResources(Me.cboTrigpointCoordinateZone, "cboTrigpointCoordinateZone")
+        Me.cboTrigpointCoordinateZone.Name = "cboTrigpointCoordinateZone"
+        Me.cboTrigpointCoordinateZone.Properties.Appearance.Font = CType(resources.GetObject("cboTrigpointCoordinateZone.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.cboTrigpointCoordinateZone.Properties.Appearance.Options.UseFont = True
+        Me.cboTrigpointCoordinateZone.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboTrigpointCoordinateZone.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboTrigpointCoordinateZone.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.cboTrigpointCoordinateZone.StyleController = Me.pnlTrigpointCoordinate
+        '
+        'txtTrigpointCoordinateY
+        '
+        resources.ApplyResources(Me.txtTrigpointCoordinateY, "txtTrigpointCoordinateY")
+        Me.txtTrigpointCoordinateY.Name = "txtTrigpointCoordinateY"
+        Me.txtTrigpointCoordinateY.Properties.Appearance.Font = CType(resources.GetObject("txtTrigpointCoordinateY.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.txtTrigpointCoordinateY.Properties.Appearance.Options.UseFont = True
+        Me.txtTrigpointCoordinateY.StyleController = Me.pnlTrigpointCoordinate
         '
         'txtTrigpointCoordinateAlt
         '
@@ -5317,19 +5359,7 @@ Partial Class frmMain2
         Me.txtTrigpointCoordinateAlt.Name = "txtTrigpointCoordinateAlt"
         Me.txtTrigpointCoordinateAlt.Properties.Appearance.Font = CType(resources.GetObject("txtTrigpointCoordinateAlt.Properties.Appearance.Font"), System.Drawing.Font)
         Me.txtTrigpointCoordinateAlt.Properties.Appearance.Options.UseFont = True
-        '
-        'pnlTrigpointCoordinateWGS84
-        '
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlTrigpointCoordinateWGS84, CType(resources.GetObject("pnlTrigpointCoordinateWGS84.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnlTrigpointCoordinateWGS84.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        Me.pnlTrigpointCoordinateWGS84.Controls.Add(Me.txtTrigpointCoordinateLong)
-        Me.pnlTrigpointCoordinateWGS84.Controls.Add(Me.txtTrigpointCoordinateLat)
-        Me.pnlTrigpointCoordinateWGS84.Controls.Add(Me.lblTrigpointCoordinateLat)
-        Me.pnlTrigpointCoordinateWGS84.Controls.Add(Me.lblTrigpointCoordinateLong)
-        Me.pnlTrigpointCoordinateWGS84.Controls.Add(Me.lblTrigpointCoordinateFormat)
-        Me.pnlTrigpointCoordinateWGS84.Controls.Add(Me.cboTrigpointCoordinateFormat)
-        resources.ApplyResources(Me.pnlTrigpointCoordinateWGS84, "pnlTrigpointCoordinateWGS84")
-        Me.pnlTrigpointCoordinateWGS84.Name = "pnlTrigpointCoordinateWGS84"
+        Me.txtTrigpointCoordinateAlt.StyleController = Me.pnlTrigpointCoordinate
         '
         'txtTrigpointCoordinateLong
         '
@@ -5337,6 +5367,7 @@ Partial Class frmMain2
         Me.txtTrigpointCoordinateLong.Name = "txtTrigpointCoordinateLong"
         Me.txtTrigpointCoordinateLong.Properties.Appearance.Font = CType(resources.GetObject("txtTrigpointCoordinateLong.Properties.Appearance.Font"), System.Drawing.Font)
         Me.txtTrigpointCoordinateLong.Properties.Appearance.Options.UseFont = True
+        Me.txtTrigpointCoordinateLong.StyleController = Me.pnlTrigpointCoordinate
         '
         'txtTrigpointCoordinateLat
         '
@@ -5344,27 +5375,7 @@ Partial Class frmMain2
         Me.txtTrigpointCoordinateLat.Name = "txtTrigpointCoordinateLat"
         Me.txtTrigpointCoordinateLat.Properties.Appearance.Font = CType(resources.GetObject("txtTrigpointCoordinateLat.Properties.Appearance.Font"), System.Drawing.Font)
         Me.txtTrigpointCoordinateLat.Properties.Appearance.Options.UseFont = True
-        '
-        'lblTrigpointCoordinateLat
-        '
-        Me.lblTrigpointCoordinateLat.Appearance.Font = CType(resources.GetObject("lblTrigpointCoordinateLat.Appearance.Font"), System.Drawing.Font)
-        Me.lblTrigpointCoordinateLat.Appearance.Options.UseFont = True
-        resources.ApplyResources(Me.lblTrigpointCoordinateLat, "lblTrigpointCoordinateLat")
-        Me.lblTrigpointCoordinateLat.Name = "lblTrigpointCoordinateLat"
-        '
-        'lblTrigpointCoordinateLong
-        '
-        Me.lblTrigpointCoordinateLong.Appearance.Font = CType(resources.GetObject("lblTrigpointCoordinateLong.Appearance.Font"), System.Drawing.Font)
-        Me.lblTrigpointCoordinateLong.Appearance.Options.UseFont = True
-        resources.ApplyResources(Me.lblTrigpointCoordinateLong, "lblTrigpointCoordinateLong")
-        Me.lblTrigpointCoordinateLong.Name = "lblTrigpointCoordinateLong"
-        '
-        'lblTrigpointCoordinateFormat
-        '
-        Me.lblTrigpointCoordinateFormat.Appearance.Font = CType(resources.GetObject("lblTrigpointCoordinateFormat.Appearance.Font"), System.Drawing.Font)
-        Me.lblTrigpointCoordinateFormat.Appearance.Options.UseFont = True
-        resources.ApplyResources(Me.lblTrigpointCoordinateFormat, "lblTrigpointCoordinateFormat")
-        Me.lblTrigpointCoordinateFormat.Name = "lblTrigpointCoordinateFormat"
+        Me.txtTrigpointCoordinateLat.StyleController = Me.pnlTrigpointCoordinate
         '
         'cboTrigpointCoordinateFormat
         '
@@ -5375,60 +5386,7 @@ Partial Class frmMain2
         Me.cboTrigpointCoordinateFormat.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboTrigpointCoordinateFormat.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.cboTrigpointCoordinateFormat.Properties.Items.AddRange(New Object() {resources.GetString("cboTrigpointCoordinateFormat.Properties.Items"), resources.GetString("cboTrigpointCoordinateFormat.Properties.Items1"), resources.GetString("cboTrigpointCoordinateFormat.Properties.Items2")})
         Me.cboTrigpointCoordinateFormat.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        '
-        'pnlTrigpointCoordinateUTM
-        '
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlTrigpointCoordinateUTM, CType(resources.GetObject("pnlTrigpointCoordinateUTM.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnlTrigpointCoordinateUTM.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        Me.pnlTrigpointCoordinateUTM.Controls.Add(Me.Label5)
-        Me.pnlTrigpointCoordinateUTM.Controls.Add(Me.cboTrigpointCoordinateBand)
-        Me.pnlTrigpointCoordinateUTM.Controls.Add(Me.lblTrigpointCoordinateZone)
-        Me.pnlTrigpointCoordinateUTM.Controls.Add(Me.txtTrigpointCoordinateY)
-        Me.pnlTrigpointCoordinateUTM.Controls.Add(Me.cboTrigpointCoordinateZone)
-        Me.pnlTrigpointCoordinateUTM.Controls.Add(Me.txtTrigpointCoordinateX)
-        Me.pnlTrigpointCoordinateUTM.Controls.Add(Me.lblTrigpointCoordinateY)
-        Me.pnlTrigpointCoordinateUTM.Controls.Add(Me.lblTrigpointCoordinateX)
-        resources.ApplyResources(Me.pnlTrigpointCoordinateUTM, "pnlTrigpointCoordinateUTM")
-        Me.pnlTrigpointCoordinateUTM.Name = "pnlTrigpointCoordinateUTM"
-        '
-        'Label5
-        '
-        Me.Label5.Appearance.Font = CType(resources.GetObject("Label5.Appearance.Font"), System.Drawing.Font)
-        Me.Label5.Appearance.Options.UseFont = True
-        resources.ApplyResources(Me.Label5, "Label5")
-        Me.Label5.Name = "Label5"
-        '
-        'cboTrigpointCoordinateBand
-        '
-        resources.ApplyResources(Me.cboTrigpointCoordinateBand, "cboTrigpointCoordinateBand")
-        Me.cboTrigpointCoordinateBand.Name = "cboTrigpointCoordinateBand"
-        Me.cboTrigpointCoordinateBand.Properties.Appearance.Font = CType(resources.GetObject("cboTrigpointCoordinateBand.Properties.Appearance.Font"), System.Drawing.Font)
-        Me.cboTrigpointCoordinateBand.Properties.Appearance.Options.UseFont = True
-        Me.cboTrigpointCoordinateBand.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboTrigpointCoordinateBand.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.cboTrigpointCoordinateBand.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        '
-        'lblTrigpointCoordinateZone
-        '
-        Me.lblTrigpointCoordinateZone.Appearance.Font = CType(resources.GetObject("lblTrigpointCoordinateZone.Appearance.Font"), System.Drawing.Font)
-        Me.lblTrigpointCoordinateZone.Appearance.Options.UseFont = True
-        resources.ApplyResources(Me.lblTrigpointCoordinateZone, "lblTrigpointCoordinateZone")
-        Me.lblTrigpointCoordinateZone.Name = "lblTrigpointCoordinateZone"
-        '
-        'txtTrigpointCoordinateY
-        '
-        resources.ApplyResources(Me.txtTrigpointCoordinateY, "txtTrigpointCoordinateY")
-        Me.txtTrigpointCoordinateY.Name = "txtTrigpointCoordinateY"
-        Me.txtTrigpointCoordinateY.Properties.Appearance.Font = CType(resources.GetObject("txtTrigpointCoordinateY.Properties.Appearance.Font"), System.Drawing.Font)
-        Me.txtTrigpointCoordinateY.Properties.Appearance.Options.UseFont = True
-        '
-        'cboTrigpointCoordinateZone
-        '
-        resources.ApplyResources(Me.cboTrigpointCoordinateZone, "cboTrigpointCoordinateZone")
-        Me.cboTrigpointCoordinateZone.Name = "cboTrigpointCoordinateZone"
-        Me.cboTrigpointCoordinateZone.Properties.Appearance.Font = CType(resources.GetObject("cboTrigpointCoordinateZone.Properties.Appearance.Font"), System.Drawing.Font)
-        Me.cboTrigpointCoordinateZone.Properties.Appearance.Options.UseFont = True
-        Me.cboTrigpointCoordinateZone.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboTrigpointCoordinateZone.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.cboTrigpointCoordinateZone.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.cboTrigpointCoordinateFormat.StyleController = Me.pnlTrigpointCoordinate
         '
         'txtTrigpointCoordinateX
         '
@@ -5436,24 +5394,175 @@ Partial Class frmMain2
         Me.txtTrigpointCoordinateX.Name = "txtTrigpointCoordinateX"
         Me.txtTrigpointCoordinateX.Properties.Appearance.Font = CType(resources.GetObject("txtTrigpointCoordinateX.Properties.Appearance.Font"), System.Drawing.Font)
         Me.txtTrigpointCoordinateX.Properties.Appearance.Options.UseFont = True
+        Me.txtTrigpointCoordinateX.StyleController = Me.pnlTrigpointCoordinate
         '
-        'lblTrigpointCoordinateY
+        'cboTrigpointCoordinateGeo
         '
-        Me.lblTrigpointCoordinateY.Appearance.Font = CType(resources.GetObject("lblTrigpointCoordinateY.Appearance.Font"), System.Drawing.Font)
-        Me.lblTrigpointCoordinateY.Appearance.Options.UseFont = True
-        resources.ApplyResources(Me.lblTrigpointCoordinateY, "lblTrigpointCoordinateY")
-        Me.lblTrigpointCoordinateY.Name = "lblTrigpointCoordinateY"
+        resources.ApplyResources(Me.cboTrigpointCoordinateGeo, "cboTrigpointCoordinateGeo")
+        Me.cboTrigpointCoordinateGeo.Name = "cboTrigpointCoordinateGeo"
+        Me.cboTrigpointCoordinateGeo.Properties.Appearance.Font = CType(resources.GetObject("cboTrigpointCoordinateGeo.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.cboTrigpointCoordinateGeo.Properties.Appearance.Options.UseFont = True
+        Me.cboTrigpointCoordinateGeo.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboTrigpointCoordinateGeo.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboTrigpointCoordinateGeo.Properties.Items.AddRange(New Object() {resources.GetString("cboTrigpointCoordinateGeo.Properties.Items"), resources.GetString("cboTrigpointCoordinateGeo.Properties.Items1")})
+        Me.cboTrigpointCoordinateGeo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.cboTrigpointCoordinateGeo.StyleController = Me.pnlTrigpointCoordinate
         '
-        'lblTrigpointCoordinateX
+        'Root
         '
-        Me.lblTrigpointCoordinateX.Appearance.Font = CType(resources.GetObject("lblTrigpointCoordinateX.Appearance.Font"), System.Drawing.Font)
-        Me.lblTrigpointCoordinateX.Appearance.Options.UseFont = True
-        resources.ApplyResources(Me.lblTrigpointCoordinateX, "lblTrigpointCoordinateX")
-        Me.lblTrigpointCoordinateX.Name = "lblTrigpointCoordinateX"
+        Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
+        Me.Root.GroupBordersVisible = False
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.pnlTrigpointCoordinateWGS84, Me.pnlTrigpointCoordinateGeo, Me.pnlTrigpointCoordinateUTM, Me.pnlTrigpointCoordinateAlt, Me.pnlTrigpointCoordinateFix, Me.LayoutControlItem9, Me.EmptySpaceItem1, Me.EmptySpaceItem2})
+        Me.Root.Name = "Root"
+        Me.Root.Padding = New DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0)
+        Me.Root.Size = New System.Drawing.Size(223, 338)
+        Me.Root.TextVisible = False
+        '
+        'pnlTrigpointCoordinateWGS84
+        '
+        Me.pnlTrigpointCoordinateWGS84.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.pnlTrigpointCoordinateLat, Me.pnlTrigpointCoordinateLong, Me.pnlTrigpointCoordinateFormat})
+        Me.pnlTrigpointCoordinateWGS84.Location = New System.Drawing.Point(0, 24)
+        Me.pnlTrigpointCoordinateWGS84.Name = "pnlTrigpointCoordinateWGS84"
+        Me.pnlTrigpointCoordinateWGS84.Size = New System.Drawing.Size(223, 96)
+        resources.ApplyResources(Me.pnlTrigpointCoordinateWGS84, "pnlTrigpointCoordinateWGS84")
+        Me.pnlTrigpointCoordinateWGS84.TextVisible = False
+        '
+        'pnlTrigpointCoordinateLat
+        '
+        Me.pnlTrigpointCoordinateLat.Control = Me.txtTrigpointCoordinateLat
+        Me.pnlTrigpointCoordinateLat.Location = New System.Drawing.Point(0, 0)
+        Me.pnlTrigpointCoordinateLat.Name = "pnlTrigpointCoordinateLat"
+        Me.pnlTrigpointCoordinateLat.Size = New System.Drawing.Size(199, 24)
+        resources.ApplyResources(Me.pnlTrigpointCoordinateLat, "pnlTrigpointCoordinateLat")
+        Me.pnlTrigpointCoordinateLat.TextSize = New System.Drawing.Size(39, 13)
+        '
+        'pnlTrigpointCoordinateLong
+        '
+        Me.pnlTrigpointCoordinateLong.Control = Me.txtTrigpointCoordinateLong
+        Me.pnlTrigpointCoordinateLong.Location = New System.Drawing.Point(0, 24)
+        Me.pnlTrigpointCoordinateLong.Name = "pnlTrigpointCoordinateLong"
+        Me.pnlTrigpointCoordinateLong.Size = New System.Drawing.Size(199, 24)
+        resources.ApplyResources(Me.pnlTrigpointCoordinateLong, "pnlTrigpointCoordinateLong")
+        Me.pnlTrigpointCoordinateLong.TextSize = New System.Drawing.Size(39, 13)
+        '
+        'pnlTrigpointCoordinateFormat
+        '
+        Me.pnlTrigpointCoordinateFormat.Control = Me.cboTrigpointCoordinateFormat
+        Me.pnlTrigpointCoordinateFormat.Location = New System.Drawing.Point(0, 48)
+        Me.pnlTrigpointCoordinateFormat.Name = "pnlTrigpointCoordinateFormat"
+        Me.pnlTrigpointCoordinateFormat.Size = New System.Drawing.Size(199, 24)
+        resources.ApplyResources(Me.pnlTrigpointCoordinateFormat, "pnlTrigpointCoordinateFormat")
+        Me.pnlTrigpointCoordinateFormat.TextSize = New System.Drawing.Size(39, 13)
+        '
+        'pnlTrigpointCoordinateGeo
+        '
+        Me.pnlTrigpointCoordinateGeo.Control = Me.cboTrigpointCoordinateGeo
+        Me.pnlTrigpointCoordinateGeo.Location = New System.Drawing.Point(0, 0)
+        Me.pnlTrigpointCoordinateGeo.Name = "pnlTrigpointCoordinateGeo"
+        Me.pnlTrigpointCoordinateGeo.Size = New System.Drawing.Size(223, 24)
+        resources.ApplyResources(Me.pnlTrigpointCoordinateGeo, "pnlTrigpointCoordinateGeo")
+        Me.pnlTrigpointCoordinateGeo.TextSize = New System.Drawing.Size(39, 13)
+        '
+        'pnlTrigpointCoordinateUTM
+        '
+        Me.pnlTrigpointCoordinateUTM.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.pnlTrigpointCoordinateX, Me.pnlTrigpointCoordinateY, Me.pnlTrigpointCoordinateZone, Me.lblTrigpointCoordinateBand})
+        Me.pnlTrigpointCoordinateUTM.Location = New System.Drawing.Point(0, 120)
+        Me.pnlTrigpointCoordinateUTM.Name = "pnlTrigpointCoordinateUTM"
+        Me.pnlTrigpointCoordinateUTM.Size = New System.Drawing.Size(223, 120)
+        resources.ApplyResources(Me.pnlTrigpointCoordinateUTM, "pnlTrigpointCoordinateUTM")
+        Me.pnlTrigpointCoordinateUTM.TextVisible = False
+        '
+        'pnlTrigpointCoordinateX
+        '
+        Me.pnlTrigpointCoordinateX.Control = Me.txtTrigpointCoordinateX
+        Me.pnlTrigpointCoordinateX.Location = New System.Drawing.Point(0, 0)
+        Me.pnlTrigpointCoordinateX.Name = "pnlTrigpointCoordinateX"
+        Me.pnlTrigpointCoordinateX.Size = New System.Drawing.Size(199, 24)
+        resources.ApplyResources(Me.pnlTrigpointCoordinateX, "pnlTrigpointCoordinateX")
+        Me.pnlTrigpointCoordinateX.TextSize = New System.Drawing.Size(39, 13)
+        '
+        'pnlTrigpointCoordinateY
+        '
+        Me.pnlTrigpointCoordinateY.Control = Me.txtTrigpointCoordinateY
+        Me.pnlTrigpointCoordinateY.Location = New System.Drawing.Point(0, 24)
+        Me.pnlTrigpointCoordinateY.Name = "pnlTrigpointCoordinateY"
+        Me.pnlTrigpointCoordinateY.Size = New System.Drawing.Size(199, 24)
+        resources.ApplyResources(Me.pnlTrigpointCoordinateY, "pnlTrigpointCoordinateY")
+        Me.pnlTrigpointCoordinateY.TextSize = New System.Drawing.Size(39, 13)
+        '
+        'pnlTrigpointCoordinateZone
+        '
+        Me.pnlTrigpointCoordinateZone.Control = Me.cboTrigpointCoordinateZone
+        Me.pnlTrigpointCoordinateZone.Location = New System.Drawing.Point(0, 48)
+        Me.pnlTrigpointCoordinateZone.Name = "pnlTrigpointCoordinateZone"
+        Me.pnlTrigpointCoordinateZone.Size = New System.Drawing.Size(199, 24)
+        resources.ApplyResources(Me.pnlTrigpointCoordinateZone, "pnlTrigpointCoordinateZone")
+        Me.pnlTrigpointCoordinateZone.TextSize = New System.Drawing.Size(39, 13)
+        '
+        'lblTrigpointCoordinateBand
+        '
+        Me.lblTrigpointCoordinateBand.Control = Me.cboTrigpointCoordinateBand
+        Me.lblTrigpointCoordinateBand.Location = New System.Drawing.Point(0, 72)
+        Me.lblTrigpointCoordinateBand.Name = "lblTrigpointCoordinateBand"
+        Me.lblTrigpointCoordinateBand.Size = New System.Drawing.Size(199, 24)
+        resources.ApplyResources(Me.lblTrigpointCoordinateBand, "lblTrigpointCoordinateBand")
+        Me.lblTrigpointCoordinateBand.TextSize = New System.Drawing.Size(39, 13)
+        '
+        'pnlTrigpointCoordinateAlt
+        '
+        Me.pnlTrigpointCoordinateAlt.Control = Me.txtTrigpointCoordinateAlt
+        Me.pnlTrigpointCoordinateAlt.Location = New System.Drawing.Point(0, 240)
+        Me.pnlTrigpointCoordinateAlt.Name = "pnlTrigpointCoordinateAlt"
+        Me.pnlTrigpointCoordinateAlt.Size = New System.Drawing.Size(223, 24)
+        resources.ApplyResources(Me.pnlTrigpointCoordinateAlt, "pnlTrigpointCoordinateAlt")
+        Me.pnlTrigpointCoordinateAlt.TextSize = New System.Drawing.Size(39, 13)
+        '
+        'pnlTrigpointCoordinateFix
+        '
+        Me.pnlTrigpointCoordinateFix.Control = Me.cboTrigpointCoordinateFix
+        Me.pnlTrigpointCoordinateFix.Location = New System.Drawing.Point(0, 264)
+        Me.pnlTrigpointCoordinateFix.Name = "pnlTrigpointCoordinateFix"
+        Me.pnlTrigpointCoordinateFix.Size = New System.Drawing.Size(223, 24)
+        resources.ApplyResources(Me.pnlTrigpointCoordinateFix, "pnlTrigpointCoordinateFix")
+        Me.pnlTrigpointCoordinateFix.TextSize = New System.Drawing.Size(39, 13)
+        '
+        'LayoutControlItem9
+        '
+        Me.LayoutControlItem9.Control = Me.btnTrigpointCoordinateClear
+        resources.ApplyResources(Me.LayoutControlItem9, "LayoutControlItem9")
+        Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 288)
+        Me.LayoutControlItem9.MaxSize = New System.Drawing.Size(30, 26)
+        Me.LayoutControlItem9.MinSize = New System.Drawing.Size(30, 26)
+        Me.LayoutControlItem9.Name = "LayoutControlItem9"
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(30, 26)
+        Me.LayoutControlItem9.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem9.TextVisible = False
+        '
+        'EmptySpaceItem1
+        '
+        Me.EmptySpaceItem1.AllowHotTrack = False
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(30, 288)
+        Me.EmptySpaceItem1.MaxSize = New System.Drawing.Size(0, 26)
+        Me.EmptySpaceItem1.MinSize = New System.Drawing.Size(10, 26)
+        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(193, 26)
+        Me.EmptySpaceItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'EmptySpaceItem2
+        '
+        Me.EmptySpaceItem2.AllowHotTrack = False
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(0, 314)
+        Me.EmptySpaceItem2.MinSize = New System.Drawing.Size(104, 24)
+        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(223, 24)
+        Me.EmptySpaceItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'pnlTrigpointName
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlTrigpointName, CType(resources.GetObject("pnlTrigpointName.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlTrigpointName.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlTrigpointName.Controls.Add(Me.lblTrigPointName)
         Me.pnlTrigpointName.Controls.Add(Me.txtTrigPointName)
         resources.ApplyResources(Me.pnlTrigpointName, "pnlTrigpointName")
@@ -5481,16 +5590,16 @@ Partial Class frmMain2
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.tabTrigpointsPropertyitem, Me.LayoutControlItem8})
         Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
         Me.LayoutControlGroup2.Padding = New DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0)
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(250, 323)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(233, 383)
         Me.LayoutControlGroup2.TextVisible = False
         '
         'tabTrigpointsPropertyitem
         '
-        Me.tabTrigpointsPropertyitem.Location = New System.Drawing.Point(0, 40)
+        Me.tabTrigpointsPropertyitem.Location = New System.Drawing.Point(0, 5)
         Me.tabTrigpointsPropertyitem.Name = "tabTrigpointsPropertyitem"
         Me.tabTrigpointsPropertyitem.Padding = New DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0)
         Me.tabTrigpointsPropertyitem.SelectedTabPage = Me.tabTrigpointsCoordinateitem
-        Me.tabTrigpointsPropertyitem.Size = New System.Drawing.Size(250, 283)
+        Me.tabTrigpointsPropertyitem.Size = New System.Drawing.Size(233, 378)
         Me.tabTrigpointsPropertyitem.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.tabTrigpointsMainitem, Me.tabTrigpointsLayoutitem, Me.tabTrigpointsConnectionsitem, Me.tabTrigpointsDataitem, Me.tabTrigpointsNoteitem, Me.tabTrigpointsCoordinateitem})
         '
         'tabTrigpointsCoordinateitem
@@ -5500,7 +5609,7 @@ Partial Class frmMain2
         Me.tabTrigpointsCoordinateitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem7})
         Me.tabTrigpointsCoordinateitem.Location = New System.Drawing.Point(0, 0)
         Me.tabTrigpointsCoordinateitem.Name = "tabTrigpointsCoordinateitem"
-        Me.tabTrigpointsCoordinateitem.Size = New System.Drawing.Size(244, 247)
+        Me.tabTrigpointsCoordinateitem.Size = New System.Drawing.Size(227, 342)
         resources.ApplyResources(Me.tabTrigpointsCoordinateitem, "tabTrigpointsCoordinateitem")
         Me.tabTrigpointsCoordinateitem.TextVisible = False
         '
@@ -5509,7 +5618,7 @@ Partial Class frmMain2
         Me.LayoutControlItem7.Control = Me.pnlTrigpointsDataCoordinate
         Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem7.Name = "cPanelControlitem"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(244, 247)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(227, 342)
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem7.TextVisible = False
         '
@@ -5520,7 +5629,7 @@ Partial Class frmMain2
         Me.tabTrigpointsMainitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem5})
         Me.tabTrigpointsMainitem.Location = New System.Drawing.Point(0, 0)
         Me.tabTrigpointsMainitem.Name = "tabTrigpointsMainitem"
-        Me.tabTrigpointsMainitem.Size = New System.Drawing.Size(244, 247)
+        Me.tabTrigpointsMainitem.Size = New System.Drawing.Size(227, 342)
         resources.ApplyResources(Me.tabTrigpointsMainitem, "tabTrigpointsMainitem")
         Me.tabTrigpointsMainitem.TextVisible = False
         '
@@ -5529,7 +5638,7 @@ Partial Class frmMain2
         Me.LayoutControlItem5.Control = Me.pnlTrigpointsDataMain
         Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem5.Name = "cPanelControlitem"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(244, 247)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(227, 342)
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem5.TextVisible = False
         '
@@ -5540,7 +5649,7 @@ Partial Class frmMain2
         Me.tabTrigpointsLayoutitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6})
         Me.tabTrigpointsLayoutitem.Location = New System.Drawing.Point(0, 0)
         Me.tabTrigpointsLayoutitem.Name = "tabTrigpointsLayoutitem"
-        Me.tabTrigpointsLayoutitem.Size = New System.Drawing.Size(244, 247)
+        Me.tabTrigpointsLayoutitem.Size = New System.Drawing.Size(227, 342)
         resources.ApplyResources(Me.tabTrigpointsLayoutitem, "tabTrigpointsLayoutitem")
         Me.tabTrigpointsLayoutitem.TextVisible = False
         '
@@ -5549,7 +5658,7 @@ Partial Class frmMain2
         Me.LayoutControlItem6.Control = Me.pnlTrigpointsDataLayout
         Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem6.Name = "cPanelControlitem"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(244, 247)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(227, 342)
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem6.TextVisible = False
         '
@@ -5560,7 +5669,7 @@ Partial Class frmMain2
         Me.tabTrigpointsConnectionsitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.grdTrigpointConnectionsitem})
         Me.tabTrigpointsConnectionsitem.Location = New System.Drawing.Point(0, 0)
         Me.tabTrigpointsConnectionsitem.Name = "tabTrigpointsConnectionsitem"
-        Me.tabTrigpointsConnectionsitem.Size = New System.Drawing.Size(244, 247)
+        Me.tabTrigpointsConnectionsitem.Size = New System.Drawing.Size(227, 342)
         resources.ApplyResources(Me.tabTrigpointsConnectionsitem, "tabTrigpointsConnectionsitem")
         Me.tabTrigpointsConnectionsitem.TextVisible = False
         '
@@ -5569,7 +5678,7 @@ Partial Class frmMain2
         Me.grdTrigpointConnectionsitem.Control = Me.grdTrigpointConnections
         Me.grdTrigpointConnectionsitem.Location = New System.Drawing.Point(0, 0)
         Me.grdTrigpointConnectionsitem.Name = "grdTrigpointConnectionsitem"
-        Me.grdTrigpointConnectionsitem.Size = New System.Drawing.Size(244, 247)
+        Me.grdTrigpointConnectionsitem.Size = New System.Drawing.Size(227, 342)
         Me.grdTrigpointConnectionsitem.TextSize = New System.Drawing.Size(0, 0)
         Me.grdTrigpointConnectionsitem.TextVisible = False
         '
@@ -5580,7 +5689,7 @@ Partial Class frmMain2
         Me.tabTrigpointsDataitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.prpTrigpointDataPropertiesitem})
         Me.tabTrigpointsDataitem.Location = New System.Drawing.Point(0, 0)
         Me.tabTrigpointsDataitem.Name = "tabTrigpointsDataitem"
-        Me.tabTrigpointsDataitem.Size = New System.Drawing.Size(244, 247)
+        Me.tabTrigpointsDataitem.Size = New System.Drawing.Size(227, 342)
         resources.ApplyResources(Me.tabTrigpointsDataitem, "tabTrigpointsDataitem")
         Me.tabTrigpointsDataitem.TextVisible = False
         '
@@ -5589,7 +5698,7 @@ Partial Class frmMain2
         Me.prpTrigpointDataPropertiesitem.Control = Me.prpTrigpointDataProperties
         Me.prpTrigpointDataPropertiesitem.Location = New System.Drawing.Point(0, 0)
         Me.prpTrigpointDataPropertiesitem.Name = "prpTrigpointDataPropertiesitem"
-        Me.prpTrigpointDataPropertiesitem.Size = New System.Drawing.Size(244, 247)
+        Me.prpTrigpointDataPropertiesitem.Size = New System.Drawing.Size(227, 342)
         Me.prpTrigpointDataPropertiesitem.TextSize = New System.Drawing.Size(0, 0)
         Me.prpTrigpointDataPropertiesitem.TextVisible = False
         '
@@ -5600,7 +5709,7 @@ Partial Class frmMain2
         Me.tabTrigpointsNoteitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.txtTrigpointNoteitem})
         Me.tabTrigpointsNoteitem.Location = New System.Drawing.Point(0, 0)
         Me.tabTrigpointsNoteitem.Name = "tabTrigpointsNoteitem"
-        Me.tabTrigpointsNoteitem.Size = New System.Drawing.Size(244, 247)
+        Me.tabTrigpointsNoteitem.Size = New System.Drawing.Size(227, 342)
         resources.ApplyResources(Me.tabTrigpointsNoteitem, "tabTrigpointsNoteitem")
         Me.tabTrigpointsNoteitem.TextVisible = False
         '
@@ -5609,7 +5718,7 @@ Partial Class frmMain2
         Me.txtTrigpointNoteitem.Control = Me.txtTrigpointNote
         Me.txtTrigpointNoteitem.Location = New System.Drawing.Point(0, 0)
         Me.txtTrigpointNoteitem.Name = "txtTrigpointNoteitem"
-        Me.txtTrigpointNoteitem.Size = New System.Drawing.Size(244, 247)
+        Me.txtTrigpointNoteitem.Size = New System.Drawing.Size(227, 342)
         Me.txtTrigpointNoteitem.TextSize = New System.Drawing.Size(0, 0)
         Me.txtTrigpointNoteitem.TextVisible = False
         '
@@ -5617,11 +5726,8 @@ Partial Class frmMain2
         '
         Me.LayoutControlItem8.Control = Me.pnlTrigpointName
         Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem8.MaxSize = New System.Drawing.Size(0, 40)
-        Me.LayoutControlItem8.MinSize = New System.Drawing.Size(1, 40)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(250, 40)
-        Me.LayoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(233, 5)
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem8.TextVisible = False
         '
@@ -5631,11 +5737,12 @@ Partial Class frmMain2
         Me.WorkspaceManager.CloseStreamOnWorkspaceLoading = DevExpress.Utils.DefaultBoolean.[True]
         Me.WorkspaceManager.CloseStreamOnWorkspaceSaving = DevExpress.Utils.DefaultBoolean.[True]
         Me.WorkspaceManager.TargetControl = Me
-        Me.WorkspaceManager.TransitionType = FadeTransition1
+        Me.WorkspaceManager.TransitionType = FadeTransition2
         '
         'pnlSegmentDataMain
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentDataMain, CType(resources.GetObject("pnlSegmentDataMain.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlSegmentDataMain.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSegmentDataMain.Controls.Add(Me.chkSegmentCalibration)
         Me.pnlSegmentDataMain.Controls.Add(Me.lblSegmentDistance)
         Me.pnlSegmentDataMain.Controls.Add(Me.chkSegmentCutSplay)
@@ -5884,6 +5991,7 @@ Partial Class frmMain2
         Me.txtSegmentColor.Properties.AutomaticColor = System.Drawing.Color.Black
         Me.txtSegmentColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtSegmentColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtSegmentColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txtSegmentColor.Properties.NullColor = System.Drawing.Color.Empty
         Me.txtSegmentColor.Properties.ShowSystemColors = False
         Me.txtSegmentColor.Properties.ShowWebColors = False
         '
@@ -5926,7 +6034,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.pnlSegment, "pnlSegment")
         Me.pnlSegment.MenuManager = Me.RibbonControl
         Me.pnlSegment.Name = "pnlSegment"
-        Me.pnlSegment.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1062, 147, 650, 636)
+        Me.pnlSegment.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(989, 226, 650, 636)
         Me.pnlSegment.Root = Me.LayoutControlGroup1
         '
         'grdSegmentAttachments
@@ -5988,6 +6096,7 @@ Partial Class frmMain2
         'pnlSegmentDataLayout
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentDataLayout, CType(resources.GetObject("pnlSegmentDataLayout.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlSegmentDataLayout.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSegmentDataLayout.Controls.Add(Me.txtSegmentColor)
         Me.pnlSegmentDataLayout.Controls.Add(Me.lblSegmentColor)
         resources.ApplyResources(Me.pnlSegmentDataLayout, "pnlSegmentDataLayout")
@@ -5996,6 +6105,7 @@ Partial Class frmMain2
         'pnlSegmentFromAndTo
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentFromAndTo, CType(resources.GetObject("pnlSegmentFromAndTo.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlSegmentFromAndTo.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSegmentFromAndTo.Controls.Add(Me.txtSegmentTo)
         Me.pnlSegmentFromAndTo.Controls.Add(Me.txtSegmentFrom)
         Me.pnlSegmentFromAndTo.Controls.Add(Me.lblSegmentFrom)
@@ -6039,6 +6149,7 @@ Partial Class frmMain2
         'pnlSegmentCaveBranches
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentCaveBranches, CType(resources.GetObject("pnlSegmentCaveBranches.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlSegmentCaveBranches.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSegmentCaveBranches.Controls.Add(Me.pnlSegmentCaveBranchesColor)
         Me.pnlSegmentCaveBranches.Controls.Add(Me.lblSegmentCave)
         Me.pnlSegmentCaveBranches.Controls.Add(Me.lblSegmentBranch)
@@ -6083,6 +6194,7 @@ Partial Class frmMain2
         'pnlSegmentSession
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlSegmentSession, CType(resources.GetObject("pnlSegmentSession.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlSegmentSession.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSegmentSession.Controls.Add(Me.pnlSegmentSessionColor)
         Me.pnlSegmentSession.Controls.Add(Me.lblSegmentSession)
         Me.pnlSegmentSession.Controls.Add(Me.cboSegmentSessionList)
@@ -6122,34 +6234,30 @@ Partial Class frmMain2
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.pnlSegmentSession
+        resources.ApplyResources(Me.LayoutControlItem2, "LayoutControlItem2")
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem2.MaxSize = New System.Drawing.Size(0, 36)
-        Me.LayoutControlItem2.MinSize = New System.Drawing.Size(5, 36)
         Me.LayoutControlItem2.Name = "item1"
         Me.LayoutControlItem2.Size = New System.Drawing.Size(250, 36)
-        Me.LayoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
         '
         'LayoutControlItem1
         '
         Me.LayoutControlItem1.Control = Me.pnlSegmentCaveBranches
+        resources.ApplyResources(Me.LayoutControlItem1, "LayoutControlItem1")
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 36)
-        Me.LayoutControlItem1.MaxSize = New System.Drawing.Size(0, 62)
-        Me.LayoutControlItem1.MinSize = New System.Drawing.Size(5, 62)
         Me.LayoutControlItem1.Name = "item0"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(250, 62)
-        Me.LayoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(250, 60)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
         '
         'tabSegmentsPropertyitem
         '
-        Me.tabSegmentsPropertyitem.Location = New System.Drawing.Point(0, 138)
+        Me.tabSegmentsPropertyitem.Location = New System.Drawing.Point(0, 135)
         Me.tabSegmentsPropertyitem.Name = "tabSegmentsPropertyitem"
         Me.tabSegmentsPropertyitem.Padding = New DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0)
         Me.tabSegmentsPropertyitem.SelectedTabPage = Me.tabSegmentsMainitem
-        Me.tabSegmentsPropertyitem.Size = New System.Drawing.Size(250, 265)
+        Me.tabSegmentsPropertyitem.Size = New System.Drawing.Size(250, 268)
         Me.tabSegmentsPropertyitem.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.tabSegmentsMainitem, Me.tabSegmentsLayoutitem, Me.tabSegmentsDataitem, Me.tabSegmentsNoteitem, Me.tabSegmentsAttachmentsitem})
         '
         'tabSegmentsMainitem
@@ -6159,16 +6267,17 @@ Partial Class frmMain2
         Me.tabSegmentsMainitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3})
         Me.tabSegmentsMainitem.Location = New System.Drawing.Point(0, 0)
         Me.tabSegmentsMainitem.Name = "tabSegmentsMainitem"
-        Me.tabSegmentsMainitem.Size = New System.Drawing.Size(244, 229)
+        Me.tabSegmentsMainitem.Size = New System.Drawing.Size(244, 232)
         resources.ApplyResources(Me.tabSegmentsMainitem, "tabSegmentsMainitem")
         Me.tabSegmentsMainitem.TextVisible = False
         '
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.pnlSegmentDataMain
+        resources.ApplyResources(Me.LayoutControlItem3, "LayoutControlItem3")
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem3.Name = "cPanelControlitem"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(244, 229)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(244, 232)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         '
@@ -6179,16 +6288,17 @@ Partial Class frmMain2
         Me.tabSegmentsLayoutitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.pnlSegmentDataLayoutitem})
         Me.tabSegmentsLayoutitem.Location = New System.Drawing.Point(0, 0)
         Me.tabSegmentsLayoutitem.Name = "tabSegmentsLayoutitem"
-        Me.tabSegmentsLayoutitem.Size = New System.Drawing.Size(244, 229)
+        Me.tabSegmentsLayoutitem.Size = New System.Drawing.Size(244, 232)
         resources.ApplyResources(Me.tabSegmentsLayoutitem, "tabSegmentsLayoutitem")
         Me.tabSegmentsLayoutitem.TextVisible = False
         '
         'pnlSegmentDataLayoutitem
         '
         Me.pnlSegmentDataLayoutitem.Control = Me.pnlSegmentDataLayout
+        resources.ApplyResources(Me.pnlSegmentDataLayoutitem, "pnlSegmentDataLayoutitem")
         Me.pnlSegmentDataLayoutitem.Location = New System.Drawing.Point(0, 0)
         Me.pnlSegmentDataLayoutitem.Name = "pnlSegmentDataLayoutitem"
-        Me.pnlSegmentDataLayoutitem.Size = New System.Drawing.Size(244, 229)
+        Me.pnlSegmentDataLayoutitem.Size = New System.Drawing.Size(244, 232)
         Me.pnlSegmentDataLayoutitem.TextSize = New System.Drawing.Size(0, 0)
         Me.pnlSegmentDataLayoutitem.TextVisible = False
         '
@@ -6199,16 +6309,17 @@ Partial Class frmMain2
         Me.tabSegmentsDataitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.prpSegmentDataPropertiesitem})
         Me.tabSegmentsDataitem.Location = New System.Drawing.Point(0, 0)
         Me.tabSegmentsDataitem.Name = "tabSegmentsDataitem"
-        Me.tabSegmentsDataitem.Size = New System.Drawing.Size(244, 229)
+        Me.tabSegmentsDataitem.Size = New System.Drawing.Size(244, 232)
         resources.ApplyResources(Me.tabSegmentsDataitem, "tabSegmentsDataitem")
         Me.tabSegmentsDataitem.TextVisible = False
         '
         'prpSegmentDataPropertiesitem
         '
         Me.prpSegmentDataPropertiesitem.Control = Me.prpSegmentDataProperties
+        resources.ApplyResources(Me.prpSegmentDataPropertiesitem, "prpSegmentDataPropertiesitem")
         Me.prpSegmentDataPropertiesitem.Location = New System.Drawing.Point(0, 0)
         Me.prpSegmentDataPropertiesitem.Name = "prpSegmentDataPropertiesitem"
-        Me.prpSegmentDataPropertiesitem.Size = New System.Drawing.Size(244, 229)
+        Me.prpSegmentDataPropertiesitem.Size = New System.Drawing.Size(244, 232)
         Me.prpSegmentDataPropertiesitem.TextSize = New System.Drawing.Size(0, 0)
         Me.prpSegmentDataPropertiesitem.TextVisible = False
         '
@@ -6219,16 +6330,17 @@ Partial Class frmMain2
         Me.tabSegmentsNoteitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.txtSegmentNoteitem})
         Me.tabSegmentsNoteitem.Location = New System.Drawing.Point(0, 0)
         Me.tabSegmentsNoteitem.Name = "tabSegmentsNoteitem"
-        Me.tabSegmentsNoteitem.Size = New System.Drawing.Size(244, 229)
+        Me.tabSegmentsNoteitem.Size = New System.Drawing.Size(244, 232)
         resources.ApplyResources(Me.tabSegmentsNoteitem, "tabSegmentsNoteitem")
         Me.tabSegmentsNoteitem.TextVisible = False
         '
         'txtSegmentNoteitem
         '
         Me.txtSegmentNoteitem.Control = Me.txtSegmentNote
+        resources.ApplyResources(Me.txtSegmentNoteitem, "txtSegmentNoteitem")
         Me.txtSegmentNoteitem.Location = New System.Drawing.Point(0, 0)
         Me.txtSegmentNoteitem.Name = "txtSegmentNoteitem"
-        Me.txtSegmentNoteitem.Size = New System.Drawing.Size(244, 229)
+        Me.txtSegmentNoteitem.Size = New System.Drawing.Size(244, 232)
         Me.txtSegmentNoteitem.TextSize = New System.Drawing.Size(0, 0)
         Me.txtSegmentNoteitem.TextVisible = False
         '
@@ -6239,28 +6351,27 @@ Partial Class frmMain2
         Me.tabSegmentsAttachmentsitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.grdSegmentAttachmentsitem})
         Me.tabSegmentsAttachmentsitem.Location = New System.Drawing.Point(0, 0)
         Me.tabSegmentsAttachmentsitem.Name = "tabSegmentsAttachmentsitem"
-        Me.tabSegmentsAttachmentsitem.Size = New System.Drawing.Size(244, 229)
+        Me.tabSegmentsAttachmentsitem.Size = New System.Drawing.Size(244, 232)
         resources.ApplyResources(Me.tabSegmentsAttachmentsitem, "tabSegmentsAttachmentsitem")
         Me.tabSegmentsAttachmentsitem.TextVisible = False
         '
         'grdSegmentAttachmentsitem
         '
         Me.grdSegmentAttachmentsitem.Control = Me.grdSegmentAttachments
+        resources.ApplyResources(Me.grdSegmentAttachmentsitem, "grdSegmentAttachmentsitem")
         Me.grdSegmentAttachmentsitem.Location = New System.Drawing.Point(0, 0)
         Me.grdSegmentAttachmentsitem.Name = "grdSegmentAttachmentsitem"
-        Me.grdSegmentAttachmentsitem.Size = New System.Drawing.Size(244, 229)
+        Me.grdSegmentAttachmentsitem.Size = New System.Drawing.Size(244, 232)
         Me.grdSegmentAttachmentsitem.TextSize = New System.Drawing.Size(0, 0)
         Me.grdSegmentAttachmentsitem.TextVisible = False
         '
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.pnlSegmentFromAndTo
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 98)
-        Me.LayoutControlItem4.MaxSize = New System.Drawing.Size(0, 40)
-        Me.LayoutControlItem4.MinSize = New System.Drawing.Size(5, 40)
+        resources.ApplyResources(Me.LayoutControlItem4, "LayoutControlItem4")
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 96)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(250, 40)
-        Me.LayoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(250, 39)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
         '
@@ -6602,7 +6713,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.dockProperties, "dockProperties")
         Me.dockProperties.Name = "dockProperties"
         Me.dockProperties.Options.AllowDockAsTabbedDocument = False
-        Me.dockProperties.OriginalSize = New System.Drawing.Size(767, 774)
+        Me.dockProperties.OriginalSize = New System.Drawing.Size(767, 739)
         '
         'ControlContainer10
         '
@@ -6629,7 +6740,7 @@ Partial Class frmMain2
         Me.grpDesignProp.GroupBordersVisible = False
         Me.grpDesignProp.Name = "grpDesignProp"
         Me.grpDesignProp.Padding = New DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0)
-        Me.grpDesignProp.Size = New System.Drawing.Size(47, 738)
+        Me.grpDesignProp.Size = New System.Drawing.Size(47, 793)
         Me.grpDesignProp.TextVisible = False
         '
         'pnl3DProp
@@ -6648,7 +6759,7 @@ Partial Class frmMain2
         Me.grp3DProp.GroupBordersVisible = False
         Me.grp3DProp.Name = "grp3DProp"
         Me.grp3DProp.Padding = New DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0)
-        Me.grp3DProp.Size = New System.Drawing.Size(51, 738)
+        Me.grp3DProp.Size = New System.Drawing.Size(51, 793)
         Me.grp3DProp.TextVisible = False
         '
         'pnlObjectProp
@@ -6674,7 +6785,7 @@ Partial Class frmMain2
         Me.grpObjectProp.GroupBordersVisible = False
         Me.grpObjectProp.Name = "grpObjectProp"
         Me.grpObjectProp.Padding = New DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0)
-        Me.grpObjectProp.Size = New System.Drawing.Size(451, 734)
+        Me.grpObjectProp.Size = New System.Drawing.Size(451, 789)
         Me.grpObjectProp.TextVisible = False
         '
         'dockLevels
@@ -6689,7 +6800,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.dockLevels, "dockLevels")
         Me.dockLevels.Name = "dockLevels"
         Me.dockLevels.Options.AllowDockAsTabbedDocument = False
-        Me.dockLevels.OriginalSize = New System.Drawing.Size(767, 774)
+        Me.dockLevels.OriginalSize = New System.Drawing.Size(767, 739)
         '
         'ControlContainer7
         '
@@ -6707,7 +6818,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.dockClipart, "dockClipart")
         Me.dockClipart.Name = "dockClipart"
         Me.dockClipart.Options.AllowDockAsTabbedDocument = False
-        Me.dockClipart.OriginalSize = New System.Drawing.Size(767, 774)
+        Me.dockClipart.OriginalSize = New System.Drawing.Size(767, 739)
         '
         'ControlContainer9
         '
@@ -7365,11 +7476,11 @@ Partial Class frmMain2
         Me.docView.DocumentGroups.AddRange(New DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup() {Me.DocumentGroup2, Me.DocumentGroup1})
         Me.docView.DocumentProperties.AllowClose = False
         Me.docView.Documents.AddRange(New DevExpress.XtraBars.Docking2010.Views.BaseDocument() {Me.Document1, Me.Document2})
-        DockingContainer1.Element = Me.DocumentGroup1
-        DockingContainer1.Length.UnitValue = 0.76215277777777779R
-        DockingContainer2.Element = Me.DocumentGroup2
-        DockingContainer2.Length.UnitValue = 1.2378472222222223R
-        Me.docView.RootContainer.Nodes.AddRange(New DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer() {DockingContainer1, DockingContainer2})
+        DockingContainer3.Element = Me.DocumentGroup1
+        DockingContainer3.Length.UnitValue = 0.76215277777777779R
+        DockingContainer4.Element = Me.DocumentGroup2
+        DockingContainer4.Length.UnitValue = 1.2378472222222223R
+        Me.docView.RootContainer.Nodes.AddRange(New DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer() {DockingContainer3, DockingContainer4})
         '
         'mnuSegments
         '
@@ -7517,235 +7628,255 @@ Partial Class frmMain2
         Me.Name = "frmMain2"
         Me.Ribbon = Me.RibbonControl
         Me.StatusBar = Me.RibbonStatusBar1
-        CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Document2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DocumentGroup2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Document1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlDesigner, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Document2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DocumentGroup2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Document1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlDesigner, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlDesigner.ResumeLayout(False)
-        Me.pnlDesigner.PerformLayout()
-        CType(Me.pnlUndoPopup, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BarAndDockingController, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuTemplates, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuRecents, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuTherionPad, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuPasteSpecial, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuPlotManageStations, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuZoom, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainSessionList, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainSessionListView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtMainSessionListName, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainCaveList, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainCaveListView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtMainCaveListName, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainCaveListLocked, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.svgImages, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainCaveBranchList, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainCaveBranchListView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtMainCaveBranchName, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainCaveBranchListLocked, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainBindDesignType, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMainBindCrossSections, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemGridLookUpEdit1View, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPenSmootingFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.barStatusProgress, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCurrentItemX, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCurrentItemY, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCurrentItemW, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCurrentItemH, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCurrentItemScaleW, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCurrentItemScaleH, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCurrentItemRotateBy, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkCurrentItemRotateCenteredOnOrigin, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCurrentItemGenericReducePointFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.trkZoom, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuSegmentDirection, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuConvertTo, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtAlignToGridSize, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuWorkspaces, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuBar, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboPensSmooting1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemPopupContainerEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCurrentItemTransparency, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnl3D, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlDesigner.PerformLayout
+        CType(Me.pnlUndoPopup, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.BarAndDockingController, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuTemplates, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuRecents, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuTherionPad, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuPasteSpecial, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuPlotManageStations, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuZoom, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainSessionList, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainSessionListView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtMainSessionListName, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainCaveList, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainCaveListView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtMainCaveListName, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainCaveListLocked, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.svgImages, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainCaveBranchList, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainCaveBranchListView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtMainCaveBranchName, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainCaveBranchListLocked, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainBindDesignType, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMainBindCrossSections, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemGridLookUpEdit1View, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPenSmootingFactor, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.barStatusProgress, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCurrentItemX, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCurrentItemY, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCurrentItemW, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCurrentItemH, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCurrentItemScaleW, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCurrentItemScaleH, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCurrentItemRotateBy, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkCurrentItemRotateCenteredOnOrigin, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCurrentItemGenericReducePointFactor, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.trkZoom, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuSegmentDirection, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuConvertTo, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtAlignToGridSize, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuWorkspaces, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuBar, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboPensSmooting1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemPopupContainerEdit1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCurrentItemTransparency, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnl3D, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnl3D.ResumeLayout(False)
-        CType(Me.picMap, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuUndo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picMap, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuUndo, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlTrigpointsDataMain, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlTrigpointsDataMain.ResumeLayout(False)
-        Me.pnlTrigpointsDataMain.PerformLayout()
-        CType(Me.grdTrigPointAliases, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdViewTrigPointAliases, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkTrigpointZTurn.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointEntrance.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkTrigpointIsInExploration.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkTrigpointShowEntrance.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkTrigpointIsSpecial.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigPointType.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlTrigpointsDataMain.PerformLayout
+        CType(Me.grdTrigPointAliases, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdViewTrigPointAliases, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkTrigpointZTurn.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointEntrance.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkTrigpointIsInExploration.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkTrigpointShowEntrance.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkTrigpointIsSpecial.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigPointType.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlTrigpointsDataLayout, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlTrigpointsDataLayout.ResumeLayout(False)
-        Me.pnlTrigpointsDataLayout.PerformLayout()
-        CType(Me.txtTrigpointFontColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkTrigpointDrawTranslationsLine.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigPointLabelPosition.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTrigPointLabelDistance, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigPointLabelSymbol.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdTrigpointConnections, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdViewTrigpointConnections, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.prpTrigpointDataProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTrigpointNote.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlTrigPoint, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlTrigpointsDataLayout.PerformLayout
+        CType(Me.txtTrigpointFontColor.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkTrigpointDrawTranslationsLine.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigPointLabelPosition.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTrigPointLabelDistance, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigPointLabelSymbol.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdTrigpointConnections, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdViewTrigpointConnections, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.prpTrigpointDataProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTrigpointNote.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlTrigPoint, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlTrigPoint.ResumeLayout(False)
+        CType(Me.pnlTrigpointsDataCoordinate, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlTrigpointsDataCoordinate.ResumeLayout(False)
-        Me.pnlTrigpointsDataCoordinate.PerformLayout()
-        CType(Me.cboTrigpointCoordinateGeo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointCoordinateFix.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTrigpointCoordinateAlt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlTrigpointCoordinateWGS84, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlTrigpointCoordinateWGS84.ResumeLayout(False)
-        Me.pnlTrigpointCoordinateWGS84.PerformLayout()
-        CType(Me.txtTrigpointCoordinateLong.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTrigpointCoordinateLat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointCoordinateFormat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlTrigpointCoordinateUTM, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlTrigpointCoordinateUTM.ResumeLayout(False)
-        Me.pnlTrigpointCoordinateUTM.PerformLayout()
-        CType(Me.cboTrigpointCoordinateBand.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTrigpointCoordinateY.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointCoordinateZone.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTrigpointCoordinateX.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlTrigpointCoordinate, System.ComponentModel.ISupportInitialize).EndInit
+        Me.pnlTrigpointCoordinate.ResumeLayout(False)
+        CType(Me.cboTrigpointCoordinateFix.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointCoordinateBand.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointCoordinateZone.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTrigpointCoordinateY.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTrigpointCoordinateAlt.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTrigpointCoordinateLong.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTrigpointCoordinateLat.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointCoordinateFormat.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTrigpointCoordinateX.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointCoordinateGeo.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlTrigpointCoordinateWGS84, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlTrigpointCoordinateLat, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlTrigpointCoordinateLong, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlTrigpointCoordinateFormat, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlTrigpointCoordinateGeo, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlTrigpointCoordinateUTM, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlTrigpointCoordinateX, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlTrigpointCoordinateY, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlTrigpointCoordinateZone, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.lblTrigpointCoordinateBand, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlTrigpointCoordinateAlt, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlTrigpointCoordinateFix, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlTrigpointName, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlTrigpointName.ResumeLayout(False)
-        Me.pnlTrigpointName.PerformLayout()
-        CType(Me.txtTrigPointName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tabTrigpointsPropertyitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tabTrigpointsCoordinateitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tabTrigpointsMainitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tabTrigpointsLayoutitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tabTrigpointsConnectionsitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdTrigpointConnectionsitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tabTrigpointsDataitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.prpTrigpointDataPropertiesitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tabTrigpointsNoteitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTrigpointNoteitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlTrigpointName.PerformLayout
+        CType(Me.txtTrigPointName.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabTrigpointsPropertyitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabTrigpointsCoordinateitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabTrigpointsMainitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabTrigpointsLayoutitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabTrigpointsConnectionsitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdTrigpointConnectionsitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabTrigpointsDataitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.prpTrigpointDataPropertiesitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabTrigpointsNoteitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTrigpointNoteitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlSegmentDataMain, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlSegmentDataMain.ResumeLayout(False)
-        Me.pnlSegmentDataMain.PerformLayout()
-        CType(Me.chkSegmentCalibration.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSegmentCutSplay.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSegmentZSurvey.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlSegmentSurfaceProfile, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlSegmentDataMain.PerformLayout
+        CType(Me.chkSegmentCalibration.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkSegmentCutSplay.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkSegmentZSurvey.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlSegmentSurfaceProfile, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlSegmentSurfaceProfile.ResumeLayout(False)
-        Me.pnlSegmentSurfaceProfile.PerformLayout()
-        CType(Me.cboSegmentSurfaceProfileShow.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSegmentVirtual.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentInclination.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSegmentUnbindable.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSegmentSurface.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSegmentDuplicate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSegmentSplay.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentDistance.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentRight.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentUp.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentDown.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentLeft.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentBearing.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSegmentExclude.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSegmentInverted.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboSegmentDirection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.prpSegmentDataProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentNote.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlSegment, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlSegmentSurfaceProfile.PerformLayout
+        CType(Me.cboSegmentSurfaceProfileShow.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkSegmentVirtual.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentInclination.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkSegmentUnbindable.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkSegmentSurface.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkSegmentDuplicate.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkSegmentSplay.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentDistance.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentRight.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentUp.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentDown.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentLeft.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentBearing.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkSegmentExclude.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkSegmentInverted.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboSegmentDirection.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentColor.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.prpSegmentDataProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentNote.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlSegment, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlSegment.ResumeLayout(False)
-        CType(Me.grdSegmentAttachments, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdViewSegmentAttachments, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picSegmentAttachmentsImage, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentAttachmentsNote, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdSegmentAttachments, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdViewSegmentAttachments, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.picSegmentAttachmentsImage, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentAttachmentsNote, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlSegmentDataLayout, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlSegmentDataLayout.ResumeLayout(False)
-        Me.pnlSegmentDataLayout.PerformLayout()
+        Me.pnlSegmentDataLayout.PerformLayout
+        CType(Me.pnlSegmentFromAndTo, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlSegmentFromAndTo.ResumeLayout(False)
-        Me.pnlSegmentFromAndTo.PerformLayout()
-        CType(Me.txtSegmentTo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentFrom.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlSegmentFromAndTo.PerformLayout
+        CType(Me.txtSegmentTo.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentFrom.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlSegmentCaveBranches, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlSegmentCaveBranches.ResumeLayout(False)
-        Me.pnlSegmentCaveBranches.PerformLayout()
-        CType(Me.pnlSegmentCaveBranchesColor, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlSegmentCaveBranches.PerformLayout
+        CType(Me.pnlSegmentCaveBranchesColor, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlSegmentSession, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlSegmentSession.ResumeLayout(False)
-        Me.pnlSegmentSession.PerformLayout()
-        CType(Me.pnlSegmentSessionColor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tabSegmentsPropertyitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tabSegmentsMainitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tabSegmentsLayoutitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlSegmentDataLayoutitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tabSegmentsDataitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.prpSegmentDataPropertiesitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tabSegmentsNoteitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentNoteitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tabSegmentsAttachmentsitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdSegmentAttachmentsitem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.spSegmentsAndTrigpoints.Panel1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlSegmentSession.PerformLayout
+        CType(Me.pnlSegmentSessionColor, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabSegmentsPropertyitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabSegmentsMainitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabSegmentsLayoutitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlSegmentDataLayoutitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabSegmentsDataitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.prpSegmentDataPropertiesitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabSegmentsNoteitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentNoteitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabSegmentsAttachmentsitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdSegmentAttachmentsitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.spSegmentsAndTrigpoints.Panel1, System.ComponentModel.ISupportInitialize).EndInit
         Me.spSegmentsAndTrigpoints.Panel1.ResumeLayout(False)
-        CType(Me.spSegmentsAndTrigpoints.Panel2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spSegmentsAndTrigpoints.Panel2, System.ComponentModel.ISupportInitialize).EndInit
         Me.spSegmentsAndTrigpoints.Panel2.ResumeLayout(False)
-        CType(Me.spSegmentsAndTrigpoints, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spSegmentsAndTrigpoints, System.ComponentModel.ISupportInitialize).EndInit
         Me.spSegmentsAndTrigpoints.ResumeLayout(False)
-        CType(Me.spSegments.Panel1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spSegments.Panel1, System.ComponentModel.ISupportInitialize).EndInit
         Me.spSegments.Panel1.ResumeLayout(False)
-        CType(Me.spSegments.Panel2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spSegments.Panel2, System.ComponentModel.ISupportInitialize).EndInit
         Me.spSegments.Panel2.ResumeLayout(False)
-        CType(Me.spSegments, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spSegments, System.ComponentModel.ISupportInitialize).EndInit
         Me.spSegments.ResumeLayout(False)
-        CType(Me.grdSegments, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdViewSegments, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentsListNumericEdit, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboSegmentListProfileDirection2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboSegmentsListNote, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboSegmentsListAttachment, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSegmentsListBearing, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdSegments, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdViewSegments, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentsListNumericEdit, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboSegmentListProfileDirection2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboSegmentsListNote, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboSegmentsListAttachment, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentsListBearing, System.ComponentModel.ISupportInitialize).EndInit
         Me.mnuDesignItemOLD.ResumeLayout(False)
         Me.pnlForm.ResumeLayout(False)
         Me.panelContainer1.ResumeLayout(False)
         Me.dockProperties.ResumeLayout(False)
         Me.ControlContainer10.ResumeLayout(False)
-        CType(Me.pnlDesignProp, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grpDesignProp, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnl3DProp, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grp3DProp, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlObjectProp, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlDesignProp, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grpDesignProp, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnl3DProp, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grp3DProp, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlObjectProp, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlObjectProp.ResumeLayout(False)
-        CType(Me.pnlObjectSubProp, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grpObjectProp, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlObjectSubProp, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grpObjectProp, System.ComponentModel.ISupportInitialize).EndInit
         Me.dockLevels.ResumeLayout(False)
         Me.dockClipart.ResumeLayout(False)
         Me.ControlContainer6.ResumeLayout(False)
-        Me.ControlContainer6.PerformLayout()
+        Me.ControlContainer6.PerformLayout
         Me.DockPanel1_Container.ResumeLayout(False)
-        Me.DockPanel1_Container.PerformLayout()
-        CType(Me.spTrigPoints.Panel1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.DockPanel1_Container.PerformLayout
+        CType(Me.spTrigPoints.Panel1, System.ComponentModel.ISupportInitialize).EndInit
         Me.spTrigPoints.Panel1.ResumeLayout(False)
-        CType(Me.spTrigPoints.Panel2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spTrigPoints.Panel2, System.ComponentModel.ISupportInitialize).EndInit
         Me.spTrigPoints.Panel2.ResumeLayout(False)
-        CType(Me.spTrigPoints, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spTrigPoints, System.ComponentModel.ISupportInitialize).EndInit
         Me.spTrigPoints.ResumeLayout(False)
-        CType(Me.grdTrigPoints, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdViewTrigpoints, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointsListSpecial, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointsListEntrance, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointsListCoordinate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointsListNote, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointsListInExploration, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picTrigpointsIcons, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigPointListsSplay, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DockManager, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdTrigPoints, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdViewTrigpoints, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointsListSpecial, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointsListEntrance, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointsListCoordinate, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointsListNote, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigpointsListInExploration, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.picTrigpointsIcons, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboTrigPointListsSplay, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DockManager, System.ComponentModel.ISupportInitialize).EndInit
         Me.dockScript.ResumeLayout(False)
         Me.dockIV.ResumeLayout(False)
         Me.dockAV.ResumeLayout(False)
@@ -7757,21 +7888,21 @@ Partial Class frmMain2
         Me.dockDistances.ResumeLayout(False)
         Me.dockData.ResumeLayout(False)
         Me.dockDesigner.ResumeLayout(False)
-        CType(Me.DocumentManager, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.docView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuSegments, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuTrigpoint, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuDataProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuAliases, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuAttachments, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuDesignItemPoint, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuMapDrop, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuDesignItem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuDesignNone, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuTray, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.svgItemImages, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DocumentManager, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.docView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuSegments, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuTrigpoint, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuDataProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuAliases, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuAttachments, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuDesignItemPoint, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuMapDrop, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuDesignItem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuDesignNone, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuTray, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.svgItemImages, System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(False)
-        Me.PerformLayout()
+        Me.PerformLayout
 
     End Sub
     Friend WithEvents lblSegmentTo As DevExpress.XtraEditors.LabelControl
@@ -7802,10 +7933,6 @@ Partial Class frmMain2
     Friend WithEvents lblCoordinateLong As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboTrigpointCoordinateFormat As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents lblCoordinateLat As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents lblTrigpointCoordinateGeo As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents lblTrigpointCoordinateFormat As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents lblTrigpointCoordinateLong As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents lblTrigpointCoordinateLat As DevExpress.XtraEditors.LabelControl
     Friend WithEvents mnuDesignItemOLD As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents picMap As System.Windows.Forms.PictureBox
     Friend WithEvents mnuDesignItemBar0 As System.Windows.Forms.ToolStripSeparator
@@ -7816,7 +7943,6 @@ Partial Class frmMain2
     Friend WithEvents chkSegmentExclude As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents lblSegmentBranch As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtTrigpointCoordinateAlt As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents lblTrigpointCoordinateAlt As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lblTrigpointLabelPosition As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboTrigPointLabelPosition As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents txtTrigPointName As DevExpress.XtraEditors.TextEdit
@@ -7853,19 +7979,12 @@ Partial Class frmMain2
     Friend WithEvents mnuDesignItemBar8 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
     Friend WithEvents chkSegmentUnbindable As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents pnlTrigpointCoordinateUTM As DevExpress.XtraEditors.PanelControl
-    Friend WithEvents Label5 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboTrigpointCoordinateBand As DevExpress.XtraEditors.ComboBoxEdit
-    Friend WithEvents lblTrigpointCoordinateZone As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtTrigpointCoordinateY As DevExpress.XtraEditors.TextEdit
     Friend WithEvents cboTrigpointCoordinateZone As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents txtTrigpointCoordinateX As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents lblTrigpointCoordinateY As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents lblTrigpointCoordinateX As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents pnlTrigpointCoordinateWGS84 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents chkSegmentVirtual As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents mnuDesignItemSegmentSplay As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents lblTrigpointCoordinateFix As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboTrigpointCoordinateFix As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents btnTrigpointCoordinateClear As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents pnl3D As DevExpress.XtraEditors.PanelControl
@@ -7874,13 +7993,9 @@ Partial Class frmMain2
     Friend WithEvents lblSegmentSurfaceProfileShow As DevExpress.XtraEditors.LabelControl
     Friend WithEvents pnlSegmentSurfaceProfile As DevExpress.XtraEditors.PanelControl
     Friend WithEvents bwMain As System.ComponentModel.BackgroundWorker
-    Friend WithEvents pnlSegmentCaveBranches As cPanelControl
     Friend WithEvents pnlSegmentCaveBranchesColor As DevExpress.XtraEditors.PanelControl
-    Friend WithEvents pnlSegmentSession As cPanelControl
     Friend WithEvents pnlSegmentSessionColor As DevExpress.XtraEditors.PanelControl
     Friend WithEvents chkTrigpointDrawTranslationsLine As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents pnlSegmentFromAndTo As cPanelControl
-    Friend WithEvents pnlTrigpointName As cPanelControl
     Friend WithEvents chkSegmentZSurvey As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkSegmentCutSplay As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkTrigpointZTurn As DevExpress.XtraEditors.CheckEdit
@@ -8460,8 +8575,6 @@ Partial Class frmMain2
     Friend WithEvents mnuUndo As DevExpress.XtraBars.PopupMenu
     Friend WithEvents pnlUndoPopup As DevExpress.XtraBars.PopupControlContainer
     Friend WithEvents btnViewToolbarFloatingBar As DevExpress.XtraBars.BarCheckItem
-    Friend WithEvents pnlSegmentDataMain As cPanelControl
-    Friend WithEvents pnlSegmentDataLayout As cPanelControl
     Friend WithEvents pnlSegment As DevExpress.XtraLayout.LayoutControl
     Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents tabSegmentsPropertyitem As DevExpress.XtraLayout.TabbedControlGroup
@@ -8479,9 +8592,6 @@ Partial Class frmMain2
     Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutConverter1 As DevExpress.XtraLayout.Converter.LayoutConverter
-    Friend WithEvents pnlTrigpointsDataMain As cPanelControl
-    Friend WithEvents pnlTrigpointsDataLayout As cPanelControl
-    Friend WithEvents pnlTrigpointsDataCoordinate As cPanelControl
     Friend WithEvents pnlTrigPoint As DevExpress.XtraLayout.LayoutControl
     Friend WithEvents LayoutControlGroup2 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents tabTrigpointsPropertyitem As DevExpress.XtraLayout.TabbedControlGroup
@@ -8506,4 +8616,30 @@ Partial Class frmMain2
     Friend WithEvents colMainCaveCrossSectionName As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colMainCaveCrossSectionFrom As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colMainCaveCrossSectionTo As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents pnlSegmentCaveBranches As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlSegmentSession As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlSegmentFromAndTo As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlTrigpointName As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlSegmentDataMain As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlSegmentDataLayout As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlTrigpointsDataMain As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlTrigpointsDataLayout As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlTrigpointsDataCoordinate As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlTrigpointCoordinate As DevExpress.XtraLayout.LayoutControl
+    Friend WithEvents Root As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents pnlTrigpointCoordinateGeo As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents pnlTrigpointCoordinateWGS84 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents pnlTrigpointCoordinateLat As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents pnlTrigpointCoordinateLong As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents pnlTrigpointCoordinateFormat As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents pnlTrigpointCoordinateUTM As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents pnlTrigpointCoordinateX As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents pnlTrigpointCoordinateY As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents pnlTrigpointCoordinateZone As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents lblTrigpointCoordinateBand As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents pnlTrigpointCoordinateAlt As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents pnlTrigpointCoordinateFix As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents LayoutControlItem9 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem2 As DevExpress.XtraLayout.EmptySpaceItem
 End Class

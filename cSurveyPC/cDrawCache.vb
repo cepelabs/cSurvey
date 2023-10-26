@@ -1,9 +1,6 @@
-﻿Imports System.Drawing
-Imports System.Drawing.Drawing2D
+﻿Imports System.Drawing.Drawing2D
 Imports System.Xml
-
 Imports cSurveyPC.cSurvey.Design
-Imports DevExpress.Utils.Extensions
 
 Namespace cSurvey.Drawings
     Public Class cDrawCache

@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class cPanelControl
-    Inherits DevExpress.XtraEditors.XtraUserControl
+    Inherits DevExpress.XtraEditors.PanelControl
 
     'UserControl overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -23,10 +23,10 @@ Partial Class cPanelControl
         '
         'cPanelControl
         '
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        'Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.Name = "cPanelControl"
         Me.ResumeLayout(False)
-
+        Me.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
     End Sub
 
 End Class

@@ -3352,7 +3352,7 @@ Module modExport
         Using st As StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(Filename, False, TextFileEncoder)
             Call st.WriteLine(pGetTherionTextEncorderDef(TextFileEncoder))
             Call st.WriteLine("#csurvey " & modMain.GetReleaseVersion)
-            Dim sName As String = FormatTextFor(If(Survey.Properties.Name = "", "csurvey_unnamed", Survey.Properties.Name), FormatTextForEnum.BaseWithoutSpacesAndSlash)
+            Dim sName As String = FormatTextFor(If(Survey.Properties.Name = "", "csurvey_unnamed_" & Survey.ID, Survey.Properties.Name & "_" & Survey.ID), FormatTextForEnum.BaseWithoutSpacesAndSlash)
             Call st.Write("survey " & sName & " -title " & FormatTextFor(If((Options And TherionExportOptionsEnum.UseCadastralIDinCaveNames) = TherionExportOptionsEnum.UseCadastralIDinCaveNames AndAlso Survey.Properties.ID <> "", Survey.Properties.ID & " " & Survey.Properties.Name, Survey.Properties.Name), FormatTextForEnum.TherionText))
 
             If Not Survey.Properties.GPS.Enabled Then

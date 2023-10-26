@@ -135,7 +135,7 @@
     <value>Label1</value>
   </data>
   <data name="&gt;&gt;Label1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
     <value>frmScaleQuota</value>
@@ -201,7 +201,7 @@
     <value>lblPlotPenWidth</value>
   </data>
   <data name="&gt;&gt;lblPlotPenWidth.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotPenWidth.Parent" xml:space="preserve">
     <value>frmScaleQuota</value>
@@ -225,7 +225,7 @@
     <value>lblPlotSelectedPenWidth</value>
   </data>
   <data name="&gt;&gt;lblPlotSelectedPenWidth.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotSelectedPenWidth.Parent" xml:space="preserve">
     <value>frmScaleQuota</value>
@@ -270,7 +270,7 @@
     <value>frmScaleQuota</value>
   </data>
   <data name="&gt;&gt;frmScaleQuota.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;frmScaleQuota.Parent" xml:space="preserve">
     <value>$this</value>
@@ -294,7 +294,7 @@
     <value>lblQuotaRightRefPercent</value>
   </data>
   <data name="&gt;&gt;lblQuotaRightRefPercent.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblQuotaRightRefPercent.Parent" xml:space="preserve">
     <value>frmHVQuota</value>
@@ -339,7 +339,7 @@
     <value>lblQuotaCapDecoration</value>
   </data>
   <data name="&gt;&gt;lblQuotaCapDecoration.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblQuotaCapDecoration.Parent" xml:space="preserve">
     <value>frmHVQuota</value>
@@ -363,7 +363,7 @@
     <value>lblQuotaLeftRefPercent</value>
   </data>
   <data name="&gt;&gt;lblQuotaLeftRefPercent.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblQuotaLeftRefPercent.Parent" xml:space="preserve">
     <value>frmHVQuota</value>
@@ -395,8 +395,8 @@
   <data name="cboQuotaCapDecoration.Location" type="System.Drawing.Point, System.Drawing">
     <value>148, 31</value>
   </data>
-  <assembly alias="DevExpress.Utils.v22.2" name="DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="cboQuotaCapDecoration.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.2">
+  <assembly alias="DevExpress.Utils.v23.1" name="DevExpress.Utils.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cboQuotaCapDecoration.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.1">
     <value>Combo</value>
   </data>
   <data name="cboQuotaCapDecoration.Properties.Items" xml:space="preserve">
@@ -418,7 +418,7 @@
     <value>cboQuotaCapDecoration</value>
   </data>
   <data name="&gt;&gt;cboQuotaCapDecoration.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboQuotaCapDecoration.Parent" xml:space="preserve">
     <value>frmHVQuota</value>
@@ -442,7 +442,7 @@
     <value>frmHVQuota</value>
   </data>
   <data name="&gt;&gt;frmHVQuota.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;frmHVQuota.Parent" xml:space="preserve">
     <value>$this</value>
@@ -466,7 +466,7 @@
     <value>lblQuotaAltitudeFill</value>
   </data>
   <data name="&gt;&gt;lblQuotaAltitudeFill.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblQuotaAltitudeFill.Parent" xml:space="preserve">
     <value>frmAltQuota</value>
@@ -490,7 +490,7 @@
     <value>lblQuotaAltitudeStyle</value>
   </data>
   <data name="&gt;&gt;lblQuotaAltitudeStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblQuotaAltitudeStyle.Parent" xml:space="preserve">
     <value>frmAltQuota</value>
@@ -501,7 +501,7 @@
   <data name="cboQuotaAltitudeFill.Location" type="System.Drawing.Point, System.Drawing">
     <value>99, 59</value>
   </data>
-  <data name="cboQuotaAltitudeFill.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.2">
+  <data name="cboQuotaAltitudeFill.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.1">
     <value>Combo</value>
   </data>
   <data name="cboQuotaAltitudeFill.Properties.Items" xml:space="preserve">
@@ -526,7 +526,7 @@
     <value>cboQuotaAltitudeFill</value>
   </data>
   <data name="&gt;&gt;cboQuotaAltitudeFill.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboQuotaAltitudeFill.Parent" xml:space="preserve">
     <value>frmAltQuota</value>
@@ -537,7 +537,7 @@
   <data name="cboQuotaAltitudeStyle.Location" type="System.Drawing.Point, System.Drawing">
     <value>99, 31</value>
   </data>
-  <data name="cboQuotaAltitudeStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v22.2">
+  <data name="cboQuotaAltitudeStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.1">
     <value>Combo</value>
   </data>
   <data name="cboQuotaAltitudeStyle.Properties.Items" xml:space="preserve">
@@ -565,7 +565,7 @@
     <value>cboQuotaAltitudeStyle</value>
   </data>
   <data name="&gt;&gt;cboQuotaAltitudeStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboQuotaAltitudeStyle.Parent" xml:space="preserve">
     <value>frmAltQuota</value>
@@ -589,7 +589,7 @@
     <value>frmAltQuota</value>
   </data>
   <data name="&gt;&gt;frmAltQuota.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;frmAltQuota.Parent" xml:space="preserve">
     <value>$this</value>

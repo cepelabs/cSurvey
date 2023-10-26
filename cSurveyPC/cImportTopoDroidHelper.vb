@@ -232,6 +232,31 @@ Public Class cImportTopoDroidHelper
                         Call pConvertItem(Survey, XMLItem, oItem)
                         Return oItem
 
+                    Case "floor-meander"
+                        Dim oItem As cItemFreeHandLine = Layers.WaterAndFloorMorphologiesLayer.CreateMeander(sCave, sBranch)
+                        Call oItem.SetBindDesignType(BindDesignType, CrossSection)
+                        oItem.LineType = cIItemLine.LineTypeEnum.Lines
+                        Call oItem.Points.Parse(XMLItem.Item("points"))
+                        If Not Location.IsEmpty Then oItem.MoveBy(Location)
+                        Call pConvertItem(Survey, XMLItem, oItem)
+                        Return oItem
+                    Case "ceiling-meander"
+                        Dim oItem As cItemFreeHandLine = Layers.CeilingMorphologiesLayer.CreateCeilingMeander(sCave, sBranch)
+                        Call oItem.SetBindDesignType(BindDesignType, CrossSection)
+                        oItem.LineType = cIItemLine.LineTypeEnum.Lines
+                        Call oItem.Points.Parse(XMLItem.Item("points"))
+                        If Not Location.IsEmpty Then oItem.MoveBy(Location)
+                        Call pConvertItem(Survey, XMLItem, oItem)
+                        Return oItem
+                    Case "border"
+                        Dim oItem As cItemFreeHandLine = Layers.BordersLayer.CreateBorder(sCave, sBranch)
+                        Call oItem.SetBindDesignType(BindDesignType, CrossSection)
+                        oItem.LineType = cIItemLine.LineTypeEnum.Lines
+                        Call oItem.Points.Parse(XMLItem.Item("points"))
+                        If Not Location.IsEmpty Then oItem.MoveBy(Location)
+                        Call pConvertItem(Survey, XMLItem, oItem)
+                        Return oItem
+
                     Case Else
                         Dim oItem As cItemFreeHandLine = Layers.BordersLayer.CreateBorder(sCave, sBranch)
                         Call oItem.SetBindDesignType(BindDesignType, CrossSection)
@@ -289,6 +314,7 @@ Public Class cImportTopoDroidHelper
                         Call oItem.Points.Parse(XMLItem.Item("points"))
                         Call pConvertItem(Survey, XMLItem, oItem)
                         Return oItem
+
                     Case Else
                         Dim oItem As cItemFreeHandArea = Layers.SoilLayer.CreateSoil(sCave, sBranch)
                         Call oItem.SetBindDesignType(BindDesignType, CrossSection)
@@ -300,12 +326,12 @@ Public Class cImportTopoDroidHelper
                 End Select
             Case "point"
                 Select Case sName
-                    Case "audio"
-'    'Dim oItem As cItemAttachment = Layers.SignsLayer.CreateAttachment(sCave, sBranch, )
-'    'Return oItem
-                    Case "photo"
-                        '    'Dim oItem As cItemAttachment = Layers.SignsLayer.CreateAttachment(sCave, sBranch, )
-                        '    'Return oItem                        
+'                    Case "audio"
+''    'Dim oItem As cItemAttachment = Layers.SignsLayer.CreateAttachment(sCave, sBranch, )
+''    'Return oItem
+'                    Case "photo"
+'                        '    'Dim oItem As cItemAttachment = Layers.SignsLayer.CreateAttachment(sCave, sBranch, )
+'                        '    'Return oItem                        
                     Case "label"
                         Dim sText As String = modXML.GetAttributeValue(XMLItem, "text", "")
                         Dim oItem As cItemText = Layers.SignsLayer.CreateText(sCave, sBranch, sText)
@@ -329,6 +355,17 @@ Public Class cImportTopoDroidHelper
                         oItem.Text = modXML.GetAttributeValue(XMLItem, "sectiontext", "")
 
                         Call ConvertCrossSection(Survey, Layers, oItem.DesignCrossSection, XMLItem.Item("crosssection"), New SizeF(0, 0)) ' New SizeF(oItem.Points(0).Point.X, oItem.Points(0).Point.Y))
+
+                        If modXML.ChildElementExist(XMLItem, "crosssectionfile") Then
+                            Dim oXMLFile As XmlElement = XMLItem.Item("crosssectionfile")
+                            Dim oData As Byte() = Convert.FromBase64String(oXMLFile.Item("attachment").GetAttribute("data"))
+                            Dim iDataFormat As Integer = oXMLFile.Item("attachment").GetAttribute("dataformat")
+                            Dim sMimeType As String = oXMLFile.Item("attachment").GetAttribute("type")
+                            Dim oAttachment As cAttachment = Survey.Attachments.Add(sMimeType, oData, "", "")
+                            Dim oAttachmentItem As cItemAttachment = Layers.SignsLayer.CreateAttachment(sCave, sBranch, oAttachment.ID, cAttachmentsLinks.cAttachmentDataFormatEnum.Resource)
+                            Call oAttachmentItem.SetBindDesignType(BindDesignType, CrossSection)
+                            Call oAttachmentItem.Points.Parse(XMLItem.Item("points"))
+                        End If
 
                         Return oItem
                     Case Else

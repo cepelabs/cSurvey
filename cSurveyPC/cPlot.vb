@@ -340,4 +340,21 @@ Namespace cSurvey.Design
         Public MustOverride Function GetVisibleCaveBounds(PaintOptions As cOptionsCenterline, ByVal Cave As String, Branch As String) As RectangleF
 
     End Class
+
+    Public Class cValue(Of T)
+        Private oValue As T
+
+        Public Property Value As T
+            Get
+                Return oValue
+            End Get
+            Set(value As T)
+                oValue = value
+            End Set
+        End Property
+
+        Public Sub New(Value As T)
+            oValue = Value
+        End Sub
+    End Class
 End Namespace

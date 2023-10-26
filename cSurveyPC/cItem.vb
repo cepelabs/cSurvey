@@ -201,7 +201,9 @@ Namespace cSurvey.Design
                 Return bFilteredInDesign
             End Get
             Set(ByVal value As Boolean)
-                bFilteredInDesign = value
+                If bFilteredInDesign <> value Then
+                    bFilteredInDesign = value
+                End If
             End Set
         End Property
 

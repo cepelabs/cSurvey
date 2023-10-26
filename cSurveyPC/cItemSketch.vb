@@ -225,14 +225,14 @@ Namespace cSurvey.Design.Items
 
         Private oTransparentColor As Color
         Private sTransparencyThreshold As Single
-        Private sDefaultTransparencyThreshold As Single = 0.95
+        Private sDefaultTransparencyThreshold As Single = 0.95F
 
         Private bManualAdjust As Boolean
         Private bMorphingDisabled As Boolean
 
         Public Overrides ReadOnly Property CanBeCopied As Boolean
             Get
-                Return False
+                Return True
             End Get
         End Property
 

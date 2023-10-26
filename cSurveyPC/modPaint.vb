@@ -3700,20 +3700,20 @@ Module modPaint
 
                     Dim sStepCaption As Single
                     Dim sStepInterval As Single
-                    If PaintZoom >= 10 Then
-                        sStepInterval = 1
-                    ElseIf PaintZoom < 10 AndAlso PaintZoom >= 5 Then
-                        sStepInterval = 2
-                    ElseIf PaintZoom < 5 AndAlso PaintZoom >= 2 Then
-                        sStepInterval = 5
-                    ElseIf PaintZoom < 2 AndAlso PaintZoom >= 1 Then
-                        sStepInterval = 10
-                    ElseIf PaintZoom < 1 AndAlso PaintZoom >= 0.5 Then
-                        sStepInterval = 50
-                    ElseIf PaintZoom < 0.5 AndAlso PaintZoom >= 0.1 Then
-                        sStepInterval = 100
+                    If PaintZoom >= 10.0F Then
+                        sStepInterval = 1.0F
+                    ElseIf PaintZoom < 10.0F AndAlso PaintZoom >= 5.0F Then
+                        sStepInterval = 2.0F
+                    ElseIf PaintZoom < 5.0F AndAlso PaintZoom >= 2.0F Then
+                        sStepInterval = 5.0F
+                    ElseIf PaintZoom < 2.0F AndAlso PaintZoom >= 1.0F Then
+                        sStepInterval = 10.0F
+                    ElseIf PaintZoom < 1.0F AndAlso PaintZoom >= 0.5F Then
+                        sStepInterval = 50.0F
+                    ElseIf PaintZoom < 0.5F AndAlso PaintZoom >= 0.1F Then
+                        sStepInterval = 100.0F
                     Else
-                        sStepInterval = 500
+                        sStepInterval = 500.0F
                     End If
                     sStepCaption = sStepInterval
 

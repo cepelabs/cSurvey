@@ -128,7 +128,7 @@ Public Class cDesignSurfaceControl
                 grdSurfaceLayers.DataSource = Nothing
                 grdSurfaceLayers.DataSource = oSurfaceOptions
                 Call grdViewSurfaceLayers.SetFocusedObject(oItem)
-                Call MyBase.DrawInvalidate()
+                Call MyBase.DrawInvalidate(New cHolosViewer.cDrawInvalidateEventArgs(cHolosViewer.InvalidateType.SurfaceTexture))
             End If
         Else
             Dim oSurfaceOptions As cSurfaceOptions = DirectCast(MyBase.Options, cOptionsDesign).SurfaceOptions
@@ -152,7 +152,7 @@ Public Class cDesignSurfaceControl
                 grdSurfaceLayers.DataSource = Nothing
                 grdSurfaceLayers.DataSource = oSurfaceOptions
                 Call grdViewSurfaceLayers.SetFocusedObject(oItem)
-                Call MyBase.DrawInvalidate()
+                Call MyBase.DrawInvalidate(New cHolosViewer.cDrawInvalidateEventArgs(cHolosViewer.InvalidateType.SurfaceTexture))
             End If
         Else
             Dim oSurfaceOptions As cSurfaceOptions = DirectCast(MyBase.Options, cOptionsDesign).SurfaceOptions

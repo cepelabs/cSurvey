@@ -7486,7 +7486,7 @@ o ad una sezione trasversale</value>
     <value>Barre degli strumenti</value>
   </data>
   <data name="tabTrigpointsCoordinateitem.Text" xml:space="preserve">
-    <value>Coordinate</value>
+    <value>Cordinate</value>
   </data>
   <data name="tabTrigpointsConnectionsitem.Text" xml:space="preserve">
     <value>Connessioni</value>
@@ -7544,5 +7544,29 @@ o ad una sezione trasversale</value>
   </data>
   <data name="colMainCaveCrossSectionTo.Caption" xml:space="preserve">
     <value>A</value>
+  </data>
+  <data name="pnlTrigpointCoordinate.Text" xml:space="preserve">
+    <value>Coordinate:</value>
+  </data>
+  <data name="pnlTrigpointCoordinateAlt.Text" xml:space="preserve">
+    <value>Alt.:</value>
+  </data>
+  <data name="pnlTrigpointCoordinateFix.Text" xml:space="preserve">
+    <value>Fix:</value>
+  </data>
+  <data name="pnlTrigpointCoordinateFormat.Text" xml:space="preserve">
+    <value>Formato:</value>
+  </data>
+  <data name="pnlTrigpointCoordinateGeo.Text" xml:space="preserve">
+    <value>Sistema:</value>
+  </data>
+  <data name="pnlTrigpointCoordinateLat.Text" xml:space="preserve">
+    <value>Lat.:</value>
+  </data>
+  <data name="pnlTrigpointCoordinateLong.Text" xml:space="preserve">
+    <value>Long.:</value>
+  </data>
+  <data name="pnlTrigpointCoordinateZone.Text" xml:space="preserve">
+    <value>Zona:</value>
   </data>
 </root>

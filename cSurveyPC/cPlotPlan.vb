@@ -454,6 +454,9 @@ Namespace cSurvey.Design
 
                         Dim sTTH As Single = PaintOptions.TranslationsOptions.TranslationsThreshold
                         Dim oDrawedTrigPoint As List(Of String) = New List(Of String)
+
+                        Dim oLabelInSamePosition As Dictionary(Of PointF, cValue(Of Integer)) = New Dictionary(Of PointF, cValue(Of Integer))
+
                         For Each oSegment As cSegment In oVisibleSegments
                             If Not oSegment.Splay Then
                                 If modDesign.GetIfSegmentMustBeDrawedByCaveAndBranch(PaintOptions, oSegment, Selection.CurrentCave, Selection.CurrentBranch) Then
@@ -507,17 +510,20 @@ Namespace cSurvey.Design
                                                     End If
 
                                                     'disegno il punto e il nome del caposaldo
-                                                    If (oTranslationTrigPoint.Count > 1 AndAlso PaintOptions.DrawTranslation AndAlso oTrigPoint.DrawTranslationsLine) OrElse (PaintOptions.DrawPlot AndAlso PaintOptions.DrawPoints) OrElse (PaintOptions.DrawDesign AndAlso PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
-                                                        If oTrigPoint Is oCurrentTrigpoint Then
-                                                            Call RenderTrigPoint(Graphics, PaintOptions, oTrigPoint, oPoint, oDrawingObject.SelectedPointSize, oDrawingObject.SelectedPointBrush, oDrawingObject.SelectedPointPen, oCache)
-                                                        Else
-                                                            Call RenderTrigPoint(Graphics, PaintOptions, oTrigPoint, oPoint, oDrawingObject.PointSize, oDrawingObject.PointBrush, oDrawingObject.PointPen, oCache)
+                                                    If pCheckLabelInSamePosition(oLabelInSamePosition, oPoint) Then
+                                                        If (oTranslationTrigPoint.Count > 1 AndAlso PaintOptions.DrawTranslation AndAlso oTrigPoint.DrawTranslationsLine) OrElse (PaintOptions.DrawPlot AndAlso PaintOptions.DrawPoints) OrElse (PaintOptions.DrawDesign AndAlso PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
+                                                            If oTrigPoint Is oCurrentTrigpoint Then
+                                                                Call RenderTrigPoint(Graphics, PaintOptions, oTrigPoint, oPoint, oDrawingObject.SelectedPointSize, oDrawingObject.SelectedPointBrush, oDrawingObject.SelectedPointPen, oCache)
+                                                            Else
+                                                                Call RenderTrigPoint(Graphics, PaintOptions, oTrigPoint, oPoint, oDrawingObject.PointSize, oDrawingObject.PointBrush, oDrawingObject.PointPen, oCache)
+                                                            End If
                                                         End If
-                                                    End If
-                                                    If (PaintOptions.DrawPlot AndAlso PaintOptions.DrawPointNames) OrElse (PaintOptions.DrawDesign AndAlso PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
-                                                        'e il nome del punto
-                                                        If (PaintOptions.ShowPointText AndAlso Not PaintOptions.DrawSpecialPoints) OrElse (PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
-                                                            Call RenderTrigPointName(Graphics, PaintOptions, oTrigPoint, oPoint, oCache)
+                                                        If PaintOptions.ShowPointText Then
+                                                            If (PaintOptions.DrawPlot) OrElse (PaintOptions.DrawDesign AndAlso PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
+                                                                'e il nome del punto
+                                                                'If (Not PaintOptions.DrawSpecialPoints) OrElse (PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
+                                                                Call RenderTrigPointName(Graphics, PaintOptions, oTrigPoint, oPoint, oCache)
+                                                            End If
                                                         End If
                                                     End If
                                                 Next
@@ -534,6 +540,15 @@ Namespace cSurvey.Design
                 End If
             End With
         End Sub
+
+        Private Function pCheckLabelInSamePosition(LabelInSamePosition As Dictionary(Of PointF, cValue(Of Integer)), Point As PointF) As Boolean
+            If LabelInSamePosition.ContainsKey(Point) Then
+                LabelInSamePosition(Point).Value += 1
+            Else
+                Call LabelInSamePosition.Add(Point, New cValue(Of Integer)(1))
+            End If
+            Return LabelInSamePosition(Point).Value < 5
+        End Function
 
         Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
             Dim oSVGGroup As XmlElement = modSVG.CreateLayer(SVG, "plot", "plot")
@@ -717,8 +732,8 @@ Namespace cSurvey.Design
 
         Friend Overrides Sub Calculate(ByVal SegmentsColl As List(Of cSegment), Optional ByVal PerformWarping As Boolean = True)
             Dim oPointCache As Dictionary(Of String, cPointCacheItem) = New Dictionary(Of String, cPointCacheItem)
-            For Each oSegment As cSegment In SegmentsColl ' oSegmentsList
-                If oSegment.IsValid Then ' AndAlso Not oSegment.IsSelfDefined Then
+            For Each oSegment As cSegment In SegmentsColl
+                If oSegment.IsValid Then
                     Dim iSideMeasureType As cSegment.SideMeasuresTypeEnum
                     Dim iSideMeasureReferTo As cSegment.SideMeasuresReferToEnum
 
@@ -783,7 +798,7 @@ Namespace cSurvey.Design
             Next
 
             'set topoint and frompoint to shots
-            For Each oSegment As cSegment In SegmentsColl 'oSurvey.Segments
+            For Each oSegment As cSegment In SegmentsColl
                 If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined Then
                     Dim sFrom As String = oSegment.Data.Data.From
                     Dim sTo As String = oSegment.Data.Data.To
@@ -796,8 +811,8 @@ Namespace cSurvey.Design
             Next
 
             'repeat the loop calculating sidepoints
-            For Each oSegment As cSegment In SegmentsColl 'oSegmentsList
-                If oSegment.IsValid Then ' AndAlso Not oSegment.IsSelfDefined Then
+            For Each oSegment As cSegment In SegmentsColl
+                If oSegment.IsValid Then
                     Dim iSideMeasureType As cSegment.SideMeasuresTypeEnum
                     Dim iSideMeasureReferTo As cSegment.SideMeasuresReferToEnum
 
@@ -987,7 +1002,7 @@ Namespace cSurvey.Design
             Next
 
             'set sidepoints...
-            For Each oSegment As cSegment In SegmentsColl 'oSurvey.Segments
+            For Each oSegment As cSegment In SegmentsColl
                 If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined Then
                     Dim oFromPointCacheitem As cPointCacheItem = oPointCache(oSegment.Data.Data.From)
                     Dim oToPointCacheitem As cPointCacheItem = oPointCache(oSegment.Data.Data.To)
@@ -1006,7 +1021,7 @@ Namespace cSurvey.Design
             'warping design...
             If PerformWarping Then
                 If oSurvey.Properties.DesignWarpingMode = cSurvey.DesignWarpingModeEnum.Default AndAlso Not oSurvey.Properties.PlanWarpingDisabled Then
-                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, Now & vbTab & "Warping profile design")
+                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Warping profile design")
                     Dim iIndex As Integer
                     Dim iCount As Integer
                     If Not oSurvey.Plan.IsEmpty Then

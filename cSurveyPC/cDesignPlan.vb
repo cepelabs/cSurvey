@@ -247,18 +247,8 @@ Namespace cSurvey.Design
                         Dim iDesignPointIndex As Integer = 0
                         Dim oJoins As List(Of cPoint) = New List(Of cPoint)
                         For Each oDesignpoint As cPoint In oDesignPointArray
-                            If oJoins.Contains(oDesignpoint) Then
-                                Debug.Print("skipped joined point")
-                            Else
+                            If Not oJoins.Contains(oDesignpoint) Then
                                 Call oDesignpoint.MoveTo(oPoints(iDesignPointIndex).X, oPoints(iDesignPointIndex).Y)
-                                'Call oDesignpoint.MoveToFromJoin(oPoints(iDesignPointIndex))
-                                'If oDesignpoint.IsJoined Then
-                                '    Call oJoins.Add(oDesignpoint)
-                                '    For Each oJoinedPoint As cPoint In oDesignpoint.PointsJoin.ToArray(oDesignpoint)
-                                '        Call oJoinedPoint.MoveToFromJoin(oPoints(iDesignPointIndex))
-                                '        Call oJoins.Add(oJoinedPoint)
-                                '    Next
-                                'End If
                                 If oDesignpoint.IsJoined Then
                                     Call oJoins.AddRange(oDesignpoint.PointsJoin.ToArray)
                                 End If

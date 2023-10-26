@@ -1,6 +1,7 @@
 ﻿Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Helper.Editor
+Imports DevExpress.Office.Drawing
 Imports System.IO
 Imports System.Xml
 
@@ -593,6 +594,7 @@ Namespace cSurvey.Calculate
                                 Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Prepare data")
                                 Call pCalculatePrepareData(oOriginItem, oGroups)
                                 If oOrphanStations.Count > 0 Then
+                                    'If oOrphanStations.Count > 25 Then oOrphanStations = oOrphanStations.Take(25).ToList
                                     Dim oOrphanSegments As List(Of cSegment) = New List(Of cSegment)
                                     Call oOrphanStations.ForEach(Sub(sStation) oOrphanSegments.AddRange(oSurvey.Segments.GetTrigpointSegments(sStation).Cast(Of cSegment)))
                                     oOrphanSegments = oOrphanSegments.Distinct().ToList
@@ -943,47 +945,97 @@ Namespace cSurvey.Calculate
                         For Each oTrigPointCalculateItem As cTrigPointCalculateItem In oTrigPoints
                             Dim sFrom As String = oTrigPointCalculateItem.[From]
                             Dim sSign As Decimal = oTrigPointCalculateItem.Sign
-                            For Each oSegment As cSegment In oSubSegmentColl
-                                Dim bIgnore As Boolean = False
-                                Dim bProcess As Boolean = False
-                                If oSegment.Data.SourceData.From = sFrom Then
-                                    With oSurvey.TrigPoints(oSegment.Data.SourceData.From).Connections
-                                        If .Contains(oSegment.Data.SourceData.To) Then
-                                            bIgnore = .Get(oSegment.Data.SourceData.To)
-                                        End If
-                                    End With
-                                    bProcess = True
-                                End If
-                                If Not bProcess AndAlso oSegment.Data.SourceData.To = sFrom Then
-                                    With oSurvey.TrigPoints(oSegment.Data.SourceData.To).Connections
-                                        If .Contains(oSegment.Data.SourceData.From) Then
-                                            bIgnore = .Get(oSegment.Data.SourceData.From)
-                                        End If
-                                    End With
-                                    If Not bIgnore Then
-                                        Call oSegment.Data.ReverseData(oSegment) ', bReverseDirection)
-                                        bProcess = True
-                                    End If
-                                End If
-                                If bProcess Then
-                                    If Not oCalculatedTrigpoints.ContainsKey(oSegment.Data.Data.To) Then Call oCalculatedTrigpoints.Add(oSegment.Data.Data.To, New cTrigPointPoint(0, 0, 0, 0))
-                                    If Not bIgnore Then
-                                        'add shot to processed collection
-                                        Call oCalculatedSegments.Add(oSegment)
-                                        If Not oSegment.Splay Then
-                                            'splay don't have next shot
-                                            Call oNextTrigPoint.Add(New cTrigPointCalculateItem(oSegment.Data.SourceData.To, 0))
-                                        End If
-                                    End If
-                                End If
-                            Next
+
+                            Threading.Tasks.Parallel.ForEach(Of cSurveyPC.cSurvey.cSegment)(oSubSegmentColl, Sub(oSegment)
+                                                                                                                 Dim bIgnore As Boolean = False
+                                                                                                                 Dim bProcess As Boolean = False
+                                                                                                                 If oSegment.Data.SourceData.From = sFrom Then
+                                                                                                                     With oSurvey.TrigPoints(oSegment.Data.SourceData.From).Connections
+                                                                                                                         If .Contains(oSegment.Data.SourceData.To) Then
+                                                                                                                             bIgnore = .Get(oSegment.Data.SourceData.To)
+                                                                                                                         End If
+                                                                                                                     End With
+                                                                                                                     bProcess = True
+                                                                                                                 End If
+                                                                                                                 If Not bProcess AndAlso oSegment.Data.SourceData.To = sFrom Then
+                                                                                                                     With oSurvey.TrigPoints(oSegment.Data.SourceData.To).Connections
+                                                                                                                         If .Contains(oSegment.Data.SourceData.From) Then
+                                                                                                                             bIgnore = .Get(oSegment.Data.SourceData.From)
+                                                                                                                         End If
+                                                                                                                     End With
+                                                                                                                     If Not bIgnore Then
+                                                                                                                         Call oSegment.Data.ReverseData(oSegment)
+                                                                                                                         bProcess = True
+                                                                                                                     End If
+                                                                                                                 End If
+                                                                                                                 If bProcess Then
+
+                                                                                                                     SyncLock oCalculatedTrigpoints
+                                                                                                                         If Not oCalculatedTrigpoints.ContainsKey(oSegment.Data.Data.To) Then
+                                                                                                                             Call oCalculatedTrigpoints.Add(oSegment.Data.Data.To, New cTrigPointPoint(0, 0, 0, 0))
+                                                                                                                         End If
+                                                                                                                     End SyncLock
+
+                                                                                                                     If Not bIgnore Then
+                                                                                                                         'add shot to processed collection
+                                                                                                                         SyncLock oCalculatedSegments
+                                                                                                                             Call oCalculatedSegments.Add(oSegment)
+                                                                                                                         End SyncLock
+                                                                                                                         If Not oSegment.Splay Then
+                                                                                                                             'splay don't have next shot
+                                                                                                                             SyncLock oNextTrigPoint
+                                                                                                                                 Call oNextTrigPoint.Add(New cTrigPointCalculateItem(oSegment.Data.SourceData.To, 0))
+                                                                                                                             End SyncLock
+                                                                                                                         End If
+                                                                                                                     End If
+                                                                                                                 End If
+                                                                                                             End Sub)
+
+                            'For Each oSegment As cSegment In oSubSegmentColl
+                            '    Dim bIgnore As Boolean = False
+                            '    Dim bProcess As Boolean = False
+                            '    If oSegment.Data.SourceData.From = sFrom Then
+                            '        With oSurvey.TrigPoints(oSegment.Data.SourceData.From).Connections
+                            '            If .Contains(oSegment.Data.SourceData.To) Then
+                            '                bIgnore = .Get(oSegment.Data.SourceData.To)
+                            '            End If
+                            '        End With
+                            '        bProcess = True
+                            '    End If
+                            '    If Not bProcess AndAlso oSegment.Data.SourceData.To = sFrom Then
+                            '        With oSurvey.TrigPoints(oSegment.Data.SourceData.To).Connections
+                            '            If .Contains(oSegment.Data.SourceData.From) Then
+                            '                bIgnore = .Get(oSegment.Data.SourceData.From)
+                            '            End If
+                            '        End With
+                            '        If Not bIgnore Then
+                            '            Call oSegment.Data.ReverseData(oSegment)
+                            '            bProcess = True
+                            '        End If
+                            '    End If
+                            '    If bProcess Then
+                            '        If Not oCalculatedTrigpoints.ContainsKey(oSegment.Data.Data.To) Then Call oCalculatedTrigpoints.Add(oSegment.Data.Data.To, New cTrigPointPoint(0, 0, 0, 0))
+                            '        If Not bIgnore Then
+                            '            'add shot to processed collection
+                            '            Call oCalculatedSegments.Add(oSegment)
+                            '            If Not oSegment.Splay Then
+                            '                'splay don't have next shot
+                            '                Call oNextTrigPoint.Add(New cTrigPointCalculateItem(oSegment.Data.SourceData.To, 0))
+                            '            End If
+                            '        End If
+                            '    End If
+                            'Next
                             oSubSegmentColl = oSubSegmentColl.Except(oCalculatedSegments).ToList
                             Call oCalculatedSegments.Clear()
                         Next
                         Call oTrigPoints.Clear()
                         Call oTrigPoints.AddRange(oNextTrigPoint)
                         Call oNextTrigPoint.Clear()
+
+                        Call oSurvey.RaiseOnProgressEvent("calcprocsegments", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("calculate.textpart19"), (oGroup.Segments.Count - oSubSegmentColl.Count) / oGroup.Segments.Count)
                     Loop
+                    Call oSurvey.RaiseOnProgressEvent("calcprocsegments", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+
                     Dim oOrphanShots As List(Of cSegment) = oSubSegmentColl.Where(Function(oitem) Not oitem.IsEquate).ToList
                     If oOrphanShots.Count > 0 Then
                         Dim oOrphanStations As List(Of String) = New List(Of String)
@@ -991,11 +1043,9 @@ Namespace cSurvey.Calculate
                         Call oOrphanStations.AddRange(oOrphanShots.Select(Function(oitem) oitem.To).Where(Function(sStation) Not oCalculatedTrigpoints.ContainsKey(sStation)))
                         If oOrphanStations.Count > 0 Then
                             'error...each loop have to add any station to oCalculatedTrigpoints, except for any equate connection this group to another...if not data are not correct...
+                            'if orphan stations are more then 25 show only the first 25....
+                            'If oOrphanStations.Count > 25 Then oOrphanStations = oOrphanStations.Take(25).ToList
                             Dim oRemainShots As List(Of cSegment) = oOrphanShots.Where(Function(oSegment) oOrphanStations.Contains(oSegment.From) OrElse oOrphanStations.Contains(oSegment.To)).ToList
-
-                            'Dim oStations As List(Of cSurveyPC.cSurvey.cTrigPoint) = oOrphanStations.Select(Function(sStation) oSurvey.TrigPoints(sStation)).ToList
-                            'Call oCalculateData.Add(New cCalculateDataItem(Now, cCalculateDataItem.CalculateDataItemTypeEnum.Error, String.Format(GetLocalizedString("calculate.textpart9"), sExtendStart), oStations))
-                            'Throw New cCalculateOrphanStationsException(oStations)
                             Throw New cCalculateOrphanShotsException(String.Format(GetLocalizedString("calculate.textpart9"), sExtendStart), oRemainShots)
                         End If
                     End If
@@ -1004,38 +1054,40 @@ Namespace cSurvey.Calculate
 
             'set splay flag
             Threading.Tasks.Parallel.ForEach(Of cSurveyPC.cSurvey.cTrigPoint)(oSurvey.TrigPoints, Sub(oTrigpoint)
-                                                                                                      If oTrigpoint.Name Like "*(*)" Then
-                                                                                                          Call oTrigpoint.Data.SetSplay(True)
-                                                                                                      Else
-                                                                                                          If oTrigpoint.Connections.Count = 1 Then
-                                                                                                              Dim oSegment As cSegment = oSurvey.Segments.Find(oTrigpoint.Name, oTrigpoint.Connections.First)
-                                                                                                              If oSegment Is Nothing Then
-                                                                                                                  Call oTrigpoint.Data.SetSplay(False)
-                                                                                                              Else
-                                                                                                                  Call oTrigpoint.Data.SetSplay(oSegment.Splay)
-                                                                                                              End If
-                                                                                                          Else
-                                                                                                              Call oTrigpoint.Data.SetSplay(False)
-                                                                                                          End If
-                                                                                                      End If
+                                                                                                      Call oTrigpoint.Data.SetSplay(False)
                                                                                                   End Sub)
+            Threading.Tasks.Parallel.ForEach(Of cSurveyPC.cSurvey.cTrigPoint)(oSurvey.TrigPoints.Where(Function(oTrigPoint) oTrigPoint.Name Like "*(*)"), Sub(oTrigpoint)
+                                                                                                                                                              Call oTrigpoint.Data.SetSplay(True)
+                                                                                                                                                          End Sub)
 
-            'For Each oTrigpoint As cSurveyPC.cSurvey.cTrigPoint In oSurvey.TrigPoints
-            '    If oTrigpoint.Name Like "*(*)" Then
-            '        Call oTrigpoint.Data.SetSplay(True)
-            '    Else
-            '        If oTrigpoint.Connections.Count = 1 Then
-            '            Dim oSegment As cSegment = oSurvey.Segments.Find(oTrigpoint.Name, oTrigpoint.Connections.First)
-            '            If oSegment Is Nothing Then
-            '                Call oTrigpoint.Data.SetSplay(False)
-            '            Else
-            '                Call oTrigpoint.Data.SetSplay(oSegment.Splay)
-            '            End If
-            '        Else
-            '            Call oTrigpoint.Data.SetSplay(False)
-            '        End If
-            '    End If
-            'Next
+            Threading.Tasks.Parallel.ForEach(Of cSurveyPC.cSurvey.cSegment)(oSurvey.Segments.Cast(Of cSegment).Where(Function(oSegment) oSegment.Splay), Sub(oSegment)
+                                                                                                                                                             Dim oTo As cSurveyPC.cSurvey.cTrigPoint = oSegment.GetToTrigPoint
+                                                                                                                                                             If oTo.Connections.Count = 1 Then
+                                                                                                                                                                 Call oTo.Data.SetSplay(True)
+                                                                                                                                                             End If
+                                                                                                                                                             'Dim oFrom As cSurveyPC.cSurvey.cTrigPoint = oSegment.GetFromTrigPoint
+                                                                                                                                                             'If oFrom.Connections.Count = 1 Then
+                                                                                                                                                             '    Call oFrom.Data.SetSplay(True)
+                                                                                                                                                             'End If
+                                                                                                                                                         End Sub)
+
+
+            'Threading.Tasks.Parallel.ForEach(Of cSurveyPC.cSurvey.cTrigPoint)(oSurvey.TrigPoints, Sub(oTrigpoint)
+            '                                                                                          If oTrigpoint.Name Like "*(*)" Then
+            '                                                                                              Call oTrigpoint.Data.SetSplay(True)
+            '                                                                                          Else
+            '                                                                                              If oTrigpoint.Connections.Count = 1 Then
+            '                                                                                                  Dim oSegment As cSegment = oSurvey.Segments.Find(oTrigpoint.Name, oTrigpoint.Connections.First)
+            '                                                                                                  If oSegment Is Nothing Then
+            '                                                                                                      Call oTrigpoint.Data.SetSplay(False)
+            '                                                                                                  Else
+            '                                                                                                      Call oTrigpoint.Data.SetSplay(oSegment.Splay)
+            '                                                                                                  End If
+            '                                                                                              Else
+            '                                                                                                  Call oTrigpoint.Data.SetSplay(False)
+            '                                                                                              End If
+            '                                                                                          End If
+            '                                                                                      End Sub)
 
             'set calibration flag
             Dim oCalibrationSegments As cSegmentCollection = oSurvey.Segments.GetCalibrationSegments
@@ -1048,17 +1100,6 @@ Namespace cSurvey.Calculate
                                                                                                                       Call oTrigpoint.Data.SetCalibration(bIsCalibration)
                                                                                                                   End Sub)
 
-            'Dim oCalibrationSegments As cSegmentCollection = oSurvey.Segments.GetCalibrationSegments
-            'If oCalibrationSegments.Count > 0 Then
-            '    For Each oTrigpoint As cSurveyPC.cSurvey.cTrigPoint In oCalibrationSegments.GetTrigPoints
-            '        Dim bIsCalibration As Boolean = True
-            '        For Each oSegment As cSegment In oCalibrationSegments.Find(oTrigpoint.Name)
-            '            bIsCalibration = bIsCalibration And oSegment.Calibration
-            '            If Not bIsCalibration Then Exit For
-            '        Next
-            '        Call oTrigpoint.Data.SetCalibration(bIsCalibration)
-            '    Next
-            'End If
         End Sub
 
         Private Class cTranslateErrorMessageResult
@@ -1202,6 +1243,7 @@ Namespace cSurvey.Calculate
                         For Each oTrigPointCalculateItem As cTrigPointCalculateItem In oTrigPoints
                             Dim sFrom As String = oTrigPointCalculateItem.[From]
                             Dim sSign As Decimal = oTrigPointCalculateItem.Sign
+
                             For Each oSegment As cSegment In oSubSegmentColl
                                 If oSegment.Data.Data.From = sFrom Then
                                     Dim sTo As String = oSegment.Data.Data.To
@@ -1293,17 +1335,17 @@ Namespace cSurvey.Calculate
                                 End If
                             Next
                             oSubSegmentColl = oSubSegmentColl.Except(oCalculatedSegments).ToList
-                            'For Each oSegment As cSegment In oCalculatedSegments
-                            '    Call oSubSegmentColl.Remove(oSegment)
-                            'Next
                             Call oCalculatedSegments.Clear()
                         Next
                         Call oTrigPoints.Clear()
                         Call oTrigPoints.AddRange(oNextTrigPoint)
                         Call oNextTrigPoint.Clear()
+
+                        Call oSurvey.RaiseOnProgressEvent("calcdandsidemeasures", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("calculate.textpart20"), (oGroup.Segments.Count - oSubSegmentColl.Count) / oGroup.Segments.Count)
                     Loop
                 End If
             Loop
+            Call oSurvey.RaiseOnProgressEvent("calcdandsidemeasures", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
 
             Dim oSegmentsColl As List(Of cSegment) = Groups.GetDistinctSegments.Where(Function(oitem) Not oitem.Splay).ToList
 
@@ -1360,6 +1402,7 @@ Namespace cSurvey.Calculate
 
                 Call pRelocateStations(New cConnectionDef(Origin.From, Origin.From), oOriginTP, oRelocateTrigpoints, oRelocateTrigpointsIndex)
 
+                Dim iCount As Integer = oSegmentsColl.Count
                 Do Until oTrigPoints.Count = 0 OrElse oSegmentsColl.Count = 0
                     For Each oTrigPointCalculateItem As cTrigPointCalculateItem In oTrigPoints
                         Dim sFrom As String = oTrigPointCalculateItem.[From]
@@ -1398,8 +1441,11 @@ Namespace cSurvey.Calculate
                     Call oTrigPoints.Clear()
                     Call oTrigPoints.AddRange(oNextTrigPoint)
                     Call oNextTrigPoint.Clear()
+
+                    Call oSurvey.RaiseOnProgressEvent("calcstationposition", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("calculate.textpart19"), (iCount - oSegmentsColl.Count) / iCount)
                 Loop
             End If
+            Call oSurvey.RaiseOnProgressEvent("calcprocsegments", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
 
             'all have to be relocated to put origin to 0,0
             oOriginTP = oTPs(Origin.From).GetPoints.FirstOrDefault()
@@ -1537,10 +1583,6 @@ Namespace cSurvey.Calculate
         Private Sub pProcessOutputStringHandler(sendingProcess As Object, outLine As DataReceivedStringEventArgs)
             Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, outLine.Data)
         End Sub
-
-        'Private Sub pProcessOutputHandler(sendingProcess As Object, outLine As DataReceivedEventArgs)
-        '    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Unknown, outLine.Data)
-        'End Sub
 
         Private Sub pCalculateSegments(ByVal Origin As cTrigPointCalculateItem, Groups As cSegmentGroupCollection)
             'Dim iInversionMode As cSurvey.InversioneModeEnum = oSurvey.Properties.InversionMode

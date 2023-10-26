@@ -1940,5 +1940,6 @@ Namespace cSurvey
         Private Sub oSegments_OnSegmentChangeRange(Sender As cSegments, e As cSegments.OnSegmentsEventArgs) Handles oSegments.OnSegmentChangeRange
             RaiseEvent OnSegmentsChange(Me, New cSurvey.OnSegmentChangeEventArgs(SegmentsChangeActionEnum.ChangeRange, e))
         End Sub
+
     End Class
 End Namespace

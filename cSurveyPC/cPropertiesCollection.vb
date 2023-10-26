@@ -1,4 +1,6 @@
 ﻿Imports System.Xml
+Imports DevExpress.Data.Async.Helpers
+Imports DevExpress.Pdf.Native.BouncyCastle.Asn1.X509.Qualified
 
 Namespace cSurvey
     Public Interface cIDesignProperties
@@ -59,7 +61,7 @@ Namespace cSurvey
                         oValue = modNumbers.StringToSingle(sValue)
                     Case "double"
                         oValue = modNumbers.StringToDouble(sValue)
-                    Case "integer"
+                    Case "integer", "int32"
                         oValue = CInt(sValue)
                     Case "decimal"
                         oValue = CDec(modNumbers.StringToDecimal(sValue))
@@ -136,7 +138,7 @@ Namespace cSurvey
             If oItems.ContainsKey(Name) Then
                 Return oItems(Name)
             Else
-                Dim oArgs As cgetparenteventargs = New cGetParentEventArgs
+                Dim oArgs As cGetParentEventArgs = New cGetParentEventArgs
                 RaiseEvent OnGetParent(Me, oArgs)
                 If oArgs.Parent Is Nothing Then
                     Return DefaultValue
@@ -166,25 +168,36 @@ Namespace cSurvey
             Dim oXmlPropertiesCollection As XmlElement = Document.CreateElement(Name)
             For Each sName As String In oItems.Keys
                 Dim oValue As Object = oItems(sName)
-                Dim sType As String = oValue.GetType.Name
+                Dim oType As Type = oValue.GetType
+                Dim bIsEnum As Boolean = oType.IsEnum
                 Dim oXmlPropertiesCollectionItem As XmlElement = Document.CreateElement("item")
                 Call oXmlPropertiesCollectionItem.SetAttribute("name", sName)
-                Call oXmlPropertiesCollectionItem.SetAttribute("type", sType)
-                Select Case sType.ToLower
-                    Case "citemfont"
-                        Dim oValueFont As Design.cItemFont = oValue
-                        Call oValueFont.SaveTo(File, Document, oXmlPropertiesCollectionItem, "font")
-                    Case "cfont"
-                        Dim oValueFont As cFont = oValue
-                        Call oValueFont.SaveTo(File, Document, oXmlPropertiesCollectionItem, "font")
-                    Case "color"
-                        Dim oValueColor As Color = oValue
-                        oXmlPropertiesCollectionItem.InnerText = oValueColor.ToArgb
-                    Case "single", "double", "decimal"
-                        oXmlPropertiesCollectionItem.InnerText = modNumbers.NumberToString(oValue, "")
-                    Case Else
-                        oXmlPropertiesCollectionItem.InnerText = oValue
-                End Select
+                If bIsEnum Then
+                    'enum in csurvey are always integer
+                    Call oXmlPropertiesCollectionItem.SetAttribute("type", "integer")
+                    oXmlPropertiesCollectionItem.InnerText = DirectCast(oValue, [Enum]).ToString("D")
+                Else
+                    Dim sType As String = oType.Name.ToLower
+                    Call oXmlPropertiesCollectionItem.SetAttribute("type", sType)
+                    'Debug.Print(sType)
+                    Select Case sType
+                        Case "citemfont"
+                            Dim oValueFont As Design.cItemFont = oValue
+                            Call oValueFont.SaveTo(File, Document, oXmlPropertiesCollectionItem, "font")
+                        Case "cfont"
+                            Dim oValueFont As cFont = oValue
+                            Call oValueFont.SaveTo(File, Document, oXmlPropertiesCollectionItem, "font")
+                        Case "color"
+                            Dim oValueColor As Color = oValue
+                            oXmlPropertiesCollectionItem.InnerText = oValueColor.ToArgb
+                        Case "single", "double", "decimal"
+                            oXmlPropertiesCollectionItem.InnerText = modNumbers.NumberToString(oValue, "")
+                        Case "integer", "long", "int32"
+                            oXmlPropertiesCollectionItem.InnerText = modNumbers.NumberToString(oValue, "0")
+                        Case Else
+                            oXmlPropertiesCollectionItem.InnerText = oValue
+                    End Select
+                End If
                 Call oXmlPropertiesCollection.AppendChild(oXmlPropertiesCollectionItem)
             Next
             Call Parent.AppendChild(oXmlPropertiesCollection)

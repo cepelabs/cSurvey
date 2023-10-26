@@ -132,13 +132,21 @@ Friend Class frmScaleRules
     Private Sub pSetDesignNumericValue(DesignProperties As cPropertiesCollection, Name As String, DefaultValue As Object, Control As DevExpress.XtraEditors.SpinEdit)
         Dim oCheckbox As DevExpress.XtraEditors.CheckEdit = pGetCheckbox(Control.Name)
         If DesignProperties.HasValue(Name) Then
-            Control.EditValue = DesignProperties.GetValue(Name, DefaultValue)
+            Try
+                Control.EditValue = DesignProperties.GetValue(Name, DefaultValue)
+            Catch ex As Exception
+                Control.EditValue = DefaultValue
+            End Try
             If Not oCheckbox Is Nothing Then
                 oCheckbox.Checked = True
                 Call oCheckbox_checkchanged(oCheckbox, EventArgs.Empty)
             End If
         Else
-            Control.EditValue = DesignProperties.GetValue(Name, DefaultValue)
+            Try
+                Control.EditValue = DesignProperties.GetValue(Name, DefaultValue)
+            Catch ex As Exception
+                Control.EditValue = DefaultValue
+            End Try
             If Not oCheckbox Is Nothing Then
                 oCheckbox.Checked = False
                 Call oCheckbox_checkchanged(oCheckbox, EventArgs.Empty)
@@ -149,13 +157,21 @@ Friend Class frmScaleRules
     Private Sub pSetDesignNumericValue(DesignProperties As cPropertiesCollection, Name As String, DefaultValue As Object, Control As NumericUpDown)
         Dim oCheckbox As DevExpress.XtraEditors.CheckEdit = pGetCheckbox(Control.Name)
         If DesignProperties.HasValue(Name) Then
-            Control.Value = DesignProperties.GetValue(Name, DefaultValue)
+            Try
+                Control.Value = DesignProperties.GetValue(Name, DefaultValue)
+            Catch ex As Exception
+                Control.Value = DefaultValue
+            End Try
             If Not oCheckbox Is Nothing Then
                 oCheckbox.Checked = True
                 Call oCheckbox_checkchanged(oCheckbox, EventArgs.Empty)
             End If
         Else
-            Control.Value = DesignProperties.GetValue(Name, DefaultValue)
+            Try
+                Control.Value = DesignProperties.GetValue(Name, DefaultValue)
+            Catch ex As Exception
+                Control.Value = DefaultValue
+            End Try
             If Not oCheckbox Is Nothing Then
                 oCheckbox.Checked = False
                 Call oCheckbox_checkchanged(oCheckbox, EventArgs.Empty)

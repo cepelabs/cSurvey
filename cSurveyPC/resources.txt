@@ -1093,3 +1093,6 @@ pens.strikefaultunknownpen=Unknown strike fault
 main.undo53=Combine items
 calibration.error=Error (value)
 calibration.errorscale=Error (scale)
+calculate.textpart19=Processing connections
+calculate.textpart20=Processing extended elevation and side measures 
+calculate.textpart21=Processing station's positions

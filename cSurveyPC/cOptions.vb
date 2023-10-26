@@ -184,7 +184,7 @@ Namespace cSurvey.Design
         Private bDrawSegments As Boolean
         Private iDrawSegmentsOptions As DrawSegmentsOptionsEnum
         Private bDrawPoints As Boolean
-        Private bDrawPointNames As Boolean
+        'Private bDrawPointNames As Boolean
         Private bDrawLRUD As Boolean
         Private bDrawSplay As Boolean
         Private iShowSplayMode As ShowSplayModeEnum
@@ -761,17 +761,17 @@ Namespace cSurvey.Design
         End Property
 
         'TODO: is redundant?
-        Public Overridable Property DrawPointNames() As Boolean
-            Get
-                Return bDrawPointNames
-            End Get
-            Set(ByVal value As Boolean)
-                If bDrawPointNames <> value Then
-                    bDrawPointNames = value
-                    Call PropertyChanged("DrawPointNames")
-                End If
-            End Set
-        End Property
+        'Public Overridable Property DrawPointNames() As Boolean
+        '    Get
+        '        Return bDrawPointNames
+        '    End Get
+        '    Set(ByVal value As Boolean)
+        '        If bDrawPointNames <> value Then
+        '            bDrawPointNames = value
+        '            Call PropertyChanged("DrawPointNames")
+        '        End If
+        '    End Set
+        'End Property
 
         Public Overridable Property DrawPoints() As Boolean
             Get
@@ -918,7 +918,7 @@ Namespace cSurvey.Design
             iDrawSegmentsOptions = DrawSegmentsOptionsEnum.None
             iShowSplayMode = ShowSplayModeEnum.OnlyInRange
 
-            bDrawPointNames = True
+            'bDrawPointNames = True
             bDrawPoints = True
             bDrawSpecialPoints = False
 
@@ -1074,7 +1074,7 @@ Namespace cSurvey.Design
             iDrawSegmentsOptions = modXML.GetAttributeValue(Options, "drawsegmentsoptions", DrawSegmentsOptionsEnum.None)
             iShowSplayMode = modXML.GetAttributeValue(Options, "showsplaymode", ShowSplayModeEnum.OnlyInRange)
 
-            bDrawPointNames = modXML.GetAttributeValue(Options, "drawpointnames", True)
+            'bDrawPointNames = modXML.GetAttributeValue(Options, "drawpointnames", True)
             bDrawPoints = modXML.GetAttributeValue(Options, "drawpoints", True)
 
             bDrawScale = modXML.GetAttributeValue(Options, "drawscale")
@@ -1211,7 +1211,7 @@ Namespace cSurvey.Design
             oXmlOptions.SetAttribute("drawsegmentsoptions", iDrawSegmentsOptions.ToString("D"))
             oXmlOptions.SetAttribute("showsplaymode", iShowSplayMode.ToString("D"))
 
-            oXmlOptions.SetAttribute("drawpointnames", If(bDrawPointNames, 1, 0))
+            'oXmlOptions.SetAttribute("drawpointnames", If(bDrawPointNames, 1, 0))
             oXmlOptions.SetAttribute("drawpoints", If(bDrawPoints, 1, 0))
 
             oXmlOptions.SetAttribute("drawscale", If(bDrawScale, 1, 0))

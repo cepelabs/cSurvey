@@ -28,7 +28,7 @@ Namespace cSurvey.Calculate
                 Dim sHash As String = oSegment.GetHash
                 If Not oSegmentHash.Contains(sHash) Then
                     Call oGroup.oSegments.Add(oSegment)
-                    Call oSegmentHash.Add(oSegment.GetHash)
+                    Call oSegmentHash.Add(sHash)
                 End If
             Next
             Return oGroup
@@ -62,6 +62,16 @@ Namespace cSurvey.Calculate
         Public Function GetSegments() As List(Of cSegment)
             Return New List(Of cSegment)(oSegments)
         End Function
+
+        Friend Sub Remove(Segment As cSegment)
+            Call oSegments.Remove(Segment)
+        End Sub
+
+        Friend Sub RemoveRange(Segments As IEnumerable(Of cSegment))
+            For Each oSegment As cSegment In Segments
+                Call oSegments.Remove(oSegment)
+            Next
+        End Sub
 
         Friend Sub Append(Segment As cSegment)
             Segment.Data.Group = Me

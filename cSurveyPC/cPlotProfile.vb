@@ -647,9 +647,11 @@ Namespace cSurvey.Design
                                                             Call RenderTrigPoint(Graphics, PaintOptions, oTrigPoint, oPoint, oDrawingObject.PointSize, oDrawingObject.PointBrush, oDrawingObject.PointPen, oCache)
                                                         End If
                                                     End If
-                                                    If (PaintOptions.DrawPlot AndAlso PaintOptions.DrawPointNames) OrElse (PaintOptions.DrawDesign AndAlso PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
-                                                        'e il nome del punto
-                                                        If (PaintOptions.ShowPointText AndAlso Not PaintOptions.DrawSpecialPoints) OrElse (PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
+                                                    If PaintOptions.ShowPointText Then
+                                                        If (PaintOptions.DrawPlot) OrElse (PaintOptions.DrawDesign AndAlso PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
+                                                            'If (PaintOptions.DrawPlot AndAlso PaintOptions.DrawPointNames) OrElse (PaintOptions.DrawDesign AndAlso PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
+                                                            'e il nome del punto
+                                                            'If (PaintOptions.ShowPointText AndAlso Not PaintOptions.DrawSpecialPoints) OrElse (PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
                                                             Call RenderTrigPointName(Graphics, PaintOptions, oTrigPoint, oPoint, oCache)
                                                         End If
                                                     End If
@@ -833,7 +835,7 @@ Namespace cSurvey.Design
             'warping design...
             If PerformWarping Then
                 If oSurvey.Properties.DesignWarpingMode = cSurvey.DesignWarpingModeEnum.Default AndAlso Not oSurvey.Properties.ProfileWarpingDisabled AndAlso oSurvey.Properties.DesignWarpingState = cSurvey.DesignWarpingStateEnum.Active Then
-                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, Now & vbTab & "Warping profile design")
+                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Warping profile design")
                     Dim iIndex As Integer
                     Dim iCount As Integer
                     If Not oSurvey.Profile.IsEmpty Then

@@ -7569,4 +7569,19 @@ o ad una sezione trasversale</value>
   <data name="pnlTrigpointCoordinateZone.Text" xml:space="preserve">
     <value>Zona:</value>
   </data>
+  <data name="lblTrigpointCoordinateBand.Text" xml:space="preserve">
+    <value>Banda:</value>
+  </data>
+  <data name="cboTrigPointListsSplay.Items" xml:space="preserve">
+    <value>Splay</value>
+  </data>
+  <data name="cboTrigPointListsSplay.Items3" xml:space="preserve">
+    <value>Caposaldo</value>
+  </data>
+  <data name="cboTrigpointsListSpecial.Items" xml:space="preserve">
+    <value>Caposaldo speciale</value>
+  </data>
+  <data name="cboTrigpointsListSpecial.Items3" xml:space="preserve">
+    <value>Caposaldo predefinito</value>
+  </data>
 </root>

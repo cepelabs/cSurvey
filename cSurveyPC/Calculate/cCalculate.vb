@@ -1062,13 +1062,13 @@ Namespace cSurvey.Calculate
 
             Threading.Tasks.Parallel.ForEach(Of cSurveyPC.cSurvey.cSegment)(oSurvey.Segments.Cast(Of cSegment).Where(Function(oSegment) oSegment.Splay), Sub(oSegment)
                                                                                                                                                              Dim oTo As cSurveyPC.cSurvey.cTrigPoint = oSegment.GetToTrigPoint
-                                                                                                                                                             If oTo.Connections.Count = 1 Then
+                                                                                                                                                             If oTo.Connections.Count = 0 Then
                                                                                                                                                                  Call oTo.Data.SetSplay(True)
                                                                                                                                                              End If
-                                                                                                                                                             'Dim oFrom As cSurveyPC.cSurvey.cTrigPoint = oSegment.GetFromTrigPoint
-                                                                                                                                                             'If oFrom.Connections.Count = 1 Then
-                                                                                                                                                             '    Call oFrom.Data.SetSplay(True)
-                                                                                                                                                             'End If
+                                                                                                                                                             Dim oFrom As cSurveyPC.cSurvey.cTrigPoint = oSegment.GetFromTrigPoint
+                                                                                                                                                             If oFrom.Connections.Count = 0 Then
+                                                                                                                                                                 Call oFrom.Data.SetSplay(True)
+                                                                                                                                                             End If
                                                                                                                                                          End Sub)
 
 

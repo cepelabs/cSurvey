@@ -354,7 +354,6 @@ Namespace cSurvey.Design
                                                                 Call oCacheItem.AddPath(oAreaPoly)
                                                             End If
                                                             Call oCacheItem.Transform(oTranslationMatrix)
-                                                            'Call oAreaPoly.Dispose()
                                                         End If
                                                     End Using
                                                 End If

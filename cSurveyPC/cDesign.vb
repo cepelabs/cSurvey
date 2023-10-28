@@ -156,10 +156,15 @@ Namespace cSurvey.Design
         Friend Overridable Sub Redraw(Optional Options As cOptionsCenterline = Nothing)
             Call oCaches.Invalidate(Options)
             For Each oLayer As cLayer In oLayers
-                For Each oItem As cItem In oLayer.Items
-                    Call oItem.Caches.Invalidate(Options)
-                Next
+                Call Threading.Tasks.Parallel.ForEach(Of cItem)(oLayer.Items, Sub(oItem)
+                                                                                  Call oItem.Caches.Invalidate(Options)
+                                                                              End Sub)
             Next
+            'For Each oLayer As cLayer In oLayers
+            '    For Each oItem As cItem In oLayer.Items
+            '        Call oItem.Caches.Invalidate(Options)
+            '    Next
+            'Next
         End Sub
 
         Public Overridable ReadOnly Property Layers() As cLayers

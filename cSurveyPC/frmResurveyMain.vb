@@ -5351,6 +5351,7 @@ Friend Class frmResurveyMain
                 Call cSurvey.UIHelpers.Dialogs.SaveImage(Me, picProfile.Image)
         End Select
     End Sub
+
     Private Sub WorkspaceManager_PropertySerializing(sender As Object, ea As DevExpress.Utils.PropertyCancelEventArgs) Handles WorkspaceManager.PropertySerializing
         If ea.Component IsNot Nothing AndAlso (TypeOf ea.Component Is cSessionDropDown OrElse TypeOf ea.Component Is cCaveDropDown OrElse TypeOf ea.Component Is cCaveBranchDropDown) Then
             ea.Cancel = True

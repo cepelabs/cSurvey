@@ -7409,8 +7409,10 @@ Friend Class frmMain2
         End If
         Call pSegmentLoad(ToolEventArgs.CurrentSegment)
 
-        Call oSurvey.Plan.Plot.Redraw(oCurrentOptions)
-        Call oSurvey.Profile.Plot.Redraw(oCurrentOptions)
+        Call oSurvey.Plan.Plot.Redraw(ToolEventArgs.PreviousSegment)
+        Call oSurvey.Profile.Plot.Redraw(ToolEventArgs.PreviousSegment)
+        Call oSurvey.Plan.Plot.Redraw(ToolEventArgs.CurrentSegment)
+        Call oSurvey.Profile.Plot.Redraw(ToolEventArgs.CurrentSegment)
 
         Call pClipboardAlign()
 
@@ -9774,8 +9776,10 @@ Friend Class frmMain2
         Call pTrigPointSave(ToolEventArgs.PreviousTrigpoint)
         Call pTrigpointLoad(ToolEventArgs.CurrentTrigpoint)
 
-        Call oSurvey.Plan.Plot.Redraw(oCurrentOptions)
-        Call oSurvey.Profile.Plot.Redraw(oCurrentOptions)
+        Call oSurvey.Plan.Plot.Redraw(ToolEventArgs.PreviousTrigpoint)
+        Call oSurvey.Profile.Plot.Redraw(ToolEventArgs.PreviousTrigpoint)
+        Call oSurvey.Plan.Plot.Redraw(ToolEventArgs.CurrentTrigpoint)
+        Call oSurvey.Profile.Plot.Redraw(ToolEventArgs.CurrentTrigpoint)
 
         Call pClipboardAlign()
 
@@ -15538,7 +15542,7 @@ Friend Class frmMain2
             Case "PlotShowSegment"
                 chkViewShowShots.Checked = oCurrentOptions.DrawSegments
             Case "PlotShowTrigpoint"
-                chkViewShowShots.Checked = oCurrentOptions.DrawPoints
+                chkViewShowStation.Checked = oCurrentOptions.DrawPoints
             Case "PlotShowTrigpointText"
                 chkViewShowStationLabel.Checked = oCurrentOptions.ShowPointText
             Case "QuotaType"

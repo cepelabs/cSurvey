@@ -218,7 +218,7 @@ Namespace cSurvey
             Set(value As Single)
                 If sProfileSplayBorderMaxAngleVariation <> value Then
                     sProfileSplayBorderMaxAngleVariation = value
-                    Call oSurvey.Profile.Plot.Caches.Invalidate()
+                    Call oSurvey.Profile.Plot.Redraw(Me)
                     iInvalidated = iInvalidated Or cCalculate.InvalidateEnum.OnlyProfileSplay
                     bChanged = True
                     RaiseEvent OnSplayChange(Me, EventArgs.Empty)
@@ -233,7 +233,7 @@ Namespace cSurvey
             Set(value As SizeF)
                 If oPlanSplayBorderInclinationRange <> value Then
                     oPlanSplayBorderInclinationRange = value
-                    Call oSurvey.Plan.Plot.Caches.Invalidate()
+                    Call oSurvey.Plan.Plot.Redraw(Me)
                     iInvalidated = iInvalidated Or cCalculate.InvalidateEnum.OnlyProfileSplay
                     bChanged = True
                     RaiseEvent OnSplayChange(Me, EventArgs.Empty)
@@ -248,7 +248,7 @@ Namespace cSurvey
             Set(value As SizeF)
                 If oProfileSplayBorderNegInclinationRange <> value Then
                     oProfileSplayBorderNegInclinationRange = value
-                    Call oSurvey.Profile.Plot.Caches.Invalidate()
+                    Call oSurvey.Profile.Plot.Redraw(Me)
                     iInvalidated = iInvalidated Or cCalculate.InvalidateEnum.OnlyProfileSplay
                     bChanged = True
                     RaiseEvent OnSplayChange(Me, EventArgs.Empty)
@@ -263,7 +263,7 @@ Namespace cSurvey
             Set(value As SizeF)
                 If oProfileSplayBorderPosInclinationRange <> value Then
                     oProfileSplayBorderPosInclinationRange = value
-                    Call oSurvey.Profile.Plot.Caches.Invalidate()
+                    Call oSurvey.Profile.Plot.Redraw(Me)
                     iInvalidated = iInvalidated Or cCalculate.InvalidateEnum.OnlyProfileSplay
                     bChanged = True
                     RaiseEvent OnSplayChange(Me, EventArgs.Empty)
@@ -278,7 +278,7 @@ Namespace cSurvey
             Set(value As Integer)
                 If iProfileSplayBorderProjectionAngle <> value Then
                     iProfileSplayBorderProjectionAngle = value
-                    Call oSurvey.Profile.Plot.Caches.Invalidate()
+                    Call oSurvey.Profile.Plot.Redraw(Me)
                     iInvalidated = iInvalidated Or cCalculate.InvalidateEnum.OnlyProfileSplay
                     bChanged = True
                     RaiseEvent OnSplayChange(Me, EventArgs.Empty)
@@ -293,7 +293,7 @@ Namespace cSurvey
             Set(value As Single)
                 If sPlanSplayBorderProjectionDeltaZ <> value Then
                     sPlanSplayBorderProjectionDeltaZ = value
-                    Call oSurvey.Plan.Plot.Caches.Invalidate()
+                    Call oSurvey.Plan.Plot.Redraw(Me)
                     iInvalidated = iInvalidated Or cCalculate.InvalidateEnum.OnlyPlanSplay
                     RaiseEvent OnSplayChange(Me, EventArgs.Empty)
                     bChanged = True
@@ -308,7 +308,7 @@ Namespace cSurvey
             Set(value As Single)
                 If sPlanSplayBorderMaxDeltaVariation <> value Then
                     sPlanSplayBorderMaxDeltaVariation = value
-                    Call oSurvey.Plan.Plot.Caches.Invalidate()
+                    Call oSurvey.Plan.Plot.Redraw(Me)
                     iInvalidated = iInvalidated Or cCalculate.InvalidateEnum.OnlyPlanSplay
                     RaiseEvent OnSplayChange(Me, EventArgs.Empty)
                     bChanged = True
@@ -1541,7 +1541,7 @@ Namespace cSurvey
             Set(value As cIItemPlanSplayBorder.PlanSplayBorderProjectionTypeEnum)
                 If iPlanSplayBorderProjectionType <> value Then
                     iPlanSplayBorderProjectionType = value
-                    Call oSurvey.Plan.Plot.Caches.Invalidate()
+                    Call oSurvey.Plan.Plot.Redraw(Me)
                     iInvalidated = iInvalidated Or cCalculate.InvalidateEnum.OnlyPlanSplay
                     bChanged = True
                 End If

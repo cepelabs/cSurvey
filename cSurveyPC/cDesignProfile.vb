@@ -198,7 +198,8 @@ Namespace cSurvey.Design
 
         Friend Overrides Sub Redraw(Optional Options As cOptionsCenterline = Nothing)
             Call MyBase.Redraw(Options)
-            Call oPlot.Caches.Invalidate(Options)
+            'Call oPlot.Caches.Invalidate(Options)
+            Call oPlot.Redraw(Options)
             If Options.Survey Is oSurvey Then
                 Call Threading.Tasks.Parallel.ForEach(Of cSurvey)(oSurvey.LinkedSurveys.GetUsable.Select(Function(oitem) oitem.LinkedSurvey), Sub(oLinkedSurvey)
                                                                                                                                                   Call oLinkedSurvey.Profile.Redraw(Options)

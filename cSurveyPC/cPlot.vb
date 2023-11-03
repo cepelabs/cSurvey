@@ -171,7 +171,7 @@ Namespace cSurvey.Design
     Public MustInherit Class cPlot
         Private oSurvey As cSurvey
 
-        Private oCaches As cDrawCaches
+        'Private oCaches As cDrawCaches
 
         Private oCompass As cDesignCompass
         Private oInfoBox As cDesignInfoBox
@@ -223,22 +223,26 @@ Namespace cSurvey.Design
 
         Friend Sub New(ByVal Survey As cSurvey)
             oSurvey = Survey
-            oCaches = New cDrawCaches
+            'oCaches = New cDrawCaches
 
             oCompass = New cDesignCompass(oSurvey)
             oInfoBox = New cDesignInfoBox(oSurvey)
             oScale = New cDesignScale(oSurvey)
         End Sub
 
-        Public Overridable Sub Redraw(Optional Options As cOptionsCenterline = Nothing)
-            Call oCaches.Invalidate(Options)
-        End Sub
+        Public MustOverride Sub Redraw(Segment As cSegment)
+        Public MustOverride Sub Redraw(Trigpoint As cTrigPoint)
+        Public MustOverride Sub Redraw(Optional Options As cOptionsCenterline = Nothing)
 
-        Friend ReadOnly Property Caches As cDrawCaches
-            Get
-                Return oCaches
-            End Get
-        End Property
+        'Public Overridable Sub Redraw(Optional Options As cOptionsCenterline = Nothing)
+        '    Call oCaches.Invalidate(Options)
+        'End Sub
+
+        'Friend ReadOnly Property Caches As cDrawCaches
+        '    Get
+        '        Return oCaches
+        '    End Get
+        'End Property
 
         Friend MustOverride Sub Calculate(ByVal SegmentsColl As List(Of cSegment), Optional ByVal PerformWarping As Boolean = True)
         Friend MustOverride Sub CalculateSplay()

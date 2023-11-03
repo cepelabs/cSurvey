@@ -7,6 +7,7 @@ Imports cSurveyPC.cSurvey.Calculate
 
 Imports System.Xml
 Imports cSurveyPC.cSurvey.Design.cLayers
+Imports cSurveyPC.cResurvey
 
 Namespace cSurvey.Design
     Public Class cPlotPlan
@@ -202,39 +203,90 @@ Namespace cSurvey.Design
             End If
         End Function
 
+        Private oSegmentsCaches As Dictionary(Of cSegment, cDrawCaches) = New Dictionary(Of cSegment, cDrawCaches)
+        Private oTrigpointsCaches As Dictionary(Of cTrigPoint, cDrawCaches) = New Dictionary(Of cTrigPoint, cDrawCaches)
+
+        Private Function pGetOrCreateTrigpointFromCache(TrigPoint As cTrigPoint, PaintOptions As cOptionsCenterline) As cDrawCache
+            If oTrigpointsCaches.ContainsKey(TrigPoint) Then
+                Return oTrigpointsCaches(TrigPoint)(PaintOptions)
+            Else
+                Dim oValue As cDrawCaches = New cDrawCaches
+                oTrigpointsCaches.Add(TrigPoint, oValue)
+                Return oValue(PaintOptions)
+            End If
+        End Function
+
+        Private Function pGetOrCreateSegmentFromCache(Segment As cSegment, PaintOptions As cOptionsCenterline) As cDrawCache
+            If oSegmentsCaches.ContainsKey(Segment) Then
+                Return oSegmentsCaches(Segment)(PaintOptions)
+            Else
+                Dim oValue As cDrawCaches = New cDrawCaches
+                oSegmentsCaches.Add(Segment, oValue)
+                Return oValue(PaintOptions)
+            End If
+        End Function
+
+        Public Overrides Sub Redraw(Trigpoint As cTrigPoint)
+            If Trigpoint IsNot Nothing Then
+                If oTrigpointsCaches.ContainsKey(Trigpoint) Then
+                    oTrigpointsCaches(Trigpoint).Invalidate()
+                End If
+            End If
+        End Sub
+
+        Public Overrides Sub Redraw(Segment As cSegment)
+            If Segment IsNot Nothing Then
+                If oSegmentsCaches.ContainsKey(Segment) Then
+                    oSegmentsCaches(Segment).Invalidate()
+                End If
+            End If
+        End Sub
+
+        Public Overrides Sub Redraw(Optional Options As cOptionsCenterline = Nothing)
+            Threading.Tasks.Parallel.ForEach(Of cDrawCaches)(oTrigpointsCaches.Values, Sub(oCaches)
+                                                                                           Call oCaches.Invalidate(Options)
+                                                                                       End Sub)
+            Threading.Tasks.Parallel.ForEach(Of cDrawCaches)(oSegmentsCaches.Values, Sub(oCaches)
+                                                                                         Call oCaches.Invalidate(Options)
+                                                                                     End Sub)
+        End Sub
+
         Friend Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, Selection As Helper.Editor.cIEditDesignSelection)
-            Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
-            With oCache
-                If .Invalidated Then
-                    Call .Clear()
-                    Dim oCacheItem As Drawings.cDrawCacheItem
-                    Dim oStartSurveySegment As cISegment = oSurvey.Segments.GetOrigin
-                    'disegno SOLO se ho l'orgine definita...altrimenti non verrebbe nulla
-                    If Not oStartSurveySegment Is Nothing Then
-                        Dim iSplayEditMode As cOptionsDesign.SplayEditModeEnum
-                        If TypeOf PaintOptions Is cOptionsDesign Then
-                            iSplayEditMode = DirectCast(PaintOptions, cOptionsDesign).SplayEditMode
-                        Else
-                            iSplayEditMode = cOptionsDesign.SplayEditModeEnum.All
-                        End If
+            'Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
+            'With oCache
+            'If .Invalidated Then
+            '        Call .Clear()
+            Dim oCacheItem As Drawings.cDrawCacheItem
+            Dim oStartSurveySegment As cISegment = oSurvey.Segments.GetOrigin
+            'disegno SOLO se ho l'orgine definita...altrimenti non verrebbe nulla
+            If Not oStartSurveySegment Is Nothing Then
+                Dim iSplayEditMode As cOptionsDesign.SplayEditModeEnum
+                If TypeOf PaintOptions Is cOptionsDesign Then
+                    iSplayEditMode = DirectCast(PaintOptions, cOptionsDesign).SplayEditMode
+                Else
+                    iSplayEditMode = cOptionsDesign.SplayEditModeEnum.All
+                End If
 
-                        Dim oCurrentSegment As cISegment = If(PaintOptions.IsDesign, Selection.CurrentSegment, Nothing)
-                        Dim oCurrentTrigpoint As cTrigPoint = If(PaintOptions.IsDesign, Selection.CurrentTrigpoint, Nothing)
-                        Dim oDrawedSplaySegment As List(Of String) = New List(Of String)
-                        Dim oDrawingObject As cOptionsDrawingObjects = PaintOptions.DrawingObjects
-                        Dim oTranslationTrigPoints As cTranslatedTrigPoints = New cTranslatedTrigPoints
+                Dim oCurrentSegment As cISegment = If(PaintOptions.IsDesign, Selection.CurrentSegment, Nothing)
+                Dim oCurrentTrigpoint As cTrigPoint = If(PaintOptions.IsDesign, Selection.CurrentTrigpoint, Nothing)
+                'Dim oDrawedSplaySegment As List(Of String) = New List(Of String)
+                Dim oDrawingObject As cOptionsDrawingObjects = PaintOptions.DrawingObjects
+                Dim oTranslationTrigPoints As cTranslatedTrigPoints = New cTranslatedTrigPoints
 
-                        Dim oDefaultRingColor As Color
-                        Dim sDefaultRingPenWidth As Single
-                        With oSurvey.Properties.HighlightsDetails(Properties.cHighlightsDetails.RingKey)
-                            oDefaultRingColor = Color.FromArgb(.Opacity, .Color)
-                            sDefaultRingPenWidth = .Size
-                        End With
+                Dim oDefaultRingColor As Color
+                Dim sDefaultRingPenWidth As Single
+                With oSurvey.Properties.HighlightsDetails(Properties.cHighlightsDetails.RingKey)
+                    oDefaultRingColor = Color.FromArgb(.Opacity, .Color)
+                    sDefaultRingPenWidth = .Size
+                End With
 
-                        Dim oVisibleSegments As List(Of cISegment) = MyBase.GetAllVisibleSegments(PaintOptions)
-                        For Each oSegment As cSegment In oVisibleSegments
-                            If Not oSegment.Splay Then
-                                If modDesign.GetIfSegmentMustBeDrawedByCaveAndBranch(PaintOptions, oSegment, Selection.CurrentCave, Selection.CurrentBranch) Then
+                Dim oVisibleSegments As List(Of cISegment) = MyBase.GetAllVisibleSegments(PaintOptions)
+                For Each oSegment As cSegment In oVisibleSegments
+                    If Not oSegment.Splay Then
+                        If modDesign.GetIfSegmentMustBeDrawedByCaveAndBranch(PaintOptions, oSegment, Selection.CurrentCave, Selection.CurrentBranch) Then
+                            Dim oSegmentCache As cDrawCache = pGetOrCreateSegmentFromCache(oSegment, PaintOptions)
+                            If oSegmentCache.Invalidated Then
+                                With oSegmentCache
                                     Using oTranslationMatrix As Matrix = New Matrix
                                         If Not PaintOptions.IsDesign AndAlso PaintOptions.DrawTranslation Then
                                             Dim oTranslation As PointF = modPlot.GetPlanSegmentTranslation(oSurvey, oSegment)
@@ -274,24 +326,24 @@ Namespace cSurvey.Design
                                             If PaintOptions.ShowSplayMode = cOptionsCenterline.ShowSplayModeEnum.All Then
                                                 oFromSplay = oSegment.Data.Plan.FromSplays.GetNotInRangeSplays
                                                 If oFromSplay.Count > 0 Then
-                                                    Call modPaint.PaintStationSplays(PaintOptions, oCache, oCurrentSegment, oSegment, oFromPoint, modPaint.LightColor(oColor, 0.85), oTranslationMatrix, "-L", "-R", oFromSplay)
+                                                    Call modPaint.PaintStationSplays(PaintOptions, oSegmentCache, oCurrentSegment, oSegment, oFromPoint, modPaint.LightColor(oColor, 0.85), oTranslationMatrix, "-L", "-R", oFromSplay)
                                                 End If
                                             End If
                                             oFromSplay = oSegment.Data.Plan.FromSplays.GetInRangeSplays
                                             If oFromSplay.Count > 0 Then
-                                                Call modPaint.PaintStationSplays(PaintOptions, oCache, oCurrentSegment, oSegment, oFromPoint, oColor, oTranslationMatrix, "-L", "-R", oFromSplay)
+                                                Call modPaint.PaintStationSplays(PaintOptions, oSegmentCache, oCurrentSegment, oSegment, oFromPoint, oColor, oTranslationMatrix, "-L", "-R", oFromSplay)
                                             End If
 
                                             Dim oToSplays As List(Of Plot.cSplayPlanProjectedData)
                                             If PaintOptions.ShowSplayMode = cOptionsCenterline.ShowSplayModeEnum.All Then
                                                 oToSplays = oSegment.Data.Plan.ToSplays.GetNotInRangeSplays
                                                 If oToSplays.Count > 0 Then
-                                                    Call modPaint.PaintStationSplays(PaintOptions, oCache, oCurrentSegment, oSegment, oToPoint, modPaint.LightColor(oColor, 0.85), oTranslationMatrix, "-L", "-R", oToSplays)
+                                                    Call modPaint.PaintStationSplays(PaintOptions, oSegmentCache, oCurrentSegment, oSegment, oToPoint, modPaint.LightColor(oColor, 0.85), oTranslationMatrix, "-L", "-R", oToSplays)
                                                 End If
                                             End If
                                             oToSplays = oSegment.Data.Plan.ToSplays.GetInRangeSplays
                                             If oToSplays.Count > 0 Then
-                                                Call modPaint.PaintStationSplays(PaintOptions, oCache, oCurrentSegment, oSegment, oToPoint, oColor, oTranslationMatrix, "-L", "-R", oToSplays)
+                                                Call modPaint.PaintStationSplays(PaintOptions, oSegmentCache, oCurrentSegment, oSegment, oToPoint, oColor, oTranslationMatrix, "-L", "-R", oToSplays)
                                             End If
                                         End If
 
@@ -311,7 +363,7 @@ Namespace cSurvey.Design
                                                 If PaintOptions.DrawStyle = cOptionsCenterline.DrawStyleEnum.OnlySegment Then
                                                     Using oAreaLine As GraphicsPath = modPlot.GetPlanAreaLine(oSegment)
                                                         If Not oAreaLine Is Nothing Then
-                                                            oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
+                                                            oCacheItem = oSegmentCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
                                                             If oCurrentSegment Is oSegment Then
                                                                 oDrawingObject.LRUDSelectedPen.Color = oColor
                                                                 Call oCacheItem.SetPen(oDrawingObject.LRUDSelectedPen)
@@ -327,7 +379,7 @@ Namespace cSurvey.Design
                                                 Else
                                                     Using oAreaPoly As GraphicsPath = modPlot.GetPlanAreaPolygon(oSegment)
                                                         If Not oAreaPoly Is Nothing Then
-                                                            oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
+                                                            oCacheItem = oSegmentCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
                                                             If oCurrentSegment Is oSegment Then
                                                                 If oDrawingObject.EnableBrushes Then
                                                                     If oDrawingObject.EnableTransparence Then
@@ -381,7 +433,7 @@ Namespace cSurvey.Design
                                                     oColor = modPaint.GrayColor(oColor)
                                                 End If
 
-                                                oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
+                                                oCacheItem = oSegmentCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
                                                 If oCurrentSegment Is oSegment Then
                                                     oDrawingObject.SelectedPen.Color = oColor
                                                     Call oCacheItem.SetPen(oDrawingObject.SelectedPen)
@@ -395,7 +447,7 @@ Namespace cSurvey.Design
 
                                                 If PaintOptions.DrawHighlights Then
                                                     If PaintOptions.HighlightsOptions.Get(Properties.cHighlightsDetails.RingKey) AndAlso oSegment.Data.IsInRing AndAlso oSurvey.Calculate.Rings.IsSegmentInSelectedRing(oSegment) Then
-                                                        oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
+                                                        oCacheItem = oSegmentCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
                                                         oDrawingObject.SelectedRingPen.Color = oSurvey.Calculate.Rings.GetSegmentColor(oSegment, oDefaultRingColor)
                                                         oDrawingObject.SelectedRingPen.Width = sDefaultRingPenWidth
                                                         Call oCacheItem.SetPen(oDrawingObject.SelectedRingPen)
@@ -408,7 +460,7 @@ Namespace cSurvey.Design
                                                                 If .ApplyTo = Properties.cHighlightsDetail.ApplyToEnum.Shots Then
                                                                     Dim oMeters As Properties.cHighlightsDetailMeters = .GetMetres
                                                                     If .GetScript.Eval("GetHighlight", {New Properties.cShotHighlightDetails(oSurvey, oSegment, oMeters)}) Then
-                                                                        Call modRender.RenderHighlightShot(Graphics, PaintOptions, oSegment.Data.Plan.FromPoint, oSegment.Data.Plan.ToPoint, oCache, oMeters)
+                                                                        Call modRender.RenderHighlightShot(Graphics, PaintOptions, oSegment.Data.Plan.FromPoint, oSegment.Data.Plan.ToPoint, oSegmentCache, oMeters)
                                                                     End If
                                                                 End If
                                                             End With
@@ -417,7 +469,7 @@ Namespace cSurvey.Design
                                                 End If
                                             End If
                                             If PaintOptions.DrawPlot AndAlso PaintOptions.ShowPointInformation Then
-                                                oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
+                                                oCacheItem = oSegmentCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
                                                 Dim oTrigPoint As cTrigPoint = oSegment.GetToTrigPoint
                                                 Dim sInfo As String = .Data.From & " -> " & .Data.To & vbCrLf & ": " & modNumbers.MathRound(.Data.Distance, 2) & " " & cSegment.GetDistanceSimbol(oSegment.GetDistanceType) & "/" & modNumbers.MathRound(.Data.Inclination, 2) & " " & cSegment.GetInclinationSimbol(oSegment.GetInclinationType) & "/" & modNumbers.MathRound(.Data.Bearing, 2) & " " & cSegment.GetBearingSimbol(oSegment.GetBearingType) & vbCrLf & "Δ: " & modNumbers.MathRound(- .Profile.ToPoint.Y, 2) & " m" & vbCrLf & oTrigPoint.Note
                                                 Call oCacheItem.SetBrush(oDrawingObject.InfoBrush)
@@ -426,72 +478,75 @@ Namespace cSurvey.Design
                                             End If
                                         End With
                                     End Using
-
-                                    'linee di riporto (traslazioni)
-                                    If Not oSegment.Splay Then
-                                        If Not PaintOptions.IsDesign AndAlso PaintOptions.DrawTranslation Then
-                                            With oSegment.Data
-                                                Dim oTranslation As SizeF = modPlot.GetPlanSegmentTranslation(oSurvey, oSegment)
-                                                If oTranslation.IsEmpty Then
-                                                    Call oTranslationTrigPoints.Add(.Data.From, .Plan.FromPoint)
-                                                    Call oTranslationTrigPoints.Add(.Data.To, .Plan.ToPoint)
-                                                Else
-                                                    Call oTranslationTrigPoints.Add(.Data.From, PointF.Add(.Plan.FromPoint, oTranslation))
-                                                    Call oTranslationTrigPoints.Add(.Data.To, PointF.Add(.Plan.ToPoint, oTranslation))
-                                                End If
-                                            End With
-                                        Else
-                                            With oSegment.Data
-                                                Call oTranslationTrigPoints.Add(.Data.From, .Plan.FromPoint)
-                                                Call oTranslationTrigPoints.Add(.Data.To, .Plan.ToPoint)
-                                            End With
-                                        End If
-                                    End If
-                                End If
+                                    .Rendered()
+                                End With
                             End If
-                        Next
+                            'linee di riporto (traslazioni)
+                            If Not PaintOptions.IsDesign AndAlso PaintOptions.DrawTranslation Then
+                                With oSegment.Data
+                                    Dim oTranslation As SizeF = modPlot.GetPlanSegmentTranslation(oSurvey, oSegment)
+                                    If oTranslation.IsEmpty Then
+                                        Call oTranslationTrigPoints.Add(.Data.From, .Plan.FromPoint)
+                                        Call oTranslationTrigPoints.Add(.Data.To, .Plan.ToPoint)
+                                    Else
+                                        Call oTranslationTrigPoints.Add(.Data.From, PointF.Add(.Plan.FromPoint, oTranslation))
+                                        Call oTranslationTrigPoints.Add(.Data.To, PointF.Add(.Plan.ToPoint, oTranslation))
+                                    End If
+                                End With
+                            Else
+                                With oSegment.Data
+                                    Call oTranslationTrigPoints.Add(.Data.From, .Plan.FromPoint)
+                                    Call oTranslationTrigPoints.Add(.Data.To, .Plan.ToPoint)
+                                End With
+                            End If
+                        End If
+                    End If
+                Next
 
-                        Dim sTTH As Single = PaintOptions.TranslationsOptions.TranslationsThreshold
-                        Dim oDrawedTrigPoint As List(Of String) = New List(Of String)
+                Dim sTTH As Single = PaintOptions.TranslationsOptions.TranslationsThreshold
+                Dim oDrawedTrigPoint As List(Of String) = New List(Of String)
+                Dim oLabelInSamePosition As Dictionary(Of PointF, cValue(Of Integer)) = New Dictionary(Of PointF, cValue(Of Integer))
 
-                        Dim oLabelInSamePosition As Dictionary(Of PointF, cValue(Of Integer)) = New Dictionary(Of PointF, cValue(Of Integer))
-
-                        For Each oSegment As cSegment In oVisibleSegments
-                            If Not oSegment.Splay Then
-                                If modDesign.GetIfSegmentMustBeDrawedByCaveAndBranch(PaintOptions, oSegment, Selection.CurrentCave, Selection.CurrentBranch) Then
-                                    Dim oTranslationTrigpointsToDraw As List(Of cTranslatedTrigPoint) = New List(Of cTranslatedTrigPoint)
-                                    If oTranslationTrigPoints.Contains(oSegment.From) Then Call oTranslationTrigpointsToDraw.Add(oTranslationTrigPoints(oSegment.From))
-                                    If oTranslationTrigPoints.Contains(oSegment.To) Then Call oTranslationTrigpointsToDraw.Add(oTranslationTrigPoints(oSegment.To))
-                                    For Each oTranslationTrigPoint As cTranslatedTrigPoint In oTranslationTrigpointsToDraw
-                                        If Not oDrawedTrigPoint.Contains(oTranslationTrigPoint.Name) Then
-                                            'linee di traslazione
-                                            If Not PaintOptions.IsDesign AndAlso PaintOptions.DrawTranslation AndAlso PaintOptions.TranslationsOptions.DrawTranslationsLine AndAlso oTranslationTrigPoint.Count > 1 AndAlso oSurvey.TrigPoints(oTranslationTrigPoint.Name).DrawTranslationsLine Then
-                                                Dim oFromPoint As PointF = oTranslationTrigPoint(0)
-                                                Dim i As Integer = 1
-                                                Do While i < oTranslationTrigPoint.Count
-                                                    oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
-                                                    Dim oToPoint As PointF = oTranslationTrigPoint(i)
-                                                    If (sTTH = 0 OrElse modPaint.DistancePointToPoint(oToPoint, oFromPoint) > sTTH) Then
-                                                        If (oToPoint.X <> oFromPoint.X) AndAlso (oToPoint.Y <> oFromPoint.Y) Then
-                                                            Dim oMidPoint As PointF = New PointF(oFromPoint.X, oToPoint.Y)
-                                                            Call oCacheItem.SetPen(oDrawingObject.TranslationPen)
-                                                            Call oCacheItem.AddLine(oFromPoint, oMidPoint)
-                                                            Call oCacheItem.AddLine(oMidPoint, oToPoint)
+                For Each oSegment As cSegment In oVisibleSegments
+                    If Not oSegment.Splay Then
+                        If modDesign.GetIfSegmentMustBeDrawedByCaveAndBranch(PaintOptions, oSegment, Selection.CurrentCave, Selection.CurrentBranch) Then
+                            Dim oTranslationTrigpointsToDraw As List(Of cTranslatedTrigPoint) = New List(Of cTranslatedTrigPoint)
+                            If oTranslationTrigPoints.Contains(oSegment.From) Then Call oTranslationTrigpointsToDraw.Add(oTranslationTrigPoints(oSegment.From))
+                            If oTranslationTrigPoints.Contains(oSegment.To) Then Call oTranslationTrigpointsToDraw.Add(oTranslationTrigPoints(oSegment.To))
+                            For Each oTranslationTrigPoint As cTranslatedTrigPoint In oTranslationTrigpointsToDraw
+                                If Not oDrawedTrigPoint.Contains(oTranslationTrigPoint.Name) Then
+                                    If oSurvey.TrigPoints.Contains(oTranslationTrigPoint.Name) Then
+                                        Dim oTrigPoint As cTrigPoint = oSurvey.TrigPoints(oTranslationTrigPoint.Name)
+                                        Dim oTrigpointCache As cDrawCache = pGetOrCreateTrigpointFromCache(oTrigPoint, PaintOptions)
+                                        If oTrigpointCache.Invalidated Then
+                                            With oTrigpointCache
+                                                'linee di traslazione
+                                                If Not PaintOptions.IsDesign AndAlso PaintOptions.DrawTranslation AndAlso PaintOptions.TranslationsOptions.DrawTranslationsLine AndAlso oTranslationTrigPoint.Count > 1 AndAlso oTrigPoint.DrawTranslationsLine Then
+                                                    Dim oFromPoint As PointF = oTranslationTrigPoint(0)
+                                                    Dim i As Integer = 1
+                                                    Do While i < oTranslationTrigPoint.Count
+                                                        oCacheItem = .Add(cDrawCacheItem.cDrawCacheItemType.Border)
+                                                        Dim oToPoint As PointF = oTranslationTrigPoint(i)
+                                                        If (sTTH = 0 OrElse modPaint.DistancePointToPoint(oToPoint, oFromPoint) > sTTH) Then
+                                                            If (oToPoint.X <> oFromPoint.X) AndAlso (oToPoint.Y <> oFromPoint.Y) Then
+                                                                Dim oMidPoint As PointF = New PointF(oFromPoint.X, oToPoint.Y)
+                                                                Call oCacheItem.SetPen(oDrawingObject.TranslationPen)
+                                                                Call oCacheItem.AddLine(oFromPoint, oMidPoint)
+                                                                Call oCacheItem.AddLine(oMidPoint, oToPoint)
+                                                            Else
+                                                                Call oCacheItem.SetPen(oDrawingObject.TranslationPen)
+                                                                Call oCacheItem.AddLine(oFromPoint, oToPoint)
+                                                            End If
+                                                            i += 1
                                                         Else
-                                                            Call oCacheItem.SetPen(oDrawingObject.TranslationPen)
-                                                            Call oCacheItem.AddLine(oFromPoint, oToPoint)
+                                                            Call oTranslationTrigPoint.Remove(oToPoint)
                                                         End If
-                                                        i += 1
-                                                    Else
-                                                        Call oTranslationTrigPoint.Remove(oToPoint)
-                                                    End If
-                                                Loop
-                                            End If
-                                            If oSurvey.TrigPoints.Contains(oTranslationTrigPoint.Name) Then
-                                                Dim oTrigPoint As cTrigPoint = oSurvey.TrigPoints(oTranslationTrigPoint.Name)
+                                                    Loop
+                                                End If
+
                                                 For Each oPoint As PointF In oTranslationTrigPoint
                                                     If oTrigPoint.IsEntrance Then
-                                                        Call RenderEntrancePoint(Graphics, PaintOptions, oPoint, oCache, oTrigPoint.ShowEntrance)
+                                                        Call RenderEntrancePoint(Graphics, PaintOptions, oPoint, oTrigpointCache, oTrigPoint.ShowEntrance)
                                                     End If
                                                     If PaintOptions.DrawHighlights Then
                                                         For Each sID As String In PaintOptions.HighlightsOptions
@@ -500,7 +555,7 @@ Namespace cSurvey.Design
                                                                     If .ApplyTo = Properties.cHighlightsDetail.ApplyToEnum.Stations Then
                                                                         Dim oMeters As Properties.cHighlightsDetailMeters = .GetMetres
                                                                         If .GetScript.Eval("GetHighlight", {New Properties.cStationHighlightDetails(oSurvey, oTrigPoint, oMeters)}) Then
-                                                                            Call modRender.RenderHighlightStation(Graphics, PaintOptions, oPoint, oCache, oMeters)
+                                                                            Call modRender.RenderHighlightStation(Graphics, PaintOptions, oPoint, oTrigpointCache, oMeters)
                                                                         End If
                                                                     End If
                                                                 End With
@@ -508,36 +563,33 @@ Namespace cSurvey.Design
                                                         Next
                                                     End If
 
-                                                    'disegno il punto e il nome del caposaldo
+                                                    'point and point name
                                                     If pCheckLabelInSamePosition(oLabelInSamePosition, oPoint) Then
                                                         If (oTranslationTrigPoint.Count > 1 AndAlso PaintOptions.DrawTranslation AndAlso oTrigPoint.DrawTranslationsLine) OrElse (PaintOptions.DrawPlot AndAlso PaintOptions.DrawPoints) OrElse (PaintOptions.DrawDesign AndAlso PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
                                                             If oTrigPoint Is oCurrentTrigpoint Then
-                                                                Call RenderTrigPoint(Graphics, PaintOptions, oTrigPoint, oPoint, oDrawingObject.SelectedPointSize, oDrawingObject.SelectedPointBrush, oDrawingObject.SelectedPointPen, oCache)
+                                                                Call RenderTrigPoint(Graphics, PaintOptions, oTrigPoint, oPoint, oDrawingObject.SelectedPointSize, oDrawingObject.SelectedPointBrush, oDrawingObject.SelectedPointPen, oTrigpointCache)
                                                             Else
-                                                                Call RenderTrigPoint(Graphics, PaintOptions, oTrigPoint, oPoint, oDrawingObject.PointSize, oDrawingObject.PointBrush, oDrawingObject.PointPen, oCache)
+                                                                Call RenderTrigPoint(Graphics, PaintOptions, oTrigPoint, oPoint, oDrawingObject.PointSize, oDrawingObject.PointBrush, oDrawingObject.PointPen, oTrigpointCache)
                                                             End If
                                                         End If
                                                         If PaintOptions.ShowPointText Then
                                                             If (PaintOptions.DrawPlot) OrElse (PaintOptions.DrawDesign AndAlso PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
-                                                                'e il nome del punto
-                                                                'If (Not PaintOptions.DrawSpecialPoints) OrElse (PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
-                                                                Call RenderTrigPointName(Graphics, PaintOptions, oTrigPoint, oPoint, oCache)
+                                                                Call RenderTrigPointName(Graphics, PaintOptions, oTrigPoint, oPoint, oTrigpointCache)
                                                             End If
                                                         End If
                                                     End If
                                                 Next
                                                 Call oDrawedTrigPoint.Add(oTranslationTrigPoint.Name)
-                                            End If
+                                                .Rendered()
+                                            End With
                                         End If
-                                    Next
+                                    End If
                                 End If
-                            End If
-                        Next
+                            Next
+                        End If
                     End If
-
-                    Call .Rendered()
-                End If
-            End With
+                Next
+            End If
         End Sub
 
         Private Function pCheckLabelInSamePosition(LabelInSamePosition As Dictionary(Of PointF, cValue(Of Integer)), Point As PointF) As Boolean
@@ -551,7 +603,13 @@ Namespace cSurvey.Design
 
         Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
             Dim oSVGGroup As XmlElement = modSVG.CreateLayer(SVG, "plot", "plot")
-            Call modSVG.AppendItem(SVG, oSVGGroup, MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options))
+            For Each oCaches As cDrawCaches In oSegmentsCaches.Values
+                Call modSVG.AppendItem(SVG, oSVGGroup, oCaches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options))
+            Next
+            For Each oCaches As cDrawCaches In oTrigpointsCaches.Values
+                Call modSVG.AppendItem(SVG, oSVGGroup, oCaches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options))
+            Next
+            'Call modSVG.AppendItem(SVG, oSVGGroup, MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options))
             Return oSVGGroup
         End Function
 
@@ -567,7 +625,13 @@ Namespace cSurvey.Design
                 PaintOptions.HighlightMode = cOptionsCenterline.HighlightModeEnum.Default
             End If
             Call Render(Graphics, PaintOptions, Selection)
-            Call MyBase.Caches(PaintOptions).Paint(Graphics, PaintOptions, cItem.PaintOptionsEnum.None)
+            For Each oCaches As cDrawCaches In oSegmentsCaches.Values
+                oCaches(PaintOptions).Paint(Graphics, PaintOptions, cItem.PaintOptionsEnum.None)
+            Next
+            For Each oCaches As cDrawCaches In oTrigpointsCaches.Values
+                oCaches(PaintOptions).Paint(Graphics, PaintOptions, cItem.PaintOptionsEnum.None)
+            Next
+            'Call MyBase.Caches(PaintOptions).Paint(Graphics, PaintOptions, cItem.PaintOptionsEnum.None)
         End Sub
 
         Friend Overrides Sub ResetChanges()

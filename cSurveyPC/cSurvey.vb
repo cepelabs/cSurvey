@@ -1893,8 +1893,8 @@ Namespace cSurvey
 
         Private Sub oCalc_OnCalculateComplete(ByVal Sender As Calculate.cCalculate, Args As EventArgs) Handles oCalc.OnCalculateComplete
             iInvalidated = cCalculate.InvalidateEnum.None
-            Call oPlan.Plot.Caches.Invalidate()
-            Call oProfile.Plot.Caches.Invalidate()
+            Call oPlan.Plot.Redraw()
+            Call oProfile.Plot.Redraw()
             RaiseEvent OnCalculate(Me, New OnCalculateEventArgs)
         End Sub
 

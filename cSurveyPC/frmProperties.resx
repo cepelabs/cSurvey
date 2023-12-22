@@ -865,7 +865,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;txtBaseLineWidthScaleFactor.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="txtBaseHeavyLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>323, 30</value>
@@ -886,7 +886,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;txtBaseHeavyLinesScaleFactor.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="txtBaseLightLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 30</value>
@@ -907,7 +907,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;txtBaseLightLinesScaleFactor.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="txtBaseUltraLightLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 57</value>
@@ -928,7 +928,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;txtBaseUltraLightLinesScaleFactor.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="txtBaseMediumLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>323, 57</value>
@@ -949,7 +949,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;txtBaseMediumLinesScaleFactor.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="txtDesignSignScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>323, 56</value>
@@ -2710,7 +2710,7 @@
   <assembly alias="DevExpress.Data.v23.1" name="DevExpress.Data.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="optWarpingActive.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIyLjIsIFZlcnNpb249MjIuMi42
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIzLjEsIFZlcnNpb249MjMuMS41
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
         dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAALoBAAAC77u/
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
@@ -4406,8 +4406,8 @@
   <assembly alias="DevExpress.XtraBars.v23.1" name="DevExpress.XtraBars.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="BarManager.Categories" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v23.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMi4yLCBWZXJzaW9uPTIy
-        LjIuNi4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
+        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMy4xLCBWZXJzaW9uPTIz
+        LjEuNS4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
         ACZEZXZFeHByZXNzLlh0cmFCYXJzLkJhck1hbmFnZXJDYXRlZ29yeQMAAAAETmFtZQRHdWlkB1Zpc2li
         bGUBAwALU3lzdGVtLkd1aWQBAgAAAAYDAAAAEkNhdmVzIGFuZCBicmFuY2hlcwT8////C1N5c3RlbS5H
         dWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgIC
@@ -4416,8 +4416,8 @@
   </data>
   <data name="BarManager.Categories1" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v23.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMi4yLCBWZXJzaW9uPTIy
-        LjIuNi4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
+        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMy4xLCBWZXJzaW9uPTIz
+        LjEuNS4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
         ACZEZXZFeHByZXNzLlh0cmFCYXJzLkJhck1hbmFnZXJDYXRlZ29yeQMAAAAETmFtZQRHdWlkB1Zpc2li
         bGUBAwALU3lzdGVtLkd1aWQBAgAAAAYDAAAACFNlc3Npb25zBPz///8LU3lzdGVtLkd1aWQLAAAAAl9h
         Al9iAl9jAl9kAl9lAl9mAl9nAl9oAl9pAl9qAl9rAAAAAAAAAAAAAAAIBwcCAgICAgICAkXYq2HAEahE
@@ -4426,8 +4426,8 @@
   </data>
   <data name="BarManager.Categories2" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v23.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMi4yLCBWZXJzaW9uPTIy
-        LjIuNi4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
+        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMy4xLCBWZXJzaW9uPTIz
+        LjEuNS4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
         ACZEZXZFeHByZXNzLlh0cmFCYXJzLkJhck1hbmFnZXJDYXRlZ29yeQMAAAAETmFtZQRHdWlkB1Zpc2li
         bGUBAwALU3lzdGVtLkd1aWQBAgAAAAYDAAAACUVsZXZhdGlvbgT8////C1N5c3RlbS5HdWlkCwAAAAJf
         YQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgJJ1VRTgb2V
@@ -4436,8 +4436,8 @@
   </data>
   <data name="BarManager.Categories3" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v23.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMi4yLCBWZXJzaW9uPTIy
-        LjIuNi4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
+        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMy4xLCBWZXJzaW9uPTIz
+        LjEuNS4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
         ACZEZXZFeHByZXNzLlh0cmFCYXJzLkJhck1hbmFnZXJDYXRlZ29yeQMAAAAETmFtZQRHdWlkB1Zpc2li
         bGUBAwALU3lzdGVtLkd1aWQBAgAAAAYDAAAAC09ydGhvcGhvdG9zBPz///8LU3lzdGVtLkd1aWQLAAAA
         Al9hAl9iAl9jAl9kAl9lAl9mAl9nAl9oAl9pAl9qAl9rAAAAAAAAAAAAAAAIBwcCAgICAgICAji04LDw
@@ -4446,8 +4446,8 @@
   </data>
   <data name="BarManager.Categories4" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v23.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMi4yLCBWZXJzaW9uPTIy
-        LjIuNi4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
+        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMy4xLCBWZXJzaW9uPTIz
+        LjEuNS4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
         ACZEZXZFeHByZXNzLlh0cmFCYXJzLkJhck1hbmFnZXJDYXRlZ29yeQMAAAAETmFtZQRHdWlkB1Zpc2li
         bGUBAwALU3lzdGVtLkd1aWQBAgAAAAYDAAAACkhpZ2hsaWdodHME/P///wtTeXN0ZW0uR3VpZAsAAAAC
         X2ECX2ICX2MCX2QCX2UCX2YCX2cCX2gCX2kCX2oCX2sAAAAAAAAAAAAAAAgHBwICAgICAgICjqf2TxLL
@@ -4456,8 +4456,8 @@
   </data>
   <data name="BarManager.Categories5" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v23.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMi4yLCBWZXJzaW9uPTIy
-        LjIuNi4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
+        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMy4xLCBWZXJzaW9uPTIz
+        LjEuNS4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
         ACZEZXZFeHByZXNzLlh0cmFCYXJzLkJhck1hbmFnZXJDYXRlZ29yeQMAAAAETmFtZQRHdWlkB1Zpc2li
         bGUBAwALU3lzdGVtLkd1aWQBAgAAAAYDAAAAA1dNUwT8////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJf
         YwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgLNbsFDcaLoQLWts2QG
@@ -9191,6 +9191,60 @@
   <data name="&gt;&gt;cmdItemNamePatternAdd.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="LabelControl4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LabelControl4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>405, 88</value>
+  </data>
+  <data name="LabelControl4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="LabelControl4.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="LabelControl4.Text" xml:space="preserve">
+    <value>Brush lines:</value>
+  </data>
+  <data name="&gt;&gt;LabelControl4.Name" xml:space="preserve">
+    <value>LabelControl4</value>
+  </data>
+  <data name="&gt;&gt;LabelControl4.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;LabelControl4.Parent" xml:space="preserve">
+    <value>GroupBox1</value>
+  </data>
+  <data name="&gt;&gt;LabelControl4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtBaseBrushLinesScaleFactor.EditValue" type="System.Decimal, mscorlib">
+    <value>0.1</value>
+  </data>
+  <data name="txtBaseBrushLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>522, 85</value>
+  </data>
+  <data name="txtBaseBrushLinesScaleFactor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.1">
+    <value>Combo</value>
+  </data>
+  <data name="txtBaseBrushLinesScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 20</value>
+  </data>
+  <data name="txtBaseBrushLinesScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;txtBaseBrushLinesScaleFactor.Name" xml:space="preserve">
+    <value>txtBaseBrushLinesScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;txtBaseBrushLinesScaleFactor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtBaseBrushLinesScaleFactor.Parent" xml:space="preserve">
+    <value>GroupBox1</value>
+  </data>
+  <data name="&gt;&gt;txtBaseBrushLinesScaleFactor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="LabelControl2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -9216,7 +9270,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;LabelControl2.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="txtBaseGeologyLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>323, 84</value>
@@ -9237,7 +9291,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;txtBaseGeologyLinesScaleFactor.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="Label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -9264,7 +9318,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;Label8.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="Label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -9291,7 +9345,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;Label7.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="Label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -9318,7 +9372,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;Label4.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="lblBaseLinesScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -9345,7 +9399,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;lblBaseLinesScaleFactor.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="lblBaseLineWidthScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -9372,7 +9426,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;lblBaseLineWidthScaleFactor.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="GroupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 12</value>

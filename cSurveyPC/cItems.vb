@@ -181,7 +181,7 @@ Namespace cSurvey.Design
             oItems = New BindingList(Of cItem)
             Dim iIndex As Integer = 0
             Dim iCount As Integer = Items.ChildNodes.Count
-            Dim iStep As Integer = IIf(iCount > 20, iCount \ 20, 1)
+            Dim iStep As Integer = If(iCount > 20, iCount \ 20, 1)
             For Each oXMLItem As XmlElement In Items.ChildNodes
                 iIndex += 1
                 If (iIndex Mod iStep) = 0 Then Call oSurvey.RaiseOnProgressEvent("", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, String.Format(modMain.GetLocalizedString("items.textpart1"), If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, modMain.GetLocalizedString("items.textpart3"), modMain.GetLocalizedString("items.textpart4"))), iIndex / iCount)
@@ -228,6 +228,9 @@ Namespace cSurvey.Design
                         oItem = New cItemInformationBoxText(oSurvey, oDesign, oLayer, File, oXMLItem)
                     Case cIItem.cItemTypeEnum.Scale
                         oItem = New cItemScale(oSurvey, oDesign, oLayer, File, oXMLItem)
+
+                    Case cIItem.cItemTypeEnum.Chunk3D
+                        oItem = New cItemChunk3D(oSurvey, oDesign, oLayer, File, oXMLItem)
                 End Select
                 If oItem Is Nothing Then
                     Stop

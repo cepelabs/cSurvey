@@ -5,6 +5,7 @@ Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Drawings
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Items
+Imports cSurveyPC.cSurvey.Design3D
 
 Module modDesign
 
@@ -129,5 +130,42 @@ Module modDesign
             End If
         End If
     End Function
+
+    'Public Function GetIfChunkMustBeDrawedByCaveAndBranch(ByVal PaintOptions As cOptionsCenterline, ByVal Chunk As cItemChunk3D, ByVal CurrentCave As String, ByVal CurrentBranch As String) As Boolean
+    '    If IsNothing(Chunk) Then
+    '        Return False
+    '    Else
+    '        If PaintOptions.HighlightCurrentCave Then
+    '            'solo nel caso in cui ho chiesto di evidenziare la grotta/ramo attivo...
+    '            Select Case PaintOptions.HighlightMode
+    '                Case cOptionsCenterline.HighlightModeEnum.Default
+    '                    'se impostata solo la grotta mostra tutti gli oggetti di quella grotta
+    '                    'se impostata per ramo mostra SOLO quel ramo
+    '                    If CurrentCave = "" And CurrentBranch = "" Then
+    '                        Return True
+    '                    ElseIf CurrentCave <> "" And CurrentBranch = "" Then
+    '                        Return Chunk.Cave.ToLower = CurrentCave.ToLower
+    '                    Else
+    '                        Return Chunk.Cave.ToLower = CurrentCave.ToLower And Chunk.Branch.ToLower = CurrentBranch.ToLower
+    '                    End If
+    '                Case cOptionsCenterline.HighlightModeEnum.Hierarchic
+    '                    'se impostata solo la grotta mostra tutti gli oggetti di quella grotta
+    '                    'se impostata per ramo mostra gli oggetti di quel ramo e tutti gli oggetti figli di quel ramo 
+    '                    If CurrentCave = "" And CurrentBranch = "" Then
+    '                        Return True
+    '                    ElseIf CurrentCave <> "" And CurrentBranch = "" Then
+    '                        Return Chunk.Cave.ToLower = CurrentCave.ToLower
+    '                    Else
+    '                        Return Chunk.Cave.ToLower = CurrentCave.ToLower And (Chunk.Branch & cCaveInfoBranches.sBranchSeparator).ToLower.StartsWith(CurrentBranch.ToLower)
+    '                    End If
+    '                Case cOptionsCenterline.HighlightModeEnum.ExactMatch
+    '                    'confronta SEMPRE grotta/ramo richiesti con quelli dell'oggetto...utile per trovare oggetti orfani o oggetti ancora non collegati...
+    '                    Return Chunk.Cave.ToLower = CurrentCave.ToLower And Chunk.Branch.ToLower = CurrentBranch.ToLower
+    '            End Select
+    '        Else
+    '            Return True
+    '        End If
+    '    End If
+    'End Function
 
 End Module

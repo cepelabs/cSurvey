@@ -74,7 +74,7 @@ Namespace cSurvey.Design
 
 #End Region
 
-        Public ReadOnly Property ItemsList() As BindingList(Of cItem)
+        Public Overridable ReadOnly Property ItemsList() As BindingList(Of cItem)
             Get
                 Return oItems.List
             End Get
@@ -86,7 +86,7 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Public Function CreateGeneric(ByVal Cave As String, ByVal Branch As String, ByVal Clipart As cDrawClipArt, Optional ByVal Options As cItemGeneric.cItemGenericOptions = Nothing) As cItemGeneric
+        Public Overridable Function CreateGeneric(ByVal Cave As String, ByVal Branch As String, ByVal Clipart As cDrawClipArt, Optional ByVal Options As cItemGeneric.cItemGenericOptions = Nothing) As cItemGeneric
             Dim oItem As cItemGeneric = New cItemGeneric(oSurvey, oDesign, Me, cIItem.cItemCategoryEnum.None, Clipart, Options)
             oItem.Pen.Type = cPen.PenTypeEnum.GenericPen
             oItem.Brush.Type = cBrush.BrushTypeEnum.None
@@ -95,7 +95,7 @@ Namespace cSurvey.Design
             Return oItem
         End Function
 
-        Public Function CreateGeneric(ByVal Cave As String, ByVal Branch As String, ByVal Data As Object, ByVal DataFormat As cItemGeneric.cItemGenericDataFormatEnum) As cItemGeneric
+        Public Overridable Function CreateGeneric(ByVal Cave As String, ByVal Branch As String, ByVal Data As Object, ByVal DataFormat As cItemGeneric.cItemGenericDataFormatEnum) As cItemGeneric
             Dim oItem As cItemGeneric = New cItemGeneric(oSurvey, oDesign, Me, cIItem.cItemCategoryEnum.None, Data, DataFormat)
             oItem.Pen.Type = cPen.PenTypeEnum.GenericPen
             oItem.Brush.Type = cBrush.BrushTypeEnum.None
@@ -104,7 +104,7 @@ Namespace cSurvey.Design
             Return oItem
         End Function
 
-        Public Property HiddenInDesign As Boolean
+        Public Overridable Property HiddenInDesign As Boolean
             Get
                 Return bHiddenInDesign
             End Get
@@ -113,7 +113,7 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public Property HiddenInPreview As Boolean
+        Public Overridable Property HiddenInPreview As Boolean
             Get
                 Return bHiddenInPreview
             End Get
@@ -122,19 +122,19 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public ReadOnly Property Design() As cDesign
+        Public Overridable ReadOnly Property Design() As cDesign
             Get
                 Return oDesign
             End Get
         End Property
 
-        Public ReadOnly Property Name() As String
+        Public Overridable ReadOnly Property Name() As String
             Get
                 Return sName
             End Get
         End Property
 
-        Public ReadOnly Property Type() As cLayers.LayerTypeEnum
+        Public Overridable ReadOnly Property Type() As cLayers.LayerTypeEnum
             Get
                 Return iType
             End Get
@@ -169,44 +169,20 @@ Namespace cSurvey.Design
             oItems = New cItems(oSurvey, Design, Me)
         End Sub
 
-        Friend Function GetItemsByRectangle(ByVal Rectangle As RectangleF, ByVal PaintOptions As cOptions, ByVal CurrentCave As String, ByVal CurrentBranch As String) As List(Of cItem)
+        Friend Overridable Function GetItemsByRectangle(ByVal Rectangle As RectangleF, ByVal PaintOptions As cOptions, ByVal CurrentCave As String, ByVal CurrentBranch As String) As List(Of cItem)
             If bHiddenInDesign Then
                 Return New List(Of cItem)
             Else
                 Return oItems.Where(Function(oItem) modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) AndAlso modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, CurrentCave, CurrentBranch) AndAlso Rectangle.Contains(oItem.GetBounds)).ToList
             End If
-            'Dim oResultItems As List(Of cItem) = New List(Of cItem)
-            'If Not bHiddenInDesign Then
-            '    For Each oItem As cItem In oItems
-            '        If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
-            '            If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, CurrentCave, CurrentBranch) Then
-            '                If Rectangle.Contains(oItem.GetBounds) Then
-            '                    Call oResultItems.Add(oItem)
-            '                End If
-            '            End If
-            '        End If
-            '    Next
-            'End If
-            'Return oResultItems
         End Function
 
-        Friend Function GetItemsByRectangle(ByVal Rectangle As RectangleF, ByVal PaintOptions As cOptionsCenterline) As List(Of cItem)
+        Friend Overridable Function GetItemsByRectangle(ByVal Rectangle As RectangleF, ByVal PaintOptions As cOptionsCenterline) As List(Of cItem)
             If bHiddenInDesign Then
                 Return New List(Of cItem)
             Else
                 Return oItems.Where(Function(oItem) modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) AndAlso Rectangle.Contains(oItem.GetBounds)).ToList
             End If
-            'Dim oResultItems As List(Of cItem) = New List(Of cItem)
-            'If Not bHiddenInDesign Then
-            '    For Each oItem As cItem In oItems
-            '        If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
-            '            If Rectangle.Contains(oItem.GetBounds) Then
-            '                Call oResultItems.Add(oItem)
-            '            End If
-            '        End If
-            '    Next
-            'End If
-            'Return oResultItems
         End Function
 
         Friend Shared Function CreateItem(Survey As cSurvey, Design As cDesign, Layer As cLayer, File As cFile, Item As XmlElement) As cItem
@@ -265,13 +241,12 @@ Namespace cSurvey.Design
         ''' <param name="File">File container</param>
         ''' <param name="Item">XML Element</param>
         ''' <returns>The new design item</returns>
-        Friend Function CreateItem(ByVal File As cFile, ByVal Item As XmlElement) As cItem
+        Friend Overridable Function CreateItem(ByVal File As cFile, ByVal Item As XmlElement) As cItem
             Dim oItem As cItem = cLayer.CreateItem(oSurvey, oDesign, Me, File, Item)
             If Not oItem Is Nothing Then
                 If TypeOf oItem Is cItemItems Then
                     For Each oSubItem As cItem In DirectCast(oItem, cItemItems)
                         oSubItem.Layer.Items.Add(oSubItem)
-                        'oItems.Add(oSubItem)
                     Next
                 Else
                     Call oItems.Add(oItem)
@@ -280,7 +255,7 @@ Namespace cSurvey.Design
             Return oItem
         End Function
 
-        Friend Function CreateItem(ByVal Type As cIItem.cItemTypeEnum, ByVal Category As cIItem.cItemCategoryEnum, ByVal Segment As cSegment) As cItem
+        Friend Overridable Function CreateItem(ByVal Type As cIItem.cItemTypeEnum, ByVal Category As cIItem.cItemCategoryEnum, ByVal Segment As cSegment) As cItem
             Dim oItem As cItem = Nothing
             Select Case Type
                 Case cIItem.cItemTypeEnum.CrossSection
@@ -292,7 +267,7 @@ Namespace cSurvey.Design
             Return oItem
         End Function
 
-        Friend Function CreateItem(ByVal Type As cIItem.cItemTypeEnum, ByVal Category As cIItem.cItemCategoryEnum, ByVal Data As Image) As cItem
+        Friend Overridable Function CreateItem(ByVal Type As cIItem.cItemTypeEnum, ByVal Category As cIItem.cItemCategoryEnum, ByVal Data As Image) As cItem
             Dim oItem As cItem = Nothing
             Select Case Type
                 Case cIItem.cItemTypeEnum.Image
@@ -306,7 +281,7 @@ Namespace cSurvey.Design
             Return oItem
         End Function
 
-        Friend Function CreateItem(ByVal Type As cIItem.cItemTypeEnum, ByVal Category As cIItem.cItemCategoryEnum, ByVal Data As String) As cItem
+        Friend Overridable Function CreateItem(ByVal Type As cIItem.cItemTypeEnum, ByVal Category As cIItem.cItemCategoryEnum, ByVal Data As String) As cItem
             Dim oItem As cItem = Nothing
             Select Case Type
                 Case cIItem.cItemTypeEnum.Quota
@@ -326,7 +301,7 @@ Namespace cSurvey.Design
             Return oItem
         End Function
 
-        Friend Function CreateItem(ByVal Type As cIItem.cItemTypeEnum, ByVal Category As cIItem.cItemCategoryEnum) As cItem
+        Friend Overridable Function CreateItem(ByVal Type As cIItem.cItemTypeEnum, ByVal Category As cIItem.cItemCategoryEnum) As cItem
             Dim oItem As cItem = Nothing
             Select Case Type
                 Case cIItem.cItemTypeEnum.FreeHandArea
@@ -344,7 +319,7 @@ Namespace cSurvey.Design
             Return oItem
         End Function
 
-        Friend Function CreateItem(ByVal Type As cIItem.cItemTypeEnum, ByVal Category As cIItem.cItemCategoryEnum, ByVal Data As Object, ByVal DataFormat As cAttachmentsLinks.cAttachmentDataFormatEnum) As cItem
+        Friend Overridable Function CreateItem(ByVal Type As cIItem.cItemTypeEnum, ByVal Category As cIItem.cItemCategoryEnum, ByVal Data As Object, ByVal DataFormat As cAttachmentsLinks.cAttachmentDataFormatEnum) As cItem
             Dim oItem As cItem = Nothing
             Select Case Type
                 Case cIItem.cItemTypeEnum.Attachment
@@ -356,7 +331,7 @@ Namespace cSurvey.Design
             Return oItem
         End Function
 
-        Friend Function CreateItem(ByVal Type As cIItem.cItemTypeEnum, ByVal Category As cIItem.cItemCategoryEnum, ByVal Data As Object, ByVal DataFormat As cIItemClipartBase.cClipartDataFormatEnum) As cItem
+        Friend Overridable Function CreateItem(ByVal Type As cIItem.cItemTypeEnum, ByVal Category As cIItem.cItemCategoryEnum, ByVal Data As Object, ByVal DataFormat As cIItemClipartBase.cClipartDataFormatEnum) As cItem
             Dim oItem As cItem = Nothing
             Select Case Type
                 Case cIItem.cItemTypeEnum.Compass
@@ -374,7 +349,7 @@ Namespace cSurvey.Design
             Return oItem
         End Function
 
-        Public ReadOnly Property Items() As cItems
+        Public Overridable ReadOnly Property Items() As cItems
             Get
                 Return oItems
             End Get
@@ -382,24 +357,10 @@ Namespace cSurvey.Design
 
         Friend Overridable Function GetAllDesignVisibleItems(PaintOptions As cOptionsCenterline, ByVal CurrentCave As String, ByVal CurrentBranch As String) As List(Of cItem)
             Return GetAllDesignVisibleItems(PaintOptions).Where(Function(oitem) modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oitem, CurrentCave, CurrentBranch)).ToList
-            'Dim oResultItems As List(Of cItem) = New List(Of cItem)
-            'For Each oItem As cItem In GetAllDesignVisibleItems(PaintOptions)
-            '    If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, CurrentCave, CurrentBranch) Then
-            '        Call oResultItems.Add(oItem)
-            '    End If
-            'Next
-            'Return oResultItems
         End Function
 
         Friend Overridable Function GetAllVisibleItems(PaintOptions As cOptionsCenterline, ByVal CurrentCave As String, ByVal CurrentBranch As String) As List(Of cItem)
             Return GetAllVisibleItems(PaintOptions).Where(Function(oitem) modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oitem, CurrentCave, CurrentBranch)).ToList
-            'Dim oResultItems As List(Of cItem) = New List(Of cItem)
-            'For Each oItem As cItem In GetAllVisibleItems(PaintOptions)
-            '    If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, CurrentCave, CurrentBranch) Then
-            '        Call oResultItems.Add(oItem)
-            '    End If
-            'Next
-            'Return oResultItems
         End Function
 
         Friend Overridable Function GetAllDesignVisibleItems(PaintOptions As cOptionsCenterline) As List(Of cItem)
@@ -411,33 +372,14 @@ Namespace cSurvey.Design
             Dim sCurrentProfile As String = PaintOptions.CurrentCaveVisibilityProfile
             If sCurrentProfile = "" Then
                 Call oVisibleItems.AddRange(oItems.Where(Function(oitem) modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oitem)))
-                'For Each oItem As cItem In oItems
-                '    If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
-                '        Call oVisibleItems.Add(oItem)
-                '    End If
-                'Next
             Else
                 Dim sItemsQuery As String = oSurvey.Properties.CaveVisibilityProfiles.GetItemsQuery(sCurrentProfile)
                 If sItemsQuery = "" Then
                     Call oVisibleItems.AddRange(oItems.Where(Function(oitem) oSurvey.Properties.CaveVisibilityProfiles.GetVisible(sCurrentProfile, oitem.Cave, oitem.Branch) AndAlso modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oitem)))
-                    'For Each oItem As cItem In oItems
-                    '    If oSurvey.Properties.CaveVisibilityProfiles.GetVisible(sCurrentProfile, oItem.Cave, oItem.Branch) Then
-                    '        If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
-                    '            Call oVisibleItems.Add(oItem)
-                    '        End If
-                    '    End If
-                    'Next
                 Else
                     Try
                         Dim oQueryItems = From oItem As cItem In oItems.ToArray.AsQueryable.Where(sItemsQuery) Select oItem
                         Call oVisibleItems.AddRange(oQueryItems.Where(Function(oitem) oSurvey.Properties.CaveVisibilityProfiles.GetVisible(sCurrentProfile, oitem.Cave, oitem.Branch) AndAlso modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oitem)))
-                        'For Each oItem As cItem In oQueryItems
-                        '    If oSurvey.Properties.CaveVisibilityProfiles.GetVisible(sCurrentProfile, oItem.Cave, oItem.Branch) Then
-                        '        If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
-                        '            Call oVisibleItems.Add(oItem)
-                        '        End If
-                        '    End If
-                        'Next
                     Catch ex As Exception
                         Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, "cLayer.GetAllVisibleItems -> " & ex.Message)
                     End Try

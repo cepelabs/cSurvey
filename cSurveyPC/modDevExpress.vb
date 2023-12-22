@@ -332,14 +332,27 @@ Public Module modDevExpress
     End Sub
 
     <Extension>
-    Public Sub RowAdd(Grid As DevExpress.XtraVerticalGrid.VGridControl, FieldName As String, Caption As String, Type As DevExpress.Data.UnboundColumnType)
+    Public Function RowAdd(Grid As DevExpress.XtraVerticalGrid.VGridControl, ParentRow As EditorRow, FieldName As String, Caption As String, Type As DevExpress.Data.UnboundColumnType) As EditorRow
+        Dim oRow As EditorRow = New EditorRow(FieldName)
+        oRow.Properties.Caption = Caption
+        oRow.Properties.ReadOnly = True
+        'oRow.Properties.AllowEdit = False
+        oRow.Properties.UnboundType = Type
+        ParentRow.ChildRows.Add(oRow)
+        ParentRow.Expanded = True
+        Return oRow
+    End Function
+
+    <Extension>
+    Public Function RowAdd(Grid As DevExpress.XtraVerticalGrid.VGridControl, FieldName As String, Caption As String, Type As DevExpress.Data.UnboundColumnType) As EditorRow
         Dim oRow As EditorRow = New EditorRow(FieldName)
         oRow.Properties.Caption = Caption
         oRow.Properties.ReadOnly = True
         'oRow.Properties.AllowEdit = False
         oRow.Properties.UnboundType = Type
         Grid.Rows.Add(oRow)
-    End Sub
+        Return oRow
+    End Function
 
     <Extension>
     Public Sub CopyRow(Grid As DevExpress.XtraGrid.Views.Grid.GridView)

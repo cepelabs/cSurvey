@@ -557,9 +557,8 @@ Namespace cSurvey.Helper.Editor
                 Return oPlanTools
             ElseIf Item.Design Is oProfileTools.Design Then
                 Return oProfileTools
-                '3d not supported...
-                'ElseIf Layer.Design Is oThreeDTools.Design Then
-                'Return oThreeDTools
+            ElseIf item.Design Is oThreeDTools.Design Then
+                Return oThreeDTools
             End If
         End Function
 
@@ -569,8 +568,8 @@ Namespace cSurvey.Helper.Editor
             ElseIf Layer.Design Is oProfileTools.Design Then
                 Return oProfileTools
                 '3d not supported...
-                'ElseIf Layer.Design Is oThreeDTools.Design Then
-                'Return oThreeDTools
+            ElseIf Layer.Design Is oThreeDTools.Design Then
+                Return oThreeDTools
             End If
         End Function
 
@@ -658,7 +657,7 @@ Namespace cSurvey.Helper.Editor
             oUndo = New cUndo(oSurvey, Me)
             oPlanTools = New cEditDesignTools(Me, oSurvey.Plan)
             oProfileTools = New cEditDesignTools(Me, oSurvey.Profile)
-            oThreeDTools = New cEditDesignTools(Me, New cDesign3D(oSurvey))
+            oThreeDTools = New cEditDesignTools(Me, oSurvey.ThreeD)
         End Sub
 
         Public ReadOnly Property Undo() As cUndo
@@ -1048,6 +1047,160 @@ Namespace cSurvey.Helper.Editor
         End Sub
     End Class
 
+    Friend Class cPasteSpecialEventArgs
+        Inherits EventArgs
+
+        Private oBag As Object
+        Private oLocation As PointF
+
+        Private oItems As List(Of cItem)
+
+        Public ReadOnly Property Bag As Object
+            Get
+                Return oBag
+            End Get
+        End Property
+
+        Public ReadOnly Property Location As PointF
+            Get
+                Return oLocation
+            End Get
+        End Property
+
+        Public ReadOnly Property Items As List(Of cItem)
+            Get
+                Return oItems
+            End Get
+        End Property
+
+        Friend Sub New(ByVal Bag As Object, ByVal Location As PointF)
+            oBag = Bag
+            oLocation = Location
+            oItems = New List(Of cItem)
+        End Sub
+    End Class
+
+    Friend Class cEditDesignToolsEventArgs
+        Inherits EventArgs
+
+        Private oCurrentLayer As cLayer
+        Private oCurrentItem As cItem
+        Private oCurrentItemPoint As cPoint
+        Private bIsNewItem As Boolean
+
+        Friend Sub New(ByVal Tools As cEditDesignTools)
+            oCurrentLayer = Tools.CurrentLayer
+            oCurrentItem = Tools.CurrentItem
+            oCurrentItemPoint = Tools.CurrentItemPoint
+            bIsNewItem = Tools.IsNewItem
+        End Sub
+
+        Friend Sub New(ByVal CurrentLayer As cLayer, ByVal CurrentItem As cItem, ByVal CurrentItemPoint As cPoint, ByVal IsNewItem As Boolean)
+            oCurrentLayer = CurrentLayer
+            oCurrentItem = CurrentItem
+            oCurrentItemPoint = CurrentItemPoint
+            bIsNewItem = IsNewItem
+        End Sub
+
+        Public ReadOnly Property IsNewItem As Boolean
+            Get
+                Return bIsNewItem
+            End Get
+        End Property
+
+        Public ReadOnly Property CurrentLayer() As cLayer
+            Get
+                Return oCurrentLayer
+            End Get
+        End Property
+
+        Public ReadOnly Property CurrentItem() As cItem
+            Get
+                Return oCurrentItem
+            End Get
+        End Property
+
+        Public ReadOnly Property CurrentItemPoint() As cPoint
+            Get
+                Return oCurrentItemPoint
+            End Get
+        End Property
+    End Class
+
+    Friend Class cCrossSectionSelectEventArgs
+        Inherits EventArgs
+    End Class
+
+    Friend Class cCaveBranchSelectEventArgs
+        Inherits EventArgs
+    End Class
+
+    Friend Class cChangeDesignEventArgs
+        Inherits EventArgs
+
+        Private oNewTools As cEditDesignTools
+
+        Friend Sub New(NewTools As cEditDesignTools)
+            oNewTools = NewTools
+        End Sub
+
+        Friend ReadOnly Property NewTool As cEditDesignTools
+            Get
+                Return oNewTools
+            End Get
+        End Property
+    End Class
+
+    Friend Class cFilterEventArgs
+        Inherits EventArgs
+
+        Private bRefresh As Boolean
+
+        Friend Sub New(Refresh As Boolean)
+            bRefresh = Refresh
+        End Sub
+
+        Public ReadOnly Property Refresh As Boolean
+            Get
+                Return bRefresh
+            End Get
+        End Property
+    End Class
+
+    Friend Class cMarkedDesktopPointMoveEventArgs
+        Inherits cMarkedDesktopPoint.cMoveEventArgs
+
+        Private oMarkedDesktopPoint As cMarkedDesktopPoint
+
+        Public ReadOnly Property MarkedDesktopPoint As cMarkedDesktopPoint
+            Get
+                Return oMarkedDesktopPoint
+            End Get
+        End Property
+
+        Public Sub New(MarkedDesktopPoint As cMarkedDesktopPoint, Args As cMarkedDesktopPoint.cMoveEventArgs)
+            Call MyBase.New(Args.NewPoint)
+            oMarkedDesktopPoint = MarkedDesktopPoint
+        End Sub
+    End Class
+
+    Friend Class cMarkedDesktopPointPaintInfoEventArgs
+        Inherits cMarkedDesktopPoint.cPaintInfoEventArgs
+
+        Private oMarkedDesktopPoint As cMarkedDesktopPoint
+
+        Public ReadOnly Property MarkedDesktopPoint As cMarkedDesktopPoint
+            Get
+                Return oMarkedDesktopPoint
+            End Get
+        End Property
+
+        Public Sub New(MarkedDesktopPoint As cMarkedDesktopPoint, Args As cMarkedDesktopPoint.cPaintInfoEventArgs)
+            MyBase.New()
+            oMarkedDesktopPoint = MarkedDesktopPoint
+        End Sub
+    End Class
+
     Friend Class cEditDesignTools
         Implements cIEditDesignSelection
 
@@ -1088,22 +1241,6 @@ Namespace cSurvey.Helper.Editor
         Private bIsFiltered As Boolean
         Private bFilterWhiteBoard As Boolean
 
-        Friend Class cFilterEventArgs
-            Inherits EventArgs
-
-            Private bRefresh As Boolean
-
-            Friend Sub New(Refresh As Boolean)
-                bRefresh = Refresh
-            End Sub
-
-            Public ReadOnly Property Refresh As Boolean
-                Get
-                    Return bRefresh
-                End Get
-            End Property
-        End Class
-
         Friend Event OnFilterApplied(ByVal Sender As Object, ByVal ToolEventArgs As cFilterEventArgs)
         Friend Event OnFilterRemoved(ByVal Sender As Object, ByVal ToolEventArgs As cFilterEventArgs)
 
@@ -1113,13 +1250,7 @@ Namespace cSurvey.Helper.Editor
             End Get
         End Property
 
-        'Public ReadOnly Property Undo As cUndo
-        '    Get
-        '        Return oParent.Undo
-        '    End Get
-        'End Property
-
-        Public ReadOnly Property Design As cDesign
+        Public Overridable ReadOnly Property Design As cDesign
             Get
                 Return oDesign
             End Get
@@ -1199,109 +1330,17 @@ Namespace cSurvey.Helper.Editor
             End Get
         End Property
 
-        Public Class cPasteSpecialEventArgs
-            Inherits EventArgs
+        Protected Sub SetCurrentItem(CurrentItem As cItem)
+            oCurrentItem = CurrentItem
+        End Sub
 
-            Private oBag As Object
-            Private oLocation As PointF
+        Protected Sub RaiseOnItemDelete(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs)
+            RaiseEvent OnItemDelete(Sender, ToolEventArgs)
+        End Sub
 
-            Private oItems As List(Of cItem)
-
-            Public ReadOnly Property Bag As Object
-                Get
-                    Return oBag
-                End Get
-            End Property
-
-            Public ReadOnly Property Location As PointF
-                Get
-                    Return oLocation
-                End Get
-            End Property
-
-            Public ReadOnly Property Items As List(Of cItem)
-                Get
-                    Return oItems
-                End Get
-            End Property
-
-            Friend Sub New(ByVal Bag As Object, ByVal Location As PointF)
-                oBag = Bag
-                oLocation = Location
-                oItems = New List(Of cItem)
-            End Sub
-        End Class
-
-        Public Class cEditDesignToolsEventArgs
-            Inherits EventArgs
-
-            Private oCurrentLayer As cLayer
-            Private oCurrentItem As cItem
-            Private oCurrentItemPoint As cPoint
-            Private bIsNewItem As Boolean
-
-            Friend Sub New(ByVal Tools As cEditDesignTools)
-                oCurrentLayer = Tools.CurrentLayer
-                oCurrentItem = Tools.CurrentItem
-                oCurrentItemPoint = Tools.CurrentItemPoint
-                bIsNewItem = Tools.IsNewItem
-            End Sub
-
-            Friend Sub New(ByVal CurrentLayer As cLayer, ByVal CurrentItem As cItem, ByVal CurrentItemPoint As cPoint, ByVal IsNewItem As Boolean)
-                oCurrentLayer = CurrentLayer
-                oCurrentItem = CurrentItem
-                oCurrentItemPoint = CurrentItemPoint
-                bIsNewItem = IsNewItem
-            End Sub
-
-            Public ReadOnly Property IsNewItem As Boolean
-                Get
-                    Return bIsNewItem
-                End Get
-            End Property
-
-            Public ReadOnly Property CurrentLayer() As cLayer
-                Get
-                    Return oCurrentLayer
-                End Get
-            End Property
-
-            Public ReadOnly Property CurrentItem() As cItem
-                Get
-                    Return oCurrentItem
-                End Get
-            End Property
-
-            Public ReadOnly Property CurrentItemPoint() As cPoint
-                Get
-                    Return oCurrentItemPoint
-                End Get
-            End Property
-        End Class
-
-        Public Class cCrossSectionSelectEventArgs
-            Inherits EventArgs
-        End Class
-
-        Public Class cCaveBranchSelectEventArgs
-            Inherits EventArgs
-        End Class
-
-        Public Class cChangeDesignEventArgs
-            Inherits EventArgs
-
-            Private oNewTools As cEditDesignTools
-
-            Public Sub New(NewTools As cEditDesignTools)
-                oNewTools = NewTools
-            End Sub
-
-            Friend ReadOnly Property NewTool As cEditDesignTools
-                Get
-                    Return oNewTools
-                End Get
-            End Property
-        End Class
+        Protected Sub RaiseOnItemDeleted(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs)
+            RaiseEvent OnItemDeleted(Sender, ToolEventArgs)
+        End Sub
 
         Friend Event OnRefreshDesign(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs)
 
@@ -1459,11 +1498,9 @@ Namespace cSurvey.Helper.Editor
             If IsNewItem Then
                 bIsNewItem = True
                 bStarted = False
-                'Call oSurvey.Undo.Push("Nuovo oggetto", cUndo.ActionEnum.Insert, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
             Else
                 bIsNewItem = False
                 bStarted = False
-                'Call oParent.Undo.Push("Modifica oggetto", cUndo.ActionEnum.Update, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
             End If
             RaiseEvent OnItemEdit(Me, New cEditDesignToolsEventArgs(Me))
         End Sub
@@ -1710,11 +1747,6 @@ Namespace cSurvey.Helper.Editor
         End Sub
 
         Public Sub CutItem()
-            'Dim oFile As cFile = New cFile
-            'Dim oXML As XmlDocument = oFile.Document
-            'Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
-            'Call oCurrentItem.SaveTo(oFile, oXML, oXMLParent)
-            'Call oXML.AppendChild(oXMLParent)
             Dim oXMl As XmlDocument = pItemToStorage()
 
             Dim oDataObject As DataObject = New DataObject
@@ -1740,7 +1772,6 @@ Namespace cSurvey.Helper.Editor
         Public Sub DeleteItemPoint()
             If oCurrentItem IsNot Nothing Then
                 If oCurrentItem.Points.Count > 1 Then
-                    'Call oParent.Undo.Push("Modifica oggetto", cUndo.ActionEnum.Update, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
                     Dim iPointIndex As Integer = oCurrentItem.Points.IndexOf(oCurrentItemPoint)
                     If oCurrentItem.Points.Remove(oCurrentItemPoint) Then
                         RaiseEvent OnItemPointDelete(Me, New cEditDesignToolsEventArgs(Me))
@@ -1761,17 +1792,15 @@ Namespace cSurvey.Helper.Editor
             End If
         End Sub
 
-        Public Sub DeleteItem()
+        Public Overridable Sub DeleteItem()
             If oCurrentItem IsNot Nothing Then
                 If oCurrentItem.Type = cIItem.cItemTypeEnum.Items Then
-                    'Call oParent.Undo.Push("Elimina oggetti", cUndo.ActionEnum.Delete, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
                     Call oCurrentLayer.Items.Remove(oCurrentItem)
                     Dim oItems As cSurveyPC.cSurvey.Design.Items.cItemItems = oCurrentItem
                     For Each oItem As cItem In oItems
                         Call oCurrentLayer.Design.RemoveItem(oItem)
                     Next
                 Else
-                    'Call oParent.Undo.Push("Elimina oggetto", cUndo.ActionEnum.Delete, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
                     Call oCurrentLayer.Items.Remove(oCurrentItem)
                 End If
                 RaiseEvent OnItemDelete(Me, New cEditDesignToolsEventArgs(Me))
@@ -1786,16 +1815,27 @@ Namespace cSurvey.Helper.Editor
             oParent.Undo.CreateSnapshot(Description, {Item})
         End Sub
 
+        Private Function pGetDesignType(Design As cDesign) As cUndo.cAreaEnum
+            Select Case Design.Type
+                Case cIDesign.cDesignTypeEnum.Plan
+                    Return cUndo.cAreaEnum.DesignPlan
+                Case cIDesign.cDesignTypeEnum.Profile
+                    Return cUndo.cAreaEnum.DesignProfile
+                Case cIDesign.cDesignTypeEnum.ThreeDModel
+                    Return cAreaEnum.Design3D
+            End Select
+        End Function
+
         Public Sub CreateUndoSnapshot(Description As String, PropertyName As String)
-            oParent.Undo.CreateSnapshot(Description, If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, cUndo.cAreaEnum.DesignPlan, cUndo.cAreaEnum.DesignProfile), PropertyName)
+            oParent.Undo.CreateSnapshot(Description, pGetDesignType(oDesign), PropertyName)
         End Sub
 
         Public Sub CreateUndoSnapshot(Description As String, BackupDelegate As cUndoItemBackupValueDelegate, RestoreDelegate As cUndoItemRestoreValueDelegate)
-            oParent.Undo.CreateSnapshot(Description, If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, cUndo.cAreaEnum.DesignPlan, cUndo.cAreaEnum.DesignProfile), BackupDelegate, RestoreDelegate)
+            oParent.Undo.CreateSnapshot(Description, pGetDesignType(oDesign), BackupDelegate, RestoreDelegate)
         End Sub
 
         Public Sub CreateUndoSnapshot(Description As String)
-            oParent.Undo.CreateSnapshot(Description, If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, cUndo.cAreaEnum.DesignPlan, cUndo.cAreaEnum.DesignProfile))
+            oParent.Undo.CreateSnapshot(Description, pGetDesignType(oDesign))
         End Sub
 
         Public Sub BeginUndoSnapshot(Description As String, Items As IEnumerable(Of cItem))
@@ -1803,11 +1843,11 @@ Namespace cSurvey.Helper.Editor
         End Sub
 
         Public Sub BeginUndoSnapshot(Description As String)
-            oParent.Undo.BeginSnapshot(Description, If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, cUndo.cAreaEnum.DesignPlan, cUndo.cAreaEnum.DesignProfile))
+            oParent.Undo.BeginSnapshot(Description, pGetDesignType(oDesign))
         End Sub
 
         Public Sub CreateSelectionSnaphot()
-            oParent.Undo.CreateSelectionSnapshot(If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, cUndo.cAreaEnum.DesignPlan, cUndo.cAreaEnum.DesignProfile))
+            oParent.Undo.CreateSelectionSnapshot(pGetDesignType(oDesign))
         End Sub
 
         Public Sub CancelUndoSnapshot()
@@ -1824,16 +1864,6 @@ Namespace cSurvey.Helper.Editor
             End If
         End Sub
 
-        'Public Sub TakeUndoSnapshot()
-        '    If oCurrentItem IsNot Nothing And oCurrentLayer IsNot Nothing Then
-        '        If oCurrentItem.Type = cIItem.cItemTypeEnum.Items Then
-        '            'DA FARE....BOH!
-        '        Else
-        '            Call oParent.Undo.Push("Modifica oggetto", cUndo.ActionEnum.Update, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
-        '        End If
-        '    End If
-        'End Sub
-
         Private Function pEndItem() As Boolean
             Dim bRaiseEvent As Boolean
             If Not oCurrentItem Is Nothing Then
@@ -1847,11 +1877,6 @@ Namespace cSurvey.Helper.Editor
             bStarted = False
             If bRaiseEvent Then
                 RaiseEvent OnItemEnd(Me, New cEditDesignToolsEventArgs(oCurrentLayer, oCurrentItem, oCurrentItemPoint, bIsNewItem))
-                'If Not oCurrentItem Is Nothing Then
-                '    If bIsNewItem Then
-                '        Call oParent.Undo.Push("Aggiunta oggetto", cUndo.ActionEnum.Insert, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
-                '    End If
-                'End If
             End If
             bIsNewItem = False
             oCurrentItem = Nothing
@@ -1942,13 +1967,13 @@ Namespace cSurvey.Helper.Editor
             End Get
         End Property
 
-        Public ReadOnly Property CurrentLayer() As cLayer Implements cIEditDesignSelection.CurrentLayer
+        Public Overridable ReadOnly Property CurrentLayer() As cLayer Implements cIEditDesignSelection.CurrentLayer
             Get
                 Return oCurrentLayer
             End Get
         End Property
 
-        Public ReadOnly Property CurrentItem() As cItem Implements cIEditDesignSelection.CurrentItem
+        Public Overridable ReadOnly Property CurrentItem() As cItem Implements cIEditDesignSelection.CurrentItem
             Get
                 Return oCurrentItem
             End Get
@@ -2041,40 +2066,6 @@ Namespace cSurvey.Helper.Editor
         Friend Event OnMarkedDesktopPointGetPaintInfo(Sender As cEditDesignTools, Args As cMarkedDesktopPointPaintInfoEventArgs)
         Friend Event OnMarkedDesktopPointMove(Sender As cEditDesignTools, Args As cMarkedDesktopPointMoveEventArgs)
         Friend Event OnMarkedDesktopPointSet(Sender As cEditDesignTools, Args As EventArgs)
-
-        Friend Class cMarkedDesktopPointMoveEventArgs
-            Inherits cMarkedDesktopPoint.cMoveEventArgs
-
-            Private oMarkedDesktopPoint As cMarkedDesktopPoint
-
-            Public ReadOnly Property MarkedDesktopPoint As cMarkedDesktopPoint
-                Get
-                    Return oMarkedDesktopPoint
-                End Get
-            End Property
-
-            Public Sub New(MarkedDesktopPoint As cMarkedDesktopPoint, Args As cMarkedDesktopPoint.cMoveEventArgs)
-                Call MyBase.New(Args.NewPoint)
-                oMarkedDesktopPoint = MarkedDesktopPoint
-            End Sub
-        End Class
-
-        Friend Class cMarkedDesktopPointPaintInfoEventArgs
-            Inherits cMarkedDesktopPoint.cPaintInfoEventArgs
-
-            Private oMarkedDesktopPoint As cMarkedDesktopPoint
-
-            Public ReadOnly Property MarkedDesktopPoint As cMarkedDesktopPoint
-                Get
-                    Return oMarkedDesktopPoint
-                End Get
-            End Property
-
-            Public Sub New(MarkedDesktopPoint As cMarkedDesktopPoint, Args As cMarkedDesktopPoint.cPaintInfoEventArgs)
-                MyBase.New()
-                oMarkedDesktopPoint = MarkedDesktopPoint
-            End Sub
-        End Class
 
         Private Sub oCurrentMarkedDesktopPoint_OnGetPaintInfo(Sender As cMarkedDesktopPoint, Args As cMarkedDesktopPoint.cPaintInfoEventArgs) Handles oCurrentMarkedDesktopPoint.OnGetPaintInfo
             Dim oArgs As cMarkedDesktopPointPaintInfoEventArgs = New cMarkedDesktopPointPaintInfoEventArgs(Sender, Args)
@@ -2329,4 +2320,32 @@ Namespace cSurvey.Helper.Editor
             End With
         End Sub
     End Class
+
+    'Friend Class cEditDesignTools3D
+    '    Inherits cEditDesignTools
+
+    '    Public Shadows ReadOnly Property Design As cDesign3D
+    '        Get
+    '            Return MyBase.Design
+    '        End Get
+    '    End Property
+
+    '    Public Overrides Sub DeleteItem()
+    '        If MyBase.CurrentItem IsNot Nothing Then
+    '            If MyBase.CurrentItem.Type = cIItem.cItemTypeEnum.Chunk3D Then
+    '                Design.Layers.ChunkLayer.Items.Remove(DirectCast(MyBase.CurrentItem, cItemChunk3D))
+    '            End If
+
+    '            Call RaiseOnItemDelete(Me, New cEditDesignToolsEventArgs(Me))
+    '            Call SetCurrentItem(Nothing)
+    '            Call EndItem()
+    '            Call SelectItem(Nothing)
+    '            Call RaiseOnItemDeleted(Me, New cEditDesignToolsEventArgs(Me))
+    '        End If
+    '    End Sub
+
+    '    Public Sub New(Parent As cEditTools, Design As cIDesign)
+    '        MyBase.New(Parent, Design)
+    '    End Sub
+    'End Class
 End Namespace

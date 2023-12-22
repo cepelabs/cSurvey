@@ -52,6 +52,8 @@
 
             Group = 50
 
+            Chunk3D = 95
+
             Marker = 96
             Trigpoint = 97
             Segment = 98

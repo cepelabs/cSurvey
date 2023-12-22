@@ -835,4 +835,7 @@ Non vi è correlazione tra questo codice e alcun dato relativo all'utente.</valu
   <data name="chkITChangePeriodKey.Properties.Caption" xml:space="preserve">
     <value>Cambia automaticamente il tasto . in ,</value>
   </data>
+  <data name="chkEnableMultithreadingPreview.Properties.Caption" xml:space="preserve">
+    <value>Abilita multithreading in anteprima/esportazione</value>
+  </data>
 </root>

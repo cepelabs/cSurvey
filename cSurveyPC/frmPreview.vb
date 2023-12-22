@@ -80,6 +80,8 @@ Friend Class frmPreview
         oSelection = cSurveyPC.cSurvey.Helper.Editor.cEmptyEditDesignSelection.Empty
         iMode = Mode
 
+        bMultiThreadingPreview = My.Application.Settings.GetSetting("debug.multithreadingpreview", 1)
+
         bManualRefresh = (oSurvey.SharedSettings.GetValue("preview.manualrefresh", "0") = "1") Or (My.Computer.Keyboard.AltKeyDown Or My.Computer.Keyboard.CtrlKeyDown)
         btnManualRefresh.Checked = bManualRefresh
 
@@ -2557,12 +2559,18 @@ Friend Class frmPreview
         Call pDrawingThreadStart()
     End Sub
 
+    Private bMultiThreadingPreview As Boolean
+
     Private Sub pDrawingThreadStart()
         If oDrawRefreshThread Is Nothing Then
-            oDrawRefreshThread = New Threading.Thread(AddressOf oDrawRefreshThread_callback)
-            oDrawRefreshThread.Priority = Threading.ThreadPriority.Lowest
-            btnStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
-            Call oDrawRefreshThread.Start()
+            If bMultiThreadingPreview Then
+                oDrawRefreshThread = New Threading.Thread(AddressOf oDrawRefreshThread_callback)
+                oDrawRefreshThread.Priority = Threading.ThreadPriority.Lowest
+                btnStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
+                Call oDrawRefreshThread.Start()
+            Else
+                Call oDrawRefreshThread_callback()
+            End If
         End If
     End Sub
 

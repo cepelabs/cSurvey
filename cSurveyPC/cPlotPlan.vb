@@ -517,71 +517,73 @@ Namespace cSurvey.Design
                                 If Not oDrawedTrigPoint.Contains(oTranslationTrigPoint.Name) Then
                                     If oSurvey.TrigPoints.Contains(oTranslationTrigPoint.Name) Then
                                         Dim oTrigPoint As cTrigPoint = oSurvey.TrigPoints(oTranslationTrigPoint.Name)
-                                        Dim oTrigpointCache As cDrawCache = pGetOrCreateTrigpointFromCache(oTrigPoint, PaintOptions)
-                                        If oTrigpointCache.Invalidated Then
-                                            With oTrigpointCache
-                                                'linee di traslazione
-                                                If Not PaintOptions.IsDesign AndAlso PaintOptions.DrawTranslation AndAlso PaintOptions.TranslationsOptions.DrawTranslationsLine AndAlso oTranslationTrigPoint.Count > 1 AndAlso oTrigPoint.DrawTranslationsLine Then
-                                                    Dim oFromPoint As PointF = oTranslationTrigPoint(0)
-                                                    Dim i As Integer = 1
-                                                    Do While i < oTranslationTrigPoint.Count
-                                                        oCacheItem = .Add(cDrawCacheItem.cDrawCacheItemType.Border)
-                                                        Dim oToPoint As PointF = oTranslationTrigPoint(i)
-                                                        If (sTTH = 0 OrElse modPaint.DistancePointToPoint(oToPoint, oFromPoint) > sTTH) Then
-                                                            If (oToPoint.X <> oFromPoint.X) AndAlso (oToPoint.Y <> oFromPoint.Y) Then
-                                                                Dim oMidPoint As PointF = New PointF(oFromPoint.X, oToPoint.Y)
-                                                                Call oCacheItem.SetPen(oDrawingObject.TranslationPen)
-                                                                Call oCacheItem.AddLine(oFromPoint, oMidPoint)
-                                                                Call oCacheItem.AddLine(oMidPoint, oToPoint)
+                                        If ((PaintOptions.IsDesign AndAlso Not oTrigPoint.HiddenInDesign) OrElse ((PaintOptions.IsPreview OrElse PaintOptions.IsViewer) AndAlso Not oTrigPoint.HiddenInPreview)) Then
+                                            Dim oTrigpointCache As cDrawCache = pGetOrCreateTrigpointFromCache(oTrigPoint, PaintOptions)
+                                            If oTrigpointCache.Invalidated Then
+                                                With oTrigpointCache
+                                                    'linee di traslazione
+                                                    If Not PaintOptions.IsDesign AndAlso PaintOptions.DrawTranslation AndAlso PaintOptions.TranslationsOptions.DrawTranslationsLine AndAlso oTranslationTrigPoint.Count > 1 AndAlso oTrigPoint.DrawTranslationsLine Then
+                                                        Dim oFromPoint As PointF = oTranslationTrigPoint(0)
+                                                        Dim i As Integer = 1
+                                                        Do While i < oTranslationTrigPoint.Count
+                                                            oCacheItem = .Add(cDrawCacheItem.cDrawCacheItemType.Border)
+                                                            Dim oToPoint As PointF = oTranslationTrigPoint(i)
+                                                            If (sTTH = 0 OrElse modPaint.DistancePointToPoint(oToPoint, oFromPoint) > sTTH) Then
+                                                                If (oToPoint.X <> oFromPoint.X) AndAlso (oToPoint.Y <> oFromPoint.Y) Then
+                                                                    Dim oMidPoint As PointF = New PointF(oFromPoint.X, oToPoint.Y)
+                                                                    Call oCacheItem.SetPen(oDrawingObject.TranslationPen)
+                                                                    Call oCacheItem.AddLine(oFromPoint, oMidPoint)
+                                                                    Call oCacheItem.AddLine(oMidPoint, oToPoint)
+                                                                Else
+                                                                    Call oCacheItem.SetPen(oDrawingObject.TranslationPen)
+                                                                    Call oCacheItem.AddLine(oFromPoint, oToPoint)
+                                                                End If
+                                                                i += 1
                                                             Else
-                                                                Call oCacheItem.SetPen(oDrawingObject.TranslationPen)
-                                                                Call oCacheItem.AddLine(oFromPoint, oToPoint)
+                                                                Call oTranslationTrigPoint.Remove(oToPoint)
                                                             End If
-                                                            i += 1
-                                                        Else
-                                                            Call oTranslationTrigPoint.Remove(oToPoint)
-                                                        End If
-                                                    Loop
-                                                End If
-
-                                                For Each oPoint As PointF In oTranslationTrigPoint
-                                                    If oTrigPoint.IsEntrance Then
-                                                        Call RenderEntrancePoint(Graphics, PaintOptions, oPoint, oTrigpointCache, oTrigPoint.ShowEntrance)
+                                                        Loop
                                                     End If
-                                                    If PaintOptions.DrawHighlights Then
-                                                        For Each sID As String In PaintOptions.HighlightsOptions
-                                                            If oSurvey.Properties.HighlightsDetails.Contains(sID) Then
-                                                                With oSurvey.Properties.HighlightsDetails(sID)
-                                                                    If .ApplyTo = Properties.cHighlightsDetail.ApplyToEnum.Stations Then
-                                                                        Dim oMeters As Properties.cHighlightsDetailMeters = .GetMetres
-                                                                        If .GetScript.Eval("GetHighlight", {New Properties.cStationHighlightDetails(oSurvey, oTrigPoint, oMeters)}) Then
-                                                                            Call modRender.RenderHighlightStation(Graphics, PaintOptions, oPoint, oTrigpointCache, oMeters)
+
+                                                    For Each oPoint As PointF In oTranslationTrigPoint
+                                                        If oTrigPoint.IsEntrance Then
+                                                            Call RenderEntrancePoint(Graphics, PaintOptions, oPoint, oTrigpointCache, oTrigPoint.ShowEntrance)
+                                                        End If
+                                                        If PaintOptions.DrawHighlights Then
+                                                            For Each sID As String In PaintOptions.HighlightsOptions
+                                                                If oSurvey.Properties.HighlightsDetails.Contains(sID) Then
+                                                                    With oSurvey.Properties.HighlightsDetails(sID)
+                                                                        If .ApplyTo = Properties.cHighlightsDetail.ApplyToEnum.Stations Then
+                                                                            Dim oMeters As Properties.cHighlightsDetailMeters = .GetMetres
+                                                                            If .GetScript.Eval("GetHighlight", {New Properties.cStationHighlightDetails(oSurvey, oTrigPoint, oMeters)}) Then
+                                                                                Call modRender.RenderHighlightStation(Graphics, PaintOptions, oPoint, oTrigpointCache, oMeters)
+                                                                            End If
                                                                         End If
-                                                                    End If
-                                                                End With
-                                                            End If
-                                                        Next
-                                                    End If
+                                                                    End With
+                                                                End If
+                                                            Next
+                                                        End If
 
-                                                    'point and point name
-                                                    If pCheckLabelInSamePosition(oLabelInSamePosition, oPoint) Then
-                                                        If (oTranslationTrigPoint.Count > 1 AndAlso PaintOptions.DrawTranslation AndAlso oTrigPoint.DrawTranslationsLine) OrElse (PaintOptions.DrawPlot AndAlso PaintOptions.DrawPoints) OrElse (PaintOptions.DrawDesign AndAlso PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
-                                                            If oTrigPoint Is oCurrentTrigpoint Then
-                                                                Call RenderTrigPoint(Graphics, PaintOptions, oTrigPoint, oPoint, oDrawingObject.SelectedPointSize, oDrawingObject.SelectedPointBrush, oDrawingObject.SelectedPointPen, oTrigpointCache)
-                                                            Else
-                                                                Call RenderTrigPoint(Graphics, PaintOptions, oTrigPoint, oPoint, oDrawingObject.PointSize, oDrawingObject.PointBrush, oDrawingObject.PointPen, oTrigpointCache)
+                                                        'point and point name
+                                                        If pCheckLabelInSamePosition(oLabelInSamePosition, oPoint) Then
+                                                            If (oTranslationTrigPoint.Count > 1 AndAlso PaintOptions.DrawTranslation AndAlso oTrigPoint.DrawTranslationsLine) OrElse (PaintOptions.DrawPlot AndAlso PaintOptions.DrawPoints) OrElse (PaintOptions.DrawDesign AndAlso PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
+                                                                If oTrigPoint Is oCurrentTrigpoint Then
+                                                                    Call RenderTrigPoint(Graphics, PaintOptions, oTrigPoint, oPoint, oDrawingObject.SelectedPointSize, oDrawingObject.SelectedPointBrush, oDrawingObject.SelectedPointPen, oTrigpointCache)
+                                                                Else
+                                                                    Call RenderTrigPoint(Graphics, PaintOptions, oTrigPoint, oPoint, oDrawingObject.PointSize, oDrawingObject.PointBrush, oDrawingObject.PointPen, oTrigpointCache)
+                                                                End If
+                                                            End If
+                                                            If PaintOptions.ShowPointText Then
+                                                                If (PaintOptions.DrawPlot) OrElse (PaintOptions.DrawDesign AndAlso PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
+                                                                    Call RenderTrigPointName(Graphics, PaintOptions, oTrigPoint, oPoint, oTrigpointCache)
+                                                                End If
                                                             End If
                                                         End If
-                                                        If PaintOptions.ShowPointText Then
-                                                            If (PaintOptions.DrawPlot) OrElse (PaintOptions.DrawDesign AndAlso PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
-                                                                Call RenderTrigPointName(Graphics, PaintOptions, oTrigPoint, oPoint, oTrigpointCache)
-                                                            End If
-                                                        End If
-                                                    End If
-                                                Next
-                                                Call oDrawedTrigPoint.Add(oTranslationTrigPoint.Name)
-                                                .Rendered()
-                                            End With
+                                                    Next
+                                                    Call oDrawedTrigPoint.Add(oTranslationTrigPoint.Name)
+                                                    .Rendered()
+                                                End With
+                                            End If
                                         End If
                                     End If
                                 End If

@@ -368,6 +368,12 @@
     <Compile Include="Calculate\cCalculate.Plot.cSplayProfileProjectedDatas.vb" />
     <Compile Include="Calculate\cCalculate.Plot.cSplayPlanProjectedDatas.vb" />
     <Compile Include="Calculate\cCalculate.Plot.cSplayPlanProjectedData.vb" />
+    <Compile Include="cItemChunk3D.vb" />
+    <Compile Include="cLayer3D.vb" />
+    <Compile Include="cLayerChunk3D.vb" />
+    <Compile Include="cLayers3D.vb" />
+    <Compile Include="cModel3DHelper.vb" />
+    <Compile Include="cChunks3Ds.vb" />
     <Compile Include="cOptions.cSurfaceLochOptions.vb" />
     <Compile Include="cOptionsTherion.vb" />
     <Compile Include="cTherion.vb" />
@@ -420,6 +426,12 @@
     <Compile Include="frmSegmentsReplicateDataFieldEditor.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ItemPropertyControl\cItemChunk3DPropertyControl.Designer.vb">
+      <DependentUpon>cItemChunk3DPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemChunk3DPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="ItemPropertyControl\cItemCrossSectionMarkerPropertyControl.Designer.vb">
       <DependentUpon>cItemCrossSectionMarkerPropertyControl.vb</DependentUpon>
     </Compile>
@@ -443,6 +455,12 @@
     </Compile>
     <Compile Include="ItemPropertyControl\cItemPenStylePropertyControl.vb">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Specialized\cHolosItemView.xaml.vb">
+      <DependentUpon>cHolosItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cHolosItemEdit.xaml.vb">
+      <DependentUpon>cHolosItemEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Specialized\cPanelControl.Designer.vb">
       <DependentUpon>cPanelControl.vb</DependentUpon>
@@ -1635,6 +1653,12 @@
     <Compile Include="Specialized\cTrigpointsMultiselector.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Specialized\frmHolosItemEdit.Designer.vb">
+      <DependentUpon>frmHolosItemEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\frmHolosItemEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="cBorderFromSplay.it.resx">
@@ -1729,6 +1753,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ItemPropertyControl\cItemCaveBranchPropertyControl.en.resx">
       <DependentUpon>cItemCaveBranchPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemChunk3DPropertyControl.it.resx">
+      <DependentUpon>cItemChunk3DPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemChunk3DPropertyControl.resx">
+      <DependentUpon>cItemChunk3DPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemChunk3DPropertyControl.ru.resx">
+      <DependentUpon>cItemChunk3DPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ItemPropertyControl\cItemCrossSectionMarkerPropertyControl.en.resx">
       <DependentUpon>cItemCrossSectionMarkerPropertyControl.vb</DependentUpon>
@@ -3066,6 +3100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Specialized\cUndoDropDown.resx">
       <DependentUpon>cUndoDropDown.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\frmHolosItemEdit.resx">
+      <DependentUpon>frmHolosItemEdit.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -4825,6 +4862,7 @@
     <None Include="Resources\disconnected.svg" />
     <None Include="Resources\Actions_Arrow4Left.svg" />
     <None Include="Resources\Actions_Arrow4Right.svg" />
+    <None Include="Resources\actions_add1.svg" />
     <Content Include="Resources\Actions_Database.svg" />
     <None Include="Resources\csurvey_2.svg" />
     <Content Include="Resources\Bar.svg" />
@@ -4863,6 +4901,14 @@
     </FileAssociation>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Specialized\cHolosItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Specialized\cHolosItemEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Specialized\cHolosViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -28,6 +28,7 @@ Imports DevExpress.RichEdit.Export
 Imports DevExpress.Utils.Extensions
 Imports DevExpress.XtraBars.Ribbon
 Imports DevExpress.Utils
+Imports cSurveyPC.cSurvey.Design3D
 
 Friend Class frmMain2
     Private sZoomDefault As Single = 15.1181107F
@@ -1655,14 +1656,12 @@ Friend Class frmMain2
                 If .Splay Then
                     lblSegmentDirection.Enabled = False
                     cboSegmentDirection.Enabled = False
-                    'chkSegmentInverted.Enabled = False
                     chkSegmentUnbindable.Enabled = False
                     chkSegmentZSurvey.Enabled = False
                 Else
                     cboSegmentDirection.SelectedIndex = Segment.Direction
                     lblSegmentDirection.Enabled = bEnabledProfileEdit
                     cboSegmentDirection.Enabled = bEnabledProfileEdit
-                    'chkSegmentInverted.Enabled = bEnabled
                     chkSegmentUnbindable.Enabled = True
                     chkSegmentZSurvey.Enabled = True
                 End If
@@ -2240,11 +2239,13 @@ Friend Class frmMain2
                 Dim oTrigpoint As cTrigPoint = Args.SelectedItem
                 Call pTrigPointSelect(oTrigpoint, True, True)
                 Call pTrigpointItemSelect()
-            End If
-            If TypeOf Args.SelectedItem Is cSegment Then
+            ElseIf TypeOf Args.SelectedItem Is cSegment Then
                 Dim oSegment As cSegment = Args.SelectedItem
                 Call pSegmentSelect(oSegment, True, True)
                 Call pSegmentItemSelect()
+            ElseIf TypeOf Args.SelectedItem Is cItemChunk3D Then
+                Dim oChunk As cItemChunk3D = Args.SelectedItem
+                Call pGetCurrentDesignTools.SelectItem(oChunk)
             End If
         End If
     End Sub
@@ -4084,6 +4085,8 @@ Friend Class frmMain2
                     oPropScaleItems.Visible = False
                     oPropCompassItems.Visible = False
 
+                    oPropChunck3d.Visible = False
+
                     grpCurrentItemStation.SetVisible(False)
                     grpCurrentItemShot.SetVisible(True)
 
@@ -4153,6 +4156,8 @@ Friend Class frmMain2
                     End If
                     oPropCrossSectionSplayBorder.Visible = False
 
+                    oPropChunck3d.Visible = False
+
                     Call oPropObjectsBinding.Rebind(oCurrentItem)
                     oPropObjectsBinding.Visible = Not oSegment.Splay AndAlso (oCurrentDesign.Type = cIDesign.cDesignTypeEnum.Plan Or oCurrentDesign.Type = cIDesign.cDesignTypeEnum.Profile) AndAlso "" & oSegment.Cave <> ""
                 End With
@@ -4160,6 +4165,77 @@ Friend Class frmMain2
         End If
         'End If
         Call pPropPopupHide()
+    End Sub
+
+    Private Sub pPropertyItemChunck3D()
+        RibbonControl.Manager.BeginUpdate()
+
+        Dim bPropPopupShowed As Boolean
+        If Not oCurrentDesign Is Nothing Then
+            Dim oCurrentItem As cItem = pGetCurrentDesignTools.CurrentItem
+            Dim oCurrentMarkedDesktopPoint As cMarkedDesktopPoint = pGetCurrentDesignTools.CurrentMarkedDesktopPoint
+            If Not oCurrentItem Is Nothing Then
+                Dim bIsUnlocked As Boolean = True
+                'TODO: manage islocked for UI elements that can not be used in this context
+
+                With oCurrentItem
+                    grpCurrentItemLocation.Visible = False
+                    grpCurrentItemSize.SetVisible(False)
+                    btnItemsLayouts.SetVisible(False)
+                    btnCurrentItemSendCopyTo.Visibility = BarItemVisibility.Never
+                    btnCurrentItemConvertTo.Visibility = BarItemVisibility.Never
+                    grpCurrentItemRotate.SetVisible(False)
+                    grpCurrentItemAlign.SetVisible(False)
+                    grpCurrentItemShot.SetVisible(False)
+                    grpCurrentItemStation.SetVisible(False)
+                    btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
+
+                    Call oPropName.Rebind(oCurrentItem)
+                    oPropName.Visible = True
+                    oPropTransparency.Visible = False
+
+                    Call oPropCaveBranch.Rebind(oCurrentItem, Nothing)
+                    oPropCaveBranch.Visible = True
+                    oPropCategoryAndProperties.Visible = False
+                    oPropPenStyle.Visible = False
+                    oPropBrushStyle.Visible = False
+                    oPropImage.Visible = False
+                    oPropSegment.Visible = False
+                    oPropTrigpoint.Visible = False
+                    oPropMarker.Visible = False
+                    oPropPointSegmentBinding.Visible = False
+                    oPropSegmentBinding.Visible = False
+                    oPropSign.Visible = False
+                    oPropTextStyle.Visible = False
+                    oPropClipping.Visible = False
+                    oPropCrossSection.Visible = False
+                    oPropQuota.Visible = False
+                    oPropSketch.Visible = False
+                    oPropMergeMode.Visible = False
+                    oPropObjectsBinding.Visible = False
+                    oPropTrigpointsDistances.Visible = False
+
+                    oPropPlanSplayBorder.Visible = False
+                    oPropProfileSplayBorder.Visible = False
+                    oPropCrossSectionSplayBorder.Visible = False
+                    oPropCategoryAndProperties.Visible = False
+                    oPropCrossSectionMarker.Visible = False
+
+                    oPropVisibility.Visible = False
+                    oPropLineType.Visible = False
+                    oPropPointLineType.Visible = False
+
+                    oPropChunck3d.Visible = True
+
+                    btnCurrentItemLock.Visibility = BarItemVisibility.Never
+
+                    Call oPropChunck3d.Rebind(oCurrentItem)
+                End With
+            End If
+        End If
+        RibbonControl.Manager.EndUpdate()
+
+        If Not bPropPopupShowed Then pPropPopupHide()
     End Sub
 
     Private Sub pPropertyItemMarker()
@@ -4214,6 +4290,8 @@ Friend Class frmMain2
                     oPropVisibility.Visible = False
                     oPropLineType.Visible = False
                     oPropPointLineType.Visible = False
+
+                    oPropChunck3d.Visible = False
 
                     Dim oBounds As RectangleF = .GetBounds
                     Dim oLocation As PointF = oBounds.Location
@@ -4291,9 +4369,11 @@ Friend Class frmMain2
                 oPropScaleItems.Visible = False
                 oPropCompassItems.Visible = False
 
-                oPropVisibility.Visible = False
+                oPropVisibility.Visible = True
                 oPropLineType.Visible = False
                 oPropPointLineType.Visible = False
+
+                oPropChunck3d.Visible = False
 
                 oPropTrigpoint.Visible = True
                 oPropTrigpoint.Rebind(oCurrentItem)
@@ -4477,6 +4557,8 @@ Friend Class frmMain2
             oPropScaleItems.Visible = False
             oPropCompassItems.Visible = False
 
+            oPropChunck3d.Visible = False
+
             oPropVisibility.Visible = False
             oPropLineType.Visible = False
 
@@ -4631,6 +4713,8 @@ Friend Class frmMain2
                 Call pPropertyItemTrigpoint()
             ElseIf .Type = cIItem.cItemTypeEnum.Marker Then
                 Call pPropertyItemMarker()
+            ElseIf .Type = cIItem.cItemTypeEnum.Chunk3D Then
+                Call pPropertyItemChunck3D()
             Else
                 grpCurrentItemClipart.SetVisible(TypeOf oCurrentDesign Is cIItemClipart)
                 grpCurrentItemSign.SetVisible(TypeOf oCurrentItem Is cIItemSign)
@@ -4767,6 +4851,8 @@ Friend Class frmMain2
 
                 oPropPlanSplayBorder.Visible = False
                 oPropProfileSplayBorder.Visible = False
+
+                oPropChunck3d.Visible = False
 
                 If .HaveLineType Then
                     Call oPropLineType.Rebind(oCurrentItem, AddressOf pSequencesTo)
@@ -4926,6 +5012,8 @@ Friend Class frmMain2
         oPropVisibility.Visible = False
         oPropLineType.Visible = False
         oPropPointLineType.Visible = False
+
+        oPropChunck3d.Visible = False
 
         RibbonControl.Manager.EndUpdate()
 
@@ -5287,13 +5375,11 @@ Friend Class frmMain2
             If Not bDisableTrigpointsChangeEvent Then
                 Select Case Args.Action
                     Case cSurvey.cSurvey.TrigpointsChangeActionEnum.Change
-                        'Call pSurveyCalculate(False)
-                        'pSelectTrigpoint(Args.Trigpoint)
                         Call pGetCurrentTools.SelectTrigpoint(Args.Trigpoint)
-                        'Call pPropertyItemTrigpoint()
                     Case cSurvey.cSurvey.TrigpointsChangeActionEnum.Rebind
                         Call pSurveyTrigpointsGridSetup()
                 End Select
+                'Call pGetCurrentDesignTools.Design.Plot.Redraw(Args.Trigpoint)
             End If
         End If
     End Sub
@@ -7209,36 +7295,36 @@ Friend Class frmMain2
         oFrozenDesktop = oTempFrozenDesktop
     End Sub
 
-    Private Sub oPlanTools_OnFilterApplied(Sender As Object, ToolEventArgs As cEditDesignTools.cFilterEventArgs) Handles oPlanTools.OnFilterApplied
+    Private Sub oPlanTools_OnFilterApplied(Sender As Object, ToolEventArgs As cFilterEventArgs) Handles oPlanTools.OnFilterApplied
         Call pSurveyLayersFilterApply(True, ToolEventArgs.Refresh)
     End Sub
 
-    Private Sub oProfileTools_OnFilterApplied(Sender As Object, ToolEventArgs As cEditDesignTools.cFilterEventArgs) Handles oProfileTools.OnFilterApplied
+    Private Sub oProfileTools_OnFilterApplied(Sender As Object, ToolEventArgs As cFilterEventArgs) Handles oProfileTools.OnFilterApplied
         Call pSurveyLayersFilterApply(True, ToolEventArgs.Refresh)
     End Sub
 
-    Private Sub oPlanTools_OnItemDeleted(Sender As Object, ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnItemDeleted, oProfileTools.OnItemDeleted
+    Private Sub oPlanTools_OnItemDeleted(Sender As Object, ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnItemDeleted, oProfileTools.OnItemDeleted
         Call pGetCurrentDesignTools.CommitUndoSnapshot()
         Call pObjectPropertyLoad()
         Call pMapInvalidate()
     End Sub
 
-    Private Sub oPlanTools_OnItemPointDelete(Sender As Object, ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnItemPointDelete, oProfileTools.OnItemPointDelete
+    Private Sub oPlanTools_OnItemPointDelete(Sender As Object, ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnItemPointDelete, oProfileTools.OnItemPointDelete
         Call pMapInvalidate()
     End Sub
 
-    Private Sub oPlanTools_OnItemEdit(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnItemEdit, oProfileTools.OnItemEdit
+    Private Sub oPlanTools_OnItemEdit(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnItemEdit, oProfileTools.OnItemEdit
         picMap.Cursor = Cursors.Cross
         Call pFrozeDesktopImage()
         Call pObjectPropertyLoad()
     End Sub
 
-    Private Sub oPlanTools_OnItemPointEdit(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnItemPointEdit, oProfileTools.OnItemPointEdit
+    Private Sub oPlanTools_OnItemPointEdit(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnItemPointEdit, oProfileTools.OnItemPointEdit
         picMap.Cursor = Cursors.Cross
         Call pObjectPropertyLoad()
     End Sub
 
-    Private Sub oPlanTools_OnItemEnd(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnItemEnd, oProfileTools.OnItemEnd
+    Private Sub oPlanTools_OnItemEnd(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnItemEnd, oProfileTools.OnItemEnd
         Dim bValidItem As Boolean = Not ToolEventArgs.CurrentItem Is Nothing
         If Not oFrozenDesktop Is Nothing Then
             If bValidItem Then
@@ -7304,17 +7390,17 @@ Friend Class frmMain2
         Call pClipboardAlign()
     End Sub
 
-    Private Sub oPlanTools_OnItemCombine(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnItemCombine, oProfileTools.OnItemCombine
+    Private Sub oPlanTools_OnItemCombine(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnItemCombine, oProfileTools.OnItemCombine
         Call pMapInvalidate()
         Call pObjectPropertyLoad()
     End Sub
 
-    Private Sub oPlanTools_OnRefreshDesign(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnRefreshDesign, oProfileTools.OnRefreshDesign
+    Private Sub oPlanTools_OnRefreshDesign(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnRefreshDesign, oProfileTools.OnRefreshDesign
         Call pMapInvalidate()
         Call pClipboardAlign()
     End Sub
 
-    Private Sub oPlanTools_OnItemSelect(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnItemSelect, oProfileTools.OnItemSelect
+    Private Sub oPlanTools_OnItemSelect(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnItemSelect, oProfileTools.OnItemSelect
         Dim bThereIsAnItemSelected As Boolean = Not pGetCurrentDesignTools.CurrentItem Is Nothing
         If bThereIsAnItemSelected AndAlso Not bUndoRestore Then pGetCurrentDesignTools.CreateSelectionSnaphot()
         btnZoomZoomToSelection.Enabled = bThereIsAnItemSelected
@@ -7324,7 +7410,7 @@ Friend Class frmMain2
         Call pClipboardAlign()
     End Sub
 
-    Private Sub oPlanTools_OnLayerSelect(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnLayerSelect, oProfileTools.OnLayerSelect
+    Private Sub oPlanTools_OnLayerSelect(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnLayerSelect, oProfileTools.OnLayerSelect
         Select Case ToolEventArgs.CurrentLayer.Type
             Case cLayers.LayerTypeEnum.Base
                 If Not btnLayer_Base.Checked Then
@@ -7365,7 +7451,7 @@ Friend Class frmMain2
         End If
     End Sub
 
-    Private Sub oPlanTools_OnItemPointEnd(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnItemPointEnd, oProfileTools.OnItemPointEnd
+    Private Sub oPlanTools_OnItemPointEnd(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnItemPointEnd, oProfileTools.OnItemPointEnd
         Call pUndoRefresh()
         Call pMapInvalidate()
         Call pObjectPropertyLoad()
@@ -7522,6 +7608,8 @@ Friend Class frmMain2
             Catch
             End Try
         ElseIf picMap.Focused Then
+            Call pDesignItemDelete()
+        ElseIf h3D.Focused Then
             Call pDesignItemDelete()
         End If
         Call pStatusSet(GetLocalizedString("main.textpart6"))
@@ -8281,7 +8369,7 @@ Friend Class frmMain2
         Return sHash = sNewHash
     End Function
 
-    Private Sub oProfileTools_OnLayerSelect(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oProfileTools.OnLayerSelect
+    Private Sub oProfileTools_OnLayerSelect(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs) Handles oProfileTools.OnLayerSelect
         Select Case ToolEventArgs.CurrentLayer.Type
             Case cLayers.LayerTypeEnum.Base
                 If Not btnLayer_Base.Checked Then
@@ -9142,72 +9230,6 @@ Friend Class frmMain2
         End If
     End Sub
 
-    'Private Sub cmdPropParent_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPropParent.Click
-    '    Call pGetCurrentDesignTools.EndPoint()
-    'End Sub
-
-    'Private Sub mnuLayersAndItemsProperty_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuLayersAndItemsProperty.Click
-    '    If TypeOf tvLayers2.SelectedObject Is cLayer Then
-    '    ElseIf TypeOf tvLayers2.SelectedObject Is cItem Then
-    '        Dim oItem As cItem = tvLayers2.SelectedObject
-    '        Call pGetCurrentDesignTools.SelectItem(oItem)
-    '        Call pMapInvalidate()
-    '        Call pObjectPropShow(True)
-    '        Call tabObjectProp.SelectTab(tabObjectPropMain)
-    '    End If
-    'End Sub
-
-    'Private Sub mnuLayersAndItemsRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuLayersAndItemsRefresh.Click
-    '    Call pSurveyLoadTreeLayers()
-    'End Sub
-
-    'Private Sub mnuLayersAndItemsExpand_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuLayersAndItemsExpand.Click
-    '    If Not IsNothing(tvLayers2.FocusedItem) Then
-    '        Call tvLayers2.Expand(tvLayers2.FocusedObject)
-    '    End If
-    'End Sub
-
-    'Private Sub pSurveyLayersCollapse()
-    '    Call oDockLevels.CollapseAll()
-    'End Sub
-
-    'Private Sub pSurveyLayersExpand()
-    '    Call oDockLevels.ExpandAll()
-    'End Sub
-
-    'Private Sub tvLayers_NodeMouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.TreeNodeMouseClickEventArgs)
-    '    If e.Node.Name Like "item:*" Then
-    '        Dim oItem As cItem = e.Node.Tag
-    '        If oItem.Deleted Then
-    '            With e.Node
-    '                .ImageKey = "cross"
-    '                .StateImageKey = "cross"
-    '                .SelectedImageKey = "cross"
-    '            End With
-    '        End If
-    '    End If
-    '    If e.Node.Name Like "layer:*" Then
-    '        '?
-    '    End If
-    'End Sub
-
-    'Private Sub tvLayers_NodeMouseDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.TreeNodeMouseClickEventArgs)
-    '    If e.Node.Name Like "item:*" Then
-    '        Dim oItem As cItem = e.Node.Tag
-    '        If Not oItem.Deleted Then
-    '            Call pGetCurrentDesignTools.SelectItem(oItem)
-    '            If My.Computer.Keyboard.CtrlKeyDown Then
-    '                Call pMapCenterAndFitSelection()
-    '            End If
-    '            Call pMapInvalidate()
-    '        End If
-    '    End If
-    '    If e.Node.Name Like "layer:*" Then
-    '        Dim oLayer As cLayer = e.Node.Tag
-    '        Call pGetCurrentDesignTools.SelectLayer(oLayer)
-    '    End If
-    'End Sub
-
     Private Delegate Sub pSurveyHighlightCurrentCaveDelegate(ForceRefresh As Boolean)
     Private Sub pSurveyHighlightCurrentCave(ForceRefresh As Boolean)
         If InvokeRequired Then
@@ -9901,17 +9923,46 @@ Friend Class frmMain2
                         btnPaste.Enabled = bEnabled
                     End If
                 Case Else
-                    btnDesignSetCurrentCaveBranch.Enabled = False
+                    If oCurrentDesign Is Nothing Then
+                        btnDesignSetCurrentCaveBranch.Enabled = False
 
-                    btnCut.Enabled = False
-                    btnCopy.Enabled = False
+                        btnCut.Enabled = False
+                        btnCopy.Enabled = False
 
-                    btnPasteService.Enabled = False
-                    btnPaste.Enabled = False
-                    btnPasteService.ActAsDropDown = False
-                    btnPasteService.ButtonStyle = BarButtonStyle.Default
+                        btnPasteService.Enabled = False
+                        btnPaste.Enabled = False
+                        btnPasteService.ActAsDropDown = False
+                        btnPasteService.ButtonStyle = BarButtonStyle.Default
 
-                    btnDelete.Enabled = False
+                        btnDelete.Enabled = False
+                    Else
+                        Dim oItem As cItem = pGetCurrentDesignTools.CurrentItem
+                        If TypeOf oItem Is cItemChunk3D Then
+                            btnDesignSetCurrentCaveBranch.Enabled = False
+
+                            btnCut.Enabled = False
+                            btnCopy.Enabled = False
+
+                            btnPasteService.Enabled = False
+                            btnPaste.Enabled = False
+                            btnPasteService.ActAsDropDown = False
+                            btnPasteService.ButtonStyle = BarButtonStyle.Default
+
+                            btnDelete.Enabled = oItem.CanBeDeleted
+                        Else
+                            btnDesignSetCurrentCaveBranch.Enabled = False
+
+                            btnCut.Enabled = False
+                            btnCopy.Enabled = False
+
+                            btnPasteService.Enabled = False
+                            btnPaste.Enabled = False
+                            btnPasteService.ActAsDropDown = False
+                            btnPasteService.ButtonStyle = BarButtonStyle.Default
+
+                            btnDelete.Enabled = False
+                        End If
+                    End If
             End Select
         Catch
         End Try
@@ -13209,6 +13260,7 @@ Friend Class frmMain2
     Private oPropSegmentBinding As cItemSegmentBindingPropertyControl
     Private oPropObjectsBinding As cItemObjectsBindingPropertyControl
     Private oPropTrigpointsDistances As cItemTrigpointDistancesPropertyControl
+    Private oPropChunck3d As cItemChunk3DPropertyControl
 
     Private WithEvents oPropPointSegmentBindingContainer As cCollapsablePropertyControlContainer
     Private WithEvents oPropSegmentBindingContainer As cCollapsablePropertyControlContainer
@@ -13487,6 +13539,9 @@ Friend Class frmMain2
         Call pUIAppendItemPropertyControl(oPropProfileSplayBorder, 250)
         oPropCrossSectionSplayBorder = New cItemCrossSectionSplayPropertyControl
         Call pUIAppendItemPropertyControl(oPropCrossSectionSplayBorder, 268)
+
+        oPropChunck3d = New cItemChunk3DPropertyControl
+        Call pUIAppendItemPropertyControl(oPropChunck3d, 360)
 
         Dim oSeparator As cCollapsablePropertySeparator = New cCollapsablePropertySeparator
         pnlObjectProp.Controls.Add(oSeparator)
@@ -15099,11 +15154,11 @@ Friend Class frmMain2
         Call pMapInvalidate()
     End Sub
 
-    Private Sub oTools_OnMarkedDesktopPointGetPaintInfo(Sender As Object, Args As cEditDesignTools.cMarkedDesktopPointPaintInfoEventArgs) Handles oPlanTools.OnMarkedDesktopPointGetPaintInfo, oProfileTools.OnMarkedDesktopPointGetPaintInfo
+    Private Sub oTools_OnMarkedDesktopPointGetPaintInfo(Sender As Object, Args As cMarkedDesktopPointPaintInfoEventArgs) Handles oPlanTools.OnMarkedDesktopPointGetPaintInfo, oProfileTools.OnMarkedDesktopPointGetPaintInfo
         Args.Scale = sPaintZoom
     End Sub
 
-    Private Sub oTools_OnMarkedDesktopPointMove(Sender As Object, Args As cEditDesignTools.cMarkedDesktopPointMoveEventArgs) Handles oPlanTools.OnMarkedDesktopPointMove, oProfileTools.OnMarkedDesktopPointMove
+    Private Sub oTools_OnMarkedDesktopPointMove(Sender As Object, Args As cMarkedDesktopPointMoveEventArgs) Handles oPlanTools.OnMarkedDesktopPointMove, oProfileTools.OnMarkedDesktopPointMove
         Call pCurrentMarkedDesktopPointSet(Args.NewPoint)
     End Sub
 
@@ -15141,7 +15196,7 @@ Friend Class frmMain2
         Call pSurveyMainPropertiesPanelsRefresh()
     End Sub
 
-    Private Sub o3DTools_OnItemSelect(Sender As Object, ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles o3DTools.OnItemSelect
+    Private Sub o3DTools_OnItemSelect(Sender As Object, ToolEventArgs As cEditDesignToolsEventArgs) Handles o3DTools.OnItemSelect
         btnZoomZoomToSelection.Enabled = False
 
         Call pObjectPropertyDelayedLoad()
@@ -15263,7 +15318,7 @@ Friend Class frmMain2
         Call pMapInvalidate()
     End Sub
 
-    Private Sub o3DTools_OnCaveBranchSelect(Sender As Object, ToolEventArgs As cEditDesignTools.cCaveBranchSelectEventArgs) Handles o3DTools.OnCaveBranchSelect
+    Private Sub o3DTools_OnCaveBranchSelect(Sender As Object, ToolEventArgs As cCaveBranchSelectEventArgs) Handles o3DTools.OnCaveBranchSelect
         If Not bDisabledCaveBranchChangeEvent Then
             Call pSurveyHighlightCurrentCave(False)
             Call pSurveySetCurrentCaveBranch(o3DTools.CurrentCave, o3DTools.CurrentBranch)
@@ -15272,7 +15327,7 @@ Friend Class frmMain2
         End If
     End Sub
 
-    Private Sub oPlanTools_OnCaveBranchSelect(Sender As Object, ToolEventArgs As cEditDesignTools.cCaveBranchSelectEventArgs) Handles oPlanTools.OnCaveBranchSelect
+    Private Sub oPlanTools_OnCaveBranchSelect(Sender As Object, ToolEventArgs As cCaveBranchSelectEventArgs) Handles oPlanTools.OnCaveBranchSelect
         If Not bDisabledCaveBranchChangeEvent Then
             Call pSurveyHighlightCurrentCave(False)
             Call pSurveySetCurrentCaveBranch(oPlanTools.CurrentCave, oPlanTools.CurrentBranch)
@@ -15289,7 +15344,7 @@ Friend Class frmMain2
         btnSegmentDelete.Enabled = bEnabled
     End Sub
 
-    Private Sub oProfileTools_OnCaveBranchSelect(Sender As Object, ToolEventArgs As cEditDesignTools.cCaveBranchSelectEventArgs) Handles oProfileTools.OnCaveBranchSelect
+    Private Sub oProfileTools_OnCaveBranchSelect(Sender As Object, ToolEventArgs As cCaveBranchSelectEventArgs) Handles oProfileTools.OnCaveBranchSelect
         If Not bDisabledCaveBranchChangeEvent Then
             Call pSurveyHighlightCurrentCave(False)
             Call pSurveySetCurrentCaveBranch(oProfileTools.CurrentCave, oProfileTools.CurrentBranch)
@@ -15572,7 +15627,7 @@ Friend Class frmMain2
     'Private Sub mnuAliases_Opening(sender As Object, e As CancelEventArgs)
     '    'mnuAliasesRemove.Enabled = (Not IsNothing(grdTrigPointAliases.CurrentRow) AndAlso Not grdTrigPointAliases.CurrentRow.IsNewRow)
     'End Sub
-    Private Sub oProfileTools_OnChangeDesign(Sender As Object, ChangeDesignEventArgs As cEditDesignTools.cChangeDesignEventArgs) Handles oProfileTools.OnChangeDesign
+    Private Sub oProfileTools_OnChangeDesign(Sender As Object, ChangeDesignEventArgs As cChangeDesignEventArgs) Handles oProfileTools.OnChangeDesign
         Select Case ChangeDesignEventArgs.NewTool.Design.Type
             Case cIDesign.cDesignTypeEnum.Plan
                 Call pSurveyShowPlan()
@@ -15583,7 +15638,7 @@ Friend Class frmMain2
         End Select
     End Sub
 
-    Private Sub oPlanTools_OnChangeDesign(Sender As Object, ChangeDesignEventArgs As cEditDesignTools.cChangeDesignEventArgs) Handles oPlanTools.OnChangeDesign
+    Private Sub oPlanTools_OnChangeDesign(Sender As Object, ChangeDesignEventArgs As cChangeDesignEventArgs) Handles oPlanTools.OnChangeDesign
         Select Case ChangeDesignEventArgs.NewTool.Design.Type
             Case cIDesign.cDesignTypeEnum.Plan
                 Call pSurveyShowPlan()
@@ -19503,7 +19558,7 @@ Friend Class frmMain2
         Call pUndoRefresh()
     End Sub
 
-    Private Sub oPlanTools_OnItemDelete(Sender As Object, ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnItemDelete, oProfileTools.OnItemDelete
+    Private Sub oPlanTools_OnItemDelete(Sender As Object, ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnItemDelete, oProfileTools.OnItemDelete
         Call pGetCurrentDesignTools.BeginUndoSnapshot("Delete item", {ToolEventArgs.CurrentItem})
     End Sub
 
@@ -19535,6 +19590,10 @@ Friend Class frmMain2
 
     Private Sub cboMainBindCrossSections_QueryPopUp(sender As Object, e As CancelEventArgs) Handles cboMainBindCrossSections.QueryPopUp
         cboMainBindCrossSections.PopupView.RefreshData()
+    End Sub
+
+    Private Sub o3DTools_OnItemDelete(Sender As Object, ToolEventArgs As cEditDesignToolsEventArgs) Handles o3DTools.OnItemDelete
+        Call oHolos.DeleteChunk(DirectCast(ToolEventArgs.CurrentItem, cItemChunk3D))
     End Sub
 End Class
 

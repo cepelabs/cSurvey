@@ -192,6 +192,9 @@ Friend Class frmScaleRules
         Call pSetDesignNumericValue(DesignProperties, "BaseLightLinesScaleFactor", 1, txtBaseLightLinesScaleFactor)
         Call pSetDesignNumericValue(DesignProperties, "BaseUltraLightLinesScaleFactor", 0.3, txtBaseUltraLightLinesScaleFactor)
         Call pSetDesignNumericValue(DesignProperties, "BaseGeologyLinesScaleFactor", 0.3, txtBaseGeologyLinesScaleFactor)
+
+        Call pSetDesignNumericValue(DesignProperties, "BrushLinesScaleFactor", 0.1, txtBaseBrushLinesScaleFactor)
+
         'clipart, simboli e testo
         Call pSetDesignNumericValue(DesignProperties, "DesignSoilScaleFactor", 1, txtDesignSoilScaleFactor)
         Call pSetDesignNumericValue(DesignProperties, "DesignTextureScaleFactor", 0.2, txtDesignTextureScaleFactor)
@@ -256,7 +259,7 @@ Friend Class frmScaleRules
 
     Private Sub pSaveRule(DesignProperties As cPropertiesCollection)
         With DesignProperties
-            .Clear()
+            Call .Clear()
 
             If txtBaseLineWidthScaleFactor.Enabled Then Call DesignProperties.SetValue("BaseLineWidthScaleFactor", txtBaseLineWidthScaleFactor.Value)
             If txtBaseHeavyLinesScaleFactor.Enabled Then Call DesignProperties.SetValue("BaseHeavyLinesScaleFactor", txtBaseHeavyLinesScaleFactor.Value)
@@ -264,6 +267,8 @@ Friend Class frmScaleRules
             If txtBaseLightLinesScaleFactor.Enabled Then Call DesignProperties.SetValue("BaseLightLinesScaleFactor", txtBaseLightLinesScaleFactor.Value)
             If txtBaseUltraLightLinesScaleFactor.Enabled Then Call DesignProperties.SetValue("BaseUltraLightLinesScaleFactor", txtBaseUltraLightLinesScaleFactor.Value)
             If txtBaseGeologyLinesScaleFactor.Enabled Then Call DesignProperties.SetValue("BaseGeologyLinesScaleFactor", txtBaseGeologyLinesScaleFactor.Value)
+
+            If txtBaseBrushLinesScaleFactor.Enabled Then Call DesignProperties.SetValue("BrushLinesScaleFactor", txtBaseBrushLinesScaleFactor.Value)
 
             If txtDesignSoilScaleFactor.Enabled Then Call DesignProperties.SetValue("DesignSoilScaleFactor", txtDesignSoilScaleFactor.Value)
             If txtDesignTextureScaleFactor.Enabled Then Call DesignProperties.SetValue("DesignTextureScaleFactor", txtDesignTextureScaleFactor.Value)
@@ -324,25 +329,6 @@ Friend Class frmScaleRules
             End With
         End If
     End Sub
-
-    'Private Class cScaleRuleListViewComparer
-    '    Implements IComparer
-    '    Private iColumnIndex As Integer
-    '    Private iSortOrder As SortOrder
-
-    '    Public Sub New(ByVal ColumnIndex As Integer, ByVal SortOrder As SortOrder)
-    '        iColumnIndex = 1
-    '        iSortOrder = SortOrder.Ascending
-    '    End Sub
-
-    '    Public Function Compare(ByVal x As Object, ByVal y As Object) As Integer Implements System.Collections.IComparer.Compare
-    '        Dim oItemX As ListViewItem = DirectCast(x, ListViewItem)
-    '        Dim sX As String = oItemX.SubItems(iColumnIndex).Text
-    '        Dim oItemY As ListViewItem = DirectCast(y, ListViewItem)
-    '        Dim sY As String = oItemY.SubItems(iColumnIndex).Text
-    '        Return String.Compare(sX, sY)
-    '    End Function
-    'End Class
 
     Public Enum EditStyleEnum
         ScaleRule = 0
@@ -444,45 +430,11 @@ Friend Class frmScaleRules
                 Call pLoadRule(oDesignProperties)
             Case EditStyleEnum.ScaleRule
                 Call tvScales_FocusedNodeChanged(tvScales, New DevExpress.XtraTreeList.FocusedNodeChangedEventArgs(tvScales.FocusedNode, tvScales.FocusedNode))
-                'Call lv.Items.Clear()
-                'For Each oScaleRule As cScaleRule In oScaleRules
-                '    Dim oItem As ListViewItem = New ListViewItem
-                '    oItem.Name = oScaleRule.Scale
-                '    oItem.Text = GetLocalizedString("scalerules.textpart1") & " 1:" & Strings.Format(oScaleRule.Scale, "#,##0")
-                '    oItem.ImageIndex = 0
-                '    oItem.Tag = oScaleRule
-                '    Call oItem.SubItems.Add(Strings.Format(oScaleRule.Scale, "00000"))
-                '    Call lv.Items.Add(oItem)
-                'Next
-                'If lv.Items.Count > 0 Then
-                '    lv.Items(0).Selected = True
-                'End If
-                'Call lv_SelectedIndexChanged(lv, EventArgs.Empty)
         End Select
     End Sub
 
     Private Sub btnRemove_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRemove.ItemClick
         DirectCast(tvScales.DataSource, UIHelpers.cScaleRulescBindingList).Remove(tvScales.GetFocusedObject.scale)
-        'Try
-        '    Dim oItem As ListViewItem = lv.SelectedItems(0)
-        '    Dim iIndex As Integer = oItem.Index
-        '    Dim oScaleRule As cScaleRule = oItem.Tag
-        '    Call oScaleRules.Remove(oScaleRule)
-        '    Call oItem.Remove()
-        '    Try
-        '        Dim iNewIndex As Integer
-        '        If iIndex > 0 Then
-        '            iNewIndex = iIndex - 1
-        '        End If
-        '        Dim oNewItem As ListViewItem = lv.Items(iNewIndex)
-        '        oNewItem.Selected = True
-        '        oNewItem.Focused = True
-        '        Call pLoadRule(oNewItem.Tag)
-        '    Catch
-        '    End Try
-        '    'Call lv_SelectedIndexChanged(lv, EventArgs.Empty)
-        'Catch
-        'End Try
     End Sub
 
     Private Sub cmdOk_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdOk.Click

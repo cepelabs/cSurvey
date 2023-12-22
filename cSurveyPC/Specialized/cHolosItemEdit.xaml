@@ -10,18 +10,14 @@
         <ht:LinearConverter x:Key="Multiplier" M="0.5"/>
     </UserControl.Resources>
     <DockPanel>
-            <StatusBar DockPanel.Dock="Bottom">
-                <TextBlock Text="{Binding Value, ElementName=planeManipulator, StringFormat='{}{0:0.000}'}"/>
-            </StatusBar>
-
         <ht:HelixViewport3D Name="mainViewport" ShowCoordinateSystem="True" Camera="{ht:PerspectiveCamera 0,-10,10}" ZoomExtentsWhenLoaded="True">
             <ht:SunLight/>
 
-            <ht:CubeVisual3D x:Name="cube_station1" Transform="{ht:Translate 0,-3,0}" Fill="#B2CD7F32"/>
-            <ht:CombinedManipulator CanRotateX="false" CanRotateY="false" CanRotateZ="False" TargetTransform="{Binding Transform, ElementName=cube_station1}"/>
+            <ht:CubeVisual3D x:Name="cube_station1" Transform="{ht:Translate 0,3,0}" Fill="#B24CCD32"/>
+            <ht:CombinedManipulator x:Name="cube_station1_manipulator" CanRotateX="false" CanRotateY="false" CanRotateZ="False" TargetTransform="{Binding Transform, ElementName=cube_station1}"/>
 
-            <ht:CubeVisual3D x:Name="cube_station2" Transform="{ht:Translate 0,+3,0}" Fill="#B2CD7F32"/>
-            <ht:CombinedManipulator CanRotateX="false" CanRotateY="False" CanRotateZ="False" TargetTransform="{Binding Transform, ElementName=cube_station2}"/>
+            <ht:CubeVisual3D x:Name="cube_station2" Transform="{ht:Translate 0,-3,0}" Fill="#B2EA2E04"/>
+            <ht:CombinedManipulator x:Name="cube_station2_manipulator" CanRotateX="false" CanRotateY="False" CanRotateZ="False" TargetTransform="{Binding Transform, ElementName=cube_station2}"/>
 
             <ht:CubeVisual3D x:Name="cube_station3" Transform="{ht:Translate 0,0,0}" Fill="#B2C0C0C0"/>
             <ht:CombinedManipulator CanRotateX="false" CanRotateY="true" CanRotateZ="False" CanTranslateX="False" CanTranslateY="False" CanTranslateZ="False" TargetTransform="{Binding Transform, ElementName=cube_station3}"/>

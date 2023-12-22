@@ -1,18 +1,95 @@
-﻿Imports cSurveyPC.cSurvey.Drawings
-
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView
+Imports System.Windows.Media.Media3D
 Imports System.Xml
-Imports System.Drawing
-Imports System.Drawing.Drawing2D
-Imports cSurveyPC.cSurvey.Calculate
-Imports cSurveyPC.cSurvey.Calculate.Plot
-Imports DevExpress.XtraEditors.TextEdit
+Imports cSurveyPC.cSurvey.Design3D
+Imports HelixToolkit.Wpf
 
 Namespace cSurvey.Design.Items
-    Public Class cItemTrigpoint
+    Public Class cItemChunk3D
         Inherits cItem
-        Implements cIItemTrigpoint
 
-        Private oTrigPoint As cTrigPoint
+        Private sID As String
+
+        Private oModelFiles As cModelFiles3D
+
+        Private oStations As cModelStations3D
+
+        Private oModel As Model3DGroup
+        Private oModelTransform As cTransform3D
+
+        Public Function IsValid() As Boolean
+            Return oStations.IsValid
+        End Function
+
+        Public ReadOnly Property ModelTransform() As cTransform3D
+            Get
+                Return oModelTransform
+            End Get
+        End Property
+
+        Public ReadOnly Property ModelFiles As cModelFiles3D
+            Get
+                Return oModelFiles
+            End Get
+        End Property
+
+        Public ReadOnly Property Stations As cModelStations3D
+            Get
+                Return oStations
+            End Get
+        End Property
+
+        Friend ReadOnly Property GetModel As Model3DGroup
+            Get
+                If oModel Is Nothing Then
+                    Dim sTempPath As String = oModelFiles.WriteAll(IO.Path.GetTempPath)
+                    Dim oM As ModelImporter = New ModelImporter
+                    oModel = oM.Load(IO.Path.Combine(sTempPath, oModelFiles.MainFile))
+                End If
+                Return oModel
+            End Get
+        End Property
+
+        Public ReadOnly Property ID As String
+            Get
+                Return sID
+            End Get
+        End Property
+
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign3D, ByVal Layer As cLayer3D, ByVal File As cFile, ByVal Item As XmlElement)
+            Call MyBase.New(Survey, Design, Layer, File, Item)
+            sID = Item.GetAttribute("id")
+
+            oModelFiles = New cModelFiles3D(Me, File, Item.Item("files"))
+
+            oStations = New cModelStations3D(MyBase.Survey, Item.Item("stations"))
+            oModelTransform = New cTransform3D(MyBase.Survey, Item.Item("t"))
+        End Sub
+
+        Public Sub New(Survey As cSurvey, Design As cDesign3D, ByVal Layer As cLayer3D, Category As cIItem.cItemCategoryEnum, Filename As String)
+            Call MyBase.New(Survey, Design, Design.Layers(cLayers.LayerTypeEnum.Base), cIItem.cItemTypeEnum.Chunk3D, Category)
+
+            sID = Guid.NewGuid.ToString
+
+            oModelFiles = New cModelFiles3D(Me, Filename)
+
+            oStations = New cModelStations3D(MyBase.Survey)
+            oModelTransform = New cTransform3D(MyBase.Survey)
+        End Sub
+
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+            Dim oXmlItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
+
+            oXmlItem.SetAttribute("id", sID)
+
+            Call oModelFiles.SaveTo(File, Document, oXmlItem, Options)
+            Call oStations.SaveTo(File, Document, oXmlItem)
+            Call oModelTransform.SaveTo(File, Document, oXmlItem)
+
+            Call Parent.AppendChild(oXmlItem)
+            Return oXmlItem
+        End Function
 
         Public Overrides ReadOnly Property CanBeCopied As Boolean
             Get
@@ -20,21 +97,30 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
+        Public Overrides Property DesignAffinity As DesignAffinityEnum
+            Get
+                Return DesignAffinityEnum.Design
+            End Get
+            Set(ByVal value As DesignAffinityEnum)
+                'readonly....
+            End Set
+        End Property
+
         Public Overrides Property HiddenInDesign As Boolean
             Get
-                Return oTrigPoint.HiddenInDesign
+                Return False
             End Get
             Set(ByVal value As Boolean)
-                oTrigPoint.HiddenInDesign = value
+
             End Set
         End Property
 
         Public Overrides Property HiddenInPreview As Boolean
             Get
-                Return oTrigPoint.HiddenInPreview
+                Return False
             End Get
             Set(ByVal value As Boolean)
-                oTrigPoint.HiddenInPreview = value
+
             End Set
         End Property
 
@@ -64,7 +150,7 @@ Namespace cSurvey.Design.Items
 
         Public Overrides ReadOnly Property CanBeDeleted As Boolean
             Get
-                Return False
+                Return True
             End Get
         End Property
 
@@ -74,38 +160,18 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Public Overrides Sub SetCave(Cave As String, Optional Branch As String = "", Optional BindSegment As Boolean = True)
-            'do nothing
+        Public Overrides Sub SetCave(ByVal Cave As cCaveInfo, Optional ByVal Branch As cCaveInfoBranch = Nothing, Optional ByVal BindSegment As Boolean = True)
+            If Cave Is Nothing Then
+                Call SetCave("", "", BindSegment)
+            Else
+                Call SetCave(Cave.Name, If(Branch Is Nothing, "", Branch.Path), BindSegment)
+            End If
         End Sub
-
-        Public Overrides ReadOnly Property Cave As String
-            Get
-                Return ""
-            End Get
-        End Property
 
         Public Overrides ReadOnly Property HaveTransparency As Boolean
             Get
                 Return False
             End Get
-        End Property
-
-        Public Overrides ReadOnly Property Branch As String
-            Get
-                Return ""
-            End Get
-        End Property
-
-        Public Property Trigpoint As cTrigPoint Implements cIItemTrigpoint.Trigpoint
-            Get
-                Return oTrigPoint
-            End Get
-            Set(value As cTrigPoint)
-                If Not oTrigPoint Is value Then
-                    oTrigPoint = value
-                    Call MyBase.Caches.Invalidate()
-                End If
-            End Set
         End Property
 
         Public Overrides ReadOnly Property BindMode As cItem.BindModeEnum
@@ -271,41 +337,6 @@ Namespace cSurvey.Design.Items
         Friend Overrides Function ToSvgItem(SVG As System.Xml.XmlDocument, PaintOptions As cOptionsCenterline, Options As cItem.SVGOptionsEnum) As System.Xml.XmlElement
             Return Nothing
         End Function
-
-        Public Overrides Function GetBounds() As RectangleF
-            If oTrigPoint Is Nothing Then
-                Return New RectangleF
-            Else
-                'ATTENZIONE! per ora questo codice va bene perché non considero la traslazioni...
-                'in design csurvey non supporta transazione quindi ok...se si vuol far andare questo codice anche non in design
-                'è necessario gestire le traslazioni in modo opportuno in fase di calcolo e non in fase di disegno...
-                Dim oSegments As cSegmentCollection = oTrigPoint.GetSegments.GetSurveySegments
-                If oSegments.Count > 0 Then
-                    If MyBase.Design.Type = cIDesign.cDesignTypeEnum.Plan Then
-                        Dim oData As cPlanProjectedData = oSegments(0).Data.Plan
-                        If oData.From = oTrigPoint.Name Then
-                            Return modPaint.GetRectanglefFomPoint(oData.FromPoint, 1)
-                        Else
-                            Return modPaint.GetRectanglefFomPoint(oData.ToPoint, 1)
-                        End If
-                    Else
-                        Dim oData As cProfileProjectedData = oSegments(0).Data.Profile
-                        If oData.From = oTrigPoint.Name Then
-                            Return modPaint.GetRectanglefFomPoint(oData.FromPoint, 1)
-                        Else
-                            Return modPaint.GetRectanglefFomPoint(oData.ToPoint, 1)
-                        End If
-                    End If
-                Else
-                    Return New RectangleF
-                End If
-            End If
-        End Function
-
-        Public Sub New(Survey As cSurvey, Design As cDesign, Trigpoint As cTrigPoint)
-            Call MyBase.New(Survey, Design, Design.Layers(cLayers.LayerTypeEnum.Base), cIItem.cItemTypeEnum.trigpoint, cIItem.cItemCategoryEnum.None)
-            oTrigPoint = Trigpoint
-        End Sub
 
     End Class
 End Namespace

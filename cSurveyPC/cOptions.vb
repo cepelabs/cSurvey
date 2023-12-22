@@ -1354,6 +1354,10 @@ Namespace cSurvey.Design
             Return oDesignProperties.GetValue("BaseUltraLightLinesScaleFactor", 0.1)
         End Function
 
+        Public Function GetBrushPenUltralightWidth() As Single
+            Return oDesignProperties.GetValue("BrushLinesScaleFactor", 0.1)
+        End Function
+
         Public Function GetDefaultTextFont() As cFont
             Return oDesignProperties.GetValue("DesignTextFont", New cFont(oSurvey, "Tahoma", 8, Color.Black))
         End Function
@@ -1374,6 +1378,13 @@ Namespace cSurvey.Design
                     Return GetDefaultTextFont.FontSize
                 Case cItemFont.FontTypeEnum.Custom
                     Return GetDefaultTextFont.FontSize
+            End Select
+        End Function
+
+        Friend Function GetBrushPenDefaultWidth(ByVal Type As cBrush.BrushTypeEnum) As Single
+            Select Case Type
+                Case Else
+                    Return GetBrushPenUltralightWidth()
             End Select
         End Function
 

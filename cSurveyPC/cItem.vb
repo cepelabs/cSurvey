@@ -530,7 +530,11 @@ Namespace cSurvey.Design
                 End If
             End If
 
-            oPoints = New cPoints(oSurvey, Me, Item.Item("points"))
+            If modXML.ChildElementExist(Item, "points") Then
+                oPoints = New cPoints(oSurvey, Me, Item.Item("points"))
+            Else
+                oPoints = New cPoints(oSurvey, Me)
+            End If
 
             If modXML.ChildElementExist(Item, "datarow") Then
                 oDataProperties = New Data.cDataProperties(oSurvey, oSurvey.Properties.DataTables.DesignItems, Item.Item("datarow"))

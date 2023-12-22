@@ -34,12 +34,12 @@ friend Class frmAutoSettings
         Dim sTherionPath As String = ""
         Dim sDefaultPaths As List(Of String) = New List(Of String)
         'some standard path to speed up search
-        Call sDefaultPaths.Add("%SYSTEMDRIVE%\Program Files (x86)\Therion")
         Call sDefaultPaths.Add("%SYSTEMDRIVE%\Program Files\Therion")
+        Call sDefaultPaths.Add("%SYSTEMDRIVE%\Program Files (x86)\Therion")
         'IT version does not be usefull cause windows use original names but I don't remember for old os version
         Call sDefaultPaths.Add("%SYSTEMDRIVE%\Programmi\Therion")
-        Call sDefaultPaths.Add(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Therion"))
         Call sDefaultPaths.Add(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Therion"))
+        Call sDefaultPaths.Add(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Therion"))
 
         For Each sPath As String In sDefaultPaths
             Try

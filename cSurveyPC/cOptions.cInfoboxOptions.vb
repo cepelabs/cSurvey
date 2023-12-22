@@ -187,9 +187,9 @@ Namespace cSurvey.Design.Options
 
         Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLInfoBoxOptions As XmlElement = Document.CreateElement("infoboxoptions")
-            Call oXMLInfoBoxOptions.SetAttribute("idvisible", IIf(bIDVisible, 1, 0))
-            Call oXMLInfoBoxOptions.SetAttribute("titlevisible", IIf(bTitleVisible, 1, 0))
-            Call oXMLInfoBoxOptions.SetAttribute("textvisible", IIf(bTextVisible, 1, 0))
+            Call oXMLInfoBoxOptions.SetAttribute("idvisible", If(bIDVisible, 1, 0))
+            Call oXMLInfoBoxOptions.SetAttribute("titlevisible", If(bTitleVisible, 1, 0))
+            Call oXMLInfoBoxOptions.SetAttribute("textvisible", If(bTextVisible, 1, 0))
             Call oXMLInfoBoxOptions.SetAttribute("width", modNumbers.NumberToString(sWidth))
             Call oIDFont.SaveTo(File, Document, oXMLInfoBoxOptions, "idfont")
             Call oTitleFont.SaveTo(File, Document, oXMLInfoBoxOptions, "titlefont")

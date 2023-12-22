@@ -1159,6 +1159,8 @@ Namespace cSurvey.Design
             AnticlinePen = 40
             SynclinePen = 41
 
+            ClipartPen = 42
+
             User = 98
             Custom = 99
         End Enum

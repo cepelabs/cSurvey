@@ -351,11 +351,11 @@ Friend Class cDockLevels
         Call RefreshData()
     End Sub
 
-    Private Sub oDesignTools_OnFilterApplied(Sender As Object, ToolEventArgs As cEditDesignTools.cFilterEventArgs) Handles oDesignTools.OnFilterApplied
-        Call pFilterApply
+    Private Sub oDesignTools_OnFilterApplied(Sender As Object, ToolEventArgs As cFilterEventArgs) Handles oDesignTools.OnFilterApplied
+        Call pFilterApply()
     End Sub
 
-    Private Sub oDesignTools_OnFilterRemoved(Sender As Object, ToolEventArgs As cEditDesignTools.cFilterEventArgs) Handles oDesignTools.OnFilterRemoved
+    Private Sub oDesignTools_OnFilterRemoved(Sender As Object, ToolEventArgs As cFilterEventArgs) Handles oDesignTools.OnFilterRemoved
         Call pFilterApply()
     End Sub
 

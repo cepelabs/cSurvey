@@ -2673,6 +2673,7 @@ Module modExport
                 sText = sText.Replace("°", "")
                 sText = sText.Replace("§", "")
                 sText = sText.Replace("’", "_")
+                sText = sText.Replace("*", "_")
                 sText = sText.Replace(Chr(34), "")
             Case FormatTextForEnum.BaseWithoutSpaces
                 sText = FormatTextFor(sText, FormatTextForEnum.Base)

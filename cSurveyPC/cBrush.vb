@@ -1660,15 +1660,25 @@ Namespace cSurvey.Design
             Return sLineWidth
         End Function
 
+        Friend Function GetPaintPenWidth(PaintOptions As cOptionsCenterline, BaseWidth As Single) As Single
+            Dim sLineWidth As Single = GetPaintLineWidth(PaintOptions)
+            Dim sPenWidth As Single = 0
+            '20211014: due to a fix from microsoft pens with width <=1 are correctly scaled, before this fix pens with width<=1 or negative are not scaled
+            If BaseWidth < 0 Then
+                sPenWidth = BaseWidth
+            ElseIf BaseWidth = 0 Then
+                sPenWidth = PaintOptions.GetBrushPenDefaultWidth(iType) * sLineWidth
+            Else
+                sPenWidth = BaseWidth * sLineWidth
+            End If
+            Return sPenWidth
+        End Function
+
         Private Sub pRender(ByVal PaintOptions As cOptionsCenterline)
             If iHatchType = cBrush.HatchTypeEnum.Solid Or iHatchType = cBrush.HatchTypeEnum.Clipart Or iHatchType = cBrush.HatchTypeEnum.Pattern Or iHatchType = cBrush.HatchTypeEnum.Texture Then
-                'Dim oRenderArgs As cBrush.cRenderArgs = New cBrush.cRenderArgs
-                'RaiseEvent OnRender(Me, oRenderArgs)
-
-                Dim sLineWidth As Single = GetPaintLineWidth(PaintOptions)
                 Dim oPaintColor As Color = If(oAlternativeColor.IsEmpty, oColor, oAlternativeColor)
 
-                oPen = New Pen(oPaintColor, sLineWidth / 10)
+                oPen = New Pen(oPaintColor, GetPaintPenWidth(PaintOptions, 0))
                 oBrush = New SolidBrush(oPaintColor)
                 oSchematicBrush = New HatchBrush(HatchStyle.Percent10, oPaintColor, Color.White)
                 oClipartAlternativeBrush1 = New SolidBrush(oClipartAlternativeColor)

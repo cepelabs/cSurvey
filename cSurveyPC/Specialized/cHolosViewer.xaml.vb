@@ -12,6 +12,13 @@ Imports System.Windows.Controls
 Imports DotNetCaveModel.DNetCMCave
 Imports CM
 Imports System.Collections.Generic
+Imports DevExpress.XtraBars.Painters
+Imports cSurveyPC.cSurvey.Design3D
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
+Imports System.Windows.Markup
+Imports DevExpress.Utils.Extensions
+Imports DevExpress.XtraEditors.TextEdit
+Imports cSurveyPC.cSurvey.Design.Items
 
 Friend Class cHolosViewer
     Private Const iHotSpotFillAlpha As Integer = 100
@@ -60,6 +67,7 @@ Friend Class cHolosViewer
     Private oCaves As List(Of ModelVisual3D)
     Private oSelectors As ModelVisual3D
     Private oModels As List(Of ModelVisual3D)
+    Private oChunks As Dictionary(Of cItemChunk3D, ModelVisual3D)
     Private oPlots As List(Of ModelVisual3D)
     Private oSurfaces As List(Of ModelVisual3D)
     Private oSurfaceModel As HelixToolkit.Wpf.cSurveySpecialized.TerrainVisual3D
@@ -71,6 +79,7 @@ Friend Class cHolosViewer
     Private oHotSpots As Dictionary(Of ModelVisual3D, cHotSpot)
     Private oCavesHotSpots As Dictionary(Of ModelVisual3D, cHotSpot)
     Private oSurfacesHotSpots As Dictionary(Of ModelVisual3D, cHotSpot)
+    Private oChunksHotSpots As Dictionary(Of ModelVisual3D, cHotSpot)
 
     'Private cmCave As DNetCMCave
     Dim oCmCaves As Dictionary(Of cSurvey.cSurvey, DNetCMCave)
@@ -113,6 +122,11 @@ Friend Class cHolosViewer
                 Return oModel
             End Get
         End Property
+
+        Friend Sub New(Model As ModelVisual3D, Chunk As cItemChunk3D)
+            oModel = Model
+            oSourceItem = Chunk
+        End Sub
 
         Friend Sub New(Model As ModelVisual3D, Segment As cSegment)
             oModel = Model
@@ -669,6 +683,10 @@ Friend Class cHolosViewer
         Call oPlots.Clear()
         oSelectors = Nothing
         Call oModels.Clear()
+
+        Call oChunks.Clear()
+        Call oChunksHotSpots.Clear()
+
         bModelOutline = False
         bModelOutlineDisabled = False
         Call oModelOutline.Clear()
@@ -704,6 +722,8 @@ Friend Class cHolosViewer
                 Call oList.AddRange(oPlots)
                 Call oList.AddRange(oModelOutline)
 
+                Call oList.AddRange(oChunks.Values)
+
                 'selectors model contains object for hittest...this objects have to be hittested but not visible...is it possible?
                 If Not IsNothing(oSelectors) Then Call oList.Add(oSelectors)
 
@@ -724,6 +744,9 @@ Friend Class cHolosViewer
                     Call oHotSpots.Add(ohotspot.Model, ohotspot)
                 Next
                 For Each ohotspot As cHotSpot In oSurfacesHotSpots.Values
+                    Call oHotSpots.Add(ohotspot.Model, ohotspot)
+                Next
+                For Each ohotspot As cHotSpot In oChunksHotSpots.Values
                     Call oHotSpots.Add(ohotspot.Model, ohotspot)
                 Next
             End If
@@ -747,6 +770,86 @@ Friend Class cHolosViewer
         Return New Point3D(X * fX, Y * fY, Z * fZ)
     End Function
 
+    Private Function pChunk(Chunk As cItemChunk3D) As ModelVisual3D
+        Dim oChunkModel As Model3DGroup = Chunk.GetModel '.Clone
+        Dim oChunkGroup As ModelVisual3D = New ModelVisual3D
+
+        Dim oResultTransformGroup As Transform3DGroup = New Transform3DGroup()
+        Call oResultTransformGroup.Children.Add(New ScaleTransform3D(Chunk.ModelTransform.XScale, Chunk.ModelTransform.YScale, Chunk.ModelTransform.ZScale))
+        Call oResultTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(1, 0, 0), Chunk.ModelTransform.XRotate)))
+        Call oResultTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 1, 0), Chunk.ModelTransform.YRotate)))
+        Call oResultTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 0, 1), Chunk.ModelTransform.ZRotate)))
+
+        Dim sMainOriginX As Single = 0
+        Dim sMainOriginY As Single = 0
+        Dim sMainOriginZ As Single = 0
+        Dim oMainCoordinate As Calculate.cTrigPointCoordinate = oSurvey.Calculate.TrigPoints(oSurvey.TrigPoints.GetOrigin).Coordinate
+        If Not oMainCoordinate Is Nothing Then
+            With oMainCoordinate
+                Dim oUTM As modUTM.UTM = New modUTM.UTM(oMainCoordinate)
+                sMainOriginX = oUTM.East
+                sMainOriginY = oUTM.North
+                sMainOriginZ = .Altitude()
+            End With
+        End If
+
+        Dim sOriginX As Single = 0
+        Dim sOriginY As Single = 0
+        Dim sOriginZ As Single = 0
+        Dim oCoordinate As Calculate.cTrigPointCoordinate = oSurvey.Calculate.TrigPoints(oSurvey.TrigPoints.GetOrigin).Coordinate
+        If Not oCoordinate Is Nothing Then
+            With oCoordinate
+                Dim oUTM As modUTM.UTM = New modUTM.UTM(oCoordinate)
+                sOriginX = oUTM.East
+                sOriginY = oUTM.North
+                Dim oSizePoint As SizeF = New SizeD(sOriginX - sMainOriginX, sOriginY - sMainOriginY)
+                Dim oMovePoint As PointD = modPaint.RotatePointByRadians(New PointD(oSizePoint.Width, oSizePoint.Height), oSurvey.Calculate.GeoMagDeclinationData.MeridianConvergenceRadians)
+                sOriginX = oMovePoint.X
+                sOriginY = oMovePoint.Y
+                sOriginZ = .Altitude()
+            End With
+        End If
+
+        'TODO: fix this
+        Dim dHeightScale As Double = 1 ' PaintOptions.SurfaceOptions.Elevation.AltitudeAmplification
+
+        Dim oPoints As Dictionary(Of String, List(Of Point3D)) = GetStations3DPoints(oSurvey, sOriginX, sOriginY, sOriginZ, dHeightScale)
+        Dim oStation1 As Point3D = oPoints(Chunk.Stations.Station1.TrigPoint.Name)(0)
+        'reset model coordinate
+        Call oResultTransformGroup.Children.Add(New TranslateTransform3D(-Chunk.Stations.Station1.Point.X, -Chunk.Stations.Station1.Point.Y, -Chunk.Stations.Station1.Point.Z))
+        Dim oStation2 As Point3D = oPoints(Chunk.Stations.Station2.TrigPoint.Name)(0)
+
+        'Dim dDistance1 As Double = oStation1.DistanceTo(oStation2)
+        'Dim dDistance2 As Double = oModelEdit.Point1.DistanceTo(oModelEdit.Point2)
+        'Dim dFinalScale As Double = dDistance1 / dDistance2
+
+        Dim sBearingStation As Decimal = modPaint.GetBearing(New PointD(oStation1.X, -oStation1.Y), New PointD(oStation2.X, -oStation2.Y))
+        Dim sBearingModel As Decimal = modPaint.GetBearing(New PointD(Chunk.Stations.Station1.Point.X, -Chunk.Stations.Station1.Point.Y), New PointD(Chunk.Stations.Station2.Point.X, -Chunk.Stations.Station2.Point.Y))
+        Dim sAngle As Decimal = modPaint.NormalizeAngle(sBearingModel - sBearingStation)  ' modPaint.GetAngleBetweenSegment(New PointD(oStation1.X, -oStation1.Y), New PointD(oStation2.X, -oStation2.Y), New PointD(oModelEdit.Point1.X, oModelEdit.Point1.Y), New PointD(oModelEdit.Point2.X, oModelEdit.Point2.Y))
+        Call oResultTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 0, 1), sAngle)))
+        Call oResultTransformGroup.Children.Add(New ScaleTransform3D(1.0 / Chunk.ModelTransform.XScale, 1.0 / Chunk.ModelTransform.YScale, 1.0 / Chunk.ModelTransform.ZScale))
+        Call oResultTransformGroup.Children.Add(New TranslateTransform3D(oStation1.X, oStation1.Y, oStation1.Z))
+
+        Dim oModelPointTransformGroup As Transform3DGroup = New Transform3DGroup()
+        Call oModelPointTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 0, 1), sAngle)))
+        Call oModelPointTransformGroup.Children.Add(New ScaleTransform3D(1.0 / Chunk.ModelTransform.XScale, 1.0 / Chunk.ModelTransform.YScale, 1.0 / Chunk.ModelTransform.ZScale))
+        Call oModelPointTransformGroup.Children.Add(New TranslateTransform3D(oStation1.X, oStation1.Y, oStation1.Z))
+
+        Dim oModelPoint1 As Point3D = oModelPointTransformGroup.Transform(Chunk.Stations.Station1.Point)
+        Dim oModelPoint2 As Point3D = oModelPointTransformGroup.Transform(Chunk.Stations.Station2.Point)
+
+        'adjust x, y and z or adjust only plan distance and z?
+        Dim sXScale As Double = (oStation2.X - oStation1.X) / (oModelPoint2.X - oModelPoint1.X)
+        Dim sYScale As Double = (oStation2.Y - oStation1.Y) / (oModelPoint2.Y - oModelPoint1.Y)
+        Dim sZScale As Double = (oStation2.Z - oStation1.Z) / (oModelPoint2.Z - oModelPoint1.Z)
+        Call oResultTransformGroup.Children.Add(New ScaleTransform3D(sXScale, sYScale, sZScale))
+
+        oChunkGroup.Transform = oResultTransformGroup
+        oChunkGroup.Content = oChunkModel
+
+        Return oChunkGroup
+    End Function
+
     Public Sub Import(Optional Filename As String = "")
         Dim ofd As OpenFileDialog = New OpenFileDialog
         If ofd.ShowDialog() = DialogResult.OK Then
@@ -757,14 +860,117 @@ Friend Class cHolosViewer
             Dim oGroup As ModelVisual3D = New ModelVisual3D
 
             Dim oTransformGroup As Transform3DGroup = New Transform3DGroup()
-            ''Call oTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(1, 0, 0), 0)))
-            Call oTransformGroup.Children.Add(New ScaleTransform3D(0.1, 0.1, 0.1))
-            Call oTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 0, 1), 90)))
-            Call oTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 1, 0), -90)))
-            Call oTransformGroup.Children.Add(New TranslateTransform3D(0, 0, 0))
             oGroup.Transform = oTransformGroup
             oGroup.Content = oModel
-            Call mainViewport.Children.Add(oGroup)
+
+            Using frmHIE As frmHolosItemEdit = New frmHolosItemEdit(oSurvey)
+                Call frmHIE.AddGroup(sFilename, oGroup)
+                If frmHIE.ShowDialog = DialogResult.OK Then
+
+                    Dim oImportModel As Model3DGroup = oM.Load(sFilename)
+                    'My.Computer.FileSystem.WriteAllText("d:\prova.xaml", XamlWriter.Save(oImportModel.Clone), False)
+                    'Using s As FileStream = New FileStream("d:\prova.xaml", FileMode.Open)
+                    '    oImportModel = XamlReader.Load(s)
+                    'End Using
+                    Dim oImportGroup As ModelVisual3D = New ModelVisual3D
+                    oImportGroup.Content = oImportModel
+
+                    Dim oModelEdit As frmHolosItemEdit.cModelEdit = frmHIE.Result
+
+                    '------------------------------------
+                    Dim oItem3D As cItemChunk3D = oSurvey.[ThreeD].Layers.ChunkLayer.CreateChunk("", "", sFilename)
+                    oItem3D.ModelTransform.XScale = oModelEdit.Scale
+                    oItem3D.ModelTransform.YScale = oModelEdit.Scale
+                    oItem3D.ModelTransform.ZScale = oModelEdit.Scale
+
+                    oItem3D.ModelTransform.XRotate = oModelEdit.RotateX
+                    oItem3D.ModelTransform.YRotate = oModelEdit.RotateY
+                    oItem3D.ModelTransform.ZRotate = oModelEdit.RotateZ
+
+                    Dim oTrigpoint1 As cTrigPoint = oSurvey.TrigPoints(oModelEdit.Station1)
+                    oItem3D.Stations.SetStation1(oModelEdit.Point1, oTrigpoint1)
+                    Dim oTrigpoint2 As cTrigPoint = oSurvey.TrigPoints(oModelEdit.Station2)
+                    oItem3D.Stations.SetStation2(oModelEdit.Point2, oTrigpoint2)
+
+                    '------------------------------------
+
+                    'Dim oResultTransformGroup As Transform3DGroup = New Transform3DGroup()
+                    'Call oResultTransformGroup.Children.Add(New ScaleTransform3D(oModelEdit.Scale, oModelEdit.Scale, oModelEdit.Scale))
+                    'Call oResultTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(1, 0, 0), oModelEdit.RotateX)))
+                    'Call oResultTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 1, 0), oModelEdit.RotateY)))
+                    'Call oResultTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 0, 1), oModelEdit.RotateZ)))
+
+                    'Dim sMainOriginX As Single = 0
+                    'Dim sMainOriginY As Single = 0
+                    'Dim sMainOriginZ As Single = 0
+                    'Dim oMainCoordinate As Calculate.cTrigPointCoordinate = oSurvey.Calculate.TrigPoints(oSurvey.TrigPoints.GetOrigin).Coordinate
+                    'If Not oMainCoordinate Is Nothing Then
+                    '    With oMainCoordinate
+                    '        Dim oUTM As modUTM.UTM = New modUTM.UTM(oMainCoordinate)
+                    '        sMainOriginX = oUTM.East
+                    '        sMainOriginY = oUTM.North
+                    '        sMainOriginZ = .Altitude()
+                    '    End With
+                    'End If
+
+                    'Dim sOriginX As Single = 0
+                    'Dim sOriginY As Single = 0
+                    'Dim sOriginZ As Single = 0
+                    'Dim oCoordinate As Calculate.cTrigPointCoordinate = oSurvey.Calculate.TrigPoints(oSurvey.TrigPoints.GetOrigin).Coordinate
+                    'If Not oCoordinate Is Nothing Then
+                    '    With oCoordinate
+                    '        Dim oUTM As modUTM.UTM = New modUTM.UTM(oCoordinate)
+                    '        sOriginX = oUTM.East
+                    '        sOriginY = oUTM.North
+                    '        Dim oSizePoint As SizeF = New SizeD(sOriginX - sMainOriginX, sOriginY - sMainOriginY)
+                    '        Dim oMovePoint As PointD = modPaint.RotatePointByRadians(New PointD(oSizePoint.Width, oSizePoint.Height), oSurvey.Calculate.GeoMagDeclinationData.MeridianConvergenceRadians)
+                    '        sOriginX = oMovePoint.X
+                    '        sOriginY = oMovePoint.Y
+                    '        sOriginZ = .Altitude()
+                    '    End With
+                    'End If
+
+                    ''TODO: fix this
+                    'Dim dHeightScale As Double = 1 ' PaintOptions.SurfaceOptions.Elevation.AltitudeAmplification
+
+                    'Dim oPoints As Dictionary(Of String, List(Of Point3D)) = GetStations3DPoints(oSurvey, sOriginX, sOriginY, sOriginZ, dHeightScale)
+                    'Dim oStation1 As Point3D = oPoints(oModelEdit.Station1)(0)
+                    ''reset model coordinate
+                    'Call oResultTransformGroup.Children.Add(New TranslateTransform3D(-oModelEdit.X1, -oModelEdit.Y1, -oModelEdit.Z1))
+                    'Dim oStation2 As Point3D = oPoints(oModelEdit.Station2)(0)
+
+                    ''Dim dDistance1 As Double = oStation1.DistanceTo(oStation2)
+                    ''Dim dDistance2 As Double = oModelEdit.Point1.DistanceTo(oModelEdit.Point2)
+                    ''Dim dFinalScale As Double = dDistance1 / dDistance2
+
+                    'Dim sBearingStation As Decimal = modPaint.GetBearing(New PointD(oStation1.X, -oStation1.Y), New PointD(oStation2.X, -oStation2.Y))
+                    'Dim sBearingModel As Decimal = modPaint.GetBearing(New PointD(oModelEdit.Point1.X, -oModelEdit.Point1.Y), New PointD(oModelEdit.Point2.X, -oModelEdit.Point2.Y))
+                    'Dim sAngle As Decimal = modPaint.NormalizeAngle(sBearingModel - sBearingStation)  ' modPaint.GetAngleBetweenSegment(New PointD(oStation1.X, -oStation1.Y), New PointD(oStation2.X, -oStation2.Y), New PointD(oModelEdit.Point1.X, oModelEdit.Point1.Y), New PointD(oModelEdit.Point2.X, oModelEdit.Point2.Y))
+                    'Call oResultTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 0, 1), sAngle)))
+                    'Call oResultTransformGroup.Children.Add(New ScaleTransform3D(1.0 / oModelEdit.Scale, 1.0 / oModelEdit.Scale, 1.0 / oModelEdit.Scale))
+                    'Call oResultTransformGroup.Children.Add(New TranslateTransform3D(oStation1.X, oStation1.Y, oStation1.Z))
+
+                    'Dim oModelPointTransformGroup As Transform3DGroup = New Transform3DGroup()
+                    'Call oModelPointTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 0, 1), sAngle)))
+                    'Call oModelPointTransformGroup.Children.Add(New ScaleTransform3D(1.0 / oModelEdit.Scale, 1.0 / oModelEdit.Scale, 1.0 / oModelEdit.Scale))
+                    'Call oModelPointTransformGroup.Children.Add(New TranslateTransform3D(oStation1.X, oStation1.Y, oStation1.Z))
+
+                    'Dim oModelPoint1 As Point3D = oModelPointTransformGroup.Transform(oModelEdit.Point1)
+                    'Dim oModelPoint2 As Point3D = oModelPointTransformGroup.Transform(oModelEdit.Point2)
+
+                    ''adjust x, y and z or adjust only plan distance and z?
+                    'Dim sXScale As Double = (oStation2.X - oStation1.X) / (oModelPoint2.X - oModelPoint1.X)
+                    'Dim sYScale As Double = (oStation2.Y - oStation1.Y) / (oModelPoint2.Y - oModelPoint1.Y)
+                    'Dim sZScale As Double = (oStation2.Z - oStation1.Z) / (oModelPoint2.Z - oModelPoint1.Z)
+                    'Call oResultTransformGroup.Children.Add(New ScaleTransform3D(sXScale, sYScale, sZScale))
+
+                    'oImportGroup.Transform = oResultTransformGroup
+                    'oImportGroup.Content = oModel
+
+                    'mainViewport.Children.Add(oImportGroup)
+                End If
+            End Using
+
         End If
     End Sub
 
@@ -781,7 +987,7 @@ Friend Class cHolosViewer
                             Call modMain.FilterSaveLast("export.3d", .FilterIndex)
                             sSaveFilename = .FileName
                         End If
-                    End With                       
+                    End With
                 End Using
             End If
             If sSaveFilename <> "" Then
@@ -833,7 +1039,7 @@ Friend Class cHolosViewer
 
         If Survey.Properties.ThreeDModelMode > cProperties.ThreeDModelModeEnum.Simple AndAlso (PaintOptions.DrawLRUD OrElse PaintOptions.DrawModel) Then
             For Each oSegment As cSegment In Survey.Segments
-                If oSegment.IsValid And Not oSegment.IsSelfDefined Then
+                If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined Then
                     If oSegment.Data.SubDatas.Count = 0 Then
                         'for performance here may be usefull to detect if shot is a splay or is a shot without subdata...
                         'if is splay the stations have to be calculate only if splay are visible in paintoptions...
@@ -1014,14 +1220,8 @@ Friend Class cHolosViewer
             Dim oResPoint As List(Of Point3D) = New List(Of Point3D)()
             Dim sName As String = sTrigPoint
 
-            'Dim oPoint As Calculate.cTrigPointPoint = oSurvey.Calculate.TrigPoints(sName).Point
-            'Dim x As Decimal = oPoint.X + dX ' oUTM.East - oOriginUTM.East
-            'Dim y As Decimal = -oPoint.Y + dY  'oUTM.North - oOriginUTM.North
-            'Dim z As Decimal = -oPoint.Z + dZ ' oPos.Altitude - oOriginPos.Altitude
-
             Dim oPointPlan As PointF = oPointPlans(sName)
             Dim oPointProfile As PointF = oPointProfiles(sName)
-            'Dim oPoint As Calculate.cTrigPointPoint = oSurvey.Calculate.TrigPoints(sName).Point
             Dim x As Decimal = oPointPlan.X + dX
             Dim y As Decimal = -oPointPlan.Y + dY
             Dim z As Decimal = -oPointProfile.Y + dZ ' oPos.Altitude - oOriginPos.Altitude
@@ -1035,6 +1235,54 @@ Friend Class cHolosViewer
             Call oResPoint.Add(New Point3D(x, y, (z - (oPointUp.Y - oPointProfile.Y)) * HeightScale))
             Dim oPointDown As PointF = oPointDowns(sName)
             Call oResPoint.Add(New Point3D(x, y, (z - (oPointDown.Y - oPointProfile.Y)) * HeightScale))
+
+            Call oResPoints.Add(sName, oResPoint)
+        Next
+        'Next
+        Return oResPoints
+    End Function
+
+    Public Shared Function GetStations3DPoints(Survey As cSurveyPC.cSurvey.cSurvey, ByVal dX As Decimal, dY As Decimal, dZ As Decimal, HeightScale As Decimal) As Dictionary(Of String, List(Of Point3D))
+        Dim oResPoints As Dictionary(Of String, List(Of Point3D)) = New Dictionary(Of String, List(Of Point3D))
+        Dim oTrigpoints As HashSet(Of String) = New HashSet(Of String)
+
+        Dim oPointPlans As Dictionary(Of String, PointF) = New Dictionary(Of String, PointF)
+        Dim oPointProfiles As Dictionary(Of String, PointF) = New Dictionary(Of String, PointF)
+
+        For Each oSegment As cSegment In Survey.Segments
+            If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined AndAlso Not oSegment.Splay Then
+                Dim sFrom As String = oSegment.From
+                Dim sTo As String = oSegment.To
+
+                If Not oTrigpoints.Contains(sFrom) Then oTrigpoints.Add(sFrom)
+                If Not oTrigpoints.Contains(sTo) Then oTrigpoints.Add(sTo)
+
+                If oSegment.Data.Data.Reversed Then
+                    Call pAppend3DPoints(oPointPlans, sTo, oSegment.Data.Plan.FromPoint)
+                    Call pAppend3DPoints(oPointProfiles, sTo, oSegment.Data.Profile.FromPoint)
+
+                    Call pAppend3DPoints(oPointPlans, sFrom, oSegment.Data.Plan.ToPoint)
+                    Call pAppend3DPoints(oPointProfiles, sFrom, oSegment.Data.Profile.ToPoint)
+                Else
+                    Call pAppend3DPoints(oPointPlans, sFrom, oSegment.Data.Plan.FromPoint)
+                    Call pAppend3DPoints(oPointProfiles, sFrom, oSegment.Data.Profile.FromPoint)
+
+                    Call pAppend3DPoints(oPointPlans, sTo, oSegment.Data.Plan.ToPoint)
+                    Call pAppend3DPoints(oPointProfiles, sTo, oSegment.Data.Profile.ToPoint)
+                End If
+            End If
+        Next
+
+        For Each sTrigPoint As String In oTrigpoints
+            Dim oResPoint As List(Of Point3D) = New List(Of Point3D)
+            Dim sName As String = sTrigPoint
+
+            Dim oPointPlan As PointF = oPointPlans(sName)
+            Dim oPointProfile As PointF = oPointProfiles(sName)
+            Dim x As Decimal = oPointPlan.X + dX
+            Dim y As Decimal = -oPointPlan.Y + dY
+            Dim z As Decimal = -oPointProfile.Y + dZ
+            Call oResPoint.Add(New Point3D(x, y, z * HeightScale))
 
             Call oResPoints.Add(sName, oResPoint)
         Next
@@ -1118,7 +1366,7 @@ Friend Class cHolosViewer
                     sOriginZ = .Altitude()
                 End With
             End If
-            Dim oPoints As Dictionary(Of String, List(Of Point3D)) = Get3DPoints(oCurrentSurvey, PaintOptions, sOriginX, sOriginY, sOriginZ, dHeightScale) 'New Dictionary(Of String, List(Of Point3D))
+            Dim oPoints As Dictionary(Of String, List(Of Point3D)) = Get3DPoints(oCurrentSurvey, PaintOptions, sOriginX, sOriginY, sOriginZ, dHeightScale)
 
             Dim oDrawingObject As cOptionsDrawingObjects = PaintOptions.DrawingObjects
             Dim oShotByColor As Dictionary(Of Color, List(Of cSurvey.cSegment)) = New Dictionary(Of Color, List(Of cSurvey.cSegment))()
@@ -1494,7 +1742,6 @@ Friend Class cHolosViewer
                 If oStationPoints.Points.Count > 0 Then Call oCaves.Add(oStationPoints)
             End If
 
-            'Dim oBuilder As MeshBuilder = New MeshBuilder
             If PaintOptions.DrawModel Then
                 Dim oStationToPiketDict = New Dictionary(Of String, Integer)
                 'If bIsThisSurvey Then
@@ -1708,6 +1955,15 @@ Friend Class cHolosViewer
 
                 Call oCmCaves.Add(oCurrentSurvey, cmCave)
             End If
+
+            For Each oChunk As cItemChunk3D In oSurvey.ThreeD.Layers.ChunkLayer.Items
+                If GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oChunk, Selection.CurrentCave, Selection.CurrentBranch) Then
+                    Dim oChunkModel As ModelVisual3D = pChunk(oChunk)
+                    Dim oChunkHotSpot As cHotSpot = New cHotSpot(oChunkModel, oChunk)
+                    oChunksHotSpots.Add(oChunkModel, oChunkHotSpot)
+                    oChunks.Add(oChunk, oChunkModel)
+                End If
+            Next
         Next
 
         If PaintOptions.DrawModel Then
@@ -1886,8 +2142,9 @@ Friend Class cHolosViewer
         If oHitTestResult.Count Then
             Dim oModel As ModelVisual3D = oHitTestResult(0)
             Return oModel
+        Else
+            Return Nothing
         End If
-        Return Nothing
     End Function
 
     Public Sub Zoom(Factor As Single)
@@ -1939,40 +2196,11 @@ Friend Class cHolosViewer
                 Cursor = System.Windows.Input.Cursors.Arrow
             End If
         End If
-        'Try
-        '    Dim oModel As ModelVisual3D = pHitTest(e.GetPosition(mainViewport))
-        '    Dim oHotSpot As cHotSpot = oHotSpotsTable(oModel)
-        '    If Not oHotSpot Is Nothing Then
-        '        Cursor = Cursors.Hand
+    End Sub
 
-        '        Dim sContent As String = IIf(oHotSpot.ID <> "", oHotSpot.ID & vbCrLf, "") & oHotSpot.Description
-
-        '        pnlHitTestObjectName.Content = IIf(oHotSpot.ID <> "", oHotSpot.ID & " - ", "") & oHotSpot.Description
-        '        Dim oUTM As modUTM.UTM = New modUTM.UTM(sBand, iZone, oHotSpot.Point.X + iOffSetX, -1 * (oHotSpot.Point.Y - iOffsetY))
-        '        Dim oWGS84 As modUTM.WGS84 = modUTM.UTMToWGS84(oUTM)
-        '        pnlCoordinate.Content = modNumbers.NumberToCoordinate(oWGS84.Latitude, CoordinateFormatEnum.DegreesMinutesSeconds) & " - " & modNumbers.NumberToCoordinate(oWGS84.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds)
-
-        '        Dim oTip As ToolTip = New ToolTip
-        '        Dim bShow As Boolean
-        '        If Not mainViewport.ToolTip Is Nothing Then
-        '            bShow = sContent <> mainViewport.ToolTip.Content
-        '        Else
-        '            bShow = True
-        '        End If
-        '        If bShow Then
-        '            If Not mainViewport.ToolTip Is Nothing Then mainViewport.ToolTip.IsOpen = False
-        '            oTip.Content = sContent
-        '            mainViewport.ToolTip = oTip
-        '            ToolTipService.SetShowDuration(mainViewport, 1)
-        '            oTip.IsOpen = True
-        '        End If
-
-        '    Else
-        '        Cursor = Cursors.Arrow
-        '    End If
-        'Catch
-        '    Cursor = Cursors.Arrow
-        'End Try
+    Friend Sub DeleteChunk(Chunk As cItemChunk3D)
+        Dim oModel As ModelVisual3D = oChunks(Chunk)
+        Call oAll.Children.Remove(oModel)
     End Sub
 
     Public Sub New()
@@ -1984,12 +2212,16 @@ Friend Class cHolosViewer
         oCavesHotSpots = New Dictionary(Of ModelVisual3D, cHotSpot)
         oSurfacesHotSpots = New Dictionary(Of ModelVisual3D, cHotSpot)
 
-        'oLights = New List(Of ModelVisual3D)
         oCaves = New List(Of ModelVisual3D)
         oSurfaces = New List(Of ModelVisual3D)
+
         oModels = New List(Of ModelVisual3D)
+
         oPlots = New List(Of ModelVisual3D)
         oModelOutline = New List(Of LinesVisual3D)
+
+        oChunks = New Dictionary(Of cItemChunk3D, ModelVisual3D)
+        oChunksHotSpots = New Dictionary(Of ModelVisual3D, cHotSpot)
 
         oCmCaves = New Dictionary(Of cSurvey.cSurvey, DNetCMCave)
 
@@ -2012,23 +2244,6 @@ Friend Class cHolosViewer
 
         'AddHandler System.Windows.Media.CompositionTarget.Rendering, AddressOf CompositionTargetRendering
     End Sub
-
-    'Private Sub CompositionTargetRendering(sender As Object, e As EventArgs)
-    '    '    Dim oMatrix As System.Windows.Media.Media3D.Matrix3D = Viewport3DHelper.GetTotalTransform(mainViewport.Viewport)
-    '    '    For Each oElement As System.Windows.UIElement In overlay2d.Children
-    '    '        If oElement.GetName Like "station*" Then
-    '    '            Dim oStationLabel As TextBlock = oElement
-    '    '            Dim oPosition = Overlay.GetPosition3D(oStationLabel)
-    '    '            Dim oPosition2D = oMatrix.Transform(oPosition)
-    '    '            Call Canvas.SetLeft(oElement, oPosition2D.X + oStationLabel.ActualWidth / 20)
-    '    '            Call Canvas.SetTop(oElement, oPosition2D.Y + oStationLabel.ActualHeight / 20)
-    '    '        End If
-    '    '    Next
-    '    If bFirstComposition Then
-    '        Call ResetScene()
-    '        bFirstComposition = False
-    '    End If
-    'End Sub
 
     Private Delegate Sub pResetSceneDelegate()
 

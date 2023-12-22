@@ -351,6 +351,8 @@ Partial Class frmProperties
         Me.lblDesignSignScaleFactor = New DevExpress.XtraEditors.LabelControl()
         Me.lblDesignTerrainLevelScaleFactor = New DevExpress.XtraEditors.LabelControl()
         Me.GroupBox1 = New DevExpress.XtraEditors.GroupControl()
+        Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtBaseBrushLinesScaleFactor = New DevExpress.XtraEditors.SpinEdit()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.txtBaseGeologyLinesScaleFactor = New System.Windows.Forms.NumericUpDown()
         Me.Label8 = New DevExpress.XtraEditors.LabelControl()
@@ -779,6 +781,7 @@ Partial Class frmProperties
         Me.GroupBox10.SuspendLayout()
         CType(Me.GroupBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.txtBaseBrushLinesScaleFactor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtBaseGeologyLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtSpecialTrigPointStructure.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTrigPointStructure.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2136,6 +2139,7 @@ Partial Class frmProperties
         Me.txtPlotNoteTextColor.Name = "txtPlotNoteTextColor"
         Me.txtPlotNoteTextColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPlotNoteTextColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtPlotNoteTextColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txtPlotNoteTextColor.Properties.NullColor = System.Drawing.Color.Empty
         Me.txtPlotNoteTextColor.Properties.ShowSystemColors = False
         Me.txtPlotNoteTextColor.Properties.ShowWebColors = False
         '
@@ -3221,6 +3225,8 @@ Partial Class frmProperties
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.LabelControl4)
+        Me.GroupBox1.Controls.Add(Me.txtBaseBrushLinesScaleFactor)
         Me.GroupBox1.Controls.Add(Me.LabelControl2)
         Me.GroupBox1.Controls.Add(Me.txtBaseGeologyLinesScaleFactor)
         Me.GroupBox1.Controls.Add(Me.Label8)
@@ -3235,6 +3241,21 @@ Partial Class frmProperties
         Me.GroupBox1.Controls.Add(Me.lblBaseLineWidthScaleFactor)
         resources.ApplyResources(Me.GroupBox1, "GroupBox1")
         Me.GroupBox1.Name = "GroupBox1"
+        '
+        'LabelControl4
+        '
+        resources.ApplyResources(Me.LabelControl4, "LabelControl4")
+        Me.LabelControl4.Name = "LabelControl4"
+        '
+        'txtBaseBrushLinesScaleFactor
+        '
+        resources.ApplyResources(Me.txtBaseBrushLinesScaleFactor, "txtBaseBrushLinesScaleFactor")
+        Me.txtBaseBrushLinesScaleFactor.MenuManager = Me.BarManager
+        Me.txtBaseBrushLinesScaleFactor.Name = "txtBaseBrushLinesScaleFactor"
+        Me.txtBaseBrushLinesScaleFactor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtBaseBrushLinesScaleFactor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtBaseBrushLinesScaleFactor.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
+        Me.txtBaseBrushLinesScaleFactor.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
+        Me.txtBaseBrushLinesScaleFactor.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 65536})
         '
         'LabelControl2
         '
@@ -3327,6 +3348,7 @@ Partial Class frmProperties
         Me.txtCaveInfoColor.Name = "txtCaveInfoColor"
         Me.txtCaveInfoColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtCaveInfoColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtCaveInfoColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txtCaveInfoColor.Properties.NullColor = System.Drawing.Color.Empty
         Me.txtCaveInfoColor.Properties.ShowSystemColors = False
         Me.txtCaveInfoColor.Properties.ShowWebColors = False
         '
@@ -4125,6 +4147,7 @@ Partial Class frmProperties
         Me.txtHighlightColor.Name = "txtHighlightColor"
         Me.txtHighlightColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtHighlightColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtHighlightColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txtHighlightColor.Properties.NullColor = System.Drawing.Color.Empty
         Me.txtHighlightColor.Properties.ShowSystemColors = False
         Me.txtHighlightColor.Properties.ShowWebColors = False
         '
@@ -4397,6 +4420,7 @@ Partial Class frmProperties
         Me.txtSessionColor.Name = "txtSessionColor"
         Me.txtSessionColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtSessionColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtSessionColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txtSessionColor.Properties.NullColor = System.Drawing.Color.Empty
         Me.txtSessionColor.Properties.ShowSystemColors = False
         Me.txtSessionColor.Properties.ShowWebColors = False
         '
@@ -5684,6 +5708,7 @@ Partial Class frmProperties
         CType(Me.GroupBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.txtBaseBrushLinesScaleFactor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtBaseGeologyLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtSpecialTrigPointStructure.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTrigPointStructure.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -6470,4 +6495,6 @@ Partial Class frmProperties
     Friend WithEvents colSessionCalibrateIndex As DevExpress.XtraTreeList.Columns.TreeListColumn
     Friend WithEvents txtSessionCalibrateValue As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
     Friend WithEvents btnSessionCalibration As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LabelControl4 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtBaseBrushLinesScaleFactor As DevExpress.XtraEditors.SpinEdit
 End Class

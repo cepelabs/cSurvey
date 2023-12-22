@@ -67,16 +67,6 @@ Friend Class cItemCaveBranchPropertyControl
 
     Private Sub cmdPropSetCaveBranch_Click(sender As Object, e As EventArgs) Handles cmdPropSetCaveBranch.Click
         Call MyBase.DoCommand("currentcaveandbranchgettocurrent")
-        'If Not DisabledObjectProperty() Then
-        '    Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo29"))
-        '    Dim sCurrentCave As String = cCaveInfo.EditToString(cboPropCaveList.EditValue)
-        '    Dim sCurrentBranch As String = cCaveInfoBranch.EditToString(cboPropCaveBranchList.EditValue)
-        '    Call Item.SetCave(sCurrentCave, sCurrentBranch, True)
-        '    Call Item.SetBindDesignType(cboPropBindDesignType.SelectedIndex, Item.Survey.CrossSections.GetBindItem(cboPropBindCrossSections.EditValue), True)
-        '    Call MyBase.CommitUndoSnapshot()
-        '    Call MyBase.PropertyChanged("CaveBranch")
-        '    Call MyBase.MapInvalidate()
-        'End If
     End Sub
 
     Private Sub cboPropCaveList_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropCaveList.EditValueChanged

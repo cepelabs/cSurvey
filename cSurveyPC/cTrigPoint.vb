@@ -72,8 +72,9 @@ Namespace cSurvey
             End Sub
 
             Public Function Add(ByVal [Alias] As String) As Integer
-                If [Alias] <> "" Then
-                    Call oItems.Add([Alias])
+                Dim sAlias As String = ("" & [Alias]).Trim
+                If sAlias <> "" Then
+                    Call oItems.Add(sAlias)
                     Return oItems.Count - 1
                 Else
                     Return -1
@@ -181,7 +182,34 @@ Namespace cSurvey
 
         Private oPlotData As Calculate.Plot.cStationData
 
-        Friend Event OnChange(ByVal Sender As cTrigPoint)
+        Friend Event OnChange(ByVal Sender As Object, e As EventArgs)
+
+        Private bHiddenInDesign As Boolean
+        Private bHiddenInPreview As Boolean
+
+        Public Overridable Property HiddenInDesign As Boolean
+            Get
+                Return bHiddenInDesign
+            End Get
+            Set(ByVal value As Boolean)
+                If bHiddenInDesign <> value Then
+                    bHiddenInDesign = value
+                    RaiseEvent OnChange(Me, EventArgs.Empty)
+                End If
+            End Set
+        End Property
+
+        Public Overridable Property HiddenInPreview As Boolean
+            Get
+                Return bHiddenInPreview
+            End Get
+            Set(value As Boolean)
+                If bHiddenInPreview <> value Then
+                    bHiddenInPreview = value
+                    RaiseEvent OnChange(Me, EventArgs.Empty)
+                End If
+            End Set
+        End Property
 
         Friend ReadOnly Property Data() As Calculate.Plot.cStationData
             Get
@@ -565,7 +593,7 @@ Namespace cSurvey
 
         Public Sub Save()
             If bChanged Then
-                RaiseEvent OnChange(Me)
+                RaiseEvent OnChange(Me, EventArgs.Empty)
                 bChanged = False
                 iInvalidated = cCalculate.InvalidateEnum.None
             End If
@@ -663,13 +691,13 @@ Namespace cSurvey
         Private Sub oCoordinate_OnChange(ByVal Sender As cCoordinate) Handles oCoordinate.OnChange
             bChanged = True
             iInvalidated = cCalculate.InvalidateEnum.FullCalculate
-            RaiseEvent OnChange(Me)
+            RaiseEvent OnChange(Me, EventArgs.Empty)
         End Sub
 
         Private Sub oConnections_OnConnectionChanged(ByVal Sender As cConnections, ByVal e As cConnections.cConnectionsEventArgs) Handles oConnections.OnConnectionChanged
             bChanged = True
             iInvalidated = cCalculate.InvalidateEnum.FullCalculate
-            RaiseEvent OnChange(Me)
+            RaiseEvent OnChange(Me, EventArgs.Empty)
         End Sub
 
         Private Sub oConnections_OnGetOwnerStation(ByVal Sender As cConnections, ByVal e As cConnections.cGetOwnerEventArgs) Handles oConnections.OnGetOwnerStation

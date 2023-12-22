@@ -3,6 +3,7 @@ Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Scale
 Imports cSurveyPC.cSurvey.Calculate
 Imports cSurveyPC.cSurvey.CaveRegister
+Imports System.Windows.Media.Media3D
 
 Namespace cSurvey
     Public Class cSurvey
@@ -25,6 +26,7 @@ Namespace cSurvey
 
         Private WithEvents oPlan As cDesignPlan
         Private WithEvents oProfile As cDesignProfile
+        Private WithEvents o3D As cDesign3D
         Private WithEvents oCrossSections As cDesignCrossSections
         Private oSketches As cDesignSketches
 
@@ -613,6 +615,8 @@ Namespace cSurvey
 
             oPlan = New cDesignPlan(Me)
             oProfile = New cDesignProfile(Me)
+            o3D = New cDesign3D(Me)
+
             oCrossSections = New cDesignCrossSections(Me)
             oSketches = New cDesignSketches(Me)
             oCalc = New cCalculate(Me)
@@ -801,8 +805,6 @@ Namespace cSurvey
 
         Friend Sub RaiseOnPropertiesChanged(ByVal Source As OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum)
             RaiseEvent OnBeforePropertiesChange(Me, New OnPropertiesChangedEventArgs(Source))
-            'Call oPlan.Plot.Caches.Invalidate()
-            'Call oProfile.Plot.Caches.Invalidate()
             RaiseEvent OnPropertiesChanged(Me, New OnPropertiesChangedEventArgs(Source))
         End Sub
 
@@ -1329,9 +1331,6 @@ Namespace cSurvey
                     Else
                         oPlan = New cDesignPlan(Me)
                     End If
-                    'If (pGetFileCreatID(oXml) = "topodroid" OrElse (LoadOptions And LoadOptionsEnum.FixTopoDroid) = LoadOptionsEnum.FixTopoDroid) Then
-                    '    Call modImport.FixTopodroidDesign(Me, oPlan, oXmlRoot.Item("plan"))
-                    'End If
                     Call RaiseOnProgressEvent("load.design.plan", OnProgressEventArgs.ProgressActionEnum.End, "", 0)
 
                     Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart112"), 0.5)
@@ -1341,6 +1340,14 @@ Namespace cSurvey
                     Else
                         oProfile = New cDesignProfile(Me)
                     End If
+
+                    'TODO: add RaiseOnProgressEvent
+                    If ChildElementExist(oXmlRoot, "model3d") Then
+                        o3D = New cDesign3D(Me, oFile, oXmlRoot.Item("model3d"))
+                    Else
+                        o3D = New cDesign3D(Me)
+                    End If
+
                     'If (pGetFileCreatID(oXml) = "topodroid" OrElse (LoadOptions And LoadOptionsEnum.FixTopoDroid) = LoadOptionsEnum.FixTopoDroid) Then
                     '    Call modImport.FixTopodroidDesign(Me, oProfile, oXmlRoot.Item("profile"))
                     'End If
@@ -1562,6 +1569,12 @@ Namespace cSurvey
             End Get
         End Property
 
+        Public ReadOnly Property [ThreeD]() As cDesign3D
+            Get
+                Return o3D
+            End Get
+        End Property
+
         Public ReadOnly Property Plan() As cDesignPlan
             Get
                 Return oPlan
@@ -1761,6 +1774,9 @@ Namespace cSurvey
             Call oProfile.SaveTo(File, Document, oXmlRoot, Options)
             If Not bSilent Then Call RaiseOnProgressEvent("save.design.profile", OnProgressEventArgs.ProgressActionEnum.End, "", 0)
 
+            'TODO: add raiseonprogressevent
+            Call o3D.SaveTo(File, Document, oXmlRoot, Options)
+
             If oCrossSections.Count <> 0 Then
                 Call oCrossSections.Rebind(True)
                 Call oCrossSections.SaveTo(File, Document, oXmlRoot)
@@ -1780,8 +1796,6 @@ Namespace cSurvey
             If oSharedSettings.Count <> 0 Then Call oSharedSettings.SaveTo(File, Document, oXmlRoot)
 
             Call oSurface.SaveTo(File, Document, oXmlRoot)
-
-            'Call oCaveRegister.SaveTo(File, Document, oXmlRoot)
 
             Call oMasterSlave.SaveTo(File, Document, oXmlRoot)
 
@@ -1854,12 +1868,12 @@ Namespace cSurvey
             RaiseEvent OnSegmentsChange(Me, New cSurvey.OnSegmentChangeEventArgs(SegmentsChangeActionEnum.Change, Args))
         End Sub
 
-        Private Sub oTrigpoints_OnTrigPointChange(ByVal Sender As cTrigPoints, ByVal Args As cTrigPoints.OnTrigpointEventArgs) Handles oTrigPoints.OnTrigPointChange
+        Private Sub oTrigpoints_OnTrigPointChange(ByVal Sender As Object, ByVal Args As cTrigPoints.OnTrigpointEventArgs) Handles oTrigPoints.OnTrigPointChange
             iInvalidated = iInvalidated Or Args.Trigpoint.Invalidated
             RaiseEvent OnTrigpointsChange(Me, New cSurvey.OnTrigpointChangeEventArgs(TrigpointsChangeActionEnum.Change, Args))
         End Sub
 
-        Private Sub oTrigPoints_OnTrigPointRebind(ByVal Sender As cTrigPoints, ByVal Args As cTrigPoints.OnTrigpointEventArgs) Handles oTrigPoints.OnTrigPointRebind
+        Private Sub oTrigPoints_OnTrigPointRebind(ByVal Sender As Object, ByVal Args As cTrigPoints.OnTrigpointEventArgs) Handles oTrigPoints.OnTrigPointRebind
             RaiseEvent OnTrigpointsChange(Me, New cSurvey.OnTrigpointChangeEventArgs(TrigpointsChangeActionEnum.Rebind, Args))
         End Sub
 

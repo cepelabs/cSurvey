@@ -189,6 +189,9 @@ Friend Class frmProperties
             txtBaseLightLinesScaleFactor.Value = .DesignProperties.GetValue("BaseLightLinesScaleFactor", 0.5)
             txtBaseUltraLightLinesScaleFactor.Value = .DesignProperties.GetValue("BaseUltraLightLinesScaleFactor", 0.1)
             txtBaseGeologyLinesScaleFactor.Value = .DesignProperties.GetValue("GeologyLinesScaleFactor", 10.0)
+
+            txtBaseBrushLinesScaleFactor.Value = .DesignProperties.GetValue("BrushLinesScaleFactor", 0.1)
+
             'clipart, simboli e testo
             txtDesignSoilScaleFactor.Value = .DesignProperties.GetValue("DesignSoilScaleFactor", 1)
             txtDesignTextureScaleFactor.Value = .DesignProperties.GetValue("DesignTextureScaleFactor", 0.2)
@@ -732,6 +735,8 @@ Friend Class frmProperties
             Call .DesignProperties.SetValue("BaseLightLinesScaleFactor", txtBaseLightLinesScaleFactor.Value)
             Call .DesignProperties.SetValue("BaseUltraLightLinesScaleFactor", txtBaseUltraLightLinesScaleFactor.Value)
             Call .DesignProperties.SetValue("BaseGeologyLinesScaleFactor", txtBaseGeologyLinesScaleFactor.Value)
+
+            Call .DesignProperties.SetValue("BrushLinesScaleFactor", txtBaseBrushLinesScaleFactor.Value)
 
             Call .DesignProperties.SetValue("DesignSoilScaleFactor", txtDesignSoilScaleFactor.Value)
             Call .DesignProperties.SetValue("DesignTextureScaleFactor", txtDesignTextureScaleFactor.Value)

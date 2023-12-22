@@ -86,7 +86,7 @@ Namespace cSurvey.Design
                     Call .Clear()
                     Dim oItem As cDrawCacheItem
 
-                    Dim oPreviewOptions As cOptionsDesign = PaintOptions
+                    Dim oPreviewOptions As cOptionsCenterline = PaintOptions
                     Dim sBoxWidth As Single
                     Dim sBoxHeight As Single
                     'Dim iBoxDefaultWidth As Integer = PaintOptions.InfoBoxOptions.Width

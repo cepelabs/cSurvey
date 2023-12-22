@@ -98,6 +98,7 @@ Friend Class frmSettings
         Call My.Application.Settings.SetSetting("debug.autosave.usehistorysettings", IIf(chkAutosaveUseHistorySettings.Checked, 1, 0))
         Call My.Application.Settings.SetSetting("debug.sendexception", If(chkSendException.Checked, 1, 0))
         Call My.Application.Settings.SetSetting("debug.checknewversion", If(chkCheckNewVersion.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("debug.multithreadingpreview", If(chkEnableMultithreadingPreview.Checked, 1, 0))
 
         Call My.Application.Settings.SetSetting("clipboard.segments.extformats", pGetClipboardFormats("segments"))
         Call My.Application.Settings.SetSetting("clipboard.designitems.extformats", pGetClipboardFormats("designitems"))
@@ -335,6 +336,8 @@ Friend Class frmSettings
         chkAutosaveUseHistorySettings.Checked = My.Application.Settings.GetSetting("debug.autosave.usehistorysettings", 0)
         chkSendException.Checked = My.Application.Settings.GetSetting("debug.sendexception", 0)
         chkCheckNewVersion.Checked = My.Application.Settings.GetSetting("debug.checknewversion", 0)
+        chkEnableMultithreadingPreview.Checked = My.Application.Settings.GetSetting("debug.multithreadingpreview", 1)
+
         txtMachineID.Text = My.Application.Settings.GetSetting("debug.machineid", "")
 
         Call pSetClipboardFormats("segments", My.Application.Settings.GetSetting("clipboard.segments.extformats", ""))

@@ -23,11 +23,11 @@ Partial Class frmSettings
     '<System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSettings))
-        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.tabHistorySettings = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.chkHistoryArchiveOnSave = New DevExpress.XtraEditors.CheckEdit()
@@ -215,10 +215,14 @@ Partial Class frmSettings
         Me.tabInfoWMS = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoHistory = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoDebug = New DevExpress.XtraTab.XtraTabPage()
+        Me.chkEnableMultithreadingPreview = New DevExpress.XtraEditors.CheckEdit()
         Me.chkForceGarbaceCollect = New DevExpress.XtraEditors.CheckEdit()
         Me.lblLogMaxSize = New DevExpress.XtraEditors.LabelControl()
         Me.txtLogMaxLine = New DevExpress.XtraEditors.SpinEdit()
         Me.chkLogOnFile = New DevExpress.XtraEditors.CheckEdit()
+        Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.CheckEdit1 = New DevExpress.XtraEditors.CheckEdit()
+        Me.CheckEdit2 = New DevExpress.XtraEditors.CheckEdit()
         Me.tabHistorySettings.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.chkHistoryArchiveOnSave.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -324,9 +328,14 @@ Partial Class frmSettings
         Me.tabInfoWMS.SuspendLayout()
         Me.tabInfoHistory.SuspendLayout()
         Me.tabInfoDebug.SuspendLayout()
+        CType(Me.chkEnableMultithreadingPreview.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkForceGarbaceCollect.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtLogMaxLine.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkLogOnFile.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl1.SuspendLayout()
+        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tabHistorySettings
@@ -1622,9 +1631,9 @@ Partial Class frmSettings
         'txtDefaultPenPattern
         '
         resources.ApplyResources(Me.txtDefaultPenPattern, "txtDefaultPenPattern")
-        EditorButtonImageOptions4.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
-        EditorButtonImageOptions4.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.txtDefaultPenPattern.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtDefaultPenPattern.Buttons1"), CType(resources.GetObject("txtDefaultPenPattern.Buttons2"), Integer), CType(resources.GetObject("txtDefaultPenPattern.Buttons3"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons4"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons5"), Boolean), EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, resources.GetString("txtDefaultPenPattern.Buttons6"), CType(resources.GetObject("txtDefaultPenPattern.Buttons7"), Object), CType(resources.GetObject("txtDefaultPenPattern.Buttons8"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtDefaultPenPattern.Buttons9"), DevExpress.Utils.ToolTipAnchor)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons10"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        EditorButtonImageOptions1.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        EditorButtonImageOptions1.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.txtDefaultPenPattern.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtDefaultPenPattern.Buttons1"), CType(resources.GetObject("txtDefaultPenPattern.Buttons2"), Integer), CType(resources.GetObject("txtDefaultPenPattern.Buttons3"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons4"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons5"), Boolean), EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, resources.GetString("txtDefaultPenPattern.Buttons6"), CType(resources.GetObject("txtDefaultPenPattern.Buttons7"), Object), CType(resources.GetObject("txtDefaultPenPattern.Buttons8"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtDefaultPenPattern.Buttons9"), DevExpress.Utils.ToolTipAnchor)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons10"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtDefaultPenPattern.Name = "txtDefaultPenPattern"
         Me.txtDefaultPenPattern.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
@@ -1685,6 +1694,8 @@ Partial Class frmSettings
         '
         'tabInfoDebug
         '
+        Me.tabInfoDebug.Controls.Add(Me.GroupControl1)
+        Me.tabInfoDebug.Controls.Add(Me.chkEnableMultithreadingPreview)
         Me.tabInfoDebug.Controls.Add(Me.chkForceGarbaceCollect)
         Me.tabInfoDebug.Controls.Add(Me.lblLogMaxSize)
         Me.tabInfoDebug.Controls.Add(Me.txtLogMaxLine)
@@ -1700,6 +1711,13 @@ Partial Class frmSettings
         Me.tabInfoDebug.Controls.Add(Me.Label4)
         Me.tabInfoDebug.Name = "tabInfoDebug"
         resources.ApplyResources(Me.tabInfoDebug, "tabInfoDebug")
+        '
+        'chkEnableMultithreadingPreview
+        '
+        resources.ApplyResources(Me.chkEnableMultithreadingPreview, "chkEnableMultithreadingPreview")
+        Me.chkEnableMultithreadingPreview.Name = "chkEnableMultithreadingPreview"
+        Me.chkEnableMultithreadingPreview.Properties.AutoWidth = True
+        Me.chkEnableMultithreadingPreview.Properties.Caption = resources.GetString("chkEnableMultithreadingPreview.Properties.Caption")
         '
         'chkForceGarbaceCollect
         '
@@ -1733,6 +1751,25 @@ Partial Class frmSettings
         Me.chkLogOnFile.Name = "chkLogOnFile"
         Me.chkLogOnFile.Properties.AutoWidth = True
         Me.chkLogOnFile.Properties.Caption = resources.GetString("chkLogOnFile.Properties.Caption")
+        '
+        'GroupControl1
+        '
+        Me.GroupControl1.Controls.Add(Me.CheckEdit2)
+        Me.GroupControl1.Controls.Add(Me.CheckEdit1)
+        resources.ApplyResources(Me.GroupControl1, "GroupControl1")
+        Me.GroupControl1.Name = "GroupControl1"
+        '
+        'CheckEdit1
+        '
+        resources.ApplyResources(Me.CheckEdit1, "CheckEdit1")
+        Me.CheckEdit1.Name = "CheckEdit1"
+        Me.CheckEdit1.Properties.Caption = resources.GetString("CheckEdit1.Properties.Caption")
+        '
+        'CheckEdit2
+        '
+        resources.ApplyResources(Me.CheckEdit2, "CheckEdit2")
+        Me.CheckEdit2.Name = "CheckEdit2"
+        Me.CheckEdit2.Properties.Caption = resources.GetString("CheckEdit2.Properties.Caption")
         '
         'frmSettings
         '
@@ -1871,9 +1908,14 @@ Partial Class frmSettings
         Me.tabInfoHistory.PerformLayout()
         Me.tabInfoDebug.ResumeLayout(False)
         Me.tabInfoDebug.PerformLayout()
+        CType(Me.chkEnableMultithreadingPreview.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkForceGarbaceCollect.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtLogMaxLine.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkLogOnFile.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl1.ResumeLayout(False)
+        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2068,4 +2110,8 @@ Partial Class frmSettings
     Friend WithEvents pnlParameters As DevExpress.Utils.FlyoutPanelControl
     Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboDesignGeoLineType As ComboBox
+    Friend WithEvents chkEnableMultithreadingPreview As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents CheckEdit2 As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents CheckEdit1 As DevExpress.XtraEditors.CheckEdit
 End Class

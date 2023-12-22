@@ -4,7 +4,6 @@ Imports System.Drawing.Drawing2D
 Imports cSurveyPC.cSurvey.Drawings
 Imports cSurveyPC.cSurvey.Design.Items
 Imports cSurveyPC.cSurvey.Design.Options
-Imports cSurveyPC.cSurvey.Editor
 
 Namespace cSurvey.Design
     Public MustInherit Class cDesign
@@ -160,11 +159,6 @@ Namespace cSurvey.Design
                                                                                   Call oItem.Caches.Invalidate(Options)
                                                                               End Sub)
             Next
-            'For Each oLayer As cLayer In oLayers
-            '    For Each oItem As cItem In oLayer.Items
-            '        Call oItem.Caches.Invalidate(Options)
-            '    Next
-            'Next
         End Sub
 
         Public Overridable ReadOnly Property Layers() As cLayers

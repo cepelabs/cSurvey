@@ -539,18 +539,6 @@ Namespace cSurvey.Helper.Editor
             MyBase.New(Parent, Description, Area)
             oPreviousSelection = PreviousSelection
         End Sub
-
-        'Friend Sub New(Parent As cUndo, Description As String, Area As cAreaEnum, Item As cItem)
-        '    MyBase.New(Parent, Description, Area)
-        '    oFirstItems = New List(Of cUndoItemSelectionDesignData)
-        '    Call Append(Item)
-        'End Sub
-
-        'Friend Sub New(Parent As cUndo, Description As String, Area As cAreaEnum, Items As IEnumerable(Of cItem))
-        '    MyBase.New(Parent, Description, Area)
-        '    oFirstItems = New List(Of cUndoItemSelectionDesignData)
-        '    Call Append(Items)
-        'End Sub
     End Class
 
     Public Class cUndoDesignItemEdit
@@ -905,6 +893,7 @@ Namespace cSurvey.Helper.Editor
             DesignProfile = 1
             DataSegments = 2
             DataShots = 3
+            Design3D = 4
             All = 99
         End Enum
 
@@ -1164,6 +1153,11 @@ Namespace cSurvey.Helper.Editor
             If oCurrentUndoItem Is Nothing Then
                 Dim oItem As cItem
                 Select Case Area
+                    Case cAreaEnum.Design3D
+                        oItem = oParent.ThreeDTools.CurrentItem
+                        If oItem IsNot Nothing Then
+                            oCurrentUndoItem = New cUndoDesignItemEdit(Me, Description, Area, oItem)
+                        End If
                     Case cAreaEnum.DesignPlan
                         oItem = oParent.PlanTools.CurrentItem
                         If oItem IsNot Nothing Then
@@ -1271,6 +1265,12 @@ Namespace cSurvey.Helper.Editor
             Else
                 Dim oItem As cItem
                 Select Case oCurrentUndoItem.Area
+                    Case cAreaEnum.Design3D
+                        If TypeOf oCurrentUndoItem Is cUndoDesignItemEdit Then
+                            Dim oCurrentDesignUndoItem As cUndoDesignItemEdit = oCurrentUndoItem
+                            oItem = oParent.PlanTools.CurrentItem
+                            Call oCurrentDesignUndoItem.Commit(oItem)
+                        End If
                     Case cAreaEnum.DesignPlan
                         If TypeOf oCurrentUndoItem Is cUndoDesignItemEdit Then
                             Dim oCurrentDesignUndoItem As cUndoDesignItemEdit = oCurrentUndoItem

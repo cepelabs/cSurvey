@@ -105,29 +105,32 @@ Namespace cSurvey
 
         Default Public ReadOnly Property Item(ByVal Path As String) As cCaveInfoBranch
             Get
-                'Try
-                Dim sPath As String = Path.ToLower
-                Dim sName As String
-                If sPath.Contains(sBranchSeparator) Then
-                    Dim iSeparatorPos As Integer = sPath.IndexOf(sBranchSeparator)
-                    sName = sPath.Substring(0, iSeparatorPos)
-                    sPath = sPath.Substring(iSeparatorPos + 1)
-                Else
-                    sName = sPath
-                    sPath = ""
-                End If
-                If oBranches.ContainsKey(sName) Then
-                    If sPath = "" Then
-                        Return oBranches(sName)
-                    Else
-                        Return oBranches(sName).Branches(sPath)
-                    End If
-                Else
+                If Path Is Nothing Then
                     Return Nothing
+                Else
+                    Dim sPath As String = Path.ToLower
+                    Dim sName As String
+                    If sPath.Contains(sBranchSeparator) Then
+                        Dim iSeparatorPos As Integer = sPath.IndexOf(sBranchSeparator)
+                        sName = sPath.Substring(0, iSeparatorPos)
+                        sPath = sPath.Substring(iSeparatorPos + 1)
+                    Else
+                        sName = sPath
+                        sPath = ""
+                    End If
+                    If oBranches.ContainsKey(sName) Then
+                        If sPath = "" Then
+                            Return oBranches(sName)
+                        Else
+                            Return oBranches(sName).Branches(sPath)
+                        End If
+                    Else
+                        Return Nothing
+                    End If
+                    'Catch
+                    '    Return Nothing
+                    'End Try
                 End If
-                'Catch
-                '    Return Nothing
-                'End Try
             End Get
         End Property
 

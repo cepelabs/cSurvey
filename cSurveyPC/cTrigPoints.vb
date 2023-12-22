@@ -33,8 +33,8 @@ Namespace cSurvey
 
         Private oTrigPoints As SortedList(Of String, cTrigPoint)
 
-        Friend Event OnTrigPointRebind(ByVal Sender As cTrigPoints, ByVal Args As OnTrigpointEventArgs)
-        Friend Event OnTrigPointChange(ByVal Sender As cTrigPoints, ByVal Args As OnTrigpointEventArgs)
+        Friend Event OnTrigPointRebind(ByVal Sender As Object, ByVal Args As OnTrigpointEventArgs)
+        Friend Event OnTrigPointChange(ByVal Sender As Object, ByVal Args As OnTrigpointEventArgs)
 
         Public ReadOnly Property Last() As cTrigPoint
             Get
@@ -80,7 +80,7 @@ Namespace cSurvey
             Next
         End Sub
 
-        Private Sub oTrigPoint_OnChange(ByVal Sender As cTrigPoint)
+        Private Sub oTrigPoint_OnChange(ByVal Sender As Object, e As EventArgs)
             RaiseEvent OnTrigPointChange(Me, New cTrigPoints.OnTrigpointEventArgs(Sender))
         End Sub
 

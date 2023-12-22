@@ -28,6 +28,25 @@ Partial Class frmScaleRules
         Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupBox1 = New DevExpress.XtraEditors.GroupControl()
+        Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtBaseBrushLinesScaleFactor = New DevExpress.XtraEditors.SpinEdit()
+        Me.BarManager = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.barMain = New DevExpress.XtraBars.Bar()
+        Me.btnAddScale = New DevExpress.XtraBars.BarEditItem()
+        Me.txtAddScale = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.btnAdd = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnAddAsCopy = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnRemove = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnRemoveAll = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnClear = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnImport = New DevExpress.XtraBars.BarButtonItem()
+        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
+        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtBaseGeologyLinesScaleFactor = New System.Windows.Forms.NumericUpDown()
         Me.Label8 = New DevExpress.XtraEditors.LabelControl()
         Me.Label7 = New DevExpress.XtraEditors.LabelControl()
         Me.Label4 = New DevExpress.XtraEditors.LabelControl()
@@ -79,21 +98,6 @@ Partial Class frmScaleRules
         Me.GroupBox6 = New DevExpress.XtraEditors.GroupControl()
         Me.lblPlotSplayCrossScale = New DevExpress.XtraEditors.LabelControl()
         Me.txtPlotSplayCrossScale = New DevExpress.XtraEditors.SpinEdit()
-        Me.BarManager = New DevExpress.XtraBars.BarManager(Me.components)
-        Me.barMain = New DevExpress.XtraBars.Bar()
-        Me.btnAddScale = New DevExpress.XtraBars.BarEditItem()
-        Me.txtAddScale = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
-        Me.btnAdd = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnAddAsCopy = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnRemove = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnRemoveAll = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnClear = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnExport = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnImport = New DevExpress.XtraBars.BarButtonItem()
-        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
-        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
-        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
-        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
         Me.lblPlotSplaySelectedPenWidth = New DevExpress.XtraEditors.LabelControl()
         Me.txtPlotSplaySelectedPenWidth = New System.Windows.Forms.NumericUpDown()
         Me.txtPlotSplayPenWidth = New System.Windows.Forms.NumericUpDown()
@@ -161,10 +165,12 @@ Partial Class frmScaleRules
         Me.tabInfoDesign = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoPlot = New DevExpress.XtraTab.XtraTabPage()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
-        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
-        Me.txtBaseGeologyLinesScaleFactor = New System.Windows.Forms.NumericUpDown()
         CType(Me.GroupBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.txtBaseBrushLinesScaleFactor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtAddScale, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtBaseGeologyLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtBaseMediumLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtBaseUltraLightLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtBaseLightLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -196,8 +202,6 @@ Partial Class frmScaleRules
         CType(Me.GroupBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
         CType(Me.txtPlotSplayCrossScale.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtAddScale, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPlotSplaySelectedPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPlotSplayPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.frmPlotLRUD, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -235,7 +239,6 @@ Partial Class frmScaleRules
         Me.tabInfoPlot.SuspendLayout()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl2.SuspendLayout()
-        CType(Me.txtBaseGeologyLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdApply
@@ -257,6 +260,8 @@ Partial Class frmScaleRules
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.LabelControl4)
+        Me.GroupBox1.Controls.Add(Me.txtBaseBrushLinesScaleFactor)
         Me.GroupBox1.Controls.Add(Me.LabelControl2)
         Me.GroupBox1.Controls.Add(Me.txtBaseGeologyLinesScaleFactor)
         Me.GroupBox1.Controls.Add(Me.Label8)
@@ -271,6 +276,158 @@ Partial Class frmScaleRules
         Me.GroupBox1.Controls.Add(Me.lblBaseLineWidthScaleFactor)
         resources.ApplyResources(Me.GroupBox1, "GroupBox1")
         Me.GroupBox1.Name = "GroupBox1"
+        '
+        'LabelControl4
+        '
+        resources.ApplyResources(Me.LabelControl4, "LabelControl4")
+        Me.LabelControl4.Name = "LabelControl4"
+        Me.LabelControl4.Tag = "txtBaseBrushLinesScaleFactor"
+        '
+        'txtBaseBrushLinesScaleFactor
+        '
+        resources.ApplyResources(Me.txtBaseBrushLinesScaleFactor, "txtBaseBrushLinesScaleFactor")
+        Me.txtBaseBrushLinesScaleFactor.MenuManager = Me.BarManager
+        Me.txtBaseBrushLinesScaleFactor.Name = "txtBaseBrushLinesScaleFactor"
+        Me.txtBaseBrushLinesScaleFactor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtBaseBrushLinesScaleFactor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtBaseBrushLinesScaleFactor.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
+        Me.txtBaseBrushLinesScaleFactor.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
+        Me.txtBaseBrushLinesScaleFactor.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 65536})
+        '
+        'BarManager
+        '
+        Me.BarManager.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.barMain})
+        Me.BarManager.DockControls.Add(Me.barDockControlTop)
+        Me.BarManager.DockControls.Add(Me.barDockControlBottom)
+        Me.BarManager.DockControls.Add(Me.barDockControlLeft)
+        Me.BarManager.DockControls.Add(Me.barDockControlRight)
+        Me.BarManager.Form = Me
+        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnAddScale, Me.btnAdd, Me.btnAddAsCopy, Me.btnRemove, Me.btnRemoveAll, Me.btnClear, Me.btnExport, Me.btnImport})
+        Me.BarManager.MaxItemId = 8
+        Me.BarManager.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.txtAddScale})
+        '
+        'barMain
+        '
+        Me.barMain.BarName = "Tools"
+        Me.barMain.DockCol = 0
+        Me.barMain.DockRow = 0
+        Me.barMain.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
+        Me.barMain.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnAddScale), New DevExpress.XtraBars.LinkPersistInfo(Me.btnAdd), New DevExpress.XtraBars.LinkPersistInfo(Me.btnAddAsCopy), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRemove, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRemoveAll, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnClear, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnExport, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnImport)})
+        Me.barMain.OptionsBar.AllowQuickCustomization = False
+        Me.barMain.OptionsBar.DisableClose = True
+        Me.barMain.OptionsBar.DisableCustomization = True
+        Me.barMain.OptionsBar.DrawDragBorder = False
+        Me.barMain.OptionsBar.UseWholeRow = True
+        resources.ApplyResources(Me.barMain, "barMain")
+        '
+        'btnAddScale
+        '
+        resources.ApplyResources(Me.btnAddScale, "btnAddScale")
+        Me.btnAddScale.Edit = Me.txtAddScale
+        Me.btnAddScale.Id = 0
+        Me.btnAddScale.Name = "btnAddScale"
+        Me.btnAddScale.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.Caption
+        '
+        'txtAddScale
+        '
+        resources.ApplyResources(Me.txtAddScale, "txtAddScale")
+        Me.txtAddScale.DisplayFormat.FormatString = "N0"
+        Me.txtAddScale.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtAddScale.EditFormat.FormatString = "N0"
+        Me.txtAddScale.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtAddScale.Name = "txtAddScale"
+        '
+        'btnAdd
+        '
+        resources.ApplyResources(Me.btnAdd, "btnAdd")
+        Me.btnAdd.Enabled = False
+        Me.btnAdd.Id = 1
+        Me.btnAdd.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
+        Me.btnAdd.Name = "btnAdd"
+        '
+        'btnAddAsCopy
+        '
+        resources.ApplyResources(Me.btnAddAsCopy, "btnAddAsCopy")
+        Me.btnAddAsCopy.Enabled = False
+        Me.btnAddAsCopy.Id = 2
+        Me.btnAddAsCopy.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.copy
+        Me.btnAddAsCopy.Name = "btnAddAsCopy"
+        '
+        'btnRemove
+        '
+        resources.ApplyResources(Me.btnRemove, "btnRemove")
+        Me.btnRemove.Enabled = False
+        Me.btnRemove.Id = 3
+        Me.btnRemove.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
+        Me.btnRemove.Name = "btnRemove"
+        '
+        'btnRemoveAll
+        '
+        resources.ApplyResources(Me.btnRemoveAll, "btnRemoveAll")
+        Me.btnRemoveAll.Enabled = False
+        Me.btnRemoveAll.Id = 4
+        Me.btnRemoveAll.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.clearall
+        Me.btnRemoveAll.Name = "btnRemoveAll"
+        '
+        'btnClear
+        '
+        resources.ApplyResources(Me.btnClear, "btnClear")
+        Me.btnClear.Enabled = False
+        Me.btnClear.Id = 5
+        Me.btnClear.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.reset
+        Me.btnClear.Name = "btnClear"
+        '
+        'btnExport
+        '
+        resources.ApplyResources(Me.btnExport, "btnExport")
+        Me.btnExport.Enabled = False
+        Me.btnExport.Id = 6
+        Me.btnExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
+        Me.btnExport.Name = "btnExport"
+        '
+        'btnImport
+        '
+        resources.ApplyResources(Me.btnImport, "btnImport")
+        Me.btnImport.Id = 7
+        Me.btnImport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.import
+        Me.btnImport.Name = "btnImport"
+        '
+        'barDockControlTop
+        '
+        Me.barDockControlTop.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlTop, "barDockControlTop")
+        Me.barDockControlTop.Manager = Me.BarManager
+        '
+        'barDockControlBottom
+        '
+        Me.barDockControlBottom.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlBottom, "barDockControlBottom")
+        Me.barDockControlBottom.Manager = Me.BarManager
+        '
+        'barDockControlLeft
+        '
+        Me.barDockControlLeft.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlLeft, "barDockControlLeft")
+        Me.barDockControlLeft.Manager = Me.BarManager
+        '
+        'barDockControlRight
+        '
+        Me.barDockControlRight.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlRight, "barDockControlRight")
+        Me.barDockControlRight.Manager = Me.BarManager
+        '
+        'LabelControl2
+        '
+        resources.ApplyResources(Me.LabelControl2, "LabelControl2")
+        Me.LabelControl2.Name = "LabelControl2"
+        '
+        'txtBaseGeologyLinesScaleFactor
+        '
+        Me.txtBaseGeologyLinesScaleFactor.DecimalPlaces = 1
+        Me.txtBaseGeologyLinesScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
+        resources.ApplyResources(Me.txtBaseGeologyLinesScaleFactor, "txtBaseGeologyLinesScaleFactor")
+        Me.txtBaseGeologyLinesScaleFactor.Minimum = New Decimal(New Integer() {1, 0, 0, 65536})
+        Me.txtBaseGeologyLinesScaleFactor.Name = "txtBaseGeologyLinesScaleFactor"
+        Me.txtBaseGeologyLinesScaleFactor.Value = New Decimal(New Integer() {1, 0, 0, 65536})
         '
         'Label8
         '
@@ -652,128 +809,6 @@ Partial Class frmScaleRules
         Me.txtPlotSplayCrossScale.Properties.MaskSettings.Set("mask", "0.0")
         Me.txtPlotSplayCrossScale.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
         Me.txtPlotSplayCrossScale.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 65536})
-        '
-        'BarManager
-        '
-        Me.BarManager.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.barMain})
-        Me.BarManager.DockControls.Add(Me.barDockControlTop)
-        Me.BarManager.DockControls.Add(Me.barDockControlBottom)
-        Me.BarManager.DockControls.Add(Me.barDockControlLeft)
-        Me.BarManager.DockControls.Add(Me.barDockControlRight)
-        Me.BarManager.Form = Me
-        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnAddScale, Me.btnAdd, Me.btnAddAsCopy, Me.btnRemove, Me.btnRemoveAll, Me.btnClear, Me.btnExport, Me.btnImport})
-        Me.BarManager.MaxItemId = 8
-        Me.BarManager.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.txtAddScale})
-        '
-        'barMain
-        '
-        Me.barMain.BarName = "Tools"
-        Me.barMain.DockCol = 0
-        Me.barMain.DockRow = 0
-        Me.barMain.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.barMain.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnAddScale), New DevExpress.XtraBars.LinkPersistInfo(Me.btnAdd), New DevExpress.XtraBars.LinkPersistInfo(Me.btnAddAsCopy), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRemove, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRemoveAll, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnClear, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnExport, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnImport)})
-        Me.barMain.OptionsBar.AllowQuickCustomization = False
-        Me.barMain.OptionsBar.DisableClose = True
-        Me.barMain.OptionsBar.DisableCustomization = True
-        Me.barMain.OptionsBar.DrawDragBorder = False
-        Me.barMain.OptionsBar.UseWholeRow = True
-        resources.ApplyResources(Me.barMain, "barMain")
-        '
-        'btnAddScale
-        '
-        resources.ApplyResources(Me.btnAddScale, "btnAddScale")
-        Me.btnAddScale.Edit = Me.txtAddScale
-        Me.btnAddScale.Id = 0
-        Me.btnAddScale.Name = "btnAddScale"
-        Me.btnAddScale.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.Caption
-        '
-        'txtAddScale
-        '
-        resources.ApplyResources(Me.txtAddScale, "txtAddScale")
-        Me.txtAddScale.DisplayFormat.FormatString = "N0"
-        Me.txtAddScale.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtAddScale.EditFormat.FormatString = "N0"
-        Me.txtAddScale.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtAddScale.Name = "txtAddScale"
-        '
-        'btnAdd
-        '
-        resources.ApplyResources(Me.btnAdd, "btnAdd")
-        Me.btnAdd.Enabled = False
-        Me.btnAdd.Id = 1
-        Me.btnAdd.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
-        Me.btnAdd.Name = "btnAdd"
-        '
-        'btnAddAsCopy
-        '
-        resources.ApplyResources(Me.btnAddAsCopy, "btnAddAsCopy")
-        Me.btnAddAsCopy.Enabled = False
-        Me.btnAddAsCopy.Id = 2
-        Me.btnAddAsCopy.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.copy
-        Me.btnAddAsCopy.Name = "btnAddAsCopy"
-        '
-        'btnRemove
-        '
-        resources.ApplyResources(Me.btnRemove, "btnRemove")
-        Me.btnRemove.Enabled = False
-        Me.btnRemove.Id = 3
-        Me.btnRemove.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
-        Me.btnRemove.Name = "btnRemove"
-        '
-        'btnRemoveAll
-        '
-        resources.ApplyResources(Me.btnRemoveAll, "btnRemoveAll")
-        Me.btnRemoveAll.Enabled = False
-        Me.btnRemoveAll.Id = 4
-        Me.btnRemoveAll.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.clearall
-        Me.btnRemoveAll.Name = "btnRemoveAll"
-        '
-        'btnClear
-        '
-        resources.ApplyResources(Me.btnClear, "btnClear")
-        Me.btnClear.Enabled = False
-        Me.btnClear.Id = 5
-        Me.btnClear.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.reset
-        Me.btnClear.Name = "btnClear"
-        '
-        'btnExport
-        '
-        resources.ApplyResources(Me.btnExport, "btnExport")
-        Me.btnExport.Enabled = False
-        Me.btnExport.Id = 6
-        Me.btnExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
-        Me.btnExport.Name = "btnExport"
-        '
-        'btnImport
-        '
-        resources.ApplyResources(Me.btnImport, "btnImport")
-        Me.btnImport.Id = 7
-        Me.btnImport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.import
-        Me.btnImport.Name = "btnImport"
-        '
-        'barDockControlTop
-        '
-        Me.barDockControlTop.CausesValidation = False
-        resources.ApplyResources(Me.barDockControlTop, "barDockControlTop")
-        Me.barDockControlTop.Manager = Me.BarManager
-        '
-        'barDockControlBottom
-        '
-        Me.barDockControlBottom.CausesValidation = False
-        resources.ApplyResources(Me.barDockControlBottom, "barDockControlBottom")
-        Me.barDockControlBottom.Manager = Me.BarManager
-        '
-        'barDockControlLeft
-        '
-        Me.barDockControlLeft.CausesValidation = False
-        resources.ApplyResources(Me.barDockControlLeft, "barDockControlLeft")
-        Me.barDockControlLeft.Manager = Me.BarManager
-        '
-        'barDockControlRight
-        '
-        Me.barDockControlRight.CausesValidation = False
-        resources.ApplyResources(Me.barDockControlRight, "barDockControlRight")
-        Me.barDockControlRight.Manager = Me.BarManager
         '
         'lblPlotSplaySelectedPenWidth
         '
@@ -1292,20 +1327,6 @@ Partial Class frmScaleRules
         resources.ApplyResources(Me.PanelControl2, "PanelControl2")
         Me.PanelControl2.Name = "PanelControl2"
         '
-        'LabelControl2
-        '
-        resources.ApplyResources(Me.LabelControl2, "LabelControl2")
-        Me.LabelControl2.Name = "LabelControl2"
-        '
-        'txtBaseGeologyLinesScaleFactor
-        '
-        Me.txtBaseGeologyLinesScaleFactor.DecimalPlaces = 1
-        Me.txtBaseGeologyLinesScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
-        resources.ApplyResources(Me.txtBaseGeologyLinesScaleFactor, "txtBaseGeologyLinesScaleFactor")
-        Me.txtBaseGeologyLinesScaleFactor.Minimum = New Decimal(New Integer() {1, 0, 0, 65536})
-        Me.txtBaseGeologyLinesScaleFactor.Name = "txtBaseGeologyLinesScaleFactor"
-        Me.txtBaseGeologyLinesScaleFactor.Value = New Decimal(New Integer() {1, 0, 0, 65536})
-        '
         'frmScaleRules
         '
         resources.ApplyResources(Me, "$this")
@@ -1327,6 +1348,10 @@ Partial Class frmScaleRules
         CType(Me.GroupBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.txtBaseBrushLinesScaleFactor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtAddScale, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtBaseGeologyLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtBaseMediumLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtBaseUltraLightLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtBaseLightLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1364,8 +1389,6 @@ Partial Class frmScaleRules
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
         CType(Me.txtPlotSplayCrossScale.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtAddScale, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPlotSplaySelectedPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPlotSplayPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.frmPlotLRUD, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1408,7 +1431,6 @@ Partial Class frmScaleRules
         Me.tabInfoPlot.ResumeLayout(False)
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl2.ResumeLayout(False)
-        CType(Me.txtBaseGeologyLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1552,4 +1574,6 @@ Partial Class frmScaleRules
     Friend WithEvents txtPlotSplayCrossScale As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtBaseGeologyLinesScaleFactor As NumericUpDown
+    Friend WithEvents LabelControl4 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtBaseBrushLinesScaleFactor As DevExpress.XtraEditors.SpinEdit
 End Class

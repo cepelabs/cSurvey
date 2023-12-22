@@ -1,7 +1,4 @@
-Imports System
 Imports System.Xml
-Imports System.Collections.Generic
-Imports System.Collections.ObjectModel
 
 Imports cSurveyPC.cSurvey.Design.Layers
 Imports System.ComponentModel
@@ -15,6 +12,18 @@ Namespace cSurvey.Design
         Private oDesign As cDesign
 
         Private oLayers As BindingList(Of cLayer)
+
+        Friend ReadOnly Property Survey As cSurvey
+            Get
+                Return oSurvey
+            End Get
+        End Property
+
+        Friend Overridable ReadOnly Property Design As cDesign
+            Get
+                Return oDesign
+            End Get
+        End Property
 
         Friend ReadOnly Property List As BindingList(Of cLayer)
             Get
@@ -32,43 +41,43 @@ Namespace cSurvey.Design
             Signs = 6
         End Enum
 
-        Public ReadOnly Property RocksAndConcretionLayer() As cLayerRocks
+        Public Overridable ReadOnly Property RocksAndConcretionLayer() As cLayerRocks
             Get
                 Return oLayers(LayerTypeEnum.RocksAndConcretion)
             End Get
         End Property
 
-        Public ReadOnly Property CeilingMorphologiesLayer() As cLayerCeilingMorphologies
+        Public Overridable ReadOnly Property CeilingMorphologiesLayer() As cLayerCeilingMorphologies
             Get
                 Return oLayers(LayerTypeEnum.CeilingMorphologies)
             End Get
         End Property
 
-        Public ReadOnly Property BordersLayer() As cLayerBorders
+        Public Overridable ReadOnly Property BordersLayer() As cLayerBorders
             Get
                 Return oLayers(LayerTypeEnum.Borders)
             End Get
         End Property
 
-        Public ReadOnly Property SignsLayer() As cLayerSigns
+        Public Overridable ReadOnly Property SignsLayer() As cLayerSigns
             Get
                 Return oLayers(LayerTypeEnum.Signs)
             End Get
         End Property
 
-        Public ReadOnly Property WaterAndFloorMorphologiesLayer() As cLayerWaterAndFloorMorphologies
+        Public Overridable ReadOnly Property WaterAndFloorMorphologiesLayer() As cLayerWaterAndFloorMorphologies
             Get
                 Return oLayers(LayerTypeEnum.WaterAndFloorMorphologies)
             End Get
         End Property
 
-        Public ReadOnly Property SoilLayer() As cLayerSoil
+        Public Overridable ReadOnly Property SoilLayer() As cLayerSoil
             Get
                 Return oLayers(LayerTypeEnum.Soil)
             End Get
         End Property
 
-        Public ReadOnly Property BaseLayer() As cLayerBase
+        Public Overridable ReadOnly Property BaseLayer() As cLayerBase
             Get
                 Return oLayers(LayerTypeEnum.Base)
             End Get
@@ -226,6 +235,5 @@ Namespace cSurvey.Design
         Private Function cLayer_GetEnumerator() As IEnumerator(Of cLayer) Implements IEnumerable(Of cLayer).GetEnumerator
             Return oLayers.GetEnumerator
         End Function
-
     End Class
 End Namespace

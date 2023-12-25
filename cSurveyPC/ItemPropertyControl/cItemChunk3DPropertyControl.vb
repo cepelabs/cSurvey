@@ -84,11 +84,11 @@ Friend Class cItemChunk3DPropertyControl
             Call grdChunkInfo.RowAdd("station2", GetLocalizedString("itemchunk.textpart2"), DevExpress.Data.UnboundColumnType.String)
 
             Dim oTransformRow As EditorRow = grdChunkInfo.RowAdd("transform", GetLocalizedString("itemchunk.textpart4"), DevExpress.Data.UnboundColumnType.String)
-            Dim oTransformRowScale As EditorRow = grdChunkInfo.RowAdd(oTransformRow, "transformscale", GetLocalizedString("itemchunk.textpart5"), DevExpress.Data.UnboundColumnType.String)
+            Dim oTransformRowScale As EditorRow = grdChunkInfo.RowAdd(oTransformRow, "transformscale", GetLocalizedString("itemchunk.textpart9"), DevExpress.Data.UnboundColumnType.String)
             Call grdChunkInfo.RowAdd(oTransformRowScale, "transformxscale", GetLocalizedString("itemchunk.textpart6"), DevExpress.Data.UnboundColumnType.Decimal)
             Call grdChunkInfo.RowAdd(oTransformRowScale, "transformyscale", GetLocalizedString("itemchunk.textpart7"), DevExpress.Data.UnboundColumnType.Decimal)
             Call grdChunkInfo.RowAdd(oTransformRowScale, "transformzscale", GetLocalizedString("itemchunk.textpart8"), DevExpress.Data.UnboundColumnType.Decimal)
-            Dim oTransformRowRotation As EditorRow = grdChunkInfo.RowAdd(oTransformRow, "transformrotate", GetLocalizedString("itemchunk.textpart9"), DevExpress.Data.UnboundColumnType.String)
+            Dim oTransformRowRotation As EditorRow = grdChunkInfo.RowAdd(oTransformRow, "transformrotate", GetLocalizedString("itemchunk.textpart5"), DevExpress.Data.UnboundColumnType.String)
             Call grdChunkInfo.RowAdd(oTransformRowRotation, "transformxrotate", GetLocalizedString("itemchunk.textpart6"), DevExpress.Data.UnboundColumnType.Decimal)
             Call grdChunkInfo.RowAdd(oTransformRowRotation, "transformyrotate", GetLocalizedString("itemchunk.textpart7"), DevExpress.Data.UnboundColumnType.Decimal)
             Call grdChunkInfo.RowAdd(oTransformRowRotation, "transformzrotate", GetLocalizedString("itemchunk.textpart8"), DevExpress.Data.UnboundColumnType.Decimal)

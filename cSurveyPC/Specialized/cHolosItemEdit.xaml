@@ -18,9 +18,6 @@
 
             <ht:CubeVisual3D x:Name="cube_station2" Transform="{ht:Translate 0,-3,0}" Fill="#B2EA2E04"/>
             <ht:CombinedManipulator x:Name="cube_station2_manipulator" CanRotateX="false" CanRotateY="False" CanRotateZ="False" TargetTransform="{Binding Transform, ElementName=cube_station2}"/>
-
-            <ht:CubeVisual3D x:Name="cube_station3" Transform="{ht:Translate 0,0,0}" Fill="#B2C0C0C0"/>
-            <ht:CombinedManipulator CanRotateX="false" CanRotateY="true" CanRotateZ="False" CanTranslateX="False" CanTranslateY="False" CanTranslateZ="False" TargetTransform="{Binding Transform, ElementName=cube_station3}"/>
         </ht:HelixViewport3D>
         </DockPanel>
 </UserControl>

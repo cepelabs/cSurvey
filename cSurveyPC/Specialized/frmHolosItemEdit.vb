@@ -9,6 +9,7 @@ Imports DevExpress.Utils.Extensions
 Imports System.Xml
 Imports DevExpress.XtraCharts.Designer
 Imports cSurveyPC.cSurvey.Design.Items
+Imports System.Runtime.CompilerServices
 
 Public Class frmHolosItemEdit
 
@@ -52,19 +53,33 @@ Public Class frmHolosItemEdit
         txtzrotate.EditValue = modNumbers.StringToDecimal(Item.ModelTransform.ZRotate)
         If Item.Stations.Station1.IsValid Then
             txtStation1.EditValue = Item.Stations.Station1.TrigPoint.Name
-            txt1.EditValue = Item.Stations.Station1.Point.X & ";" & Item.Stations.Station1.Point.Y & ";" & Item.Stations.Station1.Point.Z
+
+            Dim oCube1Manupulator As CombinedManipulator = oHolosEdit.station1manipulator
+            oCube1Manupulator.UnBind()
+            Dim oCube1 As CubeVisual3D = oHolosEdit.station1
+            Dim oCube1Bound As Rect3D = oCube1.FindBounds(oCube1.Transform)
+            oCube1.Transform = New TranslateTransform3D(Item.Stations.Station1.Point.X + oCube1Bound.SizeX / 4.0, Item.Stations.Station1.Point.Y + oCube1Bound.SizeY / 4.0, Item.Stations.Station1.Point.Z + oCube1Bound.SizeZ / 4.0)
+            oCube1Manupulator.Bind(oCube1)
         End If
         If Item.Stations.Station2.IsValid Then
             txtStation2.EditValue = Item.Stations.Station2.TrigPoint.Name
-            txt2.EditValue = Item.Stations.Station2.Point.X & ";" & Item.Stations.Station2.Point.Y & ";" & Item.Stations.Station2.Point.Z
+            'txt2.EditValue = Item.Stations.Station2.Point.X & ";" & Item.Stations.Station2.Point.Y & ";" & Item.Stations.Station2.Point.Z
+
+            Dim oCube2Manupulator As CombinedManipulator = oHolosEdit.station2manipulator
+            oCube2Manupulator.UnBind()
+            Dim oCube2 As CubeVisual3D = oHolosEdit.station2
+            Dim oCube2Bound As Rect3D = oCube2.FindBounds(oCube2.Transform)
+            oCube2.Transform = New TranslateTransform3D(Item.Stations.Station2.Point.X + oCube2Bound.SizeX / 4.0, Item.Stations.Station2.Point.Y + oCube2Bound.SizeY / 4.0, Item.Stations.Station2.Point.Z + oCube2Bound.SizeZ / 4.0)
+            oCube2Manupulator.Bind(oCube2)
         End If
         bdisableEvent = False
 
         bStarted = True
 
         Call pUpdateTransform()
-        Call txt1_EditValueChanged(txt1, EventArgs.Empty)
-        Call txt2_EditValueChanged(txt2, EventArgs.Empty)
+        Call pUpdatePositions()
+        'Call txt1_EditValueChanged(txt1, EventArgs.Empty)
+        'Call txt2_EditValueChanged(txt2, EventArgs.Empty)
     End Sub
 
     Friend Sub AddGroup(Filename As String, Group As ModelVisual3D)
@@ -132,11 +147,11 @@ Public Class frmHolosItemEdit
     End Sub
 
     Private Sub oHolosEdit_MouseDown(sender As Object, e As MouseButtonEventArgs) Handles oHolosEdit.MouseDown
-        Call pUpdatePositions()
+        'Call pUpdatePositions()
     End Sub
 
     Private Sub oHolosEdit_MouseMove(sender As Object, e As MouseEventArgs) Handles oHolosEdit.MouseMove
-        Call pUpdatePositions()
+        'Call pUpdatePositions()
     End Sub
 
     Private Sub oHolosEdit_MouseUp(sender As Object, e As MouseButtonEventArgs) Handles oHolosEdit.MouseUp
@@ -148,19 +163,14 @@ Public Class frmHolosItemEdit
     Private Sub pUpdatePositions()
         If bStarted Then
             bdisableEvent = True
-            Dim oTrasformation As Transform3DGroup = New Transform3DGroup()
-            Call oTrasformation.Children.Add(New ScaleTransform3D(txtScale.EditValue, txtScale.EditValue, txtScale.EditValue))
-
-            Dim oCube1 As CubeVisual3D = Viewport.FindName("cube_station1")
+            Dim oCube1 As CubeVisual3D = oHolosEdit.station1
             Dim oCube1Bound As Rect3D = oCube1.FindBounds(oCube1.Transform)
             Dim oCube1Center As Point3D = New Point3D(oCube1Bound.X + oCube1Bound.SizeX / 2.0F, oCube1Bound.Y + oCube1Bound.SizeY / 2.0F, oCube1Bound.Z + oCube1Bound.SizeZ / 2.0F)
-            'oCube1Center = oTrasformation.Transform(oCube1Center)
-            txt1.Text = Math.Round(oCube1Center.X / 2.0, 2) & ";" & Math.Round(oCube1Center.Y / 2.0, 2) & ";" & Math.Round(oCube1Center.Z / 2.0, 2)
-            Dim oCube2 As CubeVisual3D = Viewport.FindName("cube_station2")
+            txt1.Text = oCube1Center.X / 2.0 & ";" & oCube1Center.Y / 2.0 & ";" & oCube1Center.Z / 2.0
+            Dim oCube2 As CubeVisual3D = oHolosEdit.station2
             Dim oCube2Bound As Rect3D = oCube2.FindBounds(oCube2.Transform)
             Dim oCube2Center As Point3D = New Point3D(oCube2Bound.X + oCube2Bound.SizeX / 2.0F, oCube2Bound.Y + oCube2Bound.SizeY / 2.0F, oCube2Bound.Z + oCube2Bound.SizeZ / 2.0F)
-            'oCube2Center = oTrasformation.Transform(oCube2Center)
-            txt2.Text = Math.Round(oCube2Center.X / 2.0, 2) & ";" & Math.Round(oCube2Center.Y / 2.0, 2) & ";" & Math.Round(oCube2Center.Z / 2.0, 2)
+            txt2.Text = oCube2Center.X / 2.0 & ";" & oCube2Center.Y / 2.0 & ";" & oCube2Center.Z / 2.0
             bdisableEvent = False
         End If
     End Sub
@@ -296,14 +306,15 @@ Public Class frmHolosItemEdit
 
     Public ReadOnly Property Result() As cModelEdit
         Get
-            Dim oCube1 As CubeVisual3D = Viewport.FindName("cube_station1")
+            Dim oCube1 As CubeVisual3D = oHolosEdit.station1
             Dim oCube1Bound As Rect3D = oCube1.FindBounds(oCube1.Transform)
             Dim oCube1Center As Point3D = New Point3D(oCube1Bound.X + oCube1Bound.SizeX / 2.0F, oCube1Bound.Y + oCube1Bound.SizeY / 2.0F, oCube1Bound.Z + oCube1Bound.SizeZ / 2.0F)
-            Dim oCube2 As CubeVisual3D = Viewport.FindName("cube_station2")
+            Dim oCube2 As CubeVisual3D = oHolosEdit.station2
             Dim oCube2Bound As Rect3D = oCube2.FindBounds(oCube2.Transform)
             Dim oCube2Center As Point3D = New Point3D(oCube2Bound.X + oCube2Bound.SizeX / 2.0F, oCube2Bound.Y + oCube2Bound.SizeY / 2.0F, oCube2Bound.Z + oCube2Bound.SizeZ / 2.0F)
 
             Return New cModelEdit(txtScale.EditValue, txtxrotate.EditValue, txtyrotate.EditValue, txtzrotate.EditValue, txtStation1.EditValue, oCube1Bound.X / 2.0, oCube1Bound.Y / 2.0, oCube1Bound.Z / 2.0, txtStation2.EditValue, oCube2Bound.X / 2.0, oCube2Bound.Y / 2.0, oCube2Bound.Z / 2.0)
+            'Return New cModelEdit(txtScale.EditValue, txtxrotate.EditValue, txtyrotate.EditValue, txtzrotate.EditValue, txtStation1.EditValue, oCube1Bound.X, oCube1Bound.Y, oCube1Bound.Z, txtStation2.EditValue, oCube2Bound.X, oCube2Bound.Y, oCube2Bound.Z)
         End Get
     End Property
 
@@ -333,24 +344,24 @@ Public Class frmHolosItemEdit
         End Using
     End Sub
 
-    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
-        Dim oTrasformation As Transform3DGroup = New Transform3DGroup()
-        Call oTrasformation.Children.Add(New ScaleTransform3D(txtScale.EditValue, txtScale.EditValue, txtScale.EditValue))
+    'Private Sub SimpleButton1_Click(sender As Object, e As EventArgs)
+    '    Dim oTrasformation As Transform3DGroup = New Transform3DGroup()
+    '    Call oTrasformation.Children.Add(New ScaleTransform3D(txtScale.EditValue, txtScale.EditValue, txtScale.EditValue))
 
-        Dim oCube1 As CubeVisual3D = Viewport.FindName("cube_station1")
-        Dim oCube1Bound As Rect3D = oCube1.FindBounds(oCube1.Transform)
-        Dim oCube1Center As Point3D = New Point3D(oCube1Bound.X + oCube1Bound.SizeX / 2.0F, oCube1Bound.Y + oCube1Bound.SizeY / 2.0F, oCube1Bound.Z + oCube1Bound.SizeZ / 2.0F)
-        'oCube1Center = oTrasformation.Transform(oCube1Center)
+    '    Dim oCube1 As CubeVisual3D = oHolosEdit.station1
+    '    Dim oCube1Bound As Rect3D = oCube1.FindBounds(oCube1.Transform)
+    '    Dim oCube1Center As Point3D = New Point3D(oCube1Bound.X + oCube1Bound.SizeX / 2.0F, oCube1Bound.Y + oCube1Bound.SizeY / 2.0F, oCube1Bound.Z + oCube1Bound.SizeZ / 2.0F)
+    '    'oCube1Center = oTrasformation.Transform(oCube1Center)
 
-        Dim oGroup As ModelVisual3D = Viewport.Children(Viewport.Children.Count - 1)
-        Dim oGroupTransform As Transform3DGroup = oGroup.Transform
-        oGroupTransform.Children.RemoveAt(4)
-        If My.Computer.Keyboard.ShiftKeyDown Then
-            oGroupTransform.Children.Add(New TranslateTransform3D(0, 0, 0))
-        Else
-            oGroupTransform.Children.Add(New TranslateTransform3D(-oCube1Center.X / 2.0, -oCube1Center.Y / 2.0, -oCube1Center.Z / 2.0))
-        End If
-    End Sub
+    '    Dim oGroup As ModelVisual3D = Viewport.Children(Viewport.Children.Count - 1)
+    '    Dim oGroupTransform As Transform3DGroup = oGroup.Transform
+    '    oGroupTransform.Children.RemoveAt(4)
+    '    If My.Computer.Keyboard.ShiftKeyDown Then
+    '        oGroupTransform.Children.Add(New TranslateTransform3D(0, 0, 0))
+    '    Else
+    '        oGroupTransform.Children.Add(New TranslateTransform3D(-oCube1Center.X / 2.0, -oCube1Center.Y / 2.0, -oCube1Center.Z / 2.0))
+    '    End If
+    'End Sub
 
     Private Sub txt1_EditValueChanged(sender As Object, e As EventArgs) Handles txt1.EditValueChanged
         If Not bdisableEvent Then
@@ -358,9 +369,12 @@ Public Class frmHolosItemEdit
             Dim sX As Decimal = modNumbers.StringToDecimal(sValues(0))
             Dim sy As Decimal = modNumbers.StringToDecimal(sValues(1))
             Dim sz As Decimal = modNumbers.StringToDecimal(sValues(2))
-            Dim oCube1Manupulator As CombinedManipulator = Viewport.FindName("cube_station1_manipulator")
+            Dim oCube1Manupulator As CombinedManipulator = oHolosEdit.station1manipulator
             oCube1Manupulator.UnBind()
-            Dim oCube1 As CubeVisual3D = Viewport.FindName("cube_station1")
+            Dim oCube1 As CubeVisual3D = oHolosEdit.station1
+            'Dim oCube1Bound As Rect3D = oCube1.FindBounds(oCube1.Transform)
+            'Debug.Print("X" & sX & " Y" & sy & " Z" & sz)
+            ''oCube1.Transform = New TranslateTransform3D(sX + oCube1Bound.SizeX / 4.0, sy + oCube1Bound.SizeY / 4.0, sz + oCube1Bound.SizeZ / 4.0)
             oCube1.Transform = New TranslateTransform3D(sX, sy, sz)
             oCube1Manupulator.Bind(oCube1)
         End If
@@ -372,9 +386,11 @@ Public Class frmHolosItemEdit
             Dim sX As Decimal = modNumbers.StringToDecimal(sValues(0))
             Dim sy As Decimal = modNumbers.StringToDecimal(sValues(1))
             Dim sz As Decimal = modNumbers.StringToDecimal(sValues(2))
-            Dim oCube2Manupulator As CombinedManipulator = Viewport.FindName("cube_station2_manipulator")
+            Dim oCube2Manupulator As CombinedManipulator = oHolosEdit.station2manipulator
             oCube2Manupulator.UnBind()
-            Dim oCube2 As CubeVisual3D = Viewport.FindName("cube_station2")
+            Dim oCube2 As CubeVisual3D = oHolosEdit.station2
+            Dim oCube2Bound As Rect3D = oCube2.FindBounds(oCube2.Transform)
+            'oCube2.Transform = New TranslateTransform3D(sX + oCube2Bound.SizeX / 4.0, sy + oCube2Bound.SizeY / 4.0, sz + oCube2Bound.SizeZ / 4.0)
             oCube2.Transform = New TranslateTransform3D(sX, sy, sz)
             oCube2Manupulator.Bind(oCube2)
         End If
@@ -436,5 +452,24 @@ Public Class frmHolosItemEdit
                 oXML.Save(.FileName)
             End If
         End With
+    End Sub
+
+    Private Sub oHolosEdit_OnManualMove(sender As Object, e As cHolosItemEdit.cOnManualMoveEventArgs) Handles oHolosEdit.OnManualMove
+        If e.Selected Is oHolosEdit.station1 Then
+            Dim oXYZ As Decimal() = txt1.Text.Split({";"c}).Select(Function(sItem) modNumbers.StringToDecimal(sItem)).ToArray
+            Debug.Print("PRE " & oXYZ(0) & " " & oXYZ(1) & " " & oXYZ(2))
+            Debug.Print(e.X & " " & e.Y & " " & e.Z)
+            oXYZ(0) += e.X
+            oXYZ(1) += e.Y
+            oXYZ(2) += e.Z
+            Debug.Print("POST " & oXYZ(0) & " " & oXYZ(1) & " " & oXYZ(2))
+            txt1.Text = oXYZ(0) & ";" & oXYZ(1) & ";" & oXYZ(2)
+        ElseIf e.Selected Is oHolosEdit.station2 Then
+            Dim oXYZ As Decimal() = txt2.Text.Split({";"c}).Select(Function(sItem) modNumbers.StringToDecimal(sItem)).ToArray
+            oXYZ(0) += e.X
+            oXYZ(1) += e.Y
+            oXYZ(2) += e.Z
+            txt2.Text = oXYZ(0) & ";" & oXYZ(1) & ";" & oXYZ(2)
+        End If
     End Sub
 End Class

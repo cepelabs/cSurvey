@@ -25,7 +25,6 @@ Partial Class frmHolosItemEdit
         Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
@@ -116,7 +115,6 @@ Partial Class frmHolosItemEdit
         '
         'PanelControl2
         '
-        Me.PanelControl2.Controls.Add(Me.SimpleButton1)
         Me.PanelControl2.Controls.Add(Me.LabelControl4)
         Me.PanelControl2.Controls.Add(Me.LabelControl3)
         Me.PanelControl2.Controls.Add(Me.LabelControl2)
@@ -139,15 +137,6 @@ Partial Class frmHolosItemEdit
         Me.PanelControl2.Name = "PanelControl2"
         Me.PanelControl2.Size = New System.Drawing.Size(319, 320)
         Me.PanelControl2.TabIndex = 2
-        '
-        'SimpleButton1
-        '
-        Me.SimpleButton1.Location = New System.Drawing.Point(233, 170)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(42, 42)
-        Me.SimpleButton1.TabIndex = 226
-        Me.SimpleButton1.Text = "SimpleButton1"
-        Me.SimpleButton1.Visible = False
         '
         'LabelControl4
         '
@@ -249,6 +238,10 @@ Partial Class frmHolosItemEdit
         Me.txtScale.Location = New System.Drawing.Point(79, 155)
         Me.txtScale.Name = "txtScale"
         Me.txtScale.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txtScale.Properties.DisplayFormat.FormatString = "N2"
+        Me.txtScale.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtScale.Properties.EditFormat.FormatString = "N2"
+        Me.txtScale.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txtScale.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
         Me.txtScale.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
         Me.txtScale.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 131072})
@@ -261,6 +254,10 @@ Partial Class frmHolosItemEdit
         Me.txtzrotate.Location = New System.Drawing.Point(251, 104)
         Me.txtzrotate.Name = "txtzrotate"
         Me.txtzrotate.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txtzrotate.Properties.DisplayFormat.FormatString = "N2"
+        Me.txtzrotate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtzrotate.Properties.EditFormat.FormatString = "N2"
+        Me.txtzrotate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txtzrotate.Properties.MaxValue = New Decimal(New Integer() {360, 0, 0, 0})
         Me.txtzrotate.Size = New System.Drawing.Size(56, 20)
         Me.txtzrotate.TabIndex = 5
@@ -271,6 +268,10 @@ Partial Class frmHolosItemEdit
         Me.txtyrotate.Location = New System.Drawing.Point(251, 53)
         Me.txtyrotate.Name = "txtyrotate"
         Me.txtyrotate.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txtyrotate.Properties.DisplayFormat.FormatString = "N2"
+        Me.txtyrotate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtyrotate.Properties.EditFormat.FormatString = "N2"
+        Me.txtyrotate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txtyrotate.Properties.MaxValue = New Decimal(New Integer() {360, 0, 0, 0})
         Me.txtyrotate.Size = New System.Drawing.Size(56, 20)
         Me.txtyrotate.TabIndex = 3
@@ -281,6 +282,10 @@ Partial Class frmHolosItemEdit
         Me.txtxrotate.Location = New System.Drawing.Point(251, 2)
         Me.txtxrotate.Name = "txtxrotate"
         Me.txtxrotate.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txtxrotate.Properties.DisplayFormat.FormatString = "N2"
+        Me.txtxrotate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtxrotate.Properties.EditFormat.FormatString = "N2"
+        Me.txtxrotate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txtxrotate.Properties.MaxValue = New Decimal(New Integer() {360, 0, 0, 0})
         Me.txtxrotate.Size = New System.Drawing.Size(56, 20)
         Me.txtxrotate.TabIndex = 1
@@ -438,6 +443,7 @@ Partial Class frmHolosItemEdit
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
         Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
+        Me.KeyPreview = True
         Me.Name = "frmHolosItemEdit"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Add chunk:"
@@ -488,7 +494,6 @@ Partial Class frmHolosItemEdit
     Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents BarManager As DevExpress.XtraBars.BarManager
     Friend WithEvents BarMain As DevExpress.XtraBars.Bar
     Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl

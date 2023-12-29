@@ -216,4 +216,7 @@
   <data name="lblDesignPlotColorMode.Text" xml:space="preserve">
     <value>Stile colore:</value>
   </data>
+  <data name="chkShowChunks.Properties.Caption" xml:space="preserve">
+    <value>Blocchi</value>
+  </data>
 </root>

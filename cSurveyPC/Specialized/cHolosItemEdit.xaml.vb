@@ -75,6 +75,15 @@ Public Class cHolosItemEdit
                 Call oHitTestResult.Add(oModel)
                 Return Media.HitTestResultBehavior.Stop
             End If
+        ElseIf TypeOf Result.VisualHit Is TranslateManipulator Then
+            Dim oManipulator As TranslateManipulator = Result.VisualHit
+            If cube_station1_manipulator.Children.Contains(oManipulator) Then
+                Call oHitTestResult.Add(cube_station1)
+                Return Media.HitTestResultBehavior.Stop
+            ElseIf cube_station2_manipulator.Children.Contains(oManipulator) Then
+                Call oHitTestResult.Add(cube_station2)
+                Return Media.HitTestResultBehavior.Stop
+            End If
         End If
     End Function
 
@@ -158,7 +167,6 @@ Public Class cHolosItemEdit
             Else
                 dDelta = 0.01
             End If
-            Debug.Print("PREVIEW " & e.Key.ToString & " MOD " & e.KeyboardDevice.Modifiers.ToString)
             If e.Key = System.Windows.Input.Key.Up Then
                 If oSelected Is cube_station1 OrElse oSelected Is cube_station2 Then
                     RaiseEvent OnManualMove(Me, New cOnManualMoveEventArgs(oSelected, 0, dDelta, 0))

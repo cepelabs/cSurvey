@@ -18,7 +18,7 @@ Public Class frmHolosItemEdit
     Private bStarted As Boolean
     Private sFilename As String
 
-    Public Sub New(Survey As cSurvey.cSurvey)
+    Public Sub New(Survey As cSurvey.cSurvey, Filename As String)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -27,6 +27,8 @@ Public Class frmHolosItemEdit
         oSurvey = Survey
         oHolosEdit = New cHolosItemEdit
         h3D.Child = oHolosEdit
+
+        Call pAddGroup(Filename)
     End Sub
 
     Public Sub New(Survey As cSurvey.cSurvey, Item As cItemChunk3D)
@@ -82,10 +84,19 @@ Public Class frmHolosItemEdit
         'Call txt2_EditValueChanged(txt2, EventArgs.Empty)
     End Sub
 
-    Friend Sub AddGroup(Filename As String, Group As ModelVisual3D)
+    Private Sub pAddGroup(Filename As String)
         bStarted = True
         sFilename = Filename
-        Viewport.Children.Add(Group)
+
+        Dim oM As ModelImporter = New ModelImporter
+        Dim oModel As Model3DGroup = oM.Load(sFilename)
+        Dim oGroup As ModelVisual3D = New ModelVisual3D
+
+        Dim oTransformGroup As Transform3DGroup = New Transform3DGroup()
+        oGroup.Transform = oTransformGroup
+        oGroup.Content = oModel
+
+        Call Viewport.Children.Add(oGroup)
 
         Dim sPresetFilename As String = IO.Path.Combine(IO.Path.GetDirectoryName(sFilename), IO.Path.GetFileNameWithoutExtension(sFilename) & ".3DChunckx")
         If My.Computer.FileSystem.FileExists(sPresetFilename) Then

@@ -1113,3 +1113,5 @@ itemchunk.textpart6=X
 itemchunk.textpart7=Y
 itemchunk.textpart8=Z
 itemchunk.textpart9=Scala
+main.openchunkdialog=Seleziona un modello 3d:
+main.filetypeCHUNK=Modelli 3D

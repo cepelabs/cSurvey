@@ -2115,6 +2115,17 @@ Namespace cSurvey.Helper.Editor
 
         Public AvaiableInPlan As Boolean
         Public AvaiableInProfile As Boolean
+        Public AvaiableIn3D As Boolean
+
+        Public Function VisibleInDesign(Design As cDesign)
+            If Design.Type = cIDesign.cDesignTypeEnum.Plan Then
+                Return AvaiableInPlan
+            ElseIf Design.Type = cIDesign.cDesignTypeEnum.Profile Then
+                Return AvaiableInProfile
+            Else
+                Return AvaiableIn3D
+            End If
+        End Function
 
         Public Hidden As Boolean
 
@@ -2256,9 +2267,11 @@ Namespace cSurvey.Helper.Editor
                 If sDesign = "" Then
                     AvaiableInPlan = True
                     AvaiableInProfile = True
+                    AvaiableIn3D = False
                 Else
                     AvaiableInPlan = sDesign.Contains("plan")
                     AvaiableInProfile = sDesign.Contains("profile")
+                    AvaiableIn3D = sDesign.Contains("3d")
                 End If
             End With
         End Sub

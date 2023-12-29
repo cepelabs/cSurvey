@@ -16,7 +16,21 @@ Namespace cSurvey.Design
         Private bModelColorGray As Boolean
         Private bModelExtendedElevation As Boolean
 
+        Private bDrawChunks
+
         Private bDrawLinkedSurveys As Boolean
+
+        Public Property DrawChunks As Boolean
+            Get
+                Return bDrawChunks
+            End Get
+            Set(value As Boolean)
+                If bDrawChunks <> value Then
+                    bDrawChunks = value
+                    Call PropertyChanged("DrawChunks")
+                End If
+            End Set
+        End Property
 
         Public Property DrawLinkedSurveys As Boolean Implements cIOptionLinkedSurveys.DrawLinkedSurveys
             Get
@@ -103,6 +117,8 @@ Namespace cSurvey.Design
             iDrawModelMode = RenderMode.SM_ROUGH_WALLS
             iDrawModelColoringMode = ColoringMode.CM_CAVEBRANCH
             bModelColorGray = False
+
+            bDrawChunks = True
         End Sub
 
         Public Overloads ReadOnly Property SurfaceOptions As cSurface3DOptions
@@ -124,6 +140,8 @@ Namespace cSurvey.Design
             oXMLOptions.SetAttribute("drawmodelmode", iDrawModelMode.ToString("D"))
             oXMLOptions.SetAttribute("drawmodelcoloringmode", iDrawModelColoringMode.ToString("D"))
             Call oXMLOptions.SetAttribute("modelcolorgray", If(bModelColorGray, 1, 0))
+
+            oXMLOptions.SetAttribute("drawchunks", If(bDrawChunks, 1, 0))
             'If bDrawLinkedSurveys Then Call oXMLOptions.SetAttribute("drawlinkedsurveys", "1")
             Return oXMLOptions
         End Function
@@ -139,6 +157,8 @@ Namespace cSurvey.Design
             iDrawModelMode = modXML.GetAttributeValue(Options, "drawmodelmode", RenderMode.SM_ROUGH_WALLS)
             iDrawModelColoringMode = modXML.GetAttributeValue(Options, "drawmodelcoloringmode", ColoringMode.CM_CAVEBRANCH)
             bModelColorGray = modXML.GetAttributeValue(Options, "modelcolorgray")
+
+            bDrawChunks = modXML.GetAttributeValue(Options, "drawchunks")
             '---------------------
             'bDrawLinkedSurveys = modXML.GetAttributeValue(Options, "drawlinkedsurveys", 0)
         End Sub

@@ -23,6 +23,21 @@ Friend Class cDockLevels
 
     Public Event OnGetLocalizedResource(sender As Object, e As KeyValueChangeEventArgs(Of String, String))
 
+    Public Shadows Sub SuspendLayout()
+        Call MyBase.SuspendLayout()
+        Call tvLayers.SuspendLayout()
+    End Sub
+
+    Public Shadows Sub ResumeLayout(performLayout As Boolean)
+        Call MyBase.ResumeLayout(performLayout)
+        Call tvLayers.ResumeLayout(performLayout)
+    End Sub
+
+    Public Shadows Sub ResumeLayout()
+        Call MyBase.ResumeLayout()
+        Call tvLayers.ResumeLayout()
+    End Sub
+
     Public Sub New()
 
         ' Chiamata richiesta dalla finestra di progettazione.

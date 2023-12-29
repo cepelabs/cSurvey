@@ -117,22 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblPropClipping.Text" xml:space="preserve">
-    <value>Ritaglio:</value>
+  <data name="lblPropChunk.Text" xml:space="preserve">
+    <value>Modello:</value>
   </data>
-  <data name="lblPropClipping.ToolTip" xml:space="preserve">
-    <value>Modalità di ritaglio</value>
-  </data>
-  <data name="chkClippingType1.ToolTip" xml:space="preserve">
-    <value>Non tagliare</value>
-  </data>
-  <data name="chkClippingType2.ToolTip" xml:space="preserve">
-    <value>Taglia dentro ai bordi</value>
-  </data>
-  <data name="chkClippingType3.ToolTip" xml:space="preserve">
-    <value>Taglia fuori dai bordi</value>
-  </data>
-  <data name="chkClippingType0.ToolTip" xml:space="preserve">
-    <value>Predefinito</value>
+  <data name="cmdPropModelEdit.ToolTip" xml:space="preserve">
+    <value>Modifica modello...</value>
   </data>
 </root>

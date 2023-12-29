@@ -7,6 +7,7 @@ Imports cSurveyPC.cSurvey.Design.Items
 Imports cSurveyPC.XSystem.Linq.Dynamic
 Imports System.Linq.Expressions
 Imports System.ComponentModel
+Imports DevExpress.XtraLayout.Customization
 
 Namespace cSurvey.Design
     Public Class cLayer
@@ -229,6 +230,10 @@ Namespace cSurvey.Design
                     If DirectCast(oItem, cItemAttachment).Attachment Is Nothing Then
                         oItem = Nothing
                     End If
+
+                Case cIItem.cItemTypeEnum.Chunk3D
+                    oItem = New cItemChunk3D(Survey, Design, Layer, File, Item)
+
                 Case cIItem.cItemTypeEnum.Items
                     oItem = New cItemItems(Survey, Design, Layer, File, Item)
             End Select

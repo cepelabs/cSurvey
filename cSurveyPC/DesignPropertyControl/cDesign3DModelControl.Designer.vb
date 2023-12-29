@@ -46,6 +46,7 @@ Partial Class cDesign3DModelControl
         Me.cboModelMode = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.cboModelColoringMode = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.lbl3dPlotModelColoringMode = New DevExpress.XtraEditors.LabelControl()
+        Me.chkShowChunks = New DevExpress.XtraEditors.CheckEdit()
         CType(Me.chkDesignPlot.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlDesignPlot, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlDesignPlot.SuspendLayout()
@@ -68,6 +69,7 @@ Partial Class cDesign3DModelControl
         CType(Me.chkModelColorGray.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboModelMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboModelColoringMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkShowChunks.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'chkDesignPlot
@@ -219,6 +221,7 @@ Partial Class cDesign3DModelControl
         Me.chk3dPlotModelExtendedElevation.Name = "chk3dPlotModelExtendedElevation"
         Me.chk3dPlotModelExtendedElevation.Properties.Appearance.Font = CType(resources.GetObject("chk3dPlotModelExtendedElevation.Properties.Appearance.Font"), System.Drawing.Font)
         Me.chk3dPlotModelExtendedElevation.Properties.Appearance.Options.UseFont = True
+        Me.chk3dPlotModelExtendedElevation.Properties.AutoWidth = True
         Me.chk3dPlotModelExtendedElevation.Properties.Caption = resources.GetString("chk3dPlotModelExtendedElevation.Properties.Caption")
         '
         'chkModelColorGray
@@ -227,6 +230,7 @@ Partial Class cDesign3DModelControl
         Me.chkModelColorGray.Name = "chkModelColorGray"
         Me.chkModelColorGray.Properties.Appearance.Font = CType(resources.GetObject("chkModelColorGray.Properties.Appearance.Font"), System.Drawing.Font)
         Me.chkModelColorGray.Properties.Appearance.Options.UseFont = True
+        Me.chkModelColorGray.Properties.AutoWidth = True
         Me.chkModelColorGray.Properties.Caption = resources.GetString("chkModelColorGray.Properties.Caption")
         '
         'lbl3dPlotModelMode
@@ -263,10 +267,18 @@ Partial Class cDesign3DModelControl
         resources.ApplyResources(Me.lbl3dPlotModelColoringMode, "lbl3dPlotModelColoringMode")
         Me.lbl3dPlotModelColoringMode.Name = "lbl3dPlotModelColoringMode"
         '
+        'chkShowChunks
+        '
+        resources.ApplyResources(Me.chkShowChunks, "chkShowChunks")
+        Me.chkShowChunks.Name = "chkShowChunks"
+        Me.chkShowChunks.Properties.AutoWidth = True
+        Me.chkShowChunks.Properties.Caption = resources.GetString("chkShowChunks.Properties.Caption")
+        '
         'cDesign3DModelControl
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.chkShowChunks)
         Me.Controls.Add(Me.pnlModel)
         Me.Controls.Add(Me.chkShowModel)
         Me.Controls.Add(Me.chkDesignPlot)
@@ -296,6 +308,7 @@ Partial Class cDesign3DModelControl
         CType(Me.chkModelColorGray.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboModelMode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboModelColoringMode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkShowChunks.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -323,4 +336,5 @@ Partial Class cDesign3DModelControl
     Friend WithEvents cboModelMode As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents cboModelColoringMode As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents lbl3dPlotModelColoringMode As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents chkShowChunks As DevExpress.XtraEditors.CheckEdit
 End Class

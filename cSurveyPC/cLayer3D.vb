@@ -19,6 +19,20 @@ Namespace cSurvey.Design
             MyBase.New(Survey, Design, Name, Type)
         End Sub
 
+        ''' <summary>
+        ''' Create a design item from xml
+        ''' </summary>
+        ''' <param name="File">File container</param>
+        ''' <param name="Item">XML Element</param>
+        ''' <returns>The new design item</returns>
+        Friend Shadows Function CreateItem(ByVal File As cFile, ByVal Item As XmlElement) As cItem
+            Dim oItem As cItem = CreateItem(Survey, Design, Me, File, Item)
+            If Not oItem Is Nothing Then
+                Call MyBase.Items.Add(oItem)
+            End If
+            Return oItem
+        End Function
+
         Friend Shadows Function CreateItem(ByVal Type As cIItem.cItemTypeEnum, ByVal Category As cIItem.cItemCategoryEnum, Filename As String) As cItem
             Dim oItem As cItem = Nothing
             Select Case Type

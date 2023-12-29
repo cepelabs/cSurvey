@@ -41,6 +41,8 @@ Public Class cDesign3DModelControl
         cboModelColoringMode.SelectedIndex = Me.Options.DrawModelColoringMode
         chkModelColorGray.Checked = Me.Options.CenterlineColorGray
 
+        chkShowChunks.Checked = Me.Options.DrawChunks
+
         chk3dPlotModelExtendedElevation.Visible = bIsInDebug
     End Sub
 
@@ -186,6 +188,14 @@ Public Class cDesign3DModelControl
             chkDesignPlotShowSplayLabel.Enabled = bEnabled
             Call MyBase.PropertyChanged("3DModelShowSplay")
             Call MyBase.DrawInvalidate(New cHolosViewer.cDrawInvalidateEventArgs(cHolosViewer.InvalidateType.ModelMode))
+        End If
+    End Sub
+
+    Private Sub chkShowChunks_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowChunks.CheckedChanged
+        If Not DisabledObjectProperty Then
+            Me.Options.DrawChunks = chkShowChunks.Checked
+            Call MyBase.PropertyChanged("3DShowChunks")
+            Call MyBase.DrawInvalidate(New cHolosViewer.cDrawInvalidateEventArgs(cHolosViewer.InvalidateType.Chunks))
         End If
     End Sub
 End Class

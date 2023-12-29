@@ -2271,10 +2271,10 @@ Friend Class frmMain2
                 If e.Control Then
                     Call pDesignSnapToGrid(Not btnAlignToGrid.Checked)
                 End If
-            Case Keys.I
-                If e.Control And e.Alt Then
-                    Call oHolos.Import()
-                End If
+            'Case Keys.I
+            '    If e.Control And e.Alt Then
+            '        Call oHolos.Import()
+            '    End If
             Case Keys.E
                 If e.Control And e.Alt Then
                     Using frmE As frmExceptionManager = New frmExceptionManager(oSurvey, "", New Exception("PROVA"))
@@ -5446,7 +5446,7 @@ Friend Class frmMain2
                     Dim bValue As Boolean
                     If Not oItem.Item.Tag Is Nothing Then
                         Dim oBag As cEditToolsBag = oItem.Item.Tag
-                        If oBag.Layer = Layer Then
+                        If oBag.Layer = Layer AndAlso oBag.AvaiableIn3D Then
                             bValue = True
                         Else
                             bValue = False
@@ -5657,10 +5657,10 @@ Friend Class frmMain2
             Call p3DInvalidate(cHolosViewer.InvalidateType.None)  'da rivedere....
 
             oTopDesignLevelBar.Visible = False
-            oTopDesignItemsBar.Visible = False
+            oTopDesignItemsBar.Visible = bDesignItemsBarVisible
             oLastUsedBar.Visible = False
             grpDesignOptions.SetVisible(False)
-            pageDesign.Visible = False
+            pageDesign.Visible = True
 
             btnScrollMode.Visibility = BarItemVisibility.Never
             btnAltMode.Visibility = BarItemVisibility.Never
@@ -5723,7 +5723,20 @@ Friend Class frmMain2
             grpDesignCommands.Visible = False
             grpDesignBindings.SetVisible(False)
 
-            grpDesignItemsAdd.SetVisible(False)
+            For Each oItem As BarItem In Ribbon.Items
+                Debug.Print(oItem.Name)
+                If TypeOf oItem.Tag Is cEditToolsBag Then
+                    Dim oBag As cEditToolsBag = oItem.Tag
+                    oItem.Visibility = modControls.VisibleToVisibility(oBag.AvaiableIn3D)
+                    For Each oLink As BarItemLink In oItem.Links
+                        oLink.Visible = oBag.AvaiableIn3D
+                    Next
+                Else
+                    'oItem.Visibility = BarItemVisibility.Always
+                End If
+            Next
+            grpDesignItemsAdd.SetVisible(True)
+            'grpDesignItemsAdd.SetVisible(False)
 
             Call pSurveySetCurrentCaveBranch(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch)
             btnDesignHighlight0.Checked = Not oCurrentOptions.HighlightCurrentCave
@@ -5878,12 +5891,16 @@ Friend Class frmMain2
                 End Select
             End If
 
-            For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
-                If TypeOf oItem.Item.Tag Is cEditToolsBag Then
-                    Dim oBag As cEditToolsBag = oItem.Item.Tag
-                    oItem.Item.Visibility = modControls.VisibleToVisibility(oBag.AvaiableInProfile)
+            For Each oItem As BarItem In Ribbon.Items
+                Debug.Print(oItem.Name)
+                If TypeOf oItem.Tag Is cEditToolsBag Then
+                    Dim oBag As cEditToolsBag = oItem.Tag
+                    oItem.Visibility = modControls.VisibleToVisibility(oBag.AvaiableInProfile)
+                    For Each oLink As BarItemLink In oItem.Links
+                        oLink.Visible = oBag.AvaiableInProfile
+                    Next
                 Else
-                    oItem.Item.Visibility = BarItemVisibility.Always
+                    ' oItem.Visibility = BarItemVisibility.Always
                 End If
             Next
             grpDesignItemsAdd.SetVisible(True)
@@ -6041,12 +6058,15 @@ Friend Class frmMain2
                 End Select
             End If
 
-            For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
-                If TypeOf oItem.Item.Tag Is cEditToolsBag Then
-                    Dim oBag As cEditToolsBag = oItem.Item.Tag
-                    oItem.Item.Visibility = modControls.VisibleToVisibility(oBag.AvaiableInPlan)
+            For Each oItem As BarItem In Ribbon.Items
+                If TypeOf oItem.Tag Is cEditToolsBag Then
+                    Dim oBag As cEditToolsBag = oItem.Tag
+                    oItem.Visibility = modControls.VisibleToVisibility(oBag.AvaiableInPlan)
+                    For Each oLink As BarItemLink In oItem.Links
+                        oLink.Visible = oBag.AvaiableInPlan
+                    Next
                 Else
-                    oItem.Item.Visibility = BarItemVisibility.Always
+                    'oItem.Visibility = BarItemVisibility.Always
                 End If
             Next
             grpDesignItemsAdd.SetVisible(True)
@@ -6390,10 +6410,8 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pSurveyDesignToolsLoadSubToolbarItem(ByVal Item As XmlElement, Optional ParentMenu As PopupMenu = Nothing) ', ByVal Parent As System.Windows.Forms.ToolStripItemCollection, Optional ByVal IsDropDown As Boolean = False)
-        'btnItemsAdd.Gallery.ShowGroupCaption = False
         Dim bBeginGroup As Boolean = False
         Dim iLastLayer As cLayers.LayerTypeEnum = -1
-        'Dim oGroup As DevExpress.XtraBars.Ribbon.GalleryItemGroup = ParentGroup
         Dim oItemGroup As BarButtonGroup
         For Each oXmlTool As XmlElement In Item.ChildNodes
             If oXmlTool.Name = "tool" Then
@@ -6671,19 +6689,7 @@ Friend Class frmMain2
         grpDesignItemsAdd.ClearItems
 
         Dim oXml As XmlDocument = New XmlDocument
-        'If modMain.bIsInDebug Then
-        '    oXml.Load(Path.Combine(modMain.GetApplicationPath, "designtools_debug.xml"))
-        'Else
         oXml.Load(Path.Combine(modMain.GetApplicationPath, "designtools.xml"))
-        'End If
-
-        'Call pSurveyCreateSequenceToArea()
-        'Call pSurveyCreateBorderFromSplay()
-
-        'For Each iLayerType As cLayers.LayerTypeEnum In [Enum].GetValues(GetType(cLayers.LayerTypeEnum))
-        '    Call lvPropConvertTo.Groups.Add(iLayerType, [Enum].GetName(GetType(cLayers.LayerTypeEnum), iLayerType))
-        '    'Call oAreaFromSequence.lvItemToCreate.Groups.Add(iLayerType, [Enum].GetName(GetType(cLayers.LayerTypeEnum), iLayerType))
-        'Next
         Dim oXMLDesign As XmlElement = oXml.Item("design")
 
         If modXML.ChildElementExist(oXMLDesign, "penstylepattern") Then
@@ -6724,18 +6730,6 @@ Friend Class frmMain2
         Call pSurveyDesignToolsLoadConvertToItems(oXMLDesign.Item("tools"), oSignsGroup, cLayers.LayerTypeEnum.Signs)
         If Not oSignsGroup.HasVisibleItems Then mnuConvertTo.Gallery.Groups.Remove(oSignsGroup)
 
-
-        'Try
-        '    Call pSurveyDesignToolsLoadConvertToItems(oXMLDesign.Item("tools"))
-        '    If lvPropConvertTo.Items.Count > 0 Then
-        '        lvPropConvertTo.Items(0).Selected = True
-        '    End If
-        '    'Call pSurveyDesignToolsLoadSequenceToAreaItems(oXMLDesign.Item("tools"))
-        'Catch ex As Exception
-        '    Call pLogAdd(ex)
-        'End Try
-
-        'Try
         Call pSurveyDesignToolsLoadSubToolbarItem(oXMLDesign.Item("tools"))
         'Catch ex As Exception
         'Call pLogAdd(ex)
@@ -6965,8 +6959,47 @@ Friend Class frmMain2
                     Call oItem.SetBindDesignType(iBindDesignType, oSurvey.CrossSections.GetBindItem(btnMainBindCrossSections.EditValue), False)
                     Call pGetCurrentDesignTools.EditItem(oItem, True)
                 End If
+            Case "chunk3d"
+                If Filename = "" Then
+                    Using oOfd As OpenFileDialog = New OpenFileDialog
+                        With oOfd
+                            .Title = GetLocalizedString("main.openchunkdialog")
+                            .Filter = GetLocalizedString("main.filetypeCHUNK") & " (*.OBJ;*.STL;*.DAE)|*.OBJ;*.STL;*.DAE|" & GetLocalizedString("main.filetypeALL") & " (*.*)|*.*"
+                            .FilterIndex = 1
+                            If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                                Filename = .FileName
+                            Else
+                                bCancel = True
+                            End If
+                        End With
+                    End Using
+                End If
+                If Not bCancel And Filename <> "" Then
+                    Using frmHIE As frmHolosItemEdit = New frmHolosItemEdit(oSurvey, Filename)
+                        If frmHIE.ShowDialog = DialogResult.OK Then
+                            Dim oModelEdit As frmHolosItemEdit.cModelEdit = frmHIE.Result
+
+                            '------------------------------------
+                            Dim oItem3D As cItemChunk3D = oSurvey.[ThreeD].Layers.ChunkLayer.CreateChunk(sCave, sBranch, Filename)
+                            oItem3D.ModelTransform.XScale = oModelEdit.Scale
+                            oItem3D.ModelTransform.YScale = oModelEdit.Scale
+                            oItem3D.ModelTransform.ZScale = oModelEdit.Scale
+
+                            oItem3D.ModelTransform.XRotate = oModelEdit.RotateX
+                            oItem3D.ModelTransform.YRotate = oModelEdit.RotateY
+                            oItem3D.ModelTransform.ZRotate = oModelEdit.RotateZ
+
+                            Dim oTrigpoint1 As cTrigPoint = oSurvey.TrigPoints(oModelEdit.Station1)
+                            oItem3D.Stations.SetStation1(oModelEdit.Point1, oTrigpoint1)
+                            Dim oTrigpoint2 As cTrigPoint = oSurvey.TrigPoints(oModelEdit.Station2)
+                            oItem3D.Stations.SetStation2(oModelEdit.Point2, oTrigpoint2)
+
+                            Call pGetCurrentDesignTools.EditItem(oItem3D, True)
+                        End If
+                    End Using
+                End If
             Case Else
-                Dim oLayer As cLayer = oCurrentDesign.Layers(Bag.Layer)
+                Dim oLayer As cLayer = pGetLayer(Bag.Layer)
                 Call pGetCurrentDesignTools.SelectLayer(oLayer)
                 oItem = oLayer.GetType.GetMethod(Bag.Method).Invoke(oLayer, Bag.GetInvokeParameters("cave", sCave, "branch", sBranch))
                 If Bag.LineType <> cIItemLine.LineTypeEnum.Undefined Then
@@ -7035,6 +7068,14 @@ Friend Class frmMain2
             End If
         End If
     End Sub
+
+    Private Function pGetLayer(Layer As Object) As Object
+        If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.ThreeDModel Then
+            Return DirectCast(oCurrentDesign, cDesign3D).Layers(Layer)
+        Else
+            Return oCurrentDesign.Layers(Layer)
+        End If
+    End Function
 
     Private Sub pItemClipartCreate(ClipartItem As cItemClipart, Point As PointF)
         Dim sDesignClipartScaleFactor As Single = 1 ' oSurvey.Properties.DesignProperties.GetValue("DesignClipartScaleFactor", 1)
@@ -7303,7 +7344,7 @@ Friend Class frmMain2
         Call pSurveyLayersFilterApply(True, ToolEventArgs.Refresh)
     End Sub
 
-    Private Sub oPlanTools_OnItemDeleted(Sender As Object, ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnItemDeleted, oProfileTools.OnItemDeleted
+    Private Sub oPlanTools_OnItemDeleted(Sender As Object, ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnItemDeleted, oProfileTools.OnItemDeleted, o3DTools.OnItemDeleted
         Call pGetCurrentDesignTools.CommitUndoSnapshot()
         Call pObjectPropertyLoad()
         Call pMapInvalidate()
@@ -7395,7 +7436,7 @@ Friend Class frmMain2
         Call pObjectPropertyLoad()
     End Sub
 
-    Private Sub oPlanTools_OnRefreshDesign(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnRefreshDesign, oProfileTools.OnRefreshDesign
+    Private Sub oPlanTools_OnRefreshDesign(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnRefreshDesign, oProfileTools.OnRefreshDesign, o3DTools.OnRefreshDesign
         Call pMapInvalidate()
         Call pClipboardAlign()
     End Sub
@@ -10011,7 +10052,11 @@ Friend Class frmMain2
 
                 Call oSurvey.Properties.DataTables.DesignItems.Add("import_source", Data.cDataFields.TypeEnum.Text)
 
+                Call oDockLevels.SuspendLayout()
+
                 Call modImport.TherionTh2ImportFrom(oSurvey, Filename, sForcedCaveName, iOptions, sScaleFactor)
+
+                Call oDockLevels.ResumeLayout()
 
                 Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, 0, GetLocalizedString("main.progressend11"))
                 Call oMousePointer.Pop()
@@ -10998,7 +11043,7 @@ Friend Class frmMain2
 
                 Dim oOptions As cTherion.cTherionImportOptions = New cTherion.cTherionImportOptions(sPrefix, oCave, oBranch, bImportAsNewCave, bImportLineOfComment)
 
-                Call cTherion.Import(oSurvey, Filename, ooptions)
+                Call cTherion.Import(oSurvey, Filename, oOptions)
 
                 bDisableSegmentsChangeEvent = False
                 bDisableTrigpointsChangeEvent = False
@@ -11903,6 +11948,8 @@ Friend Class frmMain2
                     End If
 
                     If frmIS.chkcSurveyImportGraphics.Checked AndAlso frmIS.chkcSurveyImportGraphics.Enabled Then
+                        Call oDockLevels.SuspendLayout()
+
                         Call oSurvey.Properties.DataTables.DesignItems.MergeWith(oImportSurvey.Properties.DataTables.DesignItems)
 
                         Dim oPlanTraslation As SizeF
@@ -12144,6 +12191,8 @@ Friend Class frmMain2
 
                             'oSurvey.Calculate.Calculate(False)
                         End If
+
+                        Call oDockLevels.ResumeLayout()
                     End If
 
                     If frmIS.chkcSurveyImportDesignProperties.Enabled And frmIS.chkcSurveyImportDesignProperties.Checked Then
@@ -12158,7 +12207,6 @@ Friend Class frmMain2
                         Call oSurvey.LinkedSurveys.MergeWith(oImportSurvey.LinkedSurveys)
                         'Call oDockLS.tvLinkedSurveys.BuildList()
                     End If
-
                     Call pSurveyUpdateProperty(False)
 
                     'Call pSurveyFillSessionList(False)
@@ -13599,7 +13647,7 @@ Friend Class frmMain2
         o3DDesignSurface = New cDesignSurfaceControl
         Call pUIAppendDesign3DPropertyControl(o3DDesignSurface, 242)
         o3DDesignModel = New cDesign3DModelControl
-        Call pUIAppendDesign3DPropertyControl(o3DDesignModel, 460)
+        Call pUIAppendDesign3DPropertyControl(o3DDesignModel, 458)
         o3DAltitudeAmplification = New cDesign3DElevationFactor
         Call pUIAppendDesign3DPropertyControl(o3DAltitudeAmplification, 32)
 
@@ -19558,7 +19606,7 @@ Friend Class frmMain2
         Call pUndoRefresh()
     End Sub
 
-    Private Sub oPlanTools_OnItemDelete(Sender As Object, ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnItemDelete, oProfileTools.OnItemDelete
+    Private Sub oPlanTools_OnItemDelete(Sender As Object, ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnItemDelete, oProfileTools.OnItemDelete, o3DTools.OnItemDelete
         Call pGetCurrentDesignTools.BeginUndoSnapshot("Delete item", {ToolEventArgs.CurrentItem})
     End Sub
 
@@ -19595,6 +19643,16 @@ Friend Class frmMain2
     Private Sub o3DTools_OnItemDelete(Sender As Object, ToolEventArgs As cEditDesignToolsEventArgs) Handles o3DTools.OnItemDelete
         Call oHolos.DeleteChunk(DirectCast(ToolEventArgs.CurrentItem, cItemChunk3D))
     End Sub
+
+    Private Sub oHolos_OnKeyUp(sender As Object, e As KeyEventArgs) Handles oHolos.OnKeyUp
+        If e.KeyCode = Keys.Delete Then
+            Call pClipboardDelete()
+        End If
+    End Sub
+
+    'Private Sub oHolos_OnContextMenuRequest(Sender As Object, e As Windows.Forms.MouseEventArgs) Handles oHolos.OnContextMenuRequest
+    '    Call mnuDesignItem.ShowPopup(h3D.PointToScreen(New Point(e.X, e.Y)))
+    'End Sub
 End Class
 
 

@@ -224,7 +224,7 @@
     <value>139</value>
   </data>
   <data name="cmdPropModelEdit.ToolTip" xml:space="preserve">
-    <value>Edit image...</value>
+    <value>Edit chunk...</value>
   </data>
   <data name="&gt;&gt;cmdPropModelEdit.Name" xml:space="preserve">
     <value>cmdPropModelEdit</value>

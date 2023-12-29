@@ -1754,6 +1754,9 @@
     <EmbeddedResource Include="ItemPropertyControl\cItemCaveBranchPropertyControl.en.resx">
       <DependentUpon>cItemCaveBranchPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemChunk3DPropertyControl.en.resx">
+      <DependentUpon>cItemChunk3DPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ItemPropertyControl\cItemChunk3DPropertyControl.it.resx">
       <DependentUpon>cItemChunk3DPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
@@ -3101,6 +3104,9 @@
     <EmbeddedResource Include="Specialized\cUndoDropDown.resx">
       <DependentUpon>cUndoDropDown.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\frmHolosItemEdit.it.resx">
+      <DependentUpon>frmHolosItemEdit.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Specialized\frmHolosItemEdit.resx">
       <DependentUpon>frmHolosItemEdit.vb</DependentUpon>
     </EmbeddedResource>
@@ -3251,6 +3257,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Objects\Icons\item_anticline.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_chunk3d.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Objects\Icons\item_genericfault.svg">

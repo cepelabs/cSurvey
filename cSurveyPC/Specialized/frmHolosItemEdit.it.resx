@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,4 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="LabelControl4.Text" xml:space="preserve">
+    <value>Scala:</value>
+  </data>
+  <data name="LabelControl3.Text" xml:space="preserve">
+    <value>Rotazione Z:</value>
+  </data>
+  <data name="LabelControl2.Text" xml:space="preserve">
+    <value>Rotazione Y:</value>
+  </data>
+  <data name="LabelControl1.Text" xml:space="preserve">
+    <value>Rotazione X:</value>
+  </data>
+  <data name="lblStation2.Text" xml:space="preserve">
+    <value>Caposaldo 2:</value>
+  </data>
+  <data name="lblStation1.Text" xml:space="preserve">
+    <value>Caposaldo 1:</value>
+  </data>
+  <data name="btnLoadPreset.Caption" xml:space="preserve">
+    <value>Carica preset</value>
+  </data>
+  <data name="btnSavePreset.Caption" xml:space="preserve">
+    <value>Salva preset</value>
+  </data>
+  <data name="BarMain.Text" xml:space="preserve">
+    <value>Strumenti</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Aggiungi blocco:</value>
+  </data>
 </root>

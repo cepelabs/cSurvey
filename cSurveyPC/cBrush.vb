@@ -1731,7 +1731,7 @@ Namespace cSurvey.Design
         End Sub
 
         Private Function pCreateRegion(Path As GraphicsPath) As cIRegion
-            If oSurvey.Properties.DesignProperties.GetValue("ClippingForAdvancedBrush", 0) = 0 Then
+            If oSurvey.Properties.DesignProperties.GetValue("clippingforadvancedbrush", 0) = 0 Then
                 Return New cGDIRegion(Path)
             Else
                 Return New cClipperRegion(Path, 1000, 10)

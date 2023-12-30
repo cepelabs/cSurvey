@@ -20,7 +20,6 @@ Imports DevExpress.Utils.Extensions
 Imports DevExpress.XtraEditors.TextEdit
 Imports cSurveyPC.cSurvey.Design.Items
 Imports System.Windows.Input
-Imports System.Windows.Media
 
 Friend Class cHolosViewer
     Private Const iHotSpotFillAlpha As Integer = 100

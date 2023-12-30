@@ -166,14 +166,15 @@ Friend Class frmProperties
             cboInversionMode.SelectedIndex = .InversionMode
 
             cboClipBorder.SelectedIndex = .DesignProperties.GetValue("clipborder", My.Application.Settings.GetSetting("design.clipborder", cSurvey.Design.cClippingRegions.ClipBorderEnum.ClipBorder))
-            Dim sClippingForAdvancedBrushValue As String = My.Application.Settings.GetSetting("clippingforadvancedbrush", cSurvey.Drawings.cIRegion.RegionTypeEnum.GDI.ToString("D"))
-            If sClippingForAdvancedBrushValue = "Clipper" Then
-                cboClipAdvancedClipart.SelectedIndex = cSurvey.Drawings.cIRegion.RegionTypeEnum.Clipper
-            ElseIf sClippingForAdvancedBrushValue = "GDI" Then
-                cboClipAdvancedClipart.SelectedIndex = cSurvey.Drawings.cIRegion.RegionTypeEnum.GDI
-            Else
-                cboClipAdvancedClipart.SelectedIndex = .DesignProperties.GetValue("clippingforadvancedbrush", sClippingForAdvancedBrushValue)
-            End If
+            'Dim sClippingForAdvancedBrushValue As String = My.Application.Settings.GetSetting("clippingforadvancedbrush", cSurvey.Drawings.cIRegion.RegionTypeEnum.GDI.ToString("D"))
+            'If sClippingForAdvancedBrushValue = "Clipper" Then
+            '    cboClipAdvancedClipart.SelectedIndex = cSurvey.Drawings.cIRegion.RegionTypeEnum.Clipper
+            'ElseIf sClippingForAdvancedBrushValue = "GDI" Then
+            '    cboClipAdvancedClipart.SelectedIndex = cSurvey.Drawings.cIRegion.RegionTypeEnum.GDI
+            'Else
+            'cboClipAdvancedClipart.SelectedIndex = .DesignProperties.GetValue("clippingforadvancedbrush", sClippingForAdvancedBrushValue)
+            'End If
+            cboClipAdvancedClipart.SelectedIndex = .DesignProperties.GetValue("clippingforadvancedbrush", 0)
 
             cboLineType.SelectedIndex = .DesignProperties.GetValue("LineType", My.Application.Settings.GetSetting("design.linetype", cSurvey.Design.Items.cIItemLine.LineTypeEnum.Splines))
             cboGeologicalLineType.SelectedIndex = .DesignProperties.GetValue("GeoLineType", My.Application.Settings.GetSetting("design.geolinetype", cSurvey.Design.Items.cIItemLine.LineTypeEnum.Lines))

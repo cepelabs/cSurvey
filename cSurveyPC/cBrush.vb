@@ -1734,7 +1734,7 @@ Namespace cSurvey.Design
             If oSurvey.Properties.DesignProperties.GetValue("clippingforadvancedbrush", 0) = 0 Then
                 Return New cGDIRegion(Path)
             Else
-                Return New cClipperRegion(Path, 1000, 10)
+                Return New cClipperRegion(Path, 1000, 0.1)
             End If
         End Function
 

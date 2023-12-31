@@ -51,18 +51,18 @@ Namespace cSurvey.Drawings
             sAccurancy = Accurancy
             Call oBaseMatrix.Scale(sScale, sScale)
             Using oBasePath As GraphicsPath = Path.Clone
-                Call oBasePath.Flatten(Nothing, sAccurancy)
+                Call oBasePath.Flatten(oBaseMatrix, sAccurancy)
                 oBaseIntPaths = cClipperHelper.GraphicsPathToIntPaths(oBasePath)
             End Using
         End Sub
 
         Public Function Contains(Graphics As Graphics, Path As GraphicsPath) As Boolean Implements cIRegion.Contains
             Using oPath As GraphicsPath = Path.Clone
-                Call oPath.Flatten(Nothing, sAccurancy)
+                Call oPath.Flatten(oBaseMatrix, sAccurancy)
                 Dim oIntPaths As List(Of List(Of IntPoint)) = cClipperHelper.GraphicsPathToIntPaths(oPath)
                 Call oClipper.Clear()
-                Call oClipper.AddPaths(oBaseIntPaths, PolyType.ptClip, False)
-                Call oClipper.AddPaths(oIntPaths, PolyType.ptSubject, False)
+                Call oClipper.AddPaths(oBaseIntPaths, PolyType.ptClip, True)
+                Call oClipper.AddPaths(oIntPaths, PolyType.ptSubject, True)
                 Dim oResultPaths As List(Of List(Of IntPoint)) = New List(Of List(Of IntPoint))
                 Call oClipper.Execute(ClipType.ctDifference, oResultPaths)
                 Return oResultPaths.Count = 0

@@ -1034,6 +1034,8 @@ Namespace cSurvey.Design
                                     End If
                                 End If
                                 iIndex += 1
+
+                                If Selection.Cancel Then Exit For
                             Next
                         End Using
                         Graphics.Restore(oState)
@@ -1041,6 +1043,8 @@ Namespace cSurvey.Design
                         Call oSurvey.RaiseOnProgressEvent("paint.design.surface", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
                         Graphics.SmoothingMode = iBackupSmoothingMode
                     End If
+
+                    If Selection.Cancel Then Exit Sub
 
                     If sOrigin <> "" AndAlso oSurvey.Properties.GPS.Enabled Then
                         'linked survey: for now are drawed before this survey...layer are drawed in correct order but by survey and not in correct sequence...
@@ -1090,6 +1094,7 @@ Namespace cSurvey.Design
                                         End If
                                     End If
                                 End If
+                                If Selection.Cancel Then Exit For
                             Next
                             Dim iLowerLayersDesignTransparencyThreshold As Integer = oSurvey.Properties.DesignProperties.GetValue("LowerLayersDesignTransparencyThreshold", 120) 'My.Application.Settings.GetSetting("design.lowerlayersdesigntransparencythreshold", 120)
                             If iLowerLayersDesignTransparencyThreshold > 0 Then
@@ -1097,6 +1102,8 @@ Namespace cSurvey.Design
                             End If
                         End If
                     End If
+
+                    If Selection.Cancel Then Exit Sub
                 End If
 
                 If PaintOptions.DrawDesign Then
@@ -1205,6 +1212,7 @@ Namespace cSurvey.Design
                                                 End If
                                         End Select
                                     End If
+                                    If Selection.Cancel Then Exit For
                                 Next
                             End Using
                         Else
@@ -1228,6 +1236,7 @@ Namespace cSurvey.Design
                                                 Call Graphics.FillPath(oBackbrush, oClippingPath)
                                                 Call Graphics.Restore(oState)
                                             End If
+                                            If Selection.Cancel Then Exit For
                                         Next
                                     End Using
                                 End If
@@ -1242,6 +1251,7 @@ Namespace cSurvey.Design
                                     For Each oCaveBranchPlaceholder As cCaveBranchPlaceholder In oDrawingOrder
                                         For Each oLayer As cLayer In oLayers
                                             Call oLayer.Paint(Graphics, PaintOptions, cItem.PaintOptionsEnum.Wireframe, oClippingRegions, New Helper.Editor.cEditDesignSelection(Selection, oCaveBranchPlaceholder.Cave, oCaveBranchPlaceholder.Branch))
+                                            If Selection.Cancel Then Exit For
                                         Next
                                     Next
                                     PaintOptions.HighlightCurrentCave = False
@@ -1260,6 +1270,7 @@ Namespace cSurvey.Design
                                         Call oSurvey.RaiseOnProgressEvent("", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Rendering " & oCaveBranchPlaceholder.Cave & " " & oCaveBranchPlaceholder.Branch, iIndex / iCount, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
                                         For Each oLayer As cLayer In oLayers
                                             Call oLayer.Paint(Graphics, PaintOptions, cItem.PaintOptionsEnum.Solid, oClippingRegions, New Helper.Editor.cEditDesignSelection(Selection, oCaveBranchPlaceholder.Cave, oCaveBranchPlaceholder.Branch))
+                                            If Selection.Cancel Then Exit For
                                         Next
                                         iIndex += 1
                                     Next
@@ -1328,6 +1339,8 @@ Namespace cSurvey.Design
                                         End If
                                     End If
                                 End If
+
+                                If Selection.Cancel Then Exit For
                             Next
                         Else
                             Using oClippingRegions As cClippingRegions = GetCaveClippingRegions(Graphics, PaintOptions)
@@ -1363,6 +1376,7 @@ Namespace cSurvey.Design
                                             End Using
                                         End If
                                     End If
+                                    If Selection.Cancel Then Exit For
                                 Next
                             End Using
                             If PaintOptions.DesignStyle = cOptionsCenterline.DesignStyleEnum.Areas Then
@@ -1377,6 +1391,7 @@ Namespace cSurvey.Design
                                         For Each oCaveBranchPlaceholder As cCaveBranchPlaceholder In oDrawingOrder
                                             For Each oLayer As cLayer In oLayers
                                                 Call oLayer.Paint(Graphics, PaintOptions, cItem.PaintOptionsEnum.Wireframe, oClippingRegions, New Helper.Editor.cEditDesignSelection(Selection, oCaveBranchPlaceholder.Cave, oCaveBranchPlaceholder.Branch))
+                                                If Selection.Cancel Then Exit For
                                             Next
                                         Next
                                     End Using
@@ -1391,6 +1406,7 @@ Namespace cSurvey.Design
                                             Call oSurvey.RaiseOnProgressEvent("", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Rendering " & oCaveBranchPlaceholder.Cave & " " & oCaveBranchPlaceholder.Branch, iIndex / iCount, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
                                             For Each oLayer As cLayer In oLayers
                                                 Call oLayer.Paint(Graphics, PaintOptions, cItem.PaintOptionsEnum.Solid, oClippingRegions, New Helper.Editor.cEditDesignSelection(Selection, oCaveBranchPlaceholder.Cave, oCaveBranchPlaceholder.Branch))
+                                                If Selection.Cancel Then Exit For
                                             Next
                                             iIndex += 1
                                         Next
@@ -1404,11 +1420,15 @@ Namespace cSurvey.Design
                         End If
                     End If
 
+                    If Selection.Cancel Then Exit Sub
+
                     'original position (if over design)
                     If PaintOptions.TranslationsOptions.DrawOriginalPosition AndAlso PaintOptions.TranslationsOptions.OriginalPositionOverDesign Then
                         Call pDrawOriginalPosition(Graphics, PaintOptions, oDrawingOrder)
                     End If
                 End If
+
+                If Selection.Cancel Then Exit Sub
 
                 If Not bSchematic AndAlso (PaintOptions.DrawPlot OrElse PaintOptions.DrawSpecialPoints OrElse (PaintOptions.DrawTranslation AndAlso PaintOptions.TranslationsOptions.DrawTranslationsLine) OrElse PaintOptions.DrawSurfaceProfile) Then
                     Call Plot.Paint(Graphics, PaintOptions, Selection)

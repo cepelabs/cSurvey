@@ -7,6 +7,7 @@ Imports cSurveyPC.cSurvey.Helper.Editor.cUndo
 Imports System.Windows.Input
 Imports DevExpress.XtraRichEdit.Commands.Internal
 Imports DevExpress.XtraRichEdit.API.Native
+Imports DevExpress.XtraBars.Docking2010.Views.WindowsUI
 
 Namespace cSurvey.Helper.Editor
     Public Class cEnvironmentSettingsFolder
@@ -292,6 +293,10 @@ Namespace cSurvey.Helper.Editor
         ReadOnly Property CurrentItemPoint As Design.cPoint
 
         Function IsInEditing() As Boolean
+
+        Sub SetCancel()
+        Sub ResetCancel()
+        Function Cancel() As Boolean
     End Interface
 
     Friend Class cEditSelection
@@ -409,11 +414,39 @@ Namespace cSurvey.Helper.Editor
         Public Function IsInEditing() As Boolean Implements cIEditDesignSelection.IsInEditing
             Return False
         End Function
+
+        Private bCancel As Boolean
+
+        Public Function Cancel() As Boolean Implements cIEditDesignSelection.Cancel
+            Return bCancel
+        End Function
+
+        Friend Sub ResetCancel() Implements cIEditDesignSelection.ResetCancel
+            bCancel = False
+        End Sub
+
+        Friend Sub SetCancel() Implements cIEditDesignSelection.SetCancel
+            bCancel = True
+        End Sub
     End Class
 
     Friend Class cEmptyEditDesignSelection
         Inherits cEmptyEditSelection
         Implements cIEditDesignSelection
+
+        Private bCancel As Boolean
+
+        Public Function Cancel() As Boolean Implements cIEditDesignSelection.Cancel
+            Return bCancel
+        End Function
+
+        Friend Sub ResetCancel() Implements cIEditDesignSelection.ResetCancel
+            bCancel = False
+        End Sub
+
+        Friend Sub SetCancel() Implements cIEditDesignSelection.SetCancel
+            bCancel = True
+        End Sub
 
         Public ReadOnly Property CurrentLayer As cLayer Implements cIEditDesignSelection.CurrentLayer
             Get
@@ -1243,6 +1276,20 @@ Namespace cSurvey.Helper.Editor
 
         Friend Event OnFilterApplied(ByVal Sender As Object, ByVal ToolEventArgs As cFilterEventArgs)
         Friend Event OnFilterRemoved(ByVal Sender As Object, ByVal ToolEventArgs As cFilterEventArgs)
+
+        Private bCancel As Boolean
+
+        Public Function Cancel() As Boolean Implements cIEditDesignSelection.Cancel
+            Return bCancel
+        End Function
+
+        Friend Sub ResetCancel() Implements cIEditDesignSelection.ResetCancel
+            bCancel = False
+        End Sub
+
+        Friend Sub SetCancel() Implements cIEditDesignSelection.SetCancel
+            bCancel = True
+        End Sub
 
         Public ReadOnly Property Undo As cUndo
             Get

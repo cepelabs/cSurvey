@@ -1445,7 +1445,7 @@ Friend Class frmPreview
         Dim oOptions As cSurvey.Design.cOptionsPreview = oCurrentOptions
         Dim oParameters As frmPreviewMargins = New frmPreviewMargins(oOptions.PageMargins, "mm")
         pnlParameters.Controls.Add(oParameters)
-        flyParameters.Size = oParameters.Size
+        flyParameters.Size = pGetFlyParametersSize(oParameters)
         oParameters.Dock = DockStyle.Fill
         flyParameters.OwnerControl = cmdSetMargins
         flyParameters.ShowBeakForm(True)
@@ -1765,7 +1765,7 @@ Friend Class frmPreview
         End If
         Dim oParameters As frmParametersInfoBox = New frmParametersInfoBox(oCurrentOptions, sUnitText)
         pnlParameters.Controls.Add(oParameters)
-        flyParameters.Size = oParameters.Size
+        flyParameters.Size = pGetFlyParametersSize(oParameters)
         oParameters.Dock = DockStyle.Fill
         flyParameters.OwnerControl = btnInfoBoxDetails
         flyParameters.ShowBeakForm(True)
@@ -1774,7 +1774,7 @@ Friend Class frmPreview
     Private Sub btnScaleDetails_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnScaleDetails.Click
         Dim oParameters As frmParametersScale = New frmParametersScale(oCurrentOptions)
         pnlParameters.Controls.Add(oParameters)
-        flyParameters.Size = oParameters.Size
+        flyParameters.Size = pGetFlyParametersSize(oParameters)
         oParameters.Dock = DockStyle.Fill
         flyParameters.OwnerControl = btnScaleDetails
         flyParameters.ShowBeakForm(True)
@@ -1798,11 +1798,21 @@ Friend Class frmPreview
         'End If
         Dim oParameters As frmParametersCompass = New frmParametersCompass(oCurrentOptions)
         pnlParameters.Controls.Add(oParameters)
-        flyParameters.Size = oParameters.Size
+        flyParameters.Size = pGetFlyParametersSize(oParameters)
         oParameters.Dock = DockStyle.Fill
         flyParameters.OwnerControl = btnCompassDetails
         flyParameters.ShowBeakForm(True)
     End Sub
+
+    Private Function pGetFlyParametersSize(Parameters As Control) As Size
+        If bManualRefresh Then
+            flyParameters.OptionsButtonPanel.ShowButtonPanel = True
+            Return New Drawing.Size(Parameters.Size.Width, Parameters.Size.Height + flyParameters.OptionsButtonPanel.ButtonPanelHeight + 4)
+        Else
+            flyParameters.OptionsButtonPanel.ShowButtonPanel = False
+            Return Parameters.Size
+        End If
+    End Function
 
     'Private Sub frmPIB_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles frmPIB.FormClosed
     '    frmPIB = Nothing
@@ -1877,7 +1887,7 @@ Friend Class frmPreview
         Dim oOptions As cSurvey.Design.cOptionsExport = oCurrentOptions
         Dim oParameters As frmPreviewMargins = New frmPreviewMargins(oOptions.Margins, cboImageUM.Text)
         pnlParameters.Controls.Add(oParameters)
-        flyParameters.Size = oParameters.Size
+        flyParameters.Size = pGetFlyParametersSize(oParameters)
         oParameters.Dock = DockStyle.Fill
         flyParameters.OwnerControl = cmdSetImageMargins
         flyParameters.ShowBeakForm(True)
@@ -1917,7 +1927,7 @@ Friend Class frmPreview
         End If
         Dim oParameters As frmParametersTranslations = New frmParametersTranslations(oCurrentOptions.TranslationsOptions, iApplyTo)
         pnlParameters.Controls.Add(oParameters)
-        flyParameters.Size = oParameters.Size
+        flyParameters.Size = pGetFlyParametersSize(oParameters)
         oParameters.Dock = DockStyle.Fill
         flyParameters.OwnerControl = btnTranslationsDetails
         flyParameters.ShowBeakForm(True)
@@ -2340,7 +2350,7 @@ Friend Class frmPreview
     Private Sub btnZOrderDetails_Click(sender As System.Object, e As System.EventArgs) Handles btnZOrderDetails.Click
         Dim oParameters As frmParametersZOrder = New frmParametersZOrder(oCurrentOptions)
         pnlParameters.Controls.Add(oParameters)
-        flyParameters.Size = oParameters.Size
+        flyParameters.Size = pGetFlyParametersSize(oParameters)
         oParameters.Dock = DockStyle.Fill
         flyParameters.OwnerControl = btnZOrderDetails
         flyParameters.ShowBeakForm(True)
@@ -2464,9 +2474,6 @@ Friend Class frmPreview
                 Call oCurrentDesign.Paint(Graphics, oOptions, cDrawOptions.Empty, oSelection)
 
                 Graphics.SmoothingMode = SmoothingMode.None
-                'If bDrawRulers Then
-                '    Call modPaint.MapDrawRulers(Graphics, oCurrentOptions, oSurvey, oSelection, iDrawRulesStyle, sPaintZoom)
-                'End If
 
                 Graphics.SmoothingMode = SmoothingMode.AntiAlias
                 Graphics.ResetTransform()
@@ -2564,6 +2571,7 @@ Friend Class frmPreview
     Private Sub pDrawingThreadStart()
         If oDrawRefreshThread Is Nothing Then
             If bMultiThreadingPreview Then
+                Call oSelection.ResetCancel()
                 oDrawRefreshThread = New Threading.Thread(AddressOf oDrawRefreshThread_callback)
                 oDrawRefreshThread.Priority = Threading.ThreadPriority.Lowest
                 btnStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
@@ -2928,7 +2936,7 @@ Friend Class frmPreview
         'End If
         Dim oParameters As frmParametersDesign = New frmParametersDesign(oCurrentOptions)
         pnlParameters.Controls.Add(oParameters)
-        flyParameters.Size = oParameters.Size
+        flyParameters.Size = pGetFlyParametersSize(oParameters)
         oParameters.Dock = DockStyle.Fill
         flyParameters.OwnerControl = btnDesignDetails
         flyParameters.ShowBeakForm(True)
@@ -2955,7 +2963,7 @@ Friend Class frmPreview
         End If
         Dim oParameters As frmParametersSegments = New frmParametersSegments(oCurrentOptions, iApplyTo)
         pnlParameters.Controls.Add(oParameters)
-        flyParameters.Size = oParameters.Size
+        flyParameters.Size = pGetFlyParametersSize(oParameters)
         oParameters.Dock = DockStyle.Fill
         flyParameters.OwnerControl = btnSegmentDetails
         flyParameters.ShowBeakForm(True) '(New Point(oRect.Right, oRect.Top + oRect.Height / 2), True)
@@ -2997,7 +3005,8 @@ Friend Class frmPreview
     Private Sub pDrawingThreadStop()
         If Not oDrawRefreshThread Is Nothing Then
             If oDrawRefreshThread.ThreadState = Threading.ThreadState.Running Then
-                Call oDrawRefreshThread.Abort()
+                Call oSelection.SetCancel()
+                Call oDrawRefreshThread.Join()
                 Call oSurvey.RaiseOnProgressEvent("", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Reset, "", 0)
             End If
             oDrawRefreshThread = Nothing
@@ -3474,5 +3483,12 @@ Friend Class frmPreview
             NavBarControl1.Width = NavBarControl1.Width / 2.0F
             Call My.Application.Settings.DeleteSetting("preview.bar.large")
         End If
+    End Sub
+
+    Private Sub flyParameters_ButtonClick(sender As Object, e As DevExpress.Utils.FlyoutPanelButtonClickEventArgs) Handles flyParameters.ButtonClick
+        Select Case e.Button.Tag
+            Case "refresh"
+                Call btnRefresh.PerformClick()
+        End Select
     End Sub
 End Class

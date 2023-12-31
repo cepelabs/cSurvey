@@ -24,6 +24,7 @@ Partial Class frmPreview
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPreview))
+        Dim ButtonImageOptions1 As DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions = New DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions()
         Me.pnlOptions = New DevExpress.XtraEditors.XtraScrollableControl()
         Me.pnlMainOptions = New DevExpress.XtraEditors.PanelControl()
         Me.chkPrintTrigpointText = New DevExpress.XtraEditors.CheckEdit()
@@ -1056,7 +1057,7 @@ Partial Class frmPreview
         Me.RibbonControl1.AutoHideEmptyItems = True
         Me.RibbonControl1.Categories.AddRange(New DevExpress.XtraBars.BarManagerCategory() {CType(resources.GetObject("RibbonControl1.Categories"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("RibbonControl1.Categories1"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("RibbonControl1.Categories2"), DevExpress.XtraBars.BarManagerCategory)})
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.btnProfilesAdd, Me.btnProfilesDelete, Me.btnProperties, Me.btnBaseRule, Me.btnPrint, Me.btnExport, Me.btnClose, Me.btnZoomIn, Me.btnZoomOut, Me.btnZoomToFit, Me.btnSidePanel, Me.btnDesignGraphicsQuality, Me.btnStop, Me.btnDesignGraphics0, Me.btnDesignGraphics1, Me.btnDesignGraphics2, Me.btnManualRefresh, Me.btnRefresh, Me.pnlStatusText, Me.pnlStatusDesignZoom, Me.btnStatusDesignZoom100, Me.btnStatusDesignZoom200, Me.btnStatusDesignZoom250, Me.btnStatusDesignZoom500, Me.btnStatusDesignZoom1000, Me.pnlStatusCurrentRule, Me.pnlStatusProgress, Me.btnProfileImportFromFile, Me.btnProfileExportToFile, Me.btnProfileLargeBar})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.btnProfilesAdd, Me.btnProfilesDelete, Me.btnProperties, Me.btnBaseRule, Me.btnPrint, Me.btnExport, Me.btnClose, Me.btnZoomIn, Me.btnZoomOut, Me.btnZoomToFit, Me.btnSidePanel, Me.btnDesignGraphicsQuality, Me.btnStop, Me.btnDesignGraphics0, Me.btnDesignGraphics1, Me.btnDesignGraphics2, Me.btnManualRefresh, Me.btnRefresh, Me.pnlStatusText, Me.pnlStatusDesignZoom, Me.btnStatusDesignZoom100, Me.btnStatusDesignZoom200, Me.btnStatusDesignZoom250, Me.btnStatusDesignZoom500, Me.btnStatusDesignZoom1000, Me.pnlStatusCurrentRule, Me.pnlStatusProgress, Me.btnProfileImportFromFile, Me.btnProfileExportToFile, Me.btnProfileLargeBar})
         resources.ApplyResources(Me.RibbonControl1, "RibbonControl1")
         Me.RibbonControl1.MaxItemId = 31
         Me.RibbonControl1.Name = "RibbonControl1"
@@ -1430,6 +1431,11 @@ Partial Class frmPreview
         Me.flyParameters.Controls.Add(Me.pnlParameters)
         resources.ApplyResources(Me.flyParameters, "flyParameters")
         Me.flyParameters.Name = "flyParameters"
+        Me.flyParameters.OptionsButtonPanel.ButtonPanelHeight = 26
+        ButtonImageOptions1.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_refresh
+        ButtonImageOptions1.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.flyParameters.OptionsButtonPanel.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.Utils.PeekFormButton(resources.GetString("flyParameters.OptionsButtonPanel.Buttons"), CType(resources.GetObject("flyParameters.OptionsButtonPanel.Buttons1"), Boolean), ButtonImageOptions1, CType(resources.GetObject("flyParameters.OptionsButtonPanel.Buttons2"), DevExpress.XtraBars.Docking2010.ButtonStyle), resources.GetString("flyParameters.OptionsButtonPanel.Buttons3"), CType(resources.GetObject("flyParameters.OptionsButtonPanel.Buttons4"), Integer), CType(resources.GetObject("flyParameters.OptionsButtonPanel.Buttons5"), Boolean), CType(resources.GetObject("flyParameters.OptionsButtonPanel.Buttons6"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("flyParameters.OptionsButtonPanel.Buttons7"), Boolean), CType(resources.GetObject("flyParameters.OptionsButtonPanel.Buttons8"), Boolean), CType(resources.GetObject("flyParameters.OptionsButtonPanel.Buttons9"), Boolean), resources.GetString("flyParameters.OptionsButtonPanel.Buttons10"), CType(resources.GetObject("flyParameters.OptionsButtonPanel.Buttons11"), Integer), CType(resources.GetObject("flyParameters.OptionsButtonPanel.Buttons12"), Boolean))})
+        Me.flyParameters.OptionsButtonPanel.ShowButtonPanel = True
         '
         'pnlParameters
         '

@@ -1032,4 +1032,7 @@
   <data name="chkPrintTrigpointText.Properties.Caption" xml:space="preserve">
     <value>Etichette capisaldi</value>
   </data>
+  <data name="flyParameters.OptionsButtonPanel.Buttons" xml:space="preserve">
+    <value>Aggiorna</value>
+  </data>
 </root>

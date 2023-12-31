@@ -9690,7 +9690,8 @@ Friend Class frmMain2
                         Call modExport.TherionCreateConfig(oSurvey, sTempConfigFilename, oTempThInputFilename, "export model -fmt loch -output " & Chr(34) & sTempThOutputFilename & Chr(34))
 
                         iExitCode = modMain.ExecuteProcess(sThProcess, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), bThBackgroundProcess, AddressOf pProcessOutputHandler)
-                        If iExitCode = 0 Then
+                        If iExitCode = 0 OrElse My.Computer.FileSystem.FileExists(sTempThOutputFilename) Then
+                            If iExitCode <> 0 Then Call pLogAdd(cSurvey.cSurvey.LogEntryType.Warning, "Therion exit code " & iExitCode, "")
                             If iRes = DialogResult.OK Then
                                 Dim sLochPath As String = Path.GetDirectoryName(sThProcess)
                                 Call Shell(Path.Combine(sLochPath, "loch.exe") & " " & Chr(34) & sTempThOutputFilename & Chr(34), AppWinStyle.MaximizedFocus, True, -1)

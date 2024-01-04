@@ -129,7 +129,7 @@
     <value>accordionContainer</value>
   </data>
   <data name="&gt;&gt;accordionContainer.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Navigation.AccordionContentContainer, DevExpress.XtraBars.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Navigation.AccordionContentContainer, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;accordionContainer.Parent" xml:space="preserve">
     <value>accordion</value>
@@ -163,7 +163,7 @@
     <value>accordion</value>
   </data>
   <data name="&gt;&gt;accordion.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Navigation.AccordionControl, DevExpress.XtraBars.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Navigation.AccordionControl, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;accordion.Parent" xml:space="preserve">
     <value>$this</value>
@@ -184,12 +184,12 @@
     <value>AccordionControlElement1</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement1.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>cCollapsablePropertyControlContainer</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.XtraUserControl, DevExpress.Utils.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.XtraUserControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>

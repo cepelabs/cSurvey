@@ -13,6 +13,7 @@ Imports cSurveyPC.cSurvey.Drawings
 Imports System.IO
 Imports System.Runtime.CompilerServices
 Imports DevExpress.XtraRichEdit.Layout.Engine
+Imports System.Windows.Media.Media3D
 
 Module modPaint
     Public Const sMeterToPixelScale As Decimal = 1.0 / 3779.52768
@@ -1074,6 +1075,10 @@ Module modPaint
     '    End If
     '    Return sBearing
     'End Function
+    Public Function GetSlope3D(p0 As Point3D, p1 As Point3D)
+        Return (p1.Z - p0.Z) / Math.Sqrt((p1.X - p0.X) ^ 2 + (p1.Y - p0.Y) ^ 2)
+    End Function
+
     Public Function GetInclination(ByVal p0 As PointD, ByVal p1 As PointD) As Decimal
         Dim dDirection As Decimal
         Dim dBearing As Decimal = GetBearing(p0, p1)

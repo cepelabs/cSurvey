@@ -825,29 +825,65 @@ Friend Class cHolosViewer
         'Dim dDistance2 As Double = oModelEdit.Point1.DistanceTo(oModelEdit.Point2)
         'Dim dFinalScale As Double = dDistance1 / dDistance2
 
+        'align model to shot bearing
         Dim sBearingStation As Decimal = modPaint.GetBearing(New PointD(oStation1.X, -oStation1.Y), New PointD(oStation2.X, -oStation2.Y))
         Dim sBearingModel As Decimal = modPaint.GetBearing(New PointD(Chunk.Stations.Station1.Point.X, -Chunk.Stations.Station1.Point.Y), New PointD(Chunk.Stations.Station2.Point.X, -Chunk.Stations.Station2.Point.Y))
-        Dim sAngle As Decimal = modPaint.NormalizeAngle(sBearingModel - sBearingStation)  ' modPaint.GetAngleBetweenSegment(New PointD(oStation1.X, -oStation1.Y), New PointD(oStation2.X, -oStation2.Y), New PointD(oModelEdit.Point1.X, oModelEdit.Point1.Y), New PointD(oModelEdit.Point2.X, oModelEdit.Point2.Y))
+        Dim sAngle As Decimal = modPaint.NormalizeAngle(sBearingModel - sBearingStation)
         Call oResultTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 0, 1), sAngle)))
+
+        'align model to shot inclination
+        Dim sSlopeStation As Decimal = RadiansToDegree(modPaint.GetSlope3D(oStation1, oStation2))
+        Dim sSlopeModel As Decimal = RadiansToDegree(modPaint.GetSlope3D(Chunk.Stations.Station1.Point, Chunk.Stations.Station2.Point))
+        Dim sSlope As Decimal = modPaint.NormalizeAngle(sSlopeModel - sSlopeStation)
+        Call oResultTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 1, 0), sSlope)))
+
         Call oResultTransformGroup.Children.Add(New ScaleTransform3D(1.0 / Chunk.ModelTransform.XScale, 1.0 / Chunk.ModelTransform.YScale, (1.0 / Chunk.ModelTransform.ZScale) * dHeightScale))
         Call oResultTransformGroup.Children.Add(New TranslateTransform3D(oStation1.X, oStation1.Y, oStation1.Z))
 
         Dim oModelPointTransformGroup As Transform3DGroup = New Transform3DGroup()
         Call oModelPointTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 0, 1), sAngle)))
+        Call oModelPointTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 1, 0), sSlope)))
         Call oModelPointTransformGroup.Children.Add(New ScaleTransform3D(1.0 / Chunk.ModelTransform.XScale, 1.0 / Chunk.ModelTransform.YScale, (1.0 / Chunk.ModelTransform.ZScale) * dHeightScale))
         Call oModelPointTransformGroup.Children.Add(New TranslateTransform3D(oStation1.X, oStation1.Y, oStation1.Z))
 
         Dim oModelPoint1 As Point3D = oModelPointTransformGroup.Transform(Chunk.Stations.Station1.Point)
         Dim oModelPoint2 As Point3D = oModelPointTransformGroup.Transform(Chunk.Stations.Station2.Point)
 
-        'adjust x, y and z or adjust only plan distance and z?
-        'TODO: this code work can be right only each delta have same sign of model station placeholder delta
-        'if not model will be inverted and this is not correct
-        'I don't know how to fix this...skew?
-        Dim sXScale As Double = Math.Abs((oStation2.X - oStation1.X) / (oModelPoint2.X - oModelPoint1.X))
-        Dim sYScale As Double = Math.Abs((oStation2.Y - oStation1.Y) / (oModelPoint2.Y - oModelPoint1.Y))
-        Dim sZScale As Double = Math.Abs((oStation2.Z - oStation1.Z) / (oModelPoint2.Z - oModelPoint1.Z))
+        'adjust x, y and z
+        Dim sXScale As Double = (oStation2.X - oStation1.X) / (oModelPoint2.X - oModelPoint1.X)
+        Dim sYScale As Double = (oStation2.Y - oStation1.Y) / (oModelPoint2.Y - oModelPoint1.Y)
+        Dim sZScale As Double = (oStation2.Z - oStation1.Z) / (oModelPoint2.Z - oModelPoint1.Z)
+        Dim bXRotate As Boolean
+        Dim bYRotate As Boolean
+        Dim bZRotate As Boolean
+        If sXScale < 0.0 Then
+            sXScale = 1.0
+            bXRotate = True
+        End If
+        If sYScale < 0.0 Then
+            sYScale = 1.0
+            bYRotate = True
+        End If
+        If sZScale < 0.0 Then
+            sZScale = 1.0
+            bZRotate = True
+        End If
         Call oResultTransformGroup.Children.Add(New ScaleTransform3D(sXScale, sYScale, sZScale, oStation1.X, oStation1.Y, oStation1.Z))
+        'If bXRotate Then
+        '    Dim sAngle1 As Single = modPaint.GetBearing(New PointD(oStation1.X, oStation1.Y), New PointD(oStation2.X, oStation2.Y))
+        '    Dim sAngle2 As Single = modPaint.GetBearing(New PointD(oModelPoint1.X, oModelPoint1.Y), New PointD(oModelPoint2.X, oModelPoint2.Y))
+        '    Call oModelPointTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(1, 0, 0), sAngle1 - sAngle2)))
+        'End If
+        'If bYRotate Then
+        '    Dim sAngle1 As Single = modPaint.GetBearing(New PointD(oStation1.Y, oStation1.Z), New PointD(oStation2.Y, oStation2.Z))
+        '    Dim sAngle2 As Single = modPaint.GetBearing(New PointD(oModelPoint1.Y, oModelPoint1.Z), New PointD(oModelPoint2.X, oModelPoint2.Z))
+        '    Call oModelPointTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 1, 0), sAngle1 - sAngle2)))
+        'End If
+        'If bZRotate Then
+        '    Dim sAngle1 As Single = modPaint.GetBearing(New PointD(oStation1.X, oStation1.Z), New PointD(oStation2.X, oStation2.Z))
+        '    Dim sAngle2 As Single = modPaint.GetBearing(New PointD(oModelPoint1.X, oModelPoint1.Z), New PointD(oModelPoint2.X, oModelPoint2.Z))
+        '    Call oModelPointTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 0, 1), sAngle1 - sAngle2)))
+        'End If
 
         oChunkGroup.Transform = oResultTransformGroup
         oChunkGroup.Content = oChunkModel

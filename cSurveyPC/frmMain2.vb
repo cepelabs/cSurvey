@@ -2237,11 +2237,11 @@ Friend Class frmMain2
         Else
             If TypeOf Args.SelectedItem Is cTrigPoint Then
                 Dim oTrigpoint As cTrigPoint = Args.SelectedItem
-                Call pTrigPointSelect(oTrigpoint, True, True)
+                Call pTrigPointSelect(oTrigpoint, True, False)
                 Call pTrigpointItemSelect()
             ElseIf TypeOf Args.SelectedItem Is cSegment Then
                 Dim oSegment As cSegment = Args.SelectedItem
-                Call pSegmentSelect(oSegment, True, True)
+                Call pSegmentSelect(oSegment, True, False)
                 Call pSegmentItemSelect()
             ElseIf TypeOf Args.SelectedItem Is cItemChunk3D Then
                 Dim oChunk As cItemChunk3D = Args.SelectedItem
@@ -3834,6 +3834,19 @@ Friend Class frmMain2
                                 ElseIf iSnapToPoint = 3 Then
                                     Dim oLastItem As cItem = oSnapToPointPointTojoin.Item
                                     If oLastItem Is .LastItemPoint.Item Then
+
+                                        If .CurrentItem.CanBeReduced Then
+                                            If btnPenSmooting.Checked Then
+                                                Dim oLineItem As Items.cIItemLine = .CurrentItem
+                                                Call oLineItem.ReducePoints(btnPenSmootingFactor.EditValue)
+                                            End If
+                                            Dim iDefaultLineType As cIItemLine.LineTypeEnum = oSurvey.Properties.DesignProperties.GetValue("LineType", My.Application.Settings.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
+                                            If iDefaultLineType = cIItemLine.LineTypeEnum.Beziers Then
+                                                'sequence to bezier
+                                                Call pSequencesTo(cIItemLine.LineTypeEnum.Beziers, True)
+                                            End If
+                                        End If
+
                                         Dim oFirstPoint As cPoint = .CurrentItem.Points.GetSequence(.LastItemPoint).First
                                         If Not oFirstPoint Is .CurrentItem.Points.First Then
                                             'the snap is in the same object
@@ -3841,6 +3854,18 @@ Friend Class frmMain2
                                         End If
                                     Else
                                         If oLastItem.Type = .LastItemPoint.Item.Type Then
+                                            If .CurrentItem.CanBeReduced Then
+                                                If btnPenSmooting.Checked Then
+                                                    Dim oLineItem As Items.cIItemLine = .CurrentItem
+                                                    Call oLineItem.ReducePoints(btnPenSmootingFactor.EditValue)
+                                                End If
+                                                Dim iDefaultLineType As cIItemLine.LineTypeEnum = oSurvey.Properties.DesignProperties.GetValue("LineType", My.Application.Settings.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
+                                                If iDefaultLineType = cIItemLine.LineTypeEnum.Beziers Then
+                                                    'sequence to bezier
+                                                    Call pSequencesTo(cIItemLine.LineTypeEnum.Beziers, True)
+                                                End If
+                                            End If
+
                                             'same object type...merge and then combine...
                                             Dim oFirstPoint As cPoint = .CurrentItem.Points.GetSequence(.LastItemPoint).First
                                             Dim oItem As cItem = .LastItemPoint.Item
@@ -7344,12 +7369,6 @@ Friend Class frmMain2
         Call pSurveyLayersFilterApply(True, ToolEventArgs.Refresh)
     End Sub
 
-    Private Sub oPlanTools_OnItemDeleted(Sender As Object, ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnItemDeleted, oProfileTools.OnItemDeleted, o3DTools.OnItemDeleted
-        Call pGetCurrentDesignTools.CommitUndoSnapshot()
-        Call pObjectPropertyLoad()
-        Call pMapInvalidate()
-    End Sub
-
     Private Sub oPlanTools_OnItemPointDelete(Sender As Object, ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnItemPointDelete, oProfileTools.OnItemPointDelete
         Call pMapInvalidate()
     End Sub
@@ -7378,7 +7397,7 @@ Friend Class frmMain2
                         End If
                         Dim iDefaultLineType As cIItemLine.LineTypeEnum = oSurvey.Properties.DesignProperties.GetValue("LineType", My.Application.Settings.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
                         If iDefaultLineType = cIItemLine.LineTypeEnum.Beziers Then
-                            'converto le sequenze in bezier
+                            'sequence to bezier
                             Call pSequencesTo(cIItemLine.LineTypeEnum.Beziers, True)
                         End If
                     End If
@@ -7635,26 +7654,28 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pClipboardDelete()
-        Call oMousePointer.Push(Cursors.WaitCursor)
-        Call pStatusSet(GetLocalizedString("main.textpart7"))
-        If grdSegments.Focused Then
-            Try
-                Dim oSegment As cSegment = pGetCurrentTools.CurrentSegment
-                If Not oSegment Is Nothing Then
-                    Dim bEnabledEdit As Boolean = (oSegment.Splay) OrElse (Not (oSegment.IsBinded Or oSegment.IsOrigin))
-                    If bEnabledEdit Then
-                        Call pSegmentDelete()
+        If btnDelete.Enabled Then
+            Call oMousePointer.Push(Cursors.WaitCursor)
+            Call pStatusSet(GetLocalizedString("main.textpart7"))
+            If grdSegments.Focused Then
+                Try
+                    Dim oSegment As cSegment = pGetCurrentTools.CurrentSegment
+                    If Not oSegment Is Nothing Then
+                        Dim bEnabledEdit As Boolean = (oSegment.Splay) OrElse (Not (oSegment.IsBinded Or oSegment.IsOrigin))
+                        If bEnabledEdit Then
+                            Call pSegmentDelete()
+                        End If
                     End If
-                End If
-            Catch
-            End Try
-        ElseIf picMap.Focused Then
-            Call pDesignItemDelete()
-        ElseIf h3D.Focused Then
-            Call pDesignItemDelete()
+                Catch
+                End Try
+            ElseIf picMap.Focused Then
+                Call pDesignItemDelete()
+            ElseIf h3D.Focused Then
+                Call pDesignItemDelete()
+            End If
+            Call pStatusSet(GetLocalizedString("main.textpart6"))
+            Call oMousePointer.Pop()
         End If
-        Call pStatusSet(GetLocalizedString("main.textpart6"))
-        Call oMousePointer.Pop()
     End Sub
 
     Private Sub pDesignItemDelete()
@@ -9964,7 +9985,7 @@ Friend Class frmMain2
                         End If
                         btnPaste.Enabled = bEnabled
                     End If
-                Case Else
+                Case cContextEnum.Design3D
                     If oCurrentDesign Is Nothing Then
                         btnDesignSetCurrentCaveBranch.Enabled = False
 
@@ -9979,31 +10000,80 @@ Friend Class frmMain2
                         btnDelete.Enabled = False
                     Else
                         Dim oItem As cItem = pGetCurrentDesignTools.CurrentItem
-                        If TypeOf oItem Is cItemChunk3D Then
-                            btnDesignSetCurrentCaveBranch.Enabled = False
+                        Dim bEnabledEdit As Boolean = Not oItem Is Nothing
 
-                            btnCut.Enabled = False
-                            btnCopy.Enabled = False
-
-                            btnPasteService.Enabled = False
-                            btnPaste.Enabled = False
-                            btnPasteService.ActAsDropDown = False
-                            btnPasteService.ButtonStyle = BarButtonStyle.Default
-
-                            btnDelete.Enabled = oItem.CanBeDeleted
+                        If bEnabledEdit Then
+                            If TypeOf oItem Is cItemSegment Then
+                                bEnabledEdit = False
+                                btnDesignSetCurrentCaveBranch.Enabled = True
+                            ElseIf TypeOf oItem Is cItemTrigpoint Then
+                                bEnabledEdit = False
+                                btnDesignSetCurrentCaveBranch.Enabled = False
+                            Else
+                                btnDesignSetCurrentCaveBranch.Enabled = True
+                            End If
                         Else
                             btnDesignSetCurrentCaveBranch.Enabled = False
-
-                            btnCut.Enabled = False
-                            btnCopy.Enabled = False
-
-                            btnPasteService.Enabled = False
-                            btnPaste.Enabled = False
-                            btnPasteService.ActAsDropDown = False
-                            btnPasteService.ButtonStyle = BarButtonStyle.Default
-
-                            btnDelete.Enabled = False
                         End If
+
+                        Dim bItemCanBeCopied As Boolean = oItem.CanBeCopied
+                        Dim bCanBeDeleted As Boolean = bEnabledEdit AndAlso oItem.CanBeDeleted 'AndAlso bLocked
+                        Dim bCanBeCutted As Boolean = bCanBeDeleted AndAlso bItemCanBeCopied
+                        Dim bCanBeCopied As Boolean = bEnabledEdit AndAlso bItemCanBeCopied
+
+                        btnCut.Enabled = bCanBeCutted
+                        btnCopy.Enabled = bCanBeCopied
+                        Debug.Print(bCanBeDeleted)
+                        btnDelete.Enabled = bCanBeDeleted
+
+                        'Dim bStandardFormat As Boolean = pClipboardCheckDesignFormat()
+                        'Dim bExtraFormat As Boolean = pClipboardCheckDesignExtraFormats()
+                        'Dim bEnabled As Boolean = bStandardFormat OrElse bExtraFormat
+
+                        btnPasteService.Enabled = False
+                        btnPasteService.ButtonStyle = BarButtonStyle.Default
+                        btnPaste.Enabled = False
+                    End If
+                Case Else
+                    If oCurrentDesign Is Nothing Then
+                        btnDesignSetCurrentCaveBranch.Enabled = False
+
+                        btnCut.Enabled = False
+                        btnCopy.Enabled = False
+
+                        btnPasteService.Enabled = False
+                        btnPaste.Enabled = False
+                        btnPasteService.ActAsDropDown = False
+                        btnPasteService.ButtonStyle = BarButtonStyle.Default
+
+                        btnDelete.Enabled = False
+                    Else
+                        'Dim oItem As cItem = pGetCurrentDesignTools.CurrentItem
+                        'If TypeOf oItem Is cItemChunk3D Then
+                        '    btnDesignSetCurrentCaveBranch.Enabled = False
+
+                        '    btnCut.Enabled = False
+                        '    btnCopy.Enabled = False
+
+                        '    btnPasteService.Enabled = False
+                        '    btnPaste.Enabled = False
+                        '    btnPasteService.ActAsDropDown = False
+                        '    btnPasteService.ButtonStyle = BarButtonStyle.Default
+
+                        '    btnDelete.Enabled = oItem.CanBeDeleted
+                        'Else
+                        btnDesignSetCurrentCaveBranch.Enabled = False
+
+                        btnCut.Enabled = False
+                        btnCopy.Enabled = False
+
+                        btnPasteService.Enabled = False
+                        btnPaste.Enabled = False
+                        btnPasteService.ActAsDropDown = False
+                        btnPasteService.ButtonStyle = BarButtonStyle.Default
+
+                        btnDelete.Enabled = False
+                        'End If
                     End If
             End Select
         Catch
@@ -19607,7 +19677,20 @@ Friend Class frmMain2
         Call pUndoRefresh()
     End Sub
 
-    Private Sub oPlanTools_OnItemDelete(Sender As Object, ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnItemDelete, oProfileTools.OnItemDelete, o3DTools.OnItemDelete
+    Private Sub o3DTools_OnItemDelete(Sender As Object, ToolEventArgs As cEditDesignToolsEventArgs) Handles o3DTools.OnItemDelete
+        Call pGetCurrentDesignTools.BeginUndoSnapshot("Delete item", {ToolEventArgs.CurrentItem})
+        If TypeOf ToolEventArgs.CurrentItem Is cItemChunk3D Then
+            Call oHolos.DeleteChunk(DirectCast(ToolEventArgs.CurrentItem, cItemChunk3D))
+        End If
+    End Sub
+
+    Private Sub oPlanTools_OnItemDeleted(Sender As Object, ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnItemDeleted, oProfileTools.OnItemDeleted, o3DTools.OnItemDeleted
+        Call pGetCurrentDesignTools.CommitUndoSnapshot()
+        Call pObjectPropertyLoad()
+        Call pMapInvalidate()
+    End Sub
+
+    Private Sub oPlanTools_OnItemDelete(Sender As Object, ToolEventArgs As cEditDesignToolsEventArgs) Handles oPlanTools.OnItemDelete, oProfileTools.OnItemDelete
         Call pGetCurrentDesignTools.BeginUndoSnapshot("Delete item", {ToolEventArgs.CurrentItem})
     End Sub
 
@@ -19641,14 +19724,14 @@ Friend Class frmMain2
         cboMainBindCrossSections.PopupView.RefreshData()
     End Sub
 
-    Private Sub o3DTools_OnItemDelete(Sender As Object, ToolEventArgs As cEditDesignToolsEventArgs) Handles o3DTools.OnItemDelete
-        Call oHolos.DeleteChunk(DirectCast(ToolEventArgs.CurrentItem, cItemChunk3D))
-    End Sub
-
     Private Sub oHolos_OnKeyUp(sender As Object, e As KeyEventArgs) Handles oHolos.OnKeyUp
         If e.KeyCode = Keys.Delete Then
             Call pClipboardDelete()
         End If
+    End Sub
+
+    Private Sub h3D_GotFocus(sender As Object, e As EventArgs) Handles h3D.GotFocus
+        Call oClipboardViewer_ClipboardChanged(Nothing, Nothing)
     End Sub
 
     'Private Sub oHolos_OnContextMenuRequest(Sender As Object, e As Windows.Forms.MouseEventArgs) Handles oHolos.OnContextMenuRequest

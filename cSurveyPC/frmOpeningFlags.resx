@@ -117,8 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="DevExpress.XtraEditors.v23.1" name="DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="lblDescription.AutoSizeMode" type="DevExpress.XtraEditors.LabelAutoSizeMode, DevExpress.XtraEditors.v23.1">
+  <assembly alias="DevExpress.XtraEditors.v23.2" name="DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="lblDescription.AutoSizeMode" type="DevExpress.XtraEditors.LabelAutoSizeMode, DevExpress.XtraEditors.v23.2">
     <value>None</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
@@ -144,7 +144,7 @@ In case these changes do not have the desired effect not save the file.</value>
     <value>lblDescription</value>
   </data>
   <data name="&gt;&gt;lblDescription.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDescription.Parent" xml:space="preserve">
     <value>$this</value>
@@ -171,7 +171,7 @@ In case these changes do not have the desired effect not save the file.</value>
     <value>chkMorphingDisable</value>
   </data>
   <data name="&gt;&gt;chkMorphingDisable.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkMorphingDisable.Parent" xml:space="preserve">
     <value>$this</value>
@@ -201,7 +201,7 @@ In case these changes do not have the desired effect not save the file.</value>
     <value>chkCalculateMode</value>
   </data>
   <data name="&gt;&gt;chkCalculateMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkCalculateMode.Parent" xml:space="preserve">
     <value>$this</value>
@@ -231,7 +231,7 @@ In case these changes do not have the desired effect not save the file.</value>
     <value>lblDesignWarpingMode</value>
   </data>
   <data name="&gt;&gt;lblDesignWarpingMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignWarpingMode.Parent" xml:space="preserve">
     <value>$this</value>
@@ -349,7 +349,7 @@ In case these changes do not have the desired effect not save the file.</value>
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -379,7 +379,7 @@ In case these changes do not have the desired effect not save the file.</value>
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
@@ -403,7 +403,7 @@ In case these changes do not have the desired effect not save the file.</value>
     <value>chkCalculateModeEnabled</value>
   </data>
   <data name="&gt;&gt;chkCalculateModeEnabled.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkCalculateModeEnabled.Parent" xml:space="preserve">
     <value>$this</value>
@@ -430,7 +430,7 @@ In case these changes do not have the desired effect not save the file.</value>
     <value>chkDesignWarpingModeEnabled</value>
   </data>
   <data name="&gt;&gt;chkDesignWarpingModeEnabled.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignWarpingModeEnabled.Parent" xml:space="preserve">
     <value>$this</value>
@@ -457,7 +457,7 @@ In case these changes do not have the desired effect not save the file.</value>
     <value>chkMorphingDisableEnabled</value>
   </data>
   <data name="&gt;&gt;chkMorphingDisableEnabled.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkMorphingDisableEnabled.Parent" xml:space="preserve">
     <value>$this</value>
@@ -487,7 +487,7 @@ In case these changes do not have the desired effect not save the file.</value>
     <value>lblDesignWarpingModeEnabledIn</value>
   </data>
   <data name="&gt;&gt;lblDesignWarpingModeEnabledIn.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignWarpingModeEnabledIn.Parent" xml:space="preserve">
     <value>$this</value>
@@ -517,7 +517,7 @@ In case these changes do not have the desired effect not save the file.</value>
     <value>chkProfileWarpingEnabled</value>
   </data>
   <data name="&gt;&gt;chkProfileWarpingEnabled.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkProfileWarpingEnabled.Parent" xml:space="preserve">
     <value>$this</value>
@@ -547,7 +547,7 @@ In case these changes do not have the desired effect not save the file.</value>
     <value>chkPlanWarpingEnabled</value>
   </data>
   <data name="&gt;&gt;chkPlanWarpingEnabled.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPlanWarpingEnabled.Parent" xml:space="preserve">
     <value>$this</value>
@@ -574,7 +574,7 @@ In case these changes do not have the desired effect not save the file.</value>
     <value>chkUpgradeCalculateVersionEnabled</value>
   </data>
   <data name="&gt;&gt;chkUpgradeCalculateVersionEnabled.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkUpgradeCalculateVersionEnabled.Parent" xml:space="preserve">
     <value>$this</value>
@@ -604,7 +604,7 @@ In case these changes do not have the desired effect not save the file.</value>
     <value>chkUpgradeCalculateVersion</value>
   </data>
   <data name="&gt;&gt;chkUpgradeCalculateVersion.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkUpgradeCalculateVersion.Parent" xml:space="preserve">
     <value>$this</value>
@@ -631,7 +631,7 @@ In case these changes do not have the desired effect not save the file.</value>
     <value>chkUpgradeInversionModeEnabled</value>
   </data>
   <data name="&gt;&gt;chkUpgradeInversionModeEnabled.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkUpgradeInversionModeEnabled.Parent" xml:space="preserve">
     <value>$this</value>
@@ -661,7 +661,7 @@ In case these changes do not have the desired effect not save the file.</value>
     <value>chkUpgradeInversionMode</value>
   </data>
   <data name="&gt;&gt;chkUpgradeInversionMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkUpgradeInversionMode.Parent" xml:space="preserve">
     <value>$this</value>
@@ -688,7 +688,7 @@ In case these changes do not have the desired effect not save the file.</value>
     <value>chkRegenerateSegmentsIDEnabled</value>
   </data>
   <data name="&gt;&gt;chkRegenerateSegmentsIDEnabled.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkRegenerateSegmentsIDEnabled.Parent" xml:space="preserve">
     <value>$this</value>
@@ -718,7 +718,7 @@ In case these changes do not have the desired effect not save the file.</value>
     <value>chkRegenerateSegmentsID</value>
   </data>
   <data name="&gt;&gt;chkRegenerateSegmentsID.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkRegenerateSegmentsID.Parent" xml:space="preserve">
     <value>$this</value>

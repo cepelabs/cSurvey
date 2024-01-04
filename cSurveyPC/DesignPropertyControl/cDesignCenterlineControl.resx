@@ -139,7 +139,7 @@
     <value>chkDesignPlot</value>
   </data>
   <data name="&gt;&gt;chkDesignPlot.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlot.Parent" xml:space="preserve">
     <value>$this</value>
@@ -172,7 +172,7 @@
     <value>chkDesignPlotShowSegmentSurface</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSegmentSurface.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSegmentSurface.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -202,7 +202,7 @@
     <value>chkDesignPlotShowSegmentDuplicate</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSegmentDuplicate.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSegmentDuplicate.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -232,7 +232,7 @@
     <value>chkDesignPlotShowSplayMode</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSplayMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSplayMode.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -262,7 +262,7 @@
     <value>chkDesignPlotColorGray</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotColorGray.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotColorGray.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -292,7 +292,7 @@
     <value>btnDesignRings</value>
   </data>
   <data name="&gt;&gt;btnDesignRings.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnDesignRings.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -306,8 +306,8 @@
   <data name="cboDesignPlotSegmentsPaintStyle.Location" type="System.Drawing.Point, System.Drawing">
     <value>94, 86</value>
   </data>
-  <assembly alias="DevExpress.Utils.v23.1" name="DevExpress.Utils.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="cboDesignPlotSegmentsPaintStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.1">
+  <assembly alias="DevExpress.Utils.v23.2" name="DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cboDesignPlotSegmentsPaintStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
     <value>Combo</value>
   </data>
   <data name="cboDesignPlotSegmentsPaintStyle.Properties.Items" xml:space="preserve">
@@ -332,7 +332,7 @@
     <value>cboDesignPlotSegmentsPaintStyle</value>
   </data>
   <data name="&gt;&gt;cboDesignPlotSegmentsPaintStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboDesignPlotSegmentsPaintStyle.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -359,7 +359,7 @@
     <value>chkDesignPlotShowHLs</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowHLs.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowHLs.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -370,7 +370,7 @@
   <data name="cboDesignPlotColorMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>94, 383</value>
   </data>
-  <data name="cboDesignPlotColorMode.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.1">
+  <data name="cboDesignPlotColorMode.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
     <value>Combo</value>
   </data>
   <data name="cboDesignPlotColorMode.Properties.Items" xml:space="preserve">
@@ -392,7 +392,7 @@
     <value>cboDesignPlotColorMode</value>
   </data>
   <data name="&gt;&gt;cboDesignPlotColorMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboDesignPlotColorMode.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -422,7 +422,7 @@
     <value>lblDesignPlotColorMode</value>
   </data>
   <data name="&gt;&gt;lblDesignPlotColorMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignPlotColorMode.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -449,7 +449,7 @@
     <value>chkDesignPlotShowTrigpointText</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowTrigpointText.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowTrigpointText.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -479,7 +479,7 @@
     <value>btnDesignPlotSplay</value>
   </data>
   <data name="&gt;&gt;btnDesignPlotSplay.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnDesignPlotSplay.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -506,7 +506,7 @@
     <value>chkDesignPlotShowTrigpoint</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowTrigpoint.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowTrigpoint.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -536,7 +536,7 @@
     <value>btnDesignHighlights</value>
   </data>
   <data name="&gt;&gt;btnDesignHighlights.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnDesignHighlights.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -563,7 +563,7 @@
     <value>chkDesignPlotShowLRUD</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowLRUD.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowLRUD.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -593,7 +593,7 @@
     <value>chkDesignPlotShowSplayLabel</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSplayLabel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSplayLabel.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -620,7 +620,7 @@
     <value>chkDesignPlotShowSegment</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSegment.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSegment.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -647,7 +647,7 @@
     <value>chkDesignPlotShowSplay</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSplay.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSplay.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -664,7 +664,7 @@
   <data name="cboDesignPlotSplayStyle.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
-  <data name="cboDesignPlotSplayStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.1">
+  <data name="cboDesignPlotSplayStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
     <value>Combo</value>
   </data>
   <data name="cboDesignPlotSplayStyle.Properties.Items" xml:space="preserve">
@@ -686,7 +686,7 @@
     <value>cboDesignPlotSplayStyle</value>
   </data>
   <data name="&gt;&gt;cboDesignPlotSplayStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboDesignPlotSplayStyle.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -737,7 +737,7 @@
     <value>grdHighlights</value>
   </data>
   <data name="&gt;&gt;grdHighlights.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;grdHighlights.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -761,7 +761,7 @@
     <value>pnlDesignPlot</value>
   </data>
   <data name="&gt;&gt;pnlDesignPlot.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlDesignPlot.Parent" xml:space="preserve">
     <value>$this</value>
@@ -785,25 +785,25 @@
     <value>grdViewHighlights</value>
   </data>
   <data name="&gt;&gt;grdViewHighlights.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colHLSelected.Name" xml:space="preserve">
     <value>colHLSelected</value>
   </data>
   <data name="&gt;&gt;colHLSelected.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkHLSelected.Name" xml:space="preserve">
     <value>chkHLSelected</value>
   </data>
   <data name="&gt;&gt;chkHLSelected.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit, DevExpress.XtraEditors.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colHLName.Name" xml:space="preserve">
     <value>colHLName</value>
   </data>
   <data name="&gt;&gt;colHLName.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>cDesignCenterlineControl</value>

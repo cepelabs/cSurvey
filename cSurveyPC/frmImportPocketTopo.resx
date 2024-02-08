@@ -141,7 +141,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtPrefix.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="lblPrefix.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -168,7 +168,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPrefix.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtFilename.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -196,7 +196,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtFilename.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="lblFilename.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -223,7 +223,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblFilename.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -250,7 +250,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -277,7 +277,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="txtCaveName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -304,7 +304,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtCaveName.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="lblCaveName.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -331,7 +331,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblCaveName.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="chkPocketTopoImportData.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -343,7 +343,7 @@
     <value>Import data</value>
   </data>
   <data name="chkPocketTopoImportData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 20</value>
+    <value>80, 20</value>
   </data>
   <data name="chkPocketTopoImportData.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -358,7 +358,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkPocketTopoImportData.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="chkPocketTopoImportGraphics.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -370,7 +370,7 @@
     <value>Import graphics</value>
   </data>
   <data name="chkPocketTopoImportGraphics.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 20</value>
+    <value>98, 20</value>
   </data>
   <data name="chkPocketTopoImportGraphics.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -385,6 +385,36 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkPocketTopoImportGraphics.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkPocketTopoImportGraphicsAsGeneric.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkPocketTopoImportGraphicsAsGeneric.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPocketTopoImportGraphicsAsGeneric.Location" type="System.Drawing.Point, System.Drawing">
+    <value>34, 151</value>
+  </data>
+  <data name="CheckEdit1.Properties.Caption" xml:space="preserve">
+    <value>Import as generic object</value>
+  </data>
+  <data name="chkPocketTopoImportGraphicsAsGeneric.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 20</value>
+  </data>
+  <data name="chkPocketTopoImportGraphicsAsGeneric.TabIndex" type="System.Int32, mscorlib">
+    <value>69</value>
+  </data>
+  <data name="&gt;&gt;chkPocketTopoImportGraphicsAsGeneric.Name" xml:space="preserve">
+    <value>chkPocketTopoImportGraphicsAsGeneric</value>
+  </data>
+  <data name="&gt;&gt;chkPocketTopoImportGraphicsAsGeneric.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPocketTopoImportGraphicsAsGeneric.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPocketTopoImportGraphicsAsGeneric.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

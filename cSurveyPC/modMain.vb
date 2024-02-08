@@ -3,11 +3,9 @@ Imports System.Xml
 Imports System.Reflection
 
 Module modMain
-    'Public dDemoDate As Date = #8/31/2013#
     Public sMachineID As String
     Public bIsInDebug As Boolean
     Public bIsModernOS As Boolean
-    'Public bMultiThreading As Boolean
 
     Public sBaseVersion As String = "2"
 

@@ -33,11 +33,13 @@ Partial Class frmImportPocketTopo
         Me.lblCaveName = New DevExpress.XtraEditors.LabelControl()
         Me.chkPocketTopoImportData = New DevExpress.XtraEditors.CheckEdit()
         Me.chkPocketTopoImportGraphics = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkPocketTopoImportGraphicsAsGeneric = New DevExpress.XtraEditors.CheckEdit()
         CType(Me.txtPrefix.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtFilename.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCaveName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkPocketTopoImportData.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkPocketTopoImportGraphics.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPocketTopoImportGraphicsAsGeneric.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtPrefix
@@ -94,13 +96,22 @@ Partial Class frmImportPocketTopo
         '
         resources.ApplyResources(Me.chkPocketTopoImportData, "chkPocketTopoImportData")
         Me.chkPocketTopoImportData.Name = "chkPocketTopoImportData"
+        Me.chkPocketTopoImportData.Properties.AutoWidth = True
         Me.chkPocketTopoImportData.Properties.Caption = resources.GetString("chkPocketTopoImportData.Properties.Caption")
         '
         'chkPocketTopoImportGraphics
         '
         resources.ApplyResources(Me.chkPocketTopoImportGraphics, "chkPocketTopoImportGraphics")
         Me.chkPocketTopoImportGraphics.Name = "chkPocketTopoImportGraphics"
+        Me.chkPocketTopoImportGraphics.Properties.AutoWidth = True
         Me.chkPocketTopoImportGraphics.Properties.Caption = resources.GetString("chkPocketTopoImportGraphics.Properties.Caption")
+        '
+        'chkPocketTopoImportGraphicsAsGeneric
+        '
+        resources.ApplyResources(Me.chkPocketTopoImportGraphicsAsGeneric, "chkPocketTopoImportGraphicsAsGeneric")
+        Me.chkPocketTopoImportGraphicsAsGeneric.Name = "chkPocketTopoImportGraphicsAsGeneric"
+        Me.chkPocketTopoImportGraphicsAsGeneric.Properties.AutoWidth = True
+        Me.chkPocketTopoImportGraphicsAsGeneric.Properties.Caption = resources.GetString("CheckEdit1.Properties.Caption")
         '
         'frmImportPocketTopo
         '
@@ -108,6 +119,7 @@ Partial Class frmImportPocketTopo
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
+        Me.Controls.Add(Me.chkPocketTopoImportGraphicsAsGeneric)
         Me.Controls.Add(Me.chkPocketTopoImportGraphics)
         Me.Controls.Add(Me.chkPocketTopoImportData)
         Me.Controls.Add(Me.txtCaveName)
@@ -129,6 +141,7 @@ Partial Class frmImportPocketTopo
         CType(Me.txtCaveName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkPocketTopoImportData.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkPocketTopoImportGraphics.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPocketTopoImportGraphicsAsGeneric.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -143,4 +156,5 @@ Partial Class frmImportPocketTopo
     Friend WithEvents lblCaveName As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chkPocketTopoImportData As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkPocketTopoImportGraphics As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkPocketTopoImportGraphicsAsGeneric As DevExpress.XtraEditors.CheckEdit
 End Class

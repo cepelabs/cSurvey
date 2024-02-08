@@ -67,6 +67,7 @@ Partial Class cMessageBar
         Me.btnPopupCustom.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_refresh
         Me.btnPopupCustom.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.btnPopupCustom.Name = "btnPopupCustom"
+        Me.btnPopupCustom.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
         '
         'cMessageBar
         '

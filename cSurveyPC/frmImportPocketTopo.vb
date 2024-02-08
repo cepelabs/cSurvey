@@ -5,13 +5,15 @@
         txtCaveName.Text = My.Application.Settings.GetSetting("data.import.pockettopo.cavename", "")
         chkPocketTopoImportData.Checked = My.Application.Settings.GetSetting("data.import.pockettopo.importdata", 1)
         chkPocketTopoImportGraphics.Checked = My.Application.Settings.GetSetting("data.import.pockettopo.importgraphics", 0)
+        chkPocketTopoImportGraphicsAsGeneric.Checked = My.Application.Settings.GetSetting("data.import.pockettopo.importgraphics.asgeneric", 0)
     End Sub
 
     Private Sub pSettingsSave()
         Call My.Application.Settings.SetSetting("data.import.pockettopo.prefix", txtPrefix.Text)
         Call My.Application.Settings.SetSetting("data.import.pockettopo.cavename", txtCaveName.Text)
-        Call My.Application.Settings.SetSetting("data.import.pockettopo.importdata", IIf(chkPocketTopoImportData.Checked, 1, 0))
-        Call My.Application.Settings.SetSetting("data.import.pockettopo.importgraphics", IIf(chkPocketTopoImportGraphics.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.pockettopo.importdata", If(chkPocketTopoImportData.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.pockettopo.importgraphics", If(chkPocketTopoImportGraphics.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.pockettopo.importgraphics.asgeneric", If(chkPocketTopoImportGraphicsAsGeneric.Checked, 1, 0))
     End Sub
 
     Public Sub New()
@@ -23,5 +25,9 @@
 
     Private Sub cmdOk_Click(sender As System.Object, e As System.EventArgs) Handles cmdOk.Click
         Call pSettingsSave()
+    End Sub
+
+    Private Sub chkPocketTopoImportGraphics_CheckedChanged(sender As Object, e As EventArgs) Handles chkPocketTopoImportGraphics.CheckedChanged
+        chkPocketTopoImportGraphicsAsGeneric.Enabled = chkPocketTopoImportGraphics.Checked
     End Sub
 End Class

@@ -210,4 +210,7 @@
   <data name="chkPocketTopoImportGraphics.Properties.Caption" xml:space="preserve">
     <value>Importa grafica</value>
   </data>
+  <data name="CheckEdit1.Properties.Caption" xml:space="preserve">
+    <value>Importa come oggetti generici</value>
+  </data>
 </root>

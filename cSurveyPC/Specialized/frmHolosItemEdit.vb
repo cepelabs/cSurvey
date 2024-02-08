@@ -80,8 +80,6 @@ Public Class frmHolosItemEdit
 
         Call pUpdateTransform()
         Call pUpdatePositions()
-        'Call txt1_EditValueChanged(txt1, EventArgs.Empty)
-        'Call txt2_EditValueChanged(txt2, EventArgs.Empty)
     End Sub
 
     Private Sub pAddGroup(Filename As String)
@@ -132,7 +130,6 @@ Public Class frmHolosItemEdit
             Call oTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(1, 0, 0), txtxrotate.EditValue)))
             Call oTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 1, 0), txtyrotate.EditValue)))
             Call oTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 0, 1), txtzrotate.EditValue)))
-            'Call oTransformGroup.Children.Add(New TranslateTransform3D(0, 0, 0))
             Dim oGroup As ModelVisual3D = Viewport.Children(Viewport.Children.Count - 1)
             oGroup.Transform = oTransformGroup
         End If
@@ -383,9 +380,6 @@ Public Class frmHolosItemEdit
             Dim oCube1Manupulator As CombinedManipulator = oHolosEdit.station1manipulator
             oCube1Manupulator.UnBind()
             Dim oCube1 As CubeVisual3D = oHolosEdit.station1
-            'Dim oCube1Bound As Rect3D = oCube1.FindBounds(oCube1.Transform)
-            'Debug.Print("X" & sX & " Y" & sy & " Z" & sz)
-            ''oCube1.Transform = New TranslateTransform3D(sX + oCube1Bound.SizeX / 4.0, sy + oCube1Bound.SizeY / 4.0, sz + oCube1Bound.SizeZ / 4.0)
             oCube1.Transform = New TranslateTransform3D(sX, sy, sz)
             oCube1Manupulator.Bind(oCube1)
         End If
@@ -400,8 +394,6 @@ Public Class frmHolosItemEdit
             Dim oCube2Manupulator As CombinedManipulator = oHolosEdit.station2manipulator
             oCube2Manupulator.UnBind()
             Dim oCube2 As CubeVisual3D = oHolosEdit.station2
-            Dim oCube2Bound As Rect3D = oCube2.FindBounds(oCube2.Transform)
-            'oCube2.Transform = New TranslateTransform3D(sX + oCube2Bound.SizeX / 4.0, sy + oCube2Bound.SizeY / 4.0, sz + oCube2Bound.SizeZ / 4.0)
             oCube2.Transform = New TranslateTransform3D(sX, sy, sz)
             oCube2Manupulator.Bind(oCube2)
         End If
@@ -468,12 +460,12 @@ Public Class frmHolosItemEdit
     Private Sub oHolosEdit_OnManualMove(sender As Object, e As cHolosItemEdit.cOnManualMoveEventArgs) Handles oHolosEdit.OnManualMove
         If e.Selected Is oHolosEdit.station1 Then
             Dim oXYZ As Decimal() = txt1.Text.Split({";"c}).Select(Function(sItem) modNumbers.StringToDecimal(sItem)).ToArray
-            Debug.Print("PRE " & oXYZ(0) & " " & oXYZ(1) & " " & oXYZ(2))
-            Debug.Print(e.X & " " & e.Y & " " & e.Z)
+            'Debug.Print("PRE " & oXYZ(0) & " " & oXYZ(1) & " " & oXYZ(2))
+            'Debug.Print(e.X & " " & e.Y & " " & e.Z)
             oXYZ(0) += e.X
             oXYZ(1) += e.Y
             oXYZ(2) += e.Z
-            Debug.Print("POST " & oXYZ(0) & " " & oXYZ(1) & " " & oXYZ(2))
+            'Debug.Print("POST " & oXYZ(0) & " " & oXYZ(1) & " " & oXYZ(2))
             txt1.Text = oXYZ(0) & ";" & oXYZ(1) & ";" & oXYZ(2)
         ElseIf e.Selected Is oHolosEdit.station2 Then
             Dim oXYZ As Decimal() = txt2.Text.Split({";"c}).Select(Function(sItem) modNumbers.StringToDecimal(sItem)).ToArray

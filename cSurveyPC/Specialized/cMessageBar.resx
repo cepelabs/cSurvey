@@ -219,7 +219,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnPopupCustom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1419, 4</value>
+    <value>1419, 0</value>
   </data>
   <data name="btnPopupCustom.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>

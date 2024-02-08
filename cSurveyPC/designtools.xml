@@ -6,10 +6,10 @@
 	    <presumedcavepen pattern="6.0 2.0" />
     </penstylepattern>
     <tools>
-    <tool type="chunk3d" convertto="0" name="btnDesignTools_Base_Chunk3D" svgimage="item_chunk3d.svg" image="icon_image_small.ico" design="3d" style="2" layer="0" method="CreateChunk" parameters="cave,branch,filename">
-        <caption lang="it" caption="Blocco" tooltip="Inserisce un blocco 3D agganciato ad una battuta di poligonale..."/>
-        <caption lang="en" caption="Chunk" tooltip="Add a 3D chunk binded to a centerline's shot..."/>
-        <caption lang="ru" caption="Chunk" tooltip="Add a 3D chunk binded to a centerline's shot..."/>
+    <tool debug="1" type="chunk3d" convertto="0" name="btnDesignTools_Base_Chunk3D" svgimage="item_chunk3d.svg" image="icon_image_small.ico" design="3d" style="2" layer="0" method="CreateChunk" parameters="cave,branch,filename">
+        <caption lang="it" caption="Blocco 3D" tooltip="Inserisce un blocco 3D agganciato ad una battuta di poligonale..."/>
+        <caption lang="en" caption="Chunk 3D" tooltip="Add a 3D chunk binded to a centerline's shot..."/>
+        <caption lang="ru" caption="Chunk 3D " tooltip="Add a 3D chunk binded to a centerline's shot..."/>
     </tool>		
     <tool type="image" convertto="2" name="btnDesignTools_Base_Image" svgimage="item_image.svg" image="icon_image_small.ico" style="2" caption="Immagine" tooltip="Inserisce nel rilievo un immagine generica da ricalcare..." layer="0" method="CreateImage" parameters="cave,branch,image">
       <caption lang="it" caption="Immagine" tooltip="Inserisce nel rilievo un immagine generica da ricalcare..."/>

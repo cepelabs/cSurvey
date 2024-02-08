@@ -1099,8 +1099,8 @@ calculate.textpart21=Processing station's positions
 3ditemedit.loadpresetdialog=Load 3D preset
 3ditemedit.savepresetdialog=Save 3D preset
 3ditemedit.filetype3DChunckPreset=cSurvey 3D preset
-3ditemedit.editdialogtitle=Edit chunk
-3ditemedit.adddialogtitle=Add chunk
+3ditemedit.editdialogtitle=Edit 3D chunk
+3ditemedit.adddialogtitle=Add 3D chunk
 
 itemchunk.textpart1=Station 1
 itemchunk.textpart2=Station 2
@@ -1113,3 +1113,9 @@ itemchunk.textpart8=Z
 itemchunk.textpart9=Scale
 main.openchunkdialog=Select a 3D model:
 main.filetypeCHUNK=3D models
+
+main.warning35=Unable to add a 3D chunk on a survey with less than 2 stations.
+
+main.textpart167=Warping paused
+main.textpart168=Warping paused on plan
+main.textpart169=Warping paused on profile

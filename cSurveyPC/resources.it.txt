@@ -1092,17 +1092,20 @@ pens.verticalfaultpen=Faglia verticale
 pens.strikefaultdxpen=Faglia trascorrente destra
 pens.strikefaultsxpen=Faglia trascorrente sinistra
 pens.strikefaultunknownpen=Faglia trascorrente con direzione ignota
-main.undo53=Combine items
+main.undo53=Combina oggetti
+
 calibration.error=Errore (valore)
 calibration.errorscale=Errore (scala)
+
 calculate.textpart19=Elaborazione connessioni
 calculate.textpart20=Elaborazione sezione longitudinale e misure laterali
 calculate.textpart21=Elaborazione posizione stazioni
+
 3ditemedit.loadpresetdialog=Carica preset 3D
 3ditemedit.savepresetdialog=Salva preset 3D
-3ditemedit.filetype3DChunckPreset=cSurvey preset 3D
-3ditemedit.editdialogtitle=Modifica chunk
-3ditemedit.adddialogtitle=Aggiungi chunk
+3ditemedit.filetype3DChunckPreset=Preset 3D cSurvey
+3ditemedit.editdialogtitle=Modifica blocco 3D
+3ditemedit.adddialogtitle=Aggiungi blocco 3D
 
 itemchunk.textpart1=Caposaldo 1
 itemchunk.textpart2=Caposaldo 2
@@ -1115,3 +1118,8 @@ itemchunk.textpart8=Z
 itemchunk.textpart9=Scala
 main.openchunkdialog=Seleziona un modello 3d:
 main.filetypeCHUNK=Modelli 3D
+main.warning35=Impossibile aggiungere un blocco 3D in un rilievo con meno di 2 capisaldi.
+
+main.textpart167=Warping in pausa
+main.textpart168=Warping disattivato in pianta
+main.textpart169=Warping disattivato in sezione

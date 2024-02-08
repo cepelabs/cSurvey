@@ -6,6 +6,7 @@
 
     Private bAllowMessageClick As Boolean
     Private iButtonStyle As ButtonStyleEnum
+    Private bAllowClose As Boolean = True
 
     Public Sub New()
 
@@ -63,6 +64,18 @@
         End Set
     End Property
 
+    Public Property AllowClose() As Boolean
+        Get
+            Return bAllowClose
+        End Get
+        Set(value As Boolean)
+            If bAllowClose <> value Then
+                bAllowClose = value
+                btnPopupClose.Visible = bAllowClose
+            End If
+        End Set
+    End Property
+
     Public Property AllowMessageClick() As Boolean
         Get
             Return bAllowMessageClick
@@ -97,6 +110,10 @@
     Public Sub PopupShow(ByVal Type As String, ByVal Text As String, Optional Details As String = "")
         Dim bShow As Boolean
         Select Case Type.ToLower
+            Case "warping"
+                picPopupWarning.SvgImage = My.Resources.warping
+                Me.BackColor = Color.LightSalmon
+                bShow = True
             Case "error"
                 picPopupWarning.SvgImage = My.Resources.error2
                 Me.BackColor = Color.PeachPuff
@@ -107,7 +124,6 @@
                 bShow = True
         End Select
         If bShow Then
-            'Dim sText As String = If(Text.Length > 2048, Text.Substring(0, 2048), Text)
             lblPopupWarning.Text = Text
             lblPopupWarning.ToolTip = Text & If(Details <> "", vbCrLf & Details, "")
             Visible = True
@@ -163,6 +179,7 @@
         picPopupWarning.Size = New Size(picPopupWarning.Width, Height)
     End Sub
 End Class
+
 Public Class cInternalLinkEventArgs
     Inherits EventArgs
 

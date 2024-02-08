@@ -80,12 +80,14 @@ Partial Class cItemCrossSectionSplayPropertyControl
         '
         resources.ApplyResources(Me.chkPropCrossSectionShowOnlyCutSplay, "chkPropCrossSectionShowOnlyCutSplay")
         Me.chkPropCrossSectionShowOnlyCutSplay.Name = "chkPropCrossSectionShowOnlyCutSplay"
+        Me.chkPropCrossSectionShowOnlyCutSplay.Properties.AutoWidth = True
         Me.chkPropCrossSectionShowOnlyCutSplay.Properties.Caption = resources.GetString("chkPropCrossSectionShowOnlyCutSplay.Properties.Caption")
         '
         'chkPropCrossSectionSplayText
         '
         resources.ApplyResources(Me.chkPropCrossSectionSplayText, "chkPropCrossSectionSplayText")
         Me.chkPropCrossSectionSplayText.Name = "chkPropCrossSectionSplayText"
+        Me.chkPropCrossSectionSplayText.Properties.AutoWidth = True
         Me.chkPropCrossSectionSplayText.Properties.Caption = resources.GetString("chkPropCrossSectionSplayText.Properties.Caption")
         '
         'txtPropCrossSectionSplayMaxVariationAngle
@@ -131,6 +133,7 @@ Partial Class cItemCrossSectionSplayPropertyControl
         '
         resources.ApplyResources(Me.chkPropCrossSectionShowSplayBorder, "chkPropCrossSectionShowSplayBorder")
         Me.chkPropCrossSectionShowSplayBorder.Name = "chkPropCrossSectionShowSplayBorder"
+        Me.chkPropCrossSectionShowSplayBorder.Properties.AutoWidth = True
         Me.chkPropCrossSectionShowSplayBorder.Properties.Caption = resources.GetString("chkPropCrossSectionShowSplayBorder.Properties.Caption")
         '
         'cItemCrossSectionSplayPropertyControl

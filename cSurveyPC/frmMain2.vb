@@ -28,7 +28,6 @@ Imports DevExpress.RichEdit.Export
 Imports DevExpress.Utils.Extensions
 Imports DevExpress.XtraBars.Ribbon
 Imports DevExpress.Utils
-Imports cSurveyPC.cSurvey.Design3D
 
 Friend Class frmMain2
     Private sZoomDefault As Single = 15.1181107F
@@ -411,7 +410,7 @@ Friend Class frmMain2
             oCurrentDesign = Nothing
 
             oSurvey = New cSurvey.cSurvey
-            Call pSurveySetDefaults
+            Call pSurveySetDefaults()
 
             '---------------------------------------------------------
             'added in v2 due to microsoft tips abound gc: some say this can be usefull, some no...
@@ -2558,7 +2557,12 @@ Friend Class frmMain2
         If sLui <> "" Then
             Dim sLastUsedItems As String() = sLui.Split(",").Distinct.ToArray
             For Each sLuiItem As String In sLastUsedItems
-                Call oLastUsedItems.Add(RibbonControl.Items.FindByName(sLuiItem))
+                If sLuiItem <> "" Then
+                    Dim oRealItem As DevExpress.XtraBars.BarItem = RibbonControl.Items.FindByName(sLuiItem)
+                    If oRealItem IsNot Nothing Then
+                        Call oLastUsedItems.Add(oRealItem)
+                    End If
+                End If
             Next
         End If
 
@@ -2682,6 +2686,7 @@ Friend Class frmMain2
             RibbonControl.Minimized = modXML.GetAttributeValue(oXMLRoot, "m", "0")
         End If
 
+
         'TODO: remove this settings...have to be managed by cEditDesignEnviroment...
         Call pSurveyCheckBezierLineType()
 
@@ -2695,10 +2700,13 @@ Friend Class frmMain2
         Dim oMUIFolder As cEnvironmentSettingsFolder = My.Application.Settings.GetFolder("mui")
         For Each sMuiItem As String In oMUIFolder.GetKeys
             Dim iBaseCount As Integer = oMUIFolder.GetSetting(sMuiItem)
-            Call oMostUsedItems.Add(RibbonControl.Items.FindByName(sMuiItem), New cMostUsedItemCounters(iBaseCount))
+            Dim oRealItem As DevExpress.XtraBars.BarItem = RibbonControl.Items.FindByName(sMuiItem)
+            If oRealItem IsNot Nothing Then
+                Call oMostUsedItems.Add(oRealItem, New cMostUsedItemCounters(iBaseCount))
+            End If
         Next
 
-        oDockConsole.restoresettings
+        oDockConsole.RestoreSettings()
 
         'Call ResumeLayout()
     End Sub
@@ -5456,31 +5464,42 @@ Friend Class frmMain2
         End If
     End Sub
 
-    Private Sub pLayerTools_RestoreAll()
-        For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
-            oItem.Item.Visibility = BarItemVisibility.Always
-            oItem.Item.Enabled = True
-        Next
-    End Sub
+    'Private Sub pLayerTools_RestoreAll()
+    '    For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
+    '        oItem.Item.Visibility = BarItemVisibility.Always
+    '        oItem.Item.Enabled = True
+    '    Next
+    'End Sub
 
-    Private Sub pLayerTools_EnabledByLevel(ByVal Layer As cLayers.LayerTypeEnum)
+    Private Sub pLayerTools_EnabledByLevel(Design As cIDesign.cDesignTypeEnum, ByVal Layer As cLayers.LayerTypeEnum)
+        Debug.Print(Design.ToString & " - " & Layer.ToString)
         Call RibbonControl.Manager.BeginUpdate()
         If bToolsEnabledByLevel Then
             For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
                 Try
+                    Dim oStandardItem As BarItem = RibbonControl.Items.FindByName(oItem.Item.Name & "_Standard")
                     Dim bValue As Boolean
-                    If Not oItem.Item.Tag Is Nothing Then
+                    If oItem.Item.Tag IsNot Nothing Then
                         Dim oBag As cEditToolsBag = oItem.Item.Tag
-                        If oBag.Layer = Layer AndAlso oBag.AvaiableIn3D Then
+                        If oBag.Layer = Layer Then
                             bValue = True
                         Else
                             bValue = False
                         End If
-                        If bToolsHiddenByLevel Then
-                            oItem.Item.Visibility = modControls.VisibleToVisibility(bValue)
+                        If (oBag.AvaiableInPlan AndAlso Design = cIDesign.cDesignTypeEnum.Plan) OrElse (oBag.AvaiableInProfile AndAlso Design = cIDesign.cDesignTypeEnum.Profile) OrElse (oBag.AvaiableIn3D AndAlso Design = cIDesign.cDesignTypeEnum.ThreeDModel) Then
+                            If bToolsHiddenByLevel Then
+                                oItem.Item.Visibility = modControls.VisibleToVisibility(bValue)
+                            Else
+                                oItem.Item.Visibility = BarItemVisibility.Always
+                            End If
                             oItem.Item.Enabled = bValue
                         Else
-                            oItem.Item.Enabled = bValue
+                            oItem.Item.Visibility = BarItemVisibility.Never
+                            oItem.Item.Enabled = False
+                        End If
+                        If oStandardItem IsNot Nothing Then
+                            oStandardItem.Visibility = oItem.Item.Visibility
+                            oStandardItem.Enabled = oItem.Item.Enabled
                         End If
                     End If
                 Catch ex As Exception
@@ -5488,13 +5507,19 @@ Friend Class frmMain2
             Next
         Else
             For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
-                If Not oItem.Item.Enabled Then
-                    oItem.Item.Enabled = True
+                Dim oStandardItem As BarItem = RibbonControl.Items.FindByName(oItem.Item.Name & "_Standard")
+                If Not oItem.Item.Enabled OrElse oItem.Item.Visibility = BarItemVisibility.Always Then
                     oItem.Item.Visibility = BarItemVisibility.Always
+                    oItem.Item.Enabled = True
+                    If oStandardItem IsNot Nothing Then
+                        oStandardItem.Visibility = oItem.Item.Visibility
+                        oStandardItem.Enabled = oItem.Item.Enabled
+                    End If
                 End If
             Next
         End If
         Call RibbonControl.Manager.EndUpdate()
+        Call RibbonControl.Refresh()
     End Sub
 
     Private Sub picMap_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles picMap.Click
@@ -5748,19 +5773,26 @@ Friend Class frmMain2
             grpDesignCommands.Visible = False
             grpDesignBindings.SetVisible(False)
 
-            For Each oItem As BarItem In Ribbon.Items
-                Debug.Print(oItem.Name)
-                If TypeOf oItem.Tag Is cEditToolsBag Then
-                    Dim oBag As cEditToolsBag = oItem.Tag
-                    oItem.Visibility = modControls.VisibleToVisibility(oBag.AvaiableIn3D)
-                    For Each oLink As BarItemLink In oItem.Links
-                        oLink.Visible = oBag.AvaiableIn3D
-                    Next
-                Else
-                    'oItem.Visibility = BarItemVisibility.Always
-                End If
-            Next
-            grpDesignItemsAdd.SetVisible(True)
+            If pGetCurrentDesignTools.CurrentLayer Is Nothing Then
+                Call pGetCurrentDesignTools.SelectLayer(oSurvey.ThreeD.Layers(cLayers3D.Layer3DTypeEnum.Chunks))
+            Else
+                btnLayer_Base.Checked = True
+            End If
+
+            Call pLayerTools_EnabledByLevel(cIDesign.cDesignTypeEnum.ThreeDModel, cLayers3D.Layer3DTypeEnum.Chunks)
+            'For Each oItem As BarItem In Ribbon.Items
+            '    Debug.Print(oItem.Name)
+            '    If TypeOf oItem.Tag Is cEditToolsBag Then
+            '        Dim oBag As cEditToolsBag = oItem.Tag
+            '        oItem.Visibility = modControls.VisibleToVisibility(oBag.AvaiableIn3D)
+            '        For Each oLink As BarItemLink In oItem.Links
+            '            oLink.Visible = oBag.AvaiableIn3D
+            '        Next
+            '    Else
+            '        'oItem.Visibility = BarItemVisibility.Always
+            '    End If
+            'Next
+            grpDesignItemsAdd.Visible = True
             'grpDesignItemsAdd.SetVisible(False)
 
             Call pSurveySetCurrentCaveBranch(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch)
@@ -5916,19 +5948,20 @@ Friend Class frmMain2
                 End Select
             End If
 
-            For Each oItem As BarItem In Ribbon.Items
-                Debug.Print(oItem.Name)
-                If TypeOf oItem.Tag Is cEditToolsBag Then
-                    Dim oBag As cEditToolsBag = oItem.Tag
-                    oItem.Visibility = modControls.VisibleToVisibility(oBag.AvaiableInProfile)
-                    For Each oLink As BarItemLink In oItem.Links
-                        oLink.Visible = oBag.AvaiableInProfile
-                    Next
-                Else
-                    ' oItem.Visibility = BarItemVisibility.Always
-                End If
-            Next
-            grpDesignItemsAdd.SetVisible(True)
+            Call pLayerTools_EnabledByLevel(cIDesign.cDesignTypeEnum.Profile, pGetCurrentDesignTools.CurrentLayer.Type)
+            'For Each oItem As BarItem In Ribbon.Items
+            '    Debug.Print(oItem.Name)
+            '    If TypeOf oItem.Tag Is cEditToolsBag Then
+            '        Dim oBag As cEditToolsBag = oItem.Tag
+            '        oItem.Visibility = modControls.VisibleToVisibility(oBag.AvaiableInProfile)
+            '        For Each oLink As BarItemLink In oItem.Links
+            '            oLink.Visible = oBag.AvaiableInProfile
+            '        Next
+            '    Else
+            '        ' oItem.Visibility = BarItemVisibility.Always
+            '    End If
+            'Next
+            grpDesignItemsAdd.Visible = True
 
             Call pSurveySetCurrentCaveBranch(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch)
             btnDesignHighlight0.Checked = Not oCurrentOptions.HighlightCurrentCave
@@ -6083,18 +6116,19 @@ Friend Class frmMain2
                 End Select
             End If
 
-            For Each oItem As BarItem In Ribbon.Items
-                If TypeOf oItem.Tag Is cEditToolsBag Then
-                    Dim oBag As cEditToolsBag = oItem.Tag
-                    oItem.Visibility = modControls.VisibleToVisibility(oBag.AvaiableInPlan)
-                    For Each oLink As BarItemLink In oItem.Links
-                        oLink.Visible = oBag.AvaiableInPlan
-                    Next
-                Else
-                    'oItem.Visibility = BarItemVisibility.Always
-                End If
-            Next
-            grpDesignItemsAdd.SetVisible(True)
+            Call pLayerTools_EnabledByLevel(cIDesign.cDesignTypeEnum.Plan, pGetCurrentDesignTools.CurrentLayer.Type)
+            'For Each oItem As BarItem In Ribbon.Items
+            '    If TypeOf oItem.Tag Is cEditToolsBag Then
+            '        Dim oBag As cEditToolsBag = oItem.Tag
+            '        oItem.Visibility = modControls.VisibleToVisibility(oBag.AvaiableInPlan)
+            '        For Each oLink As BarItemLink In oItem.Links
+            '            oLink.Visible = oBag.AvaiableInPlan
+            '        Next
+            '    Else
+            '        'oItem.Visibility = BarItemVisibility.Always
+            '    End If
+            'Next
+            grpDesignItemsAdd.Visible = True
 
             Call pSurveySetCurrentCaveBranch(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch)
             btnDesignHighlight0.Checked = Not oCurrentOptions.HighlightCurrentCave
@@ -6440,199 +6474,120 @@ Friend Class frmMain2
         Dim oItemGroup As BarButtonGroup
         For Each oXmlTool As XmlElement In Item.ChildNodes
             If oXmlTool.Name = "tool" Then
-                Dim oBag As cEditToolsBag = New cEditToolsBag(oXmlTool)
-                If Not oBag.Hidden Then
-                    Dim sType As String = oBag.Type
-                    Dim sCaption As String = oBag.Caption
-                    Dim iLayer As cLayers.LayerTypeEnum = oBag.Layer
-                    If iLayer <> iLastLayer AndAlso ParentMenu Is Nothing Then
-                        iLastLayer = iLayer
+                Dim bDebug As Boolean = modXML.GetAttributeValue(oXmlTool, "debug", 0)
+                If (Not bDebug) OrElse (bDebug AndAlso modMain.bIsInDebug) Then
+                    Dim oBag As cEditToolsBag = New cEditToolsBag(oXmlTool)
+                    If Not oBag.Hidden Then
+                        Dim sType As String = oBag.Type
+                        Dim sCaption As String = oBag.Caption
+                        Dim iLayer As cLayers.LayerTypeEnum = oBag.Layer
+                        If iLayer <> iLastLayer AndAlso ParentMenu Is Nothing Then
+                            iLastLayer = iLayer
 
-                        oItemGroup = New BarButtonGroup
-                        oItemGroup.Caption = sCaption
-                        RibbonControl.Items.Add(oItemGroup)
-                        Call grpDesignItemsAdd.ItemLinks.Add(oItemGroup)
+                            oItemGroup = New BarButtonGroup
+                            oItemGroup.Caption = sCaption
+                            RibbonControl.Items.Add(oItemGroup)
+                            Call grpDesignItemsAdd.ItemLinks.Add(oItemGroup)
 
-                        bBeginGroup = False
+                            bBeginGroup = False
+                        End If
+                        Select Case sType
+                            Case "dropdown"
+                                Dim oItem As BarButtonItem = New BarButtonItem
+                                oItem.Name = "btnItemsAdd_" & oBag.Name
+                                oItem.Caption = sCaption
+                                oItem.ImageOptions.Image = New Bitmap(Path.Combine(Path.Combine(sObjectsPath, "icons"), oBag.Image))
+                                If oBag.SvgImage <> "" Then
+                                    oItem.ImageOptions.SvgImage = pGetDesignToolsSvgImage(oBag.SvgImage)
+                                    oItem.ImageOptions.SvgImageSize = New Size(24, 24)
+                                    oItem.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None
+                                End If
+                                oItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+                                oItem.Tag = oBag
+                                oItem.ActAsDropDown = True
+                                oItem.ButtonStyle = BarButtonStyle.DropDown
+                                oItem.DropDownControl = New PopupMenu
+                                If ParentMenu Is Nothing Then
+                                    Call grpDesignItemsAdd.ItemLinks.Add(oItem)
+                                Else
+                                    ParentMenu.AddItem(oItem).BeginGroup = bBeginGroup
+                                End If
+                                Call pSurveyDesignToolsLoadSubToolbarItem(oXmlTool, oItem.DropDownControl)
+                            Case "separator", "-"
+                                bBeginGroup = True
+                            Case "gallery"
+                                Dim oItem As BarButtonItem = New BarButtonItem
+                                oItem.Name = "btnItemsAdd_" & oBag.Name
+                                oItem.Caption = sCaption
+                                oItem.ImageOptions.Image = New Bitmap(Path.Combine(Path.Combine(sObjectsPath, "icons"), oBag.Image))
+                                If oBag.SvgImage <> "" Then
+                                    oItem.ImageOptions.SvgImage = pGetDesignToolsSvgImage(oBag.SvgImage)
+                                    oItem.ImageOptions.SvgImageSize = New Size(24, 24)
+                                    oItem.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None
+                                End If
+                                oItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+                                oItem.Tag = oBag
+                                If ParentMenu Is Nothing Then
+                                    Call grpDesignItemsAdd.ItemLinks.Add(oItem)
+                                Else
+                                    ParentMenu.AddItem(oItem).BeginGroup = bBeginGroup
+                                End If
+                                bBeginGroup = False
+                                AddHandler oItem.ItemClick, AddressOf btnDesignTools_ItemClick
+                                Call pSurveyDesignToolsCreateStandardItem(oBag)
+
+                                Dim sGalleryPart() As String = oBag.Gallery.Split(",")
+                                Dim sGalleryName As String = sGalleryPart(0)
+                                Dim sGalleryText As String = sCaption 'sGalleryPart(1)
+                                Dim bGalleryGroupable As Boolean = sGalleryPart(2)
+                                Call oDockClipart.AddGallery(sClipartPath, oBag, sGalleryName, sGalleryText, bGalleryGroupable)
+                            Case "texteditor"
+                                Dim oItem As BarButtonItem = New BarButtonItem
+                                oItem.Name = "btnItemsAdd_" & oBag.Name
+                                oItem.Caption = sCaption
+                                oItem.ImageOptions.Image = New Bitmap(Path.Combine(Path.Combine(sObjectsPath, "icons"), oBag.Image))
+                                If oBag.SvgImage <> "" Then
+                                    oItem.ImageOptions.SvgImage = pGetDesignToolsSvgImage(oBag.SvgImage)
+                                    oItem.ImageOptions.SvgImageSize = New Size(24, 24)
+                                    oItem.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None
+                                End If
+                                oItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+                                oItem.Tag = oBag
+                                If ParentMenu Is Nothing Then
+                                    Call grpDesignItemsAdd.ItemLinks.Add(oItem)
+                                Else
+                                    ParentMenu.AddItem(oItem).BeginGroup = bBeginGroup
+                                End If
+                                bBeginGroup = False
+                                AddHandler oItem.ItemClick, AddressOf btnDesignTools_ItemClick
+                                Call pSurveyDesignToolsCreateStandardItem(oBag)
+                                Call oDockText.AddText(oBag)
+                            Case Else
+                                Dim oItem As BarButtonItem = New BarButtonItem
+                                oItem.Name = "btnItemsAdd_" & oBag.Name
+                                oItem.Caption = sCaption
+                                oItem.ImageOptions.Image = New Bitmap(Path.Combine(Path.Combine(sObjectsPath, "icons"), oBag.Image))
+                                If oBag.SvgImage <> "" Then
+                                    oItem.ImageOptions.SvgImage = pGetDesignToolsSvgImage(oBag.SvgImage)
+                                    oItem.ImageOptions.SvgImageSize = New Size(24, 24)
+                                    oItem.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None
+                                End If
+                                oItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+                                oItem.Tag = oBag
+                                If ParentMenu Is Nothing Then
+                                    Call grpDesignItemsAdd.ItemLinks.Add(oItem)
+                                Else
+                                    ParentMenu.AddItem(oItem).BeginGroup = bBeginGroup
+                                End If
+                                bBeginGroup = False
+                                AddHandler oItem.ItemClick, AddressOf btnDesignTools_ItemClick
+                                Call pSurveyDesignToolsCreateStandardItem(oBag)
+                        End Select
                     End If
-                    Select Case sType
-                        Case "dropdown"
-                            Dim oItem As BarButtonItem = New BarButtonItem
-                            oItem.Name = "btnItemsAdd_" & oBag.Name
-                            oItem.Caption = sCaption
-                            oItem.ImageOptions.Image = New Bitmap(Path.Combine(Path.Combine(sObjectsPath, "icons"), oBag.Image))
-                            If oBag.SvgImage <> "" Then
-                                oItem.ImageOptions.SvgImage = pGetDesignToolsSvgImage(oBag.SvgImage)
-                                oItem.ImageOptions.SvgImageSize = New Size(24, 24)
-                                oItem.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None
-                            End If
-                            oItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
-                            oItem.Tag = oBag
-                            oItem.ActAsDropDown = True
-                            oItem.ButtonStyle = BarButtonStyle.DropDown
-                            oItem.DropDownControl = New PopupMenu
-                            If ParentMenu Is Nothing Then
-                                Call grpDesignItemsAdd.ItemLinks.Add(oItem)
-                            Else
-                                ParentMenu.AddItem(oItem).BeginGroup = bBeginGroup
-                            End If
-                            Call pSurveyDesignToolsLoadSubToolbarItem(oXmlTool, oItem.DropDownControl)
-                        Case "separator", "-"
-                            bBeginGroup = True
-                        Case "gallery"
-                            Dim oItem As BarButtonItem = New BarButtonItem
-                            oItem.Name = "btnItemsAdd_" & oBag.Name
-                            oItem.Caption = sCaption
-                            oItem.ImageOptions.Image = New Bitmap(Path.Combine(Path.Combine(sObjectsPath, "icons"), oBag.Image))
-                            If oBag.SvgImage <> "" Then
-                                oItem.ImageOptions.SvgImage = pGetDesignToolsSvgImage(oBag.SvgImage)
-                                oItem.ImageOptions.SvgImageSize = New Size(24, 24)
-                                oItem.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None
-                            End If
-                            oItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
-                            oItem.Tag = oBag
-                            If ParentMenu Is Nothing Then
-                                Call grpDesignItemsAdd.ItemLinks.Add(oItem)
-                            Else
-                                ParentMenu.AddItem(oItem).BeginGroup = bBeginGroup
-                            End If
-                            bBeginGroup = False
-                            AddHandler oItem.ItemClick, AddressOf btnDesignTools_ItemClick
-                            Call pSurveyDesignToolsCreateStandardItem(oBag)
-
-                            Dim sGalleryPart() As String = oBag.Gallery.Split(",")
-                            Dim sGalleryName As String = sGalleryPart(0)
-                            Dim sGalleryText As String = sCaption 'sGalleryPart(1)
-                            Dim bGalleryGroupable As Boolean = sGalleryPart(2)
-                            Call oDockClipart.AddGallery(sClipartPath, oBag, sGalleryName, sGalleryText, bGalleryGroupable)
-                        Case "texteditor"
-                            Dim oItem As BarButtonItem = New BarButtonItem
-                            oItem.Name = "btnItemsAdd_" & oBag.Name
-                            oItem.Caption = sCaption
-                            oItem.ImageOptions.Image = New Bitmap(Path.Combine(Path.Combine(sObjectsPath, "icons"), oBag.Image))
-                            If oBag.SvgImage <> "" Then
-                                oItem.ImageOptions.SvgImage = pGetDesignToolsSvgImage(oBag.SvgImage)
-                                oItem.ImageOptions.SvgImageSize = New Size(24, 24)
-                                oItem.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None
-                            End If
-                            oItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
-                            oItem.Tag = oBag
-                            If ParentMenu Is Nothing Then
-                                Call grpDesignItemsAdd.ItemLinks.Add(oItem)
-                            Else
-                                ParentMenu.AddItem(oItem).BeginGroup = bBeginGroup
-                            End If
-                            bBeginGroup = False
-                            AddHandler oItem.ItemClick, AddressOf btnDesignTools_ItemClick
-                            Call pSurveyDesignToolsCreateStandardItem(oBag)
-                            Call oDockText.AddText(oBag)
-                        Case Else
-                            Dim oItem As BarButtonItem = New BarButtonItem
-                            oItem.Name = "btnItemsAdd_" & oBag.Name
-                            oItem.Caption = sCaption
-                            oItem.ImageOptions.Image = New Bitmap(Path.Combine(Path.Combine(sObjectsPath, "icons"), oBag.Image))
-                            If oBag.SvgImage <> "" Then
-                                oItem.ImageOptions.SvgImage = pGetDesignToolsSvgImage(oBag.SvgImage)
-                                oItem.ImageOptions.SvgImageSize = New Size(24, 24)
-                                oItem.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None
-                            End If
-                            oItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
-                            oItem.Tag = oBag
-                            If ParentMenu Is Nothing Then
-                                Call grpDesignItemsAdd.ItemLinks.Add(oItem)
-                            Else
-                                ParentMenu.AddItem(oItem).BeginGroup = bBeginGroup
-                            End If
-                            bBeginGroup = False
-                            AddHandler oItem.ItemClick, AddressOf btnDesignTools_ItemClick
-                            Call pSurveyDesignToolsCreateStandardItem(oBag)
-                    End Select
                 End If
             End If
         Next
     End Sub
-
-    'Private Sub pSurveyDesignToolsLoadSubMenuItem(ByVal Item As XmlElement, ByVal Parent As System.Windows.Forms.ToolStripItemCollection)
-    '    For Each oXmlTool As XmlElement In Item.ChildNodes
-    '        If oXmlTool.Name = "tool" Then
-    '            Dim oBag As cEditToolsBag = New cEditToolsBag(oXmlTool)
-    '            If Not oBag.Hidden Then
-    '                Dim sType As String = oBag.Type
-    '                Dim sCaption As String = oBag.Caption
-    '                Select Case sType
-    '                    Case "dropdown"
-    '                        Dim oMenuItem As ToolStripMenuItem = New ToolStripMenuItem
-    '                        oMenuItem.AutoSize = True
-    '                        oMenuItem.Text = sCaption
-    '                        Call Parent.Add(oMenuItem)
-    '                        oMenuItem.Tag = oBag
-    '                        oMenuItem.ToolTipText = oBag.ToolTip
-    '                        oMenuItem.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText
-    '                        Try
-    '                            If oBag.Image <> "" Then
-    '                                oMenuItem.Image = New Bitmap(Path.Combine(Path.Combine(sObjectsPath, "icons"), oBag.Image))
-    '                                oMenuItem.ImageScaling = ToolStripItemImageScaling.SizeToFit
-    '                            End If
-    '                        Catch
-    '                        End Try
-    '                        Call pSurveyDesignToolsLoadSubMenuItem(oXmlTool, oMenuItem.DropDownItems)
-    '                    Case "separator", "-"
-    '                        Dim oMenuItem As ToolStripSeparator = New ToolStripSeparator
-    '                        oMenuItem.AutoSize = True
-    '                        Call Parent.Add(oMenuItem)
-    '                    Case "gallery"
-    '                        Dim oMenuItem As ToolStripMenuItem = New ToolStripMenuItem
-    '                        oMenuItem.AutoSize = True
-    '                        oMenuItem.Text = sCaption
-    '                        Call Parent.Add(oMenuItem)
-    '                        oMenuItem.Tag = oBag
-    '                        oMenuItem.ToolTipText = oBag.ToolTip
-    '                        oMenuItem.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText
-    '                        Try
-    '                            If oBag.Image <> "" Then
-    '                                oMenuItem.Image = New Bitmap(Path.Combine(Path.Combine(sObjectsPath, "icons"), oBag.Image))
-    '                                oMenuItem.ImageScaling = ToolStripItemImageScaling.SizeToFit
-    '                            End If
-    '                        Catch
-    '                        End Try
-    '                        AddHandler oMenuItem.Click, AddressOf btnDesignTools_Click
-    '                    Case "texteditor"
-    '                        Dim oMenuItem As ToolStripMenuItem = New ToolStripMenuItem
-    '                        oMenuItem.AutoSize = True
-    '                        oMenuItem.Text = sCaption
-    '                        Call Parent.Add(oMenuItem)
-    '                        oMenuItem.Tag = oBag
-    '                        oMenuItem.ToolTipText = oBag.ToolTip
-    '                        oMenuItem.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText
-    '                        Try
-    '                            If oBag.Image <> "" Then
-    '                                oMenuItem.Image = New Bitmap(Path.Combine(Path.Combine(sObjectsPath, "icons"), oBag.Image))
-    '                                oMenuItem.ImageScaling = ToolStripItemImageScaling.SizeToFit
-    '                            End If
-    '                        Catch
-    '                        End Try
-    '                        AddHandler oMenuItem.Click, AddressOf btnDesignTools_Click
-    '                    Case Else
-    '                        Dim oMenuItem As ToolStripMenuItem = New ToolStripMenuItem
-    '                        oMenuItem.AutoSize = True
-    '                        oMenuItem.Text = sCaption
-    '                        Call Parent.Add(oMenuItem)
-    '                        oMenuItem.Tag = oBag
-    '                        oMenuItem.ToolTipText = oBag.ToolTip
-    '                        oMenuItem.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText
-    '                        Try
-    '                            If oBag.Image <> "" Then
-    '                                oMenuItem.Image = New Bitmap(Path.Combine(Path.Combine(sObjectsPath, "icons"), oBag.Image))
-    '                                oMenuItem.ImageScaling = ToolStripItemImageScaling.SizeToFit
-    '                            End If
-    '                        Catch
-    '                        End Try
-    '                        AddHandler oMenuItem.Click, AddressOf btnDesignTools_Click
-    '                End Select
-    '            End If
-    '        End If
-    '    Next
-    'End Sub
 
     Private Sub pSurveyDesignToolsLoadSequenceToAreaItems(Parent As XmlElement)
         For Each oXmlItem As XmlElement In Parent
@@ -6675,26 +6630,29 @@ Friend Class frmMain2
     Private Sub pSurveyDesignToolsLoadConvertToItems(Parent As XmlElement, Group As DevExpress.XtraBars.Ribbon.GalleryItemGroup, Layer As cLayers.LayerTypeEnum)
         For Each oXmlItem As XmlElement In Parent
             If oXmlItem.Name = "tool" Then
-                If oXmlItem.GetAttribute("type") = "dropdown" Then
-                    Call pSurveyDesignToolsLoadConvertToItems(oXmlItem, Group, Layer)
-                Else
-                    Dim oBag As cEditToolsBag = New cEditToolsBag(oXmlItem)
-                    If Not oBag.Hidden AndAlso oBag.Layer = Layer Then
-                        Dim iConvertTo As Integer = oBag.ConvertTo
-                        If iConvertTo <> 0 Then
-                            Dim oItem As Ribbon.GalleryItem = New Ribbon.GalleryItem
-                            oItem.Caption = oBag.Caption
-                            oItem.Hint = oBag.Caption
-                            If oBag.SvgImage = "" Then
-                                oItem.ImageOptions.Image = New Bitmap(Path.Combine(Path.Combine(sObjectsPath, "icons"), oBag.Image))
-                            Else
-                                oItem.ImageOptions.SvgImage = pGetDesignToolsSvgImage(oBag.SvgImage)
-                                oItem.ImageOptions.SvgImageSize = New Size(24, 24)
-                                oItem.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None
+                Dim bDebug As Boolean = modXML.GetAttributeValue(oXmlItem, "debug", 0)
+                If (Not bDebug) OrElse (bDebug AndAlso modMain.bIsInDebug) Then
+                    If oXmlItem.GetAttribute("type") = "dropdown" Then
+                        Call pSurveyDesignToolsLoadConvertToItems(oXmlItem, Group, Layer)
+                    Else
+                        Dim oBag As cEditToolsBag = New cEditToolsBag(oXmlItem)
+                        If Not oBag.Hidden AndAlso oBag.Layer = Layer Then
+                            Dim iConvertTo As Integer = oBag.ConvertTo
+                            If iConvertTo <> 0 Then
+                                Dim oItem As Ribbon.GalleryItem = New Ribbon.GalleryItem
+                                oItem.Caption = oBag.Caption
+                                oItem.Hint = oBag.Caption
+                                If oBag.SvgImage = "" Then
+                                    oItem.ImageOptions.Image = New Bitmap(Path.Combine(Path.Combine(sObjectsPath, "icons"), oBag.Image))
+                                Else
+                                    oItem.ImageOptions.SvgImage = pGetDesignToolsSvgImage(oBag.SvgImage)
+                                    oItem.ImageOptions.SvgImageSize = New Size(24, 24)
+                                    oItem.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None
+                                End If
+                                oItem.Tag = oBag
+                                AddHandler oItem.ItemClick, AddressOf btnConvertToItem_ItemClick
+                                Call Group.Items.Add(oItem)
                             End If
-                            oItem.Tag = oBag
-                            AddHandler oItem.ItemClick, AddressOf btnConvertToItem_ItemClick
-                            Call Group.Items.Add(oItem)
                         End If
                     End If
                 End If
@@ -6985,43 +6943,47 @@ Friend Class frmMain2
                     Call pGetCurrentDesignTools.EditItem(oItem, True)
                 End If
             Case "chunk3d"
-                If Filename = "" Then
-                    Using oOfd As OpenFileDialog = New OpenFileDialog
-                        With oOfd
-                            .Title = GetLocalizedString("main.openchunkdialog")
-                            .Filter = GetLocalizedString("main.filetypeCHUNK") & " (*.OBJ;*.STL;*.DAE)|*.OBJ;*.STL;*.DAE|" & GetLocalizedString("main.filetypeALL") & " (*.*)|*.*"
-                            .FilterIndex = 1
-                            If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                                Filename = .FileName
-                            Else
-                                bCancel = True
+                If oSurvey.TrigPoints.Count > 1 Then
+                    If Filename = "" Then
+                        Using oOfd As OpenFileDialog = New OpenFileDialog
+                            With oOfd
+                                .Title = GetLocalizedString("main.openchunkdialog")
+                                .Filter = GetLocalizedString("main.filetypeCHUNK") & " (*.OBJ;*.STL;*.DAE)|*.OBJ;*.STL;*.DAE|" & GetLocalizedString("main.filetypeALL") & " (*.*)|*.*"
+                                .FilterIndex = 1
+                                If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                                    Filename = .FileName
+                                Else
+                                    bCancel = True
+                                End If
+                            End With
+                        End Using
+                    End If
+                    If Not bCancel And Filename <> "" Then
+                        Using frmHIE As frmHolosItemEdit = New frmHolosItemEdit(oSurvey, Filename)
+                            If frmHIE.ShowDialog = DialogResult.OK Then
+                                Dim oModelEdit As frmHolosItemEdit.cModelEdit = frmHIE.Result
+
+                                '------------------------------------
+                                Dim oItem3D As cItemChunk3D = oSurvey.[ThreeD].Layers.ChunkLayer.CreateChunk(sCave, sBranch, Filename)
+                                oItem3D.ModelTransform.XScale = oModelEdit.Scale
+                                oItem3D.ModelTransform.YScale = oModelEdit.Scale
+                                oItem3D.ModelTransform.ZScale = oModelEdit.Scale
+
+                                oItem3D.ModelTransform.XRotate = oModelEdit.RotateX
+                                oItem3D.ModelTransform.YRotate = oModelEdit.RotateY
+                                oItem3D.ModelTransform.ZRotate = oModelEdit.RotateZ
+
+                                Dim oTrigpoint1 As cTrigPoint = oSurvey.TrigPoints(oModelEdit.Station1)
+                                oItem3D.Stations.SetStation1(oModelEdit.Point1, oTrigpoint1)
+                                Dim oTrigpoint2 As cTrigPoint = oSurvey.TrigPoints(oModelEdit.Station2)
+                                oItem3D.Stations.SetStation2(oModelEdit.Point2, oTrigpoint2)
+
+                                Call pGetCurrentDesignTools.EditItem(oItem3D, True)
                             End If
-                        End With
-                    End Using
-                End If
-                If Not bCancel And Filename <> "" Then
-                    Using frmHIE As frmHolosItemEdit = New frmHolosItemEdit(oSurvey, Filename)
-                        If frmHIE.ShowDialog = DialogResult.OK Then
-                            Dim oModelEdit As frmHolosItemEdit.cModelEdit = frmHIE.Result
-
-                            '------------------------------------
-                            Dim oItem3D As cItemChunk3D = oSurvey.[ThreeD].Layers.ChunkLayer.CreateChunk(sCave, sBranch, Filename)
-                            oItem3D.ModelTransform.XScale = oModelEdit.Scale
-                            oItem3D.ModelTransform.YScale = oModelEdit.Scale
-                            oItem3D.ModelTransform.ZScale = oModelEdit.Scale
-
-                            oItem3D.ModelTransform.XRotate = oModelEdit.RotateX
-                            oItem3D.ModelTransform.YRotate = oModelEdit.RotateY
-                            oItem3D.ModelTransform.ZRotate = oModelEdit.RotateZ
-
-                            Dim oTrigpoint1 As cTrigPoint = oSurvey.TrigPoints(oModelEdit.Station1)
-                            oItem3D.Stations.SetStation1(oModelEdit.Point1, oTrigpoint1)
-                            Dim oTrigpoint2 As cTrigPoint = oSurvey.TrigPoints(oModelEdit.Station2)
-                            oItem3D.Stations.SetStation2(oModelEdit.Point2, oTrigpoint2)
-
-                            Call pGetCurrentDesignTools.EditItem(oItem3D, True)
-                        End If
-                    End Using
+                        End Using
+                    End If
+                Else
+                    Call UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.warning35"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Exclamation, GetLocalizedString("main.warningtitle"))
                 End If
             Case Else
                 Dim oLayer As cLayer = pGetLayer(Bag.Layer)
@@ -9249,6 +9211,14 @@ Friend Class frmMain2
             Call oMousePointer.Pop()
             bDrawing = False
         End If
+    End Sub
+
+    Private Sub pWarpingPopupShow(ByVal Type As String, ByVal Text As String, Optional Details As String = "")
+        Call cWarpingMessageBar.PopupShow(Type, Text, Details)
+    End Sub
+
+    Private Sub pWarpingPopupHide()
+        Call cWarpingMessageBar.Hide()
     End Sub
 
     Private Sub pPopupShow(ByVal Type As String, ByVal Text As String, Optional Details As String = "")
@@ -12305,15 +12275,15 @@ Friend Class frmMain2
 
         Dim bImportData As Boolean
         Dim bImportGraphics As Boolean
+        Dim bUseGenericObject As Boolean
 
         Using frmIPT As frmImportPocketTopo = New frmImportPocketTopo
             frmIPT.txtFilename.Text = Filename
 
             If frmIPT.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                'If bDefaultArrangePriorityOnImport Then Call oSurvey.Calculate.ArrangePriority()
-
                 bImportData = frmIPT.chkPocketTopoImportData.Checked
                 bImportGraphics = frmIPT.chkPocketTopoImportGraphics.Checked
+                bUseGenericObject = frmIPT.chkPocketTopoImportGraphicsAsGeneric.Checked
 
                 Dim sForcedCaveName As String = frmIPT.txtCaveName.Text
                 Dim sPrefix As String = frmIPT.txtPrefix.Text.Trim.ToUpper
@@ -12361,7 +12331,7 @@ Friend Class frmMain2
                     Dim bPolyline As Boolean
                     Dim bStations As Boolean
                     Dim iDesign As cSurvey.Design.cIDesign.cDesignTypeEnum
-                    Dim oItem As cSurvey.Design.Items.cItemFreeHandLine
+                    Dim oItem As cSurvey.Design.cItem
                     Dim sColor As String
 
                     Dim sOrigin As String = ""
@@ -12392,8 +12362,7 @@ Friend Class frmMain2
                                                 oCurrentSession = oSurvey.Properties.Sessions.Add(dSessionDate, oSurvey.Properties.Sessions.GetUniqueID(dSessionDate, GetLocalizedString("main.textpart13")))
                                             Case "FIX"
                                         'coordinate GPS in formato metrico!
-                                        'DA FARE!!!!!
-                                        'bisogna chiedere i dati aggiuntivi per completare le coordinate UTM...
+                                        'TODO: ask additional data for utm
                                             Case "DECLINATION"
                                                 sDeclination = modNumbers.StringToSingle(sLineParts(1))
                                             Case "PLAN"
@@ -12415,12 +12384,21 @@ Friend Class frmMain2
                                             Case "POLYLINE"
                                                 sColor = sLineParts(1)
                                                 Dim oColor As Color
-                                                Select Case iDesign
-                                                    Case cIDesign.cDesignTypeEnum.Plan
-                                                        oItem = DirectCast(oSurvey.Plan.Layers(cLayers.LayerTypeEnum.Borders), cSurvey.Design.Layers.cLayerBorders).CreateBorder(sCaveName, "")
-                                                    Case cIDesign.cDesignTypeEnum.Profile
-                                                        oItem = DirectCast(oSurvey.Profile.Layers(cLayers.LayerTypeEnum.Borders), cSurvey.Design.Layers.cLayerBorders).CreateBorder(sCaveName, "")
-                                                End Select
+                                                If bUseGenericObject Then
+                                                    Select Case iDesign
+                                                        Case cIDesign.cDesignTypeEnum.Plan
+                                                            oItem = DirectCast(oSurvey.Plan.Layers(cLayers.LayerTypeEnum.Base), cSurvey.Design.Layers.cLayerBase).CreateGeneric(sCaveName, "")
+                                                        Case cIDesign.cDesignTypeEnum.Profile
+                                                            oItem = DirectCast(oSurvey.Profile.Layers(cLayers.LayerTypeEnum.Base), cSurvey.Design.Layers.cLayerBase).CreateGeneric(sCaveName, "")
+                                                    End Select
+                                                Else
+                                                    Select Case iDesign
+                                                        Case cIDesign.cDesignTypeEnum.Plan
+                                                            oItem = DirectCast(oSurvey.Plan.Layers(cLayers.LayerTypeEnum.Borders), cSurvey.Design.Layers.cLayerBorders).CreateBorder(sCaveName, "")
+                                                        Case cIDesign.cDesignTypeEnum.Profile
+                                                            oItem = DirectCast(oSurvey.Profile.Layers(cLayers.LayerTypeEnum.Borders), cSurvey.Design.Layers.cLayerBorders).CreateBorder(sCaveName, "")
+                                                    End Select
+                                                End If
                                                 Select Case sColor
                                                     Case "ORANGE"
                                                         oColor = Color.Orange
@@ -12437,13 +12415,15 @@ Friend Class frmMain2
                                                     Case "RED"
                                                         oColor = Color.Red
                                                     Case Else
-                                                        'non so quanto colori siano gestibili
+                                                        'how many colors?
                                                         Try
                                                             oColor = Color.FromName(sColor)
                                                         Catch
                                                             oColor = Color.DimGray
                                                         End Try
                                                 End Select
+                                                DirectCast(oItem, cIItemLine).LineType = cIItemLine.LineTypeEnum.Lines
+                                                oItem.Pen.Type = cPen.PenTypeEnum.Custom
                                                 oItem.Pen.Color = oColor
                                                 Call oItem.DataProperties.SetValue("import_source", "pockettopo")
                                                 Call oItem.DataProperties.SetValue("import_date", dNow)
@@ -13406,6 +13386,7 @@ Friend Class frmMain2
         Dim oMessageForeColor As Color = My.Application.RuntimeSettings.GetSetting("messagebar.forecolor", SystemColors.ControlText)
         cMainMessageBar.CaptionForecolor = oMessageForeColor
         oPropMessageBar.CaptionForecolor = oMessageForeColor
+        cWarpingMessageBar.CaptionForecolor = oMessageForeColor
     End Sub
 
     Private Sub oEditDesignEnvironment_OnChanged(Sender As Object, e As PropertyChangeEventArgs)
@@ -13424,6 +13405,7 @@ Friend Class frmMain2
 
     Public Sub New()
         ' This call is required by the designer.
+
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
@@ -13507,7 +13489,7 @@ Friend Class frmMain2
                                                                                 End Sub
 
         AddHandler RibbonControl.Manager.HighlightedLinkChanged, AddressOf RibbonControl_HighlightedLinkChanged
-        AddHandler RibbonControl.Manager.ShortcutItemClick, AddressOf RibbonControl_ShortcutItemClick
+        AddHandler RibbonControl.Manager.ShortcutItemClick, AddressOf Ribboncontrol_ShortcutItemClick
 
         ntiMain.Icon = Me.Icon
 
@@ -13721,7 +13703,6 @@ Friend Class frmMain2
         Call pUIAppendDesign3DPropertyControl(o3DDesignModel, 458)
         o3DAltitudeAmplification = New cDesign3DElevationFactor
         Call pUIAppendDesign3DPropertyControl(o3DAltitudeAmplification, 32)
-
 
         pnlDesignProp.Dock = DockStyle.Fill
         pnlObjectProp.Dock = DockStyle.Fill
@@ -14059,16 +14040,16 @@ Friend Class frmMain2
         Call pSegmentCheckFlags()
     End Sub
 
-    Private Function pDesignItemFindCreateButton()
-        For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
-            If TypeOf oItem.Item.Tag Is cEditToolsBag Then
-                Dim oBag As cEditToolsBag = oItem.Item.Tag
-                oItem.Item.Visibility = modControls.VisibleToVisibility(oBag.AvaiableInProfile)
-            Else
-                oItem.Item.Visibility = True
-            End If
-        Next
-    End Function
+    'Private Function pDesignItemFindCreateButton()
+    '    For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
+    '        If TypeOf oItem.Item.Tag Is cEditToolsBag Then
+    '            Dim oBag As cEditToolsBag = oItem.Item.Tag
+    '            oItem.Item.Visibility = modControls.VisibleToVisibility(oBag.AvaiableInProfile)
+    '        Else
+    '            oItem.Item.Visibility = True
+    '        End If
+    '    Next
+    'End Function
 
     Private Sub btnMapDropAttachment_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnMapDropAttachment.ItemClick
         Dim oBag As cEditToolsBag = RibbonControl.Items.FindByName("btnItemsAdd_btnDesignTools_Signs_Attachment").Tag
@@ -15085,6 +15066,19 @@ Friend Class frmMain2
                 btnStatusDesignGeographicState.ImageOptions.SvgImage = My.Resources.warning
                 btnStatusDesignGeographicState.Description = modMain.GetLocalizedString("main.textpart61")
             End If
+
+            If oSurvey.Properties.DesignWarpingMode = cSurvey.cSurvey.DesignWarpingModeEnum.None Then
+                Call pWarpingPopupShow("warping", modMain.GetLocalizedString("main.textpart59"))
+            ElseIf oSurvey.Properties.DesignWarpingState = cSurvey.cSurvey.DesignWarpingStateEnum.Paused Then
+                Call pWarpingPopupShow("warping", modMain.GetLocalizedString("main.textpart167") & " <image=#pause;size=16,16>")
+            ElseIf oCurrentDesign IsNot Nothing AndAlso oCurrentDesign.Type = cIDesign.cDesignTypeEnum.Plan AndAlso oSurvey.Properties.PlanWarpingDisabled Then
+                Call pWarpingPopupShow("warping", modMain.GetLocalizedString("main.textpart168"))
+            ElseIf oCurrentDesign IsNot Nothing AndAlso oCurrentDesign.Type = cIDesign.cDesignTypeEnum.profile AndAlso oSurvey.Properties.ProfileWarpingDisabled Then
+                Call pWarpingPopupShow("warping", modMain.GetLocalizedString("main.textpart169"))
+            Else
+                pWarpingPopupHide()
+            End If
+
             If oSurvey.Properties.DesignWarpingMode = cSurvey.cSurvey.DesignWarpingModeEnum.None OrElse IsNothing(oCurrentDesign) Then
                 btnStatusDesignWarping.ImageOptions.SvgImage = My.Resources.warning
                 btnStatusDesignWarpingState.ImageOptions.Image = My.Resources.control_stop_blue
@@ -15787,6 +15781,10 @@ Friend Class frmMain2
         Call pMapInvalidate()
     End Sub
 
+    Private Sub cWarpingMessagebar_MessageClick(sender As Object, e As EventArgs) Handles cWarpingMessageBar.MessageClick
+        Call pSurveyProperty(3)
+    End Sub
+
     Private Sub cMessagebar_MessageClick(sender As Object, e As EventArgs) Handles cMainMessageBar.MessageClick
         Call pConsoleShow(True)
     End Sub
@@ -15801,7 +15799,6 @@ Friend Class frmMain2
             'RemoveHandler frmMW.OnRestoreDefaultWorkspace, AddressOf frmManagekWorkspaces_OnRestoreDefaultWorkspace
         End Using
     End Sub
-
 
     Private Sub WorkspaceManager_PropertySerializing(sender As Object, ea As DevExpress.Utils.PropertyCancelEventArgs) Handles WorkspaceManager.PropertySerializing
         If ea.Component IsNot Nothing AndAlso (TypeOf ea.Component Is cSessionDropDown OrElse TypeOf ea.Component Is cCaveDropDown OrElse TypeOf ea.Component Is cCaveBranchDropDown) Then
@@ -16334,7 +16331,7 @@ Friend Class frmMain2
             btnLayer_Signs.Checked = False
             Call pToolsEnd()
             Call pGetCurrentDesignTools.SelectLayer(oCurrentDesign.Layers(cLayers.LayerTypeEnum.Base))
-            Call pLayerTools_EnabledByLevel(cLayers.LayerTypeEnum.Base)
+            Call pLayerTools_EnabledByLevel(oCurrentDesign.Type, cLayers.LayerTypeEnum.Base)
             Call pMapInvalidate()
         End If
     End Sub
@@ -16350,7 +16347,7 @@ Friend Class frmMain2
             btnLayer_Signs.Checked = False
             Call pToolsEnd()
             Call pGetCurrentDesignTools.SelectLayer(oCurrentDesign.Layers(cLayers.LayerTypeEnum.Soil))
-            Call pLayerTools_EnabledByLevel(cLayers.LayerTypeEnum.Soil)
+            Call pLayerTools_EnabledByLevel(oCurrentDesign.Type, cLayers.LayerTypeEnum.Soil)
             Call pMapInvalidate()
         End If
     End Sub
@@ -16366,7 +16363,7 @@ Friend Class frmMain2
             btnLayer_Signs.Checked = False
             Call pToolsEnd()
             Call pGetCurrentDesignTools.SelectLayer(oCurrentDesign.Layers(cLayers.LayerTypeEnum.WaterAndFloorMorphologies))
-            Call pLayerTools_EnabledByLevel(cLayers.LayerTypeEnum.WaterAndFloorMorphologies)
+            Call pLayerTools_EnabledByLevel(oCurrentDesign.Type, cLayers.LayerTypeEnum.WaterAndFloorMorphologies)
             Call pMapInvalidate()
         End If
     End Sub
@@ -16382,7 +16379,7 @@ Friend Class frmMain2
             btnLayer_Signs.Checked = False
             Call pToolsEnd()
             Call pGetCurrentDesignTools.SelectLayer(oCurrentDesign.Layers(cLayers.LayerTypeEnum.RocksAndConcretion))
-            Call pLayerTools_EnabledByLevel(cLayers.LayerTypeEnum.RocksAndConcretion)
+            Call pLayerTools_EnabledByLevel(oCurrentDesign.Type, cLayers.LayerTypeEnum.RocksAndConcretion)
             Call pMapInvalidate()
         End If
     End Sub
@@ -16398,7 +16395,7 @@ Friend Class frmMain2
             btnLayer_Signs.Checked = False
             Call pToolsEnd()
             Call pGetCurrentDesignTools.SelectLayer(oCurrentDesign.Layers(cLayers.LayerTypeEnum.CeilingMorphologies))
-            Call pLayerTools_EnabledByLevel(cLayers.LayerTypeEnum.CeilingMorphologies)
+            Call pLayerTools_EnabledByLevel(oCurrentDesign.Type, cLayers.LayerTypeEnum.CeilingMorphologies)
             Call pMapInvalidate()
         End If
     End Sub
@@ -16414,7 +16411,7 @@ Friend Class frmMain2
             btnLayer_Signs.Checked = False
             Call pToolsEnd()
             Call pGetCurrentDesignTools.SelectLayer(oCurrentDesign.Layers(cLayers.LayerTypeEnum.Borders))
-            Call pLayerTools_EnabledByLevel(cLayers.LayerTypeEnum.Borders)
+            Call pLayerTools_EnabledByLevel(oCurrentDesign.Type, cLayers.LayerTypeEnum.Borders)
             Call pMapInvalidate()
         End If
     End Sub
@@ -16430,7 +16427,7 @@ Friend Class frmMain2
             'btnLayer_Signs.Checked = False
             Call pToolsEnd()
             Call pGetCurrentDesignTools.SelectLayer(oCurrentDesign.Layers(cLayers.LayerTypeEnum.Signs))
-            Call pLayerTools_EnabledByLevel(cLayers.LayerTypeEnum.Signs)
+            Call pLayerTools_EnabledByLevel(oCurrentDesign.Type, cLayers.LayerTypeEnum.Signs)
             Call pMapInvalidate()
         End If
     End Sub

@@ -1,8 +1,12 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
+﻿Imports System.IO
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView
+Imports System.Windows.Media
+Imports System.Windows.Media.Imaging
 Imports System.Windows.Media.Media3D
 Imports System.Xml
 Imports cSurveyPC.cSurvey.Design3D
+Imports DevExpress.XtraEditors.TextEditController
 Imports HelixToolkit.Wpf
 
 Namespace cSurvey.Design.Items
@@ -40,12 +44,54 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
+        Private Sub pChangeMaterial(Brush As ImageBrush)
+            If TypeOf Brush.ImageSource Is BitmapImage Then
+                Dim oImage As BitmapImage = Brush.ImageSource
+                Dim oUri = oImage.UriSource
+                If oUri IsNot Nothing Then
+                    Dim oNewImage As BitmapImage = New BitmapImage()
+                    oNewImage.BeginInit()
+                    oNewImage.CacheOption = BitmapCacheOption.OnLoad
+                    oNewImage.StreamSource = New MemoryStream(My.Computer.FileSystem.ReadAllBytes(oUri.ToString))
+                    oNewImage.EndInit()
+                    Brush.ImageSource = oNewImage
+                End If
+            End If
+        End Sub
+
+        Private Sub pProcessMaterial(Material As Material)
+            If TypeOf Material Is DiffuseMaterial Then
+                Dim oBrush As Brush = DirectCast(Material, DiffuseMaterial).Brush
+                If TypeOf oBrush Is ImageBrush Then
+                    Call pChangeMaterial(DirectCast(oBrush, ImageBrush))
+                End If
+            ElseIf TypeOf Material Is SpecularMaterial Then
+                Dim oBrush As Brush = DirectCast(Material, SpecularMaterial).Brush
+                If TypeOf oBrush Is ImageBrush Then
+                    Call pChangeMaterial(DirectCast(oBrush, ImageBrush))
+                End If
+            ElseIf TypeOf Material Is MaterialGroup Then
+                For Each oMaterial In DirectCast(Material, MaterialGroup).Children
+                    Call pProcessMaterial(oMaterial)
+                Next
+            End If
+        End Sub
+
         Friend ReadOnly Property GetModel As Model3DGroup
             Get
                 If oModel Is Nothing Then
                     Dim sTempPath As String = oModelFiles.WriteAll(IO.Path.GetTempPath)
                     Dim oM As ModelImporter = New ModelImporter
                     oModel = oM.Load(IO.Path.Combine(sTempPath, oModelFiles.MainFile))
+                    'model use bitmap in materials
+                    'bitmapsource have to be deleted but bitmap are loaded only when model is rendered and no event is raise or some else to detect if file is free to be deleted.
+                    'So, to allow deleting now, I change bitmap with stream and, finally I delete all temp files.
+                    'TODO: this is horrible...use a lot of diskspace and a lot of memory. At least have to be use only stream but I don't find a way without changing Helix source code.
+                    For Each oChildModel As GeometryModel3D In oModel.Children
+                        Call pProcessMaterial(oChildModel.Material)
+                        Call pProcessMaterial(oChildModel.BackMaterial)
+                    Next
+                    My.Computer.FileSystem.DeleteDirectory(sTempPath, FileIO.DeleteDirectoryOption.DeleteAllContents)
                 End If
                 Return oModel
             End Get

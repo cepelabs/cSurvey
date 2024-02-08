@@ -710,6 +710,7 @@ Partial Class frmMain2
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.dockTopDesignerBar = New DevExpress.XtraBars.StandaloneBarDockControl()
         Me.cMainMessageBar = New cSurveyPC.cMessageBar()
+        Me.cWarpingMessageBar = New cSurveyPC.cMessageBar()
         Me.spSegmentsAndTrigpoints = New DevExpress.XtraEditors.SplitContainerControl()
         Me.spSegments = New DevExpress.XtraEditors.SplitContainerControl()
         Me.grdSegments = New DevExpress.XtraGrid.GridControl()
@@ -6384,6 +6385,7 @@ Partial Class frmMain2
         '
         'cMainMessageBar
         '
+        Me.cMainMessageBar.AllowClose = True
         Me.DefaultToolTipController.SetAllowHtmlText(Me.cMainMessageBar, CType(resources.GetObject("cMainMessageBar.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cMainMessageBar.AllowMessageClick = True
         Me.cMainMessageBar.ButtonStyle = cSurveyPC.cMessageBar.ButtonStyleEnum.Close
@@ -6392,6 +6394,18 @@ Partial Class frmMain2
         Me.cMainMessageBar.CustomButtonTooltip = ""
         resources.ApplyResources(Me.cMainMessageBar, "cMainMessageBar")
         Me.cMainMessageBar.Name = "cMainMessageBar"
+        '
+        'cWarpingMessageBar
+        '
+        Me.cWarpingMessageBar.AllowClose = False
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.cWarpingMessageBar, CType(resources.GetObject("cWarpingMessageBar.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.cWarpingMessageBar.AllowMessageClick = True
+        Me.cWarpingMessageBar.ButtonStyle = cSurveyPC.cMessageBar.ButtonStyleEnum.Close
+        Me.cWarpingMessageBar.CaptionForecolor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.cWarpingMessageBar.CustomButtonCaption = "Refresh"
+        Me.cWarpingMessageBar.CustomButtonTooltip = ""
+        resources.ApplyResources(Me.cWarpingMessageBar, "cWarpingMessageBar")
+        Me.cWarpingMessageBar.Name = "cWarpingMessageBar"
         '
         'spSegmentsAndTrigpoints
         '
@@ -6713,7 +6727,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.dockProperties, "dockProperties")
         Me.dockProperties.Name = "dockProperties"
         Me.dockProperties.Options.AllowDockAsTabbedDocument = False
-        Me.dockProperties.OriginalSize = New System.Drawing.Size(767, 739)
+        Me.dockProperties.OriginalSize = New System.Drawing.Size(767, 767)
         '
         'ControlContainer10
         '
@@ -6740,7 +6754,7 @@ Partial Class frmMain2
         Me.grpDesignProp.GroupBordersVisible = False
         Me.grpDesignProp.Name = "grpDesignProp"
         Me.grpDesignProp.Padding = New DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0)
-        Me.grpDesignProp.Size = New System.Drawing.Size(47, 793)
+        Me.grpDesignProp.Size = New System.Drawing.Size(47, 767)
         Me.grpDesignProp.TextVisible = False
         '
         'pnl3DProp
@@ -6759,7 +6773,7 @@ Partial Class frmMain2
         Me.grp3DProp.GroupBordersVisible = False
         Me.grp3DProp.Name = "grp3DProp"
         Me.grp3DProp.Padding = New DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0)
-        Me.grp3DProp.Size = New System.Drawing.Size(51, 793)
+        Me.grp3DProp.Size = New System.Drawing.Size(51, 767)
         Me.grp3DProp.TextVisible = False
         '
         'pnlObjectProp
@@ -6785,7 +6799,7 @@ Partial Class frmMain2
         Me.grpObjectProp.GroupBordersVisible = False
         Me.grpObjectProp.Name = "grpObjectProp"
         Me.grpObjectProp.Padding = New DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0)
-        Me.grpObjectProp.Size = New System.Drawing.Size(451, 789)
+        Me.grpObjectProp.Size = New System.Drawing.Size(451, 763)
         Me.grpObjectProp.TextVisible = False
         '
         'dockLevels
@@ -6800,7 +6814,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.dockLevels, "dockLevels")
         Me.dockLevels.Name = "dockLevels"
         Me.dockLevels.Options.AllowDockAsTabbedDocument = False
-        Me.dockLevels.OriginalSize = New System.Drawing.Size(767, 739)
+        Me.dockLevels.OriginalSize = New System.Drawing.Size(767, 767)
         '
         'ControlContainer7
         '
@@ -6818,7 +6832,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.dockClipart, "dockClipart")
         Me.dockClipart.Name = "dockClipart"
         Me.dockClipart.Options.AllowDockAsTabbedDocument = False
-        Me.dockClipart.OriginalSize = New System.Drawing.Size(767, 739)
+        Me.dockClipart.OriginalSize = New System.Drawing.Size(767, 767)
         '
         'ControlContainer9
         '
@@ -7620,6 +7634,7 @@ Partial Class frmMain2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.Controls.Add(Me.pnlForm)
         Me.Controls.Add(Me.cMainMessageBar)
+        Me.Controls.Add(Me.cWarpingMessageBar)
         Me.Controls.Add(Me.dockTopGlobalBar)
         Me.Controls.Add(Me.RibbonStatusBar1)
         Me.Controls.Add(Me.RibbonControl)
@@ -7972,6 +7987,7 @@ Partial Class frmMain2
     Friend WithEvents tmrMouseMove As System.Windows.Forms.Timer
     Friend WithEvents lblSegmentDirection As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cMainMessageBar As cMessageBar
+    Friend WithEvents cWarpingMessageBar As cMessageBar
     Friend WithEvents chkSegmentSurface As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkSegmentDuplicate As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkSegmentSplay As DevExpress.XtraEditors.CheckEdit

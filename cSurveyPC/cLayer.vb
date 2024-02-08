@@ -87,6 +87,15 @@ Namespace cSurvey.Design
             End Get
         End Property
 
+        Public Overridable Function CreateGeneric(ByVal Cave As String, ByVal Branch As String, Optional ByVal Options As cItemGeneric.cItemGenericOptions = Nothing) As cItemGeneric
+            Dim oItem As cItemGeneric = New cItemGeneric(oSurvey, oDesign, Me, cIItem.cItemCategoryEnum.None)
+            oItem.Pen.Type = cPen.PenTypeEnum.GenericPen
+            oItem.Brush.Type = cBrush.BrushTypeEnum.None
+            Call oItem.SetCave(Cave, Branch)
+            Call oItems.Add(oItem)
+            Return oItem
+        End Function
+
         Public Overridable Function CreateGeneric(ByVal Cave As String, ByVal Branch As String, ByVal Clipart As cDrawClipArt, Optional ByVal Options As cItemGeneric.cItemGenericOptions = Nothing) As cItemGeneric
             Dim oItem As cItemGeneric = New cItemGeneric(oSurvey, oDesign, Me, cIItem.cItemCategoryEnum.None, Clipart, Options)
             oItem.Pen.Type = cPen.PenTypeEnum.GenericPen

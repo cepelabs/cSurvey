@@ -1,9 +1,12 @@
 ﻿Imports System.ComponentModel
 Imports System.IO
+Imports System.Text
+Imports System.Windows.Input
 Imports cSurveyPC.cSurvey.Helper.Editor
 Imports cSurveyPC.cSurvey.Surface
 Imports DevExpress.Utils.Behaviors.Common
 Imports DevExpress.XtraEditors
+Imports OfficeOpenXml.FormulaParsing.Excel.Functions.Text
 
 Namespace cSurvey.UIHelpers
 
@@ -2905,6 +2908,26 @@ Namespace cSurvey.UIHelpers
         End Property
     End Class
 
+    Public Class cKeyValueItem(Of K, T)
+        Inherits cValueItem(Of T)
+
+        Private oKey As K
+
+        Friend Sub New(Key As K, Value As T)
+            MyBase.New(Value)
+            oKey = Key
+        End Sub
+
+        Public Property Key As K
+            Get
+                Return oKey
+            End Get
+            Set(value As K)
+                oKey = value
+            End Set
+        End Property
+    End Class
+
     Public Class cConnectionsBindingList
         Inherits BindingList(Of cDescriptionValueItem(Of Boolean))
 
@@ -3301,7 +3324,7 @@ Namespace cSurvey.UIHelpers
         End Sub
 
         Private Shared Sub pSave(Recents As List(Of String), RegistryKey As String)
-            Dim oFolder As cEnvironmentSettingsFolder = My.Application.Settings.getfolder(RegistryKey)
+            Dim oFolder As cEnvironmentSettingsFolder = My.Application.Settings.GetFolder(RegistryKey)
             Dim iValueIndex As Integer = 0
             For Each sRecent As String In Recents
                 oFolder.SetSetting(iValueIndex, sRecent)
@@ -3873,5 +3896,68 @@ Namespace cSurvey.UIHelpers
         Public Sub New(Name As String)
             sName = Name
         End Sub
+    End Class
+
+    Public Class cTherionINISettings
+        Inherits BindingList(Of cKeyValueItem(Of String, String))
+
+        Private sTherionINI As String
+
+        Private sTherionINIFilename As String
+
+        Public Sub New(Settings As String)
+            MyBase.New
+            If Settings.Trim <> "" Then
+                For Each sItem As String In Settings.Trim.Split({"|"c})
+                    Dim sItemData As String() = sItem.Split({"="c})
+                    Dim oItem As cKeyValueItem(Of String, String) = New cKeyValueItem(Of String, String)(sItemData(0), sItemData(1))
+                    Call MyBase.Add(oItem)
+                Next
+            End If
+            sTherionINIFilename = IO.Path.Combine(modMain.GetUserApplicationPath, "therion.ini")
+            Call Invalidate()
+        End Sub
+
+        ''' <summary>
+        ''' Rewrite therion.ini in csurvey application path
+        ''' </summary>
+        Public Sub Invalidate()
+            Dim bFlagLoopClosure As Boolean
+            Dim fi As FileInfo = New FileInfo(sTherionINIFilename)
+            Using st As StreamWriter = fi.CreateText
+                Call st.WriteLine("#therion.ini for cSurvey")
+                Call st.WriteLine("#use settings inside cSurvey to change this file, do not change it directly")
+                For Each oItem As cKeyValueItem(Of String, String) In MyBase.Items
+                    Dim sKey As String = oItem.Key.Trim
+                    Dim sValue As String = oItem.Value.Trim
+                    If sKey <> "" AndAlso sValue <> "" Then
+                        Call st.Write(sKey)
+                        Call st.Write(" ")
+                        Call st.WriteLine(sValue)
+                        If Not bFlagLoopClosure AndAlso sKey = "loop-closure" Then bFlagLoopClosure = True
+                    End If
+                Next
+                If Not bFlagLoopClosure Then
+                    Call st.WriteLine("loop-closure therion")
+                End If
+                Call st.Close()
+            End Using
+        End Sub
+
+        Public Overrides Function ToString() As String
+            Return String.Join("|", MyBase.Items.Where(Function(oitem) oitem.Key.Trim <> "" AndAlso oitem.Value.Trim <> "").Select(Function(oItem) oItem.Key.Trim & "=" & oItem.Value.Trim))
+        End Function
+
+        Public Overloads Function Add() As cKeyValueItem(Of String, String)
+            Dim oItem As cKeyValueItem(Of String, String) = New cKeyValueItem(Of String, String)("", "")
+            Call MyBase.Add(oItem)
+            Return oItem
+        End Function
+
+        Public Overloads Function Add(Key As String, Value As String) As cKeyValueItem(Of String, String)
+            Dim oItem As cKeyValueItem(Of String, String) = New cKeyValueItem(Of String, String)(Key, Value)
+            Call MyBase.Add(oItem)
+            Return oItem
+        End Function
     End Class
 End Namespace

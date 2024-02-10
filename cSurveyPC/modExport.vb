@@ -9,6 +9,7 @@ Imports System.Text.RegularExpressions
 Imports Diacritics.Extensions
 Imports BrightIdeasSoftware
 Imports DevExpress.XtraVerticalGrid.ViewInfo
+Imports cSurveyPC.cSurvey.UIHelpers
 
 Module modExport
     Public Sub CreateStationDictionary(TrigPointsToElaborate As List(Of String), KeyToExclude As List(Of Integer), ByRef InputDictionary As Dictionary(Of String, String), ByRef OutputDictionary As Dictionary(Of String, String))

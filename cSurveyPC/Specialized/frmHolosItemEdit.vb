@@ -166,7 +166,12 @@ Public Class frmHolosItemEdit
         Call pUpdatePositions()
     End Sub
 
-    Private bdisableEvent As Boolean
+    Private bDisableEvent As Boolean
+
+    Private Sub pUpdatePositionsTexts()
+        txt1.Text = Math.Round(oStation1Point.X, 3) & ";" & Math.Round(oStation1Point.Y, 3) & ";" & Math.Round(oStation1Point.Z, 3)
+        txt2.Text = Math.Round(oStation2Point.X, 3) & ";" & Math.Round(oStation2Point.Y, 3) & ";" & Math.Round(oStation2Point.Z, 3)
+    End Sub
 
     Private Sub pUpdatePositions()
         If bStarted Then
@@ -174,14 +179,22 @@ Public Class frmHolosItemEdit
             Dim oCube1 As CubeVisual3D = oHolosEdit.station1
             Dim oCube1Bound As Rect3D = oCube1.FindBounds(oCube1.Transform)
             Dim oCube1Center As Point3D = New Point3D(oCube1Bound.X + oCube1Bound.SizeX / 2.0F, oCube1Bound.Y + oCube1Bound.SizeY / 2.0F, oCube1Bound.Z + oCube1Bound.SizeZ / 2.0F)
-            txt1.Text = oCube1Center.X / 2.0 & ";" & oCube1Center.Y / 2.0 & ";" & oCube1Center.Z / 2.0
+            oStation1Point.X = oCube1Center.X / 2.0
+            oStation1Point.Y = oCube1Center.Y / 2.0
+            oStation1Point.Z = oCube1Center.Z / 2.0
             Dim oCube2 As CubeVisual3D = oHolosEdit.station2
             Dim oCube2Bound As Rect3D = oCube2.FindBounds(oCube2.Transform)
             Dim oCube2Center As Point3D = New Point3D(oCube2Bound.X + oCube2Bound.SizeX / 2.0F, oCube2Bound.Y + oCube2Bound.SizeY / 2.0F, oCube2Bound.Z + oCube2Bound.SizeZ / 2.0F)
-            txt2.Text = oCube2Center.X / 2.0 & ";" & oCube2Center.Y / 2.0 & ";" & oCube2Center.Z / 2.0
+            oStation2Point.X = oCube2Center.X / 2.0
+            oStation2Point.Y = oCube2Center.Y / 2.0
+            oStation2Point.Z = oCube2Center.Z / 2.0
+            Call pUpdatePositionsTexts()
             bdisableEvent = False
         End If
     End Sub
+
+    Private oStation1Point As Point3D
+    Private oStation2Point As Point3D
 
     Public Class cModelEdit
         Private sStation1 As String
@@ -371,30 +384,30 @@ Public Class frmHolosItemEdit
     '    End If
     'End Sub
 
-    Private Sub txt1_EditValueChanged(sender As Object, e As EventArgs) Handles txt1.EditValueChanged
+    Private Sub pStation1Changed()
         If Not bdisableEvent Then
-            Dim sValues As String() = txt1.EditValue.ToString.Split(";"c)
-            Dim sX As Decimal = modNumbers.StringToDecimal(sValues(0))
-            Dim sy As Decimal = modNumbers.StringToDecimal(sValues(1))
-            Dim sz As Decimal = modNumbers.StringToDecimal(sValues(2))
+            'Dim sValues As String() = txt1.EditValue.ToString.Split(";"c)
+            'Dim sX As Decimal = modNumbers.StringToDecimal(sValues(0))
+            'Dim sy As Decimal = modNumbers.StringToDecimal(sValues(1))
+            'Dim sz As Decimal = modNumbers.StringToDecimal(sValues(2))
             Dim oCube1Manupulator As CombinedManipulator = oHolosEdit.station1manipulator
             oCube1Manupulator.UnBind()
             Dim oCube1 As CubeVisual3D = oHolosEdit.station1
-            oCube1.Transform = New TranslateTransform3D(sX, sy, sz)
+            oCube1.Transform = New TranslateTransform3D(oStation1Point.X, oStation1Point.Y, oStation1Point.Z)
             oCube1Manupulator.Bind(oCube1)
         End If
     End Sub
 
-    Private Sub txt2_EditValueChanged(sender As Object, e As EventArgs) Handles txt2.EditValueChanged
+    Private Sub pStation2Changed()
         If Not bdisableEvent Then
-            Dim sValues As String() = txt2.EditValue.ToString.Split(";"c)
-            Dim sX As Decimal = modNumbers.StringToDecimal(sValues(0))
-            Dim sy As Decimal = modNumbers.StringToDecimal(sValues(1))
-            Dim sz As Decimal = modNumbers.StringToDecimal(sValues(2))
+            'Dim sValues As String() = txt2.EditValue.ToString.Split(";"c)
+            'Dim sX As Decimal = modNumbers.StringToDecimal(sValues(0))
+            'Dim sy As Decimal = modNumbers.StringToDecimal(sValues(1))
+            'Dim sz As Decimal = modNumbers.StringToDecimal(sValues(2))
             Dim oCube2Manupulator As CombinedManipulator = oHolosEdit.station2manipulator
             oCube2Manupulator.UnBind()
             Dim oCube2 As CubeVisual3D = oHolosEdit.station2
-            oCube2.Transform = New TranslateTransform3D(sX, sy, sz)
+            oCube2.Transform = New TranslateTransform3D(oStation2Point.X, oStation2Point.Y, oStation2Point.Z)
             oCube2Manupulator.Bind(oCube2)
         End If
     End Sub
@@ -421,11 +434,23 @@ Public Class frmHolosItemEdit
         txtzrotate.EditValue = modNumbers.StringToDecimal(oXMLRoot.GetAttribute("zr"))
         Dim oXMLStation1 As XmlElement = oXMLRoot.Item("station1")
         txtStation1.EditValue = oXMLStation1.GetAttribute("s")
-        txt1.EditValue = oXMLStation1.GetAttribute("l")
+
+        Dim oXYZ1 As Decimal() = oXMLStation1.GetAttribute("l").Split({";"c}).Select(Function(sItem) modNumbers.StringToDecimal(sItem)).ToArray
+        oStation1Point.X = oXYZ1(0)
+        oStation1Point.Y = oXYZ1(1)
+        oStation1Point.Z = oXYZ1(2)
+        Call pStation1Changed()
+
         Dim oXMLStation2 As XmlElement = oXMLRoot.Item("station2")
         txtStation2.EditValue = oXMLStation2.GetAttribute("s")
-        txt2.EditValue = oXMLStation2.GetAttribute("l")
 
+        Dim oXYZ2 As Decimal() = oXMLStation2.GetAttribute("l").Split({";"c}).Select(Function(sItem) modNumbers.StringToDecimal(sItem)).ToArray
+        oStation2Point.X = oXYZ2(0)
+        oStation2Point.Y = oXYZ2(1)
+        oStation2Point.Z = oXYZ2(2)
+        Call pStation2Changed()
+
+        Call pUpdatePositionsTexts()
         Call pUpdateTransform()
         Call pUpdatePositions()
     End Sub
@@ -445,11 +470,13 @@ Public Class frmHolosItemEdit
                 Call oXMLRoot.SetAttribute("zr", modNumbers.NumberToString(txtzrotate.EditValue))
                 Dim oXMLStation1 As XmlElement = oXML.CreateElement("station1")
                 oXMLStation1.SetAttribute("s", txtStation1.EditValue)
-                oXMLStation1.SetAttribute("l", txt1.EditValue)
+                oXMLStation1.SetAttribute("l", modNumbers.NumberToString(oStation1Point.X, "0.0000000") & ";" & modNumbers.NumberToString(oStation1Point.Y, "0.0000000") & ";" & modNumbers.NumberToString(oStation1Point.Z, "0.0000000"))
+                'oXMLStation1.SetAttribute("l", txt1.EditValue)
                 oXMLRoot.AppendChild(oXMLStation1)
                 Dim oXMLStation2 As XmlElement = oXML.CreateElement("station2")
                 oXMLStation2.SetAttribute("s", txtStation2.EditValue)
-                oXMLStation2.SetAttribute("l", txt2.EditValue)
+                'oXMLStation2.SetAttribute("l", txt2.EditValue)
+                oXMLStation2.SetAttribute("l", modNumbers.NumberToString(oStation2Point.X, "0.0000000") & ";" & modNumbers.NumberToString(oStation2Point.Y, "0.0000000") & ";" & modNumbers.NumberToString(oStation2Point.Z, "0.0000000"))
                 oXMLRoot.AppendChild(oXMLStation2)
                 oXML.AppendChild(oXMLRoot)
                 oXML.Save(.FileName)
@@ -459,20 +486,32 @@ Public Class frmHolosItemEdit
 
     Private Sub oHolosEdit_OnManualMove(sender As Object, e As cHolosItemEdit.cOnManualMoveEventArgs) Handles oHolosEdit.OnManualMove
         If e.Selected Is oHolosEdit.station1 Then
-            Dim oXYZ As Decimal() = txt1.Text.Split({";"c}).Select(Function(sItem) modNumbers.StringToDecimal(sItem)).ToArray
-            'Debug.Print("PRE " & oXYZ(0) & " " & oXYZ(1) & " " & oXYZ(2))
-            'Debug.Print(e.X & " " & e.Y & " " & e.Z)
-            oXYZ(0) += e.X
-            oXYZ(1) += e.Y
-            oXYZ(2) += e.Z
-            'Debug.Print("POST " & oXYZ(0) & " " & oXYZ(1) & " " & oXYZ(2))
-            txt1.Text = oXYZ(0) & ";" & oXYZ(1) & ";" & oXYZ(2)
+            'Dim oXYZ As Decimal() = txt1.Text.Split({";"c}).Select(Function(sItem) modNumbers.StringToDecimal(sItem)).ToArray
+            ''Debug.Print("PRE " & oXYZ(0) & " " & oXYZ(1) & " " & oXYZ(2))
+            ''Debug.Print(e.X & " " & e.Y & " " & e.Z)
+            'oXYZ(0) += e.X
+            'oXYZ(1) += e.Y
+            'oXYZ(2) += e.Z
+            ''Debug.Print("POST " & oXYZ(0) & " " & oXYZ(1) & " " & oXYZ(2))
+            'txt1.Text = oXYZ(0) & ";" & oXYZ(1) & ";" & oXYZ(2)
+
+            oStation1Point.X += e.X
+            oStation1Point.Y += e.Y
+            oStation1Point.Z += e.Z
+            Call pStation1Changed()
+            Call pUpdatePositionsTexts()
         ElseIf e.Selected Is oHolosEdit.station2 Then
-            Dim oXYZ As Decimal() = txt2.Text.Split({";"c}).Select(Function(sItem) modNumbers.StringToDecimal(sItem)).ToArray
-            oXYZ(0) += e.X
-            oXYZ(1) += e.Y
-            oXYZ(2) += e.Z
-            txt2.Text = oXYZ(0) & ";" & oXYZ(1) & ";" & oXYZ(2)
+            'Dim oXYZ As Decimal() = txt2.Text.Split({";"c}).Select(Function(sItem) modNumbers.StringToDecimal(sItem)).ToArray
+            'oXYZ(0) += e.X
+            'oXYZ(1) += e.Y
+            'oXYZ(2) += e.Z
+            'txt2.Text = oXYZ(0) & ";" & oXYZ(1) & ";" & oXYZ(2)
+
+            oStation2Point.X += e.X
+            oStation2Point.Y += e.Y
+            oStation2Point.Z += e.Z
+            Call pStation2Changed()
+            Call pUpdatePositionsTexts()
         End If
     End Sub
 End Class

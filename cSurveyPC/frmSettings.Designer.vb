@@ -157,6 +157,12 @@ Partial Class frmSettings
         Me.txtTherionPath = New DevExpress.XtraEditors.TextEdit()
         Me.lblTherionPath = New DevExpress.XtraEditors.LabelControl()
         Me.frmTherionAdvancedSettings = New DevExpress.XtraEditors.GroupControl()
+        Me.cmdTherionINIDelete = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdTherionINIAdd = New DevExpress.XtraEditors.SimpleButton()
+        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
+        Me.tvTherionINI = New DevExpress.XtraTreeList.TreeList()
+        Me.colTherionIniKey = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.colTherionIniValue = New DevExpress.XtraTreeList.Columns.TreeListColumn()
         Me.chkTherionUseCadastralIDInCaveNames = New DevExpress.XtraEditors.CheckEdit()
         Me.chkTherionSegmentForcePath = New DevExpress.XtraEditors.CheckEdit()
         Me.chkTherionSegmentForceDirection = New DevExpress.XtraEditors.CheckEdit()
@@ -215,14 +221,14 @@ Partial Class frmSettings
         Me.tabInfoWMS = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoHistory = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoDebug = New DevExpress.XtraTab.XtraTabPage()
+        Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.CheckEdit2 = New DevExpress.XtraEditors.CheckEdit()
+        Me.CheckEdit1 = New DevExpress.XtraEditors.CheckEdit()
         Me.chkEnableMultithreadingPreview = New DevExpress.XtraEditors.CheckEdit()
         Me.chkForceGarbaceCollect = New DevExpress.XtraEditors.CheckEdit()
         Me.lblLogMaxSize = New DevExpress.XtraEditors.LabelControl()
         Me.txtLogMaxLine = New DevExpress.XtraEditors.SpinEdit()
         Me.chkLogOnFile = New DevExpress.XtraEditors.CheckEdit()
-        Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
-        Me.CheckEdit1 = New DevExpress.XtraEditors.CheckEdit()
-        Me.CheckEdit2 = New DevExpress.XtraEditors.CheckEdit()
         Me.tabHistorySettings.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.chkHistoryArchiveOnSave.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -292,6 +298,7 @@ Partial Class frmSettings
         CType(Me.txtTherionPath.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.frmTherionAdvancedSettings, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frmTherionAdvancedSettings.SuspendLayout()
+        CType(Me.tvTherionINI, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkTherionUseCadastralIDInCaveNames.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkTherionSegmentForcePath.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkTherionSegmentForceDirection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -328,14 +335,14 @@ Partial Class frmSettings
         Me.tabInfoWMS.SuspendLayout()
         Me.tabInfoHistory.SuspendLayout()
         Me.tabInfoDebug.SuspendLayout()
+        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl1.SuspendLayout()
+        CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkEnableMultithreadingPreview.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkForceGarbaceCollect.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtLogMaxLine.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkLogOnFile.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl1.SuspendLayout()
-        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tabHistorySettings
@@ -1233,6 +1240,10 @@ Partial Class frmSettings
         'frmTherionAdvancedSettings
         '
         resources.ApplyResources(Me.frmTherionAdvancedSettings, "frmTherionAdvancedSettings")
+        Me.frmTherionAdvancedSettings.Controls.Add(Me.cmdTherionINIDelete)
+        Me.frmTherionAdvancedSettings.Controls.Add(Me.cmdTherionINIAdd)
+        Me.frmTherionAdvancedSettings.Controls.Add(Me.LabelControl3)
+        Me.frmTherionAdvancedSettings.Controls.Add(Me.tvTherionINI)
         Me.frmTherionAdvancedSettings.Controls.Add(Me.chkTherionUseCadastralIDInCaveNames)
         Me.frmTherionAdvancedSettings.Controls.Add(Me.chkTherionSegmentForcePath)
         Me.frmTherionAdvancedSettings.Controls.Add(Me.chkTherionSegmentForceDirection)
@@ -1240,6 +1251,47 @@ Partial Class frmSettings
         Me.frmTherionAdvancedSettings.Controls.Add(Me.chkTherionBackgroundProcess)
         Me.frmTherionAdvancedSettings.Controls.Add(Me.chkTherionDeleteTempFiles)
         Me.frmTherionAdvancedSettings.Name = "frmTherionAdvancedSettings"
+        '
+        'cmdTherionINIDelete
+        '
+        resources.ApplyResources(Me.cmdTherionINIDelete, "cmdTherionINIDelete")
+        Me.cmdTherionINIDelete.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdTherionINIDelete.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
+        Me.cmdTherionINIDelete.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.cmdTherionINIDelete.Name = "cmdTherionINIDelete"
+        '
+        'cmdTherionINIAdd
+        '
+        resources.ApplyResources(Me.cmdTherionINIAdd, "cmdTherionINIAdd")
+        Me.cmdTherionINIAdd.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdTherionINIAdd.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
+        Me.cmdTherionINIAdd.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.cmdTherionINIAdd.Name = "cmdTherionINIAdd"
+        '
+        'LabelControl3
+        '
+        resources.ApplyResources(Me.LabelControl3, "LabelControl3")
+        Me.LabelControl3.Name = "LabelControl3"
+        '
+        'tvTherionINI
+        '
+        resources.ApplyResources(Me.tvTherionINI, "tvTherionINI")
+        Me.tvTherionINI.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colTherionIniKey, Me.colTherionIniValue})
+        Me.tvTherionINI.Name = "tvTherionINI"
+        Me.tvTherionINI.OptionsView.ShowIndicator = False
+        Me.tvTherionINI.OptionsView.ShowRoot = False
+        '
+        'colTherionIniKey
+        '
+        resources.ApplyResources(Me.colTherionIniKey, "colTherionIniKey")
+        Me.colTherionIniKey.FieldName = "Key"
+        Me.colTherionIniKey.Name = "colTherionIniKey"
+        '
+        'colTherionIniValue
+        '
+        resources.ApplyResources(Me.colTherionIniValue, "colTherionIniValue")
+        Me.colTherionIniValue.FieldName = "Value"
+        Me.colTherionIniValue.Name = "colTherionIniValue"
         '
         'chkTherionUseCadastralIDInCaveNames
         '
@@ -1712,6 +1764,25 @@ Partial Class frmSettings
         Me.tabInfoDebug.Name = "tabInfoDebug"
         resources.ApplyResources(Me.tabInfoDebug, "tabInfoDebug")
         '
+        'GroupControl1
+        '
+        Me.GroupControl1.Controls.Add(Me.CheckEdit2)
+        Me.GroupControl1.Controls.Add(Me.CheckEdit1)
+        resources.ApplyResources(Me.GroupControl1, "GroupControl1")
+        Me.GroupControl1.Name = "GroupControl1"
+        '
+        'CheckEdit2
+        '
+        resources.ApplyResources(Me.CheckEdit2, "CheckEdit2")
+        Me.CheckEdit2.Name = "CheckEdit2"
+        Me.CheckEdit2.Properties.Caption = resources.GetString("CheckEdit2.Properties.Caption")
+        '
+        'CheckEdit1
+        '
+        resources.ApplyResources(Me.CheckEdit1, "CheckEdit1")
+        Me.CheckEdit1.Name = "CheckEdit1"
+        Me.CheckEdit1.Properties.Caption = resources.GetString("CheckEdit1.Properties.Caption")
+        '
         'chkEnableMultithreadingPreview
         '
         resources.ApplyResources(Me.chkEnableMultithreadingPreview, "chkEnableMultithreadingPreview")
@@ -1751,25 +1822,6 @@ Partial Class frmSettings
         Me.chkLogOnFile.Name = "chkLogOnFile"
         Me.chkLogOnFile.Properties.AutoWidth = True
         Me.chkLogOnFile.Properties.Caption = resources.GetString("chkLogOnFile.Properties.Caption")
-        '
-        'GroupControl1
-        '
-        Me.GroupControl1.Controls.Add(Me.CheckEdit2)
-        Me.GroupControl1.Controls.Add(Me.CheckEdit1)
-        resources.ApplyResources(Me.GroupControl1, "GroupControl1")
-        Me.GroupControl1.Name = "GroupControl1"
-        '
-        'CheckEdit1
-        '
-        resources.ApplyResources(Me.CheckEdit1, "CheckEdit1")
-        Me.CheckEdit1.Name = "CheckEdit1"
-        Me.CheckEdit1.Properties.Caption = resources.GetString("CheckEdit1.Properties.Caption")
-        '
-        'CheckEdit2
-        '
-        resources.ApplyResources(Me.CheckEdit2, "CheckEdit2")
-        Me.CheckEdit2.Name = "CheckEdit2"
-        Me.CheckEdit2.Properties.Caption = resources.GetString("CheckEdit2.Properties.Caption")
         '
         'frmSettings
         '
@@ -1864,6 +1916,7 @@ Partial Class frmSettings
         CType(Me.frmTherionAdvancedSettings, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frmTherionAdvancedSettings.ResumeLayout(False)
         Me.frmTherionAdvancedSettings.PerformLayout()
+        CType(Me.tvTherionINI, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkTherionUseCadastralIDInCaveNames.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkTherionSegmentForcePath.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkTherionSegmentForceDirection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1908,14 +1961,14 @@ Partial Class frmSettings
         Me.tabInfoHistory.PerformLayout()
         Me.tabInfoDebug.ResumeLayout(False)
         Me.tabInfoDebug.PerformLayout()
+        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl1.ResumeLayout(False)
+        CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkEnableMultithreadingPreview.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkForceGarbaceCollect.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtLogMaxLine.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkLogOnFile.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupControl1.ResumeLayout(False)
-        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2114,4 +2167,10 @@ Partial Class frmSettings
     Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents CheckEdit2 As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents CheckEdit1 As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents tvTherionINI As DevExpress.XtraTreeList.TreeList
+    Friend WithEvents colTherionIniKey As DevExpress.XtraTreeList.Columns.TreeListColumn
+    Friend WithEvents colTherionIniValue As DevExpress.XtraTreeList.Columns.TreeListColumn
+    Friend WithEvents cmdTherionINIAdd As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdTherionINIDelete As DevExpress.XtraEditors.SimpleButton
 End Class

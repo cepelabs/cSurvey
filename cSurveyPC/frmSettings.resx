@@ -3443,7 +3443,7 @@ The data must then be corrected manually after the import.</value>
     <value>12</value>
   </data>
   <data name="chkTherionLochEnabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 36</value>
+    <value>11, 39</value>
   </data>
   <data name="chkTherionLochEnabled.Properties.Caption" xml:space="preserve">
     <value>Enable Loch</value>
@@ -3544,11 +3544,140 @@ The data must then be corrected manually after the import.</value>
   <data name="frmTherionAdvancedSettings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
+  <data name="cmdTherionINIDelete.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdTherionINIDelete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cmdTherionINIDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdTherionINIDelete.Location" type="System.Drawing.Point, System.Drawing">
+    <value>408, 181</value>
+  </data>
+  <data name="cmdTherionINIDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdTherionINIDelete.TabIndex" type="System.Int32, mscorlib">
+    <value>134</value>
+  </data>
+  <data name="cmdTherionINIDelete.ToolTip" xml:space="preserve">
+    <value>Browse to the folder...</value>
+  </data>
+  <data name="&gt;&gt;cmdTherionINIDelete.Name" xml:space="preserve">
+    <value>cmdTherionINIDelete</value>
+  </data>
+  <data name="&gt;&gt;cmdTherionINIDelete.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdTherionINIDelete.Parent" xml:space="preserve">
+    <value>frmTherionAdvancedSettings</value>
+  </data>
+  <data name="&gt;&gt;cmdTherionINIDelete.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cmdTherionINIAdd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdTherionINIAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdTherionINIAdd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>408, 151</value>
+  </data>
+  <data name="cmdTherionINIAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdTherionINIAdd.TabIndex" type="System.Int32, mscorlib">
+    <value>133</value>
+  </data>
+  <data name="cmdTherionINIAdd.ToolTip" xml:space="preserve">
+    <value>Browse to the folder...</value>
+  </data>
+  <data name="&gt;&gt;cmdTherionINIAdd.Name" xml:space="preserve">
+    <value>cmdTherionINIAdd</value>
+  </data>
+  <data name="&gt;&gt;cmdTherionINIAdd.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdTherionINIAdd.Parent" xml:space="preserve">
+    <value>frmTherionAdvancedSettings</value>
+  </data>
+  <data name="&gt;&gt;cmdTherionINIAdd.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="LabelControl3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 123</value>
+  </data>
+  <data name="LabelControl3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 13</value>
+  </data>
+  <data name="LabelControl3.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="LabelControl3.Text" xml:space="preserve">
+    <value>Customize therion.ini settings:</value>
+  </data>
+  <data name="&gt;&gt;LabelControl3.Name" xml:space="preserve">
+    <value>LabelControl3</value>
+  </data>
+  <data name="&gt;&gt;LabelControl3.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;LabelControl3.Parent" xml:space="preserve">
+    <value>frmTherionAdvancedSettings</value>
+  </data>
+  <data name="&gt;&gt;LabelControl3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tvTherionINI.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="colTherionIniKey.Caption" xml:space="preserve">
+    <value>Key</value>
+  </data>
+  <data name="colTherionIniKey.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colTherionIniKey.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="colTherionIniValue.Caption" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="colTherionIniValue.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colTherionIniValue.VisibleIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tvTherionINI.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 151</value>
+  </data>
+  <data name="tvTherionINI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>386, 141</value>
+  </data>
+  <data name="tvTherionINI.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;tvTherionINI.Name" xml:space="preserve">
+    <value>tvTherionINI</value>
+  </data>
+  <data name="&gt;&gt;tvTherionINI.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tvTherionINI.Parent" xml:space="preserve">
+    <value>frmTherionAdvancedSettings</value>
+  </data>
+  <data name="&gt;&gt;tvTherionINI.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="chkTherionUseCadastralIDInCaveNames.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkTherionUseCadastralIDInCaveNames.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 80</value>
+    <value>16, 86</value>
   </data>
   <data name="chkTherionUseCadastralIDInCaveNames.Properties.Caption" xml:space="preserve">
     <value>Use cadastral ID in cave names</value>
@@ -3572,10 +3701,10 @@ The data must then be corrected manually after the import.</value>
     <value>frmTherionAdvancedSettings</value>
   </data>
   <data name="&gt;&gt;chkTherionUseCadastralIDInCaveNames.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="chkTherionSegmentForcePath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>256, 57</value>
+    <value>256, 60</value>
   </data>
   <data name="chkTherionSegmentForcePath.Properties.Caption" xml:space="preserve">
     <value>Force path in extended elevation</value>
@@ -3599,7 +3728,7 @@ The data must then be corrected manually after the import.</value>
     <value>frmTherionAdvancedSettings</value>
   </data>
   <data name="&gt;&gt;chkTherionSegmentForcePath.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="chkTherionSegmentForceDirection.Location" type="System.Drawing.Point, System.Drawing">
     <value>256, 34</value>
@@ -3626,10 +3755,10 @@ The data must then be corrected manually after the import.</value>
     <value>frmTherionAdvancedSettings</value>
   </data>
   <data name="&gt;&gt;chkTherionSegmentForceDirection.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="chkTherionTrigpointSafename.Location" type="System.Drawing.Point, System.Drawing">
-    <value>256, 80</value>
+    <value>256, 86</value>
   </data>
   <data name="chkTherionTrigpointSafename.Properties.Caption" xml:space="preserve">
     <value>Use station dictionary</value>
@@ -3653,7 +3782,7 @@ The data must then be corrected manually after the import.</value>
     <value>frmTherionAdvancedSettings</value>
   </data>
   <data name="&gt;&gt;chkTherionTrigpointSafename.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="chkTherionBackgroundProcess.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 34</value>
@@ -3680,10 +3809,10 @@ The data must then be corrected manually after the import.</value>
     <value>frmTherionAdvancedSettings</value>
   </data>
   <data name="&gt;&gt;chkTherionBackgroundProcess.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="chkTherionDeleteTempFiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 57</value>
+    <value>16, 60</value>
   </data>
   <data name="chkTherionDeleteTempFiles.Properties.Caption" xml:space="preserve">
     <value>Delete temp files</value>
@@ -3707,13 +3836,13 @@ The data must then be corrected manually after the import.</value>
     <value>frmTherionAdvancedSettings</value>
   </data>
   <data name="&gt;&gt;chkTherionDeleteTempFiles.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="frmTherionAdvancedSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 62</value>
+    <value>11, 72</value>
   </data>
   <data name="frmTherionAdvancedSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>450, 120</value>
+    <value>450, 309</value>
   </data>
   <data name="frmTherionAdvancedSettings.TabIndex" type="System.Int32, mscorlib">
     <value>115</value>
@@ -4986,6 +5115,18 @@ The data must then be corrected manually after the import.</value>
   </data>
   <data name="&gt;&gt;colClipboardFormat.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colTherionIniKey.Name" xml:space="preserve">
+    <value>colTherionIniKey</value>
+  </data>
+  <data name="&gt;&gt;colTherionIniKey.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colTherionIniValue.Name" xml:space="preserve">
+    <value>colTherionIniValue</value>
+  </data>
+  <data name="&gt;&gt;colTherionIniValue.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnMain.Name" xml:space="preserve">
     <value>btnMain</value>

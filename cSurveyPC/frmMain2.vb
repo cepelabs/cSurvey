@@ -28,6 +28,7 @@ Imports DevExpress.RichEdit.Export
 Imports DevExpress.Utils.Extensions
 Imports DevExpress.XtraBars.Ribbon
 Imports DevExpress.Utils
+Imports cSurveyPC.cSurvey.UIHelpers
 
 Friend Class frmMain2
     Private sZoomDefault As Single = 15.1181107F
@@ -2517,6 +2518,10 @@ Friend Class frmMain2
 
     Private Sub pSettingsLoad()
         'Call My.Application.Settings.Reset()
+
+        Dim oTherionIni As cTherionINISettings = My.Application.RuntimeSettings.GetSetting("therion.ini", Nothing)
+        If oTherionIni Is Nothing Then oTherionIni = New cTherionINISettings(My.Application.Settings.GetSetting("therion.inisettings", ""))
+        Call My.Application.RuntimeSettings.SetSetting("therion.ini", oTherionIni)
 
         bChangeDecimalKey = My.Application.Settings.GetSetting("keys.changedecimalkey", "1")
         bChangePeriodKey = My.Application.Settings.GetSetting("keys.changeperiodkey", "0")
@@ -5477,7 +5482,6 @@ Friend Class frmMain2
         If bToolsEnabledByLevel Then
             For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
                 Try
-                    Dim oStandardItem As BarItem = RibbonControl.Items.FindByName(oItem.Item.Name & "_Standard")
                     Dim bValue As Boolean
                     If oItem.Item.Tag IsNot Nothing Then
                         Dim oBag As cEditToolsBag = oItem.Item.Tag
@@ -5497,6 +5501,7 @@ Friend Class frmMain2
                             oItem.Item.Visibility = BarItemVisibility.Never
                             oItem.Item.Enabled = False
                         End If
+                        Dim oStandardItem As BarItem = RibbonControl.Items.FindByName(oItem.Item.Name & "_Standard")
                         If oStandardItem IsNot Nothing Then
                             oStandardItem.Visibility = oItem.Item.Visibility
                             oStandardItem.Enabled = oItem.Item.Enabled
@@ -5507,10 +5512,16 @@ Friend Class frmMain2
             Next
         Else
             For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
-                Dim oStandardItem As BarItem = RibbonControl.Items.FindByName(oItem.Item.Name & "_Standard")
-                If Not oItem.Item.Enabled OrElse oItem.Item.Visibility = BarItemVisibility.Always Then
-                    oItem.Item.Visibility = BarItemVisibility.Always
-                    oItem.Item.Enabled = True
+                If oItem.Item.Tag IsNot Nothing Then
+                    Dim oBag As cEditToolsBag = oItem.Item.Tag
+                    If (oBag.AvaiableInPlan AndAlso Design = cIDesign.cDesignTypeEnum.Plan) OrElse (oBag.AvaiableInProfile AndAlso Design = cIDesign.cDesignTypeEnum.Profile) OrElse (oBag.AvaiableIn3D AndAlso Design = cIDesign.cDesignTypeEnum.ThreeDModel) Then
+                        oItem.Item.Visibility = BarItemVisibility.Always
+                        oItem.Item.Enabled = True
+                    Else
+                        oItem.Item.Visibility = BarItemVisibility.Never
+                        oItem.Item.Enabled = False
+                    End If
+                    Dim oStandardItem As BarItem = RibbonControl.Items.FindByName(oItem.Item.Name & "_Standard")
                     If oStandardItem IsNot Nothing Then
                         oStandardItem.Visibility = oItem.Item.Visibility
                         oStandardItem.Enabled = oItem.Item.Enabled

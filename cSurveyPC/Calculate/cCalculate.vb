@@ -1621,6 +1621,8 @@ Namespace cSurvey.Calculate
                         Call oFiles.Add(sTempConfigFilename)
                         Dim sTempThLogFilename As String = IO.Path.Combine(sTempPath, sBaseName & "_log.log")
                         Call oFiles.Add(sTempThLogFilename)
+                        Dim sTempINIFilename As String = IO.Path.Combine(sTempPath, "therion.ini")
+                        Call oFiles.Add(sTempINIFilename)
 
                         Call DeleteFiles(oFiles)
 

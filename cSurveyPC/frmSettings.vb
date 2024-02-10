@@ -149,6 +149,10 @@ Friend Class frmSettings
                 Call My.Application.Settings.SetSetting("design.penstylepattern." & oValue.Name, oValue.Value, oValue.DefaultValue)
             End If
         Next
+        Dim oTherionIni As cTherionINISettings = DirectCast(tvTherionINI.DataSource, cTherionINISettings)
+        Call My.Application.Settings.SetSetting("therion.inisettings", oTherionIni.ToString)
+        oTherionIni.invalidate
+        Call My.Application.RuntimeSettings.SetSetting("therion.ini", oTherionIni)
 
         Call My.Application.Settings.Save()
     End Sub
@@ -388,6 +392,11 @@ Friend Class frmSettings
         chkITChangeDecimalKey.Checked = My.Application.Settings.GetSetting("keys.changedecimalkey", "1")
         chkITChangePeriodKey.Checked = My.Application.Settings.GetSetting("keys.changeperiodkey", "0")
 
+        'therion.ini is a runtime settings created by frmmain from therion.inisettings string
+        Dim oTherionINI As cTherionINISettings = My.Application.RuntimeSettings.GetSetting("therion.ini", Nothing)
+        If oTherionINI Is Nothing Then oTherionINI = New cTherionINISettings("")
+        tvTherionINI.DataSource = oTherionINI
+        Call tvTherionINI_FocusedNodeChanged(tvTherionINI, Nothing)
 
         Call pVisibilityByLanguage()
 
@@ -609,4 +618,15 @@ Friend Class frmSettings
 
     End Sub
 
+    Private Sub cmdTherionINIAdd_Click(sender As Object, e As EventArgs) Handles cmdTherionINIAdd.Click
+        DirectCast(tvTherionINI.DataSource, cTherionINISettings).Add()
+    End Sub
+
+    Private Sub cmdTherionINIDelete_Click(sender As Object, e As EventArgs) Handles cmdTherionINIDelete.Click
+        DirectCast(tvTherionINI.DataSource, cTherionINISettings).Remove(tvTherionINI.GetFocusedObject)
+    End Sub
+
+    Private Sub tvTherionINI_FocusedNodeChanged(sender As Object, e As DevExpress.XtraTreeList.FocusedNodeChangedEventArgs) Handles tvTherionINI.FocusedNodeChanged
+        cmdTherionINIDelete.Enabled = tvTherionINI.FocusedNode IsNot Nothing
+    End Sub
 End Class

@@ -1,6 +1,8 @@
 ﻿Imports System.IO
 Imports System.Xml
 Imports System.Reflection
+Imports System.Collections.Specialized
+Imports System.Web.Management
 
 Module modMain
     Public sMachineID As String
@@ -205,9 +207,12 @@ Module modMain
                     .StartInfo.RedirectStandardOutput = True
                     .StartInfo.UseShellExecute = False
                     'usefull to allow special settings for therion launced from csurvey
-                    '2023-06-05: this fix error with therion 6.1.7
                     Dim sCustomTherionIniPath As String = My.Application.Settings.GetSetting("therion.inipath", "")
-                    If sCustomTherionIniPath <> "" Then .StartInfo.EnvironmentVariables.Add("THERION", sCustomTherionIniPath)
+                    If sCustomTherionIniPath <> "" Then
+                        .StartInfo.EnvironmentVariables.Add("THERION", sCustomTherionIniPath)
+                    Else
+                        .StartInfo.EnvironmentVariables.Add("THERION", modMain.GetUserApplicationPath)
+                    End If
                 End If
                 Call .Start()
                 'If Background Then
@@ -253,7 +258,11 @@ Module modMain
                     .StartInfo.UseShellExecute = False
                     'usefull to allow special settings for therion launced from csurvey
                     Dim sCustomTherionIniPath As String = My.Application.Settings.GetSetting("therion.inipath", "")
-                    If sCustomTherionIniPath <> "" Then .StartInfo.EnvironmentVariables.Add("THERION", sCustomTherionIniPath)
+                    If sCustomTherionIniPath <> "" Then
+                        .StartInfo.EnvironmentVariables.Add("THERION", sCustomTherionIniPath)
+                    Else
+                        .StartInfo.EnvironmentVariables.Add("THERION", modMain.GetUserApplicationPath)
+                    End If
                 End If
                 Call .Start()
                 If Background Then

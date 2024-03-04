@@ -965,7 +965,7 @@ Friend Class frmMain2
         End If
         If oEditCrossSectionsCombo.DataSource.Count > 0 Then
             Try
-                If oCurrentCrossSection Is Nothing Then
+                If oCurrentCrossSection Is Nothing OrElse Not oEditCrossSectionsCombo.DataSource.contains(oCurrentCrossSection) Then
                     CrossSectionsCombo.EditValue = oEditCrossSectionsCombo.DataSource(0)
                 Else
                     CrossSectionsCombo.EditValue = oCurrentCrossSection
@@ -994,7 +994,7 @@ Friend Class frmMain2
         End If
         If CrossSectionsCombo.Properties.Items.Count > 0 Then
             Try
-                If oCurrentCrossSection Is Nothing Then
+                If oCurrentCrossSection Is Nothing OrElse Not CrossSectionsCombo.Properties.Items.Contains(oCurrentCrossSection) Then
                     CrossSectionsCombo.SelectedIndex = 0
                 Else
                     CrossSectionsCombo.SelectedItem = oCurrentCrossSection
@@ -1117,7 +1117,7 @@ Friend Class frmMain2
         If Not Reset Then oMainCave = btnMainCaveList.EditValue
         cboMainCaveList.DataSource = oSurvey.Properties.CaveInfos.GetWithEmpty.Select(Function(oitem) oitem.Value).ToList
         Try
-            If oMainCave Is Nothing Then
+            If oMainCave Is Nothing OrElse Not cboMainCaveList.DataSource.contains(oMainCave) Then
                 btnMainCaveList.EditValue = cboMainCaveList.DataSource(0)
             Else
                 btnMainCaveList.EditValue = oMainCave

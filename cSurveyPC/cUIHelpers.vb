@@ -3901,8 +3901,6 @@ Namespace cSurvey.UIHelpers
     Public Class cTherionINISettings
         Inherits BindingList(Of cKeyValueItem(Of String, String))
 
-        Private sTherionINI As String
-
         Private sTherionINIFilename As String
 
         Public Sub New(Settings As String)

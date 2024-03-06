@@ -1750,7 +1750,7 @@ Module modExport
                             c = 0
                             oXLSGeoData.Cells(r, pExcelNextColumn(c)).Value = oGeoDataDate
                             oXLSGeoData.Cells(r, c).Style.Numberformat.Format = "dd/mm/yyyy"
-                            oXLSGeoData.Cells(r, pExcelNextColumn(c)).Value = Survey.Calculate.GeoMagDeclinationData.GetValue(oGeoDataDate)
+                            oXLSGeoData.Cells(r, pExcelNextColumn(c)).Value = Survey.Calculate.GeoMagDeclinationData.Item(oGeoDataDate)
 
                             r += 1
                         Next

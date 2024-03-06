@@ -78,16 +78,34 @@ Namespace cSurvey.Calculate
             End Get
         End Property
 
-        Public Function GetValue([Date] As Date) As Decimal
-            Dim dLastdate As Date = Date.MinValue
-            For Each dDate In oItems.Keys
-                If dDate > [Date] Then
-                    Return oItems(dLastdate)
-                End If
-                dLastdate = dDate
-            Next
-            Return Decimal.MinValue
-        End Function
+        'Public Function GetValue([Date] As Date) As Decimal?
+        '    Dim dfirstdate As Date = oItems.Keys.Min
+        '    Dim dlastdate As Date = oItems.Keys.Max
+        '    If [Date] < dfirstdate Then
+        '        Return Nothing
+        '    ElseIf [Date] > dlastdate Then
+        '        Return Nothing
+        '    Else
+        '        Dim oDates As List(Of Date) = oItems.Keys.ToList
+        '        For i As Integer = 0 To oDates.Count - 2
+        '            Dim dDate As Date = oDates(i)
+        '            Dim dNextDate As Date = oDates(i + 1)
+        '            If [Date] >= dDate AndAlso dDate < dNextDate Then
+        '                Return oItems(dDate)
+        '            End If
+        '        Next
+        '    End If
+        '    Return Nothing
+
+        '    'Dim dLastdate As Date = Date.MinValue
+        '    'For Each dDate In oItems.Keys
+        '    '    If dDate > [Date] Then
+        '    '        Return oItems(dLastdate)
+        '    '    End If
+        '    '    dLastdate = dDate
+        '    'Next
+        '    'Return Nothing
+        'End Function
 
         Private Function pTherionDateToDate(Text As String) As Date
             Dim sDatePart() As String = Text.Split(".")

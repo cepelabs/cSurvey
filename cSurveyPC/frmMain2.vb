@@ -1047,48 +1047,6 @@ Friend Class frmMain2
         Call oMousePointer.Pop()
     End Sub
 
-    'Private Sub xpSurveyFillCaveBranchList(ByVal Cave As cCaveInfo, ByVal BranchesCombo As ComboBox)
-    '    Dim sCave As String = ""
-    '    If Not Cave Is Nothing Then
-    '        sCave = Cave.Name
-    '    End If
-    '    Call xpSurveyFillCaveBranchList(sCave, BranchesCombo)
-    'End Sub
-
-    'Private Sub xpSurveyFillCaveBranchList(ByVal Cave As String, ByVal BranchesCombo As ComboBox)
-    '    Call oMousePointer.Push(Cursors.WaitCursor)
-
-    '    Dim oEmptyCaveInfoBranch As cCaveInfoBranch = oSurvey.Properties.CaveInfos.GetEmptyCaveInfoBranch(Cave)
-    '    If Cave = "" Then
-    '        Call BranchesCombo.Items.Clear()
-    '        Call BranchesCombo.Items.Add(oEmptyCaveInfoBranch)
-    '        BranchesCombo.Enabled = False
-    '    Else
-    '        Dim oCurrentBranch As cCaveInfoBranch = BranchesCombo.SelectedItem
-    '        Call BranchesCombo.Items.Clear()
-    '        Call BranchesCombo.Items.Add(oEmptyCaveInfoBranch)
-    '        For Each oBranch As cCaveInfoBranch In oSurvey.Properties.CaveInfos(Cave).Branches.GetAllBranches.Values
-    '            Call BranchesCombo.Items.Add(oBranch)
-    '        Next
-    '        If BranchesCombo.Items.Count > 0 Then
-    '            Try
-    '                If IsNothing(oCurrentBranch) Then
-    '                    BranchesCombo.SelectedIndex = 0
-    '                Else
-    '                    BranchesCombo.SelectedItem = oCurrentBranch
-    '                End If
-    '            Catch
-    '                BranchesCombo.SelectedIndex = 0
-    '            End Try
-    '            BranchesCombo.Enabled = True
-    '        Else
-    '            BranchesCombo.Enabled = False
-    '        End If
-    '    End If
-
-    '    Call oMousePointer.Pop()
-    'End Sub
-
     Private Sub pSurveyFillSessionList(Reset As Boolean)
         Call cboSegmentSessionList.Rebind(oSurvey, Reset)
 

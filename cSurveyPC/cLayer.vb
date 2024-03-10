@@ -403,8 +403,8 @@ Namespace cSurvey.Design
         End Function
 
         Friend Overridable Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Clipping As cClippingRegions, Selection As Helper.Editor.cIEditDesignSelection)
-            Try
-                Dim oItems As List(Of cItem) = GetAllVisibleItems(PaintOptions)
+            'Try
+            Dim oItems As List(Of cItem) = GetAllVisibleItems(PaintOptions)
                 If oItems.Count > 0 Then
                     Dim oVisibleBounds As RectangleF
                     Dim oBaseVisibleBounds As RectangleF = Graphics.VisibleClipBounds
@@ -482,9 +482,9 @@ Namespace cSurvey.Design
                         'End If
                     Next
                 End If
-            Catch ex As Exception
-                Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, "cLayer.Paint -> " & ex.Message)
-            End Try
+            'Catch ex As Exception
+            '    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, "cLayer.Paint -> " & ex.Message)
+            'End Try
         End Sub
 
         Public Overridable Function HitTest(ByVal PaintOptions As cOptions, ByVal CurrentCave As String, ByVal CurrentBranch As String, ByVal Point As PointF, ByVal Wide As Single, First As Boolean) As List(Of cItem)

@@ -1675,7 +1675,7 @@ Namespace cSurvey.Design
         End Function
 
         Private Sub pRender(ByVal PaintOptions As cOptionsCenterline)
-            If iHatchType = cBrush.HatchTypeEnum.Solid Or iHatchType = cBrush.HatchTypeEnum.Clipart Or iHatchType = cBrush.HatchTypeEnum.Pattern Or iHatchType = cBrush.HatchTypeEnum.Texture Then
+            If iHatchType = cBrush.HatchTypeEnum.Solid OrElse iHatchType = cBrush.HatchTypeEnum.Clipart OrElse iHatchType = cBrush.HatchTypeEnum.Pattern OrElse iHatchType = cBrush.HatchTypeEnum.Texture Then
                 Dim oPaintColor As Color = If(oAlternativeColor.IsEmpty, oColor, oAlternativeColor)
 
                 oPen = New Pen(oPaintColor, GetPaintPenWidth(PaintOptions, 0))
@@ -1683,7 +1683,7 @@ Namespace cSurvey.Design
                 oSchematicBrush = New HatchBrush(HatchStyle.Percent10, oPaintColor, Color.White)
                 oClipartAlternativeBrush1 = New SolidBrush(oClipartAlternativeColor)
                 oClipartAlternativeBrush2 = New SolidBrush(Color.FromArgb(180, oClipartAlternativeColor))
-                oBackgroundbrush = New SolidBrush(oBackgroundColor)
+                oBackgroundBrush = New SolidBrush(oBackgroundColor)
                 If iHatchType = cBrush.HatchTypeEnum.Texture Then
                     If oTexture IsNot Nothing Then
                         Dim oRect As RectangleF = New RectangleF(0, 0, oTexture.Width, oTexture.Height)
@@ -1691,23 +1691,25 @@ Namespace cSurvey.Design
                     End If
                 End If
 
-                oPatternPens = New List(Of Pen)
-                For Each oPatternBrush In oPatternBrushes
-                    Dim oPatternPen As Pen = New Pen(oPaintColor, sLineWidth / 10.0F)
-                    oPatternPen.SetLineCap(Drawing2D.LineCap.Round, Drawing2D.LineCap.Round, Drawing2D.DashCap.Round)
-                    oPatternPen.LineJoin = Drawing2D.LineJoin.Round
-                    Select Case oPatternBrush.PatternPenStyle
-                        Case cPen.PenStylesEnum.Solid
-                            oPatternPen.DashStyle = DashStyle.Solid
-                        Case cPen.PenStylesEnum.Dot
-                            oPatternPen.DashStyle = DashStyle.Dot
-                        Case cPen.PenStylesEnum.Dash
-                            oPatternPen.DashStyle = DashStyle.Dash
-                        Case cPen.PenStylesEnum.DashDot
-                            oPatternPen.DashStyle = DashStyle.DashDot
-                    End Select
-                    Call oPatternPens.Add(oPatternPen)
-                Next
+                If oPatternBrushes IsNot Nothing Then
+                    oPatternPens = New List(Of Pen)
+                    For Each oPatternBrush In oPatternBrushes
+                        Dim oPatternPen As Pen = New Pen(oPaintColor, sLineWidth / 10.0F)
+                        oPatternPen.SetLineCap(Drawing2D.LineCap.Round, Drawing2D.LineCap.Round, Drawing2D.DashCap.Round)
+                        oPatternPen.LineJoin = Drawing2D.LineJoin.Round
+                        Select Case oPatternBrush.PatternPenStyle
+                            Case cPen.PenStylesEnum.Solid
+                                oPatternPen.DashStyle = DashStyle.Solid
+                            Case cPen.PenStylesEnum.Dot
+                                oPatternPen.DashStyle = DashStyle.Dot
+                            Case cPen.PenStylesEnum.Dash
+                                oPatternPen.DashStyle = DashStyle.Dash
+                            Case cPen.PenStylesEnum.DashDot
+                                oPatternPen.DashStyle = DashStyle.DashDot
+                        End Select
+                        Call oPatternPens.Add(oPatternPen)
+                    Next
+                End If
 
                 bInvalidated = False
             End If

@@ -987,8 +987,8 @@ Namespace cSurvey.Design
         End Sub
 
         Public Overridable Sub Paint(Graphics As Graphics, PaintOptions As cOptionsCenterline, DrawOptions As cDrawOptions, Selection As Helper.Editor.cIEditDesignSelection)
-            Try
-                Dim sOrigin As String = oSurvey.Properties.Origin
+            'Try
+            Dim sOrigin As String = oSurvey.Properties.Origin
                 Dim bIsThisSurvey As Boolean = PaintOptions.Survey Is oSurvey
                 Dim bSchematic As Boolean = (DrawOptions.DrawOptions And cDrawOptions.cdrawoptionsenum.Schematic) = cDrawOptions.cdrawoptionsenum.Schematic
 
@@ -1433,10 +1433,10 @@ Namespace cSurvey.Design
                 If Not bSchematic AndAlso (PaintOptions.DrawPlot OrElse PaintOptions.DrawSpecialPoints OrElse (PaintOptions.DrawTranslation AndAlso PaintOptions.TranslationsOptions.DrawTranslationsLine) OrElse PaintOptions.DrawSurfaceProfile) Then
                     Call Plot.Paint(Graphics, PaintOptions, Selection)
                 End If
-            Catch ex As Exception
-                Debug.Print("cDesign.Paint>" & ex.Message)
-            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, ex.Message & vbCrLf & ex.StackTrace)
-            End Try
+            'Catch ex As Exception
+            '    Debug.Print("cDesign.Paint>" & ex.Message)
+            'Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, ex.Message & vbCrLf & ex.StackTrace)
+            'End Try
         End Sub
 
         Public MustOverride ReadOnly Property Plot() As cPlot

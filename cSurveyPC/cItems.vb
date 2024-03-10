@@ -237,6 +237,12 @@ Namespace cSurvey.Design
                 Else
                     Call oItems.Add(oItem)
                 End If
+
+                'If TypeOf oItem Is cItemSign Then
+                '    If DirectCast(oItem, cItemSign).Brush.PatternBrushes Is Nothing Then
+                '        Stop
+                '    End If
+                'End If
             Next
         End Sub
 

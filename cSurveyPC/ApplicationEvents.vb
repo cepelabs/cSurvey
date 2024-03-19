@@ -1,4 +1,8 @@
-﻿Imports cSurveyPC.cSurvey.Helper.Editor
+﻿Imports System.Xml
+Imports cSurveyPC.cSurvey.Helper.Editor
+Imports DevExpress.LookAndFeel
+Imports DevExpress.Office
+Imports DevExpress.Utils.Svg
 Imports Microsoft.VisualBasic.ApplicationServices
 
 Namespace My
@@ -69,6 +73,28 @@ Namespace My
             Using oGr As Graphics = Graphics.FromHwnd(IntPtr.Zero)
                 sCurrentDPIRatio = oGr.DpiX / 96.0F
             End Using
+        End Sub
+
+        Public Sub CreateCustomSkinAndPalette()
+            DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("The Bezier")
+            Dim oCommonSkin = DevExpress.Skins.CommonSkins.GetSkin(UserLookAndFeel.Default)
+
+            Dim oXML As XmlDocument = New XmlDocument
+            oXML.LoadXml(My.Resources.custompalettes)
+            For Each oXMLPalette As XmlElement In oXML.DocumentElement.ChildNodes
+                Dim oSvgPalette As New DevExpress.Utils.Svg.SvgPalette()
+                Dim sPaletteName As String = oXMLPalette.GetAttribute("Name")
+                For Each oXMLColor As XmlElement In oXMLPalette.ChildNodes
+                    Dim sName As String = oXMLColor.GetAttribute("Name")
+                    Dim iValues As Integer() = oXMLColor.GetAttribute("Value").Split({","c}).Select(Function(sValue) Integer.Parse(sValue)).ToArray
+                    Dim oColor As Color = Color.FromArgb(iValues(0), iValues(1), iValues(2))
+                    oSvgPalette.Colors.Add(New DevExpress.Utils.Svg.SvgColor(sName, oColor))
+                Next
+                If oCommonSkin.CustomSvgPalettes.FindPalette(sPaletteName) Is Nothing Then
+                    oCommonSkin.CustomSvgPalettes.Add(New SvgPaletteKey(oCommonSkin.CustomSvgPalettes.Count, sPaletteName), oSvgPalette)
+                End If
+            Next
+            LookAndFeelHelper.ForceDefaultLookAndFeelChanged()
         End Sub
 
         Private bChangeDecimalKey As Boolean

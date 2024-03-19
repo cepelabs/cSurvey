@@ -229,7 +229,7 @@ Friend Class frmMain2
     Private bDisabledObjectPropertyEvent As Boolean = True
     Private bDisabledCaveBranchChangeEvent As Boolean = True
     Private bDisabledAutosaveEvent As Boolean = True
-    Private bDisabledSurfaceLayersEvent As Boolean = True
+    Private bDisabledSurfaceEvent As Boolean = True
     Private bDisablewarpingDetails As Boolean = False
 
     Private oStartPaintDrawPosition As PointF
@@ -2484,9 +2484,9 @@ Friend Class frmMain2
         bChangeDecimalKey = My.Application.Settings.GetSetting("keys.changedecimalkey", "1")
         bChangePeriodKey = My.Application.Settings.GetSetting("keys.changeperiodkey", "0")
 
-        Dim sSkinName As String = "" & My.Application.Settings.GetSetting("theme.name")
+        Dim sSkinName As String = "" & My.Application.Settings.GetSetting("theme.name", "The Bezier")
         If sSkinName <> "" Then
-            Dim sPaletteName As String = "" & My.Application.Settings.GetSetting("theme.palette")
+            Dim sPaletteName As String = "" & My.Application.Settings.GetSetting("theme.palette", "cSurvey (red)")
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle(sSkinName, sPaletteName)
             DevExpress.LookAndFeel.UserLookAndFeel.Default.UpdateStyleSettings()
         End If
@@ -5128,8 +5128,6 @@ Friend Class frmMain2
         Call pSurveyInvalidate()
         Call pSurveySegmentsRefresh()
         Call pSurveyTrigpointsRefresh()
-        'Call grdViewSegments.RefreshData()
-        'Call grdViewTrigpoints.RefreshData()
 
         Call pSurveyDelayedRedraw()
         Call pSurveyMainPropertiesPanelsRefresh()
@@ -5159,12 +5157,14 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pSurveyProperty(Optional SelectedTabIndex As Integer? = Nothing, Optional SelectedElement As Object = Nothing)
+        bDisabledSurfaceEvent = True
         Using frmP As frmProperties = New frmProperties(oSurvey, SelectedTabIndex, iFunctionLanguage, SelectedElement)
             AddHandler frmP.OnApply, AddressOf frmProperties_OnApply
             AddHandler frmP.OnSegmentSelect, AddressOf frmProperties_OnSegmentSelect
             If frmP.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Call pSurveyUpdateProperty()
             End If
+            bDisabledSurfaceEvent = False
         End Using
     End Sub
 
@@ -13377,6 +13377,8 @@ Friend Class frmMain2
 
         InitializeComponent()
 
+        My.Application.CreateCustomSkinAndPalette()
+
         ' Add any initialization after the InitializeComponent() call.
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlSegment, False)
         LayoutControlItem2.TextVisible = False
@@ -13954,9 +13956,11 @@ Friend Class frmMain2
     End Sub
 
     Private Sub oSurvey_OnSurfaceChanged(Sender As Object, Args As cSurvey.cSurvey.OnSurfaceChangedEventArgs) Handles oSurvey.OnSurfaceChanged
-        Call modWMSManager.WMSDownloadFileReset()
-        Call pSurveyCalculate(False)
-        Call pObjectPropertyLoad()
+        If Not bDisabledSurfaceEvent Then
+            Call modWMSManager.WMSDownloadFileReset()
+            Call pSurveyCalculate(False)
+            Call pObjectPropertyLoad()
+        End If
     End Sub
 
     Private Sub chkSegmentExclude_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkSegmentExclude.CheckedChanged

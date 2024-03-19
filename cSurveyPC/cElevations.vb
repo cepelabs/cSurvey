@@ -117,17 +117,6 @@ Namespace cSurvey.Surface
             End Try
         End Sub
 
-        'Public Property [Default] As cElevation
-        '    Get
-        '        Return oDefault
-        '    End Get
-        '    Set(value As cElevation)
-        '        If oItems.Contains(value) Or value Is Nothing Then
-        '            oDefault = value
-        '        End If
-        '    End Set
-        'End Property
-
         Friend Sub New(Survey As cSurvey)
             oSurvey = Survey
             oItems = New List(Of cElevation)
@@ -135,9 +124,6 @@ Namespace cSurvey.Surface
 
         Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlElevations As XmlElement = Document.CreateElement("elevations")
-            'If Not oDefault Is Nothing Then
-            '    Call oXmlElevations.SetAttribute("default", oDefault.ID)
-            'End If
             For Each oElevation As cElevation In oItems
                 If Not oElevation.IsEmpty Then
                     Call oElevation.SaveTo(File, Document, oXmlElevations)
@@ -153,12 +139,9 @@ Namespace cSurvey.Surface
                 Dim oElevation As cElevation = New cElevation(oSurvey)
                 Call oElevation.CopyFrom(oItem)
                 AddHandler oElevation.OnChange, AddressOf oElevation_onchange
-                'AddHandler oElevation.OnDefaultSet, AddressOf oElevation_ondefaultset
-                'AddHandler oElevation.OnDefaultGet, AddressOf oElevation_ondefaultget
                 Call oItems.Add(oElevation)
             Next
             Call oElevation_onchange(Nothing, EventArgs.Empty)
-            'oDefault = Elevations.oDefault
         End Sub
 
         Public Function GetEnumerator() As System.Collections.IEnumerator Implements System.Collections.IEnumerable.GetEnumerator

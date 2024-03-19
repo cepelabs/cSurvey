@@ -1921,6 +1921,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to &lt;SvgPalettes&gt;
+        '''    &lt;SvgPalette Name=&quot;cSurvey (red)&quot;&gt;
+        '''        &lt;SvgColor Name=&quot;Paint&quot; Value=&quot;245,245,245&quot; /&gt;
+        '''        &lt;SvgColor Name=&quot;Paint High&quot; Value=&quot;255,255,255&quot; /&gt;
+        '''        &lt;SvgColor Name=&quot;Paint Shadow&quot; Value=&quot;239,239,239&quot; /&gt;
+        '''        &lt;SvgColor Name=&quot;Paint Deep Shadow&quot; Value=&quot;219,219,219&quot; /&gt;
+        '''        &lt;SvgColor Name=&quot;Brush&quot; Value=&quot;70,70,70&quot; /&gt;
+        '''        &lt;SvgColor Name=&quot;Brush Light&quot; Value=&quot;158,158,158&quot; /&gt;
+        '''        &lt;SvgColor Name=&quot;Brush High&quot; Value=&quot;70,70,70&quot; /&gt;
+        '''        &lt;SvgColor Name=&quot;Brush Major&quot; Value=&quot; [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property custompalettes() As String
+            Get
+                Return ResourceManager.GetString("custompalettes", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property cut() As System.Drawing.Bitmap

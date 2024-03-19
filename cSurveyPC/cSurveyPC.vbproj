@@ -4898,6 +4898,7 @@
     <None Include="Resources\charttype_polarpoint1.svg" />
     <None Include="Resources\calibrate.svg" />
     <None Include="Resources\calibrate_bn.svg" />
+    <None Include="Resources\custompalettes.txt" />
     <Content Include="version.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -1119,3 +1119,8 @@ main.warning35=Unable to add a 3D chunk on a survey with less than 2 stations.
 main.textpart167=Warping paused
 main.textpart168=Warping paused on plan
 main.textpart169=Warping paused on profile
+
+about.infoabout.textpart7=With the sponsorship of:
+about.infoabout.textpart8=With the help and support of:
+about.infoabout.textpart9=Other contributors and thanks:
+about.infoabout.textpart10=A very special thanks to:

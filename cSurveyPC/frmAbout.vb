@@ -1,4 +1,5 @@
-﻿Imports DevExpress.Utils.Html
+﻿Imports DevExpress.Office.Utils
+Imports DevExpress.Utils.Html
 
 Friend NotInheritable Class frmAbout
 
@@ -39,31 +40,69 @@ Friend NotInheritable Class frmAbout
         htmlMainInfo.HtmlTemplate.Template = htmlMainInfo.HtmlTemplate.Template.Replace("%PRODUCTNAME%", My.Application.Info.ProductName)
         htmlMainInfo.HtmlTemplate.Template = htmlMainInfo.HtmlTemplate.Template.Replace("%COPYRIGHT%", My.Application.Info.Copyright)
 
+        htmlMainInfo.HtmlTemplate.Template = htmlMainInfo.HtmlTemplate.Template.Replace("%TEXTPART7%", modMain.GetLocalizedString("about.infoabout.textpart7"))
+        htmlMainInfo.HtmlTemplate.Template = htmlMainInfo.HtmlTemplate.Template.Replace("%TEXTPART8%", modMain.GetLocalizedString("about.infoabout.textpart8"))
+        htmlMainInfo.HtmlTemplate.Template = htmlMainInfo.HtmlTemplate.Template.Replace("%TEXTPART9%", modMain.GetLocalizedString("about.infoabout.textpart9"))
+        htmlMainInfo.HtmlTemplate.Template = htmlMainInfo.HtmlTemplate.Template.Replace("%TEXTPART10%", modMain.GetLocalizedString("about.infoabout.textpart10"))
+
         Dim oProcess As Process = Process.GetCurrentProcess()
         Dim sMemoryUsage As String = GetLocalizedString("about.infoabout.textpart2") & ": Working Set: " & oProcess.WorkingSet64 / 1024 & " Kb" ', Totale: " & GC.GetTotalMemory(True) / 1024 & " Kb"
         lblInfo.Text = String.Format(GetLocalizedString("about.infoabout.textpart3"), modMain.GetPackageVersion, modMain.GetReleaseDate.ToString("d")) & vbCrLf & sMemoryUsage & vbCrLf & IIf(Environment.Is64BitOperatingSystem, GetLocalizedString("about.infoabout.textpart4a"), GetLocalizedString("about.infoabout.textpart4b")) & " - " & IIf(Environment.Is64BitProcess, "cSurvey 64 bit", "cSurvey 32 bit") & vbCrLf
-        'rtfCopyrights.Text = String.Format(sCopyrights, GetLocalizedString("about.infoabout.textpart5"), GetLocalizedString("about.infoabout.textpart6"))
+
+        htmlMainInfo.DataContext = New cAboutSource()
     End Sub
+
+    Private Class cAboutSource
+        Public ReadOnly Property fsrer As Image
+            Get
+                Return My.Resources.about_fsrer
+            End Get
+        End Property
+
+        Public ReadOnly Property devexpress As Image
+            Get
+                Return My.Resources.about_devexpress
+            End Get
+        End Property
+
+        Public ReadOnly Property csd As Image
+            Get
+                Return My.Resources.about_csd
+            End Get
+        End Property
+
+        Public ReadOnly Property bolognaspeleologica As Image
+            Get
+                Return My.Resources.about_bolognaspeleologica
+            End Get
+        End Property
+
+        Public ReadOnly Property gsbusb As Image
+            Get
+                Return My.Resources.about_gsbusb
+            End Get
+        End Property
+    End Class
 
     Private Sub OKButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Call Me.Close()
     End Sub
 
-    Private Sub lnkContact_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs)
-        Shell("explorer mailto:info@csurvey.it")
-    End Sub
+    'Private Sub lnkContact_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs)
+    '    Shell("explorer mailto:info@csurvey.it")
+    'End Sub
 
-    Private Sub lnkGreetings0_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs)
-        Shell("explorer http://www.fsrer.it")
-    End Sub
+    'Private Sub lnkGreetings0_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs)
+    '    Shell("explorer http://www.fsrer.it")
+    'End Sub
 
-    Private Sub lnkGreetings1_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs)
-        Shell("explorer http://www.bolognaspeleologia.it")
-    End Sub
+    'Private Sub lnkGreetings1_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs)
+    '    Shell("explorer http://www.bolognaspeleologia.it")
+    'End Sub
 
-    Private Sub lnkGreetings2_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs)
-        Shell("explorer http://www.gsb-usb.it")
-    End Sub
+    'Private Sub lnkGreetings2_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs)
+    '    Shell("explorer http://www.gsb-usb.it")
+    'End Sub
 
     Private Sub htmlCopyright_ElementMouseClick(sender As Object, e As DxHtmlElementMouseEventArgs) Handles htmlCopyright.ElementMouseClick
         If e.TagName = "a" Then

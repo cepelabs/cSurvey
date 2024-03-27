@@ -83,6 +83,8 @@ Partial Class frmAbout
         Me.ImageCollection1.Images.SetKeyName(0, "gsbusb.png")
         Me.ImageCollection1.Images.SetKeyName(1, "bolognaspeleologica.png")
         Me.ImageCollection1.Images.SetKeyName(2, "fsrer.png")
+        Me.ImageCollection1.Images.SetKeyName(3, "csd.png")
+        Me.ImageCollection1.Images.SetKeyName(4, "devexpress.png")
         '
         'picLogo
         '

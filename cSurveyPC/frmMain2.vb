@@ -2739,11 +2739,11 @@ Friend Class frmMain2
             Dim sCurrentVersion As String = ""
             Try
                 Dim sURL As String
-                'If NightBuild Then
-                sURL = "http://www.csurvey.it/download/nightbuild/v2/version.xml"
-                'Else
-                'sURL = "http://www.csurvey.it/download/version.xml"
-                'End If
+                If NightBuild Then
+                    sURL = "http://www.csurvey.it/download/nightbuild/version.xml"
+                Else
+                    sURL = "http://www.csurvey.it/download/version.xml"
+                End If
                 Using oWeb As System.Net.WebClient = New System.Net.WebClient
                     Dim oXML As XmlDocument = New XmlDocument
                     Call oXML.LoadXml(oWeb.DownloadString(sURL))

@@ -1123,3 +1123,8 @@ main.warning35=Impossibile aggiungere un blocco 3D in un rilievo con meno di 2 c
 main.textpart167=Warping in pausa
 main.textpart168=Warping disattivato in pianta
 main.textpart169=Warping disattivato in sezione
+
+about.infoabout.textpart7=Con il patrocinio di:
+about.infoabout.textpart8=Con l'aiuto e il supporto di:
+about.infoabout.textpart9=Altri contributi e ringraziamenti:
+about.infoabout.textpart10=Un ringraziamento speciale a:

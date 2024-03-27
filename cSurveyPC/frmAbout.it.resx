@@ -638,26 +638,6 @@
   <data name="TabNavigationPage1.PageText" xml:space="preserve">
     <value>Principale</value>
   </data>
-  <data name="htmlMainInfo.HtmlTemplate.Template" xml:space="preserve">
-    <value>&lt;div class="text"&gt;
-%COPYRIGHT%
-&lt;/div&gt;
-&lt;div class="row"&gt;
- &lt;div class="text cell"&gt;
-  Con il patrocinio della:
-  &lt;div class="text"&gt;
-    &lt;a id="src:https://www.fsrer.it"&gt;&lt;img src="fsrer.png" class="logo"&gt;&lt;br&gt;Federazione Speleologica&lt;br&gt;dell'Emilia-Romagna&lt;/a&gt;
-  &lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="text cell"&gt;
-  Con il contributo e il supporto di:
-  &lt;div class="row"&gt;
-   &lt;div class="text cell"&gt;&lt;a id="src:https://www.bolognaspeleologia.it"&gt;&lt;img src="bolognaspeleologica.png" class="logo"&gt;&lt;br&gt;Bologna Speleologica ODV&lt;/a&gt;&lt;/div&gt;
-   &lt;div class="text cell"&gt;&lt;a id="src:https://www.gsb-usb.it"&gt;&lt;img src="gsbusb.png" class="logo"&gt;&lt;br&gt;GSB - USB APS&lt;br&gt;Gruppo Speleologico Bolognese&lt;br&gt;Unione Speleologica Bolognese&lt;/a&gt;&lt;/div&gt;
-  &lt;/div&gt;
- &lt;/div&gt;
-&lt;/div&gt;</value>
-  </data>
   <data name="htmlLicence.HtmlTemplate.Template" xml:space="preserve">
     <value>&lt;div class="container" id="container"&gt;
 &lt;p&gt;cSurvey è un software progettato per il disegno di rilievi ipogei.&lt;br&gt;

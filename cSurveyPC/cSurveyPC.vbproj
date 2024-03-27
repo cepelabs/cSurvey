@@ -4879,6 +4879,11 @@
     <None Include="Resources\Actions_Arrow4Left.svg" />
     <None Include="Resources\Actions_Arrow4Right.svg" />
     <None Include="Resources\actions_add1.svg" />
+    <None Include="Resources\about_gsbusb.png" />
+    <None Include="Resources\about_fsrer.png" />
+    <None Include="Resources\about_devexpress.png" />
+    <None Include="Resources\about_csd.png" />
+    <None Include="Resources\about_bolognaspeleologica.png" />
     <Content Include="Resources\Actions_Database.svg" />
     <None Include="Resources\csurvey_2.svg" />
     <Content Include="Resources\Bar.svg" />

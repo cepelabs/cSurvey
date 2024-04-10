@@ -26,6 +26,7 @@ Partial Class frmHolosItemEdit
         Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdSwapStation = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
@@ -99,6 +100,7 @@ Partial Class frmHolosItemEdit
         '
         'PanelControl2
         '
+        Me.PanelControl2.Controls.Add(Me.cmdSwapStation)
         Me.PanelControl2.Controls.Add(Me.LabelControl4)
         Me.PanelControl2.Controls.Add(Me.LabelControl3)
         Me.PanelControl2.Controls.Add(Me.LabelControl2)
@@ -118,6 +120,14 @@ Partial Class frmHolosItemEdit
         Me.PanelControl2.Controls.Add(Me.yrotate)
         resources.ApplyResources(Me.PanelControl2, "PanelControl2")
         Me.PanelControl2.Name = "PanelControl2"
+        '
+        'cmdSwapStation
+        '
+        Me.cmdSwapStation.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdSwapStation.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.cube_replace
+        Me.cmdSwapStation.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.cmdSwapStation, "cmdSwapStation")
+        Me.cmdSwapStation.Name = "cmdSwapStation"
         '
         'LabelControl4
         '
@@ -142,6 +152,9 @@ Partial Class frmHolosItemEdit
         'lblStation2
         '
         resources.ApplyResources(Me.lblStation2, "lblStation2")
+        Me.lblStation2.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.lblStation2.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.cube_red
+        Me.lblStation2.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.lblStation2.Name = "lblStation2"
         '
         'txtStation2
@@ -155,6 +168,9 @@ Partial Class frmHolosItemEdit
         'lblStation1
         '
         resources.ApplyResources(Me.lblStation1, "lblStation1")
+        Me.lblStation1.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.lblStation1.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.cube_green
+        Me.lblStation1.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.lblStation1.Name = "lblStation1"
         '
         'txtStation1
@@ -387,4 +403,5 @@ Partial Class frmHolosItemEdit
     Friend WithEvents barDockControlRight As DevExpress.XtraBars.BarDockControl
     Friend WithEvents btnLoadPreset As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnSavePreset As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents cmdSwapStation As DevExpress.XtraEditors.SimpleButton
 End Class

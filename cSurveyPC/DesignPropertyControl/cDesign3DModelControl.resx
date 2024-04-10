@@ -139,196 +139,16 @@
     <value>chkDesignPlot</value>
   </data>
   <data name="&gt;&gt;chkDesignPlot.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlot.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkDesignPlot.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="pnlDesignPlot.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSegmentSurface.Name" xml:space="preserve">
-    <value>chkDesignPlotShowSegmentSurface</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSegmentSurface.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSegmentSurface.Parent" xml:space="preserve">
-    <value>pnlDesignPlot</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSegmentSurface.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSegmentDuplicate.Name" xml:space="preserve">
-    <value>chkDesignPlotShowSegmentDuplicate</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSegmentDuplicate.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSegmentDuplicate.Parent" xml:space="preserve">
-    <value>pnlDesignPlot</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSegmentDuplicate.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotColorGray.Name" xml:space="preserve">
-    <value>chkDesignPlotColorGray</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotColorGray.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotColorGray.Parent" xml:space="preserve">
-    <value>pnlDesignPlot</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotColorGray.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;cboDesignPlotSegmentsPaintStyle.Name" xml:space="preserve">
-    <value>cboDesignPlotSegmentsPaintStyle</value>
-  </data>
-  <data name="&gt;&gt;cboDesignPlotSegmentsPaintStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboDesignPlotSegmentsPaintStyle.Parent" xml:space="preserve">
-    <value>pnlDesignPlot</value>
-  </data>
-  <data name="&gt;&gt;cboDesignPlotSegmentsPaintStyle.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;cboDesignPlotColorMode.Name" xml:space="preserve">
-    <value>cboDesignPlotColorMode</value>
-  </data>
-  <data name="&gt;&gt;cboDesignPlotColorMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboDesignPlotColorMode.Parent" xml:space="preserve">
-    <value>pnlDesignPlot</value>
-  </data>
-  <data name="&gt;&gt;cboDesignPlotColorMode.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;lblDesignPlotColorMode.Name" xml:space="preserve">
-    <value>lblDesignPlotColorMode</value>
-  </data>
-  <data name="&gt;&gt;lblDesignPlotColorMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblDesignPlotColorMode.Parent" xml:space="preserve">
-    <value>pnlDesignPlot</value>
-  </data>
-  <data name="&gt;&gt;lblDesignPlotColorMode.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowTrigpointText.Name" xml:space="preserve">
-    <value>chkDesignPlotShowTrigpointText</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowTrigpointText.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowTrigpointText.Parent" xml:space="preserve">
-    <value>pnlDesignPlot</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowTrigpointText.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowTrigpoint.Name" xml:space="preserve">
-    <value>chkDesignPlotShowTrigpoint</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowTrigpoint.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowTrigpoint.Parent" xml:space="preserve">
-    <value>pnlDesignPlot</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowTrigpoint.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowLRUD.Name" xml:space="preserve">
-    <value>chkDesignPlotShowLRUD</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowLRUD.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowLRUD.Parent" xml:space="preserve">
-    <value>pnlDesignPlot</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowLRUD.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSplayLabel.Name" xml:space="preserve">
-    <value>chkDesignPlotShowSplayLabel</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSplayLabel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSplayLabel.Parent" xml:space="preserve">
-    <value>pnlDesignPlot</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSplayLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSegment.Name" xml:space="preserve">
-    <value>chkDesignPlotShowSegment</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSegment.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSegment.Parent" xml:space="preserve">
-    <value>pnlDesignPlot</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSegment.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSplay.Name" xml:space="preserve">
-    <value>chkDesignPlotShowSplay</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSplay.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSplay.Parent" xml:space="preserve">
-    <value>pnlDesignPlot</value>
-  </data>
-  <data name="&gt;&gt;chkDesignPlotShowSplay.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;cboDesignPlotSplayStyle.Name" xml:space="preserve">
-    <value>cboDesignPlotSplayStyle</value>
-  </data>
-  <data name="&gt;&gt;cboDesignPlotSplayStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboDesignPlotSplayStyle.Parent" xml:space="preserve">
-    <value>pnlDesignPlot</value>
-  </data>
-  <data name="&gt;&gt;cboDesignPlotSplayStyle.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="pnlDesignPlot.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="pnlDesignPlot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 28</value>
-  </data>
-  <data name="pnlDesignPlot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>272, 277</value>
-  </data>
-  <data name="pnlDesignPlot.TabIndex" type="System.Int32, mscorlib">
-    <value>161</value>
-  </data>
-  <data name="&gt;&gt;pnlDesignPlot.Name" xml:space="preserve">
-    <value>pnlDesignPlot</value>
-  </data>
-  <data name="&gt;&gt;pnlDesignPlot.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlDesignPlot.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlDesignPlot.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="chkDesignPlotShowSegmentSurface.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -352,7 +172,7 @@
     <value>chkDesignPlotShowSegmentSurface</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSegmentSurface.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSegmentSurface.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -382,7 +202,7 @@
     <value>chkDesignPlotShowSegmentDuplicate</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSegmentDuplicate.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSegmentDuplicate.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -412,7 +232,7 @@
     <value>chkDesignPlotColorGray</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotColorGray.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotColorGray.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -426,7 +246,7 @@
   <data name="cboDesignPlotSegmentsPaintStyle.Location" type="System.Drawing.Point, System.Drawing">
     <value>94, 86</value>
   </data>
-  <assembly alias="DevExpress.Utils.v23.2" name="DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Utils.v23.2" name="DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="cboDesignPlotSegmentsPaintStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
     <value>Combo</value>
   </data>
@@ -452,7 +272,7 @@
     <value>cboDesignPlotSegmentsPaintStyle</value>
   </data>
   <data name="&gt;&gt;cboDesignPlotSegmentsPaintStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboDesignPlotSegmentsPaintStyle.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -485,7 +305,7 @@
     <value>cboDesignPlotColorMode</value>
   </data>
   <data name="&gt;&gt;cboDesignPlotColorMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboDesignPlotColorMode.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -515,7 +335,7 @@
     <value>lblDesignPlotColorMode</value>
   </data>
   <data name="&gt;&gt;lblDesignPlotColorMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignPlotColorMode.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -542,7 +362,7 @@
     <value>chkDesignPlotShowTrigpointText</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowTrigpointText.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowTrigpointText.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -569,7 +389,7 @@
     <value>chkDesignPlotShowTrigpoint</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowTrigpoint.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowTrigpoint.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -596,7 +416,7 @@
     <value>chkDesignPlotShowLRUD</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowLRUD.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowLRUD.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -626,7 +446,7 @@
     <value>chkDesignPlotShowSplayLabel</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSplayLabel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSplayLabel.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -653,7 +473,7 @@
     <value>chkDesignPlotShowSegment</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSegment.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSegment.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -680,7 +500,7 @@
     <value>chkDesignPlotShowSplay</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSplay.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPlotShowSplay.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
@@ -719,13 +539,37 @@
     <value>cboDesignPlotSplayStyle</value>
   </data>
   <data name="&gt;&gt;cboDesignPlotSplayStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboDesignPlotSplayStyle.Parent" xml:space="preserve">
     <value>pnlDesignPlot</value>
   </data>
   <data name="&gt;&gt;cboDesignPlotSplayStyle.ZOrder" xml:space="preserve">
     <value>12</value>
+  </data>
+  <data name="pnlDesignPlot.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="pnlDesignPlot.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 28</value>
+  </data>
+  <data name="pnlDesignPlot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>272, 277</value>
+  </data>
+  <data name="pnlDesignPlot.TabIndex" type="System.Int32, mscorlib">
+    <value>161</value>
+  </data>
+  <data name="&gt;&gt;pnlDesignPlot.Name" xml:space="preserve">
+    <value>pnlDesignPlot</value>
+  </data>
+  <data name="&gt;&gt;pnlDesignPlot.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlDesignPlot.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlDesignPlot.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="chkShowModel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -746,13 +590,13 @@
     <value>chkShowModel</value>
   </data>
   <data name="&gt;&gt;chkShowModel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkShowModel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkShowModel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="pnlModel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -779,7 +623,7 @@
     <value>chk3dPlotModelExtendedElevation</value>
   </data>
   <data name="&gt;&gt;chk3dPlotModelExtendedElevation.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chk3dPlotModelExtendedElevation.Parent" xml:space="preserve">
     <value>pnlModel</value>
@@ -809,7 +653,7 @@
     <value>chkModelColorGray</value>
   </data>
   <data name="&gt;&gt;chkModelColorGray.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkModelColorGray.Parent" xml:space="preserve">
     <value>pnlModel</value>
@@ -824,7 +668,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbl3dPlotModelMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 6</value>
+    <value>6, 9</value>
   </data>
   <data name="lbl3dPlotModelMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>28, 13</value>
@@ -839,7 +683,7 @@
     <value>lbl3dPlotModelMode</value>
   </data>
   <data name="&gt;&gt;lbl3dPlotModelMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lbl3dPlotModelMode.Parent" xml:space="preserve">
     <value>pnlModel</value>
@@ -878,7 +722,7 @@
     <value>cboModelMode</value>
   </data>
   <data name="&gt;&gt;cboModelMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboModelMode.Parent" xml:space="preserve">
     <value>pnlModel</value>
@@ -914,7 +758,7 @@
     <value>cboModelColoringMode</value>
   </data>
   <data name="&gt;&gt;cboModelColoringMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboModelColoringMode.Parent" xml:space="preserve">
     <value>pnlModel</value>
@@ -944,7 +788,7 @@
     <value>lbl3dPlotModelColoringMode</value>
   </data>
   <data name="&gt;&gt;lbl3dPlotModelColoringMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lbl3dPlotModelColoringMode.Parent" xml:space="preserve">
     <value>pnlModel</value>
@@ -971,13 +815,13 @@
     <value>pnlModel</value>
   </data>
   <data name="&gt;&gt;pnlModel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlModel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pnlModel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="chkShowChunks.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -998,12 +842,135 @@
     <value>chkShowChunks</value>
   </data>
   <data name="&gt;&gt;chkShowChunks.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkShowChunks.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkShowChunks.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlChunk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="chkChunkColorGray.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkChunkColorGray.Location" type="System.Drawing.Point, System.Drawing">
+    <value>94, 32</value>
+  </data>
+  <data name="CheckEdit2.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="CheckEdit2.Properties.Caption" xml:space="preserve">
+    <value>Grayscale</value>
+  </data>
+  <data name="chkChunkColorGray.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 20</value>
+  </data>
+  <data name="chkChunkColorGray.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;chkChunkColorGray.Name" xml:space="preserve">
+    <value>chkChunkColorGray</value>
+  </data>
+  <data name="&gt;&gt;chkChunkColorGray.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkChunkColorGray.Parent" xml:space="preserve">
+    <value>pnlChunk</value>
+  </data>
+  <data name="&gt;&gt;chkChunkColorGray.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cboChunkColoringMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>94, 6</value>
+  </data>
+  <data name="ComboBoxEdit2.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="ComboBoxEdit2.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
+    <value>Combo</value>
+  </data>
+  <data name="ComboBoxEdit2.Properties.Items" xml:space="preserve">
+    <value>Original texture</value>
+  </data>
+  <data name="ComboBoxEdit2.Properties.Items1" xml:space="preserve">
+    <value>Caves and branches</value>
+  </data>
+  <data name="cboChunkColoringMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 20</value>
+  </data>
+  <data name="cboChunkColoringMode.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cboChunkColoringMode.Name" xml:space="preserve">
+    <value>cboChunkColoringMode</value>
+  </data>
+  <data name="&gt;&gt;cboChunkColoringMode.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboChunkColoringMode.Parent" xml:space="preserve">
+    <value>pnlChunk</value>
+  </data>
+  <data name="&gt;&gt;cboChunkColoringMode.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="LabelControl2.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="LabelControl2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LabelControl2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 9</value>
+  </data>
+  <data name="LabelControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="LabelControl2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="LabelControl2.Text" xml:space="preserve">
+    <value>Color style:</value>
+  </data>
+  <data name="&gt;&gt;LabelControl2.Name" xml:space="preserve">
+    <value>LabelControl2</value>
+  </data>
+  <data name="&gt;&gt;LabelControl2.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;LabelControl2.Parent" xml:space="preserve">
+    <value>pnlChunk</value>
+  </data>
+  <data name="&gt;&gt;LabelControl2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pnlChunk.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="pnlChunk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 455</value>
+  </data>
+  <data name="pnlChunk.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="pnlChunk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>272, 57</value>
+  </data>
+  <data name="pnlChunk.TabIndex" type="System.Int32, mscorlib">
+    <value>173</value>
+  </data>
+  <data name="&gt;&gt;pnlChunk.Name" xml:space="preserve">
+    <value>pnlChunk</value>
+  </data>
+  <data name="&gt;&gt;pnlChunk.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlChunk.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlChunk.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -1013,7 +980,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>299, 454</value>
+    <value>299, 518</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>cDesign3DModelControl</value>

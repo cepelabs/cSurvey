@@ -219,4 +219,16 @@
   <data name="chkShowChunks.Properties.Caption" xml:space="preserve">
     <value>Blocchi</value>
   </data>
+  <data name="CheckEdit2.Properties.Caption" xml:space="preserve">
+    <value>Scala di grigi</value>
+  </data>
+  <data name="ComboBoxEdit2.Properties.Items" xml:space="preserve">
+    <value>Texture originale</value>
+  </data>
+  <data name="ComboBoxEdit2.Properties.Items1" xml:space="preserve">
+    <value>Grotte e rami</value>
+  </data>
+  <data name="LabelControl2.Text" xml:space="preserve">
+    <value>Stile colore:</value>
+  </data>
 </root>

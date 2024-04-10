@@ -8111,7 +8111,6 @@ Friend Class frmMain2
             With frmSRI
                 If .ShowDialog(Me) = vbOK Then
                     oMousePointer.Push(Cursors.WaitCursor)
-                    'Call oTools.SelectSegment(Nothing)
 
                     Dim bReplicateSession As Boolean = .chkSession.Checked
                     Dim bReplicateCave As Boolean = .chkCave.Checked
@@ -9410,25 +9409,23 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pTrigpointsTrigpointPrefix()
-        Dim oSelectedTrigpoints As List(Of String) = New List(Of String)
+        Dim oSelectedTrigpoints As List(Of cTrigPoint) = New List(Of cTrigPoint)
         If grdTrigPoints.Focused Then
-            Dim sTrigpoint As String
             For Each oTrigpoint As cTrigPoint In grdViewTrigpoints.GetSelectedRows.Select(Function(iRowHandle) DirectCast(grdViewTrigpoints.GetRow(iRowHandle), cTrigPoint)).ToList
-                sTrigpoint = oTrigpoint.Name
-                If Not oSelectedTrigpoints.Contains(sTrigpoint) Then
-                    Call oSelectedTrigpoints.Add(sTrigpoint)
+                'sTrigpoint = oTrigpoint.Name
+                If Not oSelectedTrigpoints.Contains(oTrigpoint) Then
+                    Call oSelectedTrigpoints.Add(oTrigpoint)
                 End If
             Next
         ElseIf grdSegments.Focused Then
-            Dim sTrigpoint As String
             For Each oSegment As cSegment In pSegmentsFromGridSelection()
-                sTrigpoint = oSegment.From
-                If Not oSelectedTrigpoints.Contains(sTrigpoint) Then
-                    Call oSelectedTrigpoints.Add(sTrigpoint)
+                Dim oTrigpoint As cTrigPoint = oSegment.GetFromTrigPoint
+                If Not oSelectedTrigpoints.Contains(oTrigpoint) Then
+                    Call oSelectedTrigpoints.Add(oTrigpoint)
                 End If
-                sTrigpoint = oSegment.To
-                If Not oSelectedTrigpoints.Contains(sTrigpoint) Then
-                    Call oSelectedTrigpoints.Add(sTrigpoint)
+                oTrigpoint = oSegment.GetToTrigPoint
+                If Not oSelectedTrigpoints.Contains(oTrigpoint) Then
+                    Call oSelectedTrigpoints.Add(oTrigpoint)
                 End If
             Next
         End If
@@ -9441,15 +9438,25 @@ Friend Class frmMain2
         'Try : iCurrentTrigpoint = grdTrigPoints.CurrentRow.Index : Catch : iCurrentTrigpoint = -1 : End Try
         Call pGetCurrentTools.SelectSegment(Nothing)
         Call pGetCurrentTools.SelectTrigpoint(Nothing)
+
+        bDisableTrigpointsChangeEvent = True
+        bDisableSegmentsChangeEvent = True
+
         Using frmPT As frmPrefixTrigPoints = New frmPrefixTrigPoints(oSurvey, oSelectedTrigpoints)
             With frmPT
                 If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    bDisableTrigpointsChangeEvent = False
+                    bDisableSegmentsChangeEvent = False
+
                     Call pSurveySegmentsRefresh()
                     Call pSurveyTrigpointsRefresh()
                     Call pSegmentSelect(oCurrentSegment, False, False)
                     Call pTrigPointSelect(oCurrentTrigpoint, False, False)
                     Call pSegmentsRefresh()
                     Call pTrigpointsRefresh()
+                Else
+                    bDisableTrigpointsChangeEvent = False
+                    bDisableSegmentsChangeEvent = False
                 End If
             End With
         End Using
@@ -13671,7 +13678,7 @@ Friend Class frmMain2
         o3DDesignSurface = New cDesignSurfaceControl
         Call pUIAppendDesign3DPropertyControl(o3DDesignSurface, 242)
         o3DDesignModel = New cDesign3DModelControl
-        Call pUIAppendDesign3DPropertyControl(o3DDesignModel, 458)
+        Call pUIAppendDesign3DPropertyControl(o3DDesignModel, 520)
         o3DAltitudeAmplification = New cDesign3DElevationFactor
         Call pUIAppendDesign3DPropertyControl(o3DAltitudeAmplification, 32)
 

@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+﻿<Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class cItemAttachmentPropertyControl
     Inherits cItemPropertyControl
 
@@ -39,7 +39,7 @@ Partial Class cItemAttachmentPropertyControl
         'cmdPropAttachmentBrowse
         '
         Me.cmdPropAttachmentBrowse.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.cmdPropAttachmentBrowse.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.open
+        Me.cmdPropAttachmentBrowse.ImageOptions.SvgImage = cSurveyPC.My.Resources.Resources.open
         Me.cmdPropAttachmentBrowse.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         resources.ApplyResources(Me.cmdPropAttachmentBrowse, "cmdPropAttachmentBrowse")
         Me.cmdPropAttachmentBrowse.Name = "cmdPropAttachmentBrowse"
@@ -67,7 +67,7 @@ Partial Class cItemAttachmentPropertyControl
         'cmdPropAttachmentOpen
         '
         Me.cmdPropAttachmentOpen.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.cmdPropAttachmentOpen.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.open2
+        Me.cmdPropAttachmentOpen.ImageOptions.SvgImage = cSurveyPC.My.Resources.Resources.open2
         Me.cmdPropAttachmentOpen.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         resources.ApplyResources(Me.cmdPropAttachmentOpen, "cmdPropAttachmentOpen")
         Me.cmdPropAttachmentOpen.Name = "cmdPropAttachmentOpen"

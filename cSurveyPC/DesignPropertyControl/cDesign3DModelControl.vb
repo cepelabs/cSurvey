@@ -42,6 +42,10 @@ Public Class cDesign3DModelControl
         chkModelColorGray.Checked = Me.Options.CenterlineColorGray
 
         chkShowChunks.Checked = Me.Options.DrawChunks
+        pnlChunk.Enabled = chkShowChunks.Checked
+        cboChunkColoringMode.SelectedIndex = Me.Options.DrawChunkColoringMode
+        chkChunkColorGray.Enabled = Me.Options.DrawChunkColoringMode = cOptions3D.ChunkColoringMode.CavesAndBranches
+        chkChunkColorGray.Checked = Me.Options.ChunkColorGray
 
         chk3dPlotModelExtendedElevation.Visible = bIsInDebug
     End Sub
@@ -194,8 +198,27 @@ Public Class cDesign3DModelControl
     Private Sub chkShowChunks_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowChunks.CheckedChanged
         If Not DisabledObjectProperty Then
             Me.Options.DrawChunks = chkShowChunks.Checked
+            pnlChunk.Enabled = Me.Options.DrawChunks
             Call MyBase.PropertyChanged("3DShowChunks")
             Call MyBase.DrawInvalidate(New cHolosViewer.cDrawInvalidateEventArgs(cHolosViewer.InvalidateType.Chunks))
         End If
     End Sub
+
+    Private Sub cboChunkColoringMode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboChunkColoringMode.SelectedIndexChanged
+        If Not DisabledObjectProperty Then
+            Me.Options.DrawChunkColoringMode = cboChunkColoringMode.SelectedIndex
+            chkChunkColorGray.Enabled = Me.Options.DrawChunkColoringMode = cOptions3D.ChunkColoringMode.CavesAndBranches
+            Call MyBase.PropertyChanged("3DChunkColoringMode")
+            Call MyBase.DrawInvalidate(New cHolosViewer.cDrawInvalidateEventArgs(cHolosViewer.InvalidateType.Chunks))
+        End If
+    End Sub
+
+    Private Sub chkChunkColorGray_CheckedChanged(sender As Object, e As EventArgs) Handles chkChunkColorGray.CheckedChanged
+        If Not DisabledObjectProperty Then
+            Me.Options.ChunkColorGray = chkChunkColorGray.Checked
+            Call MyBase.PropertyChanged("ChunkColorGray")
+            Call MyBase.DrawInvalidate(New cHolosViewer.cDrawInvalidateEventArgs(cHolosViewer.InvalidateType.Chunks))
+        End If
+    End Sub
+
 End Class

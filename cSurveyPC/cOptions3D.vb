@@ -16,7 +16,14 @@ Namespace cSurvey.Design
         Private bModelColorGray As Boolean
         Private bModelExtendedElevation As Boolean
 
-        Private bDrawChunks
+        Public Enum ChunkColoringMode
+            OriginalMaterial = 0
+            CavesAndBranches = 1
+        End Enum
+
+        Private bDrawChunks As Boolean
+        Private iDrawChunkColoringMode As ChunkColoringMode
+        Private bChunkColorGray As Boolean
 
         Private bDrawLinkedSurveys As Boolean
 
@@ -94,6 +101,31 @@ Namespace cSurvey.Design
             End Set
         End Property
 
+        Public Overridable Property ChunkColorGray As Boolean
+            Get
+                Return bChunkColorGray
+            End Get
+            Set(value As Boolean)
+                If bChunkColorGray <> value Then
+                    bChunkColorGray = value
+                    Call MyBase.Rebind()
+                    Call PropertyChanged("ChunkColorGray")
+                End If
+            End Set
+        End Property
+
+        Public Property DrawChunkColoringMode As ChunkColoringMode
+            Get
+                Return iDrawChunkColoringMode
+            End Get
+            Set(value As ChunkColoringMode)
+                If iDrawChunkColoringMode <> value Then
+                    iDrawChunkColoringMode = value
+                    Call PropertyChanged("DrawChunkColoringMode")
+                End If
+            End Set
+        End Property
+
         Public Property DrawModelColoringMode As ColoringMode
             Get
                 Return iDrawModelColoringMode
@@ -117,6 +149,9 @@ Namespace cSurvey.Design
             iDrawModelMode = RenderMode.SM_ROUGH_WALLS
             iDrawModelColoringMode = ColoringMode.CM_CAVEBRANCH
             bModelColorGray = False
+
+            iDrawChunkColoringMode = ChunkColoringMode.OriginalMaterial
+            bChunkColorGray = False
 
             bDrawChunks = True
         End Sub
@@ -142,7 +177,9 @@ Namespace cSurvey.Design
             Call oXMLOptions.SetAttribute("modelcolorgray", If(bModelColorGray, 1, 0))
 
             oXMLOptions.SetAttribute("drawchunks", If(bDrawChunks, 1, 0))
-            'If bDrawLinkedSurveys Then Call oXMLOptions.SetAttribute("drawlinkedsurveys", "1")
+            oXMLOptions.SetAttribute("drawchunkcoloringmode", iDrawChunkColoringMode.ToString("D"))
+            Call oXMLOptions.SetAttribute("chunkcolorgray", If(bChunkColorGray, 1, 0))
+
             Return oXMLOptions
         End Function
 
@@ -159,6 +196,8 @@ Namespace cSurvey.Design
             bModelColorGray = modXML.GetAttributeValue(Options, "modelcolorgray")
 
             bDrawChunks = modXML.GetAttributeValue(Options, "drawchunks")
+            iDrawChunkColoringMode = modXML.GetAttributeValue(Options, "drawchunkcoloringmode", ChunkColoringMode.OriginalMaterial)
+            bChunkColorGray = modXML.GetAttributeValue(Options, "chunkcolorgray")
             '---------------------
             'bDrawLinkedSurveys = modXML.GetAttributeValue(Options, "drawlinkedsurveys", 0)
         End Sub

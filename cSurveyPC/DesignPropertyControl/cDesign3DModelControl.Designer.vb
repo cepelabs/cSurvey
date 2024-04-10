@@ -47,6 +47,10 @@ Partial Class cDesign3DModelControl
         Me.cboModelColoringMode = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.lbl3dPlotModelColoringMode = New DevExpress.XtraEditors.LabelControl()
         Me.chkShowChunks = New DevExpress.XtraEditors.CheckEdit()
+        Me.pnlChunk = New DevExpress.XtraEditors.PanelControl()
+        Me.chkChunkColorGray = New DevExpress.XtraEditors.CheckEdit()
+        Me.cboChunkColoringMode = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         CType(Me.chkDesignPlot.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlDesignPlot, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlDesignPlot.SuspendLayout()
@@ -70,6 +74,10 @@ Partial Class cDesign3DModelControl
         CType(Me.cboModelMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboModelColoringMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkShowChunks.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlChunk, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlChunk.SuspendLayout()
+        CType(Me.chkChunkColorGray.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboChunkColoringMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'chkDesignPlot
@@ -274,10 +282,46 @@ Partial Class cDesign3DModelControl
         Me.chkShowChunks.Properties.AutoWidth = True
         Me.chkShowChunks.Properties.Caption = resources.GetString("chkShowChunks.Properties.Caption")
         '
+        'pnlChunk
+        '
+        resources.ApplyResources(Me.pnlChunk, "pnlChunk")
+        Me.pnlChunk.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlChunk.Controls.Add(Me.chkChunkColorGray)
+        Me.pnlChunk.Controls.Add(Me.cboChunkColoringMode)
+        Me.pnlChunk.Controls.Add(Me.LabelControl2)
+        Me.pnlChunk.Name = "pnlChunk"
+        '
+        'chkChunkColorGray
+        '
+        resources.ApplyResources(Me.chkChunkColorGray, "chkChunkColorGray")
+        Me.chkChunkColorGray.Name = "chkChunkColorGray"
+        Me.chkChunkColorGray.Properties.Appearance.Font = CType(resources.GetObject("CheckEdit2.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkChunkColorGray.Properties.Appearance.Options.UseFont = True
+        Me.chkChunkColorGray.Properties.AutoWidth = True
+        Me.chkChunkColorGray.Properties.Caption = resources.GetString("CheckEdit2.Properties.Caption")
+        '
+        'cboChunkColoringMode
+        '
+        resources.ApplyResources(Me.cboChunkColoringMode, "cboChunkColoringMode")
+        Me.cboChunkColoringMode.Name = "cboChunkColoringMode"
+        Me.cboChunkColoringMode.Properties.Appearance.Font = CType(resources.GetObject("ComboBoxEdit2.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.cboChunkColoringMode.Properties.Appearance.Options.UseFont = True
+        Me.cboChunkColoringMode.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("ComboBoxEdit2.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboChunkColoringMode.Properties.Items.AddRange(New Object() {resources.GetString("ComboBoxEdit2.Properties.Items"), resources.GetString("ComboBoxEdit2.Properties.Items1")})
+        Me.cboChunkColoringMode.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
+        'LabelControl2
+        '
+        Me.LabelControl2.Appearance.Font = CType(resources.GetObject("LabelControl2.Appearance.Font"), System.Drawing.Font)
+        Me.LabelControl2.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.LabelControl2, "LabelControl2")
+        Me.LabelControl2.Name = "LabelControl2"
+        '
         'cDesign3DModelControl
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.pnlChunk)
         Me.Controls.Add(Me.chkShowChunks)
         Me.Controls.Add(Me.pnlModel)
         Me.Controls.Add(Me.chkShowModel)
@@ -309,6 +353,11 @@ Partial Class cDesign3DModelControl
         CType(Me.cboModelMode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboModelColoringMode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkShowChunks.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlChunk, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlChunk.ResumeLayout(False)
+        Me.pnlChunk.PerformLayout()
+        CType(Me.chkChunkColorGray.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboChunkColoringMode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -337,4 +386,8 @@ Partial Class cDesign3DModelControl
     Friend WithEvents cboModelColoringMode As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents lbl3dPlotModelColoringMode As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chkShowChunks As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents pnlChunk As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents chkChunkColorGray As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents cboChunkColoringMode As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
 End Class

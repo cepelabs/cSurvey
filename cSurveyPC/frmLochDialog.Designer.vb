@@ -234,7 +234,7 @@ Partial Class frmLochDialog
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
-        Me.IconOptions.Image = Global.cSurveyPC.My.Resources.Resources.loch_LOCHICON
+        Me.IconOptions.Image = cSurveyPC.My.Resources.Resources.loch_LOCHICON
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmLochDialog"

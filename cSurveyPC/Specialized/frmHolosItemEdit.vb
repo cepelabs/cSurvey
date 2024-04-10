@@ -514,4 +514,18 @@ Public Class frmHolosItemEdit
             Call pUpdatePositionsTexts()
         End If
     End Sub
+
+    Private Sub cmdSwapStation_Click(sender As Object, e As EventArgs) Handles cmdSwapStation.Click
+        Dim oTmp As Point3D = oStation1Point
+        oStation1Point = oStation2Point
+        oStation2Point = oTmp
+
+        Dim sTmp As String = "" & txtStation1.EditValue
+        txtStation1.EditValue = txtStation2.EditValue
+        txtStation2.EditValue = sTmp
+
+        Call pStation1Changed()
+        Call pStation2Changed()
+        Call pUpdatePositionsTexts()
+    End Sub
 End Class

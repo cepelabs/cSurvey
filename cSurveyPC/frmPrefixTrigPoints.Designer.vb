@@ -23,8 +23,6 @@ Partial Class frmPrefixTrigPoints
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPrefixTrigPoints))
-        Me.ListBox1 = New DevExpress.XtraEditors.ListBoxControl()
-        Me.ListBox2 = New DevExpress.XtraEditors.ListBoxControl()
         Me.Button1 = New DevExpress.XtraEditors.SimpleButton()
         Me.Button2 = New DevExpress.XtraEditors.SimpleButton()
         Me.txtPrefix = New DevExpress.XtraEditors.TextEdit()
@@ -36,31 +34,19 @@ Partial Class frmPrefixTrigPoints
         Me.chkShowSplay = New DevExpress.XtraEditors.CheckEdit()
         Me.optRemove = New DevExpress.XtraEditors.CheckButton()
         Me.optAdd = New DevExpress.XtraEditors.CheckButton()
-        CType(Me.ListBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ListBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.listbox1 = New DevExpress.XtraGrid.GridControl()
+        Me.grdView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.col1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.listbox2 = New DevExpress.XtraGrid.GridControl()
+        Me.grdView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.col2 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.txtPrefix.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkShowSplay.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.listbox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.listbox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'ListBox1
-        '
-        resources.ApplyResources(Me.ListBox1, "ListBox1")
-        Me.ListBox1.Appearance.Font = CType(resources.GetObject("ListBox1.Appearance.Font"), System.Drawing.Font)
-        Me.ListBox1.Appearance.Options.UseFont = True
-        Me.ListBox1.ItemHeight = 14
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
-        Me.ListBox1.SortOrder = System.Windows.Forms.SortOrder.Ascending
-        '
-        'ListBox2
-        '
-        resources.ApplyResources(Me.ListBox2, "ListBox2")
-        Me.ListBox2.Appearance.Font = CType(resources.GetObject("ListBox2.Appearance.Font"), System.Drawing.Font)
-        Me.ListBox2.Appearance.Options.UseFont = True
-        Me.ListBox2.ItemHeight = 14
-        Me.ListBox2.Name = "ListBox2"
-        Me.ListBox2.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
-        Me.ListBox2.SortOrder = System.Windows.Forms.SortOrder.Ascending
         '
         'Button1
         '
@@ -128,11 +114,66 @@ Partial Class frmPrefixTrigPoints
         resources.ApplyResources(Me.optAdd, "optAdd")
         Me.optAdd.Name = "optAdd"
         '
+        'listbox1
+        '
+        resources.ApplyResources(Me.listbox1, "listbox1")
+        Me.listbox1.MainView = Me.grdView1
+        Me.listbox1.Name = "listbox1"
+        Me.listbox1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdView1})
+        '
+        'grdView1
+        '
+        Me.grdView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col1})
+        Me.grdView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus
+        Me.grdView1.GridControl = Me.listbox1
+        Me.grdView1.Name = "grdView1"
+        Me.grdView1.OptionsBehavior.Editable = False
+        Me.grdView1.OptionsBehavior.ReadOnly = True
+        Me.grdView1.OptionsCustomization.AllowGroup = False
+        Me.grdView1.OptionsSelection.MultiSelect = True
+        Me.grdView1.OptionsView.ShowColumnHeaders = False
+        Me.grdView1.OptionsView.ShowGroupPanel = False
+        Me.grdView1.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.col1, DevExpress.Data.ColumnSortOrder.Ascending)})
+        '
+        'col1
+        '
+        resources.ApplyResources(Me.col1, "col1")
+        Me.col1.FieldName = "Name"
+        Me.col1.Name = "col1"
+        '
+        'listbox2
+        '
+        resources.ApplyResources(Me.listbox2, "listbox2")
+        Me.listbox2.MainView = Me.grdView2
+        Me.listbox2.Name = "listbox2"
+        Me.listbox2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdView2})
+        '
+        'grdView2
+        '
+        Me.grdView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col2})
+        Me.grdView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus
+        Me.grdView2.GridControl = Me.listbox2
+        Me.grdView2.Name = "grdView2"
+        Me.grdView2.OptionsBehavior.Editable = False
+        Me.grdView2.OptionsBehavior.ReadOnly = True
+        Me.grdView2.OptionsCustomization.AllowGroup = False
+        Me.grdView2.OptionsSelection.MultiSelect = True
+        Me.grdView2.OptionsView.ShowColumnHeaders = False
+        Me.grdView2.OptionsView.ShowGroupPanel = False
+        Me.grdView2.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.col2, DevExpress.Data.ColumnSortOrder.Ascending)})
+        '
+        'col2
+        '
+        resources.ApplyResources(Me.col2, "col2")
+        Me.col2.FieldName = "Name"
+        Me.col2.Name = "col2"
+        '
         'frmPrefixTrigPoints
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
+        Me.Controls.Add(Me.listbox2)
         Me.Controls.Add(Me.txtPrefix)
         Me.Controls.Add(Me.lblPrefix)
         Me.Controls.Add(Me.optRemove)
@@ -144,22 +185,21 @@ Partial Class frmPrefixTrigPoints
         Me.Controls.Add(Me.cmdOk)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.ListBox2)
-        Me.Controls.Add(Me.ListBox1)
+        Me.Controls.Add(Me.listbox1)
         Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.addprefix
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmPrefixTrigPoints"
-        CType(Me.ListBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ListBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPrefix.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkShowSplay.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.listbox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.listbox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents ListBox1 As DevExpress.XtraEditors.ListBoxControl
-    Friend WithEvents ListBox2 As DevExpress.XtraEditors.ListBoxControl
     Friend WithEvents Button1 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents Button2 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents txtPrefix As DevExpress.XtraEditors.TextEdit
@@ -171,4 +211,10 @@ Partial Class frmPrefixTrigPoints
     Friend WithEvents chkShowSplay As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents optAdd As DevExpress.XtraEditors.CheckButton
     Friend WithEvents optRemove As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents listbox1 As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdView1 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents col1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents listbox2 As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdView2 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents col2 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

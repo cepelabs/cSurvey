@@ -77,6 +77,44 @@ Namespace cSurvey.Design.Items
             End If
         End Sub
 
+        Private oOriginalMaterialCache As Dictionary(Of GeometryModel3D, Material())
+
+
+        ''' <summary>
+        ''' Get model with provided paintoptions
+        ''' </summary>
+        ''' <param name="Options">Paintoptions with colors and other settings</param>
+        ''' <returns></returns>
+        Friend ReadOnly Property GetModel(Options As cOptions3D) As Model3DGroup
+            Get
+                Dim oModel As Model3DGroup = GetModel()
+
+                If Options.DrawChunkColoringMode = cOptions3D.ChunkColoringMode.CavesAndBranches Then
+                    For Each oSubModel As GeometryModel3D In oModel.Children
+                        Dim oColor As System.Drawing.Color = MyBase.Survey.Properties.CaveInfos.GetColor(MyBase.Cave, MyBase.Branch, System.Drawing.Color.LightGray)
+                        If Options.ChunkColorGray Then
+                            oColor = modPaint.GrayColor(oColor)
+                        End If
+                        oSubModel.Material = MaterialHelper.CreateMaterial(oColor.ToMediaColor)
+                        oSubModel.BackMaterial = oSubModel.Material
+                    Next
+                Else
+                    For Each oSubModel As GeometryModel3D In oModel.Children
+                        Dim oMaterials As Material() = oOriginalMaterialCache(oSubModel)
+                        oSubModel.Material = oMaterials(0)
+                        oSubModel.BackMaterial = oMaterials(1)
+                    Next
+                End If
+
+                Return oModel
+            End Get
+        End Property
+
+
+        ''' <summary>
+        ''' Get last rendered model
+        ''' </summary>
+        ''' <returns></returns>
         Friend ReadOnly Property GetModel As Model3DGroup
             Get
                 If oModel Is Nothing Then
@@ -92,6 +130,11 @@ Namespace cSurvey.Design.Items
                         Call pProcessMaterial(oChildModel.BackMaterial)
                     Next
                     My.Computer.FileSystem.DeleteDirectory(sTempPath, FileIO.DeleteDirectoryOption.DeleteAllContents)
+
+                    oOriginalMaterialCache = New Dictionary(Of GeometryModel3D, Material())
+                    For Each oSubModel As GeometryModel3D In oModel.Children
+                        oOriginalMaterialCache.Add(oSubModel, {oSubModel.Material, oSubModel.BackMaterial})
+                    Next
                 End If
                 Return oModel
             End Get

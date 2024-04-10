@@ -139,7 +139,7 @@
     <value>lblPropChunk</value>
   </data>
   <data name="&gt;&gt;lblPropChunk.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropChunk.Parent" xml:space="preserve">
     <value>$this</value>
@@ -184,7 +184,7 @@
     <value>cmdPropModelPreview</value>
   </data>
   <data name="&gt;&gt;cmdPropModelPreview.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPropModelPreview.Parent" xml:space="preserve">
     <value>$this</value>
@@ -192,10 +192,10 @@
   <data name="&gt;&gt;cmdPropModelPreview.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <assembly alias="DevExpress.Data.v23.2" name="DevExpress.Data.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Data.v23.2" name="DevExpress.Data.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="cmdPropModelEdit.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIzLjEsIFZlcnNpb249MjMuMS41
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIzLjIsIFZlcnNpb249MjMuMi41
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
         dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAHQCAAAC77u/
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
@@ -230,7 +230,7 @@
     <value>cmdPropModelEdit</value>
   </data>
   <data name="&gt;&gt;cmdPropModelEdit.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPropModelEdit.Parent" xml:space="preserve">
     <value>$this</value>
@@ -241,7 +241,7 @@
   <data name="grdChunkInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <assembly alias="DevExpress.XtraVerticalGrid.v23.2" name="DevExpress.XtraVerticalGrid.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.XtraVerticalGrid.v23.2" name="DevExpress.XtraVerticalGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="grdChunkInfo.LayoutStyle" type="DevExpress.XtraVerticalGrid.LayoutViewStyle, DevExpress.XtraVerticalGrid.v23.2">
     <value>SingleRecordView</value>
   </data>
@@ -249,7 +249,7 @@
     <value>7, 140</value>
   </data>
   <data name="grdChunkInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>491, 144</value>
+    <value>491, 186</value>
   </data>
   <data name="grdChunkInfo.TabIndex" type="System.Int32, mscorlib">
     <value>194</value>
@@ -258,7 +258,7 @@
     <value>grdChunkInfo</value>
   </data>
   <data name="&gt;&gt;grdChunkInfo.Type" xml:space="preserve">
-    <value>DevExpress.XtraVerticalGrid.VGridControl, DevExpress.XtraVerticalGrid.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraVerticalGrid.VGridControl, DevExpress.XtraVerticalGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;grdChunkInfo.Parent" xml:space="preserve">
     <value>$this</value>
@@ -273,7 +273,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>506, 292</value>
+    <value>506, 334</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>cItemChunk3DPropertyControl</value>

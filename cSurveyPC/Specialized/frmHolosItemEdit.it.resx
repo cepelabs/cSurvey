@@ -150,4 +150,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Aggiungi blocco:</value>
   </data>
+  <data name="cmdSwapStation.ToolTip" xml:space="preserve">
+    <value>Scambia capisaldi</value>
+  </data>
 </root>

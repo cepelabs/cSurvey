@@ -12,6 +12,7 @@ Imports DevExpress.XtraEditors
 Imports DevExpress.XtraBars.Ribbon
 Imports System.Reflection
 Imports System.ComponentModel
+Imports DevExpress.Utils.Extensions
 'Imports OfficeOpenXml.FormulaParsing.Excel.Functions.Text
 
 Public Module modDevExpress
@@ -37,7 +38,7 @@ Public Module modDevExpress
 
         Public Overrides ReadOnly Property Description As String
             Get
-                If sdescription Is Nothing Then
+                If sDescription Is Nothing Then
                     Return MyBase.Description
                 Else
                     Return sDescription
@@ -160,6 +161,16 @@ Public Module modDevExpress
         Next
         Group.Visible = Visible
     End Sub
+
+    <Extension>
+    Public Function GetSelectedAndFocusedRow(Grid As DevExpress.XtraGrid.Views.Grid.GridView) As Integer()
+        Dim oResults As List(Of Integer) = New List(Of Integer)
+        oResults.AddRange(Grid.GetSelectedRows)
+        If Not oResults.Contains(Grid.FocusedRowHandle) Then
+            Call oResults.Add(Grid.FocusedRowHandle)
+        End If
+        Return oResults.ToArray
+    End Function
 
     <Extension>
     Public Function FullFocusRow(Grid As DevExpress.XtraGrid.Views.Grid.GridView, RowHandle As Integer) As Boolean

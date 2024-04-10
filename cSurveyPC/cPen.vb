@@ -1047,7 +1047,7 @@ Namespace cSurvey.Design
                                 bUseBrush = True
                         End Select
                         'Call cClipartOnPath.ClipartOnPath(Graphics, Path)
-                        Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, oTmpClipart, iDecorationAlignment, sDecorationSpacePercentage, sDecorationDistancePercentage, oColor, oColor, sDecorationScale * sZoomFactor)
+                        Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, oTmpClipart, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, sDecorationDistancePercentage, oColor, oColor, sDecorationScale * sZoomFactor)
                             If Not oPath Is Nothing Then
                                 Call Cache.AddBorder(oPath, If(bUsePen, oClipartPen, Nothing), Nothing, If(bUseBrush, oClipartBrush, Nothing))
                             End If

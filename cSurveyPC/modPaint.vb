@@ -18,8 +18,19 @@ Imports System.Windows.Media.Media3D
 Module modPaint
     Public Const sMeterToPixelScale As Decimal = 1.0 / 3779.52768
 
+    <Extension>
+    Public Function ToDrawingColor(MediaColor As Windows.Media.Color) As Drawing.Color
+        Return System.Drawing.Color.FromArgb(MediaColor.A, MediaColor.R, MediaColor.G, MediaColor.B)
+    End Function
+
+    <Extension>
     Public Function MediaColorToDrawingColor(MediaColor As Windows.Media.Color) As Drawing.Color
         Return System.Drawing.Color.FromArgb(MediaColor.A, MediaColor.R, MediaColor.G, MediaColor.B)
+    End Function
+
+    <Extension>
+    Public Function ToMediaColor(Color As Drawing.Color) As Windows.Media.Color
+        Return Windows.Media.Color.FromArgb(Color.A, Color.R, Color.G, Color.B)
     End Function
 
     Public Function DrawingColorToMediaColor(Color As Drawing.Color) As Windows.Media.Color

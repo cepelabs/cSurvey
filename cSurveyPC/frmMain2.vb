@@ -5801,6 +5801,7 @@ Friend Class frmMain2
         End If
         If iCurrentDesignType <> cIDesign.cDesignTypeEnum.Profile Then
             RibbonControl.Manager.BeginUpdate()
+            bDisablePaintEvent = True
 
             Call pToolsEnd()
             If iCurrentDesignType >= 0 Then
@@ -5949,6 +5950,7 @@ Friend Class frmMain2
             Call pSurveyMainPropertiesPanelsRefresh()
 
             Call pRebindDesignBar()
+            bDisablePaintEvent = False
             Call pSurveyRedraw()
 
             Call pObjectPropertyLoad()
@@ -5969,6 +5971,7 @@ Friend Class frmMain2
         End If
         If iCurrentDesignType <> cIDesign.cDesignTypeEnum.Plan Then
             RibbonControl.Manager.BeginUpdate()
+            bDisablePaintEvent = True
 
             Call pToolsEnd()
             If iCurrentDesignType >= 0 Then
@@ -6116,6 +6119,7 @@ Friend Class frmMain2
             Call pSurveyMainPropertiesPanelsRefresh()
 
             Call pRebindDesignBar()
+            bDisablePaintEvent = False
             Call pSurveyRedraw()
 
             Call pObjectPropertyLoad()
@@ -9056,7 +9060,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pSurveyDraw(ByVal Graphics As Graphics, Optional DisableDrawSelection As Boolean = False)
-        If Not bDrawing Then
+        If Not bDisablePaintEvent AndAlso Not bDrawing Then
             bDrawing = True
             Call oMousePointer.Push(Cursors.AppStarting)
 

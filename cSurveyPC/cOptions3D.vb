@@ -6,6 +6,7 @@ Namespace cSurvey.Design
     Public Class cOptions3D
         Inherits cOptionsCenterline
         Implements cIOptionLinkedSurveys
+        Implements cIModelOptions3D
 
         Private oSurvey As cSurvey
         Private oSurfaceOptions As cSurface3DOptions
@@ -15,6 +16,8 @@ Namespace cSurvey.Design
         Private iDrawModelColoringMode As DotNetCaveModel.ColoringMode
         Private bModelColorGray As Boolean
         Private bModelExtendedElevation As Boolean
+
+        Private iChunkCutMode As cIModelOptions3D.CutModeEnum
 
         Public Enum ChunkColoringMode
             OriginalMaterial = 0
@@ -47,6 +50,19 @@ Namespace cSurvey.Design
                 If bDrawLinkedSurveys <> value Then
                     bDrawLinkedSurveys = value
                     Call PropertyChanged("DrawLinkedSurveys")
+                End If
+            End Set
+        End Property
+
+        Public Property ChunkCutMode As cIModelOptions3D.CutModeEnum Implements cIModelOptions3D.CutMode
+            Get
+                Return iChunkCutMode
+            End Get
+            Set(value As cIModelOptions3D.CutModeEnum)
+                If iChunkCutMode <> value Then
+                    iChunkCutMode = value
+                    Call MyBase.Rebind()
+                    Call PropertyChanged("CutMode")
                 End If
             End Set
         End Property
@@ -152,6 +168,7 @@ Namespace cSurvey.Design
 
             iDrawChunkColoringMode = ChunkColoringMode.OriginalMaterial
             bChunkColorGray = False
+            iChunkCutMode = cIModelOptions3D.CutModeEnum.None
 
             bDrawChunks = True
         End Sub
@@ -171,14 +188,16 @@ Namespace cSurvey.Design
         Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLOptions As XmlElement = MyBase.SaveTo(File, Document, Parent)
             Call oSurfaceOptions.SaveTo(File, Document, oXMLOptions)
-            oXMLOptions.SetAttribute("drawmodel", If(bDrawModel, 1, 0))
-            oXMLOptions.SetAttribute("drawmodelmode", iDrawModelMode.ToString("D"))
-            oXMLOptions.SetAttribute("drawmodelcoloringmode", iDrawModelColoringMode.ToString("D"))
+            Call oXMLOptions.SetAttribute("drawmodel", If(bDrawModel, 1, 0))
+            Call oXMLOptions.SetAttribute("drawmodelmode", iDrawModelMode.ToString("D"))
+            Call oXMLOptions.SetAttribute("drawmodelcoloringmode", iDrawModelColoringMode.ToString("D"))
             Call oXMLOptions.SetAttribute("modelcolorgray", If(bModelColorGray, 1, 0))
 
-            oXMLOptions.SetAttribute("drawchunks", If(bDrawChunks, 1, 0))
-            oXMLOptions.SetAttribute("drawchunkcoloringmode", iDrawChunkColoringMode.ToString("D"))
+            Call oXMLOptions.SetAttribute("drawchunks", If(bDrawChunks, 1, 0))
+            Call oXMLOptions.SetAttribute("drawchunkcoloringmode", iDrawChunkColoringMode.ToString("D"))
             Call oXMLOptions.SetAttribute("chunkcolorgray", If(bChunkColorGray, 1, 0))
+
+            Call oXMLOptions.SetAttribute("chunkcutmode", iChunkCutMode.ToString("D"))
 
             Return oXMLOptions
         End Function
@@ -198,6 +217,8 @@ Namespace cSurvey.Design
             bDrawChunks = modXML.GetAttributeValue(Options, "drawchunks")
             iDrawChunkColoringMode = modXML.GetAttributeValue(Options, "drawchunkcoloringmode", ChunkColoringMode.OriginalMaterial)
             bChunkColorGray = modXML.GetAttributeValue(Options, "chunkcolorgray")
+
+            iChunkCutMode = modXML.GetAttributeValue(Options, "chunkcutmode", cIModelOptions3D.CutModeEnum.None)
             '---------------------
             'bDrawLinkedSurveys = modXML.GetAttributeValue(Options, "drawlinkedsurveys", 0)
         End Sub

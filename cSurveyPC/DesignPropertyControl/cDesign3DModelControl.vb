@@ -46,6 +46,7 @@ Public Class cDesign3DModelControl
         cboChunkColoringMode.SelectedIndex = Me.Options.DrawChunkColoringMode
         chkChunkColorGray.Enabled = Me.Options.DrawChunkColoringMode = cOptions3D.ChunkColoringMode.CavesAndBranches
         chkChunkColorGray.Checked = Me.Options.ChunkColorGray
+        cboChunkCutMode.SelectedIndex = Me.Options.ChunkCutMode
 
         chk3dPlotModelExtendedElevation.Visible = bIsInDebug
     End Sub
@@ -221,4 +222,11 @@ Public Class cDesign3DModelControl
         End If
     End Sub
 
+    Private Sub cboChunkCutMode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboChunkCutMode.SelectedIndexChanged
+        If Not DisabledObjectProperty Then
+            Me.Options.ChunkCutMode = cboChunkCutMode.SelectedIndex
+            Call MyBase.PropertyChanged("ChunkCutMode")
+            Call MyBase.DrawInvalidate(New cHolosViewer.cDrawInvalidateEventArgs(cHolosViewer.InvalidateType.Chunks))
+        End If
+    End Sub
 End Class

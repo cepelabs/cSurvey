@@ -37,6 +37,16 @@ Namespace cSurvey.Design
         Sub MapInvalidate()
         Event OnMapInvalidate(Sender As Object, e As EventArgs)
     End Interface
+
+    Public Interface cIModelOptions3D
+        Enum CutModeEnum
+            None = 0
+            RemoveCeiling = 1
+        End Enum
+
+        Property CutMode As CutModeEnum
+    End Interface
+
     Public Interface cIOptionLinkedSurveys
         Inherits cIOptions
         Property DrawLinkedSurveys As Boolean

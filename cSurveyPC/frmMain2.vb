@@ -4217,7 +4217,8 @@ Friend Class frmMain2
                     oPropCategoryAndProperties.Visible = False
                     oPropCrossSectionMarker.Visible = False
 
-                    oPropVisibility.Visible = False
+                    oPropVisibility.Rebind(oCurrentItem)
+                    oPropVisibility.Visible = True
                     oPropLineType.Visible = False
                     oPropPointLineType.Visible = False
 
@@ -4365,6 +4366,7 @@ Friend Class frmMain2
                 oPropScaleItems.Visible = False
                 oPropCompassItems.Visible = False
 
+                oPropVisibility.Rebind(oCurrentItem)
                 oPropVisibility.Visible = True
                 oPropLineType.Visible = False
                 oPropPointLineType.Visible = False
@@ -5663,7 +5665,8 @@ Friend Class frmMain2
             chkViewShowStation.Checked = oCurrentOptions.DrawPoints
             chkViewShowStationLabel.Checked = oCurrentOptions.ShowPointText
 
-            oDockLevels.Enabled = False
+            Call oDockLevels.SetDesign(oCurrentDesign, pGetCurrentDesignTools, oCurrentOptions)
+            oDockLevels.Enabled = True
             oDockText.Enabled = False
             oDockJoinPoints.Enabled = False
             oDockClipart.Enabled = False
@@ -5738,13 +5741,21 @@ Friend Class frmMain2
             oVSB.Visible = False
             oHSB.Visible = False
 
-            grpDesignLayers.SetVisible(False)
+            grpDesignLayers.SetVisible(True)
             grpDesignCommands.Visible = False
             grpDesignBindings.SetVisible(False)
 
+            btnLayer_Base.Visibility = BarItemVisibility.Always
+            btnLayer_Soil.Visibility = BarItemVisibility.Never
+            btnLayer_Water.Visibility = BarItemVisibility.Never
+            btnLayer_TerrainLevel.Visibility = BarItemVisibility.Never
+            btnLayer_Rocks.Visibility = BarItemVisibility.Never
+            btnLayer_Borders.Visibility = BarItemVisibility.Never
+            btnLayer_Signs.Visibility = BarItemVisibility.Never
             If pGetCurrentDesignTools.CurrentLayer Is Nothing Then
                 Call pGetCurrentDesignTools.SelectLayer(oSurvey.ThreeD.Layers(cLayers3D.Layer3DTypeEnum.Chunks))
             Else
+
                 btnLayer_Base.Checked = True
             End If
 
@@ -5897,6 +5908,13 @@ Friend Class frmMain2
             grpDesignCommands.Visible = True
             grpDesignBindings.SetVisible(True)
 
+            btnLayer_Base.Visibility = BarItemVisibility.Always
+            btnLayer_Soil.Visibility = BarItemVisibility.Always
+            btnLayer_Water.Visibility = BarItemVisibility.Never
+            btnLayer_TerrainLevel.Visibility = BarItemVisibility.Always
+            btnLayer_Rocks.Visibility = BarItemVisibility.Always
+            btnLayer_Borders.Visibility = BarItemVisibility.Always
+            btnLayer_Signs.Visibility = BarItemVisibility.Always
             If pGetCurrentDesignTools.CurrentLayer Is Nothing Then
                 Call pGetCurrentDesignTools.SelectLayer(oSurvey.Profile.Layers(cLayers.LayerTypeEnum.Base))
             Else
@@ -6067,6 +6085,13 @@ Friend Class frmMain2
             grpDesignCommands.Visible = True
             grpDesignBindings.SetVisible(True)
 
+            btnLayer_Base.Visibility = BarItemVisibility.Always
+            btnLayer_Soil.Visibility = BarItemVisibility.Always
+            btnLayer_Water.Visibility = BarItemVisibility.Never
+            btnLayer_TerrainLevel.Visibility = BarItemVisibility.Always
+            btnLayer_Rocks.Visibility = BarItemVisibility.Always
+            btnLayer_Borders.Visibility = BarItemVisibility.Always
+            btnLayer_Signs.Visibility = BarItemVisibility.Always
             If pGetCurrentDesignTools.CurrentLayer Is Nothing Then
                 Call pGetCurrentDesignTools.SelectLayer(oSurvey.Plan.Layers(cLayers.LayerTypeEnum.Base))
             Else
@@ -13682,7 +13707,7 @@ Friend Class frmMain2
         o3DDesignSurface = New cDesignSurfaceControl
         Call pUIAppendDesign3DPropertyControl(o3DDesignSurface, 242)
         o3DDesignModel = New cDesign3DModelControl
-        Call pUIAppendDesign3DPropertyControl(o3DDesignModel, 520)
+        Call pUIAppendDesign3DPropertyControl(o3DDesignModel, 544)
         o3DAltitudeAmplification = New cDesign3DElevationFactor
         Call pUIAppendDesign3DPropertyControl(o3DAltitudeAmplification, 32)
 
@@ -16738,6 +16763,8 @@ Friend Class frmMain2
                 btnDesignHighlight0.Checked = Not oCurrentOptions.HighlightCurrentCave
                 btnDesignHighlight1.Checked = oCurrentOptions.HighlightCurrentCave
                 Call pSurveyHighlightCurrentCave(True)
+            Case "DrawChunks"
+                o3DDesignModel.chkShowChunks.Checked = DirectCast(oCurrentOptions, cOptions3D).DrawChunks
         End Select
     End Sub
 

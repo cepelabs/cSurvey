@@ -10,6 +10,12 @@ Namespace cSurvey.Design.Items
 
         Private iLineType As cIItemLine.LineTypeEnum
 
+        Public Overrides ReadOnly Property HaveAffinity As Boolean
+            Get
+                Return True
+            End Get
+        End Property
+
         Public Overrides ReadOnly Property CanBeCopied As Boolean
             Get
                 Return True

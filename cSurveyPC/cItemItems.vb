@@ -17,6 +17,18 @@ Namespace cSurvey.Design.Items
         Private oItems As List(Of cItem)
         Private WithEvents oDataProperties As Data.cDataProperties
 
+        Public Overrides ReadOnly Property HaveAffinity As Boolean
+            Get
+                For Each oItem As cItem In oItems
+                    If oItem.HaveAffinity Then
+                        'if only one item haveaffinity...return true
+                        Return True
+                    End If
+                Next
+                Return False
+            End Get
+        End Property
+
         Public Overrides ReadOnly Property CanBeCopied As Boolean
             Get
                 For Each oItem As cItem In oItems

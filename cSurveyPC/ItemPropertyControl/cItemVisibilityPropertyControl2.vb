@@ -17,18 +17,18 @@ Friend Class cItemVisibilityPropertyControl2
         chkPropVisibleInDesign.Enabled = Item.CanBeHiddenInDesign
         chkPropVisibleInPreview.Enabled = Item.CanBeHiddenInPreview
 
-        If TypeOf Item Is Items.cItemSegment Then
-            chkAffinityDesign.Enabled = False
-            chkAffinityExtra.Enabled = False
-            chkPropVisibleByProfile.Enabled = False
-            chkPropVisibleByScale.Enabled = False
-        Else
+        If Item.haveAffinity Then
             chkAffinityDesign.Checked = Item.DesignAffinity = cItem.DesignAffinityEnum.Design
             chkAffinityExtra.Checked = Item.DesignAffinity = cItem.DesignAffinityEnum.Extra
             chkAffinityDesign.Enabled = True
             chkAffinityExtra.Enabled = True
             chkPropVisibleByProfile.Enabled = True
             chkPropVisibleByScale.Enabled = True
+        Else
+            chkAffinityDesign.Enabled = False
+            chkAffinityExtra.Enabled = False
+            chkPropVisibleByProfile.Enabled = False
+            chkPropVisibleByScale.Enabled = False
         End If
     End Sub
 

@@ -43,6 +43,12 @@ Namespace cSurvey.Design.Items
 
         Private sMarkerPosition As Single
 
+        Public Overrides ReadOnly Property HaveAffinity As Boolean
+            Get
+                Return True
+            End Get
+        End Property
+
         Friend Sub RebindCrossSection(CrossSection As cDesignCrossSection)
             oCrossSection = CrossSection
             Call pCalculate()

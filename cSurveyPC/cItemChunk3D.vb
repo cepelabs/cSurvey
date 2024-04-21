@@ -22,9 +22,19 @@ Namespace cSurvey.Design.Items
         Private oModel As Model3DGroup
         Private oModelTransform As cTransform3D
 
+        Private oCachedModel As Model3DGroup
+
+        Private iModelCutMode As cIModelOptions3D.CutModeEnum
+
         Public Function IsValid() As Boolean
             Return oStations.IsValid
         End Function
+
+        Public Overrides ReadOnly Property HaveAffinity As Boolean
+            Get
+                Return False
+            End Get
+        End Property
 
         Public ReadOnly Property ModelTransform() As cTransform3D
             Get
@@ -79,6 +89,10 @@ Namespace cSurvey.Design.Items
 
         Private oOriginalMaterialCache As Dictionary(Of GeometryModel3D, Material())
 
+        Private Sub pResetModelCache()
+            oCachedModel = Nothing
+            If oOriginalMaterialCache IsNot Nothing Then Call oOriginalMaterialCache.Clear()
+        End Sub
 
         ''' <summary>
         ''' Get model with provided paintoptions
@@ -87,10 +101,20 @@ Namespace cSurvey.Design.Items
         ''' <returns></returns>
         Friend ReadOnly Property GetModel(Options As cOptions3D) As Model3DGroup
             Get
-                Dim oModel As Model3DGroup = GetModel()
+                If Options.ChunkCutMode <> iModelCutMode Then
+                    Call pResetModelCache()
+                    iModelCutMode = Options.ChunkCutMode
+                End If
+                If oCachedModel Is Nothing Then
+                    oCachedModel = GetModel().Clone()
+                    oOriginalMaterialCache = New Dictionary(Of GeometryModel3D, Material())
+                    For Each oSubModel As GeometryModel3D In oCachedModel.Children
+                        oOriginalMaterialCache.Add(oSubModel, {oSubModel.Material, oSubModel.BackMaterial})
+                    Next
+                End If
 
                 If Options.DrawChunkColoringMode = cOptions3D.ChunkColoringMode.CavesAndBranches Then
-                    For Each oSubModel As GeometryModel3D In oModel.Children
+                    For Each oSubModel As GeometryModel3D In oCachedModel.Children
                         Dim oColor As System.Drawing.Color = MyBase.Survey.Properties.CaveInfos.GetColor(MyBase.Cave, MyBase.Branch, System.Drawing.Color.LightGray)
                         If Options.ChunkColorGray Then
                             oColor = modPaint.GrayColor(oColor)
@@ -99,14 +123,14 @@ Namespace cSurvey.Design.Items
                         oSubModel.BackMaterial = oSubModel.Material
                     Next
                 Else
-                    For Each oSubModel As GeometryModel3D In oModel.Children
+                    For Each oSubModel As GeometryModel3D In oCachedModel.Children
                         Dim oMaterials As Material() = oOriginalMaterialCache(oSubModel)
                         oSubModel.Material = oMaterials(0)
                         oSubModel.BackMaterial = oMaterials(1)
                     Next
                 End If
 
-                Return oModel
+                Return oCachedModel
             End Get
         End Property
 
@@ -115,7 +139,7 @@ Namespace cSurvey.Design.Items
         ''' Get last rendered model
         ''' </summary>
         ''' <returns></returns>
-        Friend ReadOnly Property GetModel As Model3DGroup
+        Friend ReadOnly Property GetModel() As Model3DGroup
             Get
                 If oModel Is Nothing Then
                     Dim sTempPath As String = oModelFiles.WriteAll(IO.Path.GetTempPath)
@@ -131,10 +155,10 @@ Namespace cSurvey.Design.Items
                     Next
                     My.Computer.FileSystem.DeleteDirectory(sTempPath, FileIO.DeleteDirectoryOption.DeleteAllContents)
 
-                    oOriginalMaterialCache = New Dictionary(Of GeometryModel3D, Material())
-                    For Each oSubModel As GeometryModel3D In oModel.Children
-                        oOriginalMaterialCache.Add(oSubModel, {oSubModel.Material, oSubModel.BackMaterial})
-                    Next
+                    'oOriginalMaterialCache = New Dictionary(Of GeometryModel3D, Material())
+                    'For Each oSubModel As GeometryModel3D In oModel.Children
+                    '    oOriginalMaterialCache.Add(oSubModel, {oSubModel.Material, oSubModel.BackMaterial})
+                    'Next
                 End If
                 Return oModel
             End Get
@@ -195,15 +219,6 @@ Namespace cSurvey.Design.Items
             End Set
         End Property
 
-        Public Overrides Property HiddenInDesign As Boolean
-            Get
-                Return False
-            End Get
-            Set(ByVal value As Boolean)
-
-            End Set
-        End Property
-
         Public Overrides Property HiddenInPreview As Boolean
             Get
                 Return False
@@ -221,7 +236,7 @@ Namespace cSurvey.Design.Items
 
         Public Overrides ReadOnly Property CanBeHiddenInPreview As Boolean
             Get
-                Return True
+                Return False
             End Get
         End Property
 

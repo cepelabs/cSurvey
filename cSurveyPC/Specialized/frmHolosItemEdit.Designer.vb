@@ -155,6 +155,7 @@ Partial Class frmHolosItemEdit
         Me.lblStation2.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
         Me.lblStation2.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.cube_red
         Me.lblStation2.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.lblStation2.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None
         Me.lblStation2.Name = "lblStation2"
         '
         'txtStation2
@@ -171,6 +172,7 @@ Partial Class frmHolosItemEdit
         Me.lblStation1.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
         Me.lblStation1.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.cube_green
         Me.lblStation1.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.lblStation1.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None
         Me.lblStation1.Name = "lblStation1"
         '
         'txtStation1

@@ -6,6 +6,12 @@ Namespace cSurvey.Design.Items
 
         Private oMarkedPoint As cMarkedDesktopPoint
 
+        Public Overrides ReadOnly Property HaveAffinity As Boolean
+            Get
+                Return False
+            End Get
+        End Property
+
         Public Overrides ReadOnly Property CanBeCopied As Boolean
             Get
                 Return False

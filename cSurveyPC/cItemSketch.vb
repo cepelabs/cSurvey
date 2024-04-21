@@ -230,6 +230,12 @@ Namespace cSurvey.Design.Items
         Private bManualAdjust As Boolean
         Private bMorphingDisabled As Boolean
 
+        Public Overrides ReadOnly Property HaveAffinity As Boolean
+            Get
+                Return True
+            End Get
+        End Property
+
         Public Overrides ReadOnly Property CanBeCopied As Boolean
             Get
                 Return True

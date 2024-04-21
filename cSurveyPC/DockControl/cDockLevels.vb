@@ -16,7 +16,7 @@ Friend Class cDockLevels
     Private oSurvey As cSurveyPC.cSurvey.cSurvey
     Private oDesign As cDesign
     Private WithEvents oDesignTools As Helper.Editor.cEditDesignTools
-    Private oCurrentOptions As cOptionsDesign
+    Private oCurrentOptions As cOptionsCenterline
     Private oDefaultOptions As cOptions
 
     Private oLayerCaptions As List(Of String)
@@ -52,7 +52,7 @@ Friend Class cDockLevels
 
     Public Event OnMapInvalidate(Sender As Object, e As EventArgs)
 
-    Public Sub SetDesign(Design As cDesign, DesignTools As Helper.Editor.cEditDesignTools, CurrentOptions As cOptionsDesign)
+    Public Sub SetDesign(Design As cDesign, DesignTools As Helper.Editor.cEditDesignTools, CurrentOptions As cOptionsCenterline)
         oDesign = Design
         oDesignTools = DesignTools
         oCurrentOptions = CurrentOptions
@@ -68,6 +68,7 @@ Friend Class cDockLevels
     Private WithEvents oLayer6 As BindingList(Of cItem)
 
     Private Delegate Sub pSurveyLoadTreeLayersDelegate()
+
     Private Sub pSurveyLoadTreeLayers()
         If InvokeRequired Then
             Call Me.BeginInvoke(New pSurveyLoadTreeLayersDelegate(AddressOf pSurveyLoadTreeLayers))
@@ -92,15 +93,41 @@ Friend Class cDockLevels
                 oLayer6 = Nothing
                 tvLayers.DataSource = Nothing
             Else
-                Dim oLayers As BindingList(Of cLayer) = oDesign.Layers.List
-                oLayer0 = oLayers(cLayers.LayerTypeEnum.Base).ItemsList
-                oLayer1 = oLayers(cLayers.LayerTypeEnum.Soil).ItemsList
-                oLayer2 = oLayers(cLayers.LayerTypeEnum.WaterAndFloorMorphologies).ItemsList
-                oLayer3 = oLayers(cLayers.LayerTypeEnum.RocksAndConcretion).ItemsList
-                oLayer4 = oLayers(cLayers.LayerTypeEnum.CeilingMorphologies).ItemsList
-                oLayer5 = oLayers(cLayers.LayerTypeEnum.Borders).ItemsList
-                oLayer6 = oLayers(cLayers.LayerTypeEnum.Signs).ItemsList
-                tvLayers.DataSource = oLayers
+
+                If TypeOf oDesign Is cDesignPlan Then
+                    Dim oDesignBase As cDesignPlan = oDesign
+                    Dim oLayers As BindingList(Of cLayer) = oDesignBase.Layers.List
+                    oLayer0 = oLayers(cLayers.LayerTypeEnum.Base).ItemsList
+                    oLayer1 = oLayers(cLayers.LayerTypeEnum.Soil).ItemsList
+                    oLayer2 = oLayers(cLayers.LayerTypeEnum.WaterAndFloorMorphologies).ItemsList
+                    oLayer3 = oLayers(cLayers.LayerTypeEnum.RocksAndConcretion).ItemsList
+                    oLayer4 = oLayers(cLayers.LayerTypeEnum.CeilingMorphologies).ItemsList
+                    oLayer5 = oLayers(cLayers.LayerTypeEnum.Borders).ItemsList
+                    oLayer6 = oLayers(cLayers.LayerTypeEnum.Signs).ItemsList
+                    tvLayers.DataSource = oLayers
+
+                    btnWhiteboard.Visibility = BarItemVisibility.Always
+                ElseIf TypeOf oDesign Is cDesignProfile Then
+                    Dim oDesignBase As cDesignProfile = oDesign
+                    Dim oLayers As BindingList(Of cLayer) = oDesignBase.Layers.List
+                    oLayer0 = oLayers(cLayers.LayerTypeEnum.Base).ItemsList
+                    oLayer1 = oLayers(cLayers.LayerTypeEnum.Soil).ItemsList
+                    oLayer2 = oLayers(cLayers.LayerTypeEnum.WaterAndFloorMorphologies).ItemsList
+                    oLayer3 = oLayers(cLayers.LayerTypeEnum.RocksAndConcretion).ItemsList
+                    oLayer4 = oLayers(cLayers.LayerTypeEnum.CeilingMorphologies).ItemsList
+                    oLayer5 = oLayers(cLayers.LayerTypeEnum.Borders).ItemsList
+                    oLayer6 = oLayers(cLayers.LayerTypeEnum.Signs).ItemsList
+                    tvLayers.DataSource = oLayers
+
+                    btnWhiteboard.Visibility = BarItemVisibility.Always
+                Else
+                    Dim oDesignBase As cDesign3D = oDesign
+                    Dim oLayers As BindingList(Of cLayer) = oDesignBase.Layers.List
+                    oLayer0 = oLayers(cLayers.LayerTypeEnum.Base).ItemsList
+                    tvLayers.DataSource = oLayers
+
+                    btnWhiteboard.Visibility = BarItemVisibility.Never
+                End If
             End If
             Call tvLayers.EndUpdate()
         End If
@@ -241,7 +268,7 @@ Friend Class cDockLevels
                 Select Case e.Column.Name
                     Case "colTreeLayersHiddenInDesign"
                         If TypeOf e.Row Is cLayer Then
-                            DirectCast(e.Row, cLayer).HiddenInDesign = Not e.Value
+                            DirectCast(e.Row, Object).HiddenInDesign = Not e.Value
                             RaiseEvent OnMapInvalidate(Me, EventArgs.Empty)
                         Else
                             DirectCast(e.Row, cItem).HiddenInDesign = Not e.Value
@@ -249,7 +276,7 @@ Friend Class cDockLevels
                         End If
                     Case "colTreeLayersHiddenInPreview"
                         If TypeOf e.Row Is cLayer Then
-                            DirectCast(e.Row, cLayer).HiddenInPreview = Not e.Value
+                            DirectCast(e.Row, Object).HiddenInPreview = Not e.Value
                             RaiseEvent OnMapInvalidate(Me, EventArgs.Empty)
                         Else
                             DirectCast(e.Row, cItem).HiddenInPreview = Not e.Value
@@ -427,4 +454,15 @@ Friend Class cDockLevels
             Call tvLayers.Invalidate()
         End If
     End Sub
+
+    Private Sub tvLayers_ShowingEditor(sender As Object, e As CancelEventArgs) Handles tvLayers.ShowingEditor
+        If tvLayers.FocusedColumn Is colTreeLayersHiddenInDesign Then
+            Dim oItem As Object = tvLayers.GetFocusedRow()
+            e.Cancel = Not oItem.CanBeHiddenInDesign
+        ElseIf tvLayers.FocusedColumn Is colTreeLayersHiddenInPreview Then
+            Dim oItem As Object = tvLayers.GetFocusedRow()
+            e.Cancel = Not oItem.CanBeHiddenInpreview
+        End If
+    End Sub
+
 End Class

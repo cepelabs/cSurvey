@@ -114,6 +114,18 @@ Namespace cSurvey.Design
             Return oItem
         End Function
 
+        Public Overridable ReadOnly Property CanBeHiddenInDesign As Boolean
+            Get
+                Return True
+            End Get
+        End Property
+
+        Public Overridable ReadOnly Property CanBeHiddenInPreview As Boolean
+            Get
+                Return True
+            End Get
+        End Property
+
         Public Overridable Property HiddenInDesign As Boolean
             Get
                 Return bHiddenInDesign

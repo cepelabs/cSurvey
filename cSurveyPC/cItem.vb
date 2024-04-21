@@ -358,6 +358,7 @@ Namespace cSurvey.Design
         Public MustOverride ReadOnly Property HavePen As Boolean
         Public MustOverride ReadOnly Property HaveBrush As Boolean
         Public MustOverride ReadOnly Property HaveTransparency As Boolean
+        Public MustOverride ReadOnly Property HaveAffinity As Boolean
 
         Public MustOverride ReadOnly Property HaveEditablePoints As Boolean
         Public MustOverride ReadOnly Property HaveLineType As Boolean

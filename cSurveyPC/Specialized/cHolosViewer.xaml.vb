@@ -722,10 +722,11 @@ Friend Class cHolosViewer
                 End If
 
                 Call oList.AddRange(oModels)
+                Call oList.AddRange(oChunks.Values)
+
                 Call oList.AddRange(oPlots)
                 Call oList.AddRange(oModelOutline)
 
-                Call oList.AddRange(oChunks.Values)
 
                 'selectors model contains object for hittest...this objects have to be hittested but not visible...is it possible?
                 If Not IsNothing(oSelectors) Then Call oList.Add(oSelectors)
@@ -771,6 +772,145 @@ Friend Class cHolosViewer
 
     Private Function pGetPoint3d(X As Double, Y As Double, Z As Double, Optional fX As Double = 1, Optional fY As Double = 1, Optional fZ As Double = 1) As Point3D
         Return New Point3D(X * fX, Y * fY, Z * fZ)
+    End Function
+
+    Private Function pChunkCuttinPlaneArrow(Chunk As cItemChunk3D, PaintOptions As cOptions3D) As ModelVisual3D
+        Dim dHeightScale As Double = PaintOptions.SurfaceOptions.Elevation.AltitudeAmplification
+
+        Dim sMainOriginX As Single = 0
+        Dim sMainOriginY As Single = 0
+        Dim sMainOriginZ As Single = 0
+        Dim oMainCoordinate As Calculate.cTrigPointCoordinate = oSurvey.Calculate.TrigPoints(oSurvey.TrigPoints.GetOrigin).Coordinate
+        If Not oMainCoordinate Is Nothing Then
+            With oMainCoordinate
+                Dim oUTM As modUTM.UTM = New modUTM.UTM(oMainCoordinate)
+                sMainOriginX = oUTM.East
+                sMainOriginY = oUTM.North
+                sMainOriginZ = .Altitude()
+            End With
+        End If
+
+        Dim sOriginX As Single = 0
+        Dim sOriginY As Single = 0
+        Dim sOriginZ As Single = 0
+        Dim oCoordinate As Calculate.cTrigPointCoordinate = oSurvey.Calculate.TrigPoints(oSurvey.TrigPoints.GetOrigin).Coordinate
+        If Not oCoordinate Is Nothing Then
+            With oCoordinate
+                Dim oUTM As modUTM.UTM = New modUTM.UTM(oCoordinate)
+                sOriginX = oUTM.East
+                sOriginY = oUTM.North
+                Dim oSizePoint As SizeF = New SizeD(sOriginX - sMainOriginX, sOriginY - sMainOriginY)
+                Dim oMovePoint As PointD = modPaint.RotatePointByRadians(New PointD(oSizePoint.Width, oSizePoint.Height), oSurvey.Calculate.GeoMagDeclinationData.MeridianConvergenceRadians)
+                sOriginX = oMovePoint.X
+                sOriginY = oMovePoint.Y
+                sOriginZ = .Altitude()
+            End With
+        End If
+
+        Dim oPoints As Dictionary(Of String, List(Of Point3D)) = GetStations3DPoints(oSurvey, sOriginX, sOriginY, sOriginZ, dHeightScale)
+        Dim oStation1 As Point3D = oPoints(Chunk.Stations.Station1.TrigPoint.Name)(0)
+        Dim oStation2 As Point3D = oPoints(Chunk.Stations.Station2.TrigPoint.Name)(0)
+
+        Dim dBearingStation As Decimal = modPaint.GetBearing(New PointD(oStation1.X, -oStation1.Y), New PointD(oStation2.X, -oStation2.Y)) - 90
+        dBearingStation = modPaint.NormalizeAngle(dBearingStation)
+
+        Dim oVector1 As Vector3D = New Vector3D(oStation2.X - oStation1.X, oStation2.Y - oStation1.Y, oStation2.Z - oStation1.Z)
+        oVector1.Normalize()
+        Dim oVector2 As Vector3D = New Vector3D(0, 1, 0)
+        Dim oT As RotateTransform3D = New RotateTransform3D(New AxisAngleRotation3D(New Vector3D(0, 0, 1), 360 - dBearingStation), oStation1)
+        oVector2 = oT.Transform(oVector2)
+        oVector2.Normalize()
+
+        Dim oVector3 As Vector3D = Vector3D.CrossProduct(oVector1, oVector2)
+        oVector3.Normalize()
+        oVector3.Negate()
+
+        Dim oModel As ModelVisual3D = New ModelVisual3D
+
+        Dim o As ArrowVisual3D = New ArrowVisual3D
+        o.Material = New DiffuseMaterial(New Media.SolidColorBrush(Color.Red.ToMediaColor))
+        o.Origin = oStation1
+        o.Direction = oVector1
+        oModel.Children.Add(o)
+
+        o = New ArrowVisual3D
+        o.Material = New DiffuseMaterial(New Media.SolidColorBrush(Color.Green.ToMediaColor))
+        o.Origin = oStation1
+        o.Direction = oVector2
+        oModel.Children.Add(o)
+
+        o = New ArrowVisual3D
+        o.Material = New DiffuseMaterial(New Media.SolidColorBrush(Color.Blue.ToMediaColor))
+        o.Origin = oStation1
+        o.Direction = oVector3
+        oModel.Children.Add(o)
+
+        'Dim oMiddlePoint2 As Point3D = New Point3D(oStation1.X + (oStation2.X - oStation1.X) / 2.0F, oStation1.Y + (oStation2.Y - oStation1.Y) / 2.0F, oStation1.Z + (oStation2.Z - oStation1.Z) / 2.0F)
+        Dim s As SphereVisual3D = New SphereVisual3D
+        s.Material = New DiffuseMaterial(New Media.SolidColorBrush(Color.Green.ToMediaColor))
+        s.Center = oStation1
+        s.Radius = 5
+
+        'oModel.Children.Add(o)
+        'oModel.Children.Add(s)
+
+        Return oModel
+        'ìReturn s
+    End Function
+
+    Private Function pChunkCuttingPlane(Chunk As cItemChunk3D, PaintOptions As cOptions3D) As Plane3D
+        Dim dHeightScale As Double = PaintOptions.SurfaceOptions.Elevation.AltitudeAmplification
+
+        Dim sMainOriginX As Single = 0
+        Dim sMainOriginY As Single = 0
+        Dim sMainOriginZ As Single = 0
+        Dim oMainCoordinate As Calculate.cTrigPointCoordinate = oSurvey.Calculate.TrigPoints(oSurvey.TrigPoints.GetOrigin).Coordinate
+        If Not oMainCoordinate Is Nothing Then
+            With oMainCoordinate
+                Dim oUTM As modUTM.UTM = New modUTM.UTM(oMainCoordinate)
+                sMainOriginX = oUTM.East
+                sMainOriginY = oUTM.North
+                sMainOriginZ = .Altitude()
+            End With
+        End If
+
+        Dim sOriginX As Single = 0
+        Dim sOriginY As Single = 0
+        Dim sOriginZ As Single = 0
+        Dim oCoordinate As Calculate.cTrigPointCoordinate = oSurvey.Calculate.TrigPoints(oSurvey.TrigPoints.GetOrigin).Coordinate
+        If Not oCoordinate Is Nothing Then
+            With oCoordinate
+                Dim oUTM As modUTM.UTM = New modUTM.UTM(oCoordinate)
+                sOriginX = oUTM.East
+                sOriginY = oUTM.North
+                Dim oSizePoint As SizeF = New SizeD(sOriginX - sMainOriginX, sOriginY - sMainOriginY)
+                Dim oMovePoint As PointD = modPaint.RotatePointByRadians(New PointD(oSizePoint.Width, oSizePoint.Height), oSurvey.Calculate.GeoMagDeclinationData.MeridianConvergenceRadians)
+                sOriginX = oMovePoint.X
+                sOriginY = oMovePoint.Y
+                sOriginZ = .Altitude()
+            End With
+        End If
+
+        Dim oPoints As Dictionary(Of String, List(Of Point3D)) = GetStations3DPoints(oSurvey, sOriginX, sOriginY, sOriginZ, dHeightScale)
+        Dim oStation1 As Point3D = oPoints(Chunk.Stations.Station1.TrigPoint.Name)(0)
+        Dim oStation2 As Point3D = oPoints(Chunk.Stations.Station2.TrigPoint.Name)(0)
+
+        Dim dBearingStation As Decimal = modPaint.GetBearing(New PointD(oStation1.X, -oStation1.Y), New PointD(oStation2.X, -oStation2.Y)) - 90
+        dBearingStation = modPaint.NormalizeAngle(dBearingStation)
+
+        Dim oVector1 As Vector3D = New Vector3D(oStation2.X - oStation1.X, oStation2.Y - oStation1.Y, oStation2.Z - oStation1.Z)
+        oVector1.Normalize()
+        Dim oVector2 As Vector3D = New Vector3D(0, 1, 0)
+        Dim oT As RotateTransform3D = New RotateTransform3D(New AxisAngleRotation3D(New Vector3D(0, 0, 1), 360 - dBearingStation), oStation1)
+        oVector2 = oT.Transform(oVector2)
+        oVector2.Normalize()
+
+        Dim oVector3 As Vector3D = Vector3D.CrossProduct(oVector1, oVector2)
+        oVector3.Normalize()
+        'oVector = Vector3D.CrossProduct(New Vector3D(0, 1, 0), oVector)
+        oVector3.Negate()
+
+        Return New Plane3D(New Point3D(oStation1.X, oStation1.Y, oStation1.Z + 0.1F), oVector3)
     End Function
 
     Private Function pChunk(Chunk As cItemChunk3D, PaintOptions As cOptions3D) As ModelVisual3D
@@ -824,23 +964,23 @@ Friend Class cHolosViewer
         Dim oStation2 As Point3D = oPoints(Chunk.Stations.Station2.TrigPoint.Name)(0)
 
         'align model to shot bearing
-        Dim sBearingStation As Decimal = modPaint.GetBearing(New PointD(oStation1.X, -oStation1.Y), New PointD(oStation2.X, -oStation2.Y))
-        Dim sBearingModel As Decimal = modPaint.GetBearing(New PointD(Chunk.Stations.Station1.Point.X, -Chunk.Stations.Station1.Point.Y), New PointD(Chunk.Stations.Station2.Point.X, -Chunk.Stations.Station2.Point.Y))
-        Dim sAngle As Decimal = modPaint.NormalizeAngle(sBearingModel - sBearingStation)
-        Call oResultTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 0, 1), sAngle)))
+        Dim dBearingStation As Decimal = modPaint.GetBearing(New PointD(oStation1.X, -oStation1.Y), New PointD(oStation2.X, -oStation2.Y))
+        Dim dBearingModel As Decimal = modPaint.GetBearing(New PointD(Chunk.Stations.Station1.Point.X, -Chunk.Stations.Station1.Point.Y), New PointD(Chunk.Stations.Station2.Point.X, -Chunk.Stations.Station2.Point.Y))
+        Dim dAngle As Decimal = modPaint.NormalizeAngle(dBearingModel - dBearingStation)
+        Call oResultTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 0, 1), dAngle)))
 
         'align model to shot inclination
-        Dim sSlopeStation As Decimal = RadiansToDegree(modPaint.GetSlope3D(oStation1, oStation2))
-        Dim sSlopeModel As Decimal = RadiansToDegree(modPaint.GetSlope3D(Chunk.Stations.Station1.Point, Chunk.Stations.Station2.Point))
-        Dim sSlope As Decimal = sSlopeStation - sSlopeModel
-        Call oResultTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 1, 0), sSlope)))
+        Dim dSlopeStation As Decimal = modPaint.GetSlope3D(oStation1, oStation2)
+        Dim dSlopeModel As Decimal = modPaint.GetSlope3D(Chunk.Stations.Station1.Point, Chunk.Stations.Station2.Point)
+        Dim dSlope As Decimal = dSlopeModel - dSlopeStation
+        Call oResultTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 1, 0), dSlope)))
 
         Call oResultTransformGroup.Children.Add(New ScaleTransform3D(1.0 / Chunk.ModelTransform.XScale, 1.0 / Chunk.ModelTransform.YScale, (1.0 / Chunk.ModelTransform.ZScale) * dHeightScale))
         Call oResultTransformGroup.Children.Add(New TranslateTransform3D(oStation1.X, oStation1.Y, oStation1.Z))
 
         Dim oModelPointTransformGroup As Transform3DGroup = New Transform3DGroup()
-        Call oModelPointTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 0, 1), sAngle)))
-        Call oModelPointTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 1, 0), sSlope)))
+        Call oModelPointTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 0, 1), dAngle)))
+        Call oModelPointTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 1, 0), dSlope)))
         Call oModelPointTransformGroup.Children.Add(New ScaleTransform3D(1.0 / Chunk.ModelTransform.XScale, 1.0 / Chunk.ModelTransform.YScale, (1.0 / Chunk.ModelTransform.ZScale) * dHeightScale))
         Call oModelPointTransformGroup.Children.Add(New TranslateTransform3D(oStation1.X, oStation1.Y, oStation1.Z))
 
@@ -2002,16 +2142,41 @@ Friend Class cHolosViewer
             End If
 
             If PaintOptions.DrawChunks Then
-                For Each oChunk As cItemChunk3D In oSurvey.ThreeD.Layers.ChunkLayer.Items
-                    If GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oChunk, Selection.CurrentCave, Selection.CurrentBranch) Then
-                        If oChunk.Stations.IsValid Then
-                            Dim oChunkModel As ModelVisual3D = pChunk(oChunk, PaintOptions)
-                            Dim oChunkHotSpot As cHotSpot = New cHotSpot(oChunkModel, oChunk)
-                            oChunksHotSpots.Add(oChunkModel, oChunkHotSpot)
-                            oChunks.Add(oChunk, oChunkModel)
+                If PaintOptions.ChunkCutMode = cIModelOptions3D.CutModeEnum.RemoveCeiling Then
+                    For Each oChunk As cItemChunk3D In oSurvey.ThreeD.Layers.ChunkLayer.Items
+                        If Not oChunk.HiddenInDesign AndAlso GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oChunk, Selection.CurrentCave, Selection.CurrentBranch) Then
+                            If oChunk.Stations.IsValid Then
+                                Dim oCutGroup As CuttingPlaneGroup = New CuttingPlaneGroup
+
+                                Dim oCutPlane As Plane3D = pChunkCuttingPlane(oChunk, PaintOptions)
+                                oCutGroup.CuttingPlanes.Add(oCutPlane)
+
+                                Dim oChunkModel As ModelVisual3D = pChunk(oChunk, PaintOptions)
+                                oCutGroup.Children.Add(oChunkModel)
+
+                                'Dim oCutArrow = pChunkCuttinPlaneArrow(oChunk, PaintOptions)
+                                'oCutGroup.Children.Add(oCutArrow)
+
+                                'oCutGroup.UpdateModel()
+
+                                Dim oChunkHotSpot As cHotSpot = New cHotSpot(oCutGroup, oChunk)
+                                oChunksHotSpots.Add(oCutGroup, oChunkHotSpot)
+                                oChunks.Add(oChunk, oCutGroup)
+                            End If
                         End If
-                    End If
-                Next
+                    Next
+                Else
+                    For Each oChunk As cItemChunk3D In oSurvey.ThreeD.Layers.ChunkLayer.Items
+                        If GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oChunk, Selection.CurrentCave, Selection.CurrentBranch) Then
+                            If oChunk.Stations.IsValid Then
+                                Dim oChunkModel As ModelVisual3D = pChunk(oChunk, PaintOptions)
+                                Dim oChunkHotSpot As cHotSpot = New cHotSpot(oChunkModel, oChunk)
+                                oChunksHotSpots.Add(oChunkModel, oChunkHotSpot)
+                                oChunks.Add(oChunk, oChunkModel)
+                            End If
+                        End If
+                    Next
+                End If
             End If
         Next
 
@@ -2224,8 +2389,9 @@ Friend Class cHolosViewer
             Dim oItemSelectEventsArgs As cItemSelectEventArgs = New cItemSelectEventArgs(Nothing)
             RaiseEvent OnItemSelect(Me, oItemSelectEventsArgs)
         Else
-            If oHotSpots.ContainsKey(oModel) Then
-                Dim oItemSelectEventsArgs As cItemSelectEventArgs = New cItemSelectEventArgs(oHotSpots(oModel).SourceItem)
+            Dim oHotSpot As cHotSpot = pTraverseHotSpot(oModel)
+            If oHotSpot IsNot Nothing Then
+                Dim oItemSelectEventsArgs As cItemSelectEventArgs = New cItemSelectEventArgs(oHotSpot.SourceItem)
                 RaiseEvent OnItemSelect(Me, oItemSelectEventsArgs)
             Else
                 Dim oItemSelectEventsArgs As cItemSelectEventArgs = New cItemSelectEventArgs(Nothing)
@@ -2239,13 +2405,39 @@ Friend Class cHolosViewer
         If oModel Is Nothing Then
             Cursor = System.Windows.Input.Cursors.Arrow
         Else
-            If oHotSpots.ContainsKey(oModel) Then
+            Dim oHotSpot As cHotSpot = pTraverseHotSpot(oModel)
+            If oHotSpot IsNot Nothing Then
                 Cursor = System.Windows.Input.Cursors.Hand
             Else
                 Cursor = System.Windows.Input.Cursors.Arrow
             End If
         End If
     End Sub
+
+    Private Function pTraverseHotSpot(Model As ModelVisual3D, Parent As ModelVisual3D) As Boolean
+        If Parent.Children.Contains(Model) Then
+            Return True
+        Else
+            For Each oModel As ModelVisual3D In Parent.Children
+                If pTraverseHotSpot(Model, oModel) Then
+                    Return True
+                End If
+            Next
+            Return False
+        End If
+    End Function
+
+    Private Function pTraverseHotSpot(Model As ModelVisual3D) As cHotSpot
+        For Each oModel As ModelVisual3D In oHotSpots.Keys
+            If oModel Is Model Then
+                Return oHotSpots(Model)
+            Else
+                If pTraverseHotSpot(Model, oModel) Then
+                    Return oHotSpots(oModel)
+                End If
+            End If
+        Next
+    End Function
 
     Friend Sub DeleteChunk(Chunk As cItemChunk3D)
         Dim oModel As ModelVisual3D = oChunks(Chunk)

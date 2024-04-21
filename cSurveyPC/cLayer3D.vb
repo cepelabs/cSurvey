@@ -19,6 +19,29 @@ Namespace cSurvey.Design
             MyBase.New(Survey, Design, Name, Type)
         End Sub
 
+        Public Overrides Property HiddenInDesign As Boolean
+            Get
+                Return Not DirectCast(MyBase.Survey.Options("_design.3d"), cOptions3D).DrawChunks
+            End Get
+            Set(ByVal value As Boolean)
+                If DirectCast(MyBase.Survey.Options("_design.3d"), cOptions3D).DrawChunks <> value Then
+                    DirectCast(MyBase.Survey.Options("_design.3d"), cOptions3D).DrawChunks = Not value
+                End If
+            End Set
+        End Property
+
+        Public Overrides ReadOnly Property CanBeHiddenInDesign As Boolean
+            Get
+                Return True
+            End Get
+        End Property
+
+        Public Overrides ReadOnly Property CanBeHiddenInPreview As Boolean
+            Get
+                Return False
+            End Get
+        End Property
+
         ''' <summary>
         ''' Create a design item from xml
         ''' </summary>

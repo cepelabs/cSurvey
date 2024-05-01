@@ -470,6 +470,7 @@ Namespace cSurvey.Helper.Editor
             Else
                 sBasePropertyName = sPropertyName
             End If
+
             Dim oValue As Object = CallByName(oBaseObject, sBasePropertyName, CallType.Get)
             Return New cUndoItemValueDesignPropertyData(oValue, Item.Layer.Items.IndexOf(Item), Item.Layer)
         End Function

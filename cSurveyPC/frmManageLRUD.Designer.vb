@@ -59,8 +59,12 @@ Partial Class frmManageLRUD
         Me.lblAction = New DevExpress.XtraEditors.LabelControl()
         Me.pnlOption0 = New DevExpress.XtraEditors.PanelControl()
         Me.pnlOption1 = New DevExpress.XtraEditors.PanelControl()
-        Me.pnlOption3 = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlOption4 = New DevExpress.XtraEditors.PanelControl()
         Me.pnlOptionOther = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlOption3 = New DevExpress.XtraEditors.PanelControl()
+        Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.chkMode3MarkAsGenerated = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkMode3AlsoZero = New DevExpress.XtraEditors.CheckEdit()
         Me.pnlBottom = New DevExpress.XtraEditors.PanelControl()
         CType(Me.frmRestore, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frmRestore.SuspendLayout()
@@ -88,10 +92,16 @@ Partial Class frmManageLRUD
         Me.pnlOption0.SuspendLayout()
         CType(Me.pnlOption1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlOption1.SuspendLayout()
-        CType(Me.pnlOption3, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlOption3.SuspendLayout()
+        CType(Me.pnlOption4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlOption4.SuspendLayout()
         CType(Me.pnlOptionOther, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlOptionOther.SuspendLayout()
+        CType(Me.pnlOption3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlOption3.SuspendLayout()
+        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl1.SuspendLayout()
+        CType(Me.chkMode3MarkAsGenerated.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkMode3AlsoZero.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlBottom, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlBottom.SuspendLayout()
         Me.SuspendLayout()
@@ -314,7 +324,7 @@ Partial Class frmManageLRUD
         '
         Me.cboAction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboAction.FormattingEnabled = True
-        Me.cboAction.Items.AddRange(New Object() {resources.GetString("cboAction.Items"), resources.GetString("cboAction.Items1"), resources.GetString("cboAction.Items2"), resources.GetString("cboAction.Items3")})
+        Me.cboAction.Items.AddRange(New Object() {resources.GetString("cboAction.Items"), resources.GetString("cboAction.Items1"), resources.GetString("cboAction.Items2"), resources.GetString("cboAction.Items3"), resources.GetString("cboAction.Items4")})
         resources.ApplyResources(Me.cboAction, "cboAction")
         Me.cboAction.Name = "cboAction"
         '
@@ -324,8 +334,9 @@ Partial Class frmManageLRUD
         Me.TableLayoutPanel1.Controls.Add(Me.PanelControl1, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.pnlOption0, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.pnlOption1, 0, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.pnlOption4, 0, 4)
+        Me.TableLayoutPanel1.Controls.Add(Me.pnlOptionOther, 0, 5)
         Me.TableLayoutPanel1.Controls.Add(Me.pnlOption3, 0, 3)
-        Me.TableLayoutPanel1.Controls.Add(Me.pnlOptionOther, 0, 4)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         '
         'PanelControl1
@@ -357,12 +368,12 @@ Partial Class frmManageLRUD
         resources.ApplyResources(Me.pnlOption1, "pnlOption1")
         Me.pnlOption1.Name = "pnlOption1"
         '
-        'pnlOption3
+        'pnlOption4
         '
-        Me.pnlOption3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        Me.pnlOption3.Controls.Add(Me.frmRestore)
-        resources.ApplyResources(Me.pnlOption3, "pnlOption3")
-        Me.pnlOption3.Name = "pnlOption3"
+        Me.pnlOption4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlOption4.Controls.Add(Me.frmRestore)
+        resources.ApplyResources(Me.pnlOption4, "pnlOption4")
+        Me.pnlOption4.Name = "pnlOption4"
         '
         'pnlOptionOther
         '
@@ -372,6 +383,34 @@ Partial Class frmManageLRUD
         Me.pnlOptionOther.Controls.Add(Me.frmBackup)
         resources.ApplyResources(Me.pnlOptionOther, "pnlOptionOther")
         Me.pnlOptionOther.Name = "pnlOptionOther"
+        '
+        'pnlOption3
+        '
+        Me.pnlOption3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlOption3.Controls.Add(Me.GroupControl1)
+        resources.ApplyResources(Me.pnlOption3, "pnlOption3")
+        Me.pnlOption3.Name = "pnlOption3"
+        '
+        'GroupControl1
+        '
+        Me.GroupControl1.Controls.Add(Me.chkMode3MarkAsGenerated)
+        Me.GroupControl1.Controls.Add(Me.chkMode3AlsoZero)
+        resources.ApplyResources(Me.GroupControl1, "GroupControl1")
+        Me.GroupControl1.Name = "GroupControl1"
+        '
+        'chkMode3MarkAsGenerated
+        '
+        resources.ApplyResources(Me.chkMode3MarkAsGenerated, "chkMode3MarkAsGenerated")
+        Me.chkMode3MarkAsGenerated.Name = "chkMode3MarkAsGenerated"
+        Me.chkMode3MarkAsGenerated.Properties.AutoWidth = True
+        Me.chkMode3MarkAsGenerated.Properties.Caption = resources.GetString("chkMode3MarkAsGenerated.Properties.Caption")
+        '
+        'chkMode3AlsoZero
+        '
+        resources.ApplyResources(Me.chkMode3AlsoZero, "chkMode3AlsoZero")
+        Me.chkMode3AlsoZero.Name = "chkMode3AlsoZero"
+        Me.chkMode3AlsoZero.Properties.AutoWidth = True
+        Me.chkMode3AlsoZero.Properties.Caption = resources.GetString("chkMode3AlsoZero.Properties.Caption")
         '
         'pnlBottom
         '
@@ -426,11 +465,18 @@ Partial Class frmManageLRUD
         Me.pnlOption0.ResumeLayout(False)
         CType(Me.pnlOption1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlOption1.ResumeLayout(False)
-        CType(Me.pnlOption3, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlOption3.ResumeLayout(False)
+        CType(Me.pnlOption4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlOption4.ResumeLayout(False)
         CType(Me.pnlOptionOther, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlOptionOther.ResumeLayout(False)
         Me.pnlOptionOther.PerformLayout()
+        CType(Me.pnlOption3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlOption3.ResumeLayout(False)
+        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl1.ResumeLayout(False)
+        Me.GroupControl1.PerformLayout()
+        CType(Me.chkMode3MarkAsGenerated.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkMode3AlsoZero.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pnlBottom, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlBottom.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -473,7 +519,11 @@ Partial Class frmManageLRUD
     Friend WithEvents lblAction As DevExpress.XtraEditors.LabelControl
     Friend WithEvents pnlOption0 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents pnlOption1 As DevExpress.XtraEditors.PanelControl
-    Friend WithEvents pnlOption3 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlOption4 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents pnlOptionOther As DevExpress.XtraEditors.PanelControl
     Friend WithEvents pnlBottom As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlOption3 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents chkMode3MarkAsGenerated As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkMode3AlsoZero As DevExpress.XtraEditors.CheckEdit
 End Class

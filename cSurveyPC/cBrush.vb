@@ -1138,7 +1138,7 @@ Namespace cSurvey.Design
             oTexture = Brush.oTexture
             iTextureWrapMode = Brush.iTextureWrapMode
 
-            oPatternBrushes = Brush.oPatternBrushes.Clone
+            oPatternBrushes = If(Brush.oPatternBrushes Is Nothing, New cPatternBrushes(oSurvey), Brush.oPatternBrushes.Clone)
             'oPatternPen = Brush.oPatternPen
             'iPatternType = Brush.iPatternType
             'iPatternPenStyle = Brush.iPatternPenStyle

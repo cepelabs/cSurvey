@@ -1,7 +1,7 @@
 ﻿Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Data
 
-friend Class frmManageLRUD
+Friend Class frmManageLRUD
     Private oSurvey As cSurvey.cSurvey
 
     Private Sub pSettingsLoad()
@@ -27,6 +27,9 @@ friend Class frmManageLRUD
         chkShotWithLRUD.Checked = My.Application.Settings.GetSetting("editor.managelrud.shotwithlrud", "0")
         chkShotWithCalculatedLRUD.Checked = My.Application.Settings.GetSetting("editor.managelrud.shotwithcalculatedlrud", "1")
         chkShotWithoutLRUD.Checked = My.Application.Settings.GetSetting("editor.managelrud.shotwithoutlrud", "1")
+
+        chkMode3AlsoZero.Checked = My.Application.Settings.GetSetting("editor.managelrud.createsplaywith0len", "1")
+        chkMode3MarkAsGenerated.Checked = My.Application.Settings.GetSetting("editor.managelrud.splaymarkasgenerated", "1")
     End Sub
 
     Private Sub pSettingsSave()
@@ -43,6 +46,9 @@ friend Class frmManageLRUD
         Call My.Application.Settings.SetSetting("editor.managelrud.shotwithlrud", If(chkShotWithLRUD.Checked, "1", "0"))
         Call My.Application.Settings.SetSetting("editor.managelrud.shotwithcalculatedlrud", If(chkShotWithCalculatedLRUD.Checked, "1", "0"))
         Call My.Application.Settings.SetSetting("editor.managelrud.shotwithoutlrud", If(chkShotWithoutLRUD.Checked, "1", "0"))
+
+        Call My.Application.Settings.SetSetting("editor.managelrud.createsplaywith0len", If(chkMode3AlsoZero.Checked, "1", "0"))
+        Call My.Application.Settings.SetSetting("editor.managelrud.splaymarkasgenerated", If(chkMode3MarkAsGenerated.Checked, "1", "0"))
     End Sub
 
     Public Sub New(Survey As cSurveyPC.cSurvey.cSurvey, Optional Session As cSession = Nothing, Optional Cave As cCaveInfo = Nothing, Optional CaveBranch As cCaveInfoBranch = Nothing, Optional Rows As Integer = 1)
@@ -138,6 +144,7 @@ friend Class frmManageLRUD
             chkBackup.Enabled = True
             frmBackup.Enabled = True
             chkMarkAsCalculated.Enabled = True
+            pnlOptionOther.Visible = True
 
             frmMode1.Enabled = True
             frmMode2.Enabled = False
@@ -146,6 +153,7 @@ friend Class frmManageLRUD
             chkBackup.Enabled = True
             frmBackup.Enabled = True
             chkMarkAsCalculated.Enabled = True
+            pnlOptionOther.Visible = True
 
             frmMode1.Enabled = False
             frmMode2.Enabled = True
@@ -154,15 +162,26 @@ friend Class frmManageLRUD
             chkBackup.Enabled = True
             frmBackup.Enabled = True
             chkMarkAsCalculated.Enabled = True
+            pnlOptionOther.Visible = True
+
+            frmMode1.Enabled = False
+            frmMode2.Enabled = False
+        ElseIf cboAction.SelectedIndex = 3 Then
+            frmRestore.Enabled = False
+            chkBackup.Enabled = False
+            frmBackup.Enabled = False
+            chkMarkAsCalculated.Enabled = False
+            pnlOptionOther.Visible = False
 
             frmMode1.Enabled = False
             frmMode2.Enabled = False
         Else
-            Dim bEnabled As Boolean = cboAction.SelectedIndex = 3
+            Dim bEnabled As Boolean = cboAction.SelectedIndex = 4
             frmRestore.Enabled = bEnabled
             chkBackup.Enabled = False
             frmBackup.Enabled = False
             chkMarkAsCalculated.Enabled = False
+            pnlOptionOther.Visible = False
 
             frmMode1.Enabled = False
             frmMode2.Enabled = False
@@ -186,18 +205,27 @@ friend Class frmManageLRUD
                 pnlOption0.Visible = True
                 pnlOption1.Visible = False
                 pnlOption3.Visible = False
+                pnlOption4.Visible = False
             Case 1
                 pnlOption0.Visible = False
                 pnlOption1.Visible = True
                 pnlOption3.Visible = False
+                pnlOption4.Visible = False
             Case 2
                 pnlOption0.Visible = False
                 pnlOption1.Visible = False
                 pnlOption3.Visible = False
+                pnlOption4.Visible = False
             Case 3
                 pnlOption0.Visible = False
                 pnlOption1.Visible = False
                 pnlOption3.Visible = True
+                pnlOption4.Visible = False
+            Case Else
+                pnlOption0.Visible = False
+                pnlOption1.Visible = False
+                pnlOption3.Visible = False
+                pnlOption4.Visible = True
         End Select
         Call pRadioButtonEnabled()
     End Sub

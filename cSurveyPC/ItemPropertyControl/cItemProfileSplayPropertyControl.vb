@@ -15,22 +15,22 @@ Friend Class cItemProfileSplayPropertyControl
         ' Add any initialization after the InitializeComponent() 
     End Sub
 
-    Public Shadows ReadOnly Property Item As cIItemProfileSplayBorder
+    Public Shadows ReadOnly Property Item As cItemSegment
         Get
             Return MyBase.Item
         End Get
     End Property
 
-    Public Shadows Sub Rebind(Item As cIItemProfileSplayBorder)
+    Public Shadows Sub Rebind(Item As cItemSegment)
         MyBase.Rebind(Item)
 
         Try
-            txtPropProfileSplayProjectionAngle.Value = Me.Item.SplayBorderProjectionAngle
-            txtPropProfileSplayMaxVariationAngle.Value = Me.Item.SplayBorderMaxAngleVariation
-            txtPropProfileSplayPosInclinationRangeMin.Value = Me.Item.SplayBorderPosInclinationRange.Width
-            txtPropProfileSplayPosInclinationRangeMax.Value = Me.Item.SplayBorderPosInclinationRange.Height
-            txtPropProfileSplayNegInclinationRangeMin.Value = Me.Item.SplayBorderNegInclinationRange.Width
-            txtPropProfileSplayNegInclinationRangeMax.Value = Me.Item.SplayBorderNegInclinationRange.Height
+            txtPropProfileSplayProjectionAngle.Value = Me.Item.ProfileSplayBorderProjectionAngle
+            txtPropProfileSplayMaxVariationAngle.Value = Me.Item.ProfileSplayBorderMaxAngleVariation
+            txtPropProfileSplayPosInclinationRangeMin.Value = Me.Item.ProfileSplayBorderPosInclinationRange.Width
+            txtPropProfileSplayPosInclinationRangeMax.Value = Me.Item.ProfileSplayBorderPosInclinationRange.Height
+            txtPropProfileSplayNegInclinationRangeMin.Value = Me.Item.ProfileSplayBorderNegInclinationRange.Width
+            txtPropProfileSplayNegInclinationRangeMax.Value = Me.Item.ProfileSplayBorderNegInclinationRange.Height
         Catch
         End Try
         Call picPropProfileProjectionSchema.Invalidate()
@@ -38,38 +38,38 @@ Friend Class cItemProfileSplayPropertyControl
 
     Private Sub txtPropProfileSplayProjectionAngle_ValueChanged(sender As Object, e As EventArgs) Handles txtPropProfileSplayProjectionAngle.ValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "SplayBorderProjectionAngle")
-            Me.Item.SplayBorderProjectionAngle = txtPropProfileSplayProjectionAngle.Value
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "ProfileSplayBorderProjectionAngle")
+            Me.Item.ProfileSplayBorderProjectionAngle = txtPropProfileSplayProjectionAngle.Value
             Call picPropProfileProjectionSchema.Invalidate()
-            Call MyBase.PropertyChanged("ProfileSplayProjectionAngle")
+            Call MyBase.PropertyChanged("ProfileSplayBorderProjectionAngle")
             Call MyBase.MapInvalidate()
         End If
     End Sub
 
     Private Sub txtPropProfileSplayMaxVariationAngle_ValueChanged(sender As Object, e As EventArgs) Handles txtPropProfileSplayMaxVariationAngle.ValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "SplayBorderMaxAngleVariation")
-            Me.Item.SplayBorderMaxAngleVariation = txtPropProfileSplayMaxVariationAngle.Value
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "ProfileSplayBorderMaxAngleVariation")
+            Me.Item.ProfileSplayBorderMaxAngleVariation = txtPropProfileSplayMaxVariationAngle.Value
             Call picPropProfileProjectionSchema.Invalidate()
-            Call MyBase.PropertyChanged("ProfileSplayMaxVariationAngle")
+            Call MyBase.PropertyChanged("ProfileSplayBorderMaxAngleVariation")
             Call MyBase.MapInvalidate()
         End If
     End Sub
 
     Private Sub txtPropProfileSplayPosInclinationRangeMin_ValueChanged(sender As Object, e As EventArgs) Handles txtPropProfileSplayPosInclinationRangeMin.ValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "SplayBorderPosInclinationRange")
-            Me.Item.SplayBorderPosInclinationRange = New SizeF(txtPropProfileSplayPosInclinationRangeMin.Value, Me.Item.SplayBorderPosInclinationRange.Height)
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "ProfileSplayBorderPosInclinationRange")
+            Me.Item.ProfileSplayBorderPosInclinationRange = New SizeF(txtPropProfileSplayPosInclinationRangeMin.Value, Me.Item.ProfileSplayBorderPosInclinationRange.Height)
             Call picPropProfileProjectionSchema.Invalidate()
-            Call MyBase.PropertyChanged("ProfileSplayPosInclinationRangeMin")
+            Call MyBase.PropertyChanged("ProfileSplayBorderPosInclinationRange")
             Call MyBase.MapInvalidate()
         End If
     End Sub
 
     Private Sub txtPropProfileSplayNegInclinationRangeMin_ValueChanged(sender As Object, e As EventArgs) Handles txtPropProfileSplayNegInclinationRangeMin.ValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "SplayBorderNegInclinationRange")
-            Me.Item.SplayBorderNegInclinationRange = New SizeF(txtPropProfileSplayNegInclinationRangeMin.Value, Me.Item.SplayBorderNegInclinationRange.Height)
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "ProfileSplayBorderNegInclinationRange")
+            Me.Item.ProfileSplayBorderNegInclinationRange = New SizeF(txtPropProfileSplayNegInclinationRangeMin.Value, Me.Item.ProfileSplayBorderNegInclinationRange.Height)
             Call picPropProfileProjectionSchema.Invalidate()
             Call MyBase.PropertyChanged("ProfileSplayNegInclinationRangeMin")
             Call MyBase.MapInvalidate()
@@ -78,8 +78,8 @@ Friend Class cItemProfileSplayPropertyControl
 
     Private Sub txtPropProfileSplayPosInclinationRangeMax_ValueChanged(sender As Object, e As EventArgs) Handles txtPropProfileSplayPosInclinationRangeMax.ValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "SplayBorderPosInclinationRange")
-            Me.Item.SplayBorderPosInclinationRange = New SizeF(Me.Item.SplayBorderPosInclinationRange.Width, txtPropProfileSplayPosInclinationRangeMax.Value)
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "ProfileSplayBorderPosInclinationRange")
+            Me.Item.ProfileSplayBorderPosInclinationRange = New SizeF(Me.Item.ProfileSplayBorderPosInclinationRange.Width, txtPropProfileSplayPosInclinationRangeMax.Value)
             Call picPropProfileProjectionSchema.Invalidate()
             Call MyBase.PropertyChanged("ProfileSplayPosInclinationRangeMax")
             Call MyBase.MapInvalidate()
@@ -88,8 +88,8 @@ Friend Class cItemProfileSplayPropertyControl
 
     Private Sub txtPropProfileSplayNegInclinationRangeMax_ValueChanged(sender As Object, e As EventArgs) Handles txtPropProfileSplayNegInclinationRangeMax.ValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "SplayBorderNegInclinationRange")
-            Me.Item.SplayBorderNegInclinationRange = New SizeF(Me.Item.SplayBorderNegInclinationRange.Width, txtPropProfileSplayNegInclinationRangeMax.Value)
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "ProfileSplayBorderNegInclinationRange")
+            Me.Item.ProfileSplayBorderNegInclinationRange = New SizeF(Me.Item.ProfileSplayBorderNegInclinationRange.Width, txtPropProfileSplayNegInclinationRangeMax.Value)
             Call picPropProfileProjectionSchema.Invalidate()
             Call MyBase.PropertyChanged("ProfileSplayNegInclinationRangeMax")
             Call MyBase.MapInvalidate()
@@ -102,8 +102,8 @@ Friend Class cItemProfileSplayPropertyControl
 
     Private Sub picPropProfileProjectionSchema_PaintEx(sender As Object, e As DevExpress.XtraGrid.PaintExEventArgs) Handles picPropProfileProjectionSchema.PaintEx
         Dim dBearing As Decimal = DirectCast(Me.Item, cItemSegment).Segment.Data.Data.Bearing
-        Dim iAngle As Integer = Me.Item.SplayBorderProjectionAngle
-        Dim iVariation As Integer = Me.Item.SplayBorderMaxAngleVariation
+        Dim iAngle As Integer = Me.Item.ProfileSplayBorderProjectionAngle
+        Dim iVariation As Integer = Me.Item.ProfileSplayBorderMaxAngleVariation
 
         e.Cache.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
         e.Cache.InterpolationMode = Drawing2D.InterpolationMode.HighQualityBicubic

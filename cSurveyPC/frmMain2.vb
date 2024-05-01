@@ -7757,12 +7757,13 @@ Friend Class frmMain2
                         bDisableSegmentsChangeEvent = True
                         Call grdSegments.BeginUpdate()
                         Dim bBackup As Boolean = .chkBackup.Checked
-                        Dim bMarkAsCalculated As Boolean = .chkMarkAsCalculated.Checked
-                        If bMarkAsCalculated Then
-                            Call oSurvey.Properties.DataTables.Segments.Add("LRUD_calculated", Data.cDataFields.TypeEnum.Boolean)
-                            Call oSurvey.Properties.DataTables.Segments.Add("LRUD_source", Data.cDataFields.TypeEnum.Text)
-                        End If
                         If .cboAction.SelectedIndex = 0 Then
+                            Dim bMarkAsCalculated As Boolean = .chkMarkAsCalculated.Checked
+                            If bMarkAsCalculated Then
+                                Call oSurvey.Properties.DataTables.Segments.Add("LRUD_calculated", Data.cDataFields.TypeEnum.Boolean)
+                                Call oSurvey.Properties.DataTables.Segments.Add("LRUD_source", Data.cDataFields.TypeEnum.Text)
+                            End If
+
                             Dim oSessions As SortedDictionary(Of String, cSession) = oSurvey.Properties.Sessions.GetWithEmpty()
                             For Each oSegment As cSegment In pSegmentsGetSelections(.cboReplicateTo.SelectedIndex)
                                 If Not oSegment.Splay AndAlso pSegmentsLRUDIsInRange(oSegment, frmMLRUD) Then
@@ -7797,6 +7798,12 @@ Friend Class frmMain2
                             Next
                             Call oSurvey.Segments.SaveAll()
                         ElseIf .cboAction.SelectedIndex = 1 Then
+                            Dim bMarkAsCalculated As Boolean = .chkMarkAsCalculated.Checked
+                            If bMarkAsCalculated Then
+                                Call oSurvey.Properties.DataTables.Segments.Add("LRUD_calculated", Data.cDataFields.TypeEnum.Boolean)
+                                Call oSurvey.Properties.DataTables.Segments.Add("LRUD_source", Data.cDataFields.TypeEnum.Text)
+                            End If
+
                             Select Case .cboMode2Mode.SelectedIndex
                                 Case 0
                                     Dim oSessions As SortedDictionary(Of String, cSession) = oSurvey.Properties.Sessions.GetWithEmpty()
@@ -7909,133 +7916,13 @@ Friend Class frmMain2
                                     Next
                                     Call oSurvey.Segments.SaveAll()
                             End Select
-
-                            'Dim oSessions As SortedDictionary(Of String, cSession) = oSurvey.Properties.Sessions.GetWithEmpty()
-                            'For Each oSegment As cSegment In pSegmentsGetSelections(.cboReplicateTo.SelectedIndex)
-                            '    If Not oSegment.Splay AndAlso pSegmentsLRUDIsInRange(oSegment, frmMLRUD) Then
-
-                            '        If bBackup Then Call .Backup(oSegment)
-
-                            '        Dim iFromOrTo As GetDesignStationEnum
-                            '        Dim oSegmentSession As cSession = oSessions(oSegment.Session)
-                            '        If oSegmentSession.SideMeasuresReferTo = cSegment.SideMeasuresReferToEnum.StartPoint Then
-                            '            If oSegment.Data.Data.Reversed Then
-                            '                iFromOrTo = GetDesignStationEnum.To
-                            '            Else
-                            '                iFromOrTo = GetDesignStationEnum.From
-                            '            End If
-                            '        Else
-                            '            If oSegment.Data.Data.Reversed Then
-                            '                iFromOrTo = GetDesignStationEnum.From
-                            '            Else
-                            '                iFromOrTo = GetDesignStationEnum.To
-                            '            End If
-                            '        End If
-
-                            '        Dim iPlanAngleRange As Decimal = .txtMode2H.Value
-                            '        Dim iProfileAngleRange As Decimal = .txtMode2V.Value
-                            '        Dim bUseOnlyCutSplay As Boolean = .chkMode2OnlyCutSplay.Checked
-
-                            '        If iFromOrTo = GetDesignStationEnum.From Then
-                            '            Dim oPlanSplays As List(Of Calculate.Plot.cSplayPlanProjectedData)
-                            '            If bUseOnlyCutSplay Then
-                            '                oPlanSplays = oSegment.Data.Plan.FromSplays.Where(Function(item) item.GetSplaySegment.Cut).ToList
-                            '            Else
-                            '                oPlanSplays = oSegment.Data.Plan.FromSplays.ToList
-                            '            End If
-
-                            '            Dim dLBearing As Decimal = oSegment.Data.Plan.FromBearingLeft
-                            '            Dim oLSplay As Calculate.Plot.cSplayPlanProjectedData = oPlanSplays.Where(Function(item) modPaint.AngleIsInRange(modPaint.GetBearing(oSegment.Data.Plan.FromPoint, item.ToPoint), dLBearing - iPlanAngleRange, dLBearing + iPlanAngleRange)).OrderByDescending(Function(item) modPaint.DistancePointToPoint(oSegment.Data.Plan.FromPoint, item.ToPoint)).FirstOrDefault
-                            '            If IsNothing(oLSplay) Then
-                            '                oSegment.Left = 0
-                            '            Else
-                            '                oSegment.Left = modNumbers.MathRound(modPaint.DistancePointToPoint(oSegment.Data.Plan.FromPoint, oLSplay.ToPoint), 2)
-                            '            End If
-
-                            '            Dim dRBearing As Decimal = oSegment.Data.Plan.FromBearingRight
-                            '            Dim oRSplay As Calculate.Plot.cSplayPlanProjectedData = oPlanSplays.Where(Function(item) modPaint.AngleIsInRange(modPaint.GetBearing(oSegment.Data.Plan.FromPoint, item.ToPoint), dRBearing - iPlanAngleRange, dRBearing + iPlanAngleRange)).OrderByDescending(Function(item) modPaint.DistancePointToPoint(oSegment.Data.Plan.FromPoint, item.ToPoint)).FirstOrDefault
-                            '            If IsNothing(oRSplay) Then
-                            '                oSegment.Right = 0
-                            '            Else
-                            '                oSegment.Right = modNumbers.MathRound(modPaint.DistancePointToPoint(oSegment.Data.Plan.FromPoint, oRSplay.ToPoint), 2)
-                            '            End If
-
-                            '            'profile-------------------------------------------------------
-                            '            Dim oProfileSplays As List(Of Calculate.Plot.cSplayProfileProjectedData)
-                            '            If bUseOnlyCutSplay Then
-                            '                oProfileSplays = oSegment.Data.Profile.FromSplays.Where(Function(item) item.GetSplaySegment.Cut).ToList
-                            '            Else
-                            '                oProfileSplays = oSegment.Data.Profile.FromSplays.ToList
-                            '            End If
-
-                            '            Dim oUSplay As Calculate.Plot.cSplayProfileProjectedData = oProfileSplays.Where(Function(item) modPaint.InclinationIsInRange(modPaint.GetInclination(oSegment.Data.Profile.FromPoint, item.ToPoint), 90 - iProfileAngleRange, 90)).OrderByDescending(Function(item) modPaint.DistancePointToPoint(oSegment.Data.Profile.FromPoint, item.ToPoint)).FirstOrDefault
-                            '            If IsNothing(oUSplay) Then
-                            '                oSegment.Up = 0
-                            '            Else
-                            '                oSegment.Up = modNumbers.MathRound(modPaint.DistancePointToPoint(oSegment.Data.Profile.FromPoint, oUSplay.ToPoint), 2)
-                            '            End If
-
-                            '            Dim oDSplay As Calculate.Plot.cSplayProfileProjectedData = oProfileSplays.Where(Function(item) modPaint.InclinationIsInRange(modPaint.GetInclination(oSegment.Data.Profile.FromPoint, item.ToPoint), -90 + iProfileAngleRange, -90)).OrderByDescending(Function(item) modPaint.DistancePointToPoint(oSegment.Data.Profile.FromPoint, item.ToPoint)).FirstOrDefault
-                            '            If IsNothing(oDSplay) Then
-                            '                oSegment.Down = 0
-                            '            Else
-                            '                oSegment.Down = modNumbers.MathRound(modPaint.DistancePointToPoint(oSegment.Data.Profile.FromPoint, oDSplay.ToPoint), 2)
-                            '            End If
-                            '        Else
-                            '            Dim oPlanSplays As List(Of Calculate.Plot.cSplayPlanProjectedData)
-                            '            If bUseOnlyCutSplay Then
-                            '                oPlanSplays = oSegment.Data.Plan.ToSplays.Where(Function(item) item.GetSplaySegment.Cut).ToList
-                            '            Else
-                            '                oPlanSplays = oSegment.Data.Plan.ToSplays.ToList
-                            '            End If
-
-                            '            Dim dLBearing As Decimal = oSegment.Data.Plan.ToBearingLeft
-                            '            Dim oLSplay As Calculate.Plot.cSplayPlanProjectedData = oPlanSplays.Where(Function(item) modPaint.AngleIsInRange(modPaint.GetBearing(oSegment.Data.Plan.ToPoint, item.ToPoint), dLBearing - iPlanAngleRange, dLBearing + iPlanAngleRange)).OrderByDescending(Function(item) modPaint.DistancePointToPoint(oSegment.Data.Plan.ToPoint, item.ToPoint)).FirstOrDefault
-                            '            If IsNothing(oLSplay) Then
-                            '                oSegment.Left = 0
-                            '            Else
-                            '                oSegment.Left = modNumbers.MathRound(modPaint.DistancePointToPoint(oSegment.Data.Plan.ToPoint, oLSplay.ToPoint), 2)
-                            '            End If
-
-                            '            Dim dRBearing As Decimal = oSegment.Data.Plan.ToBearingRight
-                            '            Dim oRSplay As Calculate.Plot.cSplayPlanProjectedData = oPlanSplays.Where(Function(item) modPaint.AngleIsInRange(modPaint.GetBearing(oSegment.Data.Plan.ToPoint, item.ToPoint), dRBearing - iPlanAngleRange, dRBearing + iPlanAngleRange)).OrderByDescending(Function(item) modPaint.DistancePointToPoint(oSegment.Data.Plan.ToPoint, item.ToPoint)).FirstOrDefault
-                            '            If IsNothing(oRSplay) Then
-                            '                oSegment.Right = 0
-                            '            Else
-                            '                oSegment.Right = modNumbers.MathRound(modPaint.DistancePointToPoint(oSegment.Data.Plan.ToPoint, oRSplay.ToPoint), 2)
-                            '            End If
-
-                            '            'profile-------------------------------------------------------
-                            '            Dim oProfileSplays As List(Of Calculate.Plot.cSplayProfileProjectedData)
-                            '            If bUseOnlyCutSplay Then
-                            '                oProfileSplays = oSegment.Data.Profile.ToSplays.Where(Function(item) item.GetSplaySegment.Cut).ToList
-                            '            Else
-                            '                oProfileSplays = oSegment.Data.Profile.ToSplays.ToList
-                            '            End If
-
-                            '            Dim oUSplay As Calculate.Plot.cSplayProfileProjectedData = oProfileSplays.Where(Function(item) modPaint.InclinationIsInRange(modPaint.GetInclination(oSegment.Data.Profile.ToPoint, item.ToPoint), 90 - iProfileAngleRange, 90)).OrderByDescending(Function(item) modPaint.DistancePointToPoint(oSegment.Data.Profile.ToPoint, item.ToPoint)).FirstOrDefault
-                            '            If IsNothing(oUSplay) Then
-                            '                oSegment.Up = 0
-                            '            Else
-                            '                oSegment.Up = modNumbers.MathRound(modPaint.DistancePointToPoint(oSegment.Data.Profile.ToPoint, oUSplay.ToPoint), 2)
-                            '            End If
-
-                            '            Dim oDSplay As Calculate.Plot.cSplayProfileProjectedData = oProfileSplays.Where(Function(item) modPaint.InclinationIsInRange(modPaint.GetInclination(oSegment.Data.Profile.ToPoint, item.ToPoint), -90 + iProfileAngleRange, -90)).OrderByDescending(Function(item) modPaint.DistancePointToPoint(oSegment.Data.Profile.ToPoint, item.ToPoint)).FirstOrDefault
-                            '            If IsNothing(oDSplay) Then
-                            '                oSegment.Down = 0
-                            '            Else
-                            '                oSegment.Down = modNumbers.MathRound(modPaint.DistancePointToPoint(oSegment.Data.Profile.ToPoint, oDSplay.ToPoint), 2)
-                            '            End If
-                            '        End If
-                            '        If bMarkAsCalculated Then
-                            '            Call oSegment.DataProperties.SetValue("LRUD_calculated", True)
-                            '            Call oSegment.DataProperties.SetValue("LRUD_source", "splays")
-                            '        End If
-                            '    End If
-                            'Next
-                            'Call oSurvey.Segments.SaveAll()
-
                         ElseIf .cboAction.SelectedIndex = 2 Then
+                            Dim bMarkAsCalculated As Boolean = .chkMarkAsCalculated.Checked
+                            If bMarkAsCalculated Then
+                                Call oSurvey.Properties.DataTables.Segments.Add("LRUD_calculated", Data.cDataFields.TypeEnum.Boolean)
+                                Call oSurvey.Properties.DataTables.Segments.Add("LRUD_source", Data.cDataFields.TypeEnum.Text)
+                            End If
+
                             Dim oSessions As SortedDictionary(Of String, cSession) = oSurvey.Properties.Sessions.GetWithEmpty()
                             For Each oSegment As cSegment In pSegmentsGetSelections(.cboReplicateTo.SelectedIndex)
                                 If Not oSegment.Splay AndAlso pSegmentsLRUDIsInRange(oSegment, frmMLRUD) Then
@@ -8070,6 +7957,148 @@ Friend Class frmMain2
                                 End If
                             Next
                             Call oSurvey.Segments.SaveAll()
+                        ElseIf .cboAction.SelectedIndex = 3 Then
+                            Dim bMarkAsGenerated As Boolean = .chkMode3MarkAsGenerated.Checked
+                            If bMarkAsGenerated Then
+                                Call oSurvey.Properties.DataTables.Segments.Add("SPLAY_calculated", Data.cDataFields.TypeEnum.Boolean)
+                                Call oSurvey.Properties.DataTables.Segments.Add("SPLAY_shot", Data.cDataFields.TypeEnum.Text)
+                                Call oSurvey.Properties.DataTables.Segments.Add("SPLAY_source", Data.cDataFields.TypeEnum.Text)
+                            End If
+
+                            Dim oSessions As SortedDictionary(Of String, cSession) = oSurvey.Properties.Sessions.GetWithEmpty()
+                            For Each oSegment As cSegment In pSegmentsGetSelections(.cboReplicateTo.SelectedIndex)
+                                If Not oSegment.Splay AndAlso pSegmentsLRUDIsInRange(oSegment, frmMLRUD) Then
+                                    If oSegment.GetSession.SideMeasuresReferTo = cSegment.SideMeasuresReferToEnum.StartPoint Then
+                                        Dim iLastIndex As Integer = oSegment.Index + 1
+
+                                        If .chkMode3AlsoZero.Checked OrElse oSegment.Left > 0 Then
+                                            Dim oLeftSegment As cSegment = oSurvey.Segments.Insert(oSegment.Index + 1)
+                                            oLeftSegment.SetSession(oSegment.Session)
+                                            oLeftSegment.SetCave(oSegment.Cave, oSegment.Branch)
+                                            oLeftSegment.From = oSegment.From
+                                            oLeftSegment.To = oSegment.From & "(L)"
+                                            oLeftSegment.Splay = True
+                                            oLeftSegment.Distance = oSegment.Left
+                                            oLeftSegment.Bearing = modPaint.NormalizeAngle(oSegment.Data.Plan.FromBearingLeft)
+                                            Call oLeftSegment.DataProperties.SetValue("SPLAY_calculated", True)
+                                            Call oLeftSegment.DataProperties.SetValue("SPLAY_shot", oSegment.ToString)
+                                            Call oLeftSegment.DataProperties.SetValue("SPLAY_source", "L")
+                                            iLastIndex = oLeftSegment.Index + 1
+                                        End If
+
+                                        If .chkMode3AlsoZero.Checked OrElse oSegment.Right > 0 Then
+                                            Dim oRightSegment As cSegment = oSurvey.Segments.Insert(iLastIndex)
+                                            oRightSegment.SetSession(oSegment.Session)
+                                            oRightSegment.SetCave(oSegment.Cave, oSegment.Branch)
+                                            oRightSegment.From = oSegment.From
+                                            oRightSegment.To = oSegment.From & "(R)"
+                                            oRightSegment.Splay = True
+                                            oRightSegment.Distance = oSegment.Right
+                                            oRightSegment.Bearing = modPaint.NormalizeAngle(oSegment.Data.Plan.FromBearingRight)
+                                            Call oRightSegment.DataProperties.SetValue("SPLAY_calculated", True)
+                                            Call oRightSegment.DataProperties.SetValue("SPLAY_shot", oSegment.ToString)
+                                            Call oRightSegment.DataProperties.SetValue("SPLAY_source", "R")
+                                            iLastIndex = oRightSegment.Index + 1
+                                        End If
+
+                                        If .chkMode3AlsoZero.Checked OrElse oSegment.Up > 0 Then
+                                            Dim oUpSegment As cSegment = oSurvey.Segments.Insert(iLastIndex)
+                                            oUpSegment.SetSession(oSegment.Session)
+                                            oUpSegment.SetCave(oSegment.Cave, oSegment.Branch)
+                                            oUpSegment.From = oSegment.From
+                                            oUpSegment.To = oSegment.From & "(U)"
+                                            oUpSegment.Splay = True
+                                            oUpSegment.Distance = oSegment.Up
+                                            oUpSegment.Bearing = oSegment.Bearing
+                                            oUpSegment.Inclination = 90
+                                            Call oUpSegment.DataProperties.SetValue("SPLAY_calculated", True)
+                                            Call oUpSegment.DataProperties.SetValue("SPLAY_shot", oSegment.ToString)
+                                            Call oUpSegment.DataProperties.SetValue("SPLAY_source", "U")
+                                            iLastIndex = oUpSegment.Index + 1
+                                        End If
+
+                                        If .chkMode3AlsoZero.Checked OrElse oSegment.Down > 0 Then
+                                            Dim oDownSegment As cSegment = oSurvey.Segments.Insert(iLastIndex)
+                                            oDownSegment.SetSession(oSegment.Session)
+                                            oDownSegment.SetCave(oSegment.Cave, oSegment.Branch)
+                                            oDownSegment.From = oSegment.From
+                                            oDownSegment.To = oSegment.From & "(D)"
+                                            oDownSegment.Splay = True
+                                            oDownSegment.Distance = oSegment.Down
+                                            oDownSegment.Bearing = oSegment.Bearing
+                                            oDownSegment.Inclination = -90
+                                            Call oDownSegment.DataProperties.SetValue("SPLAY_calculated", True)
+                                            Call oDownSegment.DataProperties.SetValue("SPLAY_shot", oSegment.ToString)
+                                            Call oDownSegment.DataProperties.SetValue("SPLAY_source", "D")
+                                        End If
+                                    Else
+                                        Dim iLastIndex As Integer = oSegment.Index + 1
+
+                                        If .chkMode3AlsoZero.Checked OrElse oSegment.Left > 0 Then
+                                            Dim oLeftSegment As cSegment = oSurvey.Segments.Insert(iLastIndex)
+                                            oLeftSegment.SetSession(oSegment.Session)
+                                            oLeftSegment.SetCave(oSegment.Cave, oSegment.Branch)
+                                            oLeftSegment.From = oSegment.To
+                                            oLeftSegment.To = oSegment.To & "(L)"
+                                            oLeftSegment.Splay = True
+                                            oLeftSegment.Distance = oSegment.Left
+                                            oLeftSegment.Bearing = modPaint.NormalizeAngle(oSegment.Data.Plan.ToBearingLeft)
+                                            Call oLeftSegment.DataProperties.SetValue("SPLAY_calculated", True)
+                                            Call oLeftSegment.DataProperties.SetValue("SPLAY_shot", oSegment.ToString)
+                                            Call oLeftSegment.DataProperties.SetValue("SPLAY_source", "L")
+                                            iLastIndex = oLeftSegment.Index + 1
+                                        End If
+
+                                        If .chkMode3AlsoZero.Checked OrElse oSegment.Right > 0 Then
+                                            Dim oRightSegment As cSegment = oSurvey.Segments.Insert(iLastIndex)
+                                            oRightSegment.SetSession(oSegment.Session)
+                                            oRightSegment.SetCave(oSegment.Cave, oSegment.Branch)
+                                            oRightSegment.From = oSegment.To
+                                            oRightSegment.To = oSegment.To & "(R)"
+                                            oRightSegment.Splay = True
+                                            oRightSegment.Distance = oSegment.Right
+                                            oRightSegment.Bearing = modPaint.NormalizeAngle(oSegment.Data.Plan.ToBearingRight)
+                                            Call oRightSegment.DataProperties.SetValue("SPLAY_calculated", True)
+                                            Call oRightSegment.DataProperties.SetValue("SPLAY_shot", oSegment.ToString)
+                                            Call oRightSegment.DataProperties.SetValue("SPLAY_source", "R")
+                                            iLastIndex = oRightSegment.Index + 1
+                                        End If
+
+                                        If .chkMode3AlsoZero.Checked OrElse oSegment.Up > 0 Then
+                                            Dim oUpSegment As cSegment = oSurvey.Segments.Insert(iLastIndex)
+                                            oUpSegment.SetSession(oSegment.Session)
+                                            oUpSegment.SetCave(oSegment.Cave, oSegment.Branch)
+                                            oUpSegment.From = oSegment.To
+                                            oUpSegment.To = oSegment.To & "(U)"
+                                            oUpSegment.Splay = True
+                                            oUpSegment.Distance = oSegment.Up
+                                            oUpSegment.Bearing = oSegment.Bearing
+                                            oUpSegment.Inclination = 90
+                                            Call oUpSegment.DataProperties.SetValue("SPLAY_calculated", True)
+                                            Call oUpSegment.DataProperties.SetValue("SPLAY_shot", oSegment.ToString)
+                                            Call oUpSegment.DataProperties.SetValue("SPLAY_source", "U")
+                                            iLastIndex = oUpSegment.Index + 1
+                                        End If
+
+                                        If .chkMode3AlsoZero.Checked OrElse oSegment.Down > 0 Then
+                                            Dim oDownSegment As cSegment = oSurvey.Segments.Insert(iLastIndex)
+                                            oDownSegment.SetSession(oSegment.Session)
+                                            oDownSegment.SetCave(oSegment.Cave, oSegment.Branch)
+                                            oDownSegment.From = oSegment.To
+                                            oDownSegment.To = oSegment.To & "(D)"
+                                            oDownSegment.Splay = True
+                                            oDownSegment.Distance = oSegment.Down
+                                            oDownSegment.Bearing = oSegment.Bearing
+                                            oDownSegment.Inclination = -90
+                                            Call oDownSegment.DataProperties.SetValue("SPLAY_calculated", True)
+                                            Call oDownSegment.DataProperties.SetValue("SPLAY_shot", oSegment.ToString)
+                                            Call oDownSegment.DataProperties.SetValue("SPLAY_source", "D")
+                                        End If
+                                    End If
+
+                                End If
+                            Next
+                            oSurvey.Segments.SaveAll()
                         Else
                             Call .Restore()
                         End If

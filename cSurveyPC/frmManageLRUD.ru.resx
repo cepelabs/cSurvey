@@ -120,9 +120,6 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Управление данными ЛПВН:</value>
   </data>
-  <data name="RadioButton1.Text" xml:space="preserve">
-		<value>Установить ЛПВН с помощью длины первых четырех боковых замеров</value>
-	</data>
   <data name="RadioButton1b.Text" xml:space="preserve">
 		<value>Использовать длины как ВНЛП</value>
 	</data>
@@ -132,12 +129,6 @@
   <data name="frmMode1.Text" xml:space="preserve">
 		<value>Режим:</value>
 	</data>
-  <data name="RadioButton2.Text" xml:space="preserve">
-		<value>Расчет ЛПВН из области, определенной боковыми замерами</value>
-	</data>
-  <data name="RadioButton3.Text" xml:space="preserve">
-		<value>Расчет ЛПВН из области, определенной краями рисунка</value>
-	</data>
   <data name="cmdCancel.Text" xml:space="preserve">
 		<value>Отмена</value>
 	</data>
@@ -146,9 +137,6 @@
 	</data>
   <data name="chkBackup.Properties.Caption" xml:space="preserve">
 		<value>Сохранить текущие данные</value>
-	</data>
-  <data name="RadioButton4.Text" xml:space="preserve">
-		<value>Восстановить ранее сохраненные данные</value>
 	</data>
   <data name="Label1.Text" xml:space="preserve">
 		<value>Применить к:</value>
@@ -204,7 +192,10 @@
   <data name="cboAction.Items2" xml:space="preserve">
     <value>Расчет ЛПВН из области, определенной краями рисунка</value>
   </data>
-  <data name="cboAction.Items3" xml:space="preserve">
+  <data name="cboAction.Items4" xml:space="preserve">
     <value>Восстановить ранее сохраненные данные</value>
+  </data>
+  <data name="GroupControl1.Text" xml:space="preserve">
+    <value>Опции:</value>
   </data>
 </root>

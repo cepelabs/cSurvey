@@ -120,9 +120,6 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Gestisci dati LRUD:</value>
   </data>
-  <data name="RadioButton1.Text" xml:space="preserve">
-		<value>Imposta LRUD usando le lunghezze dei primi quattro splay</value>
-	</data>
   <data name="RadioButton1b.Text" xml:space="preserve">
 		<value>Usa le distanze come UDLR</value>
 	</data>
@@ -132,12 +129,6 @@
   <data name="frmMode1.Text" xml:space="preserve">
 		<value>Modalità:</value>
 	</data>
-  <data name="RadioButton2.Text" xml:space="preserve">
-		<value>Calcola LRUD dall'area definita dagli splay</value>
-	</data>
-  <data name="RadioButton3.Text" xml:space="preserve">
-		<value>Calcola LRUD dall'area definita dai bordi disegnati</value>
-	</data>
   <data name="cmdCancel.Text" xml:space="preserve">
 		<value>Annulla</value>
 	</data>
@@ -146,9 +137,6 @@
 	</data>
   <data name="chkBackup.Properties.Caption" xml:space="preserve">
 		<value>Salva dati attuali</value>
-	</data>
-  <data name="RadioButton4.Text" xml:space="preserve">
-		<value>Recupera dati precedentemente salvati</value>
 	</data>
   <data name="Label1.Text" xml:space="preserve">
 		<value>Applica a:</value>
@@ -216,10 +204,22 @@
   <data name="cboAction.Items2" xml:space="preserve">
     <value>Calcola LRUD dall'area definita dai bordi disegnati</value>
   </data>
-  <data name="cboAction.Items3" xml:space="preserve">
-    <value>Recupera dati precedentemente salvati</value>
-  </data>
   <data name="lblAction.Text" xml:space="preserve">
     <value>Azione:</value>
+  </data>
+  <data name="cboAction.Items4" xml:space="preserve">
+    <value>Recupera dati precedentemente salvati</value>
+  </data>
+  <data name="cboAction.Items3" xml:space="preserve">
+    <value>Crea splay calcolati da LRUD</value>
+  </data>
+  <data name="chkMode3AlsoZero.Properties.Caption" xml:space="preserve">
+    <value>Crea anche splay a lunghezza 0</value>
+  </data>
+  <data name="GroupControl1.Text" xml:space="preserve">
+    <value>Opzioni:</value>
+  </data>
+  <data name="chkMode3MarkAsGenerated.Properties.Caption" xml:space="preserve">
+    <value>Marca come autogenerati</value>
   </data>
 </root>

@@ -20,7 +20,6 @@ Imports DevExpress.Utils.Extensions
 Imports DevExpress.XtraEditors.TextEdit
 Imports cSurveyPC.cSurvey.Design.Items
 Imports System.Windows.Input
-Imports DevExpress.Office.UI
 
 Friend Class cHolosViewer
     Private Const iHotSpotFillAlpha As Integer = 100
@@ -959,28 +958,42 @@ Friend Class cHolosViewer
 
         Dim oPoints As Dictionary(Of String, List(Of Point3D)) = GetStations3DPoints(oSurvey, sOriginX, sOriginY, sOriginZ, dHeightScale)
         Dim oStation1 As Point3D = oPoints(Chunk.Stations.Station1.TrigPoint.Name)(0)
-        'reset model coordinate
-        Call oResultTransformGroup.Children.Add(New TranslateTransform3D(-Chunk.Stations.Station1.Point.X, -Chunk.Stations.Station1.Point.Y, -Chunk.Stations.Station1.Point.Z))
         Dim oStation2 As Point3D = oPoints(Chunk.Stations.Station2.TrigPoint.Name)(0)
 
         'align model to shot bearing
         Dim dBearingStation As Decimal = modPaint.GetBearing(New PointD(oStation1.X, -oStation1.Y), New PointD(oStation2.X, -oStation2.Y))
         Dim dBearingModel As Decimal = modPaint.GetBearing(New PointD(Chunk.Stations.Station1.Point.X, -Chunk.Stations.Station1.Point.Y), New PointD(Chunk.Stations.Station2.Point.X, -Chunk.Stations.Station2.Point.Y))
-        Dim dAngle As Decimal = modPaint.NormalizeAngle(dBearingModel - dBearingStation)
-        Call oResultTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 0, 1), dAngle)))
+        Dim dBearing As Decimal = -(360.0 - dBearingModel) + (360.0 - dBearingStation)
+
+        Dim oVectorBearing As Vector3D = New Media.Media3D.Vector3D(0, 0, 1)
 
         'align model to shot inclination
         Dim dSlopeStation As Decimal = modPaint.GetSlope3D(oStation1, oStation2)
         Dim dSlopeModel As Decimal = modPaint.GetSlope3D(Chunk.Stations.Station1.Point, Chunk.Stations.Station2.Point)
-        Dim dSlope As Decimal = dSlopeModel - dSlopeStation
-        Call oResultTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 1, 0), dSlope)))
+        Dim dSlope As Decimal = -dSlopeModel + dSlopeStation
 
+        Dim oVectorSlope As Vector3D = New Vector3D(oStation2.X - oStation1.X, oStation2.Y - oStation1.Y, 0)
+        Dim oVectorSlopeTrasformGroup As Transform3DGroup = New Transform3DGroup()
+        oVectorSlopeTrasformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 0, 1), dBearing)))
+        oVectorSlope = oVectorSlopeTrasformGroup.Transform(oVectorSlope)
+
+
+        'reset model coordinate
+        Call oResultTransformGroup.Children.Add(New TranslateTransform3D(-Chunk.Stations.Station1.Point.X, -Chunk.Stations.Station1.Point.Y, -Chunk.Stations.Station1.Point.Z))
+        'rotate to compensate bearing on station1
+        Call oResultTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(oVectorBearing, dBearing)))
+        'rotate to compensate slope on station1
+        Call oResultTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(oVectorSlope, dSlope)))
+        'reset model scale
         Call oResultTransformGroup.Children.Add(New ScaleTransform3D(1.0 / Chunk.ModelTransform.XScale, 1.0 / Chunk.ModelTransform.YScale, (1.0 / Chunk.ModelTransform.ZScale) * dHeightScale))
+        'translate model to real position
         Call oResultTransformGroup.Children.Add(New TranslateTransform3D(oStation1.X, oStation1.Y, oStation1.Z))
 
+        'same on model point to calcoluate distance
         Dim oModelPointTransformGroup As Transform3DGroup = New Transform3DGroup()
-        Call oModelPointTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 0, 1), dAngle)))
-        Call oModelPointTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(New Media.Media3D.Vector3D(0, 1, 0), dSlope)))
+        Call oModelPointTransformGroup.Children.Add(New TranslateTransform3D(-Chunk.Stations.Station1.Point.X, -Chunk.Stations.Station1.Point.Y, -Chunk.Stations.Station1.Point.Z))
+        Call oModelPointTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(oVectorBearing, dBearing)))
+        Call oModelPointTransformGroup.Children.Add(New RotateTransform3D(New Media.Media3D.AxisAngleRotation3D(oVectorSlope, dSlope)))
         Call oModelPointTransformGroup.Children.Add(New ScaleTransform3D(1.0 / Chunk.ModelTransform.XScale, 1.0 / Chunk.ModelTransform.YScale, (1.0 / Chunk.ModelTransform.ZScale) * dHeightScale))
         Call oModelPointTransformGroup.Children.Add(New TranslateTransform3D(oStation1.X, oStation1.Y, oStation1.Z))
 
@@ -2143,9 +2156,15 @@ Friend Class cHolosViewer
 
             If PaintOptions.DrawChunks Then
                 If PaintOptions.ChunkCutMode = cIModelOptions3D.CutModeEnum.RemoveCeiling Then
+                    oSurvey.RaiseOnProgressEvent("load3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, "Loading 3d chunk", 0, cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.Image3D)
+                    Dim iIndex As Integer
+                    Dim iCount As Integer = oSurvey.ThreeD.Layers.ChunkLayer.Items.Count
                     For Each oChunk As cItemChunk3D In oSurvey.ThreeD.Layers.ChunkLayer.Items
+                        iIndex += 1
                         If Not oChunk.HiddenInDesign AndAlso GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oChunk, Selection.CurrentCave, Selection.CurrentBranch) Then
                             If oChunk.Stations.IsValid Then
+                                oSurvey.RaiseOnProgressEvent("load3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Loading 3d chunk", iIndex / iCount, cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.Image3D)
+
                                 Dim oCutGroup As CuttingPlaneGroup = New CuttingPlaneGroup
 
                                 Dim oCutPlane As Plane3D = pChunkCuttingPlane(oChunk, PaintOptions)
@@ -2165,10 +2184,17 @@ Friend Class cHolosViewer
                             End If
                         End If
                     Next
+                    oSurvey.RaiseOnProgressEvent("load3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
                 Else
+                    oSurvey.RaiseOnProgressEvent("load3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, "Loading 3d chunk", 0, cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.Image3D)
+                    Dim iIndex As Integer
+                    Dim iCount As Integer = oSurvey.ThreeD.Layers.ChunkLayer.Items.Count
                     For Each oChunk As cItemChunk3D In oSurvey.ThreeD.Layers.ChunkLayer.Items
-                        If GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oChunk, Selection.CurrentCave, Selection.CurrentBranch) Then
+                        iIndex += 1
+                        If Not oChunk.HiddenInDesign AndAlso GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oChunk, Selection.CurrentCave, Selection.CurrentBranch) Then
                             If oChunk.Stations.IsValid Then
+                                oSurvey.RaiseOnProgressEvent("load3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Loading 3d chunk", iIndex / iCount, cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.Image3D)
+
                                 Dim oChunkModel As ModelVisual3D = pChunk(oChunk, PaintOptions)
                                 Dim oChunkHotSpot As cHotSpot = New cHotSpot(oChunkModel, oChunk)
                                 oChunksHotSpots.Add(oChunkModel, oChunkHotSpot)
@@ -2176,6 +2202,7 @@ Friend Class cHolosViewer
                             End If
                         End If
                     Next
+                    oSurvey.RaiseOnProgressEvent("load3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
                 End If
             End If
         Next

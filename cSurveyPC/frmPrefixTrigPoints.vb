@@ -179,11 +179,11 @@ Friend Class frmPrefixTrigPoints
         End Try
     End Sub
 
-    Private Sub ListBox1_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs)
+    Private Sub grdView1_DoubleClick(sender As Object, e As EventArgs) Handles grdView1.DoubleClick
         Call Button1_Click(Nothing, Nothing)
     End Sub
 
-    Private Sub ListBox2_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub grdView2_DoubleClick(sender As Object, e As EventArgs) Handles grdView2.DoubleClick
         Call Button2_Click(Nothing, Nothing)
     End Sub
 

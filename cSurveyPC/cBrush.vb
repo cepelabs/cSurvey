@@ -1419,6 +1419,9 @@ Namespace cSurvey.Design
 
         Public ReadOnly Property PatternBrushes As cPatternBrushes
             Get
+                If oPatternBrushes Is Nothing Then
+                    oPatternBrushes = New cPatternBrushes(oSurvey)
+                End If
                 Return oPatternBrushes
             End Get
         End Property
@@ -2086,7 +2089,7 @@ Namespace cSurvey.Design
                         oBackupColors(6) = oClipartAlternativeColor
                         oClipartAlternativeColor = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oClipartAlternativeColor)
 
-                        If oPatternPens.Count > 0 Then
+                        If oPatternPens IsNot Nothing AndAlso oPatternPens.Count > 0 Then
                             oBackupColors(7) = oPatternPens(0).Color
                             For Each oPatternPen As Pen In oPatternPens
                                 oPatternPen.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oBackupColors(7))
@@ -2116,9 +2119,11 @@ Namespace cSurvey.Design
                         oClipartAlternativeBrush1.Color = oBackupColors(4)
                         oClipartAlternativeBrush2.Color = oBackupColors(5)
                         oClipartAlternativeColor = oBackupColors(6)
-                        For Each oPatternPen As Pen In oPatternPens
-                            oPatternPen.Color = oBackupColors(7)
-                        Next
+                        If oPatternPens IsNot Nothing Then
+                            For Each oPatternPen As Pen In oPatternPens
+                                oPatternPen.Color = oBackupColors(7)
+                            Next
+                        End If
                     End If
                 End If
             End If

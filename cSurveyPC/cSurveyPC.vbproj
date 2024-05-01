@@ -478,7 +478,7 @@
       <DependentUpon>cPanelControl.vb</DependentUpon>
     </Compile>
     <Compile Include="Specialized\cPanelControl.vb">
-      <SubType>Form</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>

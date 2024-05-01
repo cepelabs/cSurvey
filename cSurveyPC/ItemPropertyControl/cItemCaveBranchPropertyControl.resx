@@ -139,7 +139,7 @@
     <value>lblPropBranchList</value>
   </data>
   <data name="&gt;&gt;lblPropBranchList.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBranchList.Parent" xml:space="preserve">
     <value>pnlPropCaveBranches</value>
@@ -166,7 +166,7 @@
     <value>lblPropCaveList</value>
   </data>
   <data name="&gt;&gt;lblPropCaveList.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCaveList.Parent" xml:space="preserve">
     <value>pnlPropCaveBranches</value>
@@ -250,7 +250,7 @@
     <value>lblPropBindCrossSections</value>
   </data>
   <data name="&gt;&gt;lblPropBindCrossSections.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBindCrossSections.Parent" xml:space="preserve">
     <value>$this</value>
@@ -264,7 +264,7 @@
   <data name="cboPropBindDesignType.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 67</value>
   </data>
-  <assembly alias="DevExpress.Utils.v23.2" name="DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Utils.v23.2" name="DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="cboPropBindDesignType.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
     <value>Combo</value>
   </data>
@@ -287,7 +287,7 @@
     <value>cboPropBindDesignType</value>
   </data>
   <data name="&gt;&gt;cboPropBindDesignType.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPropBindDesignType.Parent" xml:space="preserve">
     <value>$this</value>
@@ -314,7 +314,7 @@
     <value>lblPropBindDesignType</value>
   </data>
   <data name="&gt;&gt;lblPropBindDesignType.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropBindDesignType.Parent" xml:space="preserve">
     <value>$this</value>
@@ -338,7 +338,7 @@
     <value>pnlPropCaveBranchesColor</value>
   </data>
   <data name="&gt;&gt;pnlPropCaveBranchesColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlPropCaveBranchesColor.Parent" xml:space="preserve">
     <value>pnlPropCaveBranches</value>
@@ -349,7 +349,7 @@
   <data name="cmdPropSetCurrentCaveBranch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <assembly alias="DevExpress.Data.v23.2" name="DevExpress.Data.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Data.v23.2" name="DevExpress.Data.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="cmdPropSetCurrentCaveBranch.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi44
@@ -494,7 +494,7 @@
     <value>cmdPropSetCurrentCaveBranch</value>
   </data>
   <data name="&gt;&gt;cmdPropSetCurrentCaveBranch.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPropSetCurrentCaveBranch.Parent" xml:space="preserve">
     <value>pnlPropCaveBranches</value>
@@ -559,7 +559,7 @@
     <value>cmdPropSetCaveBranch</value>
   </data>
   <data name="&gt;&gt;cmdPropSetCaveBranch.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPropSetCaveBranch.Parent" xml:space="preserve">
     <value>pnlPropCaveBranches</value>
@@ -583,7 +583,7 @@
     <value>pnlPropCaveBranches</value>
   </data>
   <data name="&gt;&gt;pnlPropCaveBranches.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlPropCaveBranches.Parent" xml:space="preserve">
     <value>$this</value>

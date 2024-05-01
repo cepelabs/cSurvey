@@ -63,17 +63,30 @@ Friend Class cItemChunk3DPropertyControl
 
     Private oGroup As ModelVisual3D
 
-    Public Shadows Sub Rebind(Item As cItem)
-        MyBase.Rebind(Item)
-
-        oItem = Item
-
+    Private Sub cmdPropModelLoad_Click(sender As Object, e As EventArgs) Handles cmdPropModelLoad.Click
+        Cursor = Cursors.AppStarting
+        cmdPropModelLoad.Visible = False
         If oGroup IsNot Nothing Then
             Call oHolosView.mainViewport.Children.Remove(oGroup)
         End If
         oGroup = New ModelVisual3D
-        oGroup.Content = oItem.GetModel
+        oGroup.Content = oItem.LoadModel
         oHolosView.mainViewport.Children.Add(oGroup)
+        Cursor = Cursors.Default
+    End Sub
+
+    Public Shadows Sub Rebind(Item As cItem)
+        MyBase.Rebind(Item)
+
+        If oItem IsNot Item Then
+            cmdPropModelLoad.Visible = True
+            If oGroup IsNot Nothing Then
+                Call oHolosView.mainViewport.Children.Remove(oGroup)
+                oGroup = Nothing
+            End If
+        End If
+
+        oItem = Item
 
         If grdChunkInfo.Rows.Count = 0 Then
             grdChunkInfo.Rows.Clear()
@@ -121,4 +134,5 @@ Friend Class cItemChunk3DPropertyControl
             End If
         End Using
     End Sub
+
 End Class

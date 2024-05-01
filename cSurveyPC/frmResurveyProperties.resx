@@ -142,7 +142,7 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
@@ -172,7 +172,7 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -193,7 +193,7 @@
     <value>txtPlanPosition</value>
   </data>
   <data name="&gt;&gt;txtPlanPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtPlanPosition.Parent" xml:space="preserve">
     <value>$this</value>
@@ -220,7 +220,7 @@
     <value>lblPosition</value>
   </data>
   <data name="&gt;&gt;lblPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPosition.Parent" xml:space="preserve">
     <value>$this</value>
@@ -244,7 +244,7 @@
     <value>txtName</value>
   </data>
   <data name="&gt;&gt;txtName.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtName.Parent" xml:space="preserve">
     <value>$this</value>
@@ -271,7 +271,7 @@
     <value>lblName</value>
   </data>
   <data name="&gt;&gt;lblName.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblName.Parent" xml:space="preserve">
     <value>$this</value>
@@ -292,7 +292,7 @@
     <value>txtProfilePosition</value>
   </data>
   <data name="&gt;&gt;txtProfilePosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtProfilePosition.Parent" xml:space="preserve">
     <value>$this</value>
@@ -319,7 +319,7 @@
     <value>lblPlanPosition</value>
   </data>
   <data name="&gt;&gt;lblPlanPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlanPosition.Parent" xml:space="preserve">
     <value>$this</value>
@@ -346,7 +346,7 @@
     <value>lblConnectedTo</value>
   </data>
   <data name="&gt;&gt;lblConnectedTo.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblConnectedTo.Parent" xml:space="preserve">
     <value>pnlNextStations</value>
@@ -373,7 +373,7 @@
     <value>lblProfilePosition</value>
   </data>
   <data name="&gt;&gt;lblProfilePosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblProfilePosition.Parent" xml:space="preserve">
     <value>$this</value>
@@ -400,7 +400,7 @@
     <value>lblScaleUM</value>
   </data>
   <data name="&gt;&gt;lblScaleUM.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblScaleUM.Parent" xml:space="preserve">
     <value>pnlScale</value>
@@ -427,7 +427,7 @@
     <value>lblScaleSize</value>
   </data>
   <data name="&gt;&gt;lblScaleSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblScaleSize.Parent" xml:space="preserve">
     <value>pnlScale</value>
@@ -457,7 +457,7 @@
     <value>cmdApply</value>
   </data>
   <data name="&gt;&gt;cmdApply.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdApply.Parent" xml:space="preserve">
     <value>$this</value>
@@ -468,7 +468,7 @@
   <data name="cmdNext.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <assembly alias="DevExpress.Data.v23.2" name="DevExpress.Data.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Data.v23.2" name="DevExpress.Data.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="cmdNext.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi41
@@ -503,7 +503,7 @@
     <value>cmdNext</value>
   </data>
   <data name="&gt;&gt;cmdNext.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdNext.Parent" xml:space="preserve">
     <value>$this</value>
@@ -548,7 +548,7 @@
     <value>cmdPrev</value>
   </data>
   <data name="&gt;&gt;cmdPrev.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPrev.Parent" xml:space="preserve">
     <value>$this</value>
@@ -569,7 +569,7 @@
     <value>tknPlan</value>
   </data>
   <data name="&gt;&gt;tknPlan.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TokenEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TokenEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tknPlan.Parent" xml:space="preserve">
     <value>pnlNextStations</value>
@@ -590,7 +590,7 @@
     <value>tknProfile</value>
   </data>
   <data name="&gt;&gt;tknProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TokenEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TokenEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tknProfile.Parent" xml:space="preserve">
     <value>pnlNextStations</value>
@@ -611,7 +611,7 @@
     <value>pnlNextStations</value>
   </data>
   <data name="&gt;&gt;pnlNextStations.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlNextStations.Parent" xml:space="preserve">
     <value>$this</value>
@@ -623,7 +623,7 @@
     <value>txtScaleSize</value>
   </data>
   <data name="&gt;&gt;txtScaleSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtScaleSize.Parent" xml:space="preserve">
     <value>pnlScale</value>
@@ -644,7 +644,7 @@
     <value>pnlScale</value>
   </data>
   <data name="&gt;&gt;pnlScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlScale.Parent" xml:space="preserve">
     <value>$this</value>
@@ -658,7 +658,7 @@
   <data name="txtScaleSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 10</value>
   </data>
-  <assembly alias="DevExpress.Utils.v23.2" name="DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Utils.v23.2" name="DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="txtScaleSize.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
     <value>Combo</value>
   </data>
@@ -675,7 +675,7 @@
     <value>txtScaleSize</value>
   </data>
   <data name="&gt;&gt;txtScaleSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtScaleSize.Parent" xml:space="preserve">
     <value>pnlScale</value>
@@ -702,6 +702,6 @@
     <value>frmResurveyProperties</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.XtraForm, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.XtraForm, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>

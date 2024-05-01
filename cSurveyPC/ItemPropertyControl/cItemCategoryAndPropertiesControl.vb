@@ -23,6 +23,14 @@ Friend Class cItemCategoryAndPropertiesControl
         MyBase.Rebind(Item)
 
         cboPropCategories.SelectedIndex = Array.IndexOf([Enum].GetValues(GetType(cIItem.cItemCategoryEnum)), Item.Category)
+
+        Dim bChecked As Boolean = chkPropShowDataProperties.Checked
+        If bChecked Then
+            prpPropDesignDataProperties.BeginUpdate()
+            prpPropDesignDataProperties.SelectedObject = Nothing
+            prpPropDesignDataProperties.SelectedObject = MyBase.Item.DataProperties.GetClass
+            prpPropDesignDataProperties.EndUpdate()
+        End If
     End Sub
 
     Private Sub prpPropDesignDataProperties_MouseUp(sender As Object, e As MouseEventArgs) Handles prpPropDesignDataProperties.MouseUp

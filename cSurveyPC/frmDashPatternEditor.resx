@@ -145,7 +145,7 @@
     <value>grdBlocks</value>
   </data>
   <data name="&gt;&gt;grdBlocks.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;grdBlocks.Parent" xml:space="preserve">
     <value>$this</value>
@@ -178,7 +178,7 @@
     <value>barDockControlTop</value>
   </data>
   <data name="&gt;&gt;barDockControlTop.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;barDockControlTop.Parent" xml:space="preserve">
     <value>$this</value>
@@ -199,7 +199,7 @@
     <value>barDockControlBottom</value>
   </data>
   <data name="&gt;&gt;barDockControlBottom.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;barDockControlBottom.Parent" xml:space="preserve">
     <value>$this</value>
@@ -220,7 +220,7 @@
     <value>barDockControlLeft</value>
   </data>
   <data name="&gt;&gt;barDockControlLeft.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;barDockControlLeft.Parent" xml:space="preserve">
     <value>$this</value>
@@ -241,7 +241,7 @@
     <value>barDockControlRight</value>
   </data>
   <data name="&gt;&gt;barDockControlRight.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;barDockControlRight.Parent" xml:space="preserve">
     <value>$this</value>
@@ -262,43 +262,43 @@
     <value>grdViewBlocks</value>
   </data>
   <data name="&gt;&gt;grdViewBlocks.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colDashValue.Name" xml:space="preserve">
     <value>colDashValue</value>
   </data>
   <data name="&gt;&gt;colDashValue.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;BarManager.Name" xml:space="preserve">
     <value>BarManager</value>
   </data>
   <data name="&gt;&gt;BarManager.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Bar.Name" xml:space="preserve">
     <value>Bar</value>
   </data>
   <data name="&gt;&gt;Bar.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Bar, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Bar, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnAdd.Name" xml:space="preserve">
     <value>btnAdd</value>
   </data>
   <data name="&gt;&gt;btnAdd.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnRemove.Name" xml:space="preserve">
     <value>btnRemove</value>
   </data>
   <data name="&gt;&gt;btnRemove.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Bar1.Name" xml:space="preserve">
     <value>Bar1</value>
   </data>
   <data name="&gt;&gt;Bar1.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Bar, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Bar, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmDashPatternEditor</value>

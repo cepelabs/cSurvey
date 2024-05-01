@@ -161,7 +161,7 @@
     <value>btnPropObjectsSelect</value>
   </data>
   <data name="&gt;&gt;btnPropObjectsSelect.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnPropObjectsSelect.Parent" xml:space="preserve">
     <value>$this</value>
@@ -191,7 +191,7 @@
     <value>btnPropObjectsRefresh</value>
   </data>
   <data name="&gt;&gt;btnPropObjectsRefresh.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnPropObjectsRefresh.Parent" xml:space="preserve">
     <value>$this</value>
@@ -218,7 +218,7 @@
     <value>lblPropObjects</value>
   </data>
   <data name="&gt;&gt;lblPropObjects.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropObjects.Parent" xml:space="preserve">
     <value>$this</value>
@@ -229,7 +229,7 @@
   <metadata name="iml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>657, 17</value>
   </metadata>
-  <assembly alias="DevExpress.Data.v23.2" name="DevExpress.Data.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Data.v23.2" name="DevExpress.Data.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="iml.layer" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi41
@@ -405,7 +405,7 @@
     <value>tvLayers</value>
   </data>
   <data name="&gt;&gt;tvLayers.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tvLayers.Parent" xml:space="preserve">
     <value>$this</value>
@@ -426,49 +426,49 @@
     <value>iml</value>
   </data>
   <data name="&gt;&gt;iml.Type" xml:space="preserve">
-    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colTreeLayersType.Name" xml:space="preserve">
     <value>colTreeLayersType</value>
   </data>
   <data name="&gt;&gt;colTreeLayersType.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colTreeLayersCaveBranchColor.Name" xml:space="preserve">
     <value>colTreeLayersCaveBranchColor</value>
   </data>
   <data name="&gt;&gt;colTreeLayersCaveBranchColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colTreeLayersHiddenInPreview.Name" xml:space="preserve">
     <value>colTreeLayersHiddenInPreview</value>
   </data>
   <data name="&gt;&gt;colTreeLayersHiddenInPreview.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colTreeLayersHiddenInDesign.Name" xml:space="preserve">
     <value>colTreeLayersHiddenInDesign</value>
   </data>
   <data name="&gt;&gt;colTreeLayersHiddenInDesign.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colTreeLayersName.Name" xml:space="preserve">
     <value>colTreeLayersName</value>
   </data>
   <data name="&gt;&gt;colTreeLayersName.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colTreeLayersCave.Name" xml:space="preserve">
     <value>colTreeLayersCave</value>
   </data>
   <data name="&gt;&gt;colTreeLayersCave.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colTreeLayersBranch.Name" xml:space="preserve">
     <value>colTreeLayersBranch</value>
   </data>
   <data name="&gt;&gt;colTreeLayersBranch.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>cItemObjectsBindingPropertyControl</value>

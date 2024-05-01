@@ -5910,7 +5910,7 @@ Friend Class frmMain2
 
             btnLayer_Base.Visibility = BarItemVisibility.Always
             btnLayer_Soil.Visibility = BarItemVisibility.Always
-            btnLayer_Water.Visibility = BarItemVisibility.Never
+            btnLayer_Water.Visibility = BarItemVisibility.Always
             btnLayer_TerrainLevel.Visibility = BarItemVisibility.Always
             btnLayer_Rocks.Visibility = BarItemVisibility.Always
             btnLayer_Borders.Visibility = BarItemVisibility.Always
@@ -6087,7 +6087,7 @@ Friend Class frmMain2
 
             btnLayer_Base.Visibility = BarItemVisibility.Always
             btnLayer_Soil.Visibility = BarItemVisibility.Always
-            btnLayer_Water.Visibility = BarItemVisibility.Never
+            btnLayer_Water.Visibility = BarItemVisibility.Always
             btnLayer_TerrainLevel.Visibility = BarItemVisibility.Always
             btnLayer_Rocks.Visibility = BarItemVisibility.Always
             btnLayer_Borders.Visibility = BarItemVisibility.Always

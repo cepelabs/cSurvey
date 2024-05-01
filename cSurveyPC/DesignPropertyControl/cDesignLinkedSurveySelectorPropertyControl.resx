@@ -166,7 +166,7 @@
     <value>chkDesignDrawLinkedSurveys</value>
   </data>
   <data name="&gt;&gt;chkDesignDrawLinkedSurveys.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignDrawLinkedSurveys.Parent" xml:space="preserve">
     <value>$this</value>
@@ -196,7 +196,7 @@
     <value>cmdDesignLinkedSurveys</value>
   </data>
   <data name="&gt;&gt;cmdDesignLinkedSurveys.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdDesignLinkedSurveys.Parent" xml:space="preserve">
     <value>$this</value>

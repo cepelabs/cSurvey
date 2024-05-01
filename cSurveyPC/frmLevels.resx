@@ -162,7 +162,7 @@
     <value>barDockControlTop</value>
   </data>
   <data name="&gt;&gt;barDockControlTop.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;barDockControlTop.Parent" xml:space="preserve">
     <value>$this</value>
@@ -186,7 +186,7 @@
     <value>barDockControlBottom</value>
   </data>
   <data name="&gt;&gt;barDockControlBottom.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;barDockControlBottom.Parent" xml:space="preserve">
     <value>$this</value>
@@ -210,7 +210,7 @@
     <value>barDockControlLeft</value>
   </data>
   <data name="&gt;&gt;barDockControlLeft.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;barDockControlLeft.Parent" xml:space="preserve">
     <value>$this</value>
@@ -234,7 +234,7 @@
     <value>barDockControlRight</value>
   </data>
   <data name="&gt;&gt;barDockControlRight.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;barDockControlRight.Parent" xml:space="preserve">
     <value>$this</value>
@@ -315,7 +315,7 @@
   <data name="colTreeLayersHiddenInDesign.ImageOptions.Alignment" type="System.Drawing.StringAlignment, System.Drawing">
     <value>Center</value>
   </data>
-  <assembly alias="DevExpress.Data.v23.2" name="DevExpress.Data.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Data.v23.2" name="DevExpress.Data.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="colTreeLayersHiddenInDesign.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIwLjIsIFZlcnNpb249MjAuMi4z
@@ -451,7 +451,7 @@
     <value>tvLayers</value>
   </data>
   <data name="&gt;&gt;tvLayers.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tvLayers.Parent" xml:space="preserve">
     <value>$this</value>
@@ -472,127 +472,127 @@
     <value>BarManager</value>
   </data>
   <data name="&gt;&gt;BarManager.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Bar1.Name" xml:space="preserve">
     <value>Bar1</value>
   </data>
   <data name="&gt;&gt;Bar1.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Bar, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Bar, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnFilterEdit.Name" xml:space="preserve">
     <value>btnFilterEdit</value>
   </data>
   <data name="&gt;&gt;btnFilterEdit.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnFiltered.Name" xml:space="preserve">
     <value>btnFiltered</value>
   </data>
   <data name="&gt;&gt;btnFiltered.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnWhiteboard.Name" xml:space="preserve">
     <value>btnWhiteboard</value>
   </data>
   <data name="&gt;&gt;btnWhiteboard.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnInvertFilter.Name" xml:space="preserve">
     <value>btnInvertFilter</value>
   </data>
   <data name="&gt;&gt;btnInvertFilter.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnLayerSync.Name" xml:space="preserve">
     <value>btnLayerSync</value>
   </data>
   <data name="&gt;&gt;btnLayerSync.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnObjectProperty.Name" xml:space="preserve">
     <value>btnObjectProperty</value>
   </data>
   <data name="&gt;&gt;btnObjectProperty.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnObjectSelect.Name" xml:space="preserve">
     <value>btnObjectSelect</value>
   </data>
   <data name="&gt;&gt;btnObjectSelect.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnRefresh.Name" xml:space="preserve">
     <value>btnRefresh</value>
   </data>
   <data name="&gt;&gt;btnRefresh.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnExpandAll.Name" xml:space="preserve">
     <value>btnExpandAll</value>
   </data>
   <data name="&gt;&gt;btnExpandAll.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnCollapseAll.Name" xml:space="preserve">
     <value>btnCollapseAll</value>
   </data>
   <data name="&gt;&gt;btnCollapseAll.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;mnuContext.Name" xml:space="preserve">
     <value>mnuContext</value>
   </data>
   <data name="&gt;&gt;mnuContext.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;iml.Name" xml:space="preserve">
     <value>iml</value>
   </data>
   <data name="&gt;&gt;iml.Type" xml:space="preserve">
-    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colTreeLayersType.Name" xml:space="preserve">
     <value>colTreeLayersType</value>
   </data>
   <data name="&gt;&gt;colTreeLayersType.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colTreeLayersCaveBranchColor.Name" xml:space="preserve">
     <value>colTreeLayersCaveBranchColor</value>
   </data>
   <data name="&gt;&gt;colTreeLayersCaveBranchColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colTreeLayersHiddenInPreview.Name" xml:space="preserve">
     <value>colTreeLayersHiddenInPreview</value>
   </data>
   <data name="&gt;&gt;colTreeLayersHiddenInPreview.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colTreeLayersHiddenInDesign.Name" xml:space="preserve">
     <value>colTreeLayersHiddenInDesign</value>
   </data>
   <data name="&gt;&gt;colTreeLayersHiddenInDesign.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colTreeLayersName.Name" xml:space="preserve">
     <value>colTreeLayersName</value>
   </data>
   <data name="&gt;&gt;colTreeLayersName.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colTreeLayersCave.Name" xml:space="preserve">
     <value>colTreeLayersCave</value>
   </data>
   <data name="&gt;&gt;colTreeLayersCave.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colTreeLayersBranch.Name" xml:space="preserve">
     <value>colTreeLayersBranch</value>
   </data>
   <data name="&gt;&gt;colTreeLayersBranch.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmLevels</value>

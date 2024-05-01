@@ -1091,7 +1091,9 @@ Module modPaint
         Dim oVector1 As Vector3D = New Vector3D(p1.X - p0.X, p1.Y - p0.Y, p1.Z - p0.Z)
         Dim p2 As Point3D = New Point3D(p1.X, p1.Y, p0.Z)
         Dim oVector2 As Vector3D = New Vector3D(p2.X - p0.X, p2.Y - p0.Y, p2.Z - p0.Z)
-        Return Vector3D.AngleBetween(oVector1, oVector2)
+        Dim dSegno As Double = If(p1.Z - p0.Z > 0, 1, -1)
+        Return dSegno * Vector3D.AngleBetween(oVector2, oVector1)
+
         'Return (p1.Z - p0.Z) / Math.Sqrt((p1.X - p0.X) ^ 2 + (p1.Y - p0.Y) ^ 2)
     End Function
 

@@ -147,6 +147,55 @@
   <data name="&gt;&gt;lblPropChunk.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <assembly alias="DevExpress.Data.v23.2" name="DevExpress.Data.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="SimpleButton1.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIzLjIsIFZlcnNpb249MjMuMi41
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAC4DAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAg
+        MzIgMzIiPg0KICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLkJsdWV7ZmlsbDojMTE3N0Q3O30KCS5Z
+        ZWxsb3d7ZmlsbDojRkZCMTE1O30KCS5CbGFja3tmaWxsOiM3MjcyNzI7fQoJLkdyZWVue2ZpbGw6IzAz
+        OUMyMzt9CgkuUmVke2ZpbGw6I0QxMUMxQzt9Cgkuc3Qwe29wYWNpdHk6MC43NTt9Cgkuc3Qxe29wYWNp
+        dHk6MC41O30KPC9zdHlsZT4NCiAgPGcgaWQ9IlJlZnJlc2hfMV8iPg0KICAgIDxwYXRoIGQ9Ik0yNC41
+        LDcuNUMyMi4zLDUuMywxOS4zLDQsMTYsNEMxMC4xLDQsNS4xLDguMyw0LjIsMTRoNC4xYzAuOS0zLjQs
+        NC02LDcuNy02YzIuMiwwLDQuMiwwLjksNS42LDIuNEwxOCwxNCAgIGg1LjdoNC4xSDI4VjRMMjQuNSw3
+        LjV6IiBjbGFzcz0iR3JlZW4iIC8+DQogICAgPHBhdGggZD0iTTE2LjIsMjRjLTIuMiwwLTQuMi0wLjkt
+        NS42LTIuNGwzLjYtMy42SDguNEg0LjRINC4ydjEwbDMuNS0zLjVjMi4yLDIuMiw1LjIsMy41LDguNSwz
+        LjUgICBDMjIuMSwyOCwyNywyMy43LDI4LDE4aC00LjFDMjMsMjEuNCwxOS45LDI0LDE2LjIsMjR6IiBj
+        bGFzcz0iR3JlZW4iIC8+DQogIDwvZz4NCjwvc3ZnPgs=
+</value>
+  </data>
+  <data name="cmdPropModelLoad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropModelLoad.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="cmdPropModelLoad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdPropModelLoad.TabIndex" type="System.Int32, mscorlib">
+    <value>195</value>
+  </data>
+  <data name="cmdPropModelLoad.ToolTip" xml:space="preserve">
+    <value>Edit chunk...</value>
+  </data>
+  <data name="&gt;&gt;cmdPropModelLoad.Name" xml:space="preserve">
+    <value>cmdPropModelLoad</value>
+  </data>
+  <data name="&gt;&gt;cmdPropModelLoad.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropModelLoad.Parent" xml:space="preserve">
+    <value>cmdPropModelPreview</value>
+  </data>
+  <data name="&gt;&gt;cmdPropModelLoad.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="h3D.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -169,7 +218,7 @@
     <value>cmdPropModelPreview</value>
   </data>
   <data name="&gt;&gt;h3D.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="cmdPropModelPreview.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 6</value>
@@ -192,7 +241,6 @@
   <data name="&gt;&gt;cmdPropModelPreview.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <assembly alias="DevExpress.Data.v23.2" name="DevExpress.Data.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="cmdPropModelEdit.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIzLjIsIFZlcnNpb249MjMuMi41

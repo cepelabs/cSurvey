@@ -19,7 +19,7 @@ Namespace cSurvey.Design.Items
 
         Private oStations As cModelStations3D
 
-        Private oModel As Model3DGroup
+        'Private oModel As Model3DGroup
         Private oModelTransform As cTransform3D
 
         Private oCachedModel As Model3DGroup
@@ -87,7 +87,7 @@ Namespace cSurvey.Design.Items
             End If
         End Sub
 
-        Private oOriginalMaterialCache As Dictionary(Of GeometryModel3D, Material())
+        Private oOriginalMaterialCache As Dictionary(Of GeometryModel3D, Material()) = New Dictionary(Of GeometryModel3D, Material())
 
         Private Sub pResetModelCache()
             oCachedModel = Nothing
@@ -106,8 +106,8 @@ Namespace cSurvey.Design.Items
                     iModelCutMode = Options.ChunkCutMode
                 End If
                 If oCachedModel Is Nothing Then
-                    oCachedModel = GetModel().Clone()
-                    oOriginalMaterialCache = New Dictionary(Of GeometryModel3D, Material())
+                    oCachedModel = LoadModel()
+                    Call oOriginalMaterialCache.Clear()
                     For Each oSubModel As GeometryModel3D In oCachedModel.Children
                         oOriginalMaterialCache.Add(oSubModel, {oSubModel.Material, oSubModel.BackMaterial})
                     Next
@@ -134,35 +134,25 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-
         ''' <summary>
-        ''' Get last rendered model
+        ''' Load and return a new instance of the 3D model
         ''' </summary>
         ''' <returns></returns>
-        Friend ReadOnly Property GetModel() As Model3DGroup
-            Get
-                If oModel Is Nothing Then
-                    Dim sTempPath As String = oModelFiles.WriteAll(IO.Path.GetTempPath)
-                    Dim oM As ModelImporter = New ModelImporter
-                    oModel = oM.Load(IO.Path.Combine(sTempPath, oModelFiles.MainFile))
-                    'model use bitmap in materials
-                    'bitmapsource have to be deleted but bitmap are loaded only when model is rendered and no event is raise or some else to detect if file is free to be deleted.
-                    'So, to allow deleting now, I change bitmap with stream and, finally I delete all temp files.
-                    'TODO: this is horrible...use a lot of diskspace and a lot of memory. At least have to be use only stream but I don't find a way without changing Helix source code.
-                    For Each oChildModel As GeometryModel3D In oModel.Children
-                        Call pProcessMaterial(oChildModel.Material)
-                        Call pProcessMaterial(oChildModel.BackMaterial)
-                    Next
-                    My.Computer.FileSystem.DeleteDirectory(sTempPath, FileIO.DeleteDirectoryOption.DeleteAllContents)
-
-                    'oOriginalMaterialCache = New Dictionary(Of GeometryModel3D, Material())
-                    'For Each oSubModel As GeometryModel3D In oModel.Children
-                    '    oOriginalMaterialCache.Add(oSubModel, {oSubModel.Material, oSubModel.BackMaterial})
-                    'Next
-                End If
-                Return oModel
-            End Get
-        End Property
+        Public Function LoadModel() As Model3DGroup
+            Dim sTempPath As String = oModelFiles.WriteAll(IO.Path.GetTempPath)
+            Dim oM As ModelImporter = New ModelImporter
+            Dim oLoadedModel As Model3DGroup = oM.Load(IO.Path.Combine(sTempPath, oModelFiles.MainFile))
+            'model use bitmap in materials
+            'bitmapsource have to be deleted but bitmap are loaded only when model is rendered and no event is raise or some else to detect if file is free to be deleted.
+            'So, to allow deleting now, I change bitmap with stream and, finally I delete all temp files.
+            'TODO: this is horrible...use a lot of diskspace and a lot of memory. At least have to be use only stream but I don't find a way without changing Helix source code.
+            For Each oChildModel As GeometryModel3D In oLoadedModel.Children
+                Call pProcessMaterial(oChildModel.Material)
+                Call pProcessMaterial(oChildModel.BackMaterial)
+            Next
+            My.Computer.FileSystem.DeleteDirectory(sTempPath, FileIO.DeleteDirectoryOption.DeleteAllContents)
+            Return oLoadedModel
+        End Function
 
         Public ReadOnly Property ID As String
             Get

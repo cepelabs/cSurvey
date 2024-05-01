@@ -142,7 +142,7 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>pnlBottom</value>
@@ -169,7 +169,7 @@
     <value>chkRestoreDeleteBackupAfterRestore</value>
   </data>
   <data name="&gt;&gt;chkRestoreDeleteBackupAfterRestore.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkRestoreDeleteBackupAfterRestore.Parent" xml:space="preserve">
     <value>frmRestore</value>
@@ -196,7 +196,7 @@
     <value>Label4</value>
   </data>
   <data name="&gt;&gt;Label4.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label4.Parent" xml:space="preserve">
     <value>frmRestore</value>
@@ -244,7 +244,7 @@
     <value>Label5</value>
   </data>
   <data name="&gt;&gt;Label5.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label5.Parent" xml:space="preserve">
     <value>frmRestore</value>
@@ -268,7 +268,7 @@
     <value>frmRestore</value>
   </data>
   <data name="&gt;&gt;frmRestore.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;frmRestore.Parent" xml:space="preserve">
     <value>pnlOption3</value>
@@ -295,7 +295,7 @@
     <value>Label3</value>
   </data>
   <data name="&gt;&gt;Label3.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label3.Parent" xml:space="preserve">
     <value>frmBackup</value>
@@ -343,7 +343,7 @@
     <value>Label2</value>
   </data>
   <data name="&gt;&gt;Label2.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label2.Parent" xml:space="preserve">
     <value>frmBackup</value>
@@ -370,7 +370,7 @@
     <value>frmBackup</value>
   </data>
   <data name="&gt;&gt;frmBackup.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;frmBackup.Parent" xml:space="preserve">
     <value>pnlOptionOther</value>
@@ -397,7 +397,7 @@
     <value>chkBackup</value>
   </data>
   <data name="&gt;&gt;chkBackup.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkBackup.Parent" xml:space="preserve">
     <value>pnlOptionOther</value>
@@ -427,7 +427,7 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>pnlBottom</value>
@@ -511,7 +511,7 @@
     <value>frmMode1</value>
   </data>
   <data name="&gt;&gt;frmMode1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;frmMode1.Parent" xml:space="preserve">
     <value>pnlOption0</value>
@@ -538,7 +538,7 @@
     <value>chkShotWithLRUD</value>
   </data>
   <data name="&gt;&gt;chkShotWithLRUD.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkShotWithLRUD.Parent" xml:space="preserve">
     <value>Panel1</value>
@@ -598,7 +598,7 @@
     <value>chkShotWithCalculatedLRUD</value>
   </data>
   <data name="&gt;&gt;chkShotWithCalculatedLRUD.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkShotWithCalculatedLRUD.Parent" xml:space="preserve">
     <value>Panel1</value>
@@ -628,7 +628,7 @@
     <value>Label1</value>
   </data>
   <data name="&gt;&gt;Label1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
     <value>Panel1</value>
@@ -652,7 +652,7 @@
     <value>chkShotWithoutLRUD</value>
   </data>
   <data name="&gt;&gt;chkShotWithoutLRUD.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkShotWithoutLRUD.Parent" xml:space="preserve">
     <value>Panel1</value>
@@ -676,7 +676,7 @@
     <value>Panel1</value>
   </data>
   <data name="&gt;&gt;Panel1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Panel1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -703,7 +703,7 @@
     <value>lblSplayMode</value>
   </data>
   <data name="&gt;&gt;lblSplayMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblSplayMode.Parent" xml:space="preserve">
     <value>frmMode2</value>
@@ -754,7 +754,7 @@
     <value>Label26</value>
   </data>
   <data name="&gt;&gt;Label26.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label26.Parent" xml:space="preserve">
     <value>frmMode2</value>
@@ -805,7 +805,7 @@
     <value>Label35</value>
   </data>
   <data name="&gt;&gt;Label35.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label35.Parent" xml:space="preserve">
     <value>frmMode2</value>
@@ -853,7 +853,7 @@
     <value>chkMode2OnlyCutSplay</value>
   </data>
   <data name="&gt;&gt;chkMode2OnlyCutSplay.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkMode2OnlyCutSplay.Parent" xml:space="preserve">
     <value>frmMode2</value>
@@ -877,7 +877,7 @@
     <value>frmMode2</value>
   </data>
   <data name="&gt;&gt;frmMode2.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;frmMode2.Parent" xml:space="preserve">
     <value>pnlOption1</value>
@@ -904,7 +904,7 @@
     <value>chkMarkAsCalculated</value>
   </data>
   <data name="&gt;&gt;chkMarkAsCalculated.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkMarkAsCalculated.Parent" xml:space="preserve">
     <value>pnlOptionOther</value>
@@ -973,7 +973,7 @@
     <value>lblAction</value>
   </data>
   <data name="&gt;&gt;lblAction.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblAction.Parent" xml:space="preserve">
     <value>PanelControl1</value>
@@ -994,7 +994,7 @@
     <value>PanelControl1</value>
   </data>
   <data name="&gt;&gt;PanelControl1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;PanelControl1.Parent" xml:space="preserve">
     <value>TableLayoutPanel1</value>
@@ -1015,7 +1015,7 @@
     <value>pnlOption0</value>
   </data>
   <data name="&gt;&gt;pnlOption0.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlOption0.Parent" xml:space="preserve">
     <value>TableLayoutPanel1</value>
@@ -1036,7 +1036,7 @@
     <value>pnlOption1</value>
   </data>
   <data name="&gt;&gt;pnlOption1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlOption1.Parent" xml:space="preserve">
     <value>TableLayoutPanel1</value>
@@ -1057,7 +1057,7 @@
     <value>pnlOption3</value>
   </data>
   <data name="&gt;&gt;pnlOption3.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlOption3.Parent" xml:space="preserve">
     <value>TableLayoutPanel1</value>
@@ -1078,7 +1078,7 @@
     <value>pnlOptionOther</value>
   </data>
   <data name="&gt;&gt;pnlOptionOther.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlOptionOther.Parent" xml:space="preserve">
     <value>TableLayoutPanel1</value>
@@ -1132,7 +1132,7 @@
     <value>pnlBottom</value>
   </data>
   <data name="&gt;&gt;pnlBottom.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlBottom.Parent" xml:space="preserve">
     <value>$this</value>

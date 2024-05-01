@@ -135,7 +135,7 @@
     <value>txtPrefix</value>
   </data>
   <data name="&gt;&gt;txtPrefix.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtPrefix.Parent" xml:space="preserve">
     <value>$this</value>
@@ -162,7 +162,7 @@
     <value>lblPrefix</value>
   </data>
   <data name="&gt;&gt;lblPrefix.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPrefix.Parent" xml:space="preserve">
     <value>$this</value>
@@ -189,7 +189,7 @@
     <value>chkVTopoImportIncompatibleSet</value>
   </data>
   <data name="&gt;&gt;chkVTopoImportIncompatibleSet.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkVTopoImportIncompatibleSet.Parent" xml:space="preserve">
     <value>$this</value>
@@ -213,7 +213,7 @@
     <value>txtFilename</value>
   </data>
   <data name="&gt;&gt;txtFilename.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtFilename.Parent" xml:space="preserve">
     <value>$this</value>
@@ -240,7 +240,7 @@
     <value>lblFilename</value>
   </data>
   <data name="&gt;&gt;lblFilename.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblFilename.Parent" xml:space="preserve">
     <value>$this</value>
@@ -268,7 +268,7 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -295,7 +295,7 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
@@ -319,7 +319,7 @@
     <value>txtCaveName</value>
   </data>
   <data name="&gt;&gt;txtCaveName.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtCaveName.Parent" xml:space="preserve">
     <value>$this</value>
@@ -343,7 +343,7 @@
     <value>chkVTopoImportSetAsBranch</value>
   </data>
   <data name="&gt;&gt;chkVTopoImportSetAsBranch.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkVTopoImportSetAsBranch.Parent" xml:space="preserve">
     <value>$this</value>
@@ -370,7 +370,7 @@
     <value>lblCaveName</value>
   </data>
   <data name="&gt;&gt;lblCaveName.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblCaveName.Parent" xml:space="preserve">
     <value>$this</value>

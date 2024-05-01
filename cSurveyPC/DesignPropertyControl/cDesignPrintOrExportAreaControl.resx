@@ -128,7 +128,7 @@
   <data name="cboDesignPrintOrExportAreaProfile.Location" type="System.Drawing.Point, System.Drawing">
     <value>94, 6</value>
   </data>
-  <assembly alias="DevExpress.Utils.v23.2" name="DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Utils.v23.2" name="DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="cboDesignPrintOrExportAreaProfile.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
     <value>Combo</value>
   </data>
@@ -146,7 +146,7 @@
     <value>cboDesignPrintOrExportAreaProfile</value>
   </data>
   <data name="&gt;&gt;cboDesignPrintOrExportAreaProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ImageComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ImageComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboDesignPrintOrExportAreaProfile.Parent" xml:space="preserve">
     <value>pnlDesignPrintOrExportArea</value>
@@ -176,7 +176,7 @@
     <value>cmdDesignBaseRule</value>
   </data>
   <data name="&gt;&gt;cmdDesignBaseRule.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdDesignBaseRule.Parent" xml:space="preserve">
     <value>pnlDesignPrintOrExportArea</value>
@@ -203,7 +203,7 @@
     <value>lblDesignPrintOrExportAreaProfileDesignStyle</value>
   </data>
   <data name="&gt;&gt;lblDesignPrintOrExportAreaProfileDesignStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignPrintOrExportAreaProfileDesignStyle.Parent" xml:space="preserve">
     <value>pnlDesignPrintOrExportArea</value>
@@ -233,7 +233,7 @@
     <value>cboDesignPrintOrExportAreaProfileDesignStyle</value>
   </data>
   <data name="&gt;&gt;cboDesignPrintOrExportAreaProfileDesignStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboDesignPrintOrExportAreaProfileDesignStyle.Parent" xml:space="preserve">
     <value>pnlDesignPrintOrExportArea</value>
@@ -260,7 +260,7 @@
     <value>lblDesignPrintOrExportAreaProfile</value>
   </data>
   <data name="&gt;&gt;lblDesignPrintOrExportAreaProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignPrintOrExportAreaProfile.Parent" xml:space="preserve">
     <value>pnlDesignPrintOrExportArea</value>
@@ -284,7 +284,7 @@
     <value>pnlDesignPrintOrExportArea</value>
   </data>
   <data name="&gt;&gt;pnlDesignPrintOrExportArea.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlDesignPrintOrExportArea.Parent" xml:space="preserve">
     <value>$this</value>
@@ -311,7 +311,7 @@
     <value>chkDesignPrintOrExportArea</value>
   </data>
   <data name="&gt;&gt;chkDesignPrintOrExportArea.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPrintOrExportArea.Parent" xml:space="preserve">
     <value>$this</value>
@@ -332,7 +332,7 @@
     <value>iml</value>
   </data>
   <data name="&gt;&gt;iml.Type" xml:space="preserve">
-    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>cDesignPrintOrExportAreaControl</value>

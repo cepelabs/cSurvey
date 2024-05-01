@@ -141,7 +141,7 @@
     <value>txtPrefix</value>
   </data>
   <data name="&gt;&gt;txtPrefix.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtPrefix.Parent" xml:space="preserve">
     <value>$this</value>
@@ -168,7 +168,7 @@
     <value>lblPrefix</value>
   </data>
   <data name="&gt;&gt;lblPrefix.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPrefix.Parent" xml:space="preserve">
     <value>$this</value>
@@ -195,7 +195,7 @@
     <value>txtFilename</value>
   </data>
   <data name="&gt;&gt;txtFilename.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtFilename.Parent" xml:space="preserve">
     <value>$this</value>
@@ -222,7 +222,7 @@
     <value>lblFilename</value>
   </data>
   <data name="&gt;&gt;lblFilename.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblFilename.Parent" xml:space="preserve">
     <value>$this</value>
@@ -250,7 +250,7 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -277,7 +277,7 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
@@ -304,7 +304,7 @@
     <value>txtCaveName</value>
   </data>
   <data name="&gt;&gt;txtCaveName.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtCaveName.Parent" xml:space="preserve">
     <value>$this</value>
@@ -331,7 +331,7 @@
     <value>lblCaveName</value>
   </data>
   <data name="&gt;&gt;lblCaveName.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblCaveName.Parent" xml:space="preserve">
     <value>$this</value>
@@ -358,7 +358,7 @@
     <value>chkTherionImportprofile</value>
   </data>
   <data name="&gt;&gt;chkTherionImportprofile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTherionImportprofile.Parent" xml:space="preserve">
     <value>$this</value>
@@ -385,7 +385,7 @@
     <value>chkTherionImportplan</value>
   </data>
   <data name="&gt;&gt;chkTherionImportplan.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTherionImportplan.Parent" xml:space="preserve">
     <value>$this</value>
@@ -412,7 +412,7 @@
     <value>chkTherionMergeAndReorderBorders</value>
   </data>
   <data name="&gt;&gt;chkTherionMergeAndReorderBorders.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTherionMergeAndReorderBorders.Parent" xml:space="preserve">
     <value>$this</value>
@@ -442,7 +442,7 @@
     <value>chktherionConvertBezierToSpline</value>
   </data>
   <data name="&gt;&gt;chktherionConvertBezierToSpline.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chktherionConvertBezierToSpline.Parent" xml:space="preserve">
     <value>$this</value>
@@ -469,7 +469,7 @@
     <value>lblTherionScaleFactor</value>
   </data>
   <data name="&gt;&gt;lblTherionScaleFactor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblTherionScaleFactor.Parent" xml:space="preserve">
     <value>$this</value>
@@ -483,7 +483,7 @@
   <data name="txtTherionScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>222, 102</value>
   </data>
-  <assembly alias="DevExpress.Utils.v23.2" name="DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Utils.v23.2" name="DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="txtTherionScaleFactor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
     <value>Combo</value>
   </data>
@@ -497,7 +497,7 @@
     <value>txtTherionScaleFactor</value>
   </data>
   <data name="&gt;&gt;txtTherionScaleFactor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtTherionScaleFactor.Parent" xml:space="preserve">
     <value>$this</value>

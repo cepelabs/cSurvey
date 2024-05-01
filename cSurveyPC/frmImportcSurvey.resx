@@ -136,7 +136,7 @@
     <value>txtFilename</value>
   </data>
   <data name="&gt;&gt;txtFilename.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtFilename.Parent" xml:space="preserve">
     <value>$this</value>
@@ -166,7 +166,7 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
@@ -196,7 +196,7 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -238,7 +238,7 @@
     <value>tvLog</value>
   </data>
   <data name="&gt;&gt;tvLog.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tvLog.Parent" xml:space="preserve">
     <value>GroupBox1</value>
@@ -262,7 +262,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;GroupBox1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;GroupBox1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -350,7 +350,7 @@
     <value>chkcSurveyImportScaleRules</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportScaleRules.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportScaleRules.Parent" xml:space="preserve">
     <value>$this</value>
@@ -377,7 +377,7 @@
     <value>chkcSurveyImportDesignProperties</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDesignProperties.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDesignProperties.Parent" xml:space="preserve">
     <value>$this</value>
@@ -404,7 +404,7 @@
     <value>chkcSurveyImportSurface</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportSurface.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportSurface.Parent" xml:space="preserve">
     <value>$this</value>
@@ -434,7 +434,7 @@
     <value>chkcSurveyImportProfile</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportProfile.Parent" xml:space="preserve">
     <value>pnlcSurveyImportGraphics</value>
@@ -464,7 +464,7 @@
     <value>chkcSurveyImportPlan</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportPlan.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportPlan.Parent" xml:space="preserve">
     <value>pnlcSurveyImportGraphics</value>
@@ -494,7 +494,7 @@
     <value>lblFilename</value>
   </data>
   <data name="&gt;&gt;lblFilename.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblFilename.Parent" xml:space="preserve">
     <value>$this</value>
@@ -521,7 +521,7 @@
     <value>chkcSurveyImportData</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportData.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportData.Parent" xml:space="preserve">
     <value>$this</value>
@@ -548,7 +548,7 @@
     <value>chkcSurveyImportGraphics</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportGraphics.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportGraphics.Parent" xml:space="preserve">
     <value>$this</value>
@@ -578,7 +578,7 @@
     <value>chkcSurveyImportCaveBranchFromDesign</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportCaveBranchFromDesign.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportCaveBranchFromDesign.Parent" xml:space="preserve">
     <value>pnlcSurveyImportGraphics</value>
@@ -608,7 +608,7 @@
     <value>chkcSurveyImportDuplicates</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDuplicates.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDuplicates.Parent" xml:space="preserve">
     <value>pnlcSurveyImportData</value>
@@ -659,7 +659,7 @@
     <value>lblcSurveyImportDuplicatesMode</value>
   </data>
   <data name="&gt;&gt;lblcSurveyImportDuplicatesMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblcSurveyImportDuplicatesMode.Parent" xml:space="preserve">
     <value>pnlcSurveyImportData</value>
@@ -689,7 +689,7 @@
     <value>chkcSurveyImportDuplicatesOverwrite</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDuplicatesOverwrite.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDuplicatesOverwrite.Parent" xml:space="preserve">
     <value>pnlcSurveyImportData</value>
@@ -719,7 +719,7 @@
     <value>chkcSurveyImportDuplicatesStations</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDuplicatesStations.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDuplicatesStations.Parent" xml:space="preserve">
     <value>pnlcSurveyImportData</value>
@@ -746,7 +746,7 @@
     <value>chkImportAsBranchOf</value>
   </data>
   <data name="&gt;&gt;chkImportAsBranchOf.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkImportAsBranchOf.Parent" xml:space="preserve">
     <value>$this</value>
@@ -776,7 +776,7 @@
     <value>chkcSurveyImportUpdateCaveBranchPriority</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportUpdateCaveBranchPriority.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportUpdateCaveBranchPriority.Parent" xml:space="preserve">
     <value>$this</value>
@@ -800,7 +800,7 @@
     <value>chkcSurveyImportCreateNewBranch</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportCreateNewBranch.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportCreateNewBranch.Parent" xml:space="preserve">
     <value>$this</value>
@@ -830,7 +830,7 @@
     <value>chkcSurveyImportDuplicatesOverwriteOnlyUsed</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDuplicatesOverwriteOnlyUsed.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDuplicatesOverwriteOnlyUsed.Parent" xml:space="preserve">
     <value>pnlcSurveyImportData</value>
@@ -857,7 +857,7 @@
     <value>chkcSurveyDisableOriginAsExtendstart</value>
   </data>
   <data name="&gt;&gt;chkcSurveyDisableOriginAsExtendstart.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkcSurveyDisableOriginAsExtendstart.Parent" xml:space="preserve">
     <value>$this</value>
@@ -887,7 +887,7 @@
     <value>lblcSurveyImportWarpingMode</value>
   </data>
   <data name="&gt;&gt;lblcSurveyImportWarpingMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblcSurveyImportWarpingMode.Parent" xml:space="preserve">
     <value>pnlcSurveyImportGraphics</value>
@@ -944,7 +944,7 @@
     <value>chkcsurveyimportlinkedsurvey</value>
   </data>
   <data name="&gt;&gt;chkcsurveyimportlinkedsurvey.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkcsurveyimportlinkedsurvey.Parent" xml:space="preserve">
     <value>$this</value>
@@ -965,7 +965,7 @@
     <value>pnlcSurveyImportData</value>
   </data>
   <data name="&gt;&gt;pnlcSurveyImportData.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlcSurveyImportData.Parent" xml:space="preserve">
     <value>$this</value>
@@ -986,7 +986,7 @@
     <value>pnlcSurveyImportGraphics</value>
   </data>
   <data name="&gt;&gt;pnlcSurveyImportGraphics.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlcSurveyImportGraphics.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1013,7 +1013,7 @@
     <value>chkcSurveyImportTexts</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportTexts.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportTexts.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1091,19 +1091,19 @@
     <value>tvLogText</value>
   </data>
   <data name="&gt;&gt;tvLogText.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tvLogImageName.Name" xml:space="preserve">
     <value>tvLogImageName</value>
   </data>
   <data name="&gt;&gt;tvLogImageName.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;svgiml.Name" xml:space="preserve">
     <value>svgiml</value>
   </data>
   <data name="&gt;&gt;svgiml.Type" xml:space="preserve">
-    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;iml.Name" xml:space="preserve">
     <value>iml</value>

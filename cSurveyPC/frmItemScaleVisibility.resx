@@ -139,7 +139,7 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -166,7 +166,7 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
@@ -192,7 +192,7 @@
   <data name="cboVisibilityIcon.AutoHeight" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <assembly alias="DevExpress.Utils.v23.2" name="DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Utils.v23.2" name="DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="cboVisibilityIcon.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
     <value>Combo</value>
   </data>
@@ -239,7 +239,7 @@
     <value>grdVisibility</value>
   </data>
   <data name="&gt;&gt;grdVisibility.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;grdVisibility.Parent" xml:space="preserve">
     <value>$this</value>
@@ -331,49 +331,49 @@
     <value>imlScale</value>
   </data>
   <data name="&gt;&gt;imlScale.Type" xml:space="preserve">
-    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;iml.Name" xml:space="preserve">
     <value>iml</value>
   </data>
   <data name="&gt;&gt;iml.Type" xml:space="preserve">
-    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;grdVisibilityView.Name" xml:space="preserve">
     <value>grdVisibilityView</value>
   </data>
   <data name="&gt;&gt;grdVisibilityView.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colVisibiltyIcon.Name" xml:space="preserve">
     <value>colVisibiltyIcon</value>
   </data>
   <data name="&gt;&gt;colVisibiltyIcon.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboVisibilityIcon.Name" xml:space="preserve">
     <value>cboVisibilityIcon</value>
   </data>
   <data name="&gt;&gt;cboVisibilityIcon.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colVisibiltyScale.Name" xml:space="preserve">
     <value>colVisibiltyScale</value>
   </data>
   <data name="&gt;&gt;colVisibiltyScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colVisibiltyVisibility.Name" xml:space="preserve">
     <value>colVisibiltyVisibility</value>
   </data>
   <data name="&gt;&gt;colVisibiltyVisibility.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboVisibiltyVisibility.Name" xml:space="preserve">
     <value>cboVisibiltyVisibility</value>
   </data>
   <data name="&gt;&gt;cboVisibiltyVisibility.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmItemScaleVisibility</value>

@@ -43,10 +43,10 @@ Public Class frmHolosItemEdit
 
         Text = modMain.GetLocalizedString("3ditemedit.editdialogtitle")
 
-        bdisableEvent = True
+        bDisableEvent = True
         sFilename = ""
         Dim oGroup As ModelVisual3D = New ModelVisual3D
-        oGroup.Content = Item.GetModel
+        oGroup.Content = Item.LoadModel
         Viewport.Children.Add(oGroup)
 
         txtScale.EditValue = modNumbers.StringToDecimal(Item.ModelTransform.XScale)

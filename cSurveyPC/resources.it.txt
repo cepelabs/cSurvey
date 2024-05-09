@@ -1128,3 +1128,9 @@ about.infoabout.textpart7=Con il patrocinio di:
 about.infoabout.textpart8=Con l'aiuto e il supporto di:
 about.infoabout.textpart9=Altri contributi e ringraziamenti:
 about.infoabout.textpart10=Un ringraziamento speciale a:
+
+csurvey.textpart126=Caricamento modello 3D...
+items.textpart5=Modello 3D
+
+holos.progressbegin6=Costruzione modello 3D: blocchi...
+holos.progress6=Costruzione modello 3D: blocchi...

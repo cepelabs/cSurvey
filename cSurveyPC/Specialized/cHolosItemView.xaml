@@ -10,7 +10,7 @@
         <ht:LinearConverter x:Key="Multiplier" M="0.5"/>
     </UserControl.Resources>
     <DockPanel>
-        <ht:HelixViewport3D Name="mainViewport" ShowCoordinateSystem="false" Camera="{ht:PerspectiveCamera 0,-10,10}" ZoomExtentsWhenLoaded="True" RenderTransformOrigin="0.605,0.539" ShowViewCube="False">
+        <ht:HelixViewport3D Name="mainViewport" ShowCoordinateSystem="false" Camera="{ht:PerspectiveCamera 0,-10,10}" ZoomExtentsWhenLoaded="True" ShowViewCube="false">
             <ht:SunLight/>
         </ht:HelixViewport3D>
     </DockPanel>

@@ -10,7 +10,7 @@ Namespace cSurvey.Design
     Public Class cDesignPlan
         Inherits cDesign
 
-        Private iType As cIDesign.cDesignTypeEnum
+        Private iType As cIDesign.cDesignTypeEnum = cIDesign.cDesignTypeEnum.Plan
 
         Private oSurvey As cSurvey
         Private oPlot As cPlotPlan
@@ -45,7 +45,6 @@ Namespace cSurvey.Design
         Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal Design As XmlElement)
             Call MyBase.New(Survey, File, Design)
             oSurvey = Survey
-            iType = cIDesign.cDesignTypeEnum.Plan
             If modXML.ChildElementExist(Design, "plot") Then
                 oPlot = New cPlotPlan(Survey, Design.Item("plot"))
             Else

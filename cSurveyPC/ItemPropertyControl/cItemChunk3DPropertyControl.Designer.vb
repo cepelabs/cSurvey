@@ -25,10 +25,10 @@ Partial Class cItemChunk3DPropertyControl
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(cItemChunk3DPropertyControl))
         Me.lblPropChunk = New DevExpress.XtraEditors.LabelControl()
         Me.cmdPropModelPreview = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdPropModelLoad = New DevExpress.XtraEditors.SimpleButton()
         Me.h3D = New System.Windows.Forms.Integration.ElementHost()
         Me.cmdPropModelEdit = New DevExpress.XtraEditors.SimpleButton()
         Me.grdChunkInfo = New DevExpress.XtraVerticalGrid.VGridControl()
-        Me.cmdPropModelLoad = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.cmdPropModelPreview, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.cmdPropModelPreview.SuspendLayout()
         CType(Me.grdChunkInfo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -45,6 +45,14 @@ Partial Class cItemChunk3DPropertyControl
         Me.cmdPropModelPreview.Controls.Add(Me.h3D)
         resources.ApplyResources(Me.cmdPropModelPreview, "cmdPropModelPreview")
         Me.cmdPropModelPreview.Name = "cmdPropModelPreview"
+        '
+        'cmdPropModelLoad
+        '
+        Me.cmdPropModelLoad.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdPropModelLoad.ImageOptions.SvgImage = CType(resources.GetObject("cmdPropModelLoad.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.cmdPropModelLoad.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.cmdPropModelLoad, "cmdPropModelLoad")
+        Me.cmdPropModelLoad.Name = "cmdPropModelLoad"
         '
         'h3D
         '
@@ -70,14 +78,6 @@ Partial Class cItemChunk3DPropertyControl
         Me.grdChunkInfo.OptionsFilter.AllowFilter = False
         Me.grdChunkInfo.OptionsLayout.StoreAppearance = True
         Me.grdChunkInfo.OptionsView.MinRowAutoHeight = 12
-        '
-        'cmdPropModelLoad
-        '
-        Me.cmdPropModelLoad.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.cmdPropModelLoad.ImageOptions.SvgImage = CType(resources.GetObject("SimpleButton1.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.cmdPropModelLoad.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        resources.ApplyResources(Me.cmdPropModelLoad, "cmdPropModelLoad")
-        Me.cmdPropModelLoad.Name = "cmdPropModelLoad"
         '
         'cItemChunk3DPropertyControl
         '

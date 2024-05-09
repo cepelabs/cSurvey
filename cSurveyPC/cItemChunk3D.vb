@@ -154,6 +154,17 @@ Namespace cSurvey.Design.Items
             Return oLoadedModel
         End Function
 
+        ''' <summary>
+        ''' SPERIMENTAL FUNCTION...
+        ''' </summary>
+        ''' <returns></returns>
+        Public Function GetPlanImage() As cItemChunk3DImage
+            Using frmICPR As frmItemChunk3DPlanRenderer = New frmItemChunk3DPlanRenderer(Me, 1024, 768)
+                frmICPR.ShowDialog()
+                frmICPR.Close()
+            End Using
+        End Function
+
         Public ReadOnly Property ID As String
             Get
                 Return sID
@@ -432,5 +443,36 @@ Namespace cSurvey.Design.Items
             Return Nothing
         End Function
 
+    End Class
+
+    Public Class cItemChunk3DImage
+        Private oImage As Image
+
+        Private oPoint1 As Point
+        Private oPoint2 As Point
+
+        Friend Sub New(Image As Image, Point1 As Point, Point2 As Point)
+            oImage = Image
+            oPoint1 = Point1
+            oPoint2 = Point2
+        End Sub
+
+        Public ReadOnly Property Point1 As Point
+            Get
+                Return oPoint1
+            End Get
+        End Property
+
+        Public ReadOnly Property Point2 As Point
+            Get
+                Return oPoint2
+            End Get
+        End Property
+
+        Public ReadOnly Property Image As Image
+            Get
+                Return oImage
+            End Get
+        End Property
     End Class
 End Namespace

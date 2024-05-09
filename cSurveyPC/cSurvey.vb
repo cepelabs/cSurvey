@@ -1340,18 +1340,16 @@ Namespace cSurvey
                     Else
                         oProfile = New cDesignProfile(Me)
                     End If
+                    Call RaiseOnProgressEvent("load.design.profile", OnProgressEventArgs.ProgressActionEnum.End, "", 0)
 
-                    'TODO: add RaiseOnProgressEvent
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart126"), 0)
+                    Call RaiseOnProgressEvent("load.design3d", OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("csurvey.textpart126"), 0, OnProgressEventArgs.ProgressOptionsEnum.Image3D)
                     If ChildElementExist(oXmlRoot, "model3d") Then
                         o3D = New cDesign3D(Me, oFile, oXmlRoot.Item("model3d"))
                     Else
                         o3D = New cDesign3D(Me)
                     End If
-
-                    'If (pGetFileCreatID(oXml) = "topodroid" OrElse (LoadOptions And LoadOptionsEnum.FixTopoDroid) = LoadOptionsEnum.FixTopoDroid) Then
-                    '    Call modImport.FixTopodroidDesign(Me, oProfile, oXmlRoot.Item("profile"))
-                    'End If
-                    Call RaiseOnProgressEvent("load.design.profile", OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+                    Call RaiseOnProgressEvent("load.design3d", OnProgressEventArgs.ProgressActionEnum.End, "", 0)
 
                     Call RaiseOnProgressEvent("load.design.crosssection", OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("csurvey.textpart115"), 0)
                     Call oCrossSections.RebindCrossSections()

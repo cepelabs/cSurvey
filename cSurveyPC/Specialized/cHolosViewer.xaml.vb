@@ -2156,14 +2156,14 @@ Friend Class cHolosViewer
 
             If PaintOptions.DrawChunks Then
                 If PaintOptions.ChunkCutMode = cIModelOptions3D.CutModeEnum.RemoveCeiling Then
-                    oSurvey.RaiseOnProgressEvent("load3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, "Loading 3d chunk", 0, cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.Image3D)
+                    oSurvey.RaiseOnProgressEvent("load3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("holos.progressbegin6"), 0, cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.Image3D Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
                     Dim iIndex As Integer
                     Dim iCount As Integer = oSurvey.ThreeD.Layers.ChunkLayer.Items.Count
                     For Each oChunk As cItemChunk3D In oSurvey.ThreeD.Layers.ChunkLayer.Items
                         iIndex += 1
                         If Not oChunk.HiddenInDesign AndAlso GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oChunk, Selection.CurrentCave, Selection.CurrentBranch) Then
                             If oChunk.Stations.IsValid Then
-                                oSurvey.RaiseOnProgressEvent("load3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Loading 3d chunk", iIndex / iCount, cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.Image3D)
+                                oSurvey.RaiseOnProgressEvent("load3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("holos.progress6"), iIndex / iCount, cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.Image3D)
 
                                 Dim oCutGroup As CuttingPlaneGroup = New CuttingPlaneGroup
 
@@ -2186,14 +2186,14 @@ Friend Class cHolosViewer
                     Next
                     oSurvey.RaiseOnProgressEvent("load3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
                 Else
-                    oSurvey.RaiseOnProgressEvent("load3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, "Loading 3d chunk", 0, cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.Image3D)
+                    oSurvey.RaiseOnProgressEvent("load3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("holos.progressbegin6"), 0, cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.Image3D Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
                     Dim iIndex As Integer
                     Dim iCount As Integer = oSurvey.ThreeD.Layers.ChunkLayer.Items.Count
                     For Each oChunk As cItemChunk3D In oSurvey.ThreeD.Layers.ChunkLayer.Items
                         iIndex += 1
                         If Not oChunk.HiddenInDesign AndAlso GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oChunk, Selection.CurrentCave, Selection.CurrentBranch) Then
                             If oChunk.Stations.IsValid Then
-                                oSurvey.RaiseOnProgressEvent("load3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Loading 3d chunk", iIndex / iCount, cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.Image3D)
+                                oSurvey.RaiseOnProgressEvent("load3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("holos.progress6"), iIndex / iCount, cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.Image3D)
 
                                 Dim oChunkModel As ModelVisual3D = pChunk(oChunk, PaintOptions)
                                 Dim oChunkHotSpot As cHotSpot = New cHotSpot(oChunkModel, oChunk)

@@ -1671,6 +1671,12 @@
     <Compile Include="Specialized\frmHolosItemEdit.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Specialized\frmItemChunk3DPlanRenderer.Designer.vb">
+      <DependentUpon>frmItemChunk3DPlanRenderer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\frmItemChunk3DPlanRenderer.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="cBorderFromSplay.it.resx">
@@ -3121,6 +3127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Specialized\frmHolosItemEdit.resx">
       <DependentUpon>frmHolosItemEdit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\frmItemChunk3DPlanRenderer.resx">
+      <DependentUpon>frmItemChunk3DPlanRenderer.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

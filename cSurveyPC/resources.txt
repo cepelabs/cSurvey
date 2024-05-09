@@ -1124,3 +1124,9 @@ about.infoabout.textpart7=With the sponsorship of:
 about.infoabout.textpart8=With the help and support of:
 about.infoabout.textpart9=Other contributors and thanks:
 about.infoabout.textpart10=A very special thanks to:
+
+csurvey.textpart126=Loading 3D model
+items.textpart5=3D model
+
+holos.progressbegin6=Building 3D model: chunks...
+holos.progress6=Building 3D model: chunks...

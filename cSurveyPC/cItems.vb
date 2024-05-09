@@ -182,9 +182,19 @@ Namespace cSurvey.Design
             Dim iIndex As Integer = 0
             Dim iCount As Integer = Items.ChildNodes.Count
             Dim iStep As Integer = If(iCount > 20, iCount \ 20, 1)
+
+            Dim sLoadingText As String
+            If TypeOf Design Is cDesignPlan Then
+                sLoadingText = String.Format(modMain.GetLocalizedString("items.textpart1"), modMain.GetLocalizedString("items.textpart3"))
+            ElseIf TypeOf Design Is cDesignProfile Then
+                sLoadingText = String.Format(modMain.GetLocalizedString("items.textpart1"), modMain.GetLocalizedString("items.textpart4"))
+            Else
+                sLoadingText = String.Format(modMain.GetLocalizedString("items.textpart1"), modMain.GetLocalizedString("items.textpart5"))
+            End If
+
             For Each oXMLItem As XmlElement In Items.ChildNodes
                 iIndex += 1
-                If (iIndex Mod iStep) = 0 Then Call oSurvey.RaiseOnProgressEvent("", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, String.Format(modMain.GetLocalizedString("items.textpart1"), If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, modMain.GetLocalizedString("items.textpart3"), modMain.GetLocalizedString("items.textpart4"))), iIndex / iCount)
+                If (iIndex Mod iStep) = 0 Then Call oSurvey.RaiseOnProgressEvent("", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, sLoadingText, iIndex / iCount)
                 Dim oItem As cItem = Nothing
                 Select Case oXMLItem.GetAttribute("type")
                     Case cIItem.cItemTypeEnum.Generic

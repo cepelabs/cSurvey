@@ -7,10 +7,13 @@ Imports DevExpress.XtraVerticalGrid.Events
 Imports DevExpress.XtraVerticalGrid.Rows
 
 Friend Class cItemChunk3DPropertyControl
-    Private oItem As cItemChunk3D
-
     Private WithEvents oHolosView As cHolosItemView
 
+    Public Shadows ReadOnly Property Item As cItemChunk3D
+        Get
+            Return MyBase.Item
+        End Get
+    End Property
     Public Sub New()
 
         ' This call is required by the designer.
@@ -26,33 +29,33 @@ Friend Class cItemChunk3DPropertyControl
         If e.IsGetData Then
             Select Case e.RowProperties.FieldName.ToLower
                 Case "basefilename"
-                    e.Value = oItem.ModelFiles.MainFile
+                    e.Value = Item.ModelFiles.MainFile
                 Case "station1"
-                    If oItem.Stations.Station1.IsValid Then
-                        e.Value = oItem.Stations.Station1.Name
+                    If Item.Stations.Station1.IsValid Then
+                        e.Value = Item.Stations.Station1.Name
                     Else
                         e.Value = ""
                     End If
                 Case "station2"
-                    If oItem.Stations.Station2.IsValid Then
-                        e.Value = oItem.Stations.Station2.Name
+                    If Item.Stations.Station2.IsValid Then
+                        e.Value = Item.Stations.Station2.Name
                     Else
                         e.Value = ""
                     End If
                 Case "transform", "transformrotate"
                     e.Value = ""
                 Case "transformxrotate"
-                    e.Value = oItem.ModelTransform.XRotate
+                    e.Value = Item.ModelTransform.XRotate
                 Case "transformyrotate"
-                    e.Value = oItem.ModelTransform.YRotate
+                    e.Value = Item.ModelTransform.YRotate
                 Case "transformzrotate"
-                    e.Value = oItem.ModelTransform.ZRotate
+                    e.Value = Item.ModelTransform.ZRotate
                 Case "transformxscale"
-                    e.Value = oItem.ModelTransform.XScale
+                    e.Value = Item.ModelTransform.XScale
                 Case "transformyscale"
-                    e.Value = oItem.ModelTransform.YScale
+                    e.Value = Item.ModelTransform.YScale
                 Case "transformzscale"
-                    e.Value = oItem.ModelTransform.ZScale
+                    e.Value = Item.ModelTransform.ZScale
             End Select
         End If
     End Sub
@@ -70,7 +73,7 @@ Friend Class cItemChunk3DPropertyControl
             Call oHolosView.mainViewport.Children.Remove(oGroup)
         End If
         oGroup = New ModelVisual3D
-        oGroup.Content = oItem.LoadModel
+        oGroup.Content = Item.LoadModel
         oHolosView.mainViewport.Children.Add(oGroup)
         Cursor = Cursors.Default
     End Sub
@@ -78,15 +81,13 @@ Friend Class cItemChunk3DPropertyControl
     Public Shadows Sub Rebind(Item As cItem)
         MyBase.Rebind(Item)
 
-        If oItem IsNot Item Then
+        If Me.Item IsNot Item Then
             cmdPropModelLoad.Visible = True
             If oGroup IsNot Nothing Then
                 Call oHolosView.mainViewport.Children.Remove(oGroup)
                 oGroup = Nothing
             End If
         End If
-
-        oItem = Item
 
         If grdChunkInfo.Rows.Count = 0 Then
             grdChunkInfo.Rows.Clear()
@@ -111,11 +112,11 @@ Friend Class cItemChunk3DPropertyControl
     End Sub
 
     Private Sub cmdPropModelEdit_Click(sender As Object, e As EventArgs) Handles cmdPropModelEdit.Click
-        Using frmCE As frmHolosItemEdit = New frmHolosItemEdit(oItem.Survey, oItem)
+        Using frmCE As frmHolosItemEdit = New frmHolosItemEdit(Item.Survey, Item)
             If frmCE.ShowDialog(Me) = DialogResult.OK Then
                 Dim oModelEdit As frmHolosItemEdit.cModelEdit = frmCE.Result
 
-                With oItem.ModelTransform
+                With Item.ModelTransform
                     .XScale = oModelEdit.Scale
                     .YScale = oModelEdit.Scale
                     .ZScale = oModelEdit.Scale
@@ -125,14 +126,17 @@ Friend Class cItemChunk3DPropertyControl
                     .ZRotate = oModelEdit.RotateZ
                 End With
 
-                With oItem.Stations
-                    .Station1.TrigPoint = oItem.Survey.TrigPoints(oModelEdit.Station1)
+                With Item.Stations
+                    .Station1.TrigPoint = Item.Survey.TrigPoints(oModelEdit.Station1)
                     .Station1.Point = oModelEdit.Point1
-                    .Station2.TrigPoint = oItem.Survey.TrigPoints(oModelEdit.Station2)
+                    .Station2.TrigPoint = Item.Survey.TrigPoints(oModelEdit.Station2)
                     .Station2.Point = oModelEdit.Point2
                 End With
             End If
         End Using
     End Sub
 
+    'Private Sub cItemChunk3DPropertyControl_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick
+    '    Call Item.GetPlanImage()
+    'End Sub
 End Class

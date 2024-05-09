@@ -702,6 +702,7 @@ Namespace cSurvey
         End Sub
 
         Public Sub RefreshSplayNames()
+            'TODO: this code use settings from UI (SPLAY_source) so have to be revised
             Call oSurvey.RaiseOnProgressEvent("segments.refreshsplaynames", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, modMain.GetLocalizedString("segments.refreshsplaynamesbegin"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageCalculate Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
             Dim iIndex As Integer = 0
             Dim iCount As Integer = oSegments.Count
@@ -712,31 +713,41 @@ Namespace cSurvey
                     iIndex += 1
                     If (iIndex Mod 10) = 0 Then Call oSurvey.RaiseOnProgressEvent("segments.refreshsplaynames", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("segments.refreshsplaynamesprogress"), iIndex / iCount)
                     If osegment.To Like "*(*)" Then
-                        Dim oArgs As cSegment.cGetSplayNameEventArgs = New cSegment.cGetSplayNameEventArgs(osegment.From)
-                        If oSplayIndexes.ContainsKey(osegment.From) Then
-                            iLastSplayIndex = oSplayIndexes(osegment.From)
-                            Call oSplayIndexes.Remove(osegment.From)
+                        Dim sCalculatedSplaySource As String = osegment.DataProperties.GetValue("SPLAY_source", "")
+                        If sCalculatedSplaySource = "" Then
+                            Dim oArgs As cSegment.cGetSplayNameEventArgs = New cSegment.cGetSplayNameEventArgs(osegment.From)
+                            If oSplayIndexes.ContainsKey(osegment.From) Then
+                                iLastSplayIndex = oSplayIndexes(osegment.From)
+                                Call oSplayIndexes.Remove(osegment.From)
+                            Else
+                                iLastSplayIndex = 0
+                            End If
+                            iLastSplayIndex += 1
+                            Call oSplayIndexes.Add(osegment.From, iLastSplayIndex)
+                            If oLastSplayIndexes.ContainsKey(osegment.From) Then Call oLastSplayIndexes.Remove(osegment.From)
+                            Call oLastSplayIndexes.Add(osegment.From, iLastSplayIndex)
+                            osegment.To = osegment.From & "(" & iLastSplayIndex & ")"
                         Else
-                            iLastSplayIndex = 0
+                            osegment.To = osegment.From & "(" & sCalculatedSplaySource & ")"
                         End If
-                        iLastSplayIndex += 1
-                        Call oSplayIndexes.Add(osegment.From, iLastSplayIndex)
-                        If oLastSplayIndexes.ContainsKey(osegment.From) Then Call oLastSplayIndexes.Remove(osegment.From)
-                        Call oLastSplayIndexes.Add(osegment.From, iLastSplayIndex)
-                        osegment.To = osegment.From & "(" & iLastSplayIndex & ")"
                     ElseIf osegment.From Like "*(*)" Then
-                        Dim oArgs As cSegment.cGetSplayNameEventArgs = New cSegment.cGetSplayNameEventArgs(osegment.To)
-                        If oSplayIndexes.ContainsKey(osegment.To) Then
-                            iLastSplayIndex = oSplayIndexes(osegment.To)
-                            Call oSplayIndexes.Remove(osegment.To)
+                        Dim sCalculatedSplaySource As String = osegment.DataProperties.GetValue("SPLAY_source", "")
+                        If sCalculatedSplaySource = "" Then
+                            Dim oArgs As cSegment.cGetSplayNameEventArgs = New cSegment.cGetSplayNameEventArgs(osegment.To)
+                            If oSplayIndexes.ContainsKey(osegment.To) Then
+                                iLastSplayIndex = oSplayIndexes(osegment.To)
+                                Call oSplayIndexes.Remove(osegment.To)
+                            Else
+                                iLastSplayIndex = 0
+                            End If
+                            iLastSplayIndex += 1
+                            Call oSplayIndexes.Add(osegment.To, iLastSplayIndex)
+                            If oLastSplayIndexes.ContainsKey(osegment.To) Then Call oLastSplayIndexes.Remove(osegment.To)
+                            Call oLastSplayIndexes.Add(osegment.To, iLastSplayIndex)
+                            osegment.From = osegment.To & "(" & iLastSplayIndex & ")"
                         Else
-                            iLastSplayIndex = 0
+                            osegment.From = osegment.To & "(" & sCalculatedSplaySource & ")"
                         End If
-                        iLastSplayIndex += 1
-                        Call oSplayIndexes.Add(osegment.To, iLastSplayIndex)
-                        If oLastSplayIndexes.ContainsKey(osegment.To) Then Call oLastSplayIndexes.Remove(osegment.To)
-                        Call oLastSplayIndexes.Add(osegment.To, iLastSplayIndex)
-                        osegment.From = osegment.To & "(" & iLastSplayIndex & ")"
                     End If
                 End If
             Next

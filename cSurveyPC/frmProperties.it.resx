@@ -1933,4 +1933,7 @@
   <data name="chkGPSAllowManualDeclinations.Properties.Caption" xml:space="preserve">
     <value>Consenti declinazioni manuali</value>
   </data>
+  <data name="lbl3DExportAsImageOversampling.Text" xml:space="preserve">
+    <value>Oversampling esport. come immagine:</value>
+  </data>
 </root>

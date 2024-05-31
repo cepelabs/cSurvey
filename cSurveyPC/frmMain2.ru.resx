@@ -3720,21 +3720,6 @@
   <data name="mnuDesignItemPointRefresh.Text" xml:space="preserve">
     <value>Обновить</value>
   </data>
-  <data name="mnuMapDropImage.Text" xml:space="preserve">
-    <value>Изображение</value>
-  </data>
-  <data name="mnuMapDropSketch.Text" xml:space="preserve">
-    <value>Абрис</value>
-  </data>
-  <data name="mnuMapDropPocketTopo.Text" xml:space="preserve">
-    <value>Файл экспорта PocketTopo</value>
-  </data>
-  <data name="mnuMapDropCaveExplorer.Text" xml:space="preserve">
-    <value>Файл CaveExplorer</value>
-  </data>
-  <data name="mnuMapDropText.Text" xml:space="preserve">
-    <value>Простой текст</value>
-  </data>
   <data name="mnnuTrayShowHide.Text" xml:space="preserve">
     <value>Показать/Скрыть</value>
   </data>
@@ -6489,5 +6474,20 @@
   </data>
   <data name="tabSegmentsDataitem.Text" xml:space="preserve">
     <value>Доп. данные</value>
+  </data>
+  <data name="btnMapDropPocketTopo.Caption" xml:space="preserve">
+    <value>Файл экспорта PocketTopo</value>
+  </data>
+  <data name="btnMapDropCaveExplorer.Caption" xml:space="preserve">
+    <value>Файл CaveExplorer</value>
+  </data>
+  <data name="btnMapDropGenericText.Caption" xml:space="preserve">
+    <value>Простой текст</value>
+  </data>
+  <data name="btnMapDropSketch.Caption" xml:space="preserve">
+    <value>Абрис</value>
+  </data>
+  <data name="btnMapDropImage.Caption" xml:space="preserve">
+    <value>Изображение</value>
   </data>
 </root>

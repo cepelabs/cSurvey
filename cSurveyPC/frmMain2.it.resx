@@ -3779,18 +3779,6 @@ o ad una sezione trasversale</value>
   <data name="mnuDesignItemPointRefresh.Text" xml:space="preserve">
     <value>Aggiorna</value>
   </data>
-  <data name="mnuMapDropImage.Text" xml:space="preserve">
-    <value>Immagine</value>
-  </data>
-  <data name="mnuMapDropPocketTopo.Text" xml:space="preserve">
-    <value>File di scambio PocketTopo</value>
-  </data>
-  <data name="mnuMapDropCaveExplorer.Text" xml:space="preserve">
-    <value>File dati CaveExplorer</value>
-  </data>
-  <data name="mnuMapDropText.Text" xml:space="preserve">
-    <value>Testo generico</value>
-  </data>
   <data name="mnnuTrayShowHide.Text" xml:space="preserve">
     <value>Mostra/nascondi</value>
   </data>
@@ -6099,9 +6087,6 @@ o ad una sezione trasversale</value>
   <data name="lblPropAttachment.Text" xml:space="preserve">
     <value>Allegato:</value>
   </data>
-  <data name="mnuMapDropAttachment.Text" xml:space="preserve">
-    <value>Allegato</value>
-  </data>
   <data name="mnuFileNewFromTemplate.Text" xml:space="preserve">
     <value>Nuovo da modello</value>
   </data>
@@ -7216,7 +7201,7 @@ o ad una sezione trasversale</value>
     <value>Testi comuni</value>
   </data>
   <data name="btnMapDropGenericText.Caption" xml:space="preserve">
-    <value>Testo</value>
+    <value>Testo generico</value>
   </data>
   <data name="btnViewScript.Caption" xml:space="preserve">
     <value>Script</value>
@@ -7583,5 +7568,20 @@ o ad una sezione trasversale</value>
   </data>
   <data name="cboTrigpointsListSpecial.Items3" xml:space="preserve">
     <value>Caposaldo predefinito</value>
+  </data>
+  <data name="btnMapDropImage.Caption" xml:space="preserve">
+    <value>Immagine</value>
+  </data>
+  <data name="btnMapDropSketch.Caption" xml:space="preserve">
+    <value>Sketch</value>
+  </data>
+  <data name="btnMapDropPocketTopo.Caption" xml:space="preserve">
+    <value>File di scambio PocketTopo</value>
+  </data>
+  <data name="btnMapDropCaveExplorer.Caption" xml:space="preserve">
+    <value>File di CaveExplorer</value>
+  </data>
+  <data name="btnMapDropAttachment.Caption" xml:space="preserve">
+    <value>Allegato</value>
   </data>
 </root>

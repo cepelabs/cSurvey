@@ -108,7 +108,7 @@ Namespace cSurvey.Design.Items
 
         Public Overrides ReadOnly Property CanBeWarped As Boolean
             Get
-                Return False
+                Return True
             End Get
         End Property
 
@@ -208,7 +208,7 @@ Namespace cSurvey.Design.Items
 
         Public Overrides ReadOnly Property BindMode As cItem.BindModeEnum
             Get
-                Return BindModeEnum.AllPoints
+                Return BindModeEnum.CenterPoint
             End Get
         End Property
 
@@ -331,6 +331,9 @@ Namespace cSurvey.Design.Items
                     End If
                 Catch
                 End Try
+                If PaintOptions.ShowSegmentBindings Then
+                    Call modPaint.PaintPointToSegmentBindings(Graphics, MyBase.Survey, Me, Selected)
+                End If
             End If
         End Sub
 

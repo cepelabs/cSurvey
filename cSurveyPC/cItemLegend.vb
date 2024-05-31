@@ -635,12 +635,12 @@ Namespace cSurvey.Design.Items
                 Call oItems.Clear()
             End If
 
-            For Each oLayer As cLayer In MyBase.Design.Layers.Where(Function(layer) Not (layer.Type = cLayers.LayerTypeEnum.RocksAndConcretion OrElse layer.Type = cLayers.LayerTypeEnum.Signs))
+            For Each oLayer As cLayer In MyBase.Design.Layers.Where(Function(layer) Not (layer.Type = cLayers.LayerTypeEnum.RocksAndConcretion)) 'OrElse layer.Type = cLayers.LayerTypeEnum.Signs))
                 For Each oItem As cItem In oLayer.Items
                     If Not oItem.HiddenInDesign AndAlso Not oItem.HiddenInPreview AndAlso Not TypeOf oItem Is cItemLegend Then
                         If oItem.HavePen Then
                             Dim iPenType As cPen.PenTypeEnum = oItem.Pen.Type
-                            If iPenType <> cPen.PenTypeEnum.None Then
+                            If iPenType <> cPen.PenTypeEnum.None AndAlso Not (oItem.Layer.Type = cLayers.LayerTypeEnum.Signs And iPenType = cPen.PenTypeEnum.TightPen) Then
                                 If Not oPenList.Contains(iPenType) OrElse iPenType = cPen.PenTypeEnum.Custom Then
                                     Dim sName As String = oItem.Pen.Name
                                     If ((Flags And cIItemLegend.AutoFillFlagsEnum.AllowDuplicatedNames) = cIItemLegend.AutoFillFlagsEnum.AllowDuplicatedNames) OrElse ((Flags And cIItemLegend.AutoFillFlagsEnum.AllowDuplicatedNames) = 0 AndAlso Not oNames.Contains(sName.ToLower)) Then
@@ -655,12 +655,12 @@ Namespace cSurvey.Design.Items
                 Next
             Next
 
-            For Each oLayer As cLayer In MyBase.Design.Layers.Where(Function(layer) Not (layer.Type = cLayers.LayerTypeEnum.RocksAndConcretion OrElse layer.Type = cLayers.LayerTypeEnum.Signs))
+            For Each oLayer As cLayer In MyBase.Design.Layers.Where(Function(layer) Not (layer.Type = cLayers.LayerTypeEnum.RocksAndConcretion)) 'OrElse layer.Type = cLayers.LayerTypeEnum.Signs))
                 For Each oItem As cItem In oLayer.Items
                     If Not oItem.HiddenInDesign AndAlso Not oItem.HiddenInPreview AndAlso Not TypeOf oItem Is cItemLegend Then
                         If oItem.HaveBrush Then
                             Dim iBrushType As cBrush.BrushTypeEnum = oItem.Brush.Type
-                            If iBrushType <> cBrush.BrushTypeEnum.None Then
+                            If iBrushType <> cBrush.BrushTypeEnum.None AndAlso Not (oItem.Layer.Type = cLayers.LayerTypeEnum.Signs And iBrushType = cBrush.BrushTypeEnum.SignSolid) Then
                                 If Not oBrushList.Contains(iBrushType) OrElse iBrushType = cBrush.BrushTypeEnum.Custom Then
                                     Dim sName As String = oItem.Brush.Name
                                     If ((Flags And cIItemLegend.AutoFillFlagsEnum.AllowDuplicatedNames) = cIItemLegend.AutoFillFlagsEnum.AllowDuplicatedNames) OrElse ((Flags And cIItemLegend.AutoFillFlagsEnum.AllowDuplicatedNames) = 0 AndAlso Not oNames.Contains(sName.ToLower)) Then
@@ -861,13 +861,13 @@ Namespace cSurvey.Design.Items
                                             Using oDesignSignPaths As cDrawPaths = oSign.Clipart.ClonePaths
                                                 Using oScaleMatrix As Matrix = New Matrix
                                                     Dim oOriginalBounds As RectangleF = oDesignSignPaths.GetBounds()
-                                                    If sItemItemScale <> 1 Then oOriginalBounds = modPaint.FullScaleRectangle(oOriginalBounds, 1 / sItemItemScale)
+                                                    If sItemItemScale <> 1 Then oOriginalBounds = modPaint.FullScaleRectangle(oOriginalBounds, 1.0F / sItemItemScale)
                                                     Dim oPaddedBounds As RectangleF = oBordersBounds
                                                     Call oPaddedBounds.Inflate(-0.1, -0.1)
                                                     Dim sClipScale As Single = modPaint.ScaleToFit(oPaddedBounds, oOriginalBounds)
                                                     oOriginalBounds = modPaint.FullScaleRectangle(oOriginalBounds, sClipScale)
-                                                    Dim sOffsetX As Single = oPaddedBounds.X - oOriginalBounds.X + oPaddedBounds.Width / 2 - oOriginalBounds.Width / 2
-                                                    Dim sOffsetY As Single = oPaddedBounds.Y - oOriginalBounds.Y + oPaddedBounds.Height / 2 - oOriginalBounds.Height / 2
+                                                    Dim sOffsetX As Single = oPaddedBounds.X - oOriginalBounds.X + oPaddedBounds.Width / 2.0F - oOriginalBounds.Width / 2.0F
+                                                    Dim sOffsetY As Single = oPaddedBounds.Y - oOriginalBounds.Y + oPaddedBounds.Height / 2.0F - oOriginalBounds.Height / 2.0F
 
                                                     Call oScaleMatrix.Scale(sClipScale, sClipScale, MatrixOrder.Append)
                                                     Call oScaleMatrix.Translate(sOffsetX, sOffsetY, MatrixOrder.Append)

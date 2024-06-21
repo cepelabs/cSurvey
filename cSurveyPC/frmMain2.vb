@@ -3915,6 +3915,9 @@ Friend Class frmMain2
         End If
     End Sub
 
+    Private Sub dockDesigner_SizeChanged(sender As Object, e As EventArgs) Handles dockDesigner.SizeChanged
+        Call picMap.Invalidate()
+    End Sub
     Private Sub pMapBindScrollbars()
         Dim oSize As Size = oCurrentDesign.GetVisibleBounds(oCurrentOptions).Size.ToSize
         If oSize.IsEmpty Then
@@ -11622,7 +11625,9 @@ Friend Class frmMain2
 
                         Call oSurvey.TrigPoints.Rebind()
 
-                        oSurvey.Properties.Origin = sOrigin
+                        If oSurvey.Properties.Origin = "" Then
+                            oSurvey.Properties.Origin = sOrigin
+                        End If
                     End If
                 End Using
 
@@ -14975,6 +14980,7 @@ Friend Class frmMain2
         Call docView.Controller.Close(docView.Documents.FirstOrDefault(Function(oDocument) oDocument.ControlName.ToLower = "dockdesigner"))
 
         Call pObjectPropShow(False)
+        Call pClipartShow(False)
         Call pLevelsShow(False)
     End Sub
 
@@ -14984,6 +14990,7 @@ Friend Class frmMain2
         Call docView.Controller.Close(docView.Documents.FirstOrDefault(Function(oDocument) oDocument.ControlName.ToLower = "dockdata"))
 
         Call pObjectPropShow(True)
+        Call pClipartShow(True)
         Call pLevelsShow(True)
     End Sub
 
@@ -14993,6 +15000,7 @@ Friend Class frmMain2
         'Call pFieldDataShow(True)
         'Call pDesignAreaShow(True)
         Call pObjectPropShow(True)
+        Call pClipartShow(True)
         Call pLevelsShow(True)
     End Sub
 
@@ -19769,6 +19777,14 @@ Friend Class frmMain2
 
     Private Sub h3D_GotFocus(sender As Object, e As EventArgs) Handles h3D.GotFocus
         Call oClipboardViewer_ClipboardChanged(Nothing, Nothing)
+    End Sub
+
+    Private Sub frmMain2_Move(sender As Object, e As EventArgs) Handles Me.Move
+        Call picMap.Invalidate()
+    End Sub
+
+    Private Sub frmMain2_ResizeEnd(sender As Object, e As EventArgs) Handles Me.ResizeEnd
+        Call picMap.Invalidate()
     End Sub
 
     'Private Sub oHolos_OnContextMenuRequest(Sender As Object, e As Windows.Forms.MouseEventArgs) Handles oHolos.OnContextMenuRequest

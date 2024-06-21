@@ -7920,6 +7920,7 @@ Partial Class frmMain2
         Me.PerformLayout
 
     End Sub
+
     Friend WithEvents lblSegmentTo As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lblSegmentFrom As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtSegmentDistance As DevExpress.XtraEditors.TextEdit

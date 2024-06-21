@@ -122,11 +122,15 @@ Module modMain
     End Function
 
     Public Function CompareVersion(Version1 As String, Version2 As String) As Boolean
-        Dim oVersion1() As Integer = SplitVersion(Version1)
-        Dim oVersion2() As Integer = SplitVersion(Version2)
-        Dim dVersion1 As Decimal = oVersion1(2) + oVersion1(1) * 10000 + oVersion1(0) * 10000000
-        Dim dVersion2 As Decimal = oVersion2(2) + oVersion2(1) * 10000 + oVersion2(0) * 10000000
-        Return dVersion1 > dVersion2
+        If Version1 = "" OrElse Version2 = "" Then
+            Return False
+        Else
+            Dim oVersion1() As Integer = SplitVersion(Version1)
+            Dim oVersion2() As Integer = SplitVersion(Version2)
+            Dim dVersion1 As Decimal = oVersion1(2) + oVersion1(1) * 10000 + oVersion1(0) * 10000000
+            Dim dVersion2 As Decimal = oVersion2(2) + oVersion2(1) * 10000 + oVersion2(0) * 10000000
+            Return dVersion1 > dVersion2
+        End If
     End Function
 
     Public Sub KillProcessTree(Root As Process)

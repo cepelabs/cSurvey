@@ -39,7 +39,9 @@ Friend Class cItemTextStylePropertyControl
         End If
 
         cboPropTextStyle.EditValue = Me.Item.Font.Type
-
+        If Me.Item.Font.Type = cItemFont.FontTypeEnum.Custom Then
+            Call cboPropTextStyle_EditValueChanged(cboPropTextStyle, EventArgs.Empty)
+        End If
         cboPropTextSize.SelectedIndex = DirectCast(Me.Item, cIItemSizable).Size
         If (Me.Item.AvaiableTextProperties And cIItemText.AvaiableTextPropertiesEnum.Text) Then
             txtPropText.Text = Me.Item.Text

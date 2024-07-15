@@ -244,54 +244,6 @@ Friend Class frmParametersZOrder
         TreeList1.EndUpdate()
     End Sub
 
-    'Private Sub pZorderBagToGrid()
-    '    Call oZOrderBag.Sort()
-    '    Call tvCaveInfos.Nodes.Clear()
-    '    If chkKeepCaveAndBranchGrouped.Checked Then
-    '        'consente l'ordinamento mantenendo la gerarchia grotta/ramo
-    '        For Each oItem As cZOrderBagItem In oZOrderBag
-    '            Dim bBranch As Boolean = oItem.Branch <> ""
-    '            If Not bBranch Then
-    '                Dim oCaveNode As TreeNode = tvCaveInfos.Nodes.Add(oItem.Cave)
-    '                oCaveNode.Tag = oItem
-    '                oCaveNode.SelectedImageKey = "cave"
-    '                oCaveNode.ImageKey = "cave"
-    '                Call pCaveBranchesLoad(oItem.Cave, oCaveNode.Nodes)
-    '            End If
-    '        Next
-    '        Call tvCaveInfos.ExpandAll()
-    '    Else
-    '        'ordinamento completamente libero
-    '        For Each oItem As cZOrderBagItem In oZOrderBag
-    '            Dim bBranch As Boolean = oItem.Branch <> ""
-    '            Dim oCaveNode As TreeNode = tvCaveInfos.Nodes.Add(oItem.Cave & IIf(bBranch, "\" & oItem.Branch, ""))
-    '            oCaveNode.Tag = oItem
-    '            If bBranch Then
-    '                oCaveNode.SelectedImageKey = "branch"
-    '                oCaveNode.ImageKey = "branch"
-    '            Else
-    '                oCaveNode.SelectedImageKey = "cave"
-    '                oCaveNode.ImageKey = "cave"
-    '            End If
-    '        Next
-    '    End If
-    '    If tvCaveInfos.Nodes.Count > 0 Then
-    '        tvCaveInfos.SelectedNode = tvCaveInfos.Nodes(0)
-    '    End If
-    'End Sub
-
-    'Private Sub pCaveBranchesLoad(ParentCave As String, ParentNodes As TreeNodeCollection)
-    '    For Each oItem As cZOrderBagItem In oZOrderBag
-    '        If oItem.Cave = ParentCave And oItem.Branch <> "" Then
-    '            Dim oBranchNode As TreeNode = ParentNodes.Add(oItem.Branch)
-    '            oBranchNode.Tag = oItem
-    '            oBranchNode.SelectedImageKey = "branch"
-    '            oBranchNode.ImageKey = "branch"
-    '        End If
-    '    Next
-    'End Sub
-
-    'Private Sub pGridToZorderBag()
     '    Dim iIndex As Integer = 0
     '    For Each oNode As TreeNode In tvCaveInfos.Nodes
     '        Dim oItem As cZOrderBagItem = oNode.Tag

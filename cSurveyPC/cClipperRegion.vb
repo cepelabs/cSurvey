@@ -4,18 +4,6 @@ Imports ClipperLib
 Imports System.Runtime.CompilerServices
 
 Namespace cSurvey.Drawings
-    Public Class cClipperHelper
-        Public Shared Function GraphicsPathToIntPaths(Path As GraphicsPath) As List(Of List(Of IntPoint))
-            Dim oIntPaths As List(Of List(Of IntPoint)) = New List(Of List(Of IntPoint))
-            Dim oIntPath As List(Of IntPoint) = New List(Of IntPoint)
-            For Each oPoint As PointF In Path.PathPoints
-                Call oIntPath.Add(New IntPoint(oPoint.X, oPoint.Y))
-            Next
-            Call oIntPaths.Add(oIntPath)
-            Return oIntPaths
-        End Function
-    End Class
-
     Public Class cClipperRegion
         Implements IDisposable
         Implements cIRegion

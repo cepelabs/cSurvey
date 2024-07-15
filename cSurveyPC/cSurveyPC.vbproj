@@ -3093,6 +3093,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmParametersTranslations.resx">
       <DependentUpon>frmParametersTranslations.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSVGImportOptions.resx">
       <DependentUpon>frmSVGImportOptions.vb</DependentUpon>

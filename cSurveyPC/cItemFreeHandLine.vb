@@ -182,7 +182,7 @@ Namespace cSurvey.Design.Items
                         For Each oSequence As cSequence In MyBase.Points.GetSequences()
                             Using oPath As GraphicsPath = New GraphicsPath
                                 If SequenceToPath(oSequence, iLineType, oPath) Then
-                                    Call oSequence.GetPen(MyBase.Pen).Render(Graphics, PaintOptions, Options, Selected, oPath, oCache)
+                                    Call oSequence.GetPen(MyBase.Pen).Render(PaintOptions, Options, Selected, oPath, oCache)
                                 End If
                             End Using
                         Next

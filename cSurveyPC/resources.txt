@@ -1130,3 +1130,8 @@ items.textpart5=3D model
 
 holos.progressbegin6=Building 3D model: chunks...
 holos.progress6=Building 3D model: chunks...
+
+main.filetypePARAMXCG=Parameters exchange file
+preview.exportparameterstitle=Parameters export
+preview.importparameterstitle=Parameters import
+preview.warning5=File is not in correct format or data are not valid in this context

@@ -30,6 +30,10 @@ Friend Class cItemTextStylePropertyControl
         End Get
     End Property
 
+    Public Sub Import(PaintOptions As cOptions)
+        Rebind(Item, PaintOptions)
+    End Sub
+
     Public Shadows Sub Rebind(Item As cItem, PaintOptions As cOptions)
         MyBase.Rebind(Item)
 

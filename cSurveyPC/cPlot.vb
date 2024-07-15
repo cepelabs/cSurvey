@@ -119,6 +119,14 @@ Namespace cSurvey.Design
             Return Add(Name, New PointF(X, Y))
         End Function
 
+        Public Function AddRange(Names As IEnumerable(Of String), Point As PointF) As List(Of cTranslatedTrigPoint)
+            Dim oResults As List(Of cTranslatedTrigPoint) = New List(Of cTranslatedTrigPoint)
+            For Each sName As String In Names
+                oResults.Add(Add(sName, Point))
+            Next
+            Return oResults
+        End Function
+
         Public Function Add(ByVal Name As String, ByVal Point As PointF)
             Dim oItem As cTranslatedTrigPoint
             If oColl.ContainsKey(Name) Then

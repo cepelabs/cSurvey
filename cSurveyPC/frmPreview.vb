@@ -13,6 +13,7 @@ Imports DevExpress.XtraNavBar
 Imports cSurveyPC.cSurvey.Helper.Editor
 Imports System.ComponentModel
 Imports System.Web
+Imports OfficeOpenXml.FormulaParsing.Excel.Functions.Logical
 
 Friend Class frmPreview
     'Private WithEvents frmPC As frmParametersCompass
@@ -1629,8 +1630,7 @@ Friend Class frmPreview
                             Else
                                 oXML = oSurvey.Profile.ToSvg(oOptions, oSVGOptions, oSize, oPageInSourceUnit, iUnit, oPageInMeters)
                             End If
-
-                            'Call XMLAddDeclaration(oXML)
+                            'the legacy objects are rendered directly for tosvg
 
                             Dim oXMLWriterSettings As XmlWriterSettings = New XmlWriterSettings
                             oXMLWriterSettings.Indent = False
@@ -1804,6 +1804,14 @@ Friend Class frmPreview
         flyParameters.ShowBeakForm(True)
     End Sub
 
+    Private Function pGetFlyParameterContext() As String
+        If pnlParameters.Controls.Count = 0 Then
+            Return ""
+        Else
+            Return TypeName(pnlParameters.Controls(0))
+        End If
+    End Function
+
     Private Function pGetFlyParametersSize(Parameters As Control) As Size
         If bManualRefresh Then
             flyParameters.OptionsButtonPanel.ShowButtonPanel = True
@@ -1918,7 +1926,7 @@ Friend Class frmPreview
         Call pRefresh()
     End Sub
 
-    Private Sub frmParametersTranslations(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTranslationsDetails.Click
+    Private Sub btnTranslationsDetails_click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTranslationsDetails.Click
         Dim iApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum
         If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
             iApplyTo = cSurvey.Design.cIDesign.cDesignTypeEnum.Plan
@@ -1931,29 +1939,7 @@ Friend Class frmPreview
         oParameters.Dock = DockStyle.Fill
         flyParameters.OwnerControl = btnTranslationsDetails
         flyParameters.ShowBeakForm(True)
-
-        'Dim iApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum
-        'If frmT Is Nothing Then
-        '    If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
-        '        iApplyTo = cSurvey.Design.cIDesign.cDesignTypeEnum.Plan
-        '    Else
-        '        iApplyTo = cSurvey.Design.cIDesign.cDesignTypeEnum.Profile
-        '    End If
-        '    frmT = New frmParametersTranslations(oCurrentOptions, iApplyTo)
-        '    Call frmT.Show(Me)
-        'Else
-        '    If Not frmT.Visible Then frmT.Show(Me)
-        '    Call frmT.BringToFront()
-        'End If
     End Sub
-
-    'Private Sub frmZ_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles frmZ.FormClosed
-    '    frmZ = Nothing
-    'End Sub
-
-    'Private Sub frmZ_Disposed(sender As Object, e As EventArgs) Handles frmZ.Disposed
-    '    frmZ = Nothing
-    'End Sub
 
     Private Sub chkTranslations_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkTranslations.CheckedChanged
         btnTranslationsDetails.Enabled = chkTranslations.Checked
@@ -3397,6 +3383,16 @@ Friend Class frmPreview
 
     Private Sub flyParameters_BeforeShow(sender As Object, e As CancelEventArgs) Handles flyParameters.BeforeShow
         bRefreshFromParameters = True
+
+        'IMPORT/EXPORT in parameters...not sure if usefull...leaved but not completed
+        'Select Case pGetFlyParameterContext()
+        '    Case "frmParametersTranslations"
+        '        flyParameters.OptionsButtonPanel.Buttons.First(Function(oButton) oButton.Properties.Tag = "import").Properties.Visible = True
+        '        flyParameters.OptionsButtonPanel.Buttons.First(Function(oButton) oButton.Properties.Tag = "export").Properties.Visible = True
+        '    Case Else
+        '        flyParameters.OptionsButtonPanel.Buttons.First(Function(oButton) oButton.Properties.Tag = "import").Properties.Visible = False
+        '        flyParameters.OptionsButtonPanel.Buttons.First(Function(oButton) oButton.Properties.Tag = "export").Properties.Visible = False
+        'End Select
     End Sub
 
     Private Sub flyParameters_Hidden(sender As Object, e As DevExpress.Utils.FlyoutPanelEventArgs) Handles flyParameters.Hidden
@@ -3489,6 +3485,37 @@ Friend Class frmPreview
         Select Case e.Button.Tag
             Case "refresh"
                 Call btnRefresh.PerformClick()
+            Case "import"
+                Dim sContext As String = pGetFlyParameterContext()
+                Select Case sContext
+                    Case "frmParametersTranslations"
+                        Dim oResult As UIHelpers.Dialogs.cOpenFileDialogResult = UIHelpers.Dialogs.OpenFileDialog("", "", GetLocalizedString("main.filetypePARAMXCG") & " (*.PARX)|*.PARX", 1, modMain.GetLocalizedString("preview.exportparameterstitle"))
+                        If oResult.DialogResult = DevExpress.Utils.CommonDialogs.Internal.DialogResult.OK Then
+                            Dim oXml As XmlDocument = New XmlDocument
+                            oXml.Load(oResult.Filename)
+                            If oXml.DocumentElement.GetAttribute("s") = sContext Then
+                                oCurrentOptions.TranslationsOptions.Import(oXml.DocumentElement)
+                                flyParameters.HideBeakForm()
+                                Call btnTranslationsDetails_click(btnTranslationsDetails, EventArgs.Empty)
+                            Else
+                                UIHelpers.Dialogs.Msgbox(modMain.GetLocalizedString("preview.warning5"), MsgBoxStyle.OkOnly, modMain.GetLocalizedString("preview.warningtitle"))
+                            End If
+                        End If
+                End Select
+            Case "export"
+                Dim sContext As String = pGetFlyParameterContext()
+                Select Case sContext
+                    Case "frmParametersTranslations"
+                        Dim oResult As UIHelpers.Dialogs.cSaveFileDialogResult = UIHelpers.Dialogs.SaveFileDialog("", "", GetLocalizedString("main.filetypePARAMXCG") & " (*.PARX)|*.PARX", 1, modMain.GetLocalizedString("preview.importparameterstitle"))
+                        If oResult.DialogResult = DevExpress.Utils.CommonDialogs.Internal.DialogResult.OK Then
+                            Dim oXml As XmlDocument = New XmlDocument
+                            Dim oXmlRoot As XmlElement = oXml.CreateElement("parametersexports")
+                            oXmlRoot.SetAttribute("s", sContext)
+                            oXml.AppendChild(oXmlRoot)
+                            oCurrentOptions.TranslationsOptions.SaveTo(Nothing, oXml, oXml.DocumentElement)
+                            oXml.Save(oResult.Filename)
+                        End If
+                End Select
         End Select
     End Sub
 End Class

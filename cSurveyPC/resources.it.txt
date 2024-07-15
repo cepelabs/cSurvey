@@ -1134,3 +1134,8 @@ items.textpart5=Modello 3D
 
 holos.progressbegin6=Costruzione modello 3D: blocchi...
 holos.progress6=Costruzione modello 3D: blocchi...
+
+main.filetypePARAMXCG=File di scambio parametri
+preview.exportparameterstitle=Esporta parametri
+preview.importparameterstitle=Importa parametri
+preview.warning5=Il file non è del formato corretto o non è valido in questo contesto

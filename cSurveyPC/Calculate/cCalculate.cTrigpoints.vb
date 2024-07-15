@@ -72,6 +72,58 @@ Namespace cSurvey.Calculate
 
         Private oZs As cMinMaxs
 
+        ''' <summary>
+        ''' Return equates for the given stations
+        ''' </summary>
+        ''' <param name="Trigpoint">Station name to get equates</param>
+        ''' <returns>List of unique station's equate name</returns>
+        Public Function Equate(Trigpoint As String) As SortedSet(Of String)
+            If oItems.ContainsKey(Trigpoint) Then
+                Dim oResults As SortedSet(Of String) = EquateTo(oItems(Trigpoint))
+                oResults.Add(Trigpoint)
+                Return oResults
+            Else
+                Throw New KeyNotFoundException
+            End If
+        End Function
+
+        ''' <summary>
+        ''' Return other equates for the given stations
+        ''' </summary>
+        ''' <param name="Trigpoint">Station name to get equates</param>
+        ''' <returns>List of unique station's equate name</returns>
+        Public Function EquateTo(Trigpoint As String) As SortedSet(Of String)
+            If oItems.ContainsKey(Trigpoint) Then
+                Return EquateTo(oItems(Trigpoint))
+            Else
+                Throw New KeyNotFoundException
+            End If
+        End Function
+
+        ''' <summary>
+        ''' Return other equates for the given stations
+        ''' </summary>
+        ''' <param name="Trigpoint">Station to get equates</param>
+        ''' <returns>List of unique station's equate name</returns>
+        Public Function EquateTo(Trigpoint As Calculate.cTrigPoint) As SortedSet(Of String)
+            Dim oEquates As SortedSet(Of String) = New SortedSet(Of String)
+            Call pGetEquate(oEquates, Trigpoint, Trigpoint)
+            Return oEquates
+        End Function
+
+        Private Sub pGetEquate(Equates As SortedSet(Of String), StartTridpoint As Calculate.cTrigPoint, TrigPoint As Calculate.cTrigPoint)
+            If TrigPoint IsNot Nothing Then
+                For Each sEquate As String In TrigPoint.Connections.GetEquateShots
+                    If StartTridpoint.Name <> sEquate Then
+                        If Not Equates.Contains(sEquate) Then
+                            Equates.Add(sEquate)
+                            Call pGetEquate(Equates, StartTridpoint, oSurvey.Calculate.TrigPoints(sEquate))
+                        End If
+                    End If
+                Next
+            End If
+        End Sub
+
         Friend Sub New(Survey As cSurvey, ByVal Item As XmlElement)
             oSurvey = Survey
             oItems = New Dictionary(Of String, cTrigPoint) '(StringComparer.OrdinalIgnoreCase)

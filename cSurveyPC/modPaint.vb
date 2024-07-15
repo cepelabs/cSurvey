@@ -4099,18 +4099,10 @@ Module modPaint
         If oSequencePoints.Length > 1 Then
             If IsNothing(Path) Then Path = New GraphicsPath
             Select Case Sequence.GetLineType(DefaultLineType)
-                'Case cIItemLine.LineTypeEnum.ClosedBeziers
-                '    Call modPaint.PointsToBeziers(oSequencePoints, Path)
-                '    Call Path.CloseFigure()
                 Case cIItemLine.LineTypeEnum.Beziers
                     Call modPaint.PointsToBeziers(oSequencePoints, Path)
-                'Case cIItemLine.LineTypeEnum.ClosedSplines
-                '    Call Path.AddClosedCurve(oSequencePoints, sDefaultSplineTension)
                 Case cIItemLine.LineTypeEnum.Splines
                     Call Path.AddCurve(oSequencePoints, sDefaultSplineTension)
-                    'Case cIItemLine.LineTypeEnum.closedLines
-                    '    Call Path.AddLines(oSequencePoints)
-                    '    Call Path.CloseFigure()
                 Case Else
                     Call Path.AddLines(oSequencePoints)
             End Select

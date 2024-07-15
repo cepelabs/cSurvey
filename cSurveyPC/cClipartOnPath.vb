@@ -25,7 +25,7 @@ Class cClipartOnPath
         Return Not PathData.Types.Where(Function(oType) oType <> PathPointType.Start AndAlso (oType And PathPointType.PathTypeMask) <> PathPointType.Line).Count > 0
     End Function
 
-    Public Shared Function ClipartOnPath(ByVal Graphics As Graphics, ByVal Pathdata As PathData, ByVal Clipart As cDrawClipArt, ClipartPosition As ClipartPositionEnum, ByVal ClipartSpacePercentage As Single, ByVal ClipartDistancePercentage As Single, ByVal Color As Color, ByVal FillColor As Color, ByVal Zoom As Single) As GraphicsPath
+    Public Shared Function ClipartOnPath(ByVal Pathdata As PathData, ByVal Clipart As cDrawClipArt, ClipartPosition As ClipartPositionEnum, ByVal ClipartSpacePercentage As Single, ByVal ClipartDistancePercentage As Single, ByVal Color As Color, ByVal FillColor As Color, ByVal Zoom As Single) As GraphicsPath
         Dim sZoom As Single = Zoom / 40.0F
         Dim oTransformedPath As cDrawPaths
         Using oTransformMatrix As Matrix = New Matrix
@@ -50,7 +50,7 @@ Class cClipartOnPath
             '    End If
             'Next
             oResultPoints = pCleanPoints(oResultPoints)
-            Return pDrawClipartOnLines(Graphics, oTransformedPath, oResultPoints, ClipartPosition, sClipartSpacePercentage, sClipartDistancePercentage)
+            Return pDrawClipartOnLines(oTransformedPath, oResultPoints, ClipartPosition, sClipartSpacePercentage, sClipartDistancePercentage)
         Else
             Using oPath As GraphicsPath = New GraphicsPath(Pathdata.Points, Pathdata.Types)
                 If oPath.PointCount > 1 Then
@@ -68,7 +68,7 @@ Class cClipartOnPath
                     oResultPoints = pCleanPoints(oResultPoints)
                 End If
             End Using
-            Return pDrawClipart(Graphics, oTransformedPath, oResultPoints, ClipartPosition, sClipartSpacePercentage, sClipartDistancePercentage)
+            Return pDrawClipart(oTransformedPath, oResultPoints, ClipartPosition, sClipartSpacePercentage, sClipartDistancePercentage)
         End If
     End Function
 
@@ -86,7 +86,7 @@ Class cClipartOnPath
         Return oPointResults
     End Function
 
-    Private Shared Function pDrawClipartOnLines(ByVal Graphics As Graphics, TransformedPath As cDrawPaths, ByVal Points As List(Of PointF), ClipartPosition As ClipartPositionEnum, ClipartSpacePercentage As Single, ClipartDistancePercentage As Single) As GraphicsPath
+    Private Shared Function pDrawClipartOnLines(TransformedPath As cDrawPaths, ByVal Points As List(Of PointF), ClipartPosition As ClipartPositionEnum, ClipartSpacePercentage As Single, ClipartDistancePercentage As Single) As GraphicsPath
         Dim oPath As GraphicsPath = New GraphicsPath
 
         Dim sMaxWidthClipart As Single = TransformedPath.GetBounds.Width
@@ -105,7 +105,7 @@ Class cClipartOnPath
                     Do
                         Dim sAngle As Single = pGetAngle(oLastPoint, oPoint)
                         Dim oCenter As PointF = modPaint.PointOnLineByDistance(oLastPoint, oPoint, sStep + sWidth / 2)
-                        Call oPath.AddPath(pDrawRotatedClipart(Graphics, TransformedPath, ClipartPosition, sAngle, oCenter, ClipartDistancePercentage), False)
+                        Call oPath.AddPath(pDrawRotatedClipart(TransformedPath, ClipartPosition, sAngle, oCenter, ClipartDistancePercentage), False)
                         sStep += sWidth
                     Loop While (sStep + sWidth) <= sDistance
                 End If
@@ -117,7 +117,7 @@ Class cClipartOnPath
         Return oPath
     End Function
 
-    Private Shared Function pDrawClipart(ByVal Graphics As Graphics, TransformedPath As cDrawPaths, ByVal Points As List(Of PointF), ClipartPosition As ClipartPositionEnum, ClipartSpacePercentage As Single, ClipartDistancePercentage As Single) As GraphicsPath
+    Private Shared Function pDrawClipart(TransformedPath As cDrawPaths, ByVal Points As List(Of PointF), ClipartPosition As ClipartPositionEnum, ClipartSpacePercentage As Single, ClipartDistancePercentage As Single) As GraphicsPath
         Dim oPath As GraphicsPath = New GraphicsPath
         Dim iPointCount As Integer = Points.Count - 1
         Dim sCount As Single = 1
@@ -134,21 +134,16 @@ Class cClipartOnPath
         Dim sWidth As Single = sMaxWidthClipart + sMaxWidthClipart * ClipartSpacePercentage / 100.0F
         If sWidth < 1.0F Then sWidth = 1.0F
 
-        'Graphics.DrawLines(New Pen(Brushes.Orange, 0.01), Points.ToArray)
-
         Do While sCount < iPointCount
             If (sCount + sWidth \ 2) >= 0F AndAlso (sCount + sWidth) < iPointCount Then
                 sCount += sWidth
-                'oPoint2 = Points(sCount)
                 Dim iCenter As Integer = sCount - sWidth \ 2.0F
                 oPoint1 = Points(iCenter - sWidth \ 2.0F)
                 oPoint2 = Points(iCenter + sWidth \ 2.0F)
                 oPoint = Points(iCenter)
 
                 sAngle = pGetAngle(oPoint1, oPoint2)
-                'Graphics.DrawLine(New Pen(Brushes.Red, 0.1), oPoint1, oPoint2)
-                Call oPath.AddPath(pDrawRotatedClipart(Graphics, TransformedPath, ClipartPosition, sAngle, oPoint, ClipartDistancePercentage), False)
-                'oPoint1 = Points(sCount)
+                Call oPath.AddPath(pDrawRotatedClipart(TransformedPath, ClipartPosition, sAngle, oPoint, ClipartDistancePercentage), False)
             Else
                 sCount += sWidth
             End If
@@ -169,7 +164,7 @@ Class cClipartOnPath
         End If
     End Function
 
-    Private Shared Function pDrawRotatedClipart(ByVal Graphics As Graphics, TransformedPath As cDrawPaths, ClipartPosition As ClipartPositionEnum, ByVal Angle As Single, ByVal Center As PointF, DistancePercentage As Single) As GraphicsPath
+    Private Shared Function pDrawRotatedClipart(TransformedPath As cDrawPaths, ClipartPosition As ClipartPositionEnum, ByVal Angle As Single, ByVal Center As PointF, DistancePercentage As Single) As GraphicsPath
         Dim oBasePath As GraphicsPath = New GraphicsPath(Drawing.Drawing2D.FillMode.Winding)
         Dim x As Single = Center.X
         Dim y As Single = Center.Y

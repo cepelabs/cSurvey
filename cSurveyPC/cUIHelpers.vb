@@ -5,6 +5,7 @@ Imports System.Windows.Input
 Imports cSurveyPC.cSurvey.Helper.Editor
 Imports cSurveyPC.cSurvey.Surface
 Imports DevExpress.Utils.Behaviors.Common
+Imports DevExpress.Utils.CommonDialogs.Internal
 Imports DevExpress.XtraEditors
 Imports OfficeOpenXml.FormulaParsing.Excel.Functions.Text
 
@@ -428,7 +429,7 @@ Namespace cSurvey.UIHelpers
 
     Public Class Dialogs
 
-        Public Class cSaveFileDialogResult
+        Public Class cFileDialogResult
             Private iDialogResult As DialogResult
             Private sFilename As String
 
@@ -451,6 +452,30 @@ Namespace cSurvey.UIHelpers
             Public Sub New(DialogResult As DialogResult, Filename As String)
                 iDialogResult = DialogResult
                 sFilename = Filename
+            End Sub
+        End Class
+
+        Public Class cSaveFileDialogResult
+            Inherits cFileDialogResult
+
+            Public Sub New(DialogResult As DialogResult)
+                MyBase.New(DialogResult)
+            End Sub
+
+            Public Sub New(DialogResult As DialogResult, Filename As String)
+                MyBase.New(DialogResult, Filename)
+            End Sub
+        End Class
+
+        Public Class cOpenFileDialogResult
+            Inherits cFileDialogResult
+
+            Public Sub New(DialogResult As DialogResult)
+                MyBase.New(DialogResult)
+            End Sub
+
+            Public Sub New(DialogResult As DialogResult, Filename As String)
+                MyBase.New(DialogResult, Filename)
             End Sub
         End Class
 
@@ -477,6 +502,36 @@ Namespace cSurvey.UIHelpers
                         Return New cSaveFileDialogResult(DialogResult.OK, .FileName)
                     Else
                         Return New cSaveFileDialogResult(DialogResult.Cancel)
+                    End If
+                End With
+            End Using
+        End Function
+
+        Public Shared Function OpenFileDialog(InitialDirectory As String, Filename As String, Filter As String, FilterIndex As Integer, Optional Title As String = Nothing) As cOpenFileDialogResult
+            Return OpenFileDialog(Nothing, InitialDirectory, Filename, Filter, FilterIndex, Title)
+        End Function
+
+        Public Shared Function OpenFileDialog(Owner As IWin32Window, InitialDirectory As String, Filename As String, Filter As String, FilterIndex As Integer, Optional Title As String = Nothing) As cOpenFileDialogResult
+            Using osfd As OpenFileDialog = New OpenFileDialog
+                With osfd
+                    Dim sFilename As String = "" & Filename
+                    Dim sInitialDirectory As String = "" & InitialDirectory
+                    .RestoreDirectory = True
+                    If sFilename <> "" Then
+                        .InitialDirectory = IO.Path.GetDirectoryName(sFilename)
+                        .FileName = IO.Path.GetFileName(sFilename)
+                    ElseIf sInitialDirectory <> "" Then
+                        .InitialDirectory = sInitialDirectory
+                    End If
+                    .Filter = Filter
+                    .FilterIndex = FilterIndex
+                    .CheckFileExists = True
+                    .CheckPathExists = True
+                    If Title IsNot Nothing Then .Title = Title
+                    If .ShowDialog(Owner) = Windows.Forms.DialogResult.OK Then
+                        Return New cOpenFileDialogResult(DialogResult.OK, .FileName)
+                    Else
+                        Return New cOpenFileDialogResult(DialogResult.Cancel)
                     End If
                 End With
             End Using

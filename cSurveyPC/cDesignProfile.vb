@@ -324,12 +324,6 @@ Namespace cSurvey.Design
                         iBorderCount = oMaskPaths.Count
                         For Each sKey As String In oMaskPaths.Keys
                             Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "design.svgexport.progress2", iBorderIndex / iBorderCount)
-                            'Dim oSVGClipPath As XmlElement = modSVG.CreateClipPath(SVG, "clip_" & sKey)
-                            'Dim oPaths As List(Of GraphicsPath) = oClippingPaths(sKey)
-                            'For Each oPath As GraphicsPath In oPaths
-                            '    Call modSVG.AppendItem(SVG, oSVGClipPath, PaintOptions, oPath)
-                            'Next
-                            'Call modSVG.AppendItem(SVG, Parent, oSVGClipPath)
 
                             Dim oSVGMaskPath As XmlElement = modSVG.CreateMaskPath(SVG, "mask_" & sKey)
                             Dim oDirectMaskPaths As List(Of cMaskPath) = oMaskPaths(sKey)
@@ -454,9 +448,8 @@ Namespace cSurvey.Design
                 oSVG = modSVG.CreateSVG(oSurvey.Name, Size, Unit, ViewBox, SVGCreateFlagsEnum.AddInkscapeSettings)
                 oDesign = modSVG.CreateLayer(oSVG, "profile", "profile")
             End If
-            'Call modSVG.AppendRectangle(oSVG, oDesign, ViewBox, Nothing, PaintOptions.DrawingObjects.TranslationPen)
             Call modSVG.AppendItem(oSVG, oDesign, ToSvgItem(oSVG, PaintOptions, Options))
-            If PaintOptions.DrawPlot OrElse PaintOptions.DrawSpecialPoints Then
+            If (PaintOptions.DrawPlot OrElse PaintOptions.DrawSpecialPoints OrElse (PaintOptions.DrawTranslation AndAlso PaintOptions.TranslationsOptions.DrawTranslationsLine) OrElse PaintOptions.DrawSurfaceProfile) Then
                 Call modSVG.AppendItem(oSVG, oDesign, oPlot.ToSvgItem(oSVG, PaintOptions, Options))
             End If
             Call modSVG.AppendItem(oSVG, Nothing, oDesign)

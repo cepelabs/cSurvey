@@ -238,7 +238,7 @@ Namespace cSurvey.Design.Items
                                         Case Else
                                             Call oPath.AddLines(oSequencePoints)
                                     End Select
-                                    Call oSequence.GetPen(MyBase.Pen).Render(Graphics, PaintOptions, Options, Selected, oPath, oCache)
+                                    Call oSequence.GetPen(MyBase.Pen).Render(PaintOptions, Options, Selected, oPath, oCache)
                                 End Using
                             End If
                         Next

@@ -6,15 +6,15 @@ Imports DevExpress.XtraVerticalGrid.Events
 Imports DevExpress.XtraVerticalGrid.Rows
 
 Friend Class cItemTrigpointPropertyControl
-    Private Sub pGetEquate(Equates As HashSet(Of String), Station As Calculate.cTrigPoint)
-        If oCalculatedTrigpoint IsNot Nothing Then
-            For Each sEquate As String In oCalculatedTrigpoint.Connections.GetEquateShots
-                If Equates.Add(sEquate) Then
-                    Call pGetEquate(Equates, oTrigpoint.Survey.Calculate.TrigPoints(sEquate))
-                End If
-            Next
-        End If
-    End Sub
+    'Private Sub pGetEquate(Equates As HashSet(Of String), Station As Calculate.cTrigPoint)
+    '    If oCalculatedTrigpoint IsNot Nothing Then
+    '        For Each sEquate As String In oCalculatedTrigpoint.Connections.GetEquateShots
+    '            If Equates.Add(sEquate) Then
+    '                Call pGetEquate(Equates, oTrigpoint.Survey.Calculate.TrigPoints(sEquate))
+    '            End If
+    '        Next
+    '    End If
+    'End Sub
 
     Private Sub grdTrigpointInfo_CustomUnboundData(sender As Object, e As CustomDataEventArgs) Handles grdTrigpointInfo.CustomUnboundData
         If e.IsGetData Then
@@ -23,9 +23,7 @@ Friend Class cItemTrigpointPropertyControl
                     e.Value = oTrigpoint.Name
                 Case "equate"
                     If oCalculatedTrigpoint IsNot Nothing Then
-                        Dim oEquates As HashSet(Of String) = New HashSet(Of String)
-                        Call pGetEquate(oEquates, oCalculatedTrigpoint)
-                        e.Value = String.Join(";", oEquates)
+                        e.Value = String.Join(";", oTrigpoint.Survey.Calculate.TrigPoints.EquateTo(oCalculatedTrigpoint))
                     End If
                 Case "x"
                     e.Value = Strings.Format(modNumbers.MathRound(oTrigpoint.Data.X, 3), "0.00") & " m"

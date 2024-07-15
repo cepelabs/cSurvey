@@ -38,7 +38,7 @@ Friend Class frmParametersCompass
         txtCompassText.Text = oCompassOptions.Text
 
         If oCompassOptions.Font.FontName = "" Then
-            cboCompassFontChar.EditValue = oCompassOptions.Font.FontName
+            cboCompassFontChar.EditValue = Nothing
         Else
             cboCompassFontChar.EditValue = oCompassOptions.Font.FontName
         End If

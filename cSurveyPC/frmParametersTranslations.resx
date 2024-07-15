@@ -148,7 +148,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkShowLine.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="chkShowOriginalPosition.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -181,43 +181,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkShowOriginalPosition.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <metadata name="mnuTraslationsGrid.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>21, 17</value>
-  </metadata>
-  <data name="mnuTraslationsGrid.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="mnuTraslationsGridFilterByLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
-  </data>
-  <data name="mnuTraslationsGridFilterByLabel.Text" xml:space="preserve">
-    <value>Filter by:</value>
-  </data>
-  <data name="txtTraslationsGridFilterBy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="txtTraslationsGridFilterBy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
-  </data>
-  <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 6</value>
-  </data>
-  <data name="mnuTraslationsGridRemoveFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
-  </data>
-  <data name="mnuTraslationsGridRemoveFilter.Text" xml:space="preserve">
-    <value>Remove filter</value>
-  </data>
-  <data name="mnuTraslationsGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 79</value>
-  </data>
-  <data name="&gt;&gt;mnuTraslationsGrid.Name" xml:space="preserve">
-    <value>mnuTraslationsGrid</value>
-  </data>
-  <data name="&gt;&gt;mnuTraslationsGrid.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>10</value>
   </data>
   <data name="chkOriginalPositionColorGray.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -253,7 +217,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkOriginalPositionColorGray.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="cboOriginalPositionColorMode.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -290,7 +254,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cboOriginalPositionColorMode.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="lblOriginalPositionColorMode.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -326,7 +290,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblOriginalPositionColorMode.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="txtTranslationsThreshold.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -359,7 +323,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtTranslationsThreshold.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="lblTranslationsThreshold.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -395,7 +359,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblTranslationsThreshold.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="chkOriginalPositionOnlyTranslated.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -431,7 +395,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkOriginalPositionOnlyTranslated.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="chkOriginalPositionOverDesign.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -464,7 +428,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkOriginalPositionOverDesign.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="lblTranslationsThresholdUM.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -500,7 +464,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblTranslationsThresholdUM.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="GridControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -565,9 +529,6 @@
   <data name="txtGridTranslationXY.AutoHeight" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="txtGridTranslationXY.BeepOnError" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="txtGridTranslationXY.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
     <value>Combo</value>
   </data>
@@ -608,7 +569,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;GridControl1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -618,30 +579,6 @@
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>515, 330</value>
-  </data>
-  <data name="&gt;&gt;mnuTraslationsGridFilterByLabel.Name" xml:space="preserve">
-    <value>mnuTraslationsGridFilterByLabel</value>
-  </data>
-  <data name="&gt;&gt;mnuTraslationsGridFilterByLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtTraslationsGridFilterBy.Name" xml:space="preserve">
-    <value>txtTraslationsGridFilterBy</value>
-  </data>
-  <data name="&gt;&gt;txtTraslationsGridFilterBy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem1.Name" xml:space="preserve">
-    <value>ToolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;mnuTraslationsGridRemoveFilter.Name" xml:space="preserve">
-    <value>mnuTraslationsGridRemoveFilter</value>
-  </data>
-  <data name="&gt;&gt;mnuTraslationsGridRemoveFilter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;GridView1.Name" xml:space="preserve">
     <value>GridView1</value>

@@ -14,6 +14,11 @@ Public Class cClipperHelper
         Next
         Return oPath
     End Function
+    Public Shared Function GraphicsPathToIntPaths(Path As GraphicsPath) As List(Of List(Of IntPoint))
+        Dim oIntPaths As List(Of List(Of IntPoint)) = New List(Of List(Of IntPoint))
+        Call oIntPaths.Add(GetIntPath(Path))
+        Return oIntPaths
+    End Function
 
     Public Class cClipperMetaPath
         Private oPath As List(Of IntPoint)
@@ -32,7 +37,6 @@ Public Class cClipperHelper
             Call oClipper.AddPath(cClipperHelper.GetIntPath(Path), PolyType.ptClip, Closed)
             Dim oResults As List(Of List(Of IntPoint)) = New List(Of List(Of IntPoint))
             Call oClipper.Execute(ClipType.ctUnion, oResults)
-            'oPath = oResults
         End Sub
     End Class
 End Class

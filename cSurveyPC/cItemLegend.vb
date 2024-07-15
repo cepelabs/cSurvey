@@ -837,7 +837,7 @@ Namespace cSurvey.Design.Items
                                                     Dim oP0 As PointF = New PointF(oBordersBounds.Left, oBordersBounds.Top + oBordersBounds.Height * 2 / 3)
                                                     Dim oP1 As PointF = New PointF(oBordersBounds.Right, oBordersBounds.Top + oBordersBounds.Height * 1 / 3)
                                                     Call oPath.AddLine(oP0, oP1)
-                                                    Call oDesignPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                    Call oDesignPen.Render(PaintOptions, Options, False, oPath, oCache)
                                                 End Using
                                             End Using
                                         End If
@@ -882,7 +882,7 @@ Namespace cSurvey.Design.Items
 
                                 Using oBordersPath As GraphicsPath = New GraphicsPath
                                     Call oBordersPath.AddRectangle(oBordersBounds)
-                                    Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oBordersPath, oCache)
+                                    Call oBorderPen.Render(PaintOptions, Options, False, oBordersPath, oCache)
                                 End Using
 
                                 Using oSF As StringFormat = New StringFormat

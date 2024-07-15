@@ -10,6 +10,7 @@ Imports Diacritics.Extensions
 Imports BrightIdeasSoftware
 Imports DevExpress.XtraVerticalGrid.ViewInfo
 Imports cSurveyPC.cSurvey.UIHelpers
+Imports DevExpress.Utils.Drawing.Helpers.NativeMethods
 
 Module modExport
     Public Sub CreateStationDictionary(TrigPointsToElaborate As List(Of String), KeyToExclude As List(Of Integer), ByRef InputDictionary As Dictionary(Of String, String), ByRef OutputDictionary As Dictionary(Of String, String))
@@ -485,13 +486,15 @@ Module modExport
 
                             Dim oCoordinates As System.Text.StringBuilder = New System.Text.StringBuilder
                             For iPoint As Integer = 0 To oResSubpoints.Count - 1
-                                Dim oPoint As PointF = modPaint.RotatePointByRadians(oResSubpoints(iPoint), sMC)
-                                Dim oRefPoint As modUTM.UTM = New modUTM.UTM(oUTMOrigin)
-                                oRefPoint.East = oRefPoint.East + CDec(oPoint.X)
-                                oRefPoint.North = oRefPoint.North - CDec(oPoint.Y)
-                                Dim oRefPointWGS84 As modUTM.WGS84 = modUTM.UTMToWGS84(oRefPoint)
-                                Call oCoordinates.AppendLine(modNumbers.NumberToString(oRefPointWGS84.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oRefPointWGS84.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(0, DefaultAltitudeFormat))
+                                Call pGoogleKMLAppendPoint(oCoordinates, oResSubpoints(iPoint), sMC, oUTMOrigin)
+                                'Dim oPoint As PointF = modPaint.RotatePointByRadians(oResSubpoints(iPoint), sMC)
+                                'Dim oRefPoint As modUTM.UTM = New modUTM.UTM(oUTMOrigin)
+                                'oRefPoint.East = oRefPoint.East + CDec(oPoint.X)
+                                'oRefPoint.North = oRefPoint.North - CDec(oPoint.Y)
+                                'Dim oRefPointWGS84 As modUTM.WGS84 = modUTM.UTMToWGS84(oRefPoint)
+                                'Call oCoordinates.AppendLine(modNumbers.NumberToString(oRefPointWGS84.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oRefPointWGS84.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(0, DefaultAltitudeFormat))
                             Next
+                            Call pGoogleKMLAppendPoint(oCoordinates, oResSubpoints(0), sMC, oUTMOrigin)
 
                             Call GoogleKmlAppendNode(Xml, xmlLinearRing, "coordinates", oCoordinates.ToString)
                             Call xmlouterBoundaryIs.AppendChild(xmlLinearRing)
@@ -503,13 +506,16 @@ Module modExport
                                     Dim xmlInnerLinearRing As XmlElement = Xml.CreateElement("LinearRing")
                                     Dim oInnerCoordinates As System.Text.StringBuilder = New System.Text.StringBuilder
                                     For iPoint As Integer = 0 To oHoleResSubpoints.Count - 1
-                                        Dim oPoint As PointF = modPaint.RotatePointByRadians(oHoleResSubpoints(iPoint), sMC)
-                                        Dim oRefPoint As modUTM.UTM = New modUTM.UTM(oUTMOrigin)
-                                        oRefPoint.East = oRefPoint.East + CDec(oPoint.X)
-                                        oRefPoint.North = oRefPoint.North - CDec(oPoint.Y)
-                                        Dim oRefPointWGS84 As modUTM.WGS84 = modUTM.UTMToWGS84(oRefPoint)
-                                        Call oInnerCoordinates.AppendLine(modNumbers.NumberToString(oRefPointWGS84.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oRefPointWGS84.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(0, DefaultAltitudeFormat))
+                                        Call pGoogleKMLAppendPoint(oInnerCoordinates, oHoleResSubpoints(iPoint), sMC, oUTMOrigin)
+                                        'Dim oPoint As PointF = modPaint.RotatePointByRadians(oHoleResSubpoints(iPoint), sMC)
+                                        'Dim oRefPoint As modUTM.UTM = New modUTM.UTM(oUTMOrigin)
+                                        'oRefPoint.East = oRefPoint.East + CDec(oPoint.X)
+                                        'oRefPoint.North = oRefPoint.North - CDec(oPoint.Y)
+                                        'Dim oRefPointWGS84 As modUTM.WGS84 = modUTM.UTMToWGS84(oRefPoint)
+                                        'Call oInnerCoordinates.AppendLine(modNumbers.NumberToString(oRefPointWGS84.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oRefPointWGS84.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(0, DefaultAltitudeFormat))
                                     Next
+                                    Call pGoogleKMLAppendPoint(oCoordinates, oHoleResSubpoints(0), sMC, oUTMOrigin)
+
                                     Call GoogleKmlAppendNode(Xml, xmlInnerLinearRing, "coordinates", oInnerCoordinates.ToString)
                                     Call xmlInnerBoundaryIs.AppendChild(xmlInnerLinearRing)
                                     Call xmlPolygon.AppendChild(xmlInnerBoundaryIs)
@@ -527,7 +533,14 @@ Module modExport
             Next
             Call Parent.AppendChild(xmlFolderBorders)
         End If
-
+    End Sub
+    Private Sub pGoogleKMLAppendPoint(Coordinates As System.Text.StringBuilder, Point As PointF, MC As Single, UTMOrigin As UTM)
+        Dim oPoint As PointF = modPaint.RotatePointByRadians(Point, MC)
+        Dim oRefPoint As modUTM.UTM = New modUTM.UTM(UTMOrigin)
+        oRefPoint.East = oRefPoint.East + CDec(oPoint.X)
+        oRefPoint.North = oRefPoint.North - CDec(oPoint.Y)
+        Dim oRefPointWGS84 As modUTM.WGS84 = modUTM.UTMToWGS84(oRefPoint)
+        Call Coordinates.AppendLine(modNumbers.NumberToString(oRefPointWGS84.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oRefPointWGS84.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(0, DefaultAltitudeFormat))
     End Sub
 
     Public Sub GoogleKmlExportTo2(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, Optional Options As GoogleKMLExportOptionsEnum = GoogleKMLExportOptionsEnum.Track Or GoogleKMLExportOptionsEnum.Waypoint, Optional BorderTransparency As Single = 0)

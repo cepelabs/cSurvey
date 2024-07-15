@@ -1241,7 +1241,7 @@ Namespace cSurvey.Drawings
                 If sFill <> "none" Then
                     Call Item.Brush.Render(Graphics, PaintOptions, Options, Selected, oDrawPath.Path, Cache)
                 End If
-                Call Item.Pen.Render(Graphics, PaintOptions, Options, Selected, oDrawPath.Path, Cache)
+                Call Item.Pen.Render(PaintOptions, Options, Selected, oDrawPath.Path, Cache)
             Next
         End Sub
 

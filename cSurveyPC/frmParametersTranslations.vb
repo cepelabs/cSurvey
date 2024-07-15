@@ -151,7 +151,6 @@ Friend Class frmParametersTranslations
 
         oTransactionsBag = New cTranslationsBag(oOptions.Survey, oOptions, ApplyTo)
         GridControl1.DataSource = oTransactionsBag
-        'Call pTransactionsBagToGrid()
 
         bEventDisabled = False
     End Sub

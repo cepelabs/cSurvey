@@ -22,15 +22,9 @@ Partial Class frmParametersTranslations
     'Non modificarla nell'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmParametersTranslations))
         Me.chkShowLine = New DevExpress.XtraEditors.CheckEdit()
         Me.chkShowOriginalPosition = New DevExpress.XtraEditors.CheckEdit()
-        Me.mnuTraslationsGrid = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.mnuTraslationsGridFilterByLabel = New System.Windows.Forms.ToolStripMenuItem()
-        Me.txtTraslationsGridFilterBy = New System.Windows.Forms.ToolStripTextBox()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuTraslationsGridRemoveFilter = New System.Windows.Forms.ToolStripMenuItem()
         Me.chkOriginalPositionColorGray = New DevExpress.XtraEditors.CheckEdit()
         Me.cboOriginalPositionColorMode = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.lblOriginalPositionColorMode = New DevExpress.XtraEditors.LabelControl()
@@ -51,7 +45,6 @@ Partial Class frmParametersTranslations
         Me.colCaveBranchY = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.chkShowLine.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkShowOriginalPosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.mnuTraslationsGrid.SuspendLayout()
         CType(Me.chkOriginalPositionColorGray.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboOriginalPositionColorMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTranslationsThreshold.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -74,32 +67,6 @@ Partial Class frmParametersTranslations
         resources.ApplyResources(Me.chkShowOriginalPosition, "chkShowOriginalPosition")
         Me.chkShowOriginalPosition.Name = "chkShowOriginalPosition"
         Me.chkShowOriginalPosition.Properties.Caption = resources.GetString("chkShowOriginalPosition.Properties.Caption")
-        '
-        'mnuTraslationsGrid
-        '
-        resources.ApplyResources(Me.mnuTraslationsGrid, "mnuTraslationsGrid")
-        Me.mnuTraslationsGrid.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuTraslationsGridFilterByLabel, Me.txtTraslationsGridFilterBy, Me.ToolStripMenuItem1, Me.mnuTraslationsGridRemoveFilter})
-        Me.mnuTraslationsGrid.Name = "mnuTraslationsGrid"
-        '
-        'mnuTraslationsGridFilterByLabel
-        '
-        Me.mnuTraslationsGridFilterByLabel.Name = "mnuTraslationsGridFilterByLabel"
-        resources.ApplyResources(Me.mnuTraslationsGridFilterByLabel, "mnuTraslationsGridFilterByLabel")
-        '
-        'txtTraslationsGridFilterBy
-        '
-        resources.ApplyResources(Me.txtTraslationsGridFilterBy, "txtTraslationsGridFilterBy")
-        Me.txtTraslationsGridFilterBy.Name = "txtTraslationsGridFilterBy"
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        resources.ApplyResources(Me.ToolStripMenuItem1, "ToolStripMenuItem1")
-        '
-        'mnuTraslationsGridRemoveFilter
-        '
-        Me.mnuTraslationsGridRemoveFilter.Name = "mnuTraslationsGridRemoveFilter"
-        resources.ApplyResources(Me.mnuTraslationsGridRemoveFilter, "mnuTraslationsGridRemoveFilter")
         '
         'chkOriginalPositionColorGray
         '
@@ -283,8 +250,6 @@ Partial Class frmParametersTranslations
         Me.Name = "frmParametersTranslations"
         CType(Me.chkShowLine.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkShowOriginalPosition.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.mnuTraslationsGrid.ResumeLayout(False)
-        Me.mnuTraslationsGrid.PerformLayout()
         CType(Me.chkOriginalPositionColorGray.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboOriginalPositionColorMode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTranslationsThreshold.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -303,11 +268,6 @@ Partial Class frmParametersTranslations
     Friend WithEvents chkOriginalPositionColorGray As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents cboOriginalPositionColorMode As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents lblOriginalPositionColorMode As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents mnuTraslationsGrid As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents mnuTraslationsGridFilterByLabel As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents txtTraslationsGridFilterBy As System.Windows.Forms.ToolStripTextBox
-    Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents mnuTraslationsGridRemoveFilter As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents txtTranslationsThreshold As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents lblTranslationsThreshold As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chkOriginalPositionOnlyTranslated As DevExpress.XtraEditors.CheckEdit

@@ -74,7 +74,7 @@ Namespace cSurvey.Design
                             Dim sBackupLocalZoomFactor As Single = sLocalZoomFactor
                             sLocalZoomFactor = 6
                             bInvalidated = True
-                            Call Render(oGr, PaintOptions, cItem.PaintOptionsEnum.None, False, oPath, oCache)
+                            Call Render(PaintOptions, cItem.PaintOptionsEnum.None, False, oPath, oCache)
                             sLocalZoomFactor = sBackupLocalZoomFactor
                             bInvalidated = True
 
@@ -120,7 +120,7 @@ Namespace cSurvey.Design
                         Dim oP1 As PointF = New PointF(oBounds.Right - 1, oBounds.Top + oBounds.Height / 2)
                         Call oPath.AddLine(oP0, oP1)
                         Using oCache As cDrawCache = New cDrawCache
-                            Call Render(oGr, PaintOptions, cItem.PaintOptionsEnum.None, False, oPath, oCache)
+                            Call Render(PaintOptions, cItem.PaintOptionsEnum.None, False, oPath, oCache)
                             Call oCache.Paint(oGr, PaintOptions, cItem.PaintOptionsEnum.None)
                         End Using
                     End Using
@@ -961,7 +961,7 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Friend Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As Boolean, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
+        Friend Sub Render(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As Boolean, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
             If bInvalidated Then pRender(PaintOptions)
             If Path.PointCount > 1 Then
                 If iType = cPen.PenTypeEnum.None Then
@@ -1046,8 +1046,7 @@ Namespace cSurvey.Design
                                 oTmpClipart = oClipart
                                 bUseBrush = True
                         End Select
-                        'Call cClipartOnPath.ClipartOnPath(Graphics, Path)
-                        Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, oTmpClipart, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, sDecorationDistancePercentage, oColor, oColor, sDecorationScale * sZoomFactor)
+                        Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Path.PathData, oTmpClipart, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, sDecorationDistancePercentage, oColor, oColor, sDecorationScale * sZoomFactor)
                             If Not oPath Is Nothing Then
                                 Call Cache.AddBorder(oPath, If(bUsePen, oClipartPen, Nothing), Nothing, If(bUseBrush, oClipartBrush, Nothing))
                             End If
@@ -1684,9 +1683,9 @@ Namespace cSurvey.Design
 
         Private bIsRendering As Boolean
 
-        Friend Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As Boolean, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
+        Friend Sub Render(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As Boolean, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
             bIsRendering = True
-            Call oBasePen.Render(Graphics, PaintOptions, Options, Selected, Path, Cache)
+            Call oBasePen.Render(PaintOptions, Options, Selected, Path, Cache)
             bIsRendering = False
         End Sub
 

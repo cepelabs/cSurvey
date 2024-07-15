@@ -1718,7 +1718,7 @@ Namespace cSurvey.Design
             End If
         End Sub
 
-        Private Sub pRenderTexture(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
+        Private Sub pRenderTexture(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
             If PaintOptions.ShowAdvancedBrushes Then
                 If Selected = cItem.SelectionModeEnum.InEdit Then
                     Call Cache.AddFiller(Path, Nothing, Nothing, oClipartAlternativeBrush2)
@@ -1743,7 +1743,7 @@ Namespace cSurvey.Design
             End If
         End Function
 
-        Private Sub pRenderClipart(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache, Seed As cBrushSeed)
+        Private Sub pRenderClipart(Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache, Seed As cBrushSeed)
             If PaintOptions.ShowAdvancedBrushes Then
                 If Selected = cItem.SelectionModeEnum.InEdit Then
                     Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Path, Nothing, Nothing, oClipartAlternativeBrush2)
@@ -2011,7 +2011,7 @@ Namespace cSurvey.Design
             End If
         End Sub
 
-        Private Sub pRenderPattern(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
+        Private Sub pRenderPattern(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
             If PaintOptions.ShowAdvancedBrushes Then
                 If Selected = cItem.SelectionModeEnum.InEdit Then
                     Call Cache.AddFiller(Path, Nothing, Nothing, oClipartAlternativeBrush2)
@@ -2056,11 +2056,11 @@ Namespace cSurvey.Design
             End If
         End Sub
 
-        Private Sub pRenderSolid(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
+        Private Sub pRenderSolid(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
             Call Cache.AddBorder(Path, Nothing, Nothing, oBrush)
         End Sub
 
-        Friend Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache, Optional Seed As cBrushSeed = Nothing)
+        Friend Sub Render(Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache, Optional Seed As cBrushSeed = Nothing)
             If bInvalidated Then Call pRender(PaintOptions)
             If iType <> cBrush.BrushTypeEnum.None Then
                 If Path.PointCount > 1 Then
@@ -2079,7 +2079,7 @@ Namespace cSurvey.Design
                         'oSchematicBrush.ForegroundColor =
 
                         oBackupColors(3) = oBackgroundBrush.Color
-                        oBackgroundBrush.color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oBackgroundBrush.Color)
+                        oBackgroundBrush.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oBackgroundBrush.Color)
 
                         oBackupColors(4) = oClipartAlternativeBrush1.Color
                         oClipartAlternativeBrush1.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oClipartAlternativeBrush1.Color)
@@ -2101,14 +2101,14 @@ Namespace cSurvey.Design
                         Case cBrush.HatchTypeEnum.None
                                 'nulla...
                         Case cBrush.HatchTypeEnum.Solid
-                            Call pRenderSolid(Graphics, PaintOptions, Options, Selected, Path, Cache)
+                            Call pRenderSolid(PaintOptions, Options, Selected, Path, Cache)
                         Case cBrush.HatchTypeEnum.Pattern
-                            Call pRenderPattern(Graphics, PaintOptions, Options, Selected, Path, Cache)
+                            Call pRenderPattern(PaintOptions, Options, Selected, Path, Cache)
                         Case cBrush.HatchTypeEnum.Clipart
                             If Seed Is Nothing Then Seed = New cBrushSeed(0, 0)
                             Call pRenderClipart(Graphics, PaintOptions, Options, Selected, Path, Cache, Seed)
                         Case cBrush.HatchTypeEnum.Texture
-                            Call pRenderTexture(Graphics, PaintOptions, Options, Selected, Path, Cache)
+                            Call pRenderTexture(PaintOptions, Options, Selected, Path, Cache)
                     End Select
 
                     If oRenderArgs.Transparency <> 0 Then

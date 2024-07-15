@@ -365,40 +365,40 @@ Namespace cSurvey.Design.Items
                                                 Using oPath As GraphicsPath = New GraphicsPath
                                                     Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iScaleSubStepWidth, sScaleHeight / 2))
                                                     Call oBorderBrush.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
-                                                    Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                    Call oBorderPen.Render(PaintOptions, Options, False, oPath, oCache)
                                                 End Using
                                                 Using oPath As GraphicsPath = New GraphicsPath
                                                     Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY + sScaleHeight / 2, iScaleSubStepWidth, sScaleHeight / 2))
-                                                    Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                    Call oBorderPen.Render(PaintOptions, Options, False, oPath, oCache)
                                                 End Using
                                             Else
                                                 Using oPath As GraphicsPath = New GraphicsPath
                                                     Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iScaleSubStepWidth, sScaleHeight))
                                                     Call oBorderBrush.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
-                                                    Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                    Call oBorderPen.Render(PaintOptions, Options, False, oPath, oCache)
                                                 End Using
                                             End If
                                         Else
                                             If iScaleFillStyle = cIItemScale.ScaleFillStyleEnum.Alternate Then
                                                 Using oPath As GraphicsPath = New GraphicsPath
                                                     Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iScaleSubStepWidth, sScaleHeight / 2))
-                                                    Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                    Call oBorderPen.Render(PaintOptions, Options, False, oPath, oCache)
                                                 End Using
                                                 Using oPath As GraphicsPath = New GraphicsPath
                                                     Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY + sScaleHeight / 2, iScaleSubStepWidth, sScaleHeight / 2))
                                                     Call oBorderBrush.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
-                                                    Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                    Call oBorderPen.Render(PaintOptions, Options, False, oPath, oCache)
                                                 End Using
                                             Else
                                                 Using oPath As GraphicsPath = New GraphicsPath
                                                     Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iScaleSubStepWidth, sScaleHeight))
-                                                    Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                    Call oBorderPen.Render(PaintOptions, Options, False, oPath, oCache)
                                                 End Using
                                             End If
                                         End If
                                         Using oPath As GraphicsPath = New GraphicsPath
                                             Call oPath.AddLine(sScaleStepLeftX, sScaleLeftY + sScaleHeight, sScaleStepLeftX, sScaleLeftY + sScaleHeight + sOffsetScaleHeight)
-                                            Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                            Call oBorderPen.Render(PaintOptions, Options, False, oPath, oCache)
                                         End Using
                                         Using oPath As GraphicsPath = New GraphicsPath
                                             sMeter = iMeter & "m"
@@ -422,40 +422,40 @@ Namespace cSurvey.Design.Items
                                             Using oPath As GraphicsPath = New GraphicsPath
                                                 Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iDetailedSteps, sScaleHeight / 2))
                                                 Call oBorderBrush.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
-                                                Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                Call oBorderPen.Render(PaintOptions, Options, False, oPath, oCache)
                                             End Using
                                             Using oPath As GraphicsPath = New GraphicsPath
                                                 Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY + sScaleHeight / 2, iDetailedSteps, sScaleHeight / 2))
-                                                Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                Call oBorderPen.Render(PaintOptions, Options, False, oPath, oCache)
                                             End Using
                                         Else
                                             Using oPath As GraphicsPath = New GraphicsPath
                                                 Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iDetailedSteps, sScaleHeight))
                                                 Call oBorderBrush.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
-                                                Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                Call oBorderPen.Render(PaintOptions, Options, False, oPath, oCache)
                                             End Using
                                         End If
                                     Else
                                         If iScaleFillStyle = cIItemScale.ScaleFillStyleEnum.Alternate Then
                                             Using oPath As GraphicsPath = New GraphicsPath
                                                 Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iDetailedSteps, sScaleHeight / 2))
-                                                Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                Call oBorderPen.Render(PaintOptions, Options, False, oPath, oCache)
                                             End Using
                                             Using oPath As GraphicsPath = New GraphicsPath
                                                 Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY + sScaleHeight / 2, iDetailedSteps, sScaleHeight / 2))
                                                 Call oBorderBrush.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
-                                                Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                Call oBorderPen.Render(PaintOptions, Options, False, oPath, oCache)
                                             End Using
                                         Else
                                             Using oPath As GraphicsPath = New GraphicsPath
                                                 Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iDetailedSteps, sScaleHeight))
-                                                Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                Call oBorderPen.Render(PaintOptions, Options, False, oPath, oCache)
                                             End Using
                                         End If
                                     End If
                                     Using oPath As GraphicsPath = New GraphicsPath
                                         Call oPath.AddLine(sScaleStepLeftX, sScaleLeftY + sScaleHeight, sScaleStepLeftX, sScaleLeftY + sScaleHeight + sOffsetScaleHeight)
-                                        Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                        Call oBorderPen.Render(PaintOptions, Options, False, oPath, oCache)
                                     End Using
                                     Using oPath As GraphicsPath = New GraphicsPath
                                         'dimensiono il testo se rischiesto (il fattore di scala sarà da parametrizzare in qualche modo)
@@ -490,7 +490,7 @@ Namespace cSurvey.Design.Items
                             Dim sScaleRightX As Single = sScaleStepLeftX
                             Using oPath As GraphicsPath = New GraphicsPath
                                 Call oPath.AddLine(sScaleStepLeftX, sScaleLeftY + sScaleHeight, sScaleStepLeftX, sScaleLeftY + sScaleHeight + sOffsetScaleHeight)
-                                Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                Call oBorderPen.Render(PaintOptions, Options, False, oPath, oCache)
                             End Using
                             If sScaleText <> "" Then
                                 Using oPath As GraphicsPath = New GraphicsPath

@@ -443,7 +443,7 @@ Namespace cSurvey.Design
             End If
             'Call modSVG.AppendRectangle(oSVG, oDesign, ViewBox, Nothing, PaintOptions.DrawingObjects.TranslationPen)
             Call modSVG.AppendItem(oSVG, oDesign, ToSvgItem(oSVG, PaintOptions, Options))
-            If PaintOptions.DrawPlot OrElse PaintOptions.DrawSpecialPoints Then
+            If (PaintOptions.DrawPlot OrElse PaintOptions.DrawSpecialPoints OrElse (PaintOptions.DrawTranslation AndAlso PaintOptions.TranslationsOptions.DrawTranslationsLine) OrElse PaintOptions.DrawSurfaceProfile) Then
                 Call modSVG.AppendItem(oSVG, oDesign, oPlot.ToSvgItem(oSVG, PaintOptions, Options))
             End If
             Call modSVG.AppendItem(oSVG, Nothing, oDesign)

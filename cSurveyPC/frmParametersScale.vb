@@ -47,7 +47,6 @@ Friend Class frmParametersScale
 
         If oScaleOptions.Font.FontName = "" Then
             cboScaleTextFontChar.EditValue = Nothing
-            'cboScaleTextFontChar.SelectedIndex = 0
         Else
             cboScaleTextFontChar.Text = oScaleOptions.Font.FontName
         End If

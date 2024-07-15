@@ -341,7 +341,7 @@ Namespace cSurvey.Design.Items
                         If sFill <> "none" Then
                             Call MyBase.Brush.Render(Graphics, PaintOptions, Options, Selected, oPath, oCache)
                         End If
-                        Call MyBase.Pen.Render(Graphics, PaintOptions, Options, Selected, oPath, oCache)
+                        Call MyBase.Pen.Render(PaintOptions, Options, Selected, oPath, oCache)
                         Call oPath.Dispose()
                     Next
                     Call .Rendered()

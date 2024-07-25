@@ -92,6 +92,7 @@ Partial Class frmHistory
         resources.ApplyResources(Me.lvItems, "lvItems")
         Me.lvItems.FullRowSelect = True
         Me.lvItems.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
+        Me.lvItems.HideSelection = False
         Me.lvItems.MultiSelect = False
         Me.lvItems.Name = "lvItems"
         Me.lvItems.SmallImageList = Me.iml
@@ -169,6 +170,7 @@ Partial Class frmHistory
         Me.lvLog.ContextMenuStrip = Me.mnuLog
         resources.ApplyResources(Me.lvLog, "lvLog")
         Me.lvLog.FullRowSelect = True
+        Me.lvLog.HideSelection = False
         Me.lvLog.Name = "lvLog"
         Me.lvLog.SmallImageList = Me.iml
         Me.lvLog.UseCompatibleStateImageBehavior = False
@@ -304,6 +306,8 @@ Partial Class frmHistory
         Me.Controls.Add(Me.SplitContainer1)
         Me.Controls.Add(Me.sbMain)
         Me.Controls.Add(Me.tbMain)
+        Me.IconOptions.Icon = CType(resources.GetObject("frmHistory.IconOptions.Icon"), System.Drawing.Icon)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.time
         Me.Name = "frmHistory"
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)

@@ -196,6 +196,7 @@ Friend Class frmMain2
     Private iZoomType As ZoomTypeEnum = ZoomTypeEnum.ScaleFactor
 
     Private bGridExportSplayNames As Boolean
+    Private bGridDisableConstraint As Boolean
 
     Private bAlwaysUseShellForAttachments As Boolean
 
@@ -1499,11 +1500,14 @@ Friend Class frmMain2
                     Call oTools.SelectSegment(Nothing)
                     bDisableSegmentsChangeEvent = True
                     bDisableSelectItemEvent = True
-                    Dim iLastIndex As Integer
+                    'Dim iLastIndex As Integer
                     For Each oSegment As cSegment In oSegments
-                        Dim iIndex As Integer = oSegment.Index
-                        Call oTools.DeleteSegment(oSegment)
-                        iLastIndex = iIndex
+                        Dim bEnabledEdit As Boolean = ((oSegment.Splay) OrElse (Not (oSegment.IsBinded OrElse oSegment.IsOrigin))) OrElse (pGetDisableDataGridConstraint())
+                        If bEnabledEdit Then
+                            'Dim iIndex As Integer = oSegment.Index
+                            Call oTools.DeleteSegment(oSegment)
+                            'iLastIndex = iIndex
+                        End If
                     Next
                     bDisableSelectItemEvent = False
                     bDisableSegmentsChangeEvent = False
@@ -1597,7 +1601,8 @@ Friend Class frmMain2
                 txtSegmentFrom.EditValue = .From
                 txtSegmentTo.EditValue = .To
 
-                Dim bEnabledEdit As Boolean = Not .IsBinded
+                '((oSegment.Splay) OrElse (Not (oSegment.IsBinded OrElse oSegment.IsOrigin))) OrElse (My.Computer.Keyboard.CtrlKeyDown AndAlso My.Computer.Keyboard.ShiftKeyDown)
+                Dim bEnabledEdit As Boolean = (.Splay OrElse (Not (.IsBinded OrElse .IsOrigin))) OrElse (pGetDisableDataGridConstraint())
                 txtSegmentFrom.Enabled = bEnabledEdit
                 txtSegmentTo.Enabled = bEnabledEdit
 
@@ -2314,6 +2319,10 @@ Friend Class frmMain2
         End Select
     End Sub
 
+    Private Function pGetDisableDataGridConstraint() As Boolean
+        Return bGridDisableConstraint
+    End Function
+
     Private Sub pSurveyCaption()
         Text = "cSurvey - " & oSurvey.Name & " [" & sFilename & "]" & If(modMain.bIsInDebug, " DEBUG - " & modMain.GetReleaseVersion(), "") '& If(Environment.Is64BitProcess, " - 64bit", " - 32bit")
         Call My.Application.SetCurrent(oSurvey, sFilename)
@@ -2576,6 +2585,7 @@ Friend Class frmMain2
         iZoomType = My.Application.Settings.GetSetting("zoom.type", 1)
 
         bGridExportSplayNames = My.Application.Settings.GetSetting("grid.shotsgrid.exportsplaynames", 1)
+        bGridDisableConstraint = My.Application.Settings.GetSetting("grid.shotsgrid.disableconstraint", 0)
 
         'bLogEnabled = oReg.GetValue("debug.log", 0)
 
@@ -7624,7 +7634,7 @@ Friend Class frmMain2
                 Try
                     Dim oSegment As cSegment = pGetCurrentTools.CurrentSegment
                     If Not oSegment Is Nothing Then
-                        Dim bEnabledEdit As Boolean = (oSegment.Splay) OrElse (Not (oSegment.IsBinded Or oSegment.IsOrigin))
+                        Dim bEnabledEdit As Boolean = ((oSegment.Splay) OrElse (Not (oSegment.IsBinded OrElse oSegment.IsOrigin))) OrElse (pGetDisableDataGridConstraint())
                         If bEnabledEdit Then
                             Call pSegmentDelete()
                         End If
@@ -9897,7 +9907,7 @@ Friend Class frmMain2
                     Else
                         btnDesignSetCurrentCaveBranch.Enabled = True
                         Dim oSegments As cSegmentCollection = pSegmentsFromGridSelection(True)
-                        Dim bEnabledEdit As Boolean = oSegments.Count > 0 AndAlso Not IsNothing(oSegment)
+                        Dim bEnabledEdit As Boolean = oSegments.Count > 0 AndAlso ((oSegment.Splay) OrElse (Not (oSegment.IsBinded OrElse oSegment.IsOrigin))) OrElse (pGetDisableDataGridConstraint())
                         Dim bLocked As Boolean = oSegment.GetLocked
 
                         btnCut.Enabled = bEnabledEdit AndAlso Not bLocked
@@ -9961,7 +9971,7 @@ Friend Class frmMain2
                             btnDesignSetCurrentCaveBranch.Enabled = False
                         End If
 
-                        Dim bItemCanBeCopied As Boolean = oItem.CanBeCopied
+                        Dim bItemCanBeCopied As Boolean = bEnabledEdit AndAlso oItem.CanBeCopied
                         Dim bCanBeDeleted As Boolean = bEnabledEdit AndAlso oItem.CanBeDeleted 'AndAlso bLocked
                         Dim bCanBeCutted As Boolean = bCanBeDeleted AndAlso bItemCanBeCopied
                         Dim bCanBeCopied As Boolean = bEnabledEdit AndAlso bItemCanBeCopied

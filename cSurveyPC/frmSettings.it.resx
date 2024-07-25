@@ -838,4 +838,7 @@ Non vi è correlazione tra questo codice e alcun dato relativo all'utente.</valu
   <data name="chkEnableMultithreadingPreview.Properties.Caption" xml:space="preserve">
     <value>Abilita multithreading in anteprima/esportazione</value>
   </data>
+  <data name="chkShotsAllowForceConstraint.Properties.Caption" xml:space="preserve">
+    <value>Disattiva vincoli sulla modifica dei dati</value>
+  </data>
 </root>

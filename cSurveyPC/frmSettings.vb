@@ -39,6 +39,7 @@ Friend Class frmSettings
         Call My.Application.Settings.SetSetting("design.anchorscale", modNumbers.NumberToString(txtDesignAnchorScale.Value))
         Call My.Application.Settings.SetSetting("design.showlegacyextraprintandexportobjects", If(chkDesignShowLegacyExtraPrintAndExportObjects.Checked, 1, 0))
 
+        Call My.Application.Settings.SetSetting("grid.shotsgrid.disableconstraint", If(chkShotsDisableConstraint.Checked, 1, 0))
         Call My.Application.Settings.SetSetting("grid.shotsgrid.exportsplaynames", If(chkShotsGridExportSplayNames.Checked, 1, 0))
 
         Call My.Application.Settings.SetSetting("svg.importmaxpathlen", txtSVGImportPathMaxLen.Value)
@@ -285,6 +286,7 @@ Friend Class frmSettings
         txtDesignAnchorScale.Value = sAnchorScale
         chkDesignShowLegacyExtraPrintAndExportObjects.Checked = My.Application.Settings.GetSetting("design.showlegacyextraprintandexportobjects", Not bFirstRun)
 
+        chkShotsDisableConstraint.Checked = My.Application.Settings.GetSetting("grid.shotsgrid.disableconstraint", 0)
         chkShotsGridExportSplayNames.Checked = My.Application.Settings.GetSetting("grid.shotsgrid.exportsplaynames", 1)
 
         'chkShowLastUsedToolsInDesignBar.Checked =My.Application.Settings.GetSetting("design.designbar.showlastusedtools", 1)

@@ -360,6 +360,9 @@
   <data name="&gt;&gt;chkShowSplay.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="optRemove.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="optRemove.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -386,6 +389,9 @@
   </data>
   <data name="&gt;&gt;optRemove.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="optAdd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <data name="optAdd.Location" type="System.Drawing.Point, System.Drawing">
     <value>248, 8</value>

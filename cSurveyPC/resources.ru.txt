@@ -1135,3 +1135,5 @@ main.filetypePARAMXCG=Parameters exchange file
 preview.exportparameterstitle=Parameters export
 preview.importparameterstitle=Parameters import
 preview.warning5=File is not in correct format or data are not valid in this context
+
+linkedsurveys.textpart4=The survey {0} with id {1} is this survey

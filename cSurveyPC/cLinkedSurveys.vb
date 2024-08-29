@@ -10,6 +10,14 @@ Namespace cSurvey
         End Sub
     End Class
 
+    Public Class cSelfLinkedSurveyException
+        Inherits Exception
+
+        Public Sub New(Filename As String, ID As String)
+            MyBase.New(String.Format(modMain.GetLocalizedString("linkedsurveys.textpart4"), Filename, ID))
+        End Sub
+    End Class
+
     Public Class cLinkedSurvey
         Private oLinkedSurveys As cLinkedSurveys
 
@@ -161,14 +169,20 @@ Namespace cSurvey
                         oLastException = oResult.Exception
                         oLinkedSurvey = Nothing
                     Else
-                        Dim bIsDuplicated As Boolean = oLinkedSurveys.ContainsCopyOf(Me) ' Not oSurvey.LinkedSurveys.FirstOrDefault(Function(oitem) Not oitem Is Me AndAlso oitem.GetID = oLinkedSurvey.ID) Is Nothing
-                        If bIsDuplicated Then
-                            Call oLinkedSurveys.Survey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "Survey file """ & sFilename & """ is already linked")
-                            oLastException = New cDuplicatedLinkedSurveyException(sFilename, oLinkedSurvey.ID)
+                        If Me.Survey.ID = Me.LinkedSurvey.ID Then
+                            Call oLinkedSurveys.Survey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "Survey file """ & sFilename & """ is this survey")
+                            oLastException = New cSelfLinkedSurveyException(sFilename, oLinkedSurvey.ID)
                             oLinkedSurvey = Nothing
                         Else
-                            'recheck child linkedsurvey
-                            If Recursive Then Call oLinkedSurveys.RecursiveAdd(Me)
+                            Dim bIsDuplicated As Boolean = oLinkedSurveys.ContainsCopyOf(Me) ' Not oSurvey.LinkedSurveys.FirstOrDefault(Function(oitem) Not oitem Is Me AndAlso oitem.GetID = oLinkedSurvey.ID) Is Nothing
+                            If bIsDuplicated Then
+                                Call oLinkedSurveys.Survey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "Survey file """ & sFilename & """ is already linked")
+                                oLastException = New cDuplicatedLinkedSurveyException(sFilename, oLinkedSurvey.ID)
+                                oLinkedSurvey = Nothing
+                            Else
+                                'recheck child linkedsurvey
+                                If Recursive Then Call oLinkedSurveys.RecursiveAdd(Me)
+                            End If
                         End If
                     End If
                 Else
@@ -436,6 +450,7 @@ Namespace cSurvey
                 Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Survey file """ & Filename & """ successfully linked")
                 Return oItem
             End If
+            'End If
         End Function
 
         Public Function Add(Filename As String) As cLinkedSurvey

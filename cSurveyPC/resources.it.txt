@@ -1139,3 +1139,5 @@ main.filetypePARAMXCG=File di scambio parametri
 preview.exportparameterstitle=Esporta parametri
 preview.importparameterstitle=Importa parametri
 preview.warning5=Il file non è del formato corretto o non è valido in questo contesto
+
+linkedsurveys.textpart4=Il rilievo {0} con id {1} è questo rilievo.

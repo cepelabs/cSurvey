@@ -102,16 +102,16 @@ Partial Class frmPrefixTrigPoints
         '
         'optRemove
         '
-        Me.optRemove.GroupIndex = 1
         resources.ApplyResources(Me.optRemove, "optRemove")
+        Me.optRemove.GroupIndex = 1
         Me.optRemove.Name = "optRemove"
         Me.optRemove.TabStop = False
         '
         'optAdd
         '
+        resources.ApplyResources(Me.optAdd, "optAdd")
         Me.optAdd.Checked = True
         Me.optAdd.GroupIndex = 1
-        resources.ApplyResources(Me.optAdd, "optAdd")
         Me.optAdd.Name = "optAdd"
         '
         'listbox1

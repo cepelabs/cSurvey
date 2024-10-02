@@ -389,6 +389,12 @@
     <Compile Include="cOptions.cSurfaceLochOptions.vb" />
     <Compile Include="cOptionsTherion.vb" />
     <Compile Include="cTherion.vb" />
+    <Compile Include="DockControl\cDockBrushesAndPens.Designer.vb">
+      <DependentUpon>cDockBrushesAndPens.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockControl\cDockBrushesAndPens.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="frmClipartReplaceWith.Designer.vb">
       <DependentUpon>frmClipartReplaceWith.vb</DependentUpon>
     </Compile>
@@ -1696,6 +1702,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DesignPropertyControl\cDesign3DModelControl.ru.resx">
       <DependentUpon>cDesign3DModelControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockControl\cDockBrushesAndPens.it.resx">
+      <DependentUpon>cDockBrushesAndPens.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockControl\cDockBrushesAndPens.resx">
+      <DependentUpon>cDockBrushesAndPens.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockControl\cDockBrushesAndPens.ru.resx">
+      <DependentUpon>cDockBrushesAndPens.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockControl\cDockLevels.en.resx">
       <DependentUpon>cDockLevels.vb</DependentUpon>
@@ -4922,6 +4937,10 @@
     <None Include="Resources\cube_green.svg" />
     <None Include="Resources\cube_red.svg" />
     <None Include="Resources\cube_replace.svg" />
+    <None Include="Resources\user.svg" />
+    <None Include="Resources\brushesandpens.svg" />
+    <None Include="Resources\brushesandpensgallery.svg" />
+    <None Include="Resources\replacefill.svg" />
     <Content Include="version.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

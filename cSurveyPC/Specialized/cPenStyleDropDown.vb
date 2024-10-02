@@ -17,8 +17,22 @@ Public Class cPenStyleDropDown
         oItems = New cPensBaseCollection
     End Sub
 
+    Private Sub oPens_onchanged(sender As Object, e As EventArgs)
+        Call Rebind(sender.Survey)
+    End Sub
+
     Public Sub Rebind(Survey As cSurvey.cSurvey)
+        Dim bAddHandler As Boolean
+        If oSurvey IsNot Nothing AndAlso Survey IsNot oSurvey Then
+            RemoveHandler oSurvey.Pens.OnChanged, AddressOf oPens_onchanged
+            bAddHandler = True
+        ElseIf oSurvey Is Nothing Then
+            bAddHandler = True
+        End If
+
         oSurvey = Survey
+
+        AddHandler oSurvey.Pens.OnChanged, AddressOf oPens_onchanged
 
         cboPenStyle.Properties.BeginUpdate()
 
@@ -70,22 +84,26 @@ Public Class cPenStyleDropDown
             Call pAppendItem(oPen)
         Next
 
-        Call oItems.Clear()
-        For Each sFilename As String In My.Computer.FileSystem.GetFiles(modMain.GetUserApplicationPath, FileIO.SearchOption.SearchTopLevelOnly, {"*.cpen"})
-            Dim oXml As XmlDocument = New XmlDocument
-            oXml.Load(sFilename)
-            Dim oPen As cCustomPen = New cCustomPen(oSurvey, oXml.DocumentElement.Item("pen"))
-            If Not oSurvey.Pens.Contains(oPen) Then
-                Call oItems.Add(oPen)
-                Call pAppendItem(oPen, True)
-            End If
-        Next
+        'Call oItems.Clear()
+        'For Each sFilename As String In My.Computer.FileSystem.GetFiles(modMain.GetUserApplicationPath, FileIO.SearchOption.SearchTopLevelOnly, {"*.cpen"})
+        '    Dim oXml As XmlDocument = New XmlDocument
+        '    oXml.Load(sFilename)
+        '    Dim oPen As cCustomPen = New cCustomPen(oSurvey, oXml.DocumentElement.Item("pen"))
+        '    If Not oSurvey.Pens.Contains(oPen) Then
+        '        Call oItems.Add(oPen)
+        '        Call pAppendItem(oPen, True)
+        '    End If
+        'Next
 
         pAppendItem(oSurvey.Pens.FromCustom(Color.Black, GetLocalizedString("main.textpart41"), 1, cPen.PenStylesEnum.Solid))
 
         cboPenStyle.EditValue = sOldValue
 
         cboPenStyle.Properties.EndUpdate()
+
+        If bAddHandler Then
+            AddHandler oSurvey.Pens.OnChanged, AddressOf oPens_onchanged
+        End If
     End Sub
 
     Private oItems As cPensBaseCollection
@@ -96,17 +114,20 @@ Public Class cPenStyleDropDown
 
     Private Sub pAppendItem(Pen As cCustomPen, Optional FromFile As Boolean = False)
         Dim oSVGImage As DevExpress.Utils.Svg.SvgImage
+        Dim bUser As Boolean
         If Pen.Type = cPen.PenTypeEnum.User Then
             Using oms As MemoryStream = New MemoryStream
                 Pen.GetThumbnailSVG(oSurvey.Options.Item("_design.plan"), cItem.PaintOptionsEnum.FullLayerDraw, False, iml.ImageSize.Width, iml.ImageSize.Height, If(FromFile, Color.DarkGray, Color.DarkRed), Color.White).Save(oms)
                 Call oms.Seek(0, SeekOrigin.Begin)
                 oSVGImage = DevExpress.Utils.Svg.SvgImage.FromStream(oms)
             End Using
+            bUser = True
         Else
             oSVGImage = DevExpress.Utils.Svg.SvgImage.FromFile(IO.Path.Combine(modMain.GetApplicationPath, "Objects\Pens\" & Pen.Type.ToString & ".svg"))
+            bUser = False
         End If
         Call iml.Add(oSVGImage)
-        Dim oItem As DevExpress.XtraEditors.Controls.ImageComboBoxItem = New DevExpress.XtraEditors.Controls.ImageComboBoxItem(Pen.Name, Pen.ID, iml.Count - 1)
+        Dim oItem As DevExpress.XtraEditors.Controls.ImageComboBoxItem = New DevExpress.XtraEditors.Controls.ImageComboBoxItem(Pen.Name & If(bUser, " <image=user;size=16,16>", ""), Pen.ID, iml.Count - 1)
         cboPenStyle.Properties.Items.Add(oItem)
     End Sub
 

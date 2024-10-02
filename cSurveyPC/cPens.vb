@@ -11,6 +11,8 @@ Namespace cSurvey.Design
     Public Class cPens
         Implements IEnumerable
 
+        Public Event OnChanged(sender As Object, e As EventArgs)
+
         Private WithEvents oSurvey As cSurvey
 
         Private oPenNone As cCustomPen
@@ -52,6 +54,12 @@ Namespace cSurvey.Design
         Private oPenThrustTectonics As cCustomPen
         Private oPenAnticline As cCustomPen
         Private oPenSyncline As cCustomPen
+
+        Public ReadOnly Property Survey As cSurvey
+            Get
+                Return oSurvey
+            End Get
+        End Property
 
         Public ReadOnly Property SynclinePen() As cCustomPen
             Get
@@ -595,6 +603,7 @@ Namespace cSurvey.Design
                 Else
                     If Not ContainsID(CustomPen.ID) Then
                         Call oItems.Add(CustomPen)
+                        RaiseEvent OnChanged(Me, EventArgs.Empty)
                         Return True
                     Else
                         Return False
@@ -622,6 +631,7 @@ Namespace cSurvey.Design
                         Return oExistingPen2
                     Else
                         Call oItems.Add(oNewPen)
+                        RaiseEvent OnChanged(Me, EventArgs.Empty)
                         Return oNewPen
                     End If
                 End If
@@ -650,9 +660,35 @@ Namespace cSurvey.Design
             Return oXMLPens
         End Function
 
-        Public Sub CleanUp()
+        Friend Sub CleanUp()
             'TODO
         End Sub
+
+        Friend Function Delete(ID As String) As Boolean
+            If ContainsID(ID) Then
+                Dim oCustomPen As cCustomPen = Item(ID)
+                oItems.Remove(oCustomPen)
+                RaiseEvent OnChanged(Me, EventArgs.Empty)
+                Return True
+            Else
+                Return False
+            End If
+        End Function
+
+        Friend Function Delete(Pen As cPen) As Boolean
+            If Pen.Type = cPen.PenTypeEnum.User Then
+                Dim oCustomPen As cCustomPen = Pen.GetBasePen
+                If oItems.Contains(oCustomPen) Then
+                    oItems.Remove(oCustomPen)
+                    RaiseEvent OnChanged(Me, EventArgs.Empty)
+                    Return True
+                Else
+                    Return False
+                End If
+            Else
+                Return False
+            End If
+        End Function
 
         Public Function ContainsName(Name As String) As Boolean
             Return oItems.FirstOrDefault(Function(oItem) oItem.Name.ToLower = Name.ToLower) IsNot Nothing

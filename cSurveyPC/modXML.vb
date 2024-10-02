@@ -105,4 +105,10 @@ Module modXML
         End If
     End Function
 
+    Public Function FromFile(Filename As String) As XmlDocument
+        Dim oXml As XmlDocument = New XmlDocument
+        oXml.Load(Filename)
+        Return oXml
+    End Function
+
 End Module

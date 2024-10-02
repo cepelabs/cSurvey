@@ -1,10 +1,7 @@
 ﻿Imports System.Drawing
 Imports System.Drawing.Imaging
 Imports System.Drawing.Drawing2D
-
 Imports cSurveyPC.cSurvey.Drawings
-Imports System.Windows.Media.Animation
-Imports OfficeOpenXml.FormulaParsing.Excel.Functions.Math
 
 Class cClipartOnPath
     Public Enum ClipartPositionEnum
@@ -40,15 +37,6 @@ Class cClipartOnPath
         If pIsPathLine(Pathdata) Then
             'the path in already a sequence of straight line
             oResultPoints.AddRange(Pathdata.Points)
-            'Dim oPoint As PointF = Pathdata.Points(0)
-            'For i As Integer = 0 To Pathdata.Points.Length - 2
-            '    If Pathdata.Types(i + 1) = PathPointType.Start Or (Pathdata.Types(i) And PathPointType.CloseSubpath) = PathPointType.CloseSubpath Then
-            '        Call oResultPoints.AddRange(pGetLinePoints(Pathdata.Points(i), oPoint, 1))
-            '        oPoint = Pathdata.Points(i + 1)
-            '    Else
-            '        Call oResultPoints.AddRange(pGetLinePoints(Pathdata.Points(i), Pathdata.Points(i + 1), 1))
-            '    End If
-            'Next
             oResultPoints = pCleanPoints(oResultPoints)
             Return pDrawClipartOnLines(oTransformedPath, oResultPoints, ClipartPosition, sClipartSpacePercentage, sClipartDistancePercentage)
         Else
@@ -254,10 +242,6 @@ Class cClipartOnPath
             Loop
         End If
 
-        'Dim oPoints2 As PointF()
-        'ReDim oPoints2(iCount)
-        'Call Array.Copy(oPoints, oPoints2, iCount)
-        'Return oPoints2
         Return oPoints
     End Function
 

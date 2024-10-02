@@ -11157,6 +11157,12 @@
   <data name="btnCurrentItemSignReplaceByClipart.Caption" xml:space="preserve">
     <value>Replace by clipart</value>
   </data>
+  <data name="btnViewBrushesAndPens.Caption" xml:space="preserve">
+    <value>Brushes and pens gallery</value>
+  </data>
+  <data name="btnViewClipartGallery.Caption" xml:space="preserve">
+    <value>Clipart gallery</value>
+  </data>
   <data name="RibbonControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -13198,7 +13204,7 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>174</value>
+    <value>176</value>
   </metadata>
   <data name="$this.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v23.2">
     <value>Default</value>
@@ -13211,6 +13217,51 @@
   </data>
   <data name="pnlForm.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v23.2">
     <value>Default</value>
+  </data>
+  <data name="ControlContainer13.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v23.2">
+    <value>Default</value>
+  </data>
+  <data name="ControlContainer13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ControlContainer13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>767, 767</value>
+  </data>
+  <data name="ControlContainer13.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ControlContainer13.Name" xml:space="preserve">
+    <value>ControlContainer13</value>
+  </data>
+  <data name="&gt;&gt;ControlContainer13.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Docking.ControlContainer, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;ControlContainer13.Parent" xml:space="preserve">
+    <value>dockBrushesAndPens</value>
+  </data>
+  <data name="&gt;&gt;ControlContainer13.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dockBrushesAndPens.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 30</value>
+  </data>
+  <data name="dockBrushesAndPens.Size" type="System.Drawing.Size, System.Drawing">
+    <value>767, 767</value>
+  </data>
+  <data name="dockBrushesAndPens.Text" xml:space="preserve">
+    <value>Brushes and pens gallery</value>
+  </data>
+  <data name="&gt;&gt;dockBrushesAndPens.Name" xml:space="preserve">
+    <value>dockBrushesAndPens</value>
+  </data>
+  <data name="&gt;&gt;dockBrushesAndPens.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Docking.DockPanel, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;dockBrushesAndPens.Parent" xml:space="preserve">
+    <value>panelContainer1</value>
+  </data>
+  <data name="&gt;&gt;dockBrushesAndPens.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="ControlContainer10.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v23.2">
     <value>Default</value>
@@ -16391,6 +16442,18 @@
     <value>btnCurrentItemSignReplaceByClipart</value>
   </data>
   <data name="&gt;&gt;btnCurrentItemSignReplaceByClipart.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnViewBrushesAndPens.Name" xml:space="preserve">
+    <value>btnViewBrushesAndPens</value>
+  </data>
+  <data name="&gt;&gt;btnViewBrushesAndPens.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnViewClipartGallery.Name" xml:space="preserve">
+    <value>btnViewClipartGallery</value>
+  </data>
+  <data name="&gt;&gt;btnViewClipartGallery.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pageFile.Name" xml:space="preserve">

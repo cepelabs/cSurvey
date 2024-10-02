@@ -238,6 +238,8 @@ Friend Class cItemBrushStylePropertyControl
         MyBase.DisabledObjectProperty = True
         If Item IsNot Nothing Then
             If Item.Brush.Type = cBrush.BrushTypeEnum.Custom Then
+                btnPropCustomize.Enabled = False
+
                 cmdPropSave.Visible = True
                 cmdPropBrushReseed.Enabled = True
 
@@ -278,6 +280,8 @@ Friend Class cItemBrushStylePropertyControl
 
                 Call pBrushPatternRefresh()
             Else
+                btnPropCustomize.Enabled = True
+
                 cmdPropSave.Visible = False
                 cmdPropBrushReseed.Visible = Item.Brush.HatchType = cBrush.HatchTypeEnum.Clipart
             End If
@@ -316,21 +320,22 @@ Friend Class cItemBrushStylePropertyControl
     Private Sub pSaveToSurvey()
         Dim oBrush As cBrush = Item.Brush
         Dim sHash As String = cBrush.CalculateHash(oBrush)
-        If oSurvey.Pens.Contains(sHash) Then
+        If oSurvey.Brushes.Contains(sHash) Then
             Call cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.savebrushalreadyexist"))
         Else
             Dim sName As String = cSurvey.UIHelpers.Dialogs.TextInputBox(Me, GetLocalizedString("main.savepentext"), GetLocalizedString("main.savepentitle"), "")
             If sName IsNot Nothing Then
-                Dim bOk As Boolean = True
-                If oSurvey.Brushes.Contains(oBrush) Then
-                    bOk = cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.savebrushoverwritetext"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, GetLocalizedString("main.savepentitle")) = MsgBoxResult.Yes
-                End If
-                If bOk Then
-                    Using oNewBrush As cCustomBrush = oSurvey.Brushes.Add(oBrush, sName)
-                        cboPropBrushPattern.Rebind(oSurvey)
-                        cboPropBrushPattern.EditValue = oNewBrush.ID
-                    End Using
-                End If
+                'Dim bOk As Boolean = True
+                'If oSurvey.Brushes.Contains(oBrush) Then
+                '    bOk = cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.savebrushoverwritetext"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, GetLocalizedString("main.savepentitle")) = MsgBoxResult.Yes
+                'End If
+                'If bOk Then
+                Using oNewBrush As cCustomBrush = oSurvey.Brushes.Add(oBrush, sName)
+                    cboPropBrushPattern.Rebind(oSurvey)
+                    cboPropBrushPattern.EditValue = oNewBrush.ID
+                    MyBase.DoCommand("refreshbrushesandpens", {1, "brushes"})
+                End Using
+                'End If
             End If
         End If
     End Sub
@@ -345,11 +350,12 @@ Friend Class cItemBrushStylePropertyControl
                 bOk = cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.savebrushoverwritetext"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, GetLocalizedString("main.savebrushtitle")) = MsgBoxResult.Yes
             End If
             If bOk Then
-                Using oNewBrush As cCustomBrush = cCustomBrush.CopyAsUser(oSurvey, oBrush.GetBaseBrush)
+                Using oNewBrush As cCustomBrush = oSurvey.Brushes.Add(oBrush, sName)
                     oNewBrush.Name = sName
                     Call pSaveBrush(sFilename, oNewBrush)
                     cboPropBrushPattern.Rebind(oSurvey)
-                    cboPropBrushPattern.EditValue = oBrush.ID
+                    cboPropBrushPattern.EditValue = oNewBrush.ID
+                    MyBase.DoCommand("refreshbrushesandpens", {0, "brushes"})
                 End Using
             End If
         End If
@@ -640,5 +646,13 @@ Friend Class cItemBrushStylePropertyControl
             Call MyBase.PropertyChanged("BrushPatternBackgroundColor")
             Call MyBase.MapInvalidate()
         End If
+    End Sub
+
+    Private Sub btnPropCustomize_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPropCustomize.ItemClick
+        cboPropBrushPattern.EditValue = "_99"
+    End Sub
+
+    Private Sub cboPropBrushPattern_OnGalleryButtonClick(sender As Object, e As EventArgs) Handles cboPropBrushPattern.OnGalleryButtonClick
+        MyBase.DoCommand("brushesandpens")
     End Sub
 End Class

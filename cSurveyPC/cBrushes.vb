@@ -10,6 +10,8 @@ Namespace cSurvey.Design
     Public Class cBrushes
         Implements IEnumerable
 
+        Public Event OnChanged(sender As Object, e As EventArgs)
+
         Private WithEvents oSurvey As cSurvey
 
         Private oBrushNone As cCustomBrush
@@ -233,11 +235,43 @@ Namespace cSurvey.Design
                 Else
                     If Not ContainsID(Custombrush.ID) Then
                         Call oItems.Add(Custombrush)
+                        RaiseEvent OnChanged(Me, EventArgs.Empty)
                         Return True
                     Else
                         Return False
                     End If
                 End If
+            End If
+        End Function
+        Public ReadOnly Property Survey As cSurvey
+            Get
+                Return oSurvey
+            End Get
+        End Property
+
+        Friend Function Delete(ID As String) As Boolean
+            If ContainsID(ID) Then
+                Dim oCustombrush As cCustomBrush = Item(ID)
+                oItems.Remove(oCustombrush)
+                RaiseEvent OnChanged(Me, EventArgs.Empty)
+                Return True
+            Else
+                Return False
+            End If
+        End Function
+
+        Friend Function Delete(brush As cBrush) As Boolean
+            If brush.Type = cBrush.BrushTypeEnum.User Then
+                Dim oCustombrush As cCustomBrush = brush.GetBaseBrush
+                If oItems.Contains(oCustombrush) Then
+                    oItems.Remove(oCustombrush)
+                    RaiseEvent OnChanged(Me, EventArgs.Empty)
+                    Return True
+                Else
+                    Return False
+                End If
+            Else
+                Return False
             End If
         End Function
 
@@ -260,6 +294,7 @@ Namespace cSurvey.Design
                         Return oExistingbrush2
                     Else
                         Call oItems.Add(oNewbrush)
+                        RaiseEvent OnChanged(Me, EventArgs.Empty)
                         Return oNewbrush
                     End If
                 End If
@@ -274,8 +309,8 @@ Namespace cSurvey.Design
             Return oXMLbrushes
         End Function
 
-        Public Sub CleanUp()
-            'TODO
+        Friend Sub CleanUp()
+            'TODO?
         End Sub
 
         Public Function ContainsName(Name As String) As Boolean
@@ -336,6 +371,14 @@ Namespace cSurvey.Design
                 MyBase.Dictionary.Add(oitem.ID, oitem)
             Next
         End Sub
+
+        Public Function ContainsKey(Key As String) As Boolean
+            Return MyBase.FirstOrDefault(Function(oItem) oItem.ID = Key) IsNot Nothing
+        End Function
+
+        Public Function ContainsKey(item As cCustomBrush) As Boolean
+            Return MyBase.FirstOrDefault(Function(oItem) oItem.ID = item.ID) IsNot Nothing
+        End Function
 
         Protected Overrides Function GetKeyForItem(ByVal item As cCustomBrush) As String
             Return item.ID

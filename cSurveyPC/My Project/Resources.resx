@@ -2143,4 +2143,16 @@
   <data name="cube_replace" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cube_replace.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="brushesandpens" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\brushesandpens.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="brushesandpensgallery" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\brushesandpensgallery.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="replacefill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\replacefill.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
 </root>

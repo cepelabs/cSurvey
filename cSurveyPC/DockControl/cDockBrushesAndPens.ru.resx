@@ -117,10 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="iml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="captioniml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>183, 17</value>
-  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Text" xml:space="preserve">
+    <value>Галерея</value>
+  </data>
+  <data name="btnAdd.Caption" xml:space="preserve">
+    <value>Добавить...</value>
+  </data>
+  <data name="btnRefresh.Caption" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="btnRemove.Caption" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="btnEditMetadata.Caption" xml:space="preserve">
+    <value>Метаданные</value>
+  </data>
+  <data name="btnViewGallery.Caption" xml:space="preserve">
+    <value>Объекты в галерее</value>
+  </data>
+  <data name="btnViewSurvey.Caption" xml:space="preserve">
+    <value>Объекты в съёмке</value>
+  </data>
 </root>

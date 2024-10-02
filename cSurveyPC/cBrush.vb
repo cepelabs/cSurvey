@@ -1,20 +1,12 @@
-﻿Imports cSurveyPC
-Imports cSurveyPC.cSurvey
-Imports cSurveyPC.cSurvey.Drawings
+﻿Imports cSurveyPC.cSurvey.Drawings
 
 Imports System.Xml
-Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.IO
-Imports DevExpress.Export.Xl
-Imports DevExpress.XtraRichEdit.Import.Html
 Imports cSurveyPC.cSurvey.Scripting
-Imports DevExpress.Data.TreeList
 Imports System.Collections.ObjectModel
-Imports DevExpress.XtraRichEdit.Layout
 Imports System.Dynamic
-Imports DevExpress.Emf
-Imports ImageProcessor.Processors
+Imports cSurveyPC.cSurvey.Design.cBrush
 
 Namespace cSurvey.Design
 
@@ -919,10 +911,13 @@ Namespace cSurvey.Design
     Public Class cCustomBrush
         Implements IDisposable
         Implements cIPatternBrush
+        Implements cICustomPaintElement
 
         Private WithEvents oSurvey As cSurvey
 
         Private sID As String
+
+        Private sFilename As String
 
         Private sName As String
         Private iType As cBrush.BrushTypeEnum
@@ -973,31 +968,34 @@ Namespace cSurvey.Design
 
         Friend Event OnRender(sender As Object, RenderArgs As cBrush.cRenderEventArgs)
 
-        Public Function GetThumbnailSVG(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer, ByVal ForeColor As Color, ByVal Backcolor As Color) As XmlDocument
+        Public Function GetThumbnailSVG(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer, ByVal ForeColor As Color, ByVal Backcolor As Color) As XmlDocument Implements cICustomPaintElement.GetThumbnailSVG
             Dim oBounds As RectangleF = New RectangleF(0, 0, thumbWidth, thumbHeight)
             Dim oSVG As XmlDocument = modSVG.CreateSVG("", New Size(thumbWidth, thumbHeight), SizeUnit.pixel, oBounds, SVGCreateFlagsEnum.None)
             Using oImage As Image = New Bitmap(thumbWidth, thumbHeight)
                 Using oGr As Graphics = Graphics.FromImage(oImage)
-                    Using oBackBrush As SolidBrush = New SolidBrush(Backcolor)
-                        Call oGr.FillRectangle(oBackBrush, oBounds)
-                        Dim sZoom As Single = 0.1
-                        Using oPath As GraphicsPath = New GraphicsPath
-                            Dim oBrushRect As RectangleF = New RectangleF(oBounds.Left, oBounds.Top, oBounds.Width, oBounds.Height)
-                            Call oPath.AddRectangle(oBrushRect)
-                            Using oMatrix As Matrix = New Matrix
-                                Call oMatrix.Scale(sZoom, sZoom)
-                                Call oPath.Transform(oMatrix)
-                            End Using
-                            Call oGr.ScaleTransform(1 / sZoom, 1 / sZoom)
-                            Using oCache As cDrawCache = New cDrawCache
+                    Using oBackgroundBrush As SolidBrush = New SolidBrush(Backcolor)
+                        Using oForegroundPen As Pen = New Pen(ForeColor, 1)
+                            oForegroundPen.LineJoin = Drawing2D.LineJoin.Miter
+                            Call oGr.FillRectangle(oBackgroundBrush, oBounds)
+                            Dim sZoom As Single = 0.1F
+                            Using oPath As GraphicsPath = New GraphicsPath
+                                Dim oBrushRect As RectangleF = New RectangleF(oBounds.Left, oBounds.Top, oBounds.Width, oBounds.Height)
+                                Call oPath.AddRectangle(oBrushRect)
                                 Using oMatrix As Matrix = New Matrix
-                                    Call Render(oGr, PaintOptions, cItem.PaintOptionsEnum.None, False, oPath, oCache)
-                                    oMatrix.Scale(10, 10)
-                                    oCache.Trasform(oMatrix)
-                                    Call oCache.Paint(oGr, PaintOptions, cItem.PaintOptionsEnum.None)
-                                    Call modSVG.AppendRectangle(oSVG, oSVG.DocumentElement, oBounds, New SolidBrush(Backcolor), Nothing)
-                                    Call oSVG.DocumentElement.AppendChild(oCache.ToSvgItem(oSVG, PaintOptions, cItem.SVGOptionsEnum.ClipartBrushes))
-                                    Call modSVG.AppendRectangle(oSVG, oSVG.DocumentElement, oBounds, Nothing, New Pen(ForeColor))
+                                    Call oMatrix.Scale(sZoom, sZoom)
+                                    Call oPath.Transform(oMatrix)
+                                End Using
+                                Call oGr.ScaleTransform(1.0F / sZoom, 1.0F / sZoom)
+                                Using oCache As cDrawCache = New cDrawCache
+                                    Using oMatrix As Matrix = New Matrix
+                                        Call Render(oGr, PaintOptions, cItem.PaintOptionsEnum.None, False, oPath, oCache)
+                                        oMatrix.Scale(10.0F, 10.0F)
+                                        oCache.Trasform(oMatrix)
+                                        Call oCache.Paint(oGr, PaintOptions, cItem.PaintOptionsEnum.None)
+                                        Call modSVG.AppendRectangle(oSVG, oSVG.DocumentElement, oBounds, oBackgroundBrush, Nothing)
+                                        Call oSVG.DocumentElement.AppendChild(oCache.ToSvgItem(oSVG, PaintOptions, cItem.SVGOptionsEnum.ClipartBrushes))
+                                        Call modSVG.AppendRectangle(oSVG, oSVG.DocumentElement, oBounds, Nothing, oForegroundPen)
+                                    End Using
                                 End Using
                             End Using
                         End Using
@@ -1049,7 +1047,20 @@ Namespace cSurvey.Design
                 Return iType = cBrush.BrushTypeEnum.User OrElse iType = cBrush.BrushTypeEnum.Custom
             End Get
         End Property
-        Public Property ID As String
+
+        ''' <summary>
+        ''' Get the user ID of this brush even if is not a user brush
+        ''' </summary>
+        ''' <returns></returns>
+        Public Function GetID() As String
+            If iType = BrushTypeEnum.User Then
+                Return sID
+            Else
+                Return CalculateHash(Me)
+            End If
+        End Function
+
+        Public Property ID As String Implements cICustomPaintElement.ID
             Get
                 If iType = cBrush.BrushTypeEnum.User Then
                     Return sID
@@ -1072,7 +1083,18 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public Property Name() As String
+
+        ''' <summary>
+        ''' Get filename if userbrush loaded from disk
+        ''' </summary>
+        ''' <returns></returns>
+        Public ReadOnly Property Filename() As String Implements cICustomPaintElement.filename
+            Get
+                Return sFilename
+            End Get
+        End Property
+
+        Public Property Name() As String Implements cICustomPaintElement.Name
             Get
                 Return sName
             End Get
@@ -1108,7 +1130,7 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Friend ReadOnly Property Survey As cSurvey
+        Public ReadOnly Property Survey As cSurvey
             Get
                 Return oSurvey
             End Get
@@ -1435,6 +1457,7 @@ Namespace cSurvey.Design
                     'hash is calculate without name and type
                     Call oXMLItem.RemoveAttribute("type")
                     Call oXMLItem.RemoveAttribute("name")
+                    Call oXMLItem.RemoveAttribute("id")
                     Call oXMLRoot.AppendChild(oXMLItem)
                     Call oXML.AppendChild(oXMLRoot)
                     Call oFile.SaveTo(oMs)
@@ -1471,6 +1494,12 @@ Namespace cSurvey.Design
             oPatternBrushes = New cPatternBrushes(oSurvey)
 
             bInvalidated = True
+        End Sub
+
+        Friend Sub New(ByVal Survey As cSurvey, Filename As String)
+            Call Me.New(Survey, Nothing, modXML.FromFile(Filename).DocumentElement.Item("brush"))
+            sFilename = Filename
+            sName = IO.Path.GetFileNameWithoutExtension(sFilename)
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal item As XmlElement)
@@ -2159,45 +2188,46 @@ Namespace cSurvey.Design
         Protected Overridable Sub Dispose(disposing As Boolean)
             If Not disposedValue Then
                 If disposing Then
-                    If Not oPen Is Nothing Then
+                    If oPen IsNot Nothing Then
                         Call oPen.Dispose()
                         oPen = Nothing
                     End If
-                    For Each oPatternPen As Pen In oPatternPens
-                        Call oPatternPen.Dispose()
-                        oPatternPen = Nothing
-                    Next
-                    Call oPatternPens.Clear()
-
-                    If Not oBrush Is Nothing Then
+                    If oPatternPens IsNot Nothing Then
+                        For Each oPatternPen As Pen In oPatternPens
+                            Call oPatternPen.Dispose()
+                            oPatternPen = Nothing
+                        Next
+                        Call oPatternPens.Clear()
+                    End If
+                    If oBrush IsNot Nothing Then
                         Call oBrush.Dispose()
                         oBrush = Nothing
                     End If
-                    If Not oSchematicBrush Is Nothing Then
+                    If oSchematicBrush IsNot Nothing Then
                         Call oSchematicBrush.Dispose()
                         oSchematicBrush = Nothing
                     End If
-                    If Not oBackgroundBrush Is Nothing Then
+                    If oBackgroundBrush IsNot Nothing Then
                         Call oBackgroundBrush.Dispose()
                         oBackgroundBrush = Nothing
                     End If
-                    If Not oTexture Is Nothing Then
+                    If oTexture IsNot Nothing Then
                         Call oTexture.Dispose()
                         oTexture = Nothing
                     End If
-                    If Not oTextureBrush Is Nothing Then
+                    If oTextureBrush IsNot Nothing Then
                         Call oTextureBrush.Dispose()
                         oTextureBrush = Nothing
                     End If
-                    If Not oClipartAlternativeBrush1 Is Nothing Then
+                    If oClipartAlternativeBrush1 IsNot Nothing Then
                         Call oClipartAlternativeBrush1.Dispose()
                         oClipartAlternativeBrush1 = Nothing
                     End If
-                    If Not oClipartAlternativeBrush2 Is Nothing Then
+                    If oClipartAlternativeBrush2 IsNot Nothing Then
                         Call oClipartAlternativeBrush2.Dispose()
                         oClipartAlternativeBrush2 = Nothing
                     End If
-                    If Not oSchematicBrush Is Nothing Then
+                    If oSchematicBrush IsNot Nothing Then
                         Call oSchematicBrush.Dispose()
                         oSchematicBrush = Nothing
                     End If
@@ -2308,6 +2338,14 @@ Namespace cSurvey.Design
             End Get
         End Property
 
+        ''' <summary>
+        ''' Get the user ID of this brush
+        ''' </summary>
+        ''' <returns></returns>
+        Public Function GetID() As String
+            Return oBaseBrush.GetID
+        End Function
+
         Public Shared Function IsUserBrushID(ID As String) As Boolean
             If ID Is Nothing OrElse ID = "" Then
                 Return False
@@ -2340,7 +2378,7 @@ Namespace cSurvey.Design
             End Using
         End Function
 
-        Friend ReadOnly Property Survey As cSurvey
+        Public ReadOnly Property Survey As cSurvey
             Get
                 Return oSurvey
             End Get

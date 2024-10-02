@@ -8,15 +8,27 @@ Imports System.Drawing.Drawing2D
 Imports System.IO
 Imports cSurveyPC.cSurvey.Design.cPen
 Imports DevExpress.XtraTreeList.Nodes.Operations
+Imports cSurveyPC.cSurvey.Design.cBrush
 
 Namespace cSurvey.Design
 
+    Public Interface cICustomPaintElement
+        Property ID As String
+        Property Name() As String
+        Function GetThumbnailSVG(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer, ByVal ForeColor As Color, ByVal Backcolor As Color) As XmlDocument
+
+        ReadOnly Property Filename() As String
+    End Interface
+
     Public Class cCustomPen
         Implements IDisposable
+        Implements cICustomPaintElement
 
         Private WithEvents oSurvey As cSurvey
 
         Private sID As String
+
+        Private sFilename As String
 
         Private sName As String
         Private iType As cPen.PenTypeEnum
@@ -61,7 +73,17 @@ Namespace cSurvey.Design
 
         Friend Event OnRender(sender As Object, RenderArgs As cPen.cRenderEventArgs)
 
-        Public Function GetThumbnailSVG(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer, ByVal ForeColor As Color, ByVal Backcolor As Color) As XmlDocument
+        ''' <summary>
+        ''' Get filename if userpen loaded from disk
+        ''' </summary>
+        ''' <returns></returns>
+        Public ReadOnly Property Filename() As String Implements cICustomPaintElement.filename
+            Get
+                Return sFilename
+            End Get
+        End Property
+
+        Public Function GetThumbnailSVG(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer, ByVal ForeColor As Color, ByVal Backcolor As Color) As XmlDocument Implements cICustomPaintElement.GetThumbnailSVG
             Dim oBounds As RectangleF = New RectangleF(0, 0, thumbWidth, thumbHeight)
             Dim oSVG As XmlDocument = modSVG.CreateSVG("", New Size(thumbWidth, thumbHeight), SizeUnit.pixel, oBounds, SVGCreateFlagsEnum.None)
             Using oImage As Image = New Bitmap(thumbWidth, thumbHeight)
@@ -83,16 +105,16 @@ Namespace cSurvey.Design
                             Dim oBoxBounds As RectangleF = New RectangleF(0, 0, thumbWidth - 0.5F, thumbHeight - 0.5F)
 
                             Using oBackgroundBrush As SolidBrush = New SolidBrush(Backcolor)
-                                Using oForegroundPen As Pen = New Pen(ForeColor, 2)
+                                Using oForegroundPen As Pen = New Pen(ForeColor, 1)
                                     oForegroundPen.LineJoin = Drawing2D.LineJoin.Miter
                                     Call modSVG.AppendRectangle(oSVG, oSVG.DocumentElement, oBounds, oBackgroundBrush, Nothing)
                                     Call oSVG.DocumentElement.AppendChild(oCache.ToSvgItem(oSVG, PaintOptions, cItem.SVGOptionsEnum.ClipartBrushes))
-                                    If iType = cPen.PenTypeEnum.User Then
-                                        Using oForegroundBrush As SolidBrush = New SolidBrush(Color.FromArgb(120, ForeColor))
-                                            Call modSVG.AppendPolygon(oSVG, oSVG.DocumentElement, {New PointF(0, 0), New PointF(thumbWidth / 4.0F, 0), New PointF(0, thumbHeight / 4.0F)}, oForegroundBrush, Nothing)
-                                        End Using
-                                    End If
-                                    Call modSVG.AppendRectangle(oSVG, oSVG.DocumentElement, oBoxBounds, Nothing, oForegroundPen)
+                                    'If iType = cPen.PenTypeEnum.User Then
+                                    '    Using oForegroundBrush As SolidBrush = New SolidBrush(Color.FromArgb(120, ForeColor))
+                                    '        Call modSVG.AppendPolygon(oSVG, oSVG.DocumentElement, {New PointF(0, 0), New PointF(thumbWidth / 4.0F, 0), New PointF(0, thumbHeight / 4.0F)}, oForegroundBrush, Nothing)
+                                    '    End Using
+                                    'End If
+                                    Call modSVG.AppendRectangle(oSVG, oSVG.DocumentElement, oBounds, Nothing, oForegroundPen)
                                 End Using
                             End Using
                         End Using
@@ -131,13 +153,26 @@ Namespace cSurvey.Design
             End Try
         End Function
 
-        Friend ReadOnly Property Survey As cSurvey
+        Public ReadOnly Property Survey As cSurvey
             Get
                 Return oSurvey
             End Get
         End Property
 
-        Public Property ID As String
+
+        ''' <summary>
+        ''' Get the user ID of this brush
+        ''' </summary>
+        ''' <returns></returns>
+        Public Function GetID() As String
+            If iType = BrushTypeEnum.User Then
+                Return sID
+            Else
+                Return CalculateHash(Me)
+            End If
+        End Function
+
+        Public Property ID As String Implements cICustomPaintElement.id
             Get
                 If iType = cPen.PenTypeEnum.User Then
                     Return sID
@@ -147,7 +182,7 @@ Namespace cSurvey.Design
             End Get
             Set(value As String)
                 If value Is Nothing Then
-                    Throw New Exception("Pen ID cannot be Nothing")
+                    Throw New Exception("Pen ID cannot be nothing")
                 Else
                     If value.StartsWith("_") Then
                         Dim iType As cPen.PenTypeEnum = Integer.Parse(value.Substring(1))
@@ -235,7 +270,7 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public Property Name() As String
+        Public Property Name() As String Implements cICustomPaintElement.Name
             Get
                 Return sName
             End Get
@@ -259,6 +294,7 @@ Namespace cSurvey.Design
                     'hash is calculate without name and type
                     Call oXMLItem.RemoveAttribute("type")
                     Call oXMLItem.RemoveAttribute("name")
+
                     Call oXMLRoot.AppendChild(oXMLItem)
                     Call oXML.AppendChild(oXMLRoot)
                     Call oFile.SaveTo(oMs)
@@ -303,6 +339,11 @@ Namespace cSurvey.Design
             oSurvey = Survey
             Call CopyFrom(Pen)
             bInvalidated = True
+        End Sub
+        Friend Sub New(ByVal Survey As cSurvey, Filename As String)
+            Call Me.New(Survey, modXML.FromFile(Filename).DocumentElement.Item("pen"))
+            sFilename = Filename
+            sName = IO.Path.GetFileNameWithoutExtension(sFilename)
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Type As cPen.PenTypeEnum, ID As String, ByVal Name As String, ByVal Color As Color, Optional ByVal Width As Single = 1, Optional ByVal Style As cPen.PenStylesEnum = cPen.PenStylesEnum.Solid, Optional Clipart As cDrawClipArt = Nothing, Optional ByVal DecorationStyle As cPen.DecorationStylesEnum = cPen.DecorationStylesEnum.None, Optional ByVal DecorationSpacePercentage As Single = 100, Optional ByVal DecorationAlignment As cPen.DecorationAlignmentEnum = cPen.DecorationStylesEnum.None, Optional ByVal DecorationScale As Single = 1, Optional StylePattern As Single() = Nothing)
@@ -608,8 +649,8 @@ Namespace cSurvey.Design
                 Return iLineCap
             End Get
             Set(ByVal value As cPen.PenLineCapEnum)
-                If ilinecap <> value Then
-                    ilinecap = value
+                If iLineCap <> value Then
+                    iLineCap = value
                     Call Invalidate()
                 End If
             End Set
@@ -1264,11 +1305,19 @@ Namespace cSurvey.Design
             Return oBasePen.GetThumbnailImage(PaintOptions, Options, Selected, thumbWidth, thumbHeight)
         End Function
 
-        Friend ReadOnly Property Survey As cSurvey
+        Public ReadOnly Property Survey As cSurvey
             Get
                 Return oSurvey
             End Get
         End Property
+
+        ''' <summary>
+        ''' Get the user ID of this pen even if is not a user pen
+        ''' </summary>
+        ''' <returns></returns>
+        Public Function GetID() As String
+            Return oBasePen.GetID
+        End Function
 
         Public Property ID As String
             Get

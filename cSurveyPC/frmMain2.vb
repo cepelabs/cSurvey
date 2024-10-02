@@ -483,6 +483,7 @@ Friend Class frmMain2
             If Not IsNothing(oDockConsole) Then oDockConsole.SetSurvey(oSurvey)
             If Not IsNothing(oDockScript) Then oDockScript.SetSurvey(oSurvey, iFunctionLanguage)
             If Not IsNothing(oDockClipart) Then oDockClipart.SetSurvey(oSurvey)
+            If Not IsNothing(oDockBrushesAndPens) Then oDockBrushesAndPens.SetSurvey(oSurvey)
             If Not IsNothing(oDockText) Then oDockText.SetSurvey(oSurvey)
             If Not IsNothing(oDockAV) Then oDockAV.SetSurvey(oSurvey)
             If Not IsNothing(oDockIV) Then oDockIV.SetSurvey(oSurvey)
@@ -836,6 +837,7 @@ Friend Class frmMain2
                                 If Not IsNothing(oDockConsole) Then oDockConsole.SetSurvey(oSurvey)
                                 If Not IsNothing(oDockScript) Then oDockScript.SetSurvey(oSurvey, iFunctionLanguage)
                                 If Not IsNothing(oDockClipart) Then oDockClipart.SetSurvey(oSurvey)
+                                If Not IsNothing(oDockBrushesAndPens) Then oDockBrushesAndPens.SetSurvey(oSurvey)
                                 If Not IsNothing(oDockText) Then oDockText.SetSurvey(oSurvey)
                                 If Not IsNothing(oDockAV) Then oDockAV.SetSurvey(oSurvey)
                                 If Not IsNothing(oDockIV) Then oDockIV.SetSurvey(oSurvey)
@@ -2366,6 +2368,7 @@ Friend Class frmMain2
     Private WithEvents oDockScript As cDockScript
 
     Private WithEvents oDockClipart As cDockClipart
+    Private WithEvents oDockBrushesAndPens As cDockBrushesAndPens
     Private WithEvents oDockText As cDockText
     Private WithEvents oDockJoinPoints As cDockJoinPoints
 
@@ -5683,6 +5686,7 @@ Friend Class frmMain2
             oDockText.Enabled = False
             oDockJoinPoints.Enabled = False
             oDockClipart.Enabled = False
+            oDockBrushesAndPens.Enabled = False
 
             Call oPaintInfo(cIDesign.cDesignTypeEnum.Profile).Restore(oPaintTranslation, sPaintZoom)
             btnViewPlan.Checked = False
@@ -5847,6 +5851,7 @@ Friend Class frmMain2
             oDockText.Enabled = True
             oDockJoinPoints.Enabled = True
             oDockClipart.Enabled = True
+            oDockBrushesAndPens.Enabled = True
 
             If oPaintInfo(cIDesign.cDesignTypeEnum.Profile).IsEmpty Then
                 Call pZoomReset()
@@ -6024,6 +6029,7 @@ Friend Class frmMain2
             oDockText.Enabled = True
             oDockJoinPoints.Enabled = True
             oDockClipart.Enabled = True
+            oDockBrushesAndPens.Enabled = True
 
             If oPaintInfo(cIDesign.cDesignTypeEnum.Plan).IsEmpty Then
                 Call pZoomReset()
@@ -6399,7 +6405,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pClipartShow(Optional ByVal Visible As Boolean? = Nothing)
-        Call pDockContentShow(dockClipart, Visible)
+        Call pDockContentShow(dockClipart, If(Visible.HasValue, Visible, True))
     End Sub
 
     Private Sub pConsoleShow(Optional ByVal Visible As Boolean? = Nothing)
@@ -8674,6 +8680,7 @@ Friend Class frmMain2
                 dockProperties.Enabled = True
                 dockLevels.Enabled = bContextDesigner
                 dockClipart.Enabled = bContextDesigner
+                dockBrushesAndPens.Enabled = bContextDesigner
                 dockText.Enabled = bContextDesigner
                 dockJoinPoints.Enabled = bContextDesigner
             Case cContextEnum.Trigpoints
@@ -8694,6 +8701,7 @@ Friend Class frmMain2
                 dockProperties.Enabled = True
                 dockLevels.Enabled = bContextDesigner
                 dockClipart.Enabled = bContextDesigner
+                dockBrushesAndPens.Enabled = bContextDesigner
                 dockText.Enabled = bContextDesigner
                 dockJoinPoints.Enabled = bContextDesigner
             Case cContextEnum.DesignPlan, cContextEnum.DesignProfile
@@ -8714,6 +8722,7 @@ Friend Class frmMain2
                 dockProperties.Enabled = True
                 dockLevels.Enabled = bContextDesigner
                 dockClipart.Enabled = bContextDesigner
+                dockBrushesAndPens.Enabled = bContextDesigner
                 dockText.Enabled = bContextDesigner
                 dockJoinPoints.Enabled = bContextDesigner
             Case cContextEnum.Design3D
@@ -8734,6 +8743,7 @@ Friend Class frmMain2
                 dockProperties.Enabled = True
                 dockLevels.Enabled = bContextDesigner
                 dockClipart.Enabled = bContextDesigner
+                dockBrushesAndPens.Enabled = bContextDesigner
                 dockText.Enabled = bContextDesigner
                 dockJoinPoints.Enabled = bContextDesigner
                 'Case cContextEnum.Other
@@ -8774,6 +8784,7 @@ Friend Class frmMain2
                 dockProperties.Enabled = bContextDesigner OrElse bContextData
                 dockLevels.Enabled = bContextDesigner
                 dockClipart.Enabled = bContextDesigner
+                dockBrushesAndPens.Enabled = bContextDesigner
                 dockText.Enabled = bContextDesigner
                 dockJoinPoints.Enabled = bContextDesigner
         End Select
@@ -8792,7 +8803,7 @@ Friend Class frmMain2
         Try
             If Me.IsActive Then
                 If DockManager.ActivePanel IsNot Nothing Then
-                    If DockManager.ActivePanel Is dockDesigner OrElse DockManager.ActivePanel Is dockLevels OrElse DockManager.ActivePanel Is dockClipart OrElse DockManager.ActivePanel Is dockJoinPoints OrElse DockManager.ActivePanel Is dockProperties Then
+                    If DockManager.ActivePanel Is dockDesigner OrElse DockManager.ActivePanel Is dockLevels OrElse DockManager.ActivePanel Is dockClipart OrElse DockManager.ActivePanel Is dockBrushesAndPens OrElse DockManager.ActivePanel Is dockJoinPoints OrElse DockManager.ActivePanel Is dockProperties Then
                         If pIsContextDesignVisible() Then 'docView.ActiveDocument IsNot Nothing AndAlso docView.ActiveDocument.IsVisible AndAlso docView.ActiveDocument.ControlName.ToLower = "dockdesigner" Then
                             If btnViewPlan.Checked Then
                                 Return cContextEnum.DesignPlan
@@ -13501,6 +13512,7 @@ Friend Class frmMain2
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlObjectSubProp, False)
 
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockClipart, False)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockBrushesAndPens, False)
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockLevels, False)
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockConsole, False)
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockProperties, False)
@@ -13581,6 +13593,11 @@ Friend Class frmMain2
         dockClipart.Controls.Add(oDockClipart)
         dockClipart.Text = oDockClipart.Text
         oDockClipart.Dock = DockStyle.Fill
+
+        oDockBrushesAndPens = New cDockBrushesAndPens
+        dockBrushesAndPens.Controls.Add(oDockBrushesAndPens)
+        dockBrushesAndPens.Text = oDockBrushesAndPens.Text
+        oDockBrushesAndPens.Dock = DockStyle.Fill
 
         oDockText = New cDockText
         dockText.Controls.Add(oDockText)
@@ -14347,6 +14364,10 @@ Friend Class frmMain2
 
     Private Sub pTextsShow()
         Call pDockContentShow(dockTexts, True)
+    End Sub
+
+    Private Sub pBrushesAndPensShow()
+        Call pDockContentShow(dockBrushesAndPens, True)
     End Sub
 
     Private Sub pDistancesShow()
@@ -15666,6 +15687,10 @@ Friend Class frmMain2
 
     Private Sub ObjectProperty_OnDoCommand(Sender As Object, e As DoCommandEventArgs)
         Select Case e.Command.ToLower
+            Case "brushesandpens"
+                Call pBrushesAndPensShow()
+            Case "refreshbrushesandpens"
+                oDockBrushesAndPens.GalleryRefresh(e.Args(0), e.Args(1))
             Case "editproperties"
                 If e.Args.Length > 0 Then
                     If e.Args.Length = 1 Then
@@ -19364,6 +19389,7 @@ Friend Class frmMain2
         Call modDevExpress.RestoreDockPanel(DockManager, dockConsole, Docking.DockingStyle.Right)
         Call modDevExpress.RestoreDockPanel(DockManager, dockScript, Docking.DockingStyle.Right)
         Call modDevExpress.RestoreDockPanel(DockManager, dockClipart, Docking.DockingStyle.Right)
+        Call modDevExpress.RestoreDockPanel(DockManager, dockBrushesAndPens, Docking.DockingStyle.Right)
         Call modDevExpress.RestoreDockPanel(DockManager, dockText, Docking.DockingStyle.Right)
         Call modDevExpress.RestoreDockPanel(DockManager, dockAV, Docking.DockingStyle.Right)
         Call modDevExpress.RestoreDockPanel(DockManager, dockIV, Docking.DockingStyle.Right)
@@ -19795,6 +19821,149 @@ Friend Class frmMain2
 
     Private Sub frmMain2_ResizeEnd(sender As Object, e As EventArgs) Handles Me.ResizeEnd
         Call picMap.Invalidate()
+    End Sub
+
+    Private Sub btnViewClipartGallery_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnViewClipartGallery.ItemClick
+        Call pClipartShow()
+    End Sub
+
+    Private Sub btnViewBrushesAndPens_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnViewBrushesAndPens.ItemClick
+        Call pBrushesAndPensShow()
+    End Sub
+
+    Private Sub oDockBrushesAndPens_OnItemApplyTo(Sender As Object, e As cDockBrushesAndPens.OnItemEventArgs) Handles oDockBrushesAndPens.OnItemApplyTo
+        Dim oCurrentItem As cItem = pGetCurrentDesignTools.CurrentItem
+        If oCurrentItem IsNot Nothing Then
+            If TypeOf e.Item Is cCustomBrush Then
+                If oCurrentItem.HaveBrush Then
+                    Call pGetCurrentDesignTools.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo33"))
+                    Dim oCustomBrush As cCustomBrush = e.Item
+                    If oCustomBrush.Type = cBrush.BrushTypeEnum.User Then
+                        If Not oSurvey.Brushes.Contains(oCustomBrush) Then
+                            oSurvey.Brushes.Add(oCustomBrush)
+                        End If
+                    End If
+                    oCurrentItem.Brush.ID = oCustomBrush.ID
+                    Call pGetCurrentDesignTools.CommitUndoSnapshot()
+                    Call pMapInvalidate()
+                End If
+            ElseIf TypeOf e.Item Is cCustomPen Then
+                If oCurrentItem.HavePen Then
+                    Call pGetCurrentDesignTools.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo33"))
+                    Dim oCustomPen As cCustomPen = e.Item
+                    If oCustomPen.Type = cPen.PenTypeEnum.User Then
+                        If Not oSurvey.Pens.Contains(oCustomPen) Then
+                            oSurvey.Pens.Add(oCustomPen)
+                        End If
+                    End If
+                    oCurrentItem.Pen.ID = oCustomPen.ID
+                    Call pGetCurrentDesignTools.CommitUndoSnapshot()
+                    Call pMapInvalidate()
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub oDockBrushesAndPens_OnElementDelete(sender As Object, e As cDockBrushesAndPens.OnItemEventArgs) Handles oDockBrushesAndPens.OnElementDelete
+        If TypeOf e.Item Is cCustomBrush Then
+            Dim oCustomBrush As cCustomBrush = e.Item
+
+            Dim oItemsToChange As List(Of cItem) = New List(Of cItem)
+            For Each oItem As cItem In oSurvey.Plan.GetAllItems
+                If oItem.Brush IsNot Nothing AndAlso oItem.Brush.ID = oCustomBrush.ID AndAlso oItem.Brush.Type = cBrush.BrushTypeEnum.User Then
+                    oItemsToChange.Add(oItem)
+                End If
+            Next
+            If oItemsToChange.Count > 0 Then
+                Dim oNewItem As cItemItems = New cItemItems(oSurvey, oCurrentDesign, pGetCurrentDesignTools.CurrentLayer, cIItem.cItemCategoryEnum.None)
+                Call oNewItem.AddRange(oItemsToChange)
+                Call pGetCurrentDesignTools.SelectItem(oNewItem)
+            End If
+
+            'TODO: undo may be added BUT brush must be managed...without restore give a invalid object error cause deleted brush will not be restored
+            'Call pGetCurrentDesignTools.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo33"))
+            oSurvey.Brushes.Delete(oCustomBrush.ID)
+            For Each oItem As cItem In oItemsToChange
+                oItem.Brush.Type = cBrush.BrushTypeEnum.Custom
+            Next
+            'Call pGetCurrentDesignTools.CommitUndoSnapshot()
+            Call pMapInvalidate()
+        ElseIf TypeOf e.Item Is ccustompen Then
+            Dim oCustomPen As cCustomPen = e.Item
+
+            Dim oItemsToChange As List(Of cItem) = New List(Of cItem)
+            For Each oItem As cItem In oSurvey.Plan.GetAllItems
+                If oItem.Pen IsNot Nothing AndAlso oItem.Pen.ID = oCustomPen.ID AndAlso oItem.Pen.Type = cBrush.BrushTypeEnum.User Then
+                    oItemsToChange.Add(oItem)
+                End If
+            Next
+            If oItemsToChange.Count > 0 Then
+                Dim oNewItem As cItemItems = New cItemItems(oSurvey, oCurrentDesign, pGetCurrentDesignTools.CurrentLayer, cIItem.cItemCategoryEnum.None)
+                Call oNewItem.AddRange(oItemsToChange)
+                Call pGetCurrentDesignTools.SelectItem(oNewItem)
+            End If
+
+            'TODO: undo may be added BUT brush must be managed...without restore give a invalid object error cause deleted brush will not be restored
+            'Call pGetCurrentDesignTools.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo33"))
+            oSurvey.Pens.Delete(oCustomPen.ID)
+            For Each oItem As cItem In oItemsToChange
+                oItem.Pen.Type = cPen.PenTypeEnum.Custom
+            Next
+            'Call pGetCurrentDesignTools.CommitUndoSnapshot()
+            Call pMapInvalidate()
+        End If
+    End Sub
+
+    Private Sub oDockBrushesAndPens_OnElementCustomToUser(sender As Object, e As cDockBrushesAndPens.OnItemEventArgs) Handles oDockBrushesAndPens.OnElementCustomToUser
+        If TypeOf e.Item Is cCustomBrush Then
+            Dim oCustomBrush As cCustomBrush = e.Item
+
+            Dim oItemsToChange As List(Of cItem) = New List(Of cItem)
+            For Each oItem As cItem In oSurvey.Plan.GetAllItems
+                If oItem.Brush IsNot Nothing AndAlso oItem.Brush.Type = cBrush.BrushTypeEnum.Custom AndAlso oItem.Brush.GetID = oCustomBrush.ID Then
+                    oItemsToChange.Add(oItem)
+                End If
+            Next
+            If oItemsToChange.Count > 0 Then
+                Dim oNewItem As cItemItems = New cItemItems(oSurvey, oCurrentDesign, pGetCurrentDesignTools.CurrentLayer, cIItem.cItemCategoryEnum.None)
+                Call oNewItem.AddRange(oItemsToChange)
+                Call pGetCurrentDesignTools.SelectItem(oNewItem)
+
+                'TODO: undo may be added BUT brush must be managed...without restore give a invalid object error cause deleted brush will not be restored
+                'Call pGetCurrentDesignTools.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo33"))
+                If Not oSurvey.Brushes.Contains(oCustomBrush) Then
+                    oSurvey.Brushes.Add(oCustomBrush)
+                End If
+                For Each oItem As cItem In oItemsToChange
+                    oItem.Brush.ID = oCustomBrush.ID
+                Next
+                'Call pGetCurrentDesignTools.CommitUndoSnapshot()
+            End If
+        ElseIf TypeOf e.Item Is ccustompen Then
+            Dim oCustompen As cCustomPen = e.Item
+
+            Dim oItemsToChange As List(Of cItem) = New List(Of cItem)
+            For Each oItem As cItem In oSurvey.Plan.GetAllItems
+                If oItem.Pen IsNot Nothing AndAlso oItem.Pen.Type = cPen.PenTypeEnum.Custom AndAlso oItem.Pen.GetID = oCustompen.ID Then
+                    oItemsToChange.Add(oItem)
+                End If
+            Next
+            If oItemsToChange.Count > 0 Then
+                Dim oNewItem As cItemItems = New cItemItems(oSurvey, oCurrentDesign, pGetCurrentDesignTools.CurrentLayer, cIItem.cItemCategoryEnum.None)
+                Call oNewItem.AddRange(oItemsToChange)
+                Call pGetCurrentDesignTools.SelectItem(oNewItem)
+
+                'TODO: undo may be added BUT pen must be managed...without restore give a invalid object error cause deleted pen will not be restored
+                'Call pGetCurrentDesignTools.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo33"))
+                If Not oSurvey.Pens.Contains(oCustompen) Then
+                    oSurvey.Pens.Add(oCustompen)
+                End If
+                For Each oItem As cItem In oItemsToChange
+                    oItem.Pen.ID = oCustompen.ID
+                Next
+                'Call pGetCurrentDesignTools.CommitUndoSnapshot()
+            End If
+        End If
     End Sub
 
     'Private Sub oHolos_OnContextMenuRequest(Sender As Object, e As Windows.Forms.MouseEventArgs) Handles oHolos.OnContextMenuRequest

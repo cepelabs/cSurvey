@@ -1141,3 +1141,6 @@ preview.importparameterstitle=Importa parametri
 preview.warning5=Il file non è del formato corretto o non è valido in questo contesto
 
 linkedsurveys.textpart4=Il rilievo {0} con id {1} è questo rilievo.
+
+main.warning36=Eliminare {1} archiviato come {0}?
+main.warning37=Eliminare {1} dal rilievo corrente?

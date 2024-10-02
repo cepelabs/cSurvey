@@ -235,16 +235,17 @@ Friend Class cItemPenStylePropertyControl
         Else
             Dim sName As String = cSurvey.UIHelpers.Dialogs.TextInputBox(Me, GetLocalizedString("main.savepentext"), GetLocalizedString("main.savepentitle"), "")
             If sName IsNot Nothing Then
-                Dim bOk As Boolean = True
-                If oSurvey.Pens.Contains(sName) Then
-                    bOk = cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.savepenoverwritetext"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, GetLocalizedString("main.savepentitle")) = MsgBoxResult.Yes
-                End If
-                If bOk Then
-                    Using oNewPen As cCustomPen = oSurvey.Pens.Add(oPen, sName)
-                        cboPropPenPattern.Rebind(oSurvey)
-                        cboPropPenPattern.EditValue = oNewPen.ID
-                    End Using
-                End If
+                'Dim bOk As Boolean = True
+                'If oSurvey.Pens.Contains(sName) Then
+                '    bOk = cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.savepenoverwritetext"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, GetLocalizedString("main.savepentitle")) = MsgBoxResult.Yes
+                'End If
+                'If bOk Then
+                Using oNewPen As cCustomPen = oSurvey.Pens.Add(oPen, sName)
+                    cboPropPenPattern.Rebind(oSurvey)
+                    cboPropPenPattern.EditValue = oNewPen.ID
+                    MyBase.DoCommand("refreshbrushesandpens", {1, "pens"})
+                End Using
+                'End If
             End If
         End If
     End Sub
@@ -264,6 +265,7 @@ Friend Class cItemPenStylePropertyControl
                     Call pSavePen(sFilename, oNewPen)
                     cboPropPenPattern.Rebind(oSurvey)
                     cboPropPenPattern.EditValue = oPen.ID
+                    MyBase.DoCommand("refreshbrushesandpens", {0, "pens"})
                 End Using
             End If
         End If

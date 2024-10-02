@@ -1137,3 +1137,6 @@ preview.importparameterstitle=Parameters import
 preview.warning5=File is not in correct format or data are not valid in this context
 
 linkedsurveys.textpart4=The survey {0} with id {1} is this survey
+
+main.warning36=Delete {1} stored in {0}?
+main.warning37=Delete {1} from current survey?

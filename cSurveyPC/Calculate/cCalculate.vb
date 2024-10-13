@@ -2,6 +2,7 @@
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Helper.Editor
 Imports DevExpress.Office.Drawing
+Imports DevExpress.Skins
 Imports System.IO
 Imports System.Xml
 
@@ -278,14 +279,17 @@ Namespace cSurvey.Calculate
                     If iThreeDModelMode = cProperties.ThreeDModelModeEnum.Oversample Then
                         'calcolo i subdata per i segmenti...
                         Dim sMinDistance As Single = oSurvey.Properties.ThreeDOversamplingFactor   'minimun details in meters...
+                        Dim sMinSize As Single = oSurvey.Properties.ThreeDMinPassageSize
+                        Dim sPrecision As Single = oSurvey.Properties.ThreeDPrecision
+
                         Dim sFrom As String
                         Dim sTo As String
 
                         Dim oPlanOptions As cOptionsDesign = oSurvey.Options("_design.plan")
                         Dim oProfileOptions As cOptionsDesign = oSurvey.Options("_design.profile")
 
-                        Using oPlanCache As modDesignLRUD.cLRFromDesignCache = New modDesignLRUD.cLRFromDesignCache(oSurvey, oSurvey.Plan, oPlanOptions)
-                            Using oProfileCache As modDesignLRUD.cUDFromDesignCache = New modDesignLRUD.cUDFromDesignCache(oSurvey, oSurvey.Profile, oProfileOptions)
+                        Using oPlanCache As modDesignLRUD.cLRUDFromDesignCache2 = New modDesignLRUD.cLRUDFromDesignCache2(oSurvey, oSurvey.Plan, oPlanOptions, sPrecision)
+                            Using oProfileCache As modDesignLRUD.cLRUDFromDesignCache2 = New modDesignLRUD.cLRUDFromDesignCache2(oSurvey, oSurvey.Profile, oProfileOptions, sPrecision)
 
                                 Call oSurvey.RaiseOnProgressEvent("3dsubdata", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("calculate.progressbegin4"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageImport Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
 
@@ -331,6 +335,12 @@ Namespace cSurvey.Calculate
                                             Dim oToLR As SizeF = modDesignLRUD.GetLRFromDesign(oSurvey, oPlanCache, oSegment, oSegmentSubData.Plan, oPlanSubPoint, GetDesignStationEnum.To)
                                             Dim oFromUD As SizeF = modDesignLRUD.GetUDFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData.Profile, oLastProfileSubPoint, GetDesignStationEnum.From)
                                             Dim oToUD As SizeF = modDesignLRUD.GetUDFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData.Profile, oProfileSubPoint, GetDesignStationEnum.To)
+
+                                            Call pNormalizeSize(oFromLR, sMinSize)
+                                            Call pNormalizeSize(oToLR, sMinSize)
+                                            Call pNormalizeSize(oFromUD, sMinSize)
+                                            Call pNormalizeSize(oToUD, sMinSize)
+
                                             Call oSegmentSubData.SetLRUD(oFromLR.Width, oFromLR.Height, oFromUD.Width, oFromUD.Height, oToLR.Width, oToLR.Height, oToUD.Width, oToUD.Height)
 
                                             'uniformo i dati per evitare glitch...
@@ -344,6 +354,9 @@ Namespace cSurvey.Calculate
                     ElseIf iThreeDModelMode = cProperties.ThreeDModelModeEnum.AdvancedOversample Then
                         'calcolo i subdata per i segmenti...
                         Dim sMinDistance As Single = oSurvey.Properties.ThreeDOversamplingFactor   'indica il dettaglio minimo (in metri)...ora fisso, poi sarà regolabile
+                        Dim sMinSize As Single = oSurvey.Properties.ThreeDMinPassageSize
+                        Dim sPrecision As Single = oSurvey.Properties.ThreeDPrecision
+
                         Dim sStep As Single
                         'Dim sFactor As Single
                         Dim sDistance As Single
@@ -357,18 +370,20 @@ Namespace cSurvey.Calculate
                         Dim oPlanOptions As cOptionsDesign = oSurvey.Options("_design.plan")
                         Dim oProfileOptions As cOptionsDesign = oSurvey.Options("_design.profile")
 
-                        Using oPlanCache As modDesignLRUD.cLRFromDesignCache = New modDesignLRUD.cLRFromDesignCache(oSurvey, oSurvey.Plan, oPlanOptions)
-                            Using oProfileCache As modDesignLRUD.cUDFromDesignCache = New modDesignLRUD.cUDFromDesignCache(oSurvey, oSurvey.Profile, oProfileOptions)
+                        Using oPlanCache As modDesignLRUD.cLRUDFromDesignCache2 = New modDesignLRUD.cLRUDFromDesignCache2(oSurvey, oSurvey.Plan, oPlanOptions, sPrecision)
+                            Using oProfileCache As modDesignLRUD.cLRUDFromDesignCache2 = New modDesignLRUD.cLRUDFromDesignCache2(oSurvey, oSurvey.Profile, oProfileOptions, sPrecision)
 
                                 Call oSurvey.RaiseOnProgressEvent("3dsubdata", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("calculate.progressbegin4"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageImport Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
 
                                 Dim iSegmentIndex As Integer = 0
                                 Dim iSegmentCount As Integer = oSurvey.Segments.Count
+
                                 For Each oSegment As cSegment In oSurvey.Segments
                                     Call oSegment.Data.SubDatas.Clear()
 
                                     iSegmentIndex += 1
                                     If iSegmentIndex Mod 20 = 0 Then Call oSurvey.RaiseOnProgressEvent("3dsubdata", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("calculate.progress4"), iSegmentIndex / iSegmentCount)
+                                    'If (oSegment.From = "24.0" AndAlso oSegment.To = "24.1") AndAlso oSegment.IsValid AndAlso Not oSegment.Splay Then
                                     If oSegment.IsValid AndAlso Not oSegment.Splay Then
                                         If oSegment.Surface Then
                                             'for surface and splay I add shot as is
@@ -414,6 +429,12 @@ Namespace cSurvey.Calculate
                                                 Dim oToLR As SizeF = modDesignLRUD.GetLRFromDesign(oSurvey, oPlanCache, oSegment, oSegmentSubData.Plan, oPlanSubPoint, GetDesignStationEnum.To)
                                                 Dim oFromUD As SizeF = modDesignLRUD.GetUDFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData.Profile, oLastProfileSubPoint, GetDesignStationEnum.From)
                                                 Dim oToUD As SizeF = modDesignLRUD.GetUDFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData.Profile, oProfileSubPoint, GetDesignStationEnum.To)
+
+                                                Call pNormalizeSize(oFromLR, sMinSize)
+                                                Call pNormalizeSize(oToLR, sMinSize)
+                                                Call pNormalizeSize(oFromUD, sMinSize)
+                                                Call pNormalizeSize(oToUD, sMinSize)
+
                                                 Call oSegmentSubData.SetLRUD(oFromLR.Width, oFromLR.Height, oFromUD.Width, oFromUD.Height, oToLR.Width, oToLR.Height, oToUD.Width, oToUD.Height)
 
                                                 'uniformo i dati per evitare glitch...
@@ -480,6 +501,12 @@ Namespace cSurvey.Calculate
                                                     Dim oToLR As SizeF = modDesignLRUD.GetLRFromDesign(oSurvey, oPlanCache, oSegment, oSegmentSubData.Plan, oPlanSubPoint, GetDesignStationEnum.To)
                                                     Dim oFromUD As SizeF = modDesignLRUD.GetUDFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData.Profile, oLastProfileSubPoint, GetDesignStationEnum.From)
                                                     Dim oToUD As SizeF = modDesignLRUD.GetUDFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData.Profile, oProfileSubPoint, GetDesignStationEnum.To)
+
+                                                    Call pNormalizeSize(oFromLR, sMinSize)
+                                                    Call pNormalizeSize(oToLR, sMinSize)
+                                                    Call pNormalizeSize(oFromUD, sMinSize)
+                                                    Call pNormalizeSize(oToUD, sMinSize)
+
                                                     Call oSegmentSubData.SetLRUD(oFromLR.Width, oFromLR.Height, oFromUD.Width, oFromUD.Height, oToLR.Width, oToLR.Height, oToUD.Width, oToUD.Height)
 
                                                     oLastPlanSubPoint = oPlanSubPoint
@@ -519,6 +546,24 @@ Namespace cSurvey.Calculate
                 Return True
             End If
         End Function
+
+        Private Sub pNormalizeSize(ByRef LRUD As SizeF, MinSize As Single)
+            If (LRUD.Width + LRUD.Height) < MinSize Then
+                If LRUD.Width = 0 AndAlso LRUD.Height = 0 Then
+                    LRUD.Width = MinSize / 2.0F
+                    LRUD.Height = MinSize / 2.0F
+                ElseIf LRUD.Width = 0 Then
+                    LRUD.Width = MinSize
+                ElseIf LRUD.Height = 0 Then
+                    LRUD.Height = MinSize
+                Else
+                    Dim sSize As Single = LRUD.Width + LRUD.Height
+                    Dim sRatio As Single = MinSize / sSize
+                    LRUD.Width = LRUD.Width * sRatio
+                    LRUD.Height = LRUD.Height * sRatio
+                End If
+            End If
+        End Sub
 
         Private bDataFromDesignsInvalidated As Boolean
         Private iLastThreeDModelMode As cProperties.ThreeDModelModeEnum

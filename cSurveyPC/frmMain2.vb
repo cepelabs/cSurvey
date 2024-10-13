@@ -21,7 +21,6 @@ Imports DevExpress.XtraBars.Navigation
 Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraGrid.Views.Base
 Imports HelixToolkit.Wpf
-'Imports Microsoft.WindowsAPICodePack.Taskbar
 Imports DevExpress.XtraSplashScreen
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.RichEdit.Export
@@ -715,11 +714,11 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pLogAdd(Exception As Exception)
-        Call pConsoleAdd(cSurvey.cSurvey.LogEntryType.Error, Exception.Message & vbCrLf & "in" & Exception.StackTrace)
+        Call pConsoleAdd(cSurvey.cSurvey.LogEntryType.Error, Exception.Message & If(Exception.StackTrace Is Nothing, "", vbCrLf & "in" & Exception.StackTrace))
     End Sub
 
     Private Sub pLogAdd(Text As String, Exception As Exception)
-        Call pConsoleAdd(cSurvey.cSurvey.LogEntryType.Error, Exception.Message & vbCrLf & "in" & Exception.StackTrace)
+        Call pConsoleAdd(cSurvey.cSurvey.LogEntryType.Error, Exception.Message & If(Exception.StackTrace Is Nothing, "", vbCrLf & "in" & Exception.StackTrace))
     End Sub
 
     Private Sub pLogAdd(ByVal Type As cSurvey.cSurvey.LogEntryType, ByVal Text As String, URI As String)
@@ -5261,7 +5260,6 @@ Friend Class frmMain2
                     'taskbar------------------------------------------
                     If modMain.bIsModernOS Then
                         TaskbarAssistant.ProgressMode = DevExpress.Utils.Taskbar.Core.TaskbarButtonProgressMode.Normal
-                        'Call Microsoft.WindowsAPICodePack.Taskbar.TaskbarManager.Instance.SetProgressValue(0, 100)
                     End If
                 Case cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Reset
                     If Not frmProg Is Nothing Then
@@ -5272,7 +5270,6 @@ Friend Class frmMain2
                     'taskbar------------------------------------------
                     If modMain.bIsModernOS Then
                         TaskbarAssistant.ProgressMode = DevExpress.Utils.Taskbar.Core.TaskbarButtonProgressMode.NoProgress
-                        'Call Microsoft.WindowsAPICodePack.Taskbar.TaskbarManager.Instance.SetProgressState(Microsoft.WindowsAPICodePack.Taskbar.TaskbarProgressBarState.NoProgress)
                     End If
                 Case cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End
                     If Not frmProg Is Nothing Then
@@ -5284,7 +5281,6 @@ Friend Class frmMain2
                     'taskbar------------------------------------------
                     If modMain.bIsModernOS Then
                         TaskbarAssistant.ProgressMode = DevExpress.Utils.Taskbar.Core.TaskbarButtonProgressMode.NoProgress
-                        'Call Microsoft.WindowsAPICodePack.Taskbar.TaskbarManager.Instance.SetProgressState(Microsoft.WindowsAPICodePack.Taskbar.TaskbarProgressBarState.NoProgress)
                     End If
                 Case cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress
                     If Not frmProg Is Nothing Then
@@ -5295,7 +5291,6 @@ Friend Class frmMain2
                     If modMain.bIsModernOS Then
                         TaskbarAssistant.ProgressMode = DevExpress.Utils.Taskbar.Core.TaskbarButtonProgressMode.Normal
                         TaskbarAssistant.ProgressCurrentValue = Progress * 100
-                        'Call Microsoft.WindowsAPICodePack.Taskbar.TaskbarManager.Instance.SetProgressValue(Progress * 100, 100)
                     End If
             End Select
         End If

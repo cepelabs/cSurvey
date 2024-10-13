@@ -175,11 +175,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
-    <Reference Include="clipper_library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Clipper.6.2.10\lib\net40\clipper_library.dll</HintPath>
+    <Reference Include="Clipper2Lib, Version=1.4.0.0, Culture=neutral, PublicKeyToken=ddeb3f68c442d6e4, processorArchitecture=MSIL">
+      <HintPath>packages\Clipper2.1.4.0\lib\netstandard2.0\Clipper2Lib.dll</HintPath>
     </Reference>
-    <Reference Include="CsvHelper, Version=31.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
-      <HintPath>packages\CsvHelper.31.0.3\lib\net48\CsvHelper.dll</HintPath>
+    <Reference Include="clipper_library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Clipper.6.4.0\lib\net40\clipper_library.dll</HintPath>
+    </Reference>
+    <Reference Include="CsvHelper, Version=33.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>packages\CsvHelper.33.0.1\lib\net48\CsvHelper.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Charts.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -233,8 +236,8 @@
     <Reference Include="Ionic.Zip">
       <HintPath>.\Ionic.Zip.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
@@ -245,12 +248,6 @@
     </Reference>
     <Reference Include="Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack.ExtendedLinguisticServices, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\WindowsAPICodePack.1.1.2\lib\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack.Sensors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\WindowsAPICodePack.1.1.2\lib\Microsoft.WindowsAPICodePack.Sensors.dll</HintPath>
     </Reference>
     <Reference Include="NAudio, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
       <HintPath>packages\NAudio.2.2.1\lib\net472\NAudio.dll</HintPath>
@@ -949,8 +946,7 @@
     <Compile Include="cCaveInfos.vb" />
     <Compile Include="cCaveVisibility.vb" />
     <Compile Include="cClipartOnPath.vb" />
-    <Compile Include="cClipperRegion.vb" />
-    <Compile Include="cClippingPaths.vb" />
+    <Compile Include="cRegions.vb" />
     <Compile Include="cCommandLineParameters.vb" />
     <Compile Include="cConnections.vb" />
     <Compile Include="cDataProperties.vb" />
@@ -972,7 +968,6 @@
     <Compile Include="cElevation.vb" />
     <Compile Include="cExportProfile.vb" />
     <Compile Include="cFile.vb" />
-    <Compile Include="cGDIRegion.vb" />
     <Compile Include="Calculate\cCalculate.Plot.cGeoMagDeclinationData.vb" />
     <Compile Include="cGrade.vb" />
     <Compile Include="cGrades.vb" />
@@ -1239,7 +1234,6 @@
     <Compile Include="frmExportVisualTopo.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="cRegion.vb" />
     <Compile Include="frmImportcSurvey.Designer.vb">
       <DependentUpon>frmImportcSurvey.vb</DependentUpon>
     </Compile>
@@ -1377,7 +1371,7 @@
     <Compile Include="cWindowsObjects.vb" />
     <Compile Include="cCoordinate.vb" />
     <Compile Include="cDesign.vb" />
-    <Compile Include="cClippingRegions.vb" />
+    <Compile Include="cClipping.vb" />
     <Compile Include="cFont.vb" />
     <Compile Include="cIFont.vb" />
     <Compile Include="cItem.vb" />

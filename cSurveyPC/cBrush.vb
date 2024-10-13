@@ -7,6 +7,7 @@ Imports cSurveyPC.cSurvey.Scripting
 Imports System.Collections.ObjectModel
 Imports System.Dynamic
 Imports cSurveyPC.cSurvey.Design.cBrush
+Imports cSurveyPC.cSurvey.Drawings.Regions
 
 Namespace cSurvey.Design
 
@@ -1088,7 +1089,7 @@ Namespace cSurvey.Design
         ''' Get filename if userbrush loaded from disk
         ''' </summary>
         ''' <returns></returns>
-        Public ReadOnly Property Filename() As String Implements cICustomPaintElement.filename
+        Public ReadOnly Property Filename() As String Implements cICustomPaintElement.Filename
             Get
                 Return sFilename
             End Get
@@ -2065,12 +2066,19 @@ Namespace cSurvey.Design
                                     End Using
 
                                     Using oPainter As cPatternBrushPainter = New cPatternBrushPainter(oPatternBrush, oBounds)
-                                        oPatternBrush.OnPaint(oPainter)
-                                        Call oPainter.Path.Transform(oMatrix)
-                                        If oPainter.IsFilled Then
-                                            Call Cache.AddFiller(oPainter.Path, oPatternPen, Nothing, New SolidBrush(oPatternPen.Color))
+                                        If oPainter.Density < 0.1F Then
+                                            'too dense...error!
+                                            oSurvey.RaiseOnErrorLogEvent("Brush pattern too dense", New Exception("Brush pattern too dense"))
+                                            modPaint.PaintCross(oPainter.Path, oBounds)
+                                            Cache.AddBorder(oPainter.Path, New Pen(Color.Red, 0.001F))
                                         Else
-                                            Call Cache.AddFiller(oPainter.Path, oPatternPen, Nothing)
+                                            oPatternBrush.OnPaint(oPainter)
+                                            Call oPainter.Path.Transform(oMatrix)
+                                            If oPainter.IsFilled Then
+                                                Call Cache.AddFiller(oPainter.Path, oPatternPen, Nothing, New SolidBrush(oPatternPen.Color))
+                                            Else
+                                                Call Cache.AddFiller(oPainter.Path, oPatternPen, Nothing)
+                                            End If
                                         End If
                                     End Using
                                 End Using

@@ -6,8 +6,8 @@ Module modPath
     'path1 intersect path2
     Public Function Intersect(Path1 As List(Of IntPoint), Path2 As List(Of IntPoint)) As Boolean
         Dim oClipper As Clipper = New Clipper
-        Call oClipper.AddPath(Path1, PolyType.ptSubject, True)
-        Call oClipper.AddPath(Path2, PolyType.ptClip, True)
+        Call oClipper.AddPolygon(Path1, PolyType.ptSubject)
+        Call oClipper.AddPolygon(Path2, PolyType.ptClip)
         Dim oPaths As List(Of List(Of IntPoint)) = New List(Of List(Of IntPoint))
         Call oClipper.Execute(ClipType.ctIntersection, oPaths, PolyFillType.pftNonZero, PolyFillType.pftNonZero)
         Return oPaths.Count > 0

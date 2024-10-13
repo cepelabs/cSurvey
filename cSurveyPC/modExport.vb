@@ -442,7 +442,7 @@ Module modExport
                                     End If
                                 Next
                             End If
-                            Call oClipperBorder.AddPath(modClipper.ToIntPolygon(oPoints, 100), PolyType.ptSubject, True)
+                            Call oClipperBorder.AddPolygon(modClipper.ToIntPolygon(oPoints, 100), PolyType.ptSubject)
                         Next
 
                         For Each oItem As Items.cItemInvertedFreeHandArea In oHoleBordersItems
@@ -466,7 +466,7 @@ Module modExport
                                     End If
                                 Next
                             End If
-                            Call oHoleClipperBorder.AddPath(modClipper.ToIntPolygon(oPoints, 100), PolyType.ptSubject, True)
+                            Call oHoleClipperBorder.AddPolygon(modClipper.ToIntPolygon(oPoints, 100), PolyType.ptSubject)
                         Next
 
                         Dim oResPoly As List(Of List(Of IntPoint)) = New List(Of List(Of IntPoint))

@@ -35,9 +35,9 @@ Namespace cSurvey.Design
                 If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, "", "") Then
                     Dim oSVGItem As XmlElement = oItem.ToSvgItem(SVG, PaintOptions, Options)
                     If oItem.CanBeClipped Then
-                        Dim iClipBorder As cClippingRegions.ClipBorderEnum = oSurvey.Properties.DesignProperties.GetValue("ClipBorder", My.Application.Settings.GetSetting("design.clipborder", cClippingRegions.ClipBorderEnum.ClipBorder))
+                        Dim iClipBorder As Clipping.cClippingRegions.ClipBorderEnum = oSurvey.Properties.DesignProperties.GetValue("ClipBorder", My.Application.Settings.GetSetting("design.clipborder", Clipping.cClippingRegions.ClipBorderEnum.ClipBorder))
                         If oItem.ClippingType = cItem.cItemClippingTypeEnum.Default Then
-                            If (oItem.Type = cIItem.cItemTypeEnum.InvertedFreeHandArea AndAlso iType = cLayers.LayerTypeEnum.Borders) OrElse (iType > cLayers.LayerTypeEnum.Borders) OrElse (iClipBorder = cClippingRegions.ClipBorderEnum.DontClipBorder AndAlso iType = cLayers.LayerTypeEnum.Borders) Then
+                            If (oItem.Type = cIItem.cItemTypeEnum.InvertedFreeHandArea AndAlso iType = cLayers.LayerTypeEnum.Borders) OrElse (iType > cLayers.LayerTypeEnum.Borders) OrElse (iClipBorder = Clipping.cClippingRegions.ClipBorderEnum.DontClipBorder AndAlso iType = cLayers.LayerTypeEnum.Borders) Then
                                 'nothing
                             Else
                                 If oItem.Type = cIItem.cItemTypeEnum.FreeHandArea AndAlso oItem.Category = cIItem.cItemCategoryEnum.Soil AndAlso oItem.Design.Type = cIDesign.cDesignTypeEnum.Profile Then
@@ -414,86 +414,86 @@ Namespace cSurvey.Design
             Return oVisibleItems
         End Function
 
-        Friend Overridable Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Clipping As cClippingRegions, Selection As Helper.Editor.cIEditDesignSelection)
+        Friend Overridable Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Clipping As Clipping.cClippingRegions, Selection As Helper.Editor.cIEditDesignSelection)
             'Try
             Dim oItems As List(Of cItem) = GetAllVisibleItems(PaintOptions)
-                If oItems.Count > 0 Then
-                    Dim oVisibleBounds As RectangleF
-                    Dim oBaseVisibleBounds As RectangleF = Graphics.VisibleClipBounds
-                    Dim bTraslation As Boolean = Not PaintOptions.IsDesign And PaintOptions.DrawTranslation
+            If oItems.Count > 0 Then
+                Dim oVisibleBounds As RectangleF
+                Dim oBaseVisibleBounds As RectangleF = Graphics.VisibleClipBounds
+                Dim bTraslation As Boolean = Not PaintOptions.IsDesign And PaintOptions.DrawTranslation
 
-                    Dim oCurrentItem As cItem = Nothing
-                    Dim bCurrentItem As Boolean
-                    Dim bCurrentItemIsInEdit As Boolean
-                    If PaintOptions.IsDesign Then
-                        oCurrentItem = Selection.CurrentItem
-                        bCurrentItemIsInEdit = Selection.IsInEditing
-                    End If
+                Dim oCurrentItem As cItem = Nothing
+                Dim bCurrentItem As Boolean
+                Dim bCurrentItemIsInEdit As Boolean
+                If PaintOptions.IsDesign Then
+                    oCurrentItem = Selection.CurrentItem
+                    bCurrentItemIsInEdit = Selection.IsInEditing
+                End If
 
-                    For Each oItem As cItem In oItems
-                        If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, Selection.CurrentCave, Selection.CurrentBranch) Then
-                            Dim iSelectionMode As cItem.SelectionModeEnum
-                            If PaintOptions.IsDesign Then
-                                If TypeOf oCurrentItem Is cItemItems Then
-                                    If DirectCast(oCurrentItem, cItemItems).Contains(oItem) Then
-                                        iSelectionMode = cItem.SelectionModeEnum.Selected
-                                        bCurrentItem = True
-                                    Else
-                                        iSelectionMode = cItem.SelectionModeEnum.None
-                                        bCurrentItem = False
-                                    End If
+                For Each oItem As cItem In oItems
+                    If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, Selection.CurrentCave, Selection.CurrentBranch) Then
+                        Dim iSelectionMode As cItem.SelectionModeEnum
+                        If PaintOptions.IsDesign Then
+                            If TypeOf oCurrentItem Is cItemItems Then
+                                If DirectCast(oCurrentItem, cItemItems).Contains(oItem) Then
+                                    iSelectionMode = cItem.SelectionModeEnum.Selected
+                                    bCurrentItem = True
                                 Else
-                                    If oItem Is oCurrentItem Then
-                                        If bCurrentItemIsInEdit Then
-                                            iSelectionMode = cItem.SelectionModeEnum.InEdit
-                                        Else
-                                            iSelectionMode = cItem.SelectionModeEnum.Selected
-                                        End If
-                                        bCurrentItem = True
+                                    iSelectionMode = cItem.SelectionModeEnum.None
+                                    bCurrentItem = False
+                                End If
+                            Else
+                                If oItem Is oCurrentItem Then
+                                    If bCurrentItemIsInEdit Then
+                                        iSelectionMode = cItem.SelectionModeEnum.InEdit
                                     Else
-                                        iSelectionMode = cItem.SelectionModeEnum.None
-                                        bCurrentItem = False
+                                        iSelectionMode = cItem.SelectionModeEnum.Selected
                                     End If
+                                    bCurrentItem = True
+                                Else
+                                    iSelectionMode = cItem.SelectionModeEnum.None
+                                    bCurrentItem = False
                                 End If
                             End If
+                        End If
 
-                            oVisibleBounds = oBaseVisibleBounds
+                        oVisibleBounds = oBaseVisibleBounds
 
-                            Dim oState As GraphicsState = Graphics.Save()
-                            If bTraslation Then
-                                Dim oTranslation As PointF = oDesign.GetItemTranslation(oItem)
-                                If Not oTranslation.IsEmpty Then
-                                    Call Graphics.TranslateTransform(oTranslation.X, oTranslation.Y, Drawing2D.MatrixOrder.Prepend)
-                                    Call oVisibleBounds.Offset(-oTranslation.X, -oTranslation.Y)
-                                End If
+                        Dim oState As GraphicsState = Graphics.Save()
+                        If bTraslation Then
+                            Dim oTranslation As PointF = oDesign.GetItemTranslation(oItem)
+                            If Not oTranslation.IsEmpty Then
+                                Call Graphics.TranslateTransform(oTranslation.X, oTranslation.Y, Drawing2D.MatrixOrder.Prepend)
+                                Call oVisibleBounds.Offset(-oTranslation.X, -oTranslation.Y)
                             End If
+                        End If
 
-                            Dim bDraw As Boolean = False
-                            If PaintOptions.IsPreview Then
+                        Dim bDraw As Boolean = False
+                        If PaintOptions.IsPreview Then
+                            bDraw = True
+                        Else
+                            If bCurrentItem Then
                                 bDraw = True
                             Else
-                                If bCurrentItem Then
+                                If oItem.IsInvalidated(PaintOptions) Then
                                     bDraw = True
                                 Else
-                                    If oItem.IsInvalidated(PaintOptions) Then
+                                    If oVisibleBounds.IntersectsWith(oItem.GetBounds) Then
                                         bDraw = True
-                                    Else
-                                        If oVisibleBounds.IntersectsWith(oItem.GetBounds) Then
-                                            bDraw = True
-                                        End If
                                     End If
                                 End If
                             End If
-
-                            If bDraw Then
-                                Call Graphics.SetClip(Clipping.GetClip(Graphics, Me, oItem), CombineMode.Replace)
-                                Call oItem.Paint(Graphics, PaintOptions, Options, iSelectionMode)
-                            End If
-                            Call Graphics.Restore(oState)
                         End If
-                        'End If
-                    Next
-                End If
+
+                        If bDraw Then
+                            Call Graphics.SetClip(Clipping.GetClip(Graphics, Me, oItem), CombineMode.Replace)
+                            Call oItem.Paint(Graphics, PaintOptions, Options, iSelectionMode)
+                        End If
+                        Call Graphics.Restore(oState)
+                    End If
+                    'End If
+                Next
+            End If
             'Catch ex As Exception
             '    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, "cLayer.Paint -> " & ex.Message)
             'End Try

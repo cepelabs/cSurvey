@@ -3,7 +3,48 @@ Imports System.Drawing.Drawing2D
 Imports ClipperLib
 Imports System.Runtime.CompilerServices
 
-Namespace cSurvey.Drawings
+Namespace cSurvey.Drawings.Regions
+
+    Public Class cGDIRegion
+        Implements IDisposable
+        Implements cIRegion
+
+        Private oBaseRegion As Region
+
+        Public Sub New(Path As GraphicsPath)
+            oBaseRegion = New Region(Path)
+        End Sub
+
+        Public Function Contains(Graphics As Graphics, Path As GraphicsPath) As Boolean Implements cIRegion.Contains
+            Using oRegion As Region = oBaseRegion.Clone()
+                Call oRegion.Complement(Path)
+                Return oRegion.IsEmpty(Graphics)
+            End Using
+        End Function
+
+#Region "IDisposable Support"
+        Private disposedValue As Boolean ' Per rilevare chiamate ridondanti
+
+        ' IDisposable
+        Protected Overridable Sub Dispose(disposing As Boolean)
+            If Not Me.disposedValue Then
+                If disposing Then
+                    Call oBaseRegion.Dispose()
+                End If
+            End If
+            Me.disposedValue = True
+        End Sub
+
+        ' Questo codice è aggiunto da Visual Basic per implementare in modo corretto il modello Disposable.
+        Public Sub Dispose() Implements IDisposable.Dispose
+            ' Non modificare questo codice. Inserire il codice di pulizia in Dispose(disposing As Boolean).
+            Dispose(True)
+            GC.SuppressFinalize(Me)
+        End Sub
+#End Region
+
+    End Class
+
     Public Class cClipperRegion
         Implements IDisposable
         Implements cIRegion
@@ -49,8 +90,8 @@ Namespace cSurvey.Drawings
                 Call oPath.Flatten(oBaseMatrix, sAccurancy)
                 Dim oIntPaths As List(Of List(Of IntPoint)) = cClipperHelper.GraphicsPathToIntPaths(oPath)
                 Call oClipper.Clear()
-                Call oClipper.AddPaths(oBaseIntPaths, PolyType.ptClip, True)
-                Call oClipper.AddPaths(oIntPaths, PolyType.ptSubject, True)
+                Call oClipper.AddPolygons(oBaseIntPaths, PolyType.ptClip)
+                Call oClipper.AddPolygons(oIntPaths, PolyType.ptSubject)
                 Dim oResultPaths As List(Of List(Of IntPoint)) = New List(Of List(Of IntPoint))
                 Call oClipper.Execute(ClipType.ctDifference, oResultPaths)
                 Return oResultPaths.Count = 0

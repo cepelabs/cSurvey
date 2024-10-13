@@ -24,11 +24,11 @@ Partial Class frmProperties
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmProperties))
-        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
         Me.mnuInfoBoxTags = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -543,6 +543,13 @@ Partial Class frmProperties
         Me.tabInfoPlot1 = New DevExpress.XtraTab.XtraTabPage()
         Me.XtraScrollableControl2 = New DevExpress.XtraEditors.XtraScrollableControl()
         Me.tabInfo3D1 = New DevExpress.XtraTab.XtraTabPage()
+        Me.pnl3D = New DevExpress.XtraEditors.PanelControl()
+        Me.txt3DMinPassageSizeUM = New DevExpress.XtraEditors.LabelControl()
+        Me.txt3DMinPassageSize = New DevExpress.XtraEditors.SpinEdit()
+        Me.lbl3DMinPassageSize = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl3dPrecisionUM = New DevExpress.XtraEditors.LabelControl()
+        Me.txt3DPrecision = New DevExpress.XtraEditors.SpinEdit()
+        Me.lbl3DPrecision = New DevExpress.XtraEditors.LabelControl()
         Me.tabInfoHighlights1 = New DevExpress.XtraTab.XtraTabPage()
         Me.txtHighlightSize = New DevExpress.XtraEditors.SpinEdit()
         Me.trkHighlightOpacity = New DevExpress.XtraEditors.TrackBarControl()
@@ -870,6 +877,10 @@ Partial Class frmProperties
         Me.tabInfoPlot1.SuspendLayout()
         Me.XtraScrollableControl2.SuspendLayout()
         Me.tabInfo3D1.SuspendLayout()
+        CType(Me.pnl3D, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnl3D.SuspendLayout()
+        CType(Me.txt3DMinPassageSize.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt3DPrecision.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabInfoHighlights1.SuspendLayout()
         CType(Me.txtHighlightSize.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.trkHighlightOpacity, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -4613,9 +4624,9 @@ Partial Class frmProperties
         'txtDefaultPenPattern
         '
         resources.ApplyResources(Me.txtDefaultPenPattern, "txtDefaultPenPattern")
-        EditorButtonImageOptions1.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
-        EditorButtonImageOptions1.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.txtDefaultPenPattern.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtDefaultPenPattern.Buttons1"), CType(resources.GetObject("txtDefaultPenPattern.Buttons2"), Integer), CType(resources.GetObject("txtDefaultPenPattern.Buttons3"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons4"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons5"), Boolean), EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, resources.GetString("txtDefaultPenPattern.Buttons6"), CType(resources.GetObject("txtDefaultPenPattern.Buttons7"), Object), CType(resources.GetObject("txtDefaultPenPattern.Buttons8"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtDefaultPenPattern.Buttons9"), DevExpress.Utils.ToolTipAnchor)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons10"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        EditorButtonImageOptions2.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        EditorButtonImageOptions2.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.txtDefaultPenPattern.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtDefaultPenPattern.Buttons1"), CType(resources.GetObject("txtDefaultPenPattern.Buttons2"), Integer), CType(resources.GetObject("txtDefaultPenPattern.Buttons3"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons4"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons5"), Boolean), EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, resources.GetString("txtDefaultPenPattern.Buttons6"), CType(resources.GetObject("txtDefaultPenPattern.Buttons7"), Object), CType(resources.GetObject("txtDefaultPenPattern.Buttons8"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtDefaultPenPattern.Buttons9"), DevExpress.Utils.ToolTipAnchor)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons10"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtDefaultPenPattern.Name = "txtDefaultPenPattern"
         Me.txtDefaultPenPattern.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
@@ -4641,14 +4652,75 @@ Partial Class frmProperties
         '
         Me.tabInfo3D1.Controls.Add(Me.GroupBox9)
         Me.tabInfo3D1.Controls.Add(Me.lbl3DModelMode)
-        Me.tabInfo3D1.Controls.Add(Me.txt3DOversamplingFactor)
-        Me.tabInfo3D1.Controls.Add(Me.txt3DNormalizationFactor)
         Me.tabInfo3D1.Controls.Add(Me.GroupBox4)
         Me.tabInfo3D1.Controls.Add(Me.cbo3DModelMode)
-        Me.tabInfo3D1.Controls.Add(Me.lbl3DOversamplingFactor)
-        Me.tabInfo3D1.Controls.Add(Me.lbl3DNormalizationFactor)
+        Me.tabInfo3D1.Controls.Add(Me.pnl3D)
         Me.tabInfo3D1.Name = "tabInfo3D1"
         resources.ApplyResources(Me.tabInfo3D1, "tabInfo3D1")
+        '
+        'pnl3D
+        '
+        Me.pnl3D.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnl3D.Controls.Add(Me.txt3DMinPassageSizeUM)
+        Me.pnl3D.Controls.Add(Me.txt3DNormalizationFactor)
+        Me.pnl3D.Controls.Add(Me.txt3DMinPassageSize)
+        Me.pnl3D.Controls.Add(Me.lbl3DNormalizationFactor)
+        Me.pnl3D.Controls.Add(Me.lbl3DMinPassageSize)
+        Me.pnl3D.Controls.Add(Me.lbl3DOversamplingFactor)
+        Me.pnl3D.Controls.Add(Me.lbl3dPrecisionUM)
+        Me.pnl3D.Controls.Add(Me.txt3DOversamplingFactor)
+        Me.pnl3D.Controls.Add(Me.txt3DPrecision)
+        Me.pnl3D.Controls.Add(Me.lbl3DPrecision)
+        resources.ApplyResources(Me.pnl3D, "pnl3D")
+        Me.pnl3D.Name = "pnl3D"
+        '
+        'txt3DMinPassageSizeUM
+        '
+        resources.ApplyResources(Me.txt3DMinPassageSizeUM, "txt3DMinPassageSizeUM")
+        Me.txt3DMinPassageSizeUM.Name = "txt3DMinPassageSizeUM"
+        '
+        'txt3DMinPassageSize
+        '
+        resources.ApplyResources(Me.txt3DMinPassageSize, "txt3DMinPassageSize")
+        Me.txt3DMinPassageSize.Name = "txt3DMinPassageSize"
+        Me.txt3DMinPassageSize.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txt3DMinPassageSize.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txt3DMinPassageSize.Properties.DisplayFormat.FormatString = "N2"
+        Me.txt3DMinPassageSize.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt3DMinPassageSize.Properties.EditFormat.FormatString = "N2"
+        Me.txt3DMinPassageSize.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt3DMinPassageSize.Properties.Increment = New Decimal(New Integer() {5, 0, 0, 131072})
+        Me.txt3DMinPassageSize.Properties.MaskSettings.Set("mask", "N2")
+        Me.txt3DMinPassageSize.Properties.MaxValue = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.txt3DMinPassageSize.Properties.MinValue = New Decimal(New Integer() {5, 0, 0, 131072})
+        '
+        'lbl3DMinPassageSize
+        '
+        resources.ApplyResources(Me.lbl3DMinPassageSize, "lbl3DMinPassageSize")
+        Me.lbl3DMinPassageSize.Name = "lbl3DMinPassageSize"
+        '
+        'lbl3dPrecisionUM
+        '
+        resources.ApplyResources(Me.lbl3dPrecisionUM, "lbl3dPrecisionUM")
+        Me.lbl3dPrecisionUM.Name = "lbl3dPrecisionUM"
+        '
+        'txt3DPrecision
+        '
+        resources.ApplyResources(Me.txt3DPrecision, "txt3DPrecision")
+        Me.txt3DPrecision.Name = "txt3DPrecision"
+        Me.txt3DPrecision.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txt3DPrecision.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txt3DPrecision.Properties.DisplayFormat.FormatString = "N2"
+        Me.txt3DPrecision.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt3DPrecision.Properties.EditFormat.FormatString = "N2"
+        Me.txt3DPrecision.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt3DPrecision.Properties.Increment = New Decimal(New Integer() {5, 0, 0, 131072})
+        Me.txt3DPrecision.Properties.MaskSettings.Set("mask", "N1")
+        Me.txt3DPrecision.Properties.MaxValue = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.txt3DPrecision.Properties.MinValue = New Decimal(New Integer() {5, 0, 0, 131072})
+        '
+        'lbl3DPrecision
+        '
+        resources.ApplyResources(Me.lbl3DPrecision, "lbl3DPrecision")
+        Me.lbl3DPrecision.Name = "lbl3DPrecision"
         '
         'tabInfoHighlights1
         '
@@ -5821,6 +5893,11 @@ Partial Class frmProperties
         Me.XtraScrollableControl2.ResumeLayout(False)
         Me.tabInfo3D1.ResumeLayout(False)
         Me.tabInfo3D1.PerformLayout()
+        CType(Me.pnl3D, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnl3D.ResumeLayout(False)
+        Me.pnl3D.PerformLayout()
+        CType(Me.txt3DMinPassageSize.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt3DPrecision.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabInfoHighlights1.ResumeLayout(False)
         Me.tabInfoHighlights1.PerformLayout()
         CType(Me.txtHighlightSize.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -6497,4 +6574,11 @@ Partial Class frmProperties
     Friend WithEvents btnSessionCalibration As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl4 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtBaseBrushLinesScaleFactor As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents lbl3dPrecisionUM As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txt3DPrecision As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents lbl3DPrecision As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txt3DMinPassageSizeUM As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txt3DMinPassageSize As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents lbl3DMinPassageSize As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents pnl3D As DevExpress.XtraEditors.PanelControl
 End Class

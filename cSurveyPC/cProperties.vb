@@ -109,6 +109,8 @@ Namespace cSurvey
         Private sThreeDOversamplingFactor As Single
         Private iThreeDExportAsImageOversamplingFactor As Integer
         Private bThreeDLochShowSplay As Boolean
+        Private sThreeDMinPassageSize As Single
+        Private sThreeDPrecision As Single
 
         Private iThreeDSurfaceModelLod As Integer
         Private sThreeDSurfaceTextureLod As Single
@@ -807,12 +809,14 @@ Namespace cSurvey
             iVerticalLRUDThreshold = 90
 
             iThreeDSurfaceModelLod = 1
-            sThreeDSurfaceTextureLod = 1.5
+            sThreeDSurfaceTextureLod = 1.5F
 
             iThreeDModelMode = ThreeDModelModeEnum.Simple
-            sThreeDNormalizationFactor = 1.5
-            sThreeDOversamplingFactor = 1
+            sThreeDNormalizationFactor = 1.5F
+            sThreeDOversamplingFactor = 1.0F
             iThreeDExportAsImageOversamplingFactor = 2
+            sThreeDMinPassageSize = 0.5F
+            sThreeDPrecision = 0.1F
 
             bSurfaceProfile = False
             sSurfaceProfileElevation = ""
@@ -954,6 +958,24 @@ Namespace cSurvey
             End Set
         End Property
 
+        Public Property ThreeDMinPassageSize As Single
+            Get
+                Return sThreeDMinPassageSize
+            End Get
+            Set(value As Single)
+                sThreeDMinPassageSize = value
+            End Set
+        End Property
+
+        Public Property ThreeDPrecision As Single
+            Get
+                Return sThreeDPrecision
+            End Get
+            Set(value As Single)
+                sThreeDPrecision = value
+            End Set
+        End Property
+
         Public Property ThreeDExportAsImageOversamplingFactor As Integer
             Get
                 Return iThreeDExportAsImageOversamplingFactor
@@ -1082,6 +1104,8 @@ Namespace cSurvey
             sThreeDNormalizationFactor = modNumbers.StringToSingle(modXML.GetAttributeValue([Properties], "threednormalizationfactor", "1.5"))
             sThreeDOversamplingFactor = modNumbers.StringToSingle(modXML.GetAttributeValue([Properties], "threedoversamplingfactor", "1"))
             iThreeDExportAsImageOversamplingFactor = modNumbers.StringToInteger(modXML.GetAttributeValue([Properties], "threedexportasimageoversamplingfactor", "2"))
+            sThreeDMinPassageSize = modNumbers.StringToSingle(modXML.GetAttributeValue([Properties], "threedminpassagesize", 0.5))
+            sThreeDPrecision = modNumbers.StringToSingle(modXML.GetAttributeValue([Properties], "threedprecision", 0.1))
 
             bThreeDLochShowSplay = modXML.GetAttributeValue([Properties], "threedlochshowsplay", True)
 
@@ -1223,6 +1247,9 @@ Namespace cSurvey
             If sThreeDNormalizationFactor <> 1.5 Then Call oXmlProperties.SetAttribute("threednormalizationfactor", modNumbers.NumberToString(sThreeDNormalizationFactor, "0.0"))
             If sThreeDOversamplingFactor <> 1 Then Call oXmlProperties.SetAttribute("threedoversamplingfactor", modNumbers.NumberToString(sThreeDOversamplingFactor, "0.0"))
             If iThreeDExportAsImageOversamplingFactor <> 2 Then Call oXmlProperties.SetAttribute("threedexportasimageoversamplingfactor", modNumbers.NumberToString(iThreeDExportAsImageOversamplingFactor, "0"))
+
+            If sThreeDMinPassageSize <> 0.5 Then Call oXmlProperties.SetAttribute("threedminpassagesize", modNumbers.NumberToString(sThreeDMinPassageSize, "0.00"))
+            If sThreeDPrecision <> 0.1 Then Call oXmlProperties.SetAttribute("threedprecision", modNumbers.NumberToString(sThreeDPrecision, "0.00"))
 
             If Not bThreeDLochShowSplay Then Call oXmlProperties.SetAttribute("threedlochshowsplay", "0")
 

@@ -68,7 +68,7 @@ Namespace cSurvey.Design.Layers
             Return oList
         End Function
 
-        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Clipping As cClippingRegions, Selection As Helper.Editor.cIEditDesignSelection)
+        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Clipping As Clipping.cClippingRegions, Selection As Helper.Editor.cIEditDesignSelection)
             If PaintOptions.DrawDesign Then
                 'If (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Or PaintOptions.IsPreview Or PaintOptions.IsViewer Then
                 If (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Or ((PaintOptions.IsPreview Or PaintOptions.IsViewer) And Not MyBase.HiddenInPreview) Then

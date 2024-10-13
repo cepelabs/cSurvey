@@ -323,7 +323,7 @@ Module modSegmentsTools
 
         Dim oSplayPolygon As List(Of PointD) = New List(Of PointD)
         'add a minimun shape around a station...
-        Call oClipper.AddPath(modClipper.ToIntPolygon(pGetShape(oFromPoint, dMinSize, dMinSize, 8), 100), PolyType.ptSubject, True)
+        Call oClipper.AddPolygon(modClipper.ToIntPolygon(pGetShape(oFromPoint, dMinSize, dMinSize, 8), 100), PolyType.ptSubject)
         If Segment.Data.Plan.FromSplays.Count > 0 Then
             bFirst = True
             'add splay points...
@@ -355,11 +355,11 @@ Module modSegmentsTools
         If bUseConvexHull Then
             oSplayPolygon = pConvexHull(oSplayPolygon, True)
         End If
-        Call oClipper.AddPath(modClipper.ToIntPolygon(oSplayPolygon, 100), PolyType.ptSubject, True)
+        Call oClipper.AddPolygon(modClipper.ToIntPolygon(oSplayPolygon, 100), PolyType.ptSubject)
 
         Call oSplayPolygon.Clear()
         'add a minimun shape around a station...
-        Call oClipper.AddPath(modClipper.ToIntPolygon(pGetShape(oToPoint, dMinSize, dMinSize, 8), 100), PolyType.ptSubject, True)
+        Call oClipper.AddPolygon(modClipper.ToIntPolygon(pGetShape(oToPoint, dMinSize, dMinSize, 8), 100), PolyType.ptSubject)
         If Segment.Data.Plan.ToSplays.Count > 0 Then
             bFirst = True
             Dim oSortedSplayPoints As SortedDictionary(Of Decimal, PointD) = New SortedDictionary(Of Decimal, PointD)
@@ -388,7 +388,7 @@ Module modSegmentsTools
         If bUseConvexHull Then
             oSplayPolygon = pConvexHull(oSplayPolygon, True)
         End If
-        Call oClipper.AddPath(modClipper.ToIntPolygon(oSplayPolygon, 100), PolyType.ptSubject, True)
+        Call oClipper.AddPolygon(modClipper.ToIntPolygon(oSplayPolygon, 100), PolyType.ptSubject)
 
         Dim oSolution As List(Of List(Of IntPoint)) = New List(Of List(Of IntPoint))
         If oClipper.Execute(ClipType.ctUnion, oSolution, PolyFillType.pftNonZero, PolyFillType.pftNonZero) Then
@@ -410,7 +410,7 @@ Module modSegmentsTools
                 Dim oSegmentPoly As List(Of PointD) = pCreatePlanBorderPathFromSplay(oSegment, AngularPrecision, UseHull)
                 If Not IsNothing(oSegmentPoly) Then
                     Dim oRegion As Region = New Region()
-                    Call oClipper.AddPath(modClipper.ToIntPolygon(oSegmentPoly, 100), PolyType.ptSubject, True)
+                    Call oClipper.AddPolygon(modClipper.ToIntPolygon(oSegmentPoly, 100), PolyType.ptSubject)
                 End If
             End If
         Next

@@ -2165,6 +2165,50 @@ Module modPaint
         Return True
     End Function
 
+    Public Function IsInPolygon(ByVal point As PointF, ByVal polygon As PointF()) As Boolean
+        Dim result As Boolean = False
+        Dim a = polygon.Last()
+
+        For Each b In polygon
+            If (b.X = point.X) AndAlso (b.Y = point.Y) Then Return True
+
+            If (b.Y = a.Y) AndAlso (point.Y = a.Y) Then
+                If (a.X <= point.X) AndAlso (point.X <= b.X) Then Return True
+                If (b.X <= point.X) AndAlso (point.X <= a.X) Then Return True
+            End If
+
+            If (b.Y < point.Y) AndAlso (a.Y >= point.Y) OrElse (a.Y < point.Y) AndAlso (b.Y >= point.Y) Then
+                If b.X + (point.Y - b.Y) / (a.Y - b.Y) * (a.X - b.X) <= point.X Then result = Not result
+            End If
+
+            a = b
+        Next
+
+        Return result
+    End Function
+
+    Public Function IsInPolygon(ByVal point As PointF, ByVal polygon As List(Of PointF)) As Boolean
+        Dim result As Boolean = False
+        Dim a = polygon.Last()
+
+        For Each b In polygon
+            If (b.X = point.X) AndAlso (b.Y = point.Y) Then Return True
+
+            If (b.Y = a.Y) AndAlso (point.Y = a.Y) Then
+                If (a.X <= point.X) AndAlso (point.X <= b.X) Then Return True
+                If (b.X <= point.X) AndAlso (point.X <= a.X) Then Return True
+            End If
+
+            If (b.Y < point.Y) AndAlso (a.Y >= point.Y) OrElse (a.Y < point.Y) AndAlso (b.Y >= point.Y) Then
+                If b.X + (point.Y - b.Y) / (a.Y - b.Y) * (a.X - b.X) <= point.X Then result = Not result
+            End If
+
+            a = b
+        Next
+
+        Return result
+    End Function
+
     Public Function PointInPolygon(ByVal Point As PointD, ByVal Polygon As List(Of PointD)) As Boolean
         Return PointInPolygon(Point, Polygon.ToArray)
     End Function
@@ -2175,7 +2219,7 @@ Module modPaint
 
     Public Function PointInPolygon(ByVal Point As PointD, ByVal Polygon As PointD()) As Boolean
         Dim bIn As Boolean = False
-        Dim iNumberOfPoints As Integer = Polygon.Count
+        Dim iNumberOfPoints As Integer = Polygon.Length
         Dim i As Integer = 0
         Dim j As Integer = iNumberOfPoints - 1
         Do While i < iNumberOfPoints
@@ -4223,4 +4267,14 @@ Module modPaint
             End Using
         End Using
     End Function
+
+    Public Sub PaintCross(Path As GraphicsPath, Bounds As RectangleF)
+        Dim oCenter As PointF = modPaint.GetCenterPoint(Bounds)
+        Dim sSize As Single = If(Bounds.Width > Bounds.Height, Bounds.Width, Bounds.Height)
+        modPaint.PathAddCrossFromPoint(Path, oCenter, sSize)
+        Using oErrorMatrix As Matrix = New Matrix
+            oErrorMatrix.RotateAt(45, oCenter)
+            Path.Transform(oErrorMatrix)
+        End Using
+    End Sub
 End Module

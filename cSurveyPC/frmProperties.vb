@@ -165,7 +165,7 @@ Friend Class frmProperties
 
             cboInversionMode.SelectedIndex = .InversionMode
 
-            cboClipBorder.SelectedIndex = .DesignProperties.GetValue("clipborder", My.Application.Settings.GetSetting("design.clipborder", cSurvey.Design.cClippingRegions.ClipBorderEnum.ClipBorder))
+            cboClipBorder.SelectedIndex = .DesignProperties.GetValue("clipborder", My.Application.Settings.GetSetting("design.clipborder", cSurvey.Design.Clipping.cClippingRegions.ClipBorderEnum.ClipBorder))
             'Dim sClippingForAdvancedBrushValue As String = My.Application.Settings.GetSetting("clippingforadvancedbrush", cSurvey.Drawings.cIRegion.RegionTypeEnum.GDI.ToString("D"))
             'If sClippingForAdvancedBrushValue = "Clipper" Then
             '    cboClipAdvancedClipart.SelectedIndex = cSurvey.Drawings.cIRegion.RegionTypeEnum.Clipper
@@ -283,6 +283,9 @@ Friend Class frmProperties
             txt3DNormalizationFactor.Value = .ThreeDNormalizationFactor
             txt3DOversamplingFactor.Value = .ThreeDOversamplingFactor
             txt3DExportAsImageOversampling.Value = .ThreeDExportAsImageOversamplingFactor
+            txt3DPrecision.Value = .ThreeDPrecision
+            txt3DMinPassageSize.Value = .ThreeDMinPassageSize
+
 
             txt3DSurfaceModelLOD.Value = .ThreeDSurfaceModelLod
             txt3DSurfaceTextureLOD.Value = .ThreeDSurfaceTextureLod
@@ -817,6 +820,8 @@ Friend Class frmProperties
             .ThreeDNormalizationFactor = txt3DNormalizationFactor.Value
             .ThreeDOversamplingFactor = txt3DOversamplingFactor.Value
             .ThreeDExportAsImageOversamplingFactor = txt3DExportAsImageOversampling.Value
+            .ThreeDPrecision = txt3DPrecision.Value
+            .ThreeDMinPassageSize = txt3DMinPassageSize.Value
 
             .ThreeDSurfaceModelLod = txt3DSurfaceModelLOD.Value
             .ThreeDSurfaceTextureLod = txt3DSurfaceTextureLOD.Value
@@ -1738,10 +1743,7 @@ Friend Class frmProperties
 
     Private Sub cbo3DModelMode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbo3DModelMode.SelectedIndexChanged
         Dim bEnabled As Boolean = cbo3DModelMode.SelectedIndex > 0
-        lbl3DNormalizationFactor.Enabled = bEnabled
-        txt3DNormalizationFactor.Enabled = bEnabled
-        lbl3DOversamplingFactor.Enabled = bEnabled
-        txt3DOversamplingFactor.Enabled = bEnabled
+        pnl3D.Enabled = bEnabled
 
         chk3DLochShowSplay.Enabled = Not bEnabled
     End Sub

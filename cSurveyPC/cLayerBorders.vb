@@ -8,7 +8,7 @@ Namespace cSurvey.Design.Layers
     Public Class cLayerBorders
         Inherits cLayer
 
-        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Clipping As cClippingRegions, ByVal Selection As Helper.Editor.cIEditDesignSelection)
+        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Clipping As Clipping.cClippingRegions, ByVal Selection As Helper.Editor.cIEditDesignSelection)
             'forzo la render dei bordi perché mi serve averli sempre aggiornati per fare il clipping...
             For Each oItem As cItem In MyBase.Items
                 If oItem.Type = cIItem.cItemTypeEnum.InvertedFreeHandArea Then

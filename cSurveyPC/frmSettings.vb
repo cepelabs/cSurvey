@@ -276,7 +276,7 @@ Friend Class frmSettings
         cboDesignShowRulersStyle.SelectedIndex = My.Application.Settings.GetSetting("design.rulers.style", frmMain2.RulersStyleEnum.Simple)
         cboDesignShowMetricGrid.SelectedIndex = My.Application.Settings.GetSetting("design.metricgrid", 0)
         txtDesignMetricGridOpacity.Value = My.Application.Settings.GetSetting("design.metricgrid.opacity", 50)
-        cboDesignClipBorder.SelectedIndex = My.Application.Settings.GetSetting("design.clipborder", cSurvey.Design.cClippingRegions.ClipBorderEnum.ClipBorder)
+        cboDesignClipBorder.SelectedIndex = My.Application.Settings.GetSetting("design.clipborder", cSurvey.Design.Clipping.cClippingRegions.ClipBorderEnum.ClipBorder)
         cboDesignLineType.SelectedIndex = My.Application.Settings.GetSetting("design.linetype", cSurvey.Design.Items.cIItemLine.LineTypeEnum.Splines)
         cboDesignGeoLineType.SelectedIndex = My.Application.Settings.GetSetting("design.geolinetype", cSurvey.Design.Items.cIItemLine.LineTypeEnum.Lines)
         chkDesignUseOnlyAnchorToMove.Checked = My.Application.Settings.GetSetting("design.useonlyanchortomove", 1)

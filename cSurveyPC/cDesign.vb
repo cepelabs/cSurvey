@@ -4,6 +4,7 @@ Imports System.Drawing.Drawing2D
 Imports cSurveyPC.cSurvey.Drawings
 Imports cSurveyPC.cSurvey.Design.Items
 Imports cSurveyPC.cSurvey.Design.Options
+Imports OfficeOpenXml.FormulaParsing.Excel.Functions.Logical
 
 Namespace cSurvey.Design
     Public MustInherit Class cDesign
@@ -320,8 +321,8 @@ Namespace cSurvey.Design
             IncludeCrossSections = 2
         End Enum
 
-        Friend Function GetCaveClippingPaths(Graphics As Graphics, PaintOptions As cOptions, Options As ClippingPathsOptions) As cClippingPaths
-            Dim oClippingpaths As cClippingPaths = New cClippingPaths(oSurvey)
+        Friend Function GetCaveClippingPaths(Graphics As Graphics, PaintOptions As cOptions, Options As ClippingPathsOptions) As Clipping.cClippingPaths
+            Dim oClippingpaths As Clipping.cClippingPaths = New Clipping.cClippingPaths(oSurvey)
             Dim oLayer As Layers.cLayerBorders = oLayers.Item(cLayers.LayerTypeEnum.Borders)
 
             Dim bInclude As Boolean
@@ -408,8 +409,8 @@ Namespace cSurvey.Design
             Return oClippingpaths
         End Function
 
-        Friend Function GetCaveClippingRegions(Graphics As Graphics, PaintOptions As cOptions) As cClippingRegions
-            Dim oClippingRegions As cClippingRegions = New cClippingRegions(oSurvey)
+        Friend Function GetCaveClippingRegions(Graphics As Graphics, PaintOptions As cOptions) As Clipping.cClippingRegions
+            Dim oClippingRegions As Clipping.cClippingRegions = New Clipping.cClippingRegions(oSurvey)
             Dim oLayer As Layers.cLayerBorders = oLayers.Item(cLayers.LayerTypeEnum.Borders)
 
             Dim oAddItems As List(Of Design.Items.cItemInvertedFreeHandArea) = New List(Of Design.Items.cItemInvertedFreeHandArea)
@@ -940,7 +941,7 @@ Namespace cSurvey.Design
 
         Private Sub pDrawOriginalPosition(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, DrawingOrder As List(Of cCaveBranchPlaceholder))
             Dim iOriginalPositionTransparencyThreshold = oSurvey.Properties.DesignProperties.GetValue("DesignOriginalPositionTransparencyThreshold", 255)
-            Using oClippingPaths As cClippingPaths = GetCaveClippingPaths(Graphics, PaintOptions, ClippingPathsOptions.OnlyVisiblePen)
+            Using oClippingPaths As Clipping.cClippingPaths = GetCaveClippingPaths(Graphics, PaintOptions, ClippingPathsOptions.OnlyVisiblePen)
                 'attivo il filtro per grotta/ramo (non attivo nelle opzioni di stampa/esportazione)
                 'e commissiono il disegno coppia per coppia
                 Dim bClippingDraw As Boolean
@@ -1102,6 +1103,12 @@ Namespace cSurvey.Design
             End If
 
             If PaintOptions.DrawDesign Then
+
+                Using oPlanCache As modDesignLRUD.cLRUDFromDesignCache2 = New modDesignLRUD.cLRUDFromDesignCache2(oSurvey, oSurvey.Plan, PaintOptions, 0.5)
+                    oPlanCache.Paint(Graphics)
+                End Using
+
+
                 'cave/branch to be designed...ordered if needed
                 Dim oDrawingOrder As List(Of cCaveBranchPlaceholder) = New List(Of cCaveBranchPlaceholder)
                 If Not PaintOptions.IsDesign Then
@@ -1173,7 +1180,7 @@ Namespace cSurvey.Design
                         'RENDERING for EDITOR (semplified and without clipping)
                         Dim oDesignOptions As cOptionsDesign = PaintOptions
                         Dim iLowerLayersDesignTransparencyThreshold As Integer = oSurvey.Properties.DesignProperties.GetValue("LowerLayersDesignTransparencyThreshold", 120) '
-                        Using oClippingRegions As cClippingRegions = New cClippingRegions(oSurvey)
+                        Using oClippingRegions As Clipping.cClippingRegions = New Clipping.cClippingRegions(oSurvey)
                             Dim bLayerBeforeCurrent As Boolean = True
                             For Each oLayer As cLayer In oLayers
                                 If oLayer.Type = Selection.CurrentLayer.Type Then
@@ -1211,7 +1218,7 @@ Namespace cSurvey.Design
                     Else
                         'RENDERING for PREVIEW, EXPORT E VIEWER
                         'Backgrounds
-                        Using oClippingPaths As cClippingPaths = GetCaveClippingPaths(Graphics, PaintOptions, ClippingPathsOptions.OnlyVisiblePen)
+                        Using oClippingPaths As Clipping.cClippingPaths = GetCaveClippingPaths(Graphics, PaintOptions, ClippingPathsOptions.OnlyVisiblePen)
                             Dim iBackgroundTransparencyThreshold = oSurvey.Properties.DesignProperties.GetValue("DesignBackgroundTransparencyThreshold", 0)
                             Dim oBackcolor As Color = Color.White
                             If iBackgroundTransparencyThreshold > 0 Then
@@ -1236,7 +1243,7 @@ Namespace cSurvey.Design
                         End Using
 
                         If bSchematic Then
-                            Using oClippingRegions As cClippingRegions = GetCaveClippingRegions(Graphics, PaintOptions)
+                            Using oClippingRegions As Clipping.cClippingRegions = GetCaveClippingRegions(Graphics, PaintOptions)
                                 'attivo il filtro per grotta/ramo (non attivo nelle opzioni di stampa/esportazione)
                                 'e commissiono il disegno coppia per coppia
                                 PaintOptions.HighlightCurrentCave = True
@@ -1251,7 +1258,7 @@ Namespace cSurvey.Design
                                 PaintOptions.HighlightMode = cOptionsCenterline.HighlightModeEnum.Default
                             End Using
                         Else
-                            Using oClippingRegions As cClippingRegions = GetCaveClippingRegions(Graphics, PaintOptions)
+                            Using oClippingRegions As Clipping.cClippingRegions = GetCaveClippingRegions(Graphics, PaintOptions)
                                 'attivo il filtro per grotta/ramo (non attivo nelle opzioni di stampa/esportazione)
                                 'e commissiono il disegno coppia per coppia
                                 PaintOptions.HighlightCurrentCave = True
@@ -1336,7 +1343,7 @@ Namespace cSurvey.Design
                             If Selection.Cancel Then Exit For
                         Next
                     Else
-                        Using oClippingRegions As cClippingRegions = GetCaveClippingRegions(Graphics, PaintOptions)
+                        Using oClippingRegions As Clipping.cClippingRegions = GetCaveClippingRegions(Graphics, PaintOptions)
                             For Each oCaveBranchPlaceholder As cCaveBranchPlaceholder In oDrawingOrder
                                 Dim oRegion As Region = oClippingRegions(oCaveBranchPlaceholder.Cave, oCaveBranchPlaceholder.Branch)
                                 If Not oRegion Is Nothing Then
@@ -1378,7 +1385,7 @@ Namespace cSurvey.Design
                             PaintOptions.HighlightCurrentCave = True
                             PaintOptions.HighlightMode = cOptionsCenterline.HighlightModeEnum.ExactMatch
                             If bSchematic Then
-                                Using oClippingRegions As cClippingRegions = GetCaveClippingRegions(Graphics, PaintOptions)
+                                Using oClippingRegions As Clipping.cClippingRegions = GetCaveClippingRegions(Graphics, PaintOptions)
                                     'attivo il filtro per grotta/ramo (non attivo nelle opzioni di stampa/esportazione)
                                     'e commissiono il disegno coppia per coppia
                                     For Each oCaveBranchPlaceholder As cCaveBranchPlaceholder In oDrawingOrder
@@ -1389,7 +1396,7 @@ Namespace cSurvey.Design
                                     Next
                                 End Using
                             Else
-                                Using oClippingRegions As cClippingRegions = GetCaveClippingRegions(Graphics, PaintOptions)
+                                Using oClippingRegions As Clipping.cClippingRegions = GetCaveClippingRegions(Graphics, PaintOptions)
                                     'attivo il filtro per grotta/ramo (non attivo nelle opzioni di stampa/esportazione)
                                     'e commissiono il disegno coppia per coppia
                                     Dim iIndex As Integer = 0

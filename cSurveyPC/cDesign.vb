@@ -1104,9 +1104,9 @@ Namespace cSurvey.Design
 
             If PaintOptions.DrawDesign Then
 
-                Using oPlanCache As modDesignLRUD.cLRUDFromDesignCache2 = New modDesignLRUD.cLRUDFromDesignCache2(oSurvey, oSurvey.Plan, PaintOptions, 0.5)
-                    oPlanCache.Paint(Graphics)
-                End Using
+                'Using oPlanCache As modDesignLRUD.cLRUDFromDesignCache2 = New modDesignLRUD.cLRUDFromDesignCache2(oSurvey, oSurvey.Plan, PaintOptions, 0.5)
+                '    oPlanCache.Paint(Graphics)
+                'End Using
 
 
                 'cave/branch to be designed...ordered if needed

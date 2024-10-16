@@ -831,7 +831,7 @@ Namespace cSurvey.Design
 
                 'calculate surface profile...
                 Call oSegment.Data.Profile.SurfaceProfile.Clear()
-                If Not oSurvey.Properties.SurfaceProfileElevation Is Nothing Then ' And oSegment.From = "GB0" And oSegment.To = "GB1" Then
+                If Not oSurvey.Properties.SurfaceProfileElevation Is Nothing Then
                     Dim sBaseAlt As Decimal = oSurvey.Calculate.TrigPoints(oSurvey.Properties.Origin).Coordinate.Altitude  ' oSurvey.Properties.SurfaceProfileElevation.GetElevation(oSurvey.TrigPoints.GetOrigin)
                     Dim oPlanFromPoint As PointD = oSegment.Data.Plan.FromPoint
                     Dim oPlanToPoint As PointD = oSegment.Data.Plan.ToPoint

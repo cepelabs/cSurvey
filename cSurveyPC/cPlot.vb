@@ -22,11 +22,11 @@ Namespace cSurvey.Design
         Public DownPoint As PointD
 
         Public Function HaveValidLR() As Boolean
-            Return (Point <> RightPoint) Or (Point <> LeftPoint)
+            Return (Point <> RightPoint) OrElse (Point <> LeftPoint)
         End Function
 
         Public Function HaveValidUD() As Boolean
-            Return (Point <> UpPoint) Or (Point <> DownPoint)
+            Return (Point <> UpPoint) OrElse (Point <> DownPoint)
         End Function
 
         Friend Sub New()

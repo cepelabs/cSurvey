@@ -17662,7 +17662,7 @@ Friend Class frmMain2
             txtSegmentDown.Text = e.Value
 
         ElseIf grdViewSegments.FocusedColumn Is colSegmentsListExclude Then
-            chkSegmentExclude.Text = e.Value
+            chkSegmentExclude.Checked = e.Value
         ElseIf grdViewSegments.FocusedColumn Is colSegmentsListProfileDirection Then
             cboSegmentDirection.SelectedIndex = e.Value
         End If

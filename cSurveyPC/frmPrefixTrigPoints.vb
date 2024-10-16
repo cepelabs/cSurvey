@@ -74,6 +74,7 @@ Friend Class frmPrefixTrigPoints
         listbox1.BeginUpdate()
         listbox2.BeginUpdate()
         oList1.Clear()
+        Call oSurvey.TrigPoints.Rebind()
         For Each oTrigpoint As cSurvey.cTrigPoint In oSurvey.TrigPoints
             'If (chkShowSplay.Checked) OrElse (Not chkShowSplay.Checked AndAlso Not oTrigpoint.Data.IsSplay) Then
             'Dim sTrigpoint As String = oTrigpoint.Name

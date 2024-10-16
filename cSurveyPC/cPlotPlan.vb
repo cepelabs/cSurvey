@@ -863,17 +863,28 @@ Namespace cSurvey.Design
             Next
 
             'set topoint and frompoint to shots
-            For Each oSegment As cSegment In SegmentsColl
-                If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined Then
-                    Dim sFrom As String = oSegment.Data.Data.From
-                    Dim sTo As String = oSegment.Data.Data.To
-                    Dim oFromPointCacheitem As cPointCacheItem = oPointCache(oSegment.Data.Data.From)
-                    Dim oToPointCacheitem As cPointCacheItem = oPointCache(oSegment.Data.Data.To)
-                    Dim oFromPoint As PointD = oFromPointCacheitem.Point
-                    Dim oToPoint As PointD = oToPointCacheitem.Point
-                    Call oSegment.Data.Plan.SetPoints(sFrom, sTo, oFromPoint, oToPoint)
-                End If
-            Next
+            Threading.Tasks.Parallel.ForEach(Of cSurveyPC.cSurvey.cSegment)(SegmentsColl, Sub(oSegment)
+                                                                                              If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined Then
+                                                                                                  Dim sFrom As String = oSegment.Data.Data.From
+                                                                                                  Dim sTo As String = oSegment.Data.Data.To
+                                                                                                  Dim oFromPointCacheitem As cPointCacheItem = oPointCache(oSegment.Data.Data.From)
+                                                                                                  Dim oToPointCacheitem As cPointCacheItem = oPointCache(oSegment.Data.Data.To)
+                                                                                                  Dim oFromPoint As PointD = oFromPointCacheitem.Point
+                                                                                                  Dim oToPoint As PointD = oToPointCacheitem.Point
+                                                                                                  Call oSegment.Data.Plan.SetPoints(sFrom, sTo, oFromPoint, oToPoint)
+                                                                                              End If
+                                                                                          End Sub)
+            'For Each oSegment As cSegment In SegmentsColl
+            '    If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined Then
+            '        Dim sFrom As String = oSegment.Data.Data.From
+            '        Dim sTo As String = oSegment.Data.Data.To
+            '        Dim oFromPointCacheitem As cPointCacheItem = oPointCache(oSegment.Data.Data.From)
+            '        Dim oToPointCacheitem As cPointCacheItem = oPointCache(oSegment.Data.Data.To)
+            '        Dim oFromPoint As PointD = oFromPointCacheitem.Point
+            '        Dim oToPoint As PointD = oToPointCacheitem.Point
+            '        Call oSegment.Data.Plan.SetPoints(sFrom, sTo, oFromPoint, oToPoint)
+            '    End If
+            'Next
 
             'repeat the loop calculating sidepoints
             For Each oSegment As cSegment In SegmentsColl
@@ -964,9 +975,17 @@ Namespace cSurvey.Design
 
                         'for other station put a placeholder in collection....
                         If Not oPointCache.ContainsKey(sTo) Then
+                            bUpdate = True
+                        Else
+                            bUpdate = (Not oPointCache(sTo).HaveValidLR) 'AndAlso (oPoint <> oSidePointRight OrElse oPoint <> oSidePointLeft)
+                            If bUpdate Then
+                                oPointCache.Remove(sTo)
+                            End If
+                        End If
+                        If bUpdate Then 'If Not oPointCache.ContainsKey(sTo) Then
                             oPoint = oSurvey.Calculate.TrigPoints(sTo).Point.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
                             'simple LR direction...
-                            dBearing = oSegment.Data.Data.Bearing - 90 'modPaint.NormalizeAngle(pGetRelativeSegmentBearing(oPointCache, oSegmentsList, oSegment, sTo, False) - 90)
+                            dBearing = oSegment.Data.Data.Bearing - 90
 
                             Dim oPointCacheItem As cPointCacheItem = New cPointCacheItem
                             oPointCacheItem.Point = oPoint
@@ -1050,9 +1069,17 @@ Namespace cSurvey.Design
 
                         'for other station put a placeholder in collection....
                         If Not oPointCache.ContainsKey(sFrom) Then
+                            bUpdate = True
+                        Else
+                            bUpdate = (Not oPointCache(sFrom).HaveValidLR) 'AndAlso (oPoint <> oSidePointRight OrElse oPoint <> oSidePointLeft)
+                            If bUpdate Then
+                                oPointCache.Remove(sFrom)
+                            End If
+                        End If
+                        If bUpdate Then ' Not oPointCache.ContainsKey(sFrom) Then
                             oPoint = oSurvey.Calculate.TrigPoints(sFrom).Point.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
                             'simple LR direction...
-                            dBearing = oSegment.Data.Data.Bearing - 90 ' modPaint.NormalizeAngle(pGetRelativeSegmentBearing(oPointCache, oSegmentsList, oSegment, sFrom, True) - 90)
+                            dBearing = oSegment.Data.Data.Bearing - 90
 
                             Dim oPointCacheItem As cPointCacheItem = New cPointCacheItem
                             oPointCacheItem.Point = oPoint
@@ -1067,21 +1094,37 @@ Namespace cSurvey.Design
             Next
 
             'set sidepoints...
-            For Each oSegment As cSegment In SegmentsColl
-                If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined Then
-                    Dim oFromPointCacheitem As cPointCacheItem = oPointCache(oSegment.Data.Data.From)
-                    Dim oToPointCacheitem As cPointCacheItem = oPointCache(oSegment.Data.Data.To)
-                    Dim oFromSidePointRight As PointD = oFromPointCacheitem.RightPoint
-                    Dim dFromBearingRight As Decimal = oFromPointCacheitem.RightBearing
-                    Dim oFromSidePointLeft As PointD = oFromPointCacheitem.LeftPoint
-                    Dim dFromBearingLeft As Decimal = oFromPointCacheitem.LeftBearing
-                    Dim oToSidePointRight As PointD = oToPointCacheitem.RightPoint
-                    Dim dToBearingRight As Decimal = oToPointCacheitem.RightBearing
-                    Dim oToSidePointLeft As PointD = oToPointCacheitem.LeftPoint
-                    Dim dToBearingLeft As Decimal = oToPointCacheitem.LeftBearing
-                    Call oSegment.Data.Plan.SetSidePoints(oFromSidePointRight, dFromBearingRight, oFromSidePointLeft, dFromBearingLeft, oToSidePointRight, dToBearingRight, oToSidePointLeft, dToBearingLeft)
-                End If
-            Next
+            Threading.Tasks.Parallel.ForEach(Of cSurveyPC.cSurvey.cSegment)(SegmentsColl, Sub(oSegment)
+                                                                                              If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined Then
+                                                                                                  Dim oFromPointCacheitem As cPointCacheItem = oPointCache(oSegment.Data.Data.From)
+                                                                                                  Dim oToPointCacheitem As cPointCacheItem = oPointCache(oSegment.Data.Data.To)
+                                                                                                  Dim oFromSidePointRight As PointD = oFromPointCacheitem.RightPoint
+                                                                                                  Dim dFromBearingRight As Decimal = oFromPointCacheitem.RightBearing
+                                                                                                  Dim oFromSidePointLeft As PointD = oFromPointCacheitem.LeftPoint
+                                                                                                  Dim dFromBearingLeft As Decimal = oFromPointCacheitem.LeftBearing
+                                                                                                  Dim oToSidePointRight As PointD = oToPointCacheitem.RightPoint
+                                                                                                  Dim dToBearingRight As Decimal = oToPointCacheitem.RightBearing
+                                                                                                  Dim oToSidePointLeft As PointD = oToPointCacheitem.LeftPoint
+                                                                                                  Dim dToBearingLeft As Decimal = oToPointCacheitem.LeftBearing
+                                                                                                  Call oSegment.Data.Plan.SetSidePoints(oFromSidePointRight, dFromBearingRight, oFromSidePointLeft, dFromBearingLeft, oToSidePointRight, dToBearingRight, oToSidePointLeft, dToBearingLeft)
+                                                                                              End If
+                                                                                          End Sub)
+
+            'For Each oSegment As cSegment In SegmentsColl
+            '    If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined Then
+            '        Dim oFromPointCacheitem As cPointCacheItem = oPointCache(oSegment.Data.Data.From)
+            '        Dim oToPointCacheitem As cPointCacheItem = oPointCache(oSegment.Data.Data.To)
+            '        Dim oFromSidePointRight As PointD = oFromPointCacheitem.RightPoint
+            '        Dim dFromBearingRight As Decimal = oFromPointCacheitem.RightBearing
+            '        Dim oFromSidePointLeft As PointD = oFromPointCacheitem.LeftPoint
+            '        Dim dFromBearingLeft As Decimal = oFromPointCacheitem.LeftBearing
+            '        Dim oToSidePointRight As PointD = oToPointCacheitem.RightPoint
+            '        Dim dToBearingRight As Decimal = oToPointCacheitem.RightBearing
+            '        Dim oToSidePointLeft As PointD = oToPointCacheitem.LeftPoint
+            '        Dim dToBearingLeft As Decimal = oToPointCacheitem.LeftBearing
+            '        Call oSegment.Data.Plan.SetSidePoints(oFromSidePointRight, dFromBearingRight, oFromSidePointLeft, dFromBearingLeft, oToSidePointRight, dToBearingRight, oToSidePointLeft, dToBearingLeft)
+            '    End If
+            'Next
 
             'warping design...
             If PerformWarping Then

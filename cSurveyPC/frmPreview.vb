@@ -1239,7 +1239,7 @@ Friend Class frmPreview
         'pnlPopup.Visible = True
         'lblPopupWarning.Text = GetLocalizedString("preview.warning1")
 
-        cDesignMessageCorner.PopupShow("warning", GetLocalizedString("preview.warning1"))
+        cDesignMessageCorner.PopupShow("refreshwarning", GetLocalizedString("preview.warning1"), True)
         btnRefresh.Visibility = BarItemVisibility.Always
     End Sub
 
@@ -3517,5 +3517,11 @@ Friend Class frmPreview
                         End If
                 End Select
         End Select
+    End Sub
+
+    Private Sub cDesignMessageCorner_MessageClick(Sender As Object, e As EventArgs) Handles cDesignMessageCorner.MessageClick
+        If cDesignMessageCorner.Type = "refreshwarning" Then
+            Call btnRefresh.PerformClick()
+        End If
     End Sub
 End Class

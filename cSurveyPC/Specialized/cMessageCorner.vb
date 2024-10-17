@@ -27,15 +27,39 @@
     End Property
 
     Public Sub PopupHide()
+        Me.AllowClick = False
         Me.Visible = False
     End Sub
 
-    Public Sub PopupShow(ByVal Type As String, ByVal Text As String)
+    Private sText As String
+
+    Public ReadOnly Property Text As String
+        Get
+            Return sText
+        End Get
+    End Property
+
+    Private sType As String
+
+    Public ReadOnly Property Type As String
+        Get
+            Return sType
+        End Get
+    End Property
+
+    Public Sub PopupShow(ByVal Type As String, ByVal Text As String, Optional AllowClick As Boolean = False)
         Dim bShow As Boolean
-        Select Case Type.ToLower
+        sType = Type.ToLower
+        sText = Text
+        Me.AllowClick = AllowClick
+        Select Case sType
             Case "error"
                 picPopupWarning.SvgImage = My.Resources.error2
                 Me.BackColor = Color.PeachPuff
+                bShow = True
+            Case "refreshwarning"
+                picPopupWarning.SvgImage = My.Resources.refresh_warning
+                Me.BackColor = Color.LightYellow
                 bShow = True
             Case "warning"
                 picPopupWarning.SvgImage = My.Resources.warning
@@ -43,10 +67,7 @@
                 bShow = True
         End Select
         If bShow Then
-            picPopupWarning.SuperTip = modDevExpress.CreateSuperTip("", Nothing, Nothing, Text, picPopupWarning.SvgImage, New Size(24, 24), "", Nothing, Nothing)
-            'Dim sText As String = If(Text.Length > 2048, Text.Substring(0, 2048), Text)
-            'lblPopupWarning.Text = sText
-            'lblPopupWarning.ToolTip = sText & If(Details <> "", vbCrLf & Details, "")
+            picPopupWarning.SuperTip = modDevExpress.CreateSuperTip("", Nothing, Nothing, sText, picPopupWarning.SvgImage, New Size(24, 24), "", Nothing, Nothing)
             Me.Visible = True
         End If
     End Sub

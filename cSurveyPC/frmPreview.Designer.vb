@@ -1215,7 +1215,7 @@ Partial Class frmPreview
         '
         resources.ApplyResources(Me.btnRefresh, "btnRefresh")
         Me.btnRefresh.Id = 18
-        Me.btnRefresh.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_refresh
+        Me.btnRefresh.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.refresh_warning
         Me.btnRefresh.Name = "btnRefresh"
         '
         'pnlStatusText

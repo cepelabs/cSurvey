@@ -5406,7 +5406,7 @@ Friend Class frmMain2
             If Force Then
                 Call oSurvey.Invalidate()
             End If
-            Call DirectCast(grdSegments.DataSource, UIHelpers.cSegmentsBindingList).ResetCalculateException()
+            If grdSegments.DataSource IsNot Nothing Then Call DirectCast(grdSegments.DataSource, UIHelpers.cSegmentsBindingList).ResetCalculateException()
             Dim oResult As cActionResult = oSurvey.Calculate.Calculate(True)
             If oResult.Result Then
                 Call pPopupHide()

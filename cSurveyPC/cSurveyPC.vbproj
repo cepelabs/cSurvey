@@ -211,8 +211,8 @@
     <Reference Include="DevExpress.XtraRichEdit.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraVerticalGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="Diacritics, Version=3.3.27.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Diacritics.3.3.27\lib\net45\Diacritics.dll</HintPath>
+    <Reference Include="Diacritics, Version=3.3.29.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Diacritics.3.3.29\lib\net45\Diacritics.dll</HintPath>
     </Reference>
     <Reference Include="EPPlus, Version=4.5.3.3, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>packages\EPPlus.4.5.3.3\lib\net40\EPPlus.dll</HintPath>

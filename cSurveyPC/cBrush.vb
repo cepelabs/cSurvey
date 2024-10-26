@@ -2176,6 +2176,16 @@ Namespace cSurvey.Design
             Call Invalidate()
         End Sub
 
+        ''' <summary>
+        ''' For future use: pen scale-invariate (same at every scale)
+        ''' </summary>
+        ''' <returns></returns>
+        Public ReadOnly Property IsScaleInvariant As Boolean
+            Get
+                Return False
+            End Get
+        End Property
+
         Friend Sub Invalidate()
             bInvalidated = True
             RaiseEvent OnChanged(Me, EventArgs.Empty)
@@ -2811,7 +2821,9 @@ Namespace cSurvey.Design
         End Sub
 
         Private Sub oSurvey_OnPropertiesChanged(ByVal Sender As cSurvey, ByVal Args As cSurvey.OnPropertiesChangedEventArgs) Handles oSurvey.OnPropertiesChanged
-            Call Invalidate()
+            If (oBaseBrush.IsScaleInvariant AndAlso Args.Source = cSurvey.OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum.Scale) OrElse (Args.Source <> cSurvey.OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum.Scale) Then
+                Call Invalidate()
+            End If
         End Sub
 
         Private Sub oSeed_OnReseed(ByVal Sender As cBrushSeed) Handles oSeed.OnReseed

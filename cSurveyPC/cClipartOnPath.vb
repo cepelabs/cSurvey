@@ -181,6 +181,11 @@ Class cClipartOnPath
         Dim sX As Single
         Dim sY As Single
 
+        Dim sScale As Single = Math.Log10(Math.Max(Math.Max(Math.Abs(P1.X), Math.Abs(P2.X)), Math.Max(Math.Abs(P1.Y), Math.Abs(P2.Y))))
+        If sScale > 4 Then
+            oPoints.AddRange({P1, P2})
+            Return oPoints
+        End If
         Dim sIncrement As Single = 0.01
         Dim sWidth As Single = P2.X - P1.X
         Dim sHeight As Single = P2.Y - P1.Y

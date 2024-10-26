@@ -3901,7 +3901,9 @@ Namespace cSurvey.UIHelpers
                 Return sValue
             End Get
             Set(value As Single)
-                sValue = value
+                If sValue <> value AndAlso value > 0F Then
+                    sValue = value
+                End If
             End Set
         End Property
 

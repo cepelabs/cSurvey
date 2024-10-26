@@ -908,7 +908,11 @@ Namespace cSurvey.Design
                             oPen.DashPattern = {6.0F, 2.0F}
                         End If
                     Case cPen.PenStylesEnum.Custom
-                        oPen.DashPattern = sStylePattern
+                        If sStylePattern Is Nothing OrElse sStylePattern.Length = 0 Then
+                            'nothing...correct? to be checked...
+                        Else
+                            oPen.DashPattern = sStylePattern
+                        End If
                 End Select
             End If
 
@@ -952,7 +956,11 @@ Namespace cSurvey.Design
                             oClipartPen.DashPattern = {6.0F, 2.0F}
 
                         Case cPen.PenStylesEnum.Custom
-                            oClipartPen.DashPattern = sClipartStylePattern
+                            If sClipartStylePattern Is Nothing OrElse sClipartStylePattern.Length = 0 Then
+                                'nothing...correct? to be checked...
+                            Else
+                                oClipartPen.DashPattern = sClipartStylePattern
+                            End If
                     End Select
                 Else
                     oClipartPen = Nothing

@@ -3070,6 +3070,58 @@ Namespace cSurvey.UIHelpers
         Public Shared Widening Operator CType(ByVal SegmentPlaceholder As cSegmentPlaceholder) As cSegment
             Return SegmentPlaceholder.Segment
         End Operator
+        Public Property ZSurvey As Boolean
+            Get
+                Return oSegment.ZSurvey
+            End Get
+            Set(value As Boolean)
+                oSegment.ZSurvey = value
+            End Set
+        End Property
+
+        Public Property Splay As Boolean
+            Get
+                Return oSegment.Splay
+            End Get
+            Set(value As Boolean)
+                oSegment.Splay = value
+            End Set
+        End Property
+
+        Public Property Unbindable As Boolean
+            Get
+                Return oSegment.Unbindable
+            End Get
+            Set(value As Boolean)
+                oSegment.Unbindable = value
+            End Set
+        End Property
+
+        Public Property Duplicate As Boolean
+            Get
+                Return oSegment.Duplicate
+            End Get
+            Set(value As Boolean)
+                oSegment.Duplicate = value
+            End Set
+        End Property
+        Public Property CutSplay As Boolean
+            Get
+                Return oSegment.Cut
+            End Get
+            Set(value As Boolean)
+                oSegment.Cut = value
+            End Set
+        End Property
+
+        Public Property Calibration As Boolean
+            Get
+                Return oSegment.Calibration
+            End Get
+            Set(value As Boolean)
+                oSegment.Calibration = value
+            End Set
+        End Property
 
         Public Property Exclude As Boolean
             Get

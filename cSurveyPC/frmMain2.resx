@@ -19256,7 +19256,7 @@
     <value>Direction</value>
   </data>
   <data name="cboSegmentListProfileDirection2.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
-    <value>Glyph</value>
+    <value>Combo</value>
   </data>
   <data name="colSegmentsListProfileDirection.Visible" type="System.Boolean, mscorlib">
     <value>True</value>

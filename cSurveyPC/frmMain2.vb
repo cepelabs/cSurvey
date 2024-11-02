@@ -14057,6 +14057,7 @@ Friend Class frmMain2
 
     Private Sub chkSegmentExclude_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkSegmentExclude.CheckedChanged
         If Not bDisableSegmentsChangeEvent Then
+            If grdViewSegments.GetFocusedObject IsNot Nothing Then DirectCast(grdViewSegments.GetFocusedObject, cSegmentPlaceholder).Exclude = chkSegmentExclude.EditValue
             If Not chkSegmentExclude.Checked Then
                 chkSegmentCalibration.Checked = False
                 chkSegmentDuplicate.Checked = False
@@ -14065,6 +14066,7 @@ Friend Class frmMain2
                 chkSegmentCutSplay.Checked = False
             End If
             Call pSegmentCheckFlags()
+            Call grdViewSegments.RefreshRowCell(grdViewSegments.FocusedRowHandle, colSegmentsListExclude)
         End If
     End Sub
 
@@ -14086,11 +14088,18 @@ Friend Class frmMain2
     End Sub
 
     Private Sub chkSegmentSplay_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkSegmentSplay.CheckedChanged
-        Call pSegmentCheckFlags()
+        If Not bDisableSegmentsChangeEvent Then
+            If grdViewSegments.GetFocusedObject IsNot Nothing Then DirectCast(grdViewSegments.GetFocusedObject, cSegmentPlaceholder).Splay = chkSegmentSplay.EditValue
+            Call pSegmentCheckFlags()
+        End If
     End Sub
 
     Private Sub chkSegmentDuplicate_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkSegmentDuplicate.CheckedChanged
         Call pSegmentCheckFlags()
+        If Not bDisableSegmentsChangeEvent Then
+            If grdViewSegments.GetFocusedObject IsNot Nothing Then DirectCast(grdViewSegments.GetFocusedObject, cSegmentPlaceholder).Duplicate = chkSegmentDuplicate.EditValue
+            Call pSegmentCheckFlags()
+        End If
     End Sub
 
     Private Sub chkSegmentSurface_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkSegmentSurface.CheckedChanged
@@ -14098,11 +14107,16 @@ Friend Class frmMain2
     End Sub
 
     Private Sub chkSegmentCutSplay_CheckedChanged(sender As Object, e As EventArgs) Handles chkSegmentCutSplay.CheckedChanged
-        Call pSegmentCheckFlags()
+        If Not bDisableSegmentsChangeEvent Then
+            If grdViewSegments.GetFocusedObject IsNot Nothing Then DirectCast(grdViewSegments.GetFocusedObject, cSegmentPlaceholder).CutSplay = chkSegmentCutSplay.EditValue
+            Call pSegmentCheckFlags()
+        End If
     End Sub
 
     Private Sub chkSegmentZSurvey_CheckedChanged(sender As Object, e As EventArgs) Handles chkSegmentZSurvey.CheckedChanged
-        Call pSegmentCheckFlags()
+        If Not bDisableSegmentsChangeEvent Then
+            If grdViewSegments.GetFocusedObject IsNot Nothing Then DirectCast(grdViewSegments.GetFocusedObject, cSegmentPlaceholder).ZSurvey = chkSegmentZSurvey.EditValue
+        End If
     End Sub
 
     'Private Function pDesignItemFindCreateButton()
@@ -14973,24 +14987,27 @@ Friend Class frmMain2
     End Sub
 
     Private Sub chkSegmentVirtual_CheckedChanged(sender As Object, e As EventArgs) Handles chkSegmentVirtual.CheckedChanged
-        If chkSegmentVirtual.Checked Then
-            cboSegmentSessionList.Enabled = False
-            txtSegmentDistance.Enabled = False
-            txtSegmentBearing.Enabled = False
-            txtSegmentInclination.Enabled = False
-            txtSegmentLeft.Enabled = False
-            txtSegmentRight.Enabled = False
-            txtSegmentUp.Enabled = False
-            txtSegmentDown.Enabled = False
-        Else
-            cboSegmentSessionList.Enabled = True
-            txtSegmentDistance.Enabled = True
-            txtSegmentBearing.Enabled = True
-            txtSegmentInclination.Enabled = True
-            txtSegmentLeft.Enabled = True
-            txtSegmentRight.Enabled = True
-            txtSegmentUp.Enabled = True
-            txtSegmentDown.Enabled = True
+        If Not bDisableSegmentsChangeEvent Then
+            If grdViewSegments.GetFocusedObject IsNot Nothing Then DirectCast(grdViewSegments.GetFocusedObject, cSegmentPlaceholder).Unbindable = chkSegmentUnbindable.EditValue
+            If chkSegmentVirtual.Checked Then
+                cboSegmentSessionList.Enabled = False
+                txtSegmentDistance.Enabled = False
+                txtSegmentBearing.Enabled = False
+                txtSegmentInclination.Enabled = False
+                txtSegmentLeft.Enabled = False
+                txtSegmentRight.Enabled = False
+                txtSegmentUp.Enabled = False
+                txtSegmentDown.Enabled = False
+            Else
+                cboSegmentSessionList.Enabled = True
+                txtSegmentDistance.Enabled = True
+                txtSegmentBearing.Enabled = True
+                txtSegmentInclination.Enabled = True
+                txtSegmentLeft.Enabled = True
+                txtSegmentRight.Enabled = True
+                txtSegmentUp.Enabled = True
+                txtSegmentDown.Enabled = True
+            End If
         End If
     End Sub
 
@@ -15145,7 +15162,7 @@ Friend Class frmMain2
                 Call pWarpingPopupShow("warping", modMain.GetLocalizedString("main.textpart167") & " <image=#pause;size=16,16>")
             ElseIf oCurrentDesign IsNot Nothing AndAlso oCurrentDesign.Type = cIDesign.cDesignTypeEnum.Plan AndAlso oSurvey.Properties.PlanWarpingDisabled Then
                 Call pWarpingPopupShow("warping", modMain.GetLocalizedString("main.textpart168"))
-            ElseIf oCurrentDesign IsNot Nothing AndAlso oCurrentDesign.Type = cIDesign.cDesignTypeEnum.profile AndAlso oSurvey.Properties.ProfileWarpingDisabled Then
+            ElseIf oCurrentDesign IsNot Nothing AndAlso oCurrentDesign.Type = cIDesign.cDesignTypeEnum.Profile AndAlso oSurvey.Properties.ProfileWarpingDisabled Then
                 Call pWarpingPopupShow("warping", modMain.GetLocalizedString("main.textpart169"))
             Else
                 pWarpingPopupHide()
@@ -15583,7 +15600,10 @@ Friend Class frmMain2
     End Sub
 
     Private Sub chkSegmentCalibration_CheckedChanged(sender As Object, e As EventArgs) Handles chkSegmentCalibration.CheckedChanged
-        Call pSegmentCheckFlags()
+        If Not bDisableSegmentsChangeEvent Then
+            If grdViewSegments.GetFocusedObject IsNot Nothing Then DirectCast(grdViewSegments.GetFocusedObject, cSegmentPlaceholder).Calibration = chkSegmentCalibration.EditValue
+            Call pSegmentCheckFlags()
+        End If
     End Sub
 
     Private Sub pSegmentAttachmentOpen()
@@ -17605,15 +17625,36 @@ Friend Class frmMain2
             If Not IsNothing(oCaveInfo) AndAlso oCaveInfo.GetLocked Then
                 e.Cancel = True
             Else
-                If grdViewSegments.FocusedColumn Is colSegmentsListFrom OrElse grdViewSegments.FocusedColumn Is colSegmentsListTo Then
-                    If Not oTools.CurrentSegment Is Nothing Then
-                        With oTools.CurrentSegment
-                            Dim bDisabledEdit As Boolean = (.IsBinded)
-                            e.Cancel = bDisabledEdit
-                        End With
-                    End If
+                If grdViewSegments.FocusedColumn Is colSegmentsListFrom Then
+                    e.Cancel = Not txtSegmentFrom.Enabled
+                ElseIf grdViewSegments.FocusedColumn Is colSegmentsListTo Then
+                    e.Cancel = Not txtSegmentTo.Enabled
+
+                ElseIf grdViewSegments.FocusedColumn Is colSegmentsListDistance Then
+                    e.Cancel = Not txtSegmentDistance.Enabled
+                ElseIf grdViewSegments.FocusedColumn Is colSegmentsListInclination Then
+                    e.Cancel = Not txtSegmentInclination.Enabled
+                ElseIf grdViewSegments.FocusedColumn Is colSegmentsListBearing Then
+                    e.Cancel = Not txtSegmentBearing.Enabled
+                ElseIf grdViewSegments.FocusedColumn Is colSegmentsListL Then
+                    e.Cancel = Not txtSegmentLeft.Enabled
+                ElseIf grdViewSegments.FocusedColumn Is colSegmentsListR Then
+                    e.Cancel = Not txtSegmentRight.Enabled
+                ElseIf grdViewSegments.FocusedColumn Is colSegmentsListU Then
+                    e.Cancel = Not txtSegmentUp.Enabled
+                ElseIf grdViewSegments.FocusedColumn Is colSegmentsListD Then
+                    e.Cancel = Not txtSegmentDown.Enabled
+
+                    'If grdViewSegments.FocusedColumn Is colSegmentsListFrom OrElse grdViewSegments.FocusedColumn Is colSegmentsListTo Then
+
+                    '    If Not oTools.CurrentSegment Is Nothing Then
+                    '        With oTools.CurrentSegment
+                    '            Dim bDisabledEdit As Boolean = (.IsBinded)
+                    '            e.Cancel = bDisabledEdit
+                    '        End With
+                    '    End If
                 ElseIf grdViewSegments.FocusedColumn Is colSegmentsListProfileDirection Then
-                    e.Cancel = oSegment.Splay OrElse oSegment.IsProfileBinded
+                    e.Cancel = Not cboSegmentListProfileDirection2.Enabled '  oSegment.Splay OrElse oSegment.IsProfileBinded
                 End If
             End If
             bSegmentChanged = True
@@ -17662,9 +17703,11 @@ Friend Class frmMain2
             txtSegmentDown.Text = e.Value
 
         ElseIf grdViewSegments.FocusedColumn Is colSegmentsListExclude Then
-            chkSegmentExclude.Checked = e.Value
+            'chkSegmentExclude.Checked = e.Value
+            'moved in CellValueChanging
         ElseIf grdViewSegments.FocusedColumn Is colSegmentsListProfileDirection Then
-            cboSegmentDirection.SelectedIndex = e.Value
+            'cboSegmentDirection.SelectedIndex = e.Value
+            'moved in CellValueChanging
         End If
     End Sub
 
@@ -19617,7 +19660,7 @@ Friend Class frmMain2
             Dim oItem As BarItem = oQATLastItem.Item
             Dim iIndex As Integer = RibbonControl.Toolbar.ItemLinks.IndexOf(oQATLastItem)
             RibbonControl.Toolbar.ItemLinks.RemoveAt(iIndex)
-            RibbonControl.Toolbar.ItemLinks.Insert(iIndex + 1, oitem)
+            RibbonControl.Toolbar.ItemLinks.Insert(iIndex + 1, oItem)
         End If
     End Sub
 
@@ -19781,8 +19824,8 @@ Friend Class frmMain2
                     oUndoDropdown = New cUndoDropDown
                     oUndoDropdown.Name = "_undopopup"
                     AddHandler oUndoDropdown.OnUndo, AddressOf oUndoDropdown_Onundo
-                    pnlUndoPopup.Controls.Add(oUndoDropDown)
-                    oUndoDropDown.Dock = DockStyle.Fill
+                    pnlUndoPopup.Controls.Add(oUndoDropdown)
+                    oUndoDropdown.Dock = DockStyle.Fill
                 End If
                 Call oUndoDropdown.Rebind(.Undo)
             End If
@@ -19883,7 +19926,7 @@ Friend Class frmMain2
             Next
             'Call pGetCurrentDesignTools.CommitUndoSnapshot()
             Call pMapInvalidate()
-        ElseIf TypeOf e.Item Is ccustompen Then
+        ElseIf TypeOf e.Item Is cCustomPen Then
             Dim oCustomPen As cCustomPen = e.Item
 
             Dim oItemsToChange As List(Of cItem) = New List(Of cItem)
@@ -19934,7 +19977,7 @@ Friend Class frmMain2
                 Next
                 'Call pGetCurrentDesignTools.CommitUndoSnapshot()
             End If
-        ElseIf TypeOf e.Item Is ccustompen Then
+        ElseIf TypeOf e.Item Is cCustomPen Then
             Dim oCustompen As cCustomPen = e.Item
 
             Dim oItemsToChange As List(Of cItem) = New List(Of cItem)
@@ -19958,6 +20001,29 @@ Friend Class frmMain2
                 Next
                 'Call pGetCurrentDesignTools.CommitUndoSnapshot()
             End If
+        End If
+    End Sub
+
+    Private Sub grdViewSegments_CellValueChanging(sender As Object, e As CellValueChangedEventArgs) Handles grdViewSegments.CellValueChanging
+        If e.Column Is colSegmentsListExclude Then
+            grdViewSegments.PostEditor()
+            chkSegmentExclude.Checked = e.Value
+        ElseIf e.Column Is colSegmentsListProfileDirection Then
+            grdViewSegments.PostEditor()
+            cboSegmentDirection.EditValue = e.Value
+        End If
+    End Sub
+
+    Private Sub chkSegmentUnbindable_CheckedChanged(sender As Object, e As EventArgs) Handles chkSegmentUnbindable.CheckedChanged
+        If Not bDisableSegmentsChangeEvent Then
+            If grdViewSegments.GetFocusedObject IsNot Nothing Then DirectCast(grdViewSegments.GetFocusedObject, cSegmentPlaceholder).Unbindable = chkSegmentUnbindable.EditValue
+        End If
+    End Sub
+
+    Private Sub cboSegmentDirection_EditValueChanged(sender As Object, e As EventArgs) Handles cboSegmentDirection.EditValueChanged
+        If Not bDisableSegmentsChangeEvent Then
+            If grdViewSegments.GetFocusedObject IsNot Nothing Then DirectCast(grdViewSegments.GetFocusedObject, cSegmentPlaceholder).Direction = cboSegmentDirection.EditValue
+            Call grdViewSegments.RefreshRowCell(grdViewSegments.FocusedRowHandle, colSegmentsListProfileDirection)
         End If
     End Sub
 

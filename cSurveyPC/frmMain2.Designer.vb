@@ -747,6 +747,8 @@ Partial Class frmMain2
         Me.mnuDesignItemBar8 = New System.Windows.Forms.ToolStripSeparator()
         Me.pnlForm = New DevExpress.XtraEditors.XtraUserControl()
         Me.panelContainer1 = New DevExpress.XtraBars.Docking.DockPanel()
+        Me.dockBrushesAndPens = New DevExpress.XtraBars.Docking.DockPanel()
+        Me.ControlContainer13 = New DevExpress.XtraBars.Docking.ControlContainer()
         Me.dockProperties = New DevExpress.XtraBars.Docking.DockPanel()
         Me.ControlContainer10 = New DevExpress.XtraBars.Docking.ControlContainer()
         Me.pnlDesignProp = New DevExpress.XtraLayout.LayoutControl()
@@ -760,8 +762,6 @@ Partial Class frmMain2
         Me.ControlContainer7 = New DevExpress.XtraBars.Docking.ControlContainer()
         Me.dockClipart = New DevExpress.XtraBars.Docking.DockPanel()
         Me.ControlContainer9 = New DevExpress.XtraBars.Docking.ControlContainer()
-        Me.dockBrushesAndPens = New DevExpress.XtraBars.Docking.DockPanel()
-        Me.ControlContainer13 = New DevExpress.XtraBars.Docking.ControlContainer()
         Me.ControlContainer8 = New DevExpress.XtraBars.Docking.ControlContainer()
         Me.ControlContainer1 = New DevExpress.XtraBars.Docking.ControlContainer()
         Me.ControlContainer2 = New DevExpress.XtraBars.Docking.ControlContainer()
@@ -1049,6 +1049,7 @@ Partial Class frmMain2
         Me.mnuDesignItemOLD.SuspendLayout
         Me.pnlForm.SuspendLayout
         Me.panelContainer1.SuspendLayout
+        Me.dockBrushesAndPens.SuspendLayout
         Me.dockProperties.SuspendLayout
         Me.ControlContainer10.SuspendLayout
         CType(Me.pnlDesignProp, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1061,7 +1062,6 @@ Partial Class frmMain2
         CType(Me.grpObjectProp, System.ComponentModel.ISupportInitialize).BeginInit
         Me.dockLevels.SuspendLayout
         Me.dockClipart.SuspendLayout
-        Me.dockBrushesAndPens.SuspendLayout
         Me.ControlContainer6.SuspendLayout
         Me.DockPanel1_Container.SuspendLayout
         CType(Me.spTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit
@@ -6739,6 +6739,24 @@ Partial Class frmMain2
         Me.panelContainer1.OriginalSize = New System.Drawing.Size(774, 200)
         Me.panelContainer1.Tabbed = True
         '
+        'dockBrushesAndPens
+        '
+        Me.dockBrushesAndPens.Controls.Add(Me.ControlContainer13)
+        Me.dockBrushesAndPens.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill
+        Me.dockBrushesAndPens.ID = New System.Guid("683676e5-c655-4d10-8b5d-0a789c027edc")
+        Me.dockBrushesAndPens.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.brushesandpensgallery
+        Me.dockBrushesAndPens.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.dockBrushesAndPens, "dockBrushesAndPens")
+        Me.dockBrushesAndPens.Name = "dockBrushesAndPens"
+        Me.dockBrushesAndPens.Options.AllowDockAsTabbedDocument = False
+        Me.dockBrushesAndPens.OriginalSize = New System.Drawing.Size(767, 745)
+        '
+        'ControlContainer13
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.ControlContainer13, CType(resources.GetObject("ControlContainer13.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        resources.ApplyResources(Me.ControlContainer13, "ControlContainer13")
+        Me.ControlContainer13.Name = "ControlContainer13"
+        '
         'dockProperties
         '
         Me.dockProperties.Controls.Add(Me.ControlContainer10)
@@ -6861,24 +6879,6 @@ Partial Class frmMain2
         Me.DefaultToolTipController.SetAllowHtmlText(Me.ControlContainer9, CType(resources.GetObject("ControlContainer9.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.ControlContainer9, "ControlContainer9")
         Me.ControlContainer9.Name = "ControlContainer9"
-        '
-        'dockBrushesAndPens
-        '
-        Me.dockBrushesAndPens.Controls.Add(Me.ControlContainer13)
-        Me.dockBrushesAndPens.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill
-        Me.dockBrushesAndPens.ID = New System.Guid("683676e5-c655-4d10-8b5d-0a789c027edc")
-        Me.dockBrushesAndPens.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.brushesandpensgallery
-        Me.dockBrushesAndPens.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        resources.ApplyResources(Me.dockBrushesAndPens, "dockBrushesAndPens")
-        Me.dockBrushesAndPens.Name = "dockBrushesAndPens"
-        Me.dockBrushesAndPens.Options.AllowDockAsTabbedDocument = False
-        Me.dockBrushesAndPens.OriginalSize = New System.Drawing.Size(767, 745)
-        '
-        'ControlContainer13
-        '
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.ControlContainer13, CType(resources.GetObject("ControlContainer13.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        resources.ApplyResources(Me.ControlContainer13, "ControlContainer13")
-        Me.ControlContainer13.Name = "ControlContainer13"
         '
         'ControlContainer8
         '
@@ -7900,6 +7900,7 @@ Partial Class frmMain2
         Me.mnuDesignItemOLD.ResumeLayout(False)
         Me.pnlForm.ResumeLayout(False)
         Me.panelContainer1.ResumeLayout(False)
+        Me.dockBrushesAndPens.ResumeLayout(False)
         Me.dockProperties.ResumeLayout(False)
         Me.ControlContainer10.ResumeLayout(False)
         CType(Me.pnlDesignProp, System.ComponentModel.ISupportInitialize).EndInit
@@ -7912,7 +7913,6 @@ Partial Class frmMain2
         CType(Me.grpObjectProp, System.ComponentModel.ISupportInitialize).EndInit
         Me.dockLevels.ResumeLayout(False)
         Me.dockClipart.ResumeLayout(False)
-        Me.dockBrushesAndPens.ResumeLayout(False)
         Me.ControlContainer6.ResumeLayout(False)
         Me.ControlContainer6.PerformLayout
         Me.DockPanel1_Container.ResumeLayout(False)

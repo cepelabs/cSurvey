@@ -54,6 +54,10 @@ Friend Class cDockBrushesAndPens
 
     Public Sub SetSurvey(ByVal Survey As cSurveyPC.cSurvey.cSurvey)
         oSurvey = Survey
+        If bLoadOnSetSurvey Then
+            bLoadOnSetSurvey = False
+            Call pClipartLoad()
+        End If
     End Sub
 
     Friend Function GetGalleryCount() As Integer
@@ -153,9 +157,11 @@ Friend Class cDockBrushesAndPens
         Imagelist.Clear()
         For Each sFilename As String In My.Computer.FileSystem.GetFiles(modMain.GetUserApplicationPath, FileIO.SearchOption.SearchTopLevelOnly, {"*.cbrush"})
             Dim oBrush As cCustomBrush = New cCustomBrush(oSurvey, sFilename)
-            If oBrush.Type = cBrush.BrushTypeEnum.User Then
-                Imagelist.Add(pGetBrushSvgImage(oBrush))
-                Call oItems.Add(New cCustomPaintElementBag(oBrush, Imagelist.Count - 1))
+            If oBrush IsNot Nothing Then
+                If oBrush.Type = cBrush.BrushTypeEnum.User Then
+                    Imagelist.Add(pGetBrushSvgImage(oBrush))
+                    Call oItems.Add(New cCustomPaintElementBag(oBrush, Imagelist.Count - 1))
+                End If
             End If
         Next
     End Sub
@@ -200,9 +206,11 @@ Friend Class cDockBrushesAndPens
         Imagelist.Clear()
         For Each sFilename As String In My.Computer.FileSystem.GetFiles(modMain.GetUserApplicationPath, FileIO.SearchOption.SearchTopLevelOnly, {"*.cpen"})
             Dim oPen As cCustomPen = New cCustomPen(oSurvey, sFilename)
-            If oPen.Type = cPen.PenTypeEnum.User Then
-                Imagelist.Add(pGetPenSvgImage(oPen))
-                Call oItems.Add(New cCustomPaintElementBag(oPen, Imagelist.Count - 1))
+            If oPen IsNot Nothing Then
+                If oPen.Type = cPen.PenTypeEnum.User Then
+                    Imagelist.Add(pGetPenSvgImage(oPen))
+                    Call oItems.Add(New cCustomPaintElementBag(oPen, Imagelist.Count - 1))
+                End If
             End If
         Next
     End Sub
@@ -220,10 +228,7 @@ Friend Class cDockBrushesAndPens
     End Sub
 
     Private Sub pLoadItems(Grid As DevExpress.XtraGrid.GridControl, Imagelist As DevExpress.Utils.SvgImageCollection)
-        'Call oMousePointer.Push(Cursors.WaitCursor)
-
         Dim oExplorerView As DevExpress.XtraGrid.Views.WinExplorer.WinExplorerView = Grid.MainView
-
         Call oExplorerView.BeginUpdate()
         Dim sType As String = Grid.Tag(0).ToString
         Select Case iView
@@ -243,7 +248,6 @@ Friend Class cDockBrushesAndPens
                 End Select
         End Select
         Call oExplorerView.EndUpdate()
-        'Call oMousePointer.Pop()
     End Sub
 
     Private Sub lv_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs)
@@ -312,11 +316,13 @@ Friend Class cDockBrushesAndPens
     End Sub
 
     Public Sub GalleryRefresh(View As Integer, GalleryIndex As Integer)
-        If iView = View Then
-            Dim oItem As TabNavigationPage = tabGallery.Pages(GalleryIndex)
-            Dim oGrid As DevExpress.XtraGrid.GridControl = oItem.Controls(0)
-            Dim oImagelist As DevExpress.Utils.SvgImageCollection = DirectCast(oGrid.MainView, DevExpress.XtraGrid.Views.WinExplorer.WinExplorerView).MediumImages
-            Call pLoadItems(oGrid, oImagelist)
+        If oSurvey IsNot Nothing Then
+            If iView = View Then
+                Dim oItem As TabNavigationPage = tabGallery.Pages(GalleryIndex)
+                Dim oGrid As DevExpress.XtraGrid.GridControl = oItem.Controls(0)
+                Dim oImagelist As DevExpress.Utils.SvgImageCollection = DirectCast(oGrid.MainView, DevExpress.XtraGrid.Views.WinExplorer.WinExplorerView).MediumImages
+                Call pLoadItems(oGrid, oImagelist)
+            End If
         End If
     End Sub
 
@@ -621,12 +627,16 @@ Friend Class cDockBrushesAndPens
     End Sub
 
     Private bFirstShown As Boolean = True
-
+    Private bLoadOnSetSurvey As Boolean = False
     Private Sub cDockBrushesAndPens_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
         If Visible Then
             If bFirstShown Then
                 bFirstShown = False
-                Call pClipartLoad()
+                If oSurvey Is Nothing Then
+                    bLoadOnSetSurvey = True
+                Else
+                    Call pClipartLoad()
+                End If
             End If
         End If
     End Sub

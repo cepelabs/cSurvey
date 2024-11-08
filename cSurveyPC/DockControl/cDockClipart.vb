@@ -69,6 +69,10 @@ Friend Class cDockClipart
 
     Public Sub SetSurvey(ByVal Survey As cSurveyPC.cSurvey.cSurvey)
         oSurvey = Survey
+        If bLoadOnSetSurvey Then
+            bLoadOnSetSurvey = False
+            Call pClipartLoad()
+        End If
     End Sub
 
     Friend Function GetGalleryCount() As Integer
@@ -483,12 +487,16 @@ Friend Class cDockClipart
     End Sub
 
     Private bFirstShown As Boolean = True
-
+    Private bLoadOnSetSurvey As Boolean = False
     Private Sub cDockClipart_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
         If Visible Then
             If bFirstShown Then
                 bFirstShown = False
-                Call pClipartLoad()
+                If oSurvey Is Nothing Then
+                    bLoadOnSetSurvey = True
+                Else
+                    Call pClipartLoad()
+                End If
             End If
         End If
     End Sub

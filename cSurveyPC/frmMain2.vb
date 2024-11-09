@@ -2325,7 +2325,7 @@ Friend Class frmMain2
     End Function
 
     Private Sub pSurveyCaption()
-        Text = "cSurvey - " & oSurvey.Name & " [" & sFilename & "]" & If(modMain.bIsInDebug, " DEBUG - " & modMain.GetReleaseVersion(), "") '& If(Environment.Is64BitProcess, " - 64bit", " - 32bit")
+        Text = "cSurvey - " & oSurvey.Name & " [" & sFilename & "]" & If(modMain.bIsInDebug, " DEBUG - " & modMain.GetPackageVersion(), "") '& If(Environment.Is64BitProcess, " - 64bit", " - 32bit")
         Call My.Application.SetCurrent(oSurvey, sFilename)
     End Sub
 

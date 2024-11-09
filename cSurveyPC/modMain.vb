@@ -76,16 +76,16 @@ Module modMain
         Return Convert.ToDecimal(Environment.OSVersion.Version.Major) + Convert.ToDecimal(Environment.OSVersion.Version.Minor) / 10
     End Function
 
-    Public Function GetReleaseDate() As Date
-        Dim oFi As FileInfo = New FileInfo(Application.ExecutablePath)
-        Return oFi.LastWriteTime
-    End Function
+    'Public Function GetReleaseDate() As Date
+    '    Dim oFi As FileInfo = New FileInfo(Application.ExecutablePath)
+    '    Return oFi.LastWriteTime
+    'End Function
 
-    Public Function GetReleaseVersion() As String
-        Dim oFi As FileInfo = New FileInfo(Application.ExecutablePath)
-        Dim dDate As Date = oFi.LastWriteTime
-        Return sBaseVersion & "." & Strings.Format(dDate.Year - 2010, "0") & "." & Strings.Format(dDate.DayOfYear, "000") & Strings.Format((10 * (dDate.Hour * 60 + dDate.Minute) / 1440), "0")
-    End Function
+    'Public Function GetReleaseVersion() As String
+    '    Dim oFi As FileInfo = New FileInfo(Application.ExecutablePath)
+    '    Dim dDate As Date = oFi.LastWriteTime
+    '    Return sBaseVersion & "." & Strings.Format(dDate.Year - 2010, "0") & "." & Strings.Format(dDate.DayOfYear, "000") & Strings.Format((10 * (dDate.Hour * 60 + dDate.Minute) / 1440), "0")
+    'End Function
 
     Public Function SplitVersion(Version As String) As Integer()
         Dim oVersionItems() As String = Version.Split(".")
@@ -112,7 +112,11 @@ Module modMain
         Dim oXML As XmlDocument = New XmlDocument
         oXML.Load(Path.Combine(modMain.GetApplicationPath, "version.xml"))
         Dim sDate As String = oXML.Item("csurvey").GetAttribute("date")
-        Return New Date(sDate.Substring(0, 4), sDate.Substring(4, 2), sDate.Substring(6, 2), sDate.Substring(8, 2), sDate.Substring(10, 2), 0)
+        If sDate = "" Then
+            Return Date.Now
+        Else
+            Return New Date(sDate.Substring(0, 4), sDate.Substring(4, 2), sDate.Substring(6, 2), sDate.Substring(8, 2), sDate.Substring(10, 2), 0)
+        End If
     End Function
 
     Public Function GetPackageVersion() As String

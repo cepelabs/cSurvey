@@ -2728,7 +2728,7 @@ Module modExport
 
         Using st As StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(Filename, False, TextFileEncoder)
             Call st.WriteLine(pGetTherionTextEncorderDef(TextFileEncoder))
-            Call st.WriteLine("#csurvey " & modMain.GetReleaseVersion & " legacy1")
+            Call st.WriteLine("#csurvey " & modMain.GetPackageVersion & " legacy1")
             Dim sName As String = FormatTextFor(Survey.Name, FormatTextForEnum.BaseWithoutSpacesAndSlash)
             If sName = "" Then sName = "csurvey_unnamed"
             Call st.Write("survey " & sName & " -title " & Chr(34) & If((Options And TherionExportOptionsEnum.UseCadastralIDinCaveNames) = TherionExportOptionsEnum.UseCadastralIDinCaveNames AndAlso Survey.Properties.ID <> "", Survey.Properties.ID & " " & Survey.Properties.Name, Survey.Properties.Name) & Chr(34))
@@ -3366,7 +3366,7 @@ Module modExport
 
         Using st As StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(Filename, False, TextFileEncoder)
             Call st.WriteLine(pGetTherionTextEncorderDef(TextFileEncoder))
-            Call st.WriteLine("#csurvey " & modMain.GetReleaseVersion)
+            Call st.WriteLine("#csurvey " & modMain.GetPackageVersion)
             Dim sName As String = FormatTextFor(If(Survey.Properties.Name = "", "csurvey_unnamed_" & Survey.ID, Survey.Properties.Name & "_" & Survey.ID), FormatTextForEnum.BaseWithoutSpacesAndSlash)
             Call st.Write("survey " & sName & " -title " & FormatTextFor(If((Options And TherionExportOptionsEnum.UseCadastralIDinCaveNames) = TherionExportOptionsEnum.UseCadastralIDinCaveNames AndAlso Survey.Properties.ID <> "", Survey.Properties.ID & " " & Survey.Properties.Name, Survey.Properties.Name), FormatTextForEnum.TherionText))
 

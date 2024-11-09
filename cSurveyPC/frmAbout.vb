@@ -47,7 +47,7 @@ Friend NotInheritable Class frmAbout
 
         Dim oProcess As Process = Process.GetCurrentProcess()
         Dim sMemoryUsage As String = GetLocalizedString("about.infoabout.textpart2") & ": Working Set: " & oProcess.WorkingSet64 / 1024 & " Kb" ', Totale: " & GC.GetTotalMemory(True) / 1024 & " Kb"
-        lblInfo.Text = String.Format(GetLocalizedString("about.infoabout.textpart3"), modMain.GetPackageVersion, modMain.GetReleaseDate.ToString("d")) & vbCrLf & sMemoryUsage & vbCrLf & IIf(Environment.Is64BitOperatingSystem, GetLocalizedString("about.infoabout.textpart4a"), GetLocalizedString("about.infoabout.textpart4b")) & " - " & IIf(Environment.Is64BitProcess, "cSurvey 64 bit", "cSurvey 32 bit") & vbCrLf
+        lblInfo.Text = String.Format(GetLocalizedString("about.infoabout.textpart3"), modMain.GetPackageVersion, modMain.GetPackageDate.ToString("d")) & vbCrLf & sMemoryUsage & vbCrLf & IIf(Environment.Is64BitOperatingSystem, GetLocalizedString("about.infoabout.textpart4a"), GetLocalizedString("about.infoabout.textpart4b")) & " - " & IIf(Environment.Is64BitProcess, "cSurvey 64 bit", "cSurvey 32 bit") & vbCrLf
 
         htmlMainInfo.DataContext = New cAboutSource()
     End Sub

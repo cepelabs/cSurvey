@@ -62,10 +62,11 @@ Namespace cSurvey.Design
         Public Sub Load(ByVal Filename As String, Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing)
             Call Clear()
             '--------------------------------------------------------------------------------------
-            Dim oSR As IO.StreamReader = My.Computer.FileSystem.OpenTextFileReader(Filename)
-            Dim sDatas() As String = oSR.ReadToEnd.Replace(vbCrLf, " ").Replace("{", " { ").Replace("}", " } ").Split(" ")
-            Call oSR.Close()
-            Call oSR.Dispose()
+            Dim sDatas() As String
+            Using oSR As IO.StreamReader = My.Computer.FileSystem.OpenTextFileReader(Filename)
+                sDatas = oSR.ReadToEnd.Replace(vbCrLf, " ").Replace(vbCr, " ").Replace(vbLf, " ").Replace("{", " { ").Replace("}", " } ").Split(" ")
+                Call oSR.Close()
+            End Using
 
             Dim iDataIndex As Integer = 0
             Dim sCurrentSet As String = ""

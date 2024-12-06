@@ -76,7 +76,7 @@ Public Class cSegmentsGrid
         Call grdSegments.EndUpdate()
     End Sub
 
-    Public Sub Rebind(Survey As cSurvey.cSurvey, Segments As IList(Of cSegment), Parameters As cSegmentGridParameters)
+    Public Sub Rebind(Survey As cSurvey.cSurvey, Segments As IList(Of cISegment), Parameters As cSegmentGridParameters)
         oSurvey = Survey
         Call grdSegments.BeginUpdate()
         grdSegments.DataSource = Segments
@@ -101,7 +101,7 @@ Public Class cSegmentsGrid
     End Property
 
     Private Sub grdViewSegments_RowCellStyle(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs) Handles grdViewSegments.RowCellStyle
-        Dim oSegment As cSegment = grdViewSegments.GetRow(e.RowHandle)
+        Dim oSegment As cISegment = grdViewSegments.GetRow(e.RowHandle)
         If Not oSegment Is Nothing Then
             If e.Column Is colSegmentsBranchBranchColor Then
                 e.Appearance.BackColor = oSurvey.Properties.CaveInfos.GetColor(oSegment.Cave, oSegment.Branch, System.Drawing.Color.LightGray)
@@ -129,7 +129,7 @@ Public Class cSegmentsGrid
         End If
     End Sub
 
-    Public ReadOnly Property SelectedItem As cSegment
+    Public ReadOnly Property SelectedItem As cISegment
         Get
             Return grdViewSegments.GetFocusedObject
         End Get
@@ -138,13 +138,13 @@ Public Class cSegmentsGrid
     Public Class cSelectionChangedEventArgs
         Inherits EventArgs
 
-        Private oSelectedItem As cSegment
+        Private oSelectedItem As cISegment
 
-        Public Sub New(SelectedItem As cSegment)
+        Public Sub New(SelectedItem As cISegment)
             oSelectedItem = SelectedItem
         End Sub
 
-        Public ReadOnly Property SelectedItem As cSegment
+        Public ReadOnly Property SelectedItem As cISegment
             Get
                 Return oSelectedItem
             End Get
@@ -171,5 +171,17 @@ Public Class cSegmentsGrid
 
     Private Sub grdViewSegments_DoubleClick(sender As Object, e As EventArgs) Handles grdViewSegments.DoubleClick
         RaiseEvent DoubleClick(Me, e)
+    End Sub
+
+    Private Sub grdViewSegments_CustomUnboundColumnData(sender As Object, e As CustomColumnDataEventArgs) Handles grdViewSegments.CustomUnboundColumnData
+        If e.IsGetData Then
+            If e.Column Is colSegmentsBranchCave Then
+                e.Value = e.Row.cave
+            ElseIf e.Column Is colSegmentsBranchBranch Then
+                e.Value = e.Row.branch
+            ElseIf e.Column Is colSegmentsSession Then
+                e.Value = e.Row.Session
+            End If
+        End If
     End Sub
 End Class

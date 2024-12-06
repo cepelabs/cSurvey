@@ -4936,6 +4936,7 @@
     <None Include="Resources\brushesandpensgallery.svg" />
     <None Include="Resources\replacefill.svg" />
     <None Include="Resources\refresh_warning.svg" />
+    <None Include="Resources\timezones.svg" />
     <Content Include="version.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

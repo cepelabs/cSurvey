@@ -79,6 +79,7 @@ Partial Class cSegmentsGrid
         Me.colSegmentsSession.Name = "colSegmentsSession"
         Me.colSegmentsSession.OptionsColumn.AllowEdit = False
         Me.colSegmentsSession.OptionsColumn.ReadOnly = True
+        Me.colSegmentsSession.UnboundDataType = GetType(String)
         '
         'colSegmentsBranchCaveColor
         '
@@ -102,6 +103,7 @@ Partial Class cSegmentsGrid
         Me.colSegmentsBranchCave.OptionsColumn.AllowEdit = False
         Me.colSegmentsBranchCave.OptionsColumn.AllowMove = False
         Me.colSegmentsBranchCave.OptionsColumn.ReadOnly = True
+        Me.colSegmentsBranchCave.UnboundDataType = GetType(String)
         '
         'colSegmentsBranchBranchColor
         '
@@ -125,6 +127,7 @@ Partial Class cSegmentsGrid
         Me.colSegmentsBranchBranch.OptionsColumn.AllowEdit = False
         Me.colSegmentsBranchBranch.OptionsColumn.AllowMove = False
         Me.colSegmentsBranchBranch.OptionsColumn.ReadOnly = True
+        Me.colSegmentsBranchBranch.UnboundDataType = GetType(String)
         '
         'colSegmentsFrom
         '

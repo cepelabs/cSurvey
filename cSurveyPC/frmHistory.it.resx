@@ -117,26 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="colName.Text" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="colOrigine.Text" xml:space="preserve">
-    <value>Origine</value>
-  </data>
-  <data name="colSize.Text" xml:space="preserve">
-    <value>Dimensione</value>
-  </data>
   <data name="colDateStamp.Text" xml:space="preserve">
     <value>Data/ora</value>
   </data>
-  <data name="colUtente.Text" xml:space="preserve">
-    <value>Utente</value>
-  </data>
   <data name="colLogMessage.Text" xml:space="preserve">
     <value>Messaggio</value>
-  </data>
-  <data name="colLogDateStamp.Text" xml:space="preserve">
-    <value>Data/ora</value>
   </data>
   <data name="mnuItemsRefresh.Text" xml:space="preserve">
     <value>Aggiorna</value>
@@ -214,9 +199,6 @@
   <data name="mnuLogClean.Text" xml:space="preserve">
     <value>Pulisci</value>
   </data>
-  <data name="btnShowLocal.Text" xml:space="preserve">
-    <value>Cartella</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
@@ -282,21 +264,6 @@
         AAAAAAAAAAAAAMAAAADAAAAAwAAAAOABAADwAwAA+AcAAP//AAA=
 </value>
   </data>
-  <data name="btnShowWeb.Text" xml:space="preserve">
-    <value>Web</value>
-  </data>
-  <data name="btnHistoryAdd.Text" xml:space="preserve">
-    <value>Archivia</value>
-  </data>
-  <data name="btnRestore.Text" xml:space="preserve">
-    <value>Ripristina</value>
-  </data>
-  <data name="btnDelete.Text" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="btnRefresh.Text" xml:space="preserve">
-    <value>Aggiorna</value>
-  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Revisioni:</value>
   </data>
@@ -305,5 +272,44 @@
   </data>
   <data name="btnAddLocal.Text" xml:space="preserve">
     <value>Cartella</value>
+  </data>
+  <data name="btnShowLocal.Caption" xml:space="preserve">
+    <value>Locale</value>
+  </data>
+  <data name="btnShowWeb.Caption" xml:space="preserve">
+    <value>Web</value>
+  </data>
+  <data name="btnSaveTo.Caption" xml:space="preserve">
+    <value>Archivia</value>
+  </data>
+  <data name="btnRestore.Caption" xml:space="preserve">
+    <value>Ripristina</value>
+  </data>
+  <data name="btnDelete.Caption" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="btnRefresh.Caption" xml:space="preserve">
+    <value>Aggiorna</value>
+  </data>
+  <data name="btnAddLocal.Caption" xml:space="preserve">
+    <value>Locale</value>
+  </data>
+  <data name="btnAddWeb.Caption" xml:space="preserve">
+    <value>Web</value>
+  </data>
+  <data name="colItemUser.Caption" xml:space="preserve">
+    <value>Utente</value>
+  </data>
+  <data name="colItemDateTime.Caption" xml:space="preserve">
+    <value>Data/ora</value>
+  </data>
+  <data name="colItemSource.Caption" xml:space="preserve">
+    <value>Origine</value>
+  </data>
+  <data name="colItemName.Caption" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="colItemSize.Caption" xml:space="preserve">
+    <value>Dimensione</value>
   </data>
 </root>

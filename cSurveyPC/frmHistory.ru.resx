@@ -117,26 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="colName.Text" xml:space="preserve">
-    <value>Название</value>
-  </data>
-  <data name="colOrigine.Text" xml:space="preserve">
-    <value>Источник</value>
-  </data>
-  <data name="colSize.Text" xml:space="preserve">
-    <value>Размер</value>
-  </data>
   <data name="colDateStamp.Text" xml:space="preserve">
     <value>Дата/время</value>
   </data>
-  <data name="colUtente.Text" xml:space="preserve">
-    <value>Пользователь</value>
-  </data>
   <data name="colLogMessage.Text" xml:space="preserve">
     <value>Сообщение</value>
-  </data>
-  <data name="colLogDateStamp.Text" xml:space="preserve">
-    <value>Дата/время</value>
   </data>
   <data name="mnuItemsRefresh.Text" xml:space="preserve">
     <value>Обновить</value>
@@ -214,9 +199,6 @@
   <data name="mnuLogClean.Text" xml:space="preserve">
     <value>Очистить</value>
   </data>
-  <data name="btnShowLocal.Text" xml:space="preserve">
-    <value>Папка</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
@@ -282,21 +264,6 @@
         AAAAAAAAAAAAAMAAAADAAAAAwAAAAOABAADwAwAA+AcAAP//AAA=
 </value>
   </data>
-  <data name="btnShowWeb.Text" xml:space="preserve">
-    <value>Web</value>
-  </data>
-  <data name="btnHistoryAdd.Text" xml:space="preserve">
-    <value>Сохранить в</value>
-  </data>
-  <data name="btnRestore.Text" xml:space="preserve">
-    <value>Восстановить</value>
-  </data>
-  <data name="btnDelete.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="btnRefresh.Text" xml:space="preserve">
-    <value>Обновить</value>
-  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>История:</value>
   </data>
@@ -305,5 +272,44 @@
   </data>
   <data name="btnAddLocal.Text" xml:space="preserve">
     <value>Папка</value>
+  </data>
+  <data name="btnShowLocal.Caption" xml:space="preserve">
+    <value>Local</value>
+  </data>
+  <data name="btnShowWeb.Caption" xml:space="preserve">
+    <value>Web</value>
+  </data>
+  <data name="btnSaveTo.Caption" xml:space="preserve">
+    <value>Сохранить в</value>
+  </data>
+  <data name="btnRestore.Caption" xml:space="preserve">
+    <value>Восстановить</value>
+  </data>
+  <data name="btnDelete.Caption" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="btnRefresh.Caption" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="btnAddLocal.Caption" xml:space="preserve">
+    <value>Local</value>
+  </data>
+  <data name="btnAddWeb.Caption" xml:space="preserve">
+    <value>Web</value>
+  </data>
+  <data name="colItemUser.Caption" xml:space="preserve">
+    <value>Пользователь</value>
+  </data>
+  <data name="colItemDateTime.Caption" xml:space="preserve">
+    <value>Дата/время</value>
+  </data>
+  <data name="colItemSource.Caption" xml:space="preserve">
+    <value>Источник</value>
+  </data>
+  <data name="colItemName.Caption" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="colItemSize.Caption" xml:space="preserve">
+    <value>Размер</value>
   </data>
 </root>

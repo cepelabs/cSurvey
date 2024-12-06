@@ -122,6 +122,10 @@
                 picPopupWarning.SvgImage = My.Resources.warning
                 Me.BackColor = Color.LightYellow
                 bShow = True
+            Case "locked"
+                picPopupWarning.SvgImage = My.Resources.Security_Lock
+                Me.BackColor = Color.LightYellow
+                bShow = True
         End Select
         If bShow Then
             lblPopupWarning.Text = Text

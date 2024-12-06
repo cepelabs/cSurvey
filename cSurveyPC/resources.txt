@@ -1140,3 +1140,7 @@ linkedsurveys.textpart4=The survey {0} with id {1} is this survey
 
 main.warning36=Delete {1} stored in {0}?
 main.warning37=Delete {1} from current survey?
+
+exceptionmanager.details.textpart8=System language/application language
+exceptionmanager.details.textpart9=Inner error
+exceptionmanager.details.textpart10=Windows

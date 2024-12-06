@@ -63,7 +63,13 @@ Friend Class frmExceptionManager
         sText = sText & "\viewkind4\uc1\pard\fi-1420\li1420\tx1420\f0\fs20"
         sText = sText & "\b " & GetLocalizedString("exceptionmanager.details.textpart2") & ":\b0\tab " & sReleaseVersion & " " & sReleaseDate & " (" & sReleaseCPU & ")" & "\par"
         sText = sText & "\b " & GetLocalizedString("exceptionmanager.details.textpart3") & ":\b0\tab " & modMain.sMachineID & "\par"
+        sText = sText & "\b " & GetLocalizedString("exceptionmanager.details.textpart10") & ":\b0\tab " & Environment.OSVersion.ToString & "\par"
+        sText = sText & "\b " & GetLocalizedString("exceptionmanager.details.textpart8") & ":\b0\tab " & Threading.Thread.CurrentThread.CurrentCulture.Parent.Name & " - " & My.Application.CurrentLanguage & "\par"
         sText = sText & "\b " & GetLocalizedString("exceptionmanager.details.textpart4") & ":\b0\tab " & sMessage.Replace(vbCrLf, "\line ") & "\par"
+        If Exception.InnerException IsNot Nothing Then
+            Dim sInnerMessage As String = "" & Exception.InnerException.Message
+            sText = sText & "\b " & GetLocalizedString("exceptionmanager.details.textpart9") & ":\b0\tab " & sInnerMessage.Replace(vbCrLf, "\line ") & "\par"
+        End If
         sText = sText & "\b " & GetLocalizedString("exceptionmanager.details.textpart5") & ":\b0\tab " & sSource.Replace(vbCrLf, "\line ") & "\par"
         sText = sText & "\b " & GetLocalizedString("exceptionmanager.details.textpart6") & ":\b0\tab " & If(modMain.bIsInDebug, GetLocalizedString("exceptionmanager.details.textpart6a"), GetLocalizedString("exceptionmanager.details.textpart6b")) & "\par"
         sText = sText & "\b " & GetLocalizedString("exceptionmanager.details.textpart7") & ":\b0\tab " & sStackTrace.Replace(vbCrLf, "\line ") & "\par"

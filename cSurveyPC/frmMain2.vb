@@ -1584,6 +1584,7 @@ Friend Class frmMain2
         If Segment Is Nothing Then
             pnlSegment.Enabled = False
         Else
+            bDisableSegmentsChangeEvent = True
             Dim oCaveInfo As cICaveInfoBranches = oSurvey.Properties.GetCaveInfo(Segment)
             Dim bUnlocked As Boolean = IsNothing(oCaveInfo) OrElse Not oCaveInfo.GetLocked
             pnlSegment.Enabled = bUnlocked
@@ -1606,6 +1607,23 @@ Friend Class frmMain2
                 Dim bEnabledEdit As Boolean = (.Splay OrElse (Not (.IsBinded OrElse .IsOrigin))) OrElse (pGetDisableDataGridConstraint())
                 txtSegmentFrom.Enabled = bEnabledEdit
                 txtSegmentTo.Enabled = bEnabledEdit
+                Dim oEnabledMessage As List(Of String) = New List(Of String)
+                If Not .Splay Then
+                    If .IsBinded Then
+                        oEnabledMessage.Add("this shot is binded to one or more design objects")
+                    End If
+                    If .IsOrigin Then
+                        oEnabledMessage.Add("one of the shot's station is the origin")
+                    End If
+                    If .IsProfileBinded Then
+                        oEnabledMessage.Add("shot direction cannot be changed cause this shot is binded to one or more design objects in profile")
+                    End If
+                End If
+                If oEnabledMessage.Count > 0 Then
+                    cSegmentMessageBar.PopupShow("locked", "Some properties are readonly", String.Join(";" & vbCrLf, oEnabledMessage.Select(Function(sMessage) " - " & sMessage)))
+                Else
+                    cSegmentMessageBar.PopupHide()
+                End If
 
                 txtSegmentDistance.Text = .Distance
                 txtSegmentBearing.Text = .Bearing
@@ -1674,6 +1692,7 @@ Friend Class frmMain2
                 prpSegmentDataProperties.SelectedObject = .DataProperties.GetClass
                 prpSegmentDataProperties.EndUpdate()
             End With
+            bDisableSegmentsChangeEvent = False
         End If
         Call pObjectPropertyDelayedLoad()
         Call oMousePointer.Pop()
@@ -5181,8 +5200,8 @@ Friend Class frmMain2
             If frmP.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Call pSurveyUpdateProperty()
             End If
-            bDisabledSurfaceEvent = False
         End Using
+        bDisabledSurfaceEvent = False
     End Sub
 
     Private Function pToolsEnd() As Boolean
@@ -14095,7 +14114,6 @@ Friend Class frmMain2
     End Sub
 
     Private Sub chkSegmentDuplicate_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkSegmentDuplicate.CheckedChanged
-        Call pSegmentCheckFlags()
         If Not bDisableSegmentsChangeEvent Then
             If grdViewSegments.GetFocusedObject IsNot Nothing Then DirectCast(grdViewSegments.GetFocusedObject, cSegmentPlaceholder).Duplicate = chkSegmentDuplicate.EditValue
             Call pSegmentCheckFlags()
@@ -15275,13 +15293,15 @@ Friend Class frmMain2
 
     Private Sub oHistory_OnAdd(Sender As frmHistory, Args As frmHistory.OnAddEventArgs)
         Try
-            Call pSurveySave(sFilename, False, cSurvey.cSurvey.SaveOptionsEnum.Silent Or cSurvey.cSurvey.SaveOptionsEnum.NoHistory)
-            Select Case Args.HistoryMode
-                Case HistoryModeEnum.Folder
-                    Call pHistorySaveMode0(sFilename)
-                Case HistoryModeEnum.WebStorage
-                    Call pHistorySaveMode1(sFilename)
-            End Select
+            If sFilename <> "" Then
+                Call pSurveySave(sFilename, False, cSurvey.cSurvey.SaveOptionsEnum.Silent Or cSurvey.cSurvey.SaveOptionsEnum.NoHistory)
+                Select Case Args.HistoryMode
+                    Case HistoryModeEnum.Folder
+                        Call pHistorySaveMode0(sFilename)
+                    Case HistoryModeEnum.WebStorage
+                        Call pHistorySaveMode1(sFilename)
+                End Select
+            End If
         Catch ex As Exception
             Call pLogAdd(ex)
             Args.Cancelled = True
@@ -20027,9 +20047,9 @@ Friend Class frmMain2
         End If
     End Sub
 
-    'Private Sub oHolos_OnContextMenuRequest(Sender As Object, e As Windows.Forms.MouseEventArgs) Handles oHolos.OnContextMenuRequest
-    '    Call mnuDesignItem.ShowPopup(h3D.PointToScreen(New Point(e.X, e.Y)))
-    'End Sub
+    Private Sub cSegmentMessageBar_OnCloseRequest(sender As Object, e As EventArgs) Handles cSegmentMessageBar.OnCloseRequest
+        Call cSegmentMessageBar.PopupHide()
+    End Sub
 End Class
 
 

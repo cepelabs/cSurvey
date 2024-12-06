@@ -40,7 +40,7 @@ Friend Class cItemSegmentBindingPropertyControl
                 End If
             End If
         Next
-        grdSegmentsBinded.Rebind(Item.Survey, oSegments.Values.Cast(Of cSegment).ToList, New cSegmentsGrid.cSegmentGridParameters(False, True, True, True))
+        grdSegmentsBinded.Rebind(Item.Survey, oSegments.Values.Cast(Of cISegment).ToList, New cSegmentsGrid.cSegmentGridParameters(False, True, True, True))
     End Sub
 
     Public Sub DoSegmentsLock()

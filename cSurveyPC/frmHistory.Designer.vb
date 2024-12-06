@@ -25,49 +25,51 @@ Partial Class frmHistory
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmHistory))
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.lvItems = New System.Windows.Forms.ListView()
-        Me.colName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.colOrigine = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.colSize = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.colDateStamp = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.colUtente = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.mnuItems = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.mnuItemsRestore = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuItemsDelete = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuItemsRefresh = New System.Windows.Forms.ToolStripMenuItem()
-        Me.iml = New System.Windows.Forms.ImageList(Me.components)
+        Me.grdItems = New DevExpress.XtraGrid.GridControl()
+        Me.grdItemsView = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.coilItemsIcon = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.cboItemsIcon = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
+        Me.svgiml = New DevExpress.Utils.SvgImageCollection(Me.components)
+        Me.colItemsName = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colItemsSource = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colItemsSize = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colItemsDateTime = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colItemsUser = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colItemsGroup = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.Bar1 = New DevExpress.XtraBars.Bar()
+        Me.btnShowLocal = New DevExpress.XtraBars.BarCheckItem()
+        Me.btnShowWeb = New DevExpress.XtraBars.BarCheckItem()
+        Me.btnSaveTo = New DevExpress.XtraBars.BarSubItem()
+        Me.btnAddLocal = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnAddWeb = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnRestore = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnDelete = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnRefresh = New DevExpress.XtraBars.BarButtonItem()
+        Me.Bar3 = New DevExpress.XtraBars.Bar()
+        Me.pnlStatus = New DevExpress.XtraBars.BarStaticItem()
+        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
         Me.lvLog = New System.Windows.Forms.ListView()
         Me.colLogMessage = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.colLogDateStamp = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.mnuLog = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.mnuLogClean = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tbMain = New System.Windows.Forms.ToolStrip()
-        Me.btnShowLocal = New System.Windows.Forms.ToolStripButton()
-        Me.btnShowWeb = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnHistoryAdd = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.btnAddLocal = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnAddWeb = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnRestore = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnDelete = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnRefresh = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
-        Me.sbMain = New System.Windows.Forms.StatusStrip()
-        Me.pnlStatus = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.iml = New System.Windows.Forms.ImageList(Me.components)
+        Me.mnuItems = New DevExpress.XtraBars.PopupMenu(Me.components)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
-        Me.mnuItems.SuspendLayout()
+        CType(Me.grdItems, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdItemsView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboItemsIcon, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.svgiml, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.mnuLog.SuspendLayout()
-        Me.tbMain.SuspendLayout()
-        Me.sbMain.SuspendLayout()
+        CType(Me.mnuItems, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SplitContainer1
@@ -78,90 +80,219 @@ Partial Class frmHistory
         '
         'SplitContainer1.Panel1
         '
-        Me.SplitContainer1.Panel1.Controls.Add(Me.lvItems)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.grdItems)
         '
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.lvLog)
         '
-        'lvItems
+        'grdItems
         '
-        Me.lvItems.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.lvItems.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colName, Me.colOrigine, Me.colSize, Me.colDateStamp, Me.colUtente})
-        Me.lvItems.ContextMenuStrip = Me.mnuItems
-        resources.ApplyResources(Me.lvItems, "lvItems")
-        Me.lvItems.FullRowSelect = True
-        Me.lvItems.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
-        Me.lvItems.HideSelection = False
-        Me.lvItems.MultiSelect = False
-        Me.lvItems.Name = "lvItems"
-        Me.lvItems.SmallImageList = Me.iml
-        Me.lvItems.UseCompatibleStateImageBehavior = False
-        Me.lvItems.View = System.Windows.Forms.View.Details
+        resources.ApplyResources(Me.grdItems, "grdItems")
+        Me.grdItems.MainView = Me.grdItemsView
+        Me.grdItems.MenuManager = Me.BarManager1
+        Me.grdItems.Name = "grdItems"
+        Me.grdItems.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.cboItemsIcon})
+        Me.grdItems.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdItemsView})
         '
-        'colName
+        'grdItemsView
         '
-        resources.ApplyResources(Me.colName, "colName")
+        Me.grdItemsView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.coilItemsIcon, Me.colItemsName, Me.colItemsSource, Me.colItemsSize, Me.colItemsDateTime, Me.colItemsUser, Me.colItemsGroup})
+        Me.grdItemsView.GridControl = Me.grdItems
+        Me.grdItemsView.GroupCount = 1
+        Me.grdItemsView.Name = "grdItemsView"
+        Me.grdItemsView.OptionsBehavior.Editable = False
+        Me.grdItemsView.OptionsBehavior.ReadOnly = True
+        Me.grdItemsView.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.colItemsGroup, DevExpress.Data.ColumnSortOrder.Ascending)})
         '
-        'colOrigine
+        'coilItemsIcon
         '
-        resources.ApplyResources(Me.colOrigine, "colOrigine")
+        resources.ApplyResources(Me.coilItemsIcon, "coilItemsIcon")
+        Me.coilItemsIcon.ColumnEdit = Me.cboItemsIcon
+        Me.coilItemsIcon.FieldName = "ImageIndex"
+        Me.coilItemsIcon.MaxWidth = 24
+        Me.coilItemsIcon.MinWidth = 24
+        Me.coilItemsIcon.Name = "coilItemsIcon"
+        Me.coilItemsIcon.OptionsColumn.FixedWidth = True
         '
-        'colSize
+        'cboItemsIcon
         '
-        resources.ApplyResources(Me.colSize, "colSize")
+        resources.ApplyResources(Me.cboItemsIcon, "cboItemsIcon")
+        Me.cboItemsIcon.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboItemsIcon.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboItemsIcon.Items.AddRange(New DevExpress.XtraEditors.Controls.ImageComboBoxItem() {New DevExpress.XtraEditors.Controls.ImageComboBoxItem(resources.GetString("cboItemsIcon.Items"), CType(resources.GetObject("cboItemsIcon.Items1"), Object), CType(resources.GetObject("cboItemsIcon.Items2"), Integer)), New DevExpress.XtraEditors.Controls.ImageComboBoxItem(resources.GetString("cboItemsIcon.Items3"), CType(resources.GetObject("cboItemsIcon.Items4"), Object), CType(resources.GetObject("cboItemsIcon.Items5"), Integer))})
+        Me.cboItemsIcon.Name = "cboItemsIcon"
+        Me.cboItemsIcon.SmallImages = Me.svgiml
         '
-        'colDateStamp
+        'svgiml
         '
-        resources.ApplyResources(Me.colDateStamp, "colDateStamp")
+        Me.svgiml.Add("local", CType(resources.GetObject("svgiml.local"), DevExpress.Utils.Svg.SvgImage))
+        Me.svgiml.Add("web", CType(resources.GetObject("svgiml.web"), DevExpress.Utils.Svg.SvgImage))
         '
-        'colUtente
+        'colItemsName
         '
-        resources.ApplyResources(Me.colUtente, "colUtente")
+        resources.ApplyResources(Me.colItemsName, "colItemsName")
+        Me.colItemsName.FieldName = "Name"
+        Me.colItemsName.Name = "colItemsName"
         '
-        'mnuItems
+        'colItemsSource
         '
-        resources.ApplyResources(Me.mnuItems, "mnuItems")
-        Me.mnuItems.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuItemsRestore, Me.ToolStripMenuItem1, Me.mnuItemsDelete, Me.ToolStripMenuItem2, Me.mnuItemsRefresh})
-        Me.mnuItems.Name = "mnuItems"
+        resources.ApplyResources(Me.colItemsSource, "colItemsSource")
+        Me.colItemsSource.FieldName = "Origin"
+        Me.colItemsSource.Name = "colItemsSource"
         '
-        'mnuItemsRestore
+        'colItemsSize
         '
-        Me.mnuItemsRestore.Image = Global.cSurveyPC.My.Resources.Resources.arrow_undo
-        Me.mnuItemsRestore.Name = "mnuItemsRestore"
-        resources.ApplyResources(Me.mnuItemsRestore, "mnuItemsRestore")
+        resources.ApplyResources(Me.colItemsSize, "colItemsSize")
+        Me.colItemsSize.DisplayFormat.FormatString = "N"
+        Me.colItemsSize.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colItemsSize.FieldName = "Size"
+        Me.colItemsSize.Name = "colItemsSize"
         '
-        'ToolStripMenuItem1
+        'colItemsDateTime
         '
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        resources.ApplyResources(Me.ToolStripMenuItem1, "ToolStripMenuItem1")
+        resources.ApplyResources(Me.colItemsDateTime, "colItemsDateTime")
+        Me.colItemsDateTime.DisplayFormat.FormatString = "G"
+        Me.colItemsDateTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.colItemsDateTime.FieldName = "DateStamp"
+        Me.colItemsDateTime.Name = "colItemsDateTime"
         '
-        'mnuItemsDelete
+        'colItemsUser
         '
-        Me.mnuItemsDelete.Image = Global.cSurveyPC.My.Resources.Resources.cross
-        Me.mnuItemsDelete.Name = "mnuItemsDelete"
-        resources.ApplyResources(Me.mnuItemsDelete, "mnuItemsDelete")
+        resources.ApplyResources(Me.colItemsUser, "colItemsUser")
+        Me.colItemsUser.FieldName = "Username"
+        Me.colItemsUser.Name = "colItemsUser"
         '
-        'ToolStripMenuItem2
+        'colItemsGroup
         '
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        resources.ApplyResources(Me.ToolStripMenuItem2, "ToolStripMenuItem2")
+        resources.ApplyResources(Me.colItemsGroup, "colItemsGroup")
+        Me.colItemsGroup.FieldName = "Group"
+        Me.colItemsGroup.Name = "colItemsGroup"
         '
-        'mnuItemsRefresh
+        'BarManager1
         '
-        Me.mnuItemsRefresh.Image = Global.cSurveyPC.My.Resources.Resources.arrow_refresh
-        Me.mnuItemsRefresh.Name = "mnuItemsRefresh"
-        resources.ApplyResources(Me.mnuItemsRefresh, "mnuItemsRefresh")
+        Me.BarManager1.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.Bar1, Me.Bar3})
+        Me.BarManager1.DockControls.Add(Me.barDockControlTop)
+        Me.BarManager1.DockControls.Add(Me.barDockControlBottom)
+        Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
+        Me.BarManager1.DockControls.Add(Me.barDockControlRight)
+        Me.BarManager1.Form = Me
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.pnlStatus, Me.btnShowLocal, Me.btnShowWeb, Me.btnSaveTo, Me.btnAddLocal, Me.btnAddWeb, Me.btnRestore, Me.btnDelete, Me.btnRefresh})
+        Me.BarManager1.MaxItemId = 9
+        Me.BarManager1.StatusBar = Me.Bar3
         '
-        'iml
+        'Bar1
         '
-        Me.iml.ImageStream = CType(resources.GetObject("iml.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.iml.TransparentColor = System.Drawing.Color.Transparent
-        Me.iml.Images.SetKeyName(0, "web")
-        Me.iml.Images.SetKeyName(1, "local")
-        Me.iml.Images.SetKeyName(2, "warning")
-        Me.iml.Images.SetKeyName(3, "error")
-        Me.iml.Images.SetKeyName(4, "info")
+        Me.Bar1.BarName = "Tools"
+        Me.Bar1.DockCol = 0
+        Me.Bar1.DockRow = 0
+        Me.Bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
+        Me.Bar1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnShowLocal), New DevExpress.XtraBars.LinkPersistInfo(Me.btnShowWeb), New DevExpress.XtraBars.LinkPersistInfo(Me.btnSaveTo, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRestore, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnDelete, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRefresh, True)})
+        Me.Bar1.OptionsBar.AllowQuickCustomization = False
+        Me.Bar1.OptionsBar.DisableClose = True
+        Me.Bar1.OptionsBar.DisableCustomization = True
+        Me.Bar1.OptionsBar.DrawDragBorder = False
+        Me.Bar1.OptionsBar.UseWholeRow = True
+        resources.ApplyResources(Me.Bar1, "Bar1")
+        '
+        'btnShowLocal
+        '
+        Me.btnShowLocal.BindableChecked = True
+        resources.ApplyResources(Me.btnShowLocal, "btnShowLocal")
+        Me.btnShowLocal.Checked = True
+        Me.btnShowLocal.Id = 1
+        Me.btnShowLocal.Name = "btnShowLocal"
+        '
+        'btnShowWeb
+        '
+        Me.btnShowWeb.BindableChecked = True
+        resources.ApplyResources(Me.btnShowWeb, "btnShowWeb")
+        Me.btnShowWeb.Checked = True
+        Me.btnShowWeb.Id = 2
+        Me.btnShowWeb.Name = "btnShowWeb"
+        '
+        'btnSaveTo
+        '
+        resources.ApplyResources(Me.btnSaveTo, "btnSaveTo")
+        Me.btnSaveTo.Id = 3
+        Me.btnSaveTo.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.saveas
+        Me.btnSaveTo.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnAddLocal), New DevExpress.XtraBars.LinkPersistInfo(Me.btnAddWeb)})
+        Me.btnSaveTo.Name = "btnSaveTo"
+        Me.btnSaveTo.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        '
+        'btnAddLocal
+        '
+        resources.ApplyResources(Me.btnAddLocal, "btnAddLocal")
+        Me.btnAddLocal.Id = 4
+        Me.btnAddLocal.Name = "btnAddLocal"
+        '
+        'btnAddWeb
+        '
+        resources.ApplyResources(Me.btnAddWeb, "btnAddWeb")
+        Me.btnAddWeb.Id = 5
+        Me.btnAddWeb.Name = "btnAddWeb"
+        '
+        'btnRestore
+        '
+        resources.ApplyResources(Me.btnRestore, "btnRestore")
+        Me.btnRestore.Id = 6
+        Me.btnRestore.Name = "btnRestore"
+        '
+        'btnDelete
+        '
+        resources.ApplyResources(Me.btnDelete, "btnDelete")
+        Me.btnDelete.Id = 7
+        Me.btnDelete.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
+        Me.btnDelete.Name = "btnDelete"
+        '
+        'btnRefresh
+        '
+        resources.ApplyResources(Me.btnRefresh, "btnRefresh")
+        Me.btnRefresh.Id = 8
+        Me.btnRefresh.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_refresh
+        Me.btnRefresh.Name = "btnRefresh"
+        '
+        'Bar3
+        '
+        Me.Bar3.BarName = "Status bar"
+        Me.Bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom
+        Me.Bar3.DockCol = 0
+        Me.Bar3.DockRow = 0
+        Me.Bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom
+        Me.Bar3.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.pnlStatus)})
+        Me.Bar3.OptionsBar.AllowQuickCustomization = False
+        Me.Bar3.OptionsBar.DrawDragBorder = False
+        Me.Bar3.OptionsBar.UseWholeRow = True
+        resources.ApplyResources(Me.Bar3, "Bar3")
+        '
+        'pnlStatus
+        '
+        Me.pnlStatus.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring
+        Me.pnlStatus.Id = 0
+        Me.pnlStatus.Name = "pnlStatus"
+        '
+        'barDockControlTop
+        '
+        Me.barDockControlTop.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlTop, "barDockControlTop")
+        Me.barDockControlTop.Manager = Me.BarManager1
+        '
+        'barDockControlBottom
+        '
+        Me.barDockControlBottom.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlBottom, "barDockControlBottom")
+        Me.barDockControlBottom.Manager = Me.BarManager1
+        '
+        'barDockControlLeft
+        '
+        Me.barDockControlLeft.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlLeft, "barDockControlLeft")
+        Me.barDockControlLeft.Manager = Me.BarManager1
+        '
+        'barDockControlRight
+        '
+        Me.barDockControlRight.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlRight, "barDockControlRight")
+        Me.barDockControlRight.Manager = Me.BarManager1
         '
         'lvLog
         '
@@ -195,117 +326,31 @@ Partial Class frmHistory
         Me.mnuLogClean.Name = "mnuLogClean"
         resources.ApplyResources(Me.mnuLogClean, "mnuLogClean")
         '
-        'tbMain
+        'iml
         '
-        resources.ApplyResources(Me.tbMain, "tbMain")
-        Me.tbMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.tbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnShowLocal, Me.btnShowWeb, Me.ToolStripSeparator1, Me.btnHistoryAdd, Me.ToolStripSeparator4, Me.btnRestore, Me.ToolStripSeparator3, Me.btnDelete, Me.ToolStripSeparator2, Me.btnRefresh, Me.ToolStripButton1, Me.ToolStripButton2})
-        Me.tbMain.Name = "tbMain"
+        Me.iml.ImageStream = CType(resources.GetObject("iml.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.iml.TransparentColor = System.Drawing.Color.Transparent
+        Me.iml.Images.SetKeyName(0, "web")
+        Me.iml.Images.SetKeyName(1, "local")
+        Me.iml.Images.SetKeyName(2, "warning")
+        Me.iml.Images.SetKeyName(3, "error")
+        Me.iml.Images.SetKeyName(4, "info")
         '
-        'btnShowLocal
+        'mnuItems
         '
-        Me.btnShowLocal.Checked = True
-        Me.btnShowLocal.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.btnShowLocal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        resources.ApplyResources(Me.btnShowLocal, "btnShowLocal")
-        Me.btnShowLocal.Name = "btnShowLocal"
-        '
-        'btnShowWeb
-        '
-        Me.btnShowWeb.Checked = True
-        Me.btnShowWeb.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.btnShowWeb.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        resources.ApplyResources(Me.btnShowWeb, "btnShowWeb")
-        Me.btnShowWeb.Name = "btnShowWeb"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        resources.ApplyResources(Me.ToolStripSeparator1, "ToolStripSeparator1")
-        '
-        'btnHistoryAdd
-        '
-        Me.btnHistoryAdd.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnAddLocal, Me.btnAddWeb})
-        Me.btnHistoryAdd.Image = Global.cSurveyPC.My.Resources.Resources.add
-        resources.ApplyResources(Me.btnHistoryAdd, "btnHistoryAdd")
-        Me.btnHistoryAdd.Name = "btnHistoryAdd"
-        '
-        'btnAddLocal
-        '
-        Me.btnAddLocal.Name = "btnAddLocal"
-        resources.ApplyResources(Me.btnAddLocal, "btnAddLocal")
-        '
-        'btnAddWeb
-        '
-        Me.btnAddWeb.Name = "btnAddWeb"
-        resources.ApplyResources(Me.btnAddWeb, "btnAddWeb")
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        resources.ApplyResources(Me.ToolStripSeparator4, "ToolStripSeparator4")
-        '
-        'btnRestore
-        '
-        Me.btnRestore.Image = Global.cSurveyPC.My.Resources.Resources.arrow_undo
-        resources.ApplyResources(Me.btnRestore, "btnRestore")
-        Me.btnRestore.Name = "btnRestore"
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        resources.ApplyResources(Me.ToolStripSeparator3, "ToolStripSeparator3")
-        '
-        'btnDelete
-        '
-        Me.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnDelete.Image = Global.cSurveyPC.My.Resources.Resources.cross
-        resources.ApplyResources(Me.btnDelete, "btnDelete")
-        Me.btnDelete.Name = "btnDelete"
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        resources.ApplyResources(Me.ToolStripSeparator2, "ToolStripSeparator2")
-        '
-        'btnRefresh
-        '
-        Me.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnRefresh.Image = Global.cSurveyPC.My.Resources.Resources.arrow_refresh
-        resources.ApplyResources(Me.btnRefresh, "btnRefresh")
-        Me.btnRefresh.Name = "btnRefresh"
-        '
-        'ToolStripButton1
-        '
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        resources.ApplyResources(Me.ToolStripButton1, "ToolStripButton1")
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        '
-        'ToolStripButton2
-        '
-        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        resources.ApplyResources(Me.ToolStripButton2, "ToolStripButton2")
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        '
-        'sbMain
-        '
-        resources.ApplyResources(Me.sbMain, "sbMain")
-        Me.sbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.pnlStatus})
-        Me.sbMain.Name = "sbMain"
-        '
-        'pnlStatus
-        '
-        Me.pnlStatus.Name = "pnlStatus"
-        resources.ApplyResources(Me.pnlStatus, "pnlStatus")
-        Me.pnlStatus.Spring = True
+        Me.mnuItems.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnRestore), New DevExpress.XtraBars.LinkPersistInfo(Me.btnDelete, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRefresh, True)})
+        Me.mnuItems.Manager = Me.BarManager1
+        Me.mnuItems.Name = "mnuItems"
         '
         'frmHistory
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.Controls.Add(Me.SplitContainer1)
-        Me.Controls.Add(Me.sbMain)
-        Me.Controls.Add(Me.tbMain)
+        Me.Controls.Add(Me.barDockControlLeft)
+        Me.Controls.Add(Me.barDockControlRight)
+        Me.Controls.Add(Me.barDockControlBottom)
+        Me.Controls.Add(Me.barDockControlTop)
         Me.IconOptions.Icon = CType(resources.GetObject("frmHistory.IconOptions.Icon"), System.Drawing.Icon)
         Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.time
         Me.Name = "frmHistory"
@@ -313,50 +358,50 @@ Partial Class frmHistory
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
-        Me.mnuItems.ResumeLayout(False)
+        CType(Me.grdItems, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdItemsView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboItemsIcon, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.svgiml, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.mnuLog.ResumeLayout(False)
-        Me.tbMain.ResumeLayout(False)
-        Me.tbMain.PerformLayout()
-        Me.sbMain.ResumeLayout(False)
-        Me.sbMain.PerformLayout()
+        CType(Me.mnuItems, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents lvItems As System.Windows.Forms.ListView
-    Friend WithEvents colName As System.Windows.Forms.ColumnHeader
-    Friend WithEvents colOrigine As System.Windows.Forms.ColumnHeader
-    Friend WithEvents colDateStamp As System.Windows.Forms.ColumnHeader
-    Friend WithEvents colUtente As System.Windows.Forms.ColumnHeader
-    Friend WithEvents tbMain As System.Windows.Forms.ToolStrip
-    Friend WithEvents btnShowLocal As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnShowWeb As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents btnRestore As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnDelete As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents btnRefresh As System.Windows.Forms.ToolStripButton
     Friend WithEvents iml As System.Windows.Forms.ImageList
-    Friend WithEvents colSize As System.Windows.Forms.ColumnHeader
-    Friend WithEvents sbMain As System.Windows.Forms.StatusStrip
-    Friend WithEvents pnlStatus As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents SplitContainer1 As System.Windows.Forms.SplitContainer
     Friend WithEvents lvLog As System.Windows.Forms.ListView
     Friend WithEvents colLogMessage As System.Windows.Forms.ColumnHeader
     Friend WithEvents colLogDateStamp As System.Windows.Forms.ColumnHeader
-    Friend WithEvents mnuItems As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents mnuItemsRestore As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents mnuItemsDelete As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents mnuItemsRefresh As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuLog As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents mnuLogClean As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents btnHistoryAdd As System.Windows.Forms.ToolStripDropDownButton
-    Friend WithEvents btnAddLocal As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents btnAddWeb As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents ToolStripButton1 As ToolStripButton
-    Friend WithEvents ToolStripButton2 As ToolStripButton
+    Friend WithEvents BarManager1 As DevExpress.XtraBars.BarManager
+    Friend WithEvents Bar1 As DevExpress.XtraBars.Bar
+    Friend WithEvents Bar3 As DevExpress.XtraBars.Bar
+    Friend WithEvents pnlStatus As DevExpress.XtraBars.BarStaticItem
+    Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlBottom As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlLeft As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlRight As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents btnShowLocal As DevExpress.XtraBars.BarCheckItem
+    Friend WithEvents btnShowWeb As DevExpress.XtraBars.BarCheckItem
+    Friend WithEvents btnSaveTo As DevExpress.XtraBars.BarSubItem
+    Friend WithEvents btnAddLocal As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnAddWeb As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnRestore As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnDelete As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnRefresh As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents svgiml As DevExpress.Utils.SvgImageCollection
+    Friend WithEvents mnuItems As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents grdItems As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdItemsView As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents coilItemsIcon As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colItemsName As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colItemsSource As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colItemsSize As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colItemsDateTime As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colItemsUser As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colItemsGroup As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cboItemsIcon As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
 End Class

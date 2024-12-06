@@ -28,8 +28,6 @@ Partial Class frmSettings
         Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Me.tabHistorySettings = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.chkHistoryArchiveOnSave = New DevExpress.XtraEditors.CheckEdit()
         Me.lblHistoryMaxCopies = New DevExpress.XtraEditors.LabelControl()
         Me.txtHistoryFolder = New System.Windows.Forms.TextBox()
@@ -38,7 +36,6 @@ Partial Class frmSettings
         Me.lblHistoryDailyCopies = New DevExpress.XtraEditors.LabelControl()
         Me.cmdHistoryFolderBrowse = New DevExpress.XtraEditors.SimpleButton()
         Me.txtHistoryDailyCopies = New System.Windows.Forms.NumericUpDown()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.chkHistoryWebArchiveOnSave = New DevExpress.XtraEditors.CheckEdit()
         Me.chkHistoryWebAuthReq = New DevExpress.XtraEditors.CheckEdit()
         Me.lblHistoryWebMaxCopies = New DevExpress.XtraEditors.LabelControl()
@@ -230,12 +227,12 @@ Partial Class frmSettings
         Me.lblLogMaxSize = New DevExpress.XtraEditors.LabelControl()
         Me.txtLogMaxLine = New DevExpress.XtraEditors.SpinEdit()
         Me.chkLogOnFile = New DevExpress.XtraEditors.CheckEdit()
-        Me.tabHistorySettings.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
+        Me.tabHistorySettings = New DevExpress.XtraTab.XtraTabControl()
+        Me.tabHistoryLocal = New DevExpress.XtraTab.XtraTabPage()
+        Me.tabHistoryWeb = New DevExpress.XtraTab.XtraTabPage()
         CType(Me.chkHistoryArchiveOnSave.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtHistoryMaxCopies, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtHistoryDailyCopies, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPage2.SuspendLayout()
         CType(Me.chkHistoryWebArchiveOnSave.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkHistoryWebAuthReq.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtHistoryWebMaxCopies, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -345,29 +342,11 @@ Partial Class frmSettings
         CType(Me.chkForceGarbaceCollect.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtLogMaxLine.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkLogOnFile.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tabHistorySettings, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabHistorySettings.SuspendLayout()
+        Me.tabHistoryLocal.SuspendLayout()
+        Me.tabHistoryWeb.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'tabHistorySettings
-        '
-        Me.tabHistorySettings.Controls.Add(Me.TabPage1)
-        Me.tabHistorySettings.Controls.Add(Me.TabPage2)
-        resources.ApplyResources(Me.tabHistorySettings, "tabHistorySettings")
-        Me.tabHistorySettings.Name = "tabHistorySettings"
-        Me.tabHistorySettings.SelectedIndex = 0
-        '
-        'TabPage1
-        '
-        Me.TabPage1.Controls.Add(Me.chkHistoryArchiveOnSave)
-        Me.TabPage1.Controls.Add(Me.lblHistoryMaxCopies)
-        Me.TabPage1.Controls.Add(Me.txtHistoryFolder)
-        Me.TabPage1.Controls.Add(Me.txtHistoryMaxCopies)
-        Me.TabPage1.Controls.Add(Me.lblHistoryFolder)
-        Me.TabPage1.Controls.Add(Me.lblHistoryDailyCopies)
-        Me.TabPage1.Controls.Add(Me.cmdHistoryFolderBrowse)
-        Me.TabPage1.Controls.Add(Me.txtHistoryDailyCopies)
-        resources.ApplyResources(Me.TabPage1, "TabPage1")
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.UseVisualStyleBackColor = True
         '
         'chkHistoryArchiveOnSave
         '
@@ -420,25 +399,6 @@ Partial Class frmSettings
         Me.txtHistoryDailyCopies.Name = "txtHistoryDailyCopies"
         Me.txtHistoryDailyCopies.Value = New Decimal(New Integer() {4, 0, 0, 0})
         '
-        'TabPage2
-        '
-        Me.TabPage2.Controls.Add(Me.chkHistoryWebArchiveOnSave)
-        Me.TabPage2.Controls.Add(Me.chkHistoryWebAuthReq)
-        Me.TabPage2.Controls.Add(Me.lblHistoryWebMaxCopies)
-        Me.TabPage2.Controls.Add(Me.txtHistoryWebMaxCopies)
-        Me.TabPage2.Controls.Add(Me.lblHistoryWebDailyCopies)
-        Me.TabPage2.Controls.Add(Me.txtHistoryWebDailyCopies)
-        Me.TabPage2.Controls.Add(Me.cmdHistoryWebCheck)
-        Me.TabPage2.Controls.Add(Me.txtHistoryWebURL)
-        Me.TabPage2.Controls.Add(Me.lblHistoryWebPassword)
-        Me.TabPage2.Controls.Add(Me.lblHistoryWebAddress)
-        Me.TabPage2.Controls.Add(Me.txtHistoryWebPassword)
-        Me.TabPage2.Controls.Add(Me.txtHistoryWebUsername)
-        Me.TabPage2.Controls.Add(Me.lblHistoryWebUsername)
-        resources.ApplyResources(Me.TabPage2, "TabPage2")
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.UseVisualStyleBackColor = True
-        '
         'chkHistoryWebArchiveOnSave
         '
         resources.ApplyResources(Me.chkHistoryWebArchiveOnSave, "chkHistoryWebArchiveOnSave")
@@ -481,7 +441,9 @@ Partial Class frmSettings
         '
         'cmdHistoryWebCheck
         '
-        Me.cmdHistoryWebCheck.ImageOptions.Image = Global.cSurveyPC.My.Resources.Resources.world_link
+        Me.cmdHistoryWebCheck.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.cmdHistoryWebCheck.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.timezones
+        Me.cmdHistoryWebCheck.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         resources.ApplyResources(Me.cmdHistoryWebCheck, "cmdHistoryWebCheck")
         Me.cmdHistoryWebCheck.Name = "cmdHistoryWebCheck"
         '
@@ -1711,7 +1673,7 @@ Partial Class frmSettings
         resources.ApplyResources(Me.chkShotsDisableConstraint, "chkShotsDisableConstraint")
         Me.chkShotsDisableConstraint.Name = "chkShotsDisableConstraint"
         Me.chkShotsDisableConstraint.Properties.AutoWidth = True
-        Me.chkShotsDisableConstraint.Properties.Caption = resources.GetString("chkShotsAllowForceConstraint.Properties.Caption")
+        Me.chkShotsDisableConstraint.Properties.Caption = resources.GetString("chkShotsDisableConstraint.Properties.Caption")
         '
         'tabInfoSVG
         '
@@ -1833,6 +1795,44 @@ Partial Class frmSettings
         Me.chkLogOnFile.Properties.AutoWidth = True
         Me.chkLogOnFile.Properties.Caption = resources.GetString("chkLogOnFile.Properties.Caption")
         '
+        'tabHistorySettings
+        '
+        resources.ApplyResources(Me.tabHistorySettings, "tabHistorySettings")
+        Me.tabHistorySettings.Name = "tabHistorySettings"
+        Me.tabHistorySettings.SelectedTabPage = Me.tabHistoryLocal
+        Me.tabHistorySettings.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabHistoryLocal, Me.tabHistoryWeb})
+        '
+        'tabHistoryLocal
+        '
+        Me.tabHistoryLocal.Controls.Add(Me.chkHistoryArchiveOnSave)
+        Me.tabHistoryLocal.Controls.Add(Me.txtHistoryFolder)
+        Me.tabHistoryLocal.Controls.Add(Me.lblHistoryMaxCopies)
+        Me.tabHistoryLocal.Controls.Add(Me.txtHistoryDailyCopies)
+        Me.tabHistoryLocal.Controls.Add(Me.cmdHistoryFolderBrowse)
+        Me.tabHistoryLocal.Controls.Add(Me.txtHistoryMaxCopies)
+        Me.tabHistoryLocal.Controls.Add(Me.lblHistoryDailyCopies)
+        Me.tabHistoryLocal.Controls.Add(Me.lblHistoryFolder)
+        Me.tabHistoryLocal.Name = "tabHistoryLocal"
+        resources.ApplyResources(Me.tabHistoryLocal, "tabHistoryLocal")
+        '
+        'tabHistoryWeb
+        '
+        Me.tabHistoryWeb.Controls.Add(Me.chkHistoryWebArchiveOnSave)
+        Me.tabHistoryWeb.Controls.Add(Me.lblHistoryWebAddress)
+        Me.tabHistoryWeb.Controls.Add(Me.chkHistoryWebAuthReq)
+        Me.tabHistoryWeb.Controls.Add(Me.lblHistoryWebUsername)
+        Me.tabHistoryWeb.Controls.Add(Me.lblHistoryWebMaxCopies)
+        Me.tabHistoryWeb.Controls.Add(Me.txtHistoryWebUsername)
+        Me.tabHistoryWeb.Controls.Add(Me.txtHistoryWebMaxCopies)
+        Me.tabHistoryWeb.Controls.Add(Me.txtHistoryWebPassword)
+        Me.tabHistoryWeb.Controls.Add(Me.lblHistoryWebDailyCopies)
+        Me.tabHistoryWeb.Controls.Add(Me.lblHistoryWebPassword)
+        Me.tabHistoryWeb.Controls.Add(Me.txtHistoryWebDailyCopies)
+        Me.tabHistoryWeb.Controls.Add(Me.txtHistoryWebURL)
+        Me.tabHistoryWeb.Controls.Add(Me.cmdHistoryWebCheck)
+        Me.tabHistoryWeb.Name = "tabHistoryWeb"
+        resources.ApplyResources(Me.tabHistoryWeb, "tabHistoryWeb")
+        '
         'frmSettings
         '
         resources.ApplyResources(Me, "$this")
@@ -1847,14 +1847,9 @@ Partial Class frmSettings
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSettings"
-        Me.tabHistorySettings.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage1.PerformLayout()
         CType(Me.chkHistoryArchiveOnSave.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtHistoryMaxCopies, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtHistoryDailyCopies, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabPage2.ResumeLayout(False)
-        Me.TabPage2.PerformLayout()
         CType(Me.chkHistoryWebArchiveOnSave.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkHistoryWebAuthReq.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtHistoryWebMaxCopies, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1981,6 +1976,12 @@ Partial Class frmSettings
         CType(Me.chkForceGarbaceCollect.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtLogMaxLine.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkLogOnFile.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tabHistorySettings, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabHistorySettings.ResumeLayout(False)
+        Me.tabHistoryLocal.ResumeLayout(False)
+        Me.tabHistoryLocal.PerformLayout()
+        Me.tabHistoryWeb.ResumeLayout(False)
+        Me.tabHistoryWeb.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2080,9 +2081,6 @@ Partial Class frmSettings
     Friend WithEvents txtHistoryWebURL As System.Windows.Forms.TextBox
     Friend WithEvents lblHistoryWebAddress As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cmdHistoryWebCheck As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents tabHistorySettings As System.Windows.Forms.TabControl
-    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
-    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
     Friend WithEvents lblHistoryWebMaxCopies As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtHistoryWebMaxCopies As System.Windows.Forms.NumericUpDown
     Friend WithEvents lblHistoryWebDailyCopies As DevExpress.XtraEditors.LabelControl
@@ -2186,4 +2184,7 @@ Partial Class frmSettings
     Friend WithEvents cmdTherionINIAdd As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdTherionINIDelete As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents chkShotsDisableConstraint As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents tabHistorySettings As DevExpress.XtraTab.XtraTabControl
+    Friend WithEvents tabHistoryLocal As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents tabHistoryWeb As DevExpress.XtraTab.XtraTabPage
 End Class

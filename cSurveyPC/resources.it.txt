@@ -1144,3 +1144,7 @@ linkedsurveys.textpart4=Il rilievo {0} con id {1} è questo rilievo.
 
 main.warning36=Eliminare {1} archiviato come {0}?
 main.warning37=Eliminare {1} dal rilievo corrente?
+
+exceptionmanager.details.textpart8=Lingua sistema/lingua applicazione
+exceptionmanager.details.textpart9=Errore interno
+exceptionmanager.details.textpart10=Windows

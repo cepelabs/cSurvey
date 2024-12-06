@@ -255,11 +255,6 @@ Friend Class frmSettings
 
         Call pFillPenPatternItems()
 
-        'preparo la tab delle impostazioni di history
-        oTabHistory0 = tabHistorySettings.TabPages(0)
-        oTabHistory1 = tabHistorySettings.TabPages(1)
-        Call tabHistorySettings.TabPages.Clear()
-
         'leggo i valori dal registro
         Dim bFirstRun As Boolean = My.Application.Settings.Count = 0
 
@@ -501,21 +496,17 @@ Friend Class frmSettings
         End Try
     End Sub
 
-    Dim oTabHistory0 As TabPage
-    Dim oTabHistory1 As TabPage
-
     Private Sub cboHistoryMode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboHistoryMode.SelectedIndexChanged
         Select Case cboHistoryMode.SelectedIndex
             Case 0
-                Call tabHistorySettings.TabPages.Clear()
-                Call tabHistorySettings.TabPages.Add(oTabHistory0)
+                tabHistoryLocal.PageVisible = True
+                tabHistoryWeb.PageVisible = False
             Case 1
-                Call tabHistorySettings.TabPages.Clear()
-                Call tabHistorySettings.TabPages.Add(oTabHistory1)
+                tabHistoryLocal.PageVisible = False
+                tabHistoryWeb.PageVisible = True
             Case 2
-                Call tabHistorySettings.TabPages.Clear()
-                Call tabHistorySettings.TabPages.Add(oTabHistory0)
-                Call tabHistorySettings.TabPages.Add(oTabHistory1)
+                tabHistoryLocal.PageVisible = True
+                tabHistoryWeb.PageVisible = True
         End Select
     End Sub
 

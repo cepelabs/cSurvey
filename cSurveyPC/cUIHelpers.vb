@@ -2,6 +2,7 @@
 Imports System.IO
 Imports System.Text
 Imports System.Windows.Input
+Imports System.Xml
 Imports cSurveyPC.cSurvey.Helper.Editor
 Imports cSurveyPC.cSurvey.Surface
 Imports DevExpress.Utils.Behaviors.Common
@@ -4066,5 +4067,147 @@ Namespace cSurvey.UIHelpers
             Call MyBase.Add(oItem)
             Return oItem
         End Function
+    End Class
+
+    Public MustInherit Class cHistoryItemBase
+        Private sName As String
+        Private sOrigin As String
+        Private iSize As Integer
+        Private dDateStamp As DateTime
+        Private sUsername As String
+
+        Public MustOverride ReadOnly Property ID As Object
+        Public MustOverride ReadOnly Property ImageIndex As Integer
+        Public MustOverride ReadOnly Property Group As String
+        Public ReadOnly Property Size As Integer
+            Get
+                Return iSize
+            End Get
+        End Property
+        Public ReadOnly Property DateStamp As DateTime
+            Get
+                Return dDateStamp
+            End Get
+        End Property
+        Public ReadOnly Property Origin As String
+            Get
+                Return sOrigin
+            End Get
+        End Property
+
+        Public ReadOnly Property Username As String
+            Get
+                Return sUsername
+            End Get
+        End Property
+        Public ReadOnly Property Name As String
+            Get
+                Return sName
+            End Get
+        End Property
+
+        Public Sub New(Name As String, Origin As String, Size As Integer, DateStamp As DateTime, Username As String)
+            sName = Name
+            sOrigin = Origin
+            iSize = Size
+            dDateStamp = DateStamp
+            sUsername = Username
+        End Sub
+    End Class
+
+    Public Class cHistoryItemLocal
+        Inherits cHistoryItemBase
+
+        Friend Sub New(ID As String, Name As String, Origin As String, Size As Integer, DateStamp As DateTime, Username As String)
+            MyBase.New(Name, Origin, Size, DateStamp, Username)
+            sID = ID
+        End Sub
+
+        Public Overrides ReadOnly Property ImageIndex As Integer
+            Get
+                Return 0
+            End Get
+        End Property
+
+        Public Overrides ReadOnly Property Group As String
+            Get
+                Return "local"
+            End Get
+        End Property
+
+        Private sID As String
+
+        Public Overrides ReadOnly Property ID As Object
+            Get
+                Return sID
+            End Get
+        End Property
+        Public Shared Function Create(File As IO.FileInfo) As cHistoryItemLocal
+            Dim sName As String
+            Dim sOrigin As String
+            Dim dDateStamp As DateTime
+            Dim sUsername As String
+            Dim sID As String = File.FullName
+            Dim oDetailsFile As IO.FileInfo = My.Computer.FileSystem.GetFileInfo(IO.Path.Combine(File.DirectoryName, IO.Path.GetFileNameWithoutExtension(File.Name) & ".xml"))
+            If oDetailsFile.Exists Then
+                Dim oXML As XmlDocument = New XmlDocument
+                oXML.Load(oDetailsFile.FullName)
+                With oXML.Item("csurvey").Item("historydetails").Item("item")
+                    sName = .GetAttribute("name")
+                    sOrigin = .GetAttribute("origin")
+                    dDateStamp = .GetAttribute("datestamp")
+                    sUsername = .GetAttribute("username")
+                End With
+            Else
+                sName = File.Name
+                sOrigin = "N/D"
+                dDateStamp = File.LastWriteTime
+                sUsername = "N/D"
+            End If
+            Dim oItem As cHistoryItemLocal = New cHistoryItemLocal(sID, sName, sOrigin, File.Length, dDateStamp, sUsername)
+            Return oItem
+        End Function
+    End Class
+
+    Public Class cHistoryItemWeb
+        Inherits cHistoryItemBase
+
+        Friend Sub New(ID As Integer, Name As String, Origin As String, Size As Integer, DateStamp As DateTime, Username As String)
+            MyBase.New(Name, Origin, Size, DateStamp, Username)
+            iID = ID
+        End Sub
+
+        Public Overrides ReadOnly Property ImageIndex As Integer
+            Get
+                Return 1
+            End Get
+        End Property
+        Public Overrides ReadOnly Property Group As String
+            Get
+                Return "web"
+            End Get
+        End Property
+
+        Private iID As Integer
+
+        Public Overrides ReadOnly Property ID As Object
+            Get
+                Return iID
+            End Get
+        End Property
+        Public Shared Function Create(WebItem As Net.cNetHistorySet) As cHistoryItemWeb
+            Dim iID As Integer = WebItem.ID
+            Dim sName As String = WebItem.Name
+            Dim sOrigin As String = WebItem.Origin
+            Dim iSize As Integer = WebItem.Size
+            Dim dDateStamp As DateTime = WebItem.DateStamp
+            Dim sUsername As String = WebItem.Username
+            Dim oItem As cHistoryItemWeb = New cHistoryItemWeb(iID, sName, sOrigin, iSize, dDateStamp, sUsername)
+            Return oItem
+        End Function
+    End Class
+
+    Public Class cHistoryItems
+        Inherits BindingList(Of cHistoryItemBase)
     End Class
 End Namespace

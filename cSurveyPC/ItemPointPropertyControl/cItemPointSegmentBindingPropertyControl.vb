@@ -27,7 +27,7 @@ Friend Class cItemPointSegmentBindingPropertyControl
                 Call oSegments.Add(oSegment.ID, oSegment)
             End If
         End If
-        grdSegmentsBinded.Rebind(Item.Survey, oSegments.Values.Cast(Of cSegment).ToList, New cSegmentsGrid.cSegmentGridParameters(False, True, True, True))
+        grdSegmentsBinded.Rebind(Item.Survey, oSegments.Values.Cast(Of cISegment).ToList, New cSegmentsGrid.cSegmentGridParameters(False, True, True, True))
     End Sub
 
     Private Sub chkPropSegmentLocked_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropSegmentLocked.CheckedChanged

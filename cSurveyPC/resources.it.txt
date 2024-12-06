@@ -1148,3 +1148,8 @@ main.warning37=Eliminare {1} dal rilievo corrente?
 exceptionmanager.details.textpart8=Lingua sistema/lingua applicazione
 exceptionmanager.details.textpart9=Errore interno
 exceptionmanager.details.textpart10=Windows
+
+main.textpart170=questa battuta è collegata ad uno o più oggetti grafici
+main.textpart171=uno dei due capisaldi è l'origine
+main.textpart172=la direzione della battuta non è modificabile perchè la battuta è collegata ad uno o più oggetti grafici in sezione
+main.textpart173=Alcune proprietà sono bloccate

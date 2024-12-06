@@ -1144,3 +1144,8 @@ main.warning37=Delete {1} from current survey?
 exceptionmanager.details.textpart8=System language/application language
 exceptionmanager.details.textpart9=Inner error
 exceptionmanager.details.textpart10=Windows
+
+main.textpart170=this shot is binded to one or more design objects
+main.textpart171=one of the shot's station is the origin
+main.textpart172=shot direction cannot be changed cause this shot is binded to one or more design objects in profile
+main.textpart173=Some properties are readonly

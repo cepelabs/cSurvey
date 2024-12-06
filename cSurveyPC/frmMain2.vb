@@ -1610,17 +1610,17 @@ Friend Class frmMain2
                 Dim oEnabledMessage As List(Of String) = New List(Of String)
                 If Not .Splay Then
                     If .IsBinded Then
-                        oEnabledMessage.Add("this shot is binded to one or more design objects")
+                        oEnabledMessage.Add(modMain.GetLocalizedString("main.textpart170"))
                     End If
                     If .IsOrigin Then
-                        oEnabledMessage.Add("one of the shot's station is the origin")
+                        oEnabledMessage.Add(modMain.GetLocalizedString("main.textpart171"))
                     End If
                     If .IsProfileBinded Then
-                        oEnabledMessage.Add("shot direction cannot be changed cause this shot is binded to one or more design objects in profile")
+                        oEnabledMessage.Add(modMain.GetLocalizedString("main.textpart172"))
                     End If
                 End If
                 If oEnabledMessage.Count > 0 Then
-                    cSegmentMessageBar.PopupShow("locked", "Some properties are readonly", String.Join(";" & vbCrLf, oEnabledMessage.Select(Function(sMessage) " - " & sMessage)))
+                    cSegmentMessageBar.PopupShow("locked", modMain.GetLocalizedString("main.textpart173"), String.Join(";" & vbCrLf, oEnabledMessage.Select(Function(sMessage) " - " & sMessage)))
                 Else
                     cSegmentMessageBar.PopupHide()
                 End If

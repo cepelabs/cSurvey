@@ -76,7 +76,7 @@ Module modClipper
     'End Function
 
     Public Function ToIntPolygon(Polygon As List(Of PointF), Scale As Integer) As List(Of IntPoint)
-        Dim oResPolygon(Polygon.Count) As IntPoint
+        Dim oResPolygon(Polygon.Count - 1) As IntPoint
         For i As Integer = 0 To Polygon.Count - 1
             oResPolygon(i) = New IntPoint(Polygon(i).X * Scale, Polygon(i).Y * Scale)
         Next

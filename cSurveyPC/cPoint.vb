@@ -18,6 +18,22 @@ Namespace cSurvey.Design
             Return RemoveJoined(oResult)
         End Function
 
+        Public Function ContainsKey(ID As String)
+            Return oItems.ContainsKey(ID)
+        End Function
+
+        Friend Function Add(ID As String, Point As cPoint) As cPointsJoin
+            If oItems.ContainsKey(ID) Then
+                Dim oItem As cPointsJoin = oItems(ID)
+                oItem.Append(Point)
+                Return oItem
+            Else
+                Dim oItem As cPointsJoin = New cPointsJoin(oSurvey, Point)
+                Call oItems.Add(oItem.ID, oItem)
+                Return oItem
+            End If
+        End Function
+
         Public Function RemoveJoined(Points As List(Of cPoint)) As List(Of cPoint)
             Dim oResult As List(Of cPoint) = New List(Of cPoint)(Points)
             Dim oJoinedPoints As List(Of cPoint) = New List(Of cPoint)
@@ -201,11 +217,15 @@ Namespace cSurvey.Design
             Return oXmlItem
         End Function
 
-        Friend Sub New(Survey As cSurvey, CurrentPoint As cPoint)
+        Friend Sub New(Survey As cSurvey, ID As String, CurrentPoint As cPoint)
             oSurvey = Survey
-            sID = Guid.NewGuid.ToString
+            sID = ID
             oItems = New List(Of cPoint)
             Call oItems.Add(CurrentPoint)
+        End Sub
+
+        Friend Sub New(Survey As cSurvey, CurrentPoint As cPoint)
+            Me.New(Survey, Guid.NewGuid.ToString, CurrentPoint)
         End Sub
 
         Public Function Contains(Point As cPoint) As Boolean
@@ -215,7 +235,7 @@ Namespace cSurvey.Design
         Friend Sub Append(NewPoint As cPoint)
             If Not oItems.Contains(NewPoint) Then
                 If NewPoint.PointsJoin Is Nothing Then
-                    If Not oItems.Contains(NewPoint) Then 'questo check sarebbe superfluo...
+                    If Not oItems.Contains(NewPoint) Then
                         Call oItems.Add(NewPoint)
                         Call NewPoint.SetJoin(Me)
                     End If

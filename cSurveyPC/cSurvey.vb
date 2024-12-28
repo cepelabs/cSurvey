@@ -4,6 +4,7 @@ Imports cSurveyPC.cSurvey.Scale
 Imports cSurveyPC.cSurvey.Calculate
 Imports cSurveyPC.cSurvey.CaveRegister
 Imports System.Windows.Media.Media3D
+Imports cSurveyPC.cSurvey.Design.cPen
 
 Namespace cSurvey
     Public Class cSurvey
@@ -153,6 +154,56 @@ Namespace cSurvey
             Rebind = 0
             Change = 1
         End Enum
+
+        Public Class cCustomPenCreateEventArgs
+            Inherits EventArgs
+
+            Private oOriginalPen As cCustomPen
+            Public ReadOnly Property OriginalPen As cCustomPen
+                Get
+                    Return oOriginalPen
+                End Get
+            End Property
+
+            Public Sub New(OriginalPen As cCustomPen)
+                oOriginalPen = OriginalPen
+            End Sub
+        End Class
+
+        Public Event OnCustomPenCreate(sender As Object, e As cCustomPenCreateEventArgs)
+
+        Public Class cCustomBrushCreateEventArgs
+            Inherits EventArgs
+
+            Private oOriginalBrush As cCustomBrush
+            Public ReadOnly Property OriginalBrush As cCustomBrush
+                Get
+                    Return oOriginalBrush
+                End Get
+            End Property
+
+            Public Sub New(OriginalBrush As cCustomBrush)
+                oOriginalBrush = OriginalBrush
+            End Sub
+        End Class
+
+        Public Event OnCustomBrushCreate(sender As Object, e As cCustomBrushCreateEventArgs)
+
+        Friend Sub RaiseOnCustomBrushCreate(Brush As cCustomBrush, OriginalBrush As cBrush)
+            RaiseEvent OnCustomBrushCreate(Brush, New cCustomBrushCreateEventArgs(OriginalBrush.GetBaseBrush))
+        End Sub
+        Friend Sub RaiseOnCustomBrushCreate(Brush As cCustomBrush, OriginalBrush As cCustomBrush)
+            RaiseEvent OnCustomBrushCreate(Brush, New cCustomBrushCreateEventArgs(OriginalBrush))
+        End Sub
+
+
+        Friend Sub RaiseOnCustomPenCreate(Pen As cCustomPen, OriginalPen As cPen)
+            RaiseEvent OnCustomPenCreate(Pen, New cCustomPenCreateEventArgs(OriginalPen.GetBasePen))
+        End Sub
+
+        Friend Sub RaiseOnCustomPenCreate(Pen As cCustomPen, OriginalPen As cCustomPen)
+            RaiseEvent OnCustomPenCreate(Pen, New cCustomPenCreateEventArgs(OriginalPen))
+        End Sub
 
         Public Class cFileConversionEventArgs
             Inherits EventArgs

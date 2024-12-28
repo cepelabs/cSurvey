@@ -555,7 +555,6 @@ Namespace cSurvey.Helper.Editor
             Dim oRestore As cUndoRestoreDesign = New cUndoRestoreDesign(MyBase.Area)
             For Each oFirstItem As cUndoItemDataDesignData In oFirstItems.OrderBy(Function(oItem) oItem.Index)
                 Dim oItem As cItem = pDeserializeItem(MyBase.Parent.File, oFirstItem)
-                Call oItem.Layer.Items.MoveTo(oFirstItem.Index, oItem)
                 Call oRestore.Append(oItem)
             Next
             Return oRestore
@@ -603,13 +602,55 @@ Namespace cSurvey.Helper.Editor
         End Sub
 
         Private Function pDeserializeItem(File As cFile, Item As cUndoItemDataDesignData) As cItem
-            Return Item.Layer.CreateItem(File, Item.XMLElement)
+            Dim oItem As cItem = Item.Layer.CreateItem(File, Item.XMLElement.Item("item"))
+            Call oItem.Layer.Items.MoveTo(Item.Index, oItem)
+            For Each oXMLJoinedPoint As XmlElement In Item.XMLElement.Item("jps")
+                Dim sJoinedPointID As String = oXMLJoinedPoint.GetAttribute("id")
+
+                Dim iJoinedPointPointIndex As Integer = oXMLJoinedPoint.GetAttribute("p")
+
+                Dim oPoint As cPoint = oItem.Points(iJoinedPointPointIndex)
+                Dim oPointJoin As cPointsJoin = oItem.Design.PointsJoins.Add(sJoinedPointID, oPoint)
+
+                For Each oXMLOtherJoinedPoint As XmlElement In oXMLJoinedPoint.Item("ojp").ChildNodes
+                    Dim iOtherJoinedPointPointIndex As Integer = oXMLOtherJoinedPoint.GetAttribute("p")
+                    Dim iOtherJoinedPointItemIndex As Integer = oXMLOtherJoinedPoint.GetAttribute("i")
+                    Dim iOtherJoinedPointLayerIndex As Integer = oXMLOtherJoinedPoint.GetAttribute("l")
+                    oPointJoin.Append(oItem.Design.Layers(iOtherJoinedPointLayerIndex).Items(iOtherJoinedPointItemIndex).Points(iOtherJoinedPointPointIndex))
+                Next
+            Next
+            Return oItem
         End Function
 
         Private Function pSerializeItem(File As cFile, Item As cItem) As cUndoItemDataDesignData
             Dim oXML As XmlDocument = File.Document
             Dim oXMLParent As XmlElement = oXML.CreateElement("i")
-            Dim oXMLSourceData As XmlElement = Item.SaveTo(File, oXML, oXMLParent, cSurvey.SaveOptionsEnum.Silent)
+            Dim oXMLSourceData As XmlElement = oXML.CreateElement("d")
+            Dim oXMLItem As XmlElement = Item.SaveTo(File, oXML, oXMLParent, cSurvey.SaveOptionsEnum.Silent)
+            oXMLSourceData.AppendChild(oXMLItem)
+            Dim oXMLJoinedPoints As XmlElement = oXML.CreateElement("jps")
+            For Each oPoint As cPoint In Item.Points.GetJoined()
+                Dim oXMLJoinedPoint As XmlElement = oXML.CreateElement("jp")
+                oXMLJoinedPoint.SetAttribute("id", oPoint.PointsJoin.ID)
+                oXMLJoinedPoint.SetAttribute("p", oPoint.GetIndex())
+                Dim oXMLOtherJoinedPoints As XmlElement = oXML.CreateElement("ojp")
+                For Each oOtherPoint As cPoint In oPoint.PointsJoin
+                    If oOtherPoint IsNot oPoint Then
+                        Dim oXMLOtherJoinedPoint As XmlElement = oXML.CreateElement("jp")
+                        Dim oLayer As cLayer = oOtherPoint.Item.Layer
+                        Dim iItemIndex As Integer = oLayer.Items.IndexOf(oOtherPoint.Item)
+                        Dim iPointIndex As Integer = oOtherPoint.Item.Points.IndexOf(oOtherPoint)
+                        oXMLOtherJoinedPoint.SetAttribute("l", oLayer.Type.ToString("D"))
+                        oXMLOtherJoinedPoint.SetAttribute("i", iItemIndex)
+                        oXMLOtherJoinedPoint.SetAttribute("p", iPointIndex)
+                        oXMLOtherJoinedPoints.AppendChild(oXMLOtherJoinedPoint)
+                    End If
+                Next
+                oXMLJoinedPoint.AppendChild(oXMLOtherJoinedPoints)
+                oXMLJoinedPoints.AppendChild(oXMLJoinedPoint)
+            Next
+            oXMLSourceData.AppendChild(oXMLJoinedPoints)
+
             If oXMLSourceData Is Nothing Then
                 'TODO: why go here?! must investigate...
                 Return New cUndoItemDataDesignData(Nothing, Item.Layer.Items.IndexOf(Item), Item.Layer)

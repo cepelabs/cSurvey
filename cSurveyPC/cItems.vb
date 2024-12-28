@@ -106,6 +106,7 @@ Namespace cSurvey.Design
             For Each oItem As cItem In Items
                 If oItems.Contains(oItem) Then
                     Call oItem.SetDeleted()
+                    Call oItem.Points.GetJoined.ForEach(Sub(oPoint) oPoint.Unjoin())
                     Call oItems.Remove(oItem)
                 End If
             Next
@@ -115,6 +116,7 @@ Namespace cSurvey.Design
             If Not Item Is Nothing Then
                 If oItems.Contains(Item) Then
                     Call Item.SetDeleted()
+                    Call Item.Points.GetJoined.ForEach(Sub(oPoint) oPoint.Unjoin())
                     Call oItems.Remove(Item)
                 End If
             End If
@@ -124,6 +126,7 @@ Namespace cSurvey.Design
             If Index >= 0 AndAlso Index < oItems.Count Then
                 Dim oItem As cItem = oItems(Index)
                 Call oItem.SetDeleted()
+                Call oItem.Points.GetJoined.ForEach(Sub(oPoint) oPoint.Unjoin())
                 Call oItems.RemoveAt(Index)
             End If
         End Sub
@@ -260,7 +263,7 @@ Namespace cSurvey.Design
             Dim oXmlItems As XmlElement = Document.CreateElement("items")
             Dim iIndex As Integer = 0
             Dim iCount As Integer = oItems.Count
-            Dim iStep As Integer = IIf(iCount > 20, iCount \ 20, 1)
+            Dim iStep As Integer = If(iCount > 20, iCount \ 20, 1)
             For Each oItem As cItem In oItems
                 iIndex += 1
                 If (Options AndAlso cSurvey.SaveOptionsEnum.Silent) = 0 Then If (iIndex Mod iStep) = 0 Then Call oSurvey.RaiseOnProgressEvent("save", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, String.Format(modMain.GetLocalizedString("items.textpart2"), If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, modMain.GetLocalizedString("items.textpart3"), modMain.GetLocalizedString("items.textpart4"))), iIndex / iCount)

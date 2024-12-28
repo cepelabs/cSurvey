@@ -21,6 +21,10 @@ Namespace cSurvey.Design
         Friend Event OnChanged(ByVal Sender As cPoints)
         Friend Event OnGetLineType(Sender As cPoints, ByRef LineType As Items.cIItemLine.LineTypeEnum)
 
+        Public Function GetJoined() As List(Of cPoint)
+            Return oPoints.Where(Function(oPoint) oPoint.IsJoined).ToList
+        End Function
+
         Public Function GetNearestPoint(PaintPoint As PointF) As cPoint
             Return oPoints.OrderBy(Function(oPoint) modPaint.DistancePointToPoint(oPoint.Point, PaintPoint)).FirstOrDefault()
         End Function

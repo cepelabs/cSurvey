@@ -2073,11 +2073,15 @@ Namespace cSurvey.Design
                                             Cache.AddBorder(oPainter.Path, New Pen(Color.Red, 0.001F))
                                         Else
                                             oPatternBrush.OnPaint(oPainter)
-                                            Call oPainter.Path.Transform(oMatrix)
-                                            If oPainter.IsFilled Then
-                                                Call Cache.AddFiller(oPainter.Path, oPatternPen, Nothing, New SolidBrush(oPatternPen.Color))
+                                            If oPainter.Path.PointCount = 0 OrElse oPainter.Path.PointCount > 20000 Then
+                                                oSurvey.RaiseOnErrorLogEvent("Brush pattern too dense", New Exception("Brush pattern too dense"))
                                             Else
-                                                Call Cache.AddFiller(oPainter.Path, oPatternPen, Nothing)
+                                                Call oPainter.Path.Transform(oMatrix)
+                                                If oPainter.IsFilled Then
+                                                    Call Cache.AddFiller(oPainter.Path, oPatternPen, Nothing, New SolidBrush(oPatternPen.Color))
+                                                Else
+                                                    Call Cache.AddFiller(oPainter.Path, oPatternPen, Nothing)
+                                                End If
                                             End If
                                         End If
                                     End Using

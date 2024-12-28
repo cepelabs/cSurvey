@@ -487,12 +487,6 @@ Module modExport
                             Dim oCoordinates As System.Text.StringBuilder = New System.Text.StringBuilder
                             For iPoint As Integer = 0 To oResSubpoints.Count - 1
                                 Call pGoogleKMLAppendPoint(oCoordinates, oResSubpoints(iPoint), sMC, oUTMOrigin)
-                                'Dim oPoint As PointF = modPaint.RotatePointByRadians(oResSubpoints(iPoint), sMC)
-                                'Dim oRefPoint As modUTM.UTM = New modUTM.UTM(oUTMOrigin)
-                                'oRefPoint.East = oRefPoint.East + CDec(oPoint.X)
-                                'oRefPoint.North = oRefPoint.North - CDec(oPoint.Y)
-                                'Dim oRefPointWGS84 As modUTM.WGS84 = modUTM.UTMToWGS84(oRefPoint)
-                                'Call oCoordinates.AppendLine(modNumbers.NumberToString(oRefPointWGS84.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oRefPointWGS84.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(0, DefaultAltitudeFormat))
                             Next
                             Call pGoogleKMLAppendPoint(oCoordinates, oResSubpoints(0), sMC, oUTMOrigin)
 
@@ -507,12 +501,6 @@ Module modExport
                                     Dim oInnerCoordinates As System.Text.StringBuilder = New System.Text.StringBuilder
                                     For iPoint As Integer = 0 To oHoleResSubpoints.Count - 1
                                         Call pGoogleKMLAppendPoint(oInnerCoordinates, oHoleResSubpoints(iPoint), sMC, oUTMOrigin)
-                                        'Dim oPoint As PointF = modPaint.RotatePointByRadians(oHoleResSubpoints(iPoint), sMC)
-                                        'Dim oRefPoint As modUTM.UTM = New modUTM.UTM(oUTMOrigin)
-                                        'oRefPoint.East = oRefPoint.East + CDec(oPoint.X)
-                                        'oRefPoint.North = oRefPoint.North - CDec(oPoint.Y)
-                                        'Dim oRefPointWGS84 As modUTM.WGS84 = modUTM.UTMToWGS84(oRefPoint)
-                                        'Call oInnerCoordinates.AppendLine(modNumbers.NumberToString(oRefPointWGS84.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oRefPointWGS84.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(0, DefaultAltitudeFormat))
                                     Next
                                     Call pGoogleKMLAppendPoint(oCoordinates, oHoleResSubpoints(0), sMC, oUTMOrigin)
 

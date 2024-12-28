@@ -20050,6 +20050,17 @@ Friend Class frmMain2
     Private Sub cSegmentMessageBar_OnCloseRequest(sender As Object, e As EventArgs) Handles cSegmentMessageBar.OnCloseRequest
         Call cSegmentMessageBar.PopupHide()
     End Sub
+
+    Private Sub oSurvey_OnCustomBrushCreate(sender As Object, e As cSurvey.cSurvey.cCustomBrushCreateEventArgs) Handles oSurvey.OnCustomBrushCreate
+
+    End Sub
+
+    Private Sub oSurvey_OnCustomPenCreate(sender As Object, e As cSurvey.cSurvey.cCustomPenCreateEventArgs) Handles oSurvey.OnCustomPenCreate
+        Dim oPen As cCustomPen = sender
+        If e.OriginalPen.Type <> cPen.PenTypeEnum.User AndAlso e.OriginalPen.Type <> cPen.PenTypeEnum.Custom Then
+            oPen.Width = oCurrentOptions.GetPenDefaultWidth(e.OriginalPen.Type)
+        End If
+    End Sub
 End Class
 
 

@@ -325,6 +325,7 @@ Namespace cSurvey.Design
             Dim oNewPen As cCustomPen = New cCustomPen(Survey, Pen)
             oNewPen.iType = cPen.PenTypeEnum.Custom
             oNewPen.sID = ""
+            oNewPen.Survey.RaiseOnCustomPenCreate(oNewPen, Pen)
             Return oNewPen
         End Function
 
@@ -332,6 +333,7 @@ Namespace cSurvey.Design
             Dim oNewPen As cCustomPen = New cCustomPen(Survey, Pen)
             oNewPen.iType = cPen.PenTypeEnum.User
             oNewPen.sID = CalculateHash(oNewPen)
+            oNewPen.Survey.RaiseOnCustomPenCreate(oNewPen, Pen)
             Return oNewPen
         End Function
 

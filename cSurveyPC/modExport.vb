@@ -666,6 +666,60 @@ Module modExport
         Oversample3D = &H1000000
     End Enum
 
+    Public Class cVersion
+        Private oVersion As Version
+        Private dReleaseDate As Date
+
+
+        Public ReadOnly Property ReleaseDate As Date
+            Get
+                Return dReleaseDate
+            End Get
+        End Property
+
+        Public ReadOnly Property Version As Version
+            Get
+                Return oVersion
+            End Get
+        End Property
+
+        Public Sub New(Version As String, ReleaseDate As Date)
+            oVersion = New Version(Version)
+            dReleaseDate = ReleaseDate
+        End Sub
+    End Class
+
+    Public Function GetTherionVersion(TherionFilename As String) As cVersion
+        If My.Computer.FileSystem.FileExists(TherionFilename) Then
+            Try
+                Dim oResult As cVersion
+                Dim iExitCode As Integer = modMain.ExecuteTherion(TherionFilename, "", " -v ", True, Sub(sendingProcess As Object, outLine As DataReceivedEventArgs)
+                                                                                                         If outLine.Data IsNot Nothing Then
+                                                                                                             Dim sLine As String = outLine.Data.Replace(vbCrLf, " ").Replace(vbLf, "").Trim
+                                                                                                             If sLine.StartsWith("therion ") Then
+                                                                                                                 Dim sLineParts As String() = sLine.Split(" ")
+                                                                                                                 Dim sVersion As String = sLineParts(1)
+                                                                                                                 Dim dReleaseDate As Date = Date.Parse(sLineParts(2).Substring(1, sLineParts(2).Length - 2))
+                                                                                                                 oResult = New cVersion(sVersion, dReleaseDate)
+                                                                                                             End If
+                                                                                                         End If
+                                                                                                     End Sub)
+                Return oResult
+            Catch ex As Exception
+                Return Nothing
+            End Try
+        Else
+            Return Nothing
+        End If
+    End Function
+
+    'TODO: add filename and ini
+    Public Async Function GetTherionVersionAsync(TherionFilename As String) As Threading.Tasks.Task(Of cVersion)
+        Return Await Threading.Tasks.Task.Run(Function()
+                                                  Return GetTherionVersion(TherionFilename)
+                                              End Function)
+    End Function
+
     Public Sub TherionCreateConfig(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, ByVal DataFilenames As List(Of String), ByVal Command As String)
         Call TherionCreateConfig(Survey, Filename, DataFilenames.ToArray, Command)
     End Sub

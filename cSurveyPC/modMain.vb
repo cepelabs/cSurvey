@@ -181,81 +181,124 @@ Module modMain
         End Try
     End Function
 
-    Public Class DataReceivedStringEventArgs
-        Inherits EventArgs
+    'Public Class DataReceivedStringEventArgs
+    '    Inherits EventArgs
 
-        Private sData As String
+    '    Private sData As String
 
-        Public ReadOnly Property Data As String
-            Get
-                Return sData
-            End Get
-        End Property
+    '    Public ReadOnly Property Data As String
+    '        Get
+    '            Return sData
+    '        End Get
+    '    End Property
 
-        Public Sub New(Data As String)
-            sData = Data
-        End Sub
-    End Class
+    '    Public Sub New(Data As String)
+    '        sData = Data
+    '    End Sub
+    'End Class
 
-    Public Delegate Sub DataReceivedStringEventHandler(sender As Object, e As DataReceivedStringEventArgs)
+    'Public Delegate Sub DataReceivedStringEventHandler(sender As Object, e As DataReceivedStringEventArgs)
 
-    Public Function ExecuteProcess(ByVal Filename As String, ByVal Arguments As String, ByVal Background As Boolean, OutputHandler As DataReceivedStringEventHandler) As Integer
-        Dim iTimeout As Integer = 120000
-        Dim iWaitForExit As Integer = 500 '120000 ' Integer.MaxValue
-        Using oProcess As Process = New Process
-            With oProcess
-                .StartInfo.WorkingDirectory = My.Computer.FileSystem.SpecialDirectories.Temp
-                .StartInfo.FileName = Filename
-                .StartInfo.Arguments = Arguments
-                If Background Then
-                    'If Not OutputHandler Is Nothing Then AddHandler .OutputDataReceived, OutputHandler
-                    .StartInfo.CreateNoWindow = True
-                    .StartInfo.WindowStyle = ProcessWindowStyle.Hidden
-                    .StartInfo.RedirectStandardInput = True
-                    .StartInfo.RedirectStandardOutput = True
-                    .StartInfo.UseShellExecute = False
-                    'usefull to allow special settings for therion launced from csurvey
-                    Dim sCustomTherionIniPath As String = My.Application.Settings.GetSetting("therion.inipath", "")
-                    If sCustomTherionIniPath <> "" Then
-                        .StartInfo.EnvironmentVariables.Add("THERION", sCustomTherionIniPath)
-                    Else
-                        .StartInfo.EnvironmentVariables.Add("THERION", modMain.GetUserApplicationPath)
-                    End If
-                End If
-                Call .Start()
-                'If Background Then
-                '    Call .BeginOutputReadLine()
-                'End If
-                Call .StandardInput.WriteLine()
-                Dim iWait As Integer = 0
-                Do
-                    If Not OutputHandler Is Nothing Then
-                        Try
-                            Call OutputHandler(oProcess, New DataReceivedStringEventArgs(oProcess.StandardOutput.ReadToEnd))
-                        Catch ex As Exception
-                        End Try
-                    End If
-                    Call .WaitForExit(iWaitForExit)
-                    iWait += iWaitForExit
-                    If Not .HasExited AndAlso iWait >= iTimeout Then
-                        If MsgBox(GetLocalizedString("process.warning1"), MsgBoxStyle.OkCancel Or MsgBoxStyle.Critical, GetLocalizedString("process.warningtitle")) = MsgBoxResult.Cancel Then
-                            Call KillProcessTree(oProcess)
-                            Call Err.Raise(vbObjectError + 200, "process.aborted", GetLocalizedString("process.textpart1"), Nothing, Nothing)
-                        End If
-                    End If
-                Loop Until .HasExited
-                Return .ExitCode
-            End With
-        End Using
-    End Function
+    'Public Function ExecuteProcess(ByVal Filename As String, ByVal Arguments As String, ByVal Background As Boolean, OutputHandler As DataReceivedStringEventHandler) As Integer
+    '    Dim iTimeout As Integer = 120000
+    '    Dim iWaitForExit As Integer = 500 '120000 ' Integer.MaxValue
+    '    Using oProcess As Process = New Process
+    '        With oProcess
+    '            .StartInfo.WorkingDirectory = My.Computer.FileSystem.SpecialDirectories.Temp
+    '            .StartInfo.FileName = Filename
+    '            .StartInfo.Arguments = Arguments
+    '            If Background Then
+    '                'If Not OutputHandler Is Nothing Then AddHandler .OutputDataReceived, OutputHandler
+    '                .StartInfo.CreateNoWindow = True
+    '                .StartInfo.WindowStyle = ProcessWindowStyle.Hidden
+    '                .StartInfo.RedirectStandardInput = True
+    '                .StartInfo.RedirectStandardOutput = True
+    '                .StartInfo.UseShellExecute = False
+    '                'usefull to allow special settings for therion launced from csurvey
+    '                Dim sCustomTherionIniPath As String = My.Application.Settings.GetSetting("therion.inipath", "")
+    '                If sCustomTherionIniPath <> "" Then
+    '                    .StartInfo.EnvironmentVariables.Add("THERION", sCustomTherionIniPath)
+    '                Else
+    '                    .StartInfo.EnvironmentVariables.Add("THERION", modMain.GetUserApplicationPath)
+    '                End If
+    '            End If
+    '            Call .Start()
+    '            If Background Then
+    '                Call .StandardInput.WriteLine()
+    '            End If
+    '            Dim iWait As Integer = 0
+    '            Do
+    '                If Not OutputHandler Is Nothing Then
+    '                    Try
+    '                        Call OutputHandler(oProcess, New DataReceivedStringEventArgs(oProcess.StandardOutput.ReadToEnd))
+    '                    Catch ex As Exception
+    '                    End Try
+    '                End If
+    '                Call .WaitForExit(iWaitForExit)
+    '                iWait += iWaitForExit
+    '                If Not .HasExited AndAlso iWait >= iTimeout Then
+    '                    If MsgBox(GetLocalizedString("process.warning1"), MsgBoxStyle.OkCancel Or MsgBoxStyle.Critical, GetLocalizedString("process.warningtitle")) = MsgBoxResult.Cancel Then
+    '                        Call KillProcessTree(oProcess)
+    '                        Call Err.Raise(vbObjectError + 200, "process.aborted", GetLocalizedString("process.textpart1"), Nothing, Nothing)
+    '                    End If
+    '                End If
+    '            Loop Until .HasExited
+    '            Return .ExitCode
+    '        End With
+    '    End Using
+    'End Function
 
-    Public Function ExecuteProcess(ByVal Filename As String, ByVal Arguments As String, ByVal Background As Boolean, OutputHandler As System.Diagnostics.DataReceivedEventHandler) As Integer
+    'Public Function ExecuteProcess(ByVal Filename As String, ByVal Arguments As String, ByVal Background As Boolean, OutputHandler As System.Diagnostics.DataReceivedEventHandler) As Integer
+    '    Dim iTimeout As Integer = 120000
+    '    'Dim iWaitForExit As Integer = 500 '120000 ' Integer.MaxValue
+    '    Using oProcess As Process = New Process
+    '        With oProcess
+    '            .StartInfo.WorkingDirectory = My.Computer.FileSystem.SpecialDirectories.Temp
+    '            .StartInfo.FileName = Filename
+    '            .StartInfo.Arguments = Arguments
+    '            If Background Then
+    '                If Not OutputHandler Is Nothing Then AddHandler .OutputDataReceived, OutputHandler
+    '                .StartInfo.CreateNoWindow = True
+    '                .StartInfo.WindowStyle = ProcessWindowStyle.Hidden
+    '                .StartInfo.RedirectStandardInput = True
+    '                .StartInfo.RedirectStandardOutput = True
+    '                .StartInfo.UseShellExecute = False
+    '                'usefull to allow special settings for therion launced from csurvey
+    '                Dim sCustomTherionIniPath As String = My.Application.Settings.GetSetting("therion.inipath", "")
+    '                If sCustomTherionIniPath <> "" Then
+    '                    .StartInfo.EnvironmentVariables.Add("THERION", sCustomTherionIniPath)
+    '                Else
+    '                    .StartInfo.EnvironmentVariables.Add("THERION", modMain.GetUserApplicationPath)
+    '                End If
+    '            End If
+    '            Call .Start()
+    '            If Background Then
+    '                Call .BeginOutputReadLine()
+    '            End If
+    '            Call .StandardInput.WriteLine()
+    '            'Dim iWait As Integer = 0
+    '            Do
+    '                Call .WaitForExit(iTimeout)
+    '                'iWait += iWaitForExit
+    '                If Not .HasExited Then ' AndAlso iWait >= iTimeout Then
+    '                    If MsgBox(GetLocalizedString("process.warning1"), MsgBoxStyle.OkCancel Or MsgBoxStyle.Critical, GetLocalizedString("process.warningtitle")) = MsgBoxResult.Cancel Then
+    '                        Call KillProcessTree(oProcess)
+    '                        Call Err.Raise(vbObjectError + 200, "process.aborted", GetLocalizedString("process.textpart1"), Nothing, Nothing)
+    '                    End If
+    '                End If
+    '            Loop Until .HasExited
+    '            Return .ExitCode
+    '        End With
+    '    End Using
+    'End Function
+
+    Public Function ExecuteTherion(TherionExecutable As String, TherionIni As String, ByVal Arguments As String, ByVal Background As Boolean, OutputHandler As System.Diagnostics.DataReceivedEventHandler) As Integer
         Dim iTimeout As Integer = 120000
         'Dim iWaitForExit As Integer = 500 '120000 ' Integer.MaxValue
         Using oProcess As Process = New Process
             With oProcess
                 .StartInfo.WorkingDirectory = My.Computer.FileSystem.SpecialDirectories.Temp
-                .StartInfo.FileName = Filename
+                .StartInfo.FileName = TherionExecutable
                 .StartInfo.Arguments = Arguments
                 If Background Then
                     If Not OutputHandler Is Nothing Then AddHandler .OutputDataReceived, OutputHandler
@@ -265,7 +308,7 @@ Module modMain
                     .StartInfo.RedirectStandardOutput = True
                     .StartInfo.UseShellExecute = False
                     'usefull to allow special settings for therion launced from csurvey
-                    Dim sCustomTherionIniPath As String = My.Application.Settings.GetSetting("therion.inipath", "")
+                    Dim sCustomTherionIniPath As String = TherionIni
                     If sCustomTherionIniPath <> "" Then
                         .StartInfo.EnvironmentVariables.Add("THERION", sCustomTherionIniPath)
                     Else

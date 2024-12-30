@@ -9618,7 +9618,8 @@ Friend Class frmMain2
                     Call modExport.TherionThExportTo(oSurvey, sTempThInputFilename, oInputdictionary, iThOptions)
                     Call modExport.TherionCreateConfig(oSurvey, sTempConfigFilename, sTempThInputFilename, Commands)
 
-                    Dim iExitCode As Integer = modMain.ExecuteProcess(sThProcess, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), bThBackgroundProcess, AddressOf pProcessOutputHandler)
+                    Dim sThIni As String = My.Application.Settings.GetSetting("therion.inipath", "")
+                    Dim iExitCode As Integer = modMain.ExecuteTherion(sThProcess, sThIni, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), bThBackgroundProcess, AddressOf pProcessOutputHandler)
 
                     Output = My.Computer.FileSystem.ReadAllText(sTempThLogFilename)
 
@@ -9752,7 +9753,9 @@ Friend Class frmMain2
                         Next
                         Call modExport.TherionCreateConfig(oSurvey, sTempConfigFilename, oTempThInputFilename, "export model -fmt loch -output " & Chr(34) & sTempThOutputFilename & Chr(34))
 
-                        iExitCode = modMain.ExecuteProcess(sThProcess, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), bThBackgroundProcess, AddressOf pProcessOutputHandler)
+                        Dim sThIni As String = My.Application.Settings.GetSetting("therion.inipath", "")
+
+                        iExitCode = modMain.ExecuteTherion(sThProcess, sThIni, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), bThBackgroundProcess, AddressOf pProcessOutputHandler)
                         If iExitCode = 0 OrElse My.Computer.FileSystem.FileExists(sTempThOutputFilename) Then
                             If iExitCode <> 0 Then Call pLogAdd(cSurvey.cSurvey.LogEntryType.Warning, "Therion exit code " & iExitCode, "")
                             If iRes = DialogResult.OK Then
@@ -13993,6 +13996,10 @@ Friend Class frmMain2
         Using frmAS As frmAutoSettings = New frmAutoSettings
             If frmAS.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Call pSettingsLoad()
+
+                Call My.Application.ReloadSettings()
+                Call pTherionStatusUpdate()
+
                 Call pMapInvalidate()
             End If
         End Using
@@ -16607,8 +16614,13 @@ Friend Class frmMain2
         Call pSettingsSave()
         Using frmS As frmSettings = New frmSettings()
             If frmS.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+
                 Call pSettingsLoad()
                 Call pSettingsSave()
+
+                Call My.Application.ReloadSettings()
+                Call pTherionStatusUpdate()
+
                 Call pMapInvalidate()
             End If
         End Using
@@ -20059,6 +20071,40 @@ Friend Class frmMain2
         Dim oPen As cCustomPen = sender
         If e.OriginalPen.Type <> cPen.PenTypeEnum.User AndAlso e.OriginalPen.Type <> cPen.PenTypeEnum.Custom Then
             oPen.Width = oCurrentOptions.GetPenDefaultWidth(e.OriginalPen.Type)
+        End If
+    End Sub
+
+    Private Sub frmMain2_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        Call pTherionStatusUpdate()
+    End Sub
+
+    Private Async Sub pTherionStatusUpdate()
+        Dim sThProcess As String = My.Application.Settings.GetSetting("therion.path", "")
+
+        Dim oVersion As modExport.cVersion = Await modExport.GetTherionVersionAsync(sThProcess)
+
+        pnlStatusTherion.Description = modMain.GetLocalizedString("main.textpart174")
+        If oVersion Is Nothing Then
+            Call pPopupShow("error", modMain.GetLocalizedString("calculate.textpart6"))
+
+            pnlStatusTherion.Caption = modMain.GetLocalizedString("main.textpart175")
+            pnlStatusTherion.ImageOptions.SvgImage = My.Resources.warning
+
+            Dim sTherionInfo As String = modMain.GetLocalizedString("main.textpart176")
+            pnlStatusTherion.SuperTip = modDevExpress.CreateSuperTip(pnlStatusTherion.Caption, pnlStatusTherion.ImageOptions.SvgImage, New System.Drawing.Size(16, 16), sTherionInfo, Nothing, Nothing, "", Nothing, Nothing)
+        Else
+            pnlStatusTherion.Caption = "Therion " & oVersion.Version.ToString & " (" & oVersion.ReleaseDate.ToString(Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.ShortDatePattern) & ")"
+
+            Dim sTherionObsolete As String = ""
+            If Date.Today.Subtract(oVersion.ReleaseDate).Days > 365 Then
+                pnlStatusTherion.ImageOptions.SvgImage = My.Resources.warning
+                sTherionObsolete = vbCrLf & "<b>" & modMain.GetLocalizedString("main.textpart178") & "</b>"
+            Else
+                pnlStatusTherion.ImageOptions.SvgImage = Nothing
+            End If
+
+            Dim sTherionInfo As String = String.Format(modMain.GetLocalizedString("main.textpart177"), sThProcess) & sTherionObsolete
+            pnlStatusTherion.SuperTip = modDevExpress.CreateSuperTip(pnlStatusTherion.Caption, pnlStatusTherion.ImageOptions.SvgImage, New System.Drawing.Size(16, 16), sTherionInfo, Nothing, Nothing, "", Nothing, Nothing)
         End If
     End Sub
 End Class

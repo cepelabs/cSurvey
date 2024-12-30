@@ -19,7 +19,6 @@ Namespace My
         Private sFilename As String
 
         Private sCurrentLanguage As String
-        'Private oRM As System.Resources.ResourceManager
 
         Public ReadOnly Property CurrentLanguage As String
             Get
@@ -50,16 +49,19 @@ Namespace My
 
         Private sCurrentDPIRatio As Single
 
+        Public Sub ReloadSettings()
+            oSettings = New cEnvironmentSettings("Software\Cepelabs\cSurvey")
+            oRuntimeSettings = New cEnvironmentSettings
+            sCurrentLanguage = oSettings.GetSetting("language", sCurrentLanguage)
+            bChangeDecimalKey = oSettings.GetSetting("keys.changedecimalkey", "1")
+            bChangePeriodKey = oSettings.GetSetting("keys.changeperiodkey", "0")
+        End Sub
+
         Private Sub MyApplication_Startup(sender As Object, e As Microsoft.VisualBasic.ApplicationServices.StartupEventArgs) Handles Me.Startup
             Call DevExpress.XtraEditors.WindowsFormsSettings.LoadApplicationSettings()
 
             sCurrentLanguage = Threading.Thread.CurrentThread.CurrentCulture.Parent.Name
-            oSettings = New cEnvironmentSettings("Software\Cepelabs\cSurvey")
-            oRuntimeSettings = New cEnvironmentSettings
-
-            sCurrentLanguage = oSettings.GetSetting("language", sCurrentLanguage)
-            bChangeDecimalKey = oSettings.GetSetting("keys.changedecimalkey", "1")
-            bChangePeriodKey = oSettings.GetSetting("keys.changeperiodkey", "0")
+            Call ReloadSettings()
 
             If sCurrentLanguage <> "" Then
                 If bIsInDebug Then
@@ -130,6 +132,7 @@ Namespace My
         Private Sub MyApplication_UnhandledException(ByVal sender As Object, ByVal e As Microsoft.VisualBasic.ApplicationServices.UnhandledExceptionEventArgs) Handles Me.UnhandledException
             e.ExitApplication = ManageUnhandledException(e.Exception)
         End Sub
+
     End Class
 
 

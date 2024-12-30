@@ -105,6 +105,8 @@ Friend Class cItemPenStylePropertyControl
                 oPen = oPoint.Pen
             End If
             If oPen.Type = cPen.PenTypeEnum.Custom Then
+                btnPropCustomize.Enabled = False
+
                 cmdPropSave.Visible = True
                 txtPropPenWidth.Value = oPen.Width
                 txtPropPenColor.EditValue = oPen.Color
@@ -160,6 +162,8 @@ Friend Class cItemPenStylePropertyControl
                 cboPropPenClipartBrushStyle.SelectedIndex = pPenStyleToSelectedIndex(cboPropPenClipartBrushStyle, oPen.ClipartBrushStyle)
                 txtPropPenClipartBrushColor.EditValue = oPen.ClipartBrushColor
             Else
+                btnPropCustomize.Enabled = True
+
                 cmdPropSave.Visible = False
             End If
             Call pRefreshHeight()
@@ -933,5 +937,9 @@ Friend Class cItemPenStylePropertyControl
                 Call MyBase.MapInvalidate()
             End If
         End If
+    End Sub
+
+    Private Sub btnPropCustomize_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPropCustomize.ItemClick
+        cboPropPenPattern.EditValue = "_99"
     End Sub
 End Class

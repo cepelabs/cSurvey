@@ -1149,3 +1149,9 @@ main.textpart170=this shot is binded to one or more design objects
 main.textpart171=one of the shot's station is the origin
 main.textpart172=shot direction cannot be changed cause this shot is binded to one or more design objects in profile
 main.textpart173=Some properties are readonly
+
+main.textpart174=Therion version and date
+main.textpart175=Error: Therion not found
+main.textpart176=Therion not found or Therion installation path not specified
+main.textpart177=Path: {0}
+main.textpart178=Therion version is old. Check Therion website for an update.

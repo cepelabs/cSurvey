@@ -1625,7 +1625,7 @@ Namespace cSurvey.Calculate
             End Sub
         End Class
 
-        Private Sub pProcessOutputStringHandler(sendingProcess As Object, outLine As DataReceivedStringEventArgs)
+        Private Sub pProcessOutputHandler(sendingProcess As Object, outLine As DataReceivedEventArgs)
             Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, outLine.Data)
         End Sub
 
@@ -1642,7 +1642,6 @@ Namespace cSurvey.Calculate
                     Dim sThProcess As String = My.Application.Settings.GetSetting("therion.path", "")
                     If sThProcess = "" Then
                         Throw New cCalculateTherionMissingException(modMain.GetLocalizedString("calculate.textpart6"))
-                        'Call Err.Raise(vbObjectError + 100, "survey.calculate", GetLocalizedString("calculate.textpart6"), Nothing, Nothing)
                     Else
                         Dim bThBackgroundProcess As Boolean = My.Application.Settings.GetSetting("therion.backgroundprocess", 1)
                         Dim bThDeleteTempFile As Boolean = My.Application.Settings.GetSetting("therion.deletetempfiles", 1)
@@ -1727,7 +1726,8 @@ Namespace cSurvey.Calculate
                             sExportCommand = sExportCommand & "export map -proj extended -output " & Chr(34) & sTempThOutputProfileXVIFilename & Chr(34) & " -layout-sketches on" & vbCrLf
                             Call modExport.TherionCreateConfig(oSurvey, sTempConfigFilename, sTempThInputFilename, sExportCommand)
 
-                            Dim iExitCode As Integer = modMain.ExecuteProcess(sThProcess, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), bThBackgroundProcess, AddressOf pProcessOutputStringHandler)
+                            Dim sThIni As String = My.Application.Settings.GetSetting("therion.inipath", "")
+                            Dim iExitCode As Integer = modMain.ExecuteTherion(sThProcess, sThIni, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), bThBackgroundProcess, AddressOf pProcessOutputHandler)
 
                             Call oGMD.Clear()
                             Call oRs.Clear()

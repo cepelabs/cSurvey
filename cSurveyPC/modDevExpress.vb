@@ -305,6 +305,7 @@ Public Module modDevExpress
         Dim args As SuperToolTipSetupArgs = New SuperToolTipSetupArgs
         oTooltip.AllowHtmlText = DefaultBoolean.True
         If Title <> "" Then
+            args.Title.AllowHtmlText = DefaultBoolean.True
             args.Title.Text = Title
             If TitleImage IsNot Nothing Then
                 args.Title.ImageOptions.SvgImage = TitleImage
@@ -312,6 +313,7 @@ Public Module modDevExpress
             End If
         End If
         If Contents <> "" Then
+            args.Contents.AllowHtmlText = DefaultBoolean.True
             args.Contents.Text = Contents
             If ContentsImage IsNot Nothing Then
                 args.Contents.ImageOptions.SvgImage = ContentsImage
@@ -320,6 +322,7 @@ Public Module modDevExpress
         End If
         If Footer <> "" Then
             args.ShowFooterSeparator = True
+            args.Footer.AllowHtmlText = DefaultBoolean.True
             args.Footer.Text = "<href=cmd>" & Footer & "</href>"
             If FooterImage IsNot Nothing Then
                 args.Footer.ImageOptions.SvgImage = FooterImage

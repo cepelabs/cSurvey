@@ -33,11 +33,6 @@ Partial Class frmMain2
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain2))
-        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
         Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
@@ -48,58 +43,63 @@ Partial Class frmMain2
         Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim GalleryItemGroup6 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
-        Dim GalleryItem45 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem46 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem47 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem48 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem49 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem50 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItemGroup7 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
-        Dim GalleryItem51 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem52 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem53 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem54 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem55 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem56 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem57 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem58 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItemGroup8 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
-        Dim GalleryItem59 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem60 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem61 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem62 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem63 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem64 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem65 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem66 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem67 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem68 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem69 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem70 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem71 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem72 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem73 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItemGroup9 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
-        Dim GalleryItem74 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem75 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem76 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem77 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem78 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem79 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem80 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem81 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem82 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem83 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem84 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem85 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem86 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItemGroup10 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
-        Dim GalleryItem87 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim GalleryItem88 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
-        Dim FadeTransition2 As DevExpress.Utils.Animation.FadeTransition = New DevExpress.Utils.Animation.FadeTransition()
-        Dim DockingContainer3 As DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer = New DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer()
-        Dim DockingContainer4 As DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer = New DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer()
+        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim GalleryItemGroup1 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
+        Dim GalleryItem1 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem2 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem3 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem4 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem5 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem6 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItemGroup2 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
+        Dim GalleryItem7 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem8 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem9 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem10 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem11 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem12 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem13 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem14 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItemGroup3 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
+        Dim GalleryItem15 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem16 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem17 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem18 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem19 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem20 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem21 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem22 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem23 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem24 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem25 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem26 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem27 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem28 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem29 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItemGroup4 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
+        Dim GalleryItem30 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem31 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem32 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem33 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem34 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem35 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem36 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem37 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem38 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem39 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem40 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem41 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem42 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItemGroup5 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
+        Dim GalleryItem43 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim GalleryItem44 As DevExpress.XtraBars.Ribbon.GalleryItem = New DevExpress.XtraBars.Ribbon.GalleryItem()
+        Dim FadeTransition1 As DevExpress.Utils.Animation.FadeTransition = New DevExpress.Utils.Animation.FadeTransition()
+        Dim DockingContainer1 As DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer = New DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer()
+        Dim DockingContainer2 As DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer = New DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer()
         Me.DocumentGroup1 = New DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(Me.components)
         Me.Document2 = New DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(Me.components)
         Me.DocumentGroup2 = New DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(Me.components)
@@ -843,6 +843,7 @@ Partial Class frmMain2
         Me.svgItemImages = New DevExpress.Utils.SvgImageCollection(Me.components)
         Me.TaskbarAssistant = New DevExpress.Utils.Taskbar.TaskbarAssistant()
         Me.LayoutConverter1 = New DevExpress.XtraLayout.Converter.LayoutConverter(Me.components)
+        Me.pnlStatusTherion = New DevExpress.XtraBars.BarStaticItem()
         CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.Document2, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.DocumentGroup2, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1161,9 +1162,9 @@ Partial Class frmMain2
         Me.RibbonControl.Categories.AddRange(New DevExpress.XtraBars.BarManagerCategory() {CType(resources.GetObject("RibbonControl.Categories"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("RibbonControl.Categories1"), DevExpress.XtraBars.BarManagerCategory)})
         Me.RibbonControl.Controller = Me.BarAndDockingController
         Me.RibbonControl.ExpandCollapseItem.Id = 0
-        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.btnNew, Me.btnLoad, Me.btnSave, Me.btnSaveAs, Me.btnRollback, Me.btnSaveAsTemplate, Me.btnHistory, Me.btnCleanUp, Me.btnResurvey, Me.btnLoch, Me.btnTherionPad, Me.btnImport, Me.btnExport, Me.btnPrint, Me.btnProperties, Me.btnSurface, Me.btnHide, Me.btnExit, Me.btnExportData, Me.btnExportTrack, Me.btnExportImage, Me.btnExport3D, Me.btnImportData, Me.btnImportTrack, Me.btnImportDesign, Me.btnUndo, Me.btnCut, Me.btnCopy, Me.btnPasteService, Me.btnDelete, Me.btnPlotCalculate, Me.btnPlotRebind, Me.btnRefreshStations, Me.btnRemoveOrphans, Me.btnPlotInfoCave, Me.btnZoomIn, Me.btnZoomOut, Me.btnZoomToFit, Me.btnLayer_Base, Me.btnLayer_Soil, Me.btnLayer_Water, Me.btnLayer_Rocks, Me.btnLayer_TerrainLevel, Me.btnLayer_Borders, Me.btnLayer_Signs, Me.btnLayerManageLevels, Me.btnItemsEndEdit, Me.btnItemsObjectProperties, Me.btnSurveyInfoSession, Me.btnSurveyInfoEntrance, Me.btnSurveyInfoRing, Me.btnSurveyInfoOrientation, Me.btnViewDistances, Me.btnSettings, Me.btnDesignDeleteAll, Me.btnDesignPlotRebindAll, Me.btnDesignPlotRemoveBindings, Me.btnDesignPlotUnlockAll, Me.btnDesignPlotLockAll, Me.btnDesignPlotShowBindings, Me.btnDesignEditScaleRules, Me.btnViewFieldData, Me.btnViewObjectProp, Me.btnViewDesignArea, Me.btnViewPlan, Me.btnViewProfile, Me.btnView3D, Me.btnViewViewer, Me.btnViewScript, Me.btnViewSharedTexts, Me.btnViewLinkedSurveys, Me.btnViewConsole, Me.btnMainSessionList, Me.btnMainCaveList, Me.btnMainCaveBranchList, Me.btnMainBindDesignType, Me.btnMainBindCrossSections, Me.btnObjectSetCaveBranch, Me.btnGroupCaveFilters, Me.btnDesignHighlight0, Me.btnDesignHighlight1, Me.btnDesignHighlightMode, Me.btnDesignHighlightMode0, Me.btnDesignHighlightMode1, Me.btnDesignHighlightMode2, Me.btnDesignHighlightSegmentsAndTrigpoints, Me.btnViewSplayShowMode, Me.btnViewSplayShowMode1, Me.btnViewSplayShowMode0, Me.btnSegmentAdd, Me.btnSegmentDelete, Me.btnPenSmooting, Me.btnPenSmootingFactor, Me.btnPenLine, Me.btnPenSpline, Me.btnPenBezier, Me.btnGrpPensType, Me.btnGrpPenSmooting, Me.btnPlotGrades, Me.btnPlotPrefixTrigpoints, Me.btnPlotRenameTrigpoints, Me.btnPlotReplicateData, Me.btnPlotManageLRUD, Me.btnPlotSplayReplicate, Me.btnPlotDeleteAll, Me.btnPlotManageVisibility, Me.btnEditFind, Me.btnZoomZoomCenter, Me.btnZoomZoomToSelection, Me.btnZoomZoomToFitCaveBranch, Me.btnZoomAutoZoomToFit, Me.btnHelpInfo, Me.btnHelpCheckUpdate, Me.btnViewWorkspaceData, Me.btnViewWorkspaceDesign, Me.btnViewWorkspaceAll, Me.btnEditSelectAll, Me.pnlStatusText, Me.pnlStatusProgress, Me.pnlStatusCurrentRule, Me.btnStatusWMSOnLine, Me.btnStatusHistoryEnabled, Me.pnlStatusDesignSnapToGrid, Me.pnlStatusDesignInfo, Me.pnlStatusDesignZoom, Me.btnStatusDesignWarping, Me.btnStatusDesignWarpingState, Me.btnStatusDesignGeographicState, Me.pnlStatusMasterSlave, Me.btnGrpDesignPlotRebindCommands, Me.btnGrpDesignPlotRebindActions, Me.btnDesignGraphicsQuality, Me.btnDesignGraphics0, Me.btnDesignGraphics1, Me.btnDesignGraphics2, Me.btnCursorMode, Me.btnScrollMode, Me.btnAltMode, Me.btnMultiSelMode1, Me.btnMultiSelMode2, Me.btnSnapToPointNone, Me.btnSnapToPoint0, Me.btnSnapToPoint1, Me.btnSnapToPoint2, Me.btnViewRulers, Me.btnEditDrawing, Me.btnEditPointToPoint, Me.btn3DViewTop, Me.btn3DViewBottom, Me.btnFilterEdit, Me.btnFilterFiltered, Me.btnFilterWhiteboard, Me.btnFilterInvertFilter, Me.btn3dViewSN, Me.btn3dViewNS, Me.btn3dViewEW, Me.btn3dViewWE, Me.btnViewMetricGrid, Me.btnViewMetricGrid0, Me.btnViewMetricGrid1, Me.btnViewMetricGrid2, Me.btn3DCameraType, Me.btn3DCameraType1, Me.btn3DCameraType0, Me.btn3DCameraMode, Me.btn3DCameraMode0, Me.btn3DCameraMode1, Me.btnGroupDesignFilters, Me.btnSegments, Me.btnTrigpoints, Me.btnSegmentsAndTrigPoints, Me.btnSegmentGridColor, Me.btnSegmentGridColor0, Me.btnSegmentGridColor1, Me.btnSegmentGridColor2, Me.btnSegmentGridColor3, Me.btnSegmentInsert, Me.btnSegmentMoveUp, Me.btnSegmentMoveDown, Me.btnGridExport, Me.btnGridRefresh, Me.btnDataPropertiesEdit, Me.btnDataPropertiesDelete, Me.btnAliasDelete, Me.btnAliasDeleteAll, Me.btnAttachmentsOpen, Me.btnAttachmentsAdd, Me.btnAttachmentsDelete, Me.btnAttachmentsDeleteAll, Me.btnItemsSendToBottom, Me.btnItemsSendBehind, Me.btnItemsBringAhead, Me.btnItemsBringOnTop, Me.btnItemsLayouts, Me.btnCurrentItemSignSaveInGallery, Me.btnCurrentItemSignExport, Me.btnCurrentItemGenericCombine, Me.btnCurrentItemGenericDivide, Me.btnCurrentItemGenericCombineAllSequences, Me.btnCurrentItemGenericCloseAllSequences, Me.btnCurrentItemGenericReorderSequence, Me.btnCurrentItemGenericRevertAllSequences, Me.btnCurrentItemGenericRestorePointPen, Me.btnCurrentItemGenericReducePoint, Me.btnCurrentItemItemsCombine, Me.btnCurrentItemItemsCombineRockClipart, Me.btnCurrentItemItemsCombineConcretionClipart, Me.btnCurrentItemItemsCombineSignClipart, Me.btnCurrentItemPointAdd, Me.btnCurrentItemPointDelete, Me.btnCurrentItemPointSequenceDivide, Me.btnCurrentItemPointSequenceDivideAndJoin, Me.btnCurrentItemPointSequenceCombine, Me.btnCurrentItemPointCloseSequence, Me.btnCurrentItemPointDeleteSequence, Me.btnCurrentItemPointRevertSequence, Me.btnCurrentItemPointNewFromSequence0, Me.btnCurrentItemPointNewFromSequence1, Me.btnCurrentItemPlotLockSegment, Me.btnCurrentItemPlotBindSegment, Me.btnCurrentItemPointConvertToLines, Me.btnCurrentItemPointConvertToSpline, Me.btnCurrentItemPointConvertToBezier, Me.btnCurrentItemClipartSaveInGallery, Me.btnCurrentItemClipartExport, Me.btnCurrentItemLegendAddTo, Me.btnCurrentItemSendCopyTo, Me.btnCurrentItemX, Me.btnCurrentItemY, Me.btnCurrentItemW, Me.btnCurrentItemH, Me.btnCurrentItemScaleW, Me.btnCurrentItemScaleH, Me.btnCurrentItemFlipH, Me.btnCurrentItemFlipV, Me.btnCurrentItemRotateBy, Me.btnCurrentItemRotateCenteredOnOrigin, Me.btnCurrentItemRotateRight, Me.btnCurrentItemRotateLeft, Me.btnCurrentItemHAlignLeft, Me.btnCurrentItemHAlignCenter, Me.btnCurrentItemHAlignRight, Me.btnCurrenItemVAlignTop, Me.btnCurrenItemVAlignCenter, Me.btnCurrenItemVAlignBottom, Me.btnCurrentItemAlignH, Me.btnCurrentItemAlignV, Me.btnCurrentItemSpacing, Me.cmdCurrentItemHSpace, Me.cmdCurrentItemVSpace, Me.btnCurrentItemLock, Me.btnCurrentItemPointsJoin, Me.btnCurrentItemPointsJoinAndConnect, Me.btnCurrentItemPointsUnjoin, Me.btnCurrentItemPointsUnjoinAll, Me.btnCurrentItemPointResetAsParent, Me.btnCurrentItemGenericReducePointFactor, Me.btnCurrentItemConvertToLines, Me.btnCurrentItemConvertToSpline, Me.btnCurrentItemConvertToBezier, Me.btnViewImageViewer, Me.pnlStatusZoomBar, Me.btnViewAudioListener, Me.btnCurrentItemBindings, Me.btnMapDropImage, Me.btnMapDropSketch, Me.btnMapDropPocketTopo, Me.btnMapDropCaveExplorer, Me.btnMapDropGenericText, Me.btnMapDropAttachment, Me.btnCurrentItemPointInfo, Me.btnPasteStyleBrush, Me.btnPasteStylePen, Me.btnPaste, Me.btnCurrentItemSketchEdit, Me.btnCurrentItemSketchView, Me.btnCurrentItemSketchDisableMorphingForAll, Me.btnCurrentItemSketchEnableMorphingForAll, Me.btnCurrentItemSketchHideAll, Me.btnCurrentItemImageEdit, Me.btnCurrentItemImageView, Me.btnCurrentItemUnderItems, Me.btnCurrentItemSegmentDirection, Me.btnCurrentItemSegmentDirection0, Me.btnCurrentItemSegmentDirection1, Me.btnCurrentItemSegmentDirection2, Me.btnCurrentItemSegmentDirection3, Me.btnCurrentItemSegmentDirection4, Me.btnCurrentItemSegmentFromProperty, Me.btnCurrentItemSegmentToProperty, Me.btnCurrentItemShot, Me.btnCurrentItemStationSetCoordinate, Me.btnCurrentItemStationSetCoordinateCP, Me.btnCurrentItemStation, Me.btnShow, Me.btnCurrentItemConvertTo, Me.btnItemsSendAndConvert, Me.btnDesignSetCurrentCaveBranch, Me.SkinPaletteRibbonGalleryBarItem1, Me.btnAlignToGrid, Me.btnAlignToGridSize, Me.btnAlignToGridOptions, Me.btnAutoSettings, Me.btnDesignBar3DRefresh, Me.btnDesignBarPlotCalculate, Me.btnWorkspacesCapture, Me.btnWorkspacesManage, Me.btnWorkspacesList, Me.btnTrigpointGridColor, Me.btnTrigpointGridColor0, Me.btnTrigpointGridColor1, Me.btnSurveyInfoDepths, Me.btnTherionPadExportPlan, Me.btnTherionPadExportProfile, Me.btnTherionPadExport3D, Me.SkinDropDownButtonItem1, Me.btnQATBeginGroup, Me.btnQATMovePrev, Me.btnQATMoveNext, Me.btnQATRestore, Me.chkViewShowLRUD, Me.chkViewShowSplay, Me.chkViewShowShots, Me.chkViewShowStation, Me.chkViewShowStationLabel, Me.btnViewShowCenterline, Me.btnCurrentItemPlotUnlockSegment, Me.btnCurrentItemLegendAddToFakeItem, Me.btnContextMenu, Me.btnToolsMostUsed, Me.btnToolsLastUsed, Me.btnViewToolbarLevels, Me.btnViewToolbarItems, Me.btnViewToolbarLastUsedTools, Me.btnViewToolbarsDesign, Me.btnViewToolbarFloatingBar, Me.btnCurrentItemSignReplaceByCategory, Me.btnCurrentItemSignReplaceByClipart, Me.btnViewBrushesAndPens, Me.btnViewClipartGallery})
+        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.btnNew, Me.btnLoad, Me.btnSave, Me.btnSaveAs, Me.btnRollback, Me.btnSaveAsTemplate, Me.btnHistory, Me.btnCleanUp, Me.btnResurvey, Me.btnLoch, Me.btnTherionPad, Me.btnImport, Me.btnExport, Me.btnPrint, Me.btnProperties, Me.btnSurface, Me.btnHide, Me.btnExit, Me.btnExportData, Me.btnExportTrack, Me.btnExportImage, Me.btnExport3D, Me.btnImportData, Me.btnImportTrack, Me.btnImportDesign, Me.btnUndo, Me.btnCut, Me.btnCopy, Me.btnPasteService, Me.btnDelete, Me.btnPlotCalculate, Me.btnPlotRebind, Me.btnRefreshStations, Me.btnRemoveOrphans, Me.btnPlotInfoCave, Me.btnZoomIn, Me.btnZoomOut, Me.btnZoomToFit, Me.btnLayer_Base, Me.btnLayer_Soil, Me.btnLayer_Water, Me.btnLayer_Rocks, Me.btnLayer_TerrainLevel, Me.btnLayer_Borders, Me.btnLayer_Signs, Me.btnLayerManageLevels, Me.btnItemsEndEdit, Me.btnItemsObjectProperties, Me.btnSurveyInfoSession, Me.btnSurveyInfoEntrance, Me.btnSurveyInfoRing, Me.btnSurveyInfoOrientation, Me.btnViewDistances, Me.btnSettings, Me.btnDesignDeleteAll, Me.btnDesignPlotRebindAll, Me.btnDesignPlotRemoveBindings, Me.btnDesignPlotUnlockAll, Me.btnDesignPlotLockAll, Me.btnDesignPlotShowBindings, Me.btnDesignEditScaleRules, Me.btnViewFieldData, Me.btnViewObjectProp, Me.btnViewDesignArea, Me.btnViewPlan, Me.btnViewProfile, Me.btnView3D, Me.btnViewViewer, Me.btnViewScript, Me.btnViewSharedTexts, Me.btnViewLinkedSurveys, Me.btnViewConsole, Me.btnMainSessionList, Me.btnMainCaveList, Me.btnMainCaveBranchList, Me.btnMainBindDesignType, Me.btnMainBindCrossSections, Me.btnObjectSetCaveBranch, Me.btnGroupCaveFilters, Me.btnDesignHighlight0, Me.btnDesignHighlight1, Me.btnDesignHighlightMode, Me.btnDesignHighlightMode0, Me.btnDesignHighlightMode1, Me.btnDesignHighlightMode2, Me.btnDesignHighlightSegmentsAndTrigpoints, Me.btnViewSplayShowMode, Me.btnViewSplayShowMode1, Me.btnViewSplayShowMode0, Me.btnSegmentAdd, Me.btnSegmentDelete, Me.btnPenSmooting, Me.btnPenSmootingFactor, Me.btnPenLine, Me.btnPenSpline, Me.btnPenBezier, Me.btnGrpPensType, Me.btnGrpPenSmooting, Me.btnPlotGrades, Me.btnPlotPrefixTrigpoints, Me.btnPlotRenameTrigpoints, Me.btnPlotReplicateData, Me.btnPlotManageLRUD, Me.btnPlotSplayReplicate, Me.btnPlotDeleteAll, Me.btnPlotManageVisibility, Me.btnEditFind, Me.btnZoomZoomCenter, Me.btnZoomZoomToSelection, Me.btnZoomZoomToFitCaveBranch, Me.btnZoomAutoZoomToFit, Me.btnHelpInfo, Me.btnHelpCheckUpdate, Me.btnViewWorkspaceData, Me.btnViewWorkspaceDesign, Me.btnViewWorkspaceAll, Me.btnEditSelectAll, Me.pnlStatusText, Me.pnlStatusProgress, Me.pnlStatusCurrentRule, Me.btnStatusWMSOnLine, Me.btnStatusHistoryEnabled, Me.pnlStatusDesignSnapToGrid, Me.pnlStatusDesignInfo, Me.pnlStatusDesignZoom, Me.btnStatusDesignWarping, Me.btnStatusDesignWarpingState, Me.btnStatusDesignGeographicState, Me.pnlStatusMasterSlave, Me.btnGrpDesignPlotRebindCommands, Me.btnGrpDesignPlotRebindActions, Me.btnDesignGraphicsQuality, Me.btnDesignGraphics0, Me.btnDesignGraphics1, Me.btnDesignGraphics2, Me.btnCursorMode, Me.btnScrollMode, Me.btnAltMode, Me.btnMultiSelMode1, Me.btnMultiSelMode2, Me.btnSnapToPointNone, Me.btnSnapToPoint0, Me.btnSnapToPoint1, Me.btnSnapToPoint2, Me.btnViewRulers, Me.btnEditDrawing, Me.btnEditPointToPoint, Me.btn3DViewTop, Me.btn3DViewBottom, Me.btnFilterEdit, Me.btnFilterFiltered, Me.btnFilterWhiteboard, Me.btnFilterInvertFilter, Me.btn3dViewSN, Me.btn3dViewNS, Me.btn3dViewEW, Me.btn3dViewWE, Me.btnViewMetricGrid, Me.btnViewMetricGrid0, Me.btnViewMetricGrid1, Me.btnViewMetricGrid2, Me.btn3DCameraType, Me.btn3DCameraType1, Me.btn3DCameraType0, Me.btn3DCameraMode, Me.btn3DCameraMode0, Me.btn3DCameraMode1, Me.btnGroupDesignFilters, Me.btnSegments, Me.btnTrigpoints, Me.btnSegmentsAndTrigPoints, Me.btnSegmentGridColor, Me.btnSegmentGridColor0, Me.btnSegmentGridColor1, Me.btnSegmentGridColor2, Me.btnSegmentGridColor3, Me.btnSegmentInsert, Me.btnSegmentMoveUp, Me.btnSegmentMoveDown, Me.btnGridExport, Me.btnGridRefresh, Me.btnDataPropertiesEdit, Me.btnDataPropertiesDelete, Me.btnAliasDelete, Me.btnAliasDeleteAll, Me.btnAttachmentsOpen, Me.btnAttachmentsAdd, Me.btnAttachmentsDelete, Me.btnAttachmentsDeleteAll, Me.btnItemsSendToBottom, Me.btnItemsSendBehind, Me.btnItemsBringAhead, Me.btnItemsBringOnTop, Me.btnItemsLayouts, Me.btnCurrentItemSignSaveInGallery, Me.btnCurrentItemSignExport, Me.btnCurrentItemGenericCombine, Me.btnCurrentItemGenericDivide, Me.btnCurrentItemGenericCombineAllSequences, Me.btnCurrentItemGenericCloseAllSequences, Me.btnCurrentItemGenericReorderSequence, Me.btnCurrentItemGenericRevertAllSequences, Me.btnCurrentItemGenericRestorePointPen, Me.btnCurrentItemGenericReducePoint, Me.btnCurrentItemItemsCombine, Me.btnCurrentItemItemsCombineRockClipart, Me.btnCurrentItemItemsCombineConcretionClipart, Me.btnCurrentItemItemsCombineSignClipart, Me.btnCurrentItemPointAdd, Me.btnCurrentItemPointDelete, Me.btnCurrentItemPointSequenceDivide, Me.btnCurrentItemPointSequenceDivideAndJoin, Me.btnCurrentItemPointSequenceCombine, Me.btnCurrentItemPointCloseSequence, Me.btnCurrentItemPointDeleteSequence, Me.btnCurrentItemPointRevertSequence, Me.btnCurrentItemPointNewFromSequence0, Me.btnCurrentItemPointNewFromSequence1, Me.btnCurrentItemPlotLockSegment, Me.btnCurrentItemPlotBindSegment, Me.btnCurrentItemPointConvertToLines, Me.btnCurrentItemPointConvertToSpline, Me.btnCurrentItemPointConvertToBezier, Me.btnCurrentItemClipartSaveInGallery, Me.btnCurrentItemClipartExport, Me.btnCurrentItemLegendAddTo, Me.btnCurrentItemSendCopyTo, Me.btnCurrentItemX, Me.btnCurrentItemY, Me.btnCurrentItemW, Me.btnCurrentItemH, Me.btnCurrentItemScaleW, Me.btnCurrentItemScaleH, Me.btnCurrentItemFlipH, Me.btnCurrentItemFlipV, Me.btnCurrentItemRotateBy, Me.btnCurrentItemRotateCenteredOnOrigin, Me.btnCurrentItemRotateRight, Me.btnCurrentItemRotateLeft, Me.btnCurrentItemHAlignLeft, Me.btnCurrentItemHAlignCenter, Me.btnCurrentItemHAlignRight, Me.btnCurrenItemVAlignTop, Me.btnCurrenItemVAlignCenter, Me.btnCurrenItemVAlignBottom, Me.btnCurrentItemAlignH, Me.btnCurrentItemAlignV, Me.btnCurrentItemSpacing, Me.cmdCurrentItemHSpace, Me.cmdCurrentItemVSpace, Me.btnCurrentItemLock, Me.btnCurrentItemPointsJoin, Me.btnCurrentItemPointsJoinAndConnect, Me.btnCurrentItemPointsUnjoin, Me.btnCurrentItemPointsUnjoinAll, Me.btnCurrentItemPointResetAsParent, Me.btnCurrentItemGenericReducePointFactor, Me.btnCurrentItemConvertToLines, Me.btnCurrentItemConvertToSpline, Me.btnCurrentItemConvertToBezier, Me.btnViewImageViewer, Me.pnlStatusZoomBar, Me.btnViewAudioListener, Me.btnCurrentItemBindings, Me.btnMapDropImage, Me.btnMapDropSketch, Me.btnMapDropPocketTopo, Me.btnMapDropCaveExplorer, Me.btnMapDropGenericText, Me.btnMapDropAttachment, Me.btnCurrentItemPointInfo, Me.btnPasteStyleBrush, Me.btnPasteStylePen, Me.btnPaste, Me.btnCurrentItemSketchEdit, Me.btnCurrentItemSketchView, Me.btnCurrentItemSketchDisableMorphingForAll, Me.btnCurrentItemSketchEnableMorphingForAll, Me.btnCurrentItemSketchHideAll, Me.btnCurrentItemImageEdit, Me.btnCurrentItemImageView, Me.btnCurrentItemUnderItems, Me.btnCurrentItemSegmentDirection, Me.btnCurrentItemSegmentDirection0, Me.btnCurrentItemSegmentDirection1, Me.btnCurrentItemSegmentDirection2, Me.btnCurrentItemSegmentDirection3, Me.btnCurrentItemSegmentDirection4, Me.btnCurrentItemSegmentFromProperty, Me.btnCurrentItemSegmentToProperty, Me.btnCurrentItemShot, Me.btnCurrentItemStationSetCoordinate, Me.btnCurrentItemStationSetCoordinateCP, Me.btnCurrentItemStation, Me.btnShow, Me.btnCurrentItemConvertTo, Me.btnItemsSendAndConvert, Me.btnDesignSetCurrentCaveBranch, Me.SkinPaletteRibbonGalleryBarItem1, Me.btnAlignToGrid, Me.btnAlignToGridSize, Me.btnAlignToGridOptions, Me.btnAutoSettings, Me.btnDesignBar3DRefresh, Me.btnDesignBarPlotCalculate, Me.btnWorkspacesCapture, Me.btnWorkspacesManage, Me.btnWorkspacesList, Me.btnTrigpointGridColor, Me.btnTrigpointGridColor0, Me.btnTrigpointGridColor1, Me.btnSurveyInfoDepths, Me.btnTherionPadExportPlan, Me.btnTherionPadExportProfile, Me.btnTherionPadExport3D, Me.SkinDropDownButtonItem1, Me.btnQATBeginGroup, Me.btnQATMovePrev, Me.btnQATMoveNext, Me.btnQATRestore, Me.chkViewShowLRUD, Me.chkViewShowSplay, Me.chkViewShowShots, Me.chkViewShowStation, Me.chkViewShowStationLabel, Me.btnViewShowCenterline, Me.btnCurrentItemPlotUnlockSegment, Me.btnCurrentItemLegendAddToFakeItem, Me.btnContextMenu, Me.btnToolsMostUsed, Me.btnToolsLastUsed, Me.btnViewToolbarLevels, Me.btnViewToolbarItems, Me.btnViewToolbarLastUsedTools, Me.btnViewToolbarsDesign, Me.btnViewToolbarFloatingBar, Me.btnCurrentItemSignReplaceByCategory, Me.btnCurrentItemSignReplaceByClipart, Me.btnViewBrushesAndPens, Me.btnViewClipartGallery, Me.pnlStatusTherion})
         resources.ApplyResources(Me.RibbonControl, "RibbonControl")
-        Me.RibbonControl.MaxItemId = 375
+        Me.RibbonControl.MaxItemId = 376
         Me.RibbonControl.Name = "RibbonControl"
         Me.RibbonControl.PageHeaderItemLinks.Add(Me.btnHelpCheckUpdate)
         Me.RibbonControl.PageHeaderItemLinks.Add(Me.btnHelpInfo)
@@ -1899,7 +1900,7 @@ Partial Class frmMain2
         '
         Me.cboMainSessionList.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.[True]
         resources.ApplyResources(Me.cboMainSessionList, "cboMainSessionList")
-        Me.cboMainSessionList.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainSessionList.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainSessionList.Buttons1"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("cboMainSessionList.Buttons2"), CType(resources.GetObject("cboMainSessionList.Buttons3"), Integer), CType(resources.GetObject("cboMainSessionList.Buttons4"), Boolean), CType(resources.GetObject("cboMainSessionList.Buttons5"), Boolean), CType(resources.GetObject("cboMainSessionList.Buttons6"), Boolean), EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, resources.GetString("cboMainSessionList.Buttons7"), CType(resources.GetObject("cboMainSessionList.Buttons8"), Object), CType(resources.GetObject("cboMainSessionList.Buttons9"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("cboMainSessionList.Buttons10"), DevExpress.Utils.ToolTipAnchor))})
+        Me.cboMainSessionList.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainSessionList.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainSessionList.Buttons1"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("cboMainSessionList.Buttons2"), CType(resources.GetObject("cboMainSessionList.Buttons3"), Integer), CType(resources.GetObject("cboMainSessionList.Buttons4"), Boolean), CType(resources.GetObject("cboMainSessionList.Buttons5"), Boolean), CType(resources.GetObject("cboMainSessionList.Buttons6"), Boolean), EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, resources.GetString("cboMainSessionList.Buttons7"), CType(resources.GetObject("cboMainSessionList.Buttons8"), Object), CType(resources.GetObject("cboMainSessionList.Buttons9"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("cboMainSessionList.Buttons10"), DevExpress.Utils.ToolTipAnchor))})
         Me.cboMainSessionList.DisplayMember = "ToHTMLString"
         Me.cboMainSessionList.Name = "cboMainSessionList"
         Me.cboMainSessionList.PopupView = Me.cboMainSessionListView
@@ -1944,7 +1945,7 @@ Partial Class frmMain2
         '
         Me.cboMainCaveList.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.[True]
         resources.ApplyResources(Me.cboMainCaveList, "cboMainCaveList")
-        Me.cboMainCaveList.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainCaveList.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainCaveList.Buttons1"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("cboMainCaveList.Buttons2"), CType(resources.GetObject("cboMainCaveList.Buttons3"), Integer), CType(resources.GetObject("cboMainCaveList.Buttons4"), Boolean), CType(resources.GetObject("cboMainCaveList.Buttons5"), Boolean), CType(resources.GetObject("cboMainCaveList.Buttons6"), Boolean), EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, resources.GetString("cboMainCaveList.Buttons7"), CType(resources.GetObject("cboMainCaveList.Buttons8"), Object), CType(resources.GetObject("cboMainCaveList.Buttons9"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("cboMainCaveList.Buttons10"), DevExpress.Utils.ToolTipAnchor))})
+        Me.cboMainCaveList.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainCaveList.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainCaveList.Buttons1"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("cboMainCaveList.Buttons2"), CType(resources.GetObject("cboMainCaveList.Buttons3"), Integer), CType(resources.GetObject("cboMainCaveList.Buttons4"), Boolean), CType(resources.GetObject("cboMainCaveList.Buttons5"), Boolean), CType(resources.GetObject("cboMainCaveList.Buttons6"), Boolean), EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, resources.GetString("cboMainCaveList.Buttons7"), CType(resources.GetObject("cboMainCaveList.Buttons8"), Object), CType(resources.GetObject("cboMainCaveList.Buttons9"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("cboMainCaveList.Buttons10"), DevExpress.Utils.ToolTipAnchor))})
         Me.cboMainCaveList.DisplayMember = "ToHTMLString"
         Me.cboMainCaveList.Name = "cboMainCaveList"
         Me.cboMainCaveList.PopupView = Me.cboMainCaveListView
@@ -2027,7 +2028,7 @@ Partial Class frmMain2
         '
         Me.cboMainCaveBranchList.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.[True]
         resources.ApplyResources(Me.cboMainCaveBranchList, "cboMainCaveBranchList")
-        Me.cboMainCaveBranchList.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainCaveBranchList.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainCaveBranchList.Buttons1"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("cboMainCaveBranchList.Buttons2"), CType(resources.GetObject("cboMainCaveBranchList.Buttons3"), Integer), CType(resources.GetObject("cboMainCaveBranchList.Buttons4"), Boolean), CType(resources.GetObject("cboMainCaveBranchList.Buttons5"), Boolean), CType(resources.GetObject("cboMainCaveBranchList.Buttons6"), Boolean), EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, resources.GetString("cboMainCaveBranchList.Buttons7"), CType(resources.GetObject("cboMainCaveBranchList.Buttons8"), Object), CType(resources.GetObject("cboMainCaveBranchList.Buttons9"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("cboMainCaveBranchList.Buttons10"), DevExpress.Utils.ToolTipAnchor))})
+        Me.cboMainCaveBranchList.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainCaveBranchList.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboMainCaveBranchList.Buttons1"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("cboMainCaveBranchList.Buttons2"), CType(resources.GetObject("cboMainCaveBranchList.Buttons3"), Integer), CType(resources.GetObject("cboMainCaveBranchList.Buttons4"), Boolean), CType(resources.GetObject("cboMainCaveBranchList.Buttons5"), Boolean), CType(resources.GetObject("cboMainCaveBranchList.Buttons6"), Boolean), EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, resources.GetString("cboMainCaveBranchList.Buttons7"), CType(resources.GetObject("cboMainCaveBranchList.Buttons8"), Object), CType(resources.GetObject("cboMainCaveBranchList.Buttons9"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("cboMainCaveBranchList.Buttons10"), DevExpress.Utils.ToolTipAnchor))})
         Me.cboMainCaveBranchList.DisplayMember = "ToHTMLString"
         Me.cboMainCaveBranchList.Name = "cboMainCaveBranchList"
         Me.cboMainCaveBranchList.PopupView = Me.cboMainCaveBranchListView
@@ -3945,145 +3946,145 @@ Partial Class frmMain2
         '
         Me.SkinPaletteRibbonGalleryBarItem1.Gallery.AllowHtmlText = True
         Me.SkinPaletteRibbonGalleryBarItem1.Gallery.ColumnCount = 4
-        GalleryItem45.ImageOptions.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
-        GalleryItem45.Tag = "DefaultSkinPalette"
-        GalleryItem45.Value = "DefaultSkinPalette"
-        GalleryItem46.ImageOptions.Image = CType(resources.GetObject("resource.Image1"), System.Drawing.Image)
-        GalleryItem46.Tag = "Art House"
-        GalleryItem46.Value = "Art House"
-        GalleryItem47.ImageOptions.Image = CType(resources.GetObject("resource.Image2"), System.Drawing.Image)
-        GalleryItem47.Tag = "Twenty"
-        GalleryItem47.Value = "Twenty"
-        GalleryItem48.ImageOptions.Image = CType(resources.GetObject("resource.Image3"), System.Drawing.Image)
-        GalleryItem48.Tag = "Twenty Gold"
-        GalleryItem48.Value = "Twenty Gold"
-        GalleryItem49.Checked = True
-        GalleryItem49.ImageOptions.Image = CType(resources.GetObject("resource.Image4"), System.Drawing.Image)
-        GalleryItem49.Tag = "cSurvey (red)"
-        GalleryItem49.Value = "cSurvey (red)"
-        GalleryItem50.ImageOptions.Image = CType(resources.GetObject("resource.Image5"), System.Drawing.Image)
-        GalleryItem50.Tag = "cSurvey (red dark)"
-        GalleryItem50.Value = "cSurvey (red dark)"
-        GalleryItemGroup6.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem45, GalleryItem46, GalleryItem47, GalleryItem48, GalleryItem49, GalleryItem50})
-        GalleryItem51.ImageOptions.Image = CType(resources.GetObject("resource.Image6"), System.Drawing.Image)
-        GalleryItem51.Tag = "Office Colorful"
-        GalleryItem51.Value = "Office Colorful"
-        GalleryItem52.ImageOptions.Image = CType(resources.GetObject("resource.Image7"), System.Drawing.Image)
-        GalleryItem52.Tag = "Office Black"
-        GalleryItem52.Value = "Office Black"
-        GalleryItem53.ImageOptions.Image = CType(resources.GetObject("resource.Image8"), System.Drawing.Image)
-        GalleryItem53.Tag = "Office White"
-        GalleryItem53.Value = "Office White"
-        GalleryItem54.ImageOptions.Image = CType(resources.GetObject("resource.Image9"), System.Drawing.Image)
-        GalleryItem54.Tag = "Office Dark Gray"
-        GalleryItem54.Value = "Office Dark Gray"
-        GalleryItem55.ImageOptions.Image = CType(resources.GetObject("resource.Image10"), System.Drawing.Image)
-        GalleryItem55.Tag = "VS Light"
-        GalleryItem55.Value = "VS Light"
-        GalleryItem56.ImageOptions.Image = CType(resources.GetObject("resource.Image11"), System.Drawing.Image)
-        GalleryItem56.Tag = "VS Blue"
-        GalleryItem56.Value = "VS Blue"
-        GalleryItem57.ImageOptions.Image = CType(resources.GetObject("resource.Image12"), System.Drawing.Image)
-        GalleryItem57.Tag = "VS Dark"
-        GalleryItem57.Value = "VS Dark"
-        GalleryItem58.ImageOptions.Image = CType(resources.GetObject("resource.Image13"), System.Drawing.Image)
-        GalleryItem58.Tag = "VS 2019 Blue"
-        GalleryItem58.Value = "VS 2019 Blue"
-        GalleryItemGroup7.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem51, GalleryItem52, GalleryItem53, GalleryItem54, GalleryItem55, GalleryItem56, GalleryItem57, GalleryItem58})
-        GalleryItem59.ImageOptions.Image = CType(resources.GetObject("resource.Image14"), System.Drawing.Image)
-        GalleryItem59.Tag = "Leaf Rustle"
-        GalleryItem59.Value = "Leaf Rustle"
-        GalleryItem60.ImageOptions.Image = CType(resources.GetObject("resource.Image15"), System.Drawing.Image)
-        GalleryItem60.Tag = "Neon Lollipop"
-        GalleryItem60.Value = "Neon Lollipop"
-        GalleryItem61.ImageOptions.Image = CType(resources.GetObject("resource.Image16"), System.Drawing.Image)
-        GalleryItem61.Tag = "Tokyo"
-        GalleryItem61.Value = "Tokyo"
-        GalleryItem62.ImageOptions.Image = CType(resources.GetObject("resource.Image17"), System.Drawing.Image)
-        GalleryItem62.Tag = "Grasshopper"
-        GalleryItem62.Value = "Grasshopper"
-        GalleryItem63.ImageOptions.Image = CType(resources.GetObject("resource.Image18"), System.Drawing.Image)
-        GalleryItem63.Tag = "BW"
-        GalleryItem63.Value = "BW"
-        GalleryItem64.ImageOptions.Image = CType(resources.GetObject("resource.Image19"), System.Drawing.Image)
-        GalleryItem64.Tag = "Norwegian Wood"
-        GalleryItem64.Value = "Norwegian Wood"
-        GalleryItem65.ImageOptions.Image = CType(resources.GetObject("resource.Image20"), System.Drawing.Image)
-        GalleryItem65.Tag = "Date Fruit"
-        GalleryItem65.Value = "Date Fruit"
-        GalleryItem66.ImageOptions.Image = CType(resources.GetObject("resource.Image21"), System.Drawing.Image)
-        GalleryItem66.Tag = "Dragonfly"
-        GalleryItem66.Value = "Dragonfly"
-        GalleryItem67.ImageOptions.Image = CType(resources.GetObject("resource.Image22"), System.Drawing.Image)
-        GalleryItem67.Tag = "Plastic Space"
-        GalleryItem67.Value = "Plastic Space"
-        GalleryItem68.ImageOptions.Image = CType(resources.GetObject("resource.Image23"), System.Drawing.Image)
-        GalleryItem68.Tag = "Gloom Gloom"
-        GalleryItem68.Value = "Gloom Gloom"
-        GalleryItem69.ImageOptions.Image = CType(resources.GetObject("resource.Image24"), System.Drawing.Image)
-        GalleryItem69.Tag = "Aquarelle"
-        GalleryItem69.Value = "Aquarelle"
-        GalleryItem70.ImageOptions.Image = CType(resources.GetObject("resource.Image25"), System.Drawing.Image)
-        GalleryItem70.Tag = "Oxygen 3"
-        GalleryItem70.Value = "Oxygen 3"
-        GalleryItem71.ImageOptions.Image = CType(resources.GetObject("resource.Image26"), System.Drawing.Image)
-        GalleryItem71.Tag = "Moray Eel"
-        GalleryItem71.Value = "Moray Eel"
-        GalleryItem72.ImageOptions.Image = CType(resources.GetObject("resource.Image27"), System.Drawing.Image)
-        GalleryItem72.Tag = "Blackberry Shake"
-        GalleryItem72.Value = "Blackberry Shake"
-        GalleryItem73.ImageOptions.Image = CType(resources.GetObject("resource.Image28"), System.Drawing.Image)
-        GalleryItem73.Tag = "Vacuum"
-        GalleryItem73.Value = "Vacuum"
-        GalleryItemGroup8.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem59, GalleryItem60, GalleryItem61, GalleryItem62, GalleryItem63, GalleryItem64, GalleryItem65, GalleryItem66, GalleryItem67, GalleryItem68, GalleryItem69, GalleryItem70, GalleryItem71, GalleryItem72, GalleryItem73})
-        GalleryItem74.ImageOptions.Image = CType(resources.GetObject("resource.Image29"), System.Drawing.Image)
-        GalleryItem74.Tag = "Fireball"
-        GalleryItem74.Value = "Fireball"
-        GalleryItem75.ImageOptions.Image = CType(resources.GetObject("resource.Image30"), System.Drawing.Image)
-        GalleryItem75.Tag = "Crambe"
-        GalleryItem75.Value = "Crambe"
-        GalleryItem76.ImageOptions.Image = CType(resources.GetObject("resource.Image31"), System.Drawing.Image)
-        GalleryItem76.Tag = "Cherry Ink"
-        GalleryItem76.Value = "Cherry Ink"
-        GalleryItem77.ImageOptions.Image = CType(resources.GetObject("resource.Image32"), System.Drawing.Image)
-        GalleryItem77.Tag = "Starshine"
-        GalleryItem77.Value = "Starshine"
-        GalleryItem78.ImageOptions.Image = CType(resources.GetObject("resource.Image33"), System.Drawing.Image)
-        GalleryItem78.Tag = "Dark Turquoise"
-        GalleryItem78.Value = "Dark Turquoise"
-        GalleryItem79.ImageOptions.Image = CType(resources.GetObject("resource.Image34"), System.Drawing.Image)
-        GalleryItem79.Tag = "Prometheus"
-        GalleryItem79.Value = "Prometheus"
-        GalleryItem80.ImageOptions.Image = CType(resources.GetObject("resource.Image35"), System.Drawing.Image)
-        GalleryItem80.Tag = "Ghost Shark"
-        GalleryItem80.Value = "Ghost Shark"
-        GalleryItem81.ImageOptions.Image = CType(resources.GetObject("resource.Image36"), System.Drawing.Image)
-        GalleryItem81.Tag = "Blue Velvet"
-        GalleryItem81.Value = "Blue Velvet"
-        GalleryItem82.ImageOptions.Image = CType(resources.GetObject("resource.Image37"), System.Drawing.Image)
-        GalleryItem82.Tag = "Milk Snake"
-        GalleryItem82.Value = "Milk Snake"
-        GalleryItem83.ImageOptions.Image = CType(resources.GetObject("resource.Image38"), System.Drawing.Image)
-        GalleryItem83.Tag = "Mercury Ice"
-        GalleryItem83.Value = "Mercury Ice"
-        GalleryItem84.ImageOptions.Image = CType(resources.GetObject("resource.Image39"), System.Drawing.Image)
-        GalleryItem84.Tag = "Volcano"
-        GalleryItem84.Value = "Volcano"
-        GalleryItem85.ImageOptions.Image = CType(resources.GetObject("resource.Image40"), System.Drawing.Image)
-        GalleryItem85.Tag = "Witch Rave"
-        GalleryItem85.Value = "Witch Rave"
-        GalleryItem86.ImageOptions.Image = CType(resources.GetObject("resource.Image41"), System.Drawing.Image)
-        GalleryItem86.Tag = "Nebula"
-        GalleryItem86.Value = "Nebula"
-        GalleryItemGroup9.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem74, GalleryItem75, GalleryItem76, GalleryItem77, GalleryItem78, GalleryItem79, GalleryItem80, GalleryItem81, GalleryItem82, GalleryItem83, GalleryItem84, GalleryItem85, GalleryItem86})
-        GalleryItem87.ImageOptions.Image = CType(resources.GetObject("resource.Image42"), System.Drawing.Image)
-        GalleryItem87.Tag = "High Contrast White"
-        GalleryItem87.Value = "High Contrast White"
-        GalleryItem88.ImageOptions.Image = CType(resources.GetObject("resource.Image43"), System.Drawing.Image)
-        GalleryItem88.Tag = "High Contrast Black"
-        GalleryItem88.Value = "High Contrast Black"
-        GalleryItemGroup10.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem87, GalleryItem88})
-        Me.SkinPaletteRibbonGalleryBarItem1.Gallery.Groups.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItemGroup() {GalleryItemGroup6, GalleryItemGroup7, GalleryItemGroup8, GalleryItemGroup9, GalleryItemGroup10})
+        GalleryItem1.ImageOptions.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
+        GalleryItem1.Tag = "DefaultSkinPalette"
+        GalleryItem1.Value = "DefaultSkinPalette"
+        GalleryItem2.ImageOptions.Image = CType(resources.GetObject("resource.Image1"), System.Drawing.Image)
+        GalleryItem2.Tag = "Art House"
+        GalleryItem2.Value = "Art House"
+        GalleryItem3.ImageOptions.Image = CType(resources.GetObject("resource.Image2"), System.Drawing.Image)
+        GalleryItem3.Tag = "Twenty"
+        GalleryItem3.Value = "Twenty"
+        GalleryItem4.ImageOptions.Image = CType(resources.GetObject("resource.Image3"), System.Drawing.Image)
+        GalleryItem4.Tag = "Twenty Gold"
+        GalleryItem4.Value = "Twenty Gold"
+        GalleryItem5.Checked = True
+        GalleryItem5.ImageOptions.Image = CType(resources.GetObject("resource.Image4"), System.Drawing.Image)
+        GalleryItem5.Tag = "cSurvey (red)"
+        GalleryItem5.Value = "cSurvey (red)"
+        GalleryItem6.ImageOptions.Image = CType(resources.GetObject("resource.Image5"), System.Drawing.Image)
+        GalleryItem6.Tag = "cSurvey (red dark)"
+        GalleryItem6.Value = "cSurvey (red dark)"
+        GalleryItemGroup1.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem1, GalleryItem2, GalleryItem3, GalleryItem4, GalleryItem5, GalleryItem6})
+        GalleryItem7.ImageOptions.Image = CType(resources.GetObject("resource.Image6"), System.Drawing.Image)
+        GalleryItem7.Tag = "Office Colorful"
+        GalleryItem7.Value = "Office Colorful"
+        GalleryItem8.ImageOptions.Image = CType(resources.GetObject("resource.Image7"), System.Drawing.Image)
+        GalleryItem8.Tag = "Office Black"
+        GalleryItem8.Value = "Office Black"
+        GalleryItem9.ImageOptions.Image = CType(resources.GetObject("resource.Image8"), System.Drawing.Image)
+        GalleryItem9.Tag = "Office White"
+        GalleryItem9.Value = "Office White"
+        GalleryItem10.ImageOptions.Image = CType(resources.GetObject("resource.Image9"), System.Drawing.Image)
+        GalleryItem10.Tag = "Office Dark Gray"
+        GalleryItem10.Value = "Office Dark Gray"
+        GalleryItem11.ImageOptions.Image = CType(resources.GetObject("resource.Image10"), System.Drawing.Image)
+        GalleryItem11.Tag = "VS Light"
+        GalleryItem11.Value = "VS Light"
+        GalleryItem12.ImageOptions.Image = CType(resources.GetObject("resource.Image11"), System.Drawing.Image)
+        GalleryItem12.Tag = "VS Blue"
+        GalleryItem12.Value = "VS Blue"
+        GalleryItem13.ImageOptions.Image = CType(resources.GetObject("resource.Image12"), System.Drawing.Image)
+        GalleryItem13.Tag = "VS Dark"
+        GalleryItem13.Value = "VS Dark"
+        GalleryItem14.ImageOptions.Image = CType(resources.GetObject("resource.Image13"), System.Drawing.Image)
+        GalleryItem14.Tag = "VS 2019 Blue"
+        GalleryItem14.Value = "VS 2019 Blue"
+        GalleryItemGroup2.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem7, GalleryItem8, GalleryItem9, GalleryItem10, GalleryItem11, GalleryItem12, GalleryItem13, GalleryItem14})
+        GalleryItem15.ImageOptions.Image = CType(resources.GetObject("resource.Image14"), System.Drawing.Image)
+        GalleryItem15.Tag = "Leaf Rustle"
+        GalleryItem15.Value = "Leaf Rustle"
+        GalleryItem16.ImageOptions.Image = CType(resources.GetObject("resource.Image15"), System.Drawing.Image)
+        GalleryItem16.Tag = "Neon Lollipop"
+        GalleryItem16.Value = "Neon Lollipop"
+        GalleryItem17.ImageOptions.Image = CType(resources.GetObject("resource.Image16"), System.Drawing.Image)
+        GalleryItem17.Tag = "Tokyo"
+        GalleryItem17.Value = "Tokyo"
+        GalleryItem18.ImageOptions.Image = CType(resources.GetObject("resource.Image17"), System.Drawing.Image)
+        GalleryItem18.Tag = "Grasshopper"
+        GalleryItem18.Value = "Grasshopper"
+        GalleryItem19.ImageOptions.Image = CType(resources.GetObject("resource.Image18"), System.Drawing.Image)
+        GalleryItem19.Tag = "BW"
+        GalleryItem19.Value = "BW"
+        GalleryItem20.ImageOptions.Image = CType(resources.GetObject("resource.Image19"), System.Drawing.Image)
+        GalleryItem20.Tag = "Norwegian Wood"
+        GalleryItem20.Value = "Norwegian Wood"
+        GalleryItem21.ImageOptions.Image = CType(resources.GetObject("resource.Image20"), System.Drawing.Image)
+        GalleryItem21.Tag = "Date Fruit"
+        GalleryItem21.Value = "Date Fruit"
+        GalleryItem22.ImageOptions.Image = CType(resources.GetObject("resource.Image21"), System.Drawing.Image)
+        GalleryItem22.Tag = "Dragonfly"
+        GalleryItem22.Value = "Dragonfly"
+        GalleryItem23.ImageOptions.Image = CType(resources.GetObject("resource.Image22"), System.Drawing.Image)
+        GalleryItem23.Tag = "Plastic Space"
+        GalleryItem23.Value = "Plastic Space"
+        GalleryItem24.ImageOptions.Image = CType(resources.GetObject("resource.Image23"), System.Drawing.Image)
+        GalleryItem24.Tag = "Gloom Gloom"
+        GalleryItem24.Value = "Gloom Gloom"
+        GalleryItem25.ImageOptions.Image = CType(resources.GetObject("resource.Image24"), System.Drawing.Image)
+        GalleryItem25.Tag = "Aquarelle"
+        GalleryItem25.Value = "Aquarelle"
+        GalleryItem26.ImageOptions.Image = CType(resources.GetObject("resource.Image25"), System.Drawing.Image)
+        GalleryItem26.Tag = "Oxygen 3"
+        GalleryItem26.Value = "Oxygen 3"
+        GalleryItem27.ImageOptions.Image = CType(resources.GetObject("resource.Image26"), System.Drawing.Image)
+        GalleryItem27.Tag = "Moray Eel"
+        GalleryItem27.Value = "Moray Eel"
+        GalleryItem28.ImageOptions.Image = CType(resources.GetObject("resource.Image27"), System.Drawing.Image)
+        GalleryItem28.Tag = "Blackberry Shake"
+        GalleryItem28.Value = "Blackberry Shake"
+        GalleryItem29.ImageOptions.Image = CType(resources.GetObject("resource.Image28"), System.Drawing.Image)
+        GalleryItem29.Tag = "Vacuum"
+        GalleryItem29.Value = "Vacuum"
+        GalleryItemGroup3.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem15, GalleryItem16, GalleryItem17, GalleryItem18, GalleryItem19, GalleryItem20, GalleryItem21, GalleryItem22, GalleryItem23, GalleryItem24, GalleryItem25, GalleryItem26, GalleryItem27, GalleryItem28, GalleryItem29})
+        GalleryItem30.ImageOptions.Image = CType(resources.GetObject("resource.Image29"), System.Drawing.Image)
+        GalleryItem30.Tag = "Fireball"
+        GalleryItem30.Value = "Fireball"
+        GalleryItem31.ImageOptions.Image = CType(resources.GetObject("resource.Image30"), System.Drawing.Image)
+        GalleryItem31.Tag = "Crambe"
+        GalleryItem31.Value = "Crambe"
+        GalleryItem32.ImageOptions.Image = CType(resources.GetObject("resource.Image31"), System.Drawing.Image)
+        GalleryItem32.Tag = "Cherry Ink"
+        GalleryItem32.Value = "Cherry Ink"
+        GalleryItem33.ImageOptions.Image = CType(resources.GetObject("resource.Image32"), System.Drawing.Image)
+        GalleryItem33.Tag = "Starshine"
+        GalleryItem33.Value = "Starshine"
+        GalleryItem34.ImageOptions.Image = CType(resources.GetObject("resource.Image33"), System.Drawing.Image)
+        GalleryItem34.Tag = "Dark Turquoise"
+        GalleryItem34.Value = "Dark Turquoise"
+        GalleryItem35.ImageOptions.Image = CType(resources.GetObject("resource.Image34"), System.Drawing.Image)
+        GalleryItem35.Tag = "Prometheus"
+        GalleryItem35.Value = "Prometheus"
+        GalleryItem36.ImageOptions.Image = CType(resources.GetObject("resource.Image35"), System.Drawing.Image)
+        GalleryItem36.Tag = "Ghost Shark"
+        GalleryItem36.Value = "Ghost Shark"
+        GalleryItem37.ImageOptions.Image = CType(resources.GetObject("resource.Image36"), System.Drawing.Image)
+        GalleryItem37.Tag = "Blue Velvet"
+        GalleryItem37.Value = "Blue Velvet"
+        GalleryItem38.ImageOptions.Image = CType(resources.GetObject("resource.Image37"), System.Drawing.Image)
+        GalleryItem38.Tag = "Milk Snake"
+        GalleryItem38.Value = "Milk Snake"
+        GalleryItem39.ImageOptions.Image = CType(resources.GetObject("resource.Image38"), System.Drawing.Image)
+        GalleryItem39.Tag = "Mercury Ice"
+        GalleryItem39.Value = "Mercury Ice"
+        GalleryItem40.ImageOptions.Image = CType(resources.GetObject("resource.Image39"), System.Drawing.Image)
+        GalleryItem40.Tag = "Volcano"
+        GalleryItem40.Value = "Volcano"
+        GalleryItem41.ImageOptions.Image = CType(resources.GetObject("resource.Image40"), System.Drawing.Image)
+        GalleryItem41.Tag = "Witch Rave"
+        GalleryItem41.Value = "Witch Rave"
+        GalleryItem42.ImageOptions.Image = CType(resources.GetObject("resource.Image41"), System.Drawing.Image)
+        GalleryItem42.Tag = "Nebula"
+        GalleryItem42.Value = "Nebula"
+        GalleryItemGroup4.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem30, GalleryItem31, GalleryItem32, GalleryItem33, GalleryItem34, GalleryItem35, GalleryItem36, GalleryItem37, GalleryItem38, GalleryItem39, GalleryItem40, GalleryItem41, GalleryItem42})
+        GalleryItem43.ImageOptions.Image = CType(resources.GetObject("resource.Image42"), System.Drawing.Image)
+        GalleryItem43.Tag = "High Contrast White"
+        GalleryItem43.Value = "High Contrast White"
+        GalleryItem44.ImageOptions.Image = CType(resources.GetObject("resource.Image43"), System.Drawing.Image)
+        GalleryItem44.Tag = "High Contrast Black"
+        GalleryItem44.Value = "High Contrast Black"
+        GalleryItemGroup5.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {GalleryItem43, GalleryItem44})
+        Me.SkinPaletteRibbonGalleryBarItem1.Gallery.Groups.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItemGroup() {GalleryItemGroup1, GalleryItemGroup2, GalleryItemGroup3, GalleryItemGroup4, GalleryItemGroup5})
         Me.SkinPaletteRibbonGalleryBarItem1.Gallery.ImageSize = New System.Drawing.Size(80, 56)
         Me.SkinPaletteRibbonGalleryBarItem1.Gallery.ItemCheckMode = DevExpress.XtraBars.Ribbon.Gallery.ItemCheckMode.SingleRadio
         Me.SkinPaletteRibbonGalleryBarItem1.Gallery.ItemImageLayout = DevExpress.Utils.Drawing.ImageLayoutMode.Stretch
@@ -4911,6 +4912,7 @@ Partial Class frmMain2
         'RibbonStatusBar1
         '
         Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlStatusMasterSlave)
+        Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlStatusTherion, True)
         Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlStatusText, True)
         Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlStatusProgress)
         Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlStatusCurrentRule, True)
@@ -5760,7 +5762,7 @@ Partial Class frmMain2
         Me.WorkspaceManager.CloseStreamOnWorkspaceLoading = DevExpress.Utils.DefaultBoolean.[True]
         Me.WorkspaceManager.CloseStreamOnWorkspaceSaving = DevExpress.Utils.DefaultBoolean.[True]
         Me.WorkspaceManager.TargetControl = Me
-        Me.WorkspaceManager.TransitionType = FadeTransition2
+        Me.WorkspaceManager.TransitionType = FadeTransition1
         '
         'pnlSegmentDataMain
         '
@@ -7544,11 +7546,11 @@ Partial Class frmMain2
         Me.docView.DocumentGroups.AddRange(New DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup() {Me.DocumentGroup2, Me.DocumentGroup1})
         Me.docView.DocumentProperties.AllowClose = False
         Me.docView.Documents.AddRange(New DevExpress.XtraBars.Docking2010.Views.BaseDocument() {Me.Document1, Me.Document2})
-        DockingContainer3.Element = Me.DocumentGroup1
-        DockingContainer3.Length.UnitValue = 0.76215277777777779R
-        DockingContainer4.Element = Me.DocumentGroup2
-        DockingContainer4.Length.UnitValue = 1.2378472222222223R
-        Me.docView.RootContainer.Nodes.AddRange(New DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer() {DockingContainer3, DockingContainer4})
+        DockingContainer1.Element = Me.DocumentGroup1
+        DockingContainer1.Length.UnitValue = 0.76215277777777779R
+        DockingContainer2.Element = Me.DocumentGroup2
+        DockingContainer2.Length.UnitValue = 1.2378472222222223R
+        Me.docView.RootContainer.Nodes.AddRange(New DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer() {DockingContainer1, DockingContainer2})
         '
         'mnuSegments
         '
@@ -7680,6 +7682,12 @@ Partial Class frmMain2
         'TaskbarAssistant
         '
         Me.TaskbarAssistant.ParentControl = Me
+        '
+        'pnlStatusTherion
+        '
+        resources.ApplyResources(Me.pnlStatusTherion, "pnlStatusTherion")
+        Me.pnlStatusTherion.Id = 375
+        Me.pnlStatusTherion.Name = "pnlStatusTherion"
         '
         'frmMain2
         '
@@ -8719,4 +8727,5 @@ Partial Class frmMain2
     Friend WithEvents btnViewBrushesAndPens As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnViewClipartGallery As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents cSegmentMessageBar As cMessageBar
+    Friend WithEvents pnlStatusTherion As DevExpress.XtraBars.BarStaticItem
 End Class

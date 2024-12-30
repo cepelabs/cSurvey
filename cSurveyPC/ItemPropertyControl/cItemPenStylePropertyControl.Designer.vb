@@ -97,6 +97,8 @@ Partial Class cItemPenStylePropertyControl
         Me.pnlPenClipartSettings1 = New DevExpress.XtraEditors.PanelControl()
         Me.cboPropPenClipartBrushMode = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.lblPropPenClipartBrushMode = New DevExpress.XtraEditors.LabelControl()
+        Me.mnuContext = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.btnPropCustomize = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.txtPropPenColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.mnuSaveAs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -131,6 +133,7 @@ Partial Class cItemPenStylePropertyControl
         CType(Me.pnlPenClipartSettings1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlPenClipartSettings1.SuspendLayout()
         CType(Me.cboPropPenClipartBrushMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.mnuContext, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblPropPenColor
@@ -178,6 +181,7 @@ Partial Class cItemPenStylePropertyControl
         resources.ApplyResources(Me.cboPropPenPattern, "cboPropPenPattern")
         Me.cboPropPenPattern.EditValue = "_9"
         Me.cboPropPenPattern.Name = "cboPropPenPattern"
+        Me.BarManager.SetPopupContextMenu(Me.cboPropPenPattern, Me.mnuContext)
         '
         'txtPropPenColor
         '
@@ -186,6 +190,7 @@ Partial Class cItemPenStylePropertyControl
         Me.txtPropPenColor.Name = "txtPropPenColor"
         Me.txtPropPenColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPropPenColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtPropPenColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txtPropPenColor.Properties.NullColor = System.Drawing.Color.Empty
         Me.txtPropPenColor.Properties.ShowSystemColors = False
         Me.txtPropPenColor.Properties.ShowWebColors = False
         '
@@ -242,8 +247,8 @@ Partial Class cItemPenStylePropertyControl
         Me.BarManager.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager.DockControls.Add(Me.barDockControlRight)
         Me.BarManager.Form = Me
-        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnPropSaveToFile, Me.btnPropSaveToSurvey, Me.btnPropExport, Me.btnPropImport})
-        Me.BarManager.MaxItemId = 27
+        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnPropSaveToFile, Me.btnPropSaveToSurvey, Me.btnPropExport, Me.btnPropImport, Me.btnPropCustomize})
+        Me.BarManager.MaxItemId = 28
         '
         'barDockControlTop
         '
@@ -451,6 +456,7 @@ Partial Class cItemPenStylePropertyControl
         Me.txtPropPenClipartPenColor.Name = "txtPropPenClipartPenColor"
         Me.txtPropPenClipartPenColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPropPenClipartPenColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtPropPenClipartPenColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txtPropPenClipartPenColor.Properties.NullColor = System.Drawing.Color.Empty
         Me.txtPropPenClipartPenColor.Properties.ShowSystemColors = False
         Me.txtPropPenClipartPenColor.Properties.ShowWebColors = False
         '
@@ -705,6 +711,7 @@ Partial Class cItemPenStylePropertyControl
         Me.txtPropPenClipartBrushColor.Name = "txtPropPenClipartBrushColor"
         Me.txtPropPenClipartBrushColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPropPenClipartBrushColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtPropPenClipartBrushColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txtPropPenClipartBrushColor.Properties.NullColor = System.Drawing.Color.Empty
         Me.txtPropPenClipartBrushColor.Properties.ShowSystemColors = False
         Me.txtPropPenClipartBrushColor.Properties.ShowWebColors = False
         '
@@ -729,6 +736,18 @@ Partial Class cItemPenStylePropertyControl
         '
         resources.ApplyResources(Me.lblPropPenClipartBrushMode, "lblPropPenClipartBrushMode")
         Me.lblPropPenClipartBrushMode.Name = "lblPropPenClipartBrushMode"
+        '
+        'mnuContext
+        '
+        Me.mnuContext.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnPropCustomize)})
+        Me.mnuContext.Manager = Me.BarManager
+        Me.mnuContext.Name = "mnuContext"
+        '
+        'btnPropCustomize
+        '
+        resources.ApplyResources(Me.btnPropCustomize, "btnPropCustomize")
+        Me.btnPropCustomize.Id = 27
+        Me.btnPropCustomize.Name = "btnPropCustomize"
         '
         'cItemPenStylePropertyControl
         '
@@ -788,6 +807,7 @@ Partial Class cItemPenStylePropertyControl
         Me.pnlPenClipartSettings1.ResumeLayout(False)
         Me.pnlPenClipartSettings1.PerformLayout()
         CType(Me.cboPropPenClipartBrushMode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.mnuContext, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -865,4 +885,6 @@ Partial Class cItemPenStylePropertyControl
     Friend WithEvents chkPropPenClipartPenLineJoin1 As DevExpress.XtraEditors.CheckButton
     Friend WithEvents chkPropPenClipartPenLineJoin0 As DevExpress.XtraEditors.CheckButton
     Friend WithEvents chkPropPenClipartPenLineJoin2 As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents mnuContext As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents btnPropCustomize As DevExpress.XtraBars.BarButtonItem
 End Class

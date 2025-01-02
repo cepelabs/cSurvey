@@ -117,21 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="colDateStamp.Text" xml:space="preserve">
-    <value>Дата/время</value>
-  </data>
-  <data name="colLogMessage.Text" xml:space="preserve">
-    <value>Сообщение</value>
-  </data>
-  <data name="mnuItemsRefresh.Text" xml:space="preserve">
-    <value>Обновить</value>
-  </data>
-  <data name="mnuItemsDelete.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="mnuItemsRestore.Text" xml:space="preserve">
-    <value>Восстановить</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="iml.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -195,9 +180,6 @@
         AQMB8AEPAcABAwEAAQcBgAEDAfABDwGAAQEBAAEHAYABAwH4AR8BgAEBAQABDwGAAQcB/AE/AoEBAAEf
         AYABDwH8AT8CwwEAAT8BgAEfAv8C5ws=
 </value>
-  </data>
-  <data name="mnuLogClean.Text" xml:space="preserve">
-    <value>Очистить</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -267,12 +249,6 @@
   <data name="$this.Text" xml:space="preserve">
     <value>История:</value>
   </data>
-  <data name="btnAddWeb.Text" xml:space="preserve">
-    <value>Web</value>
-  </data>
-  <data name="btnAddLocal.Text" xml:space="preserve">
-    <value>Папка</value>
-  </data>
   <data name="btnShowLocal.Caption" xml:space="preserve">
     <value>Local</value>
   </data>
@@ -297,19 +273,25 @@
   <data name="btnAddWeb.Caption" xml:space="preserve">
     <value>Web</value>
   </data>
-  <data name="colItemUser.Caption" xml:space="preserve">
-    <value>Пользователь</value>
-  </data>
-  <data name="colItemDateTime.Caption" xml:space="preserve">
+  <data name="colLogDateStamp.Caption" xml:space="preserve">
     <value>Дата/время</value>
   </data>
-  <data name="colItemSource.Caption" xml:space="preserve">
+  <data name="colLogMessage.Caption" xml:space="preserve">
+    <value>Сообщение</value>
+  </data>
+  <data name="colItemsDateTime.Caption" xml:space="preserve">
+    <value>Дата/время</value>
+  </data>
+  <data name="colItemsUser.Caption" xml:space="preserve">
+    <value>Пользователь</value>
+  </data>
+  <data name="colItemsSource.Caption" xml:space="preserve">
     <value>Источник</value>
   </data>
-  <data name="colItemName.Caption" xml:space="preserve">
-    <value>Название</value>
-  </data>
-  <data name="colItemSize.Caption" xml:space="preserve">
+  <data name="colItemsSize.Caption" xml:space="preserve">
     <value>Размер</value>
+  </data>
+  <data name="colItemsName.Caption" xml:space="preserve">
+    <value>Название</value>
   </data>
 </root>

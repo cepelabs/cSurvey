@@ -20078,33 +20078,33 @@ Friend Class frmMain2
         Call pTherionStatusUpdate()
     End Sub
 
+    Private bTherionStatusUpdateBusy As Boolean
+
     Private Async Sub pTherionStatusUpdate()
-        Dim sThProcess As String = My.Application.Settings.GetSetting("therion.path", "")
-
-        Dim oVersion As modExport.cVersion = Await modExport.GetTherionVersionAsync(sThProcess)
-
-        pnlStatusTherion.Description = modMain.GetLocalizedString("main.textpart174")
-        If oVersion Is Nothing Then
-            Call pPopupShow("error", modMain.GetLocalizedString("calculate.textpart6"))
-
-            pnlStatusTherion.Caption = modMain.GetLocalizedString("main.textpart175")
-            pnlStatusTherion.ImageOptions.SvgImage = My.Resources.warning
-
-            Dim sTherionInfo As String = modMain.GetLocalizedString("main.textpart176")
-            pnlStatusTherion.SuperTip = modDevExpress.CreateSuperTip(pnlStatusTherion.Caption, pnlStatusTherion.ImageOptions.SvgImage, New System.Drawing.Size(16, 16), sTherionInfo, Nothing, Nothing, "", Nothing, Nothing)
-        Else
-            pnlStatusTherion.Caption = "Therion " & oVersion.Version.ToString & " (" & oVersion.ReleaseDate.ToString(Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.ShortDatePattern) & ")"
-
-            Dim sTherionObsolete As String = ""
-            If Date.Today.Subtract(oVersion.ReleaseDate).Days > 365 Then
+        If Not bTherionStatusUpdateBusy Then
+            bTherionStatusUpdateBusy = True
+            Dim sThProcess As String = My.Application.Settings.GetSetting("therion.path", "")
+            Dim oVersion As modExport.cVersion = Await modExport.GetTherionVersionAsync(sThProcess)
+            pnlStatusTherion.Description = modMain.GetLocalizedString("main.textpart174")
+            If oVersion Is Nothing Then
+                Call pPopupShow("error", modMain.GetLocalizedString("calculate.textpart6"))
+                pnlStatusTherion.Caption = modMain.GetLocalizedString("main.textpart175")
                 pnlStatusTherion.ImageOptions.SvgImage = My.Resources.warning
-                sTherionObsolete = vbCrLf & "<b>" & modMain.GetLocalizedString("main.textpart178") & "</b>"
+                Dim sTherionInfo As String = modMain.GetLocalizedString("main.textpart176")
+                pnlStatusTherion.SuperTip = modDevExpress.CreateSuperTip(pnlStatusTherion.Caption, pnlStatusTherion.ImageOptions.SvgImage, New System.Drawing.Size(16, 16), sTherionInfo, Nothing, Nothing, "", Nothing, Nothing)
             Else
-                pnlStatusTherion.ImageOptions.SvgImage = Nothing
+                pnlStatusTherion.Caption = "Therion " & oVersion.Version.ToString & " (" & oVersion.ReleaseDate.ToString(Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.ShortDatePattern) & ")"
+                Dim sTherionObsolete As String = ""
+                If Date.Today.Subtract(oVersion.ReleaseDate).Days > 365 Then
+                    pnlStatusTherion.ImageOptions.SvgImage = My.Resources.warning
+                    sTherionObsolete = vbCrLf & "<b>" & modMain.GetLocalizedString("main.textpart178") & "</b>"
+                Else
+                    pnlStatusTherion.ImageOptions.SvgImage = Nothing
+                End If
+                Dim sTherionInfo As String = String.Format(modMain.GetLocalizedString("main.textpart177"), sThProcess) & sTherionObsolete
+                pnlStatusTherion.SuperTip = modDevExpress.CreateSuperTip(pnlStatusTherion.Caption, pnlStatusTherion.ImageOptions.SvgImage, New System.Drawing.Size(16, 16), sTherionInfo, Nothing, Nothing, "", Nothing, Nothing)
             End If
-
-            Dim sTherionInfo As String = String.Format(modMain.GetLocalizedString("main.textpart177"), sThProcess) & sTherionObsolete
-            pnlStatusTherion.SuperTip = modDevExpress.CreateSuperTip(pnlStatusTherion.Caption, pnlStatusTherion.ImageOptions.SvgImage, New System.Drawing.Size(16, 16), sTherionInfo, Nothing, Nothing, "", Nothing, Nothing)
+            bTherionStatusUpdateBusy = False
         End If
     End Sub
 End Class

@@ -3,6 +3,7 @@ Imports System.IO
 Imports cSurveyPC.cSurvey.Net
 Imports DevExpress.XtraTreeList.Nodes
 Imports cSurveyPC.cSurvey.UIHelpers
+Imports DevExpress.XtraBars
 
 Friend Class frmHistory
     Private oSurvey As cSurvey.cSurvey
@@ -152,16 +153,9 @@ Friend Class frmHistory
     End Sub
 
     Private Sub pLogAdd(Type As String, Text As String)
-        Dim oItem As ListViewItem = New ListViewItem(Text)
-        If Type <> "" Then
-            oItem.ImageKey = Type
-        Else
-            oItem.ImageKey = "info"
-        End If
-        Call oItem.SubItems.Add(Now.ToString)
-        Call lvLog.Items.Add(oItem)
-        Call oItem.EnsureVisible()
-        lvLog.FocusedItem = oItem
+        Dim oItem As cLogItem = New cLogItem(If(Type = "", "info", Type), Text)
+        grdLog.DataSource.add(oItem)
+        Call grdLogView.SetFocusedObject(oItem)
     End Sub
 
     Public Sub New(Survey As cSurvey.cSurvey, Filename As String)
@@ -174,6 +168,7 @@ Friend Class frmHistory
         sFilename = Filename
 
         grdItems.DataSource = New cHistoryItems
+        grdLog.DataSource = New cLogItems
 
         bHistory = My.Application.Settings.GetSetting("history.enabled", 0)
         iHistoryMode = My.Application.Settings.GetSetting("history.mode", 0)
@@ -259,36 +254,15 @@ Friend Class frmHistory
                             Call MsgBox(String.Format(modMain.GetLocalizedString("history.warning1"), ex.Message), MsgBoxStyle.OkOnly Or MsgBoxStyle.Exclamation, modMain.GetLocalizedString("history.warningtitle"))
                         End Try
                 End Select
-                oItems.remove(oItem)
+                oitems.Remove(oItem)
                 If Not grdItemsView.GetFocusedObject Is Nothing Then
-                    grdItemsView.GetFocusedObject.Selected = True
+                    grdItemsView.MakeRowVisible(grdItemsView.FocusedRowHandle)
                 End If
             Catch ex As Exception
                 Call pLogAdd("error", String.Format(modMain.GetLocalizedString("history.textpart7"), ex.Message))
                 Call MsgBox(String.Format(modMain.GetLocalizedString("history.warning1"), ex.Message), MsgBoxStyle.OkOnly Or MsgBoxStyle.Exclamation, modMain.GetLocalizedString("history.warningtitle"))
             End Try
         End If
-    End Sub
-
-    Private Sub mnuItemsRefresh_Click(sender As Object, e As EventArgs)
-        Call pRefresh()
-    End Sub
-
-    Private Sub mnuItemsDelete_Click(sender As Object, e As EventArgs)
-        Call btnDelete_ItemClick(Nothing, Nothing)
-    End Sub
-
-    Private Sub mnuItemsRestore_Click(sender As Object, e As EventArgs)
-        Call btnRestore.PerformClick()
-    End Sub
-
-    Private Sub mnuLogClean_Click(sender As Object, e As EventArgs) Handles mnuLogClean.Click
-        Call lvLog.Items.Clear()
-    End Sub
-
-    Private Sub btnHistoryAdd_DropDownOpening(sender As Object, e As EventArgs)
-        btnAddLocal.Enabled = btnShowLocal.Enabled
-        btnAddWeb.Enabled = btnShowWeb.Enabled
     End Sub
 
     Private Sub pHistoryAdd(Mode As frmMain2.HistoryModeEnum)
@@ -376,6 +350,15 @@ Friend Class frmHistory
     Private Sub tvItems_PopupMenuShowing(sender As Object, e As DevExpress.XtraTreeList.PopupMenuShowingEventArgs)
         e.Menu.Items.Clear()
         mnuItems.ShowPopup(e.Point)
+    End Sub
+
+    Private Sub grdLogView_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles grdLogView.PopupMenuShowing
+        e.Allow = False
+        mnuLog.ShowPopup(grdLog.PointToScreen(e.Point))
+    End Sub
+
+    Private Sub btnLogClear_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnLogClear.ItemClick
+        Call grdLog.DataSource.clear
     End Sub
 
     'Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click

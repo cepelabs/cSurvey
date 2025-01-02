@@ -494,6 +494,7 @@ Partial Class frmMain2
         Me.btnCurrentItemSignReplaceByClipart = New DevExpress.XtraBars.BarButtonItem()
         Me.btnViewBrushesAndPens = New DevExpress.XtraBars.BarButtonItem()
         Me.btnViewClipartGallery = New DevExpress.XtraBars.BarButtonItem()
+        Me.pnlStatusTherion = New DevExpress.XtraBars.BarStaticItem()
         Me.pageFile = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.tabFile = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.tabMaintenance = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
@@ -843,7 +844,6 @@ Partial Class frmMain2
         Me.svgItemImages = New DevExpress.Utils.SvgImageCollection(Me.components)
         Me.TaskbarAssistant = New DevExpress.Utils.Taskbar.TaskbarAssistant()
         Me.LayoutConverter1 = New DevExpress.XtraLayout.Converter.LayoutConverter(Me.components)
-        Me.pnlStatusTherion = New DevExpress.XtraBars.BarStaticItem()
         CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.Document2, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.DocumentGroup2, System.ComponentModel.ISupportInitialize).BeginInit
@@ -4386,6 +4386,12 @@ Partial Class frmMain2
         Me.btnViewClipartGallery.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.ModelEditor_ImageSources
         Me.btnViewClipartGallery.Name = "btnViewClipartGallery"
         '
+        'pnlStatusTherion
+        '
+        resources.ApplyResources(Me.pnlStatusTherion, "pnlStatusTherion")
+        Me.pnlStatusTherion.Id = 375
+        Me.pnlStatusTherion.Name = "pnlStatusTherion"
+        '
         'pageFile
         '
         Me.pageFile.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.tabFile, Me.tabMaintenance, Me.tabImportExport})
@@ -7682,12 +7688,6 @@ Partial Class frmMain2
         'TaskbarAssistant
         '
         Me.TaskbarAssistant.ParentControl = Me
-        '
-        'pnlStatusTherion
-        '
-        resources.ApplyResources(Me.pnlStatusTherion, "pnlStatusTherion")
-        Me.pnlStatusTherion.Id = 375
-        Me.pnlStatusTherion.Name = "pnlStatusTherion"
         '
         'frmMain2
         '

@@ -4210,4 +4210,38 @@ Namespace cSurvey.UIHelpers
     Public Class cHistoryItems
         Inherits BindingList(Of cHistoryItemBase)
     End Class
+
+    Public Class cLogItems
+        Inherits BindingList(Of cLogItem)
+    End Class
+
+    Public Class cLogItem
+        Private sType As String
+        Private sMessage As String
+        Private dDateStamp As DateTime
+
+        Public ReadOnly Property DateStamp As DateTime
+            Get
+                Return dDateStamp
+            End Get
+        End Property
+
+        Public ReadOnly Property Message As String
+            Get
+                Return sMessage
+            End Get
+        End Property
+
+        Public ReadOnly Property Type As String
+            Get
+                Return sType
+            End Get
+        End Property
+
+        Public Sub New(Type As String, Message As String)
+            sType = Type
+            sMessage = Message
+            dDateStamp = Now
+        End Sub
+    End Class
 End Namespace

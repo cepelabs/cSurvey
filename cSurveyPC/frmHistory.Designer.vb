@@ -36,7 +36,7 @@ Partial Class frmHistory
         Me.colItemsDateTime = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colItemsUser = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colItemsGroup = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.BarManager = New DevExpress.XtraBars.BarManager(Me.components)
         Me.Bar1 = New DevExpress.XtraBars.Bar()
         Me.btnShowLocal = New DevExpress.XtraBars.BarCheckItem()
         Me.btnShowWeb = New DevExpress.XtraBars.BarCheckItem()
@@ -48,17 +48,20 @@ Partial Class frmHistory
         Me.btnRefresh = New DevExpress.XtraBars.BarButtonItem()
         Me.Bar3 = New DevExpress.XtraBars.Bar()
         Me.pnlStatus = New DevExpress.XtraBars.BarStaticItem()
+        Me.BarAndDockingController = New DevExpress.XtraBars.BarAndDockingController(Me.components)
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
-        Me.lvLog = New System.Windows.Forms.ListView()
-        Me.colLogMessage = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.colLogDateStamp = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.mnuLog = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.mnuLogClean = New System.Windows.Forms.ToolStripMenuItem()
-        Me.iml = New System.Windows.Forms.ImageList(Me.components)
+        Me.btnLogClear = New DevExpress.XtraBars.BarButtonItem()
+        Me.grdLog = New DevExpress.XtraGrid.GridControl()
+        Me.grdLogView = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colLogType = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.cboLogType = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
+        Me.colLogMessage = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLogDateStamp = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.mnuItems = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.mnuLog = New DevExpress.XtraBars.PopupMenu(Me.components)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -67,9 +70,13 @@ Partial Class frmHistory
         CType(Me.grdItemsView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboItemsIcon, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.svgiml, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.mnuLog.SuspendLayout()
+        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BarAndDockingController, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdLog, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdLogView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboLogType, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.mnuItems, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.mnuLog, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SplitContainer1
@@ -84,13 +91,13 @@ Partial Class frmHistory
         '
         'SplitContainer1.Panel2
         '
-        Me.SplitContainer1.Panel2.Controls.Add(Me.lvLog)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.grdLog)
         '
         'grdItems
         '
         resources.ApplyResources(Me.grdItems, "grdItems")
         Me.grdItems.MainView = Me.grdItemsView
-        Me.grdItems.MenuManager = Me.BarManager1
+        Me.grdItems.MenuManager = Me.BarManager
         Me.grdItems.Name = "grdItems"
         Me.grdItems.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.cboItemsIcon})
         Me.grdItems.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdItemsView})
@@ -103,6 +110,8 @@ Partial Class frmHistory
         Me.grdItemsView.Name = "grdItemsView"
         Me.grdItemsView.OptionsBehavior.Editable = False
         Me.grdItemsView.OptionsBehavior.ReadOnly = True
+        Me.grdItemsView.OptionsFind.FindPanelLocation = DevExpress.XtraGrid.Views.Grid.GridFindPanelLocation.Panel
+        Me.grdItemsView.OptionsFind.ShowFindButton = False
         Me.grdItemsView.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.colItemsGroup, DevExpress.Data.ColumnSortOrder.Ascending)})
         '
         'coilItemsIcon
@@ -127,6 +136,9 @@ Partial Class frmHistory
         '
         Me.svgiml.Add("local", CType(resources.GetObject("svgiml.local"), DevExpress.Utils.Svg.SvgImage))
         Me.svgiml.Add("web", CType(resources.GetObject("svgiml.web"), DevExpress.Utils.Svg.SvgImage))
+        Me.svgiml.Add("info", "about", GetType(cSurveyPC.My.Resources.Resources))
+        Me.svgiml.Add("warning", "warning", GetType(cSurveyPC.My.Resources.Resources))
+        Me.svgiml.Add("error", "error2", GetType(cSurveyPC.My.Resources.Resources))
         '
         'colItemsName
         '
@@ -168,17 +180,18 @@ Partial Class frmHistory
         Me.colItemsGroup.FieldName = "Group"
         Me.colItemsGroup.Name = "colItemsGroup"
         '
-        'BarManager1
+        'BarManager
         '
-        Me.BarManager1.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.Bar1, Me.Bar3})
-        Me.BarManager1.DockControls.Add(Me.barDockControlTop)
-        Me.BarManager1.DockControls.Add(Me.barDockControlBottom)
-        Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
-        Me.BarManager1.DockControls.Add(Me.barDockControlRight)
-        Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.pnlStatus, Me.btnShowLocal, Me.btnShowWeb, Me.btnSaveTo, Me.btnAddLocal, Me.btnAddWeb, Me.btnRestore, Me.btnDelete, Me.btnRefresh})
-        Me.BarManager1.MaxItemId = 9
-        Me.BarManager1.StatusBar = Me.Bar3
+        Me.BarManager.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.Bar1, Me.Bar3})
+        Me.BarManager.Controller = Me.BarAndDockingController
+        Me.BarManager.DockControls.Add(Me.barDockControlTop)
+        Me.BarManager.DockControls.Add(Me.barDockControlBottom)
+        Me.BarManager.DockControls.Add(Me.barDockControlLeft)
+        Me.BarManager.DockControls.Add(Me.barDockControlRight)
+        Me.BarManager.Form = Me
+        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.pnlStatus, Me.btnShowLocal, Me.btnShowWeb, Me.btnSaveTo, Me.btnAddLocal, Me.btnAddWeb, Me.btnRestore, Me.btnDelete, Me.btnRefresh, Me.btnLogClear})
+        Me.BarManager.MaxItemId = 10
+        Me.BarManager.StatusBar = Me.Bar3
         '
         'Bar1
         '
@@ -270,77 +283,102 @@ Partial Class frmHistory
         Me.pnlStatus.Id = 0
         Me.pnlStatus.Name = "pnlStatus"
         '
+        'BarAndDockingController
+        '
+        Me.BarAndDockingController.AppearancesBar.ItemsFont = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        '
         'barDockControlTop
         '
         Me.barDockControlTop.CausesValidation = False
         resources.ApplyResources(Me.barDockControlTop, "barDockControlTop")
-        Me.barDockControlTop.Manager = Me.BarManager1
+        Me.barDockControlTop.Manager = Me.BarManager
         '
         'barDockControlBottom
         '
         Me.barDockControlBottom.CausesValidation = False
         resources.ApplyResources(Me.barDockControlBottom, "barDockControlBottom")
-        Me.barDockControlBottom.Manager = Me.BarManager1
+        Me.barDockControlBottom.Manager = Me.BarManager
         '
         'barDockControlLeft
         '
         Me.barDockControlLeft.CausesValidation = False
         resources.ApplyResources(Me.barDockControlLeft, "barDockControlLeft")
-        Me.barDockControlLeft.Manager = Me.BarManager1
+        Me.barDockControlLeft.Manager = Me.BarManager
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         resources.ApplyResources(Me.barDockControlRight, "barDockControlRight")
-        Me.barDockControlRight.Manager = Me.BarManager1
+        Me.barDockControlRight.Manager = Me.BarManager
         '
-        'lvLog
+        'btnLogClear
         '
-        Me.lvLog.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.lvLog.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colLogMessage, Me.colLogDateStamp})
-        Me.lvLog.ContextMenuStrip = Me.mnuLog
-        resources.ApplyResources(Me.lvLog, "lvLog")
-        Me.lvLog.FullRowSelect = True
-        Me.lvLog.HideSelection = False
-        Me.lvLog.Name = "lvLog"
-        Me.lvLog.SmallImageList = Me.iml
-        Me.lvLog.UseCompatibleStateImageBehavior = False
-        Me.lvLog.View = System.Windows.Forms.View.Details
+        resources.ApplyResources(Me.btnLogClear, "btnLogClear")
+        Me.btnLogClear.Id = 9
+        Me.btnLogClear.Name = "btnLogClear"
+        '
+        'grdLog
+        '
+        resources.ApplyResources(Me.grdLog, "grdLog")
+        Me.grdLog.MainView = Me.grdLogView
+        Me.grdLog.MenuManager = Me.BarManager
+        Me.grdLog.Name = "grdLog"
+        Me.grdLog.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.cboLogType})
+        Me.grdLog.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdLogView})
+        '
+        'grdLogView
+        '
+        Me.grdLogView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colLogType, Me.colLogMessage, Me.colLogDateStamp})
+        Me.grdLogView.GridControl = Me.grdLog
+        Me.grdLogView.Name = "grdLogView"
+        Me.grdLogView.OptionsBehavior.Editable = False
+        Me.grdLogView.OptionsBehavior.ReadOnly = True
+        Me.grdLogView.OptionsView.ShowGroupPanel = False
+        Me.grdLogView.OptionsView.ShowIndicator = False
+        '
+        'colLogType
+        '
+        resources.ApplyResources(Me.colLogType, "colLogType")
+        Me.colLogType.ColumnEdit = Me.cboLogType
+        Me.colLogType.FieldName = "Type"
+        Me.colLogType.MaxWidth = 24
+        Me.colLogType.MinWidth = 24
+        Me.colLogType.Name = "colLogType"
+        Me.colLogType.OptionsColumn.FixedWidth = True
+        '
+        'cboLogType
+        '
+        resources.ApplyResources(Me.cboLogType, "cboLogType")
+        Me.cboLogType.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboLogType.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboLogType.Items.AddRange(New DevExpress.XtraEditors.Controls.ImageComboBoxItem() {New DevExpress.XtraEditors.Controls.ImageComboBoxItem(resources.GetString("cboLogType.Items"), resources.GetString("cboLogType.Items1"), CType(resources.GetObject("cboLogType.Items2"), Integer)), New DevExpress.XtraEditors.Controls.ImageComboBoxItem(resources.GetString("cboLogType.Items3"), resources.GetString("cboLogType.Items4"), CType(resources.GetObject("cboLogType.Items5"), Integer)), New DevExpress.XtraEditors.Controls.ImageComboBoxItem(resources.GetString("cboLogType.Items6"), resources.GetString("cboLogType.Items7"), CType(resources.GetObject("cboLogType.Items8"), Integer))})
+        Me.cboLogType.Name = "cboLogType"
+        Me.cboLogType.SmallImages = Me.svgiml
         '
         'colLogMessage
         '
         resources.ApplyResources(Me.colLogMessage, "colLogMessage")
+        Me.colLogMessage.FieldName = "Message"
+        Me.colLogMessage.Name = "colLogMessage"
         '
         'colLogDateStamp
         '
         resources.ApplyResources(Me.colLogDateStamp, "colLogDateStamp")
-        '
-        'mnuLog
-        '
-        resources.ApplyResources(Me.mnuLog, "mnuLog")
-        Me.mnuLog.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuLogClean})
-        Me.mnuLog.Name = "mnuLog"
-        '
-        'mnuLogClean
-        '
-        Me.mnuLogClean.Name = "mnuLogClean"
-        resources.ApplyResources(Me.mnuLogClean, "mnuLogClean")
-        '
-        'iml
-        '
-        Me.iml.ImageStream = CType(resources.GetObject("iml.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.iml.TransparentColor = System.Drawing.Color.Transparent
-        Me.iml.Images.SetKeyName(0, "web")
-        Me.iml.Images.SetKeyName(1, "local")
-        Me.iml.Images.SetKeyName(2, "warning")
-        Me.iml.Images.SetKeyName(3, "error")
-        Me.iml.Images.SetKeyName(4, "info")
+        Me.colLogDateStamp.DisplayFormat.FormatString = "G"
+        Me.colLogDateStamp.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.colLogDateStamp.FieldName = "DateStamp"
+        Me.colLogDateStamp.Name = "colLogDateStamp"
         '
         'mnuItems
         '
         Me.mnuItems.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnRestore), New DevExpress.XtraBars.LinkPersistInfo(Me.btnDelete, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRefresh, True)})
-        Me.mnuItems.Manager = Me.BarManager1
+        Me.mnuItems.Manager = Me.BarManager
         Me.mnuItems.Name = "mnuItems"
+        '
+        'mnuLog
+        '
+        Me.mnuLog.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnLogClear)})
+        Me.mnuLog.Manager = Me.BarManager
+        Me.mnuLog.Name = "mnuLog"
         '
         'frmHistory
         '
@@ -362,21 +400,19 @@ Partial Class frmHistory
         CType(Me.grdItemsView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboItemsIcon, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.svgiml, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.mnuLog.ResumeLayout(False)
+        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BarAndDockingController, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdLog, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdLogView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboLogType, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.mnuItems, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.mnuLog, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents iml As System.Windows.Forms.ImageList
     Friend WithEvents SplitContainer1 As System.Windows.Forms.SplitContainer
-    Friend WithEvents lvLog As System.Windows.Forms.ListView
-    Friend WithEvents colLogMessage As System.Windows.Forms.ColumnHeader
-    Friend WithEvents colLogDateStamp As System.Windows.Forms.ColumnHeader
-    Friend WithEvents mnuLog As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents mnuLogClean As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents BarManager1 As DevExpress.XtraBars.BarManager
+    Friend WithEvents BarManager As DevExpress.XtraBars.BarManager
     Friend WithEvents Bar1 As DevExpress.XtraBars.Bar
     Friend WithEvents Bar3 As DevExpress.XtraBars.Bar
     Friend WithEvents pnlStatus As DevExpress.XtraBars.BarStaticItem
@@ -404,4 +440,13 @@ Partial Class frmHistory
     Friend WithEvents colItemsUser As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colItemsGroup As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents cboItemsIcon As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
+    Friend WithEvents grdLog As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdLogView As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colLogMessage As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLogDateStamp As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLogType As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cboLogType As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
+    Friend WithEvents BarAndDockingController As DevExpress.XtraBars.BarAndDockingController
+    Friend WithEvents btnLogClear As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents mnuLog As DevExpress.XtraBars.PopupMenu
 End Class

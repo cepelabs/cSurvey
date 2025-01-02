@@ -213,4 +213,28 @@
   <data name="cboPropBrushHatch.Properties.Items3" xml:space="preserve">
     <value>Motivo</value>
   </data>
+  <data name="btnPropPatternMoveUp.Caption" xml:space="preserve">
+    <value>Sposta motivo su</value>
+  </data>
+  <data name="btnPropPatternMoveDown.Caption" xml:space="preserve">
+    <value>Sposta motivo giù</value>
+  </data>
+  <data name="btnPropPatternNext.Caption" xml:space="preserve">
+    <value>Seleziona successivo</value>
+  </data>
+  <data name="btnPropPatternPrevious.Caption" xml:space="preserve">
+    <value>Seleziona precedente</value>
+  </data>
+  <data name="btnPropPatternDelete.Caption" xml:space="preserve">
+    <value>Elimina motivo</value>
+  </data>
+  <data name="btnPropPatternAdd.Caption" xml:space="preserve">
+    <value>Aggiungi nuovo motivo sopra</value>
+  </data>
+  <data name="barPattern.Text" xml:space="preserve">
+    <value>Motivo</value>
+  </data>
+  <data name="btnPropCustomize.Caption" xml:space="preserve">
+    <value>Personalizza...</value>
+  </data>
 </root>

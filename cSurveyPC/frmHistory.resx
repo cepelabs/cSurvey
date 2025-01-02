@@ -331,7 +331,7 @@
   <data name="colItemsGroup.Width" type="System.Int32, mscorlib">
     <value>36</value>
   </data>
-  <metadata name="BarManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="BarManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>611, 17</value>
   </metadata>
   <data name="btnShowLocal.Caption" xml:space="preserve">
@@ -364,6 +364,9 @@
   <data name="Bar3.Text" xml:space="preserve">
     <value>Status bar</value>
   </data>
+  <metadata name="BarAndDockingController.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 54</value>
+  </metadata>
   <data name="barDockControlTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -383,13 +386,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;barDockControlTop.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="barDockControlBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="barDockControlBottom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 460</value>
+    <value>0, 517</value>
   </data>
   <data name="barDockControlBottom.Size" type="System.Drawing.Size, System.Drawing">
     <value>703, 22</value>
@@ -404,7 +407,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;barDockControlBottom.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="barDockControlLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -413,7 +416,7 @@
     <value>0, 28</value>
   </data>
   <data name="barDockControlLeft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 432</value>
+    <value>0, 489</value>
   </data>
   <data name="&gt;&gt;barDockControlLeft.Name" xml:space="preserve">
     <value>barDockControlLeft</value>
@@ -425,7 +428,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;barDockControlLeft.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="barDockControlRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -434,7 +437,7 @@
     <value>703, 28</value>
   </data>
   <data name="barDockControlRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 432</value>
+    <value>0, 489</value>
   </data>
   <data name="&gt;&gt;barDockControlRight.Name" xml:space="preserve">
     <value>barDockControlRight</value>
@@ -446,7 +449,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;barDockControlRight.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -455,7 +458,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>703, 482</value>
+    <value>703, 539</value>
   </data>
   <data name="frmHistory.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -588,10 +591,10 @@
   <data name="&gt;&gt;colItemsGroup.Type" xml:space="preserve">
     <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;BarManager1.Name" xml:space="preserve">
-    <value>BarManager1</value>
+  <data name="&gt;&gt;BarManager.Name" xml:space="preserve">
+    <value>BarManager</value>
   </data>
-  <data name="&gt;&gt;BarManager1.Type" xml:space="preserve">
+  <data name="&gt;&gt;BarManager.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Bar1.Name" xml:space="preserve">
@@ -660,34 +663,58 @@
   <data name="&gt;&gt;pnlStatus.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarStaticItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="&gt;&gt;BarAndDockingController.Name" xml:space="preserve">
+    <value>BarAndDockingController</value>
+  </data>
+  <data name="&gt;&gt;BarAndDockingController.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarAndDockingController, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnLogClear.Name" xml:space="preserve">
+    <value>btnLogClear</value>
+  </data>
+  <data name="&gt;&gt;btnLogClear.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;grdLogView.Name" xml:space="preserve">
+    <value>grdLogView</value>
+  </data>
+  <data name="&gt;&gt;grdLogView.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colLogType.Name" xml:space="preserve">
+    <value>colLogType</value>
+  </data>
+  <data name="&gt;&gt;colLogType.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboLogType.Name" xml:space="preserve">
+    <value>cboLogType</value>
+  </data>
+  <data name="&gt;&gt;cboLogType.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="&gt;&gt;colLogMessage.Name" xml:space="preserve">
     <value>colLogMessage</value>
   </data>
   <data name="&gt;&gt;colLogMessage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;colLogDateStamp.Name" xml:space="preserve">
     <value>colLogDateStamp</value>
   </data>
   <data name="&gt;&gt;colLogDateStamp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;mnuLogClean.Name" xml:space="preserve">
-    <value>mnuLogClean</value>
-  </data>
-  <data name="&gt;&gt;mnuLogClean.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;iml.Name" xml:space="preserve">
-    <value>iml</value>
-  </data>
-  <data name="&gt;&gt;iml.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;mnuItems.Name" xml:space="preserve">
     <value>mnuItems</value>
   </data>
   <data name="&gt;&gt;mnuItems.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;mnuLog.Name" xml:space="preserve">
+    <value>mnuLog</value>
+  </data>
+  <data name="&gt;&gt;mnuLog.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
@@ -696,8 +723,11 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="btnLogClear.Caption" xml:space="preserve">
+    <value>Clear</value>
+  </data>
   <data name="grdItems.Size" type="System.Drawing.Size, System.Drawing">
-    <value>703, 309</value>
+    <value>703, 366</value>
   </data>
   <data name="grdItems.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -726,130 +756,97 @@
   <data name="&gt;&gt;SplitContainer1.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="colLogMessage.Text" xml:space="preserve">
-    <value>Message</value>
-  </data>
-  <data name="colLogMessage.Width" type="System.Int32, mscorlib">
-    <value>500</value>
-  </data>
-  <data name="colLogDateStamp.Text" xml:space="preserve">
-    <value>Date/time</value>
-  </data>
-  <data name="colLogDateStamp.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="colLogDateStamp.Width" type="System.Int32, mscorlib">
-    <value>140</value>
-  </data>
-  <metadata name="mnuLog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>423, 17</value>
-  </metadata>
-  <data name="mnuLog.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="mnuLogClean.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 22</value>
-  </data>
-  <data name="mnuLogClean.Text" xml:space="preserve">
-    <value>Clean</value>
-  </data>
-  <data name="mnuLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 26</value>
-  </data>
-  <data name="&gt;&gt;mnuLog.Name" xml:space="preserve">
-    <value>mnuLog</value>
-  </data>
-  <data name="&gt;&gt;mnuLog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lvLog.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="grdLog.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="lvLog.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="grdLog.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="lvLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>703, 119</value>
+  <data name="colLogType.Caption" xml:space="preserve">
+    <value> </value>
   </data>
-  <metadata name="iml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>107, 17</value>
-  </metadata>
-  <data name="iml.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAD2
-        DAAAAk1TRnQBSQFMAgEBBQEAAUABAQFAAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
-        AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
-        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
-        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
-        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
-        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
-        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
-        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
-        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
-        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
-        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
-        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
-        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
-        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
-        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
-        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
-        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
-        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
-        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
-        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
-        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
-        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
-        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
-        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
-        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
-        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
-        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
-        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
-        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/wUAAfQF8wH0NwAB/wHz
-        AbUBrQOKAa0BtQHzAf80AAH/AfABigGzAbQDugG0AbMBigHwAf8zAAHwAa0BtAG6BbQBugG0Aa0B8DIA
-        AfQBigO0AQkD/wS0AYoB9DEAAbUBswS0AQkB/wGzBLQBswG1MQABrQS0AbMBCQH/AbMFtAGtMQABigS0
-        AbMBCQH/AbMFtAGKMQABigG0BLMBCQH/BbMBtAGKMQABigG0BLMC/wWzAbQBijEAAa0BCQSzAq0FswEJ
-        Aa0xAAEJArQDswEJAf8EswK0AQkyAAGtAQkBtAKtAQkB/wOtAbQBCQGtMwAB8wGtAgkBswOtAbQCCQGt
-        AfM0AAHzAa0BtAUJAbQBrQHzNwABCQGtA4oBrQEJNQAB9AzzAf8DAAH0C/MB9CIAAQcG7wEHAbQBswOs
-        AbsB9AIAAQcL7wEHAgAQ8wMAAvMGAALzAwAB7wb/AbMBsgGzAdQBnQFXAZABswH/AQAB7wv/Ae8CAAFS
-        DkwBUgIAAfMCRgHzBAAB8wJGAfMCAAHvBf8BuwGyA9QBVwE6ATYBswG7AQAB7wv/Ae8CAAFSBnoC5QZ6
-        AVIBAAHzAUYCFgFGAfMCAAHzAUYCFgFGAfMBAAHvBf8BrAG6AdsBugE6AVcBlwKzAa0BAAHvC/8B7wIA
-        ARoBeQF6BFkCZgRZAXoBeQEaAQABRgEWAuMBFgFGAvMBRgEWAuMBFgFGAQAB7wH/AvQB9gH/AawBmAHb
-        AXgBOgE2AtQBswGtAQAB7wH/CfQB/wHvAwABUgGaBFkC6gRZAZoBUgIAAUYBFgPjARYCRgEWA+MBFgFG
-        AQAB7wH/A/QB/wGsAtwBfgE6ATYBlwHUAVYBrAEAAe8B/wn0Af8B7wMAAfQBdAGgCFkBoAF0AfQDAAFG
-        ARYDFwIWAxcBFgFGAgAB7wH/A/QB9gGsAdwBGQGfAV0BOgGdAbMBNgGsAQAB7wH/CfQB/wHvBAACmQF6
-        AlkCZgJZAXoCmQUAAUYBlAYXAZQBRgMAAe8B/wLzAfQB/wG6AbMBGQGfAQkBeAFXATYBkAEJAQAB7wH/
-        CfMB/wHvBQABUgHDAXoBWQISAVkBegHDAVIHAAFGAZQEFwGUAUYEAAHvAf8D8wH0Af8CswJ+AX0BNgGQ
-        AbMCAAHvAf8J8wH/Ae8FAAEbAXQBwwFZAuoBWQHDAXQBGwYAAfMBRgGUBBcBlAFGAfMDAAHvAf8F8wH/
-        AbsErAEJAwAB7wH/BfMB9AT/Ae8GAAF0AZoBoALqAaABmgF0BgAB8wFGAZQGTQGUAUYB8wIAAe8B/wHy
-        A/MB8gH/AbwC7wH/AQcEAAHvAf8B8gPzAfIB/wG8AvcB/wHvBgAB/wFSARoCmQEaAVIB/wUAAfMBRgGU
-        A00ClANNAZQBRgHzAQAB7wH/BfIB/wH3AfMB/wHzAfAEAAHvAf8F8gH/AfcB8wH/AfMB8AcAARsBdALD
-        AXQBGwYAAUYBmgNGAZoCRgGaA0YBmgFGAQAB7wH/AvEB8gLxAf8B9wH/AfMB8AUAAe8B/wLxAfIC8QH/
-        AfcB/wHzAfAJAAF0ApoBdAcAAUYBvQJGAb0BRgIAAUYBvQJGAb0BRgEAAe8I/wHzAfAGAAHvCP8B8wHw
-        CgAB9gJSAfYIAAFGAr0BRgQAAUYCvQFGAgABBwjvAQcHAAEHCO8BBxgAAkYGAAJGAwABQgFNAT4HAAE+
-        AwABKAMAAUADAAEgAwABAQEAAQEGAAEBFgAD/wEAAfABHwYAAcABBwYAAYABAwYAAYABAwcAAQEHAAEB
-        BwABAQcAAQEHAAEBBwABAQcAAQEHAAEBBgABgAEDBgABgAEDBgABwAEHBgAB8AEfBwABAwGAAQME/wEA
-        AQEBgAEDAgAC5wIAAYABAwIAAsMCAAGAAQMCAAKBAgABgAEDAgABgAEBAgABgAEDAYABAQGAAQECAAGA
-        AQMBgAEBAcABAwIAAYABAwHAAQMB4AEHAgABgAEDAeABBwHwAQ8BAAEBAYABAwHgAQcB4AEHAQABAwGA
-        AQMB8AEPAcABAwEAAQcBgAEDAfABDwGAAQEBAAEHAYABAwH4AR8BgAEBAQABDwGAAQcB/AE/AoEBAAEf
-        AYABDwH8AT8CwwEAAT8BgAEfAv8C5ws=
-</value>
+  <data name="cboLogType.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="lvLog.TabIndex" type="System.Int32, mscorlib">
+  <data name="cboLogType.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboLogType.Items" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cboLogType.Items1" xml:space="preserve">
+    <value>info</value>
+  </data>
+  <data name="cboLogType.Items2" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="cboLogType.Items3" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cboLogType.Items4" xml:space="preserve">
+    <value>warning</value>
+  </data>
+  <data name="cboLogType.Items5" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="cboLogType.Items6" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cboLogType.Items7" xml:space="preserve">
+    <value>error</value>
+  </data>
+  <data name="cboLogType.Items8" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="colLogType.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colLogType.VisibleIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;lvLog.Name" xml:space="preserve">
-    <value>lvLog</value>
+  <data name="colLogType.Width" type="System.Int32, mscorlib">
+    <value>24</value>
   </data>
-  <data name="&gt;&gt;lvLog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="colLogMessage.Caption" xml:space="preserve">
+    <value>Message</value>
   </data>
-  <data name="&gt;&gt;lvLog.Parent" xml:space="preserve">
+  <data name="colLogMessage.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colLogMessage.VisibleIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="colLogMessage.Width" type="System.Int32, mscorlib">
+    <value>542</value>
+  </data>
+  <data name="colLogDateStamp.Caption" xml:space="preserve">
+    <value>Date/time</value>
+  </data>
+  <data name="colLogDateStamp.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colLogDateStamp.VisibleIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="colLogDateStamp.Width" type="System.Int32, mscorlib">
+    <value>124</value>
+  </data>
+  <data name="grdLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>703, 119</value>
+  </data>
+  <data name="grdLog.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;grdLog.Name" xml:space="preserve">
+    <value>grdLog</value>
+  </data>
+  <data name="&gt;&gt;grdLog.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;grdLog.Parent" xml:space="preserve">
     <value>SplitContainer1.Panel2</value>
   </data>
-  <data name="&gt;&gt;lvLog.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;grdLog.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;SplitContainer1.Panel2.Name" xml:space="preserve">
@@ -865,10 +862,10 @@
     <value>1</value>
   </data>
   <data name="SplitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>703, 432</value>
+    <value>703, 489</value>
   </data>
   <data name="SplitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>309</value>
+    <value>366</value>
   </data>
   <data name="SplitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>123</value>
@@ -883,9 +880,12 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SplitContainer1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <metadata name="mnuItems.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>735, 17</value>
+  </metadata>
+  <metadata name="mnuLog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>213, 54</value>
   </metadata>
 </root>

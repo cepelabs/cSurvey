@@ -339,4 +339,7 @@
   <data name="cboPropPenDecoration.Properties.Items17" xml:space="preserve">
     <value>Frecce (doppia)</value>
   </data>
+  <data name="btnPropCustomize.Caption" xml:space="preserve">
+    <value>Personalizza...</value>
+  </data>
 </root>

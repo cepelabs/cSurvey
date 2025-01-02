@@ -339,7 +339,7 @@ Namespace cSurvey
 
         Public ReadOnly Property ToHTMLString() As String
             Get
-                Return "<b><backcolor=" & ColorTranslator.ToHtml(Color) & ">  </backcolor></b>  <b>" & If(dDate.ToOADate = 0, "", dDate) & "</b> " & sDescription
+                Return "<b><backcolor=" & ColorTranslator.ToHtml(Color) & ">  </backcolor></b>  <b>" & If(dDate.ToOADate = 0, "", dDate.ToString(Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.ShortDatePattern)) & "</b> " & sDescription
             End Get
         End Property
 

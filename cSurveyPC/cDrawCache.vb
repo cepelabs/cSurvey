@@ -51,19 +51,19 @@ Namespace cSurvey.Drawings
             iMaxDrawItemCount = modMain.GetMaxDrawItemCount
         End Sub
 
-        'Public Function AddString(ByVal Text As String, ByVal Font As Font, ByVal Point As PointF, Optional ByVal Format As StringFormat = Nothing) As cDrawCacheItem
-        '    Dim oItem As cDrawCacheItemText = New cDrawCacheItemText(Text, Font, Point, Format)
-        '    Call oItems.Add(oItem)
-        '    bBounds = False
-        '    Return oItem
-        'End Function
+        Public Function AddString(ByVal Text As String, ByVal Font As Font, ByVal Point As PointF, Optional ByVal Format As StringFormat = Nothing) As cDrawCacheItem
+            Dim oItem As cDrawCacheItemText = New cDrawCacheItemText(Text, Font, Point, Format)
+            Call oItems.Add(oItem)
+            bBounds = False
+            Return oItem
+        End Function
 
-        'Public Function AddString(ByVal Text As String, ByVal Font As Font, ByVal Rectangle As RectangleF, Optional ByVal Format As StringFormat = Nothing) As cDrawCacheItem
-        '    Dim oItem As cDrawCacheItemText = New cDrawCacheItemText(Text, Font, Rectangle, Format)
-        '    Call oItems.Add(oItem)
-        '    bBounds = False
-        '    Return oItem
-        'End Function
+        Public Function AddString(ByVal Text As String, ByVal Font As Font, ByVal Rectangle As RectangleF, Optional ByVal Format As StringFormat = Nothing) As cDrawCacheItem
+            Dim oItem As cDrawCacheItemText = New cDrawCacheItemText(Text, Font, Rectangle, Format)
+            Call oItems.Add(oItem)
+            bBounds = False
+            Return oItem
+        End Function
 
         Public Function AddSetClip(ClipPath As GraphicsPath) As cDrawCacheItem
             Dim oItem As cDrawCacheItem = New cDrawCacheItem(cDrawCacheItem.cDrawCacheItemType.SetClip)
@@ -373,7 +373,7 @@ Namespace cSurvey.Drawings
             iFontUnit = Font.Unit
             oPoint = Rectangle.Location
             oSize = Rectangle.Size
-            oFormat = Format
+            oFormat = Format.Clone
             Call MyBase.AddString(sText, Font, Rectangle, oFormat)
             'MyBase.AddLines({New PointF(oPoint.X - 1, oPoint.Y), New PointF(oPoint.X + 1, oPoint.Y), New PointF(oPoint.X, oPoint.Y - 1), New PointF(oPoint.X, oPoint.Y + 1)})
         End Sub
@@ -387,7 +387,7 @@ Namespace cSurvey.Drawings
             iFontUnit = Font.Unit
             oPoint = Point
             oSize = New Size(0, 0)
-            oFormat = Format
+            oFormat = Format.Clone
             Call MyBase.AddString(sText, Font, oPoint, oFormat)
             'MyBase.AddLines({New PointF(oPoint.X - 1, oPoint.Y), New PointF(oPoint.X + 1, oPoint.Y), New PointF(oPoint.X, oPoint.Y - 1), New PointF(oPoint.X, oPoint.Y + 1)})
         End Sub

@@ -1103,7 +1103,6 @@ Namespace cSurvey.Design
             End If
 
             If PaintOptions.DrawDesign Then
-
                 'Using oPlanCache As modDesignLRUD.cLRUDFromDesignCache2 = New modDesignLRUD.cLRUDFromDesignCache2(oSurvey, oSurvey.Plan, PaintOptions, 0.5)
                 '    oPlanCache.Paint(Graphics)
                 'End Using

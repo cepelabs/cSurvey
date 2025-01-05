@@ -558,14 +558,6 @@ Namespace cSurvey.Design.Items
                 If .Invalidated Then 'OrElse bUnscalableSize Then
                     Call .Clear()
 
-                    'for debug: add cross to see base point
-                    'Using oCrossPath As GraphicsPath = New GraphicsPath
-                    '    Dim oItem As cDrawCacheItem = .Add(cDrawCacheItem.cDrawCacheItemType.Border)
-                    '    Call oItem.SetPen(PaintOptions.DrawingObjects.LRUDPen)
-                    '    Call modPaint.PathAddCrossFromPoint(oCrossPath, MyBase.Points(0).Point, 1)
-                    '    Call oItem.AddPath(oCrossPath)
-                    'End Using
-
                     Using oPath As GraphicsPath = New GraphicsPath
 
                         Using oSF As StringFormat = New StringFormat
@@ -588,32 +580,6 @@ Namespace cSurvey.Design.Items
                             Call oFont.AddToPath(PaintOptions, oPath, modPaint.ReplaceGlobalTags(oSurvey, Text), New PointF(0, 0), oSF)
 
                             Dim oPathRect As RectangleF = oPath.GetBounds
-
-                            'draw a ref for alignment in design mode (I do it here cause have to be aligned with text)
-                            'same as above...bah...
-                            'If PaintOptions.IsDesign Then
-                            '    Dim sRefX As Single
-                            '    Dim sRefY As Single
-                            '    Dim sRefWidth As Single = 2
-                            '    Dim sRefHeight As Single = 2
-                            '    Select Case iTextAlignment
-                            '        Case cIItemLineableText.TextAlignmentEnum.Center
-                            '            sRefX = oPathRect.Width / 2 - sRefWidth / 2
-                            '        Case cIItemLineableText.TextAlignmentEnum.Left
-                            '            sRefX = oPathRect.Left
-                            '        Case cIItemLineableText.TextAlignmentEnum.Right
-                            '            sRefX = oPathRect.Right - sRefWidth
-                            '    End Select
-                            '    Select Case iTextVerticalAlignment
-                            '        Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Top
-                            '            sRefY = oPathRect.Top
-                            '        Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
-                            '            sRefY = oPathRect.Height / 2 - sRefHeight / 2
-                            '        Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Bottom
-                            '            sRefY = oPathRect.Bottom - sRefHeight
-                            '    End Select
-                            '    Call oPath.AddRectangle(New RectangleF(sRefX, sRefY, sRefWidth, sRefHeight))
-                            'End If
 
                             'text align
                             Dim sX As Single
@@ -643,15 +609,6 @@ Namespace cSurvey.Design.Items
                                 Call oScaleMatrix.Scale(sScale, sScale, MatrixOrder.Append)
                                 Call oPath.Transform(oScaleMatrix)
                             End Using
-
-                            'global scale
-                            'If bUnscalableSize Then
-                            '    Using oGlobalScale As Matrix = New Matrix
-                            '        Dim sGlobalScale As Single = 100.0F * (1.0 / modPaint.GetZoomFactor(Graphics, PaintOptions.CurrentScale))
-                            '        Call oGlobalScale.Scale(sGlobalScale, sGlobalScale, MatrixOrder.Append)
-                            '        Call oPath.Transform(oGlobalScale)
-                            '    End Using
-                            'End If
 
                             oPathRect = oPath.GetBounds
 

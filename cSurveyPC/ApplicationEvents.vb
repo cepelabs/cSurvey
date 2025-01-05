@@ -51,7 +51,7 @@ Namespace My
 
         Public Sub ReloadSettings()
             oSettings = New cEnvironmentSettings("Software\Cepelabs\cSurvey")
-            oRuntimeSettings = New cEnvironmentSettings
+            'oRuntimeSettings = New cEnvironmentSettings
             sCurrentLanguage = oSettings.GetSetting("language", sCurrentLanguage)
             bChangeDecimalKey = oSettings.GetSetting("keys.changedecimalkey", "1")
             bChangePeriodKey = oSettings.GetSetting("keys.changeperiodkey", "0")
@@ -62,6 +62,7 @@ Namespace My
 
             sCurrentLanguage = Threading.Thread.CurrentThread.CurrentCulture.Parent.Name
             Call ReloadSettings()
+            oRuntimeSettings = New cEnvironmentSettings
 
             If sCurrentLanguage <> "" Then
                 If bIsInDebug Then

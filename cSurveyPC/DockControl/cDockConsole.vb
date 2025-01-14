@@ -161,31 +161,6 @@ Friend Class cDockConsole
                             Call oLogWriter.Flush()
                         End If
                     End If
-                    'txtConsole.Document.BeginUpdate()
-
-                    'Do While txtConsole.Document.Paragraphs.Count > iMaxParagraphsCount
-                    '    Dim oFirstParagraph As Paragraph = txtConsole.Document.Paragraphs.FirstOrDefault
-                    '    If oFirstParagraph IsNot Nothing Then
-                    '        Call txtConsole.Document.Delete(oFirstParagraph.Range)
-                    '    End If
-                    'Loop
-
-                    'Dim oColor As System.Drawing.Color
-                    'If Type = cSurvey.cSurvey.LogEntryType.Error OrElse (Type = cSurvey.cSurvey.LogEntryType.Unknown AndAlso (Text Like "* error -- *")) Then
-                    '    oColor = Color.DarkRed
-                    'ElseIf Type = cSurvey.cSurvey.LogEntryType.Warning Then
-                    '    oColor = Color.Orange
-                    'Else
-                    '    oColor = cEditDesignEnvironment.GetSetting("forecolor", SystemColors.WindowText)
-                    'End If
-                    'If URI = "" Then
-                    '    Call txtConsole.AppendText(Text, oColor)
-                    'Else
-                    '    Call txtConsole.AppendHyperlink(Text, oColor, URI)
-                    'End If
-                    'txtConsole.Document.EndUpdate()
-                    'txtConsole.Document.CaretPosition = txtConsole.Document.Range.End
-                    'Call txtConsole.ScrollToCaret()
                 Next
             End If
         End If

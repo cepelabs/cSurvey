@@ -11168,6 +11168,9 @@
   <data name="pnlStatusTherion.Caption" xml:space="preserve">
     <value>[therion]</value>
   </data>
+  <data name="btnCurrentItemPointsDoJoin.Caption" xml:space="preserve">
+    <value>Join</value>
+  </data>
   <data name="RibbonControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -16466,6 +16469,12 @@
   </data>
   <data name="&gt;&gt;pnlStatusTherion.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarStaticItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnCurrentItemPointsDoJoin.Name" xml:space="preserve">
+    <value>btnCurrentItemPointsDoJoin</value>
+  </data>
+  <data name="&gt;&gt;btnCurrentItemPointsDoJoin.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pageFile.Name" xml:space="preserve">
     <value>pageFile</value>

@@ -4244,4 +4244,50 @@ Namespace cSurvey.UIHelpers
             dDateStamp = Now
         End Sub
     End Class
+
+    Public Class cStateFlagStack
+        Private iCount As Integer
+        Private bValue As Boolean
+
+        Public Shared Operator Not(ByVal p As cStateFlagStack) As Boolean
+            Return Not p.Value
+        End Operator
+
+        Public Shared Widening Operator CType(ByVal p As cStateFlagStack) As Boolean
+            Return p.Value
+        End Operator
+
+        Public Sub Push()
+            iCount += 1
+            If iCount > 0 Then
+                bValue = True
+            End If
+        End Sub
+
+        Public Sub Pop()
+            If iCount > 0 Then
+                iCount -= 1
+            End If
+            If iCount = 0 AndAlso bValue Then
+                bValue = False
+            End If
+        End Sub
+
+        Public Sub Reset()
+            iCount = 0
+            bValue = False
+        End Sub
+
+        Public ReadOnly Property Count As Integer
+            Get
+                Return iCount
+            End Get
+        End Property
+
+        Public ReadOnly Property Value As Boolean
+            Get
+                Return bValue
+            End Get
+        End Property
+    End Class
 End Namespace

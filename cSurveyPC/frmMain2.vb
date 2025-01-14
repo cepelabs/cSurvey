@@ -224,8 +224,8 @@ Friend Class frmMain2
     Private bDisableSelectItemEvent As Boolean = True
     Private bDisablePaintEvent As Boolean = True
     Private bDisableZoomEvent As Boolean = True
-    Private bDisableSegmentsChangeEvent As Boolean = True
-    Private bDisableTrigpointsChangeEvent As Boolean = True
+    Private bDisableSegmentsChangeEvent As UIHelpers.cStateFlagStack = New UIHelpers.cStateFlagStack
+    Private bDisableTrigpointsChangeEvent As UIHelpers.cStateFlagStack = New UIHelpers.cStateFlagStack
     Private bDisabledObjectPropertyEvent As Boolean = True
     Private bDisabledCaveBranchChangeEvent As Boolean = True
     Private bDisabledAutosaveEvent As Boolean = True
@@ -433,11 +433,9 @@ Friend Class frmMain2
 
             bDisabledAutosaveEvent = True
             bDisabledObjectPropertyEvent = True
-
             bDisabledCaveBranchChangeEvent = True
-            bDisabledObjectPropertyEvent = True
-            bDisableSegmentsChangeEvent = True
-            bDisableTrigpointsChangeEvent = True
+            bDisableSegmentsChangeEvent.Push()
+            bDisableTrigpointsChangeEvent.Push()
 
             'template or default template...
             Template = oTemplates.GetDefaultTemplate(Template)
@@ -448,8 +446,8 @@ Friend Class frmMain2
 
             bDisabledCaveBranchChangeEvent = False
             bDisabledObjectPropertyEvent = False
-            bDisableSegmentsChangeEvent = False
-            bDisableTrigpointsChangeEvent = False
+            bDisableSegmentsChangeEvent.Pop()
+            bDisableTrigpointsChangeEvent.Pop()
 
             Call oMousePointer.Pop()
 
@@ -515,7 +513,6 @@ Friend Class frmMain2
             Call pSurveyMainPropertiesPanelsRefresh()
 
             bDisabledAutosaveEvent = False
-            bDisabledObjectPropertyEvent = False
         End If
     End Sub
 
@@ -800,16 +797,15 @@ Friend Class frmMain2
 
                             Call modOpeningFlags.SetFlags(Me)
                             bDisabledCaveBranchChangeEvent = True
-                            bDisabledObjectPropertyEvent = True
-                            bDisableSegmentsChangeEvent = True
-                            bDisableTrigpointsChangeEvent = True
+                            bDisableSegmentsChangeEvent.Push()
+                            bDisableTrigpointsChangeEvent.Push()
 
                             oResult = oSurvey.Load(Filename)
 
                             bDisabledCaveBranchChangeEvent = False
                             bDisabledObjectPropertyEvent = False
-                            bDisableSegmentsChangeEvent = False
-                            bDisableTrigpointsChangeEvent = False
+                            bDisableSegmentsChangeEvent.Pop()
+                            bDisableTrigpointsChangeEvent.Pop()
 
                             Call modOpeningFlags.ResetFlags()
                             Call oMousePointer.Pop()
@@ -870,7 +866,6 @@ Friend Class frmMain2
                             Else
                                 Call UIHelpers.Dialogs.Msgbox(String.Format(GetLocalizedString("main.warning19"), oResult.Exception.Message), MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, GetLocalizedString("main.warningtitle"))
                             End If
-                            bDisabledObjectPropertyEvent = False
                             bDisabledAutosaveEvent = False
                             If oResult.Result Then
                                 Return True
@@ -1296,7 +1291,7 @@ Friend Class frmMain2
             Call Me.BeginInvoke(New pSurveySegmentsAndTrigpointVisibilityDelegate(AddressOf pSurveySegmentsAndTrigpointVisibility))
         Else
             If oCurrentOptions IsNot Nothing Then
-                bDisableSegmentsChangeEvent = True
+                bDisableSegmentsChangeEvent.Push()
                 Call oMousePointer.Push(Cursors.WaitCursor)
                 If oCurrentOptions.HighlightCurrentCave AndAlso oCurrentOptions.HighlightSegmentsAndTrigpoints Then
                     '---------------------------------------------------------------
@@ -1363,18 +1358,18 @@ Friend Class frmMain2
                     '---------------------------------------------------------------
                 End If
                 Call oMousePointer.Pop()
-                bDisableSegmentsChangeEvent = False
+                bDisableSegmentsChangeEvent.Pop()
             End If
         End If
     End Sub
 
     Private Sub pSurveyTrigpointsGridSetup()
-        bDisableTrigpointsChangeEvent = True
+        bDisableTrigpointsChangeEvent.Push()
         grdTrigPoints.BeginUpdate()
         grdTrigPoints.DataSource = oSurvey.TrigPoints.ToList
         If oTools.CurrentTrigpoint IsNot Nothing Then grdViewTrigpoints.FocusedRowHandle = grdViewTrigpoints.FindRow(oTools.CurrentTrigpoint)
         grdTrigPoints.EndUpdate()
-        bDisableTrigpointsChangeEvent = False
+        bDisableTrigpointsChangeEvent.Pop()
     End Sub
 
     Private Sub pSurveySegmentsRefresh()
@@ -1384,20 +1379,20 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pSurveySegmentsGridSetup()
-        bDisableSegmentsChangeEvent = True
+        bDisableSegmentsChangeEvent.Push()
         grdSegments.BeginUpdate()
         grdSegments.DataSource = oTools.Segments
         If oTools.CurrentSegment IsNot Nothing Then grdViewSegments.FocusedRowHandle = grdViewSegments.FindRow(oTools.CurrentSegment)
         grdSegments.EndUpdate()
-        bDisableSegmentsChangeEvent = False
+        bDisableSegmentsChangeEvent.pop()
     End Sub
 
     Private Sub pSurveyTrigpointsRefresh(Optional ByVal RemoveOrphans As Boolean = False)
-        bDisableTrigpointsChangeEvent = True
+        bDisableTrigpointsChangeEvent.Push()
         Call oMousePointer.Push(Cursors.WaitCursor)
         Call oSurvey.TrigPoints.Rebind(RemoveOrphans)
         Call pSurveyTrigpointsGridSetup()
-        bDisableTrigpointsChangeEvent = False
+        bDisableTrigpointsChangeEvent.Pop()
         Call oMousePointer.Pop()
     End Sub
 
@@ -1499,7 +1494,7 @@ Friend Class frmMain2
             If oSegments.Count > 0 Then
                 If UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.warning20"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("main.warningtitle")) = vbYes Then
                     Call oTools.SelectSegment(Nothing)
-                    bDisableSegmentsChangeEvent = True
+                    bDisableSegmentsChangeEvent.push
                     bDisableSelectItemEvent = True
                     'Dim iLastIndex As Integer
                     For Each oSegment As cSegment In oSegments
@@ -1511,14 +1506,14 @@ Friend Class frmMain2
                         End If
                     Next
                     bDisableSelectItemEvent = False
-                    bDisableSegmentsChangeEvent = False
+                    bDisableSegmentsChangeEvent.pop()
                     Call pSurveyCalculate(False)
                 End If
             End If
         Catch ex As Exception
             Call pLogAdd(ex)
             bDisableSelectItemEvent = False
-            bDisableSegmentsChangeEvent = False
+            bDisableSegmentsChangeEvent.pop()
         End Try
     End Sub
 
@@ -1584,7 +1579,7 @@ Friend Class frmMain2
         If Segment Is Nothing Then
             pnlSegment.Enabled = False
         Else
-            bDisableSegmentsChangeEvent = True
+            bDisableSegmentsChangeEvent.push
             Dim oCaveInfo As cICaveInfoBranches = oSurvey.Properties.GetCaveInfo(Segment)
             Dim bUnlocked As Boolean = IsNothing(oCaveInfo) OrElse Not oCaveInfo.GetLocked
             pnlSegment.Enabled = bUnlocked
@@ -1692,7 +1687,7 @@ Friend Class frmMain2
                 prpSegmentDataProperties.SelectedObject = .DataProperties.GetClass
                 prpSegmentDataProperties.EndUpdate()
             End With
-            bDisableSegmentsChangeEvent = False
+            bDisableSegmentsChangeEvent.pop()
         End If
         Call pObjectPropertyDelayedLoad()
         Call oMousePointer.Pop()
@@ -1702,7 +1697,7 @@ Friend Class frmMain2
         Call oMousePointer.Push(Cursors.AppStarting)
         pnlTrigPoint.Enabled = False
 
-        bDisableTrigpointsChangeEvent = True
+        bDisableTrigpointsChangeEvent.Push()
 
         txtTrigPointName.Text = ""
 
@@ -1740,7 +1735,7 @@ Friend Class frmMain2
 
         prpTrigpointDataProperties.SelectedObject = Nothing
 
-        bDisableTrigpointsChangeEvent = False
+        bDisableTrigpointsChangeEvent.Pop()
 
         Call pGetCurrentTools.SelectTrigpoint(Nothing)
 
@@ -1773,7 +1768,7 @@ Friend Class frmMain2
         If Trigpoint Is Nothing Then
             pnlTrigPoint.Enabled = False
         Else
-            bDisableTrigpointsChangeEvent = True
+            bDisableTrigpointsChangeEvent.Push()
             pnlTrigPoint.Enabled = Not Trigpoint.IsSystem And Not Trigpoint.Data.IsSplay
             With Trigpoint
                 txtTrigPointName.Text = .Name
@@ -1805,7 +1800,7 @@ Friend Class frmMain2
                 prpTrigpointDataProperties.SelectedObject = .DataProperties.GetClass
             End With
             Call pTrigPointSelect(Trigpoint, True, False)
-            bDisableTrigpointsChangeEvent = False
+            bDisableTrigpointsChangeEvent.Pop()
             Call pGetCurrentTools.SelectTrigpoint(Trigpoint)
         End If
         Call pObjectPropertyDelayedLoad()
@@ -2135,11 +2130,19 @@ Friend Class frmMain2
         End If
     End Sub
 
+    Private Sub pDesignPointsDoJoin()
+        Call oDockJoinPoints.JoinPoints()
+        Call pObjectPropertyLoad()
+    End Sub
+
     Private Sub pDesignPointsJoin(Connect As Boolean)
         Call pJoinPointsShow(True)
         Call oDockJoinPoints.AppendPoint()
         If Connect Then
             Call oDockJoinPoints.JoinPoints()
+            Call pObjectPropertyLoad()
+        Else
+            Call pPropertyJoinPoints()
         End If
     End Sub
 
@@ -2917,7 +2920,7 @@ Friend Class frmMain2
     '        Call oSelection.Add(New Point(ocell.RowIndex, ocell.ColumnIndex))
     '    Next
 
-    '    bDisableSegmentsChangeEvent = True
+    '    bDisableSegmentsChangeEvent.push
     '    Dim oSegment As cSegment = oSurvey.Segments.Append
     '    Dim oData(14) As Object
     '    With oSegment
@@ -2963,7 +2966,7 @@ Friend Class frmMain2
     '        grdSegments.Rows(oCell.X).Cells(oCell.Y).Selected = True
     '    Next
     '    grdSegments.CurrentCell = grdSegments.Rows(oCurrentCell.Y).Cells(oCurrentCell.X)
-    '    bDisableSegmentsChangeEvent = False
+    '    bDisableSegmentsChangeEvent.pop()
 
     '    Return oSegment
     'End Function
@@ -4677,29 +4680,68 @@ Friend Class frmMain2
             btnCurrentItemPointSequenceDivide.Enabled = Not cPoint.IsControlPoint(iType) And Not cPoint.IsFirstOfAll(iType) And Not cPoint.IsLastOfAll(iType) And Not cPoint.IsFirst(iType) And Not cPoint.IsLast(iType)
             btnCurrentItemPointSequenceDivideAndJoin.Enabled = Not cPoint.IsControlPoint(iType) And Not cPoint.IsFirstOfAll(iType) And Not cPoint.IsLastOfAll(iType) And Not cPoint.IsFirst(iType) And Not cPoint.IsLast(iType)
 
-            If cPoint.IsControlPoint(iType) Then
-                btnCurrentItemPointsJoin.Enabled = False
-                btnCurrentItemPointsJoinAndConnect.Enabled = False
-                btnCurrentItemPointsUnjoin.Enabled = False
-                btnCurrentItemPointsUnjoinAll.Enabled = False
-            Else
-                Dim bNotIsInList As Boolean = Not oDockJoinPoints.IsPointInList(pGetCurrentDesignTools.CurrentItemPoint)
-                If .IsJoined Then
-                    btnCurrentItemPointsJoin.Enabled = bNotIsInList
-                    btnCurrentItemPointsJoinAndConnect.Enabled = bNotIsInList AndAlso oDockJoinPoints.GetPointsCount > 0
-                    btnCurrentItemPointsUnjoin.Enabled = True
-                    btnCurrentItemPointsUnjoinAll.Enabled = True
-                Else
-                    btnCurrentItemPointsJoin.Enabled = bNotIsInList
-                    btnCurrentItemPointsJoinAndConnect.Enabled = bNotIsInList AndAlso oDockJoinPoints.GetPointsCount > 0
-                    btnCurrentItemPointsUnjoin.Enabled = False
-                    btnCurrentItemPointsUnjoinAll.Enabled = False
-                End If
-            End If
+            Call pPropertyJoinPoints()
+            'Dim iPointCount As Integer = oDockJoinPoints.GetPointsCount
+            'If cPoint.IsControlPoint(iType) Then
+            '    btnCurrentItemPointsJoin.Enabled = False
+            '    btnCurrentItemPointsJoinAndConnect.Enabled = False
+            '    btnCurrentItemPointsUnjoin.Enabled = False
+            '    btnCurrentItemPointsUnjoinAll.Enabled = False
+            'Else
+            '    Dim bNotIsInList As Boolean = Not oDockJoinPoints.IsPointInList(pGetCurrentDesignTools.CurrentItemPoint)
+            '    If .IsJoined Then
+            '        btnCurrentItemPointsJoin.Enabled = bNotIsInList
+            '        btnCurrentItemPointsJoinAndConnect.Enabled = bNotIsInList AndAlso iPointCount > 0
+            '        btnCurrentItemPointsUnjoin.Enabled = True
+            '        btnCurrentItemPointsUnjoinAll.Enabled = True
+            '    Else
+            '        btnCurrentItemPointsJoin.Enabled = bNotIsInList
+            '        btnCurrentItemPointsJoinAndConnect.Enabled = bNotIsInList AndAlso iPointCount > 0
+            '        btnCurrentItemPointsUnjoin.Enabled = False
+            '        btnCurrentItemPointsUnjoinAll.Enabled = False
+            '    End If
+            'End If
+            'btnCurrentItemPointsJoinAndConnect.Enabled = iPointCount > 1
         End With
         RibbonControl.Manager.EndUpdate()
 
         Call pPropPopupHide()
+    End Sub
+
+    Private Sub pPropertyJoinPoints()
+        Dim iPointCount As Integer = oDockJoinPoints.GetPointsCount
+        If pGetCurrentDesignTools.CurrentItemPoint Is Nothing Then
+            btnCurrentItemPointsJoin.Enabled = False
+            btnCurrentItemPointsJoinAndConnect.Enabled = False
+            btnCurrentItemPointsUnjoin.Enabled = False
+            btnCurrentItemPointsUnjoinAll.Enabled = False
+
+            btnCurrentItemPointsDoJoin.Enabled = iPointCount > 1
+        Else
+            With pGetCurrentDesignTools.CurrentItemPoint
+                Dim iType As cPoint.PointTypeEnum = .Type
+                If cPoint.IsControlPoint(iType) Then
+                    btnCurrentItemPointsJoin.Enabled = False
+                    btnCurrentItemPointsJoinAndConnect.Enabled = False
+                    btnCurrentItemPointsUnjoin.Enabled = False
+                    btnCurrentItemPointsUnjoinAll.Enabled = False
+                Else
+                    Dim bNotIsInList As Boolean = Not oDockJoinPoints.IsPointInList(pGetCurrentDesignTools.CurrentItemPoint)
+                    If .IsJoined Then
+                        btnCurrentItemPointsJoin.Enabled = bNotIsInList
+                        btnCurrentItemPointsJoinAndConnect.Enabled = bNotIsInList AndAlso iPointCount > 0
+                        btnCurrentItemPointsUnjoin.Enabled = True
+                        btnCurrentItemPointsUnjoinAll.Enabled = True
+                    Else
+                        btnCurrentItemPointsJoin.Enabled = bNotIsInList
+                        btnCurrentItemPointsJoinAndConnect.Enabled = bNotIsInList AndAlso iPointCount > 0
+                        btnCurrentItemPointsUnjoin.Enabled = False
+                        btnCurrentItemPointsUnjoinAll.Enabled = False
+                    End If
+                End If
+                btnCurrentItemPointsDoJoin.Enabled = iPointCount > 1
+            End With
+        End If
     End Sub
 
     Private Sub pPropertyItemBounds(Optional ByRef PropPopupShowed As Boolean = False)
@@ -7590,9 +7632,9 @@ Friend Class frmMain2
         If grdSegments.Focused Then
             Try
                 Dim iIndex As Integer = grdViewSegments.GetFocusedDataSourceRowIndex
-                bDisableSegmentsChangeEvent = True
+                bDisableSegmentsChangeEvent.push
                 Dim oSegments As List(Of cSegment) = pGetCurrentTools.PasteSegments(Format, iIndex, btnMainSessionList.EditValue, btnMainCaveList.EditValue, btnMainCaveBranchList.EditValue)
-                bDisableSegmentsChangeEvent = False
+                bDisableSegmentsChangeEvent.pop()
                 'Call pSurveySegmentsGridSetup()
                 Call pSegmentSelect(oSurvey.Segments(iIndex + oSegments.Count - 1), False, False)
             Catch
@@ -7787,7 +7829,7 @@ Friend Class frmMain2
             Using frmMLRUD As frmManageLRUD = New frmManageLRUD(oSurvey, oSession, oCave, oCaveBranch, iRows)
                 With frmMLRUD
                     If .ShowDialog(Me) = vbOK Then
-                        bDisableSegmentsChangeEvent = True
+                        bDisableSegmentsChangeEvent.push
                         Call grdSegments.BeginUpdate()
                         Dim bBackup As Boolean = .chkBackup.Checked
                         If .cboAction.SelectedIndex = 0 Then
@@ -8136,7 +8178,7 @@ Friend Class frmMain2
                             Call .Restore()
                         End If
                         Call grdSegments.EndUpdate()
-                        bDisableSegmentsChangeEvent = False
+                        bDisableSegmentsChangeEvent.pop()
 
                         Call pSurveySegmentsRefresh()
                         Call pSurveyInvalidate()
@@ -8230,7 +8272,7 @@ Friend Class frmMain2
 
                     If bReplicateFormula Then
                         oReplicateFormula = frmSRI.GetScript
-                        bDisableSegmentsChangeEvent = True
+                        bDisableSegmentsChangeEvent.Push()
                     End If
 
                     For Each oSegment As cSegment In pSegmentsGetSelections(.cboReplicateTo.SelectedIndex)
@@ -8261,7 +8303,7 @@ Friend Class frmMain2
                     Next
                     Call oSurvey.Segments.SaveAll(bRebind)
                     If bReplicateFormula Then
-                        bDisableSegmentsChangeEvent = False
+                        bDisableSegmentsChangeEvent.pop()
                     End If
                     Call oMousePointer.Pop()
 
@@ -9535,14 +9577,14 @@ Friend Class frmMain2
         Call pGetCurrentTools.SelectSegment(Nothing)
         Call pGetCurrentTools.SelectTrigpoint(Nothing)
 
-        bDisableTrigpointsChangeEvent = True
-        bDisableSegmentsChangeEvent = True
+        bDisableTrigpointsChangeEvent.Push()
+        bDisableSegmentsChangeEvent.push
 
         Using frmPT As frmPrefixTrigPoints = New frmPrefixTrigPoints(oSurvey, oSelectedTrigpoints)
             With frmPT
                 If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                    bDisableTrigpointsChangeEvent = False
-                    bDisableSegmentsChangeEvent = False
+                    bDisableTrigpointsChangeEvent.Pop()
+                    bDisableSegmentsChangeEvent.pop()
 
                     Call pSurveySegmentsRefresh()
                     Call pSurveyTrigpointsRefresh()
@@ -9551,8 +9593,8 @@ Friend Class frmMain2
                     Call pSegmentsRefresh()
                     Call pTrigpointsRefresh()
                 Else
-                    bDisableTrigpointsChangeEvent = False
-                    bDisableSegmentsChangeEvent = False
+                    bDisableTrigpointsChangeEvent.Pop()
+                    bDisableSegmentsChangeEvent.pop()
                 End If
             End With
         End Using
@@ -10229,8 +10271,8 @@ Friend Class frmMain2
             If frmIGT.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 'If bDefaultArrangePriorityOnImport Then Call oSurvey.Calculate.ArrangePriority()
 
-                bDisableSegmentsChangeEvent = True
-                bDisableTrigpointsChangeEvent = True
+                bDisableSegmentsChangeEvent.push
+                bDisableTrigpointsChangeEvent.Push()
 
                 If Not Append Then
                     If sFilename = "" Then
@@ -10488,8 +10530,8 @@ Friend Class frmMain2
                     Next
                 End If
 
-                bDisableSegmentsChangeEvent = False
-                bDisableTrigpointsChangeEvent = False
+                bDisableSegmentsChangeEvent.pop()
+                bDisableTrigpointsChangeEvent.Pop()
 
                 'Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, 0, GetLocalizedString("main.progressend9"))
                 Call oMousePointer.Pop()
@@ -10519,8 +10561,8 @@ Friend Class frmMain2
             If frmIX.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 'If bDefaultArrangePriorityOnImport Then Call oSurvey.Calculate.ArrangePriority()
 
-                bDisableSegmentsChangeEvent = True
-                bDisableTrigpointsChangeEvent = True
+                bDisableSegmentsChangeEvent.push
+                bDisableTrigpointsChangeEvent.Push()
 
                 If Not Append Then
                     If sFilename = "" Then
@@ -10723,8 +10765,8 @@ Friend Class frmMain2
                     Call pLogAdd(ex)
                 End Try
 
-                bDisableSegmentsChangeEvent = False
-                bDisableTrigpointsChangeEvent = False
+                bDisableSegmentsChangeEvent.pop()
+                bDisableTrigpointsChangeEvent.Pop()
 
                 Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, 0, GetLocalizedString("main.progressend13"))
                 Call oMousePointer.Pop()
@@ -10752,8 +10794,8 @@ Friend Class frmMain2
             If frmIX.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 'If bDefaultArrangePriorityOnImport Then Call oSurvey.Calculate.ArrangePriority()
 
-                bDisableSegmentsChangeEvent = True
-                bDisableTrigpointsChangeEvent = True
+                bDisableSegmentsChangeEvent.push
+                bDisableTrigpointsChangeEvent.Push()
 
                 If Not Append Then
                     If sFilename = "" Then
@@ -10912,8 +10954,8 @@ Friend Class frmMain2
                     Call pLogAdd(ex)
                 End Try
 
-                bDisableSegmentsChangeEvent = False
-                bDisableTrigpointsChangeEvent = False
+                bDisableSegmentsChangeEvent.pop()
+                bDisableTrigpointsChangeEvent.Pop()
 
                 Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, 0, GetLocalizedString("main.progressend13"))
                 Call oMousePointer.Pop()
@@ -10941,8 +10983,8 @@ Friend Class frmMain2
             If frmIX.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 'If bDefaultArrangePriorityOnImport Then Call oSurvey.Calculate.ArrangePriority()
 
-                bDisableSegmentsChangeEvent = True
-                bDisableTrigpointsChangeEvent = True
+                bDisableSegmentsChangeEvent.push
+                bDisableTrigpointsChangeEvent.Push()
 
                 If Not Append Then
                     If sFilename = "" Then
@@ -11121,8 +11163,8 @@ Friend Class frmMain2
                     oSurvey.Properties.SplayMode = iSplay
                 End If
 
-                bDisableSegmentsChangeEvent = False
-                bDisableTrigpointsChangeEvent = False
+                bDisableSegmentsChangeEvent.pop()
+                bDisableTrigpointsChangeEvent.Pop()
 
                 Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, 0, GetLocalizedString("main.progressend13"))
                 Call oMousePointer.Pop()
@@ -11146,8 +11188,8 @@ Friend Class frmMain2
 
             If frmIT.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
 
-                bDisableSegmentsChangeEvent = True
-                bDisableTrigpointsChangeEvent = True
+                bDisableSegmentsChangeEvent.push
+                bDisableTrigpointsChangeEvent.Push()
 
                 Call oMousePointer.Push(Cursors.WaitCursor)
 
@@ -11161,8 +11203,8 @@ Friend Class frmMain2
 
                 Call cTherion.Import(oSurvey, Filename, oOptions)
 
-                bDisableSegmentsChangeEvent = False
-                bDisableTrigpointsChangeEvent = False
+                bDisableSegmentsChangeEvent.pop()
+                bDisableTrigpointsChangeEvent.Pop()
 
                 Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, 0, GetLocalizedString("main.progressend9"))
                 Call oMousePointer.Pop()
@@ -11192,8 +11234,8 @@ Friend Class frmMain2
             If frmIGD.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 'If bDefaultArrangePriorityOnImport Then Call oSurvey.Calculate.ArrangePriority()
 
-                bDisableSegmentsChangeEvent = True
-                bDisableTrigpointsChangeEvent = True
+                bDisableSegmentsChangeEvent.push
+                bDisableTrigpointsChangeEvent.Push()
 
                 If Not Append Then
                     If sFilename = "" Then
@@ -11354,8 +11396,8 @@ Friend Class frmMain2
                     oSurvey.Properties.SplayMode = iSplay
                 End If
 
-                bDisableSegmentsChangeEvent = False
-                bDisableTrigpointsChangeEvent = False
+                bDisableSegmentsChangeEvent.pop()
+                bDisableTrigpointsChangeEvent.Pop()
 
                 Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, 0, GetLocalizedString("main.progressend9"))
                 Call oMousePointer.Pop()
@@ -11395,8 +11437,8 @@ Friend Class frmMain2
                 Dim sForcedCaveName As String = frmIVT.txtCaveName.Text
                 Dim sPrefix As String = frmIVT.txtPrefix.Text.Trim.ToUpper
 
-                bDisableSegmentsChangeEvent = True
-                bDisableTrigpointsChangeEvent = True
+                bDisableSegmentsChangeEvent.push
+                bDisableTrigpointsChangeEvent.Push()
                 If Not Append Then
                     If sFilename = "" Then
                         sFilename = Filename
@@ -11669,8 +11711,8 @@ Friend Class frmMain2
                     End If
                 End Using
 
-                bDisableSegmentsChangeEvent = False
-                bDisableTrigpointsChangeEvent = False
+                bDisableSegmentsChangeEvent.pop()
+                bDisableTrigpointsChangeEvent.Pop()
 
                 Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, 0, GetLocalizedString("main.progressend1"))
                 Call oMousePointer.Pop()
@@ -11942,7 +11984,7 @@ Friend Class frmMain2
                                 End If
                             Next
 
-                            bDisableSegmentsChangeEvent = True
+                            bDisableSegmentsChangeEvent.push
                             Dim oImportSegments As cSegments = oImportSurvey.Segments
 
                             Call oSurvey.Properties.DataTables.Segments.MergeWith(oImportSurvey.Properties.DataTables.Segments)
@@ -12019,9 +12061,9 @@ Friend Class frmMain2
                                     End If
                                 End Using
                             Next
-                            bDisableSegmentsChangeEvent = False
+                            bDisableSegmentsChangeEvent.pop()
 
-                            bDisableTrigpointsChangeEvent = True
+                            bDisableTrigpointsChangeEvent.Push()
                             Dim oOriginalTrigpoints As List(Of String) = oSurvey.TrigPoints.GetNames
                             Call oSurvey.TrigPoints.Rebind()
                             Dim oImportTrigpoints As cTrigPoints = oImportSurvey.TrigPoints
@@ -12051,7 +12093,7 @@ Friend Class frmMain2
                                     End If
                                 End If
                             Next
-                            bDisableTrigpointsChangeEvent = False
+                            bDisableTrigpointsChangeEvent.Pop()
                         Catch ex As Exception
                             Call pLogAdd(ex)
                         End Try
@@ -12365,8 +12407,8 @@ Friend Class frmMain2
                 Dim sForcedCaveName As String = frmIPT.txtCaveName.Text
                 Dim sPrefix As String = frmIPT.txtPrefix.Text.Trim.ToUpper
 
-                bDisableSegmentsChangeEvent = True
-                bDisableTrigpointsChangeEvent = True
+                bDisableSegmentsChangeEvent.push
+                bDisableTrigpointsChangeEvent.Push()
 
                 If Not Append Then
                     If sFilename = "" Then
@@ -12633,8 +12675,8 @@ Friend Class frmMain2
                 End Try
                 oSurvey.Properties.SplayMode = iSplay
 
-                bDisableSegmentsChangeEvent = False
-                bDisableTrigpointsChangeEvent = False
+                bDisableSegmentsChangeEvent.pop()
+                bDisableTrigpointsChangeEvent.Pop()
 
                 Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, 0, GetLocalizedString("main.progressend6"))
                 Call oMousePointer.Pop()
@@ -12657,8 +12699,8 @@ Friend Class frmMain2
     Private Sub pSurveyImportCompass2(Filename As String, Append As Boolean)
         Call oMousePointer.Push(Cursors.WaitCursor)
 
-        bDisableSegmentsChangeEvent = True
-        bDisableTrigpointsChangeEvent = True
+        bDisableSegmentsChangeEvent.push
+        bDisableTrigpointsChangeEvent.Push()
 
         Dim fi As FileInfo = New FileInfo(Filename)
         Using sr As StreamReader = New StreamReader(fi.FullName, System.Text.Encoding.ASCII)
@@ -12746,8 +12788,8 @@ Friend Class frmMain2
             oSurvey.Segments.SaveAll()
         End Using
 
-        bDisableSegmentsChangeEvent = False
-        bDisableTrigpointsChangeEvent = False
+        bDisableSegmentsChangeEvent.pop()
+        bDisableTrigpointsChangeEvent.Pop()
 
         Call oMousePointer.Pop()
     End Sub
@@ -12770,8 +12812,8 @@ Friend Class frmMain2
                     Dim bImportFlagX As Boolean = frmIC.chkCompassImportFlagX.Checked
                     Dim bImportSSShotAsSplay As Boolean = frmIC.chkCompassImportSSShotAsSplay.Checked
 
-                    bDisableSegmentsChangeEvent = True
-                    bDisableTrigpointsChangeEvent = True
+                    bDisableSegmentsChangeEvent.push
+                    bDisableTrigpointsChangeEvent.Push()
 
                     If Not Append Then
                         If sFilename = "" Then
@@ -13059,8 +13101,8 @@ Friend Class frmMain2
                         Loop
                     End Using
 
-                    bDisableSegmentsChangeEvent = False
-                    bDisableTrigpointsChangeEvent = False
+                    bDisableSegmentsChangeEvent.pop()
+                    bDisableTrigpointsChangeEvent.Pop()
 
                     Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, 0, GetLocalizedString("main.progressend7"))
                     Call oMousePointer.Pop()
@@ -13091,8 +13133,8 @@ Friend Class frmMain2
             If frmICE.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 'If bDefaultArrangePriorityOnImport Then Call oSurvey.Calculate.ArrangePriority()
 
-                bDisableSegmentsChangeEvent = True
-                bDisableTrigpointsChangeEvent = True
+                bDisableSegmentsChangeEvent.push
+                bDisableTrigpointsChangeEvent.Push()
 
                 If Not Append Then
                     If sFilename = "" Then
@@ -13207,8 +13249,8 @@ Friend Class frmMain2
                     Loop
                 End Using
 
-                bDisableSegmentsChangeEvent = False
-                bDisableTrigpointsChangeEvent = False
+                bDisableSegmentsChangeEvent.pop()
+                bDisableTrigpointsChangeEvent.Pop()
 
                 Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, 0, GetLocalizedString("main.progressend8"))
                 Call oMousePointer.Pop()
@@ -13910,8 +13952,8 @@ Friend Class frmMain2
         bDisableSelectItemEvent = False
         bDisablePaintEvent = False
         bDisableZoomEvent = False
-        bDisableSegmentsChangeEvent = False
-        bDisableTrigpointsChangeEvent = False
+        bDisableSegmentsChangeEvent.pop()
+        bDisableTrigpointsChangeEvent.Pop()
         bDisabledObjectPropertyEvent = False
         bDisabledCaveBranchChangeEvent = False
         bDisabledAutosaveEvent = False
@@ -14278,8 +14320,8 @@ Friend Class frmMain2
                         Dim sPrefix As String = frmIR.txtPrefix.Text.Trim
                         Dim iNordType As cSegment.NordTypeEnum = frmIR.cboNordType.SelectedIndex
 
-                        bDisableSegmentsChangeEvent = True
-                        bDisableTrigpointsChangeEvent = True
+                        bDisableSegmentsChangeEvent.Push()
+                        bDisableTrigpointsChangeEvent.Push()
 
                         Dim sCaveName As String = sForcedCaveName
                         Dim sCaveBranchName As String = ""
@@ -14328,8 +14370,8 @@ Friend Class frmMain2
                             oSurvey.Properties.Origin = sPrefix & frmRM.GetOrigin
                         End If
 
-                        bDisableSegmentsChangeEvent = False
-                        bDisableTrigpointsChangeEvent = False
+                        bDisableSegmentsChangeEvent.pop()
+                        bDisableTrigpointsChangeEvent.Pop()
 
                         Call pStatusProgress(0, GetLocalizedString("main.progressend2"))
                         Call oMousePointer.Pop()
@@ -15073,7 +15115,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub frmSplay_OnApply(Sender As Object, Arg As frmSplay.ApplySplayPropertiesEventArgs)
-        bDisableSegmentsChangeEvent = True
+        bDisableSegmentsChangeEvent.push
         For Each oSegment As cSegment In oSurvey.Segments
             If Arg.ApplyToPlan Then
                 oSegment.PlanSplayBorderProjectionType = Arg.PlanSplayPlanProjectionType
@@ -15101,7 +15143,7 @@ Friend Class frmMain2
                 End If
             Next
         End If
-        bDisableSegmentsChangeEvent = False
+        bDisableSegmentsChangeEvent.pop()
         Call pSurveyCalculate(False)
         Call pObjectPropertyLoad()
     End Sub
@@ -15112,20 +15154,6 @@ Friend Class frmMain2
             Call frmS.ShowDialog(Me)
         End Using
     End Sub
-
-    'Private Sub cmdPropSignOtherOptions_Click(sender As Object, e As EventArgs) Handles cmdPropSignOtherOptions.Click
-    '    If Not bDisabledObjectPropertyEvent Then
-    '        With pGetCurrentDesignTools()
-    '            Dim oItem As cIItemSign = .CurrentItem
-    '            Using frmSP As frmSignProperties = New frmSignProperties(oItem)
-    '                If frmSP.ShowDialog(Me) = vbOK Then
-    '                    Call .TakeUndoSnapshot()
-    '                    Call pMapInvalidate()
-    '                End If
-    '            End Using
-    '        End With
-    '    End If
-    'End Sub
 
     Private Sub pTrigpointSetCoordinate(TrigPoint As String, Coordinate As Calculate.cTrigPointCoordinate)
         Call pFieldDataShow(True)
@@ -17594,9 +17622,9 @@ Friend Class frmMain2
     Private Sub grdViewTrigpoints_FocusedRowChanged(sender As Object, e As FocusedRowChangedEventArgs) Handles grdViewTrigpoints.FocusedRowChanged
         If oSurvey IsNot Nothing Then
             If Not bDisableTrigpointsChangeEvent Then
-                bDisableTrigpointsChangeEvent = True
+                bDisableTrigpointsChangeEvent.Push()
                 Call pSelectTrigpoint(grdViewTrigpoints.GetFocusedRow)
-                bDisableTrigpointsChangeEvent = False
+                bDisableTrigpointsChangeEvent.Pop()
             End If
         End If
     End Sub
@@ -17776,12 +17804,12 @@ Friend Class frmMain2
 
     '            Dim oCurrentSegment As cSegment = oTools.CurrentSegment
     '            Call oTools.SelectSegment(Nothing)
-    '            bDisableSegmentsChangeEvent = True
+    '            bDisableSegmentsChangeEvent.push
 
     '            For Each oSegment As cSegment In oRows
     '                Call oSegment.Reverse()
     '            Next
-    '            bDisableSegmentsChangeEvent = False
+    '            bDisableSegmentsChangeEvent.pop()
 
     '            Call pSurveyCalculate(False)
     '            Call pSurveySegmentsRefresh()
@@ -18836,7 +18864,7 @@ Friend Class frmMain2
         Dim oItemSegment As cItemSegment = pGetCurrentDesignTools.CurrentItem
         If Not oItemSegment.Segment.IsProfileBinded Then
             Call oMousePointer.Push(Cursors.WaitCursor)
-            bDisableSegmentsChangeEvent = True
+            bDisableSegmentsChangeEvent.push
             With oItemSegment.Segment
                 If .Direction = cSurvey.cSurvey.DirectionEnum.Right Then
                     Call pStatusSet(oItemSegment.Segment.ToString & " " & modMain.GetLocalizedString("main.textpart72"))
@@ -18849,7 +18877,7 @@ Friend Class frmMain2
                 End If
                 Call .Save()
             End With
-            bDisableSegmentsChangeEvent = False
+            bDisableSegmentsChangeEvent.pop()
             Call pSurveyCalculate(True)
             Call pPropertyItemSegment()
             Call oMousePointer.Pop()
@@ -18865,7 +18893,7 @@ Friend Class frmMain2
         Dim oItemSegment As cItemSegment = pGetCurrentDesignTools.CurrentItem
         If Not oItemSegment.Segment.IsProfileBinded Then
             Call oMousePointer.Push(Cursors.WaitCursor)
-            bDisableSegmentsChangeEvent = True
+            bDisableSegmentsChangeEvent.push
             With oItemSegment.Segment
                 If .Direction = cSurvey.cSurvey.DirectionEnum.Left Then
                     .Direction = cSurvey.cSurvey.DirectionEnum.Right
@@ -18901,7 +18929,7 @@ Friend Class frmMain2
                     End If
                 Loop
             End If
-            bDisableSegmentsChangeEvent = False
+            bDisableSegmentsChangeEvent.pop()
             Call pSurveyCalculate(True)
             Call pPropertyItemSegment()
             Call oMousePointer.Pop()
@@ -18919,7 +18947,7 @@ Friend Class frmMain2
         Dim oSegment As cSegment = oItemSegment.Segment
         If Not oSegment.IsProfileBinded Then
             Call oMousePointer.Push(Cursors.WaitCursor)
-            bDisableSegmentsChangeEvent = True
+            bDisableSegmentsChangeEvent.push
             Dim iNewDirection As cSurvey.cSurvey.DirectionEnum = oItemSegment.Segment.Direction
             For Each oSegment In oSurvey.Segments.GetCaveSegments(oSegment.Cave, oSegment.Branch)
                 With oSegment
@@ -18931,7 +18959,7 @@ Friend Class frmMain2
                     End If
                 End With
             Next
-            bDisableSegmentsChangeEvent = False
+            bDisableSegmentsChangeEvent.pop()
             Call pSurveyCalculate(True)
             Call pPropertyItemSegment()
             Call oMousePointer.Pop()
@@ -18949,7 +18977,7 @@ Friend Class frmMain2
         Dim oSegment As cSegment = oItemSegment.Segment
         If Not oSegment.IsProfileBinded Then
             Call oMousePointer.Push(Cursors.WaitCursor)
-            bDisableSegmentsChangeEvent = True
+            bDisableSegmentsChangeEvent.push
             For Each oSegment In oSurvey.Segments.GetCaveSegments(oSegment.Cave, oSegment.Branch)
                 With oSegment
                     If Not .IsProfileBinded Then
@@ -18962,7 +18990,7 @@ Friend Class frmMain2
                     End If
                 End With
             Next
-            bDisableSegmentsChangeEvent = False
+            bDisableSegmentsChangeEvent.pop()
             Call pSurveyCalculate(False)
             Call pPropertyItemSegment()
             Call oMousePointer.Pop()
@@ -19033,7 +19061,7 @@ Friend Class frmMain2
         Dim oItemSegment As cItemSegment = pGetCurrentDesignTools.CurrentItem
         If Not oItemSegment.Segment.IsProfileBinded Then
             Call oMousePointer.Push(Cursors.WaitCursor)
-            bDisableSegmentsChangeEvent = True
+            bDisableSegmentsChangeEvent.push
             With oItemSegment.Segment
                 If .Direction = cSurvey.cSurvey.DirectionEnum.Right Then
                     Call pStatusSet(oItemSegment.Segment.ToString & " " & modMain.GetLocalizedString("main.textpart72"))
@@ -19050,7 +19078,7 @@ Friend Class frmMain2
                 End If
                 Call .Save()
             End With
-            bDisableSegmentsChangeEvent = False
+            bDisableSegmentsChangeEvent.pop()
             Call pSurveyCalculate(True)
             Call pPropertyItemSegment()
             Call oMousePointer.Pop()
@@ -20106,6 +20134,10 @@ Friend Class frmMain2
             End If
             bTherionStatusUpdateBusy = False
         End If
+    End Sub
+
+    Private Sub btnCurrentItemPointsDoJoin_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCurrentItemPointsDoJoin.ItemClick
+        Call pDesignPointsDoJoin()
     End Sub
 End Class
 

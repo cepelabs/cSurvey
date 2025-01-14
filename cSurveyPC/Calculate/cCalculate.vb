@@ -1914,7 +1914,8 @@ Namespace cSurvey.Calculate
                                         iSketchIndex += 1
                                     Next
                                 End With
-                            Catch
+                            Catch ex As Exception
+                                oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, ex.Message)
                             End Try
 
                             Try
@@ -2005,7 +2006,8 @@ Namespace cSurvey.Calculate
                                         iSketchIndex += 1
                                     Next
                                 End With
-                            Catch
+                            Catch ex As Exception
+                                oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, ex.Message)
                             End Try
                             '----------------------------------------------------------------------------------------------------------------------------------------------------------------
 

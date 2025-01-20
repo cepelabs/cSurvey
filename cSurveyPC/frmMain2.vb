@@ -20139,6 +20139,10 @@ Friend Class frmMain2
     Private Sub btnCurrentItemPointsDoJoin_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCurrentItemPointsDoJoin.ItemClick
         Call pDesignPointsDoJoin()
     End Sub
+
+    Private Sub btnCurrentItemPointsPointToJoinList_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCurrentItemPointsPointToJoinList.ItemClick
+        Call pJoinPointsShow(True)
+    End Sub
 End Class
 
 

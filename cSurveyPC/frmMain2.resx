@@ -11171,6 +11171,9 @@
   <data name="btnCurrentItemPointsDoJoin.Caption" xml:space="preserve">
     <value>Join</value>
   </data>
+  <data name="btnCurrentItemPointsPointToJoinList.Caption" xml:space="preserve">
+    <value>Points to join</value>
+  </data>
   <data name="RibbonControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -16474,6 +16477,12 @@
     <value>btnCurrentItemPointsDoJoin</value>
   </data>
   <data name="&gt;&gt;btnCurrentItemPointsDoJoin.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnCurrentItemPointsPointToJoinList.Name" xml:space="preserve">
+    <value>btnCurrentItemPointsPointToJoinList</value>
+  </data>
+  <data name="&gt;&gt;btnCurrentItemPointsPointToJoinList.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pageFile.Name" xml:space="preserve">

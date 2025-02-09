@@ -645,23 +645,25 @@ Namespace cSurvey.Design.Items
 
                             Call oFont.Render(Graphics, PaintOptions, Options, oPath, oCache)
 
-                            Using oRealFont As Font = oFont.GetFont(PaintOptions).Clone
-                                Dim sScale As Single = GetTextScaleFactor(PaintOptions)
-                                Dim oItem As cDrawCacheItemText = oCache.AddString(sText, oRealFont.FontFamily.Name, oRealFont.Style, oRealFont.Size * sScale, oRealFont.Unit, MyBase.Points(0).Point, iTextAlignment, iTextVerticalAlignment, If(iTextRotateMode = cIItemRotable.RotateModeEnum.Rotable, sAngle, 0))
-                                oItem.SetBrush(oFont.GetBrush(PaintOptions))
-                                oItem.SetWireframePen(oFont.GetWireframePen(PaintOptions))
-                                'Using oScaleMatrix As Matrix = New Matrix
-                                '    Dim sScale As Single = GetTextScaleFactor(PaintOptions)
-                                '    Call oScaleMatrix.Scale(sScale, sScale, MatrixOrder.Append)
-                                '    Call oItem.Transform(oScaleMatrix)
-                                'End Using
-                                'If iTextRotateMode = cIItemRotable.RotateModeEnum.Rotable Then
-                                '    Dim oMovedCenterPoint As PointF = MyBase.Points(0).Point
-                                '    Using oRotateMatrix As Matrix = New Matrix
-                                '        Call oItem.Transform(oRotateMatrix)
-                                '    End Using
-                                'End If
-                            End Using
+                            'If bIsInDebug Then
+                            '    Using oRealFont As Font = oFont.GetFont(PaintOptions).Clone
+                            '        Dim sScale As Single = GetTextScaleFactor(PaintOptions)
+                            '        Dim oItem As cDrawCacheItemText = oCache.AddString(modPaint.ReplaceGlobalTags(oSurvey, Text), oRealFont.FontFamily.Name, oRealFont.Style, oRealFont.Size * sScale, oRealFont.Unit, MyBase.Points(0).Point, iTextAlignment, iTextVerticalAlignment, If(iTextRotateMode = cIItemRotable.RotateModeEnum.Rotable, sAngle, 0))
+                            '        oItem.SetBrush(oFont.GetBrush(PaintOptions))
+                            '        oItem.SetWireframePen(oFont.GetWireframePen(PaintOptions))
+                            '        'Using oScaleMatrix As Matrix = New Matrix
+                            '        '    Dim sScale As Single = GetTextScaleFactor(PaintOptions)
+                            '        '    Call oScaleMatrix.Scale(sScale, sScale, MatrixOrder.Append)
+                            '        '    Call oItem.Transform(oScaleMatrix)
+                            '        'End Using
+                            '        'If iTextRotateMode = cIItemRotable.RotateModeEnum.Rotable Then
+                            '        '    Dim oMovedCenterPoint As PointF = MyBase.Points(0).Point
+                            '        '    Using oRotateMatrix As Matrix = New Matrix
+                            '        '        Call oItem.Transform(oRotateMatrix)
+                            '        '    End Using
+                            '        'End If
+                            '    End Using
+                            'End If
                         End Using
                     End Using
 

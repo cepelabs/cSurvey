@@ -4400,6 +4400,7 @@ Partial Class frmMain2
         Me.btnCurrentItemPointsDoJoin.Id = 376
         Me.btnCurrentItemPointsDoJoin.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.joinpoints_join
         Me.btnCurrentItemPointsDoJoin.Name = "btnCurrentItemPointsDoJoin"
+        Me.btnCurrentItemPointsDoJoin.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'btnCurrentItemPointsPointToJoinList
         '
@@ -5639,7 +5640,7 @@ Partial Class frmMain2
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.tabTrigpointsPropertyitem, Me.LayoutControlItem8})
         Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
         Me.LayoutControlGroup2.Padding = New DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0)
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(233, 383)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(233, 379)
         Me.LayoutControlGroup2.TextVisible = False
         '
         'tabTrigpointsPropertyitem
@@ -5648,7 +5649,7 @@ Partial Class frmMain2
         Me.tabTrigpointsPropertyitem.Name = "tabTrigpointsPropertyitem"
         Me.tabTrigpointsPropertyitem.Padding = New DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0)
         Me.tabTrigpointsPropertyitem.SelectedTabPage = Me.tabTrigpointsCoordinateitem
-        Me.tabTrigpointsPropertyitem.Size = New System.Drawing.Size(233, 378)
+        Me.tabTrigpointsPropertyitem.Size = New System.Drawing.Size(233, 374)
         Me.tabTrigpointsPropertyitem.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.tabTrigpointsMainitem, Me.tabTrigpointsLayoutitem, Me.tabTrigpointsConnectionsitem, Me.tabTrigpointsDataitem, Me.tabTrigpointsNoteitem, Me.tabTrigpointsCoordinateitem})
         '
         'tabTrigpointsCoordinateitem
@@ -6316,7 +6317,7 @@ Partial Class frmMain2
         Me.tabSegmentsMainitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3})
         Me.tabSegmentsMainitem.Location = New System.Drawing.Point(0, 0)
         Me.tabSegmentsMainitem.Name = "tabSegmentsMainitem"
-        Me.tabSegmentsMainitem.Size = New System.Drawing.Size(244, 217)
+        Me.tabSegmentsMainitem.Size = New System.Drawing.Size(244, 221)
         resources.ApplyResources(Me.tabSegmentsMainitem, "tabSegmentsMainitem")
         Me.tabSegmentsMainitem.TextVisible = False
         '
@@ -6326,7 +6327,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.LayoutControlItem3, "LayoutControlItem3")
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem3.Name = "cPanelControlitem"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(244, 217)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(244, 221)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         '
@@ -6337,7 +6338,7 @@ Partial Class frmMain2
         Me.tabSegmentsLayoutitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.pnlSegmentDataLayoutitem})
         Me.tabSegmentsLayoutitem.Location = New System.Drawing.Point(0, 0)
         Me.tabSegmentsLayoutitem.Name = "tabSegmentsLayoutitem"
-        Me.tabSegmentsLayoutitem.Size = New System.Drawing.Size(244, 217)
+        Me.tabSegmentsLayoutitem.Size = New System.Drawing.Size(244, 221)
         resources.ApplyResources(Me.tabSegmentsLayoutitem, "tabSegmentsLayoutitem")
         Me.tabSegmentsLayoutitem.TextVisible = False
         '
@@ -6347,7 +6348,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.pnlSegmentDataLayoutitem, "pnlSegmentDataLayoutitem")
         Me.pnlSegmentDataLayoutitem.Location = New System.Drawing.Point(0, 0)
         Me.pnlSegmentDataLayoutitem.Name = "pnlSegmentDataLayoutitem"
-        Me.pnlSegmentDataLayoutitem.Size = New System.Drawing.Size(244, 217)
+        Me.pnlSegmentDataLayoutitem.Size = New System.Drawing.Size(244, 221)
         Me.pnlSegmentDataLayoutitem.TextSize = New System.Drawing.Size(0, 0)
         Me.pnlSegmentDataLayoutitem.TextVisible = False
         '
@@ -6358,7 +6359,7 @@ Partial Class frmMain2
         Me.tabSegmentsDataitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.prpSegmentDataPropertiesitem})
         Me.tabSegmentsDataitem.Location = New System.Drawing.Point(0, 0)
         Me.tabSegmentsDataitem.Name = "tabSegmentsDataitem"
-        Me.tabSegmentsDataitem.Size = New System.Drawing.Size(244, 217)
+        Me.tabSegmentsDataitem.Size = New System.Drawing.Size(244, 221)
         resources.ApplyResources(Me.tabSegmentsDataitem, "tabSegmentsDataitem")
         Me.tabSegmentsDataitem.TextVisible = False
         '
@@ -6368,7 +6369,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.prpSegmentDataPropertiesitem, "prpSegmentDataPropertiesitem")
         Me.prpSegmentDataPropertiesitem.Location = New System.Drawing.Point(0, 0)
         Me.prpSegmentDataPropertiesitem.Name = "prpSegmentDataPropertiesitem"
-        Me.prpSegmentDataPropertiesitem.Size = New System.Drawing.Size(244, 217)
+        Me.prpSegmentDataPropertiesitem.Size = New System.Drawing.Size(244, 221)
         Me.prpSegmentDataPropertiesitem.TextSize = New System.Drawing.Size(0, 0)
         Me.prpSegmentDataPropertiesitem.TextVisible = False
         '
@@ -6379,7 +6380,7 @@ Partial Class frmMain2
         Me.tabSegmentsNoteitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.txtSegmentNoteitem})
         Me.tabSegmentsNoteitem.Location = New System.Drawing.Point(0, 0)
         Me.tabSegmentsNoteitem.Name = "tabSegmentsNoteitem"
-        Me.tabSegmentsNoteitem.Size = New System.Drawing.Size(244, 217)
+        Me.tabSegmentsNoteitem.Size = New System.Drawing.Size(244, 221)
         resources.ApplyResources(Me.tabSegmentsNoteitem, "tabSegmentsNoteitem")
         Me.tabSegmentsNoteitem.TextVisible = False
         '
@@ -6389,7 +6390,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.txtSegmentNoteitem, "txtSegmentNoteitem")
         Me.txtSegmentNoteitem.Location = New System.Drawing.Point(0, 0)
         Me.txtSegmentNoteitem.Name = "txtSegmentNoteitem"
-        Me.txtSegmentNoteitem.Size = New System.Drawing.Size(244, 217)
+        Me.txtSegmentNoteitem.Size = New System.Drawing.Size(244, 221)
         Me.txtSegmentNoteitem.TextSize = New System.Drawing.Size(0, 0)
         Me.txtSegmentNoteitem.TextVisible = False
         '
@@ -6400,7 +6401,7 @@ Partial Class frmMain2
         Me.tabSegmentsAttachmentsitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.grdSegmentAttachmentsitem})
         Me.tabSegmentsAttachmentsitem.Location = New System.Drawing.Point(0, 0)
         Me.tabSegmentsAttachmentsitem.Name = "tabSegmentsAttachmentsitem"
-        Me.tabSegmentsAttachmentsitem.Size = New System.Drawing.Size(244, 217)
+        Me.tabSegmentsAttachmentsitem.Size = New System.Drawing.Size(244, 221)
         resources.ApplyResources(Me.tabSegmentsAttachmentsitem, "tabSegmentsAttachmentsitem")
         Me.tabSegmentsAttachmentsitem.TextVisible = False
         '
@@ -6410,7 +6411,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.grdSegmentAttachmentsitem, "grdSegmentAttachmentsitem")
         Me.grdSegmentAttachmentsitem.Location = New System.Drawing.Point(0, 0)
         Me.grdSegmentAttachmentsitem.Name = "grdSegmentAttachmentsitem"
-        Me.grdSegmentAttachmentsitem.Size = New System.Drawing.Size(244, 217)
+        Me.grdSegmentAttachmentsitem.Size = New System.Drawing.Size(244, 221)
         Me.grdSegmentAttachmentsitem.TextSize = New System.Drawing.Size(0, 0)
         Me.grdSegmentAttachmentsitem.TextVisible = False
         '
@@ -6789,7 +6790,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.dockBrushesAndPens, "dockBrushesAndPens")
         Me.dockBrushesAndPens.Name = "dockBrushesAndPens"
         Me.dockBrushesAndPens.Options.AllowDockAsTabbedDocument = False
-        Me.dockBrushesAndPens.OriginalSize = New System.Drawing.Size(767, 745)
+        Me.dockBrushesAndPens.OriginalSize = New System.Drawing.Size(767, 767)
         '
         'ControlContainer13
         '
@@ -6807,7 +6808,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.dockProperties, "dockProperties")
         Me.dockProperties.Name = "dockProperties"
         Me.dockProperties.Options.AllowDockAsTabbedDocument = False
-        Me.dockProperties.OriginalSize = New System.Drawing.Size(767, 745)
+        Me.dockProperties.OriginalSize = New System.Drawing.Size(767, 767)
         '
         'ControlContainer10
         '
@@ -6834,7 +6835,7 @@ Partial Class frmMain2
         Me.grpDesignProp.GroupBordersVisible = False
         Me.grpDesignProp.Name = "grpDesignProp"
         Me.grpDesignProp.Padding = New DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0)
-        Me.grpDesignProp.Size = New System.Drawing.Size(47, 767)
+        Me.grpDesignProp.Size = New System.Drawing.Size(47, 779)
         Me.grpDesignProp.TextVisible = False
         '
         'pnl3DProp
@@ -6853,7 +6854,7 @@ Partial Class frmMain2
         Me.grp3DProp.GroupBordersVisible = False
         Me.grp3DProp.Name = "grp3DProp"
         Me.grp3DProp.Padding = New DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0)
-        Me.grp3DProp.Size = New System.Drawing.Size(51, 767)
+        Me.grp3DProp.Size = New System.Drawing.Size(51, 779)
         Me.grp3DProp.TextVisible = False
         '
         'pnlObjectProp
@@ -6879,7 +6880,7 @@ Partial Class frmMain2
         Me.grpObjectProp.GroupBordersVisible = False
         Me.grpObjectProp.Name = "grpObjectProp"
         Me.grpObjectProp.Padding = New DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0)
-        Me.grpObjectProp.Size = New System.Drawing.Size(451, 763)
+        Me.grpObjectProp.Size = New System.Drawing.Size(451, 775)
         Me.grpObjectProp.TextVisible = False
         '
         'dockLevels
@@ -6894,7 +6895,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.dockLevels, "dockLevels")
         Me.dockLevels.Name = "dockLevels"
         Me.dockLevels.Options.AllowDockAsTabbedDocument = False
-        Me.dockLevels.OriginalSize = New System.Drawing.Size(767, 745)
+        Me.dockLevels.OriginalSize = New System.Drawing.Size(767, 767)
         '
         'ControlContainer7
         '
@@ -6912,7 +6913,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.dockClipart, "dockClipart")
         Me.dockClipart.Name = "dockClipart"
         Me.dockClipart.Options.AllowDockAsTabbedDocument = False
-        Me.dockClipart.OriginalSize = New System.Drawing.Size(767, 745)
+        Me.dockClipart.OriginalSize = New System.Drawing.Size(767, 767)
         '
         'ControlContainer9
         '

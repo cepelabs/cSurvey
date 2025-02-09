@@ -469,6 +469,11 @@ Namespace cSurvey.Design
                 Case cPen.PenTypeEnum.PresumedPen
                     Return PresumedPen
 
+                Case cPen.PenTypeEnum.PresumedGenericPen
+                    Return PresumedGenericPen
+                Case cPen.PenTypeEnum.PresumedTightPen
+                    Return PresumedTightPen
+
                 Case cPen.PenTypeEnum.CliffUpPen
                     Return CliffUpPen
                 Case cPen.PenTypeEnum.PresumedCliffUpPen

@@ -11,7 +11,7 @@ Imports DevExpress.XtraCharts.Designer
 Imports cSurveyPC.cSurvey.Design.Items
 Imports System.Runtime.CompilerServices
 
-Public Class frmHolosItemEdit
+Friend Class frmHolosItemEdit
 
     Private oSurvey As cSurvey.cSurvey
     Private WithEvents oHolosEdit As cHolosItemEdit
@@ -74,7 +74,7 @@ Public Class frmHolosItemEdit
             oCube2.Transform = New TranslateTransform3D(Item.Stations.Station2.Point.X + oCube2Bound.SizeX / 4.0, Item.Stations.Station2.Point.Y + oCube2Bound.SizeY / 4.0, Item.Stations.Station2.Point.Z + oCube2Bound.SizeZ / 4.0)
             oCube2Manupulator.Bind(oCube2)
         End If
-        bdisableEvent = False
+        bDisableEvent = False
 
         bStarted = True
 
@@ -175,7 +175,7 @@ Public Class frmHolosItemEdit
 
     Private Sub pUpdatePositions()
         If bStarted Then
-            bdisableEvent = True
+            bDisableEvent = True
             Dim oCube1 As CubeVisual3D = oHolosEdit.station1
             Dim oCube1Bound As Rect3D = oCube1.FindBounds(oCube1.Transform)
             Dim oCube1Center As Point3D = New Point3D(oCube1Bound.X + oCube1Bound.SizeX / 2.0F, oCube1Bound.Y + oCube1Bound.SizeY / 2.0F, oCube1Bound.Z + oCube1Bound.SizeZ / 2.0F)
@@ -189,7 +189,7 @@ Public Class frmHolosItemEdit
             oStation2Point.Y = oCube2Center.Y / 2.0
             oStation2Point.Z = oCube2Center.Z / 2.0
             Call pUpdatePositionsTexts()
-            bdisableEvent = False
+            bDisableEvent = False
         End If
     End Sub
 
@@ -385,7 +385,7 @@ Public Class frmHolosItemEdit
     'End Sub
 
     Private Sub pStation1Changed()
-        If Not bdisableEvent Then
+        If Not bDisableEvent Then
             'Dim sValues As String() = txt1.EditValue.ToString.Split(";"c)
             'Dim sX As Decimal = modNumbers.StringToDecimal(sValues(0))
             'Dim sy As Decimal = modNumbers.StringToDecimal(sValues(1))
@@ -399,7 +399,7 @@ Public Class frmHolosItemEdit
     End Sub
 
     Private Sub pStation2Changed()
-        If Not bdisableEvent Then
+        If Not bDisableEvent Then
             'Dim sValues As String() = txt2.EditValue.ToString.Split(";"c)
             'Dim sX As Decimal = modNumbers.StringToDecimal(sValues(0))
             'Dim sy As Decimal = modNumbers.StringToDecimal(sValues(1))

@@ -1684,12 +1684,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cBorderFromSplay.resx">
       <DependentUpon>cBorderFromSplay.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="cAreaFromSequence.it.resx">
       <DependentUpon>cAreaFromSequence.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cAreaFromSequence.resx">
       <DependentUpon>cAreaFromSequence.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="cAreaFromSequence.ru.resx">
       <DependentUpon>cAreaFromSequence.vb</DependentUpon>

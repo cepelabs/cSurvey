@@ -1,7 +1,7 @@
 ﻿Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.UIHelpers
 
-Public Class frmDistancesFilter
+Friend Class frmDistancesFilter
 
     Private oSurvey As cSurveyPC.cSurvey.cSurvey
     Private oTrigpoints As List(Of cTrigPoint)
@@ -17,7 +17,7 @@ Public Class frmDistancesFilter
         Call pRefreshSurveyList()
     End Sub
     Private Sub cboSurveyInfoFilename_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboSurveyInfoFilename.SelectedIndexChanged
-        Call pUpdateTrigpoints
+        Call pUpdateTrigpoints()
         Dim oSurveyItem As cSurveyPlaceholder = cboSurveyInfoFilename.SelectedItem
         Dim oSourceSurvey As cSurvey.cSurvey = If(oSurveyItem.IsLinked, oSurveyItem.LinkedSurvey.LinkedSurvey, oSurvey)
         Dim oTrigpointsBySurvey As List(Of cTrigPoint) = oTrigpoints.Where(Function(oTrigpoint)

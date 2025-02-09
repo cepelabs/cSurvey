@@ -373,6 +373,9 @@ Friend Class cDockLevels
 
     Private bDisableFilterItemEvent As Boolean
 
+    Public Sub FilterApply()
+        Call pFilterApply()
+    End Sub
     Private Sub pFilterApply()
         If Not bDisableFilterItemEvent Then
             bDisableFilterItemEvent = True

@@ -3,7 +3,7 @@ Imports System.Windows.Media.Media3D
 Imports cSurveyPC.cSurvey.Design.Items
 Imports HelixToolkit.Wpf
 
-Public Class frmItemChunk3DPlanRenderer
+Friend Class frmItemChunk3DPlanRenderer
 
     Private oHolosView As cHolosItemView
     Public Sub New(Item As cItemChunk3D, Width As Integer, Height As Integer)

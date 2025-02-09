@@ -2433,9 +2433,6 @@
   <data name="cboMainCaveList.Buttons10" type="DevExpress.Utils.ToolTipAnchor, DevExpress.Utils.v23.2">
     <value>Default</value>
   </data>
-  <data name="cboMainCaveList.NullText" xml:space="preserve">
-    <value />
-  </data>
   <data name="colMainCaveListName.Caption" xml:space="preserve">
     <value>Name</value>
   </data>
@@ -2636,9 +2633,6 @@
   </data>
   <data name="cboMainCaveBranchList.Buttons10" type="DevExpress.Utils.ToolTipAnchor, DevExpress.Utils.v23.2">
     <value>Default</value>
-  </data>
-  <data name="cboMainCaveBranchList.NullText" xml:space="preserve">
-    <value />
   </data>
   <data name="colMainCaveBranchName.Caption" xml:space="preserve">
     <value>Name</value>
@@ -11172,7 +11166,7 @@
     <value>Join</value>
   </data>
   <data name="btnCurrentItemPointsPointToJoinList.Caption" xml:space="preserve">
-    <value>Points to join</value>
+    <value>List of points to join</value>
   </data>
   <data name="RibbonControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -11343,13 +11337,13 @@
     <value>Combo</value>
   </data>
   <data name="RibbonControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1940, 162</value>
+    <value>1940, 158</value>
   </data>
   <data name="RibbonStatusBar1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 1074</value>
+    <value>0, 1075</value>
   </data>
   <data name="RibbonStatusBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1940, 26</value>
+    <value>1940, 24</value>
   </data>
   <data name="&gt;&gt;RibbonStatusBar1.Name" xml:space="preserve">
     <value>RibbonStatusBar1</value>
@@ -11436,7 +11430,7 @@
     <value>cDesignMessageCorner</value>
   </data>
   <data name="&gt;&gt;cDesignMessageCorner.Type" xml:space="preserve">
-    <value>cSurveyPC.cMessageCorner, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cMessageCorner, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cDesignMessageCorner.Parent" xml:space="preserve">
     <value>pnlDesigner</value>
@@ -11529,7 +11523,7 @@
     <value>0, 32</value>
   </data>
   <data name="pnlDesigner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>711, 733</value>
+    <value>711, 742</value>
   </data>
   <data name="pnlDesigner.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -11850,7 +11844,7 @@
     <value>8</value>
   </data>
   <data name="pnlTrigpointsDataMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 40</value>
+    <value>5, 36</value>
   </data>
   <data name="pnlTrigpointsDataMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>223, 338</value>
@@ -12541,7 +12535,7 @@
     <value>15</value>
   </data>
   <data name="pnlTrigpointsDataLayout.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 40</value>
+    <value>5, 36</value>
   </data>
   <data name="pnlTrigpointsDataLayout.Size" type="System.Drawing.Size, System.Drawing">
     <value>223, 338</value>
@@ -12562,7 +12556,7 @@
     <value>5</value>
   </data>
   <data name="grdTrigpointConnections.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 40</value>
+    <value>5, 36</value>
   </data>
   <data name="colTrigpointConnectionsStation.Caption" xml:space="preserve">
     <value>Station</value>
@@ -12610,7 +12604,7 @@
     <value>NoBorder</value>
   </data>
   <data name="prpTrigpointDataProperties.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 40</value>
+    <value>5, 36</value>
   </data>
   <data name="prpTrigpointDataProperties.Size" type="System.Drawing.Size, System.Drawing">
     <value>223, 338</value>
@@ -12631,7 +12625,7 @@
     <value>7</value>
   </data>
   <data name="txtTrigpointNote.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 40</value>
+    <value>5, 36</value>
   </data>
   <data name="txtTrigpointNote.Size" type="System.Drawing.Size, System.Drawing">
     <value>223, 338</value>
@@ -13050,7 +13044,7 @@
     <value>0</value>
   </data>
   <data name="pnlTrigpointsDataCoordinate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 40</value>
+    <value>5, 36</value>
   </data>
   <data name="pnlTrigpointsDataCoordinate.Size" type="System.Drawing.Size, System.Drawing">
     <value>223, 338</value>
@@ -13176,7 +13170,7 @@
     <value>Note</value>
   </data>
   <data name="pnlTrigPoint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 352</value>
+    <value>250, 361</value>
   </data>
   <data name="pnlTrigPoint.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -13224,7 +13218,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1940, 1100</value>
+    <value>1940, 1099</value>
   </data>
   <data name="pnlForm.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v23.2">
     <value>Default</value>
@@ -13236,7 +13230,7 @@
     <value>0, 0</value>
   </data>
   <data name="ControlContainer13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 767</value>
+    <value>767, 779</value>
   </data>
   <data name="ControlContainer13.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -13254,10 +13248,10 @@
     <value>0</value>
   </data>
   <data name="dockBrushesAndPens.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 30</value>
+    <value>4, 26</value>
   </data>
   <data name="dockBrushesAndPens.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 767</value>
+    <value>767, 779</value>
   </data>
   <data name="dockBrushesAndPens.Text" xml:space="preserve">
     <value>Brushes and pens gallery</value>
@@ -13284,7 +13278,7 @@
     <value>214, 0</value>
   </data>
   <data name="pnlDesignProp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 767</value>
+    <value>47, 779</value>
   </data>
   <data name="pnlDesignProp.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -13311,7 +13305,7 @@
     <value>261, 0</value>
   </data>
   <data name="pnl3DProp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 767</value>
+    <value>51, 779</value>
   </data>
   <data name="pnl3DProp.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -13341,7 +13335,7 @@
     <value>2, 2</value>
   </data>
   <data name="pnlObjectSubProp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>451, 763</value>
+    <value>451, 775</value>
   </data>
   <data name="pnlObjectSubProp.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -13368,7 +13362,7 @@
     <value>312, 0</value>
   </data>
   <data name="pnlObjectProp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>455, 767</value>
+    <value>455, 779</value>
   </data>
   <data name="pnlObjectProp.TabIndex" type="System.Int32, mscorlib">
     <value>122</value>
@@ -13389,7 +13383,7 @@
     <value>0, 0</value>
   </data>
   <data name="ControlContainer10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 767</value>
+    <value>767, 779</value>
   </data>
   <data name="ControlContainer10.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -13437,10 +13431,10 @@
 </value>
   </data>
   <data name="dockProperties.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 30</value>
+    <value>4, 26</value>
   </data>
   <data name="dockProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 767</value>
+    <value>767, 779</value>
   </data>
   <data name="dockProperties.Text" xml:space="preserve">
     <value>Properties</value>
@@ -13464,7 +13458,7 @@
     <value>0, 0</value>
   </data>
   <data name="ControlContainer7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 767</value>
+    <value>767, 779</value>
   </data>
   <data name="ControlContainer7.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -13507,10 +13501,10 @@
 </value>
   </data>
   <data name="dockLevels.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 30</value>
+    <value>4, 26</value>
   </data>
   <data name="dockLevels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 767</value>
+    <value>767, 779</value>
   </data>
   <data name="dockLevels.Text" xml:space="preserve">
     <value>Levels</value>
@@ -13534,7 +13528,7 @@
     <value>0, 0</value>
   </data>
   <data name="ControlContainer9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 767</value>
+    <value>767, 779</value>
   </data>
   <data name="ControlContainer9.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -13574,10 +13568,10 @@
 </value>
   </data>
   <data name="dockClipart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 30</value>
+    <value>4, 26</value>
   </data>
   <data name="dockClipart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 767</value>
+    <value>767, 779</value>
   </data>
   <data name="dockClipart.Text" xml:space="preserve">
     <value>Clipart gallery</value>
@@ -13598,7 +13592,7 @@
     <value>1166, 0</value>
   </data>
   <data name="panelContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>774, 830</value>
+    <value>774, 835</value>
   </data>
   <data name="panelContainer1.Text" xml:space="preserve">
     <value>panelContainer1</value>
@@ -13619,10 +13613,10 @@
     <value>Fill</value>
   </data>
   <data name="pnlForm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 244</value>
+    <value>0, 240</value>
   </data>
   <data name="pnlForm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1940, 830</value>
+    <value>1940, 835</value>
   </data>
   <data name="pnlForm.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -13646,7 +13640,7 @@
     <value>Top</value>
   </data>
   <data name="cMainMessageBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 220</value>
+    <value>0, 216</value>
   </data>
   <data name="cMainMessageBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>1940, 24</value>
@@ -13661,7 +13655,7 @@
     <value>cMainMessageBar</value>
   </data>
   <data name="&gt;&gt;cMainMessageBar.Type" xml:space="preserve">
-    <value>cSurveyPC.cMessageBar, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cMessageBar, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cMainMessageBar.Parent" xml:space="preserve">
     <value>$this</value>
@@ -13676,7 +13670,7 @@
     <value>Top</value>
   </data>
   <data name="cWarpingMessageBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 194</value>
+    <value>0, 190</value>
   </data>
   <data name="cWarpingMessageBar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -13694,7 +13688,7 @@
     <value>cWarpingMessageBar</value>
   </data>
   <data name="&gt;&gt;cWarpingMessageBar.Type" xml:space="preserve">
-    <value>cSurveyPC.cMessageBar, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cMessageBar, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cWarpingMessageBar.Parent" xml:space="preserve">
     <value>$this</value>
@@ -13709,7 +13703,7 @@
     <value>Top</value>
   </data>
   <data name="dockTopGlobalBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 162</value>
+    <value>0, 158</value>
   </data>
   <data name="dockTopGlobalBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>1940, 32</value>
@@ -18442,10 +18436,10 @@
     <value>26</value>
   </data>
   <data name="pnlSegmentDataMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 161</value>
+    <value>5, 157</value>
   </data>
   <data name="pnlSegmentDataMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 213</value>
+    <value>240, 217</value>
   </data>
   <data name="pnlSegmentDataMain.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -18523,10 +18517,10 @@
     <value>NoBorder</value>
   </data>
   <data name="prpSegmentDataProperties.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 161</value>
+    <value>5, 157</value>
   </data>
   <data name="prpSegmentDataProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 213</value>
+    <value>240, 217</value>
   </data>
   <data name="prpSegmentDataProperties.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -18544,13 +18538,13 @@
     <value>7</value>
   </data>
   <data name="txtSegmentNote.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 161</value>
+    <value>5, 157</value>
   </data>
   <data name="txtSegmentNote.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 213</value>
+    <value>240, 217</value>
   </data>
   <data name="grdSegmentAttachments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 161</value>
+    <value>5, 157</value>
   </data>
   <data name="colSegmentAttachmentsImage.Caption" xml:space="preserve">
     <value> </value>
@@ -18589,7 +18583,7 @@
     <value>240</value>
   </data>
   <data name="grdSegmentAttachments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 213</value>
+    <value>240, 217</value>
   </data>
   <data name="grdSegmentAttachments.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -18610,10 +18604,10 @@
     <value>Default</value>
   </data>
   <data name="pnlSegmentDataLayout.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 161</value>
+    <value>5, 157</value>
   </data>
   <data name="pnlSegmentDataLayout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 213</value>
+    <value>240, 217</value>
   </data>
   <data name="pnlSegmentDataLayout.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -18862,7 +18856,7 @@
     <value>cboSegmentCaveList</value>
   </data>
   <data name="&gt;&gt;cboSegmentCaveList.Type" xml:space="preserve">
-    <value>cSurveyPC.cCaveDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cCaveDropDown, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboSegmentCaveList.Parent" xml:space="preserve">
     <value>pnlSegmentCaveBranches</value>
@@ -18892,7 +18886,7 @@
     <value>cboSegmentCaveBranchList</value>
   </data>
   <data name="&gt;&gt;cboSegmentCaveBranchList.Type" xml:space="preserve">
-    <value>cSurveyPC.cCaveBranchDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cCaveBranchDropDown, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboSegmentCaveBranchList.Parent" xml:space="preserve">
     <value>pnlSegmentCaveBranches</value>
@@ -18997,7 +18991,7 @@
     <value>cboSegmentSessionList</value>
   </data>
   <data name="&gt;&gt;cboSegmentSessionList.Type" xml:space="preserve">
-    <value>cSurveyPC.cSessionDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cSessionDropDown, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboSegmentSessionList.Parent" xml:space="preserve">
     <value>pnlSegmentSession</value>
@@ -19509,7 +19503,7 @@
     <value>cSegmentMessageBar</value>
   </data>
   <data name="&gt;&gt;cSegmentMessageBar.Type" xml:space="preserve">
-    <value>cSurveyPC.cMessageBar, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cMessageBar, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cSegmentMessageBar.Parent" xml:space="preserve">
     <value>spSegments.Panel2</value>
@@ -20160,7 +20154,7 @@
     <value>28</value>
   </data>
   <data name="grdTrigPoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 352</value>
+    <value>177, 361</value>
   </data>
   <data name="grdTrigPoints.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -20202,7 +20196,7 @@
     <value>1</value>
   </data>
   <data name="spTrigPoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>437, 352</value>
+    <value>437, 361</value>
   </data>
   <data name="spTrigPoints.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -20232,7 +20226,7 @@
     <value>1</value>
   </data>
   <data name="spSegmentsAndTrigpoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>437, 765</value>
+    <value>437, 774</value>
   </data>
   <data name="spSegmentsAndTrigpoints.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -20517,7 +20511,7 @@
     <value>Bottom</value>
   </data>
   <data name="dockBottomSegmentsAndTrigpoints.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 765</value>
+    <value>0, 774</value>
   </data>
   <data name="dockBottomSegmentsAndTrigpoints.Size" type="System.Drawing.Size, System.Drawing">
     <value>437, 32</value>
@@ -20541,7 +20535,7 @@
     <value>0, 0</value>
   </data>
   <data name="ControlContainer6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>437, 797</value>
+    <value>437, 806</value>
   </data>
   <data name="ControlContainer6.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -20568,7 +20562,7 @@
     <value>Bottom</value>
   </data>
   <data name="dockBottomDesignerBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 765</value>
+    <value>0, 774</value>
   </data>
   <data name="dockBottomDesignerBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>711, 32</value>
@@ -20592,7 +20586,7 @@
     <value>0, 0</value>
   </data>
   <data name="DockPanel1_Container.Size" type="System.Drawing.Size, System.Drawing">
-    <value>711, 797</value>
+    <value>711, 806</value>
   </data>
   <data name="DockPanel1_Container.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -21250,7 +21244,7 @@
     <value>415, 738</value>
   </data>
   <data name="dockJoinPoints.Text" xml:space="preserve">
-    <value>Join points</value>
+    <value>List of points to join</value>
   </data>
   <data name="&gt;&gt;dockJoinPoints.Name" xml:space="preserve">
     <value>dockJoinPoints</value>

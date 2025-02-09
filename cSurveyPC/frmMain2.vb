@@ -4709,6 +4709,9 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pPropertyJoinPoints()
+        'at now this button is not visible
+        btnCurrentItemPointsDoJoin.Visibility = BarItemVisibility.Never
+
         Dim iPointCount As Integer = oDockJoinPoints.GetPointsCount
         If pGetCurrentDesignTools.CurrentItemPoint Is Nothing Then
             btnCurrentItemPointsJoin.Enabled = False
@@ -15008,13 +15011,19 @@ Friend Class frmMain2
             bDisableFilterItemEvent = True
             Dim oDesignTools As cEditDesignTools = pGetCurrentDesignTools()
             If oDesignTools.IsFiltered Then
-                If Not btnFilterFiltered.Checked Then btnFilterFiltered.Checked = True
-                If btnFilterWhiteboard.Checked <> oDesignTools.FilterWhiteBoard Then btnFilterWhiteboard.Checked = oDesignTools.FilterWhiteBoard
+                If Not btnFilterFiltered.Checked Then
+                    btnFilterFiltered.Checked = True
+                End If
+                If btnFilterWhiteboard.Checked <> oDesignTools.FilterWhiteBoard Then
+                    btnFilterWhiteboard.Checked = oDesignTools.FilterWhiteBoard
+                End If
                 btnFilterWhiteboard.Enabled = btnFilterFiltered.Checked
-                If btnFilterWhiteboard.Checked <> oDesignTools.FilterWhiteBoard Then btnFilterWhiteboard.Checked = oDesignTools.FilterWhiteBoard
-                btnFilterWhiteboard.Enabled = btnFilterFiltered.Checked
-                If btnFilterInvertFilter.Checked <> oDesignTools.FilterReversed Then btnFilterInvertFilter.Checked = oDesignTools.FilterReversed
+
+                If btnFilterInvertFilter.Checked <> oDesignTools.FilterReversed Then
+                    btnFilterInvertFilter.Checked = oDesignTools.FilterReversed
+                End If
                 btnFilterInvertFilter.Enabled = btnFilterFiltered.Checked
+
                 If FullRefresh Then
                     Call oMousePointer.Push(Cursors.WaitCursor)
                     Threading.Tasks.Parallel.ForEach(Of cItem)(oCurrentDesign.GetAllItems, Sub(oItem)
@@ -15023,10 +15032,15 @@ Friend Class frmMain2
                     Call oMousePointer.Pop()
                 End If
             Else
-                If btnFilterFiltered.Checked Then btnFilterFiltered.Checked = False
-                If btnFilterWhiteboard.Checked Then btnFilterWhiteboard.Checked = False
+                If btnFilterFiltered.Checked Then
+                    btnFilterFiltered.Checked = False
+                End If
+                If btnFilterWhiteboard.Checked Then
+                    btnFilterWhiteboard.Checked = False
+                End If
                 btnFilterWhiteboard.Enabled = False
                 btnFilterInvertFilter.Enabled = False
+
                 If FullRefresh Then
                     Call oMousePointer.Push(Cursors.WaitCursor)
                     Threading.Tasks.Parallel.ForEach(Of cItem)(oCurrentDesign.GetAllItems, Sub(oItem)
@@ -15039,6 +15053,7 @@ Friend Class frmMain2
                     Call oMousePointer.Pop()
                 End If
             End If
+            Call oDockLevels.filterapply()
             If RefreshTreeLayers Then
                 If Not oFrozenDesktop Is Nothing Then Call pFrozeDesktopImage()
                 Call pMapInvalidate()

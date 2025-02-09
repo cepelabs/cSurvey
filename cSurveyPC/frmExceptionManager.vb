@@ -5,7 +5,7 @@ Imports System.Net
 Imports System.ComponentModel
 Imports DevExpress.XtraBars
 
-Friend Class frmExceptionManager
+Public Class frmExceptionManager
 
     Private oSurvey As cSurvey.cSurvey
     Private sFilename As String
@@ -79,6 +79,11 @@ Friend Class frmExceptionManager
         lblException.Text = sMessage
 
         sExceptionFilename = ""
+
+        If oSurvey Is Nothing Then
+            cmdSaveAsAndExit.Enabled = False
+            cmdSaveAs.Enabled = False
+        End If
 
         If bSendException Then
             Call tmrAskToSendException.Stop()

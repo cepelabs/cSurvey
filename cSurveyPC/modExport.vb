@@ -13,6 +13,11 @@ Imports cSurveyPC.cSurvey.UIHelpers
 Imports DevExpress.Utils.Drawing.Helpers.NativeMethods
 
 Module modExport
+
+    Public Function ReplaceInvalidChars(Filename As String) As String
+        Return String.Join("_", Filename.Split(Path.GetInvalidFileNameChars()))
+    End Function
+
     Public Sub CreateStationDictionary(TrigPointsToElaborate As List(Of String), KeyToExclude As List(Of Integer), ByRef InputDictionary As Dictionary(Of String, String), ByRef OutputDictionary As Dictionary(Of String, String))
         ''---------------------------------------------------------------------------------------------------------
         'InputDictionary = New Dictionary(Of String, String)
@@ -3672,7 +3677,7 @@ Module modExport
 
     Private Function pGetGoogleColor(ByVal Color As System.Drawing.Color) As String
         Dim sA As String = Hex(Color.A)
-        If sA.Length <2 Then sA="0" & sA
+        If sA.Length < 2 Then sA = "0" & sA
 
         Dim sR As String = Hex(Color.R)
         If sR.Length < 2 Then sR = "0" & sR

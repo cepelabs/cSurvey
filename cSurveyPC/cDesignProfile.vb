@@ -60,7 +60,7 @@ Namespace cSurvey.Design
             Dim oNearestSegment As cISegment = Nothing
             If BindDesignType = cItem.BindDesignTypeEnum.MainDesign Then
                 For Each oSegment As cSegment In oSurvey.Segments.GetCaveSegments(Cave, Branch)
-                    If Not oSegment.IsUnbindable Then ' If Not oSegment.IsSelfDefined AndAlso oSegment.IsValid AndAlso Not oSegment.IsEquate AndAlso Not oSegment.Unbindable AndAlso Not oSegment.Splay Then
+                    If Not oSegment.IsUnbindable Then
                         Dim sDistance As Single = Math.Abs(modPaint.DistancePointToSegment(Point, CType(oSegment.Data.Profile.FromPoint, PointF), CType(oSegment.Data.Profile.ToPoint, PointF)))
                         If sDistance < sMinDistance Then
                             sMinDistance = sDistance

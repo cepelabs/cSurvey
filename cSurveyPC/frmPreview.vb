@@ -1218,16 +1218,32 @@ Friend Class frmPreview
         Call oMousePointer.Pop()
     End Sub
 
+    Private Sub pWin11DisableNewDialog()
+        If Environment.OSVersion.Version.Major = 6 Then
+
+        End If
+        Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\Microsoft\Print\UnifiedPrintDialog", True).SetValue("PreferLegacyPrintDialog", 1, Microsoft.Win32.RegistryValueKind.DWord)
+    End Sub
+
+    Private Sub pWin11RestoreNewDialog()
+        Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\Microsoft\Print\UnifiedPrintDialog", True).DeleteValue("PreferLegacyPrintDialog")
+    End Sub
+
     Private Sub pPrint()
+        If btnRefresh.Visibility = BarItemVisibility.Always Then
+            Call btnRefresh.PerformClick()
+        End If
         prDialog.Document = oDoc
         prDialog.AllowPrintToFile = False
+        Call pWin11DisableNewDialog()
         prDialog.UseEXDialog = True
-        If prDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
+        If prDialog.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
             If bManualRefresh Then pRefresh(True)
             oDoc.DocumentName = If(oSurvey.Name <> "", oSurvey.Name, GetLocalizedString("preview.textpart1")) & If(oCurrentProfile.IsPlan, " - " & GetLocalizedString("preview.textpart2"), " - " & GetLocalizedString("preview.textpart3"))
             Call oDoc.Print()
             oDoc.DocumentName = oSurvey.Name
         End If
+        Call pWin11RestoreNewDialog()
     End Sub
 
     Private Sub chkPrintSegments1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkPrintShots.CheckedChanged
@@ -1467,6 +1483,9 @@ Friend Class frmPreview
 
     Private Sub pExport()
         Call pOptionsSave()
+        If btnRefresh.Visibility = BarItemVisibility.Always Then
+            Call btnRefresh.PerformClick()
+        End If
         Using oSD As SaveFileDialog = New SaveFileDialog
             With oSD
                 Dim oOptions As cSurvey.Design.cOptionsExport = oCurrentOptions
@@ -1477,10 +1496,11 @@ Friend Class frmPreview
                 Else
                     sLastFilename = IO.Path.GetFileNameWithoutExtension(sLastFilename) & "." & sExtension
                 End If
+                sLastFilename = modExport.ReplaceInvalidChars(sLastFilename)
                 .FileName = sLastFilename
                 .Filter = String.Format(GetLocalizedString("preview.filetypeIMAGES"), oOptions.FileFormat) & " (*." & sExtension & ")|*." & sExtension
                 .FilterIndex = 1
-                If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     If bInvalidated Then
                         'Call pRefresh(True, False)
                     End If
@@ -1488,7 +1508,7 @@ Friend Class frmPreview
                     Select Case sExt
                         Case ".jpg", ".tif", ".png", ".bmp"
                             Call oMousePointer.Push(Cursors.WaitCursor)
-                            If bManualRefresh Then pRefresh(True)
+                            'If bManualRefresh Then pRefresh(True)
                             sLastFilename = .FileName
                             Dim iImageFormat As System.Drawing.Imaging.ImageFormat
                             Select Case sExt
@@ -1543,7 +1563,7 @@ Friend Class frmPreview
                             Call oMousePointer.Pop()
                         Case ".svg"
                             Call oMousePointer.Push(Cursors.WaitCursor)
-                            If bManualRefresh Then pRefresh(True)
+                            'If bManualRefresh Then pRefresh(True)
 
                             Dim sImageWidth As Single = oOptions.ImageWidth  '4096
                             Dim sImageHeight As Single = oOptions.ImageHeight '4096
@@ -2067,7 +2087,7 @@ Friend Class frmPreview
         Else
             frmST = New frmScaleTools(oSurvey, oDesign, oOptions, iScale, cboPrinter.Text)
         End If
-        If frmST.ShowDialog = Windows.Forms.DialogResult.OK Then
+        If frmST.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
 
         End If
     End Sub
@@ -2087,7 +2107,7 @@ Friend Class frmPreview
             .CheckPathExists = True
             .FileName = oCurrentProfile.Name
             .AddExtension = True
-            If .ShowDialog = Windows.Forms.DialogResult.OK Then
+            If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Dim oXML As XmlDocument = New XmlDocument
                 Dim oXMLRoot As XmlElement = oXML.CreateElement("options")
                 Call oXMLRoot.SetAttribute("name", oCurrentProfile.Name)
@@ -2107,7 +2127,7 @@ Friend Class frmPreview
             .DefaultExt = "opx"
             .AddExtension = True
             .CheckPathExists = True
-            If .ShowDialog = Windows.Forms.DialogResult.OK Then
+            If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
 
                 Dim oXML As XmlDocument = New XmlDocument
                 Call oXML.Load(.FileName)
@@ -2192,7 +2212,7 @@ Friend Class frmPreview
     Private Sub cmdManageProfile_Click(sender As System.Object, e As System.EventArgs) Handles cmdManageProfile.Click
         Using frmCVM = New frmCaveVisibilityManager(oSurvey, oSurvey.Properties.CaveVisibilityProfiles, txtCurrentProfile.Text)
             AddHandler frmCVM.OnChangeVisibility, AddressOf frmCVM_OnChangeVisibility
-            Call frmCVM.ShowDialog()
+            Call frmCVM.ShowDialog(Me)
             RemoveHandler frmCVM.OnChangeVisibility, AddressOf frmCVM_OnChangeVisibility
         End Using
         'If frmCVM.ShowDialog = Windows.Forms.DialogResult.OK Then

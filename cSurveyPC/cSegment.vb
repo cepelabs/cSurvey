@@ -1139,7 +1139,6 @@ Namespace cSurvey
                     Call pReassignSplay(oCurrentData.To)
                 End If
 
-                Debug.Print(Me.GetHashCode & " - " & Me.GetHash)
                 If (Options And SaveOptionsEnum.EventRaisingDisable) = 0 Then RaiseEvent OnChange(Me, EventArgs.Empty)
                 Call ResetChange()
 

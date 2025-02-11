@@ -34,12 +34,15 @@ Partial Class frmImportPocketTopo
         Me.chkPocketTopoImportData = New DevExpress.XtraEditors.CheckEdit()
         Me.chkPocketTopoImportGraphics = New DevExpress.XtraEditors.CheckEdit()
         Me.chkPocketTopoImportGraphicsAsGeneric = New DevExpress.XtraEditors.CheckEdit()
+        Me.cboFieldSet = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.lblFieldSet = New DevExpress.XtraEditors.LabelControl()
         CType(Me.txtPrefix.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtFilename.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCaveName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkPocketTopoImportData.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkPocketTopoImportGraphics.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkPocketTopoImportGraphicsAsGeneric.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboFieldSet.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtPrefix
@@ -111,7 +114,22 @@ Partial Class frmImportPocketTopo
         resources.ApplyResources(Me.chkPocketTopoImportGraphicsAsGeneric, "chkPocketTopoImportGraphicsAsGeneric")
         Me.chkPocketTopoImportGraphicsAsGeneric.Name = "chkPocketTopoImportGraphicsAsGeneric"
         Me.chkPocketTopoImportGraphicsAsGeneric.Properties.AutoWidth = True
-        Me.chkPocketTopoImportGraphicsAsGeneric.Properties.Caption = resources.GetString("CheckEdit1.Properties.Caption")
+        Me.chkPocketTopoImportGraphicsAsGeneric.Properties.Caption = resources.GetString("chkPocketTopoImportGraphicsAsGeneric.Properties.Caption")
+        '
+        'cboFieldSet
+        '
+        resources.ApplyResources(Me.cboFieldSet, "cboFieldSet")
+        Me.cboFieldSet.Name = "cboFieldSet"
+        Me.cboFieldSet.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboFieldSet.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboFieldSet.Properties.Items.AddRange(New Object() {resources.GetString("cboFieldSet.Properties.Items"), resources.GetString("cboFieldSet.Properties.Items1")})
+        Me.cboFieldSet.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
+        'lblFieldSet
+        '
+        Me.lblFieldSet.Appearance.Font = CType(resources.GetObject("lblFieldSet.Appearance.Font"), System.Drawing.Font)
+        Me.lblFieldSet.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.lblFieldSet, "lblFieldSet")
+        Me.lblFieldSet.Name = "lblFieldSet"
         '
         'frmImportPocketTopo
         '
@@ -119,6 +137,8 @@ Partial Class frmImportPocketTopo
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
+        Me.Controls.Add(Me.lblFieldSet)
+        Me.Controls.Add(Me.cboFieldSet)
         Me.Controls.Add(Me.chkPocketTopoImportGraphicsAsGeneric)
         Me.Controls.Add(Me.chkPocketTopoImportGraphics)
         Me.Controls.Add(Me.chkPocketTopoImportData)
@@ -142,6 +162,7 @@ Partial Class frmImportPocketTopo
         CType(Me.chkPocketTopoImportData.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkPocketTopoImportGraphics.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkPocketTopoImportGraphicsAsGeneric.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboFieldSet.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -157,4 +178,6 @@ Partial Class frmImportPocketTopo
     Friend WithEvents chkPocketTopoImportData As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkPocketTopoImportGraphics As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkPocketTopoImportGraphicsAsGeneric As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents cboFieldSet As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents lblFieldSet As DevExpress.XtraEditors.LabelControl
 End Class

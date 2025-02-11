@@ -210,7 +210,16 @@
   <data name="chkPocketTopoImportGraphics.Properties.Caption" xml:space="preserve">
     <value>Importa grafica</value>
   </data>
-  <data name="CheckEdit1.Properties.Caption" xml:space="preserve">
+  <data name="lblFieldSet.Text" xml:space="preserve">
+    <value>Campi:</value>
+  </data>
+  <data name="cboFieldSet.Properties.Items" xml:space="preserve">
+    <value>0 - Direzione, Inclinazione, Distanza</value>
+  </data>
+  <data name="cboFieldSet.Properties.Items1" xml:space="preserve">
+    <value>1 - Distanza, Direzione, Inclinazione</value>
+  </data>
+  <data name="chkPocketTopoImportGraphicsAsGeneric.Properties.Caption" xml:space="preserve">
     <value>Importa come oggetti generici</value>
   </data>
 </root>

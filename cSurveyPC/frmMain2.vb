@@ -12398,6 +12398,7 @@ Friend Class frmMain2
         Dim bImportData As Boolean
         Dim bImportGraphics As Boolean
         Dim bUseGenericObject As Boolean
+        Dim iFieldSet As Integer
 
         Using frmIPT As frmImportPocketTopo = New frmImportPocketTopo
             frmIPT.txtFilename.Text = Filename
@@ -12406,6 +12407,8 @@ Friend Class frmMain2
                 bImportData = frmIPT.chkPocketTopoImportData.Checked
                 bImportGraphics = frmIPT.chkPocketTopoImportGraphics.Checked
                 bUseGenericObject = frmIPT.chkPocketTopoImportGraphicsAsGeneric.Checked
+
+                iFieldSet = frmIPT.cbofieldset.selectedindex
 
                 Dim sForcedCaveName As String = frmIPT.txtCaveName.Text
                 Dim sPrefix As String = frmIPT.txtPrefix.Text.Trim.ToUpper
@@ -12498,6 +12501,8 @@ Friend Class frmMain2
                                                 bPolyline = False
                                                 bStations = False
                                             Case "STATIONS"
+                                                bData = False
+                                                bPolyline = False
                                                 bStations = True
                                             Case "DATA"
                                                 bData = bImportData
@@ -12561,24 +12566,36 @@ Friend Class frmMain2
                                     Else
                                         If bStations Then
                                             sLineParts = sLine.Split(vbTab)
-                                            If sOrigin = "" Then
-                                                sOrigin = sLineParts(2)
+
+                                            Dim sStation As String = sLineParts(2)
+                                            Dim oTraslation As SizeF = New SizeF(-modNumbers.StringToDecimal(sLineParts(0)), modNumbers.StringToDecimal(sLineParts(1)))
+                                            If oTraslation.IsEmpty OrElse sOrigin = "" Then
+                                                sOrigin = sStation
                                                 If iDesign = cIDesign.cDesignTypeEnum.Plan Then
-                                                    oPlanTraslation = New SizeF(-modNumbers.StringToDecimal(sLineParts(0)), modNumbers.StringToDecimal(sLineParts(1)))
+                                                    oPlanTraslation = oTraslation
                                                 Else
-                                                    oProfileTraslation = New SizeF(-modNumbers.StringToDecimal(sLineParts(0)), modNumbers.StringToDecimal(sLineParts(1)))
+                                                    oProfileTraslation = oTraslation
                                                 End If
-                                                bStations = False
-                                            Else
-                                                If sLineParts(2) = sOrigin Then
-                                                    If iDesign = cIDesign.cDesignTypeEnum.Plan Then
-                                                        oPlanTraslation = New SizeF(-modNumbers.StringToDecimal(sLineParts(0)), modNumbers.StringToDecimal(sLineParts(1)))
-                                                    Else
-                                                        oProfileTraslation = New SizeF(-modNumbers.StringToDecimal(sLineParts(0)), modNumbers.StringToDecimal(sLineParts(1)))
-                                                    End If
-                                                End If
-                                                bStations = False
                                             End If
+                                            'If sOrigin = "" Then
+                                            '    sOrigin = sLineParts(2)
+                                            '    If iDesign = cIDesign.cDesignTypeEnum.Plan Then
+                                            '        oPlanTraslation = New SizeF(-modNumbers.StringToDecimal(sLineParts(0)), modNumbers.StringToDecimal(sLineParts(1)))
+                                            '    Else
+                                            '        oProfileTraslation = New SizeF(-modNumbers.StringToDecimal(sLineParts(0)), modNumbers.StringToDecimal(sLineParts(1)))
+                                            '    End If
+                                            '    bStations = False
+                                            'Else
+                                            '    If iDesign = cIDesign.cDesignTypeEnum.Plan Then
+                                            '        oPlanTraslation = New SizeF(-modNumbers.StringToDecimal(sLineParts(0)), modNumbers.StringToDecimal(sLineParts(1)))
+                                            '    Else
+                                            '        oProfileTraslation = New SizeF(-modNumbers.StringToDecimal(sLineParts(0)), modNumbers.StringToDecimal(sLineParts(1)))
+                                            '    End If
+                                            '    If oPlanTraslation.IsEmpty Then
+                                            '        sOrigin = sLineParts(2)
+                                            '    End If
+                                            '    bStations = False
+                                            'End If
                                         End If
                                         If bPolyline Then
                                             Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, sr.BaseStream.Position / sr.BaseStream.Length, GetLocalizedString("main.progress6b"))
@@ -12610,32 +12627,42 @@ Friend Class frmMain2
                                                 Dim iDirection As cSurvey.cSurvey.DirectionEnum
                                                 Dim sNote As String
 
-                                                Try : sFrom = sPrefix & sLineParts(0).Trim.ToUpper : Catch : sFrom = "" : End Try
-                                                Try : sTo = sLineParts(1).Trim.ToUpper : Catch : sTo = "" : End Try
-                                                If sTo <> "" Then sTo = sPrefix & sTo
+                                                If Not sLineParts(0).Trim.StartsWith("*") Then
 
-                                                Try : dDir = modNumbers.StringToDecimal(sLineParts(2)) : Catch : dDist = 0 : End Try
-                                                Try : dIncl = modNumbers.StringToDecimal(sLineParts(3)) : Catch : dDir = 0 : End Try
-                                                Try : dDist = modNumbers.StringToDecimal(sLineParts(4)) : Catch : dIncl = 0 : End Try
+                                                    Try : sFrom = sPrefix & sLineParts(0).Trim.ToUpper : Catch : sFrom = "" : End Try
+                                                    Try : sTo = sLineParts(1).Trim.ToUpper : Catch : sTo = "" : End Try
+                                                    If sTo = "-" Then sTo = ""
+                                                    If sTo <> "" Then sTo = sPrefix & sTo
 
-                                                Try
-                                                    If sLineParts(5) = "<" Then
-                                                        iDirection = cSurvey.cSurvey.DirectionEnum.Left
-                                                    Else
-                                                        iDirection = cSurvey.cSurvey.DirectionEnum.Right
+                                                    If iFieldSet = 0 Then
+                                                        Try : dDir = modNumbers.StringToDecimal(sLineParts(2)) : Catch : dDir = 0 : End Try
+                                                        Try : dIncl = modNumbers.StringToDecimal(sLineParts(3)) : Catch : dIncl = 0 : End Try
+                                                        Try : dDist = modNumbers.StringToDecimal(sLineParts(4)) : Catch : dDist = 0 : End Try
+                                                    ElseIf iFieldSet = 1 Then
+                                                        Try : dDist = modNumbers.StringToDecimal(sLineParts(2)) : Catch : dDist = 0 : End Try
+                                                        Try : dDir = modNumbers.StringToDecimal(sLineParts(3)) : Catch : dDir = 0 : End Try
+                                                        Try : dIncl = modNumbers.StringToDecimal(sLineParts(4)) : Catch : dIncl = 0 : End Try
                                                     End If
-                                                Catch
-                                                    iDirection = cSurvey.cSurvey.DirectionEnum.Right
-                                                End Try
 
-                                                dLeft = 0
-                                                dRight = 0
-                                                dUp = 0
-                                                dDown = 0
+                                                    Try
+                                                        If sLineParts(5) = "<" Then
+                                                            iDirection = cSurvey.cSurvey.DirectionEnum.Left
+                                                        Else
+                                                            iDirection = cSurvey.cSurvey.DirectionEnum.Right
+                                                        End If
+                                                    Catch
+                                                        iDirection = cSurvey.cSurvey.DirectionEnum.Right
+                                                    End Try
 
-                                                sNote = ""
+                                                    dLeft = 0
+                                                    dRight = 0
+                                                    dUp = 0
+                                                    dDown = 0
 
-                                                Call oTempSegments.Add(New cImportSegment(oCurrentSession, sFrom, sTo, dDist, dDir, dIncl, sNote, iDirection, dLeft, dRight, dUp, dDown))
+                                                    sNote = ""
+
+                                                    Call oTempSegments.Add(New cImportSegment(oCurrentSession, sFrom, sTo, dDist, dDir, dIncl, sNote, iDirection, dLeft, dRight, dUp, dDown))
+                                                End If
                                             Catch
                                             End Try
                                         End If

@@ -4939,6 +4939,7 @@
     <None Include="Resources\replacefill.svg" />
     <None Include="Resources\refresh_warning.svg" />
     <None Include="Resources\timezones.svg" />
+    <None Include="Resources\filter_refresh.svg" />
     <Content Include="version.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

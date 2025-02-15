@@ -2069,7 +2069,7 @@ Partial Class frmProperties
         Me.txt3DNormalizationFactor.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txt3DNormalizationFactor.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
         Me.txt3DNormalizationFactor.Properties.MaskSettings.Set("mask", "N1")
-        Me.txt3DNormalizationFactor.Properties.MaxValue = New Decimal(New Integer() {5, 0, 0, 65536})
+        Me.txt3DNormalizationFactor.Properties.MaxValue = New Decimal(New Integer() {5, 0, 0, 0})
         Me.txt3DNormalizationFactor.Properties.MinValue = New Decimal(New Integer() {5, 0, 0, 65536})
         '
         'GroupBox2

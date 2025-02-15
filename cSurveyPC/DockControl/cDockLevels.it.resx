@@ -171,4 +171,7 @@
   <data name="btnLayerSync.Caption" xml:space="preserve">
     <value>Allinea selezione</value>
   </data>
+  <data name="btnReapplyFilter.Caption" xml:space="preserve">
+    <value>Riapplica filtro</value>
+  </data>
 </root>

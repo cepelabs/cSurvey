@@ -1537,14 +1537,8 @@ Friend Class frmMain2
         txtSegmentUp.Text = ""
         txtSegmentDown.Text = ""
 
-        'Select Case oSurvey.Properties.InversionMode
-        '    Case cSurvey.cSurvey.InversioneModeEnum.Absolute
         cboSegmentDirection.SelectedIndex = 0
         cboSegmentDirection.Enabled = False
-        '    Case cSurvey.cSurvey.InversioneModeEnum.Relative
-        '        chkSegmentInverted.Checked = False
-        '        chkSegmentInverted.Enabled = False
-        'End Select
 
         chkSegmentExclude.Checked = False
         chkSegmentSplay.Checked = False
@@ -13560,7 +13554,7 @@ Friend Class frmMain2
         My.Application.CreateCustomSkinAndPalette()
 
         ' Add any initialization after the InitializeComponent() call.
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlSegment, False)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlSegment, False, True)
         LayoutControlItem2.TextVisible = False
         LayoutControlItem2.Padding = New DevExpress.XtraLayout.Utils.Padding(0)
         LayoutControlItem2.Control = pnlSegmentSession
@@ -13583,7 +13577,7 @@ Friend Class frmMain2
         LayoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Call pFix(pnlSegment)
 
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlTrigPoint, False)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlTrigPoint, False, True)
         LayoutControlItem8.TextVisible = False
         LayoutControlItem8.Padding = New DevExpress.XtraLayout.Utils.Padding(0)
         LayoutControlItem8.Control = pnlTrigpointName
@@ -13592,26 +13586,26 @@ Friend Class frmMain2
         LayoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Call pFix(pnlTrigPoint)
 
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlTrigpointCoordinate, False)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlTrigpointCoordinate, False, True)
 
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(RibbonControl, False)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(RibbonControl, False, True)
 
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlDesignProp, False)
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnl3DProp, False)
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlObjectSubProp, False)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlDesignProp, False, True)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnl3DProp, False, True)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlObjectSubProp, False, True)
 
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockClipart, False)
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockBrushesAndPens, False)
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockLevels, False)
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockConsole, False)
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockProperties, False)
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockIV, False)
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockAV, False)
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockLS, False)
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockText, False)
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockTexts, False)
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockDistances, False)
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockJoinPoints, False)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockClipart, False, True)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockBrushesAndPens, False, True)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockLevels, False, True)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockConsole, False, True)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockProperties, False, True)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockIV, False, True)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockAV, False, True)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockLS, False, True)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockText, False, True)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockTexts, False, True)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockDistances, False, True)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockJoinPoints, False, True)
 
         Call My.Application.RuntimeSettings.OnPropertyChangedAppend(AddressOf oEditDesignEnvironment_OnChanged)
         AddHandler DevExpress.LookAndFeel.UserLookAndFeel.Default.StyleChanged, Sub()
@@ -15050,6 +15044,7 @@ Friend Class frmMain2
                     btnFilterInvertFilter.Checked = oDesignTools.FilterReversed
                 End If
                 btnFilterInvertFilter.Enabled = btnFilterFiltered.Checked
+                btnFilterReapplyFilter.Enabled = btnFilterFiltered.Checked
 
                 If FullRefresh Then
                     Call oMousePointer.Push(Cursors.WaitCursor)
@@ -15067,6 +15062,7 @@ Friend Class frmMain2
                 End If
                 btnFilterWhiteboard.Enabled = False
                 btnFilterInvertFilter.Enabled = False
+                btnFilterReapplyFilter.Enabled = False
 
                 If FullRefresh Then
                     Call oMousePointer.Push(Cursors.WaitCursor)
@@ -17632,7 +17628,6 @@ Friend Class frmMain2
         ElseIf grdViewSegments.FocusedColumn Is colSegmentsListAttachment Then
             tabSegmentsPropertyitem.SelectedTabPage = tabSegmentsAttachmentsitem
             If oTools.CurrentSegment.Attachments.Count = 1 Then
-                'If IsNothing(tvSegmentAttachments.SelectedObject) Then tvSegmentAttachments.SelectedObject = DirectCast(tvSegmentAttachments.Objects, cAttachmentLinks).FirstOrDefault
                 Call pSegmentAttachmentOpen()
             End If
         End If
@@ -17731,7 +17726,6 @@ Friend Class frmMain2
                     e.Cancel = Not txtSegmentFrom.Enabled
                 ElseIf grdViewSegments.FocusedColumn Is colSegmentsListTo Then
                     e.Cancel = Not txtSegmentTo.Enabled
-
                 ElseIf grdViewSegments.FocusedColumn Is colSegmentsListDistance Then
                     e.Cancel = Not txtSegmentDistance.Enabled
                 ElseIf grdViewSegments.FocusedColumn Is colSegmentsListInclination Then
@@ -17746,17 +17740,8 @@ Friend Class frmMain2
                     e.Cancel = Not txtSegmentUp.Enabled
                 ElseIf grdViewSegments.FocusedColumn Is colSegmentsListD Then
                     e.Cancel = Not txtSegmentDown.Enabled
-
-                    'If grdViewSegments.FocusedColumn Is colSegmentsListFrom OrElse grdViewSegments.FocusedColumn Is colSegmentsListTo Then
-
-                    '    If Not oTools.CurrentSegment Is Nothing Then
-                    '        With oTools.CurrentSegment
-                    '            Dim bDisabledEdit As Boolean = (.IsBinded)
-                    '            e.Cancel = bDisabledEdit
-                    '        End With
-                    '    End If
                 ElseIf grdViewSegments.FocusedColumn Is colSegmentsListProfileDirection Then
-                    e.Cancel = Not cboSegmentListProfileDirection2.Enabled '  oSegment.Splay OrElse oSegment.IsProfileBinded
+                    e.Cancel = Not cboSegmentDirection.Enabled
                 End If
             End If
             bSegmentChanged = True
@@ -17772,10 +17757,6 @@ Friend Class frmMain2
         Else
             Call pSelectSegment(oSegmentPlaceholder.Segment)
         End If
-    End Sub
-
-    Private Sub grdViewSegments_HiddenEditor(sender As Object, e As EventArgs) Handles grdViewSegments.HiddenEditor
-
     End Sub
 
     Private Sub grdViewSegments_ValidatingEditor(sender As Object, e As DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs) Handles grdViewSegments.ValidatingEditor
@@ -20184,6 +20165,11 @@ Friend Class frmMain2
 
     Private Sub btnCurrentItemPointsPointToJoinList_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCurrentItemPointsPointToJoinList.ItemClick
         Call pJoinPointsShow(True)
+    End Sub
+
+    Private Sub btnFilterReapplyFilter_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnFilterReapplyFilter.ItemClick
+        Dim oDesignTools As cEditDesignTools = pGetCurrentDesignTools()
+        oDesignTools.FilterApply(True)
     End Sub
 End Class
 

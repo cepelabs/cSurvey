@@ -385,11 +385,13 @@ Friend Class cDockLevels
                 btnWhiteboard.Enabled = btnFiltered.Checked
                 If btnInvertFilter.Checked <> oDesignTools.FilterReversed Then btnInvertFilter.Checked = oDesignTools.FilterReversed
                 btnInvertFilter.Enabled = btnFiltered.Checked
+                btnReapplyFilter.Enabled = btnFiltered.Checked
             Else
                 If btnFiltered.Checked Then btnFiltered.Checked = False
                 If btnWhiteboard.Checked Then btnWhiteboard.Checked = False
                 btnWhiteboard.Enabled = False
                 btnInvertFilter.Enabled = False
+                btnReapplyFilter.Enabled = False
             End If
             bDisableFilterItemEvent = False
         End If
@@ -468,4 +470,9 @@ Friend Class cDockLevels
         End If
     End Sub
 
+    Private Sub btnReapplyFilter_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnReapplyFilter.ItemClick
+        If Not bDisableFilterItemEvent Then
+            Call oDesignTools.FilterApply()
+        End If
+    End Sub
 End Class

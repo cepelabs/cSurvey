@@ -30,6 +30,7 @@ Partial Class cDockLevels
         Me.btnFiltered = New DevExpress.XtraBars.BarCheckItem()
         Me.btnWhiteboard = New DevExpress.XtraBars.BarCheckItem()
         Me.btnInvertFilter = New DevExpress.XtraBars.BarCheckItem()
+        Me.btnReapplyFilter = New DevExpress.XtraBars.BarButtonItem()
         Me.btnLayerSync = New DevExpress.XtraBars.BarButtonItem()
         Me.btnObjectProperty = New DevExpress.XtraBars.BarButtonItem()
         Me.btnObjectSelect = New DevExpress.XtraBars.BarButtonItem()
@@ -66,8 +67,8 @@ Partial Class cDockLevels
         Me.BarManager.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager.DockControls.Add(Me.barDockControlRight)
         Me.BarManager.Form = Me
-        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnFilterEdit, Me.btnRefresh, Me.btnFiltered, Me.btnWhiteboard, Me.btnInvertFilter, Me.btnLayerSync, Me.btnObjectProperty, Me.btnObjectSelect, Me.btnExpandAll, Me.btnCollapseAll})
-        Me.BarManager.MaxItemId = 11
+        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnFilterEdit, Me.btnRefresh, Me.btnFiltered, Me.btnWhiteboard, Me.btnInvertFilter, Me.btnLayerSync, Me.btnObjectProperty, Me.btnObjectSelect, Me.btnExpandAll, Me.btnCollapseAll, Me.btnReapplyFilter})
+        Me.BarManager.MaxItemId = 12
         '
         'BarMain
         '
@@ -76,7 +77,7 @@ Partial Class cDockLevels
         Me.BarMain.DockCol = 0
         Me.BarMain.DockRow = 0
         Me.BarMain.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.BarMain.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnFilterEdit), New DevExpress.XtraBars.LinkPersistInfo(Me.btnFiltered), New DevExpress.XtraBars.LinkPersistInfo(Me.btnWhiteboard), New DevExpress.XtraBars.LinkPersistInfo(Me.btnInvertFilter), New DevExpress.XtraBars.LinkPersistInfo(Me.btnLayerSync, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnObjectProperty, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnObjectSelect), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRefresh, True)})
+        Me.BarMain.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnFilterEdit), New DevExpress.XtraBars.LinkPersistInfo(Me.btnFiltered), New DevExpress.XtraBars.LinkPersistInfo(Me.btnWhiteboard), New DevExpress.XtraBars.LinkPersistInfo(Me.btnInvertFilter), New DevExpress.XtraBars.LinkPersistInfo(Me.btnReapplyFilter), New DevExpress.XtraBars.LinkPersistInfo(Me.btnLayerSync, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnObjectProperty, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnObjectSelect), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRefresh, True)})
         Me.BarMain.OptionsBar.AllowQuickCustomization = False
         Me.BarMain.OptionsBar.DisableClose = True
         Me.BarMain.OptionsBar.DisableCustomization = True
@@ -113,6 +114,14 @@ Partial Class cDockLevels
         Me.btnInvertFilter.Id = 5
         Me.btnInvertFilter.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.invertfilter
         Me.btnInvertFilter.Name = "btnInvertFilter"
+        '
+        'btnReapplyFilter
+        '
+        resources.ApplyResources(Me.btnReapplyFilter, "btnReapplyFilter")
+        Me.btnReapplyFilter.Enabled = False
+        Me.btnReapplyFilter.Id = 11
+        Me.btnReapplyFilter.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.filter_refresh
+        Me.btnReapplyFilter.Name = "btnReapplyFilter"
         '
         'btnLayerSync
         '
@@ -182,7 +191,7 @@ Partial Class cDockLevels
         '
         'mnuContext
         '
-        Me.mnuContext.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnExpandAll), New DevExpress.XtraBars.LinkPersistInfo(Me.btnCollapseAll), New DevExpress.XtraBars.LinkPersistInfo(Me.btnFilterEdit, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnFiltered), New DevExpress.XtraBars.LinkPersistInfo(Me.btnObjectProperty, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnObjectSelect), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRefresh, True)})
+        Me.mnuContext.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnExpandAll), New DevExpress.XtraBars.LinkPersistInfo(Me.btnCollapseAll), New DevExpress.XtraBars.LinkPersistInfo(Me.btnFilterEdit, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnFiltered), New DevExpress.XtraBars.LinkPersistInfo(Me.btnReapplyFilter), New DevExpress.XtraBars.LinkPersistInfo(Me.btnObjectProperty, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnObjectSelect), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRefresh, True)})
         Me.mnuContext.Manager = Me.BarManager
         Me.mnuContext.Name = "mnuContext"
         '
@@ -322,4 +331,5 @@ Partial Class cDockLevels
     Friend WithEvents colTreeLayersCaveBranchColor As DevExpress.XtraTreeList.Columns.TreeListColumn
     Friend WithEvents btnExpandAll As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnCollapseAll As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnReapplyFilter As DevExpress.XtraBars.BarButtonItem
 End Class

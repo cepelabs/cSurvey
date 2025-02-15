@@ -12,7 +12,6 @@ Module Module1
     Public Function GetReleaseVersion() As String
         Dim oFi As FileInfo = New FileInfo(Path.Combine(Environment.CurrentDirectory, "csurveypc.exe"))
         Dim dDate As Date = oFi.LastWriteTime
-        MsgBox(dDate)
         Return sBaseVersion & "." & Strings.Format(dDate.Year - 2010, "0") & "." & Strings.Format(dDate.DayOfYear, "000") & Strings.Format((10 * (dDate.Hour * 60 + dDate.Minute) / 1440), "0")
     End Function
 

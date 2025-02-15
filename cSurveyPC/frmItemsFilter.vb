@@ -48,7 +48,11 @@ Friend Class frmItemsFilter
         Next
 
         txtName.Text = "" & oFilter.Name
-        cboCategories.Text = New cFilterCategoryItem(oFilter.Category).ToString
+        If oFilter.Category Is Nothing Then
+            cboCategories.SelectedIndex = 0
+        Else
+            cboCategories.EditValue = New cFilterCategoryItem(oFilter.Category)
+        End If
 
         Call pFillCaveList()
         cboCaveList.EditValue = oSurvey.Properties.GetCaveInfo(oFilter.Cave, "")

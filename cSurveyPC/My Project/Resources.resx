@@ -2161,4 +2161,7 @@
   <data name="timezones" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\timezones.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="filter_refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\filter_refresh.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
 </root>

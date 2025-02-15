@@ -6537,4 +6537,7 @@ o ad una sezione trasversale</value>
   <data name="lblTrigpointCoordinateBand.Text" xml:space="preserve">
     <value>Banda:</value>
   </data>
+  <data name="btnFilterReapplyFilter.Caption" xml:space="preserve">
+    <value>Riapplica filtro</value>
+  </data>
 </root>

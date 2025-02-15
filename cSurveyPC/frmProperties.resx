@@ -1410,17 +1410,17 @@
   <data name="btnCaveInfoSelectSegment.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAI6SURBVDhPpZPfa1JhHMbPPxJR3ZTzdxJYVDAq1kU1
-        FlHU7oqKbgryqoSstbAsnT8vMrawFi0qaGOwNRZbc8Mf5+hmzjN1uRop7KLU43EeHfH0HlNyZNToCx/e
-        l/c8z/Oe7/dwKAD/RdPDjUCFXTv/gJoKO9VUyKn6HYeKYmzyMxG3Fk2NooixK57TVimCPRIELTVq+4B5
-        B5IvjqD0oWt9ADFmGbsStFWGjy/bsRY3obLoQiVpQyXRQzCjEjdDYE0QYkYScLsxQE1uVQKfzPA/2E7M
-        dyBEb6Cceozy8muUl55CWHwEIeFEibWgFDWiOGf4FSD2RVvl8JslKM/rkeg/CNazDzxzGcWYBatJN1ZZ
-        K4rzJhQjXeBn9Sgwup8BIYeaom2K5czISQizVxB/1or4k/2opNzgAxfA+c6Bn7tVNYsrH76GAn0VnP8S
-        SN+iWZnODB9DMXgWabKmBg5gbcmFuGcvYn1a5Kc7kZs6DS6oQyGsB0frkPedR87bCYpxqCYyQ23gZ04h
-        PdiG6fvSz8M3Ja9CTiUSHi2EhXvIv+9AbrID2Yl2FHwXq2/ETR0H5z1RDQDvPYovb1oxY1asUBTVQtg8
-        2i0dibo1pFcD2L5diPVqkH13GF/HDiHZvxtBMi/aqgA1flc+KYYEbMpvxCirD5XUlrfd0lEyG7C9ajL1
-        61gZ2oPIQw0GDS0D5Lkoqgq31TaKurkxZMwoGxcvED8xY1d9r2k3NWj+WlsJorLO+mr2g2yEpof/Dqgf
-        oOlqFdylEOcAAAAASUVORK5CYII=
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAI9SURBVDhPpZPfS1NhHMa//0hEdVO67WxLghUVSIVd
+        lGJEUd4VFd0U5FUNssxYWWee6dlFCw3LyKggZaCJofmD6c7ZdM6dtpmW5MCLcjs7c2dnxBNnLTJXhPTC
+        w/vy8jyf7/uTAND/qGRio6Kge+dfZKUgb6UAbylVm4VEl+l0yGPDH4O6SWxlngmcAf6WMvidRRXHk+wO
+        xJ8fQXam8XdAgLesiK1mCJwRH17UIB9thjbnhhZ3QYu1QIux0KIsVKkZasSB7MyttQAr6WF8ZDFxfzvy
+        0dtQw9eRm3+E3OIr5BaeQJ17CDXGIys5kQ07kJlu+AXQ9yVwJkywZcjN2hHrOgipcx8U8RIyESdW4x6s
+        Shwys83IhBqhTNmRFut/AAJtVhJczGKi7wTUqcuIPq1E9PF+aPMeKJPnIfvOQpm+WQjrvRK8irRwBfLE
+        RVCA18PmpYS3Ghn/GSx5qzHffQD5BTeinXsR6bAhNVaH5MgpyP56pIN2yEI9Ur5zSI7WgcQ2y1CitwrK
+        +Eks9VRh7J7hk/dG2csAb0as0wb1/V2k3tUiOVyLlaEapH0XCiuSR45BHj1eAEAZPYrPrysxzjLLRFRO
+        RJv7mwx9YU8FlKkGSB27EGmvwMrbw/gycAjxrt3wcyYIHAMavGMa1iGTLvNXIjL+PFQi2vKmydAvuBhI
+        7VZkw9ew3LsHoQcV6Gko7yYi3VQwbisOmPWPSocMOIyDegH9isVWy7eid9Mazz/b1jXVShPrP8dGVTKx
+        UX0HoOlqFWGZbvQAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="btnCaveInfoSelectSegment.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -1456,16 +1456,16 @@
   <data name="btnCaveInfoSegmentsRefresh.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIZSURBVDhPjVLNS1RxFL1W0ErByVpMKJHbwsUQtAts
-        Rp2x2lQWjX1Im2jTIoIWEVRMOTMqSvQxo5H2gW8eZbQoyiDQMVMzaRplhPlYRC2D+gtO577nc2ycoQ5c
-        3v3d373n/u55VwDIv9DeIz/9USmf+D8EXYONWPo2gv23ypCUErRFxGgJC7zdNBa00u97JRib2Y5Phfto
-        LiVZS+CPVmFosg3TuU7MFIL4WDiB6XwQyWwnYkmBOb+VfghsUixyCPwMml/24GVmB0bT1RhdrIZBU/9J
-        qgbxOUEivQXvMhfXExzs3Xjn5rgbRnYzQu8FXcOCk0P2CErcP0vynAsv0metGMs8djWhBO1U+OGy4DJn
-        9YXk+97zcp1XmmTZkYFamIuH0UJdVmJF2C8QKMm+SxJjaBetLtAjjw4wrjmBsPzgebWYv9XQfK1zNHC6
-        ufWgnRLpQzg64LIuid00TyAq4dZu+aUv1RcryaqIDnTGZ6nTMPO16KdwukA+xk5Rk3NPBZEpgZHfhBvj
-        2+C9ssH8i0DVfZO5gMSSC4OfBQ8WBMMpwchX+6s2tlyPx/NNFLdKCxvWEUxmryGxUIcYO01kjyGZ68BU
-        vgMfCvzSj094wVG0yBazZASPruts7jaez7nR91pw/K4geE+sIh+3svmqvNU8O50o1YCwSHT3z8QbnU5r
-        bSetiDIECo+KF4jI75VzZVQgUGi3JtutBJE/8+1JCaYtm7oAAAAASUVORK5CYII=
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIOSURBVDhPjZLLaxNRFMa/quAqQmN1EVHEbpUuguBO
+        qEmbTNSNGsXUR3EjblyI4EIElZhkkpYW8ZE0YuuDTgatuKhoBaFNrG2sxZiUFGaShehS0L/gkzMxNJlE
+        9IPL3Ln3nN953AOS+JcCCfzwx9He8H8Ag2PdXPk6wQORNhA7wKdC64uBnijoiYD9MXB4Gpxa2MaP1fvs
+        tUMaAf54B9NzPs6bA1yohvihepLzlRCzxgCTWVBf2sKsEaZPbYDUAX4V1D/v5cvyTk4WHZwsOaiVHNb+
+        SWETU3kwU9zMt+VLrYBDQ+vv3JpxUTM2MvwOHBwHT6VrJQh4ZBHUTSdfFM9ZZwDcTYBAHHy4Cl6ZBr1h
+        fNt3ATf+GFnr6Ggn9dIR9kVtzmsZgALZfxlJALsBdCkJPDo4VEtVieG7klhzDiSgib341XtQj+aSH4mU
+        KR7msVFnvdY9cq/EEeuP4qdkKhkLpOUZpcZnhTPUK50cyYMyQN4IeDoNnn8KqjlQq2zgzZmt9FxdpzcB
+        pLuvyxeZWXFy7BP4YBkcL4ATX2pfWVOr2/l4qYd+tUMcd7QA5ozrzCx3MZkDZ43jzJpB5ipBvq8GmTOD
+        TM16qNTGutZMWwluGddF8zaf510cfgWeuAuG7sFy8sbA3mt40/KMNlkQmf2zqe56pMa1q8m6DUDkluYp
+        Kn7ZL1r0F4BIovXYD+36DfPtSQnNLFMTAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="btnCaveInfoSegmentsRefresh.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -1853,14 +1853,14 @@
   <data name="cmdChangeInversionModeAndSetDirections.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABkUlEQVQ4T5WSTUsCURSGz7J1i1YFhSuh
-        hSC0LFBz8uMPBG0K2vQTgqgUsk8XLVokhrrITYUuCozIpEUxRiCVJVlObtr3B97OmZlkahyhF144c869
-        z9xz7yEAZJWySRCbnz2l77UCfAnCg7avW2Iz7ahfgMA6ofqaRLpEuiWWnF50UAcQ3iaozRgyFULq0rDE
-        ajMOqZnrbeoAIlv0FdwgLJ8QDq4Nr3AsOamZ623qAFgetlf6vmsvIHtLCBh34DVrXWUF6JKebz6mkVEZ
-        sPbPSxRNMqDSiiBdJSTK/ZjZG+oJ6Qq4aI0jdU84bgwiWR7uCbEBggw4a3mQrhEWi4TThhu75VH4uB25
-        E2lRfiKDFt2hgh3Ai4qaC5lnwkSMX6JAOK+PQX2bY8/qrr7PotaexxRDbACFAUfaAHJN4xL9cWrE+Dlz
-        dZ6LR8PZJ0L+hRDqCuDjHbb7kNP4mMYzuv1LVFJ4HqyWzcoqXdkAIS7mPw1LbKZH2DIPf+2yAaI8dWGm
-        iyU2046yAVj6RJp2nMAfAaBvGTpFWOSfqY4AAAAASUVORK5CYII=
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABjklEQVQ4T4WSv0vDcBDF3+js4KSgdBIc
+        CoKjgq2NVf8BwUXBxT9BEGsLTVq1g4ODUokddNGig4Ii1uKgpCIUfxZbW7u4+w88uaYpaZLqgwfHXe7z
+        zR0HkrBLSYLitmQHNXrtgHEVfKrtNCxx29ceagMENbDwkWL6Ag1LLDlnk10twNQGaJSj1PPg7rVpiY1y
+        jFJzNlpqAabX8RNKgKtZcO/WdCQLSk5qzkZL9hH8AIZl7of6EvfvwaC5g+FmzVOuJcrMd1+z1A0wGO/8
+        65ZcgAkNzFenmS6Aaq6bc9t9f0I8AVfVUe4+gselXqZy/X9CXICQBp5X/UwXweVT8Kw0yK3cEMfj5k5k
+        RHlEDm1mEydugAqe1nzU38CxKBg5AS9fR2hUFmhU5hsufM6zWF/kZFJaHQBFBY9qPcyUzSUGYihFs2Dm
+        FdSfTe+/gIfvYNgToIEH9S5maqDAAAwGVnChJEC7pVlZw40LEE6Ah9+mJW6mB5r34LTPBZhZx89UEhRL
+        3Cp0kAtgXeR/F2hJen8BGTpFWGqTUQAAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="cmdChangeInversionModeAndSetDirections.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -2277,17 +2277,17 @@
   <data name="cmdUpdateCalculateVersion.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJHSURBVDhPfZNNaBNRFIXrQt0JtRtxpy66iprUNk2r
-        SahGq3TjKuBGRLGCxqoFRbvQVooEES2pjflxxEWFkCAuAtpKdaEtQqloxCaZTKa1Jq1WLUnzN8kkHu/M
-        iD/N6AcX3nv3nPN4783UAJBLgvPua2HduxF1mhAdMirlNIJ1mRHzWsAx7YqQ+OX7M+Ctw3jty/gpoBRG
-        JT+FSuYFIIQgpifAus0Y6NTYZCGhGvB+cGcow15HcTGA1KQJqSkLxNRTLIza8MbRGiXJOllIqAaw7laI
-        SwHk4n1Iv+5AfqYPwryfjmLAhtq1Gln0k6oAzmPUJR52UMAjZCPHkXlnhfgtgGTwKPwXNHbyrFKsClUB
-        IYeh/+u4DaVPXmSnDyMbPoL54F5EBrRgbzeCdeoRc7WA8xoRZ8xkWREwPagP5bh+CEk78uwJucqpEVSW
-        n6C8HEQl7UM57cecbw8mbzU/rwqIufQkYlBMXkFxthsFvgsFzoZC/DTNz0KYOYPZB2a8utE4QifYUhXA
-        eZqRCLTTDhZ8GDbRE45BSFxG6eMl5KJkHm7D496tLjJvVr0DokGqm8c2nZzzteF7bgziQi/ysfPgPHow
-        XfUXqb9REkqoBciEh7Sji8+sQM4Hge+hS2vC/XP1PdSqVRQK/wyIubXIhK+ilLCTeQcOGur20/J6pfsb
-        1QCeaTgU9+iwNNEJ/l4TrLvqDtDyarm5AtWAiFv3kr+rQ/jOts80le5kjdxQQTWAZ3T012nTNPzrs1VD
-        NYCQdt2uDP+P4kPNDxHKDEvCPkvVAAAAAElFTkSuQmCC
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAI4SURBVDhPfZJPSJNxHMa/HapbYF6iW3XwtGozndOa
+        w1pZeOk06BJRZFBLSyjKQ2lIjIiS2da2tzc6GIyN6DAoDetQSiBGLXLb+757XWvTshqb+/+vJzZdqHvb
+        A8/t+Xx+8OVHAKjUUgTmSCtnPQifuR0+k3q5ZjU4iwY8o4XAdi4PicpMmVst+GRU3/45eQHIeVBMzaAY
+        fwtk3MjHpsBZNRjululrCr6M7HfHuTvILjoRnW5HdEaLfPQVFsb1+Ghs8xHRlpoCztqGfMSJpH8QsQ9d
+        SM0NIjPvgM+kwra6zbIKLCkQbGpF6FkX8pHnSHjPIv5Zh/xvJ8Ku03BclRmIaENNgduoGvo1qUfuO4PE
+        7EkkPKcw7zoM77Ac3IMmcGYleEsrBEYNP6tBlWB2ROlOCkPIhA1IcefKLUTHUFx6icKSC8WYHYWYA0H7
+        IUzfb3lTJeAtShRjLLLhm8gG+pAWe5AW9Ej7LyIbuITMXC8CTzV4f7dpjIh2VQkEWwtCzk4E7Vp8HW1H
+        MT6BTOgGct+uI+nrRWC0Ay8GdluIaKfkDYiosdR7Z3acD9o78Cc5gfzCAFL8FQg2JdiehmtEtP2/R6zE
+        Y5KPL77WAUk7MmI/BKYZTy439BNR3b9RLQFvlSPuuYVcyACB2YfjqvqjRLR1NVyKpEBkG0/4bQpEproh
+        Pm6G7kD9MSLauB4uRVLgtSreiY8U8Dzc82PlJpvWg5VICkRWAZ6Rx4hozbeViqRg5dW9a6fSqXB/ARHK
+        DEuQmo0wAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="cmdUpdateCalculateVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -2756,16 +2756,16 @@
   <data name="optWarpingPaused.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIRSURBVDhPXZHbSlRhFMfnCXwEXyAIypjGuQhE8BF6
-        g6AIIiMkdRRCe4FA6MoaKKIDHnYjNenFzIUgWIkGo1k5oxkzqdGk4t42o//W73PP9rDgY+3/aX2HHTtb
-        V+6/HWrtn/AvpzJqLDB8aIlKUvhl1TaQ7Uj0TSidL6q6a9KJAsOj4wsjxwPaBt51tD/Ian1rX2Uze8u+
-        Hs/tRAsMj44PP7loAJNLJhZ+S68WfY1+CTSy5Ov14p7rYHh0fPjJuQHcbTi/ol97tvO3QNeGPyjePa7r
-        Tz5qaq3uOhgeHR9+cm5Asj8TVHYPlf9Rs0BN8R5PD3M/1ZryNLMh18Hw6Pjwk3MDeGXqfSnQdPlAiV5P
-        N54XlUy90XxVroPh0fFRYe5oQN2+cjZ5dtOEnnHd8spu5yV7ODoYHh0f/lMDavY1U6lr4Y/svmPqmqwq
-        YUcu2mZ0MDw6PvzRgGRfZn91+1CFv1JhR7rYNareaV+X7o3Jruw6GB4dH35yRye4k37xKLeiTTvXsh35
-        9tNPOn93RJ3P5rRqFjoYHh0ffnJugFVzwo7zeSNQxXYktGar5Evf7ZfRwfDo+PCTawyInbvafbN9MKt5
-        E7eMXf9nAQsSpoPh0fHhJxcNsGqCZPKQHe/r9oHsqrK/6DoYHj0MNxE6OYCCbIl3pl/yQJh5aToYHj30
-        uTo7oFHNti7YwtxYYPhTJSn2H7i0iLE5XAfbAAAAAElFTkSuQmCC
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAINSURBVDhPbZPbahNRGIX3E/QR+gKC4IE0zYVQCn0E
+        30BQBLEixaRpQaovIBS8qgYU8UAPY4qN9iK5KBQ8lCqktWpOrSSmEdM2ZCZO2k/WzkES3TD8rLW+f81k
+        mBjTdy7cfjU7PL3sDkXjdC5p+f0s8FeMzCTGglPLxFJZqjV6jrR85eL+KRiZWRkbvZtgr9KgWANnx+XB
+        xlH3kpavXJz4ngI15yoN0j/h+ZbLwmeP+W2XF1t1O6XlKxcnvlug3zaXyvCjDs5Xj0tz7wiEl7j88D2r
+        haad0vKVixOvPVsQmo57pdoJqV2f1YJPIOJwL/md4ajDehk7peUrFydee7ZAb1nndc5jrXhMcNLhypMs
+        oehLNqvYKS1fuTid9l6roAkkd33e7sNQZIlrTtHeebvWegJp+crFie8p8IH1UpOPvyAQXmTiTZVgxCHr
+        Yae0fOXixHcLQlPxRv7whPQBpI/g7MQCk2su528tUvCxU1q+cnHitdd6ghuxp/eTGfabsFOD648+cPrm
+        POOPN8g3sFNavnJx4rXX+Q4Gg9E4n8oeJR+7VGhAzoVv9daUlq9cnHjtdT+kUxfDV0fvJNgse1SAvd+Q
+        d1vLmtLylYsT3/MlGmMGZKp5Npnhy+ExB/oPgJ3S8pW3lwf6C2yJMeZcYDz2TC9IsN60prR85Z3l/xV0
+        zqAx5kwb7lzS8nuOCv4AuLSIsawLyXUAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="optWarpingPaused.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -2874,7 +2874,7 @@
     <value>lvSessionSegments</value>
   </data>
   <data name="&gt;&gt;lvSessionSegments.Type" xml:space="preserve">
-    <value>cSurveyPC.cSegmentsGrid, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cSegmentsGrid, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lvSessionSegments.Parent" xml:space="preserve">
     <value>tabSessionSegments1</value>
@@ -2901,7 +2901,7 @@
     <value>lvSessionCalibartionSegments</value>
   </data>
   <data name="&gt;&gt;lvSessionCalibartionSegments.Type" xml:space="preserve">
-    <value>cSurveyPC.cSegmentsGrid, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cSegmentsGrid, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lvSessionCalibartionSegments.Parent" xml:space="preserve">
     <value>tabSessionCalibrationSegments1</value>
@@ -2928,7 +2928,7 @@
     <value>lvCaveInfoSegments</value>
   </data>
   <data name="&gt;&gt;lvCaveInfoSegments.Type" xml:space="preserve">
-    <value>cSurveyPC.cSegmentsGrid, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cSegmentsGrid, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lvCaveInfoSegments.Parent" xml:space="preserve">
     <value>tabCaveInfoSegments1</value>
@@ -3990,7 +3990,7 @@
     <value>txtPlotNoteTextColor</value>
   </data>
   <data name="&gt;&gt;txtPlotNoteTextColor.Type" xml:space="preserve">
-    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtPlotNoteTextColor.Parent" xml:space="preserve">
     <value>GroupBox7</value>
@@ -4963,7 +4963,7 @@
     <value>cboOrigin</value>
   </data>
   <data name="&gt;&gt;cboOrigin.Type" xml:space="preserve">
-    <value>cSurveyPC.cTrigpointDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cTrigpointDropDown, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboOrigin.Parent" xml:space="preserve">
     <value>tabInfoOptions1</value>
@@ -6003,7 +6003,7 @@
     <value>cbosurfaceprofileelevation</value>
   </data>
   <data name="&gt;&gt;cbosurfaceprofileelevation.Type" xml:space="preserve">
-    <value>cSurveyPC.cElevationDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cElevationDropDown, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbosurfaceprofileelevation.Parent" xml:space="preserve">
     <value>pnlsurfaceprofileelevation</value>
@@ -6219,7 +6219,7 @@
     <value>txtSessionColor</value>
   </data>
   <data name="&gt;&gt;txtSessionColor.Type" xml:space="preserve">
-    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtSessionColor.Parent" xml:space="preserve">
     <value>tabInfoSessions1</value>
@@ -7497,7 +7497,7 @@
     <value>txtCaveInfoColor</value>
   </data>
   <data name="&gt;&gt;txtCaveInfoColor.Type" xml:space="preserve">
-    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtCaveInfoColor.Parent" xml:space="preserve">
     <value>tabInfoCaves1</value>
@@ -7692,7 +7692,7 @@
     <value>cboCaveInfoExtendStart</value>
   </data>
   <data name="&gt;&gt;cboCaveInfoExtendStart.Type" xml:space="preserve">
-    <value>cSurveyPC.cTrigpointDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cTrigpointDropDown, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboCaveInfoExtendStart.Parent" xml:space="preserve">
     <value>tabCaveInfoCalculateOptions1</value>
@@ -11373,7 +11373,7 @@
     <value>txtHighlightColor</value>
   </data>
   <data name="&gt;&gt;txtHighlightColor.Type" xml:space="preserve">
-    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtHighlightColor.Parent" xml:space="preserve">
     <value>tabInfoHighlights1</value>
@@ -13040,17 +13040,17 @@
   <data name="btnGradesUsedBySelectSession.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAI6SURBVDhPpZPfa1JhHMbPPxJR3ZTzdxJYVDAq1kU1
-        FlHU7oqKbgryqoSstbAsnT8vMrawFi0qaGOwNRZbc8Mf5+hmzjN1uRop7KLU43EeHfH0HlNyZNToCx/e
-        l/c8z/Oe7/dwKAD/RdPDjUCFXTv/gJoKO9VUyKn6HYeKYmzyMxG3Fk2NooixK57TVimCPRIELTVq+4B5
-        B5IvjqD0oWt9ADFmGbsStFWGjy/bsRY3obLoQiVpQyXRQzCjEjdDYE0QYkYScLsxQE1uVQKfzPA/2E7M
-        dyBEb6Cceozy8muUl55CWHwEIeFEibWgFDWiOGf4FSD2RVvl8JslKM/rkeg/CNazDzxzGcWYBatJN1ZZ
-        K4rzJhQjXeBn9Sgwup8BIYeaom2K5czISQizVxB/1or4k/2opNzgAxfA+c6Bn7tVNYsrH76GAn0VnP8S
-        SN+iWZnODB9DMXgWabKmBg5gbcmFuGcvYn1a5Kc7kZs6DS6oQyGsB0frkPedR87bCYpxqCYyQ23gZ04h
-        PdiG6fvSz8M3Ja9CTiUSHi2EhXvIv+9AbrID2Yl2FHwXq2/ETR0H5z1RDQDvPYovb1oxY1asUBTVQtg8
-        2i0dibo1pFcD2L5diPVqkH13GF/HDiHZvxtBMi/aqgA1flc+KYYEbMpvxCirD5XUlrfd0lEyG7C9ajL1
-        61gZ2oPIQw0GDS0D5Lkoqgq31TaKurkxZMwoGxcvED8xY1d9r2k3NWj+WlsJorLO+mr2g2yEpof/Dqgf
-        oOlqFdylEOcAAAAASUVORK5CYII=
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAI9SURBVDhPpZPfS1NhHMa//0hEdVO67WxLghUVSIVd
+        lGJEUd4VFd0U5FUNssxYWWee6dlFCw3LyKggZaCJofmD6c7ZdM6dtpmW5MCLcjs7c2dnxBNnLTJXhPTC
+        w/vy8jyf7/uTAND/qGRio6Kge+dfZKUgb6UAbylVm4VEl+l0yGPDH4O6SWxlngmcAf6WMvidRRXHk+wO
+        xJ8fQXam8XdAgLesiK1mCJwRH17UIB9thjbnhhZ3QYu1QIux0KIsVKkZasSB7MyttQAr6WF8ZDFxfzvy
+        0dtQw9eRm3+E3OIr5BaeQJ17CDXGIys5kQ07kJlu+AXQ9yVwJkywZcjN2hHrOgipcx8U8RIyESdW4x6s
+        Shwys83IhBqhTNmRFut/AAJtVhJczGKi7wTUqcuIPq1E9PF+aPMeKJPnIfvOQpm+WQjrvRK8irRwBfLE
+        RVCA18PmpYS3Ghn/GSx5qzHffQD5BTeinXsR6bAhNVaH5MgpyP56pIN2yEI9Ur5zSI7WgcQ2y1CitwrK
+        +Eks9VRh7J7hk/dG2csAb0as0wb1/V2k3tUiOVyLlaEapH0XCiuSR45BHj1eAEAZPYrPrysxzjLLRFRO
+        RJv7mwx9YU8FlKkGSB27EGmvwMrbw/gycAjxrt3wcyYIHAMavGMa1iGTLvNXIjL+PFQi2vKmydAvuBhI
+        7VZkw9ew3LsHoQcV6Gko7yYi3VQwbisOmPWPSocMOIyDegH9isVWy7eid9Mazz/b1jXVShPrP8dGVTKx
+        UX0HoOlqFWGZbvQAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="btnGradesUsedBySelectSession.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -14391,7 +14391,7 @@
     <value>frmProperties</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cForm, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="btnExpandAll.Caption" xml:space="preserve">
     <value>Expand all</value>

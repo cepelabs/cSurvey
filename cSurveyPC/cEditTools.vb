@@ -1037,7 +1037,7 @@ Namespace cSurvey.Helper.Editor
                 Return iCategory
             End Get
             Set(value As cIItem.cItemCategoryEnum?)
-                If iCategory <> value Then
+                If Not iCategory.Equals(value) Then
                     iCategory = value
                 End If
             End Set

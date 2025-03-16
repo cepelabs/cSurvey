@@ -1159,3 +1159,5 @@ main.textpart175=Errore: Therion non trovato
 main.textpart176=Therion non trovato o percorso di Therion non impostato
 main.textpart177=Percorso: {0}
 main.textpart178=La versione di Therion è datata. Controlla sul sito di Therion la presenza di una versione più aggiornata.
+
+main.undo54=Unisci punti

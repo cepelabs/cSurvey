@@ -29,6 +29,7 @@ Partial Class cItemChunk3DPropertyControl
         Me.h3D = New System.Windows.Forms.Integration.ElementHost()
         Me.cmdPropModelEdit = New DevExpress.XtraEditors.SimpleButton()
         Me.grdChunkInfo = New DevExpress.XtraVerticalGrid.VGridControl()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.cmdPropModelPreview, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.cmdPropModelPreview.SuspendLayout()
         CType(Me.grdChunkInfo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -79,10 +80,19 @@ Partial Class cItemChunk3DPropertyControl
         Me.grdChunkInfo.OptionsLayout.StoreAppearance = True
         Me.grdChunkInfo.OptionsView.MinRowAutoHeight = 12
         '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.SimpleButton1.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.camera
+        Me.SimpleButton1.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.SimpleButton1, "SimpleButton1")
+        Me.SimpleButton1.Name = "SimpleButton1"
+        '
         'cItemChunk3DPropertyControl
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.SimpleButton1)
         Me.Controls.Add(Me.grdChunkInfo)
         Me.Controls.Add(Me.cmdPropModelEdit)
         Me.Controls.Add(Me.cmdPropModelPreview)
@@ -101,4 +111,5 @@ Partial Class cItemChunk3DPropertyControl
     Friend WithEvents h3D As Integration.ElementHost
     Friend WithEvents grdChunkInfo As DevExpress.XtraVerticalGrid.VGridControl
     Friend WithEvents cmdPropModelLoad As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
 End Class

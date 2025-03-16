@@ -326,12 +326,18 @@ Public Class cImportTopoDroidHelper
                 End Select
             Case "point"
                 Select Case sName
+                    Case "water-flow", "air-draught"
+                        Dim sOrientation As Single = modNumbers.StringToSingle(modXML.GetAttributeValue(XMLItem, "orientation", 0))
+                        XMLItem.SetAttribute("orientation", sOrientation + 90)
+                End Select
+
+                Select Case sName
 '                    Case "audio"
 ''    'Dim oItem As cItemAttachment = Layers.SignsLayer.CreateAttachment(sCave, sBranch, )
 ''    'Return oItem
 '                    Case "photo"
 '                        '    'Dim oItem As cItemAttachment = Layers.SignsLayer.CreateAttachment(sCave, sBranch, )
-'                        '    'Return oItem                        
+'                        '    'Return oItem
                     Case "label"
                         Dim sText As String = modXML.GetAttributeValue(XMLItem, "text", "")
                         Dim oItem As cItemText = Layers.SignsLayer.CreateText(sCave, sBranch, sText)

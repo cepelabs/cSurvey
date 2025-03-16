@@ -2057,10 +2057,15 @@ Friend Class frmMain2
         End If
     End Function
 
+    Private bFormClosing As Boolean
+
     Private Sub frmMain_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
         e.Cancel = Not pSurveySaveOnExit()
-        Call pSettingsSave()
-        Call pWorkspacesSave()
+        If Not e.Cancel Then
+            bFormClosing = True
+            Call pSettingsSave()
+            Call pWorkspacesSave()
+        End If
     End Sub
 
     Private Sub pSurveyCleanUp()
@@ -2125,15 +2130,31 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pDesignPointsDoJoin()
-        Call oDockJoinPoints.JoinPoints()
-        Call pObjectPropertyLoad()
+        If Not bDisabledObjectPropertyEvent Then
+            With pGetCurrentDesignTools()
+                Call .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo53"))
+                Call oDockJoinPoints.JoinPoints()
+                Call .CommitUndoSnapshot()
+            End With
+            Call pObjectPropertyLoad()
+        End If
     End Sub
 
     Private Sub pDesignPointsJoin(Connect As Boolean)
         Call pJoinPointsShow(True)
         Call oDockJoinPoints.AppendPoint()
         If Connect Then
-            Call oDockJoinPoints.JoinPoints()
+            With pGetCurrentDesignTools()
+                'Dim bUndo As Boolean
+                'If Not .Undo.IsBeginned Then
+                '    Call .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo53"))
+                '    bUndo = True
+                'End If
+                Call oDockJoinPoints.JoinPoints()
+                'If bUndo Then
+                '    Call .CommitUndoSnapshot()
+                'End If
+            End With
             Call pObjectPropertyLoad()
         Else
             Call pPropertyJoinPoints()
@@ -4441,12 +4462,13 @@ Friend Class frmMain2
         If InvokeRequired Then
             Call Me.BeginInvoke(New MethodInvoker(AddressOf pObjectPropertyDelayedLoad))
         Else
-            pnl3DProp.Enabled = False
-            pnlDesignProp.Enabled = False
-            pnlObjectProp.Enabled = False
-
             Call oObjectPropertyTimer.Stop()
-            Call oObjectPropertyTimer.Start()
+            If Not bFormClosing Then
+                pnl3DProp.Enabled = False
+                pnlDesignProp.Enabled = False
+                pnlObjectProp.Enabled = False
+                Call oObjectPropertyTimer.Start()
+            End If
         End If
     End Sub
 
@@ -13594,9 +13616,12 @@ Friend Class frmMain2
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnl3DProp, False, True)
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlObjectSubProp, False, True)
 
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockClipart, False, True)
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockBrushesAndPens, False, True)
-        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockLevels, False, True)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockClipart, False)
+        'Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(oDockClipart.BarManager, False, True)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockBrushesAndPens, False)
+        'Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(oDockBrushesAndPens.BarManager, False, True)
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockLevels, False)
+        'Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(oDockLevels.BarManager, False, True)
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockConsole, False, True)
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockProperties, False, True)
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(dockIV, False, True)
@@ -15990,7 +16015,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub WorkspaceManager_PropertySerializing(sender As Object, ea As DevExpress.Utils.PropertyCancelEventArgs) Handles WorkspaceManager.PropertySerializing
-        If ea.Component IsNot Nothing AndAlso (TypeOf ea.Component Is cSessionDropDown OrElse TypeOf ea.Component Is cCaveDropDown OrElse TypeOf ea.Component Is cCaveBranchDropDown) Then
+        If ea.Component IsNot Nothing AndAlso (TypeOf ea.Component Is BarManager OrElse TypeOf ea.Component Is cSessionDropDown OrElse TypeOf ea.Component Is cCaveDropDown OrElse TypeOf ea.Component Is cCaveBranchDropDown) Then
             ea.Cancel = True
         Else
             If TypeOf ea.Owner Is DevExpress.XtraVerticalGrid.VGridControl Then
@@ -16005,7 +16030,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub WorkspaceManager_PropertyDeserializing(sender As Object, ea As DevExpress.Utils.PropertyCancelEventArgs) Handles WorkspaceManager.PropertyDeserializing
-        If ea.Component IsNot Nothing AndAlso (TypeOf ea.Component Is cSessionDropDown OrElse TypeOf ea.Component Is cCaveDropDown OrElse TypeOf ea.Component Is cCaveBranchDropDown) Then
+        If ea.Component IsNot Nothing AndAlso (TypeOf ea.Component Is BarManager OrElse TypeOf ea.Component Is cSessionDropDown OrElse TypeOf ea.Component Is cCaveDropDown OrElse TypeOf ea.Component Is cCaveBranchDropDown) Then
             ea.Cancel = True
         Else
             If TypeOf ea.Owner Is DevExpress.XtraVerticalGrid.VGridControl Then
@@ -20134,6 +20159,10 @@ Friend Class frmMain2
     Private Async Sub pTherionStatusUpdate()
         If Not bTherionStatusUpdateBusy Then
             bTherionStatusUpdateBusy = True
+
+            pnlStatusVersion.Caption = "cSurvey " & modMain.GetPackageVersion & " (" & modMain.GetPackageDate.ToString(Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.ShortDatePattern) & ")"
+            pnlStatusVersion.SuperTip = modDevExpress.CreateSuperTip(pnlStatusVersion.Caption, Nothing, Nothing, sNewVersion, Nothing, Nothing, "", Nothing, Nothing)
+
             Dim sThProcess As String = My.Application.Settings.GetSetting("therion.path", "")
             Dim oVersion As modExport.cVersion = Await modExport.GetTherionVersionAsync(sThProcess)
             pnlStatusTherion.Description = modMain.GetLocalizedString("main.textpart174")

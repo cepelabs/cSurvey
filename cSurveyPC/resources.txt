@@ -1155,3 +1155,5 @@ main.textpart175=Error: Therion not found
 main.textpart176=Therion not found or Therion installation path not specified
 main.textpart177=Path: {0}
 main.textpart178=Therion version is old. Check Therion website for an update.
+
+main.undo54=Join point

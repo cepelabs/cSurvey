@@ -139,7 +139,7 @@
     <value>lblPropProfileTextPosition</value>
   </data>
   <data name="&gt;&gt;lblPropProfileTextPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropProfileTextPosition.Parent" xml:space="preserve">
     <value>$this</value>
@@ -169,7 +169,7 @@
     <value>chkPropCrossSectionMarkerArrowSizeEnabled</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerArrowSizeEnabled.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerArrowSizeEnabled.Parent" xml:space="preserve">
     <value>$this</value>
@@ -183,8 +183,8 @@
   <data name="cboPropCrossSectionMarkerArrowSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 263</value>
   </data>
-  <assembly alias="DevExpress.Utils.v23.2" name="DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="cboPropCrossSectionMarkerArrowSize.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
+  <assembly alias="DevExpress.Utils.v24.2" name="DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cboPropCrossSectionMarkerArrowSize.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
     <value>Combo</value>
   </data>
   <data name="cboPropCrossSectionMarkerArrowSize.Properties.Items" xml:space="preserve">
@@ -242,7 +242,7 @@
     <value>cboPropCrossSectionMarkerArrowSize</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerArrowSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerArrowSize.Parent" xml:space="preserve">
     <value>$this</value>
@@ -272,7 +272,7 @@
     <value>lblPropCrossSectionMarkerArrowSize</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerArrowSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerArrowSize.Parent" xml:space="preserve">
     <value>$this</value>
@@ -302,7 +302,7 @@
     <value>chkPropCrossSectionMarkerDeltaAngleEnabled</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerDeltaAngleEnabled.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerDeltaAngleEnabled.Parent" xml:space="preserve">
     <value>$this</value>
@@ -329,7 +329,7 @@
     <value>chkPropCrossSectionMarkerScaleEnabled</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerScaleEnabled.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerScaleEnabled.Parent" xml:space="preserve">
     <value>$this</value>
@@ -359,7 +359,7 @@
     <value>chkPropCrossSectionMarkerUH</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerUH.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerUH.Parent" xml:space="preserve">
     <value>$this</value>
@@ -389,7 +389,7 @@
     <value>chkPropCrossSectionMarkerDH</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerDH.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerDH.Parent" xml:space="preserve">
     <value>$this</value>
@@ -419,7 +419,7 @@
     <value>chkPropCrossSectionMarkerLW</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerLW.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerLW.Parent" xml:space="preserve">
     <value>$this</value>
@@ -446,7 +446,7 @@
     <value>chkPropCrossSectionMarkerRW</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerRW.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerRW.Parent" xml:space="preserve">
     <value>$this</value>
@@ -476,7 +476,7 @@
     <value>lblPropCrossSectionMarkerUH</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerUH.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerUH.Parent" xml:space="preserve">
     <value>$this</value>
@@ -506,7 +506,7 @@
     <value>lblPropCrossSectionMarkerDH</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerDH.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerDH.Parent" xml:space="preserve">
     <value>$this</value>
@@ -560,7 +560,7 @@
     <value>lblPropCrossSectionMarkerDHUM</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerDHUM.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerDHUM.Parent" xml:space="preserve">
     <value>$this</value>
@@ -590,7 +590,7 @@
     <value>lblPropCrossSectionMarkerLW</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerLW.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerLW.Parent" xml:space="preserve">
     <value>$this</value>
@@ -620,7 +620,7 @@
     <value>lblPropCrossSectionMarkerRWUM</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerRWUM.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerRWUM.Parent" xml:space="preserve">
     <value>$this</value>
@@ -650,7 +650,7 @@
     <value>lblPropCrossSectionMarkerRW</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerRW.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerRW.Parent" xml:space="preserve">
     <value>$this</value>
@@ -728,7 +728,7 @@
     <value>lblPropCrossSectionMarkerLWUM</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerLWUM.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerLWUM.Parent" xml:space="preserve">
     <value>$this</value>
@@ -782,7 +782,7 @@
     <value>lblPropCrossSectionMarkerUHUM</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerUHUM.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerUHUM.Parent" xml:space="preserve">
     <value>$this</value>
@@ -812,7 +812,7 @@
     <value>lblPropCrossSectionMarkerL</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerL.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerL.Parent" xml:space="preserve">
     <value>$this</value>
@@ -823,7 +823,7 @@
   <data name="cboPropCrossSectionMarkerLabelRotation.Location" type="System.Drawing.Point, System.Drawing">
     <value>104, 394</value>
   </data>
-  <data name="cboPropCrossSectionMarkerLabelRotation.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
+  <data name="cboPropCrossSectionMarkerLabelRotation.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
     <value>Combo</value>
   </data>
   <data name="cboPropCrossSectionMarkerLabelRotation.Properties.Items" xml:space="preserve">
@@ -845,7 +845,7 @@
     <value>cboPropCrossSectionMarkerLabelRotation</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerLabelRotation.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerLabelRotation.Parent" xml:space="preserve">
     <value>$this</value>
@@ -872,7 +872,7 @@
     <value>lblPropCrossSectionRotation</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionRotation.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionRotation.Parent" xml:space="preserve">
     <value>$this</value>
@@ -899,7 +899,7 @@
     <value>chkPropCrossSectionMarkerLabel</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerLabel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerLabel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -913,7 +913,7 @@
   <data name="cboPropCrossSectionMarkerScale.Location" type="System.Drawing.Point, System.Drawing">
     <value>102, 36</value>
   </data>
-  <data name="cboPropCrossSectionMarkerScale.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
+  <data name="cboPropCrossSectionMarkerScale.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
     <value>Combo</value>
   </data>
   <data name="cboPropCrossSectionMarkerScale.Properties.Items" xml:space="preserve">
@@ -971,7 +971,7 @@
     <value>cboPropCrossSectionMarkerScale</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerScale.Parent" xml:space="preserve">
     <value>$this</value>
@@ -998,7 +998,7 @@
     <value>lblPropCrossSectionMarkerScale</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerScale.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1025,7 +1025,7 @@
     <value>lblPropCrossSectionMarkerDirection</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerDirection.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerDirection.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1057,8 +1057,8 @@
   <data name="&gt;&gt;txtPropCrossSectionMarkerLabelDistance.ZOrder" xml:space="preserve">
     <value>27</value>
   </data>
-  <assembly alias="DevExpress.Data.v23.2" name="DevExpress.Data.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="cmdPropCrossSectionItem.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <assembly alias="DevExpress.Data.v24.2" name="DevExpress.Data.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cmdPropCrossSectionItem.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi44
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
@@ -1105,7 +1105,7 @@
     <value>cmdPropCrossSectionItem</value>
   </data>
   <data name="&gt;&gt;cmdPropCrossSectionItem.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPropCrossSectionItem.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1138,7 +1138,7 @@
     <value>lblPropCrossSectionMarkerLabelDistance</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerLabelDistance.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerLabelDistance.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1165,7 +1165,7 @@
     <value>cmdPropCrossSectionMarkerUDFromDesign</value>
   </data>
   <data name="&gt;&gt;cmdPropCrossSectionMarkerUDFromDesign.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPropCrossSectionMarkerUDFromDesign.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1179,7 +1179,7 @@
   <data name="cboPropCrossSectionMarkerLabelPosition.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
-  <data name="cboPropCrossSectionMarkerLabelPosition.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
+  <data name="cboPropCrossSectionMarkerLabelPosition.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
     <value>Combo</value>
   </data>
   <data name="cboPropCrossSectionMarkerLabelPosition.Properties.Items" xml:space="preserve">
@@ -1204,7 +1204,7 @@
     <value>cboPropCrossSectionMarkerLabelPosition</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerLabelPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerLabelPosition.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1231,7 +1231,7 @@
     <value>lblPropCrossSectionMarkerLabelPosition</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerLabelPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerLabelPosition.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1271,7 +1271,7 @@
     <value>cmdPropCrossSectionMarkerLRFromDesign</value>
   </data>
   <data name="&gt;&gt;cmdPropCrossSectionMarkerLRFromDesign.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPropCrossSectionMarkerLRFromDesign.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1301,7 +1301,7 @@
     <value>lbltxtPropCrossSectionMarkerRUM</value>
   </data>
   <data name="&gt;&gt;lbltxtPropCrossSectionMarkerRUM.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lbltxtPropCrossSectionMarkerRUM.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1382,7 +1382,7 @@
     <value>lblPropCrossSectionMarkerDeltaAngle</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerDeltaAngle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerDeltaAngle.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1412,7 +1412,7 @@
     <value>lblPropCrossSectionMarkerD</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerD.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerD.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1445,7 +1445,7 @@
     <value>lblPropCrossSectionPosition</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionPosition.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1475,7 +1475,7 @@
     <value>lblPropCrossSectionMarkerR</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerR.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerR.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1505,7 +1505,7 @@
     <value>lblPropCrossSectionPositionPercent</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionPositionPercent.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionPositionPercent.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1535,7 +1535,7 @@
     <value>lblPropCrossSectionDistances</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionDistances.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionDistances.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1565,7 +1565,7 @@
     <value>lblPropCrossSectionMarkerU</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerU.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerU.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1643,7 +1643,7 @@
     <value>lblPropCrossSectionMarkerAlign</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerAlign.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerAlign.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1681,7 +1681,7 @@
   <data name="cboPropCrossSectionMarkerAlign.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
-  <data name="cboPropCrossSectionMarkerAlign.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
+  <data name="cboPropCrossSectionMarkerAlign.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
     <value>Combo</value>
   </data>
   <data name="cboPropCrossSectionMarkerAlign.Properties.Items" xml:space="preserve">
@@ -1700,7 +1700,7 @@
     <value>cboPropCrossSectionMarkerAlign</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerAlign.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerAlign.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1754,7 +1754,7 @@
     <value>lblPropCrossSectionMarkerDUM</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerDUM.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerDUM.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1784,7 +1784,7 @@
     <value>lblPropCrossSectionMarkerUUM</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerUUM.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerUUM.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1814,7 +1814,7 @@
     <value>lblPropCrossSectionMarkerLUM</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerLUM.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerLUM.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1828,7 +1828,7 @@
   <data name="cboPropCrossSectionMarkerProfileAlign.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
-  <data name="cboPropCrossSectionMarkerProfileAlign.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
+  <data name="cboPropCrossSectionMarkerProfileAlign.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
     <value>Combo</value>
   </data>
   <data name="cboPropCrossSectionMarkerProfileAlign.Properties.Items" xml:space="preserve">
@@ -1847,7 +1847,7 @@
     <value>cboPropCrossSectionMarkerProfileAlign</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerProfileAlign.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerProfileAlign.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1861,7 +1861,7 @@
   <data name="cboPropCrossSectionMarkerDirection.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
-  <data name="cboPropCrossSectionMarkerDirection.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v23.2">
+  <data name="cboPropCrossSectionMarkerDirection.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
     <value>Combo</value>
   </data>
   <data name="cboPropCrossSectionMarkerDirection.Properties.Items" xml:space="preserve">
@@ -1883,7 +1883,7 @@
     <value>cboPropCrossSectionMarkerDirection</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerDirection.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerDirection.Parent" xml:space="preserve">
     <value>$this</value>

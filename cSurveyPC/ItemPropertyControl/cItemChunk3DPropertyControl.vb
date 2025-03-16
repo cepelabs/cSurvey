@@ -23,6 +23,7 @@ Friend Class cItemChunk3DPropertyControl
         oHolosView = New cHolosItemView
         h3D.Child = oHolosView
 
+        SimpleButton1.Visible = bIsInDebug
     End Sub
 
     Private Sub grdChunkInfo_CustomUnboundData(sender As Object, e As CustomDataEventArgs) Handles grdChunkInfo.CustomUnboundData
@@ -134,6 +135,10 @@ Friend Class cItemChunk3DPropertyControl
                 End With
             End If
         End Using
+    End Sub
+
+    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+        Item.GetPlanImage()
     End Sub
 
     'Private Sub cItemChunk3DPropertyControl_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick

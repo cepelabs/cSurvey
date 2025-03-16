@@ -569,6 +569,7 @@ Public Module modDevExpress
         Next
         Call Control.EndUpdate()
     End Sub
+
 End Module
 
 

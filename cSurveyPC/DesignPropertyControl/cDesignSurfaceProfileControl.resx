@@ -139,7 +139,7 @@
     <value>chkDesignSurfaceProfile</value>
   </data>
   <data name="&gt;&gt;chkDesignSurfaceProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignSurfaceProfile.Parent" xml:space="preserve">
     <value>$this</value>

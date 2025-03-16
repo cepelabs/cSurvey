@@ -1218,15 +1218,21 @@ Friend Class frmPreview
         Call oMousePointer.Pop()
     End Sub
 
-    Private Sub pWin11DisableNewDialog()
-        If Environment.OSVersion.Version.Major = 6 Then
+    Private bWin11DisabledNewDialog As Boolean
 
-        End If
-        Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\Microsoft\Print\UnifiedPrintDialog", True).SetValue("PreferLegacyPrintDialog", 1, Microsoft.Win32.RegistryValueKind.DWord)
+    Private Sub pWin11DisableNewDialog()
+        With Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Microsoft\Print\UnifiedPrintDialog", True)
+            If .GetValue("PreferLegacyPrintDialog", 0) = 0 Then
+                .SetValue("PreferLegacyPrintDialog", 1, Microsoft.Win32.RegistryValueKind.DWord)
+                bWin11DisabledNewDialog = True
+            End If
+        End With
     End Sub
 
     Private Sub pWin11RestoreNewDialog()
-        Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\Microsoft\Print\UnifiedPrintDialog", True).DeleteValue("PreferLegacyPrintDialog")
+        If bWin11DisabledNewDialog Then
+            Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Microsoft\Print\UnifiedPrintDialog", True).DeleteValue("PreferLegacyPrintDialog")
+        End If
     End Sub
 
     Private Sub pPrint()

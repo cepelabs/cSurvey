@@ -76,6 +76,10 @@ Public Class cSegmentsGrid
         Call grdSegments.EndUpdate()
     End Sub
 
+    Public Sub Rebind(Survey As cSurvey.cSurvey, Segments As IList(Of cSegment), Parameters As cSegmentGridParameters)
+        Call Rebind(Survey, Segments.Cast(Of cISegment).ToList, Parameters)
+    End Sub
+
     Public Sub Rebind(Survey As cSurvey.cSurvey, Segments As IList(Of cISegment), Parameters As cSegmentGridParameters)
         oSurvey = Survey
         Call grdSegments.BeginUpdate()

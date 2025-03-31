@@ -1882,7 +1882,7 @@ Friend Class frmProperties
     Private Sub btnSessionSegmentsRefresh_Click(sender As Object, e As EventArgs) Handles btnSessionSegmentsRefresh.Click
         Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
         If Not oCI Is Nothing AndAlso TypeOf oCI IsNot cDefaultSessionEditPlaceHolder Then
-            Call lvSessionSegments.Rebind(oSurvey, oSurvey.Segments.GetSessionSegments(oCI.Source).Cast(Of cSegment).ToList, New cSegmentsGrid.cSegmentGridParameters(False, True, True, True))
+            Call lvSessionSegments.Rebind(oSurvey, oSurvey.Segments.GetSessionSegments(oCI.Source), New cSegmentsGrid.cSegmentGridParameters(False, True, True, True))
             Dim bEnabled As Boolean = lvSessionSegments.Count > 0
             lvSessionSegments.Enabled = bEnabled
             btnCaveInfoSelectSegment.Enabled = bEnabled
@@ -2567,7 +2567,7 @@ Friend Class frmProperties
     Private Sub btnSessionCalibrationSegmentsRefresh_Click(sender As Object, e As EventArgs) Handles btnSessionCalibrationSegmentsRefresh.Click
         Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
         If Not oCI Is Nothing Then
-            Call lvSessionSegments.Rebind(oSurvey, oSurvey.Segments.GetSessionSegments(oCI.Source, cISegmentCollection.SessionSegmentsFlagEnum.CalibrationShots).Cast(Of cSegment).ToList, New cSegmentsGrid.cSegmentGridParameters(False, True, True, True))
+            Call lvSessionSegments.Rebind(oSurvey, oSurvey.Segments.GetSessionSegments(oCI.Source, cISegmentCollection.SessionSegmentsFlagEnum.CalibrationShots).Cast(Of cISegment).ToList, New cSegmentsGrid.cSegmentGridParameters(False, True, True, True))
             Dim bEnabled As Boolean = lvSessionSegments.Count > 0
             lvSessionSegments.Enabled = bEnabled
             btnCaveInfoSelectSegment.Enabled = bEnabled

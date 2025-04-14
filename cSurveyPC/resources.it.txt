@@ -1161,3 +1161,8 @@ main.textpart177=Percorso: {0}
 main.textpart178=La versione di Therion è datata. Controlla sul sito di Therion la presenza di una versione più aggiornata.
 
 main.undo54=Unisci punti
+
+main.textpart179=Utente:
+main.textpart180=Calc:
+
+main.filetypecSurveyXLSX=File di Microsoft Excel esportato da cSurvey

@@ -205,8 +205,8 @@ Partial Class frmExceptionManager
         'txtException
         '
         Me.txtException.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple
-        Me.txtException.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel
         resources.ApplyResources(Me.txtException, "txtException")
+        Me.txtException.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel
         Me.txtException.MenuManager = Me.BarManager
         Me.txtException.Name = "txtException"
         Me.txtException.ReadOnly = True

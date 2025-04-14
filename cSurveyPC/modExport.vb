@@ -1515,6 +1515,12 @@ Module modExport
         End If
     End Sub
 
+    <Flags> Public Enum ExcelImportOptionsEnum
+        None = &H0
+        CavesAndBranches = &H1
+        Sessions = &H2
+    End Enum
+
     <Flags> Public Enum ExcelExportOptionsEnum
         CalculatedData = &H1
         NamedSplayStation = &H2
@@ -1526,6 +1532,218 @@ Module modExport
         Column += Increment
         Return Column
     End Function
+
+    Private Sub pImportBranches(Survey As cSurveyPC.cSurvey.cSurvey, XLSCaves As OfficeOpenXml.ExcelWorksheet, Parent As cICaveInfoBranches, ByRef r As Integer)
+        Do
+            Dim c As Integer = 1
+            Dim sCaveName As String = "" & XLSCaves.Cells(r, c).Value
+            Dim oColor As Color = If(XLSCaves.Cells(r, c).Style.Fill.BackgroundColor.Rgb Is Nothing, Color.Transparent, ColorTranslator.FromHtml("#" & XLSCaves.Cells(r, c).Style.Fill.BackgroundColor.Rgb))
+            Dim iCaveIndent As Integer = CountLeadingSpaces(sCaveName) / 2
+            sCaveName = sCaveName.Replace("└", "")
+            sCaveName = sCaveName.Trim
+            If sCaveName = "" Then Exit Do
+            Dim oBranch = Parent.Branches.Add(sCaveName)
+            pExcelNextColumn(c)
+            oBranch.Description = XLSCaves.Cells(r, pExcelNextColumn(c)).Value
+            oBranch.ExtendStart = XLSCaves.Cells(r, pExcelNextColumn(c)).Value
+            oBranch.Color = oColor
+            Dim sCaveParentConnection As String = "" & XLSCaves.Cells(r, pExcelNextColumn(c)).Value
+            If sCaveParentConnection <> "" Then oBranch.ParentConnection = New cConnectionDef(sCaveParentConnection)
+            Dim sCaveConnection As String = "" & XLSCaves.Cells(r, pExcelNextColumn(c)).Value
+            If sCaveConnection <> "" Then oBranch.Connection = New cConnectionDef(sCaveConnection)
+
+            c = 1
+            r += 1
+            Dim sNextCaveName As String = "" & XLSCaves.Cells(r, c).Value
+            Dim iNextCaveIndent As Integer = CountLeadingSpaces(sNextCaveName) / 2
+            sNextCaveName = sNextCaveName.Replace("└", "")
+            sNextCaveName = sNextCaveName.Trim
+            If iNextCaveIndent > iCaveIndent Then
+                'child
+                Call pImportBranches(Survey, XLSCaves, oBranch, r)
+            ElseIf iCaveIndent > iNextCaveIndent Then
+                'child of parent
+                Exit Do
+            End If
+        Loop
+    End Sub
+
+    Public Sub ExcelImportFrom(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, Options As ExcelImportOptionsEnum)
+        Dim oFileinfo As IO.FileInfo = New IO.FileInfo(Filename)
+        Using oXLS As OfficeOpenXml.ExcelPackage = New OfficeOpenXml.ExcelPackage(oFileinfo)
+            'If oFileinfo.Exists Then oFileinfo.Delete()
+            'Dim bColors As Boolean = (Options And ExcelExportOptionsEnum.Colors) = ExcelExportOptionsEnum.Colors
+            'Dim bCalculatedData As Boolean = (Options And ExcelExportOptionsEnum.CalculatedData) = ExcelExportOptionsEnum.CalculatedData
+            'Dim bNamedSplayStation As Boolean = (Options And ExcelExportOptionsEnum.NamedSplayStation) = ExcelExportOptionsEnum.NamedSplayStation
+            'Dim bNamedSplayStationData As Boolean = (Options And ExcelExportOptionsEnum.NamedSplayStationData) = ExcelExportOptionsEnum.NamedSplayStationData
+            'Using oXLS As OfficeOpenXml.ExcelPackage = New OfficeOpenXml.ExcelPackage(oFileinfo)
+            'Dim sLastSession As String = "@@@@@@@@"
+
+            Dim r As Integer
+            Dim c As Integer
+
+            Dim bSession As Boolean
+            If (Options And ExcelImportOptionsEnum.Sessions) = ExcelImportOptionsEnum.Sessions Then
+                bSession = True
+                r = 2
+                Dim oXLSSession As OfficeOpenXml.ExcelWorksheet = oXLS.Workbook.Worksheets(3)
+                If oXLSSession IsNot Nothing Then
+                    Do
+                        c = 1
+                        Dim sSessionID As String = "" & oXLSSession.Cells(r, c).Value
+                        If sSessionID = "" Then Exit Do
+                        Dim oColor As Color = If(oXLSSession.Cells(r, c).Style.Fill.BackgroundColor.Rgb Is Nothing, Color.Transparent, ColorTranslator.FromHtml("#" & oXLSSession.Cells(r, c).Style.Fill.BackgroundColor.Rgb))
+                        Dim sSessionDate As String = oXLSSession.Cells(r, pExcelNextColumn(c)).Value
+                        Dim dSessionDate As Date = Date.Parse(Date.FromOADate(sSessionDate))
+                        Dim sSessionDescription As String = oXLSSession.Cells(r, pExcelNextColumn(c)).Value
+                        Dim oSession As cSession = Survey.Properties.Sessions.Add(dSessionDate, sSessionDescription)
+                        oSession.Color = oColor
+                        oSession.Note = oXLSSession.Cells(r, pExcelNextColumn(c)).Value
+                        oSession.Club = oXLSSession.Cells(r, pExcelNextColumn(c)).Value
+                        oSession.Team = oXLSSession.Cells(r, pExcelNextColumn(c)).Value
+                        oSession.Designer = oXLSSession.Cells(r, pExcelNextColumn(c)).Value
+
+                        r += 1
+                    Loop
+                End If
+            End If
+
+            'caves and branches
+            Dim bCavesAndBraches As Boolean
+            If (Options And ExcelImportOptionsEnum.CavesAndBranches) = ExcelImportOptionsEnum.CavesAndBranches Then
+                bCavesAndBraches = True
+                r = 2
+                Dim oXLSCaves As OfficeOpenXml.ExcelWorksheet = oXLS.Workbook.Worksheets(4)
+                If oXLSCaves IsNot Nothing Then
+                    Dim oCave As cCaveInfo
+                    Do
+                        c = 1
+                        Dim sCaveName As String = "" & oXLSCaves.Cells(r, c).Value
+                        If sCaveName = "" Then Exit Do
+                        Dim oColor As Color = If(oXLSCaves.Cells(r, c).Style.Fill.BackgroundColor.Rgb Is Nothing, Color.Transparent, ColorTranslator.FromHtml("#" & oXLSCaves.Cells(r, c).Style.Fill.BackgroundColor.Rgb))
+                        Dim iCaveIndent As Integer = CountLeadingSpaces(sCaveName) / 2
+                        sCaveName = sCaveName.Trim
+                        If sCaveName.StartsWith("└") Then
+                            'branch
+                            Call pImportBranches(Survey, oXLSCaves, oCave, r)
+                        Else
+                            oCave = Survey.Properties.CaveInfos.Add(sCaveName)
+                            oCave.ID = oXLSCaves.Cells(r, pExcelNextColumn(c)).Value
+                            oCave.Description = oXLSCaves.Cells(r, pExcelNextColumn(c)).Value
+                            oCave.ExtendStart = oXLSCaves.Cells(r, pExcelNextColumn(c)).Value
+                            oCave.Color = oColor
+                            Dim sCaveParentConnection As String = "" & oXLSCaves.Cells(r, pExcelNextColumn(c)).Value
+                            If sCaveParentConnection <> "" Then oCave.ParentConnection = New cConnectionDef(sCaveParentConnection)
+                            Dim sCaveConnection As String = "" & oXLSCaves.Cells(r, pExcelNextColumn(c)).Value
+                            If sCaveConnection <> "" Then oCave.Connection = New cConnectionDef(sCaveConnection)
+                        End If
+                        r += 1
+                    Loop
+                End If
+            End If
+
+            r = 2
+            Dim oXLSSegment As OfficeOpenXml.ExcelWorksheet = oXLS.Workbook.Worksheets(1)
+            If oXLSSegment IsNot Nothing Then
+                Do
+                    c = 1
+                    Dim oSegment As cSegment = New cSegment(Survey)
+                    Dim sFrom As String = "" & oXLSSegment.Cells(r, 4).Value
+                    If sFrom = "" Then Exit Do
+
+                    Dim sSession As String = "" & oXLSSegment.Cells(r, c).Value
+                    If bSession Then
+                        Call oSegment.SetSession(sSession)
+                    End If
+                    If bCavesAndBraches Then
+                        Dim sCave As String = "" & oXLSSegment.Cells(r, pExcelNextColumn(c)).Value
+                        Dim sBranch As String = "" & oXLSSegment.Cells(r, pExcelNextColumn(c)).Value
+                        Call oSegment.SetCave(sCave, sBranch)
+                    Else
+                        Call pExcelNextColumn(c)
+                        Call pExcelNextColumn(c)
+                    End If
+                    oSegment.From = oXLSSegment.Cells(r, pExcelNextColumn(c)).Value
+                    oSegment.To = oXLSSegment.Cells(r, pExcelNextColumn(c)).Value
+                    oSegment.Distance = oXLSSegment.Cells(r, pExcelNextColumn(c)).Value
+                    oSegment.Bearing = oXLSSegment.Cells(r, pExcelNextColumn(c)).Value
+                    oSegment.Inclination = oXLSSegment.Cells(r, pExcelNextColumn(c)).Value
+
+                    oSegment.Left = oXLSSegment.Cells(r, pExcelNextColumn(c)).Value
+                    oSegment.Right = oXLSSegment.Cells(r, pExcelNextColumn(c)).Value
+                    oSegment.Up = oXLSSegment.Cells(r, pExcelNextColumn(c)).Value
+                    oSegment.Down = oXLSSegment.Cells(r, pExcelNextColumn(c)).Value
+
+                    Dim sDirection As String = oXLSSegment.Cells(r, pExcelNextColumn(c)).Value
+                    If sDirection = "→" Then
+                        oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Right
+                    ElseIf sDirection = "←" Then
+                        oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Left
+                    ElseIf sDirection = "↕" Then
+                        oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Vertical
+                    Else
+                        If sDirection.ToLower = modMain.GetLocalizedString("main.textpart20a").ToLower Then
+                            oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Left
+                        ElseIf sDirection.ToLower = modMain.GetLocalizedString("main.textpart20b").ToLower Then
+                            oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Right
+                        Else
+                            oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Vertical
+                        End If
+                    End If
+                    oSegment.Exclude = oXLSSegment.Cells(r, pExcelNextColumn(c)).Value <> ""
+                    oSegment.Splay = oXLSSegment.Cells(r, pExcelNextColumn(c)).Value <> ""
+                    oSegment.Surface = oXLSSegment.Cells(r, pExcelNextColumn(c)).Value <> ""
+                    oSegment.Duplicate = oXLSSegment.Cells(r, pExcelNextColumn(c)).Value <> ""
+
+                    oSegment.Virtual = oXLSSegment.Cells(r, pExcelNextColumn(c)).Value <> ""
+                    oSegment.Calibration = oXLSSegment.Cells(r, pExcelNextColumn(c)).Value <> ""
+
+                    oSegment.Note = oXLSSegment.Cells(r, pExcelNextColumn(c)).Value
+
+                    Survey.Segments.Append(oSegment)
+
+                    r += 1
+                Loop
+                Call Survey.Segments.SaveAll()
+            End If
+
+            Call Survey.TrigPoints.Rebind(False)
+
+            r = 2
+            Dim oXLSTrigpoint As OfficeOpenXml.ExcelWorksheet = oXLS.Workbook.Worksheets(2)
+            If oXLSTrigpoint IsNot Nothing Then
+                Do
+                    c = 1
+                    Dim sTrigpoint As String = "" & oXLSTrigpoint.Cells(r, c).Value
+                    If sTrigpoint = "" Then Exit Do
+                    Dim oTrigpoint As cTrigPoint = Survey.TrigPoints(sTrigpoint)
+                    If oTrigpoint IsNot Nothing Then
+                        Dim sLatitude As String = oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value
+                        Dim sLongitude As String = oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value
+                        Dim sAltitude As String = oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value
+                        Dim sFix As String = oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value
+                        If sLatitude <> "" AndAlso sLongitude <> "" Then
+                            oTrigpoint.Coordinate.Latitude = sLatitude
+                            oTrigpoint.Coordinate.Longitude = sLongitude
+                            oTrigpoint.Coordinate.Altitude = sAltitude
+                            'oTrigpoint.Coordinate.Fix =sfix
+                        End If
+
+                        Dim sEntrance As String = oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value
+                        Dim sType As String = oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value
+                        oTrigpoint.IsSpecial = oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value <> ""
+                        oTrigpoint.IsInExploration = oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value <> ""
+
+                        oTrigpoint.Note = oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value
+
+                        Call oTrigpoint.Save()
+                    End If
+                    r += 1
+                Loop
+            End If
+            'TODO: in export calc per dati calcolati con per segmenti
+        End Using
+    End Sub
 
     Public Sub ExcelExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, Options As ExcelExportOptionsEnum)
         Dim oFileinfo As IO.FileInfo = New IO.FileInfo(Filename)
@@ -1569,13 +1787,13 @@ Module modExport
                         oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart141")
 
                         If bCalculatedData Then
-                            oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = GetLocalizedString("main.textpart34")
-                            oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = GetLocalizedString("main.textpart35")
-                            oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = GetLocalizedString("main.textpart36")
+                            oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart180") & GetLocalizedString("main.textpart34")
+                            oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart180") & GetLocalizedString("main.textpart35")
+                            oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart180") & GetLocalizedString("main.textpart36")
                         End If
 
                         For Each oDataField As Data.cDataField In Survey.Properties.DataTables.Segments
-                            oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oDataField.Category = "", "", oDataField.Category & "/") & oDataField.Name
+                            oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart179") & If(oDataField.Category = "", "", oDataField.Category & "/") & oDataField.Name
                         Next
 
                         oXLSSegment.Row(r).Style.Font.Bold = True
@@ -1624,8 +1842,8 @@ Module modExport
                     oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.Right
                     oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.Up
                     oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.Down
-
-                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Right, modMain.GetLocalizedString("main.textpart20a"), If(oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Left, modMain.GetLocalizedString("main.textpart20b"), modMain.GetLocalizedString("main.textpart20e")))
+                    '←→↕
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Right, "→", If(oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Left, "←", "↕"))
                     oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oSegment.Exclude, "✔", "")
                     oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oSegment.Splay, "✔", "")
                     oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oSegment.Surface, "✔", "")
@@ -1667,13 +1885,13 @@ Module modExport
                 oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart148")
                 oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart149")
 
-                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart37")
-                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart38")
-                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart39")
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart180") & modMain.GetLocalizedString("main.textpart37")
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart180") & modMain.GetLocalizedString("main.textpart38")
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart180") & modMain.GetLocalizedString("main.textpart39")
 
-                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart116")
-                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart117")
-                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart118")
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart180") & modMain.GetLocalizedString("main.textpart116")
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart180") & modMain.GetLocalizedString("main.textpart117")
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart180") & modMain.GetLocalizedString("main.textpart118")
 
                 For Each oDataField As Data.cDataField In Survey.Properties.DataTables.Trigpoints
                     oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = If(oDataField.Category = "", "", oDataField.Category & "/") & oDataField.Name

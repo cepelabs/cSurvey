@@ -1157,3 +1157,8 @@ main.textpart177=Path: {0}
 main.textpart178=Therion version is old. Check Therion website for an update.
 
 main.undo54=Join point
+
+main.textpart179=User:
+main.textpart180=Calc:
+
+main.filetypecSurveyXLSX=Microsoft Excel files from cSurvey

@@ -41,9 +41,31 @@ Namespace cSurvey
             End Get
         End Property
 
+        Public Shared Function Parse(Text As String) As (Station As String, FromStation As String)
+            If String.IsNullOrEmpty(Text) Then
+                Return ("", "")
+            Else
+                Dim idxStart As Integer = Text.IndexOf("(<")
+                Dim idxEnd As Integer = Text.LastIndexOf(")")
+                If idxStart = -1 OrElse idxEnd = -1 OrElse idxEnd <= idxStart + 1 Then
+                    'invalid format
+                    Return ("", "")
+                End If
+                Dim sStation As String = Text.Substring(0, idxStart)
+                Dim sFromStation As String = Text.Substring(idxStart + 2, idxEnd - idxStart - 2)
+                Return (sStation.Trim(), sFromStation.Trim())
+            End If
+        End Function
+
         Public Overrides Function ToString() As String
             Return sStation & "(<" & sFromStation & ")"
         End Function
+
+        Public Sub New(Text As String)
+            Dim o = Parse(Text)
+            sStation = o.Station
+            sFromStation = o.FromStation
+        End Sub
 
         Public Sub New(Station As String, FromStation As String)
             sStation = Station

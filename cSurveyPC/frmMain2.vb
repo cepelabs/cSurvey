@@ -574,7 +574,7 @@ Friend Class frmMain2
                 If Filename = "" Then
                     Using olfd As OpenFileDialog = New OpenFileDialog
                         With olfd
-                            .Filter = GetLocalizedString("main.filetypeTRO") & " (*.TRO)|*.TRO|" & GetLocalizedString("main.filetypeCSURVEY") & " (*.CSX;*.CSZ)|*.CSX;*.CSZ|" & GetLocalizedString("main.filetypePOCKETTOPO") & " (*.TXT)|*.TXT|" & GetLocalizedString("main.filetypeCOMPASSDATA") & " (*.DAT)|*.dat|" & GetLocalizedString("main.filetypeCAVEEXPLORER") & " (*.TXT)|*.TXT|" & GetLocalizedString("main.filetypeTEXT") & " (*.CSV;*.TXT)|*.CSV;*.TXT|" & GetLocalizedString("main.filetypeXLSX") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeERON") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeMNEMO") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeTH") & " (*.TH)|*.TH"
+                            .Filter = GetLocalizedString("main.filetypeTRO") & " (*.TRO)|*.TRO|" & GetLocalizedString("main.filetypeCSURVEY") & " (*.CSX;*.CSZ)|*.CSX;*.CSZ|" & GetLocalizedString("main.filetypePOCKETTOPO") & " (*.TXT)|*.TXT|" & GetLocalizedString("main.filetypeCOMPASSDATA") & " (*.DAT)|*.dat|" & GetLocalizedString("main.filetypeCAVEEXPLORER") & " (*.TXT)|*.TXT|" & GetLocalizedString("main.filetypeTEXT") & " (*.CSV;*.TXT)|*.CSV;*.TXT|" & GetLocalizedString("main.filetypeXLSX") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeERON") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeMNEMO") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeTH") & " (*.TH)|*.TH|" & GetLocalizedString("main.filetypecSurveyXLSX") & " (*.XLSX)|*.XLSX"
                             If FilterIndex > 0 Then
                                 .FilterIndex = FilterIndex
                                 bSaveLastUsedFilter = False
@@ -625,6 +625,9 @@ Friend Class frmMain2
                         Case 10
                             'Therion TH
                             Call pSurveyImportTherion(Filename, Append)
+                        Case 11
+                            'CSURVEY EXCEL FILE
+                            Call pSurveyImportXLSXcSurvey(Filename, Append)
                     End Select
                 End If
             Case ImportExportFormatEnum.Track
@@ -10563,6 +10566,55 @@ Friend Class frmMain2
                 Call pSurveyTrigpointsRefresh()
 
                 'Call pSurveyLoadTreeLayers()
+
+                Call pSurveyCalculate(True)
+                Call pMapInvalidate()
+            End If
+        End Using
+    End Sub
+
+    Private Sub pSurveyImportXLSXcSurvey(Filename As String, Append As Boolean)
+        'FILE EXCEL from cSurvey
+        Dim dNow As Date = Date.Now
+
+        Using frmIX As frmImportExcelcSurvey = New frmImportExcelcSurvey(oSurvey)
+            frmIX.txtFilename.Text = Filename
+
+            If frmIX.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Dim bCavesAndBraches As Boolean = frmIX.chkExcelcSurveyCavesAndBranches.Checked
+                Dim bSession As Boolean = frmIX.chkExcelcSurveySessions.Checked
+                'If bDefaultArrangePriorityOnImport Then Call oSurvey.Calculate.ArrangePriority()
+
+                bDisableSegmentsChangeEvent.Push()
+                bDisableTrigpointsChangeEvent.Push()
+
+                If Not Append Then
+                    If sFilename = "" Then
+                        sFilename = Filename
+                        sFilename = IO.Path.Combine(IO.Path.GetDirectoryName(sFilename), IO.Path.GetFileNameWithoutExtension(sFilename) & ".CSZ")
+                    End If
+                End If
+
+                Call oMousePointer.Push(Cursors.WaitCursor)
+
+                'Try
+                Call modExport.ExcelImportFrom(oSurvey, Filename, If(bSession, ExcelImportOptionsEnum.Sessions, ExcelImportOptionsEnum.None) Or If(bCavesAndBraches, ExcelImportOptionsEnum.CavesAndBranches, ExcelImportOptionsEnum.None))
+                'Catch ex As Exception
+                'Call pLogAdd(ex)
+                'End Try
+
+                bDisableSegmentsChangeEvent.Pop()
+                bDisableTrigpointsChangeEvent.Pop()
+
+                Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, 0, GetLocalizedString("main.progressend13"))
+                Call oMousePointer.Pop()
+
+                Call pSurveyFillSessionList(False)
+                Call pSurveyFillCaveList(False)
+
+                Call pSurveyCaption()
+                Call pSurveySegmentsRefresh()
+                Call pSurveyTrigpointsRefresh()
 
                 Call pSurveyCalculate(True)
                 Call pMapInvalidate()

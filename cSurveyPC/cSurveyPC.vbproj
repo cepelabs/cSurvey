@@ -405,6 +405,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dynamic.vb" />
+    <Compile Include="frmImportExcelcSurvey.Designer.vb">
+      <DependentUpon>frmImportExcelcSurvey.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportExcelcSurvey.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmImportExcelMNemo.Designer.vb">
       <DependentUpon>frmImportExcelMNemo.vb</DependentUpon>
     </Compile>
@@ -1719,6 +1725,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDistancesFilter.resx">
       <DependentUpon>frmDistancesFilter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportExcelcSurvey.it.resx">
+      <DependentUpon>frmImportExcelcSurvey.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportExcelcSurvey.resx">
+      <DependentUpon>frmImportExcelcSurvey.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportExcelcSurvey.ru.resx">
+      <DependentUpon>frmImportExcelcSurvey.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmImportExcelMNemo.it.resx">
       <DependentUpon>frmImportExcelMNemo.vb</DependentUpon>

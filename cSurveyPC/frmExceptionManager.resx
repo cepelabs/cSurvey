@@ -287,7 +287,7 @@ Save a copy of your survey and try to restart the application.
   <assembly alias="DevExpress.Data.v24.2" name="DevExpress.Data.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="cmdClose.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi43
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjI0LjIsIFZlcnNpb249MjQuMi41
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
         dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAALsCAAAC77u/
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
@@ -536,6 +536,9 @@ Save a copy of your survey and try to restart the application.
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>682, 261</value>
   </data>
+  <data name="txtException.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
   <data name="txtException.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 49</value>
   </data>
@@ -559,9 +562,6 @@ Save a copy of your survey and try to restart the application.
   </data>
   <data name="&gt;&gt;txtException.ZOrder" xml:space="preserve">
     <value>10</value>
-  </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
@@ -615,7 +615,7 @@ Save a copy of your survey and try to restart the application.
     <value>frmExceptionManager</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>DevExpress.XtraEditors.XtraForm, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="btnSaveException.Caption" xml:space="preserve">
     <value>Save exception...</value>

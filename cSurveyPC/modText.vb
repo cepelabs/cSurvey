@@ -49,4 +49,20 @@
         sTemp = sTemp.Replace(Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator, ".")
         Return sTemp
     End Function
+
+    Function CountLeadingSpaces(input As String) As Integer
+        If String.IsNullOrEmpty(input) Then
+            Return 0
+        Else
+            Dim count As Integer = 0
+            For Each c As Char In input
+                If c = " "c Then
+                    count += 1
+                Else
+                    Exit For
+                End If
+            Next
+            Return count
+        End If
+    End Function
 End Module

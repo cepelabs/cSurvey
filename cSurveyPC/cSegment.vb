@@ -881,14 +881,14 @@ Namespace cSurvey
             End If
         End Sub
 
-        Public Function GetLocked() As Boolean Implements cISegment.GetLocked
-            Dim oCaveInfo As cICaveInfoBranches = GetCaveInfo()
-            If IsNothing(oCaveInfo) Then
-                Return False
-            Else
-                Return oCaveInfo.GetLocked
-            End If
-        End Function
+        'Public Function GetLocked() As Boolean Implements cISegment.GetLocked
+        '    Dim oCaveInfo As cICaveInfoBranches = GetCaveInfo()
+        '    If IsNothing(oCaveInfo) Then
+        '        Return False
+        '    Else
+        '        Return oCaveInfo.GetLocked
+        '    End If
+        'End Function
 
         Public Function GetCaveInfo() As cICaveInfoBranches Implements cISegment.GetCaveInfo
             Return oSurvey.Properties.GetCaveInfo(Me)
@@ -1552,7 +1552,10 @@ Namespace cSurvey
                 Return iSurfaceProfileShow
             End Get
             Set(value As cISurfaceProfile.SurfaceProfileShowEnum)
-                iSurfaceProfileShow = value
+                If iSurfaceProfileShow <> value Then
+                    iSurfaceProfileShow = value
+                    bChanged = True
+                End If
             End Set
         End Property
 

@@ -1,20 +1,65 @@
-﻿Imports System.Xml
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView
+Imports System.Xml
+Imports cSurveyPC.cSurvey.cCaveInfos
 Imports cSurveyPC.cSurvey.cSurvey
+Imports cSurveyPC.cSurvey.Design.Items
+Imports NAudio
 
 Namespace cSurvey.Master
     Public Class cMasterSlave
         Private oSurvey As cSurvey
         Private oUsers As cUsers
 
+        Private oLockInfos As cCaveAndBrancheLockInfos
+
         Private sMasterID As String
+        Private bIsMaster As Boolean
 
         Private sUserID As String
         Private sSlaveID As String
+        Private bIsSlave As Boolean
         Private dSlaveDate As Date
+
+        Public Function IsLocked(Item As Design.cItem) As Boolean
+            If bIsMaster OrElse bIsSlave Then
+                Dim oCaveInfo As cICaveInfoBranches = Item.GetCaveInfo()
+                If IsNothing(oCaveInfo) Then
+                    Return False
+                Else
+                    Return oCaveInfo.GetLocked
+                End If
+            End If
+        End Function
+        Public Function IsLocked(Trigpoint As cTrigPoint) As Boolean
+            If bIsMaster OrElse bIsSlave Then
+                Dim oCaveInfos As HashSet(Of cICaveInfoBranches) = Trigpoint.GetCaveInfos
+                If oCaveInfos.Count = 0 Then
+                    Return False
+                Else
+                    Return oCaveInfos.FirstOrDefault(Function(oCaveInfo) oCaveInfo.GetLocked) IsNot Nothing
+                End If
+            End If
+        End Function
+
+        Public Function IsLocked(Segment As cISegment) As Boolean
+            If bIsMaster OrElse bIsSlave Then
+                Dim oCaveInfo As cICaveInfoBranches = Segment.GetCaveInfo
+                If IsNothing(oCaveInfo) Then
+                    Return False
+                Else
+                    Return oCaveInfo.GetLocked
+                End If
+            End If
+        End Function
+
+        Public Function IsMasterOrSlave() As Boolean
+            Return bIsMaster OrElse bIsSlave
+        End Function
 
         Friend Function SetAsMaster() As Boolean
             If sMasterID = "" Then
                 sMasterID = Guid.NewGuid.ToString
+                bIsMaster = True
                 Call oSurvey.RaiseOnPropertiesChanged(OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum.MasterSlaveSettings)
                 Return True
             Else
@@ -22,46 +67,90 @@ Namespace cSurvey.Master
             End If
         End Function
 
-        Friend Function SetAsSlave(UserID As String) As Boolean
+        ''' <summary>
+        ''' Join the slave survey to master keeping it opening
+        ''' </summary>
+        ''' <param name="Filename"></param>
+        Friend Sub PushSlave(Filename As String)
+
+        End Sub
+
+        ''' <summary>
+        ''' Join the slave survey to master closing it and freeing locked caves and braches
+        ''' </summary>
+        ''' <param name="Filename"></param>
+        Friend Sub CommitSlave(Filename As String)
+
+        End Sub
+
+        Friend Function CreateSlave(UserID As String, Filename As String) As Boolean
+
             If sMasterID <> "" And sSlaveID = "" Then
-                If oUsers.IsUsed(UserID) Then
-                    sUserID = UserID
-                    sSlaveID = Guid.NewGuid.ToString
-                    dSlaveDate = Now
-                    Call oSurvey.RaiseOnPropertiesChanged(OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum.MasterSlaveSettings)
-                    Return True
+                'verifico che l'utente non sia gia stato slavizzato
+                'se si ERRORE
+                'se no
+                'marco i rami che sono stati associati a questo utente come slavizzati
+                'quindi creo un file slave con il marker dell'utente a cui è riservato
+
+                If oUsers.Contains(UserID) Then
+                    Dim oUser As cUser = oUsers(UserID)
+                    If "" & oUser.LockID = "" Then
+                        Dim sLockID As String = oUser.SetLockID
+                        oLockInfos.SetLockID(sUserID, sLockID)
+                        'TODO 
+                        'save survey with user lockid as slave survey
+                    Else
+                        Throw New Exception("User already locked")
+                    End If
                 Else
-                    Return False
+                    Throw New Exception("User not found")
                 End If
+
+
+                'If oUsers.IsUsed(UserID) Then
+                '    sUserID = UserID
+                '    sSlaveID = Guid.NewGuid.ToString
+                '    dSlaveDate = Now
+                '    Call oSurvey.RaiseOnPropertiesChanged(OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum.MasterSlaveSettings)
+                '    Return True
+                'Else
+                '    Return False
+                'End If
             Else
                 Return False
             End If
         End Function
 
         Friend Function IsMaster() As Boolean
-            Return sMasterID <> "" AndAlso sSlaveID = ""
+            Return bIsMaster
         End Function
 
         Friend Function IsSlave() As Boolean
-            Return sMasterID <> "" AndAlso sSlaveID <> ""
+            Return bIsMaster AndAlso bIsSlave
         End Function
 
         Friend Sub New(Survey As cSurvey)
             oSurvey = Survey
             oUsers = New cUsers
+            oLockInfos = New cCaveAndBrancheLockInfos
             sMasterID = ""
+            bIsMaster = False
             sSlaveID = ""
+            bIsSlave = False
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal MasterSlave As XmlElement)
             oSurvey = Survey
             sMasterID = modXML.GetAttributeValue(MasterSlave, "masterid", "")
+            bIsMaster = sMasterID <> ""
             sSlaveID = modXML.GetAttributeValue(MasterSlave, "slaveid", "")
             If sSlaveID <> "" Then
+                bIsSlave = True
                 sUserID = modXML.GetAttributeValue(MasterSlave, "userid", "")
                 dSlaveDate = modXML.GetAttributeValue(MasterSlave, "slavedate", Now)
             End If
             oUsers = New cUsers(MasterSlave.Item("users"))
+            oLockInfos = New cCaveAndBrancheLockInfos(MasterSlave.Item("cavebrancheslockinfos"))
         End Sub
 
         Public ReadOnly Property Users As cUsers
@@ -69,6 +158,13 @@ Namespace cSurvey.Master
                 Return oUsers
             End Get
         End Property
+
+        Public ReadOnly Property LockInfos As cCaveAndBrancheLockInfos
+            Get
+                Return oLockInfos
+            End Get
+        End Property
+
 
         Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlMasterSlave As XmlElement = Document.CreateElement("masterslave")
@@ -79,6 +175,7 @@ Namespace cSurvey.Master
                 Call oXmlMasterSlave.SetAttribute("slaveid", dSlaveDate.ToString("O"))
             End If
             Call oUsers.SaveTo(File, Document, oXmlMasterSlave)
+            Call oLockInfos.SaveTo(File, Document, oXmlMasterSlave)
             Call Parent.AppendChild(oXmlMasterSlave)
             Return oXmlMasterSlave
         End Function
@@ -90,6 +187,18 @@ Namespace cSurvey.Master
 
         Private dDate As Date
         Private sAssignedBy As String
+        Private sAssignedTo As String
+
+        Private sLockID As String
+
+        Public ReadOnly Property LockID As String
+            Get
+                Return sLockID
+            End Get
+        End Property
+        Friend Sub SetLockID(LockID As String)
+            sLockID = LockID
+        End Sub
 
         Public ReadOnly Property Cave As String
             Get
@@ -115,11 +224,19 @@ Namespace cSurvey.Master
             End Get
         End Property
 
+        Public ReadOnly Property AssignedTo As String
+            Get
+                Return sAssignedTo
+            End Get
+        End Property
+
         Friend Sub New(CaveAndBranch As XmlElement)
             sCave = CaveAndBranch.GetAttribute("cave")
             sBranch = CaveAndBranch.GetAttribute("branch")
             dDate = CaveAndBranch.GetAttribute("date")
             sAssignedBy = CaveAndBranch.GetAttribute("assignedby")
+            sAssignedTo = CaveAndBranch.GetAttribute("assignedto")
+            sLockID = modXML.GetAttributeValue(CaveAndBranch, "lockid", "")
         End Sub
 
         Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
@@ -128,15 +245,20 @@ Namespace cSurvey.Master
             Call oXMLCaveAndBranch.SetAttribute("branch", sBranch)
             Call oXMLCaveAndBranch.SetAttribute("date", dDate.ToString("O"))
             Call oXMLCaveAndBranch.SetAttribute("assignedby", sAssignedBy)
+            Call oXMLCaveAndBranch.SetAttribute("assignedto", sAssignedTo)
+
+            If sLockID <> "" Then Call oXMLCaveAndBranch.SetAttribute("lockid", sLockID)
             Call Parent.AppendChild(oXMLCaveAndBranch)
             Return oXMLCaveAndBranch
         End Function
 
-        Public Sub New(Cave As String, Branch As String, [Date] As Date, AssignedBy As String)
+        Public Sub New(Cave As String, Branch As String, [Date] As Date, AssignedBy As String, AssignedTo As String)
             sCave = Cave
             sBranch = Branch
             dDate = [Date]
             sAssignedBy = AssignedBy
+            sAssignedTo = AssignedTo
+            sLockID = ""
         End Sub
     End Class
 
@@ -146,6 +268,13 @@ Namespace cSurvey.Master
 
         Private oItems As Dictionary(Of String, cCaveAndBrancheLockInfo)
 
+        Friend Sub SetLockID(UserID As String, LockID As String)
+            For Each oCaveAndBranch As cCaveAndBrancheLockInfo In oItems.Values
+                If oCaveAndBranch.AssignedTo = UserID Then
+                    Call oCaveAndBranch.SetLockID(LockID)
+                End If
+            Next
+        End Sub
         Friend Sub New(CaveAndBranches As XmlElement)
             oItems = New Dictionary(Of String, cCaveAndBrancheLockInfo)
             For Each oXMLCaveAndBranch As XmlElement In CaveAndBranches.ChildNodes
@@ -155,7 +284,7 @@ Namespace cSurvey.Master
         End Sub
 
         Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
-            Dim oXMLCaveAndBranches As XmlElement = Document.CreateElement("cavesandbranches")
+            Dim oXMLCaveAndBranches As XmlElement = Document.CreateElement("cavebrancheslockinfos")
             For Each oItem As cCaveAndBrancheLockInfo In oItems.Values
                 Call oItem.SaveTo(File, Document, oXMLCaveAndBranches)
             Next
@@ -167,6 +296,30 @@ Namespace cSurvey.Master
             oItems = New Dictionary(Of String, cCaveAndBrancheLockInfo)
         End Sub
 
+        Public Function IsLocked(Cave As cICaveInfoBranches) As Boolean
+            Dim sKey As String = pGetKey(Cave.Cave, Cave.Path)
+            Return oItems.ContainsKey(sKey)
+        End Function
+
+        Public Function IsLocked(Cave As String, Branch As String) As Boolean
+            Dim sKey As String = pGetKey(Cave, Branch)
+            Return oItems.ContainsKey(sKey)
+        End Function
+
+        Public Function GetLockInfo(Cave As cICaveInfoBranches) As cCaveAndBrancheLockInfo
+            Dim sKey As String = pGetKey(Cave.Cave, Cave.Path)
+            If oItems.ContainsKey(sKey) Then
+                Return oItems(sKey)
+            Else
+                Return Nothing
+            End If
+        End Function
+
+        Public Function Contains(Cave As cICaveInfoBranches) As Boolean
+            Dim sKey As String = pGetKey(Cave.Cave, Cave.Path)
+            Return oItems.ContainsKey(sKey)
+        End Function
+
         Public Function Contains(Cave As String, Branch As String) As Boolean
             Return oItems.ContainsKey(pGetKey(Cave, Branch))
         End Function
@@ -174,6 +327,17 @@ Namespace cSurvey.Master
         Public Function Count() As Integer
             Return oItems.Count
         End Function
+
+        Default Public ReadOnly Property Item(Cave As cICaveInfoBranches) As cCaveAndBrancheLockInfo
+            Get
+                Dim sKey As String = pGetKey(Cave.Cave, Cave.Path)
+                If oItems.ContainsKey(sKey) Then
+                    Return oItems(sKey)
+                Else
+                    Return Nothing
+                End If
+            End Get
+        End Property
 
         Default Public ReadOnly Property Item(Cave As String, Branch As String) As cCaveAndBrancheLockInfo
             Get
@@ -186,8 +350,8 @@ Namespace cSurvey.Master
             End Get
         End Property
 
-        Friend Function Append(Cave As String, Branch As String, [Date] As Date, AssignedBy As String) As cCaveAndBrancheLockInfo
-            Dim oItem As cCaveAndBrancheLockInfo = New cCaveAndBrancheLockInfo(Cave, Branch, [Date], AssignedBy)
+        Friend Function Append(Cave As String, Branch As String, [Date] As Date, AssignedBy As String, AssignedTo As String) As cCaveAndBrancheLockInfo
+            Dim oItem As cCaveAndBrancheLockInfo = New cCaveAndBrancheLockInfo(Cave, Branch, [Date], AssignedBy, AssignedTo)
             Call oItems.Add(pGetKey(Cave, Branch), oItem)
             Return oItem
         End Function
@@ -212,23 +376,36 @@ Namespace cSurvey.Master
         Private sPassword As String
         Private iLevel As Integer
 
-        Private oCavesAndBranches As cCaveAndBrancheLockInfos
+        Private sLockID As String
+
+        Public ReadOnly Property LockID As String
+            Get
+                Return sLockID
+            End Get
+        End Property
+
+        Friend Function SetLockID() As String
+            sLockID = Guid.NewGuid.ToString
+            Return sLockID
+        End Function
+
+        'Private oCavesAndBranches As cCaveAndBrancheLockInfos
 
         Friend Sub New(ByVal User As XmlElement)
             sUserID = User.GetAttribute("userid")
             sName = User.GetAttribute("name")
             sPassword = User.GetAttribute("pwd")
             iLevel = User.GetAttribute("level")
-            oCavesAndBranches = New cCaveAndBrancheLockInfos(User.Item("cavesandbranches"))
+            sLockID = modXML.GetAttributeValue(User, "lockid", "")
         End Sub
 
         Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLUser As XmlElement = Document.CreateElement("user")
             Call oXMLUser.SetAttribute("userid", sUserID)
             Call oXMLUser.SetAttribute("name", sName)
-            Call oXMLUser.SetAttribute("password", spassword)
+            Call oXMLUser.SetAttribute("password", sPassword)
             Call oXMLUser.SetAttribute("level", iLevel)
-            Call oCavesAndBranches.SaveTo(File, Document, oXMLUser)
+
             Call Parent.AppendChild(oXMLUser)
             Return oXMLUser
         End Function
@@ -239,15 +416,8 @@ Namespace cSurvey.Master
             sPassword = modMain.CalculateHash(Password)
             iLevel = Level
 
-            oCavesAndBranches = New cCaveAndBrancheLockInfos
+            sLockID = ""
         End Sub
-
-        Public ReadOnly Property CavesAndBranches As cCaveAndBrancheLockInfos
-            Get
-                Return oCavesAndBranches
-            End Get
-
-        End Property
 
         Public ReadOnly Property Name As String
             Get
@@ -278,14 +448,14 @@ Namespace cSurvey.Master
 
         Private oItems As Dictionary(Of String, cUser)
 
-        Public Function GetCaveAndBranchLockInfo(Cave As String, Branch As String) As cCaveAndBrancheLockInfo
-            For Each oUser As cUser In oItems.Values
-                If oUser.CavesAndBranches.Contains(Cave, Branch) Then
-                    Return oUser.CavesAndBranches(Cave, Branch)
-                End If
-            Next
-            Return Nothing
-        End Function
+        'Public Function GetCaveAndBranchLockInfo(Cave As String, Branch As String) As cCaveAndBrancheLockInfo
+        '    For Each oUser As cUser In oItems.Values
+        '        If oUser.CavesAndBranches.Contains(Cave, Branch) Then
+        '            Return oUser.CavesAndBranches(Cave, Branch)
+        '        End If
+        '    Next
+        '    Return Nothing
+        'End Function
 
         Public Enum LevelEnum
             Administrator = 0
@@ -295,7 +465,7 @@ Namespace cSurvey.Master
 
         Public Function ValidateUser(UserID As Integer, Password As String) As Boolean
             If oItems.ContainsKey(UserID) Then
-                Return oItems(UserID).validatepassword(Password)
+                Return oItems(UserID).ValidatePassword(Password)
             Else
                 Return False
             End If
@@ -331,17 +501,17 @@ Namespace cSurvey.Master
             oItems = New Dictionary(Of String, cUser)(StringComparer.CurrentCultureIgnoreCase)
         End Sub
 
-        Friend Function IsUsed(UserID As String) As Boolean
-            If oItems.ContainsKey(UserID) Then
-                For Each oUser As cUser In oItems.Values
-                    If oUser.CavesAndBranches.Count > 0 Then
-                        Return True
-                    End If
-                Next
-            Else
-                Return False
-            End If
-        End Function
+        'Friend Function IsUsed(UserID As String) As Boolean
+        '    If oItems.ContainsKey(UserID) Then
+        '        For Each oUser As cUser In oItems.Values
+        '            If oUser.CavesAndBranches.Count > 0 Then
+        '                Return True
+        '            End If
+        '        Next
+        '    Else
+        '        Return False
+        '    End If
+        'End Function
 
         Public Function Contains(UserID As String) As Boolean
             Return oItems.ContainsKey(UserID)

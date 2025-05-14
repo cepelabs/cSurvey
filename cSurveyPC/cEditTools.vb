@@ -1265,6 +1265,7 @@ Namespace cSurvey.Helper.Editor
 
         Private sCurrentCave As String = ""
         Private sCurrentBranch As String = ""
+        Private bCurrentCaveBranchLocked As Boolean
         Private iCurrentBindDesignType As cItem.BindDesignTypeEnum
         Private sCurrentCrossSection As String = ""
 
@@ -1520,6 +1521,12 @@ Namespace cSurvey.Helper.Editor
             End If
         End Sub
 
+        Public ReadOnly Property CurrentCaveBranchLocked() As Boolean
+            Get
+                Return bCurrentCaveBranchLocked
+            End Get
+        End Property
+
         Public Sub [SelectCave](ByVal Cave As String, Optional ByVal CaveBranch As String = "")
             If (Cave <> sCurrentCave) OrElse (CaveBranch <> sCurrentBranch) Then
                 sCurrentCave = Cave
@@ -1527,6 +1534,12 @@ Namespace cSurvey.Helper.Editor
                     sCurrentBranch = CaveBranch
                 Else
                     sCurrentBranch = ""
+                End If
+                Dim oCaveInfo As cICaveInfoBranches = oSurvey.Properties.GetCaveInfo(Cave, CaveBranch)
+                If oCaveInfo Is Nothing Then
+                    bCurrentCaveBranchLocked = False
+                Else
+                    bCurrentCaveBranchLocked = oCaveInfo.GetLocked
                 End If
                 RaiseEvent OnCaveBranchSelect(Me, New cCaveBranchSelectEventArgs)
             End If

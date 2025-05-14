@@ -29,10 +29,18 @@ Namespace cSurvey
         Private oConnection As cConnectionDef
 
         Public Function GetLocked() As Boolean Implements cICaveInfoBranches.GetLocked
-            If oParent Is Nothing Then
-                Return oCaveInfo.GetLocked
+            If bLocked Then
+                Return bLocked
             Else
-                Return oParent.GetLocked()
+                If oSurvey.MasterSlave.LockInfos.IsLocked(Me) Then
+                    Return True
+                Else
+                    If oParent Is Nothing Then
+                        Return oCaveInfo.GetLocked()
+                    Else
+                        Return oParent.GetLocked()
+                    End If
+                End If
             End If
         End Function
 

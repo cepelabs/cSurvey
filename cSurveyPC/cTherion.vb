@@ -8,6 +8,7 @@ Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 Imports DevExpress.Charts.Native
 Imports DevExpress.Data.Async.Helpers
+Imports DevExpress.Utils.Drawing.Helpers.NativeMethods
 Imports DevExpress.Utils.Extensions
 Imports DevExpress.XtraCharts
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
@@ -18,6 +19,7 @@ Imports DevExpress.XtraRichEdit.Import.Html
 Imports DevExpress.XtraTreeList
 Imports DevExpress.XtraTreeList.Printing
 Imports OfficeOpenXml.FormulaParsing.Excel.Functions.Math
+Imports OfficeOpenXml.FormulaParsing.Excel.Functions.Text
 
 Public Class cTherion
 
@@ -421,6 +423,14 @@ Public Class cTherion
                                 Importer.SessionStack.Push(oSession)
                                 Call Importer.FactorBySession.Add(oSession, New cFactor())
                                 Importer.InCenterline += 1
+
+                                Dim oData As cData = New cData(TherionDataType.Normal)
+                                oData.Fields.Add("from")
+                                oData.Fields.Add("to")
+                                oData.Fields.Add("length")
+                                oData.Fields.Add("compass")
+                                oData.Fields.Add("clino")
+                                Call Importer.DataBySession.Add(oSession, oData)
                             Case "endcenterline"
                                 Importer.LastSegment = Nothing
                                 Importer.LastComment = Nothing
@@ -428,10 +438,6 @@ Public Class cTherion
                                 Dim oSession As cSession = Importer.SessionStack.Pop()
                                 Call Importer.DataBySession.Remove(oSession)
                                 Importer.InCenterline -= 1
-
-                            Case "explo-date"
-                                'not supported
-                                Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Warning, "Unsupported tag " & sFirstTag & " in " & Filename & "[" & iRow & "]")
 
                             Case "date"
                                 Dim oSession As cSession = Importer.SessionStack.Peek
@@ -467,6 +473,10 @@ Public Class cTherion
                                 'not supported
                                 Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Warning, "Unsupported tag " & sFirstTag & " in " & Filename & "[" & iRow & "]")
 
+                            Case "explo-date"
+                                'not supported
+                                Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Warning, "Unsupported tag " & sFirstTag & " in " & Filename & "[" & iRow & "]")
+
                             Case "team"
                                 If sLineParts.Count > 0 Then
                                     Dim oSession As cSession = Importer.SessionStack.Peek
@@ -484,6 +494,8 @@ Public Class cTherion
                             Case "sd"
                             Case "instrument"
                             Case "calibrate"
+
+                            Case "station-names"
 
                             Case "units"
                                 'meter[s], centimeter[s], inch[es], feet[s], yard[s] (also m, CM, in, ft, yd). Angle units supported: degree[s], Minute[s] (also deg, min), grad[s],mil[s], percent[age]
@@ -563,8 +575,19 @@ Public Class cTherion
                                 Dim oSegment As cSegment = Survey.Segments.Append()
                                 Dim sFrom As String = sLineParts(1)
                                 Dim sTo As String = sLineParts(2)
+
                                 If Not sFrom.Contains("@") Then sFrom = sFrom & "@" & sName
                                 If Not sTo.Contains("@") Then sTo = sTo & "@" & sName
+
+                                If sFrom.Contains(".") Then
+                                    Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Warning, "Removed unsupported subsurvey reference from " & sFrom)
+                                    sFrom = sFrom.Substring(0, sFrom.IndexOf("."))
+                                End If
+                                If sTo.Contains(".") Then
+                                    Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Warning, "Removed unsupported subsurvey reference from " & sTo)
+                                    sTo = sTo.Substring(0, sTo.IndexOf("."))
+                                End If
+
                                 oSegment.From = Options.StationPrefix & sFrom
                                 oSegment.To = Options.StationPrefix & sTo
 
@@ -593,27 +616,37 @@ Public Class cTherion
                                 Importer.LastSplay = sLineParts.Contains("splay")
                             Case "cs"
                                 'coordinate system...
-                                Select Case sLineParts(1).ToLower
-                                    Case "utm"
-                                        Importer.LastCoordinateSystem = TherionCoordinateSystem.WGS84UTM
-                                        Importer.LastCoordinateZone = Nothing
-                                    Case "utm32"
-                                        Importer.LastCoordinateSystem = TherionCoordinateSystem.WGS84UTM
-                                        Importer.LastCoordinateZone = "32"
-                                    Case Else
-                                        Importer.LastCoordinateSystem = TherionCoordinateSystem.Unknown
-                                        Debug.Print("TH:CS->" & sLineParts(1) & " not supported")
-                                        Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Warning, "Unsupported coordinate system " & sLineParts(1) & " in " & Filename & "[" & iRow & "]")
-                                End Select
+                                Dim sCS As String = sLineParts(1).ToLower
+                                If sCS = "utm" Then
+                                    Importer.LastCoordinateSystem = TherionCoordinateSystem.WGS84UTM
+                                    Importer.LastCoordinateZone = Nothing
+                                    'ElseIf sCS.StartsWith("utm") Then
+                                    '    Dim sZone As String = sCS.Replace("utm", "")
+                                    '    Importer.LastCoordinateSystem = TherionCoordinateSystem.WGS84UTM
+                                    '    Importer.LastCoordinateZone = sZone
+                                Else
+                                    Select Case sCS
+                                        Case Else
+                                            Importer.LastCoordinateSystem = TherionCoordinateSystem.Unknown
+                                            Debug.Print("TH:CS->" & sLineParts(1) & " not supported")
+                                            Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Warning, "Unsupported coordinate system " & sLineParts(1) & " in " & Filename & "[" & iRow & "]")
+                                    End Select
+                                End If
                             Case "fix"
                                 'station's position
-                                Dim sStation As String = Options.StationPrefix & sLineParts(1).ToUpper
+                                Dim sName As String = Importer.CaveNamesStack.Peek
+                                Dim sStation As String = sLineParts(1).ToUpper
+                                sStation = Options.StationPrefix & sStation & "@" & sName
+                                sStation = sStation.ToUpper
                                 Select Case Importer.LastCoordinateSystem
                                     Case TherionCoordinateSystem.WGS84UTM
                                         Dim sX As String = sLineParts(2)
                                         Dim sY As String = sLineParts(3)
                                         Dim sAlt As String = sLineParts(4)
                                         Survey.TrigPoints.Rebind()
+                                        If Not Survey.TrigPoints.Contains(sStation) Then
+                                            Survey.TrigPoints.Add(sStation)
+                                        End If
                                         With Survey.TrigPoints(sStation).Coordinate
                                             .System = "WGS84/UTM"
                                             .X = sX
@@ -632,6 +665,8 @@ Public Class cTherion
                                         Debug.Print("TH:FIX->" & sStation & " in an unsupported CS")
                                         Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Warning, "Unsupported fix for " & sStation & " in " & Filename & "[" & iRow & "]")
                                 End Select
+                            Case "station"
+                                'TODO
                             Case Else
                                 'may be data?
                                 If Importer.InCenterline > 0 Then

@@ -29,9 +29,11 @@ Partial Class frmImportExcelcSurvey
         Me.lblFilename = New DevExpress.XtraEditors.LabelControl()
         Me.chkExcelcSurveyCavesAndBranches = New DevExpress.XtraEditors.CheckEdit()
         Me.chkExcelcSurveySessions = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkExcelColor = New DevExpress.XtraEditors.CheckEdit()
         CType(Me.txtFilename.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkExcelcSurveyCavesAndBranches.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkExcelcSurveySessions.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkExcelColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdCancel
@@ -73,12 +75,20 @@ Partial Class frmImportExcelcSurvey
         Me.chkExcelcSurveySessions.Properties.AutoWidth = True
         Me.chkExcelcSurveySessions.Properties.Caption = resources.GetString("chkExcelcSurveySessions.Properties.Caption")
         '
+        'chkExcelColor
+        '
+        resources.ApplyResources(Me.chkExcelColor, "chkExcelColor")
+        Me.chkExcelColor.Name = "chkExcelColor"
+        Me.chkExcelColor.Properties.AutoWidth = True
+        Me.chkExcelColor.Properties.Caption = resources.GetString("chkExportColor.Properties.Caption")
+        '
         'frmImportExcelcSurvey
         '
         Me.AcceptButton = Me.cmdOk
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
+        Me.Controls.Add(Me.chkExcelColor)
         Me.Controls.Add(Me.chkExcelcSurveySessions)
         Me.Controls.Add(Me.chkExcelcSurveyCavesAndBranches)
         Me.Controls.Add(Me.txtFilename)
@@ -94,6 +104,7 @@ Partial Class frmImportExcelcSurvey
         CType(Me.txtFilename.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkExcelcSurveyCavesAndBranches.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkExcelcSurveySessions.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkExcelColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -104,4 +115,5 @@ Partial Class frmImportExcelcSurvey
     Friend WithEvents lblFilename As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chkExcelcSurveyCavesAndBranches As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkExcelcSurveySessions As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkExcelColor As DevExpress.XtraEditors.CheckEdit
 End Class

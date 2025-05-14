@@ -19,6 +19,7 @@ Namespace My
         Private sFilename As String
 
         Private sCurrentLanguage As String
+        Private sUserLanguage As String
 
         Public ReadOnly Property CurrentLanguage As String
             Get
@@ -53,6 +54,9 @@ Namespace My
             oSettings = New cEnvironmentSettings("Software\Cepelabs\cSurvey")
             'oRuntimeSettings = New cEnvironmentSettings
             sCurrentLanguage = oSettings.GetSetting("language", sCurrentLanguage)
+            If sCurrentLanguage = "" Then
+                sCurrentLanguage = sUserLanguage
+            End If
             bChangeDecimalKey = oSettings.GetSetting("keys.changedecimalkey", "1")
             bChangePeriodKey = oSettings.GetSetting("keys.changeperiodkey", "0")
         End Sub
@@ -60,7 +64,7 @@ Namespace My
         Private Sub MyApplication_Startup(sender As Object, e As Microsoft.VisualBasic.ApplicationServices.StartupEventArgs) Handles Me.Startup
             Call DevExpress.XtraEditors.WindowsFormsSettings.LoadApplicationSettings()
 
-            sCurrentLanguage = Threading.Thread.CurrentThread.CurrentCulture.Parent.Name
+            sUserLanguage = Threading.Thread.CurrentThread.CurrentCulture.Parent.Name
             Call ReloadSettings()
             oRuntimeSettings = New cEnvironmentSettings
 

@@ -1,6 +1,8 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿Imports DevExpress.XtraEditors
+
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmMasterSlaveManager
-    Inherits System.Windows.Forms.Form
+    Inherits XtraForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -31,9 +33,9 @@ Partial Class frmMasterSlaveManager
         Me.cmdJoin = New System.Windows.Forms.Button()
         Me.pnlSetAsMaster = New System.Windows.Forms.Panel()
         Me.pnlSetAsSlave = New System.Windows.Forms.Panel()
-        Me.pnlJoin = New System.Windows.Forms.Panel()
-        Me.PropertyGrid1 = New System.Windows.Forms.PropertyGrid()
         Me.cmdLock = New System.Windows.Forms.Button()
+        Me.PropertyGrid1 = New System.Windows.Forms.PropertyGrid()
+        Me.pnlJoin = New System.Windows.Forms.Panel()
         Me.pnlSetAsMaster.SuspendLayout()
         Me.pnlSetAsSlave.SuspendLayout()
         Me.pnlJoin.SuspendLayout()
@@ -110,15 +112,14 @@ Partial Class frmMasterSlaveManager
         Me.pnlSetAsSlave.Size = New System.Drawing.Size(782, 213)
         Me.pnlSetAsSlave.TabIndex = 5
         '
-        'pnlJoin
+        'cmdLock
         '
-        Me.pnlJoin.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.pnlJoin.Controls.Add(Me.cmdJoin)
-        Me.pnlJoin.Location = New System.Drawing.Point(0, 288)
-        Me.pnlJoin.Name = "pnlJoin"
-        Me.pnlJoin.Size = New System.Drawing.Size(782, 73)
-        Me.pnlJoin.TabIndex = 6
+        Me.cmdLock.Location = New System.Drawing.Point(360, 7)
+        Me.cmdLock.Name = "cmdLock"
+        Me.cmdLock.Size = New System.Drawing.Size(61, 51)
+        Me.cmdLock.TabIndex = 4
+        Me.cmdLock.Text = "Button1"
+        Me.cmdLock.UseVisualStyleBackColor = True
         '
         'PropertyGrid1
         '
@@ -130,14 +131,15 @@ Partial Class frmMasterSlaveManager
         Me.PropertyGrid1.TabIndex = 3
         Me.PropertyGrid1.ToolbarVisible = False
         '
-        'cmdLock
+        'pnlJoin
         '
-        Me.cmdLock.Location = New System.Drawing.Point(360, 7)
-        Me.cmdLock.Name = "cmdLock"
-        Me.cmdLock.Size = New System.Drawing.Size(61, 51)
-        Me.cmdLock.TabIndex = 4
-        Me.cmdLock.Text = "Button1"
-        Me.cmdLock.UseVisualStyleBackColor = True
+        Me.pnlJoin.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.pnlJoin.Controls.Add(Me.cmdJoin)
+        Me.pnlJoin.Location = New System.Drawing.Point(0, 288)
+        Me.pnlJoin.Name = "pnlJoin"
+        Me.pnlJoin.Size = New System.Drawing.Size(782, 73)
+        Me.pnlJoin.TabIndex = 6
         '
         'frmMasterSlaveManager
         '

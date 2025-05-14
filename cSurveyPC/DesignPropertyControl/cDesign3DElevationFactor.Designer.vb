@@ -20,7 +20,7 @@ Partial Class cDesign3DElevationFactor
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()>
+
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(cDesign3DElevationFactor))
         Me.trk3DSurfaceElevationAmp = New DevExpress.XtraEditors.TrackBarControl()
@@ -31,7 +31,7 @@ Partial Class cDesign3DElevationFactor
         '
         'trk3DSurfaceElevationAmp
         '
-        resources.ApplyResources(Me.trk3DSurfaceElevationAmp, "trk3DSurfaceElevationAmp")
+        'resources.ApplyResources(Me.trk3DSurfaceElevationAmp, "trk3DSurfaceElevationAmp")
         Me.trk3DSurfaceElevationAmp.Name = "trk3DSurfaceElevationAmp"
         Me.trk3DSurfaceElevationAmp.Properties.AutoSize = False
         Me.trk3DSurfaceElevationAmp.Properties.LabelAppearance.Options.UseTextOptions = True
@@ -40,7 +40,6 @@ Partial Class cDesign3DElevationFactor
         Me.trk3DSurfaceElevationAmp.Properties.Maximum = 100
         Me.trk3DSurfaceElevationAmp.Properties.Minimum = 10
         Me.trk3DSurfaceElevationAmp.Properties.TickFrequency = 10
-        Me.trk3DSurfaceElevationAmp.Value = 10
         '
         'lbl3DSurfaceElevationAmp
         '

@@ -109,7 +109,7 @@ Namespace cSurvey
         End Property
 
         Public Function GetLocked() As Boolean Implements cICaveInfoBranches.GetLocked
-            Return bLocked
+            Return bLocked OrElse oSurvey.MasterSlave.LockInfos.IsLocked(Me)
         End Function
 
         Public Property Locked As Boolean Implements cICaveInfoBranches.Locked

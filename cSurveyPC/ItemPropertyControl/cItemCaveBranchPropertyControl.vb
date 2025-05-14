@@ -2,6 +2,7 @@
 Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Items
+Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraTreeList
 
 Friend Class cItemCaveBranchPropertyControl
@@ -115,5 +116,18 @@ Friend Class cItemCaveBranchPropertyControl
 
     Private Sub cboPropCaveList_EditRequest(sender As Object, e As EventArgs) Handles cboPropCaveList.EditRequest, cboPropCaveBranchList.EditRequest
         MyBase.DoCommand("editproperties", {7, sender.editvalue})
+    End Sub
+
+    Private Sub cboPropCaveList_CustomRowFilter(sender As Object, e As RowFilterEventArgs) Handles cboPropCaveList.CustomRowFilter
+        'If oSurvey.MasterSlave.IsMasterOrSlave Then
+        If cboPropCaveList.cboCaveListView.DataSource IsNot Nothing Then
+            e.Visible = Not DirectCast(cboPropCaveList.cboCaveListView.DataSource(e.ListSourceRow), cCaveInfo).GetLocked()
+            e.Handled = True
+            'End If
+        End If
+    End Sub
+
+    Private Sub cboPropCaveList_EnabledChanged(sender As Object, e As EventArgs) Handles cboPropCaveList.EnabledChanged
+        cboPropCaveList.cboCaveListView.RefreshData()
     End Sub
 End Class

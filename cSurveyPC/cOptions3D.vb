@@ -12,8 +12,25 @@ Namespace cSurvey.Design
         Private oSurfaceOptions As cSurface3DOptions
         Private bDrawModel As Boolean
 
-        Private iDrawModelMode As DotNetCaveModel.RenderMode
-        Private iDrawModelColoringMode As DotNetCaveModel.ColoringMode
+        'clone of DotNetCaveModel.ColoringMode
+        Public Enum ColoringMode
+            CaveBranch = 0
+            TightnessSmooth = 1
+            DepthSmooth = 2
+        End Enum
+
+        'clone of DotNetCaveModel.RenderMode
+        Public Enum RenderMode
+            Original = 0
+            RoughWalls = 1
+            SmoothWalls = 2
+            Cuts = 3
+            Outline = 4
+            Num = 5
+        End Enum
+
+        Private iDrawModelMode As RenderMode
+        Private iDrawModelColoringMode As ColoringMode
         Private bModelColorGray As Boolean
         Private bModelExtendedElevation As Boolean
 
@@ -162,8 +179,8 @@ Namespace cSurvey.Design
             MyBase.ShowPointText = False
 
             bDrawModel = True
-            iDrawModelMode = RenderMode.SM_ROUGH_WALLS
-            iDrawModelColoringMode = ColoringMode.CM_CAVEBRANCH
+            iDrawModelMode = RenderMode.RoughWalls
+            iDrawModelColoringMode = ColoringMode.CaveBranch
             bModelColorGray = False
 
             iDrawChunkColoringMode = ChunkColoringMode.OriginalMaterial
@@ -210,8 +227,8 @@ Namespace cSurvey.Design
                 oSurfaceOptions = New cSurface3DOptions(oSurvey)
             End Try
             bDrawModel = modXML.GetAttributeValue(Options, "drawmodel")
-            iDrawModelMode = modXML.GetAttributeValue(Options, "drawmodelmode", RenderMode.SM_ROUGH_WALLS)
-            iDrawModelColoringMode = modXML.GetAttributeValue(Options, "drawmodelcoloringmode", ColoringMode.CM_CAVEBRANCH)
+            iDrawModelMode = modXML.GetAttributeValue(Options, "drawmodelmode", RenderMode.RoughWalls)
+            iDrawModelColoringMode = modXML.GetAttributeValue(Options, "drawmodelcoloringmode", ColoringMode.CaveBranch)
             bModelColorGray = modXML.GetAttributeValue(Options, "modelcolorgray")
 
             bDrawChunks = modXML.GetAttributeValue(Options, "drawchunks")

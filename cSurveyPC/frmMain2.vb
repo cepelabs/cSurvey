@@ -61,8 +61,8 @@ Friend Class frmMain2
     Private sObjectsPath As String
     Private sClipartPath As String
 
-    Private sNewHash As String
-    Private sLastHash As String
+    Private sNewHash As String = ""
+    Private sLastHash As String = ""
 
     Private bMousePressed As Boolean
 
@@ -411,6 +411,7 @@ Friend Class frmMain2
             oCurrentDesign = Nothing
 
             oSurvey = New cSurvey.cSurvey
+
             Call pSurveySetDefaults()
 
             '---------------------------------------------------------
@@ -525,7 +526,7 @@ Friend Class frmMain2
 
     Private Sub pMapCenterAndFit()
         If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.ThreeDModel Then
-            Call oHolos.ZoomExtents()
+            If bHolos Then Call oHolos.ZoomExtents()
         Else
             Dim oBounds As RectangleF = oCurrentDesign.GetBounds(oCurrentOptions)
             Call pMapCenterAndFit(oBounds)
@@ -1692,9 +1693,8 @@ Friend Class frmMain2
 
     Private Sub pTrigpointClear()
         Call oMousePointer.Push(Cursors.AppStarting)
-        pnlTrigPoint.Enabled = False
-
         bDisableTrigpointsChangeEvent.Push()
+        pnlTrigPoint.Enabled = False
 
         txtTrigPointName.Text = ""
 
@@ -2040,7 +2040,7 @@ Friend Class frmMain2
             Return True
         Else
             Dim sHash As String = pSurveyGetHash()
-            If sLastHash <> sHash Then
+            If sLastHash <> "" AndAlso sLastHash <> sHash Then
                 Select Case UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.warning23"), MsgBoxStyle.YesNoCancel Or MsgBoxStyle.Question, GetLocalizedString("main.warningtitle"))
                     Case MsgBoxResult.Yes
                         If pSurveySave(sFilename) Then
@@ -2196,7 +2196,7 @@ Friend Class frmMain2
                         btnDesignBarPlotCalculate.Visibility = BarItemVisibility.Never
                     End If
                 Case cIDesign.cDesignTypeEnum.ThreeDModel
-                    If oHolos.IsInvalidated Then
+                    If bHolos AndAlso oHolos.IsInvalidated Then
                         If oHolos.IsInError Then
                             cDesignMessageCorner.CustomButtonImageOptions.SvgImage = My.Resources.error2
                             cDesignMessageCorner.CustomButtonCaption = modMain.GetLocalizedString("holos.textpart1")
@@ -2259,7 +2259,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pHolosResize()
-        If Not oHolos Is Nothing Then
+        If bHolos Then
             oHolos.Height = pnl3D.Height '/ DPIRatio
             oHolos.Width = pnl3D.Width '/ DPIRatio
         End If
@@ -2275,10 +2275,6 @@ Friend Class frmMain2
                 If e.Control Then
                     Call pDesignSnapToGrid(Not btnAlignToGrid.Checked)
                 End If
-            'Case Keys.I
-            '    If e.Control And e.Alt Then
-            '        Call oHolos.Import()
-            '    End If
             Case Keys.E
                 If e.Control And e.Alt Then
                     Using frmE As frmExceptionManager = New frmExceptionManager(oSurvey, "", New Exception("PROVA"))
@@ -2424,7 +2420,6 @@ Friend Class frmMain2
 
     Private Sub frmMain_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If Not bIsInDebug Then modDevExpress.PrepareSkinMenu(SkinDropDownButtonItem1.DropDownGallery.Gallery)
-
         If oCommandLine.Count = 1 Then
             If oCommandLine(0).Key <> "" AndAlso oCommandLine(0).Value = "" Then
                 Call pSurveyLoad(oCommandLine(0).Key, False)
@@ -2526,7 +2521,6 @@ Friend Class frmMain2
     Private bChangePeriodKey As Boolean
 
     Private Sub pSettingsLoad()
-        'Call My.Application.Settings.Reset()
 
         Dim oTherionIni As cTherionINISettings = My.Application.RuntimeSettings.GetSetting("therion.ini", Nothing)
         If oTherionIni Is Nothing Then oTherionIni = New cTherionINISettings(My.Application.Settings.GetSetting("therion.inisettings", ""))
@@ -4020,7 +4014,7 @@ Friend Class frmMain2
 
     Private Sub pMapZoomOut()
         If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.ThreeDModel Then
-            Call oHolos.Zoom(0.1)
+            If bHolos Then Call oHolos.Zoom(0.1)
         Else
             Dim sDeltaIncrement As Single
             If My.Computer.Keyboard.ShiftKeyDown Then
@@ -4039,7 +4033,7 @@ Friend Class frmMain2
 
     Private Sub pMapZoomIn()
         If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.ThreeDModel Then
-            Call oHolos.Zoom(-0.1)
+            If bHolos Then Call oHolos.Zoom(-0.1)
         Else
             Dim sDeltaIncrement As Single
             If My.Computer.Keyboard.ShiftKeyDown Then
@@ -4153,7 +4147,7 @@ Friend Class frmMain2
                     End With
                     If oCurrentItem.Design.Type = cIDesign.cDesignTypeEnum.Profile AndAlso oSegment.IsValid Then
                         btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Always
-                        btnCurrentItemSegmentDirection.Enabled = Not oSegment.IsProfileBinded 'AndAlso oSegment.Direction <> cSurvey.cSurvey.DirectionEnum.Vertical
+                        btnCurrentItemSegmentDirection.Enabled = Not oSegment.IsProfileBinded AndAlso bIsUnlocked 'AndAlso oSegment.Direction <> cSurvey.cSurvey.DirectionEnum.Vertical
                         Select Case DirectCast(oCurrentItem, cItemSegment).Segment.Direction
                             Case cSurvey.cSurvey.DirectionEnum.Left
                                 btnCurrentItemSegmentDirection.ImageOptions.SvgImage = My.Resources.directionleft
@@ -4186,8 +4180,10 @@ Friend Class frmMain2
 
                     Call oPropVisibility.Rebind(oCurrentItem)
                     oPropVisibility.Visible = True
+                    oPropVisibility.Enabled = bIsUnlocked
                     Call oPropSegment.Rebind(oCurrentItem)
                     oPropSegment.Visible = True
+                    oPropSegment.cmdSegmentSetCaveBranch.Enabled = bIsUnlocked
 
                     oPropTrigpoint.Visible = False
                     oPropMarker.Visible = False
@@ -4195,6 +4191,7 @@ Friend Class frmMain2
                     If .HaveSplayBorder And oCurrentDesign.Type = cIDesign.cDesignTypeEnum.Plan Then
                         Call oPropPlanSplayBorder.Rebind(oCurrentItem)
                         oPropPlanSplayBorder.Visible = True
+                        oPropPlanSplayBorder.Enabled = bIsUnlocked
                     Else
                         oPropPlanSplayBorder.Visible = False
                     End If
@@ -4202,6 +4199,7 @@ Friend Class frmMain2
                     If .HaveSplayBorder And oCurrentDesign.Type = cIDesign.cDesignTypeEnum.Profile Then
                         Call oPropProfileSplayBorder.Rebind(oCurrentItem)
                         oPropProfileSplayBorder.Visible = True
+                        oPropProfileSplayBorder.Enabled = bIsUnlocked
                     Else
                         oPropProfileSplayBorder.Visible = False
                     End If
@@ -4423,6 +4421,8 @@ Friend Class frmMain2
 
                 oPropVisibility.Rebind(oCurrentItem)
                 oPropVisibility.Visible = True
+                oPropVisibility.Enabled = bIsUnlocked
+
                 oPropLineType.Visible = False
                 oPropPointLineType.Visible = False
 
@@ -4433,19 +4433,14 @@ Friend Class frmMain2
 
                 If oCurrentItem.Design.Type = cIDesign.cDesignTypeEnum.Plan Then
                     If oSurvey.Properties.GPS.Enabled AndAlso Not oTrigpoint.Data.IsSplay Then
-                        btnCurrentItemStationSetCoordinate.Enabled = True
-                        'cmdPropTrigpointFix.Enabled = True
+                        btnCurrentItemStationSetCoordinate.Enabled = True And bIsUnlocked
                         If pGetCurrentDesignTools.CurrentMarkedDesktopPoint.IsSet Then
-                            'cmdPropTrigpointFixToMarker.Enabled = True
-                            btnCurrentItemStationSetCoordinateCP.Enabled = True
+                            btnCurrentItemStationSetCoordinateCP.Enabled = True And bIsUnlocked
                         Else
-                            'cmdPropTrigpointFixToMarker.Enabled = False
                             btnCurrentItemStationSetCoordinateCP.Enabled = False
                         End If
                     Else
                         btnCurrentItemStationSetCoordinate.Enabled = False
-                        'cmdPropTrigpointFix.Enabled = False
-                        'cmdPropTrigpointFixToMarker.Enabled = False
                     End If
                 Else
                     btnCurrentItemStationSetCoordinate.Enabled = False
@@ -4469,7 +4464,7 @@ Friend Class frmMain2
             If Not bFormClosing Then
                 pnl3DProp.Enabled = False
                 pnlDesignProp.Enabled = False
-                pnlObjectProp.Enabled = False
+                'pnlObjectProp.Enabled = False
                 Call oObjectPropertyTimer.Start()
             End If
         End If
@@ -4836,6 +4831,7 @@ Friend Class frmMain2
 
                 Call oPropCaveBranch.Rebind(oCurrentItem, Nothing)
                 oPropCaveBranch.Visible = True
+                oPropCaveBranch.Enabled = bUnlocked
 
                 If sCave = "" And sBranch = "" Then
                     Call pPropPopupShow("warning", modMain.GetLocalizedString("main.textpart55"))
@@ -4844,31 +4840,35 @@ Friend Class frmMain2
 
                 Call oPropCategoryAndProperties.Rebind(oCurrentItem)
                 oPropCategoryAndProperties.Visible = True
+                oPropCategoryAndProperties.Enabled = bUnlocked
 
                 Call oPropName.Rebind(oCurrentItem)
                 oPropName.Visible = True
+                oPropName.Enabled = bUnlocked
 
                 Call pPropertyItemBounds(bPropPopupShowed)
 
                 Dim bCanBeRaised As Boolean = pGetCurrentDesignTools.CurrentLayer.Items.Contains(oCurrentItem)
                 btnItemsLayouts.SetVisible(True)
-                btnItemsLayouts.Enabled = bCanBeRaised
+                btnItemsLayouts.Enabled = bCanBeRaised AndAlso bUnlocked
 
-                grpCurrentItemSize.SetVisible(.CanBeResized)
-                grpCurrentItemLocation.SetVisible(.CanBeMoved)
+                grpCurrentItemSize.SetVisible(.CanBeResized AndAlso bUnlocked)
+                grpCurrentItemLocation.SetVisible(.CanBeMoved AndAlso bUnlocked)
 
                 btnCurrentItemLock.Visibility = BarItemVisibility.Always
-                btnCurrentItemLock.Enabled = .CanBeMoved
+                btnCurrentItemLock.Enabled = .CanBeMoved AndAlso bUnlocked
                 btnCurrentItemLock.Checked = .Locked
 
                 oPropVisibility.Rebind(oCurrentItem)
                 oPropVisibility.Visible = True
+                oPropVisibility.Enabled = bUnlocked
 
-                grpCurrentItemRotate.SetVisible(.CanBeRotated)
+                grpCurrentItemRotate.SetVisible(.CanBeRotated AndAlso bUnlocked)
 
                 If .HaveTransparency Then
                     Call oPropTransparency.Rebind(oCurrentItem)
                     oPropTransparency.Visible = True
+                    oPropTransparency.Enabled = bUnlocked
                 Else
                     oPropTransparency.Visible = False
                 End If
@@ -4876,6 +4876,7 @@ Friend Class frmMain2
                 If .HavePen Then
                     Call oPropPenStyle.Rebind(oCurrentItem, Nothing, oCurrentOptions)
                     oPropPenStyle.Visible = True
+                    oPropPenStyle.Enabled = bUnlocked
                 Else
                     oPropPenStyle.Visible = False
                 End If
@@ -4883,6 +4884,7 @@ Friend Class frmMain2
                 If .HaveBrush Then
                     Call oPropBrushStyle.Rebind(oCurrentItem, oCurrentOptions)
                     oPropBrushStyle.Visible = True
+                    oPropBrushStyle.Enabled = bUnlocked
                 Else
                     oPropBrushStyle.Visible = False
                 End If
@@ -4890,7 +4892,8 @@ Friend Class frmMain2
                 If .HaveImage Then
                     Call oPropImage.Rebind(oCurrentItem)
                     oPropImage.Visible = True
-                    grpCurrentItemImage.SetVisible(True)
+                    oPropImage.Enabled = bUnlocked
+                    grpCurrentItemImage.SetVisible(True AndAlso bUnlocked)
                 Else
                     oPropImage.Visible = False
                     grpCurrentItemImage.SetVisible(False)
@@ -4899,6 +4902,7 @@ Friend Class frmMain2
                 If .HaveSign Then
                     Call oPropSign.Rebind(oCurrentItem)
                     oPropSign.Visible = True
+                    oPropSign.Enabled = bUnlocked
                 Else
                     oPropSign.Visible = False
                 End If
@@ -4906,6 +4910,7 @@ Friend Class frmMain2
                 If .HaveText Then
                     oPropTextStyle.Rebind(oCurrentItem, oCurrentOptions)
                     oPropTextStyle.Visible = True
+                    oPropTextStyle.Enabled = bUnlocked
                 Else
                     oPropTextStyle.Visible = False
                 End If
@@ -4913,6 +4918,7 @@ Friend Class frmMain2
                 If TypeOf oCurrentItem Is cIItemAttachment Then
                     oPropAttachment.Rebind(oCurrentItem)
                     oPropAttachment.Visible = True
+                    oPropAttachment.Enabled = bUnlocked
                 Else
                     oPropAttachment.Visible = False
                 End If
@@ -4920,6 +4926,7 @@ Friend Class frmMain2
                 If TypeOf oCurrentItem Is cItemCompass Then
                     Call oPropCompassItems.Rebind(oCurrentItem)
                     oPropCompassItems.Visible = True
+                    oPropCompassItems.Enabled = bUnlocked
                 Else
                     oPropCompassItems.Visible = False
                 End If
@@ -4927,6 +4934,7 @@ Friend Class frmMain2
                 If TypeOf oCurrentItem Is cItemLegend Then
                     Call oPropLegendItems.Rebind(oCurrentItem)
                     oPropLegendItems.Visible = True
+                    oPropLegendItems.Enabled = bUnlocked
                 Else
                     oPropLegendItems.Visible = False
                 End If
@@ -4934,6 +4942,7 @@ Friend Class frmMain2
                 If TypeOf oCurrentItem Is cItemScale Then
                     Call oPropScaleItems.Rebind(oCurrentItem)
                     oPropScaleItems.Visible = True
+                    oPropScaleItems.Enabled = bUnlocked
                 Else
                     oPropScaleItems.Visible = False
                 End If
@@ -4956,6 +4965,7 @@ Friend Class frmMain2
                     btnCurrentItemGenericReducePointFactor.Visibility = modControls.VisibleToVisibility(bEnabled)
                     btnCurrentItemGenericReducePoint.Visibility = modControls.VisibleToVisibility(bEnabled)
                     oPropLineType.Visible = True
+                    oPropLineType.Enabled = bUnlocked
                 Else
                     oPropLineType.Visible = False
                 End If
@@ -4964,6 +4974,7 @@ Friend Class frmMain2
                 If .CanBeClipped Then
                     Call oPropClipping.Rebind(oCurrentItem)
                     oPropClipping.Visible = True
+                    oPropClipping.Enabled = bUnlocked
                 Else
                     oPropClipping.Visible = False
                 End If
@@ -4971,6 +4982,7 @@ Friend Class frmMain2
                 If .HaveCrossSection Then
                     Call oPropCrossSection.Rebind(oCurrentItem)
                     oPropCrossSection.Visible = True
+                    oPropCrossSection.Enabled = bUnlocked
                 Else
                     oPropCrossSection.Visible = False
                 End If
@@ -4978,6 +4990,7 @@ Friend Class frmMain2
                 If TypeOf oCurrentItem Is cItemPlanCrossSectionMarker OrElse TypeOf oCurrentItem Is cItemProfileCrossSectionMarker Then
                     Call oPropCrossSectionMarker.Rebind(oCurrentItem, oCurrentOptions)
                     oPropCrossSectionMarker.Visible = True
+                    oPropCrossSectionMarker.Enabled = bUnlocked
                 Else
                     oPropCrossSectionMarker.Visible = False
                 End If
@@ -4985,15 +4998,17 @@ Friend Class frmMain2
                 If .HaveSplayBorder AndAlso .Type = cIItem.cItemTypeEnum.CrossSection Then
                     oPropCrossSectionSplayBorder.Rebind(oCurrentItem)
                     oPropCrossSectionSplayBorder.Visible = True
+                    oPropCrossSectionSplayBorder.Enabled = bUnlocked
                 Else
                     oPropCrossSectionSplayBorder.Visible = False
                 End If
 
-                btnCurrentItemConvertTo.Visibility = modControls.VisibleToVisibility(.CanBeConverted)
+                btnCurrentItemConvertTo.Visibility = modControls.VisibleToVisibility(.CanBeConverted AndAlso bUnlocked)
 
                 If .HaveQuota Then
                     Call oPropQuota.Rebind(oCurrentItem)
                     oPropQuota.Visible = True
+                    oPropQuota.Enabled = bUnlocked
                 Else
                     oPropQuota.Visible = False
                 End If
@@ -5001,7 +5016,8 @@ Friend Class frmMain2
                 If .HaveSketch Then
                     Call oPropSketch.Rebind(oCurrentItem)
                     oPropSketch.Visible = True
-                    grpCurrentItemSketch.SetVisible(True)
+                    oPropSketch.Enabled = bUnlocked
+                    grpCurrentItemSketch.SetVisible(True AndAlso bUnlocked)
                 Else
                     oPropSketch.Visible = False
                     grpCurrentItemSketch.SetVisible(False)
@@ -5010,13 +5026,14 @@ Friend Class frmMain2
                 If .Type = cIItem.cItemTypeEnum.InvertedFreeHandArea Then
                     Call oPropMergeMode.Rebind(DirectCast(oCurrentItem, cIItemMergeableArea))
                     oPropMergeMode.Visible = True
+                    oPropMergeMode.Enabled = bUnlocked
                 Else
                     oPropMergeMode.Visible = False
                 End If
 
                 If .Type = cIItem.cItemTypeEnum.Items Then
-                    grpCurrentItemAlign.SetVisible(True)
-                    grpCurrentItemItems.SetVisible(True)
+                    grpCurrentItemAlign.SetVisible(True AndAlso bUnlocked)
+                    grpCurrentItemItems.SetVisible(True AndAlso bUnlocked)
 
                     Dim oItemItems As cItemItems = oCurrentItem
                     btnCurrentItemItemsCombine.Visibility = modControls.VisibleToVisibility(oItemItems.IsSelfCombinable)
@@ -5147,7 +5164,7 @@ Friend Class frmMain2
                             pnl3DProp.Visible = False
                             pnlDesignProp.Visible = False
                             pnlObjectProp.Visible = True
-                            pnlObjectProp.Enabled = True
+                            'pnlObjectProp.Enabled = True
                         Else
                             If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.ThreeDModel Then
                                 pnl3DProp.BeginUpdate()
@@ -5233,7 +5250,7 @@ Friend Class frmMain2
         Call pSurveyMainPropertiesPanelsRefresh()
         Call pSurveyPenTypeRefresh()
 
-        Call oHolos.Invalidate()
+        If bHolos Then Call oHolos.Invalidate()
 
         If ObjectPropertyLoad Then Call pObjectPropertyLoad()
     End Sub
@@ -5531,26 +5548,55 @@ Friend Class frmMain2
     'End Sub
 
     Private Sub pLayerTools_EnabledByLevel(Design As cIDesign.cDesignTypeEnum, ByVal Layer As cLayers.LayerTypeEnum)
-        Debug.Print(Design.ToString & " - " & Layer.ToString)
         Call RibbonControl.Manager.BeginUpdate()
-        If bToolsEnabledByLevel Then
+        If pGetCurrentDesignTools.CurrentCaveBranchLocked Then
             For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
-                Try
-                    Dim bValue As Boolean
+                oItem.Item.Enabled = False
+                Dim oStandardItem As BarItem = RibbonControl.Items.FindByName(oItem.Item.Name & "_Standard")
+                If oStandardItem IsNot Nothing Then
+                    oStandardItem.Visibility = oItem.Item.Visibility
+                    oStandardItem.Enabled = False
+                End If
+            Next
+        Else
+            If bToolsEnabledByLevel Then
+                For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
+                    Try
+                        Dim bValue As Boolean
+                        If oItem.Item.Tag IsNot Nothing Then
+                            Dim oBag As cEditToolsBag = oItem.Item.Tag
+                            If oBag.Layer = Layer Then
+                                bValue = True
+                            Else
+                                bValue = False
+                            End If
+                            If (oBag.AvaiableInPlan AndAlso Design = cIDesign.cDesignTypeEnum.Plan) OrElse (oBag.AvaiableInProfile AndAlso Design = cIDesign.cDesignTypeEnum.Profile) OrElse (oBag.AvaiableIn3D AndAlso Design = cIDesign.cDesignTypeEnum.ThreeDModel) Then
+                                If bToolsHiddenByLevel Then
+                                    oItem.Item.Visibility = modControls.VisibleToVisibility(bValue)
+                                Else
+                                    oItem.Item.Visibility = BarItemVisibility.Always
+                                End If
+                                oItem.Item.Enabled = bValue
+                            Else
+                                oItem.Item.Visibility = BarItemVisibility.Never
+                                oItem.Item.Enabled = False
+                            End If
+                            Dim oStandardItem As BarItem = RibbonControl.Items.FindByName(oItem.Item.Name & "_Standard")
+                            If oStandardItem IsNot Nothing Then
+                                oStandardItem.Visibility = oItem.Item.Visibility
+                                oStandardItem.Enabled = oItem.Item.Enabled
+                            End If
+                        End If
+                    Catch ex As Exception
+                    End Try
+                Next
+            Else
+                For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
                     If oItem.Item.Tag IsNot Nothing Then
                         Dim oBag As cEditToolsBag = oItem.Item.Tag
-                        If oBag.Layer = Layer Then
-                            bValue = True
-                        Else
-                            bValue = False
-                        End If
                         If (oBag.AvaiableInPlan AndAlso Design = cIDesign.cDesignTypeEnum.Plan) OrElse (oBag.AvaiableInProfile AndAlso Design = cIDesign.cDesignTypeEnum.Profile) OrElse (oBag.AvaiableIn3D AndAlso Design = cIDesign.cDesignTypeEnum.ThreeDModel) Then
-                            If bToolsHiddenByLevel Then
-                                oItem.Item.Visibility = modControls.VisibleToVisibility(bValue)
-                            Else
-                                oItem.Item.Visibility = BarItemVisibility.Always
-                            End If
-                            oItem.Item.Enabled = bValue
+                            oItem.Item.Visibility = BarItemVisibility.Always
+                            oItem.Item.Enabled = True
                         Else
                             oItem.Item.Visibility = BarItemVisibility.Never
                             oItem.Item.Enabled = False
@@ -5561,27 +5607,8 @@ Friend Class frmMain2
                             oStandardItem.Enabled = oItem.Item.Enabled
                         End If
                     End If
-                Catch ex As Exception
-                End Try
-            Next
-        Else
-            For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
-                If oItem.Item.Tag IsNot Nothing Then
-                    Dim oBag As cEditToolsBag = oItem.Item.Tag
-                    If (oBag.AvaiableInPlan AndAlso Design = cIDesign.cDesignTypeEnum.Plan) OrElse (oBag.AvaiableInProfile AndAlso Design = cIDesign.cDesignTypeEnum.Profile) OrElse (oBag.AvaiableIn3D AndAlso Design = cIDesign.cDesignTypeEnum.ThreeDModel) Then
-                        oItem.Item.Visibility = BarItemVisibility.Always
-                        oItem.Item.Enabled = True
-                    Else
-                        oItem.Item.Visibility = BarItemVisibility.Never
-                        oItem.Item.Enabled = False
-                    End If
-                    Dim oStandardItem As BarItem = RibbonControl.Items.FindByName(oItem.Item.Name & "_Standard")
-                    If oStandardItem IsNot Nothing Then
-                        oStandardItem.Visibility = oItem.Item.Visibility
-                        oStandardItem.Enabled = oItem.Item.Enabled
-                    End If
-                End If
-            Next
+                Next
+            End If
         End If
         Call RibbonControl.Manager.EndUpdate()
         Call RibbonControl.Refresh()
@@ -5594,7 +5621,7 @@ Friend Class frmMain2
     Private Sub pSurveyExport(ByVal ExportFormat As ImportExportFormatEnum)
         Select Case ExportFormat
             Case ImportExportFormatEnum.threedD
-                Call oHolos.Export()
+                If bHolos Then Call oHolos.Export()
             Case ImportExportFormatEnum.Survey
                 Using oSFD As SaveFileDialog = New SaveFileDialog
                     With oSFD
@@ -5855,26 +5882,13 @@ Friend Class frmMain2
             End If
 
             Call pLayerTools_EnabledByLevel(cIDesign.cDesignTypeEnum.ThreeDModel, cLayers3D.Layer3DTypeEnum.Chunks)
-            'For Each oItem As BarItem In Ribbon.Items
-            '    Debug.Print(oItem.Name)
-            '    If TypeOf oItem.Tag Is cEditToolsBag Then
-            '        Dim oBag As cEditToolsBag = oItem.Tag
-            '        oItem.Visibility = modControls.VisibleToVisibility(oBag.AvaiableIn3D)
-            '        For Each oLink As BarItemLink In oItem.Links
-            '            oLink.Visible = oBag.AvaiableIn3D
-            '        Next
-            '    Else
-            '        'oItem.Visibility = BarItemVisibility.Always
-            '    End If
-            'Next
             grpDesignItemsAdd.Visible = True
-            'grpDesignItemsAdd.SetVisible(False)
 
             Call pSurveySetCurrentCaveBranch(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch)
             btnDesignHighlight0.Checked = Not oCurrentOptions.HighlightCurrentCave
             btnDesignHighlight1.Checked = oCurrentOptions.HighlightCurrentCave
             btnDesignHighlightSegmentsAndTrigpoints.Checked = oCurrentOptions.HighlightSegmentsAndTrigpoints
-            Call pSurveyRestoreCaveBranchLockstate(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch)
+            Call pSurveyRestoreCaveBranchLockstate(pGetCurrentDesignTools)
             btnMainBindDesignType.Visibility = BarItemVisibility.Never
             btnMainBindCrossSections.Visibility = BarItemVisibility.Never
 
@@ -6033,18 +6047,6 @@ Friend Class frmMain2
             End If
 
             Call pLayerTools_EnabledByLevel(cIDesign.cDesignTypeEnum.Profile, pGetCurrentDesignTools.CurrentLayer.Type)
-            'For Each oItem As BarItem In Ribbon.Items
-            '    Debug.Print(oItem.Name)
-            '    If TypeOf oItem.Tag Is cEditToolsBag Then
-            '        Dim oBag As cEditToolsBag = oItem.Tag
-            '        oItem.Visibility = modControls.VisibleToVisibility(oBag.AvaiableInProfile)
-            '        For Each oLink As BarItemLink In oItem.Links
-            '            oLink.Visible = oBag.AvaiableInProfile
-            '        Next
-            '    Else
-            '        ' oItem.Visibility = BarItemVisibility.Always
-            '    End If
-            'Next
             grpDesignItemsAdd.Visible = True
 
             Call pSurveySetCurrentCaveBranch(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch)
@@ -6052,7 +6054,7 @@ Friend Class frmMain2
             btnDesignHighlight1.Checked = oCurrentOptions.HighlightCurrentCave
             btnDesignHighlightSegmentsAndTrigpoints.Checked = oCurrentOptions.HighlightSegmentsAndTrigpoints
             Call pSurveySetCurrentBindTypeAndCrosssection(pGetCurrentDesignTools.CurrentBindDesignType, pGetCurrentDesignTools.CurrentCrossSection, True)
-            Call pSurveyRestoreCaveBranchLockstate(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch)
+            Call pSurveyRestoreCaveBranchLockstate(pGetCurrentDesignTools)
             btnMainBindDesignType.Visibility = BarItemVisibility.Always
             btnMainBindCrossSections.Visibility = BarItemVisibility.Always
 
@@ -6083,6 +6085,7 @@ Friend Class frmMain2
         Else
             iCurrentDesignType = oCurrentDesign.Type
         End If
+
         If iCurrentDesignType <> cIDesign.cDesignTypeEnum.Plan Then
             RibbonControl.Manager.BeginUpdate()
             bDisablePaintEvent = True
@@ -6170,7 +6173,6 @@ Friend Class frmMain2
             pnlStatusDesignZoom.Visibility = BarItemVisibility.Always
             pnlStatusZoomBar.Visibility = BarItemVisibility.Always
 
-            'frmMFT.Visible = False
             Call pFloatingToolbarHide()
 
             pnl3D.Visible = False
@@ -6211,17 +6213,6 @@ Friend Class frmMain2
             End If
 
             Call pLayerTools_EnabledByLevel(cIDesign.cDesignTypeEnum.Plan, pGetCurrentDesignTools.CurrentLayer.Type)
-            'For Each oItem As BarItem In Ribbon.Items
-            '    If TypeOf oItem.Tag Is cEditToolsBag Then
-            '        Dim oBag As cEditToolsBag = oItem.Tag
-            '        oItem.Visibility = modControls.VisibleToVisibility(oBag.AvaiableInPlan)
-            '        For Each oLink As BarItemLink In oItem.Links
-            '            oLink.Visible = oBag.AvaiableInPlan
-            '        Next
-            '    Else
-            '        'oItem.Visibility = BarItemVisibility.Always
-            '    End If
-            'Next
             grpDesignItemsAdd.Visible = True
 
             Call pSurveySetCurrentCaveBranch(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch)
@@ -6229,7 +6220,7 @@ Friend Class frmMain2
             btnDesignHighlight1.Checked = oCurrentOptions.HighlightCurrentCave
             btnDesignHighlightSegmentsAndTrigpoints.Checked = oCurrentOptions.HighlightSegmentsAndTrigpoints
             Call pSurveySetCurrentBindTypeAndCrosssection(pGetCurrentDesignTools.CurrentBindDesignType, pGetCurrentDesignTools.CurrentCrossSection, True)
-            Call pSurveyRestoreCaveBranchLockstate(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch)
+            Call pSurveyRestoreCaveBranchLockstate(pGetCurrentDesignTools)
             btnMainBindDesignType.Visibility = BarItemVisibility.Always
             btnMainBindCrossSections.Visibility = BarItemVisibility.Always
 
@@ -6553,7 +6544,6 @@ Friend Class frmMain2
         oItem.ImageOptions.Image = New Bitmap(Path.Combine(Path.Combine(sObjectsPath, "icons"), Bag.Image))
         If Bag.SvgImage <> "" Then
             oItem.ImageOptions.SvgImage = pGetDesignToolsSvgImage(Bag.SvgImage)
-            'oItem.ImageOptions.SvgImageSize = New Size(16, 16)
             oItem.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None
         End If
         oItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
@@ -6785,7 +6775,6 @@ Friend Class frmMain2
                 My.Application.RuntimeSettings.SetSettings("penstylepatter.presumedcavepen", oXMLDesignPenStylePatternPen.GetAttribute("pattern"))
             End If
         End If
-
         Dim oBaseGroup As DevExpress.XtraBars.Ribbon.GalleryItemGroup = pSurveyDesignToolsFillConvertToGalleryCreateGroup(btnLayer_Base)
         Call pSurveyDesignToolsLoadConvertToItems(oXMLDesign.Item("tools"), oBaseGroup, cLayers.LayerTypeEnum.Base)
         If Not oBaseGroup.HasVisibleItems Then mnuConvertTo.Gallery.Groups.Remove(oBaseGroup)
@@ -6809,10 +6798,6 @@ Friend Class frmMain2
         If Not oSignsGroup.HasVisibleItems Then mnuConvertTo.Gallery.Groups.Remove(oSignsGroup)
 
         Call pSurveyDesignToolsLoadSubToolbarItem(oXMLDesign.Item("tools"))
-        'Catch ex As Exception
-        'Call pLogAdd(ex)
-        'End Try
-        'Call pSurveyDesignToolsLoadSubMenuItem(oXMLDesign.Item("tools"), mnuDesignAdd.DropDownItems)
     End Sub
 
     Private Function pDesignTools_GetMethod(Layer As Object, MethodName As String, ParametersCount As Integer) As MethodInfo
@@ -7576,7 +7561,7 @@ Friend Class frmMain2
 
     Private Sub pTrigpointItemSelect()
         If oTools IsNot Nothing Then
-            If Not oTools.CurrentTrigpoint Is Nothing AndAlso Not oTools.CurrentTrigpoint.IsSystem Then
+            If oCurrentDesign IsNot Nothing AndAlso Not oTools.CurrentTrigpoint Is Nothing AndAlso Not oTools.CurrentTrigpoint.IsSystem Then
                 If TypeOf pGetCurrentDesignTools.CurrentItem Is cItemTrigpoint Then
                     Dim oItemTrigpoint As cItemTrigpoint = pGetCurrentDesignTools.CurrentItem
                     oItemTrigpoint.Trigpoint = oTools.CurrentTrigpoint
@@ -7676,7 +7661,7 @@ Friend Class frmMain2
             If Not oSegmentPlaceholder Is Nothing Then
                 Dim oSegment As cSegment = oSegmentPlaceholder.Segment
                 If OnlyEditable Then
-                    bAdd = oSegment.Splay OrElse (Not oSegment.IsBinded) OrElse oSegment.IsOrigin OrElse Not oSegment.GetLocked
+                    bAdd = oSegment.Splay OrElse (Not oSegment.IsBinded) OrElse oSegment.IsOrigin OrElse Not oSurvey.MasterSlave.IsLocked(oSegment)
                 Else
                     bAdd = True
                 End If
@@ -9996,20 +9981,22 @@ Friend Class frmMain2
                     Dim oSegment As cSegment = pGetCurrentTools.CurrentSegment
                     If oSegment Is Nothing Then
                         btnDesignSetCurrentCaveBranch.Enabled = False
+                        btnObjectSetCaveBranch.Enabled = False
                     Else
-                        btnDesignSetCurrentCaveBranch.Enabled = True
                         Dim oSegments As cSegmentCollection = pSegmentsFromGridSelection(True)
                         Dim bEnabledEdit As Boolean = oSegments.Count > 0 AndAlso ((oSegment.Splay) OrElse (Not (oSegment.IsBinded OrElse oSegment.IsOrigin))) OrElse (pGetDisableDataGridConstraint())
-                        Dim bLocked As Boolean = oSegment.GetLocked
+                        Dim bUnlocked As Boolean = Not oSurvey.MasterSlave.IsLocked(oSegment)
+                        btnDesignSetCurrentCaveBranch.Enabled = bUnlocked
+                        btnObjectSetCaveBranch.Enabled = bUnlocked
 
-                        btnCut.Enabled = bEnabledEdit AndAlso Not bLocked
+                        btnCut.Enabled = bEnabledEdit AndAlso bUnlocked
                         btnCopy.Enabled = bEnabledEdit
-                        btnDelete.Enabled = bEnabledEdit AndAlso Not bLocked
+                        btnDelete.Enabled = bEnabledEdit AndAlso bUnlocked
 
                         'allinea lo stato dei comandi PASTE
                         Dim bStandardFormat As Boolean = pClipboardCheckDataFormat()
                         Dim bExtraFormat As Boolean = pClipboardCheckDesignExtraFormats()
-                        Dim bEnabled As Boolean = bStandardFormat Or bExtraFormat
+                        Dim bEnabled As Boolean = (bStandardFormat OrElse bExtraFormat) AndAlso Not pGetCurrentDesignTools.CurrentCaveBranchLocked
 
                         btnPasteService.Enabled = bEnabled
                         btnPaste.Enabled = bEnabled
@@ -10019,6 +10006,7 @@ Friend Class frmMain2
                     End If
                 Case cContextEnum.Trigpoints
                     btnDesignSetCurrentCaveBranch.Enabled = False
+                    btnObjectSetCaveBranch.Enabled = False
 
                     btnCut.Enabled = False
                     btnCopy.Enabled = False
@@ -10032,6 +10020,7 @@ Friend Class frmMain2
                 Case cContextEnum.DesignPlan, cContextEnum.DesignProfile
                     If oCurrentDesign Is Nothing Then
                         btnDesignSetCurrentCaveBranch.Enabled = False
+                        btnObjectSetCaveBranch.Enabled = False
 
                         btnCut.Enabled = False
                         btnCopy.Enabled = False
@@ -10044,28 +10033,41 @@ Friend Class frmMain2
                         btnDelete.Enabled = False
                     Else
                         Dim oItem As cItem = pGetCurrentDesignTools.CurrentItem
+                        Dim bLocked As Boolean = pGetCurrentDesignTools.CurrentCaveBranchLocked
                         Dim bEnabledEdit As Boolean = Not oItem Is Nothing
 
-                        If bEnabledEdit Then
-                            If TypeOf oItem Is cItemSegment Then
-                                bEnabledEdit = False
-                                btnDesignSetCurrentCaveBranch.Enabled = True
-                            ElseIf TypeOf oItem Is cItemTrigpoint Then
-                                bEnabledEdit = False
-                                btnDesignSetCurrentCaveBranch.Enabled = False
-                            ElseIf TypeOf oItem Is cItemMarker Then
-                                bEnabledEdit = False
-                                btnDesignSetCurrentCaveBranch.Enabled = False
-                            Else
-                                btnDesignSetCurrentCaveBranch.Enabled = True
-                            End If
-                        Else
+                        If bLocked Then
                             btnDesignSetCurrentCaveBranch.Enabled = False
+                            btnObjectSetCaveBranch.Enabled = False
+                        Else
+                            If bEnabledEdit Then
+                                If TypeOf oItem Is cItemSegment Then
+                                    bEnabledEdit = False
+                                    btnDesignSetCurrentCaveBranch.Enabled = True
+                                    btnObjectSetCaveBranch.Enabled = True
+                                ElseIf TypeOf oItem Is cItemTrigpoint Then
+                                    bEnabledEdit = False
+                                    btnDesignSetCurrentCaveBranch.Enabled = False
+                                    btnObjectSetCaveBranch.Enabled = False
+                                ElseIf TypeOf oItem Is cItemMarker Then
+                                    bEnabledEdit = False
+                                    btnDesignSetCurrentCaveBranch.Enabled = False
+                                    btnObjectSetCaveBranch.Enabled = False
+                                Else
+                                    btnDesignSetCurrentCaveBranch.Enabled = True
+                                    btnObjectSetCaveBranch.Enabled = True
+                                End If
+                            Else
+                                btnDesignSetCurrentCaveBranch.Enabled = False
+                                btnObjectSetCaveBranch.Enabled = False
+                            End If
                         End If
 
+                        Dim bItemLocked As Boolean = oSurvey.MasterSlave.IsLocked(oItem)
+
                         Dim bItemCanBeCopied As Boolean = bEnabledEdit AndAlso oItem.CanBeCopied
-                        Dim bCanBeDeleted As Boolean = bEnabledEdit AndAlso oItem.CanBeDeleted 'AndAlso bLocked
-                        Dim bCanBeCutted As Boolean = bCanBeDeleted AndAlso bItemCanBeCopied
+                        Dim bCanBeDeleted As Boolean = bEnabledEdit AndAlso oItem.CanBeDeleted AndAlso Not bItemLocked
+                        Dim bCanBeCutted As Boolean = bCanBeDeleted AndAlso bItemCanBeCopied AndAlso Not bItemLocked
                         Dim bCanBeCopied As Boolean = bEnabledEdit AndAlso bItemCanBeCopied
 
                         btnCut.Enabled = bCanBeCutted
@@ -10074,9 +10076,9 @@ Friend Class frmMain2
 
                         Dim bStandardFormat As Boolean = pClipboardCheckDesignFormat()
                         Dim bExtraFormat As Boolean = pClipboardCheckDesignExtraFormats()
-                        Dim bEnabled As Boolean = bStandardFormat OrElse bExtraFormat
+                        Dim bEnabled As Boolean = (bStandardFormat OrElse bExtraFormat) AndAlso Not bItemLocked
 
-                        If bEnabledEdit AndAlso (oItem.HavePen OrElse oItem.HaveBrush) Then
+                        If bEnabledEdit AndAlso (oItem.HavePen OrElse oItem.HaveBrush) AndAlso Not bItemLocked Then
                             If bEnabled Then
                                 btnPasteService.Enabled = True
                                 btnPasteService.ActAsDropDown = False
@@ -10097,6 +10099,7 @@ Friend Class frmMain2
                 Case cContextEnum.Design3D
                     If oCurrentDesign Is Nothing Then
                         btnDesignSetCurrentCaveBranch.Enabled = False
+                        btnObjectSetCaveBranch.Enabled = False
 
                         btnCut.Enabled = False
                         btnCopy.Enabled = False
@@ -10109,35 +10112,42 @@ Friend Class frmMain2
                         btnDelete.Enabled = False
                     Else
                         Dim oItem As cItem = pGetCurrentDesignTools.CurrentItem
+                        Dim bLocked As Boolean = pGetCurrentDesignTools.CurrentCaveBranchLocked
                         Dim bEnabledEdit As Boolean = Not oItem Is Nothing
 
-                        If bEnabledEdit Then
-                            If TypeOf oItem Is cItemSegment Then
-                                bEnabledEdit = False
-                                btnDesignSetCurrentCaveBranch.Enabled = True
-                            ElseIf TypeOf oItem Is cItemTrigpoint Then
-                                bEnabledEdit = False
-                                btnDesignSetCurrentCaveBranch.Enabled = False
-                            Else
-                                btnDesignSetCurrentCaveBranch.Enabled = True
-                            End If
-                        Else
+                        If bLocked Then
                             btnDesignSetCurrentCaveBranch.Enabled = False
+                            btnObjectSetCaveBranch.Enabled = False
+                        Else
+                            If bEnabledEdit Then
+                                If TypeOf oItem Is cItemSegment Then
+                                    bEnabledEdit = False
+                                    btnDesignSetCurrentCaveBranch.Enabled = True
+                                    btnObjectSetCaveBranch.Enabled = True
+                                ElseIf TypeOf oItem Is cItemTrigpoint Then
+                                    bEnabledEdit = False
+                                    btnDesignSetCurrentCaveBranch.Enabled = False
+                                    btnObjectSetCaveBranch.Enabled = False
+                                Else
+                                    btnDesignSetCurrentCaveBranch.Enabled = True
+                                    btnObjectSetCaveBranch.Enabled = True
+                                End If
+                            Else
+                                btnDesignSetCurrentCaveBranch.Enabled = False
+                                btnObjectSetCaveBranch.Enabled = False
+                            End If
                         End If
 
+                        Dim bItemLocked As Boolean = oSurvey.MasterSlave.IsLocked(oItem)
+
                         Dim bItemCanBeCopied As Boolean = oItem.CanBeCopied
-                        Dim bCanBeDeleted As Boolean = bEnabledEdit AndAlso oItem.CanBeDeleted 'AndAlso bLocked
-                        Dim bCanBeCutted As Boolean = bCanBeDeleted AndAlso bItemCanBeCopied
+                        Dim bCanBeDeleted As Boolean = bEnabledEdit AndAlso oItem.CanBeDeleted AndAlso Not bItemLocked
+                        Dim bCanBeCutted As Boolean = bCanBeDeleted AndAlso bItemCanBeCopied AndAlso Not bItemLocked
                         Dim bCanBeCopied As Boolean = bEnabledEdit AndAlso bItemCanBeCopied
 
                         btnCut.Enabled = bCanBeCutted
                         btnCopy.Enabled = bCanBeCopied
-                        Debug.Print(bCanBeDeleted)
                         btnDelete.Enabled = bCanBeDeleted
-
-                        'Dim bStandardFormat As Boolean = pClipboardCheckDesignFormat()
-                        'Dim bExtraFormat As Boolean = pClipboardCheckDesignExtraFormats()
-                        'Dim bEnabled As Boolean = bStandardFormat OrElse bExtraFormat
 
                         btnPasteService.Enabled = False
                         btnPasteService.ButtonStyle = BarButtonStyle.Default
@@ -10146,6 +10156,7 @@ Friend Class frmMain2
                 Case Else
                     If oCurrentDesign Is Nothing Then
                         btnDesignSetCurrentCaveBranch.Enabled = False
+                        btnObjectSetCaveBranch.Enabled = False
 
                         btnCut.Enabled = False
                         btnCopy.Enabled = False
@@ -10157,21 +10168,8 @@ Friend Class frmMain2
 
                         btnDelete.Enabled = False
                     Else
-                        'Dim oItem As cItem = pGetCurrentDesignTools.CurrentItem
-                        'If TypeOf oItem Is cItemChunk3D Then
-                        '    btnDesignSetCurrentCaveBranch.Enabled = False
-
-                        '    btnCut.Enabled = False
-                        '    btnCopy.Enabled = False
-
-                        '    btnPasteService.Enabled = False
-                        '    btnPaste.Enabled = False
-                        '    btnPasteService.ActAsDropDown = False
-                        '    btnPasteService.ButtonStyle = BarButtonStyle.Default
-
-                        '    btnDelete.Enabled = oItem.CanBeDeleted
-                        'Else
                         btnDesignSetCurrentCaveBranch.Enabled = False
+                        btnObjectSetCaveBranch.Enabled = False
 
                         btnCut.Enabled = False
                         btnCopy.Enabled = False
@@ -10182,7 +10180,6 @@ Friend Class frmMain2
                         btnPasteService.ButtonStyle = BarButtonStyle.Default
 
                         btnDelete.Enabled = False
-                        'End If
                     End If
             End Select
         Catch
@@ -10583,7 +10580,7 @@ Friend Class frmMain2
             If frmIX.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Dim bCavesAndBraches As Boolean = frmIX.chkExcelcSurveyCavesAndBranches.Checked
                 Dim bSession As Boolean = frmIX.chkExcelcSurveySessions.Checked
-                'If bDefaultArrangePriorityOnImport Then Call oSurvey.Calculate.ArrangePriority()
+                Dim bcolors As Boolean = frmIX.chkExcelColor.Checked
 
                 bDisableSegmentsChangeEvent.Push()
                 bDisableTrigpointsChangeEvent.Push()
@@ -10598,7 +10595,7 @@ Friend Class frmMain2
                 Call oMousePointer.Push(Cursors.WaitCursor)
 
                 'Try
-                Call modExport.ExcelImportFrom(oSurvey, Filename, If(bSession, ExcelImportOptionsEnum.Sessions, ExcelImportOptionsEnum.None) Or If(bCavesAndBraches, ExcelImportOptionsEnum.CavesAndBranches, ExcelImportOptionsEnum.None))
+                Call modExport.ExcelImportFrom(oSurvey, Filename, If(bSession, ExcelImportOptionsEnum.Sessions, ExcelImportOptionsEnum.None) Or If(bCavesAndBraches, ExcelImportOptionsEnum.CavesAndBranches, ExcelImportOptionsEnum.None) Or If(bcolors, ExcelImportOptionsEnum.Colors, ExcelImportOptionsEnum.None))
                 'Catch ex As Exception
                 'Call pLogAdd(ex)
                 'End Try
@@ -13598,7 +13595,7 @@ Friend Class frmMain2
     Private Sub pDesignEnvironmentSet()
         Dim oBackcolor As Color = My.Application.RuntimeSettings.GetSetting("design.lowerlayersdesignbackcolor", Color.White)
         picMap.BackColor = oBackcolor
-        oHolos.SceneBackgroundcolor = oBackcolor
+        If bHolos Then oHolos.SceneBackgroundcolor = oBackcolor
 
         Dim oMessageForeColor As Color = My.Application.RuntimeSettings.GetSetting("messagebar.forecolor", SystemColors.ControlText)
         cMainMessageBar.CaptionForecolor = oMessageForeColor
@@ -13717,13 +13714,11 @@ Friend Class frmMain2
         ntiMain.Icon = Me.Icon
 
         oMousePointer = New cMousePointer
-        'dlastLogEvent = Now
 
         sObjectsPath = modMain.GetApplicationPath & "\objects"
         sClipartPath = sObjectsPath & "\cliparts"
 
         WindowState = FormWindowState.Maximized
-        'CheckForIllegalCrossThreadCalls = False
 
         oCommandLine = New cCommandLineParameters(Command)
         modMain.bIsInDebug = oCommandLine.GetValue("debug", "0")
@@ -13822,18 +13817,25 @@ Friend Class frmMain2
         oPropMarker = New cItemMarkerPropertyControl
         Call pUIAppendItemPropertyControl(oPropMarker, 170)
 
+
         oPropVisibility = New cItemVisibilityPropertyControl2
         Call pUIAppendItemPropertyControl(oPropVisibility, 82)
+
         oPropTransparency = New cItemTransparencyPropertyControl2
         Call pUIAppendItemPropertyControl(oPropTransparency, 30)
+
         oPropLineType = New cItemLineTypePropertyControl2
         Call pUIAppendItemPropertyControl(oPropLineType, 52)
+
         oPropPointLineType = New cItemPointLineTypePropertyControl2
         Call pUIAppendItemPointPropertyControl(oPropPointLineType, 52)
+
         oPropPenStyle = New cItemPenStylePropertyControl
         Call pUIAppendItemPropertyControl(oPropPenStyle, 45)
+
         oPropBrushStyle = New cItemBrushStylePropertyControl
         Call pUIAppendItemPropertyControl(oPropBrushStyle, 45)
+
         oPropTextStyle = New cItemTextStylePropertyControl
         Call pUIAppendItemPropertyControl(oPropTextStyle, 214)
 
@@ -13871,6 +13873,7 @@ Friend Class frmMain2
 
         oPropChunck3d = New cItemChunk3DPropertyControl
         Call pUIAppendItemPropertyControl(oPropChunck3d, 360)
+
 
         Dim oSeparator As cCollapsablePropertySeparator = New cCollapsablePropertySeparator
         pnlObjectProp.Controls.Add(oSeparator)
@@ -13941,6 +13944,7 @@ Friend Class frmMain2
         oOpenHandCursor = New Cursor(sObjectsPath & "\cursors\openhand.cur")
         oClosedHandCursor = New Cursor(sObjectsPath & "\cursors\closedhand.cur")
 
+
         Dim oBindDesignTypeList As List(Of cComboItem(Of cItem.BindDesignTypeEnum)) = New List(Of cComboItem(Of cItem.BindDesignTypeEnum))
         Dim oEditBindDesignTypeCombo As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit = btnMainBindDesignType.Edit
         Call oBindDesignTypeList.Add(New cComboItem(Of cItem.BindDesignTypeEnum)(modMain.GetLocalizedString("csurvey.design.item.binddesigntypeenum." & cItem.BindDesignTypeEnum.MainDesign.ToString("D")), cItem.BindDesignTypeEnum.MainDesign))
@@ -13977,7 +13981,6 @@ Friend Class frmMain2
 
         'delegates for wms download 
         Call modWMSManager.WMSSetDelegate(AddressOf pWMSChangeState, AddressOf pWMSDownloadAsyncProgress, AddressOf pWMSDownloadAsyncCompleted, AddressOf pWMSLog)
-
         'undo
         btnUndo.Enabled = False
         'frmU = New frmUndoManager()
@@ -15535,7 +15538,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub p3DInvalidate(Invalidate As cHolosViewer.InvalidateType)
-        Call oHolos.Invalidate(Invalidate)
+        If bHolos Then Call oHolos.Invalidate(Invalidate)
     End Sub
 
     Private Sub pnl3D_SizeChanged(sender As Object, e As EventArgs) Handles pnl3D.SizeChanged
@@ -15549,7 +15552,7 @@ Friend Class frmMain2
     Private Sub pSurvey3DForceRedraw()
         Call oMousePointer.Push(Cursors.WaitCursor)
         If oSurvey.Invalidated Then Call pSurveyCalculate(True)
-        Call oHolos.Redraw(oSurvey, DirectCast(oCurrentOptions, cOptions3D), o3DTools)
+        If bHolos Then Call oHolos.Redraw(oSurvey, DirectCast(oCurrentOptions, cOptions3D), o3DTools)
         Call oMousePointer.Pop()
     End Sub
 
@@ -15695,7 +15698,8 @@ Friend Class frmMain2
             Call pSurveyHighlightCurrentCave(False)
             Call pSurveySetCurrentCaveBranch(o3DTools.CurrentCave, o3DTools.CurrentBranch)
             Call pSurveyFillCrossSectionsList(o3DTools.CurrentCave, o3DTools.CurrentBranch, btnMainBindDesignType, btnMainBindCrossSections)
-            Call pSurveyRestoreCaveBranchLockstate(o3DTools.CurrentCave, o3DTools.CurrentBranch)
+            Call pLayerTools_EnabledByLevel(cIDesign.cDesignTypeEnum.ThreeDModel, pGetCurrentDesignTools.CurrentLayer.Type)
+            Call pSurveyRestoreCaveBranchLockstate(o3DTools)
         End If
     End Sub
 
@@ -15704,24 +15708,35 @@ Friend Class frmMain2
             Call pSurveyHighlightCurrentCave(False)
             Call pSurveySetCurrentCaveBranch(oPlanTools.CurrentCave, oPlanTools.CurrentBranch)
             Call pSurveyFillCrossSectionsList(oPlanTools.CurrentCave, oPlanTools.CurrentBranch, btnMainBindDesignType, btnMainBindCrossSections)
-            Call pSurveyRestoreCaveBranchLockstate(oPlanTools.CurrentCave, oPlanTools.CurrentBranch)
+            Call pLayerTools_EnabledByLevel(cIDesign.cDesignTypeEnum.Plan, pGetCurrentDesignTools.CurrentLayer.Type)
+            Call pSurveyRestoreCaveBranchLockstate(oPlanTools)
         End If
     End Sub
 
-    Private Sub pSurveyRestoreCaveBranchLockstate(Cave As String, Branch As String)
-        Dim oCaveInfo As cICaveInfoBranches = oSurvey.Properties.GetCaveInfo(Cave, Branch)
-        Dim bEnabled As Boolean = IsNothing(oCaveInfo) OrElse Not oCaveInfo.GetLocked
-        btnSegmentAdd.Enabled = bEnabled
-        btnSegmentInsert.Enabled = bEnabled
-        btnSegmentDelete.Enabled = bEnabled
+    Private Sub pSurveyRestoreCaveBranchLockstate(Tools As cEditDesignTools)
+        Dim bUnlocked As Boolean = Tools.CurrentCaveBranchLocked
+        btnSegmentAdd.Enabled = bUnlocked
+        btnSegmentInsert.Enabled = bUnlocked
+        btnSegmentDelete.Enabled = bUnlocked
+        btnDesignSetCurrentCaveBranch.Enabled = bUnlocked
+        btnObjectSetCaveBranch.Enabled = bUnlocked
     End Sub
+
+    'Private Sub pSurveyRestoreCaveBranchLockstate(Cave As String, Branch As String)
+    '    Dim oCaveInfo As cICaveInfoBranches = oSurvey.Properties.GetCaveInfo(Cave, Branch)
+    '    Dim bUnlocked As Boolean = IsNothing(oCaveInfo) OrElse Not oCaveInfo.GetLocked
+    '    btnSegmentAdd.Enabled = bUnlocked
+    '    btnSegmentInsert.Enabled = bUnlocked
+    '    btnSegmentDelete.Enabled = bUnlocked
+    'End Sub
 
     Private Sub oProfileTools_OnCaveBranchSelect(Sender As Object, ToolEventArgs As cCaveBranchSelectEventArgs) Handles oProfileTools.OnCaveBranchSelect
         If Not bDisabledCaveBranchChangeEvent Then
             Call pSurveyHighlightCurrentCave(False)
             Call pSurveySetCurrentCaveBranch(oProfileTools.CurrentCave, oProfileTools.CurrentBranch)
             Call pSurveyFillCrossSectionsList(oProfileTools.CurrentCave, oProfileTools.CurrentBranch, btnMainBindDesignType, btnMainBindCrossSections)
-            Call pSurveyRestoreCaveBranchLockstate(oProfileTools.CurrentCave, oProfileTools.CurrentBranch)
+            Call pLayerTools_EnabledByLevel(cIDesign.cDesignTypeEnum.Profile, pGetCurrentDesignTools.CurrentLayer.Type)
+            Call pSurveyRestoreCaveBranchLockstate(oProfileTools)
         End If
     End Sub
 
@@ -15817,12 +15832,16 @@ Friend Class frmMain2
     End Function
 
     Private Function pGetCurrentDesignTools() As Helper.Editor.cEditDesignTools
-        If oCurrentDesign Is oSurvey.Plan Then
+        If oCurrentDesign Is Nothing Then
             Return oPlanTools
-        ElseIf oCurrentDesign Is oSurvey.Profile Then
-            Return oProfileTools
         Else
-            Return o3DTools
+            If oCurrentDesign Is oSurvey.Plan Then
+                Return oPlanTools
+            ElseIf oCurrentDesign Is oSurvey.Profile Then
+                Return oProfileTools
+            Else
+                Return o3DTools
+            End If
         End If
     End Function
 
@@ -15839,7 +15858,7 @@ Friend Class frmMain2
     Private Sub ObjectProperty_OnMapInvalidate(Sender As Object, e As EventArgs)
         If oCurrentDesign IsNot Nothing Then
             If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.ThreeDModel Then
-                Call oHolos.Invalidate()
+                If bHolos Then Call oHolos.Invalidate()
             Else
                 Call pMapInvalidate()
             End If
@@ -15857,7 +15876,7 @@ Friend Class frmMain2
         Call oCurrentDesign.Caches.Invalidate()
         If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.ThreeDModel Then
             Dim oArgs As cHolosViewer.cDrawInvalidateEventArgs = e
-            Call oHolos.Invalidate(oArgs.Invalidate)
+            If bHolos Then Call oHolos.Invalidate(oArgs.Invalidate)
         Else
             Call pSurveyRedraw()
         End If
@@ -17324,7 +17343,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub btn3DCameraType_Popup(sender As Object, e As EventArgs) Handles btn3DCameraType.Popup
-        If Not oHolos Is Nothing Then
+        If bHolos Then
             If oHolos.CameraType = cHolosViewer.CameraTypeEnum.Perspective Then
                 btn3DCameraType0.Checked = True
                 btn3DCameraType1.Checked = False
@@ -17339,25 +17358,29 @@ Friend Class frmMain2
     End Sub
 
     Private Sub btn3DCameraType1_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btn3DCameraType1.CheckedChanged
-        If btn3DCameraType1.Checked Then
-            If oHolos.CameraType <> cHolosViewer.CameraTypeEnum.Orthographic Then
-                oHolos.CameraType = cHolosViewer.CameraTypeEnum.Orthographic
-                Call pMapCenterAndFit()
+        If bHolos Then
+            If btn3DCameraType1.Checked Then
+                If oHolos.CameraType <> cHolosViewer.CameraTypeEnum.Orthographic Then
+                    oHolos.CameraType = cHolosViewer.CameraTypeEnum.Orthographic
+                    Call pMapCenterAndFit()
+                End If
             End If
         End If
     End Sub
 
     Private Sub btn3DCameraType0_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btn3DCameraType0.CheckedChanged
-        If btn3DCameraType0.Checked Then
-            If oHolos.CameraType <> cHolosViewer.CameraTypeEnum.Perspective Then
-                oHolos.CameraType = cHolosViewer.CameraTypeEnum.Perspective
-                Call pMapCenterAndFit()
+        If bHolos Then
+            If btn3DCameraType0.Checked Then
+                If oHolos.CameraType <> cHolosViewer.CameraTypeEnum.Perspective Then
+                    oHolos.CameraType = cHolosViewer.CameraTypeEnum.Perspective
+                    Call pMapCenterAndFit()
+                End If
             End If
         End If
     End Sub
 
     Private Sub btn3DCameraMode_Popup(sender As Object, e As EventArgs) Handles btn3DCameraMode.Popup
-        If Not oHolos Is Nothing Then
+        If bHolos Then
             If oHolos.CameraMode = cHolosViewer.cameraModeEnum.Inspect Then
                 btn3DCameraMode0.Checked = True
                 btn3DCameraMode1.Checked = False
@@ -17372,17 +17395,21 @@ Friend Class frmMain2
     End Sub
 
     Private Sub btn3DCameraMode0_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btn3DCameraMode0.CheckedChanged
-        If btn3DCameraMode0.Checked Then
-            If oHolos.CameraMode <> cHolosViewer.cameraModeEnum.Inspect Then
-                oHolos.CameraMode = cHolosViewer.cameraModeEnum.Inspect
+        If bHolos Then
+            If btn3DCameraMode0.Checked Then
+                If oHolos.CameraMode <> cHolosViewer.cameraModeEnum.Inspect Then
+                    oHolos.CameraMode = cHolosViewer.cameraModeEnum.Inspect
+                End If
             End If
         End If
     End Sub
 
     Private Sub btn3DCameraMode1_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btn3DCameraMode1.CheckedChanged
-        If btn3DCameraMode1.Checked Then
-            If oHolos.CameraMode <> cHolosViewer.cameraModeEnum.Walkaround Then
-                oHolos.CameraMode = cHolosViewer.cameraModeEnum.Walkaround
+        If bHolos Then
+            If btn3DCameraMode1.Checked Then
+                If oHolos.CameraMode <> cHolosViewer.cameraModeEnum.Walkaround Then
+                    oHolos.CameraMode = cHolosViewer.cameraModeEnum.Walkaround
+                End If
             End If
         End If
     End Sub
@@ -17613,26 +17640,26 @@ Friend Class frmMain2
     End Sub
 
     Private Sub btn3DViewTop_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn3DViewTop.ItemClick
-        oHolos.SetView(cHolosViewer.ViewFromEnum.FromTop)
+        If bHolos Then oHolos.SetView(cHolosViewer.ViewFromEnum.FromTop)
     End Sub
     Private Sub btn3dViewSN_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn3dViewSN.ItemClick
-        oHolos.SetView(cHolosViewer.ViewFromEnum.FromSouth)
+        If bHolos Then oHolos.SetView(cHolosViewer.ViewFromEnum.FromSouth)
     End Sub
 
     Private Sub btn3dViewBottom_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn3DViewBottom.ItemClick
-        oHolos.SetView(cHolosViewer.ViewFromEnum.FromBottom)
+        If bHolos Then oHolos.SetView(cHolosViewer.ViewFromEnum.FromBottom)
     End Sub
 
     Private Sub btn3dViewEW_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn3dViewEW.ItemClick
-        oHolos.SetView(cHolosViewer.ViewFromEnum.FromEast)
+        If bHolos Then oHolos.SetView(cHolosViewer.ViewFromEnum.FromEast)
     End Sub
 
     Private Sub btn3dViewWE_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn3dViewWE.ItemClick
-        oHolos.SetView(cHolosViewer.ViewFromEnum.FromWest)
+        If bHolos Then oHolos.SetView(cHolosViewer.ViewFromEnum.FromWest)
     End Sub
 
     Private Sub btn3dViewNS_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn3dViewNS.ItemClick
-        oHolos.SetView(cHolosViewer.ViewFromEnum.FromNord)
+        If bHolos Then oHolos.SetView(cHolosViewer.ViewFromEnum.FromNord)
     End Sub
 
     Private Sub grdViewSegments_RowStyle(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs) Handles grdViewSegments.RowStyle
@@ -18802,20 +18829,14 @@ Friend Class frmMain2
     Private Sub pnlStatusZoomBar_EditValueChanged(sender As Object, e As EventArgs) Handles pnlStatusZoomBar.EditValueChanged
         If Not bDisableZoomEvent Then
             If Not oCurrentDesign.Type = cIDesign.cDesignTypeEnum.ThreeDModel Then
-                'oHolos.Zoom(pnlStatusZoomBar.EditValue / sZoomRatio)
-                'Else
                 Dim sNewZoom As Single
                 Dim sScale As Single = 10.0F ^ (pnlStatusZoomBar.EditValue / 10000)
                 If Me.DeviceDpi = 96 Then
-                    'sZoom = (3937.00781F * Me.DeviceDpi) / iScale
                     sNewZoom = (Me.DeviceDpi / (sScale * 0.0254F))
                 Else
                     sNewZoom = (1.0F / (sScale * 0.000254F))
                 End If
                 Call pMapZoom(sNewZoom)
-
-                'Call pFloatingToolbarUpdate()
-                'Call pMapRepaint()
             End If
         End If
     End Sub
@@ -19374,7 +19395,11 @@ Friend Class frmMain2
     End Sub
 
     Private Sub btnExport_Popup(sender As Object, e As EventArgs) Handles btnExport.Popup
-        btnExport3D.Enabled = oHolos.RedrawCount > 0
+        If bHolos Then
+            btnExport3D.Enabled = oHolos.RedrawCount > 0
+        Else
+            btnExport3D.Enabled = False
+        End If
         Dim oGPSBase As cTrigPoint = oSurvey.TrigPoints.GetGPSBaseReferencePoint
         btnExportTrack.Enabled = oSurvey.Properties.GPS.Enabled AndAlso Not oGPSBase Is Nothing AndAlso Not oGPSBase.Coordinate.IsEmpty
     End Sub
@@ -20251,6 +20276,19 @@ Friend Class frmMain2
     Private Sub btnFilterReapplyFilter_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnFilterReapplyFilter.ItemClick
         Dim oDesignTools As cEditDesignTools = pGetCurrentDesignTools()
         oDesignTools.FilterApply(True)
+    End Sub
+
+    Private Sub cboSegmentCaveList_CustomRowFilter(sender As Object, e As RowFilterEventArgs) Handles cboSegmentCaveList.CustomRowFilter
+        'If oSurvey.MasterSlave.IsMasterOrSlave Then
+        If cboSegmentCaveList.cboCaveListView.DataSource IsNot Nothing Then
+            e.Visible = Not DirectCast(cboSegmentCaveList.cboCaveListView.DataSource(e.ListSourceRow), cCaveInfo).GetLocked()
+            e.Handled = True
+        End If
+        'End If
+    End Sub
+
+    Private Sub cboSegmentCaveList_EnabledChanged(sender As Object, e As EventArgs) Handles cboSegmentCaveList.EnabledChanged
+        cboSegmentCaveList.cboCaveListView.RefreshData()
     End Sub
 End Class
 

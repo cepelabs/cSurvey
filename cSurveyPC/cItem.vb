@@ -664,15 +664,6 @@ Namespace cSurvey.Design
             End If
         End Sub
 
-        Public Function GetLocked() As Boolean Implements cIItem.GetLocked
-            Dim oCaveInfo As cICaveInfoBranches = GetCaveInfo()
-            If IsNothing(oCaveInfo) Then
-                Return False
-            Else
-                Return oCaveInfo.GetLocked
-            End If
-        End Function
-
         Public Function GetCaveInfo() As cICaveInfoBranches Implements cIItem.GetCaveInfo
             Return oSurvey.Properties.GetCaveInfo(Me)
         End Function

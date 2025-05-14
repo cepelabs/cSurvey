@@ -613,17 +613,6 @@ Namespace cSurvey
             End If
         End Function
 
-        'Friend Sub MoveTo(ByVal X As Decimal, ByVal Y As Decimal, ByVal Z As Decimal)
-        '    sX = X
-        '    sY = Y
-        '    sZ = Z
-        'End Sub
-
-        'Friend Sub MoveBy(ByVal X As Decimal, ByVal Y As Decimal, ByVal Z As Decimal)
-        '    sX += X
-        '    sY += Y
-        '    sZ += Z
-        'End Sub
         Public Property DrawTranslationsLine As Boolean
             Get
                 Return bDrawTranslationsLine
@@ -683,6 +672,14 @@ Namespace cSurvey
                 End If
             End Set
         End Property
+
+        Public Function GetCaveInfos() As HashSet(Of cICaveInfoBranches)
+            Dim oCaveInfos As HashSet(Of cICaveInfoBranches) = New HashSet(Of cICaveInfoBranches)
+            For Each oSegment As cSegment In GetSegments()
+                oCaveInfos.Add(oSegment.GetCaveInfo)
+            Next
+            Return oCaveInfos
+        End Function
 
         Public Function GetSegments() As cSegmentCollection
             Return oSurvey.Segments.Find(sName)

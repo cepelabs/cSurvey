@@ -24,11 +24,11 @@ Partial Class frmProperties
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmProperties))
-        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
         Me.mnuInfoBoxTags = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -2150,7 +2150,6 @@ Partial Class frmProperties
         Me.txtPlotNoteTextColor.Name = "txtPlotNoteTextColor"
         Me.txtPlotNoteTextColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPlotNoteTextColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtPlotNoteTextColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.txtPlotNoteTextColor.Properties.NullColor = System.Drawing.Color.Empty
         Me.txtPlotNoteTextColor.Properties.ShowSystemColors = False
         Me.txtPlotNoteTextColor.Properties.ShowWebColors = False
         '
@@ -3359,7 +3358,6 @@ Partial Class frmProperties
         Me.txtCaveInfoColor.Name = "txtCaveInfoColor"
         Me.txtCaveInfoColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtCaveInfoColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtCaveInfoColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.txtCaveInfoColor.Properties.NullColor = System.Drawing.Color.Empty
         Me.txtCaveInfoColor.Properties.ShowSystemColors = False
         Me.txtCaveInfoColor.Properties.ShowWebColors = False
         '
@@ -4158,7 +4156,6 @@ Partial Class frmProperties
         Me.txtHighlightColor.Name = "txtHighlightColor"
         Me.txtHighlightColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtHighlightColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtHighlightColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.txtHighlightColor.Properties.NullColor = System.Drawing.Color.Empty
         Me.txtHighlightColor.Properties.ShowSystemColors = False
         Me.txtHighlightColor.Properties.ShowWebColors = False
         '
@@ -4431,7 +4428,6 @@ Partial Class frmProperties
         Me.txtSessionColor.Name = "txtSessionColor"
         Me.txtSessionColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtSessionColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtSessionColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.txtSessionColor.Properties.NullColor = System.Drawing.Color.Empty
         Me.txtSessionColor.Properties.ShowSystemColors = False
         Me.txtSessionColor.Properties.ShowWebColors = False
         '
@@ -4624,9 +4620,9 @@ Partial Class frmProperties
         'txtDefaultPenPattern
         '
         resources.ApplyResources(Me.txtDefaultPenPattern, "txtDefaultPenPattern")
-        EditorButtonImageOptions1.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
-        EditorButtonImageOptions1.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.txtDefaultPenPattern.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtDefaultPenPattern.Buttons1"), CType(resources.GetObject("txtDefaultPenPattern.Buttons2"), Integer), CType(resources.GetObject("txtDefaultPenPattern.Buttons3"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons4"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons5"), Boolean), EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, resources.GetString("txtDefaultPenPattern.Buttons6"), CType(resources.GetObject("txtDefaultPenPattern.Buttons7"), Object), CType(resources.GetObject("txtDefaultPenPattern.Buttons8"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtDefaultPenPattern.Buttons9"), DevExpress.Utils.ToolTipAnchor)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons10"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        EditorButtonImageOptions2.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        EditorButtonImageOptions2.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.txtDefaultPenPattern.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtDefaultPenPattern.Buttons1"), CType(resources.GetObject("txtDefaultPenPattern.Buttons2"), Integer), CType(resources.GetObject("txtDefaultPenPattern.Buttons3"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons4"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons5"), Boolean), EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, resources.GetString("txtDefaultPenPattern.Buttons6"), CType(resources.GetObject("txtDefaultPenPattern.Buttons7"), Object), CType(resources.GetObject("txtDefaultPenPattern.Buttons8"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtDefaultPenPattern.Buttons9"), DevExpress.Utils.ToolTipAnchor)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons10"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtDefaultPenPattern.Name = "txtDefaultPenPattern"
         Me.txtDefaultPenPattern.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '

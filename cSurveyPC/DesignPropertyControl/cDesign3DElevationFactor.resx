@@ -117,23 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="trk3DSurfaceElevationAmp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="trk3DSurfaceElevationAmp.EditValue" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="trk3DSurfaceElevationAmp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="trk3DSurfaceElevationAmp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 3</value>
+    <value>63, 0</value>
   </data>
   <data name="trk3DSurfaceElevationAmp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 26</value>
+    <value>175, 29</value>
   </data>
   <data name="trk3DSurfaceElevationAmp.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -150,6 +143,7 @@
   <data name="&gt;&gt;trk3DSurfaceElevationAmp.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lbl3DSurfaceElevationAmp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -190,6 +184,6 @@
     <value>cDesign3DElevationFactor</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cDesignPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cDesignPropertyControl, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

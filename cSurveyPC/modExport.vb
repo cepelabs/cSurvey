@@ -1519,6 +1519,7 @@ Module modExport
         None = &H0
         CavesAndBranches = &H1
         Sessions = &H2
+        Colors = &H4
     End Enum
 
     <Flags> Public Enum ExcelExportOptionsEnum
@@ -1533,7 +1534,8 @@ Module modExport
         Return Column
     End Function
 
-    Private Sub pImportBranches(Survey As cSurveyPC.cSurvey.cSurvey, XLSCaves As OfficeOpenXml.ExcelWorksheet, Parent As cICaveInfoBranches, ByRef r As Integer)
+    Private Sub pImportBranches(Survey As cSurveyPC.cSurvey.cSurvey, Options As ExcelImportOptionsEnum, XLSCaves As OfficeOpenXml.ExcelWorksheet, Parent As cICaveInfoBranches, ByRef r As Integer)
+        Dim bColors As Boolean = (Options And ExcelImportOptionsEnum.Colors) = ExcelImportOptionsEnum.Colors
         Do
             Dim c As Integer = 1
             Dim sCaveName As String = "" & XLSCaves.Cells(r, c).Value
@@ -1546,7 +1548,7 @@ Module modExport
             pExcelNextColumn(c)
             oBranch.Description = XLSCaves.Cells(r, pExcelNextColumn(c)).Value
             oBranch.ExtendStart = XLSCaves.Cells(r, pExcelNextColumn(c)).Value
-            oBranch.Color = oColor
+            If bColors Then oBranch.Color = oColor
             Dim sCaveParentConnection As String = "" & XLSCaves.Cells(r, pExcelNextColumn(c)).Value
             If sCaveParentConnection <> "" Then oBranch.ParentConnection = New cConnectionDef(sCaveParentConnection)
             Dim sCaveConnection As String = "" & XLSCaves.Cells(r, pExcelNextColumn(c)).Value
@@ -1560,7 +1562,7 @@ Module modExport
             sNextCaveName = sNextCaveName.Trim
             If iNextCaveIndent > iCaveIndent Then
                 'child
-                Call pImportBranches(Survey, XLSCaves, oBranch, r)
+                Call pImportBranches(Survey, Options, XLSCaves, oBranch, r)
             ElseIf iCaveIndent > iNextCaveIndent Then
                 'child of parent
                 Exit Do
@@ -1569,10 +1571,12 @@ Module modExport
     End Sub
 
     Public Sub ExcelImportFrom(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, Options As ExcelImportOptionsEnum)
+        Dim oRm As System.Resources.ResourceManager = New System.Resources.ResourceManager(GetType(frmMain2))
+
         Dim oFileinfo As IO.FileInfo = New IO.FileInfo(Filename)
         Using oXLS As OfficeOpenXml.ExcelPackage = New OfficeOpenXml.ExcelPackage(oFileinfo)
             'If oFileinfo.Exists Then oFileinfo.Delete()
-            'Dim bColors As Boolean = (Options And ExcelExportOptionsEnum.Colors) = ExcelExportOptionsEnum.Colors
+            Dim bColors As Boolean = (Options And ExcelImportOptionsEnum.Colors) = ExcelImportOptionsEnum.Colors
             'Dim bCalculatedData As Boolean = (Options And ExcelExportOptionsEnum.CalculatedData) = ExcelExportOptionsEnum.CalculatedData
             'Dim bNamedSplayStation As Boolean = (Options And ExcelExportOptionsEnum.NamedSplayStation) = ExcelExportOptionsEnum.NamedSplayStation
             'Dim bNamedSplayStationData As Boolean = (Options And ExcelExportOptionsEnum.NamedSplayStationData) = ExcelExportOptionsEnum.NamedSplayStationData
@@ -1597,7 +1601,7 @@ Module modExport
                         Dim dSessionDate As Date = Date.Parse(Date.FromOADate(sSessionDate))
                         Dim sSessionDescription As String = oXLSSession.Cells(r, pExcelNextColumn(c)).Value
                         Dim oSession As cSession = Survey.Properties.Sessions.Add(dSessionDate, sSessionDescription)
-                        oSession.Color = oColor
+                        If bColors Then oSession.Color = oColor
                         oSession.Note = oXLSSession.Cells(r, pExcelNextColumn(c)).Value
                         oSession.Club = oXLSSession.Cells(r, pExcelNextColumn(c)).Value
                         oSession.Team = oXLSSession.Cells(r, pExcelNextColumn(c)).Value
@@ -1625,13 +1629,13 @@ Module modExport
                         sCaveName = sCaveName.Trim
                         If sCaveName.StartsWith("└") Then
                             'branch
-                            Call pImportBranches(Survey, oXLSCaves, oCave, r)
+                            Call pImportBranches(Survey, Options, oXLSCaves, oCave, r)
                         Else
                             oCave = Survey.Properties.CaveInfos.Add(sCaveName)
                             oCave.ID = oXLSCaves.Cells(r, pExcelNextColumn(c)).Value
                             oCave.Description = oXLSCaves.Cells(r, pExcelNextColumn(c)).Value
                             oCave.ExtendStart = oXLSCaves.Cells(r, pExcelNextColumn(c)).Value
-                            oCave.Color = oColor
+                            If bColors Then oCave.Color = oColor
                             Dim sCaveParentConnection As String = "" & oXLSCaves.Cells(r, pExcelNextColumn(c)).Value
                             If sCaveParentConnection <> "" Then oCave.ParentConnection = New cConnectionDef(sCaveParentConnection)
                             Dim sCaveConnection As String = "" & oXLSCaves.Cells(r, pExcelNextColumn(c)).Value
@@ -1686,8 +1690,16 @@ Module modExport
                             oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Left
                         ElseIf sDirection.ToLower = modMain.GetLocalizedString("main.textpart20b").ToLower Then
                             oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Right
-                        Else
+                        ElseIf sDirection.ToLower = modMain.GetLocalizedString("main.textpart20e").ToLower Then
                             oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Vertical
+                        Else
+                            If sDirection.ToLower = cSurvey.cSurvey.DirectionEnum.Left.ToString.ToLower Then
+                                oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Left
+                            ElseIf sDirection.ToLower = cSurvey.cSurvey.DirectionEnum.Right.ToString.ToLower Then
+                                oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Right
+                            Else
+                                oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Vertical
+                            End If
                         End If
                     End If
                     oSegment.Exclude = oXLSSegment.Cells(r, pExcelNextColumn(c)).Value <> ""
@@ -1726,11 +1738,13 @@ Module modExport
                             oTrigpoint.Coordinate.Latitude = sLatitude
                             oTrigpoint.Coordinate.Longitude = sLongitude
                             oTrigpoint.Coordinate.Altitude = sAltitude
-                            'oTrigpoint.Coordinate.Fix =sfix
+                            oTrigpoint.Coordinate.Fix = pSetLocalizationComboValue(sFix, GetType(cCoordinate.FixEnum), "cboTrigpointCoordinateFix.Properties.Items", oRm, 0)
                         End If
 
                         Dim sEntrance As String = oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value
+                        oTrigpoint.Entrance = pSetLocalizationComboValue(sEntrance, GetType(cTrigPoint.EntranceTypeEnum), "cboTrigpointEntrance.Properties.Items", oRm, 0)
                         Dim sType As String = oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value
+                        oTrigpoint.Type = pSetLocalizationComboValue(sType, GetType(cTrigPoint.TrigPointTypeEnum), "cboTrigPointType.Properties.Items", oRm, 0)
                         oTrigpoint.IsSpecial = oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value <> ""
                         oTrigpoint.IsInExploration = oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value <> ""
 
@@ -1746,6 +1760,8 @@ Module modExport
     End Sub
 
     Public Sub ExcelExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, Options As ExcelExportOptionsEnum)
+        Dim oRm As System.Resources.ResourceManager = New System.Resources.ResourceManager(GetType(frmMain2))
+
         Dim oFileinfo As IO.FileInfo = New IO.FileInfo(Filename)
         If oFileinfo.Exists Then oFileinfo.Delete()
         Dim bColors As Boolean = (Options And ExcelExportOptionsEnum.Colors) = ExcelExportOptionsEnum.Colors
@@ -1909,10 +1925,11 @@ Module modExport
                                 oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oTrigpoint.Coordinate.Latitude
                                 oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oTrigpoint.Coordinate.Longitude
                                 oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oTrigpoint.Coordinate.Altitude
-                                oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oTrigpoint.Coordinate.Fix.ToString
+                                oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = pGetLocalizedComboBoxValue(oTrigpoint.Coordinate.Fix.ToString("D"), "cboTrigpointCoordinateFix.Properties.Items", oRm) ' oTrigpoint.Coordinate.Fix.ToString
                             End If
-                            oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oTrigpoint.Entrance.ToString
-                            oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oTrigpoint.Type.ToString
+
+                            oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = pGetLocalizedComboBoxValue(oTrigpoint.Entrance.ToString("D"), "cboTrigpointEntrance.Properties.Items", oRm) ' oTrigpoint.Entrance.ToString
+                            oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = pGetLocalizedComboBoxValue(oTrigpoint.Type.ToString("D"), "cboTrigPointType.Properties.Items", oRm) 'oTrigpoint.Type.ToString
                             oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = If(oTrigpoint.IsSpecial, "✔", "")
                             oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = If(oTrigpoint.IsInExploration, "✔", "")
                             oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oTrigpoint.Note
@@ -1964,7 +1981,7 @@ Module modExport
                         End If
                     End If
                     oXLSSession.Cells(r, pExcelNextColumn(c)).Value = oSession.Date
-                    oXLSSession.Cells(r, c).Style.Numberformat.Format = "dd/mm/yyyy"
+                    oXLSSession.Cells(r, c).Style.Numberformat.Format = Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.ShortDatePattern
                     oXLSSession.Cells(r, pExcelNextColumn(c)).Value = oSession.Description
                     oXLSSession.Cells(r, pExcelNextColumn(c)).Value = oSession.Note
                     oXLSSession.Cells(r, pExcelNextColumn(c)).Value = oSession.Club
@@ -2013,7 +2030,7 @@ Module modExport
 
                     r += 1
 
-                    Call pExportBranches(Survey, oXLSCaves, oCave, r, 1)
+                    Call pExportBranches(Survey, Options, oXLSCaves, oCave, r, 1)
                 Next
 
                 If bCalculatedData Then
@@ -2027,7 +2044,7 @@ Module modExport
                         For Each oGeoDataDate As Date In Survey.Calculate.GeoMagDeclinationData.GetDates
                             c = 0
                             oXLSGeoData.Cells(r, pExcelNextColumn(c)).Value = oGeoDataDate
-                            oXLSGeoData.Cells(r, c).Style.Numberformat.Format = "dd/mm/yyyy"
+                            oXLSGeoData.Cells(r, c).Style.Numberformat.Format = Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.ShortDatePattern
                             oXLSGeoData.Cells(r, pExcelNextColumn(c)).Value = Survey.Calculate.GeoMagDeclinationData.Item(oGeoDataDate)
 
                             r += 1
@@ -2040,15 +2057,62 @@ Module modExport
         End Using
     End Sub
 
-    Private Sub pExportBranches(Survey As cSurveyPC.cSurvey.cSurvey, XLSCaves As OfficeOpenXml.ExcelWorksheet, Parent As cICaveInfoBranches, ByRef r As Integer, Indent As Integer)
+    Private Function pSetLocalizationComboValue(Value As String, BaseEnum As Type, BaseName As String, ResourceManager As System.Resources.ResourceManager, DefaultValue As Integer) As Integer
+        If Value.Contains(" - ") Then
+            Return Value.Substring(Value.IndexOf(" - "))
+        Else
+            Dim oValues = [Enum].GetValues(BaseEnum)
+            Dim i As Integer = 0
+            For Each sValue As String In [Enum].GetNames(BaseEnum)
+                If Value.ToLower = sValue.ToLower Then
+                    Return oValues(i)
+                End If
+                i += 1
+            Next
+
+            i = 0
+            Do
+                Dim sLocalizedValue As String
+                If i = 0 Then
+                    sLocalizedValue = ResourceManager.GetString(BaseName)
+                Else
+                    sLocalizedValue = ResourceManager.GetString(BaseName & i)
+                End If
+                If sLocalizedValue Is Nothing Then Exit Do
+                If Value.ToLower = sLocalizedValue.ToLower Then
+                    Return oValues(i)
+                End If
+                i += 1
+            Loop
+
+            Return DefaultValue
+        End If
+    End Function
+
+    Private Function pGetLocalizedComboBoxValue(Value As Integer, BaseName As String, ResourceManager As System.Resources.ResourceManager) As String
+        Try
+            If Value = 0 Then
+                Return Value & " - " & ResourceManager.GetString(BaseName)
+            Else
+                Return Value & " - " & ResourceManager.GetString(BaseName & Value)
+            End If
+        Catch ex As Exception
+            Return Value
+        End Try
+    End Function
+
+    Private Sub pExportBranches(Survey As cSurveyPC.cSurvey.cSurvey, Options As ExcelExportOptionsEnum, XLSCaves As OfficeOpenXml.ExcelWorksheet, Parent As cICaveInfoBranches, ByRef r As Integer, Indent As Integer)
+        Dim bColors As Boolean = (Options And ExcelExportOptionsEnum.Colors) = ExcelExportOptionsEnum.Colors
         Dim c As Integer
         For Each oBranch As cCaveInfoBranch In Parent.Branches
             c = 0
             XLSCaves.Cells(r, pExcelNextColumn(c)).Value = Space(Indent * 2) & "└ " & oBranch.Name
-            Dim oCaveBranchColor As Color = oBranch.GetColor(Color.Transparent)
-            If Not (oCaveBranchColor = Color.Transparent) Then
-                XLSCaves.Cells(r, c).Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
-                XLSCaves.Cells(r, c).Style.Fill.BackgroundColor.SetColor(oCaveBranchColor)
+            If bColors Then
+                Dim oCaveBranchColor As Color = oBranch.GetColor(Color.Transparent)
+                If Not (oCaveBranchColor = Color.Transparent) Then
+                    XLSCaves.Cells(r, c).Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
+                    XLSCaves.Cells(r, c).Style.Fill.BackgroundColor.SetColor(oCaveBranchColor)
+                End If
             End If
             XLSCaves.Cells(r, pExcelNextColumn(c)).Value = oBranch.Name
             XLSCaves.Cells(r, pExcelNextColumn(c)).Value = oBranch.Description
@@ -2066,7 +2130,7 @@ Module modExport
 
             r += 1
 
-            Call pExportBranches(Survey, XLSCaves, oBranch, r, Indent + 1)
+            Call pExportBranches(Survey, Options, XLSCaves, oBranch, r, Indent + 1)
         Next
     End Sub
 

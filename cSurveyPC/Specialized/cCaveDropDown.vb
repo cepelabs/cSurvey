@@ -1,4 +1,5 @@
-﻿Imports DevExpress.XtraGrid.Views.Base
+﻿Imports System.ComponentModel
+Imports DevExpress.XtraGrid.Views.Base
 
 Public Class cCaveDropDown
     Public Sub New()
@@ -133,4 +134,11 @@ Public Class cCaveDropDown
             RaiseEvent EditRequest(Me, EventArgs.Empty)
         End If
     End Sub
+
+    'Public Event QueryPopUp As EventHandler
+
+    'Private Sub cboCaveList_QueryPopUp(sender As Object, e As CancelEventArgs) Handles cboCaveList.QueryPopUp
+    '    RaiseEvent QueryPopUp(Me, EventArgs.Empty)
+    'End Sub
+
 End Class

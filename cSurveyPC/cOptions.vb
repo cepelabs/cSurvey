@@ -1,14 +1,7 @@
-﻿Imports cSurveyPC.cSurvey.Drawings
-Imports cSurveyPC.cSurvey.Scale
-Imports cSurveyPC.cSurvey.Design.Items
+﻿Imports cSurveyPC.cSurvey.Scale
 Imports cSurveyPC.cSurvey.Design.Options
 
 Imports System.Xml
-Imports System.Collections.ObjectModel
-
-Imports DotNetCaveModel
-Imports DotNetCaveModel.RenderMode
-Imports DotNetCaveModel.ColoringMode
 
 Namespace cSurvey.Design
     Public Class PropertyChangeEventArgs

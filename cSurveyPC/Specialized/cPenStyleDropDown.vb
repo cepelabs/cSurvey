@@ -84,17 +84,6 @@ Public Class cPenStyleDropDown
             Call pAppendItem(oPen)
         Next
 
-        'Call oItems.Clear()
-        'For Each sFilename As String In My.Computer.FileSystem.GetFiles(modMain.GetUserApplicationPath, FileIO.SearchOption.SearchTopLevelOnly, {"*.cpen"})
-        '    Dim oXml As XmlDocument = New XmlDocument
-        '    oXml.Load(sFilename)
-        '    Dim oPen As cCustomPen = New cCustomPen(oSurvey, oXml.DocumentElement.Item("pen"))
-        '    If Not oSurvey.Pens.Contains(oPen) Then
-        '        Call oItems.Add(oPen)
-        '        Call pAppendItem(oPen, True)
-        '    End If
-        'Next
-
         pAppendItem(oSurvey.Pens.FromCustom(Color.Black, GetLocalizedString("main.textpart41"), 1, cPen.PenStylesEnum.Solid))
 
         cboPenStyle.EditValue = sOldValue

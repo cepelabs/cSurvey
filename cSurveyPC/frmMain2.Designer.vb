@@ -7516,9 +7516,11 @@ Partial Class frmMain2
         'dockData
         '
         Me.dockData.Controls.Add(Me.ControlContainer6)
+        Me.dockData.Dock = DevExpress.XtraBars.Docking.DockingStyle.Float
         Me.dockData.DockedAsTabbedDocument = True
         Me.dockData.FloatLocation = New System.Drawing.Point(759, 542)
         Me.dockData.ID = New System.Guid("7380af1d-b90e-46cf-ada0-d15b3463d9d9")
+        resources.ApplyResources(Me.dockData, "dockData")
         Me.dockData.Name = "dockData"
         Me.dockData.Options.AllowDockBottom = False
         Me.dockData.Options.AllowDockFill = False
@@ -7530,15 +7532,16 @@ Partial Class frmMain2
         Me.dockData.SavedIndex = 1
         Me.dockData.SavedMdiDocument = True
         Me.dockData.SavedMdiDocumentIndex = 0
-        resources.ApplyResources(Me.dockData, "dockData")
         '
         'dockDesigner
         '
         Me.dockDesigner.Controls.Add(Me.DockPanel1_Container)
+        Me.dockDesigner.Dock = DevExpress.XtraBars.Docking.DockingStyle.Float
         Me.dockDesigner.DockedAsTabbedDocument = True
         Me.dockDesigner.FloatLocation = New System.Drawing.Point(919, 722)
         Me.dockDesigner.FloatSize = New System.Drawing.Size(496, 824)
         Me.dockDesigner.ID = New System.Guid("cfe36b20-540d-4726-b0c0-49b498664ad0")
+        resources.ApplyResources(Me.dockDesigner, "dockDesigner")
         Me.dockDesigner.Name = "dockDesigner"
         Me.dockDesigner.Options.AllowDockBottom = False
         Me.dockDesigner.Options.AllowDockFill = False
@@ -7550,7 +7553,6 @@ Partial Class frmMain2
         Me.dockDesigner.SavedIndex = 2
         Me.dockDesigner.SavedMdiDocument = True
         Me.dockDesigner.SavedMdiDocumentIndex = 0
-        resources.ApplyResources(Me.dockDesigner, "dockDesigner")
         '
         'DocumentManager
         '

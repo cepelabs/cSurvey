@@ -16,6 +16,15 @@ Friend Class cItemSegmentBindingPropertyControl
 
     Public Shadows Sub Rebind(Item As cItem)
         MyBase.Rebind(Item)
+        If Item.Survey.MasterSlave.IsLocked(Item) Then
+            cmdPropSegmentsLock.Enabled = False
+            cmdPropSegmentsUnlock.Enabled = False
+            cmdPropSegmentsRebind.Enabled = False
+        Else
+            cmdPropSegmentsLock.Enabled = True
+            cmdPropSegmentsUnlock.Enabled = True
+            cmdPropSegmentsRebind.Enabled = True
+        End If
         Enabled = IsAvailable
         Call pRefresh()
     End Sub

@@ -428,10 +428,10 @@ Namespace cSurvey.Design
                             Dim oParameter As cPatternBrushParameterBoolean = New cPatternBrushParameterBoolean(oXmlParameter.GetAttribute("name"), sParameterCaption, sParameterTooltip, oXmlParameter.GetAttribute("default"))
                             Call oParameters.Add(oParameter)
                         Case "single"
-                            Dim oParameter As cPatternBrushParameterSingle = New cPatternBrushParameterSingle(oXmlParameter.GetAttribute("name"), sParameterCaption, sParameterTooltip, oXmlParameter.GetAttribute("default"), oXmlParameter.GetAttribute("min"), oXmlParameter.GetAttribute("max"))
+                            Dim oParameter As cPatternBrushParameterSingle = New cPatternBrushParameterSingle(oXmlParameter.GetAttribute("name"), sParameterCaption, sParameterTooltip, modNumbers.StringToSingle(oXmlParameter.GetAttribute("default")), modNumbers.StringToSingle(oXmlParameter.GetAttribute("min")), modNumbers.StringToSingle(oXmlParameter.GetAttribute("max")))
                             Call oParameters.Add(oParameter)
                         Case "string"
-                            Dim oParameter As cPatternBrushParameterString = New cPatternBrushParameterString(oXmlParameter.GetAttribute("name"), sParameterCaption, sParameterTooltip, oXmlParameter.GetAttribute("default"))
+                            Dim oParameter As cPatternBrushParameterString = New cPatternBrushParameterString(oXmlParameter.GetAttribute("name"), sParameterCaption, sParameterTooltip, "" & oXmlParameter.GetAttribute("default"))
                             Call oParameters.Add(oParameter)
                     End Select
                 Next

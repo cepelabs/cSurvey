@@ -30,10 +30,6 @@ Friend Class cItemPenStylePropertyControl
     Public Shadows Sub Rebind(Item As cItem, Point As cPoint, PaintOptions As cOptions)
         MyBase.Rebind(Item)
 
-        'If oPaintOptions IsNot PaintOptions Then
-        '    oPaintOptions = PaintOptions
-        '    Call cboPropPenPattern.Rebind(oPaintOptions)
-        'End If
         If oSurvey IsNot Item.Survey Then
             oSurvey = Item.Survey
             Call cboPropPenPattern.Rebind(oSurvey)

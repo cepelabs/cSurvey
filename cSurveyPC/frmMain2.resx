@@ -21495,6 +21495,12 @@
   <data name="&gt;&gt;dockDistances.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Docking.DockPanel, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="dockData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dockData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>437, 796</value>
+  </data>
   <data name="dockData.Text" xml:space="preserve">
     <value>Data</value>
   </data>
@@ -21503,6 +21509,12 @@
   </data>
   <data name="&gt;&gt;dockData.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Docking.DockPanel, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="dockDesigner.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dockDesigner.Size" type="System.Drawing.Size, System.Drawing">
+    <value>711, 796</value>
   </data>
   <data name="dockDesigner.Text" xml:space="preserve">
     <value>Designer</value>

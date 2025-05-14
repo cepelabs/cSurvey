@@ -11,7 +11,11 @@ Friend Class cDesign3DElevationFactor
     Public Shadows Sub Rebind(Design As cIDesign, Options As cOptions)
         Call MyBase.Rebind(Design, Options)
 
-        trk3DSurfaceElevationAmp.Value = Me.Options.SurfaceOptions.Elevation.AltitudeAmplification * 10.0F
+        Try
+            trk3DSurfaceElevationAmp.Value = Me.Options.SurfaceOptions.Elevation.AltitudeAmplification * 10.0F
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Private Sub trk3DSurfaceElevationAmp_EditValueChanged(sender As Object, e As EventArgs) Handles trk3DSurfaceElevationAmp.EditValueChanged

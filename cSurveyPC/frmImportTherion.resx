@@ -346,7 +346,7 @@
     <value>cboImportAsBranchOfCave</value>
   </data>
   <data name="&gt;&gt;cboImportAsBranchOfCave.Type" xml:space="preserve">
-    <value>cSurveyPC.cCaveDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cCaveDropDown, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboImportAsBranchOfCave.Parent" xml:space="preserve">
     <value>$this</value>
@@ -370,7 +370,7 @@
     <value>cboImportAsBranchOfBranch</value>
   </data>
   <data name="&gt;&gt;cboImportAsBranchOfBranch.Type" xml:space="preserve">
-    <value>cSurveyPC.cCaveBranchDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cCaveBranchDropDown, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboImportAsBranchOfBranch.Parent" xml:space="preserve">
     <value>$this</value>
@@ -403,9 +403,9 @@
     <value>1</value>
   </data>
   <data name="chkLineOfComment.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 203</value>
+    <value>16, 187</value>
   </data>
-  <data name="CheckEdit1.Properties.Caption" xml:space="preserve">
+  <data name="chkLineOfComment.Properties.Caption" xml:space="preserve">
     <value>Import line of comment</value>
   </data>
   <data name="chkLineOfComment.Size" type="System.Drawing.Size, System.Drawing">
@@ -513,6 +513,6 @@
     <value>frmImportTherion</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cForm, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -121,7 +121,7 @@ Partial Class frmImportTherion
         resources.ApplyResources(Me.chkLineOfComment, "chkLineOfComment")
         Me.chkLineOfComment.Name = "chkLineOfComment"
         Me.chkLineOfComment.Properties.AutoWidth = True
-        Me.chkLineOfComment.Properties.Caption = resources.GetString("CheckEdit1.Properties.Caption")
+        Me.chkLineOfComment.Properties.Caption = resources.GetString("chkLineOfComment.Properties.Caption")
         '
         'frmImportTherion
         '

@@ -619,7 +619,6 @@ Namespace cSurvey.Calculate
                             Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Check sessions")
                             Dim oInvalidSegments As List(Of cSegment) = oSegmentsColl.Where(Function(oSegment) Not oSegment.IsEquate AndAlso Not oSegment.Virtual AndAlso oSegment.Session = "").ToList
                             If oInvalidSegments.Count > 0 Then
-                                'Call oCalculateData.Add(New cCalculateDataItem(Now, cCalculateDataItem.CalculateDataItemTypeEnum.Error, GetLocalizedString("calculate.textpart14"), oInvalidSegments))
                                 Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, GetLocalizedString("calculate.textpart14"))
                                 Throw New cCalculateMissingSessionException(modMain.GetLocalizedString("calculate.textpart14"), oInvalidSegments)
                             End If

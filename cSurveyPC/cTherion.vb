@@ -192,6 +192,7 @@ Public Class cTherion
         Public LastSplay As Boolean
         Public LastCoordinateSystem As TherionCoordinateSystem
         Public LastCoordinateZone As String
+        Public LastCoordinateBand As String
 
         Private oDataBySession As Dictionary(Of cSession, cData)
         Private oFactorBySession As Dictionary(Of cSession, cFactor)
@@ -620,10 +621,16 @@ Public Class cTherion
                                 If sCS = "utm" Then
                                     Importer.LastCoordinateSystem = TherionCoordinateSystem.WGS84UTM
                                     Importer.LastCoordinateZone = Nothing
-                                    'ElseIf sCS.StartsWith("utm") Then
-                                    '    Dim sZone As String = sCS.Replace("utm", "")
-                                    '    Importer.LastCoordinateSystem = TherionCoordinateSystem.WGS84UTM
-                                    '    Importer.LastCoordinateZone = sZone
+                                    Importer.LastCoordinateBand = Nothing
+                                ElseIf sCS.StartsWith("utm") Then
+                                    Dim sZone As String = sCS.Replace("utm", "")
+                                    Importer.LastCoordinateSystem = TherionCoordinateSystem.WGS84UTM
+                                    Importer.LastCoordinateZone = sZone
+                                    If sCS.EndsWith("s") Then
+                                        Importer.LastCoordinateBand = "M"
+                                    Else
+                                        Importer.LastCoordinateBand = "P"
+                                    End If
                                 Else
                                     Select Case sCS
                                         Case Else
@@ -652,11 +659,19 @@ Public Class cTherion
                                             .X = sX
                                             .Y = sY
                                             .Altitude = sAlt
+                                            If Importer.LastCoordinateBand IsNot Nothing Then
+                                                .Band = Importer.LastCoordinateBand
+                                            End If
                                             If Importer.LastCoordinateZone IsNot Nothing Then
                                                 .Zone = Importer.LastCoordinateZone
-                                                .Band = "A"
                                             End If
                                         End With
+                                        If Not Survey.Properties.GPS.Enabled Then
+                                            Survey.Properties.GPS.Enabled = True
+                                            Survey.Properties.GPS.SendToTherion = True
+                                            Survey.Properties.GPS.RefPointOnOrigin = False
+                                            Survey.Properties.GPS.CustomRefPoint = sStation
+                                        End If
                                     Case TherionCoordinateSystem.WGS84GEO
                                         Debug.Print("TH:FIX->" & sStation & " in an supported CS but not managed")
                                         Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Warning, "Not managed fix for " & sStation & " in " & Filename & "[" & iRow & "]")

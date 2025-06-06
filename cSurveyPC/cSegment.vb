@@ -1053,13 +1053,13 @@ Namespace cSurvey
                 oOldData = oCurrentData
 
                 If oSurvey.Properties.SplayMode = cSurvey.SplayModeEnum.Automatic Then
-                    If (oTempData.To = "" And oTempData.[From] <> "") Or (oTempData.To Like "*(*)" And Not (oTempData.From Like "*(*)") And oTempData.From <> oCurrentData.From) Then
+                    If (oTempData.To = "" AndAlso oTempData.[From] <> "") OrElse (oTempData.To Like "*(*)" AndAlso Not (oTempData.From Like "*(*)") AndAlso oTempData.From <> oCurrentData.From) Then
                         Dim oArgs As cGetSplayNameEventArgs = New cGetSplayNameEventArgs(oTempData.From)
                         RaiseEvent OnGetSplayName(Me, oArgs)
                         oTempData.To = oArgs.SplayName
                         oTempData.Exclude = True
                         oTempData.Splay = True
-                    ElseIf (oTempData.To <> "" And oTempData.[From] = "") Or (Not (oTempData.To Like "*(*)") And oTempData.From Like "*(*)" And oTempData.To <> oCurrentData.To) Then
+                    ElseIf (oTempData.To <> "" AndAlso oTempData.[From] = "") OrElse (Not (oTempData.To Like "*(*)") And oTempData.From Like "*(*)" AndAlso oTempData.To <> oCurrentData.To) Then
                         Dim oArgs As cGetSplayNameEventArgs = New cGetSplayNameEventArgs(oTempData.To)
                         RaiseEvent OnGetSplayName(Me, oArgs)
                         oTempData.From = oArgs.SplayName
@@ -1069,11 +1069,11 @@ Namespace cSurvey
                 Else
                     'in manual check if shot is a splay...if this check if the name in like *(*) and rename it if not ok
                     If oTempData.Splay Then
-                        If (oTempData.To Like "*(*)" And Not (oTempData.From Like "*(*)")) AndAlso Not oTempData.To Like oTempData.From & "(*)" Then
+                        If ((oTempData.To Like "*(*)" OrElse oTempData.To = "") AndAlso Not (oTempData.From Like "*(*)")) AndAlso Not oTempData.To Like oTempData.From & "(*)" Then
                             Dim oArgs As cGetSplayNameEventArgs = New cGetSplayNameEventArgs(oTempData.From)
                             RaiseEvent OnGetSplayName(Me, oArgs)
                             oTempData.To = oArgs.SplayName
-                        ElseIf (oTempData.From Like "*(*)" And Not (oTempData.To Like "*(*)")) AndAlso Not oTempData.From Like oTempData.To & "(*)" Then
+                        ElseIf (oTempData.From Like "*(*)" AndAlso Not (oTempData.To Like "*(*)")) AndAlso Not oTempData.From Like oTempData.To & "(*)" Then
                             Dim oArgs As cGetSplayNameEventArgs = New cGetSplayNameEventArgs(oTempData.To)
                             RaiseEvent OnGetSplayName(Me, oArgs)
                             oTempData.From = oArgs.SplayName

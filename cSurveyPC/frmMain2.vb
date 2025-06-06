@@ -2002,8 +2002,10 @@ Friend Class frmMain2
             '    If sErrorText <> "" Then sErrorText = sErrorText & vbCrLf
             '    sErrorText = sErrorText & GetLocalizedString("main.textpart52")
             'End If
-
-            Call Segment.Save()
+            If bSegmentChanged Then
+                Call Segment.Save()
+                bSegmentChanged = False
+            End If
         End If
     End Sub
 
@@ -20233,7 +20235,7 @@ Friend Class frmMain2
 
     Private bTherionStatusUpdateBusy As Boolean
 
-    Private Async Sub pTherionStatusUpdate()
+    Private Sub pTherionStatusUpdate()
         If Not bTherionStatusUpdateBusy Then
             bTherionStatusUpdateBusy = True
 
@@ -20241,7 +20243,7 @@ Friend Class frmMain2
             pnlStatusVersion.SuperTip = modDevExpress.CreateSuperTip(pnlStatusVersion.Caption, Nothing, Nothing, sNewVersion, Nothing, Nothing, "", Nothing, Nothing)
 
             Dim sThProcess As String = My.Application.Settings.GetSetting("therion.path", "")
-            Dim oVersion As modExport.cVersion = Await modExport.GetTherionVersionAsync(sThProcess)
+            Dim oVersion As modExport.cVersion = modExport.GetTherionVersion(sThProcess)
             pnlStatusTherion.Description = modMain.GetLocalizedString("main.textpart174")
             If oVersion Is Nothing Then
                 Call pPopupShow("error", modMain.GetLocalizedString("calculate.textpart6"))

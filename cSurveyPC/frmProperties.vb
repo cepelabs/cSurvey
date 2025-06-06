@@ -40,6 +40,14 @@ Friend Class frmProperties
         ' Add any initialization after the InitializeComponent() call.
         Cursor = Cursors.WaitCursor
 
+        If Not (My.Computer.Keyboard.AltKeyDown AndAlso My.Computer.Keyboard.CtrlKeyDown) Then
+            Dim iWindowState As FormWindowState = My.Application.Settings.GetSetting("form." & Name & ".windowstate", 0)
+            If iWindowState = FormWindowState.Normal OrElse iWindowState = FormWindowState.Maximized Then
+                WindowState = iWindowState
+            End If
+            Size = modWindow.GetSizeFromSettings(My.Application.Settings, "form." & Name & ".size", Size)
+        End If
+
         iFunctionLanguage = FunctionLanguage
 
         Call tabMain.BeginUpdate()
@@ -4101,11 +4109,29 @@ Friend Class frmProperties
         End Select
     End Sub
 
-    'Private Sub tvSessionCalibration_CustomNodeCellEditForEditing(sender As Object, e As DevExpress.XtraTreeList.GetCustomNodeCellEditEventArgs) Handles tvSessionCalibration.CustomNodeCellEditForEditing
-    '    If e.Node.ParentNode Is Nothing Then
-    '        If e.Column Is colSessionCalibrateValue Then
-    '            e.RepositoryItem = Nothing
-    '        End If
-    '    End If
-    'End Sub
+    Private Sub frmProperties_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Call modWindow.SetSizeToSettings(My.Application.Settings, "form." & Name & ".size", Size)
+        My.Application.Settings.SetSetting("form." & Name & ".windowstate", WindowState.ToString("D"))
+
+        My.Application.Settings.SetSetting("form." & Name & ".caveamdbrances.splitterposition", pnlCaveAndBraches.SplitterPosition)
+        My.Application.Settings.SetSetting("form." & Name & ".sessions.splitterposition", pnlSessions.SplitterPosition)
+        My.Application.Settings.SetSetting("form." & Name & ".highlights.splitterposition", pnlHighlights.SplitterPosition)
+        My.Application.Settings.SetSetting("form." & Name & ".grades.splitterposition", pnlGrades.SplitterPosition)
+        My.Application.Settings.SetSetting("form." & Name & ".elevations.splitterposition", pnlElevations.SplitterPosition)
+        My.Application.Settings.SetSetting("form." & Name & ".orthophotos.splitterposition", pnlOrthophotos.SplitterPosition)
+        My.Application.Settings.SetSetting("form." & Name & ".wms.splitterposition", pnlWMSs.SplitterPosition)
+    End Sub
+
+    Private Sub frmProperties_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        If Not (My.Computer.Keyboard.AltKeyDown AndAlso My.Computer.Keyboard.CtrlKeyDown) Then
+            pnlCaveAndBraches.SplitterPosition = My.Application.Settings.GetSetting("form." & Name & ".caveamdbrances.splitterposition", 190)
+            pnlSessions.SplitterPosition = My.Application.Settings.GetSetting("form." & Name & ".sessions.splitterposition", 190)
+            pnlHighlights.SplitterPosition = My.Application.Settings.GetSetting("form." & Name & ".highlights.splitterposition", 190)
+            pnlGrades.SplitterPosition = My.Application.Settings.GetSetting("form." & Name & ".grades.splitterposition", 190)
+            pnlElevations.SplitterPosition = My.Application.Settings.GetSetting("form." & Name & ".elevations.splitterposition", 190)
+            pnlOrthophotos.SplitterPosition = My.Application.Settings.GetSetting("form." & Name & ".orthophotos.splitterposition", 190)
+            pnlWMSs.SplitterPosition = My.Application.Settings.GetSetting("form." & Name & ".wmss.splitterposition", 190)
+        End If
+    End Sub
+
 End Class

@@ -354,6 +354,7 @@
     <Compile Include="cActionResult.vb" />
     <Compile Include="Calculate\cCalculate.cSegmentGroup.vb" />
     <Compile Include="Calculate\cCalculate.cSegmentGroupCollection.vb" />
+    <Compile Include="cMeshLabHelper.vb" />
     <Compile Include="cBorderFromSplay.Designer.vb">
       <DependentUpon>cBorderFromSplay.vb</DependentUpon>
     </Compile>
@@ -477,6 +478,7 @@
     <Compile Include="ItemPropertyControl\cItemPenStylePropertyControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="cBlenderHelper.vb" />
     <Compile Include="Specialized\cHolosItemView.xaml.vb">
       <DependentUpon>cHolosItemView.xaml</DependentUpon>
     </Compile>

@@ -1,15 +1,17 @@
-﻿Imports System.Windows.Media.Media3D
-Imports HelixToolkit.Wpf
+﻿Imports System.IO
+Imports System.Runtime.CompilerServices
 Imports System.Windows
 Imports System.Windows.Input
+Imports System.Windows.Media
+Imports System.Windows.Media.Media3D
+Imports System.Xml
+Imports cSurveyPC.cSurvey.Design.Items
 Imports DevExpress.Accessibility
 Imports DevExpress.Office.Utils
-Imports System.Windows.Media
 Imports DevExpress.Utils.Extensions
-Imports System.Xml
 Imports DevExpress.XtraCharts.Designer
-Imports cSurveyPC.cSurvey.Design.Items
-Imports System.Runtime.CompilerServices
+Imports HelixToolkit.Wpf
+Imports OfficeOpenXml.FormulaParsing.Excel.Functions.Math
 
 Friend Class frmHolosItemEdit
 
@@ -42,6 +44,8 @@ Friend Class frmHolosItemEdit
         h3D.Child = oHolosEdit
 
         Text = modMain.GetLocalizedString("3ditemedit.editdialogtitle")
+
+        btnReducePoint.Visibility = VisibleToVisibility(modMain.bIsInDebug)
 
         bDisableEvent = True
         sFilename = ""
@@ -527,5 +531,33 @@ Friend Class frmHolosItemEdit
         Call pStation1Changed()
         Call pStation2Changed()
         Call pUpdatePositionsTexts()
+    End Sub
+
+    Private Sub btnReducePoint_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnReducePoint.ItemClick
+        Dim oGroup As ModelVisual3D = Viewport.Children(Viewport.Children.Count - 1)
+        oGroup.Transform = New Transform3DGroup()
+        Dim oExporter As ObjExporter = New ObjExporter
+
+        Dim sTempID As String = Guid.NewGuid.ToString
+        Dim sTempFolder As String = IO.Path.Combine(IO.Path.GetTempPath, sTempID)
+        IO.Directory.CreateDirectory(sTempFolder)
+        Dim sModel As String = IO.Path.Combine(sTempFolder, sTempID) & ".obj"
+        Using oSt As Stream = File.Create(sModel)
+            oExporter.MaterialsFile = IO.Path.Combine(sTempFolder, sTempID) & ".mtl"
+            oExporter.TextureFolder = sTempFolder
+            oExporter.TextureExtension = ".jpg"
+            oExporter.Export(oGroup, oSt)
+
+            cModel3DHelper.ObjMaterialPathToRelative(sModel, sTempFolder)
+        End Using
+
+        Dim sOutModel As String = IO.Path.Combine(sTempFolder, Guid.NewGuid.ToString) & ".obj"
+        'cBlenderHelper.DecimateModel(oSurvey, New cBlenderHelper.cBlenderParameters("C:\Program Files\Blender Foundation\Blender 4.4\blender.exe"), sModel, 0.4, sOutModel)
+        cMeshLabHelper.DecimateModel(oSurvey, New cMeshLabHelper.cMeshLabParameters("C:\Program Files\VCG\MeshLab\meshlab.exe"), sModel, 0.4, sOutModel)
+
+        Viewport.Children.RemoveAt(Viewport.Children.Count - 1)
+        Call pAddGroup(sOutModel)
+
+        'Directory.Delete(sTempFolder, True)
     End Sub
 End Class

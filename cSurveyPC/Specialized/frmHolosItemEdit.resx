@@ -144,54 +144,6 @@
   <data name="&gt;&gt;h3D.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;cmdOk.Name" xml:space="preserve">
-    <value>cmdOk</value>
-  </data>
-  <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
-    <value>PanelControl1</value>
-  </data>
-  <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cmdCancel.Name" xml:space="preserve">
-    <value>cmdCancel</value>
-  </data>
-  <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
-    <value>PanelControl1</value>
-  </data>
-  <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="PanelControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="PanelControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 442</value>
-  </data>
-  <data name="PanelControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>900, 48</value>
-  </data>
-  <data name="PanelControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;PanelControl1.Name" xml:space="preserve">
-    <value>PanelControl1</value>
-  </data>
-  <data name="&gt;&gt;PanelControl1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;PanelControl1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PanelControl1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -245,6 +197,30 @@
   </data>
   <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="PanelControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="PanelControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 442</value>
+  </data>
+  <data name="PanelControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>900, 48</value>
+  </data>
+  <data name="PanelControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;PanelControl1.Name" xml:space="preserve">
+    <value>PanelControl1</value>
+  </data>
+  <data name="&gt;&gt;PanelControl1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;PanelControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PanelControl1.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="cmdSwapStation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -754,6 +730,15 @@
   <metadata name="BarManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="btnLoadPreset.Caption" xml:space="preserve">
+    <value>Load preset</value>
+  </data>
+  <data name="btnSavePreset.Caption" xml:space="preserve">
+    <value>Save preset</value>
+  </data>
+  <data name="btnReducePoint.Caption" xml:space="preserve">
+    <value>Reduce point by half</value>
+  </data>
   <data name="BarMain.Text" xml:space="preserve">
     <value>Tools</value>
   </data>
@@ -892,16 +877,16 @@
   <data name="&gt;&gt;btnSavePreset.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="&gt;&gt;btnReducePoint.Name" xml:space="preserve">
+    <value>btnReducePoint</value>
+  </data>
+  <data name="&gt;&gt;btnReducePoint.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmHolosItemEdit</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.XtraForm, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="btnSavePreset.Caption" xml:space="preserve">
-    <value>Save preset</value>
-  </data>
-  <data name="btnLoadPreset.Caption" xml:space="preserve">
-    <value>Load preset</value>
   </data>
 </root>

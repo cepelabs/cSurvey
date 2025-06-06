@@ -48,6 +48,7 @@ Partial Class frmHolosItemEdit
         Me.BarMain = New DevExpress.XtraBars.Bar()
         Me.btnLoadPreset = New DevExpress.XtraBars.BarButtonItem()
         Me.btnSavePreset = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnReducePoint = New DevExpress.XtraBars.BarButtonItem()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
@@ -154,8 +155,8 @@ Partial Class frmHolosItemEdit
         resources.ApplyResources(Me.lblStation2, "lblStation2")
         Me.lblStation2.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
         Me.lblStation2.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.cube_red
-        Me.lblStation2.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.lblStation2.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None
+        Me.lblStation2.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.lblStation2.Name = "lblStation2"
         '
         'txtStation2
@@ -171,8 +172,8 @@ Partial Class frmHolosItemEdit
         resources.ApplyResources(Me.lblStation1, "lblStation1")
         Me.lblStation1.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
         Me.lblStation1.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.cube_green
-        Me.lblStation1.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.lblStation1.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None
+        Me.lblStation1.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.lblStation1.Name = "lblStation1"
         '
         'txtStation1
@@ -279,8 +280,8 @@ Partial Class frmHolosItemEdit
         Me.BarManager.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager.DockControls.Add(Me.barDockControlRight)
         Me.BarManager.Form = Me
-        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnSavePreset, Me.btnLoadPreset})
-        Me.BarManager.MaxItemId = 15
+        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnSavePreset, Me.btnLoadPreset, Me.btnReducePoint})
+        Me.BarManager.MaxItemId = 16
         '
         'BarMain
         '
@@ -289,7 +290,7 @@ Partial Class frmHolosItemEdit
         Me.BarMain.DockCol = 0
         Me.BarMain.DockRow = 0
         Me.BarMain.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.BarMain.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnLoadPreset), New DevExpress.XtraBars.LinkPersistInfo(Me.btnSavePreset)})
+        Me.BarMain.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnLoadPreset), New DevExpress.XtraBars.LinkPersistInfo(Me.btnSavePreset), New DevExpress.XtraBars.LinkPersistInfo(Me.btnReducePoint)})
         Me.BarMain.OptionsBar.AllowQuickCustomization = False
         Me.BarMain.OptionsBar.DisableCustomization = True
         Me.BarMain.OptionsBar.DrawDragBorder = False
@@ -311,6 +312,13 @@ Partial Class frmHolosItemEdit
         Me.btnSavePreset.Id = 13
         Me.btnSavePreset.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.save
         Me.btnSavePreset.Name = "btnSavePreset"
+        '
+        'btnReducePoint
+        '
+        resources.ApplyResources(Me.btnReducePoint, "btnReducePoint")
+        Me.btnReducePoint.Id = 15
+        Me.btnReducePoint.Name = "btnReducePoint"
+        Me.btnReducePoint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'barDockControlTop
         '
@@ -406,4 +414,5 @@ Partial Class frmHolosItemEdit
     Friend WithEvents btnLoadPreset As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnSavePreset As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents cmdSwapStation As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btnReducePoint As DevExpress.XtraBars.BarButtonItem
 End Class

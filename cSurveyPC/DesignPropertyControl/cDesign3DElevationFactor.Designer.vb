@@ -31,7 +31,7 @@ Partial Class cDesign3DElevationFactor
         '
         'trk3DSurfaceElevationAmp
         '
-        'resources.ApplyResources(Me.trk3DSurfaceElevationAmp, "trk3DSurfaceElevationAmp")
+        resources.ApplyResources(Me.trk3DSurfaceElevationAmp, "trk3DSurfaceElevationAmp")
         Me.trk3DSurfaceElevationAmp.Name = "trk3DSurfaceElevationAmp"
         Me.trk3DSurfaceElevationAmp.Properties.AutoSize = False
         Me.trk3DSurfaceElevationAmp.Properties.LabelAppearance.Options.UseTextOptions = True
@@ -40,6 +40,7 @@ Partial Class cDesign3DElevationFactor
         Me.trk3DSurfaceElevationAmp.Properties.Maximum = 100
         Me.trk3DSurfaceElevationAmp.Properties.Minimum = 10
         Me.trk3DSurfaceElevationAmp.Properties.TickFrequency = 10
+        Me.trk3DSurfaceElevationAmp.Value = 10
         '
         'lbl3DSurfaceElevationAmp
         '

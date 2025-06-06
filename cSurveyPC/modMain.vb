@@ -1,8 +1,9 @@
-﻿Imports System.IO
-Imports System.Xml
+﻿Imports System.Collections.Specialized
+Imports System.IO
 Imports System.Reflection
-Imports System.Collections.Specialized
+Imports System.Text.RegularExpressions
 Imports System.Web.Management
+Imports System.Xml
 
 Module modMain
     Public sMachineID As String
@@ -388,6 +389,24 @@ Module modMain
             Next
         End With
     End Sub
+
+    Public Function MakeRelative(ByVal FullPath As String, ByVal BaseDir As String) As String
+        Dim pathSep As String = Path.DirectorySeparatorChar
+        Dim itemPath As String = Path.GetFullPath(FullPath)
+        Dim baseDirPath As String = Path.GetFullPath(BaseDir)
+        Dim p1 As String() = Regex.Split(itemPath, "\" & pathSep).Where(Function(x) x.Length <> 0).ToArray()
+        Dim p2 As String() = Regex.Split(BaseDir, "\" & pathSep).Where(Function(x) x.Length <> 0).ToArray()
+        Dim i As Integer = 0
+
+        While i < p1.Length AndAlso i < p2.Length
+            If String.Compare(p1(i), p2(i), True) <> 0 Then Exit While
+            i += 1
+        End While
+
+        If i = 0 Then Return itemPath
+        Dim r As String = String.Join(pathSep, Enumerable.Repeat("..", p2.Length - i).Concat(p1.Skip(i).Take(p1.Length - i)))
+        Return r
+    End Function
 
     Public Class cComboItem
         Public Source As Object

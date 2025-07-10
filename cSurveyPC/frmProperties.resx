@@ -9848,9 +9848,6 @@
   <data name="&gt;&gt;cboElevationColorSchema.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="txtElevationName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
   <data name="txtElevationName.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -10398,24 +10395,24 @@
     <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tvWMSs.Parent" xml:space="preserve">
-    <value>pnlWMSs.pnlWMSs_Panel1</value>
+    <value>pnlWMSs.Panel1</value>
   </data>
   <data name="&gt;&gt;tvWMSs.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="pnlWMSs.pnlWMSs_Panel1.Text" xml:space="preserve">
+  <data name="pnlWMSs.Panel1.Text" xml:space="preserve">
     <value>Panel1</value>
   </data>
-  <data name="&gt;&gt;pnlWMSs.pnlWMSs_Panel1.Name" xml:space="preserve">
-    <value>pnlWMSs.pnlWMSs_Panel1</value>
+  <data name="&gt;&gt;pnlWMSs.Panel1.Name" xml:space="preserve">
+    <value>pnlWMSs.Panel1</value>
   </data>
-  <data name="&gt;&gt;pnlWMSs.pnlWMSs_Panel1.Type" xml:space="preserve">
+  <data name="&gt;&gt;pnlWMSs.Panel1.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.SplitGroupPanel, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;pnlWMSs.pnlWMSs_Panel1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;pnlWMSs.Panel1.Parent" xml:space="preserve">
     <value>pnlWMSs</value>
   </data>
-  <data name="&gt;&gt;pnlWMSs.pnlWMSs_Panel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;pnlWMSs.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="btnWMSLayerRefresh.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -10446,7 +10443,7 @@
     <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnWMSLayerRefresh.Parent" xml:space="preserve">
-    <value>pnlWMSs.pnlWMSs_Panel2</value>
+    <value>pnlWMSs.Panel2</value>
   </data>
   <data name="&gt;&gt;btnWMSLayerRefresh.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -10473,7 +10470,7 @@
     <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtWMSName.Parent" xml:space="preserve">
-    <value>pnlWMSs.pnlWMSs_Panel2</value>
+    <value>pnlWMSs.Panel2</value>
   </data>
   <data name="&gt;&gt;txtWMSName.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -10509,7 +10506,7 @@
     <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboWMSSRSOverride.Parent" xml:space="preserve">
-    <value>pnlWMSs.pnlWMSs_Panel2</value>
+    <value>pnlWMSs.Panel2</value>
   </data>
   <data name="&gt;&gt;cboWMSSRSOverride.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -10539,7 +10536,7 @@
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblWMSName.Parent" xml:space="preserve">
-    <value>pnlWMSs.pnlWMSs_Panel2</value>
+    <value>pnlWMSs.Panel2</value>
   </data>
   <data name="&gt;&gt;lblWMSName.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -10569,7 +10566,7 @@
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblWMSSRSOverride.Parent" xml:space="preserve">
-    <value>pnlWMSs.pnlWMSs_Panel2</value>
+    <value>pnlWMSs.Panel2</value>
   </data>
   <data name="&gt;&gt;lblWMSSRSOverride.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -10599,7 +10596,7 @@
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblWMSURL.Parent" xml:space="preserve">
-    <value>pnlWMSs.pnlWMSs_Panel2</value>
+    <value>pnlWMSs.Panel2</value>
   </data>
   <data name="&gt;&gt;lblWMSURL.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -10629,7 +10626,7 @@
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblWMSLayer.Parent" xml:space="preserve">
-    <value>pnlWMSs.pnlWMSs_Panel2</value>
+    <value>pnlWMSs.Panel2</value>
   </data>
   <data name="&gt;&gt;lblWMSLayer.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -10659,7 +10656,7 @@
     <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtWMSURL.Parent" xml:space="preserve">
-    <value>pnlWMSs.pnlWMSs_Panel2</value>
+    <value>pnlWMSs.Panel2</value>
   </data>
   <data name="&gt;&gt;txtWMSURL.ZOrder" xml:space="preserve">
     <value>7</value>
@@ -10722,24 +10719,24 @@
     <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tvWMSLayer.Parent" xml:space="preserve">
-    <value>pnlWMSs.pnlWMSs_Panel2</value>
+    <value>pnlWMSs.Panel2</value>
   </data>
   <data name="&gt;&gt;tvWMSLayer.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="pnlWMSs.pnlWMSs_Panel2.Text" xml:space="preserve">
+  <data name="pnlWMSs.Panel2.Text" xml:space="preserve">
     <value>Panel2</value>
   </data>
-  <data name="&gt;&gt;pnlWMSs.pnlWMSs_Panel2.Name" xml:space="preserve">
-    <value>pnlWMSs.pnlWMSs_Panel2</value>
+  <data name="&gt;&gt;pnlWMSs.Panel2.Name" xml:space="preserve">
+    <value>pnlWMSs.Panel2</value>
   </data>
-  <data name="&gt;&gt;pnlWMSs.pnlWMSs_Panel2.Type" xml:space="preserve">
+  <data name="&gt;&gt;pnlWMSs.Panel2.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.SplitGroupPanel, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;pnlWMSs.pnlWMSs_Panel2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;pnlWMSs.Panel2.Parent" xml:space="preserve">
     <value>pnlWMSs</value>
   </data>
-  <data name="&gt;&gt;pnlWMSs.pnlWMSs_Panel2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;pnlWMSs.Panel2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="pnlWMSs.Size" type="System.Drawing.Size, System.Drawing">

@@ -2730,12 +2730,12 @@ Partial Class frmProperties
         resources.ApplyResources(Me.pnlWMSs, "pnlWMSs")
         Me.pnlWMSs.Name = "pnlWMSs"
         '
-        'pnlWMSs.pnlWMSs_Panel1
+        'pnlWMSs.Panel1
         '
         Me.pnlWMSs.Panel1.Controls.Add(Me.tvWMSs)
-        resources.ApplyResources(Me.pnlWMSs.Panel1, "pnlWMSs.pnlWMSs_Panel1")
+        resources.ApplyResources(Me.pnlWMSs.Panel1, "pnlWMSs.Panel1")
         '
-        'pnlWMSs.pnlWMSs_Panel2
+        'pnlWMSs.Panel2
         '
         Me.pnlWMSs.Panel2.Controls.Add(Me.btnWMSLayerRefresh)
         Me.pnlWMSs.Panel2.Controls.Add(Me.txtWMSName)
@@ -2746,7 +2746,7 @@ Partial Class frmProperties
         Me.pnlWMSs.Panel2.Controls.Add(Me.lblWMSLayer)
         Me.pnlWMSs.Panel2.Controls.Add(Me.txtWMSURL)
         Me.pnlWMSs.Panel2.Controls.Add(Me.tvWMSLayer)
-        resources.ApplyResources(Me.pnlWMSs.Panel2, "pnlWMSs.pnlWMSs_Panel2")
+        resources.ApplyResources(Me.pnlWMSs.Panel2, "pnlWMSs.Panel2")
         Me.pnlWMSs.SplitterPosition = 190
         '
         'tvWMSs

@@ -1,11 +1,12 @@
-﻿Imports Microsoft.VisualBasic
-Imports Microsoft.CSharp
-Imports System
-Imports System.Text
+﻿Imports System
 Imports System.CodeDom.Compiler
-Imports System.Reflection
-Imports System.IO
 Imports System.Diagnostics
+Imports System.IO
+Imports System.Reflection
+Imports System.Text
+Imports Microsoft.CSharp
+Imports Microsoft.VisualBasic
+Imports ScintillaNET.Style
 
 Namespace cSurvey.Scripting
     Public Enum LanguageEnum
@@ -58,20 +59,6 @@ Namespace cSurvey.Scripting
             sCode = ClassCode
 
             Dim oCodeProvider As System.CodeDom.Compiler.CodeDomProvider
-            Dim oCodeParameters As CompilerParameters = New CompilerParameters
-            Dim oCodeResults As CompilerResults
-            oCodeParameters.ReferencedAssemblies.Add("system.dll")
-            oCodeParameters.ReferencedAssemblies.Add("system.xml.dll")
-            oCodeParameters.ReferencedAssemblies.Add("system.data.dll")
-            oCodeParameters.ReferencedAssemblies.Add("system.drawing.dll")
-            Dim oCurrentAssembly As System.Reflection.Assembly = System.Reflection.Assembly.GetExecutingAssembly()
-            Call oCodeParameters.ReferencedAssemblies.Add(oCurrentAssembly.Location)
-
-            oCodeParameters.CompilerOptions = "/t:library"
-            oCodeParameters.TreatWarningsAsErrors = False
-            oCodeParameters.GenerateInMemory = True
-            oCodeParameters.WarningLevel = 1
-
             Dim oSB As StringBuilder = New StringBuilder("")
             Select Case Language
                 Case LanguageEnum.VisualBasic
@@ -112,20 +99,45 @@ Namespace cSurvey.Scripting
                     Call oSB.Append("}" & vbCrLf)
                     Call oSB.Append("} " & vbCrLf)
             End Select
-            Try
-                sFullCode = oSB.ToString
-                oCodeResults = oCodeProvider.CompileAssemblyFromSource(oCodeParameters, sFullCode)
-                If oCodeResults.Errors.Count <> 0 Then
-                    oCompilerErrors = oCodeResults.Errors
-                Else
-                    oAssembly = oCodeResults.CompiledAssembly
-                    oInstance = oAssembly.CreateInstance("cSurvey." & sName)
-                    oType = oInstance.GetType
-                    Call oInstance.SetSurvey(oSurvey)
-                End If
-            Catch ex As Exception
-                Call oCompilerErrors.Add(New CodeDom.Compiler.CompilerError("", 0, 0, "", ex.Message))
-            End Try
+            sFullCode = oSB.ToString
+
+            Dim sTempCodeHash As String = modMain.CalculateHash(sCode)
+            Dim sAssemblyName As String = cScriptHelper.GetAssemblyCacheAssembly("", sName, If(sCode = "", 0, 1), sCode, sTempCodeHash)
+            If My.Computer.FileSystem.FileExists(sAssemblyName) Then
+                oAssembly = Assembly.LoadFile(sAssemblyName)
+            Else
+                Call cScriptHelper.CleanUpAssembly("", sName, If(sCode = "", 0, 1))
+                Try
+                    Dim oCodeParameters As CompilerParameters = New CompilerParameters
+                    Dim oCodeResults As CompilerResults
+                    oCodeParameters.ReferencedAssemblies.Add("system.dll")
+                    oCodeParameters.ReferencedAssemblies.Add("system.xml.dll")
+                    oCodeParameters.ReferencedAssemblies.Add("system.data.dll")
+                    oCodeParameters.ReferencedAssemblies.Add("system.drawing.dll")
+                    Dim oCurrentAssembly As System.Reflection.Assembly = System.Reflection.Assembly.GetExecutingAssembly()
+                    Call oCodeParameters.ReferencedAssemblies.Add(oCurrentAssembly.Location)
+
+                    oCodeParameters.CompilerOptions = "/t:library"
+                    oCodeParameters.TreatWarningsAsErrors = False
+                    'oCodeParameters.GenerateInMemory = True
+                    oCodeParameters.WarningLevel = 1
+                    oCodeParameters.OutputAssembly = sAssemblyName
+                    oCodeParameters.IncludeDebugInformation = True
+
+                    oCodeResults = oCodeProvider.CompileAssemblyFromSource(oCodeParameters, sFullCode)
+                    If oCodeResults.Errors.Count <> 0 Then
+                        oCompilerErrors = oCodeResults.Errors
+                    Else
+                        oAssembly = oCodeResults.CompiledAssembly
+                    End If
+                Catch ex As Exception
+                    Call oCompilerErrors.Add(New CodeDom.Compiler.CompilerError("", 0, 0, "", ex.Message))
+                End Try
+            End If
+
+            oInstance = oAssembly.CreateInstance("cSurvey." & sName)
+            oType = oInstance.GetType
+            Call oInstance.SetSurvey(oSurvey)
         End Sub
 
         Public ReadOnly Property DefaultInstance As Object
@@ -353,5 +365,34 @@ Namespace cSurvey.Scripting
                 Return Nothing
             End If
         End Function
+    End Class
+
+    Public Class cScriptHelper
+
+        Public Shared Sub CleanUpAssembly(Prefix As String, Name As String, Revision As Integer)
+            For Each oFl As IO.FileInfo In New IO.DirectoryInfo(GetAssemblyCachePath).GetFiles(If(Prefix = "", "", Prefix & "_") & Name.ToLower & "_" & Revision & "_*")
+                Try
+                    Call oFl.Delete()
+                Catch ex As Exception
+                End Try
+            Next
+        End Sub
+
+        Public Shared Function GetAssemblyCacheAssembly(Prefix As String, Name As String, Revision As Integer, Code As String) As String
+            Return IO.Path.Combine(GetAssemblyCachePath, If(Prefix = "", "", Prefix & "_") & Name.ToLower & "_" & Revision & "_" & If(Environment.Is64BitProcess, "x64_", "") & modMain.CalculateHash(Code)) & ".dll"
+        End Function
+
+        Public Shared Function GetAssemblyCacheAssembly(Prefix As String, Name As String, Revision As Integer, Code As String, Hash As String) As String
+            Return IO.Path.Combine(GetAssemblyCachePath, If(Prefix = "", "", Prefix & "_") & Name.ToLower & "_" & Revision & "_" & If(Environment.Is64BitProcess, "x64_", "") & Hash) & ".dll"
+        End Function
+
+        Public Shared Function GetAssemblyCachePath() As String
+            Dim sAssemblyCachePath As String = IO.Path.Combine(IO.Path.GetDirectoryName(Windows.Forms.Application.CommonAppDataPath), "csurvey_cache")
+            If Not My.Computer.FileSystem.DirectoryExists(sAssemblyCachePath) Then
+                Call My.Computer.FileSystem.CreateDirectory(sAssemblyCachePath)
+            End If
+            Return sAssemblyCachePath
+        End Function
+
     End Class
 End Namespace

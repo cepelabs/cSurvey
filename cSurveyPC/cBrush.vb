@@ -437,7 +437,7 @@ Namespace cSurvey.Design
                 Next
             End If
             Dim oXmlCode As XmlElement = XMLPattern("code")
-            oClass = New cClass(Nothing, sName.Replace(" ", "_"), oXmlCode.InnerText, If(oXmlCode.GetAttribute("lang") = "vb#", LanguageEnum.VisualBasic, LanguageEnum.CSharp))
+            oClass = New cClass(Nothing, "patternbrush_" & sName.ToLower.Replace(" ", "_"), oXmlCode.InnerText, If(oXmlCode.GetAttribute("lang") = "vb#", LanguageEnum.VisualBasic, LanguageEnum.CSharp))
         End Sub
     End Class
 

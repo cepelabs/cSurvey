@@ -8051,7 +8051,7 @@ Friend Class frmMain2
 
                             Dim oSessions As SortedDictionary(Of String, cSession) = oSurvey.Properties.Sessions.GetWithEmpty()
                             For Each oSegment As cSegment In pSegmentsGetSelections(.cboReplicateTo.SelectedIndex)
-                                If Not oSegment.Splay AndAlso pSegmentsLRUDIsInRange(oSegment, frmMLRUD) Then
+                                If oSegment.IsValid AndAlso Not oSegment.Splay AndAlso pSegmentsLRUDIsInRange(oSegment, frmMLRUD) Then
                                     If oSegment.GetSession.SideMeasuresReferTo = cSegment.SideMeasuresReferToEnum.StartPoint Then
                                         Dim iLastIndex As Integer = oSegment.Index + 1
 

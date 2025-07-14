@@ -16,6 +16,19 @@ Public Class cDesignPropertyControl
         ' Add any initialization after the InitializeComponent() call.
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(Me, False)
     End Sub
+    Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
+        If My.Application.CurrentLanguage = "it" Then
+            If My.Application.ChangeDecimalKey AndAlso keyData = Keys.Decimal Then
+                SendKeys.Send(",")
+                Return True
+            ElseIf My.Application.ChangePeriodKey AndAlso keyData = Keys.OemPeriod Then
+                SendKeys.Send(",")
+                Return True
+            Else
+                Return MyBase.ProcessCmdKey(msg, keyData)
+            End If
+        End If
+    End Function
 
     Private oVisibleParent As cCollapsablePropertyControlContainer
 

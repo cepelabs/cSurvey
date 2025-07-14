@@ -195,6 +195,19 @@ Friend Class cDockDistances
         Call oSurvey.SharedSettings.SetValue("info.distance.splays", If(bSplay, "1", "0"))
     End Sub
 
+    Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
+        If My.Application.CurrentLanguage = "it" Then
+            If My.Application.ChangeDecimalKey AndAlso keyData = Keys.Decimal Then
+                SendKeys.Send(",")
+                Return True
+            ElseIf My.Application.ChangePeriodKey AndAlso keyData = Keys.OemPeriod Then
+                SendKeys.Send(",")
+                Return True
+            Else
+                Return MyBase.ProcessCmdKey(msg, keyData)
+            End If
+        End If
+    End Function
     Private Function pGetTrigpointBaseTuple(BaseTuples As Dictionary(Of cSurvey.cSurvey, Windows.Media.Media3D.Point3D), Trigpoint As cTrigPoint) As Windows.Media.Media3D.Point3D
         If BaseTuples Is Nothing Then
             Return New Windows.Media.Media3D.Point3D

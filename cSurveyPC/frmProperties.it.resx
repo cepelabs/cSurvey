@@ -1936,4 +1936,13 @@
   <data name="lbl3DExportAsImageOversampling.Text" xml:space="preserve">
     <value>Oversampling esport. come immagine:</value>
   </data>
+  <data name="lblValues.Text" xml:space="preserve">
+    <value>Valori:</value>
+  </data>
+  <data name="lbl3DMinPassageSize.Text" xml:space="preserve">
+    <value>Dimensione minima:</value>
+  </data>
+  <data name="lblMeasureUnit.Text" xml:space="preserve">
+    <value>Unità di misura:</value>
+  </data>
 </root>

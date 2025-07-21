@@ -2280,8 +2280,7 @@ Friend Class frmPreview
         Dim sName As String = Name
         If sName = "" Then
             Do
-                sName = DevExpress.XtraEditors.XtraInputBox.Show(GetLocalizedString("preview.addprofile"), GetLocalizedString("preview.addprofiletitle"), "")
-                'sName = InputBox(GetLocalizedString("preview.addprofile"), GetLocalizedString("preview.addprofiletitle"), "")
+                sName = "" & DevExpress.XtraEditors.XtraInputBox.Show(GetLocalizedString("preview.addprofile"), GetLocalizedString("preview.addprofiletitle"), "")
                 sName = sName.Trim
             Loop Until Not sName.StartsWith("_")
         End If

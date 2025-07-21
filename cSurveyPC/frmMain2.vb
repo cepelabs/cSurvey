@@ -15716,7 +15716,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pSurveyRestoreCaveBranchLockstate(Tools As cEditDesignTools)
-        Dim bUnlocked As Boolean = Tools.CurrentCaveBranchLocked
+        Dim bUnlocked As Boolean = Not Tools.CurrentCaveBranchLocked
         btnSegmentAdd.Enabled = bUnlocked
         btnSegmentInsert.Enabled = bUnlocked
         btnSegmentDelete.Enabled = bUnlocked

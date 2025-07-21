@@ -54,6 +54,22 @@
         tknProfile.EditValue = Nothing
 
         Select Case oStation.Type
+            Case "NB"
+                lblPlanPosition.Visible = True
+                txtPlanPosition.Visible = True
+                lblProfilePosition.Visible = False
+                txtProfilePosition.Visible = False
+
+                pnlNextStations.Visible = False
+                pnlScale.Visible = False
+            Case "NE"
+                lblPlanPosition.Visible = True
+                txtPlanPosition.Visible = True
+                lblProfilePosition.Visible = False
+                txtProfilePosition.Visible = False
+
+                pnlNextStations.Visible = False
+                pnlScale.Visible = False
             Case "SB"
                 lblPlanPosition.Visible = True
                 txtPlanPosition.Visible = True

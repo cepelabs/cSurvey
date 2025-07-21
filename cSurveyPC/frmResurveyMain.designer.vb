@@ -224,6 +224,7 @@ Partial Class frmResurveyMain
         '
         resources.ApplyResources(Me.docPlan, "docPlan")
         Me.docPlan.ControlName = "dockPlan"
+        Me.docPlan.ControlTypeName = Nothing
         Me.docPlan.FloatLocation = New System.Drawing.Point(251, 334)
         Me.docPlan.FloatSize = New System.Drawing.Size(956, 200)
         Me.docPlan.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.[False]
@@ -236,6 +237,7 @@ Partial Class frmResurveyMain
         '
         resources.ApplyResources(Me.docProfile, "docProfile")
         Me.docProfile.ControlName = "dockProfile"
+        Me.docProfile.ControlTypeName = Nothing
         Me.docProfile.FloatLocation = New System.Drawing.Point(297, 296)
         Me.docProfile.FloatSize = New System.Drawing.Size(950, 359)
         Me.docProfile.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.[False]
@@ -407,7 +409,7 @@ Partial Class frmResurveyMain
         Me.RibbonControl.CaptionBarItemLinks.Add(Me.btnConfirm)
         Me.RibbonControl.CaptionBarItemLinks.Add(Me.btnClose)
         Me.RibbonControl.ExpandCollapseItem.Id = 0
-        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnConfirm, Me.btnClose, Me.RibbonControl.ExpandCollapseItem, Me.RibbonControl.SearchEditItem, Me.btnNew, Me.btnLoad, Me.btnSave, Me.btnLoadImage, Me.btnOptions, Me.btnZoomIn, Me.btnZoomOut, Me.btnCalculate, Me.btnExport, Me.btnShowRulers, Me.btnAdd2, Me.btnRemove2, Me.btnRemoveAll2, Me.btnDelete2, Me.btnDeleteAll2, Me.btnDeleteLink, Me.btnSetOrigin2, Me.btnProperties2, Me.btnShowRuler, Me.pnlStatus, Me.pnlCurrentProjection, Me.pnlCoordinates, Me.pnlDistance, Me.pnlAngle, Me.pnlZoom, Me.btnZoom100, Me.btnZoomToFit, Me.btnsZoom, Me.btnZoom25, Me.btnZoom200, Me.btnZoom50, Me.btnVisibility, Me.btnPlanHideAll, Me.btnPlanShowAll, Me.btnProfileShowAll, Me.btnProfileHideAll, Me.btnVisible, Me.btnImageInvertColor, Me.btnImageToGrayScale, Me.btnImageBWThreshold, Me.btnRulerCenterHere, Me.btnRulerAlignTo, Me.btnMagnifier, Me.btnLeftEdit, Me.btnRightEdit, Me.btnUpEdit, Me.btnDownEdit, Me.btnSaveAs, Me.btnSaveImage, Me.btnClearImage, Me.btnQATMovePrev, Me.btnQATMoveNext, Me.btnQATRestore, Me.btnQATBeginGroup})
+        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnConfirm, Me.btnClose, Me.RibbonControl.ExpandCollapseItem, Me.btnNew, Me.btnLoad, Me.btnSave, Me.btnLoadImage, Me.btnOptions, Me.btnZoomIn, Me.btnZoomOut, Me.btnCalculate, Me.btnExport, Me.btnShowRulers, Me.btnAdd2, Me.btnRemove2, Me.btnRemoveAll2, Me.btnDelete2, Me.btnDeleteAll2, Me.btnDeleteLink, Me.btnSetOrigin2, Me.btnProperties2, Me.btnShowRuler, Me.pnlStatus, Me.pnlCurrentProjection, Me.pnlCoordinates, Me.pnlDistance, Me.pnlAngle, Me.pnlZoom, Me.btnZoom100, Me.btnZoomToFit, Me.btnsZoom, Me.btnZoom25, Me.btnZoom200, Me.btnZoom50, Me.btnVisibility, Me.btnPlanHideAll, Me.btnPlanShowAll, Me.btnProfileShowAll, Me.btnProfileHideAll, Me.btnVisible, Me.btnImageInvertColor, Me.btnImageToGrayScale, Me.btnImageBWThreshold, Me.btnRulerCenterHere, Me.btnRulerAlignTo, Me.btnMagnifier, Me.btnLeftEdit, Me.btnRightEdit, Me.btnUpEdit, Me.btnDownEdit, Me.btnSaveAs, Me.btnSaveImage, Me.btnClearImage, Me.btnQATMovePrev, Me.btnQATMoveNext, Me.btnQATRestore, Me.btnQATBeginGroup})
         resources.ApplyResources(Me.RibbonControl, "RibbonControl")
         Me.RibbonControl.MaxItemId = 74
         Me.RibbonControl.MiniToolbars.Add(Me.tbPlan)
@@ -1460,6 +1462,7 @@ Partial Class frmResurveyMain
         '
         'oMainMessageBar
         '
+        Me.oMainMessageBar.AllowClose = True
         Me.DefaultToolTipController.SetAllowHtmlText(Me.oMainMessageBar, CType(resources.GetObject("oMainMessageBar.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.oMainMessageBar.AllowMessageClick = False
         Me.oMainMessageBar.ButtonStyle = cSurveyPC.cMessageBar.ButtonStyleEnum.Close

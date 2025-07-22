@@ -1543,7 +1543,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>Precision selection and bounding box</value>
   </data>
   <data name="cboDesignSelectionMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 352</value>
+    <value>130, 383</value>
   </data>
   <data name="cboDesignSelectionMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 21</value>
@@ -1561,13 +1561,13 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;cboDesignSelectionMode.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="lblDesignSelectionMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblDesignSelectionMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 355</value>
+    <value>10, 386</value>
   </data>
   <data name="lblDesignSelectionMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 13</value>
@@ -1591,13 +1591,13 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;lblDesignSelectionMode.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="chkDesignShowLegacyExtraPrintAndExportObjects.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkDesignShowLegacyExtraPrintAndExportObjects.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 432</value>
+    <value>10, 463</value>
   </data>
   <data name="chkDesignShowLegacyExtraPrintAndExportObjects.Properties.Caption" xml:space="preserve">
     <value>Allow legacy print and export extra object</value>
@@ -1618,7 +1618,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;chkDesignShowLegacyExtraPrintAndExportObjects.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>19</value>
   </data>
   <data name="txtDesignMetricGridOpacity.Location" type="System.Drawing.Point, System.Drawing">
     <value>402, 68</value>
@@ -1639,7 +1639,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;txtDesignMetricGridOpacity.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>21</value>
   </data>
   <data name="lblDesignMetricGridOpacity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1666,7 +1666,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;lblDesignMetricGridOpacity.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>23</value>
   </data>
   <data name="cboDesignShowMetricGrid.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -1699,7 +1699,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;cboDesignShowMetricGrid.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>25</value>
   </data>
   <data name="Label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1726,10 +1726,10 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;Label6.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>27</value>
   </data>
   <data name="txtDefaultFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 459</value>
+    <value>130, 490</value>
   </data>
   <data name="txtDefaultFont.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 21</value>
@@ -1747,13 +1747,13 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;txtDefaultFont.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>29</value>
   </data>
   <data name="cmdDefaultFont.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="cmdDefaultFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>211, 458</value>
+    <value>211, 489</value>
   </data>
   <data name="cmdDefaultFont.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 21</value>
@@ -1774,7 +1774,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;cmdDefaultFont.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>31</value>
   </data>
   <data name="lblDefaultFont.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -1783,7 +1783,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>NoControl</value>
   </data>
   <data name="lblDefaultFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 462</value>
+    <value>10, 493</value>
   </data>
   <data name="lblDefaultFont.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 13</value>
@@ -1804,10 +1804,10 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;lblDefaultFont.ZOrder" xml:space="preserve">
-    <value>31</value>
+    <value>33</value>
   </data>
   <data name="chkDesignUseOnlyAnchorToMove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 326</value>
+    <value>10, 357</value>
   </data>
   <data name="chkDesignUseOnlyAnchorToMove.Properties.Caption" xml:space="preserve">
     <value>Move objects only by upper left corner</value>
@@ -1831,7 +1831,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;chkDesignUseOnlyAnchorToMove.ZOrder" xml:space="preserve">
-    <value>33</value>
+    <value>35</value>
   </data>
   <data name="cboDesignZoomType.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -1843,7 +1843,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>Scaled</value>
   </data>
   <data name="cboDesignZoomType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 299</value>
+    <value>130, 330</value>
   </data>
   <data name="cboDesignZoomType.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 21</value>
@@ -1861,10 +1861,10 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;cboDesignZoomType.ZOrder" xml:space="preserve">
-    <value>35</value>
+    <value>37</value>
   </data>
   <data name="lblDesignZoomType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 302</value>
+    <value>10, 333</value>
   </data>
   <data name="lblDesignZoomType.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 13</value>
@@ -1885,7 +1885,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;lblDesignZoomType.ZOrder" xml:space="preserve">
-    <value>34</value>
+    <value>36</value>
   </data>
   <data name="cboDesignShowRulersStyle.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1918,10 +1918,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;cboDesignShowRulersStyle.ZOrder" xml:space="preserve">
-    <value>32</value>
-  </data>
-  <data name="cboDesignClipBorder.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
+    <value>34</value>
   </data>
   <data name="cboDesignClipBorder.Items" xml:space="preserve">
     <value>Do not cuts objects on borders level</value>
@@ -1933,7 +1930,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>Disable for all objects</value>
   </data>
   <data name="cboDesignClipBorder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 210</value>
+    <value>130, 241</value>
   </data>
   <data name="cboDesignClipBorder.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 21</value>
@@ -1951,31 +1948,31 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;cboDesignClipBorder.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>32</value>
   </data>
-  <data name="lblClipping.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 213</value>
+  <data name="lblDesignClipBorder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 244</value>
   </data>
-  <data name="lblClipping.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 13</value>
+  <data name="lblDesignClipBorder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 13</value>
   </data>
-  <data name="lblClipping.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblDesignClipBorder.TabIndex" type="System.Int32, mscorlib">
     <value>117</value>
   </data>
-  <data name="lblClipping.Text" xml:space="preserve">
-    <value>Borders clipping:</value>
+  <data name="lblDesignClipBorder.Text" xml:space="preserve">
+    <value>Border clipping:</value>
   </data>
-  <data name="&gt;&gt;lblClipping.Name" xml:space="preserve">
-    <value>lblClipping</value>
+  <data name="&gt;&gt;lblDesignClipBorder.Name" xml:space="preserve">
+    <value>lblDesignClipBorder</value>
   </data>
-  <data name="&gt;&gt;lblClipping.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblDesignClipBorder.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;lblClipping.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblDesignClipBorder.Parent" xml:space="preserve">
     <value>tabInfoDesign</value>
   </data>
-  <data name="&gt;&gt;lblClipping.ZOrder" xml:space="preserve">
-    <value>28</value>
+  <data name="&gt;&gt;lblDesignClipBorder.ZOrder" xml:space="preserve">
+    <value>30</value>
   </data>
   <data name="cboDesignLineType.Items" xml:space="preserve">
     <value>Straight lines</value>
@@ -1987,7 +1984,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>Beziers</value>
   </data>
   <data name="cboDesignLineType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 237</value>
+    <value>130, 268</value>
   </data>
   <data name="cboDesignLineType.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 21</value>
@@ -2005,10 +2002,10 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;cboDesignLineType.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>28</value>
   </data>
   <data name="Label27.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 240</value>
+    <value>10, 271</value>
   </data>
   <data name="Label27.Size" type="System.Drawing.Size, System.Drawing">
     <value>28, 13</value>
@@ -2029,7 +2026,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;Label27.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>26</value>
   </data>
   <data name="cboDesignQuality.Items" xml:space="preserve">
     <value>Low</value>
@@ -2059,7 +2056,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;cboDesignQuality.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>24</value>
   </data>
   <data name="lblDesignQuality.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 40</value>
@@ -2083,7 +2080,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;lblDesignQuality.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>22</value>
   </data>
   <data name="chkDesignShowRulers.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 94</value>
@@ -2107,7 +2104,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;chkDesignShowRulers.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>20</value>
   </data>
   <data name="cboDesignMode.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2137,7 +2134,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;cboDesignMode.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="lblDesignMode.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2164,7 +2161,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;lblDesignMode.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
   <data name="chkShotsGridExportSplayNames.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3044,7 +3041,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;txtDesignAnchorScale.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="lblBaseLineWidthScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3071,7 +3068,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;lblBaseLineWidthScaleFactor.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="cboMaxDrawItemCount.Items" xml:space="preserve">
     <value>20</value>
@@ -3086,7 +3083,7 @@ The data must then be corrected manually after the import.</value>
     <value>500</value>
   </data>
   <data name="cboMaxDrawItemCount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 405</value>
+    <value>130, 436</value>
   </data>
   <data name="cboMaxDrawItemCount.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 21</value>
@@ -3104,13 +3101,13 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;cboMaxDrawItemCount.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="Label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="Label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 408</value>
+    <value>10, 439</value>
   </data>
   <data name="Label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 13</value>
@@ -3131,7 +3128,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;Label5.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 12</value>
@@ -3311,7 +3308,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;chkSetDesignToolsEnabledByLevel.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="chkSetDesignToolsHiddenByLevel.Location" type="System.Drawing.Point, System.Drawing">
     <value>37, 181</value>
@@ -3335,13 +3332,13 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;chkSetDesignToolsHiddenByLevel.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="lblDesignBarPosition.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblDesignBarPosition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 382</value>
+    <value>10, 413</value>
   </data>
   <data name="lblDesignBarPosition.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 13</value>
@@ -3362,7 +3359,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;lblDesignBarPosition.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="chkTherionLochEnabled.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 39</value>
@@ -4342,6 +4339,69 @@ The data must then be corrected manually after the import.</value>
   <data name="tabInfoDesign.AutoScrollMargin" type="System.Drawing.Size, System.Drawing">
     <value>0, 8</value>
   </data>
+  <data name="lblDesignClipSoil.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 217</value>
+  </data>
+  <data name="lblDesignClipSoil.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 13</value>
+  </data>
+  <data name="lblDesignClipSoil.TabIndex" type="System.Int32, mscorlib">
+    <value>246</value>
+  </data>
+  <data name="lblDesignClipSoil.Text" xml:space="preserve">
+    <value>Soil clipping:</value>
+  </data>
+  <data name="&gt;&gt;lblDesignClipSoil.Name" xml:space="preserve">
+    <value>lblDesignClipSoil</value>
+  </data>
+  <data name="&gt;&gt;lblDesignClipSoil.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblDesignClipSoil.Parent" xml:space="preserve">
+    <value>tabInfoDesign</value>
+  </data>
+  <data name="&gt;&gt;lblDesignClipSoil.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cboDesignClipSoil.Items" xml:space="preserve">
+    <value>Cut soil outside borders (in section)</value>
+  </data>
+  <data name="cboDesignClipSoil.Items1" xml:space="preserve">
+    <value>Cut soil inside borders (in section)</value>
+  </data>
+  <data name="cboDesignClipSoil.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 214</value>
+  </data>
+  <data name="cboDesignClipSoil.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 21</value>
+  </data>
+  <data name="cboDesignClipSoil.TabIndex" type="System.Int32, mscorlib">
+    <value>245</value>
+  </data>
+  <data name="&gt;&gt;cboDesignClipSoil.Name" xml:space="preserve">
+    <value>cboDesignClipSoil</value>
+  </data>
+  <data name="&gt;&gt;cboDesignClipSoil.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboDesignClipSoil.Parent" xml:space="preserve">
+    <value>tabInfoDesign</value>
+  </data>
+  <data name="&gt;&gt;cboDesignClipSoil.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="LabelControl2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 299</value>
+  </data>
+  <data name="LabelControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 13</value>
+  </data>
+  <data name="LabelControl2.TabIndex" type="System.Int32, mscorlib">
+    <value>244</value>
+  </data>
+  <data name="LabelControl2.Text" xml:space="preserve">
+    <value>Lines (geological):</value>
+  </data>
   <data name="&gt;&gt;LabelControl2.Name" xml:space="preserve">
     <value>LabelControl2</value>
   </data>
@@ -4352,7 +4412,25 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;LabelControl2.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
+  </data>
+  <data name="cboDesignGeoLineType.Items" xml:space="preserve">
+    <value>Straight lines</value>
+  </data>
+  <data name="cboDesignGeoLineType.Items1" xml:space="preserve">
+    <value>Splines</value>
+  </data>
+  <data name="cboDesignGeoLineType.Items2" xml:space="preserve">
+    <value>Beziers</value>
+  </data>
+  <data name="cboDesignGeoLineType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 296</value>
+  </data>
+  <data name="cboDesignGeoLineType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 21</value>
+  </data>
+  <data name="cboDesignGeoLineType.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;cboDesignGeoLineType.Name" xml:space="preserve">
     <value>cboDesignGeoLineType</value>
@@ -4364,7 +4442,28 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;cboDesignGeoLineType.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;pnlParameters.Name" xml:space="preserve">
+    <value>pnlParameters</value>
+  </data>
+  <data name="&gt;&gt;pnlParameters.Type" xml:space="preserve">
+    <value>DevExpress.Utils.FlyoutPanelControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlParameters.Parent" xml:space="preserve">
+    <value>flyParameters</value>
+  </data>
+  <data name="&gt;&gt;pnlParameters.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flyParameters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>332, 503</value>
+  </data>
+  <data name="flyParameters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 70</value>
+  </data>
+  <data name="flyParameters.TabIndex" type="System.Int32, mscorlib">
+    <value>242</value>
   </data>
   <data name="&gt;&gt;flyParameters.Name" xml:space="preserve">
     <value>flyParameters</value>
@@ -4376,7 +4475,25 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;flyParameters.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
+  </data>
+  <data name="LabelControl1.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="LabelControl1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LabelControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 526</value>
+  </data>
+  <data name="LabelControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 13</value>
+  </data>
+  <data name="LabelControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>148</value>
+  </data>
+  <data name="LabelControl1.Text" xml:space="preserve">
+    <value>Default pen pattern:</value>
   </data>
   <data name="&gt;&gt;LabelControl1.Name" xml:space="preserve">
     <value>LabelControl1</value>
@@ -4388,7 +4505,62 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;LabelControl1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
+  </data>
+  <data name="colDefaultPenPattern.Caption" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="txtDefaultPenPattern.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v24.2" name="DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="txtDefaultPenPattern.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
+    <value>Glyph</value>
+  </data>
+  <data name="txtDefaultPenPattern.Buttons1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtDefaultPenPattern.Buttons2" type="System.Int32, mscorlib">
+    <value>-1</value>
+  </data>
+  <data name="txtDefaultPenPattern.Buttons3" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtDefaultPenPattern.Buttons4" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtDefaultPenPattern.Buttons5" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtDefaultPenPattern.Buttons6" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtDefaultPenPattern.Buttons7" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="txtDefaultPenPattern.Buttons8" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="txtDefaultPenPattern.Buttons9" type="DevExpress.Utils.ToolTipAnchor, DevExpress.Utils.v24.2">
+    <value>Default</value>
+  </data>
+  <data name="txtDefaultPenPattern.Buttons10" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
+    <value>Clear</value>
+  </data>
+  <data name="colDefaultPenPattern.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colDefaultPenPattern.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tvDefaultPenPattern.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 519</value>
+  </data>
+  <data name="tvDefaultPenPattern.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 103</value>
+  </data>
+  <data name="tvDefaultPenPattern.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
   </data>
   <data name="&gt;&gt;tvDefaultPenPattern.Name" xml:space="preserve">
     <value>tvDefaultPenPattern</value>
@@ -4400,7 +4572,31 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;tvDefaultPenPattern.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
+  </data>
+  <data name="cboDesignBarPosition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 411</value>
+  </data>
+  <data name="cboDesignBarPosition.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboDesignBarPosition.Properties.Items" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="cboDesignBarPosition.Properties.Items1" xml:space="preserve">
+    <value>Top left corner of design area</value>
+  </data>
+  <data name="cboDesignBarPosition.Properties.Items2" xml:space="preserve">
+    <value>Near current design object</value>
+  </data>
+  <data name="cboDesignBarPosition.Properties.Items3" xml:space="preserve">
+    <value>Near current design object or point</value>
+  </data>
+  <data name="cboDesignBarPosition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 20</value>
+  </data>
+  <data name="cboDesignBarPosition.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
   <data name="&gt;&gt;cboDesignBarPosition.Name" xml:space="preserve">
     <value>cboDesignBarPosition</value>
@@ -4412,7 +4608,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;cboDesignBarPosition.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="tabInfoDesign.Size" type="System.Drawing.Size, System.Drawing">
     <value>475, 418</value>
@@ -4533,51 +4729,6 @@ The data must then be corrected manually after the import.</value>
   </data>
   <data name="&gt;&gt;tabInfoWMS.ZOrder" xml:space="preserve">
     <value>9</value>
-  </data>
-  <data name="tabHistorySettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 62</value>
-  </data>
-  <data name="tabHistoryLocal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>445, 173</value>
-  </data>
-  <data name="tabHistoryLocal.Text" xml:space="preserve">
-    <value>Local</value>
-  </data>
-  <data name="&gt;&gt;tabHistoryLocal.Name" xml:space="preserve">
-    <value>tabHistoryLocal</value>
-  </data>
-  <data name="&gt;&gt;tabHistoryLocal.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;tabHistoryLocal.Parent" xml:space="preserve">
-    <value>tabHistorySettings</value>
-  </data>
-  <data name="&gt;&gt;tabHistoryLocal.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabHistorySettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>447, 202</value>
-  </data>
-  <data name="tabHistorySettings.TabIndex" type="System.Int32, mscorlib">
-    <value>131</value>
-  </data>
-  <data name="tabHistoryWeb.Size" type="System.Drawing.Size, System.Drawing">
-    <value>445, 173</value>
-  </data>
-  <data name="tabHistoryWeb.Text" xml:space="preserve">
-    <value>Web</value>
-  </data>
-  <data name="&gt;&gt;tabHistoryWeb.Name" xml:space="preserve">
-    <value>tabHistoryWeb</value>
-  </data>
-  <data name="&gt;&gt;tabHistoryWeb.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;tabHistoryWeb.Parent" xml:space="preserve">
-    <value>tabHistorySettings</value>
-  </data>
-  <data name="&gt;&gt;tabHistoryWeb.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="&gt;&gt;tabHistorySettings.Name" xml:space="preserve">
     <value>tabHistorySettings</value>
@@ -4768,7 +4919,6 @@ The data must then be corrected manually after the import.</value>
   <data name="cboLanguage.Location" type="System.Drawing.Point, System.Drawing">
     <value>131, 9</value>
   </data>
-  <assembly alias="DevExpress.Utils.v24.2" name="DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="cboLanguage.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
     <value>Combo</value>
   </data>
@@ -4802,93 +4952,6 @@ The data must then be corrected manually after the import.</value>
   <data name="&gt;&gt;cboLanguage.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="LabelControl2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 268</value>
-  </data>
-  <data name="LabelControl2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 13</value>
-  </data>
-  <data name="LabelControl2.TabIndex" type="System.Int32, mscorlib">
-    <value>244</value>
-  </data>
-  <data name="LabelControl2.Text" xml:space="preserve">
-    <value>Lines (geological):</value>
-  </data>
-  <data name="&gt;&gt;LabelControl2.Name" xml:space="preserve">
-    <value>LabelControl2</value>
-  </data>
-  <data name="&gt;&gt;LabelControl2.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;LabelControl2.Parent" xml:space="preserve">
-    <value>tabInfoDesign</value>
-  </data>
-  <data name="&gt;&gt;LabelControl2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cboDesignGeoLineType.Items" xml:space="preserve">
-    <value>Straight lines</value>
-  </data>
-  <data name="cboDesignGeoLineType.Items1" xml:space="preserve">
-    <value>Splines</value>
-  </data>
-  <data name="cboDesignGeoLineType.Items2" xml:space="preserve">
-    <value>Beziers</value>
-  </data>
-  <data name="cboDesignGeoLineType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 265</value>
-  </data>
-  <data name="cboDesignGeoLineType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 21</value>
-  </data>
-  <data name="cboDesignGeoLineType.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;cboDesignGeoLineType.Name" xml:space="preserve">
-    <value>cboDesignGeoLineType</value>
-  </data>
-  <data name="&gt;&gt;cboDesignGeoLineType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboDesignGeoLineType.Parent" xml:space="preserve">
-    <value>tabInfoDesign</value>
-  </data>
-  <data name="&gt;&gt;cboDesignGeoLineType.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;pnlParameters.Name" xml:space="preserve">
-    <value>pnlParameters</value>
-  </data>
-  <data name="&gt;&gt;pnlParameters.Type" xml:space="preserve">
-    <value>DevExpress.Utils.FlyoutPanelControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlParameters.Parent" xml:space="preserve">
-    <value>flyParameters</value>
-  </data>
-  <data name="&gt;&gt;pnlParameters.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flyParameters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>332, 472</value>
-  </data>
-  <data name="flyParameters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 70</value>
-  </data>
-  <data name="flyParameters.TabIndex" type="System.Int32, mscorlib">
-    <value>242</value>
-  </data>
-  <data name="&gt;&gt;flyParameters.Name" xml:space="preserve">
-    <value>flyParameters</value>
-  </data>
-  <data name="&gt;&gt;flyParameters.Type" xml:space="preserve">
-    <value>DevExpress.Utils.FlyoutPanel, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;flyParameters.Parent" xml:space="preserve">
-    <value>tabInfoDesign</value>
-  </data>
-  <data name="&gt;&gt;flyParameters.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="pnlParameters.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -4912,138 +4975,6 @@ The data must then be corrected manually after the import.</value>
   </data>
   <data name="&gt;&gt;pnlParameters.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="LabelControl1.Appearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
-  <data name="LabelControl1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="LabelControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 495</value>
-  </data>
-  <data name="LabelControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 13</value>
-  </data>
-  <data name="LabelControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>148</value>
-  </data>
-  <data name="LabelControl1.Text" xml:space="preserve">
-    <value>Default pen pattern:</value>
-  </data>
-  <data name="&gt;&gt;LabelControl1.Name" xml:space="preserve">
-    <value>LabelControl1</value>
-  </data>
-  <data name="&gt;&gt;LabelControl1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;LabelControl1.Parent" xml:space="preserve">
-    <value>tabInfoDesign</value>
-  </data>
-  <data name="&gt;&gt;LabelControl1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="colDefaultPenPattern.Caption" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="txtDefaultPenPattern.AutoHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="txtDefaultPenPattern.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
-    <value>Glyph</value>
-  </data>
-  <data name="txtDefaultPenPattern.Buttons1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtDefaultPenPattern.Buttons2" type="System.Int32, mscorlib">
-    <value>-1</value>
-  </data>
-  <data name="txtDefaultPenPattern.Buttons3" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="txtDefaultPenPattern.Buttons4" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="txtDefaultPenPattern.Buttons5" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="txtDefaultPenPattern.Buttons6" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtDefaultPenPattern.Buttons7" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="txtDefaultPenPattern.Buttons8" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="txtDefaultPenPattern.Buttons9" type="DevExpress.Utils.ToolTipAnchor, DevExpress.Utils.v24.2">
-    <value>Default</value>
-  </data>
-  <data name="txtDefaultPenPattern.Buttons10" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
-    <value>Clear</value>
-  </data>
-  <data name="colDefaultPenPattern.Visible" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="colDefaultPenPattern.VisibleIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tvDefaultPenPattern.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 488</value>
-  </data>
-  <data name="tvDefaultPenPattern.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 103</value>
-  </data>
-  <data name="tvDefaultPenPattern.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;tvDefaultPenPattern.Name" xml:space="preserve">
-    <value>tvDefaultPenPattern</value>
-  </data>
-  <data name="&gt;&gt;tvDefaultPenPattern.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;tvDefaultPenPattern.Parent" xml:space="preserve">
-    <value>tabInfoDesign</value>
-  </data>
-  <data name="&gt;&gt;tvDefaultPenPattern.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="cboDesignBarPosition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 380</value>
-  </data>
-  <data name="cboDesignBarPosition.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
-    <value>Combo</value>
-  </data>
-  <data name="cboDesignBarPosition.Properties.Items" xml:space="preserve">
-    <value>Default</value>
-  </data>
-  <data name="cboDesignBarPosition.Properties.Items1" xml:space="preserve">
-    <value>Top left corner of design area</value>
-  </data>
-  <data name="cboDesignBarPosition.Properties.Items2" xml:space="preserve">
-    <value>Near current design object</value>
-  </data>
-  <data name="cboDesignBarPosition.Properties.Items3" xml:space="preserve">
-    <value>Near current design object or point</value>
-  </data>
-  <data name="cboDesignBarPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 20</value>
-  </data>
-  <data name="cboDesignBarPosition.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;cboDesignBarPosition.Name" xml:space="preserve">
-    <value>cboDesignBarPosition</value>
-  </data>
-  <data name="&gt;&gt;cboDesignBarPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboDesignBarPosition.Parent" xml:space="preserve">
-    <value>tabInfoDesign</value>
-  </data>
-  <data name="&gt;&gt;cboDesignBarPosition.ZOrder" xml:space="preserve">
-    <value>10</value>
   </data>
   <data name="chkShotsDisableConstraint.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5073,6 +5004,63 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoData</value>
   </data>
   <data name="&gt;&gt;chkShotsDisableConstraint.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabHistorySettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 62</value>
+  </data>
+  <data name="tabHistoryLocal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>445, 173</value>
+  </data>
+  <data name="tabHistoryLocal.Text" xml:space="preserve">
+    <value>Local</value>
+  </data>
+  <data name="&gt;&gt;tabHistoryLocal.Name" xml:space="preserve">
+    <value>tabHistoryLocal</value>
+  </data>
+  <data name="&gt;&gt;tabHistoryLocal.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabHistoryLocal.Parent" xml:space="preserve">
+    <value>tabHistorySettings</value>
+  </data>
+  <data name="&gt;&gt;tabHistoryLocal.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabHistorySettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>447, 202</value>
+  </data>
+  <data name="tabHistorySettings.TabIndex" type="System.Int32, mscorlib">
+    <value>131</value>
+  </data>
+  <data name="tabHistoryWeb.Size" type="System.Drawing.Size, System.Drawing">
+    <value>445, 173</value>
+  </data>
+  <data name="tabHistoryWeb.Text" xml:space="preserve">
+    <value>Web</value>
+  </data>
+  <data name="&gt;&gt;tabHistoryWeb.Name" xml:space="preserve">
+    <value>tabHistoryWeb</value>
+  </data>
+  <data name="&gt;&gt;tabHistoryWeb.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabHistoryWeb.Parent" xml:space="preserve">
+    <value>tabHistorySettings</value>
+  </data>
+  <data name="&gt;&gt;tabHistoryWeb.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabHistorySettings.Name" xml:space="preserve">
+    <value>tabHistorySettings</value>
+  </data>
+  <data name="&gt;&gt;tabHistorySettings.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabHistorySettings.Parent" xml:space="preserve">
+    <value>tabInfoHistory</value>
+  </data>
+  <data name="&gt;&gt;tabHistorySettings.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="CheckEdit2.Location" type="System.Drawing.Point, System.Drawing">
@@ -5471,6 +5459,6 @@ The data must then be corrected manually after the import.</value>
     <value>frmSettings</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cForm, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

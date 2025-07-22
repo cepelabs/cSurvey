@@ -31,6 +31,7 @@ Friend Class frmSettings
         Call My.Application.Settings.SetSetting("design.rulers.style", cboDesignShowRulersStyle.SelectedIndex)
         Call My.Application.Settings.SetSetting("design.metricgrid", cboDesignShowMetricGrid.SelectedIndex)
         Call My.Application.Settings.SetSetting("design.metricgrid.opacity", txtDesignMetricGridOpacity.Value)
+        Call My.Application.Settings.SetSetting("design.clipsoil", cboDesignClipSoil.SelectedIndex)
         Call My.Application.Settings.SetSetting("design.clipborder", cboDesignClipBorder.SelectedIndex)
         Call My.Application.Settings.SetSetting("design.linetype", cboDesignLineType.SelectedIndex)
         Call My.Application.Settings.SetSetting("design.geolinetype", cboDesignGeoLineType.SelectedIndex)
@@ -152,7 +153,7 @@ Friend Class frmSettings
         Next
         Dim oTherionIni As cTherionINISettings = DirectCast(tvTherionINI.DataSource, cTherionINISettings)
         Call My.Application.Settings.SetSetting("therion.inisettings", oTherionIni.ToString)
-        oTherionIni.invalidate
+        oTherionIni.Invalidate()
         Call My.Application.RuntimeSettings.SetSetting("therion.ini", oTherionIni)
 
         Call My.Application.Settings.Save()
@@ -271,6 +272,7 @@ Friend Class frmSettings
         cboDesignShowRulersStyle.SelectedIndex = My.Application.Settings.GetSetting("design.rulers.style", frmMain2.RulersStyleEnum.Simple)
         cboDesignShowMetricGrid.SelectedIndex = My.Application.Settings.GetSetting("design.metricgrid", 0)
         txtDesignMetricGridOpacity.Value = My.Application.Settings.GetSetting("design.metricgrid.opacity", 50)
+        cboDesignClipSoil.SelectedIndex = My.Application.Settings.GetSetting("design.clipsoil", cSurvey.Design.Clipping.cClippingRegions.ClipSoilEnum.DefaultOutsideBorder)
         cboDesignClipBorder.SelectedIndex = My.Application.Settings.GetSetting("design.clipborder", cSurvey.Design.Clipping.cClippingRegions.ClipBorderEnum.ClipBorder)
         cboDesignLineType.SelectedIndex = My.Application.Settings.GetSetting("design.linetype", cSurvey.Design.Items.cIItemLine.LineTypeEnum.Splines)
         cboDesignGeoLineType.SelectedIndex = My.Application.Settings.GetSetting("design.geolinetype", cSurvey.Design.Items.cIItemLine.LineTypeEnum.Lines)

@@ -23,11 +23,11 @@ Partial Class frmSettings
     '<System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSettings))
-        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.chkHistoryArchiveOnSave = New DevExpress.XtraEditors.CheckEdit()
         Me.lblHistoryMaxCopies = New DevExpress.XtraEditors.LabelControl()
         Me.txtHistoryFolder = New System.Windows.Forms.TextBox()
@@ -95,7 +95,7 @@ Partial Class frmSettings
         Me.lblDesignZoomType = New DevExpress.XtraEditors.LabelControl()
         Me.cboDesignShowRulersStyle = New System.Windows.Forms.ComboBox()
         Me.cboDesignClipBorder = New System.Windows.Forms.ComboBox()
-        Me.lblClipping = New DevExpress.XtraEditors.LabelControl()
+        Me.lblDesignClipBorder = New DevExpress.XtraEditors.LabelControl()
         Me.cboDesignLineType = New System.Windows.Forms.ComboBox()
         Me.Label27 = New DevExpress.XtraEditors.LabelControl()
         Me.cboDesignQuality = New System.Windows.Forms.ComboBox()
@@ -218,6 +218,9 @@ Partial Class frmSettings
         Me.tabInfoLinkedSurveys = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoWMS = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoHistory = New DevExpress.XtraTab.XtraTabPage()
+        Me.tabHistorySettings = New DevExpress.XtraTab.XtraTabControl()
+        Me.tabHistoryLocal = New DevExpress.XtraTab.XtraTabPage()
+        Me.tabHistoryWeb = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoDebug = New DevExpress.XtraTab.XtraTabPage()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.CheckEdit2 = New DevExpress.XtraEditors.CheckEdit()
@@ -227,9 +230,8 @@ Partial Class frmSettings
         Me.lblLogMaxSize = New DevExpress.XtraEditors.LabelControl()
         Me.txtLogMaxLine = New DevExpress.XtraEditors.SpinEdit()
         Me.chkLogOnFile = New DevExpress.XtraEditors.CheckEdit()
-        Me.tabHistorySettings = New DevExpress.XtraTab.XtraTabControl()
-        Me.tabHistoryLocal = New DevExpress.XtraTab.XtraTabPage()
-        Me.tabHistoryWeb = New DevExpress.XtraTab.XtraTabPage()
+        Me.lblDesignClipSoil = New DevExpress.XtraEditors.LabelControl()
+        Me.cboDesignClipSoil = New System.Windows.Forms.ComboBox()
         CType(Me.chkHistoryArchiveOnSave.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtHistoryMaxCopies, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtHistoryDailyCopies, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -333,6 +335,10 @@ Partial Class frmSettings
         Me.tabInfoLinkedSurveys.SuspendLayout()
         Me.tabInfoWMS.SuspendLayout()
         Me.tabInfoHistory.SuspendLayout()
+        CType(Me.tabHistorySettings, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabHistorySettings.SuspendLayout()
+        Me.tabHistoryLocal.SuspendLayout()
+        Me.tabHistoryWeb.SuspendLayout()
         Me.tabInfoDebug.SuspendLayout()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
@@ -342,10 +348,6 @@ Partial Class frmSettings
         CType(Me.chkForceGarbaceCollect.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtLogMaxLine.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkLogOnFile.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tabHistorySettings, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabHistorySettings.SuspendLayout()
-        Me.tabHistoryLocal.SuspendLayout()
-        Me.tabHistoryWeb.SuspendLayout()
         Me.SuspendLayout()
         '
         'chkHistoryArchiveOnSave
@@ -789,14 +791,14 @@ Partial Class frmSettings
         '
         Me.cboDesignClipBorder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboDesignClipBorder.DropDownWidth = 400
-        resources.ApplyResources(Me.cboDesignClipBorder, "cboDesignClipBorder")
         Me.cboDesignClipBorder.Items.AddRange(New Object() {resources.GetString("cboDesignClipBorder.Items"), resources.GetString("cboDesignClipBorder.Items1"), resources.GetString("cboDesignClipBorder.Items2")})
+        resources.ApplyResources(Me.cboDesignClipBorder, "cboDesignClipBorder")
         Me.cboDesignClipBorder.Name = "cboDesignClipBorder"
         '
-        'lblClipping
+        'lblDesignClipBorder
         '
-        resources.ApplyResources(Me.lblClipping, "lblClipping")
-        Me.lblClipping.Name = "lblClipping"
+        resources.ApplyResources(Me.lblDesignClipBorder, "lblDesignClipBorder")
+        Me.lblDesignClipBorder.Name = "lblDesignClipBorder"
         '
         'cboDesignLineType
         '
@@ -1555,6 +1557,8 @@ Partial Class frmSettings
         'tabInfoDesign
         '
         resources.ApplyResources(Me.tabInfoDesign, "tabInfoDesign")
+        Me.tabInfoDesign.Controls.Add(Me.lblDesignClipSoil)
+        Me.tabInfoDesign.Controls.Add(Me.cboDesignClipSoil)
         Me.tabInfoDesign.Controls.Add(Me.LabelControl2)
         Me.tabInfoDesign.Controls.Add(Me.cboDesignGeoLineType)
         Me.tabInfoDesign.Controls.Add(Me.flyParameters)
@@ -1583,7 +1587,7 @@ Partial Class frmSettings
         Me.tabInfoDesign.Controls.Add(Me.Label6)
         Me.tabInfoDesign.Controls.Add(Me.cboDesignLineType)
         Me.tabInfoDesign.Controls.Add(Me.txtDefaultFont)
-        Me.tabInfoDesign.Controls.Add(Me.lblClipping)
+        Me.tabInfoDesign.Controls.Add(Me.lblDesignClipBorder)
         Me.tabInfoDesign.Controls.Add(Me.cmdDefaultFont)
         Me.tabInfoDesign.Controls.Add(Me.cboDesignClipBorder)
         Me.tabInfoDesign.Controls.Add(Me.lblDefaultFont)
@@ -1647,9 +1651,9 @@ Partial Class frmSettings
         'txtDefaultPenPattern
         '
         resources.ApplyResources(Me.txtDefaultPenPattern, "txtDefaultPenPattern")
-        EditorButtonImageOptions2.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
-        EditorButtonImageOptions2.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.txtDefaultPenPattern.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtDefaultPenPattern.Buttons1"), CType(resources.GetObject("txtDefaultPenPattern.Buttons2"), Integer), CType(resources.GetObject("txtDefaultPenPattern.Buttons3"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons4"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons5"), Boolean), EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, resources.GetString("txtDefaultPenPattern.Buttons6"), CType(resources.GetObject("txtDefaultPenPattern.Buttons7"), Object), CType(resources.GetObject("txtDefaultPenPattern.Buttons8"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtDefaultPenPattern.Buttons9"), DevExpress.Utils.ToolTipAnchor)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons10"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        EditorButtonImageOptions3.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        EditorButtonImageOptions3.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.txtDefaultPenPattern.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtDefaultPenPattern.Buttons1"), CType(resources.GetObject("txtDefaultPenPattern.Buttons2"), Integer), CType(resources.GetObject("txtDefaultPenPattern.Buttons3"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons4"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons5"), Boolean), EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, resources.GetString("txtDefaultPenPattern.Buttons6"), CType(resources.GetObject("txtDefaultPenPattern.Buttons7"), Object), CType(resources.GetObject("txtDefaultPenPattern.Buttons8"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtDefaultPenPattern.Buttons9"), DevExpress.Utils.ToolTipAnchor)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons10"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtDefaultPenPattern.Name = "txtDefaultPenPattern"
         Me.txtDefaultPenPattern.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
@@ -1715,6 +1719,44 @@ Partial Class frmSettings
         Me.tabInfoHistory.Controls.Add(Me.chkAutosave)
         Me.tabInfoHistory.Name = "tabInfoHistory"
         resources.ApplyResources(Me.tabInfoHistory, "tabInfoHistory")
+        '
+        'tabHistorySettings
+        '
+        resources.ApplyResources(Me.tabHistorySettings, "tabHistorySettings")
+        Me.tabHistorySettings.Name = "tabHistorySettings"
+        Me.tabHistorySettings.SelectedTabPage = Me.tabHistoryLocal
+        Me.tabHistorySettings.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabHistoryLocal, Me.tabHistoryWeb})
+        '
+        'tabHistoryLocal
+        '
+        Me.tabHistoryLocal.Controls.Add(Me.chkHistoryArchiveOnSave)
+        Me.tabHistoryLocal.Controls.Add(Me.txtHistoryFolder)
+        Me.tabHistoryLocal.Controls.Add(Me.lblHistoryMaxCopies)
+        Me.tabHistoryLocal.Controls.Add(Me.txtHistoryDailyCopies)
+        Me.tabHistoryLocal.Controls.Add(Me.cmdHistoryFolderBrowse)
+        Me.tabHistoryLocal.Controls.Add(Me.txtHistoryMaxCopies)
+        Me.tabHistoryLocal.Controls.Add(Me.lblHistoryDailyCopies)
+        Me.tabHistoryLocal.Controls.Add(Me.lblHistoryFolder)
+        Me.tabHistoryLocal.Name = "tabHistoryLocal"
+        resources.ApplyResources(Me.tabHistoryLocal, "tabHistoryLocal")
+        '
+        'tabHistoryWeb
+        '
+        Me.tabHistoryWeb.Controls.Add(Me.chkHistoryWebArchiveOnSave)
+        Me.tabHistoryWeb.Controls.Add(Me.lblHistoryWebAddress)
+        Me.tabHistoryWeb.Controls.Add(Me.chkHistoryWebAuthReq)
+        Me.tabHistoryWeb.Controls.Add(Me.lblHistoryWebUsername)
+        Me.tabHistoryWeb.Controls.Add(Me.lblHistoryWebMaxCopies)
+        Me.tabHistoryWeb.Controls.Add(Me.txtHistoryWebUsername)
+        Me.tabHistoryWeb.Controls.Add(Me.txtHistoryWebMaxCopies)
+        Me.tabHistoryWeb.Controls.Add(Me.txtHistoryWebPassword)
+        Me.tabHistoryWeb.Controls.Add(Me.lblHistoryWebDailyCopies)
+        Me.tabHistoryWeb.Controls.Add(Me.lblHistoryWebPassword)
+        Me.tabHistoryWeb.Controls.Add(Me.txtHistoryWebDailyCopies)
+        Me.tabHistoryWeb.Controls.Add(Me.txtHistoryWebURL)
+        Me.tabHistoryWeb.Controls.Add(Me.cmdHistoryWebCheck)
+        Me.tabHistoryWeb.Name = "tabHistoryWeb"
+        resources.ApplyResources(Me.tabHistoryWeb, "tabHistoryWeb")
         '
         'tabInfoDebug
         '
@@ -1795,43 +1837,18 @@ Partial Class frmSettings
         Me.chkLogOnFile.Properties.AutoWidth = True
         Me.chkLogOnFile.Properties.Caption = resources.GetString("chkLogOnFile.Properties.Caption")
         '
-        'tabHistorySettings
+        'lblDesignClipSoil
         '
-        resources.ApplyResources(Me.tabHistorySettings, "tabHistorySettings")
-        Me.tabHistorySettings.Name = "tabHistorySettings"
-        Me.tabHistorySettings.SelectedTabPage = Me.tabHistoryLocal
-        Me.tabHistorySettings.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabHistoryLocal, Me.tabHistoryWeb})
+        resources.ApplyResources(Me.lblDesignClipSoil, "lblDesignClipSoil")
+        Me.lblDesignClipSoil.Name = "lblDesignClipSoil"
         '
-        'tabHistoryLocal
+        'cboDesignClipSoil
         '
-        Me.tabHistoryLocal.Controls.Add(Me.chkHistoryArchiveOnSave)
-        Me.tabHistoryLocal.Controls.Add(Me.txtHistoryFolder)
-        Me.tabHistoryLocal.Controls.Add(Me.lblHistoryMaxCopies)
-        Me.tabHistoryLocal.Controls.Add(Me.txtHistoryDailyCopies)
-        Me.tabHistoryLocal.Controls.Add(Me.cmdHistoryFolderBrowse)
-        Me.tabHistoryLocal.Controls.Add(Me.txtHistoryMaxCopies)
-        Me.tabHistoryLocal.Controls.Add(Me.lblHistoryDailyCopies)
-        Me.tabHistoryLocal.Controls.Add(Me.lblHistoryFolder)
-        Me.tabHistoryLocal.Name = "tabHistoryLocal"
-        resources.ApplyResources(Me.tabHistoryLocal, "tabHistoryLocal")
-        '
-        'tabHistoryWeb
-        '
-        Me.tabHistoryWeb.Controls.Add(Me.chkHistoryWebArchiveOnSave)
-        Me.tabHistoryWeb.Controls.Add(Me.lblHistoryWebAddress)
-        Me.tabHistoryWeb.Controls.Add(Me.chkHistoryWebAuthReq)
-        Me.tabHistoryWeb.Controls.Add(Me.lblHistoryWebUsername)
-        Me.tabHistoryWeb.Controls.Add(Me.lblHistoryWebMaxCopies)
-        Me.tabHistoryWeb.Controls.Add(Me.txtHistoryWebUsername)
-        Me.tabHistoryWeb.Controls.Add(Me.txtHistoryWebMaxCopies)
-        Me.tabHistoryWeb.Controls.Add(Me.txtHistoryWebPassword)
-        Me.tabHistoryWeb.Controls.Add(Me.lblHistoryWebDailyCopies)
-        Me.tabHistoryWeb.Controls.Add(Me.lblHistoryWebPassword)
-        Me.tabHistoryWeb.Controls.Add(Me.txtHistoryWebDailyCopies)
-        Me.tabHistoryWeb.Controls.Add(Me.txtHistoryWebURL)
-        Me.tabHistoryWeb.Controls.Add(Me.cmdHistoryWebCheck)
-        Me.tabHistoryWeb.Name = "tabHistoryWeb"
-        resources.ApplyResources(Me.tabHistoryWeb, "tabHistoryWeb")
+        Me.cboDesignClipSoil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboDesignClipSoil.DropDownWidth = 400
+        Me.cboDesignClipSoil.Items.AddRange(New Object() {resources.GetString("cboDesignClipSoil.Items"), resources.GetString("cboDesignClipSoil.Items1")})
+        resources.ApplyResources(Me.cboDesignClipSoil, "cboDesignClipSoil")
+        Me.cboDesignClipSoil.Name = "cboDesignClipSoil"
         '
         'frmSettings
         '
@@ -1966,6 +1983,12 @@ Partial Class frmSettings
         Me.tabInfoWMS.ResumeLayout(False)
         Me.tabInfoHistory.ResumeLayout(False)
         Me.tabInfoHistory.PerformLayout()
+        CType(Me.tabHistorySettings, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabHistorySettings.ResumeLayout(False)
+        Me.tabHistoryLocal.ResumeLayout(False)
+        Me.tabHistoryLocal.PerformLayout()
+        Me.tabHistoryWeb.ResumeLayout(False)
+        Me.tabHistoryWeb.PerformLayout()
         Me.tabInfoDebug.ResumeLayout(False)
         Me.tabInfoDebug.PerformLayout()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1976,12 +1999,6 @@ Partial Class frmSettings
         CType(Me.chkForceGarbaceCollect.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtLogMaxLine.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkLogOnFile.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tabHistorySettings, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tabHistorySettings.ResumeLayout(False)
-        Me.tabHistoryLocal.ResumeLayout(False)
-        Me.tabHistoryLocal.PerformLayout()
-        Me.tabHistoryWeb.ResumeLayout(False)
-        Me.tabHistoryWeb.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2014,7 +2031,7 @@ Partial Class frmSettings
     Friend WithEvents cboDesignLineType As System.Windows.Forms.ComboBox
     Friend WithEvents Label27 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboDesignClipBorder As System.Windows.Forms.ComboBox
-    Friend WithEvents lblClipping As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblDesignClipBorder As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chkAutosave As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkTherionLochEnabled As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkTherionDeleteTempFiles As DevExpress.XtraEditors.CheckEdit
@@ -2187,4 +2204,6 @@ Partial Class frmSettings
     Friend WithEvents tabHistorySettings As DevExpress.XtraTab.XtraTabControl
     Friend WithEvents tabHistoryLocal As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents tabHistoryWeb As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents lblDesignClipSoil As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cboDesignClipSoil As ComboBox
 End Class

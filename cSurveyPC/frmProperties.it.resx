@@ -1945,4 +1945,13 @@
   <data name="lblMeasureUnit.Text" xml:space="preserve">
     <value>Unità di misura:</value>
   </data>
+  <data name="cboClipSoil.Items" xml:space="preserve">
+    <value>Taglia suolo fuori dai  bordi (in sezione)</value>
+  </data>
+  <data name="cboClipSoil.Items1" xml:space="preserve">
+    <value>Taglia suolo dentro ai bordi (in sezione)</value>
+  </data>
+  <data name="lblClipSoil.Text" xml:space="preserve">
+    <value>Suolo:</value>
+  </data>
 </root>

@@ -4272,7 +4272,7 @@
     <value>Beziers</value>
   </data>
   <data name="cboGeologicalLineType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>122, 549</value>
+    <value>122, 626</value>
   </data>
   <data name="cboGeologicalLineType.Size" type="System.Drawing.Size, System.Drawing">
     <value>162, 21</value>
@@ -4296,7 +4296,7 @@
     <value>NoControl</value>
   </data>
   <data name="LabelControl3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 552</value>
+    <value>26, 629</value>
   </data>
   <data name="LabelControl3.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 13</value>
@@ -4344,7 +4344,7 @@
     <value>0</value>
   </data>
   <data name="flyParameters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>348, 826</value>
+    <value>348, 950</value>
   </data>
   <data name="flyParameters.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 70</value>
@@ -4371,7 +4371,7 @@
     <value>NoControl</value>
   </data>
   <data name="LabelControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 816</value>
+    <value>26, 940</value>
   </data>
   <data name="LabelControl1.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 13</value>
@@ -4440,7 +4440,7 @@
     <value>0</value>
   </data>
   <data name="tvDefaultPenPattern.Location" type="System.Drawing.Point, System.Drawing">
-    <value>146, 809</value>
+    <value>146, 933</value>
   </data>
   <data name="tvDefaultPenPattern.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 103</value>
@@ -4467,13 +4467,13 @@
     <value>Tahoma, 8.25pt</value>
   </data>
   <data name="txtDesignItemNamePattern.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 733</value>
+    <value>111, 857</value>
   </data>
   <data name="txtDesignItemNamePattern.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Both</value>
   </data>
   <data name="txtDesignItemNamePattern.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 21</value>
+    <value>130, 21</value>
   </data>
   <data name="txtDesignItemNamePattern.TabIndex" type="System.Int32, mscorlib">
     <value>124</value>
@@ -5190,7 +5190,7 @@
     <value>6</value>
   </data>
   <data name="chkShowLegacyExtraPrintAndExportObjects.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 703</value>
+    <value>23, 827</value>
   </data>
   <data name="chkShowLegacyExtraPrintAndExportObjects.Properties.Caption" xml:space="preserve">
     <value>Allow legacy print and export extra object</value>
@@ -5217,7 +5217,7 @@
     <value>NoControl</value>
   </data>
   <data name="cmdItemNamePatternAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 761</value>
+    <value>111, 885</value>
   </data>
   <data name="cmdItemNamePatternAdd.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 25</value>
@@ -5280,7 +5280,7 @@
     <value>56, 20</value>
   </data>
   <data name="txtBaseBrushLinesScaleFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;txtBaseBrushLinesScaleFactor.Name" xml:space="preserve">
     <value>txtBaseBrushLinesScaleFactor</value>
@@ -5328,7 +5328,7 @@
     <value>56, 21</value>
   </data>
   <data name="txtBaseGeologyLinesScaleFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;txtBaseGeologyLinesScaleFactor.Name" xml:space="preserve">
     <value>txtBaseGeologyLinesScaleFactor</value>
@@ -5451,7 +5451,7 @@
     <value>56, 21</value>
   </data>
   <data name="txtBaseUltraLightLinesScaleFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;txtBaseUltraLightLinesScaleFactor.Name" xml:space="preserve">
     <value>txtBaseUltraLightLinesScaleFactor</value>
@@ -5472,7 +5472,7 @@
     <value>56, 21</value>
   </data>
   <data name="txtBaseLightLinesScaleFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;txtBaseLightLinesScaleFactor.Name" xml:space="preserve">
     <value>txtBaseLightLinesScaleFactor</value>
@@ -5610,7 +5610,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblDesignItemNamePattern.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 736</value>
+    <value>23, 860</value>
   </data>
   <data name="lblDesignItemNamePattern.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 13</value>
@@ -5633,6 +5633,63 @@
   <data name="&gt;&gt;lblDesignItemNamePattern.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <data name="cboClipSoil.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="cboClipSoil.Items" xml:space="preserve">
+    <value>Cut soil outside borders (in section)</value>
+  </data>
+  <data name="cboClipSoil.Items1" xml:space="preserve">
+    <value>Cut soil inside borders (in section)</value>
+  </data>
+  <data name="cboClipSoil.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 31</value>
+  </data>
+  <data name="cboClipSoil.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 21</value>
+  </data>
+  <data name="cboClipSoil.TabIndex" type="System.Int32, mscorlib">
+    <value>130</value>
+  </data>
+  <data name="&gt;&gt;cboClipSoil.Name" xml:space="preserve">
+    <value>cboClipSoil</value>
+  </data>
+  <data name="&gt;&gt;cboClipSoil.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboClipSoil.Parent" xml:space="preserve">
+    <value>GroupBox8</value>
+  </data>
+  <data name="&gt;&gt;cboClipSoil.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblClipSoil.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblClipSoil.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 34</value>
+  </data>
+  <data name="lblClipSoil.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 13</value>
+  </data>
+  <data name="lblClipSoil.TabIndex" type="System.Int32, mscorlib">
+    <value>126</value>
+  </data>
+  <data name="lblClipSoil.Text" xml:space="preserve">
+    <value>Soil:</value>
+  </data>
+  <data name="&gt;&gt;lblClipSoil.Name" xml:space="preserve">
+    <value>lblClipSoil</value>
+  </data>
+  <data name="&gt;&gt;lblClipSoil.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblClipSoil.Parent" xml:space="preserve">
+    <value>GroupBox8</value>
+  </data>
+  <data name="&gt;&gt;lblClipSoil.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="cboClipAdvancedClipart.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
@@ -5643,13 +5700,13 @@
     <value>Clipper</value>
   </data>
   <data name="cboClipAdvancedClipart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 57</value>
+    <value>111, 100</value>
   </data>
   <data name="cboClipAdvancedClipart.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 21</value>
   </data>
   <data name="cboClipAdvancedClipart.TabIndex" type="System.Int32, mscorlib">
-    <value>123</value>
+    <value>132</value>
   </data>
   <data name="&gt;&gt;cboClipAdvancedClipart.Name" xml:space="preserve">
     <value>cboClipAdvancedClipart</value>
@@ -5661,7 +5718,7 @@
     <value>GroupBox8</value>
   </data>
   <data name="&gt;&gt;cboClipAdvancedClipart.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="cboClipBorder.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -5676,13 +5733,13 @@
     <value>Disable for all objects</value>
   </data>
   <data name="cboClipBorder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 30</value>
+    <value>111, 58</value>
   </data>
   <data name="cboClipBorder.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 21</value>
   </data>
   <data name="cboClipBorder.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>131</value>
   </data>
   <data name="&gt;&gt;cboClipBorder.Name" xml:space="preserve">
     <value>cboClipBorder</value>
@@ -5694,13 +5751,13 @@
     <value>GroupBox8</value>
   </data>
   <data name="&gt;&gt;cboClipBorder.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="lblClippingAdvancedClipart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblClippingAdvancedClipart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 60</value>
+    <value>15, 103</value>
   </data>
   <data name="lblClippingAdvancedClipart.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 13</value>
@@ -5721,13 +5778,13 @@
     <value>GroupBox8</value>
   </data>
   <data name="&gt;&gt;lblClippingAdvancedClipart.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="lblClippingBorder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblClippingBorder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 33</value>
+    <value>15, 61</value>
   </data>
   <data name="lblClippingBorder.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 13</value>
@@ -5748,13 +5805,13 @@
     <value>GroupBox8</value>
   </data>
   <data name="&gt;&gt;lblClippingBorder.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="GroupBox8.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 418</value>
   </data>
   <data name="GroupBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 89</value>
+    <value>281, 162</value>
   </data>
   <data name="GroupBox8.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -6069,7 +6126,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblSketchProfileCorrectionScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 50</value>
+    <value>23, 61</value>
   </data>
   <data name="lblSketchProfileCorrectionScale.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 13</value>
@@ -6096,7 +6153,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblSketchProfileCorrectionTranslation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 23</value>
+    <value>23, 34</value>
   </data>
   <data name="lblSketchProfileCorrectionTranslation.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 13</value>
@@ -6120,7 +6177,7 @@
     <value>1</value>
   </data>
   <data name="txtDesignSketchProfileCorrectionScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>151, 48</value>
+    <value>151, 59</value>
   </data>
   <data name="txtDesignSketchProfileCorrectionScale.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -6141,7 +6198,7 @@
     <value>2</value>
   </data>
   <data name="txtDesignSketchProfileCorrectionX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>151, 21</value>
+    <value>151, 32</value>
   </data>
   <data name="txtDesignSketchProfileCorrectionX.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -6162,7 +6219,7 @@
     <value>3</value>
   </data>
   <data name="txtDesignSketchProfileCorrectionY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 21</value>
+    <value>213, 32</value>
   </data>
   <data name="txtDesignSketchProfileCorrectionY.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -6183,10 +6240,10 @@
     <value>4</value>
   </data>
   <data name="frmSketchProfile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 117</value>
+    <value>12, 122</value>
   </data>
   <data name="frmSketchProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 80</value>
+    <value>279, 88</value>
   </data>
   <data name="frmSketchProfile.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -6210,7 +6267,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblSketchPlanCorrectionScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 50</value>
+    <value>23, 59</value>
   </data>
   <data name="lblSketchPlanCorrectionScale.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 13</value>
@@ -6237,7 +6294,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblSketchPlanCorrectionTranslation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 23</value>
+    <value>23, 32</value>
   </data>
   <data name="lblSketchPlanCorrectionTranslation.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 13</value>
@@ -6261,7 +6318,7 @@
     <value>1</value>
   </data>
   <data name="txtDesignSketchPlanCorrectionScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>151, 48</value>
+    <value>151, 57</value>
   </data>
   <data name="txtDesignSketchPlanCorrectionScale.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -6282,7 +6339,7 @@
     <value>2</value>
   </data>
   <data name="txtDesignSketchPlanCorrectionX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>151, 21</value>
+    <value>151, 30</value>
   </data>
   <data name="txtDesignSketchPlanCorrectionX.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -6303,7 +6360,7 @@
     <value>3</value>
   </data>
   <data name="txtDesignSketchPlanCorrectionY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 21</value>
+    <value>213, 30</value>
   </data>
   <data name="txtDesignSketchPlanCorrectionY.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -6327,7 +6384,7 @@
     <value>12, 30</value>
   </data>
   <data name="frmSketchPlan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 80</value>
+    <value>278, 89</value>
   </data>
   <data name="frmSketchPlan.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -6351,7 +6408,7 @@
     <value>298, 589</value>
   </data>
   <data name="frmSketch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>303, 210</value>
+    <value>303, 219</value>
   </data>
   <data name="frmSketch.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -6483,7 +6540,7 @@
     <value>3</value>
   </data>
   <data name="GroupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 588</value>
+    <value>11, 672</value>
   </data>
   <data name="GroupBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>281, 89</value>
@@ -6516,7 +6573,7 @@
     <value>Beziers</value>
   </data>
   <data name="cboLineType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>122, 522</value>
+    <value>122, 599</value>
   </data>
   <data name="cboLineType.Size" type="System.Drawing.Size, System.Drawing">
     <value>162, 21</value>
@@ -6540,7 +6597,7 @@
     <value>NoControl</value>
   </data>
   <data name="Label27.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 525</value>
+    <value>26, 602</value>
   </data>
   <data name="Label27.Size" type="System.Drawing.Size, System.Drawing">
     <value>28, 13</value>

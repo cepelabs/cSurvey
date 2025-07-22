@@ -256,11 +256,18 @@ Namespace cSurvey.Design.Clipping
 
         Private oSurvey As cSurvey
 
+        Public Enum ClipSoilEnum
+            [DefaultOutsideBorder] = 0
+            InsideBorder = 1
+        End Enum
+
         Public Enum ClipBorderEnum
             DontClipBorder = 0
             ClipBorder = 1
             Disable = 2
         End Enum
+
+        Private iClipSoil As ClipSoilEnum
 
         Private iClipBorder As ClipBorderEnum
 
@@ -269,7 +276,8 @@ Namespace cSurvey.Design.Clipping
 
         Public Sub New(ByVal Survey As cSurvey)
             oSurvey = Survey
-            iClipBorder = oSurvey.Properties.DesignProperties.GetValue("ClipBorder", My.Application.Settings.GetSetting("design.clipborder", ClipBorderEnum.ClipBorder))
+            iClipBorder = oSurvey.Properties.DesignProperties.GetValue("clipborder", My.Application.Settings.GetSetting("design.clipborder", ClipBorderEnum.ClipBorder))
+            iClipSoil = oSurvey.Properties.DesignProperties.GetValue("clipsoil", My.Application.Settings.GetSetting("design.clipsoil", ClipSoilEnum.DefaultOutsideBorder))
             oRegions = New Dictionary(Of String, Region)(System.StringComparer.OrdinalIgnoreCase)
             oInfiniteRegion = New Region
             Call oInfiniteRegion.MakeInfinite()
@@ -299,7 +307,7 @@ Namespace cSurvey.Design.Clipping
                             If oClip.IsEmpty(Graphics) Then
                                 Return oInfiniteRegion
                             Else
-                                If Item.Type = cIItem.cItemTypeEnum.FreeHandArea AndAlso Item.Category = cIItem.cItemCategoryEnum.Soil AndAlso Item.Design.Type = cIDesign.cDesignTypeEnum.Profile Then
+                                If Item.Type = cIItem.cItemTypeEnum.FreeHandArea AndAlso Item.Category = cIItem.cItemCategoryEnum.Soil AndAlso Item.Design.Type = cIDesign.cDesignTypeEnum.Profile AndAlso iClipSoil = ClipSoilEnum.DefaultOutsideBorder Then
                                     Dim oInvertedClip As Region = oInfiniteRegion.Clone
                                     Call oInvertedClip.Exclude(oClip)
                                     Return oInvertedClip

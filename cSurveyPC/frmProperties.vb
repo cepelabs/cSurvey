@@ -174,6 +174,7 @@ Friend Class frmProperties
             cboInversionMode.SelectedIndex = .InversionMode
 
             cboClipBorder.SelectedIndex = .DesignProperties.GetValue("clipborder", My.Application.Settings.GetSetting("design.clipborder", cSurvey.Design.Clipping.cClippingRegions.ClipBorderEnum.ClipBorder))
+            cboClipSoil.SelectedIndex = .DesignProperties.GetValue("clipsoil", My.Application.Settings.GetSetting("design.clipsoil", cSurvey.Design.Clipping.cClippingRegions.ClipSoilEnum.DefaultOutsideBorder))
             'Dim sClippingForAdvancedBrushValue As String = My.Application.Settings.GetSetting("clippingforadvancedbrush", cSurvey.Drawings.cIRegion.RegionTypeEnum.GDI.ToString("D"))
             'If sClippingForAdvancedBrushValue = "Clipper" Then
             '    cboClipAdvancedClipart.SelectedIndex = cSurvey.Drawings.cIRegion.RegionTypeEnum.Clipper
@@ -735,6 +736,7 @@ Friend Class frmProperties
                 .AllowManualDeclinations = chkGPSAllowManualDeclinations.Checked
             End With
 
+            Call .DesignProperties.SetValue("clipsoil", cboClipSoil.SelectedIndex)
             Call .DesignProperties.SetValue("clipborder", cboClipBorder.SelectedIndex)
             Call .DesignProperties.SetValue("clippingforadvancedbrush", cboClipAdvancedClipart.SelectedIndex)
 

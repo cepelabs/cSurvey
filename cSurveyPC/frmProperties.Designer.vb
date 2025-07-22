@@ -480,6 +480,8 @@ Partial Class frmProperties
         Me.cmdItemNamePatternAdd = New DevExpress.XtraEditors.SimpleButton()
         Me.chkShowLegacyExtraPrintAndExportObjects = New DevExpress.XtraEditors.CheckEdit()
         Me.GroupBox8 = New DevExpress.XtraEditors.GroupControl()
+        Me.cboClipSoil = New System.Windows.Forms.ComboBox()
+        Me.lblClipSoil = New DevExpress.XtraEditors.LabelControl()
         Me.cboClipAdvancedClipart = New System.Windows.Forms.ComboBox()
         Me.cboClipBorder = New System.Windows.Forms.ComboBox()
         Me.lblClippingAdvancedClipart = New DevExpress.XtraEditors.LabelControl()
@@ -4435,12 +4437,26 @@ Partial Class frmProperties
         '
         'GroupBox8
         '
+        Me.GroupBox8.Controls.Add(Me.cboClipSoil)
+        Me.GroupBox8.Controls.Add(Me.lblClipSoil)
         Me.GroupBox8.Controls.Add(Me.cboClipAdvancedClipart)
         Me.GroupBox8.Controls.Add(Me.cboClipBorder)
         Me.GroupBox8.Controls.Add(Me.lblClippingAdvancedClipart)
         Me.GroupBox8.Controls.Add(Me.lblClippingBorder)
         resources.ApplyResources(Me.GroupBox8, "GroupBox8")
         Me.GroupBox8.Name = "GroupBox8"
+        '
+        'cboClipSoil
+        '
+        Me.cboClipSoil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        resources.ApplyResources(Me.cboClipSoil, "cboClipSoil")
+        Me.cboClipSoil.Items.AddRange(New Object() {resources.GetString("cboClipSoil.Items"), resources.GetString("cboClipSoil.Items1")})
+        Me.cboClipSoil.Name = "cboClipSoil"
+        '
+        'lblClipSoil
+        '
+        resources.ApplyResources(Me.lblClipSoil, "lblClipSoil")
+        Me.lblClipSoil.Name = "lblClipSoil"
         '
         'cboClipAdvancedClipart
         '
@@ -6791,4 +6807,6 @@ Partial Class frmProperties
     Friend WithEvents pnlElevations As DevExpress.XtraEditors.SplitContainerControl
     Friend WithEvents pnlOrthophotos As DevExpress.XtraEditors.SplitContainerControl
     Friend WithEvents pnlWMSs As DevExpress.XtraEditors.SplitContainerControl
+    Friend WithEvents cboClipSoil As ComboBox
+    Friend WithEvents lblClipSoil As DevExpress.XtraEditors.LabelControl
 End Class

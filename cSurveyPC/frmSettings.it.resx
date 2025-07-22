@@ -841,4 +841,16 @@ Non vi è correlazione tra questo codice e alcun dato relativo all'utente.</valu
   <data name="chkShotsAllowForceConstraint.Properties.Caption" xml:space="preserve">
     <value>Disattiva vincoli sulla modifica dei dati</value>
   </data>
+  <data name="cboDesignClipSoil.Items" xml:space="preserve">
+    <value>Taglia suolo fuori dai  bordi (in sezione)</value>
+  </data>
+  <data name="cboDesignClipSoil.Items1" xml:space="preserve">
+    <value>Taglia suolo dentro ai bordi (in sezione)</value>
+  </data>
+  <data name="lblDesignClipSoil.Text" xml:space="preserve">
+    <value>Ritaglia suolo:</value>
+  </data>
+  <data name="lblDesignClipBorder.Text" xml:space="preserve">
+    <value>Ritaglia bordi:</value>
+  </data>
 </root>

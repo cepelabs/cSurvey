@@ -40,12 +40,16 @@ Partial Class frmPrefixTrigPoints
         Me.listbox2 = New DevExpress.XtraGrid.GridControl()
         Me.grdView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.col2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.optReplace = New DevExpress.XtraEditors.CheckButton()
+        Me.txtPrefixTo = New DevExpress.XtraEditors.TextEdit()
+        Me.lblPrefixTo = New DevExpress.XtraEditors.LabelControl()
         CType(Me.txtPrefix.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkShowSplay.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.listbox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.listbox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPrefixTo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
@@ -168,11 +172,38 @@ Partial Class frmPrefixTrigPoints
         Me.col2.FieldName = "Name"
         Me.col2.Name = "col2"
         '
+        'optReplace
+        '
+        resources.ApplyResources(Me.optReplace, "optReplace")
+        Me.optReplace.GroupIndex = 1
+        Me.optReplace.Name = "optReplace"
+        Me.optReplace.TabStop = False
+        '
+        'txtPrefixTo
+        '
+        resources.ApplyResources(Me.txtPrefixTo, "txtPrefixTo")
+        Me.txtPrefixTo.Name = "txtPrefixTo"
+        Me.txtPrefixTo.Properties.Appearance.Font = CType(resources.GetObject("txtPrefixTo.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.txtPrefixTo.Properties.Appearance.Options.UseFont = True
+        Me.txtPrefixTo.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        '
+        'lblPrefixTo
+        '
+        Me.lblPrefixTo.Appearance.Font = CType(resources.GetObject("lblPrefixTo.Appearance.Font"), System.Drawing.Font)
+        Me.lblPrefixTo.Appearance.Options.UseFont = True
+        Me.lblPrefixTo.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_arrow4right
+        Me.lblPrefixTo.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.lblPrefixTo, "lblPrefixTo")
+        Me.lblPrefixTo.Name = "lblPrefixTo"
+        '
         'frmPrefixTrigPoints
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
+        Me.Controls.Add(Me.lblPrefixTo)
+        Me.Controls.Add(Me.txtPrefixTo)
+        Me.Controls.Add(Me.optReplace)
         Me.Controls.Add(Me.listbox2)
         Me.Controls.Add(Me.txtPrefix)
         Me.Controls.Add(Me.lblPrefix)
@@ -196,6 +227,7 @@ Partial Class frmPrefixTrigPoints
         CType(Me.grdView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.listbox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPrefixTo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -217,4 +249,7 @@ Partial Class frmPrefixTrigPoints
     Friend WithEvents listbox2 As DevExpress.XtraGrid.GridControl
     Friend WithEvents grdView2 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents col2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents optReplace As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents txtPrefixTo As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents lblPrefixTo As DevExpress.XtraEditors.LabelControl
 End Class

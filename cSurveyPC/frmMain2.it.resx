@@ -430,7 +430,7 @@
     <value>Precisione dei dati...</value>
   </data>
   <data name="btnPlotPrefixTrigpoints.Caption" xml:space="preserve">
-    <value>Aggiungi prefisso...</value>
+    <value>Aggiungi/rimuovi/sostituisci prefisso...</value>
   </data>
   <data name="btnPlotRenameTrigpoints.Caption" xml:space="preserve">
     <value>Rinomina caposaldo...</value>
@@ -1752,9 +1752,6 @@
   <data name="mnuSegmentsPaste.Text" xml:space="preserve">
     <value>Incolla</value>
   </data>
-  <data name="mnuSegmentsPrefixTrigpoints.Text" xml:space="preserve">
-    <value>Aggiungi/rimuovi prefisso...</value>
-  </data>
   <data name="mnuSegmentsRenameTrigpoints.Text" xml:space="preserve">
     <value>Rinomina capisaldi...</value>
   </data>
@@ -2270,9 +2267,6 @@
   </data>
   <data name="mnuTrigPointsEntrance.Text" xml:space="preserve">
     <value>Ingresso</value>
-  </data>
-  <data name="mnuTrigPointsPrefixTrigpoints.Text" xml:space="preserve">
-    <value>Aggiungi prefisso...</value>
   </data>
   <data name="mnuTrigPointsRenameTrigpoints.Text" xml:space="preserve">
     <value>Rinomina capisaldi...</value>
@@ -4608,9 +4602,6 @@ o ad una sezione trasversale</value>
   </data>
   <data name="mnuPlotInfoDistances.Text" xml:space="preserve">
     <value>Distanze...</value>
-  </data>
-  <data name="mnuPlotPrefixTrigpoints.Text" xml:space="preserve">
-    <value>Aggiungi/rimuovi prefisso...</value>
   </data>
   <data name="mnuPlotRenameTrigpoints.Text" xml:space="preserve">
     <value>Rinomina capisaldi...</value>

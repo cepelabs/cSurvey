@@ -215,12 +215,15 @@
 </value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Aggiungi/rimuovi prefisso:</value>
+    <value>Aggiungi/rimuovi/sostituisci prefisso:</value>
   </data>
   <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
   <data name="chkShowSplay.Properties.Caption" xml:space="preserve">
     <value>Mostra splay</value>
+  </data>
+  <data name="optReplace.Text" xml:space="preserve">
+    <value>Sostituisci</value>
   </data>
 </root>

@@ -918,9 +918,6 @@
   <data name="mnuSegmentsPaste.Text" xml:space="preserve">
     <value>Вставить</value>
   </data>
-  <data name="mnuSegmentsPrefixTrigpoints.Text" xml:space="preserve">
-    <value>Добавить префикс...</value>
-  </data>
   <data name="mnuSegmentsRenameTrigpoints.Text" xml:space="preserve">
     <value>Переименовать пикеты...</value>
   </data>
@@ -1433,9 +1430,6 @@
   </data>
   <data name="mnuTrigPointsEntrance.Text" xml:space="preserve">
     <value>Вход</value>
-  </data>
-  <data name="mnuTrigPointsPrefixTrigpoints.Text" xml:space="preserve">
-    <value>Добавить префикс...</value>
   </data>
   <data name="mnuTrigPointsRenameTrigpoints.Text" xml:space="preserve">
     <value>Переименовать пикеты...</value>
@@ -3568,9 +3562,6 @@
   </data>
   <data name="mnuPlotInfoDistances.Text" xml:space="preserve">
     <value>Расстояния...</value>
-  </data>
-  <data name="mnuPlotPrefixTrigpoints.Text" xml:space="preserve">
-    <value>Добавить префикс...</value>
   </data>
   <data name="mnuPlotRenameTrigpoints.Text" xml:space="preserve">
     <value>Переименовать пикеты...</value>

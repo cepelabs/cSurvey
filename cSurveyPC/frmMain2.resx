@@ -3307,7 +3307,7 @@
 </value>
   </data>
   <data name="btnPlotPrefixTrigpoints.Caption" xml:space="preserve">
-    <value>Add prefix...</value>
+    <value>Add/remove/replace prefix...</value>
   </data>
   <data name="btnPlotPrefixTrigpoints.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -131,11 +131,21 @@ Friend Class frmPrefixTrigPoints
                             Call oSurvey.TrigPoints.RenameTrigPoint(oTrigpoint.Name, sPrefix & oTrigpoint.Name)
                         End If
                     Next
-                Else
+                ElseIf optRemove.Checked Then
                     For Each oTrigpoint As cTrigPoint In oList2
                         If (chkShowSplay.Checked) OrElse (Not chkShowSplay.Checked AndAlso Not oTrigpoint.Data.IsSplay) Then
                             If oTrigpoint.Name.StartsWith(sPrefix) Then
                                 Dim sNewTrigpoint As String = oTrigpoint.Name.Substring(sPrefix.Length)
+                                Call oSurvey.TrigPoints.RenameTrigPoint(oTrigpoint.Name, sNewTrigpoint)
+                            End If
+                        End If
+                    Next
+                Else
+                    Dim sNewPrefix As String = txtPrefixTo.Text
+                    For Each oTrigpoint As cTrigPoint In oList2
+                        If (chkShowSplay.Checked) OrElse (Not chkShowSplay.Checked AndAlso Not oTrigpoint.Data.IsSplay) Then
+                            If oTrigpoint.Name.StartsWith(sPrefix) Then
+                                Dim sNewTrigpoint As String = sNewPrefix & oTrigpoint.Name.Substring(sPrefix.Length)
                                 Call oSurvey.TrigPoints.RenameTrigPoint(oTrigpoint.Name, sNewTrigpoint)
                             End If
                         End If
@@ -224,6 +234,12 @@ Friend Class frmPrefixTrigPoints
             e.Visible = (chkShowSplay.Checked) OrElse (Not chkShowSplay.Checked AndAlso Not oTrigpoint.Data.IsSplay)
         End If
         e.Handled = True
+    End Sub
+
+    Private Sub optReplace_CheckedChanged(sender As Object, e As EventArgs) Handles optReplace.CheckedChanged
+        Dim bVisible As Boolean = optReplace.Checked
+        lblPrefixTo.Visible = bVisible
+        txtPrefixTo.Visible = bVisible
     End Sub
 
     'Private Sub grdView2_FocusedRowChanged(sender As Object, e As FocusedRowChangedEventArgs) Handles grdView2.FocusedRowChanged

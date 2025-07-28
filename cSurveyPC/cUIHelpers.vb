@@ -3,6 +3,7 @@ Imports System.IO
 Imports System.Text
 Imports System.Windows.Input
 Imports System.Xml
+Imports cSurveyPC.cSurvey.Design.Options
 Imports cSurveyPC.cSurvey.Helper.Editor
 Imports cSurveyPC.cSurvey.Surface
 Imports DevExpress.Utils.Behaviors.Common
@@ -3277,6 +3278,24 @@ Namespace cSurvey.UIHelpers
                 Return iValidation
             End Get
         End Property
+    End Class
+
+    Public Class cISurfaceOptionsItemBindingList
+        Inherits BindingList(Of cISurfaceOptionsItem)
+
+        Public Sub New(SurfaceOptions As cSurface3DOptions)
+            MyBase.New
+            For Each oItem As cISurfaceOptionsItem In SurfaceOptions
+                MyBase.Add(oItem)
+            Next
+        End Sub
+
+        Public Sub New(SurfaceOptions As cSurfaceOptions)
+            MyBase.New
+            For Each oItem As cISurfaceOptionsItem In SurfaceOptions
+                MyBase.Add(oItem)
+            Next
+        End Sub
     End Class
 
     Public Class cSegmentsBindingList

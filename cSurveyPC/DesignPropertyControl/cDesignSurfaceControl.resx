@@ -186,11 +186,14 @@
   <data name="grdSurfaceLayers.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 4</value>
   </data>
-  <data name="colLayerVisible.Caption" xml:space="preserve">
-    <value> </value>
-  </data>
   <data name="chkLayerVisible.AutoHeight" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="chkLayerVisible.Caption" xml:space="preserve">
+    <value>Visible</value>
+  </data>
+  <data name="colLayerVisible.ToolTip" xml:space="preserve">
+    <value>Visible</value>
   </data>
   <data name="colLayerVisible.Visible" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -214,6 +217,9 @@
     <value>24</value>
   </data>
   <data name="colLayerName.Caption" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="colLayerName.ToolTip" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="colLayerName.Visible" type="System.Boolean, mscorlib">
@@ -285,12 +291,12 @@
   <data name="cmdSurfaceLayersDown.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEdSURBVDhPpZK9SgNRFITPe/gGtttZx6gkqdL4BnmD
-        lCksgn/pUxh119YihY0EEVEJCAlIIiQmAQWxyEuMZ3aPht1TmR04MPe7c+culxUAqflVuSXdnWMBh96w
-        zztgKurB72Ub43ktLjHs8w6YCoeC968mwp6AZYZ93gETC0afdVze5ygYfNQQPuYo6C/2EfX1IY/WKNjW
-        gof5HqKXHAW92RauhmsWFLXgZraJ6FUL1Bv2eQdMhabgerqBcCygN+zzWVBpyTNvb9wKOiPBuQ49v4J7
-        2XxqwSmdCrqTKp6WVZy9STz0ZNzL5lOLGIgEvK1xJ7hYJENv7xC4vAOJgl09cKA/EYeejBsu78BKQelE
-        wKFP0P8KKB78O0yl85AfpGsV1MCpaagAAAAASUVORK5CYII=
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEGSURBVDhPpZCxagJBGITnPfIGaa9LbTyDprLJG/gG
+        lhYWsjHap0hi7mwtLNKIhCAmCIEE5BSSqJCApPAlRsbzRG4bvRsYGGb//9tlQRL7jlRoouvWQVk56q15
+        q9gqWwf/V7eczEsbyNGAjAF/ljV6fVCwRIDgr8zHlxSAj98SvWEKwGhxRX8EutcJAOcGHMwv6L+nAPRn
+        Z2x/JgRkDfg0O6U/Bl2TAJCpgZ3vE3oTUPlgwGUTb7q90gPvA/AhCLNeobP4vAXIN8DuV5GvqyLvpthY
+        WZ3O4vMWAICj2yrPYGsRWnn7D441bxWhnJwBq8PQyuoO+oM9OfkbUI6WjwVIWtwtS/H5NaRrFdRCDe2O
+        AAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="cmdSurfaceLayersDown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -329,12 +335,12 @@
   <data name="cmdSurfaceLayersUp.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEiSURBVDhPnVNLSsRAFHxLT+ABFFwLs3chY4LjCbyC
-        l3BQwQ/iARwU0wvdiAs3IqgwuNEZRVBciIGJs/EY5av0A828jXRBQXW9SiXdSQRAg3+R7wlIW9ZweWcY
-        FrcFb9VhTWqzfd4ZivaOYPh5gKNrqUlN718FnX3BoNzASV/Qu4ukHpSb4Gwy31iQ+ZY8Z7uC9QvB8X1k
-        VzU9zibzjUVtiMwpW9z303gNxaOgHc+gxZnLO8PAPT98rSIM493N9nlnGJa0oF+toHjRR08tuB0toHhN
-        LMi04Go0j/CuBfYKCZd3hiHTg7usZhE+EgtyLTivphHK1AK96HQ8hVAlFizrwZ19R1Kb7fPOMGRdueno
-        n0hSm+3zzvjFjJJfH0ldo5mH/ACCjBYT47hY/gAAAABJRU5ErkJggg==
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAENSURBVDhPnZLBSkJBFIb/ZU/QAyS0Dty7CLtD+gS+
+        gi+hpHCvEj1AknhnoZtw4SaCCsRNaREULaILTm56jD+OcxcXp0UzB374+c/hG87MgCSKKpbqg6Ji5sw7
+        QV7HMfhuLrcS7wWoJuDq64JXt9hKvGT/AtTOwWV2xtEcHDxYiV9mHUpvd94BqC5eoh7YmoLDhVV7Ckom
+        vd15BwDgEEBZ9n7eNJk+gVV7B2XpOfNOkJfs/PjdoF7Z070uUeokAeemzvQVVKGA+3WF6VsgIErAm/UR
+        9Qeo8if0A8TgzJSoPwMBKgavzT51FgpIwPFmj9oEAk574OTHSrw3IGrjrtYHReK9AQAO8t8nEv8n4BeC
+        jBYTFgZXtAAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="cmdSurfaceLayersUp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -407,7 +413,7 @@
     <value>cboSurfaceElevationsLayers</value>
   </data>
   <data name="&gt;&gt;cboSurfaceElevationsLayers.Type" xml:space="preserve">
-    <value>cSurveyPC.cElevationDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cElevationDropDown, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboSurfaceElevationsLayers.Parent" xml:space="preserve">
     <value>pnlElevations</value>
@@ -444,9 +450,6 @@
   </data>
   <data name="trkTransparency.EditValue" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
-  </data>
-  <data name="trkTransparency.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="trkTransparency.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 44</value>
@@ -695,7 +698,7 @@
     <value>cDesignSurfaceControl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cDesignPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cDesignPropertyControl, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="btnSelectAll.Caption" xml:space="preserve">
     <value>Select all</value>

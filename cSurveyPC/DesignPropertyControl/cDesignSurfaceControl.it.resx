@@ -153,4 +153,13 @@
   <data name="lbl3dSurfaceTransparency.Text" xml:space="preserve">
     <value>Trasparenza:</value>
   </data>
+  <data name="colLayerVisible.ToolTip" xml:space="preserve">
+    <value>Visibile</value>
+  </data>
+  <data name="colLayerName.ToolTip" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="chkLayerVisible.Caption" xml:space="preserve">
+    <value>Visibile</value>
+  </data>
 </root>

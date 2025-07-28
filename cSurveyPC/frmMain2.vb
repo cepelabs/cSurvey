@@ -2422,19 +2422,24 @@ Friend Class frmMain2
 
     Private Sub frmMain_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If Not bIsInDebug Then modDevExpress.PrepareSkinMenu(SkinDropDownButtonItem1.DropDownGallery.Gallery)
-        If oCommandLine.Count = 1 Then
-            If oCommandLine(0).Key <> "" AndAlso oCommandLine(0).Value = "" Then
+
+        Call pSurveyNew()
+
+        'if there are command in commandline
+        If oCommandLine.Count > 0 Then
+            'if there is ONE command will check if is only a key (not in format key=value) so this is a filename
+            If oCommandLine.Count = 1 AndAlso oCommandLine(0).Key <> "" AndAlso oCommandLine(0).Value = "" Then
                 Call pSurveyLoad(oCommandLine(0).Key, False)
             Else
                 Dim sFilename As String = oCommandLine.GetValue("filename", "")
                 If sFilename <> "" Then
                     Call pSurveyLoad(sFilename, False)
-                Else
-                    Call pSurveyNew()
+                    'Else
+                    '   Call pSurveyNew()
                 End If
             End If
-        Else
-            Call pSurveyNew()
+            'Else
+            '   Call pSurveyNew()
         End If
     End Sub
 

@@ -115,6 +115,7 @@ Partial Class cDesignSurfaceControl
         Me.grdViewSurfaceLayers.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colLayerVisible, Me.colLayerImage, Me.colLayerName})
         Me.grdViewSurfaceLayers.GridControl = Me.grdSurfaceLayers
         Me.grdViewSurfaceLayers.Name = "grdViewSurfaceLayers"
+        Me.grdViewSurfaceLayers.OptionsCustomization.AllowColumnMoving = False
         Me.grdViewSurfaceLayers.OptionsCustomization.AllowGroup = False
         Me.grdViewSurfaceLayers.OptionsCustomization.AllowSort = False
         Me.grdViewSurfaceLayers.OptionsView.ShowGroupPanel = False
@@ -122,13 +123,14 @@ Partial Class cDesignSurfaceControl
         '
         'colLayerVisible
         '
-        resources.ApplyResources(Me.colLayerVisible, "colLayerVisible")
         Me.colLayerVisible.ColumnEdit = Me.chkLayerVisible
-        Me.colLayerVisible.FieldName = "Visible"
+        Me.colLayerVisible.FieldName = "_visible"
         Me.colLayerVisible.MaxWidth = 24
         Me.colLayerVisible.MinWidth = 24
         Me.colLayerVisible.Name = "colLayerVisible"
         Me.colLayerVisible.OptionsColumn.FixedWidth = True
+        resources.ApplyResources(Me.colLayerVisible, "colLayerVisible")
+        Me.colLayerVisible.UnboundDataType = GetType(Boolean)
         '
         'chkLayerVisible
         '
@@ -139,14 +141,14 @@ Partial Class cDesignSurfaceControl
         '
         resources.ApplyResources(Me.colLayerImage, "colLayerImage")
         Me.colLayerImage.ColumnEdit = Me.picLayerImage
-        Me.colLayerImage.FieldName = "Image"
+        Me.colLayerImage.FieldName = "_image"
         Me.colLayerImage.MaxWidth = 24
         Me.colLayerImage.MinWidth = 24
         Me.colLayerImage.Name = "colLayerImage"
         Me.colLayerImage.OptionsColumn.AllowEdit = False
         Me.colLayerImage.OptionsColumn.FixedWidth = True
         Me.colLayerImage.OptionsColumn.ReadOnly = True
-        Me.colLayerImage.UnboundType = DevExpress.Data.UnboundColumnType.[Object]
+        Me.colLayerImage.UnboundDataType = GetType(Object)
         '
         'picLayerImage
         '
@@ -156,11 +158,11 @@ Partial Class cDesignSurfaceControl
         'colLayerName
         '
         resources.ApplyResources(Me.colLayerName, "colLayerName")
-        Me.colLayerName.FieldName = "Name"
+        Me.colLayerName.FieldName = "_name"
         Me.colLayerName.Name = "colLayerName"
         Me.colLayerName.OptionsColumn.AllowEdit = False
         Me.colLayerName.OptionsColumn.ReadOnly = True
-        Me.colLayerName.UnboundType = DevExpress.Data.UnboundColumnType.[String]
+        Me.colLayerName.UnboundDataType = GetType(String)
         '
         'cmdSurfaceLayersEdit
         '

@@ -1,9 +1,18 @@
-﻿Imports cSurveyPC.cSurvey
+﻿Imports System.ComponentModel
+Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Options
 Imports DevExpress.XtraGrid.Views.Base
 
 Public Class cDesignSurfaceControl
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(Me, False)
+    End Sub
 
     'Private Sub oSurvey_OnPropertiesChanged(ByVal Sender As Object, ByVal Args As cSurveyPC.cSurvey.cSurvey.OnPropertiesChangedEventArgs)
     '    'If Args.Source = cSurvey.cSurvey.OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum.DefaultProperties Then
@@ -40,7 +49,7 @@ Public Class cDesignSurfaceControl
 
                 Call oSurfaceOptions.Rebind()
                 grdSurfaceLayers.DataSource = Nothing
-                grdSurfaceLayers.DataSource = oSurfaceOptions
+                grdSurfaceLayers.DataSource = New UIHelpers.cISurfaceOptionsItemBindingList(oSurfaceOptions)
 
                 MyBase.Visible = True
 
@@ -52,7 +61,7 @@ Public Class cDesignSurfaceControl
 
                 Call oSurfaceOptions.Rebind()
                 grdSurfaceLayers.DataSource = Nothing
-                grdSurfaceLayers.DataSource = oSurfaceOptions
+                grdSurfaceLayers.DataSource = New UIHelpers.cISurfaceOptionsItemBindingList(oSurfaceOptions)
 
                 pnlElevations.Visible = False
                 MyBase.Visible = True
@@ -95,13 +104,15 @@ Public Class cDesignSurfaceControl
 
     Private Sub grdViewSurfaceLayers_CustomUnboundColumnData(sender As Object, e As CustomColumnDataEventArgs) Handles grdViewSurfaceLayers.CustomUnboundColumnData
         If e.Row IsNot Nothing Then
-            If e.IsGetData AndAlso e.Row IsNot Nothing Then
+            If e.IsGetData Then
                 If e.Column Is colLayerName Then
                     Dim sID As String = DirectCast(e.Row, cISurfaceOptionsItem).ID
                     Dim oItem As Surface.cISurfaceItem = MyBase.Design.Survey.Surface(sID)
                     If oItem IsNot Nothing Then
                         e.Value = oItem.Name
                     End If
+                ElseIf e.Column Is colLayerVisible Then
+                    e.Value = DirectCast(e.Row, cISurfaceOptionsItem).Visible
                 ElseIf e.Column Is colLayerImage Then
                     Dim sID As String = DirectCast(e.Row, cISurfaceOptionsItem).ID
                     Dim oItem As Surface.cISurfaceItem = MyBase.Design.Survey.Surface(sID)
@@ -114,6 +125,10 @@ Public Class cDesignSurfaceControl
                             e.Value = My.Resources.soilmodeldata
                         End If
                     End If
+                End If
+            Else
+                If e.Column Is colLayerVisible Then
+                    DirectCast(e.Row, cISurfaceOptionsItem).Visible = e.Value
                 End If
             End If
         End If

@@ -1,4 +1,5 @@
-﻿Imports cSurveyPC.cSurvey
+﻿Imports System.ComponentModel
+Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
@@ -54,16 +55,16 @@ Friend Class frmParametersTranslations
     End Class
 
     Friend Class cTranslationsBag
+        Inherits BindingList(Of cTranslationsBagItem)
         Implements IEnumerable
         Implements cIUIBaseInteractions
 
         Private oOptions As Options.cTranslationsOptions
-        Private oItems As List(Of cTranslationsBagItem)
 
         Public Event OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Implements cIUIBaseInteractions.OnPropertyChanged
 
         Friend Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, TranslationsOptions As Options.cTranslationsOptions, ByVal ApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum)
-            oItems = New List(Of cTranslationsBagItem)
+            MyBase.New
             oOptions = TranslationsOptions
 
             Call Append(Nothing, TranslationsOptions.OriginalPositionTranslation)
@@ -95,20 +96,20 @@ Friend Class frmParametersTranslations
         End Sub
 
         Friend Sub New()
-            oItems = New List(Of cTranslationsBagItem)
+            MyBase.New
         End Sub
 
-        Public ReadOnly Property Item(ByVal Index As Integer) As cTranslationsBagItem
-            Get
-                Return oItems(Index)
-            End Get
-        End Property
+        'Public ReadOnly Property Item(ByVal Index As Integer) As cTranslationsBagItem
+        '    Get
+        '        Return oItems(Index)
+        '    End Get
+        'End Property
 
-        Public ReadOnly Property Count() As Integer
-            Get
-                Return oItems.Count
-            End Get
-        End Property
+        'Public ReadOnly Property Count() As Integer
+        '    Get
+        '        Return oItems.Count
+        '    End Get
+        'End Property
 
         Private Sub oItem_OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs)
             Call PropertyChanged("Item." & e.Name)
@@ -117,13 +118,13 @@ Friend Class frmParametersTranslations
         Friend Function Append(CaveInfo As cICaveInfoBranches, Translation As cTranslationBase) ', Priority As cTranslation.cTranslationPriorityEnum, BreakPercentage As Single) As cTranslationsBagItem
             Dim oItem As cTranslationsBagItem = New cTranslationsBagItem(CaveInfo, Translation) ', Priority, BreakPercentage)
             AddHandler oItem.OnPropertyChanged, AddressOf oItem_OnPropertyChanged
-            Call oItems.Add(oItem)
+            Call MyBase.Add(oItem)
             Return oItem
         End Function
 
-        Public Function GetEnumerator() As System.Collections.IEnumerator Implements System.Collections.IEnumerable.GetEnumerator
-            Return oItems.GetEnumerator
-        End Function
+        'Public Function GetEnumerator() As System.Collections.IEnumerator Implements System.Collections.IEnumerable.GetEnumerator
+        '    Return oItems.GetEnumerator
+        'End Function
 
         Public Sub PropertyChanged(Name As String) Implements cIUIBaseInteractions.PropertyChanged
             RaiseEvent OnPropertyChanged(Me, New PropertyChangeEventArgs(Name))

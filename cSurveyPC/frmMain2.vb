@@ -6812,6 +6812,9 @@ Friend Class frmMain2
     End Function
 
     Private Sub pDesignTools_CreateItem(ByVal Bag As cEditToolsBag, Optional ByVal UseSubtype As Boolean = False, Optional ByVal Point As PointF = Nothing, Optional ByVal Filename As String = "", Optional ByVal Text As String = "", Optional ByVal Size As cIItemSizable.SizeEnum = cIItemSizable.SizeEnum.Default, Optional ByVal FontType As cItemFont.FontTypeEnum = cItemFont.FontTypeEnum.Generic)
+        'this will force undo function on validate to run with the current right selection
+        Call picMap.Focus()
+
         Dim bCancel As Boolean = False
 
         Dim sType As String = ""

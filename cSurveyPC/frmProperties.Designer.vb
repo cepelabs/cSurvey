@@ -663,6 +663,8 @@ Partial Class frmProperties
         Me.AccordionControlElement9 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlElement15 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.Bar1 = New DevExpress.XtraBars.Bar()
+        Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
+        Me.tvCaveInforsDragDrop = New DevExpress.Utils.DragDrop.DragDropEvents(Me.components)
         CType(Me.pnlSessions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlSessions.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlSessions.Panel1.SuspendLayout()
@@ -980,6 +982,7 @@ Partial Class frmProperties
         CType(Me.pnlFooter, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlFooter.SuspendLayout()
         CType(Me.AccordionControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'pnlSessions
@@ -2879,6 +2882,7 @@ Partial Class frmProperties
         '
         'tvCaveInfos
         '
+        Me.BehaviorManager1.SetBehaviors(Me.tvCaveInfos, New DevExpress.Utils.Behaviors.Behavior() {CType(DevExpress.Utils.DragDrop.DragDropBehavior.Create(GetType(DevExpress.XtraTreeList.TreeListDragDropSource), True, True, True, True, Me.tvCaveInforsDragDrop), DevExpress.Utils.Behaviors.Behavior)})
         Me.tvCaveInfos.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colCaveInfosName, Me.colCaveInfosColor})
         resources.ApplyResources(Me.tvCaveInfos, "tvCaveInfos")
         Me.tvCaveInfos.KeyFieldName = "Item"
@@ -5780,6 +5784,9 @@ Partial Class frmProperties
         Me.Bar1.StandaloneBarDockControl = Me.StandaloneBarDockControl3
         resources.ApplyResources(Me.Bar1, "Bar1")
         '
+        'tvCaveInforsDragDrop
+        '
+        '
         'frmProperties
         '
         resources.ApplyResources(Me, "$this")
@@ -6171,6 +6178,7 @@ Partial Class frmProperties
         CType(Me.pnlFooter, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlFooter.ResumeLayout(False)
         CType(Me.AccordionControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -6809,4 +6817,6 @@ Partial Class frmProperties
     Friend WithEvents pnlWMSs As DevExpress.XtraEditors.SplitContainerControl
     Friend WithEvents cboClipSoil As ComboBox
     Friend WithEvents lblClipSoil As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents BehaviorManager1 As DevExpress.Utils.Behaviors.BehaviorManager
+    Friend WithEvents tvCaveInforsDragDrop As DevExpress.Utils.DragDrop.DragDropEvents
 End Class

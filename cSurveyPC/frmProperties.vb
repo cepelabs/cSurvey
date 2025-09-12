@@ -13,6 +13,7 @@ Imports DevExpress.Drawing.Internal
 Imports System.Diagnostics.Eventing.Reader
 Imports DevExpress.XtraTreeList.Nodes
 Imports NAudio.Wave
+Imports DevExpress.Utils.DragDrop
 
 Friend Class frmProperties
     Private oSurvey As cSurvey.cSurvey
@@ -714,10 +715,14 @@ Friend Class frmProperties
             '    Dim oCI As cCaveInfoPlaceHolder = oCaveNode.Tag
             '    Call pCaveBranchesSave(oCI.Source.Branches, oCaveNode.Nodes)
             'Next
+            tvCaveInfos.BeginUpdate()
             Call DirectCast(tvCaveInfos.DataSource, cCaveInfoBranchEditBindingList).Save()
+            tvCaveInfos.EndUpdate()
             Call pCavesLoad()
 
+            tvHighlights.BeginUpdate()
             Call DirectCast(tvHighlights.DataSource, cHighlightEditBindingList).Save()
+            tvHighlights.EndUpdate()
             Call pHighlightsLoad()
 
             With .GPS
@@ -855,10 +860,22 @@ Friend Class frmProperties
 
             .HistoryEnabled = chkHistoryEnabled.Checked
 
+            tvElevations.BeginUpdate()
             Call DirectCast(tvElevations.DataSource, cElevationsBindingList).Save()
+            tvElevations.EndUpdate()
+
+            tvOrthophotos.BeginUpdate()
             Call DirectCast(tvOrthophotos.DataSource, cOrthophotosBindingList).Save()
+            tvOrthophotos.EndUpdate()
+
+            tvWMSs.BeginUpdate()
             Call DirectCast(tvWMSs.DataSource, cWMSsBindingList).Save()
+            tvWMSs.EndUpdate()
+
+            tvGrades.BeginUpdate()
             Call DirectCast(tvGrades.DataSource, cGradeEditBindingList).Save()
+            tvGrades.EndUpdate()
+
             Call pElevationsLoad()
             Call pOrthophotosLoad()
             Call pWMSsLoad()
@@ -2610,34 +2627,6 @@ Friend Class frmProperties
 
             tvCaveInfos.EndUpdate()
         End If
-
-        'Try
-        '    Dim oParentNode As TreeNode = tvCaveInfos.SelectedNode
-        '    If Not oParentNode Is Nothing Then
-        '        Call tvCaveInfos.Focus()
-
-        '        Dim sCave As String = oParentNode.Tag.name
-        '        Dim oBranches As cCaveInfoBranches = oParentNode.Tag.source.branches
-        '        Dim oCaveInfoBranch As cCaveInfoBranch = oBranches.GetEmptyCaveInfoBranch(pGetNewNodeName(modMain.GetLocalizedString("properties.textpart5"), oParentNode.Nodes))
-        '        Dim oBranchNode As TreeNode = oParentNode.Nodes.Add(oCaveInfoBranch.Name, oCaveInfoBranch.Name)
-        '        Dim oCIB As cCaveInfoBranchPlaceHolder = New cCaveInfoBranchPlaceHolder
-        '        oCIB.Name = oCaveInfoBranch.Name
-        '        oCIB.Color = oCaveInfoBranch.Color
-        '        oCIB.Description = oCaveInfoBranch.Description
-        '        oCIB.SurfaceProfileShow = oCaveInfoBranch.SurfaceProfileShow
-        '        oCIB.Locked = oCaveInfoBranch.Locked
-        '        oCIB.ExtendStart = oCaveInfoBranch.ExtendStart
-        '        oCIB.Source = oCaveInfoBranch
-        '        oCIB.Created = True
-        '        oBranchNode.Tag = oCIB
-        '        oBranchNode.SelectedImageKey = "branch"
-        '        oBranchNode.ImageKey = "branch"
-
-        '        tvCaveInfos.SelectedNode = oBranchNode
-        '        Call oBranchNode.EnsureVisible()
-        '    End If
-        'Catch
-        'End Try
     End Sub
 
     Private Sub btnCaveInfoAddCave_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnCaveInfoAddCave.ItemClick
@@ -2648,24 +2637,6 @@ Friend Class frmProperties
         Dim oNode As DevExpress.XtraTreeList.Nodes.TreeListNode = tvCaveInfos.GetNodeByDataRecord(oItem)
         tvCaveInfos.FocusedNode = oNode
         tvCaveInfos.EndUpdate()
-
-        'Call tvCaveInfos.Focus()
-
-        '
-        'Dim oCaveNode As TreeNode = tvCaveInfos.Nodes.Add(oCaveInfo.Name, oCaveInfo.Name)
-        'Dim oCI As cCaveInfoPlaceHolder = New cCaveInfoPlaceHolder
-        'oCI.Name = oCaveInfo.Name
-        'oCI.ID = oCaveInfo.ID
-        'oCI.Color = oCaveInfo.Color
-        'oCI.ExtendStart = oCaveInfo.ExtendStart
-        'oCI.Source = oCaveInfo
-        'oCI.Created = True
-        'oCaveNode.Tag = oCI
-        'oCaveNode.SelectedImageKey = "cave"
-        'oCaveNode.ImageKey = "cave"
-
-        'tvCaveInfos.SelectedNode = oCaveNode
-        'Call oCaveNode.EnsureVisible()
     End Sub
 
     Private Sub btnCaveInfoDelete_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnCaveInfoDelete.ItemClick
@@ -2826,7 +2797,9 @@ Friend Class frmProperties
     Private Sub tvCaveInfos_NodeCellStyle(sender As Object, e As DevExpress.XtraTreeList.GetCustomNodeCellStyleEventArgs) Handles tvCaveInfos.NodeCellStyle
         If e.Column Is colCaveInfosColor Then
             Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetDataRecordByNode(e.Node)
-            e.Appearance.BackColor = oItem.Color
+            If oItem IsNot Nothing Then
+                e.Appearance.BackColor = oItem.Color
+            End If
         End If
     End Sub
 
@@ -4136,4 +4109,59 @@ Friend Class frmProperties
         End If
     End Sub
 
+    Private Sub tvCaveInforsDragDrop_EndDragDrop(sender As Object, e As DevExpress.Utils.DragDrop.EndDragDropEventArgs) Handles tvCaveInforsDragDrop.EndDragDrop
+
+    End Sub
+
+    Private Sub tvCaveInforsDragDrop_BeginDragDrop(sender As Object, e As DevExpress.Utils.DragDrop.BeginDragDropEventArgs) Handles tvCaveInforsDragDrop.BeginDragDrop
+        'Dim oItem As cICaveInfoBasePlaceHolder = e.Data
+
+    End Sub
+
+    Private Sub tvCaveInforsDragDrop_DragDrop(sender As Object, e As DragDropEventArgs) Handles tvCaveInforsDragDrop.DragDrop
+        Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetRow(DirectCast(e.Data(0), TreeListNode).Id)
+        Dim oTargetNode As TreeListNode = tvCaveInfos.GetNodeAt(tvCaveInfos.PointToClient(e.Location))
+        If oTargetNode IsNot Nothing Then
+            Dim oTargetItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetRow(oTargetNode.Id)
+            If e.InsertType = InsertType.After Then
+                tvCaveInfos.BeginUpdate()
+                Dim oItems As cCaveInfoBranchEditBindingList = tvCaveInfos.DataSource
+                oItems.Move(oItem, oTargetItem.Parent, oItems.IndexOf(oTargetItem) + 1)
+                tvCaveInfos.RefreshDataSource()
+                tvCaveInfos.EndUpdate()
+                e.Handled = True
+            ElseIf e.InsertType = InsertType.Before Then
+                tvCaveInfos.BeginUpdate()
+                Dim oItems As cCaveInfoBranchEditBindingList = tvCaveInfos.DataSource
+                oItems.Move(oItem, oTargetItem.Parent, oItems.IndexOf(oTargetItem))
+                tvCaveInfos.RefreshDataSource()
+                tvCaveInfos.EndUpdate()
+                e.Handled = True
+            ElseIf e.InsertType = InsertType.AsChild Then
+                tvCaveInfos.BeginUpdate()
+                Dim oItems As cCaveInfoBranchEditBindingList = tvCaveInfos.DataSource
+                oItems.Move(oItem, oTargetItem, 0)
+                tvCaveInfos.RefreshDataSource()
+                tvCaveInfos.EndUpdate()
+                e.Handled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub tvCaveInforsDragDrop_DragOver(sender As Object, e As DragOverEventArgs) Handles tvCaveInforsDragDrop.DragOver
+        Dim oNode As TreeListNode = e.Data(0)
+        Dim oTargetNode As TreeListNode = tvCaveInfos.GetNodeAt(tvCaveInfos.PointToClient(e.Location))
+        If oTargetNode Is Nothing Then
+            e.Action = DragDropActions.None
+            e.Handled = True
+        Else
+            If oTargetNode Is oNode Then
+                e.Action = DragDropActions.None
+                e.Handled = True
+            ElseIf oTargetNode.HasAsParent(oNode) Then
+                e.Action = DragDropActions.None
+                e.Handled = True
+            End If
+        End If
+    End Sub
 End Class

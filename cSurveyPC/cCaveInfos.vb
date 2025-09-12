@@ -29,6 +29,11 @@ Namespace cSurvey
             End Sub
         End Class
 
+
+        Public Function ByOrdinalPosition() As List(Of cCaveInfo)
+            Return oCaveInfos.Values.OrderBy(Function(oItem) oItem.OrdinalPosition).ToList
+        End Function
+
         Public Function GetUniqueName(Basename As String) As String
             Dim iindex As Integer = 1
             Dim sBasename As String = Basename

@@ -14,6 +14,10 @@ Namespace cSurvey
         Private oCaveInfo As cCaveInfo
         Private oBranches As Dictionary(Of String, cCaveInfoBranch)
 
+        Public Function ByOrdinalPosition() As List(Of cCaveInfoBranch)
+            Return oBranches.Values.OrderBy(Function(oItem) oItem.OrdinalPosition).ToList
+        End Function
+
         Public Function GetUniqueName(Basename As String) As String
             Dim iindex As Integer = 1
             Dim sBasename As String = Basename

@@ -13,6 +13,8 @@ Namespace cSurvey
         Private oColor As Color
         Private sDescription As String
 
+        Private iOrdinalPosition As Integer
+
         Private oTranslations As cTranslations
         Private iDrawingZOrder As Integer
 
@@ -27,6 +29,17 @@ Namespace cSurvey
         Private iPriority As Integer?
         Private oParentConnection As cConnectionDef
         Private oConnection As cConnectionDef
+
+
+        Public ReadOnly Property OrdinalPosition As Integer
+            Get
+                Return iOrdinalPosition
+            End Get
+        End Property
+
+        Friend Sub SetOrdinalPosition(OrdinalPositio As Integer)
+            iOrdinalPosition = OrdinalPositio
+        End Sub
 
         Public Function GetLocked() As Boolean Implements cICaveInfoBranches.GetLocked
             If bLocked Then
@@ -170,6 +183,8 @@ Namespace cSurvey
             sExtendStart = ""
             iPriority = Nothing
 
+            iOrdinalPosition = 0
+
             oBranches = New cCaveInfoBranches(oSurvey, Cave, oCaveInfo, Me)
         End Sub
 
@@ -212,6 +227,8 @@ Namespace cSurvey
             iSurfaceProfileShow = modNumbers.StringToInteger(modXML.GetAttributeValue(CaveInfoBranch, "surfaceprofileshow", 0))
             bLocked = modXML.GetAttributeValue(CaveInfoBranch, "locked", 0)
 
+            iOrdinalPosition = modXML.GetAttributeValue(CaveInfoBranch, "op", 0)
+
             sExtendStart = modXML.GetAttributeValue(CaveInfoBranch, "extstart", "")
             iPriority = modXML.GetAttributeValue(CaveInfoBranch, "pty", Nothing)
             If modXML.ChildElementExist(CaveInfoBranch, "pcn") Then oParentConnection = New cConnectionDef(CaveInfoBranch("pcn"))
@@ -229,6 +246,7 @@ Namespace cSurvey
             If bLocked Then oXmlBranch.SetAttribute("locked", "1")
             If sExtendStart <> "" Then oXmlBranch.SetAttribute("extstart", sExtendStart)
             If iPriority.HasValue Then oXmlBranch.SetAttribute("pty", iPriority.Value)
+            If iOrdinalPosition <> 0 Then oXmlBranch.SetAttribute("op", iOrdinalPosition)
             If Not IsNothing(oParentConnection) Then oParentConnection.SaveTo(File, Document, oXmlBranch, "pcn")
             If Not IsNothing(oConnection) Then oConnection.SaveTo(File, Document, oXmlBranch, "cn")
             Call oBranches.SaveTo(File, Document, oXmlBranch)

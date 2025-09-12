@@ -13,6 +13,8 @@ Namespace cSurvey
         Private sName As String
         Private sDescription As String
 
+        Private iOrdinalPosition As Integer
+
         Private oColor As Color
 
         Private oBranches As cCaveInfoBranches
@@ -28,6 +30,16 @@ Namespace cSurvey
         Private iPriority As Integer?
         Private oParentConnection As cConnectionDef
         Private oConnection As cConnectionDef
+
+        Public ReadOnly Property OrdinalPosition As Integer
+            Get
+                Return iOrdinalPosition
+            End Get
+        End Property
+
+        Friend Sub SetOrdinalPosition(OrdinalPositio As Integer)
+            iOrdinalPosition = OrdinalPositio
+        End Sub
 
         Public Function GetOriginColor(DefaultColor As Color) As Color Implements cICaveInfoBranches.GetOriginColor
             Dim oOrigin As cICaveInfoBranches = GetOrigin()
@@ -187,6 +199,8 @@ Namespace cSurvey
             sID = ""
             sDescription = ""
             oColor = Drawing.Color.Transparent
+
+            iOrdinalPosition = 0
 
             oBranches = New cCaveInfoBranches(oSurvey, Name, Me, Nothing)
             oTranslations = New cTranslations
@@ -404,6 +418,8 @@ Namespace cSurvey
             iDrawingZOrder = modXML.GetAttributeValue(CaveInfo, "drawingzorder", 0)
             bLocked = modXML.GetAttributeValue(CaveInfo, "locked", 0)
 
+            iOrdinalPosition = modXML.GetAttributeValue(CaveInfo, "op", 0)
+
             sExtendStart = modXML.GetAttributeValue(CaveInfo, "extstart", "")
             iPriority = modXML.GetAttributeValue(CaveInfo, "pty", Nothing)
             If modXML.ChildElementExist(CaveInfo, "pcn") Then oParentConnection = New cConnectionDef(CaveInfo("pcn"))
@@ -424,6 +440,7 @@ Namespace cSurvey
             If iPriority.HasValue Then oXmlCaveInfo.SetAttribute("pty", iPriority.Value)
             If Not IsNothing(oParentConnection) Then oParentConnection.SaveTo(File, Document, oXmlCaveInfo, "pcn")
             If Not IsNothing(oConnection) Then oConnection.SaveTo(File, Document, oXmlCaveInfo, "cn")
+            If iOrdinalPosition <> 0 Then oXmlCaveInfo.SetAttribute("op", iOrdinalPosition)
             Call oBranches.SaveTo(File, Document, oXmlCaveInfo)
             Call Parent.AppendChild(oXmlCaveInfo)
             Return oXmlCaveInfo

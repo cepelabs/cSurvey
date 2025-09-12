@@ -242,7 +242,7 @@ Namespace cSurvey.Properties
                 Return sName
             End Get
             Set(value As String)
-                sName = Name
+                sName = value
             End Set
         End Property
 

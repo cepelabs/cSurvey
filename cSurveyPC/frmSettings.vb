@@ -230,7 +230,8 @@ Friend Class frmSettings
         Call tabMain.BeginUpdate()
         tabMain.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False
         For Each oTabControl As DevExpress.XtraTab.XtraTabPage In tabMain.TabPages
-            Dim oPanel As DevExpress.XtraEditors.PanelControl = New DevExpress.XtraEditors.PanelControl
+            Dim oPanel As DevExpress.XtraEditors.XtraScrollableControl = New DevExpress.XtraEditors.XtraScrollableControl
+            oPanel.AutoScroll = True
             Me.Controls.Add(oPanel)
             oPanel.Name = "_" & oTabControl.Name
             oPanel.Size = oTabControl.ClientSize
@@ -246,7 +247,7 @@ Friend Class frmSettings
             Next
             oPanel.Tag = tabMain.TabPages.IndexOf(oTabControl)
             oPanel.Dock = DockStyle.Fill
-            oPanel.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+            'oPanel.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
             oPanel.Visible = False
         Next
         tabMain.Visible = False

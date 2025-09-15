@@ -11144,6 +11144,15 @@
   <data name="pnlStatusVersion.Caption" xml:space="preserve">
     <value>[version]</value>
   </data>
+  <data name="btnSelectionDeleteAllShots.Caption" xml:space="preserve">
+    <value>Shots</value>
+  </data>
+  <data name="btnSelectionDeleteAllItems.Caption" xml:space="preserve">
+    <value>Design items</value>
+  </data>
+  <data name="btnSelectionDeleteAllAll.Caption" xml:space="preserve">
+    <value>All</value>
+  </data>
   <data name="RibbonControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -16470,6 +16479,24 @@
   <data name="&gt;&gt;pnlStatusVersion.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarStaticItem, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="&gt;&gt;btnSelectionDeleteAllShots.Name" xml:space="preserve">
+    <value>btnSelectionDeleteAllShots</value>
+  </data>
+  <data name="&gt;&gt;btnSelectionDeleteAllShots.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnSelectionDeleteAllItems.Name" xml:space="preserve">
+    <value>btnSelectionDeleteAllItems</value>
+  </data>
+  <data name="&gt;&gt;btnSelectionDeleteAllItems.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnSelectionDeleteAllAll.Name" xml:space="preserve">
+    <value>btnSelectionDeleteAllAll</value>
+  </data>
+  <data name="&gt;&gt;btnSelectionDeleteAllAll.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="&gt;&gt;pageFile.Name" xml:space="preserve">
     <value>pageFile</value>
   </data>
@@ -17597,6 +17624,12 @@
   </data>
   <data name="&gt;&gt;LayoutConverter1.Type" xml:space="preserve">
     <value>DevExpress.XtraLayout.Converter.LayoutConverter, DevExpress.XtraLayout.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;mnuSelectionDeleteAll.Name" xml:space="preserve">
+    <value>mnuSelectionDeleteAll</value>
+  </data>
+  <data name="&gt;&gt;mnuSelectionDeleteAll.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmMain2</value>
@@ -21495,12 +21528,6 @@
   <data name="&gt;&gt;dockDistances.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Docking.DockPanel, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="dockData.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="dockData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>437, 796</value>
-  </data>
   <data name="dockData.Text" xml:space="preserve">
     <value>Data</value>
   </data>
@@ -21509,12 +21536,6 @@
   </data>
   <data name="&gt;&gt;dockData.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Docking.DockPanel, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="dockDesigner.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="dockDesigner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>711, 796</value>
   </data>
   <data name="dockDesigner.Text" xml:space="preserve">
     <value>Designer</value>
@@ -21566,5 +21587,8 @@
   </metadata>
   <metadata name="LayoutConverter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>440, 212</value>
+  </metadata>
+  <metadata name="mnuSelectionDeleteAll.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1202, 110</value>
   </metadata>
 </root>

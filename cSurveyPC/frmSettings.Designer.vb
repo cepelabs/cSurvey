@@ -23,11 +23,11 @@ Partial Class frmSettings
     '<System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSettings))
-        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.chkHistoryArchiveOnSave = New DevExpress.XtraEditors.CheckEdit()
         Me.lblHistoryMaxCopies = New DevExpress.XtraEditors.LabelControl()
         Me.txtHistoryFolder = New System.Windows.Forms.TextBox()
@@ -202,6 +202,8 @@ Partial Class frmSettings
         Me.chkITChangeDecimalKey = New DevExpress.XtraEditors.CheckEdit()
         Me.cboLanguage = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.tabInfoDesign = New DevExpress.XtraTab.XtraTabPage()
+        Me.lblDesignClipSoil = New DevExpress.XtraEditors.LabelControl()
+        Me.cboDesignClipSoil = New System.Windows.Forms.ComboBox()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.cboDesignGeoLineType = New System.Windows.Forms.ComboBox()
         Me.flyParameters = New DevExpress.Utils.FlyoutPanel()
@@ -230,8 +232,6 @@ Partial Class frmSettings
         Me.lblLogMaxSize = New DevExpress.XtraEditors.LabelControl()
         Me.txtLogMaxLine = New DevExpress.XtraEditors.SpinEdit()
         Me.chkLogOnFile = New DevExpress.XtraEditors.CheckEdit()
-        Me.lblDesignClipSoil = New DevExpress.XtraEditors.LabelControl()
-        Me.cboDesignClipSoil = New System.Windows.Forms.ComboBox()
         CType(Me.chkHistoryArchiveOnSave.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtHistoryMaxCopies, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtHistoryDailyCopies, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1491,6 +1491,7 @@ Partial Class frmSettings
         '
         'tabInfoMain
         '
+        resources.ApplyResources(Me.tabInfoMain, "tabInfoMain")
         Me.tabInfoMain.Controls.Add(Me.cmdDefaultFolder)
         Me.tabInfoMain.Controls.Add(Me.txtDefaultClub)
         Me.tabInfoMain.Controls.Add(Me.txtDefaultFolder)
@@ -1501,17 +1502,16 @@ Partial Class frmSettings
         Me.tabInfoMain.Controls.Add(Me.txtDefaultTeam)
         Me.tabInfoMain.Controls.Add(Me.lblDefaultDesigner)
         Me.tabInfoMain.Name = "tabInfoMain"
-        resources.ApplyResources(Me.tabInfoMain, "tabInfoMain")
         '
         'tabInfoTherion
         '
+        resources.ApplyResources(Me.tabInfoTherion, "tabInfoTherion")
         Me.tabInfoTherion.Controls.Add(Me.frmTherionAdvancedSettings)
         Me.tabInfoTherion.Controls.Add(Me.chkTherionLochEnabled)
         Me.tabInfoTherion.Controls.Add(Me.txtTherionPath)
         Me.tabInfoTherion.Controls.Add(Me.cmdTherionPathBrowse)
         Me.tabInfoTherion.Controls.Add(Me.lblTherionPath)
         Me.tabInfoTherion.Name = "tabInfoTherion"
-        resources.ApplyResources(Me.tabInfoTherion, "tabInfoTherion")
         '
         'tabInfoOptions
         '
@@ -1597,6 +1597,19 @@ Partial Class frmSettings
         Me.tabInfoDesign.Controls.Add(Me.cboDesignZoomType)
         Me.tabInfoDesign.Name = "tabInfoDesign"
         '
+        'lblDesignClipSoil
+        '
+        resources.ApplyResources(Me.lblDesignClipSoil, "lblDesignClipSoil")
+        Me.lblDesignClipSoil.Name = "lblDesignClipSoil"
+        '
+        'cboDesignClipSoil
+        '
+        Me.cboDesignClipSoil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboDesignClipSoil.DropDownWidth = 400
+        Me.cboDesignClipSoil.Items.AddRange(New Object() {resources.GetString("cboDesignClipSoil.Items"), resources.GetString("cboDesignClipSoil.Items1")})
+        resources.ApplyResources(Me.cboDesignClipSoil, "cboDesignClipSoil")
+        Me.cboDesignClipSoil.Name = "cboDesignClipSoil"
+        '
         'LabelControl2
         '
         resources.ApplyResources(Me.LabelControl2, "LabelControl2")
@@ -1651,9 +1664,9 @@ Partial Class frmSettings
         'txtDefaultPenPattern
         '
         resources.ApplyResources(Me.txtDefaultPenPattern, "txtDefaultPenPattern")
-        EditorButtonImageOptions3.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
-        EditorButtonImageOptions3.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.txtDefaultPenPattern.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtDefaultPenPattern.Buttons1"), CType(resources.GetObject("txtDefaultPenPattern.Buttons2"), Integer), CType(resources.GetObject("txtDefaultPenPattern.Buttons3"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons4"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons5"), Boolean), EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, resources.GetString("txtDefaultPenPattern.Buttons6"), CType(resources.GetObject("txtDefaultPenPattern.Buttons7"), Object), CType(resources.GetObject("txtDefaultPenPattern.Buttons8"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtDefaultPenPattern.Buttons9"), DevExpress.Utils.ToolTipAnchor)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons10"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        EditorButtonImageOptions1.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        EditorButtonImageOptions1.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.txtDefaultPenPattern.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtDefaultPenPattern.Buttons1"), CType(resources.GetObject("txtDefaultPenPattern.Buttons2"), Integer), CType(resources.GetObject("txtDefaultPenPattern.Buttons3"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons4"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons5"), Boolean), EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, resources.GetString("txtDefaultPenPattern.Buttons6"), CType(resources.GetObject("txtDefaultPenPattern.Buttons7"), Object), CType(resources.GetObject("txtDefaultPenPattern.Buttons8"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtDefaultPenPattern.Buttons9"), DevExpress.Utils.ToolTipAnchor)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons10"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtDefaultPenPattern.Name = "txtDefaultPenPattern"
         Me.txtDefaultPenPattern.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
@@ -1836,19 +1849,6 @@ Partial Class frmSettings
         Me.chkLogOnFile.Name = "chkLogOnFile"
         Me.chkLogOnFile.Properties.AutoWidth = True
         Me.chkLogOnFile.Properties.Caption = resources.GetString("chkLogOnFile.Properties.Caption")
-        '
-        'lblDesignClipSoil
-        '
-        resources.ApplyResources(Me.lblDesignClipSoil, "lblDesignClipSoil")
-        Me.lblDesignClipSoil.Name = "lblDesignClipSoil"
-        '
-        'cboDesignClipSoil
-        '
-        Me.cboDesignClipSoil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboDesignClipSoil.DropDownWidth = 400
-        Me.cboDesignClipSoil.Items.AddRange(New Object() {resources.GetString("cboDesignClipSoil.Items"), resources.GetString("cboDesignClipSoil.Items1")})
-        resources.ApplyResources(Me.cboDesignClipSoil, "cboDesignClipSoil")
-        Me.cboDesignClipSoil.Name = "cboDesignClipSoil"
         '
         'frmSettings
         '

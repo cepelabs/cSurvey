@@ -1504,14 +1504,16 @@ Friend Class frmMain2
                     For Each oSegment As cSegment In oSegments
                         Dim bEnabledEdit As Boolean = ((oSegment.Splay) OrElse (Not (oSegment.IsBinded OrElse oSegment.IsOrigin))) OrElse (pGetDisableDataGridConstraint())
                         If bEnabledEdit Then
-                            'Dim iIndex As Integer = oSegment.Index
                             Call oTools.DeleteSegment(oSegment)
-                            'iLastIndex = iIndex
                         End If
                     Next
                     bDisableSelectItemEvent = False
-                    bDisableSegmentsChangeEvent.pop()
+                    bDisableSegmentsChangeEvent.Pop()
                     Call pSurveyCalculate(False)
+
+                    Call pObjectPropertyDelayedLoad()
+                    'grdViewSegments_FocusedRowChanged()
+                    'Call pSegmentSelect(oTools.CurrentSegment, True, True)
                 End If
             End If
         Catch ex As Exception

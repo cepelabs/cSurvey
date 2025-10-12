@@ -593,90 +593,94 @@ Namespace cSurvey.Calculate
                     If oOrigin Is Nothing Then
                         Return New cActionResult(False, "calculate", GetLocalizedString("calculate.textpart1"))
                     Else
-                        If oSurvey.Properties.GPS.Enabled Then
-                            If oSurvey.Properties.GPS.RefPointOnOrigin Then
-                                If oOrigin.Coordinate.IsEmpty OrElse oOrigin.Coordinate.IsInError Then
-                                    Return New cActionResult(False, "calculate", String.Format(GetLocalizedString("calculate.textpart12"), oOrigin.Name))
-                                End If
-                            Else
-                                Dim oGPSTrigpoint As cSurveyPC.cSurvey.cTrigPoint = oSurvey.TrigPoints(oSurvey.Properties.GPS.CustomRefPoint)
-                                If IsNothing(oGPSTrigpoint) Then
-                                    Return New cActionResult(False, "calculate", String.Format(GetLocalizedString("calculate.textpart13"), oSurvey.Properties.GPS.CustomRefPoint))
+                        If oOrigin.Data.IsOrphan Then
+                            Return New cActionResult(False, "calculate", GetLocalizedString("calculate.textpart17"))
+                        Else
+                            If oSurvey.Properties.GPS.Enabled Then
+                                If oSurvey.Properties.GPS.RefPointOnOrigin Then
+                                    If oOrigin.Coordinate.IsEmpty OrElse oOrigin.Coordinate.IsInError Then
+                                        Return New cActionResult(False, "calculate", String.Format(GetLocalizedString("calculate.textpart12"), oOrigin.Name))
+                                    End If
                                 Else
-                                    If oGPSTrigpoint.Coordinate.IsEmpty OrElse oGPSTrigpoint.Coordinate.IsInError Then
-                                        Return New cActionResult(False, "calculate", String.Format(GetLocalizedString("calculate.textpart12"), oSurvey.Properties.GPS.CustomRefPoint))
+                                    Dim oGPSTrigpoint As cSurveyPC.cSurvey.cTrigPoint = oSurvey.TrigPoints(oSurvey.Properties.GPS.CustomRefPoint)
+                                    If IsNothing(oGPSTrigpoint) Then
+                                        Return New cActionResult(False, "calculate", String.Format(GetLocalizedString("calculate.textpart13"), oSurvey.Properties.GPS.CustomRefPoint))
+                                    Else
+                                        If oGPSTrigpoint.Coordinate.IsEmpty OrElse oGPSTrigpoint.Coordinate.IsInError Then
+                                            Return New cActionResult(False, "calculate", String.Format(GetLocalizedString("calculate.textpart12"), oSurvey.Properties.GPS.CustomRefPoint))
+                                        End If
                                     End If
                                 End If
                             End If
-                        End If
-                        Call oSurvey.RaiseOnProgressEvent("calculate", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("calculate.progressbegin1"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageCalculate)
+                            Call oSurvey.RaiseOnProgressEvent("calculate", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("calculate.progressbegin1"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageCalculate)
 
-                        Call pSurfaceElevationTrigpointRemove()
-                        Call pOrthoPhotoTrigpointRemove()
+                            Call pSurfaceElevationTrigpointRemove()
+                            Call pOrthoPhotoTrigpointRemove()
 
-                        Dim oSegmentsColl As List(Of cSegment) = oSurvey.Segments.GetSurveySegments.ToSegments
-                        If oSurvey.Properties.CalculateVersion > 2 Then
-                            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Check sessions")
-                            Dim oInvalidSegments As List(Of cSegment) = oSegmentsColl.Where(Function(oSegment) Not oSegment.IsEquate AndAlso Not oSegment.Virtual AndAlso oSegment.Session = "").ToList
-                            If oInvalidSegments.Count > 0 Then
-                                Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, GetLocalizedString("calculate.textpart14"))
-                                Throw New cCalculateMissingSessionException(modMain.GetLocalizedString("calculate.textpart14"), oInvalidSegments)
-                            End If
-                        Else
-                            'have to warn user that some shot are without date
-                            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, GetLocalizedString("calculate.textpart14"))
-                        End If
-
-                        Dim oOriginItem As cTrigPointCalculateItem = New cTrigPointCalculateItem(oOrigin.Name, 1)
-                        Dim oGroups As cSegmentGroupCollection = pFillSegments(oSegmentsColl)
-                        Call oGroups.Validate(True)
-
-                        Select Case oSurvey.Invalidated
-                            Case InvalidateEnum.FullCalculate
-                                Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Trigpoint calculate")
-                                Dim oOrphanStations As List(Of String) = pTrigPointsCalculate(oOrigin.Name, oSegmentsColl)
-                                Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Prepare data")
-                                Call pCalculatePrepareData(oOriginItem, oGroups)
-                                If oOrphanStations.Count > 0 Then
-                                    'If oOrphanStations.Count > 25 Then oOrphanStations = oOrphanStations.Take(25).ToList
-                                    Dim oOrphanSegments As List(Of cSegment) = New List(Of cSegment)
-                                    Call oOrphanStations.ForEach(Sub(sStation) oOrphanSegments.AddRange(oSurvey.Segments.GetTrigpointSegments(sStation).Cast(Of cSegment)))
-                                    oOrphanSegments = oOrphanSegments.Distinct().ToList
-                                    Throw New cCalculateOrphanShotsException(String.Format(GetLocalizedString("calculate.textpart16"), String.Join(", ", oOrphanStations)), oOrphanSegments)
+                            Dim oSegmentsColl As List(Of cSegment) = oSurvey.Segments.GetSurveySegments.ToSegments
+                            If oSurvey.Properties.CalculateVersion > 2 Then
+                                Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Check sessions")
+                                Dim oInvalidSegments As List(Of cSegment) = oSegmentsColl.Where(Function(oSegment) Not oSegment.IsEquate AndAlso Not oSegment.Virtual AndAlso oSegment.Session = "").ToList
+                                If oInvalidSegments.Count > 0 Then
+                                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, GetLocalizedString("calculate.textpart14"))
+                                    Throw New cCalculateMissingSessionException(modMain.GetLocalizedString("calculate.textpart14"), oInvalidSegments)
                                 End If
-                                Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Therion run and get back results")
-                                Call pCalculateSegments(oOriginItem, oGroups)
-                                Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Geographics adjustments")
-                                Call pCalculateGeographics()
-                            Case InvalidateEnum.PartialCalculate
-                                Call pCalculateDAndSideMeasures(oOriginItem, oGroups)
-                        End Select
+                            Else
+                                'have to warn user that some shot are without date
+                                Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, GetLocalizedString("calculate.textpart14"))
+                            End If
 
-                        Dim bPerformWarping As Boolean
-                        If oSurvey.Invalidated <= InvalidateEnum.PartialCalculate Then
-                            bPerformWarping = False
-                        Else
-                            bPerformWarping = PerformWarping
+                            Dim oOriginItem As cTrigPointCalculateItem = New cTrigPointCalculateItem(oOrigin.Name, 1)
+                            Dim oGroups As cSegmentGroupCollection = pFillSegments(oSegmentsColl)
+                            Call oGroups.Validate(True)
+
+                            Select Case oSurvey.Invalidated
+                                Case InvalidateEnum.FullCalculate
+                                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Trigpoint calculate")
+                                    Dim oOrphanStations As List(Of String) = pTrigPointsCalculate(oOrigin.Name, oSegmentsColl)
+                                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Prepare data")
+                                    Call pCalculatePrepareData(oOriginItem, oGroups)
+                                    If oOrphanStations.Count > 0 Then
+                                        'If oOrphanStations.Count > 25 Then oOrphanStations = oOrphanStations.Take(25).ToList
+                                        Dim oOrphanSegments As List(Of cSegment) = New List(Of cSegment)
+                                        Call oOrphanStations.ForEach(Sub(sStation) oOrphanSegments.AddRange(oSurvey.Segments.GetTrigpointSegments(sStation).Cast(Of cSegment)))
+                                        oOrphanSegments = oOrphanSegments.Distinct().ToList
+                                        Throw New cCalculateOrphanShotsException(String.Format(GetLocalizedString("calculate.textpart16"), String.Join(", ", oOrphanStations)), oOrphanSegments)
+                                    End If
+                                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Therion run and get back results")
+                                    Call pCalculateSegments(oOriginItem, oGroups)
+                                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Geographics adjustments")
+                                    Call pCalculateGeographics()
+                                Case InvalidateEnum.PartialCalculate
+                                    Call pCalculateDAndSideMeasures(oOriginItem, oGroups)
+                            End Select
+
+                            Dim bPerformWarping As Boolean
+                            If oSurvey.Invalidated <= InvalidateEnum.PartialCalculate Then
+                                bPerformWarping = False
+                            Else
+                                bPerformWarping = PerformWarping
+                            End If
+
+                            'if warping is in pause and calculate is right...reactivate it
+                            If oSurvey.Properties.DesignWarpingState = cSurvey.DesignWarpingStateEnum.Paused Then oSurvey.Properties.DesignWarpingState = cSurvey.DesignWarpingStateEnum.Active
+
+                            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Calculate plan centerline data")
+                            Call oSurvey.RaiseOnProgressEvent("", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("calculate.progress1"), 0)
+                            Call oSurvey.RaiseOnProgressEvent("calculate.plot.plan", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("calculate.progressbegin2"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageCalculate)
+                            Call oSurvey.Plan.Plot.Calculate(oSegmentsColl, bPerformWarping)
+                            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Calculate plan splay data")
+                            Call oSurvey.Plan.Plot.CalculateSplay()
+                            Call oSurvey.RaiseOnProgressEvent("calculate.plot.plan", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, GetLocalizedString("calculate.progressend2"), 0)
+
+                            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Calculate profile centerline data")
+                            Call oSurvey.RaiseOnProgressEvent("", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("calculate.progress1"), 0.5)
+                            Call oSurvey.RaiseOnProgressEvent("calculate.plot.profile", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("calculate.progressbegin3"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageCalculate)
+                            Call oSurvey.Profile.Plot.Calculate(oSegmentsColl, bPerformWarping)
+                            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Calculate profile splay data")
+                            Call oSurvey.Profile.Plot.CalculateSplay()
+                            Call oSurvey.RaiseOnProgressEvent("calculate.plot.profile", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, GetLocalizedString("calculate.progressend3"), 0)
                         End If
-
-                        'if warping is in pause and calculate is right...reactivate it
-                        If oSurvey.Properties.DesignWarpingState = cSurvey.DesignWarpingStateEnum.Paused Then oSurvey.Properties.DesignWarpingState = cSurvey.DesignWarpingStateEnum.Active
-
-                        Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Calculate plan centerline data")
-                        Call oSurvey.RaiseOnProgressEvent("", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("calculate.progress1"), 0)
-                        Call oSurvey.RaiseOnProgressEvent("calculate.plot.plan", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("calculate.progressbegin2"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageCalculate)
-                        Call oSurvey.Plan.Plot.Calculate(oSegmentsColl, bPerformWarping)
-                        Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Calculate plan splay data")
-                        Call oSurvey.Plan.Plot.CalculateSplay()
-                        Call oSurvey.RaiseOnProgressEvent("calculate.plot.plan", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, GetLocalizedString("calculate.progressend2"), 0)
-
-                        Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Calculate profile centerline data")
-                        Call oSurvey.RaiseOnProgressEvent("", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("calculate.progress1"), 0.5)
-                        Call oSurvey.RaiseOnProgressEvent("calculate.plot.profile", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("calculate.progressbegin3"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageCalculate)
-                        Call oSurvey.Profile.Plot.Calculate(oSegmentsColl, bPerformWarping)
-                        Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Calculate profile splay data")
-                        Call oSurvey.Profile.Plot.CalculateSplay()
-                        Call oSurvey.RaiseOnProgressEvent("calculate.plot.profile", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, GetLocalizedString("calculate.progressend3"), 0)
                     End If
 
                     Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Calculate speleometrics")
@@ -2158,14 +2162,16 @@ Namespace cSurvey.Calculate
         End Function
 
         Private Sub pTrigpointCalculateGraph(Station As String, StationsToProcess As HashSet(Of String))
-            For Each oConnection As cTrigPointConnection In oTPs(Station).Connections
-                If StationsToProcess.Contains(oConnection.Name) Then
-                    If Not oSurvey.TrigPoints(Station).Connections.Get(oConnection.Name) Then
-                        Call StationsToProcess.Remove(oConnection.Name)
-                        Call pTrigpointCalculateGraph(oConnection.Name, StationsToProcess)
+            If StationsToProcess.Count > 0 Then
+                For Each oConnection As cTrigPointConnection In oTPs(Station).Connections
+                    If StationsToProcess.Contains(oConnection.Name) Then
+                        If Not oSurvey.TrigPoints(Station).Connections.Get(oConnection.Name) Then
+                            Call StationsToProcess.Remove(oConnection.Name)
+                            Call pTrigpointCalculateGraph(oConnection.Name, StationsToProcess)
+                        End If
                     End If
-                End If
-            Next
+                Next
+            End If
         End Sub
 
         Public ReadOnly Property CalculateData As List(Of cCalculateDataItem)

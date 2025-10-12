@@ -117,7 +117,10 @@ Namespace cSurvey.Calculate
                     If StartTridpoint.Name <> sEquate Then
                         If Not Equates.Contains(sEquate) Then
                             Equates.Add(sEquate)
-                            Call pGetEquate(Equates, StartTridpoint, oSurvey.Calculate.TrigPoints(sEquate))
+                            If oSurvey.Calculate.TrigPoints.Contains(sEquate) Then
+                                Dim oNextTp As cTrigPoint = oSurvey.Calculate.TrigPoints(sEquate)
+                                Call pGetEquate(Equates, StartTridpoint, oNextTp)
+                            End If
                         End If
                     End If
                 Next

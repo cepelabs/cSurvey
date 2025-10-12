@@ -1852,6 +1852,8 @@ Module modPaint
                 If sPath <> "" AndAlso Not bFirstCave Then
                     Text = pReplaceCaveBranchTags(Survey, oSpeleometric, ".", Text)
                     bFirstCave = False
+                ElseIf sPath = "" Then
+                    Text = pReplaceCaveBranchTags(Survey, oSpeleometric, "", Text)
                 End If
             Else
                 sPath = oSpeleometric.Cave & cCaveInfoBranches.sBranchSeparator & oSpeleometric.Branch

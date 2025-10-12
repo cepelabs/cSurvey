@@ -535,6 +535,7 @@ Friend Class frmProperties
     'End Sub
 
     Private Sub pCavesLoad()
+
         tvCaveInfos.BeginUpdate()
         tvCaveInfos.DataSource = New cCaveInfoBranchEditBindingList(oSurvey)
         tvCaveInfos.ExpandAll()
@@ -1023,7 +1024,9 @@ Friend Class frmProperties
             e.Cancel = True
         Else
             Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
-            e.Cancel = DirectCast(tvCaveInfos.DataSource, cCaveInfoBranchEditBindingList).ContainsName(sNewName)
+            If oItem.Name.ToLower <> sNewName.ToLower Then
+                e.Cancel = DirectCast(tvCaveInfos.DataSource, cCaveInfoBranchEditBindingList).ContainsName(sNewName)
+            End If
         End If
     End Sub
 

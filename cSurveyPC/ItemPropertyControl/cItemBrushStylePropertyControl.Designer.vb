@@ -140,7 +140,6 @@ Partial Class cItemBrushStylePropertyControl
         resources.ApplyResources(Me.cboPropBrushPattern, "cboPropBrushPattern")
         Me.cboPropBrushPattern.EditValue = "BigDebrits"
         Me.cboPropBrushPattern.Name = "cboPropBrushPattern"
-        Me.BarManager.SetPopupContextMenu(Me.cboPropBrushPattern, Me.mnuContext)
         '
         'cmdPropBrushReseed
         '

@@ -53,8 +53,11 @@ Friend Class frmSettings
         Call My.Application.Settings.SetSetting("svg.exportnoclipartbrushes", If(chkSVGExportNoClipartBrushes.Checked, 1, 0))
         Call My.Application.Settings.SetSetting("svg.exportnoclipping", If(chkSVGExportNoClipping.Checked, 1, 0))
         Call My.Application.Settings.SetSetting("svg.exportcsurveyreferences", If(chkSVGExportcSurveyReference.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("svg.exportinkscapereferences", If(chkSVGExportInkscapeReference.Checked, 1, 0))
         Call My.Application.Settings.SetSetting("svg.exportimages", If(chkSVGExportImages.Checked, 1, 0))
         Call My.Application.Settings.SetSetting("svg.exporttextaspath", If(chkSVGExportTextAsPath.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("svg.reuseclipart", If(chkSVGExportReuseclipart.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("svg.usestyles", If(chkSVGExportUseStyles.Checked, 1, 0))
 
         Call My.Application.Settings.SetSetting("therion.path", txtTherionPath.Text)
         Call My.Application.Settings.SetSetting("therion.lock.enabled", If(chkTherionLochEnabled.Checked, 1, 0))
@@ -302,8 +305,11 @@ Friend Class frmSettings
         chkSVGExportNoClipartBrushes.Checked = My.Application.Settings.GetSetting("svg.exportnoclipartbrushes", 0)
         chkSVGExportNoClipping.Checked = My.Application.Settings.GetSetting("svg.exportnoclipping", 0)
         chkSVGExportcSurveyReference.Checked = My.Application.Settings.GetSetting("svg.exportcsurveyreferences", 1)
+        chkSVGExportInkscapeReference.Checked = My.Application.Settings.GetSetting("svg.exportinkscapereferences", 1)
         chkSVGExportImages.Checked = My.Application.Settings.GetSetting("svg.exportimages", 1)
         chkSVGExportTextAsPath.Checked = My.Application.Settings.GetSetting("svg.exporttextaspath", 0)
+        chkSVGExportReuseclipart.Checked = My.Application.Settings.GetSetting("svg.reuseclipart", 0)
+        chkSVGExportUseStyles.Checked = My.Application.Settings.GetSetting("svg.usestyle", 1)
 
         'txtSVGExportDPI.Value =My.Application.Settings.GetSetting("svg.exportdpi", 90)
         txtTherionPath.Text = My.Application.Settings.GetSetting("therion.path", "")

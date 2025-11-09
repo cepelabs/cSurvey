@@ -447,6 +447,12 @@
     <Compile Include="frmDashPatternEditor.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="frmPreviewSVGOptions.Designer.vb">
+      <DependentUpon>frmPreviewSVGOptions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPreviewSVGOptions.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="frmSegmentsReplicateDataFieldEditor.Designer.vb">
       <DependentUpon>frmSegmentsReplicateDataFieldEditor.vb</DependentUpon>
     </Compile>
@@ -1786,6 +1792,20 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDashPatternEditor.resx">
       <DependentUpon>frmDashPatternEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPreviewSVGOptions.en.resx">
+      <DependentUpon>frmPreviewSVGOptions.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPreviewSVGOptions.it.resx">
+      <DependentUpon>frmPreviewSVGOptions.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPreviewSVGOptions.resx">
+      <DependentUpon>frmPreviewSVGOptions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPreviewSVGOptions.ru.resx">
+      <DependentUpon>frmPreviewSVGOptions.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSegmentsReplicateDataFieldEditor.it.resx">
       <DependentUpon>frmSegmentsReplicateDataFieldEditor.vb</DependentUpon>
@@ -4935,6 +4955,7 @@
     <None Include="Resources\about_bolognaspeleologica.png" />
     <Content Include="Resources\Actions_Database.svg" />
     <None Include="Resources\csurvey_2.svg" />
+    <None Include="Resources\Action_Export_ToSVG.svg" />
     <Content Include="Resources\Bar.svg" />
     <None Include="Resources\databasecleanup.svg" />
     <None Include="Resources\Electronics_Volume.svg" />

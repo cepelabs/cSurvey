@@ -8,6 +8,84 @@ Imports cSurveyPC.cSurvey.Drawings
 
 Module modSVG
 
+    Public Class cSVGWriter
+        Inherits XmlDocument
+
+        <Flags()> Public Enum SVGOptionsEnum As Integer
+            None = &H0
+            Clipping = &H1
+            ClipartBrushes = &H2
+            Silent = &H4
+            Images = &H8
+            AddSourceReference = &H10
+            AddInkscapeReference = &H20
+            ReuseClipart = &H40
+            UseStyles = &H80
+            TextAsPath = &H100
+        End Enum
+
+        Private iOptions As SVGOptionsEnum
+        Private oClipartCache As cSVGClipartCache
+        Private oStylesCache As cSVGStylesCache
+
+        Public ReadOnly Property Options As SVGOptionsEnum
+            Get
+                Return iOptions
+            End Get
+        End Property
+
+        Public ReadOnly Property StylesCache As cSVGStylesCache
+            Get
+                Return oStylesCache
+            End Get
+        End Property
+
+        Public ReadOnly Property ClipartCache As cSVGClipartCache
+            Get
+                Return oClipartCache
+            End Get
+        End Property
+
+        Public Sub New(Options As SVGOptionsEnum)
+            Call MyBase.New
+            iOptions = Options
+            oStylesCache = New cSVGStylesCache
+            oClipartCache = New cSVGClipartCache
+        End Sub
+
+        Public Sub New()
+            Call MyBase.New
+            oStylesCache = New cSVGStylesCache
+            oClipartCache = New cSVGClipartCache
+        End Sub
+
+        Public Sub AppendCliparts(ByVal PaintOptions As cOptionsCenterline)
+            Dim oDefs As XmlElement = Me.DocumentElement.Item("defs")
+            For Each sKey As String In oClipartCache.Keys
+                Dim oClipart As cSVGClipart = oClipartCache(sKey)
+                Dim oSVGClipart As XmlElement = modSVG.AppendItem(Me, oDefs, PaintOptions, oClipart.DrawPath.Path, oClipart.ClassKey)
+            Next
+        End Sub
+
+        Public Sub AppendStyles()
+            If oStylesCache.Count > 0 Then
+                Dim oXmlStyles As XmlElement = Me.CreateElement("style", svgNamespace)
+                oXmlStyles.SetAttribute("type", "text/css")
+                Dim oSb As StringBuilder = New StringBuilder
+                For Each sStyleHash In oStylesCache.Keys
+                    With oStylesCache(sStyleHash)
+                        oSb.AppendLine("." & .ClassKey & " {" & .Style & "}")
+                    End With
+                Next
+                oXmlStyles.InnerText = oSb.ToString
+
+                Me.DocumentElement.InsertBefore(oXmlStyles, Me.DocumentElement.ChildNodes(0))
+
+                Call oStylesCache.Clear()
+            End If
+        End Sub
+    End Class
+
     Public Enum SVGPathStyleEnum
         Lines = 0
         Beziers = 1
@@ -28,7 +106,7 @@ Module modSVG
         End Try
     End Function
 
-    Public Function AppendPolygon(SVG As XmlDocument, ByVal Parent As XmlElement, ByVal Points As PointF(), Brush As Brush, Pen As Pen) As XmlElement
+    Public Function AppendPolygon(SVG As cSVGWriter, ByVal Parent As XmlElement, ByVal Points As PointF(), Brush As Brush, Pen As Pen) As XmlElement
         Dim oItemRect As XmlElement = SVG.CreateElement("polygon", svgNamespace)
 
         Call oItemRect.SetAttribute("points", String.Join(" ", Points.Select(Function(oPoint) modNumbers.NumberToString(oPoint.X, "") & "," & modNumbers.NumberToString(oPoint.Y, ""))))
@@ -43,7 +121,7 @@ Module modSVG
         Return oItemRect
     End Function
 
-    Public Function AppendRectangle(SVG As XmlDocument, ByVal Parent As XmlElement, ByVal Bounds As RectangleF, Brush As Brush, Pen As Pen) As XmlElement
+    Public Function AppendRectangle(SVG As cSVGWriter, ByVal Parent As XmlElement, ByVal Bounds As RectangleF, Brush As Brush, Pen As Pen) As XmlElement
         Dim oItemRect As XmlElement = SVG.CreateElement("rect", svgNamespace)
 
         Call oItemRect.SetAttribute("x", modNumbers.NumberToString(Bounds.Left, ""))
@@ -71,7 +149,8 @@ Module modSVG
     'End Function
 
     Public Function PointToSVGString(ByVal X As Single, ByVal Y As Single) As String
-        Return modNumbers.NumberToString(X, "") & " " & modNumbers.NumberToString(Y, "")
+        Return X.ToString("0.###", Globalization.CultureInfo.InvariantCulture) & " " & Y.ToString("0.###", Globalization.CultureInfo.InvariantCulture)
+        'Return modNumbers.NumberToString(X, "") & " " & modNumbers.NumberToString(Y, "")
     End Function
 
     Public Function PointToSVGString(ByVal Point As PointF) As String
@@ -114,13 +193,14 @@ Module modSVG
         inch = 4
     End Enum
 
-    Public Enum SVGCreateFlagsEnum
-        None = 0
-        AddInkscapeSettings = 1
-    End Enum
+    'Public Enum SVGCreateFlagsEnum
+    '    None = 0
+    '    AddInkscapeSettings = 1
+    'End Enum
 
-    Public Function CreateSVG() As XmlDocument
-        Return CreateSVG("", New SizeF(100, 100), SizeUnit.percentage, New RectangleF(0, 0, 100, 100), SVGCreateFlagsEnum.None)
+
+    Public Function CreateSVG(Options As cSVGWriter.SVGOptionsEnum) As cSVGWriter
+        Return CreateSVG("", New SizeF(100, 100), SizeUnit.percentage, New RectangleF(0, 0, 100, 100), Options)
     End Function
 
     Public Function SizeUnitToUnit(Unit As SizeUnit) As String
@@ -146,9 +226,9 @@ Module modSVG
     Public Const csurveyNamespace As String = "http://www.csurvey.it"
     Public Const svgNamespace As String = "http://www.w3.org/2000/svg"
 
-    Public Sub AddSourceReference(Item As cItem, SvgItem As XmlElement, Options As cItem.SVGOptionsEnum)
-        If Item.Name <> "" Then Call SvgItem.SetAttribute("name", Item.Name)
-        If (Options And cItem.SVGOptionsEnum.AddSourceReference) = cItem.SVGOptionsEnum.AddSourceReference Then
+    Public Sub AddSourceReference(Item As cItem, SvgItem As XmlElement, Options As cSVGWriter.SVGOptionsEnum)
+        If (Options And cSVGWriter.SVGOptionsEnum.AddSourceReference) = cSVGWriter.SVGOptionsEnum.AddSourceReference Then
+            If Item.Name <> "" Then Call SvgItem.SetAttribute("name", "http://www.csurvey.it", Item.Name)
             Call SvgItem.SetAttribute("type", "http://www.csurvey.it", Item.Type.ToString("D"))
             Call SvgItem.SetAttribute("category", "http://www.csurvey.it", Item.Category.ToString("D"))
             If Item.Cave <> "" Then Call SvgItem.SetAttribute("cave", "http://www.csurvey.it", Item.Cave)
@@ -158,8 +238,8 @@ Module modSVG
         End If
     End Sub
 
-    Public Function CreateSVG(ByVal Name As String, ByVal Size As SizeF, ByVal Unit As SizeUnit, ViewBox As RectangleF, ByVal Flags As SVGCreateFlagsEnum) As XmlDocument
-        Dim oXML As XmlDocument = New XmlDocument
+    Public Function CreateSVG(ByVal Name As String, ByVal Size As SizeF, ByVal Unit As SizeUnit, ViewBox As RectangleF, Options As cSVGWriter.SVGOptionsEnum) As cSVGWriter
+        Dim oXML As cSVGWriter = New cSVGWriter(Options)
 
         Dim sUnit As String = SizeUnitToUnit(Unit)
 
@@ -171,14 +251,14 @@ Module modSVG
         Call oXMLRoot.SetAttribute("viewBox", modNumbers.NumberToString(ViewBox.Left, "") & " " & modNumbers.NumberToString(ViewBox.Top, "") & " " & modNumbers.NumberToString(ViewBox.Width, "") & " " & modNumbers.NumberToString(ViewBox.Height, ""))
 
         Call oXMLRoot.SetAttribute("xmlns", svgNamespace)
-        Call oXMLRoot.SetAttribute("xmlns:svg", svgnamespace)
-        Call oXMLRoot.SetAttribute("xmlns:xlink", XlinkNamespace)
-        Call oXMLRoot.SetAttribute("xmlns:csurvey", cSurveyNamespace)
+        Call oXMLRoot.SetAttribute("xmlns:svg", svgNamespace)
+        Call oXMLRoot.SetAttribute("xmlns:xlink", xlinkNamespace)
+        Call oXMLRoot.SetAttribute("xmlns:csurvey", csurveyNamespace)
 
-        If (Flags And SVGCreateFlagsEnum.AddInkScapeSettings) = SVGCreateFlagsEnum.AddInkScapeSettings Then
-            Call oXMLRoot.SetAttribute("xmlns:sodipodi", SodipodiNamespace)
-            Call oXMLRoot.SetAttribute("xmlns:inkscape", InkscapeNamespace)
-            Call oXMLRoot.SetAttribute("docname", SodipodiNamespace, Name)
+        If (Options And cSVGWriter.SVGOptionsEnum.AddInkscapeReference) = cSVGWriter.SVGOptionsEnum.AddInkscapeReference Then
+            Call oXMLRoot.SetAttribute("xmlns:sodipodi", sodipodiNamespace)
+            Call oXMLRoot.SetAttribute("xmlns:inkscape", inkscapeNamespace)
+            Call oXMLRoot.SetAttribute("docname", sodipodiNamespace, Name)
         End If
 
         Dim oXMLDefs As XmlElement = oXML.CreateElement("defs", svgNamespace)
@@ -187,25 +267,25 @@ Module modSVG
         Return oXML
     End Function
 
-    Public Function CreateMaskPath(ByVal SVG As XmlDocument, ByVal id As String) As XmlElement
+    Public Function CreateMaskPath(ByVal SVG As cSVGWriter, ByVal id As String) As XmlElement
         Dim oXMLMaskPath As XmlElement = SVG.CreateElement("mask", svgNamespace)
-        If id <> "" Then
+        If "" & id <> "" Then
             Call oXMLMaskPath.SetAttribute("id", id)
         End If
         Return oXMLMaskPath
     End Function
 
-    Public Function CreateClipPath(ByVal SVG As XmlDocument, ByVal id As String) As XmlElement
+    Public Function CreateClipPath(ByVal SVG As cSVGWriter, ByVal id As String) As XmlElement
         Dim oXMLClipPath As XmlElement = SVG.CreateElement("clipPath", svgNamespace)
-        If id <> "" Then
+        If "" & id <> "" Then
             Call oXMLClipPath.SetAttribute("id", id)
         End If
         Return oXMLClipPath
     End Function
 
-    Public Function CreateLayer(ByVal SVG As XmlDocument, id As String, Label As String) As XmlElement
+    Public Function CreateLayer(ByVal SVG As cSVGWriter, id As String, Label As String) As XmlElement
         Dim oXMLLayer As XmlElement = SVG.CreateElement("g", svgNamespace)
-        If id <> "" Then
+        If "" & id <> "" Then
             Call oXMLLayer.SetAttribute("id", id)
         End If
         If modXML.HasAttribute(SVG.DocumentElement, "xmlns:inkscape") Then
@@ -216,11 +296,11 @@ Module modSVG
         Return oXMLLayer
     End Function
 
-    Public Function CreateSubSVG(ByVal SVG As XmlDocument, ByVal id As String, ByVal Bounds As RectangleF, ByVal Unit As SizeUnit, ViewBox As RectangleF) As XmlElement
+    Public Function CreateSubSVG(ByVal SVG As cSVGWriter, ByVal id As String, ByVal Bounds As RectangleF, ByVal Unit As SizeUnit, ViewBox As RectangleF) As XmlElement
         Dim sUnit As String = SizeUnitToUnit(Unit)
 
         Dim oXMLRoot As XmlElement = SVG.CreateElement("svg", svgNamespace)
-        If id <> "" Then
+        If "" & id <> "" Then
             Call oXMLRoot.SetAttribute("id", id)
         End If
         Call oXMLRoot.SetAttribute("x", modNumbers.NumberToString(Bounds.Left, "") & sUnit)
@@ -233,23 +313,23 @@ Module modSVG
         Return oXMLRoot
     End Function
 
-    Public Function CreateGeneric(Svg As XmlDocument, Name As String, Optional ByVal id As String = "") As XmlElement
-        Dim oXMLGeneric As XmlElement = Svg.CreateElement(Name, svgNamespace)
-        If id <> "" Then
+    Public Function CreateGeneric(SVG As cSVGWriter, Name As String, Optional ByVal id As String = "") As XmlElement
+        Dim oXMLGeneric As XmlElement = SVG.CreateElement(Name, svgNamespace)
+        If "" & id <> "" Then
             Call oXMLGeneric.SetAttribute("id", id)
         End If
         Return oXMLGeneric
     End Function
 
-    Public Function CreateGroup(ByVal SVG As XmlDocument, Optional ByVal id As String = "") As XmlElement
+    Public Function CreateGroup(ByVal SVG As cSVGWriter, Optional ByVal id As String = "") As XmlElement
         Dim oXMLGroup As XmlElement = SVG.CreateElement("g", svgNamespace)
-        If id <> "" Then
+        If "" & id <> "" Then
             Call oXMLGroup.SetAttribute("id", id)
         End If
         Return oXMLGroup
     End Function
 
-    Public Sub AppendItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal Item As XmlElement)
+    Public Sub AppendItem(ByVal SVG As cSVGWriter, ByVal Parent As XmlElement, ByVal Item As XmlElement)
         If Parent Is Nothing Then
             Call SVG.Item("svg").AppendChild(Item)
         Else
@@ -257,38 +337,56 @@ Module modSVG
         End If
     End Sub
 
-    Public Function AppendItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptionsCenterline, ByVal Path As GraphicsPath, Optional ByVal id As String = "") As XmlElement
+    Public Function AppendItem(ByVal SVG As cSVGWriter, ByVal Parent As XmlElement, ByVal PaintOptions As cOptionsCenterline, ByVal Path As GraphicsPath, Optional ByVal id As String = "") As XmlElement
         Dim oXMLPath As XmlElement = SVG.CreateElement("path", svgNamespace)
-        Dim sPath As StringBuilder = New StringBuilder
-        Dim iLastType As PathPointType = PathPointType.Start
-        For i As Integer = 0 To Path.PointCount - 1
-            Dim oPaintPoint As PointF = Path.PathPoints(i)
-            Dim iPaintType As PathPointType = Path.PathTypes(i)
-            If iPaintType = PathPointType.Start Then
-                Call sPath.Append("M " & PointToSVGString(oPaintPoint) & " ")
-                iLastType = iPaintType
-            Else
-                Dim iPaintTypeLine As PathPointType = (iPaintType And PathPointType.PathTypeMask)
-                If iLastType <> iPaintTypeLine Then
-                    If iPaintTypeLine = PathPointType.Line Then
-                        Call sPath.Append("L " & PointToSVGString(oPaintPoint) & " ")
-                    Else
-                        Call sPath.Append("C " & PointToSVGString(oPaintPoint) & " ")
-                    End If
-                Else
-                    Call sPath.Append(" " & PointToSVGString(oPaintPoint) & " ")
+        Dim sPath As New StringBuilder(Path.PointCount * 20) ' preallocazione stimata
+        If Path.PointCount > 0 Then
+            Dim points() As PointF = Path.PathPoints
+            Dim types() As Byte = Path.PathTypes
+
+            Dim iLastType As Byte = PathPointType.Start
+
+            For i As Integer = 0 To points.Length - 1
+                Dim pt As PointF = points(i)
+                Dim t As Byte = types(i)
+                Dim tLine As Byte = (t And PathPointType.PathTypeMask)
+
+                Select Case tLine
+                    Case PathPointType.Start
+                        sPath.Append("M ").Append(pt.X.ToString("0.###", Globalization.CultureInfo.InvariantCulture)) _
+                         .Append(" ").Append(pt.Y.ToString("0.###", Globalization.CultureInfo.InvariantCulture)).Append(" ")
+                    Case PathPointType.Line
+                        ' Se il tipo cambia rispetto al precedente, scrivi "L"
+                        If (iLastType And PathPointType.PathTypeMask) <> PathPointType.Line Then
+                            sPath.Append("L ")
+                        End If
+                        sPath.Append(pt.X.ToString("0.###", Globalization.CultureInfo.InvariantCulture)) _
+                         .Append(" ").Append(pt.Y.ToString("0.###", Globalization.CultureInfo.InvariantCulture)).Append(" ")
+                    Case PathPointType.Bezier
+                        ' Gestione Bezier
+                        If (iLastType And PathPointType.PathTypeMask) <> PathPointType.Bezier Then
+                            sPath.Append("C ")
+                        End If
+                        sPath.Append(pt.X.ToString("0.###", Globalization.CultureInfo.InvariantCulture)) _
+                         .Append(" ").Append(pt.Y.ToString("0.###", Globalization.CultureInfo.InvariantCulture)).Append(" ")
+                End Select
+
+                ' Marker e chiusura
+                If (t And PathPointType.PathMarker) <> 0 Then
+                    sPath.Append("M ").Append(pt.X.ToString("0.###", Globalization.CultureInfo.InvariantCulture)) _
+                     .Append(" ").Append(pt.Y.ToString("0.###", Globalization.CultureInfo.InvariantCulture)).Append(" ")
                 End If
-                If (iPaintType And PathPointType.PathMarker) = PathPointType.PathMarker Then
-                    Call sPath.Append("M " & PointToSVGString(oPaintPoint) & " ")
+                If (t And PathPointType.CloseSubpath) <> 0 Then
+                    sPath.Append("Z ")
                 End If
-                If (iPaintType And PathPointType.CloseSubpath) = PathPointType.CloseSubpath Then
-                    Call sPath.Append("Z ")
-                End If
-                iLastType = iPaintType
-            End If
-        Next
-        Call oXMLPath.SetAttribute("d", sPath.ToString)
-        Call Parent.AppendChild(oXMLPath)
+
+                iLastType = t
+            Next
+        End If
+
+        oXMLPath.SetAttribute("d", sPath.ToString)
+        If "" & id <> "" Then oXMLPath.SetAttribute("id", id)
+        Parent.AppendChild(oXMLPath)
         Return oXMLPath
     End Function
 
@@ -301,7 +399,7 @@ Module modSVG
         End Select
     End Function
 
-    Public Function CreateText(ByVal SVG As XmlDocument, Text As String, Point As PointF, FontFamily As String, FontStyle As FontStyle, FontSize As Single, FontUnit As GraphicsUnit, Optional ByVal id As String = "") As XmlElement
+    Public Function CreateText(ByVal SVG As cSVGWriter, Text As String, Point As PointF, FontFamily As String, FontStyle As FontStyle, FontSize As Single, FontUnit As GraphicsUnit, Optional ByVal id As String = "") As XmlElement
         Dim oXMLText As XmlElement = SVG.CreateElement("text", svgNamespace)
         oXMLText.InnerText = Text
         Call oXMLText.SetAttribute("x", modNumbers.NumberToString(Point.X, ""))
@@ -311,11 +409,11 @@ Module modSVG
         Return oXMLText
     End Function
 
-    Public Function CreateText(ByVal SVG As XmlDocument, Text As String, Point As PointF, Font As Font, Optional ByVal id As String = "") As XmlElement
+    Public Function CreateText(ByVal SVG As cSVGWriter, Text As String, Point As PointF, Font As Font, Optional ByVal id As String = "") As XmlElement
         Return CreateText(SVG, Text, Point, Font.FontFamily.Name, Font.Style, Font.Size, Font.Unit, id)
     End Function
 
-    Public Function CreateImage(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Bounds As RectangleF, Image As Bitmap, Optional RotationAngle As Single = 0, Optional KeepAspectRatio As Boolean = True, Optional ByVal id As String = "") As XmlElement
+    Public Function CreateImage(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline, ByVal Bounds As RectangleF, Image As Bitmap, Optional RotationAngle As Single = 0, Optional KeepAspectRatio As Boolean = True, Optional ByVal id As String = "") As XmlElement
         If Not Image Is Nothing Then
             Dim oXMLImage As XmlElement = SVG.CreateElement("image", svgNamespace)
             Call oXMLImage.SetAttribute("x", modNumbers.NumberToString(Bounds.X, ""))
@@ -334,27 +432,129 @@ Module modSVG
         End If
     End Function
 
-    Public Function CreateItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Path As GraphicsPath, Optional ByVal id As String = "") As XmlElement
+    Public Function CreateUse(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline, GUID As String) As XmlElement
+        Dim oXMLUse As XmlElement = SVG.CreateElement("use", svgNamespace)
+        oXMLUse.SetAttribute("href", xlinkNamespace, "#" & GUID)
+        Return oXMLUse
+    End Function
+
+    Public Function CreateItem(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline, ByVal Path As GraphicsPath, Optional ByVal id As String = "") As XmlElement
         Dim oXMLGroup As XmlElement = SVG.CreateElement("g", svgNamespace)
         Call AppendItem(SVG, oXMLGroup, PaintOptions, Path, id)
         Return oXMLGroup
     End Function
 
-    Public Sub AppendItemStyle(ByVal SVG As XmlDocument, ByVal Item As XmlElement, ByVal Name As String, Value As String)
+    Public Sub AppendItemStyle(ByVal SVG As cSVGWriter, ByVal Item As XmlElement, ByVal Name As String, Value As String)
         Dim sStyle As String = "" & Item.GetAttribute("style")
         sStyle = pSVGAppendStyle(sStyle, Name, Value)
         Call Item.SetAttribute("style", sStyle)
     End Sub
 
-    Public Sub AppendItemStyle(ByVal SVG As XmlDocument, ByVal Item As XmlElement, ByVal Brush As cBrush, ByVal Pen As cPen)
+    Public Sub AppendItemStyle(ByVal SVG As cSVGWriter, ByVal Item As XmlElement, ByVal Brush As cBrush, ByVal Pen As cPen)
         Call Item.Attributes.Append(GetItemStyle(SVG, Brush, Pen))
     End Sub
 
-    Public Sub AppendItemStyle(ByVal SVG As XmlDocument, ByVal Item As XmlElement, ByVal Brush As SolidBrush, ByVal Pen As Pen)
+    Public Sub AppendItemStyle(ByVal SVG As cSVGWriter, ByVal Item As XmlElement, ByVal Brush As SolidBrush, ByVal Pen As Pen)
         Call Item.Attributes.Append(GetItemStyle(SVG, Brush, Pen))
     End Sub
 
-    Public Function GetItemStyle(ByVal SVG As XmlDocument, ByVal Brush As SolidBrush, ByVal Pen As Pen) As XmlAttribute
+    Public Class cSVGSyle
+        Private sClassKey As String
+        Private sStyle As String
+
+        Public ReadOnly Property Style As String
+            Get
+                Return sStyle
+            End Get
+        End Property
+
+        Public ReadOnly Property ClassKey As String
+            Get
+                Return sClassKey
+            End Get
+        End Property
+
+        Public Sub New(ClassKe As String, Style As String)
+            sClassKey = ClassKe
+            sStyle = Style
+        End Sub
+    End Class
+
+    Public Class cSVGStylesCache
+        Inherits Dictionary(Of String, cSVGSyle)
+
+        Public Shared Function GetHash(Style As String) As String
+            Return CalculateHash(Style)
+        End Function
+
+        Public Shadows Function Add(Style As String) As String
+            Dim sHash As String = CalculateHash(Style)
+            If MyBase.ContainsKey(sHash) Then
+                Return Me(sHash).ClassKey
+            Else
+                Dim sClassKey As String = "c" & (MyBase.Count + 1)
+                MyBase.Add(sHash, New cSVGSyle(sClassKey, Style))
+                Return sClassKey
+            End If
+        End Function
+    End Class
+
+    Public Class cSVGClipart
+        Private sClassKey As String
+        Private oDrawPath As cDrawPath
+
+        Public ReadOnly Property DrawPath As cDrawPath
+            Get
+                Return oDrawPath
+            End Get
+        End Property
+
+        Public ReadOnly Property ClassKey As String
+            Get
+                Return sClassKey
+            End Get
+        End Property
+
+        Public Sub New(ClassKey As String, DrawPath As cDrawPath)
+            sClassKey = ClassKey
+            oDrawPath = DrawPath
+        End Sub
+    End Class
+
+    Public Class cSVGClipartCache
+        Inherits Dictionary(Of String, cSVGClipart)
+
+        Public Shared Function GetHash(Style As String) As String
+            Return CalculateHash(Style)
+        End Function
+
+        Public Shadows Sub Add(Clipart As cDrawClipArt)
+            For Each oDrawPath As cDrawPath In Clipart.Paths
+                If Not Me.ContainsKey(oDrawPath.InternalID) Then
+                    Dim sClassKey As String = "b" & (Me.Count + 1)
+                    MyBase.Add(oDrawPath.InternalID, New cSVGClipart(sClassKey, oDrawPath))
+                End If
+            Next
+        End Sub
+
+        Public Shadows Sub Add(Clipart As cSurvey.cClipart)
+            Call Add(Clipart.Clipart)
+        End Sub
+
+        'Public Shadows Function Add(ItemCacheItem As cDrawCacheItem) As String
+        '    If ItemCacheItem.GUID IsNot Nothing Then
+        '        If Me.ContainsKey(ItemCacheItem.GUID) Then
+        '            Return Me(ItemCacheItem.GUID).ClassKey
+        '        Else
+        '            Dim sClassKey As String = "c" & (Me.Count + 1)
+        '            MyBase.Add(ItemCacheItem.GUID, New cSVGClipart(sClassKey, ItemCacheItem))
+        '            Return sClassKey
+        '        End If
+        '    End If
+        'End Function
+    End Class
+
+    Public Function GetItemStyle(ByVal SVG As cSVGWriter, ByVal Brush As SolidBrush, ByVal Pen As Pen) As XmlAttribute
         Dim sStyle As String = ""
         If (Not Brush Is Nothing) Then
             If Brush.Color = Color.Transparent Then
@@ -373,7 +573,7 @@ Module modSVG
             sStyle = pSVGAppendStyle(sStyle, "stroke", pGetHTMLColor(Pen.Color)) ' ColorTranslator.ToHtml(Item.Pen.Color).ToLower)
             Dim sPenWidth As Single = modNumbers.MathRound(Pen.Width, 2)
             If sPenWidth <= 0 Then
-                sPenWidth = 0.01
+                sPenWidth = sMinPenWidth
                 sStyle = pSVGAppendStyle(sStyle, "vector-effect", "none")
             End If
             Select Case Pen.DashStyle
@@ -412,12 +612,14 @@ Module modSVG
         Else
             sStyle = pSVGAppendStyle(sStyle, "stroke", "none")
         End If
-        Dim oStyle As XmlAttribute = SVG.CreateAttribute("style")
-        oStyle.Value = sStyle
+
+        Dim sClassKey As String = SVG.StylesCache.Add(sStyle)
+        Dim oStyle As XmlAttribute = SVG.CreateAttribute("class")
+        oStyle.Value = sClassKey
         Return oStyle
     End Function
 
-    Public Function GetItemStyle(ByVal SVG As XmlDocument, ByVal Brush As cBrush, ByVal Pen As cPen) As XmlAttribute
+    Public Function GetItemStyle(ByVal SVG As cSVGWriter, ByVal Brush As cBrush, ByVal Pen As cPen) As XmlAttribute
         Dim sStyle As String = ""
         If (Not Brush Is Nothing) Then
             Select Case Brush.Type
@@ -450,7 +652,7 @@ Module modSVG
             sStyle = pSVGAppendStyle(sStyle, "stroke", pGetHTMLColor(Pen.Color)) ' ColorTranslator.ToHtml(Item.Pen.Color).ToLower)
             Dim sPenWidth As Single = modNumbers.MathRound(oDrawingPen.Width, 2)
             If sPenWidth = 0 Then
-                sPenWidth = 0.01
+                sPenWidth = sMinPenWidth
                 sStyle = pSVGAppendStyle(sStyle, "vector-effect", "none")
             End If
             Select Case Pen.Style
@@ -495,10 +697,18 @@ Module modSVG
         Else
             sStyle = pSVGAppendStyle(sStyle, "stroke", "none")
         End If
-        Dim oStyle As XmlAttribute = SVG.CreateAttribute("style")
-        oStyle.Value = sStyle
+
+        Dim sClassKey As String = SVG.StylesCache.Add(sStyle)
+        Dim oStyle As XmlAttribute = SVG.CreateAttribute("class")
+        oStyle.Value = sClassKey
         Return oStyle
+
+        'Dim oStyle As XmlAttribute = SVG.CreateAttribute("style")
+        'oStyle.Value = sStyle
+        'Return oStyle
     End Function
+
+    Private sMinPenWidth As Single = 0.05
 
     Private Function pGetColorAlfaPercentage(ByVal Color As System.Drawing.Color) As Single
         Return modNumbers.MathRound(Color.A / 255, 2)
@@ -520,6 +730,25 @@ Module modSVG
         End If
         Style = Style & Key & ":" & Value
         Return Style
+    End Function
+
+    Public Function MatrixToSvgTransform(m As Matrix) As String
+        Dim e = m.Elements
+        ' Formatta con separatori a spazio e punto decimale
+        Return String.Format(
+            System.Globalization.CultureInfo.InvariantCulture,
+            "matrix({0} {1} {2} {3} {4} {5})",
+            e(0), e(1), e(2), e(3), e(4), e(5)
+        )
+    End Function
+
+    Public Function MatrixToSvgTransform(e As Single()) As String
+        ' Formatta con separatori a spazio e punto decimale
+        Return String.Format(
+            System.Globalization.CultureInfo.InvariantCulture,
+            "matrix({0} {1} {2} {3} {4} {5})",
+            e(0), e(1), e(2), e(3), e(4), e(5)
+        )
     End Function
 End Module
 

@@ -561,18 +561,18 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overrides Function ToSvgItem(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline) As XmlElement
             Dim oSVGGroup As XmlElement = modSVG.CreateGroup(SVG, "_items")
             For Each oItem In oItems
-                Dim oSVGItem As XmlElement = oItem.ToSvgItem(SVG, PaintOptions, Options)
+                Dim oSVGItem As XmlElement = oItem.ToSvgItem(SVG, PaintOptions)
                 Call modSVG.AppendItem(SVG, oSVGGroup, oSVGItem)
             Next
             Return oSVGGroup
         End Function
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-            Dim oSVG As XmlDocument = modSVG.CreateSVG
-            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
+        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cSVGWriter.SVGOptionsEnum) As cSVGWriter
+            Dim oSVG As cSVGWriter = modSVG.CreateSVG(Options)
+            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions))
             Return oSVG
         End Function
 

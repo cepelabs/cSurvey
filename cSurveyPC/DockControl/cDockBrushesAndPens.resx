@@ -400,7 +400,7 @@
     <value>Replace with...</value>
   </data>
   <data name="btnCustomToUser.Caption" xml:space="preserve">
-    <value>Replace custom elements like this to this</value>
+    <value>Replace custom elements like this with this saved element</value>
   </data>
   <metadata name="mnuGridContext.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>970, 22</value>

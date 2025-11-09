@@ -85,7 +85,7 @@ Namespace cSurvey.Design
         Public ReadOnly Property Sand() As cCustomBrush
             Get
                 If oBrushSand Is Nothing Then
-                    oBrushSand = New cCustomBrush(oSurvey, GetLocalizedString("brushes.sand"), cBrush.BrushTypeEnum.Sand, Color.Black, cBrush.HatchTypeEnum.Clipart, modPenClipart.ClipartSand, 0.5, 0.1, Color.SandyBrown, cBrush.ClipartAngleModeEnum.Random, 0, cBrush.ClipartCropEnum.None)
+                    oBrushSand = New cCustomBrush(oSurvey, GetLocalizedString("brushes.sand"), cBrush.BrushTypeEnum.Sand, Color.Black, cBrush.HatchTypeEnum.Clipart, modPenClipart.ClipartSand, 0.5, 0.1, Color.SandyBrown, cBrush.ClipartAngleModeEnum.Random, 0, cBrush.ClipartCropEnum.Full)
                 End If
                 Return oBrushSand
             End Get
@@ -276,8 +276,13 @@ Namespace cSurvey.Design
         End Function
 
         Public Function Add(brush As cBrush, Name As String) As cCustomBrush
-            If brush.Type = cBrush.BrushTypeEnum.Custom Then
-                Dim oCustombrush As cCustomBrush = brush.GetBaseBrush
+            If brush.Type = cBrush.BrushTypeEnum.Custom OrElse brush.Type = cBrush.BrushTypeEnum.User Then
+                Dim oCustombrush As cCustomBrush
+                If brush.Type = cBrush.BrushTypeEnum.User Then
+                    oCustombrush = cCustomBrush.CopyAsUser(brush.Survey, brush.GetBaseBrush)
+                Else
+                    oCustombrush = brush.GetBaseBrush
+                End If
                 If oCustombrush.Name IsNot Nothing Then oCustombrush.Name = Name
 
                 Dim oExistingbrush1 As cCustomBrush = oItems.FirstOrDefault(Function(oItem) oItem.Name.ToLower = Name.ToLower)

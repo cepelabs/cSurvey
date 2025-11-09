@@ -168,22 +168,22 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overrides Function ToSvgItem(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline) As XmlElement
             Using oMatrix As Matrix = New Matrix
                 If PaintOptions.DrawTranslation Then
                     Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
                     Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
                 End If
-                Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
+                Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, oMatrix)
                 If MyBase.Name <> "" Then Call oSVGItem.SetAttribute("name", MyBase.Name)
                 Call modSVG.AppendItemStyle(SVG, oSVGItem, MyBase.Brush, MyBase.Pen)
                 Return oSVGItem
             End Using
         End Function
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-            Dim oSVG As XmlDocument = modSVG.CreateSVG
-            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
+        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cSVGWriter.SVGOptionsEnum) As cSVGWriter
+            Dim oSVG As cSVGWriter = modSVG.CreateSVG(Options)
+            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions))
             Return oSVG
         End Function
 

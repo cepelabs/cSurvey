@@ -2217,11 +2217,95 @@ There is a correlation between this code and any data related to the user.</valu
   <data name="&gt;&gt;GroupBox7.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="chkSVGExportInkscapeReference.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkSVGExportInkscapeReference.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 138</value>
+  </data>
+  <data name="CheckEdit3.Properties.Caption" xml:space="preserve">
+    <value>Export Inkscape additional data</value>
+  </data>
+  <data name="chkSVGExportInkscapeReference.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 20</value>
+  </data>
+  <data name="chkSVGExportInkscapeReference.TabIndex" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <data name="chkSVGExportInkscapeReference.ToolTip" xml:space="preserve">
+    <value>Export also Inkscape additional data</value>
+  </data>
+  <data name="&gt;&gt;chkSVGExportInkscapeReference.Name" xml:space="preserve">
+    <value>chkSVGExportInkscapeReference</value>
+  </data>
+  <data name="&gt;&gt;chkSVGExportInkscapeReference.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkSVGExportInkscapeReference.Parent" xml:space="preserve">
+    <value>GroupBox2</value>
+  </data>
+  <data name="&gt;&gt;chkSVGExportInkscapeReference.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkSVGExportUseStyles.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkSVGExportUseStyles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 216</value>
+  </data>
+  <data name="chkSVGExportUseStyles.Properties.Caption" xml:space="preserve">
+    <value>Use common styles</value>
+  </data>
+  <data name="chkSVGExportUseStyles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 20</value>
+  </data>
+  <data name="chkSVGExportUseStyles.TabIndex" type="System.Int32, mscorlib">
+    <value>119</value>
+  </data>
+  <data name="&gt;&gt;chkSVGExportUseStyles.Name" xml:space="preserve">
+    <value>chkSVGExportUseStyles</value>
+  </data>
+  <data name="&gt;&gt;chkSVGExportUseStyles.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkSVGExportUseStyles.Parent" xml:space="preserve">
+    <value>GroupBox2</value>
+  </data>
+  <data name="&gt;&gt;chkSVGExportUseStyles.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkSVGExportReuseclipart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkSVGExportReuseclipart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 190</value>
+  </data>
+  <data name="chkSVGExportReuseclipart.Properties.Caption" xml:space="preserve">
+    <value>Reuse clipart path</value>
+  </data>
+  <data name="chkSVGExportReuseclipart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 20</value>
+  </data>
+  <data name="chkSVGExportReuseclipart.TabIndex" type="System.Int32, mscorlib">
+    <value>118</value>
+  </data>
+  <data name="&gt;&gt;chkSVGExportReuseclipart.Name" xml:space="preserve">
+    <value>chkSVGExportReuseclipart</value>
+  </data>
+  <data name="&gt;&gt;chkSVGExportReuseclipart.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkSVGExportReuseclipart.Parent" xml:space="preserve">
+    <value>GroupBox2</value>
+  </data>
+  <data name="&gt;&gt;chkSVGExportReuseclipart.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="chkSVGExportTextAsPath.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkSVGExportTextAsPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>210, 34</value>
+    <value>15, 164</value>
   </data>
   <data name="chkSVGExportTextAsPath.Properties.Caption" xml:space="preserve">
     <value>Export text as path</value>
@@ -2242,7 +2326,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;chkSVGExportTextAsPath.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="chkSVGExportcSurveyReference.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2251,16 +2335,16 @@ There is a correlation between this code and any data related to the user.</valu
     <value>15, 112</value>
   </data>
   <data name="chkSVGExportcSurveyReference.Properties.Caption" xml:space="preserve">
-    <value>Export additional data</value>
+    <value>Export cSurvey additional data</value>
   </data>
   <data name="chkSVGExportcSurveyReference.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 20</value>
+    <value>171, 20</value>
   </data>
   <data name="chkSVGExportcSurveyReference.TabIndex" type="System.Int32, mscorlib">
     <value>116</value>
   </data>
   <data name="chkSVGExportcSurveyReference.ToolTip" xml:space="preserve">
-    <value>Export also additional data</value>
+    <value>Export also cSurvey additional data</value>
   </data>
   <data name="&gt;&gt;chkSVGExportcSurveyReference.Name" xml:space="preserve">
     <value>chkSVGExportcSurveyReference</value>
@@ -2272,7 +2356,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;chkSVGExportcSurveyReference.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="chkSVGExportImages.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2302,10 +2386,10 @@ There is a correlation between this code and any data related to the user.</valu
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;chkSVGExportImages.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="lblSVGExportDPI.Location" type="System.Drawing.Point, System.Drawing">
-    <value>320, 109</value>
+    <value>322, 37</value>
   </data>
   <data name="lblSVGExportDPI.Size" type="System.Drawing.Size, System.Drawing">
     <value>21, 13</value>
@@ -2329,10 +2413,10 @@ There is a correlation between this code and any data related to the user.</valu
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;lblSVGExportDPI.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="txtSVGExportDPI.Location" type="System.Drawing.Point, System.Drawing">
-    <value>354, 107</value>
+    <value>356, 35</value>
   </data>
   <data name="txtSVGExportDPI.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 21</value>
@@ -2356,7 +2440,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;txtSVGExportDPI.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="chkSVGExportNoClipartBrushes.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 60</value>
@@ -2383,7 +2467,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;chkSVGExportNoClipartBrushes.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="chkSVGExportNoClipping.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 34</value>
@@ -2410,13 +2494,13 @@ There is a correlation between this code and any data related to the user.</valu
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;chkSVGExportNoClipping.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="lblSVGExportScale.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="lblSVGExportScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>175, 111</value>
+    <value>177, 39</value>
   </data>
   <data name="lblSVGExportScale.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 13</value>
@@ -2440,13 +2524,13 @@ There is a correlation between this code and any data related to the user.</valu
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;lblSVGExportScale.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="txtSVGExportScale.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="txtSVGExportScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>210, 107</value>
+    <value>212, 35</value>
   </data>
   <data name="txtSVGExportScale.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 21</value>
@@ -2470,13 +2554,13 @@ There is a correlation between this code and any data related to the user.</valu
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;txtSVGExportScale.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="GroupBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 167</value>
   </data>
   <data name="GroupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>450, 160</value>
+    <value>450, 246</value>
   </data>
   <data name="GroupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>114</value>

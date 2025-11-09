@@ -1,10 +1,11 @@
-﻿Imports System.Xml
-Imports System.Drawing
+﻿Imports System.Drawing
 Imports System.Drawing.Drawing2D
-Imports cSurveyPC.cSurvey.Drawings
-Imports cSurveyPC.cSurvey.Design.Items
-Imports cSurveyPC.cSurvey.Design.cLayers
+Imports System.Xml
 Imports cSurveyPC.cSurvey.Calculate.Plot.cData
+Imports cSurveyPC.cSurvey.Design.cLayers
+Imports cSurveyPC.cSurvey.Design.Items
+Imports cSurveyPC.cSurvey.Drawings
+Imports DevExpress.Data.Svg
 
 Namespace cSurvey.Design
     Public Class cDesignPlan
@@ -263,7 +264,7 @@ Namespace cSurvey.Design
             Call WarpItemsEx(Segment, Segment.Data.PlanWarpingFactor, False)
         End Sub
 
-        Private Sub pAppendSvgItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum)
+        Private Sub pAppendSvgItem(ByVal SVG As cSVGWriter, ByVal Parent As XmlElement, ByVal PaintOptions As cOptionsCenterline)
             Dim oBound As RectangleF = GetBounds(PaintOptions)
 
             'Dim sExportScaleFactor As Single = modNumbers.StringToSingle(oHelper.Editor.cEditDesignEnvironment.GetSetting("svg.exportscale", 1))
@@ -272,40 +273,42 @@ Namespace cSurvey.Design
 
             If PaintOptions.DrawDesign Then
                 If PaintOptions.DesignStyle = cOptionsDesign.DesignStyleEnum.Design OrElse PaintOptions.DesignStyle = cOptionsDesign.DesignStyleEnum.Combined Then
-                    If (Options And cItem.SVGOptionsEnum.Clipping) = cItem.SVGOptionsEnum.Clipping Then
+                    If (SVG.Options And cSVGWriter.SVGOptionsEnum.Clipping) = cSVGWriter.SVGOptionsEnum.Clipping Then
                         Using oMaskPaths As cMaskPaths = New cMaskPaths
                             Dim oBorderLayer As Layers.cLayerBorders = MyBase.Layers.Item(cLayers.LayerTypeEnum.Borders)
                             Dim iBorderIndex As Integer = 0
                             Dim iBorderCount As Integer = oBorderLayer.Items.Count
                             For Each oItem As cItem In oBorderLayer.Items
-                                Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("design.svgexport.progress1"), iBorderIndex / iBorderCount)
+                                If iBorderIndex Mod 10 = 0 Then Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("design.svgexport.progress1"), iBorderIndex / iBorderCount)
                                 If oItem.Category = cIItem.cItemCategoryEnum.CaveBorder Then
                                     Try
                                         Dim oCaveBorder As Design.Items.cItemInvertedFreeHandArea = oItem
-                                        Dim oBorderPath As GraphicsPath = New GraphicsPath
-                                        Dim oCache As cDrawCache = oCaveBorder.Caches(PaintOptions)
-                                        If oCache.Count > 0 Then
-                                            For Each oCacheItem As cDrawCacheItem In oCache
-                                                Try
-                                                    Call oBorderPath.AddPath(oCacheItem.Path, True)
-                                                Catch
-                                                End Try
-                                            Next
-                                            Call oBorderPath.CloseAllFigures()
+                                        If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oCaveBorder) Then
+                                            Dim oBorderPath As GraphicsPath = New GraphicsPath
+                                            Dim oCache As cDrawCache = oCaveBorder.Caches(PaintOptions)
+                                            If oCache.Count > 0 Then
+                                                For Each oCacheItem As cDrawCacheItem In oCache
+                                                    Try
+                                                        Call oBorderPath.AddPath(oCacheItem.Path, True)
+                                                    Catch
+                                                    End Try
+                                                Next
+                                                Call oBorderPath.CloseAllFigures()
 
-                                            If oBorderPath.PointCount > 0 Then
-                                                If PaintOptions.DrawTranslation Then
-                                                    Dim oTranslation As SizeF = GetItemTranslation(oItem)
-                                                    If Not oTranslation.IsEmpty Then
-                                                        Using oTranslationMatrix = New Matrix
-                                                            Call oTranslationMatrix.Translate(oTranslation.Width, oTranslation.Height)
-                                                            Call oBorderPath.Transform(oTranslationMatrix)
-                                                        End Using
+                                                If oBorderPath.PointCount > 0 Then
+                                                    If PaintOptions.DrawTranslation Then
+                                                        Dim oTranslation As SizeF = GetItemTranslation(oItem)
+                                                        If Not oTranslation.IsEmpty Then
+                                                            Using oTranslationMatrix = New Matrix
+                                                                Call oTranslationMatrix.Translate(oTranslation.Width, oTranslation.Height)
+                                                                Call oBorderPath.Transform(oTranslationMatrix)
+                                                            End Using
+                                                        End If
                                                     End If
-                                                End If
 
-                                                Dim sKey As String = modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
-                                                Call oMaskPaths.AppendPath(sKey, oBorderPath, oCaveBorder.MergeMode)
+                                                    Dim sKey As String = modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
+                                                    Call oMaskPaths.AppendPath(sKey, oBorderPath, oCaveBorder.MergeMode)
+                                                End If
                                             End If
                                         End If
                                     Catch
@@ -320,21 +323,25 @@ Namespace cSurvey.Design
 
                                 Dim oSVGMaskPath As XmlElement = modSVG.CreateMaskPath(SVG, "mask_" & sKey)
                                 Dim oDirectMaskPaths As List(Of cMaskPath) = oMaskPaths(sKey)
+                                Dim iMaskIndex As Integer = 0
                                 For Each oDirectMaskPath As cMaskPath In oDirectMaskPaths
-                                    Dim oSVGItem As XmlElement = modSVG.AppendItem(SVG, oSVGMaskPath, PaintOptions, oDirectMaskPath.Path)
+                                    Dim oSVGItem As XmlElement = modSVG.AppendItem(SVG, oSVGMaskPath, PaintOptions, oDirectMaskPath.Path, "mask_" & sKey & "_" & iMaskIndex)
                                     Select Case oDirectMaskPath.MergeMode
                                         Case cIItemMergeableArea.MergeModeEnum.Add
                                             Call oSVGItem.SetAttribute("fill", "white")
                                         Case cIItemMergeableArea.MergeModeEnum.Subtract
                                             Call oSVGItem.SetAttribute("fill", "black")
                                     End Select
+                                    iMaskIndex += 1
                                 Next
                                 Call modSVG.AppendItem(SVG, Parent, oSVGMaskPath)
 
                                 'inverted mask may be usefull only if used in the draw...in future have to be created only in this case...
                                 Dim oSVGInvertedMaskPath As XmlElement = modSVG.CreateMaskPath(SVG, "invmask_" & sKey)
                                 Dim oInvertedMaskPaths As List(Of cMaskPath) = oMaskPaths(sKey)
-                                Dim oSVGRectAll As XmlElement = SVG.CreateElement("rect")
+                                iMaskIndex = 0
+
+                                Dim oSVGRectAll As XmlElement = SVG.CreateElement("rect", modSVG.svgNamespace)
                                 Call oSVGRectAll.SetAttribute("x", modNumbers.NumberToString(oBound.X))
                                 Call oSVGRectAll.SetAttribute("y", modNumbers.NumberToString(oBound.Y))
                                 Call oSVGRectAll.SetAttribute("width", modNumbers.NumberToString(oBound.Width))
@@ -342,13 +349,16 @@ Namespace cSurvey.Design
                                 Call oSVGRectAll.SetAttribute("fill", "white")
                                 oSVGInvertedMaskPath.AppendChild(oSVGRectAll)
                                 For Each oInvertedMaskPath As cMaskPath In oInvertedMaskPaths
-                                    Dim oSVGItem As XmlElement = modSVG.AppendItem(SVG, oSVGInvertedMaskPath, PaintOptions, oInvertedMaskPath.Path)
+                                    Dim oSVGItem As XmlElement = modSVG.CreateUse(SVG, PaintOptions, "mask_" & sKey & "_" & iMaskIndex)
+                                    'Dim oSVGItem As XmlElement = modSVG.AppendItem(SVG, oSVGInvertedMaskPath, PaintOptions, oInvertedMaskPath.Path)
                                     Select Case oInvertedMaskPath.MergeMode
                                         Case cIItemMergeableArea.MergeModeEnum.Add
                                             Call oSVGItem.SetAttribute("fill", "black")
                                         Case cIItemMergeableArea.MergeModeEnum.Subtract
                                             Call oSVGItem.SetAttribute("fill", "white")
                                     End Select
+                                    oSVGInvertedMaskPath.AppendChild(oSVGItem)
+                                    iMaskIndex += 1
                                 Next
                                 Call modSVG.AppendItem(SVG, Parent, oSVGInvertedMaskPath)
 
@@ -362,13 +372,15 @@ Namespace cSurvey.Design
                     For Each oLayer As cLayer In MyBase.Layers
                         iIndex += 1
                         Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("design.svgexport.progress3"), iIndex / iCount)
-                        Dim oSVGItem As XmlElement = oLayer.ToSvgItem(SVG, PaintOptions, Options)
+                        Dim oSVGItem As XmlElement = oLayer.ToSvgItem(SVG, PaintOptions)
                         Call modSVG.AppendItem(SVG, Parent, oSVGItem)
                     Next
                 End If
             End If
 
             If PaintOptions.DesignStyle = cOptionsDesign.DesignStyleEnum.Areas Or PaintOptions.DesignStyle = cOptionsDesign.DesignStyleEnum.Combined Then
+                Dim iCombinedAreaTransparencyThreshold As Integer = oSurvey.Properties.DesignProperties.GetValue("DesignCombinedAreaTransparencyThreshold", 120)
+
                 Dim bDrawCaveBorder As Boolean
                 Dim oBordersLayer As cSurveyPC.cSurvey.Design.Layers.cLayerBorders = MyBase.Layers(cLayers.LayerTypeEnum.Borders)
                 Dim oSVGArea As XmlElement = modSVG.CreateGroup(SVG, "area")
@@ -376,41 +388,45 @@ Namespace cSurvey.Design
                 Dim iCount As Integer = oBordersLayer.Items.Count
                 For Each oItem As cItem In oBordersLayer.Items
                     iIndex += 1
-                    Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("design.svgexport.progress4"), iIndex / iCount)
+                    If iIndex Mod 10 = 0 Then Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("design.svgexport.progress4"), iIndex / iCount)
 
                     If oItem.Category = cIItem.cItemCategoryEnum.CaveBorder Then
                         Try
                             Dim oCaveBorder As cSurveyPC.cSurvey.Design.Items.cItemInvertedFreeHandArea = oItem
-                            Using oBorderPath As GraphicsPath = New GraphicsPath
-                                Dim oCache As cDrawCache = oCaveBorder.Caches(PaintOptions)
-                                If oCache.Count > 0 Then
-                                    bDrawCaveBorder = True
-                                    For Each oCacheItem As cDrawCacheItem In oCache
-                                        Try
-                                            Call oBorderPath.AddPath(oCacheItem.Path, True)
-                                        Catch
-                                        End Try
-                                    Next
-                                    Call oBorderPath.CloseAllFigures()
-                                End If
-                                If bDrawCaveBorder Then
-                                    Dim oColor As Color = oSurvey.Properties.CaveInfos.GetColor(oItem, Color.LightGray)
-                                    Using oBrush As SolidBrush = If(PaintOptions.DesignStyle = cOptionsDesign.DesignStyleEnum.Combined, New SolidBrush(Color.FromArgb(120, oColor)), New SolidBrush(oColor))
-                                        If Not PaintOptions.IsDesign And PaintOptions.DrawTranslation Then
-                                            Dim oTranslation As SizeF = GetItemTranslation(oItem)
-                                            If Not oTranslation.IsEmpty Then
-                                                Using oTranslationMatrix = New Matrix
-                                                    Call oTranslationMatrix.Translate(oTranslation.Width, oTranslation.Height, Drawing2D.MatrixOrder.Prepend)
-                                                    Call oBorderPath.Transform(oTranslationMatrix)
-                                                End Using
+                            If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oCaveBorder) Then
+                                Using oBorderPath As GraphicsPath = New GraphicsPath
+                                    Dim oCache As cDrawCache = oCaveBorder.Caches(PaintOptions)
+                                    If oCache.Count > 0 Then
+                                        bDrawCaveBorder = True
+                                        For Each oCacheItem As cDrawCacheItem In oCache
+                                            Try
+                                                Call oBorderPath.AddPath(oCacheItem.Path, True)
+                                            Catch
+                                            End Try
+                                        Next
+                                        Call oBorderPath.CloseAllFigures()
+                                    End If
+                                    If bDrawCaveBorder Then
+                                        Dim oColor As Color = oSurvey.Properties.CaveInfos.GetColor(oItem, Color.LightGray)
+                                        Using oBrush As SolidBrush = If(PaintOptions.DesignStyle = cOptionsDesign.DesignStyleEnum.Combined, New SolidBrush(Color.FromArgb(iCombinedAreaTransparencyThreshold, oColor)), New SolidBrush(oColor))
+                                            If Not PaintOptions.IsDesign And PaintOptions.DrawTranslation Then
+                                                Dim oTranslation As SizeF = GetItemTranslation(oItem)
+                                                If Not oTranslation.IsEmpty Then
+                                                    Using oTranslationMatrix = New Matrix
+                                                        Call oTranslationMatrix.Translate(oTranslation.Width, oTranslation.Height, Drawing2D.MatrixOrder.Prepend)
+                                                        Call oBorderPath.Transform(oTranslationMatrix)
+                                                    End Using
+                                                End If
                                             End If
-                                        End If
-                                        Dim oSVGAreaItem As XmlElement = modSVG.CreateItem(SVG, PaintOptions, oBorderPath)
-                                        Call modSVG.AppendItemStyle(SVG, oSVGAreaItem, oBrush, Nothing)
-                                        Call modSVG.AppendItem(SVG, oSVGArea, oSVGAreaItem)
-                                    End Using
-                                End If
-                            End Using
+                                            Dim oSVGAreaItem As XmlElement = modSVG.CreateItem(SVG, PaintOptions, oBorderPath)
+                                            Dim sClippingKey As String = "mask_" & modExport.FormatCaveBranchNameForSVG(oCaveBorder.Cave, oCaveBorder.Branch)
+                                            Call oSVGAreaItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
+                                            Call modSVG.AppendItemStyle(SVG, oSVGAreaItem, oBrush, Nothing)
+                                            Call modSVG.AppendItem(SVG, oSVGArea, oSVGAreaItem)
+                                        End Using
+                                    End If
+                                End Using
+                            End If
                         Catch
                         End Try
                     End If
@@ -419,48 +435,64 @@ Namespace cSurvey.Design
             End If
         End Sub
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overrides Function ToSvgItem(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline) As XmlElement
             Dim oSVGGroup As XmlElement = modSVG.CreateLayer(SVG, "design", "design")
-            Call pAppendSvgItem(SVG, oSVGGroup, PaintOptions, Options)
+            Call pAppendSvgItem(SVG, oSVGGroup, PaintOptions)
             Return oSVGGroup
         End Function
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, Unit As SizeUnit, ByVal ViewBox As RectangleF) As XmlDocument
+        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cSVGWriter.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, Unit As SizeUnit, ByVal ViewBox As RectangleF) As cSVGWriter
             Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, modMain.GetLocalizedString("design.svgexport.progressbegin1"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageExport Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage)
 
             Dim oBounds As RectangleF = New RectangleF(0, 0, Size.Width, Size.Height)
 
             Dim bLegacyObjects As Boolean = PaintOptions.DrawScale OrElse PaintOptions.DrawCompass OrElse PaintOptions.DrawBox
 
-            Dim oSVG As XmlDocument
+            Dim oSVG As cSVGWriter
             Dim oDesign As XmlElement
             If bLegacyObjects Then
-                oSVG = modSVG.CreateSVG(oSurvey.Name, Size, Unit, oBounds, SVGCreateFlagsEnum.AddInkscapeSettings)
+                oSVG = modSVG.CreateSVG(oSurvey.Name, Size, Unit, oBounds, Options)
                 oDesign = modSVG.CreateSubSVG(oSVG, "plan", PageBox, SizeUnit.none, ViewBox)
             Else
-                oSVG = modSVG.CreateSVG(oSurvey.Name, Size, Unit, ViewBox, SVGCreateFlagsEnum.AddInkscapeSettings)
+                oSVG = modSVG.CreateSVG(oSurvey.Name, Size, Unit, ViewBox, Options)
                 oDesign = modSVG.CreateLayer(oSVG, "plan", "plan")
             End If
-            'Call modSVG.AppendRectangle(oSVG, oDesign, ViewBox, Nothing, PaintOptions.DrawingObjects.TranslationPen)
-            Call modSVG.AppendItem(oSVG, oDesign, ToSvgItem(oSVG, PaintOptions, Options))
+
+            If oSVG.Options And cSVGWriter.SVGOptionsEnum.ReuseClipart Then
+                For Each oItem As cItem In Me.GetAllItems
+                    Call AppendToClipartCache(oSVG, oItem)
+                    If TypeOf oItem Is cItemLegend Then
+                        With DirectCast(oItem, cItemLegend)
+                            For Each oSubItem As cItemLegend.cLegendItem In .Items
+                                Call AppendToClipartCache(oSVG, oSubItem.Item)
+                            Next
+                        End With
+                    End If
+                Next
+            End If
+
+            Call modSVG.AppendItem(oSVG, oDesign, ToSvgItem(oSVG, PaintOptions))
             If (PaintOptions.DrawPlot OrElse PaintOptions.DrawSpecialPoints OrElse (PaintOptions.DrawTranslation AndAlso PaintOptions.TranslationsOptions.DrawTranslationsLine) OrElse PaintOptions.DrawSurfaceProfile) Then
-                Call modSVG.AppendItem(oSVG, oDesign, oPlot.ToSvgItem(oSVG, PaintOptions, Options))
+                Call modSVG.AppendItem(oSVG, oDesign, oPlot.ToSvgItem(oSVG, PaintOptions))
             End If
             Call modSVG.AppendItem(oSVG, Nothing, oDesign)
 
             If bLegacyObjects Then
                 Dim oGadget As XmlElement = modSVG.CreateSubSVG(oSVG, "legacyobjects", oBounds, SizeUnit.none, oBounds)
                 If PaintOptions.DrawScale Then
-                    Call modSVG.AppendItem(oSVG, oGadget, oPlot.Scale.ToSvgItem(oSVG, PaintOptions, Options))
+                    Call modSVG.AppendItem(oSVG, oGadget, oPlot.Scale.ToSvgItem(oSVG, PaintOptions))
                 End If
                 If PaintOptions.DrawCompass Then
-                    Call modSVG.AppendItem(oSVG, oGadget, oPlot.Compass.ToSvgItem(oSVG, PaintOptions, Options))
+                    Call modSVG.AppendItem(oSVG, oGadget, oPlot.Compass.ToSvgItem(oSVG, PaintOptions))
                 End If
                 If PaintOptions.DrawBox Then
-                    Call modSVG.AppendItem(oSVG, oGadget, oPlot.InfoBox.ToSvgItem(oSVG, PaintOptions, Options))
+                    Call modSVG.AppendItem(oSVG, oGadget, oPlot.InfoBox.ToSvgItem(oSVG, PaintOptions))
                 End If
                 Call modSVG.AppendItem(oSVG, Nothing, oGadget)
             End If
+
+            oSVG.AppendStyles()
+            oSVG.AppendCliparts(PaintOptions)
 
             Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, modMain.GetLocalizedString("design.svgexport.progressend1"), 0)
 

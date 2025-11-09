@@ -67,7 +67,7 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Friend Overrides Function ToSvg(PaintOptions As cOptionsCenterline, Options As cItem.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, Unit As SizeUnit, ByVal ViewBox As RectangleF) As XmlDocument
+        Friend Overrides Function ToSvg(PaintOptions As cOptionsCenterline, Options As cSVGWriter.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, Unit As SizeUnit, ByVal ViewBox As RectangleF) As cSVGWriter
         End Function
 
         Public Overrides ReadOnly Property Type As cIDesign.cDesignTypeEnum
@@ -79,7 +79,7 @@ Namespace cSurvey.Design
         Friend Overrides Sub WarpItems(Segment As cISegment)
         End Sub
 
-        Friend Overrides Function ToSvgItem(SVG As XmlDocument, PaintOptions As cOptionsCenterline, Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overrides Function ToSvgItem(SVG As cSVGWriter, PaintOptions As cOptionsCenterline) As XmlElement
         End Function
 
         Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement

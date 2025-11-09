@@ -1281,6 +1281,14 @@ Namespace cSurvey.Drawings
         Private sClass As String
         Private sClassNames() As String
 
+        Private sInternalID As String
+
+        Public ReadOnly Property InternalID As String
+            Get
+                Return sInternalID
+            End Get
+        End Property
+
         Public Property ID As String
             Get
                 Return sID
@@ -1296,6 +1304,7 @@ Namespace cSurvey.Drawings
             sClass = DrawPath.Class
             sClassNames = sClass.Split(" ")
             sID = DrawPath.ID
+            sInternalID = Guid.NewGuid.ToString
         End Sub
 
         Friend Sub New(ByVal Clipart As cDrawClipArt, ByVal Path As GraphicsPath, ByVal [Class] As String, ByVal ID As String)
@@ -1304,6 +1313,7 @@ Namespace cSurvey.Drawings
             sClass = [Class]
             sClassNames = sClass.Split(" ")
             sID = ID
+            sInternalID = Guid.NewGuid.ToString
         End Sub
 
         Friend Sub New(ByVal Clipart As cDrawClipArt, ByVal Path As GraphicsPath, ByVal [Class] As String)
@@ -1311,6 +1321,7 @@ Namespace cSurvey.Drawings
             oPath = Path
             sClass = [Class]
             sClassNames = sClass.Split(" ")
+            sInternalID = Guid.NewGuid.ToString
         End Sub
 
         Public ReadOnly Property Path() As GraphicsPath

@@ -618,8 +618,13 @@ Namespace cSurvey.Design
         End Function
 
         Public Function Add(Pen As cPen, Name As String) As cCustomPen
-            If Pen.Type = cPen.PenTypeEnum.Custom Then
-                Dim oCustomPen As cCustomPen = Pen.GetBasePen
+            If Pen.Type = cPen.PenTypeEnum.Custom OrElse Pen.Type = cPen.PenTypeEnum.User Then
+                Dim oCustomPen As cCustomPen
+                If Pen.Type = cPen.PenTypeEnum.User Then
+                    oCustomPen = cCustomPen.CopyAsUser(oSurvey, Pen.GetBasePen)
+                Else
+                    oCustomPen = Pen.GetBasePen
+                End If
                 If oCustomPen.Name IsNot Nothing Then oCustomPen.Name = Name
 
                 Dim oExistingPen1 As cCustomPen = oItems.FirstOrDefault(Function(oItem) oItem.Name.ToLower = Name.ToLower)

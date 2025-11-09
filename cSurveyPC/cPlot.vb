@@ -207,7 +207,7 @@ Namespace cSurvey.Design
             End Sub
         End Class
 
-        Friend MustOverride Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend MustOverride Function ToSvgItem(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline) As XmlElement
         'Friend MustOverride Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, ByVal ViewBox As RectangleF) As XmlDocument
         Friend MustOverride Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, Selection As Helper.Editor.cIEditSelection)
 

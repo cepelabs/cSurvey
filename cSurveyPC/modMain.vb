@@ -1,6 +1,7 @@
 ﻿Imports System.Collections.Specialized
 Imports System.IO
 Imports System.Reflection
+Imports System.Text
 Imports System.Text.RegularExpressions
 Imports System.Web.Management
 Imports System.Xml
@@ -354,9 +355,10 @@ Module modMain
     End Function
 
     Public Function CalculateHash(Text As String) As String
-        Dim oSW As StreamWriter = New StreamWriter(New MemoryStream)
-        Call oSW.Write(Text)
-        Return CalculateHash(oSW.BaseStream)
+        Dim oData As Byte() = Encoding.UTF8.GetBytes(Text)
+        Using oMS As New MemoryStream(oData)
+            Return CalculateHash(oMS)
+        End Using
     End Function
 
     Public Function CalculateHash(Data As Byte()) As String

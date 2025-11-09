@@ -15,15 +15,15 @@ Namespace cSurvey.Design
 
         Private oLocation As PointF
 
-        Friend Overridable Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-            Dim oSVGItem As XmlElement = oCaches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, Nothing)
+        Friend Overridable Function ToSvgItem(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline) As XmlElement
+            Dim oSVGItem As XmlElement = oCaches(PaintOptions).ToSvgItem(SVG, PaintOptions)
             Call oSVGItem.SetAttribute("id", sName)
             Return oSVGItem
         End Function
 
-        Friend Overridable Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-            Dim oSVG As XmlDocument = modSVG.CreateSVG
-            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
+        Friend Overridable Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cSVGWriter.SVGOptionsEnum) As XmlDocument
+            Dim oSVG As cSVGWriter = modSVG.CreateSVG(Options)
+            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions))
             Return oSVG
         End Function
 

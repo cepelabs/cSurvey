@@ -36,7 +36,7 @@ Public Class cClipperHelper
             For i As Integer = 0 To oFlattenedPath.PointCount - 1
                 Dim oPoint As PointF = oFlattenedPath.PathPoints(i)
                 Dim bType As Byte = oFlattenedPath.PathTypes(i)
-                If (bType And PathPointType.Start) = PathPointType.Start Then
+                If (bType = PathPointType.Start) Then
                     If oIntPath IsNot Nothing Then
                         Call oIntPaths.Add(oIntPath)
                     End If
@@ -44,6 +44,9 @@ Public Class cClipperHelper
                 End If
                 oIntPath.Add(GetIntPoint(oPoint, Precision))
             Next
+            If oIntPath IsNot Nothing Then
+                Call oIntPaths.Add(oIntPath)
+            End If
         End Using
         Return oIntPaths
     End Function

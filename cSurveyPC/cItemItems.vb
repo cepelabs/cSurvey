@@ -667,17 +667,17 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overrides Function ToSvgItem(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline) As XmlElement
             Dim oSVGGroup As XmlElement = modSVG.CreateGroup(SVG, "_items")
             For Each oItem As cItem In oItems
-                Dim oSVGItem As XmlElement = oItem.ToSvgItem(SVG, PaintOptions, Options)
+                Dim oSVGItem As XmlElement = oItem.ToSvgItem(SVG, PaintOptions)
                 Call modSVG.AppendItem(SVG, oSVGGroup, oSVGItem)
             Next
             Return oSVGGroup
         End Function
 
         'Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-        '    Dim oSVG As XmlDocument = modSVG.CreateSVG
+        '    Dim oSVG As cSVGWriter = modSVG.CreateSVG
         '    Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
         '    Return oSVG
         'End Function
@@ -1027,10 +1027,10 @@ Namespace cSurvey.Design.Items
 
         Private Function pToClipart(Category As cIItem.cItemCategoryEnum) As cItem
             Dim oPaintOptions As cOptions = MyBase.Survey.Options("_design.plan")
-            Dim oOptions As cItem.SVGOptionsEnum = SVGOptionsEnum.Silent
-            Dim oSVG As XmlDocument = modSVG.CreateSVG()
+            Dim oOptions As cSVGWriter.SVGOptionsEnum = cSVGWriter.SVGOptionsEnum.Silent
+            Dim oSVG As cSVGWriter = modSVG.CreateSVG(oOptions)
             For Each oItem As cItem In oItems
-                Call modSVG.AppendItem(oSVG, Nothing, oItem.ToSvgItem(oSVG, oPaintOptions, oOptions))
+                Call modSVG.AppendItem(oSVG, Nothing, oItem.ToSvgItem(oSVG, oPaintOptions))
             Next
             Select Case Category
                 Case cIItem.cItemCategoryEnum.Rock

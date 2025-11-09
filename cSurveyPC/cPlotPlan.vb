@@ -603,20 +603,20 @@ Namespace cSurvey.Design
             Return LabelInSamePosition(Point).Value < 5
         End Function
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overrides Function ToSvgItem(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline) As XmlElement
             Dim oSVGGroup As XmlElement = modSVG.CreateLayer(SVG, "plot", "plot")
             For Each oCaches As cDrawCaches In oSegmentsCaches.Values
-                Call modSVG.AppendItem(SVG, oSVGGroup, oCaches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options))
+                Call modSVG.AppendItem(SVG, oSVGGroup, oCaches(PaintOptions).ToSvgItem(SVG, PaintOptions))
             Next
             For Each oCaches As cDrawCaches In oTrigpointsCaches.Values
-                Call modSVG.AppendItem(SVG, oSVGGroup, oCaches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options))
+                Call modSVG.AppendItem(SVG, oSVGGroup, oCaches(PaintOptions).ToSvgItem(SVG, PaintOptions))
             Next
             'Call modSVG.AppendItem(SVG, oSVGGroup, MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options))
             Return oSVGGroup
         End Function
 
         'Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, ByVal ViewBox As RectangleF) As XmlDocument
-        '    Dim oSVG As XmlDocument = modSVG.CreateSVG
+        '    Dim oSVG As cSVGWriter = modSVG.CreateSVG
         '    Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options, Size, ViewBox))
         '    Return oSVG
         'End Function

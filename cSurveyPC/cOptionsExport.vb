@@ -24,6 +24,8 @@ Namespace cSurvey.Design
 
         Private oGPS As cGPSOptions
 
+        Private oSVG As cSVGOptions
+
         Public Property ScaleMode() As cIOptionsPreview.ScaleModeEnum Implements cIOptionsPreview.ScaleMode
             Get
                 Return iScaleMode
@@ -51,6 +53,12 @@ Namespace cSurvey.Design
         Public ReadOnly Property GPS As cGPSOptions
             Get
                 Return oGPS
+            End Get
+        End Property
+
+        Public ReadOnly Property SVG As cSVGOptions
+            Get
+                Return oSVG
             End Get
         End Property
 
@@ -171,6 +179,8 @@ Namespace cSurvey.Design
 
             Call oGPS.SaveTo(File, Document, oXMLOptions, "gps")
 
+            Call oSVG.SaveTo(File, Document, oXMLOptions, "svg")
+
             'Call oXMLOptions.SetAttribute("drawsolidrock", IIf(bDrawSolidRock, 1, 0))
 
             Return oXMLOptions
@@ -188,6 +198,7 @@ Namespace cSurvey.Design
             oMargins = New cMargins(32, 32, 32, 32)
             sFileFormat = "JPG"
             oGPS = New cGPSOptions
+            oSVG = New cSVGOptions
             'bDrawSolidRock = False
         End Sub
 
@@ -213,6 +224,12 @@ Namespace cSurvey.Design
                 oGPS = New cGPSOptions(Options.Item("gps"))
             Else
                 oGPS = New cGPSOptions
+            End If
+
+            If modXML.ChildElementExist(Options, "svg") Then
+                oSVG = New cSVGOptions(Options.Item("svg"))
+            Else
+                oSVG = New cSVGOptions
             End If
             'bDrawSolidRock = modXML.GetAttributeValue(Options, "drawsolidrock", False)
         End Sub

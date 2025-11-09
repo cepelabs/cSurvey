@@ -1,7 +1,8 @@
 ﻿Imports System.Drawing
 Imports System.Drawing.Drawing2D
-Imports ClipperLib
 Imports System.Runtime.CompilerServices
+Imports ClipperLib
+Imports ImageProcessor.Processors
 
 Namespace cSurvey.Drawings.Regions
 
@@ -73,7 +74,7 @@ Namespace cSurvey.Drawings.Regions
             End Get
         End Property
 
-        Public Sub New(Path As GraphicsPath, Optional Scale As Single = 1, Optional Accurancy As Single = 1)
+        Public Sub New(Path As GraphicsPath, Optional Scale As Single = 1.0F, Optional Accurancy As Single = 1.0F)
             oClipper = New Clipper
             oBaseMatrix = New Matrix
             sScale = Scale
@@ -85,6 +86,22 @@ Namespace cSurvey.Drawings.Regions
             End Using
         End Sub
 
+        Public Function Union(Graphics As Graphics, Path As GraphicsPath) As Boolean
+            Using oPath As GraphicsPath = Path.Clone
+                Call oPath.Flatten(oBaseMatrix, sAccurancy)
+                Dim oIntPaths As List(Of List(Of IntPoint)) = cClipperHelper.GraphicsPathToIntPaths(oPath)
+                Call oClipper.Clear()
+                Call oClipper.AddPolygons(oBaseIntPaths, PolyType.ptClip)
+                Call oClipper.AddPolygons(oIntPaths, PolyType.ptSubject)
+                Dim oResultPaths As List(Of List(Of IntPoint)) = New List(Of List(Of IntPoint))
+                Dim bSuccess As Boolean = oClipper.Execute(ClipType.ctUnion, oResultPaths, PolyFillType.pftNonZero, PolyFillType.pftNonZero)
+                If bSuccess Then
+                    oBaseIntPaths = oResultPaths
+                End If
+                Return bSuccess
+            End Using
+        End Function
+
         Public Function Contains(Graphics As Graphics, Path As GraphicsPath) As Boolean Implements cIRegion.Contains
             Using oPath As GraphicsPath = Path.Clone
                 Call oPath.Flatten(oBaseMatrix, sAccurancy)
@@ -93,8 +110,21 @@ Namespace cSurvey.Drawings.Regions
                 Call oClipper.AddPolygons(oBaseIntPaths, PolyType.ptClip)
                 Call oClipper.AddPolygons(oIntPaths, PolyType.ptSubject)
                 Dim oResultPaths As List(Of List(Of IntPoint)) = New List(Of List(Of IntPoint))
-                Call oClipper.Execute(ClipType.ctDifference, oResultPaths)
-                Return oResultPaths.Count = 0
+                Dim bSuccess As Boolean = oClipper.Execute(ClipType.ctDifference, oResultPaths)
+                Return bSuccess AndAlso oResultPaths.Count = 0
+            End Using
+        End Function
+
+        Public Function Intersect(Graphics As Graphics, Path As GraphicsPath) As Boolean
+            Using oPath As GraphicsPath = Path.Clone
+                Call oPath.Flatten(oBaseMatrix, sAccurancy)
+                Dim oIntPaths As List(Of List(Of IntPoint)) = cClipperHelper.GraphicsPathToIntPaths(oPath)
+                Call oClipper.Clear()
+                Call oClipper.AddPolygons(oBaseIntPaths, PolyType.ptClip)
+                Call oClipper.AddPolygons(oIntPaths, PolyType.ptSubject)
+                Dim oResultPaths As List(Of List(Of IntPoint)) = New List(Of List(Of IntPoint))
+                Dim bSuccess As Boolean = oClipper.Execute(ClipType.ctIntersection, oResultPaths, PolyFillType.pftNonZero, PolyFillType.pftNonZero)
+                Return bSuccess AndAlso oResultPaths.Count > 0
             End Using
         End Function
 

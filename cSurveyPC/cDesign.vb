@@ -25,8 +25,8 @@ Namespace cSurvey.Design
         Private WithEvents oLayers As cLayers
 
         Public MustOverride ReadOnly Property Type As cIDesign.cDesignTypeEnum Implements cIDesign.Type
-        Friend MustOverride Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-        Friend MustOverride Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, Unit As SizeUnit, ByVal ViewBox As RectangleF) As XmlDocument
+        Friend MustOverride Function ToSvgItem(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline) As XmlElement
+        Friend MustOverride Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cSVGWriter.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, Unit As SizeUnit, ByVal ViewBox As RectangleF) As cSVGWriter
 
         Private oPointsJoins As cPointsJoins
 
@@ -437,47 +437,49 @@ Namespace cSurvey.Design
             End If
 
             For Each oCaveBorder As Design.Items.cItemInvertedFreeHandArea In oItems
-                Call oCaveBorder.Render(Graphics, PaintOptions, cItem.PaintOptionsEnum.Solid, False)
-                Using oBorderPath As GraphicsPath = New GraphicsPath
-                    Dim oCache As cDrawCache = oCaveBorder.Caches(PaintOptions)
-                    If oCache.Count > 0 Then
-                        For Each oCacheItem As cDrawCacheItem In oCache
-                            If oCacheItem.IsWireframeOutlined AndAlso oCacheItem.Path.PointCount > 1 Then
-                                Call oBorderPath.AddPath(oCacheItem.Path, True)
-                            End If
-                        Next
-                        Call oBorderPath.CloseAllFigures()
-                        If oBorderPath.PointCount > 1 Then
-                            If oCaveBorder.MergeMode = Items.cIItemMergeableArea.MergeModeEnum.Add Then
-                                If iAdvancedClippingMode = cIOptionsPreview.AdvancedClippingModeEnum.HierarchicClipping Then
-                                    Call oClippingRegions.Combine(oCaveBorder.Cave, "", oBorderPath)
-                                    Dim sPathParts() As String = oCaveBorder.Branch.Split("\")
-                                    Dim sBranch As String = ""
-                                    For Each sPathPart In sPathParts
-                                        If sBranch <> "" Then sBranch &= "\"
-                                        sBranch &= sPathPart
-                                        Call oClippingRegions.Combine(oCaveBorder.Cave, sBranch, oBorderPath)
-                                    Next
-                                Else
-                                    Call oClippingRegions.Combine(oCaveBorder.Cave, oCaveBorder.Branch, oBorderPath)
+                If oCaveBorder.IsVisible(PaintOptions) Then
+                    Call oCaveBorder.Render(Graphics, PaintOptions, cItem.PaintOptionsEnum.Solid, False)
+                    Using oBorderPath As GraphicsPath = New GraphicsPath
+                        Dim oCache As cDrawCache = oCaveBorder.Caches(PaintOptions)
+                        If oCache.Count > 0 Then
+                            For Each oCacheItem As cDrawCacheItem In oCache
+                                If oCacheItem.IsWireframeOutlined AndAlso oCacheItem.Path.PointCount > 1 Then
+                                    Call oBorderPath.AddPath(oCacheItem.Path, True)
                                 End If
-                            Else
-                                If iAdvancedClippingMode = cIOptionsPreview.AdvancedClippingModeEnum.HierarchicClipping Then
-                                    Call oClippingRegions.Exclude(oCaveBorder.Cave, "", oBorderPath)
-                                    Dim sPathParts() As String = oCaveBorder.Branch.Split("\")
-                                    Dim sBranch As String = ""
-                                    For Each sPathPart In sPathParts
-                                        If sBranch <> "" Then sBranch &= "\"
-                                        sBranch &= sPathPart
-                                        Call oClippingRegions.Exclude(oCaveBorder.Cave, sBranch, oBorderPath)
-                                    Next
+                            Next
+                            Call oBorderPath.CloseAllFigures()
+                            If oBorderPath.PointCount > 1 Then
+                                If oCaveBorder.MergeMode = Items.cIItemMergeableArea.MergeModeEnum.Add Then
+                                    If iAdvancedClippingMode = cIOptionsPreview.AdvancedClippingModeEnum.HierarchicClipping Then
+                                        Call oClippingRegions.Combine(oCaveBorder.Cave, "", oBorderPath)
+                                        Dim sPathParts() As String = oCaveBorder.Branch.Split("\")
+                                        Dim sBranch As String = ""
+                                        For Each sPathPart In sPathParts
+                                            If sBranch <> "" Then sBranch &= "\"
+                                            sBranch &= sPathPart
+                                            Call oClippingRegions.Combine(oCaveBorder.Cave, sBranch, oBorderPath)
+                                        Next
+                                    Else
+                                        Call oClippingRegions.Combine(oCaveBorder.Cave, oCaveBorder.Branch, oBorderPath)
+                                    End If
                                 Else
-                                    Call oClippingRegions.Exclude(oCaveBorder.Cave, oCaveBorder.Branch, oBorderPath)
+                                    If iAdvancedClippingMode = cIOptionsPreview.AdvancedClippingModeEnum.HierarchicClipping Then
+                                        Call oClippingRegions.Exclude(oCaveBorder.Cave, "", oBorderPath)
+                                        Dim sPathParts() As String = oCaveBorder.Branch.Split("\")
+                                        Dim sBranch As String = ""
+                                        For Each sPathPart In sPathParts
+                                            If sBranch <> "" Then sBranch &= "\"
+                                            sBranch &= sPathPart
+                                            Call oClippingRegions.Exclude(oCaveBorder.Cave, sBranch, oBorderPath)
+                                        Next
+                                    Else
+                                        Call oClippingRegions.Exclude(oCaveBorder.Cave, oCaveBorder.Branch, oBorderPath)
+                                    End If
                                 End If
                             End If
                         End If
-                    End If
-                End Using
+                    End Using
+                End If
             Next
             Return oClippingRegions
         End Function
@@ -1462,7 +1464,26 @@ Namespace cSurvey.Design
         Public MustOverride Function GetNearestSegment(ByVal Cave As String, ByVal Branch As String, CrossSection As String, ByVal X As Single, ByVal Y As Single, ByVal BindDesignType As cItem.BindDesignTypeEnum) As cISegment
 
         Friend MustOverride Function GetSegmentPointData(ByVal Segment As cISegment) As Calculate.Plot.cIProjectedData
-
         Public MustOverride Sub Clear()
+
+        Friend Sub AppendToClipartCache(SVG As cSVGWriter, Item As cItem)
+            If Item.Brush IsNot Nothing Then
+                If Item.Brush.Clipart IsNot Nothing Then
+                    SVG.ClipartCache.Add(Item.Brush.Clipart)
+                End If
+                If Item.Brush.GetBaseBrush.Clipart IsNot Nothing Then
+                    SVG.ClipartCache.Add(Item.Brush.GetBaseBrush.Clipart)
+                End If
+            End If
+            If Item.Pen IsNot Nothing Then
+                If Item.Pen.Clipart IsNot Nothing Then
+                    SVG.ClipartCache.Add(Item.Pen.Clipart)
+                End If
+                If Item.Pen.GetBasePen.Clipart IsNot Nothing Then
+                    SVG.ClipartCache.Add(Item.Pen.GetBasePen.Clipart)
+                End If
+            End If
+        End Sub
+
     End Class
 End Namespace

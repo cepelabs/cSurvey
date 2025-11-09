@@ -268,7 +268,7 @@ Namespace cSurvey.Design
             Call WarpItemsEx(Segment, Segment.Data.ProfileWarpingFactor, False)
         End Sub
 
-        Private Sub pAppendSvgItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum)
+        Private Sub pAppendSvgItem(ByVal SVG As cSVGWriter, ByVal Parent As XmlElement, ByVal PaintOptions As cOptionsCenterline)
             Dim oBound As RectangleF = GetBounds(PaintOptions)
 
             'Dim sExportScaleFactor As Single = modNumbers.StringToSingle(oHelper.Editor.cEditDesignEnvironment.GetSetting("svg.exportscale", 1))
@@ -276,7 +276,7 @@ Namespace cSurvey.Design
             'Call Parent.SetAttribute("transform", "translate(" & modNumbers.NumberToString(Translate.X) & "," & modNumbers.NumberToString(Translate.Y) & ") scale(" & modNumbers.NumberToString(sScale) & ")")
 
             If PaintOptions.DesignStyle = cOptionsDesign.DesignStyleEnum.Design OrElse PaintOptions.DesignStyle = cOptionsDesign.DesignStyleEnum.Combined Then
-                If (Options And cItem.SVGOptionsEnum.Clipping) = cItem.SVGOptionsEnum.Clipping Then
+                If (SVG.Options And cSVGWriter.SVGOptionsEnum.Clipping) = cSVGWriter.SVGOptionsEnum.Clipping Then
                     'determino le aree di clipping...
                     'creo varie collection di path per ogni grotta/ramo
                     'ogni collection verra trasformata in un gruppo i cui path verranno messi in merge nell'svg
@@ -368,7 +368,7 @@ Namespace cSurvey.Design
                 For Each oLayer As cLayer In MyBase.Layers
                     iIndex += 1
                     Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "design.svgexport.progress3", iIndex / iCount)
-                    Dim oSVGItem As XmlElement = oLayer.ToSvgItem(SVG, PaintOptions, Options)
+                    Dim oSVGItem As XmlElement = oLayer.ToSvgItem(SVG, PaintOptions)
                     Call modSVG.AppendItem(SVG, Parent, oSVGItem)
                 Next
             End If
@@ -426,44 +426,61 @@ Namespace cSurvey.Design
             End If
         End Sub
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overrides Function ToSvgItem(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline) As XmlElement
             Dim oSVGGroup As XmlElement = modSVG.CreateLayer(SVG, "design", "design")
-            Call pAppendSvgItem(SVG, oSVGGroup, PaintOptions, Options)
+            Call pAppendSvgItem(SVG, oSVGGroup, PaintOptions)
             Return oSVGGroup
         End Function
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, Unit As SizeUnit, ByVal ViewBox As RectangleF) As XmlDocument
+        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cSVGWriter.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, Unit As SizeUnit, ByVal ViewBox As RectangleF) As cSVGWriter
             Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, modMain.GetLocalizedString("design.svgexport.progressbegin1"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageExport Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
 
             Dim oBounds As RectangleF = New RectangleF(0, 0, Size.Width, Size.Height)
 
             Dim bLegacyObjects As Boolean = PaintOptions.DrawScale OrElse PaintOptions.DrawBox
 
-            Dim oSVG As XmlDocument
+            Dim oSVG As cSVGWriter
             Dim oDesign As XmlElement
             If bLegacyObjects Then
-                oSVG = modSVG.CreateSVG(oSurvey.Name, Size, Unit, oBounds, SVGCreateFlagsEnum.AddInkscapeSettings)
+                oSVG = modSVG.CreateSVG(oSurvey.Name, Size, Unit, oBounds, Options)
                 oDesign = modSVG.CreateSubSVG(oSVG, "profile", PageBox, SizeUnit.none, ViewBox)
             Else
-                oSVG = modSVG.CreateSVG(oSurvey.Name, Size, Unit, ViewBox, SVGCreateFlagsEnum.AddInkscapeSettings)
+                oSVG = modSVG.CreateSVG(oSurvey.Name, Size, Unit, ViewBox, Options)
                 oDesign = modSVG.CreateLayer(oSVG, "profile", "profile")
             End If
-            Call modSVG.AppendItem(oSVG, oDesign, ToSvgItem(oSVG, PaintOptions, Options))
+
+            If oSVG.Options And cSVGWriter.SVGOptionsEnum.ReuseClipart Then
+                For Each oItem As cItem In Me.GetAllItems
+                    Call AppendToClipartCache(oSVG, oItem)
+                    If TypeOf oItem Is cItemLegend Then
+                        With DirectCast(oItem, cItemLegend)
+                            For Each oSubItem As cItemLegend.cLegendItem In .Items
+                                Call AppendToClipartCache(oSVG, oSubItem.Item)
+                            Next
+                        End With
+                    End If
+                Next
+            End If
+
+            Call modSVG.AppendItem(oSVG, oDesign, ToSvgItem(oSVG, PaintOptions))
             If (PaintOptions.DrawPlot OrElse PaintOptions.DrawSpecialPoints OrElse (PaintOptions.DrawTranslation AndAlso PaintOptions.TranslationsOptions.DrawTranslationsLine) OrElse PaintOptions.DrawSurfaceProfile) Then
-                Call modSVG.AppendItem(oSVG, oDesign, oPlot.ToSvgItem(oSVG, PaintOptions, Options))
+                Call modSVG.AppendItem(oSVG, oDesign, oPlot.ToSvgItem(oSVG, PaintOptions))
             End If
             Call modSVG.AppendItem(oSVG, Nothing, oDesign)
 
             If PaintOptions.DrawScale OrElse PaintOptions.DrawBox Then
                 Dim oGadget As XmlElement = modSVG.CreateSubSVG(oSVG, "legacyobjects", oBounds, SizeUnit.none, oBounds)
                 If PaintOptions.DrawScale Then
-                    Call modSVG.AppendItem(oSVG, oGadget, oPlot.Scale.ToSvgItem(oSVG, PaintOptions, Options))
+                    Call modSVG.AppendItem(oSVG, oGadget, oPlot.Scale.ToSvgItem(oSVG, PaintOptions))
                 End If
                 If PaintOptions.DrawBox Then
-                    Call modSVG.AppendItem(oSVG, oGadget, oPlot.InfoBox.ToSvgItem(oSVG, PaintOptions, Options))
+                    Call modSVG.AppendItem(oSVG, oGadget, oPlot.InfoBox.ToSvgItem(oSVG, PaintOptions))
                 End If
                 Call modSVG.AppendItem(oSVG, Nothing, oGadget)
             End If
+
+            oSVG.AppendStyles()
+            oSVG.AppendCliparts(PaintOptions)
 
             Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, modMain.GetLocalizedString("design.svgexport.progressend1"), 0)
 

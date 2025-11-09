@@ -1,4 +1,6 @@
-﻿Module modNumbers
+﻿Imports System.Globalization
+
+Module modNumbers
     <Flags()> Public Enum CoordinateFormatEnum
         DecimalDegrees = 2
         DegreesMinutes = 1
@@ -23,42 +25,87 @@
     End Function
 
     Public Function NumberToString(ByVal Number As Single, Format As String, UseLocalFormat As Boolean) As String
-        Dim sNumber As String
         If Format <> "" Then
-            sNumber = Strings.Format(Number, Format)
+            If UseLocalFormat Then
+                Return Number.ToString(Format, CultureInfo.CurrentCulture)
+            Else
+                Return Number.ToString(Format, CultureInfo.InvariantCulture)
+            End If
+        End If
+
+        ' Formattazione standard veloce (senza zeri inutili)
+        If UseLocalFormat Then
+            Return Number.ToString("0.###", CultureInfo.CurrentCulture)
         Else
-            sNumber = Number
+            Return Number.ToString("0.###", CultureInfo.InvariantCulture)
         End If
-        If Not UseLocalFormat Then
-            sNumber = sNumber.Replace(Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator, ".")
-        End If
-        Return sNumber
+
+        'Dim sNumber As String
+        'If Format <> "" Then
+        '    sNumber = Strings.Format(Number, Format)
+        'Else
+        '    sNumber = Number
+        'End If
+        'If Not UseLocalFormat Then
+        '    sNumber = sNumber.Replace(Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator, ".")
+        'End If
+        'Return sNumber
     End Function
 
     Public Function NumberToString(ByVal Number As Double, Format As String, UseLocalFormat As Boolean) As String
-        Dim sNumber As String
         If Format <> "" Then
-            sNumber = Strings.Format(Number, Format)
+            If UseLocalFormat Then
+                Return Number.ToString(Format, CultureInfo.CurrentCulture)
+            Else
+                Return Number.ToString(Format, CultureInfo.InvariantCulture)
+            End If
+        End If
+
+        ' Formattazione standard veloce (senza zeri inutili)
+        If UseLocalFormat Then
+            Return Number.ToString("0.###", CultureInfo.CurrentCulture)
         Else
-            sNumber = Number
+            Return Number.ToString("0.###", CultureInfo.InvariantCulture)
         End If
-        If Not UseLocalFormat Then
-            sNumber = sNumber.Replace(Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator, ".")
-        End If
-        Return sNumber
+
+        'Dim sNumber As String
+        'If Format <> "" Then
+        '    sNumber = Strings.Format(Number, Format)
+        'Else
+        '    sNumber = Number
+        'End If
+        'If Not UseLocalFormat Then
+        '    sNumber = sNumber.Replace(Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator, ".")
+        'End If
+        'Return sNumber
     End Function
 
     Public Function NumberToString(ByVal Number As Decimal, Format As String, UseLocalFormat As Boolean) As String
-        Dim sNumber As String
         If Format <> "" Then
-            sNumber = Strings.Format(Number, Format)
+            If UseLocalFormat Then
+                Return Number.ToString(Format, CultureInfo.CurrentCulture)
+            Else
+                Return Number.ToString(Format, CultureInfo.InvariantCulture)
+            End If
+        End If
+
+        ' Formattazione standard veloce (senza zeri inutili)
+        If UseLocalFormat Then
+            Return Number.ToString("0.###", CultureInfo.CurrentCulture)
         Else
-            sNumber = Number
+            Return Number.ToString("0.###", CultureInfo.InvariantCulture)
         End If
-        If Not UseLocalFormat Then
-            sNumber = sNumber.Replace(Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator, ".")
-        End If
-        Return sNumber
+
+        'Dim sNumber As String
+        'If Format <> "" Then
+        '    sNumber = Strings.Format(Number, Format)
+        'Else
+        '    sNumber = Number
+        'End If
+        'If Not UseLocalFormat Then
+        '    sNumber = sNumber.Replace(Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator, ".")
+        'End If
+        'Return sNumber
     End Function
 
     Public Function SizeFToString(Size As SizeF, Optional Format As String = "0.00") As String
@@ -85,24 +132,44 @@
         Return CurrentDecimalSeparatorToPoint(Number).Replace(",", ".")
     End Function
 
-    Public Function StringToDouble(ByVal [String] As String) As Double
-        Dim sNumber As String = [String].Replace(".", Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator)
-        Dim dResult As Double
-        If Double.TryParse(sNumber, dResult) Then
-            Return dResult
-        Else
-            Return 0
-        End If
+    Public Function StringToDouble(ByVal [String] As Object) As Double
+        If TypeOf [String] Is Double Then Return DirectCast([String], Double)
+        If TypeOf [String] Is Single Then Return CDbl(DirectCast([String], Single))
+        If TypeOf [String] Is Decimal Then Return CDbl(DirectCast([String], Decimal))
+        If TypeOf [String] Is Integer Then Return CDbl(DirectCast([String], Integer))
+
+        [String] = CStr([String])
+        If String.IsNullOrWhiteSpace([String]) Then Return 0R
+        Dim result As Double
+        Return If(Double.TryParse([String], NumberStyles.Float, CultureInfo.InvariantCulture, result), result, 0R)
+
+        'Dim sNumber As String = [String].Replace(".", Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator)
+        'Dim dResult As Double
+        'If Double.TryParse(sNumber, dResult) Then
+        '    Return dResult
+        'Else
+        '    Return 0
+        'End If
     End Function
 
-    Public Function StringToSingle(ByVal [String] As String) As Single
-        Dim sNumber As String = [String].Replace(".", Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator)
-        Dim sResult As Single
-        If Single.TryParse(sNumber, sResult) Then
-            Return sResult
-        Else
-            Return 0
-        End If
+    Public Function StringToSingle(ByVal [String] As Object) As Single
+        If TypeOf [String] Is Single Then Return DirectCast([String], Single)
+        If TypeOf [String] Is Double Then Return CSng(DirectCast([String], Double))
+        If TypeOf [String] Is Decimal Then Return CSng(DirectCast([String], Decimal))
+        If TypeOf [String] Is Integer Then Return CSng(DirectCast([String], Integer))
+
+        [String] = CStr([String])
+        If String.IsNullOrWhiteSpace([String]) Then Return 0R
+        Dim result As Single
+        Return If(Single.TryParse([String], NumberStyles.Float, CultureInfo.InvariantCulture, result), result, 0R)
+
+        'Dim sNumber As String = [String].Replace(".", Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator)
+        'Dim sResult As Single
+        'If Single.TryParse(sNumber, sResult) Then
+        '    Return sResult
+        'Else
+        '    Return 0
+        'End If
     End Function
 
     Public Function StringToSizeF(ByVal [String] As String) As SizeF
@@ -128,14 +195,24 @@
         Return sDoubleQuotes & sValue & sDoubleQuotes
     End Function
 
-    Public Function StringToInteger(ByVal [String] As String) As Integer
-        Dim sNumber As String = [String].Replace(".", Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator)
-        Dim dResult As Integer
-        If Integer.TryParse(sNumber, dResult) Then
-            Return dResult
-        Else
-            Return 0
-        End If
+    Public Function StringToInteger(ByVal [String] As Object) As Integer
+        If TypeOf [String] Is Integer Then Return DirectCast([String], Integer)
+        If TypeOf [String] Is Single Then Return CInt(DirectCast([String], Integer))
+        If TypeOf [String] Is Double Then Return CInt(DirectCast([String], Double))
+        If TypeOf [String] Is Decimal Then Return CInt(DirectCast([String], Decimal))
+
+        [String] = CStr([String])
+        If String.IsNullOrWhiteSpace([String]) Then Return 0
+        Dim value As Integer
+        Return If(Integer.TryParse([String].Trim, NumberStyles.Integer, CultureInfo.InvariantCulture, value), value, 0)
+
+        'Dim sNumber As String = [String].Replace(".", Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator)
+        'Dim dResult As Integer
+        'If Integer.TryParse(sNumber, dResult) Then
+        '    Return dResult
+        'Else
+        '    Return 0
+        'End If
     End Function
 
     Public Function ToDecimal(ByVal Value As Object) As Decimal

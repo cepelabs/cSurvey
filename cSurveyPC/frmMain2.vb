@@ -12080,7 +12080,7 @@ Friend Class frmMain2
                                     Dim oXML As XmlDocument = oFile.Document
                                     Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
                                     Call oImportSegment.SaveTo(oFile, oXML, oXMLParent, cSurvey.cSurvey.SaveOptionsEnum.Silent Or cSurvey.cSurvey.SaveOptionsEnum.ForClipboard)
-                                    'DirectCast(oXMLParent.ChildNodes(0), XmlElement).SetAttribute("id", "")
+
                                     Dim oNewSegment As cSegment = New cSegment(oSurvey, oFile, oXMLParent.ChildNodes(0))
                                     Dim iFindDuplicateMode As Integer = 0
                                     Dim bIsDuplicated As Boolean
@@ -18250,7 +18250,7 @@ Friend Class frmMain2
                     .Filter = GetLocalizedString("main.filetypeSVG") & " (*.SVG)|*.SVG|" & GetLocalizedString("main.filetypeALL") & " (*.*)|*.*"
                     .FilterIndex = 1
                     If .ShowDialog = DialogResult.OK Then
-                        Call oItemSign.ToSvg(oCurrentOptions, cItem.SVGOptionsEnum.ClipartBrushes).Save(.FileName)
+                        Call oItemSign.ToSvg(oCurrentOptions, cSVGWriter.SVGOptionsEnum.ClipartBrushes).Save(.FileName)
                     End If
                 End With
             End Using
@@ -18265,7 +18265,7 @@ Friend Class frmMain2
                     Dim iGalleryIndex As Integer = oDockClipart.GalleryIndexByCategory(oItemSign.Category)
                     .InitialDirectory = oDockClipart.GetGalleryPath(iGalleryIndex)
                     If oSFD.ShowDialog = DialogResult.OK Then
-                        Call oItemSign.ToSvg(oCurrentOptions, cItem.SVGOptionsEnum.ClipartBrushes).Save(.FileName)
+                        Call oItemSign.ToSvg(oCurrentOptions, cSVGWriter.SVGOptionsEnum.ClipartBrushes).Save(.FileName)
                     End If
                 End With
             End Using
@@ -18463,7 +18463,7 @@ Friend Class frmMain2
                     Dim iGalleryIndex As Integer = oDockClipart.GalleryIndexByCategory(oItemClipart.Category)
                     .InitialDirectory = oDockClipart.GetGalleryPath(iGalleryIndex)
                     If oSFD.ShowDialog = DialogResult.OK Then
-                        Call oItemClipart.ToSvg(oCurrentOptions, cItem.SVGOptionsEnum.ClipartBrushes).Save(.FileName)
+                        Call oItemClipart.ToSvg(oCurrentOptions, cSVGWriter.SVGOptionsEnum.ClipartBrushes).Save(.FileName)
                     End If
                 End With
             End Using
@@ -18479,7 +18479,7 @@ Friend Class frmMain2
                     .Filter = GetLocalizedString("main.filetypeSVG") & " (*.SVG)|*.SVG|" & GetLocalizedString("main.filetypeALL") & " (*.*)|*.*"
                     .FilterIndex = 1
                     If .ShowDialog = DialogResult.OK Then
-                        Call oItemClipart.ToSvg(oCurrentOptions, cItem.SVGOptionsEnum.ClipartBrushes).Save(.FileName)
+                        Call oItemClipart.ToSvg(oCurrentOptions, cSVGWriter.SVGOptionsEnum.ClipartBrushes).Save(.FileName)
                     End If
                 End With
             End Using

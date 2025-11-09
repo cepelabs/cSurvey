@@ -117,34 +117,97 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Galleria</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="frmSVGOptions.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="btnAdd.Caption" xml:space="preserve">
-    <value>Inserisci...</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="chkSVGUseStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 59</value>
   </data>
-  <data name="btnRefresh.Caption" xml:space="preserve">
-    <value>Aggiorna</value>
+  <data name="CheckEdit1.Properties.Caption" xml:space="preserve">
+    <value>Use common styles</value>
   </data>
-  <data name="btnRemove.Caption" xml:space="preserve">
-    <value>Rimuovi</value>
+  <data name="chkSVGUseStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 20</value>
   </data>
-  <data name="btnEditMetadata.Caption" xml:space="preserve">
-    <value>Metadati</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="chkSVGUseStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
-  <data name="btnViewGallery.Caption" xml:space="preserve">
-    <value>Elementi nella gallery</value>
+  <data name="&gt;&gt;chkSVGUseStyle.Name" xml:space="preserve">
+    <value>chkSVGUseStyle</value>
   </data>
-  <data name="btnViewSurvey.Caption" xml:space="preserve">
-    <value>Elementi usati nel rilievo corrente</value>
+  <data name="&gt;&gt;chkSVGUseStyle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="btnOpenInExplorer.Caption" xml:space="preserve">
-    <value>Apri cartella in Esplora file</value>
+  <data name="&gt;&gt;chkSVGUseStyle.Parent" xml:space="preserve">
+    <value>frmSVGOptions</value>
   </data>
-  <data name="barMain.Text" xml:space="preserve">
-    <value>Strumenti</value>
+  <data name="&gt;&gt;chkSVGUseStyle.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="btnCustomToUser.Caption" xml:space="preserve">
-    <value>Sostituisci gli elementi custom come questo con questo elemento salvato</value>
+  <data name="chkSVGReuseClipartPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 33</value>
+  </data>
+  <data name="CheckEdit1.Properties.Caption1" xml:space="preserve">
+    <value>Reuse clipart path</value>
+  </data>
+  <data name="chkSVGReuseClipartPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 20</value>
+  </data>
+  <data name="chkSVGReuseClipartPath.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;chkSVGReuseClipartPath.Name" xml:space="preserve">
+    <value>chkSVGReuseClipartPath</value>
+  </data>
+  <data name="&gt;&gt;chkSVGReuseClipartPath.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkSVGReuseClipartPath.Parent" xml:space="preserve">
+    <value>frmSVGOptions</value>
+  </data>
+  <data name="&gt;&gt;chkSVGReuseClipartPath.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="frmSVGOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="frmSVGOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>302, 212</value>
+  </data>
+  <data name="frmSVGOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="frmSVGOptions.Text" xml:space="preserve">
+    <value>SVG generation options:</value>
+  </data>
+  <data name="&gt;&gt;frmSVGOptions.Name" xml:space="preserve">
+    <value>frmSVGOptions</value>
+  </data>
+  <data name="&gt;&gt;frmSVGOptions.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;frmSVGOptions.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;frmSVGOptions.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>325, 237</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmPreviewSVGOptions</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.XtraUserControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>

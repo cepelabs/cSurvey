@@ -2164,4 +2164,7 @@
   <data name="filter_refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\filter_refresh.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="Action_Export_ToSVG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Action_Export_ToSVG.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
 </root>

@@ -4,6 +4,7 @@ Imports System.Windows.Forms.VisualStyles
 Imports System.Xml
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Items
+Imports DevExpress.Data.Svg
 Imports DevExpress.Utils.Drawing
 Imports DevExpress.XtraEditors.ButtonPanel
 
@@ -58,6 +59,7 @@ Namespace cSurvey.Drawings
 
         Public Function AddString(ByVal Text As String, ByVal FontFamily As String, FontStyle As FontStyle, FontSize As Single, FontUnit As GraphicsUnit, ByVal Point As PointF, ByVal HorizontalAlign As cIItemLineableText.TextAlignmentEnum, ByVal VerticalAlign As cIItemVerticalLineableText.TextVerticalAlignmentEnum, RotationAngle As Single) As cDrawCacheItem
             Dim oItem As cDrawCacheItemText = New cDrawCacheItemText(Text, FontFamily, FontStyle, FontSize, FontUnit, Point, HorizontalAlign, VerticalAlign, RotationAngle)
+            If sGUID IsNot Nothing Then oItem.SetGUID(sGUID, oMatrixElements)
             Call oItems.Add(oItem)
             bBounds = False
             Return oItem
@@ -65,6 +67,7 @@ Namespace cSurvey.Drawings
 
         Public Function AddString(ByVal Text As String, ByVal FontFamily As String, FontStyle As FontStyle, FontSize As Single, FontUnit As GraphicsUnit, ByVal Rectangle As RectangleF, ByVal HorizontalAlign As cIItemLineableText.TextAlignmentEnum, ByVal VerticalAlign As cIItemVerticalLineableText.TextVerticalAlignmentEnum, RotationAngle As Single) As cDrawCacheItem
             Dim oItem As cDrawCacheItemText = New cDrawCacheItemText(Text, FontFamily, FontStyle, FontSize, FontUnit, Rectangle, HorizontalAlign, VerticalAlign, RotationAngle)
+            If sGUID IsNot Nothing Then oItem.SetGUID(sGUID, oMatrixElements)
             Call oItems.Add(oItem)
             bBounds = False
             Return oItem
@@ -72,6 +75,7 @@ Namespace cSurvey.Drawings
 
         Public Function AddSetClip(ClipPath As GraphicsPath) As cDrawCacheItem
             Dim oItem As cDrawCacheItem = New cDrawCacheItem(cDrawCacheItem.cDrawCacheItemType.SetClip)
+            If sGUID IsNot Nothing Then oItem.SetGUID(sGUID, oMatrixElements)
             Call oItem.AddPath(ClipPath)
             Call oItems.Add(oItem)
             bBounds = False
@@ -80,6 +84,7 @@ Namespace cSurvey.Drawings
 
         Public Function AddResetClip() As cDrawCacheItem
             Dim oItem As cDrawCacheItem = New cDrawCacheItem(cDrawCacheItem.cDrawCacheItemType.ResetClip)
+            If sGUID IsNot Nothing Then oItem.SetGUID(sGUID, oMatrixElements)
             Call oItems.Add(oItem)
             bBounds = False
             Return oItem
@@ -87,6 +92,7 @@ Namespace cSurvey.Drawings
 
         Public Function AddBorder(Optional ByVal Path As GraphicsPath = Nothing, Optional ByVal Pen As Pen = Nothing, Optional ByVal WireframePen As Pen = Nothing, Optional ByVal Brush As Brush = Nothing) As cDrawCacheItem
             Dim oItem As cDrawCacheItem = New cDrawCacheItem(cDrawCacheItem.cDrawCacheItemType.Border, Path, Pen, WireframePen, Brush)
+            If sGUID IsNot Nothing Then oItem.SetGUID(sGUID, oMatrixElements)
             Call oItems.Add(oItem)
             bBounds = False
             Return oItem
@@ -94,6 +100,7 @@ Namespace cSurvey.Drawings
 
         Public Function AddFiller(Optional ByVal Path As GraphicsPath = Nothing, Optional ByVal Pen As Pen = Nothing, Optional ByVal WireframePen As Pen = Nothing, Optional ByVal Brush As Brush = Nothing) As cDrawCacheItem
             Dim oItem As cDrawCacheItem = New cDrawCacheItem(cDrawCacheItem.cDrawCacheItemType.Filler, Path, Pen, WireframePen, Brush)
+            If sGUID IsNot Nothing Then oItem.SetGUID(sGUID, oMatrixElements)
             Call oItems.Add(oItem)
             bBounds = False
             Return oItem
@@ -101,6 +108,7 @@ Namespace cSurvey.Drawings
 
         Public Function Add(Type As cDrawCacheItem.cDrawCacheItemType) As cDrawCacheItem
             Dim oItem As cDrawCacheItem = New cDrawCacheItem(Type)
+            If sGUID IsNot Nothing Then oItem.SetGUID(sGUID, oMatrixElements)
             Call oItems.Add(oItem)
             bBounds = False
             Return oItem
@@ -108,10 +116,24 @@ Namespace cSurvey.Drawings
 
         Public Function Add(Type As cDrawCacheItem.cDrawCacheItemType, ByVal Path As GraphicsPath, Optional ByVal Pen As Pen = Nothing, Optional ByVal WireframePen As Pen = Nothing, Optional ByVal Brush As Brush = Nothing) As cDrawCacheItem
             Dim oItem As cDrawCacheItem = New cDrawCacheItem(Type, Path, Pen, WireframePen, Brush)
+            If sGUID IsNot Nothing Then oItem.SetGUID(sGUID, oMatrixElements)
             Call oItems.Add(oItem)
             bBounds = False
             Return oItem
         End Function
+
+        Private sGUID As String
+        Private oMatrixElements As Single()
+
+        Public Sub SetGUID(GUID As String, Optional MatrixElements As Single() = Nothing)
+            sGUID = GUID
+            omatrixelements = MatrixElements
+        End Sub
+
+        Public Sub ResetGUID()
+            sGUID = Nothing
+            oMatrixElements = Nothing
+        End Sub
 
         Default Public ReadOnly Property Item(ByVal Index As Integer) As cDrawCacheItem
             Get
@@ -205,24 +227,27 @@ Namespace cSurvey.Drawings
             Return oBounds
         End Function
 
-        Friend Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum, Optional ByVal Matrix As Matrix = Nothing) As XmlElement
+        Friend Function ToSvgItem(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline, Optional ByVal Matrix As Matrix = Nothing) As XmlElement
             Dim oSVGGroup As XmlElement = modSVG.CreateGroup(SVG)
+            Dim oSVGClippedGroup As XmlElement = Nothing
             Dim sKey As String = ""
 
             SyncLock oItems
-                If (Options And cItem.SVGOptionsEnum.ClipartBrushes) = cItem.SVGOptionsEnum.ClipartBrushes Then
+                If (SVG.Options And cSVGWriter.SVGOptionsEnum.ClipartBrushes) = cSVGWriter.SVGOptionsEnum.ClipartBrushes Then
                     For Each oItem As cDrawCacheItem In oItems.Where(Function(Item) Item.Type <= cDrawCacheItem.cDrawCacheItemType.ResetClip)
                         If oItem.Type = cDrawCacheItem.cDrawCacheItemType.SetClip Then
                             sKey = "clip_" & Guid.NewGuid.ToString
                             Dim oSVGClipPath As XmlElement = modSVG.CreateClipPath(SVG, sKey)
                             Call modSVG.AppendItem(SVG, oSVGClipPath, PaintOptions, oItem.Path)
                             Call modSVG.AppendItem(SVG, oSVGGroup, oSVGClipPath)
+
+                            oSVGClippedGroup = modSVG.CreateGroup(SVG)
+                            Call oSVGClippedGroup.SetAttribute("clip-path", "url(#" & sKey & ")")
+                            Call modSVG.AppendItem(SVG, oSVGGroup, oSVGClippedGroup)
                         ElseIf oItem.Type = cDrawCacheItem.cDrawCacheItemType.Filler Then
-                            Dim oSVGItem As XmlElement = oItem.AppendSvgItem(SVG, oSVGGroup, PaintOptions, Options, Matrix)
-                            If Not oSVGItem Is Nothing AndAlso sKey <> "" Then
-                                Call oSVGItem.SetAttribute("clip-path", "url(#" & sKey & ")")
-                            End If
+                            Dim oSVGItem As XmlElement = oItem.AppendSvgItem(SVG, If(oSVGClippedGroup Is Nothing, oSVGGroup, oSVGClippedGroup), PaintOptions, Matrix)
                         Else
+                            oSVGClippedGroup = Nothing
                             sKey = ""
                         End If
                     Next
@@ -230,7 +255,7 @@ Namespace cSurvey.Drawings
 
                 For Each oItem As cDrawCacheItem In oItems
                     If oItem.Type = cDrawCacheItem.cDrawCacheItemType.Border OrElse oItem.Type = cDrawCacheItem.cDrawCacheItemType.Text Then
-                        Call oItem.AppendSvgItem(SVG, oSVGGroup, PaintOptions, Options, Matrix)
+                        Call oItem.AppendSvgItem(SVG, oSVGGroup, PaintOptions, Matrix)
                     End If
                 Next
             End SyncLock
@@ -498,7 +523,7 @@ Namespace cSurvey.Drawings
             End Using
         End Sub
 
-        Friend Overrides Function AppendSvgItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum, Optional ByVal Matrix As Matrix = Nothing) As XmlElement
+        Friend Overrides Function AppendSvgItem(ByVal SVG As cSVGWriter, ByVal Parent As XmlElement, ByVal PaintOptions As cOptionsCenterline, Optional ByVal Matrix As Matrix = Nothing) As XmlElement
             If sText <> "" Then
                 'Dim oPoints As PointF() = {oPoint}
                 'If Not Matrix Is Nothing Then
@@ -673,6 +698,26 @@ Namespace cSurvey.Drawings
             bIsWireframeOutlined = False
         End Sub
 
+        Private sGUID As String
+        Private oMatrixElements As Single()
+
+        Friend Sub SetGUID(GUID As String, Optional MatrixElements As Single() = Nothing)
+            sGUID = GUID
+            If MatrixElements IsNot Nothing Then oMatrixElements = MatrixElements
+        End Sub
+
+        Public ReadOnly Property MatrixElements As Single()
+            Get
+                Return oMatrixElements
+            End Get
+        End Property
+
+        Public ReadOnly Property GUID As String
+            Get
+                Return sGUID
+            End Get
+        End Property
+
         Friend Sub New(Type As cDrawCacheItemType, ByVal Path As GraphicsPath, ByVal Pen As Pen, ByVal WireframePen As Pen, ByVal Brush As Brush)
             iType = Type
 
@@ -815,17 +860,37 @@ Namespace cSurvey.Drawings
             End Get
         End Property
 
-        Friend Overridable Function AppendSvgItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum, Optional ByVal Matrix As Matrix = Nothing) As XmlElement
+        Friend Overridable Function AppendSvgItem(ByVal SVG As cSVGWriter, ByVal Parent As XmlElement, ByVal PaintOptions As cOptionsCenterline, Optional ByVal Matrix As Matrix = Nothing) As XmlElement
             If bIsFilled OrElse bIsOutlined Then
-                Using oSvgPath As GraphicsPath = oPath.Clone
-                    If Not Matrix Is Nothing Then
-                        Call oSvgPath.Transform(Matrix)
-                    End If
-                    Dim oItem As XmlElement = modSVG.CreateItem(SVG, PaintOptions, oSvgPath)
+                If "" & sGUID = "" OrElse (SVG.Options And cSVGWriter.SVGOptionsEnum.ReuseClipart) = 0 OrElse Not SVG.ClipartCache.ContainsKey(sGUID) Then
+                    Using oSvgPath As GraphicsPath = oPath.Clone
+                        If Matrix IsNot Nothing Then
+                            Call oSvgPath.Transform(Matrix)
+                        End If
+                        Dim oItem As XmlElement = modSVG.AppendItem(SVG, Parent, PaintOptions, oSvgPath)
+                        Call modSVG.AppendItemStyle(SVG, oItem, If(bIsFilled, oBrush, Nothing), If(bIsOutlined, oPen, Nothing))
+                        Return oItem
+                    End Using
+                Else
+                    Dim oItem As XmlElement = modSVG.CreateUse(SVG, PaintOptions, SVG.ClipartCache(sGUID).ClassKey)
                     Call modSVG.AppendItemStyle(SVG, oItem, If(bIsFilled, oBrush, Nothing), If(bIsOutlined, oPen, Nothing))
+
+                    Dim oLocalMatrixElements As Single() = Nothing
+                    If Matrix IsNot Nothing Then
+                        oLocalMatrixElements = Matrix.Elements
+                    End If
+                    If oMatrixElements IsNot Nothing Then
+                        If oLocalMatrixElements Is Nothing Then
+                            oLocalMatrixElements = oMatrixElements
+                        Else
+                            oLocalMatrixElements = modPaint.AddMatrixElements(oLocalMatrixElements, oMatrixElements)
+                        End If
+                    End If
+                    If oLocalMatrixElements IsNot Nothing Then oItem.SetAttribute("transform", modSVG.MatrixToSvgTransform(oLocalMatrixElements))
+
                     Call modSVG.AppendItem(SVG, Parent, oItem)
                     Return oItem
-                End Using
+                End If
             End If
         End Function
 

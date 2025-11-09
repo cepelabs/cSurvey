@@ -1,13 +1,13 @@
-﻿Imports cSurveyPC.cSurvey.Drawings
-
-Imports System.Xml
+﻿Imports System.Collections.ObjectModel
 Imports System.Drawing.Drawing2D
-Imports System.IO
-Imports cSurveyPC.cSurvey.Scripting
-Imports System.Collections.ObjectModel
 Imports System.Dynamic
+Imports System.IO
+Imports System.Xml
 Imports cSurveyPC.cSurvey.Design.cBrush
+Imports cSurveyPC.cSurvey.Drawings
 Imports cSurveyPC.cSurvey.Drawings.Regions
+Imports cSurveyPC.cSurvey.Scripting
+Imports DevExpress.XtraRichEdit.Import.EPub
 
 Namespace cSurvey.Design
 
@@ -775,20 +775,20 @@ Namespace cSurvey.Design
                             End If
                         Case "single"
                             oValue = modNumbers.StringToSingle(sValue)
-                            'Dim bScalable As String = If(oXMLItem.HasAttribute("scalable"), oXMLItem.GetAttribute("scalable"), True)
-                            'If bScalable Then oValue = oValue * sPatternZoomFactor
+                                    'Dim bScalable As String = If(oXMLItem.HasAttribute("scalable"), oXMLItem.GetAttribute("scalable"), True)
+                                    'If bScalable Then oValue = oValue * sPatternZoomFactor
                         Case "double"
                             oValue = modNumbers.StringToDouble(sValue)
-                            'Dim bScalable As String = If(oXMLItem.HasAttribute("scalable"), oXMLItem.GetAttribute("scalable"), True)
-                            'If bScalable Then oValue = oValue * sPatternZoomFactor
+                                    'Dim bScalable As String = If(oXMLItem.HasAttribute("scalable"), oXMLItem.GetAttribute("scalable"), True)
+                                    'If bScalable Then oValue = oValue * sPatternZoomFactor
                         Case "integer"
                             oValue = CInt(sValue)
-                            'Dim bScalable As String = If(oXMLItem.HasAttribute("scalable"), oXMLItem.GetAttribute("scalable"), True)
-                            'If bScalable Then oValue = oValue * sPatternZoomFactor
+                                    'Dim bScalable As String = If(oXMLItem.HasAttribute("scalable"), oXMLItem.GetAttribute("scalable"), True)
+                                    'If bScalable Then oValue = oValue * sPatternZoomFactor
                         Case "decimal"
                             oValue = CDec(modNumbers.StringToDecimal(sValue))
-                            'Dim bScalable As String = If(oXMLItem.HasAttribute("scalable"), oXMLItem.GetAttribute("scalable"), True)
-                            'If bScalable Then oValue = oValue * sPatternZoomFactor
+                                    'Dim bScalable As String = If(oXMLItem.HasAttribute("scalable"), oXMLItem.GetAttribute("scalable"), True)
+                                    'If bScalable Then oValue = oValue * sPatternZoomFactor
                         Case "long"
                             oValue = CLng(sValue)
                             'Dim bScalable As String = If(oXMLItem.HasAttribute("scalable"), oXMLItem.GetAttribute("scalable"), True)
@@ -971,7 +971,7 @@ Namespace cSurvey.Design
 
         Public Function GetThumbnailSVG(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer, ByVal ForeColor As Color, ByVal Backcolor As Color) As XmlDocument Implements cICustomPaintElement.GetThumbnailSVG
             Dim oBounds As RectangleF = New RectangleF(0, 0, thumbWidth, thumbHeight)
-            Dim oSVG As XmlDocument = modSVG.CreateSVG("", New Size(thumbWidth, thumbHeight), SizeUnit.pixel, oBounds, SVGCreateFlagsEnum.None)
+            Dim oSVG As cSVGWriter = modSVG.CreateSVG("", New Size(thumbWidth, thumbHeight), SizeUnit.pixel, oBounds, cSVGWriter.SVGOptionsEnum.ClipartBrushes Or cSVGWriter.SVGOptionsEnum.UseStyles)
             Using oImage As Image = New Bitmap(thumbWidth, thumbHeight)
                 Using oGr As Graphics = Graphics.FromImage(oImage)
                     Using oBackgroundBrush As SolidBrush = New SolidBrush(Backcolor)
@@ -994,8 +994,9 @@ Namespace cSurvey.Design
                                         oCache.Trasform(oMatrix)
                                         Call oCache.Paint(oGr, PaintOptions, cItem.PaintOptionsEnum.None)
                                         Call modSVG.AppendRectangle(oSVG, oSVG.DocumentElement, oBounds, oBackgroundBrush, Nothing)
-                                        Call oSVG.DocumentElement.AppendChild(oCache.ToSvgItem(oSVG, PaintOptions, cItem.SVGOptionsEnum.ClipartBrushes))
+                                        Call oSVG.DocumentElement.AppendChild(oCache.ToSvgItem(oSVG, PaintOptions))
                                         Call modSVG.AppendRectangle(oSVG, oSVG.DocumentElement, oBounds, Nothing, oForegroundPen)
+                                        Call oSVG.AppendStyles()
                                     End Using
                                 End Using
                             End Using
@@ -1773,7 +1774,33 @@ Namespace cSurvey.Design
             End If
         End Function
 
+        Private Class cSubPathBag
+            Private oPath As GraphicsPath
+            Private sGUID As String
+
+            Public ReadOnly Property Path As GraphicsPath
+                Get
+                    Return oPath
+                End Get
+            End Property
+
+            Public ReadOnly Property GUID As String
+                Get
+                    Return sGUID
+                End Get
+            End Property
+
+            Public Sub New(GUID As String, Path As GraphicsPath)
+                oPath = Path
+                sGUID = GUID
+            End Sub
+        End Class
+
+        Private bDrawClipartBrushesAsBigPath As Boolean = False
+
         Private Sub pRenderClipart(Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache, Seed As cBrushSeed)
+            'Call pRenderClipart2(Graphics, PaintOptions, Options, Selected, Path, Cache, Seed)
+            'Exit Sub
             If PaintOptions.ShowAdvancedBrushes Then
                 If Selected = cItem.SelectionModeEnum.InEdit Then
                     Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Path, Nothing, Nothing, oClipartAlternativeBrush2)
@@ -1781,259 +1808,589 @@ Namespace cSurvey.Design
                     If sClipartDensity > 0 AndAlso Not oClipart Is Nothing AndAlso Path.PointCount > 2 Then
                         Dim sZoomFactor As Single = GetPaintZoomFactor(PaintOptions)
                         Dim sCurrentDensity As Single = sClipartDensity * sZoomFactor
-                        Call Cache.AddSetClip(Path)
+                        If iClipartCrop = ClipartCropEnum.None OrElse PaintOptions.IsDesign Then Call Cache.AddSetClip(Path)
                         If oBackgroundBrush.Color <> Color.Transparent Then Cache.AddFiller(Path,,, oBackgroundBrush)
                         Using oClipRegion As cIRegion = pCreateRegion(Path)
-                            Using oPenPath As GraphicsPath = New GraphicsPath
-                                Using oFillWhitePath As GraphicsPath = New GraphicsPath
-                                    oFillWhitePath.FillMode = FillMode.Winding
-                                    Using oFillPath As GraphicsPath = New GraphicsPath
-                                        oFillPath.FillMode = FillMode.Winding
+                            If iClipartCrop = cBrush.ClipartCropEnum.Subitems Then
+                                Dim oBaseFillWhitePathColl As List(Of cSubPathBag) = New List(Of cSubPathBag)
+                                Dim oBaseFillPathColl As List(Of cSubPathBag) = New List(Of cSubPathBag)
 
-                                        If iClipartCrop = cBrush.ClipartCropEnum.Subitems Then
-                                            Dim oBasePenPathColl As List(Of GraphicsPath) = New List(Of GraphicsPath)
-                                            Dim oBaseFillWhitePathColl As List(Of GraphicsPath) = New List(Of GraphicsPath)
-                                            Dim oBaseFillPathColl As List(Of GraphicsPath) = New List(Of GraphicsPath)
+                                Dim oItemFillWhitePathColl As List(Of cSubPathBag) = New List(Of cSubPathBag)
+                                Dim oItemFillPathColl As List(Of cSubPathBag) = New List(Of cSubPathBag)
 
-                                            Dim oItemPenPathColl As List(Of GraphicsPath) = New List(Of GraphicsPath)
-                                            Dim oItemFillWhitePathColl As List(Of GraphicsPath) = New List(Of GraphicsPath)
-                                            Dim oItemFillPathColl As List(Of GraphicsPath) = New List(Of GraphicsPath)
+                                Dim oPaths As cDrawPaths = oClipart.Paths
+                                For Each oDrawPath As cDrawPath In oPaths
+                                    Dim oClipartPath As GraphicsPath = oDrawPath.Path
+                                    If oClipartPath.PointCount > 1 Then
+                                        If oClipartPath.PointCount > 2 Then
+                                            Dim sFill As String = oDrawPath.GetStyle("fill", "none")
+                                            If sFill <> "none" Then
+                                                Dim oColor As Color
+                                                If sFill = "" Then
+                                                    oColor = Color.Transparent
+                                                Else
+                                                    oColor = ColorTranslator.FromHtml(sFill)
+                                                End If
+                                                If oColor.ToArgb = Color.White.ToArgb Then
+                                                    Call oBaseFillWhitePathColl.Add(New cSubPathBag(oDrawPath.InternalID, oClipartPath))
+                                                Else
+                                                    Call oBaseFillPathColl.Add(New cSubPathBag(oDrawPath.InternalID, oClipartPath))
+                                                End If
+                                            End If
+                                        End If
+                                    End If
+                                Next
 
-                                            Dim oPaths As cDrawPaths = oClipart.Paths
-                                            For Each oDrawPath As cDrawPath In oPaths
-                                                Dim oClipartPath As GraphicsPath = oDrawPath.Path
-                                                If oClipartPath.PointCount > 1 Then
-                                                    If oClipartPath.PointCount > 2 Then
-                                                        Dim sFill As String = oDrawPath.GetStyle("fill", "none")
-                                                        If sFill <> "none" Then
-                                                            Dim oColor As Color
-                                                            If sFill = "" Then
-                                                                oColor = Color.Transparent
-                                                            Else
-                                                                oColor = ColorTranslator.FromHtml(sFill)
-                                                            End If
-                                                            If oColor.ToArgb = Color.White.ToArgb Then
-                                                                Call oBaseFillWhitePathColl.Add(oClipartPath)
-                                                            Else
-                                                                Call oBaseFillPathColl.Add(oClipartPath)
-                                                            End If
+                                Dim bBasePenPath As Boolean = oBaseFillWhitePathColl.Count > 0 OrElse oBaseFillPathColl.Count > 0 ' oBasePenPathColl.Count > 0
+                                If bBasePenPath Then
+                                    Dim bBaseFillWhitePath As Boolean = oBaseFillWhitePathColl.Count > 0
+                                    Dim bBaseFillPath As Boolean = oBaseFillPathColl.Count > 0
+
+                                    Dim oBounds As RectangleF = Path.GetBounds
+                                    Dim oClipartBounds As RectangleF = oClipart.GetBounds
+                                    Dim sLeft As Single = oBounds.Left - sCurrentDensity
+                                    Dim sRight As Single = oBounds.Right + sCurrentDensity
+                                    Call Seed.Restart()
+                                    For x As Single = sLeft To sRight Step sCurrentDensity
+                                        Dim [sTop] As Single = oBounds.Top - sCurrentDensity * Math.Abs(Seed.CurrentBase) / 100 * 2
+                                        Dim sBottom As Single = oBounds.Bottom + sCurrentDensity * Math.Abs(Seed.CurrentBase) / 100 * 2
+                                        For y As Single = [sTop] To sBottom Step sCurrentDensity
+                                            Dim oPoint As PointF
+                                            If iClipartPosition = cBrush.ClipartPositionEnum.Fixed Then
+                                                oPoint = New PointF(x, y)
+                                            Else
+                                                Call Seed.Next()
+                                                Dim sSideFactor As Single = sCurrentDensity * Seed.CurrentBase / 200.0
+                                                oPoint = New PointF(x + sSideFactor, y)
+                                            End If
+
+                                            Using oMatrix As Matrix = New Matrix
+                                                Dim oCenterPoint As PointF = New PointF(oClipartBounds.Left + oClipartBounds.Width / 2.0, oClipartBounds.Top + oClipartBounds.Height / 2.0)
+                                                If iClipartAngleMode = cBrush.ClipartAngleModeEnum.Random Then
+                                                    Call oMatrix.RotateAt(359.0 * Seed.CurrentBase / 100.0, oCenterPoint, MatrixOrder.Append)
+                                                Else
+                                                    If sClipartAngle <> 0 Then
+                                                        Call oMatrix.RotateAt(sClipartAngle, oCenterPoint, MatrixOrder.Append)
+                                                    End If
+                                                End If
+                                                Dim sTempZoomFactor As Single = sClipartZoomFactor * sZoomFactor
+                                                If sTempZoomFactor <> 1 Then
+                                                    Call oMatrix.Scale(sTempZoomFactor, sTempZoomFactor, MatrixOrder.Append)
+                                                End If
+                                                Call oMatrix.Translate(oPoint.X, oPoint.Y, MatrixOrder.Append)
+
+                                                If bBaseFillWhitePath Then
+                                                    Call oItemFillWhitePathColl.Clear()
+                                                    For Each oSubPath As cSubPathBag In oBaseFillWhitePathColl
+                                                        Dim oNewPath As GraphicsPath = oSubPath.Path.Clone
+                                                        Call oNewPath.Transform(oMatrix)
+                                                        Call oItemFillWhitePathColl.Add(New cSubPathBag(oSubPath.GUID, oNewPath))
+                                                    Next
+                                                End If
+
+                                                If bBaseFillPath Then
+                                                    Call oItemFillPathColl.Clear()
+                                                    For Each oSubPath As cSubPathBag In oBaseFillPathColl
+                                                        Dim oNewPath As GraphicsPath = oSubPath.Path.Clone
+                                                        Call oNewPath.Transform(oMatrix)
+                                                        Call oItemFillPathColl.Add(New cSubPathBag(oSubPath.GUID, oNewPath))
+                                                    Next
+                                                End If
+
+
+                                                For Each oSubPath As cSubPathBag In oItemFillWhitePathColl
+                                                    Using oWidenedPath As GraphicsPath = oSubPath.Path
+                                                        If oClipRegion.Contains(Graphics, oWidenedPath) Then
+                                                            Call Cache.SetGUID(oSubPath.GUID, oMatrix.Elements)
+                                                            Call Cache.AddFiller(oSubPath.Path, oPen, Nothing, Brushes.White)
+                                                            Call Cache.ResetGUID()
+                                                        End If
+                                                    End Using
+                                                Next
+
+                                                For Each oSubPath As cSubPathBag In oItemFillPathColl
+                                                    Using oWidenedPath As GraphicsPath = oSubPath.Path
+                                                        If oClipRegion.Contains(Graphics, oWidenedPath) Then
+                                                            Call Cache.SetGUID(oSubPath.GUID, oMatrix.Elements)
+                                                            Call Cache.AddFiller(oSubPath.Path, oPen, Nothing, oBrush)
+                                                            Call Cache.ResetGUID()
+                                                        End If
+                                                    End Using
+                                                Next
+                                            End Using
+
+                                            If Not PaintOptions.IsDesign AndAlso modMain.Is32Bit Then
+                                                Call GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced)
+                                            End If
+                                        Next
+                                    Next
+                                End If
+                            Else
+                                Using oBasePenPath As GraphicsPath = New GraphicsPath
+                                    For Each oDrawPath As cDrawPath In oClipart.Paths
+                                        Call oBasePenPath.AddPath(oDrawPath.Path, False)
+                                    Next
+
+                                    Dim bBasePenPath As Boolean = oBasePenPath.PointCount > 1
+                                    If bBasePenPath Then
+                                        Dim oBounds As RectangleF = Path.GetBounds
+                                        Dim oClipartBounds As RectangleF = oClipart.GetBounds
+                                        Dim sLeft As Single = oBounds.Left - sCurrentDensity
+                                        Dim sRight As Single = oBounds.Right + sCurrentDensity
+                                        Call Seed.Restart()
+                                        For x As Single = sLeft To sRight Step sCurrentDensity
+                                            Dim [sTop] As Single = oBounds.Top - sCurrentDensity * Math.Abs(Seed.CurrentBase) / 100.0 * 2.0
+                                            Dim sBottom As Single = oBounds.Bottom + sCurrentDensity * Math.Abs(Seed.CurrentBase) / 100.0 * 2.0
+                                            For y As Single = [sTop] To sBottom Step sCurrentDensity
+                                                Dim oPoint As PointF
+                                                If iClipartPosition = cBrush.ClipartPositionEnum.Fixed Then
+                                                    oPoint = New PointF(x, y)
+                                                Else
+                                                    Call Seed.Next()
+                                                    Dim sSideFactor As Single = sCurrentDensity * Seed.CurrentBase / 200.0
+                                                    oPoint = New PointF(x + sSideFactor, y)
+                                                End If
+
+                                                Using oMatrix As Matrix = New Matrix
+                                                    Dim oCenterPoint As PointF = New PointF(oClipartBounds.Left + oClipartBounds.Width / 2.0, oClipartBounds.Top + oClipartBounds.Height / 2.0)
+                                                    If iClipartAngleMode = cBrush.ClipartAngleModeEnum.Random Then
+                                                        Call oMatrix.RotateAt(359.0 * Seed.CurrentBase / 100.0, oCenterPoint, MatrixOrder.Append)
+                                                    Else
+                                                        If sClipartAngle <> 0 Then
+                                                            Call oMatrix.RotateAt(sClipartAngle, oCenterPoint, MatrixOrder.Append)
                                                         End If
                                                     End If
-                                                    Call oBasePenPathColl.Add(oClipartPath)
-                                                End If
-                                            Next
+                                                    Dim sTempZoomFactor As Single = sClipartZoomFactor * sZoomFactor
+                                                    If sTempZoomFactor <> 1 Then
+                                                        Call oMatrix.Scale(sTempZoomFactor, sTempZoomFactor, MatrixOrder.Append)
+                                                    End If
+                                                    Call oMatrix.Translate(oPoint.X, oPoint.Y, MatrixOrder.Append)
 
-                                            Dim bBasePenPath As Boolean = oBasePenPathColl.Count > 0
-                                            If bBasePenPath Then
-                                                Dim bBaseFillWhitePath As Boolean = oBaseFillWhitePathColl.Count > 0
-                                                Dim bBaseFillPath As Boolean = oBaseFillPathColl.Count > 0
+                                                    Using oItemPenPath As GraphicsPath = oBasePenPath.Clone
+                                                        Call oItemPenPath.Transform(oMatrix)
 
-                                                Dim oBounds As RectangleF = Path.GetBounds
-                                                Dim oClipartBounds As RectangleF = oClipart.GetBounds
-                                                Dim sLeft As Single = oBounds.Left - sCurrentDensity
-                                                Dim sRight As Single = oBounds.Right + sCurrentDensity
-                                                Call Seed.Restart()
-                                                For x As Single = sLeft To sRight Step sCurrentDensity
-                                                    Dim [sTop] As Single = oBounds.Top - sCurrentDensity * Math.Abs(Seed.CurrentBase) / 100 * 2
-                                                    Dim sBottom As Single = oBounds.Bottom + sCurrentDensity * Math.Abs(Seed.CurrentBase) / 100 * 2
-                                                    For y As Single = [sTop] To sBottom Step sCurrentDensity
-                                                        Dim oPoint As PointF
-                                                        If iClipartPosition = cBrush.ClipartPositionEnum.Fixed Then
-                                                            oPoint = New PointF(x, y)
-                                                        Else
-                                                            Call Seed.Next()
-                                                            Dim sSideFactor As Single = sCurrentDensity * Seed.CurrentBase / 200
-                                                            oPoint = New PointF(x + sSideFactor, y)
-                                                        End If
-
-                                                        Using oMatrix As Matrix = New Matrix
-                                                            Dim oCenterPoint As PointF = New PointF(oClipartBounds.Left + oClipartBounds.Width / 2, oClipartBounds.Top + oClipartBounds.Height / 2)
-                                                            If iClipartAngleMode = cBrush.ClipartAngleModeEnum.Random Then
-                                                                Call oMatrix.RotateAt(359 * Seed.CurrentBase / 100, oCenterPoint, MatrixOrder.Append)
+                                                        Dim bDo As Boolean
+                                                        Using oWidenedPath As GraphicsPath = oItemPenPath.Clone
+                                                            oWidenedPath.Widen(oPen)
+                                                            If iClipartCrop = cBrush.ClipartCropEnum.Full Then
+                                                                bDo = oClipRegion.Contains(Graphics, oWidenedPath)
                                                             Else
-                                                                If sClipartAngle <> 0 Then
-                                                                    Call oMatrix.RotateAt(sClipartAngle, oCenterPoint, MatrixOrder.Append)
-                                                                End If
+                                                                bDo = True
                                                             End If
-                                                            Dim sTempZoomFactor As Single = sClipartZoomFactor * sZoomFactor
-                                                            If sTempZoomFactor <> 1 Then
-                                                                Call oMatrix.Scale(sTempZoomFactor, sTempZoomFactor, MatrixOrder.Append)
-                                                            End If
-                                                            Call oMatrix.Translate(oPoint.X, oPoint.Y, MatrixOrder.Append)
-
-                                                            If bBaseFillWhitePath Then
-                                                                Call oItemFillWhitePathColl.Clear()
-                                                                For Each oPath As GraphicsPath In oBaseFillWhitePathColl
-                                                                    Dim oNewPath As GraphicsPath = oPath.Clone
-                                                                    Call oNewPath.Transform(oMatrix)
-                                                                    Call oItemFillWhitePathColl.Add(oNewPath)
-                                                                Next
-                                                            End If
-
-                                                            If bBaseFillPath Then
-                                                                Call oItemFillPathColl.Clear()
-                                                                For Each oPath As GraphicsPath In oBaseFillPathColl
-                                                                    Dim oNewPath As GraphicsPath = oPath.Clone
-                                                                    Call oNewPath.Transform(oMatrix)
-                                                                    Call oItemFillPathColl.Add(oNewPath)
-                                                                Next
-                                                            End If
-
-                                                            Call oItemPenPathColl.Clear()
-                                                            For Each oPath As GraphicsPath In oBasePenPathColl
-                                                                Dim oNewPath As GraphicsPath = oPath.Clone
-                                                                Call oNewPath.Transform(oMatrix)
-                                                                Call oItemPenPathColl.Add(oNewPath)
-                                                            Next
-
-                                                            For Each oPath As GraphicsPath In oItemFillWhitePathColl
-                                                                Using oWidenedPath As GraphicsPath = oPath
-                                                                    If oClipRegion.Contains(Graphics, oWidenedPath) Then
-                                                                        Call Cache.AddFiller(oPath, Nothing, Nothing, Brushes.White)
-                                                                    End If
-                                                                End Using
-                                                            Next
-
-                                                            For Each oPath As GraphicsPath In oItemFillPathColl
-                                                                'Try
-                                                                Using oWidenedPath As GraphicsPath = oPath
-                                                                    If oClipRegion.Contains(Graphics, oWidenedPath) Then
-                                                                        Call Cache.AddFiller(oPath, Nothing, Nothing, oBrush)
-                                                                    End If
-                                                                End Using
-                                                            Next
-
-                                                            For Each oPath As GraphicsPath In oItemPenPathColl
-                                                                Using oWidenedPath As GraphicsPath = oPath
-                                                                    If oClipRegion.Contains(Graphics, oWidenedPath) Then
-                                                                        Call Cache.AddFiller(oPath, oPen, Nothing)
-                                                                    End If
-                                                                End Using
-                                                            Next
-
                                                         End Using
+                                                        If bDo Then
+                                                            For Each oDrawPath As cDrawPath In oClipart.Paths
+                                                                Dim oClipartPath As GraphicsPath = oDrawPath.Path.Clone
+                                                                oClipartPath.Transform(oMatrix)
 
-                                                        If Not PaintOptions.IsDesign AndAlso modMain.Is32Bit Then
-                                                            Call GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced)
-                                                        End If
-                                                    Next
-                                                Next
-                                            End If
-                                        Else
-                                            Using oBasePenPath As GraphicsPath = New GraphicsPath
-                                                Using oBaseFillWhitePath As GraphicsPath = New GraphicsPath
-                                                    Using oBaseFillPath As GraphicsPath = New GraphicsPath
+                                                                Call Cache.SetGUID(oDrawPath.InternalID, oMatrix.Elements)
 
-                                                        Dim oItemFillWhitePath As GraphicsPath = Nothing
-                                                        Dim oItemFillPath As GraphicsPath = Nothing
-
-                                                        Dim oPaths As cDrawPaths = oClipart.Paths
-                                                        For Each oDrawPath As cDrawPath In oPaths
-                                                            Dim oClipartPath As GraphicsPath = oDrawPath.Path
-                                                            Dim sFill As String = oDrawPath.GetStyle("fill", "none")
-                                                            If sFill <> "none" Then
-                                                                Dim oColor As Color
-                                                                If sFill = "" Then
-                                                                    oColor = Color.Transparent
-                                                                Else
-                                                                    oColor = ColorTranslator.FromHtml(sFill)
-                                                                End If
-                                                                If oColor.ToArgb = Color.White.ToArgb Then
-                                                                    Call oBaseFillWhitePath.AddPath(oClipartPath, False)
-                                                                Else
-                                                                    Call oBaseFillPath.AddPath(oClipartPath, False)
-                                                                End If
-                                                            End If
-                                                            Call oBasePenPath.AddPath(oClipartPath, False)
-                                                        Next
-
-                                                        Dim bBasePenPath As Boolean = oBasePenPath.PointCount > 1
-                                                        If bBasePenPath Then
-                                                            Dim bBaseFillWhitePath As Boolean = oBaseFillWhitePath.PointCount > 1
-                                                            Dim bBaseFillPath As Boolean = oBaseFillPath.PointCount > 1
-
-                                                            Dim oBounds As RectangleF = Path.GetBounds
-                                                            Dim oClipartBounds As RectangleF = oClipart.GetBounds
-                                                            Dim sLeft As Single = oBounds.Left - sCurrentDensity
-                                                            Dim sRight As Single = oBounds.Right + sCurrentDensity
-                                                            Call Seed.Restart()
-                                                            For x As Single = sLeft To sRight Step sCurrentDensity
-                                                                Dim [sTop] As Single = oBounds.Top - sCurrentDensity * Math.Abs(Seed.CurrentBase) / 100 * 2
-                                                                Dim sBottom As Single = oBounds.Bottom + sCurrentDensity * Math.Abs(Seed.CurrentBase) / 100 * 2
-                                                                For y As Single = [sTop] To sBottom Step sCurrentDensity
-                                                                    Dim oPoint As PointF
-                                                                    If iClipartPosition = cBrush.ClipartPositionEnum.Fixed Then
-                                                                        oPoint = New PointF(x, y)
+                                                                Dim sFill As String = oDrawPath.GetStyle("fill", "none")
+                                                                If sFill <> "none" Then
+                                                                    Dim oColor As Color
+                                                                    If sFill = "" Then
+                                                                        oColor = Color.Transparent
                                                                     Else
-                                                                        Call Seed.Next()
-                                                                        Dim sSideFactor As Single = sCurrentDensity * Seed.CurrentBase / 200
-                                                                        oPoint = New PointF(x + sSideFactor, y)
+                                                                        oColor = ColorTranslator.FromHtml(sFill)
                                                                     End If
-
-                                                                    Using oMatrix As Matrix = New Matrix
-                                                                        Dim oCenterPoint As PointF = New PointF(oClipartBounds.Left + oClipartBounds.Width / 2, oClipartBounds.Top + oClipartBounds.Height / 2)
-                                                                        If iClipartAngleMode = cBrush.ClipartAngleModeEnum.Random Then
-                                                                            Call oMatrix.RotateAt(359 * Seed.CurrentBase / 100, oCenterPoint, MatrixOrder.Append)
-                                                                        Else
-                                                                            If sClipartAngle <> 0 Then
-                                                                                Call oMatrix.RotateAt(sClipartAngle, oCenterPoint, MatrixOrder.Append)
-                                                                            End If
-                                                                        End If
-                                                                        Dim sTempZoomFactor As Single = sClipartZoomFactor * sZoomFactor
-                                                                        If sTempZoomFactor <> 1 Then
-                                                                            Call oMatrix.Scale(sTempZoomFactor, sTempZoomFactor, MatrixOrder.Append)
-                                                                        End If
-                                                                        Call oMatrix.Translate(oPoint.X, oPoint.Y, MatrixOrder.Append)
-
-                                                                        Using oItemPenPath As GraphicsPath = oBasePenPath.Clone
-                                                                            Call oItemPenPath.Transform(oMatrix)
-
-                                                                            Dim bDo As Boolean
-                                                                            Using oWidenedPath As GraphicsPath = oItemPenPath.Clone
-                                                                                oWidenedPath.Widen(oPen)
-                                                                                If iClipartCrop = cBrush.ClipartCropEnum.Full Then
-                                                                                    bDo = oClipRegion.Contains(Graphics, oWidenedPath)
-                                                                                Else
-                                                                                    bDo = True
-                                                                                End If
-                                                                            End Using
-                                                                            If bDo Then
-                                                                                If bBaseFillWhitePath Then
-                                                                                    oItemFillWhitePath = oBaseFillWhitePath.Clone
-                                                                                    Call oItemFillWhitePath.Transform(oMatrix)
-                                                                                End If
-                                                                                If bBaseFillPath Then
-                                                                                    oItemFillPath = oBaseFillPath.Clone
-                                                                                    Call oItemFillPath.Transform(oMatrix)
-                                                                                End If
-
-                                                                                If bBaseFillWhitePath Then
-                                                                                    Call Cache.AddFiller(oItemFillWhitePath, Nothing, Nothing, Brushes.White)
-                                                                                    Call oItemFillWhitePath.Dispose()
-                                                                                End If
-                                                                                If bBaseFillPath Then
-                                                                                    Call Cache.AddFiller(oItemFillPath, Nothing, Nothing, oBrush)
-                                                                                    Call oItemFillPath.Dispose()
-                                                                                End If
-                                                                                Call Cache.AddFiller(oItemPenPath, oPen, Nothing)
-                                                                            End If
-                                                                        End Using
-                                                                    End Using
-                                                                Next
+                                                                    If oColor.ToArgb = Color.White.ToArgb Then
+                                                                        Call Cache.AddFiller(oClipartPath, oPen, Nothing, Brushes.White)
+                                                                    Else
+                                                                        Call Cache.AddFiller(oClipartPath, oPen, Nothing, oBrush)
+                                                                    End If
+                                                                End If
+                                                                Call Cache.ResetGUID()
                                                             Next
-                                                            'If bBaseFillWhitePath Then Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oFillWhitePath, Nothing, Nothing, Brushes.White)
-                                                            'If bBaseFillPath Then Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oFillPath, Nothing, Nothing, oBrush)
-                                                            'Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oPenPath, oPen, Nothing)
                                                         End If
                                                     End Using
                                                 End Using
-                                            End Using
-                                        End If
-                                    End Using
+                                            Next
+                                        Next
+                                    End If
                                 End Using
-                            End Using
+                            End If
                         End Using
-                        Call Cache.AddResetclip()
+                        If iClipartCrop = ClipartCropEnum.None OrElse PaintOptions.IsDesign Then Call Cache.AddResetClip()
+                    End If
+                End If
+            Else
+                Call Cache.AddFiller(Path, Nothing, Nothing, oClipartAlternativeBrush1)
+            End If
+        End Sub
+
+        Private Sub pRenderClipart2(Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache, Seed As cBrushSeed)
+            If PaintOptions.ShowAdvancedBrushes Then
+                If Selected = cItem.SelectionModeEnum.InEdit Then
+                    Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Path, Nothing, Nothing, oClipartAlternativeBrush2)
+                Else
+                    If sClipartDensity > 0 AndAlso Not oClipart Is Nothing AndAlso Path.PointCount > 2 Then
+                        Dim sZoomFactor As Single = GetPaintZoomFactor(PaintOptions)
+                        Dim sCurrentDensity As Single = sClipartDensity * sZoomFactor
+                        If iClipartCrop = ClipartCropEnum.None OrElse PaintOptions.IsDesign Then Call Cache.AddSetClip(Path)
+                        If oBackgroundBrush.Color <> Color.Transparent Then Cache.AddFiller(Path,,, oBackgroundBrush)
+                        Using oClipRegion As cIRegion = pCreateRegion(Path)
+                            If iClipartCrop = cBrush.ClipartCropEnum.Subitems Then
+                                Dim oBaseFillWhitePathColl As List(Of cSubPathBag) = New List(Of cSubPathBag)
+                                Dim oBaseFillPathColl As List(Of cSubPathBag) = New List(Of cSubPathBag)
+
+                                Dim oItemFillWhitePathColl As List(Of cSubPathBag) = New List(Of cSubPathBag)
+                                Dim oItemFillPathColl As List(Of cSubPathBag) = New List(Of cSubPathBag)
+
+                                Dim oPaths As cDrawPaths = oClipart.Paths
+                                For Each oDrawPath As cDrawPath In oPaths
+                                    Dim oClipartPath As GraphicsPath = oDrawPath.Path
+                                    If oClipartPath.PointCount > 1 Then
+                                        If oClipartPath.PointCount > 2 Then
+                                            Dim sFill As String = oDrawPath.GetStyle("fill", "none")
+                                            If sFill <> "none" Then
+                                                Dim oColor As Color
+                                                If sFill = "" Then
+                                                    oColor = Color.Transparent
+                                                Else
+                                                    oColor = ColorTranslator.FromHtml(sFill)
+                                                End If
+                                                If oColor.ToArgb = Color.White.ToArgb Then
+                                                    Call oBaseFillWhitePathColl.Add(New cSubPathBag(oDrawPath.InternalID, oClipartPath))
+                                                Else
+                                                    Call oBaseFillPathColl.Add(New cSubPathBag(oDrawPath.InternalID, oClipartPath))
+                                                End If
+                                            End If
+                                        End If
+                                    End If
+                                Next
+
+                                Dim bBasePenPath As Boolean = oBaseFillWhitePathColl.Count > 0 OrElse oBaseFillPathColl.Count > 0 ' oBasePenPathColl.Count > 0
+                                If bBasePenPath Then
+                                    Dim oFillWhitePaths As List(Of GraphicsPath) = New List(Of GraphicsPath)
+                                    Dim oFillPaths As List(Of GraphicsPath) = New List(Of GraphicsPath)
+                                    Dim oRegions As List(Of cClipperRegion) = New List(Of cClipperRegion)
+
+                                    Dim bBaseFillWhitePath As Boolean = oBaseFillWhitePathColl.Count > 0
+                                    Dim bBaseFillPath As Boolean = oBaseFillPathColl.Count > 0
+
+                                    Dim oBounds As RectangleF = Path.GetBounds
+                                    Dim oClipartBounds As RectangleF = oClipart.GetBounds
+                                    Dim sLeft As Single = oBounds.Left - sCurrentDensity
+                                    Dim sRight As Single = oBounds.Right + sCurrentDensity
+                                    Call Seed.Restart()
+                                    For x As Single = sLeft To sRight Step sCurrentDensity
+                                        Dim [sTop] As Single = oBounds.Top - sCurrentDensity * Math.Abs(Seed.CurrentBase) / 100 * 2
+                                        Dim sBottom As Single = oBounds.Bottom + sCurrentDensity * Math.Abs(Seed.CurrentBase) / 100 * 2
+                                        For y As Single = [sTop] To sBottom Step sCurrentDensity
+                                            Dim oPoint As PointF
+                                            If iClipartPosition = cBrush.ClipartPositionEnum.Fixed Then
+                                                oPoint = New PointF(x, y)
+                                            Else
+                                                Call Seed.Next()
+                                                Dim sSideFactor As Single = sCurrentDensity * Seed.CurrentBase / 200.0
+                                                oPoint = New PointF(x + sSideFactor, y)
+                                            End If
+
+                                            Using oMatrix As Matrix = New Matrix
+                                                Dim oCenterPoint As PointF = New PointF(oClipartBounds.Left + oClipartBounds.Width / 2.0, oClipartBounds.Top + oClipartBounds.Height / 2.0)
+                                                If iClipartAngleMode = cBrush.ClipartAngleModeEnum.Random Then
+                                                    Call oMatrix.RotateAt(359.0 * Seed.CurrentBase / 100.0, oCenterPoint, MatrixOrder.Append)
+                                                Else
+                                                    If sClipartAngle <> 0 Then
+                                                        Call oMatrix.RotateAt(sClipartAngle, oCenterPoint, MatrixOrder.Append)
+                                                    End If
+                                                End If
+                                                Dim sTempZoomFactor As Single = sClipartZoomFactor * sZoomFactor
+                                                If sTempZoomFactor <> 1 Then
+                                                    Call oMatrix.Scale(sTempZoomFactor, sTempZoomFactor, MatrixOrder.Append)
+                                                End If
+                                                Call oMatrix.Translate(oPoint.X, oPoint.Y, MatrixOrder.Append)
+
+                                                If bBaseFillWhitePath Then
+                                                    Call oItemFillWhitePathColl.Clear()
+                                                    For Each oSubPath As cSubPathBag In oBaseFillWhitePathColl
+                                                        Dim oNewPath As GraphicsPath = oSubPath.Path.Clone
+                                                        Call oNewPath.Transform(oMatrix)
+                                                        Call oItemFillWhitePathColl.Add(New cSubPathBag(oSubPath.GUID, oNewPath))
+                                                    Next
+                                                End If
+
+                                                If bBaseFillPath Then
+                                                    Call oItemFillPathColl.Clear()
+                                                    For Each oSubPath As cSubPathBag In oBaseFillPathColl
+                                                        Dim oNewPath As GraphicsPath = oSubPath.Path.Clone
+                                                        Call oNewPath.Transform(oMatrix)
+                                                        Call oItemFillPathColl.Add(New cSubPathBag(oSubPath.GUID, oNewPath))
+                                                    Next
+                                                End If
+
+                                                For Each oSubPath As cSubPathBag In oItemFillWhitePathColl
+                                                    Using oWidenedPath As GraphicsPath = oSubPath.Path
+                                                        If oClipRegion.Contains(Graphics, oWidenedPath) Then
+                                                            Dim oRegion As cClipperRegion
+                                                            Dim oFillWhitePath As GraphicsPath
+                                                            Dim bDone As Boolean = False
+                                                            If oRegions.Count = 0 Then
+                                                                oRegion = New cClipperRegion(oSubPath.Path, 1, 0.1)
+                                                                oRegions.Add(oRegion)
+                                                                oFillWhitePath = New GraphicsPath
+                                                                oFillWhitePath.FillMode = FillMode.Winding
+                                                                Call oFillWhitePaths.Add(oFillWhitePath)
+                                                            Else
+                                                                oRegion = oRegions(0)
+                                                                Dim iRegionIndex As Integer = 0
+                                                                Do While oRegion.Intersect(Graphics, oSubPath.Path)
+                                                                    iRegionIndex += 1
+                                                                    If iRegionIndex > oRegions.Count - 1 Then
+                                                                        oRegion = New cClipperRegion(oSubPath.Path, 1, 0.1)
+                                                                        oRegions.Add(oRegion)
+                                                                        oFillWhitePath = New GraphicsPath
+                                                                        oFillWhitePath.FillMode = FillMode.Winding
+                                                                        Call oFillWhitePaths.Add(oFillWhitePath)
+                                                                        bDone = True
+                                                                        Exit Do
+                                                                    End If
+                                                                    oRegion = oRegions(iRegionIndex)
+                                                                Loop
+                                                                If Not bDone Then
+                                                                    oFillWhitePaths(iRegionIndex).AddPath(oSubPath.Path, False)
+                                                                    oRegion.Union(Graphics, oSubPath.Path)
+                                                                End If
+                                                            End If
+                                                        End If
+                                                    End Using
+                                                Next
+
+                                                For Each oSubPath As cSubPathBag In oItemFillPathColl
+                                                    Using oWidenedPath As GraphicsPath = oSubPath.Path
+                                                        If oClipRegion.Contains(Graphics, oWidenedPath) Then
+                                                            Dim oRegion As cClipperRegion
+                                                            Dim oFillPath As GraphicsPath
+                                                            Dim bDone As Boolean = False
+                                                            If oRegions.Count = 0 Then
+                                                                oRegion = New cClipperRegion(oSubPath.Path, 1, 0.1)
+                                                                oRegions.Add(oRegion)
+                                                                oFillPath = New GraphicsPath
+                                                                oFillPath.FillMode = FillMode.Winding
+                                                                Call oFillPaths.Add(oFillPath)
+                                                            Else
+                                                                oRegion = oRegions(0)
+                                                                Dim iRegionIndex As Integer = 0
+                                                                Do While oRegion.Intersect(Graphics, oSubPath.Path)
+                                                                    iRegionIndex += 1
+                                                                    If iRegionIndex > oRegions.Count - 1 Then
+                                                                        oRegion = New cClipperRegion(oSubPath.Path, 1, 0.1)
+                                                                        oRegions.Add(oRegion)
+                                                                        oFillPath = New GraphicsPath
+                                                                        oFillPath.FillMode = FillMode.Winding
+                                                                        Call oFillPaths.Add(oFillPath)
+                                                                        bDone = True
+                                                                        Exit Do
+                                                                    End If
+                                                                    oRegion = oRegions(iRegionIndex)
+                                                                Loop
+                                                                If Not bDone Then
+                                                                    oFillPaths(iRegionIndex).AddPath(oSubPath.Path, False)
+                                                                    oRegion.Union(Graphics, oSubPath.Path)
+                                                                End If
+                                                            End If
+                                                        End If
+                                                    End Using
+                                                Next
+                                            End Using
+
+                                            If Not PaintOptions.IsDesign AndAlso modMain.Is32Bit Then
+                                                Call GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced)
+                                            End If
+                                        Next
+                                    Next
+
+                                    If oFillWhitePaths.Count Then
+                                        For Each oFillWhitePath As GraphicsPath In oFillWhitePaths
+                                            If oFillWhitePath.PointCount > 0 Then
+                                                Call Cache.AddFiller(oFillWhitePath, oPen, Nothing, Brushes.White)
+                                            End If
+                                            Call oFillWhitePath.Dispose()
+                                        Next
+                                    End If
+
+                                    If oFillPaths.Count Then
+                                        For Each oFillPath As GraphicsPath In oFillPaths
+                                            If oFillPath.PointCount > 0 Then
+                                                Call Cache.AddFiller(oFillPath, oPen, Nothing, oBrush)
+                                            End If
+                                            Call oFillPath.Dispose()
+                                        Next
+                                    End If
+
+                                    '    End Using
+                                    'End Using
+                                End If
+                            Else
+                                Dim oFillWhitePaths As List(Of GraphicsPath) = New List(Of GraphicsPath)
+                                Dim oFillPaths As List(Of GraphicsPath) = New List(Of GraphicsPath)
+                                Dim oRegions As List(Of cClipperRegion) = New List(Of cClipperRegion)
+                                Dim iFirstRegion As Integer = 0
+
+                                Using oBasePenPath As GraphicsPath = New GraphicsPath
+                                    For Each oDrawPath As cDrawPath In oClipart.Paths
+                                        Call oBasePenPath.AddPath(oDrawPath.Path, False)
+                                    Next
+
+                                    Dim bBasePenPath As Boolean = oBasePenPath.PointCount > 1
+                                    If bBasePenPath Then
+                                        Dim oBounds As RectangleF = Path.GetBounds
+                                        Dim oClipartBounds As RectangleF = oClipart.GetBounds
+                                        Dim sLeft As Single = oBounds.Left - sCurrentDensity
+                                        Dim sRight As Single = oBounds.Right + sCurrentDensity
+                                        Call Seed.Restart()
+                                        For x As Single = sLeft To sRight Step sCurrentDensity
+                                            Dim [sTop] As Single = oBounds.Top - sCurrentDensity * Math.Abs(Seed.CurrentBase) / 100.0 * 2.0
+                                            Dim sBottom As Single = oBounds.Bottom + sCurrentDensity * Math.Abs(Seed.CurrentBase) / 100.0 * 2.0
+                                            For y As Single = [sTop] To sBottom Step sCurrentDensity
+                                                Dim oPoint As PointF
+                                                If iClipartPosition = cBrush.ClipartPositionEnum.Fixed Then
+                                                    oPoint = New PointF(x, y)
+                                                Else
+                                                    Call Seed.Next()
+                                                    Dim sSideFactor As Single = sCurrentDensity * Seed.CurrentBase / 200.0
+                                                    oPoint = New PointF(x + sSideFactor, y)
+                                                End If
+
+                                                Using oMatrix As Matrix = New Matrix
+                                                    Dim oCenterPoint As PointF = New PointF(oClipartBounds.Left + oClipartBounds.Width / 2.0, oClipartBounds.Top + oClipartBounds.Height / 2.0)
+                                                    If iClipartAngleMode = cBrush.ClipartAngleModeEnum.Random Then
+                                                        Call oMatrix.RotateAt(359.0 * Seed.CurrentBase / 100.0, oCenterPoint, MatrixOrder.Append)
+                                                    Else
+                                                        If sClipartAngle <> 0 Then
+                                                            Call oMatrix.RotateAt(sClipartAngle, oCenterPoint, MatrixOrder.Append)
+                                                        End If
+                                                    End If
+                                                    Dim sTempZoomFactor As Single = sClipartZoomFactor * sZoomFactor
+                                                    If sTempZoomFactor <> 1 Then
+                                                        Call oMatrix.Scale(sTempZoomFactor, sTempZoomFactor, MatrixOrder.Append)
+                                                    End If
+                                                    Call oMatrix.Translate(oPoint.X, oPoint.Y, MatrixOrder.Append)
+
+                                                    Using oItemPenPath As GraphicsPath = oBasePenPath.Clone
+                                                        Call oItemPenPath.Transform(oMatrix)
+
+                                                        Dim bDo As Boolean
+                                                        Using oWidenedPath As GraphicsPath = oItemPenPath.Clone
+                                                            oWidenedPath.Widen(oPen)
+                                                            'If iClipartCrop = cBrush.ClipartCropEnum.Full Then
+                                                            bDo = oClipRegion.Contains(Graphics, oWidenedPath)
+                                                            'Else
+                                                            'bDo = True
+                                                            'End If
+                                                        End Using
+                                                        If bDo Then
+                                                            For Each oDrawPath As cDrawPath In oClipart.Paths
+                                                                Dim oClipartPath As GraphicsPath = oDrawPath.Path.Clone
+                                                                oClipartPath.Transform(oMatrix)
+
+                                                                Dim sFill As String = oDrawPath.GetStyle("fill", "none")
+                                                                If sFill <> "none" Then
+                                                                    Dim oColor As Color
+                                                                    If sFill = "" Then
+                                                                        oColor = Color.Transparent
+                                                                    Else
+                                                                        oColor = ColorTranslator.FromHtml(sFill)
+                                                                    End If
+                                                                    If oColor.ToArgb = Color.White.ToArgb Then
+                                                                        Dim oRegion As cClipperRegion
+                                                                        Dim oFillWhitePath As GraphicsPath
+                                                                        Dim bDone As Boolean = False
+                                                                        If iFirstRegion > oRegions.Count - 1 Then
+                                                                            oRegion = New cClipperRegion(oClipartPath, 1, 0.1)
+                                                                            oRegions.Add(oRegion)
+                                                                            oFillWhitePath = New GraphicsPath
+                                                                            oFillWhitePath.FillMode = FillMode.Winding
+                                                                            Call oFillWhitePaths.Add(oFillWhitePath)
+                                                                        Else
+                                                                            oRegion = oRegions(iFirstRegion)
+                                                                            Dim iRegionIndex As Integer = iFirstRegion
+                                                                            Do While oRegion.Intersect(Graphics, oClipartPath)
+                                                                                iRegionIndex += 1
+                                                                                If iRegionIndex > oRegions.Count - 1 Then
+                                                                                    oRegion = New cClipperRegion(oClipartPath, 1, 0.1)
+                                                                                    oRegions.Add(oRegion)
+                                                                                    oFillWhitePath = New GraphicsPath
+                                                                                    oFillWhitePath.FillMode = FillMode.Winding
+                                                                                    Call oFillWhitePaths.Add(oFillWhitePath)
+                                                                                    bDone = True
+                                                                                    Exit Do
+                                                                                End If
+                                                                                oRegion = oRegions(iRegionIndex)
+                                                                            Loop
+                                                                            If Not bDone Then
+                                                                                oFillWhitePaths(iRegionIndex).AddPath(oClipartPath, False)
+                                                                                oRegion.Union(Graphics, oClipartPath)
+                                                                                If oFillPaths(iRegionIndex).PointCount > 10000 Then
+                                                                                    iFirstRegion = iRegionIndex + 1
+                                                                                End If
+                                                                            End If
+                                                                        End If
+                                                                    Else
+                                                                        Dim oRegion As cClipperRegion
+                                                                        Dim oFillPath As GraphicsPath
+                                                                        Dim bDone As Boolean = False
+                                                                        If iFirstRegion > oRegions.Count - 1 Then
+                                                                            oRegion = New cClipperRegion(oClipartPath, 1, 0.1)
+                                                                            oRegions.Add(oRegion)
+                                                                            oFillPath = New GraphicsPath
+                                                                            oFillPath.FillMode = FillMode.Winding
+                                                                            Call oFillPaths.Add(oFillPath)
+                                                                        Else
+                                                                            oRegion = oRegions(iFirstRegion)
+                                                                            Dim iRegionIndex As Integer = iFirstRegion
+                                                                            Do While oRegion.Intersect(Graphics, oClipartPath)
+                                                                                iRegionIndex += 1
+                                                                                If iRegionIndex > oRegions.Count - 1 Then
+                                                                                    oRegion = New cClipperRegion(oClipartPath, 1, 0.1)
+                                                                                    oRegions.Add(oRegion)
+                                                                                    oFillPath = New GraphicsPath
+                                                                                    oFillPath.FillMode = FillMode.Winding
+                                                                                    Call oFillPaths.Add(oFillPath)
+                                                                                    bDone = True
+                                                                                    Exit Do
+                                                                                End If
+                                                                                oRegion = oRegions(iRegionIndex)
+                                                                            Loop
+                                                                            If Not bDone Then
+                                                                                oFillPaths(iRegionIndex).AddPath(oClipartPath, False)
+                                                                                oRegion.Union(Graphics, oClipartPath)
+                                                                                If oFillPaths(iRegionIndex).PointCount > 10000 Then
+                                                                                    iFirstRegion = iRegionIndex + 1
+                                                                                End If
+                                                                            End If
+                                                                        End If
+                                                                    End If
+                                                                End If
+                                                            Next
+                                                        End If
+                                                    End Using
+                                                End Using
+                                            Next
+                                        Next
+                                    End If
+
+                                    If oFillWhitePaths.Count Then
+                                        For Each oFillWhitePath As GraphicsPath In oFillWhitePaths
+                                            If oFillWhitePath.PointCount > 0 Then
+                                                Call Cache.AddFiller(oFillWhitePath, oPen, Nothing, Brushes.White)
+                                            End If
+                                            Call oFillWhitePath.Dispose()
+                                        Next
+                                    End If
+
+                                    If oFillPaths.Count Then
+                                        For Each oFillPath As GraphicsPath In oFillPaths
+                                            If oFillPath.PointCount > 0 Then
+                                                Call Cache.AddFiller(oFillPath, oPen, Nothing, oBrush)
+                                            End If
+                                            Call oFillPath.Dispose()
+                                        Next
+                                    End If
+                                End Using
+                            End If
+                        End Using
+                        If iClipartCrop = ClipartCropEnum.None OrElse PaintOptions.IsDesign Then Call Cache.AddResetClip()
                     End If
                 End If
             Else
@@ -2089,7 +2446,7 @@ Namespace cSurvey.Design
                             End If
                             iPatternIndex += 1
                         Next
-                        Call Cache.AddResetclip()
+                        Call Cache.AddResetClip()
                     End If
                 End If
             Else
@@ -2140,7 +2497,7 @@ Namespace cSurvey.Design
 
                     Select Case iHatchType
                         Case cBrush.HatchTypeEnum.None
-                                'nulla...
+                                        'nulla...
                         Case cBrush.HatchTypeEnum.Solid
                             Call pRenderSolid(PaintOptions, Options, Selected, Path, Cache)
                         Case cBrush.HatchTypeEnum.Pattern

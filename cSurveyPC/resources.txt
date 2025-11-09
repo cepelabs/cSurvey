@@ -1163,4 +1163,4 @@ main.textpart180=Calc:
 
 main.filetypecSurveyXLSX=Microsoft Excel files from cSurvey
 
-calculate.textpart17=Error: origin is orphaned
+calculate.textpart22=Error: origin is orphaned

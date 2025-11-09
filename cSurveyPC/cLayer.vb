@@ -23,7 +23,7 @@ Namespace cSurvey.Design
 
 #Region "SVG"
 
-        Friend Overridable Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overridable Function ToSvgItem(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline) As XmlElement
             Dim oSVGLayer As XmlElement = modSVG.CreateLayer(SVG, "layer" & iType.ToString("D"), iType.ToString)
             Dim oVisibleItems As List(Of cItem) = GetAllVisibleItems(PaintOptions)
             Dim iIndex As Integer = 0
@@ -31,45 +31,47 @@ Namespace cSurvey.Design
             Dim iStep As Integer = If(iCount > 20, iCount \ 20, 1)
             For Each oItem As cItem In oVisibleItems
                 iIndex += 1
-                If (Options And cItem.SVGOptionsEnum.Silent) = 0 Then If (iIndex Mod iStep) = 0 Then Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Esportazione livello " & iType & "...", iIndex / iCount)
+                If (SVG.Options And cSVGWriter.SVGOptionsEnum.Silent) = 0 Then If (iIndex Mod iStep) = 0 Then Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Esportazione livello " & iType & "...", iIndex / iCount)
                 If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, "", "") Then
-                    Dim oSVGItem As XmlElement = oItem.ToSvgItem(SVG, PaintOptions, Options)
-                    If oItem.CanBeClipped Then
-                        Dim iClipBorder As Clipping.cClippingRegions.ClipBorderEnum = oSurvey.Properties.DesignProperties.GetValue("ClipBorder", My.Application.Settings.GetSetting("design.clipborder", Clipping.cClippingRegions.ClipBorderEnum.ClipBorder))
-                        If oItem.ClippingType = cItem.cItemClippingTypeEnum.Default Then
-                            If (oItem.Type = cIItem.cItemTypeEnum.InvertedFreeHandArea AndAlso iType = cLayers.LayerTypeEnum.Borders) OrElse (iType > cLayers.LayerTypeEnum.Borders) OrElse (iClipBorder = Clipping.cClippingRegions.ClipBorderEnum.DontClipBorder AndAlso iType = cLayers.LayerTypeEnum.Borders) Then
-                                'nothing
-                            Else
-                                If oItem.Type = cIItem.cItemTypeEnum.FreeHandArea AndAlso oItem.Category = cIItem.cItemCategoryEnum.Soil AndAlso oItem.Design.Type = cIDesign.cDesignTypeEnum.Profile Then
-                                    Dim sClippingKey As String = "invmask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
-                                    Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
+                    Dim oSVGItem As XmlElement = oItem.ToSvgItem(SVG, PaintOptions)
+                    If oSVGItem IsNot Nothing Then
+                        If oItem.CanBeClipped Then
+                            Dim iClipBorder As Clipping.cClippingRegions.ClipBorderEnum = oSurvey.Properties.DesignProperties.GetValue("ClipBorder", My.Application.Settings.GetSetting("design.clipborder", Clipping.cClippingRegions.ClipBorderEnum.ClipBorder))
+                            If oItem.ClippingType = cItem.cItemClippingTypeEnum.Default Then
+                                If (oItem.Type = cIItem.cItemTypeEnum.InvertedFreeHandArea AndAlso iType = cLayers.LayerTypeEnum.Borders) OrElse (iType > cLayers.LayerTypeEnum.Borders) OrElse (iClipBorder = Clipping.cClippingRegions.ClipBorderEnum.DontClipBorder AndAlso iType = cLayers.LayerTypeEnum.Borders) Then
+                                    'nothing
                                 Else
-                                    Dim sClippingKey As String = "mask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
-                                    Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
+                                    If oItem.Type = cIItem.cItemTypeEnum.FreeHandArea AndAlso oItem.Category = cIItem.cItemCategoryEnum.Soil AndAlso oItem.Design.Type = cIDesign.cDesignTypeEnum.Profile Then
+                                        Dim sClippingKey As String = "invmask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
+                                        Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
+                                    Else
+                                        Dim sClippingKey As String = "mask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
+                                        Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
+                                    End If
                                 End If
-                            End If
-                        Else
-                            Select Case oItem.ClippingType
-                                Case cItem.cItemClippingTypeEnum.None
+                            Else
+                                Select Case oItem.ClippingType
+                                    Case cItem.cItemClippingTypeEnum.None
                                     'without clipping...
-                                Case cItem.cItemClippingTypeEnum.InsideBorder
-                                    Dim sClippingKey As String = "mask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
-                                    Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
-                                Case cItem.cItemClippingTypeEnum.OutsideBorder
-                                    Dim sClippingKey As String = "invmask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
-                                    Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
-                            End Select
+                                    Case cItem.cItemClippingTypeEnum.InsideBorder
+                                        Dim sClippingKey As String = "mask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
+                                        Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
+                                    Case cItem.cItemClippingTypeEnum.OutsideBorder
+                                        Dim sClippingKey As String = "invmask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
+                                        Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
+                                End Select
+                            End If
                         End If
+                        Call modSVG.AppendItem(SVG, oSVGLayer, oSVGItem)
                     End If
-                    Call modSVG.AppendItem(SVG, oSVGLayer, oSVGItem)
                 End If
             Next
             Return oSVGLayer
         End Function
 
-        Friend Overridable Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-            Dim oSVG As XmlDocument = modSVG.CreateSVG
-            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
+        Friend Overridable Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cSVGWriter.SVGOptionsEnum) As XmlDocument
+            Dim oSVG As cSVGWriter = modSVG.CreateSVG(Options)
+            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions))
             Return oSVG
         End Function
 

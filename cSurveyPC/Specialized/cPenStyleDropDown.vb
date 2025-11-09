@@ -100,38 +100,35 @@ Public Class cPenStyleDropDown
     Public Function GetUserPen(ID As String) As cCustomPen
         Return oItems(ID)
     End Function
+    Public Sub RefreshThumbnail()
+        Dim oPen As cCustomPen = oSurvey.Pens.FromID(cboPenStyle.EditValue)
+        If oPen.Type = cPen.PenTypeEnum.User Then
+            Dim iIndex As Integer = cboPenStyle.SelectedIndex
+            iml.RemoveAt(iIndex)
+            iml.Insert(iIndex, pGetThumbnail(oPen))
+            Call cboPenStyle.Refresh()
+        End If
+    End Sub
 
-    Private Sub pAppendItem(Pen As cCustomPen, Optional FromFile As Boolean = False)
-        Dim oSVGImage As DevExpress.Utils.Svg.SvgImage
-        Dim bUser As Boolean
+    Private Function pGetThumbnail(Pen As cCustomPen) As DevExpress.Utils.Svg.SvgImage
         If Pen.Type = cPen.PenTypeEnum.User Then
             Using oms As MemoryStream = New MemoryStream
-                Pen.GetThumbnailSVG(oSurvey.Options.Item("_design.plan"), cItem.PaintOptionsEnum.FullLayerDraw, False, iml.ImageSize.Width, iml.ImageSize.Height, If(FromFile, Color.DarkGray, Color.DarkRed), Color.White).Save(oms)
+                Pen.GetThumbnailSVG(oSurvey.Options.Item("_design.plan"), cItem.PaintOptionsEnum.FullLayerDraw, False, iml.ImageSize.Width, iml.ImageSize.Height, If(False, Color.DarkGray, Color.DarkRed), Color.White).Save(oms)
                 Call oms.Seek(0, SeekOrigin.Begin)
-                oSVGImage = DevExpress.Utils.Svg.SvgImage.FromStream(oms)
+                Return DevExpress.Utils.Svg.SvgImage.FromStream(oms)
             End Using
-            bUser = True
         Else
-            oSVGImage = DevExpress.Utils.Svg.SvgImage.FromFile(IO.Path.Combine(modMain.GetApplicationPath, "Objects\Pens\" & Pen.Type.ToString & ".svg"))
-            bUser = False
+            Return DevExpress.Utils.Svg.SvgImage.FromFile(IO.Path.Combine(modMain.GetApplicationPath, "Objects\Pens\" & Pen.Type.ToString & ".svg"))
         End If
+    End Function
+
+    Private Sub pAppendItem(Pen As cCustomPen) ', Optional FromFile As Boolean = False)
+        Dim oSVGImage As DevExpress.Utils.Svg.SvgImage = pGetThumbnail(Pen)
+        Dim bUser As Boolean = Pen.Type = cPen.PenTypeEnum.User
         Call iml.Add(oSVGImage)
         Dim oItem As DevExpress.XtraEditors.Controls.ImageComboBoxItem = New DevExpress.XtraEditors.Controls.ImageComboBoxItem(Pen.Name & If(bUser, " <image=user;size=16,16>", ""), Pen.ID, iml.Count - 1)
         cboPenStyle.Properties.Items.Add(oItem)
     End Sub
-
-    'Public Property EditValue As cPen.PenTypeEnum
-    '    Get
-    '        If cboPenStyle.EditValue Is Nothing Then
-    '            Return cPen.PenTypeEnum.GenericPen
-    '        Else
-    '            Return cboPenStyle.EditValue
-    '        End If
-    '    End Get
-    '    Set(value As cPen.PenTypeEnum)
-    '        cboPenStyle.EditValue = value
-    '    End Set
-    'End Property
 
     Public Property EditValue As String
         Get

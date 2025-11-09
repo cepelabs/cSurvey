@@ -85,7 +85,7 @@ Namespace cSurvey.Design
 
         Public Function GetThumbnailSVG(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer, ByVal ForeColor As Color, ByVal Backcolor As Color) As XmlDocument Implements cICustomPaintElement.GetThumbnailSVG
             Dim oBounds As RectangleF = New RectangleF(0, 0, thumbWidth, thumbHeight)
-            Dim oSVG As XmlDocument = modSVG.CreateSVG("", New Size(thumbWidth, thumbHeight), SizeUnit.pixel, oBounds, SVGCreateFlagsEnum.None)
+            Dim oSVG As cSVGWriter = modSVG.CreateSVG("", New Size(thumbWidth, thumbHeight), SizeUnit.pixel, oBounds, cSVGWriter.SVGOptionsEnum.ClipartBrushes Or cSVGWriter.SVGOptionsEnum.UseStyles)
             Using oImage As Image = New Bitmap(thumbWidth, thumbHeight)
                 Using oGr As Graphics = Graphics.FromImage(oImage)
                     Using oPath As GraphicsPath = New GraphicsPath
@@ -108,13 +108,9 @@ Namespace cSurvey.Design
                                 Using oForegroundPen As Pen = New Pen(ForeColor, 1)
                                     oForegroundPen.LineJoin = Drawing2D.LineJoin.Miter
                                     Call modSVG.AppendRectangle(oSVG, oSVG.DocumentElement, oBounds, oBackgroundBrush, Nothing)
-                                    Call oSVG.DocumentElement.AppendChild(oCache.ToSvgItem(oSVG, PaintOptions, cItem.SVGOptionsEnum.ClipartBrushes))
-                                    'If iType = cPen.PenTypeEnum.User Then
-                                    '    Using oForegroundBrush As SolidBrush = New SolidBrush(Color.FromArgb(120, ForeColor))
-                                    '        Call modSVG.AppendPolygon(oSVG, oSVG.DocumentElement, {New PointF(0, 0), New PointF(thumbWidth / 4.0F, 0), New PointF(0, thumbHeight / 4.0F)}, oForegroundBrush, Nothing)
-                                    '    End Using
-                                    'End If
+                                    Call oSVG.DocumentElement.AppendChild(oCache.ToSvgItem(oSVG, PaintOptions))
                                     Call modSVG.AppendRectangle(oSVG, oSVG.DocumentElement, oBounds, Nothing, oForegroundPen)
+                                    Call oSVG.AppendStyles()
                                 End Using
                             End Using
                         End Using

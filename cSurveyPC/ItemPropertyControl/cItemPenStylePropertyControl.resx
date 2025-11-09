@@ -342,6 +342,70 @@
   <data name="cboPropPenPattern.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 6</value>
   </data>
+  <data name="cboPropPenPattern.Size" type="System.Drawing.Size, System.Drawing">
+    <value>341, 34</value>
+  </data>
+  <data name="cboPropPenPattern.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cboPropPenPattern.Name" xml:space="preserve">
+    <value>cboPropPenPattern</value>
+  </data>
+  <data name="&gt;&gt;cboPropPenPattern.Type" xml:space="preserve">
+    <value>cSurveyPC.cPenStyleDropDown, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboPropPenPattern.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropPenPattern.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtPropPenColor.EditValue" type="System.Drawing.Color, System.Drawing">
+    <value />
+  </data>
+  <data name="txtPropPenColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>274, 29</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v24.2" name="DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="txtPropPenColor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtPropPenColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="txtPropPenColor.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtPropPenColor.Name" xml:space="preserve">
+    <value>txtPropPenColor</value>
+  </data>
+  <data name="&gt;&gt;txtPropPenColor.Type" xml:space="preserve">
+    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtPropPenColor.Parent" xml:space="preserve">
+    <value>pnlPenStyle</value>
+  </data>
+  <data name="&gt;&gt;txtPropPenColor.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="cmdPropSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <metadata name="mnuSaveAs.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>135, 17</value>
+  </metadata>
+  <data name="btnPropSaveToFile.Caption" xml:space="preserve">
+    <value>Save to local gallery...</value>
+  </data>
+  <data name="btnPropSaveToSurvey.Caption" xml:space="preserve">
+    <value>Save in this survey gallery...</value>
+  </data>
+  <data name="btnPropImport.Caption" xml:space="preserve">
+    <value>Import...</value>
+  </data>
+  <data name="btnPropExport.Caption" xml:space="preserve">
+    <value>Export...</value>
+  </data>
   <metadata name="BarManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -447,6 +511,18 @@
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>96, 96</value>
   </data>
+  <data name="chkPropPenLineCap0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 81</value>
+  </data>
+  <data name="chkPropPenLineCap0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkPropPenLineCap0.TabIndex" type="System.Int32, mscorlib">
+    <value>247</value>
+  </data>
+  <data name="chkPropPenLineCap0.Text" xml:space="preserve">
+    <value>Flat line join</value>
+  </data>
   <data name="&gt;&gt;chkPropPenLineCap0.Name" xml:space="preserve">
     <value>chkPropPenLineCap0</value>
   </data>
@@ -458,6 +534,18 @@
   </data>
   <data name="&gt;&gt;chkPropPenLineCap0.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="chkPropPenLineCap1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 81</value>
+  </data>
+  <data name="chkPropPenLineCap1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkPropPenLineCap1.TabIndex" type="System.Int32, mscorlib">
+    <value>246</value>
+  </data>
+  <data name="chkPropPenLineCap1.Text" xml:space="preserve">
+    <value>Squared line cap</value>
   </data>
   <data name="&gt;&gt;chkPropPenLineCap1.Name" xml:space="preserve">
     <value>chkPropPenLineCap1</value>
@@ -471,6 +559,18 @@
   <data name="&gt;&gt;chkPropPenLineCap1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="chkPropPenLineCap2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 81</value>
+  </data>
+  <data name="chkPropPenLineCap2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkPropPenLineCap2.TabIndex" type="System.Int32, mscorlib">
+    <value>245</value>
+  </data>
+  <data name="chkPropPenLineCap2.Text" xml:space="preserve">
+    <value>Rounded line cap</value>
+  </data>
   <data name="&gt;&gt;chkPropPenLineCap2.Name" xml:space="preserve">
     <value>chkPropPenLineCap2</value>
   </data>
@@ -482,6 +582,18 @@
   </data>
   <data name="&gt;&gt;chkPropPenLineCap2.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="chkPropPenLineJoin1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 55</value>
+  </data>
+  <data name="chkPropPenLineJoin1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkPropPenLineJoin1.TabIndex" type="System.Int32, mscorlib">
+    <value>244</value>
+  </data>
+  <data name="chkPropPenLineJoin1.Text" xml:space="preserve">
+    <value>Bevelled line join</value>
   </data>
   <data name="&gt;&gt;chkPropPenLineJoin1.Name" xml:space="preserve">
     <value>chkPropPenLineJoin1</value>
@@ -495,6 +607,18 @@
   <data name="&gt;&gt;chkPropPenLineJoin1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="chkPropPenLineJoin0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 55</value>
+  </data>
+  <data name="chkPropPenLineJoin0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkPropPenLineJoin0.TabIndex" type="System.Int32, mscorlib">
+    <value>243</value>
+  </data>
+  <data name="chkPropPenLineJoin0.Text" xml:space="preserve">
+    <value>Mitered line join</value>
+  </data>
   <data name="&gt;&gt;chkPropPenLineJoin0.Name" xml:space="preserve">
     <value>chkPropPenLineJoin0</value>
   </data>
@@ -506,6 +630,18 @@
   </data>
   <data name="&gt;&gt;chkPropPenLineJoin0.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="chkPropPenLineJoin2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 55</value>
+  </data>
+  <data name="chkPropPenLineJoin2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkPropPenLineJoin2.TabIndex" type="System.Int32, mscorlib">
+    <value>242</value>
+  </data>
+  <data name="chkPropPenLineJoin2.Text" xml:space="preserve">
+    <value>Rounded line join</value>
   </data>
   <data name="&gt;&gt;chkPropPenLineJoin2.Name" xml:space="preserve">
     <value>chkPropPenLineJoin2</value>
@@ -519,6 +655,39 @@
   <data name="&gt;&gt;chkPropPenLineJoin2.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="pnlParameters.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pnlParameters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pnlParameters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 70</value>
+  </data>
+  <data name="pnlParameters.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pnlParameters.Name" xml:space="preserve">
+    <value>pnlParameters</value>
+  </data>
+  <data name="&gt;&gt;pnlParameters.Type" xml:space="preserve">
+    <value>DevExpress.Utils.FlyoutPanelControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlParameters.Parent" xml:space="preserve">
+    <value>flyParameters</value>
+  </data>
+  <data name="&gt;&gt;pnlParameters.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flyParameters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>449, 7</value>
+  </data>
+  <data name="flyParameters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 70</value>
+  </data>
+  <data name="flyParameters.TabIndex" type="System.Int32, mscorlib">
+    <value>241</value>
+  </data>
   <data name="&gt;&gt;flyParameters.Name" xml:space="preserve">
     <value>flyParameters</value>
   </data>
@@ -530,6 +699,27 @@
   </data>
   <data name="&gt;&gt;flyParameters.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="cmdDashStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdDashStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>340, 0</value>
+  </data>
+  <data name="cmdDashStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdDashStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>240</value>
+  </data>
+  <data name="cmdDashStyle.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="cmdDashStyle.ToolTip" xml:space="preserve">
+    <value>Edit dash style...</value>
+  </data>
+  <data name="cmdDashStyle.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;cmdDashStyle.Name" xml:space="preserve">
     <value>cmdDashStyle</value>
@@ -543,6 +733,48 @@
   <data name="&gt;&gt;cmdDashStyle.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="cboPropPenStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 2</value>
+  </data>
+  <data name="cboPropPenStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboPropPenStyle.Properties.Items" xml:space="preserve">
+    <value>Solid</value>
+  </data>
+  <data name="cboPropPenStyle.Properties.Items1" xml:space="preserve">
+    <value>Dash</value>
+  </data>
+  <data name="cboPropPenStyle.Properties.Items2" xml:space="preserve">
+    <value>Dot</value>
+  </data>
+  <data name="cboPropPenStyle.Properties.Items3" xml:space="preserve">
+    <value>Dash dot</value>
+  </data>
+  <data name="cboPropPenStyle.Properties.Items4" xml:space="preserve">
+    <value>Dash dot dot</value>
+  </data>
+  <data name="cboPropPenStyle.Properties.Items5" xml:space="preserve">
+    <value>Presumed</value>
+  </data>
+  <data name="cboPropPenStyle.Properties.Items6" xml:space="preserve">
+    <value>Too narrow</value>
+  </data>
+  <data name="cboPropPenStyle.Properties.Items7" xml:space="preserve">
+    <value>Underlying</value>
+  </data>
+  <data name="cboPropPenStyle.Properties.Items8" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="cboPropPenStyle.Properties.Items9" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="cboPropPenStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 20</value>
+  </data>
+  <data name="cboPropPenStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;cboPropPenStyle.Name" xml:space="preserve">
     <value>cboPropPenStyle</value>
   </data>
@@ -555,6 +787,21 @@
   <data name="&gt;&gt;cboPropPenStyle.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="txtPropPenWidth.EditValue" type="System.Decimal, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="txtPropPenWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 29</value>
+  </data>
+  <data name="txtPropPenWidth.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtPropPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="txtPropPenWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
   <data name="&gt;&gt;txtPropPenWidth.Name" xml:space="preserve">
     <value>txtPropPenWidth</value>
   </data>
@@ -566,6 +813,75 @@
   </data>
   <data name="&gt;&gt;txtPropPenWidth.ZOrder" xml:space="preserve">
     <value>10</value>
+  </data>
+  <data name="cboPropPenDecoration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 111</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items1" xml:space="preserve">
+    <value>Hatches</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items2" xml:space="preserve">
+    <value>Triangles</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items3" xml:space="preserve">
+    <value>Arrows (up)</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items4" xml:space="preserve">
+    <value>Arrows (down)</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items5" xml:space="preserve">
+    <value>Triangles (up)</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items6" xml:space="preserve">
+    <value>Triangles (down)</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items7" xml:space="preserve">
+    <value>Hatches h/v</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items8" xml:space="preserve">
+    <value>Empty triangles (up)</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items9" xml:space="preserve">
+    <value>Empty triangles (down)</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items10" xml:space="preserve">
+    <value>Up and down triangles</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items11" xml:space="preserve">
+    <value>Down and up triangles</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items12" xml:space="preserve">
+    <value>Left half arrows</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items13" xml:space="preserve">
+    <value>Right half arrows</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items14" xml:space="preserve">
+    <value>Double half arrows</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items15" xml:space="preserve">
+    <value>Left arrows</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items16" xml:space="preserve">
+    <value>Right arrows</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items17" xml:space="preserve">
+    <value>Double arrows</value>
+  </data>
+  <data name="cboPropPenDecoration.Properties.Items18" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="cboPropPenDecoration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 20</value>
+  </data>
+  <data name="cboPropPenDecoration.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;cboPropPenDecoration.Name" xml:space="preserve">
     <value>cboPropPenDecoration</value>
@@ -606,6 +922,21 @@
   <data name="&gt;&gt;pnlPenStyle.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="cmdPropPenCleanClipart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropPenCleanClipart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>255, 0</value>
+  </data>
+  <data name="cmdPropPenCleanClipart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdPropPenCleanClipart.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="cmdPropPenCleanClipart.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
   <data name="&gt;&gt;cmdPropPenCleanClipart.Name" xml:space="preserve">
     <value>cmdPropPenCleanClipart</value>
   </data>
@@ -617,688 +948,6 @@
   </data>
   <data name="&gt;&gt;cmdPropPenCleanClipart.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPenBrowseClipart.Name" xml:space="preserve">
-    <value>cmdPropPenBrowseClipart</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPenBrowseClipart.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPenBrowseClipart.Parent" xml:space="preserve">
-    <value>pnlPenClipart</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPenBrowseClipart.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;picPropPenClipartImage.Name" xml:space="preserve">
-    <value>picPropPenClipartImage</value>
-  </data>
-  <data name="&gt;&gt;picPropPenClipartImage.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;picPropPenClipartImage.Parent" xml:space="preserve">
-    <value>pnlPenClipart</value>
-  </data>
-  <data name="&gt;&gt;picPropPenClipartImage.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartImage.Name" xml:space="preserve">
-    <value>lblPropPenClipartImage</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartImage.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartImage.Parent" xml:space="preserve">
-    <value>pnlPenClipart</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartImage.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="pnlPenClipart.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="pnlPenClipart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 178</value>
-  </data>
-  <data name="pnlPenClipart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 70</value>
-  </data>
-  <data name="pnlPenClipart.TabIndex" type="System.Int32, mscorlib">
-    <value>247</value>
-  </data>
-  <data name="pnlPenClipart.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipart.Name" xml:space="preserve">
-    <value>pnlPenClipart</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipart.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipart.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipart.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="cmdPropSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <metadata name="mnuSaveAs.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>135, 17</value>
-  </metadata>
-  <data name="btnPropSaveToFile.Caption" xml:space="preserve">
-    <value>Save to local gallery...</value>
-  </data>
-  <data name="btnPropSaveToSurvey.Caption" xml:space="preserve">
-    <value>Save in this survey gallery...</value>
-  </data>
-  <data name="btnPropImport.Caption" xml:space="preserve">
-    <value>Import...</value>
-  </data>
-  <data name="btnPropExport.Caption" xml:space="preserve">
-    <value>Export...</value>
-  </data>
-  <data name="cmdPropSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>457, 6</value>
-  </data>
-  <data name="cmdPropSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 24</value>
-  </data>
-  <data name="cmdPropSave.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="cmdPropSave.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;cmdPropSave.Name" xml:space="preserve">
-    <value>cmdPropSave</value>
-  </data>
-  <data name="&gt;&gt;cmdPropSave.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.DropDownButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdPropSave.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;cmdPropSave.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenDecorationSpacePercentageUM.Name" xml:space="preserve">
-    <value>lblPropPenDecorationSpacePercentageUM</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenDecorationSpacePercentageUM.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenDecorationSpacePercentageUM.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettings</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenDecorationSpacePercentageUM.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenDecorationDistancePercentageUM.Name" xml:space="preserve">
-    <value>lblPropPenDecorationDistancePercentageUM</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenDecorationDistancePercentageUM.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenDecorationDistancePercentageUM.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettings</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenDecorationDistancePercentageUM.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenDecorationDistancePercentage.Name" xml:space="preserve">
-    <value>txtPropPenDecorationDistancePercentage</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenDecorationDistancePercentage.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenDecorationDistancePercentage.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettings</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenDecorationDistancePercentage.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenDecorationDistancePercentage.Name" xml:space="preserve">
-    <value>lblPropPenDecorationDistancePercentage</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenDecorationDistancePercentage.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenDecorationDistancePercentage.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettings</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenDecorationDistancePercentage.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenDecorationPosition.Name" xml:space="preserve">
-    <value>cboPropPenDecorationPosition</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenDecorationPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenDecorationPosition.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettings</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenDecorationPosition.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;lblPenPropDecorationPosition.Name" xml:space="preserve">
-    <value>lblPenPropDecorationPosition</value>
-  </data>
-  <data name="&gt;&gt;lblPenPropDecorationPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPenPropDecorationPosition.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettings</value>
-  </data>
-  <data name="&gt;&gt;lblPenPropDecorationPosition.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartPenMode.Name" xml:space="preserve">
-    <value>cboPropPenClipartPenMode</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartPenMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartPenMode.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettings</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartPenMode.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPen.Name" xml:space="preserve">
-    <value>lblPropPenClipartPen</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPen.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPen.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettings</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPen.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenDecorationScale.Name" xml:space="preserve">
-    <value>txtPropPenDecorationScale</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenDecorationScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenDecorationScale.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettings</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenDecorationScale.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenDecorationSpacePercentage.Name" xml:space="preserve">
-    <value>txtPropPenDecorationSpacePercentage</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenDecorationSpacePercentage.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenDecorationSpacePercentage.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettings</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenDecorationSpacePercentage.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenDecorationAlignment.Name" xml:space="preserve">
-    <value>cboPropPenDecorationAlignment</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenDecorationAlignment.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenDecorationAlignment.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettings</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenDecorationAlignment.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="pnlPenClipartSettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="pnlPenClipartSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 248</value>
-  </data>
-  <data name="pnlPenClipartSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 156</value>
-  </data>
-  <data name="pnlPenClipartSettings.TabIndex" type="System.Int32, mscorlib">
-    <value>242</value>
-  </data>
-  <data name="pnlPenClipartSettings.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipartSettings.Name" xml:space="preserve">
-    <value>pnlPenClipartSettings</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipartSettings.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipartSettings.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipartSettings.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineCap0.Name" xml:space="preserve">
-    <value>chkPropPenClipartPenLineCap0</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineCap0.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineCap0.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineCap0.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineCap1.Name" xml:space="preserve">
-    <value>chkPropPenClipartPenLineCap1</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineCap1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineCap1.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineCap1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineCap2.Name" xml:space="preserve">
-    <value>chkPropPenClipartPenLineCap2</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineCap2.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineCap2.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineCap2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineJoin1.Name" xml:space="preserve">
-    <value>chkPropPenClipartPenLineJoin1</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineJoin1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineJoin1.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineJoin1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineJoin0.Name" xml:space="preserve">
-    <value>chkPropPenClipartPenLineJoin0</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineJoin0.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineJoin0.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineJoin0.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineJoin2.Name" xml:space="preserve">
-    <value>chkPropPenClipartPenLineJoin2</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineJoin2.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineJoin2.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenClipartPenLineJoin2.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;cmdClipartDashStyle.Name" xml:space="preserve">
-    <value>cmdClipartDashStyle</value>
-  </data>
-  <data name="&gt;&gt;cmdClipartDashStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdClipartDashStyle.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;cmdClipartDashStyle.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartPenStyle.Name" xml:space="preserve">
-    <value>cboPropPenClipartPenStyle</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartPenStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartPenStyle.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartPenStyle.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenStyle.Name" xml:space="preserve">
-    <value>lblPropPenClipartPenStyle</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenStyle.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenStyle.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenColor.Name" xml:space="preserve">
-    <value>lblPropPenClipartPenColor</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenColor.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenColor.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenWidth.Name" xml:space="preserve">
-    <value>lblPropPenClipartPenWidth</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenWidth.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenWidth.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenWidth.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartPenWidth.Name" xml:space="preserve">
-    <value>txtPropPenClipartPenWidth</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartPenWidth.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartPenWidth.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartPenWidth.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartPenColor.Name" xml:space="preserve">
-    <value>txtPropPenClipartPenColor</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartPenColor.Type" xml:space="preserve">
-    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartPenColor.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartPenColor.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="pnlPenClipartSettingsPen.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="pnlPenClipartSettingsPen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 404</value>
-  </data>
-  <data name="pnlPenClipartSettingsPen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 110</value>
-  </data>
-  <data name="pnlPenClipartSettingsPen.TabIndex" type="System.Int32, mscorlib">
-    <value>205</value>
-  </data>
-  <data name="pnlPenClipartSettingsPen.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipartSettingsPen.Name" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipartSettingsPen.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipartSettingsPen.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipartSettingsPen.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartBrushMode.Name" xml:space="preserve">
-    <value>cboPropPenClipartBrushMode</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartBrushMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartBrushMode.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettings1</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartBrushMode.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartBrushMode.Name" xml:space="preserve">
-    <value>lblPropPenClipartBrushMode</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartBrushMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartBrushMode.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettings1</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartBrushMode.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="pnlPenClipartSettings1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="pnlPenClipartSettings1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 514</value>
-  </data>
-  <data name="pnlPenClipartSettings1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 24</value>
-  </data>
-  <data name="pnlPenClipartSettings1.TabIndex" type="System.Int32, mscorlib">
-    <value>258</value>
-  </data>
-  <data name="pnlPenClipartSettings1.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipartSettings1.Name" xml:space="preserve">
-    <value>pnlPenClipartSettings1</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipartSettings1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipartSettings1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipartSettings1.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartBrushStyle.Name" xml:space="preserve">
-    <value>cboPropPenClipartBrushStyle</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartBrushStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartBrushStyle.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsBrush</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartBrushStyle.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartBrushStyle.Name" xml:space="preserve">
-    <value>lblPropPenClipartBrushStyle</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartBrushStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartBrushStyle.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsBrush</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartBrushStyle.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartBrushColor.Name" xml:space="preserve">
-    <value>lblPropPenClipartBrushColor</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartBrushColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartBrushColor.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsBrush</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartBrushColor.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartBrushColor.Name" xml:space="preserve">
-    <value>txtPropPenClipartBrushColor</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartBrushColor.Type" xml:space="preserve">
-    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartBrushColor.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsBrush</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartBrushColor.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="pnlPenClipartSettingsBrush.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="pnlPenClipartSettingsBrush.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 538</value>
-  </data>
-  <data name="pnlPenClipartSettingsBrush.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 50</value>
-  </data>
-  <data name="pnlPenClipartSettingsBrush.TabIndex" type="System.Int32, mscorlib">
-    <value>257</value>
-  </data>
-  <data name="pnlPenClipartSettingsBrush.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipartSettingsBrush.Name" xml:space="preserve">
-    <value>pnlPenClipartSettingsBrush</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipartSettingsBrush.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipartSettingsBrush.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlPenClipartSettingsBrush.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 588</value>
-  </data>
-  <data name="&gt;&gt;mnuSaveAs.Name" xml:space="preserve">
-    <value>mnuSaveAs</value>
-  </data>
-  <data name="&gt;&gt;mnuSaveAs.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnPropSaveToFile.Name" xml:space="preserve">
-    <value>btnPropSaveToFile</value>
-  </data>
-  <data name="&gt;&gt;btnPropSaveToFile.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnPropSaveToSurvey.Name" xml:space="preserve">
-    <value>btnPropSaveToSurvey</value>
-  </data>
-  <data name="&gt;&gt;btnPropSaveToSurvey.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnPropImport.Name" xml:space="preserve">
-    <value>btnPropImport</value>
-  </data>
-  <data name="&gt;&gt;btnPropImport.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnPropExport.Name" xml:space="preserve">
-    <value>btnPropExport</value>
-  </data>
-  <data name="&gt;&gt;btnPropExport.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;BarManager.Name" xml:space="preserve">
-    <value>BarManager</value>
-  </data>
-  <data name="&gt;&gt;BarManager.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;mnuContext.Name" xml:space="preserve">
-    <value>mnuContext</value>
-  </data>
-  <data name="&gt;&gt;mnuContext.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnPropCustomize.Name" xml:space="preserve">
-    <value>btnPropCustomize</value>
-  </data>
-  <data name="&gt;&gt;btnPropCustomize.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>cItemPenStylePropertyControl</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="btnPropCustomize.Caption" xml:space="preserve">
-    <value>Customize...</value>
-  </data>
-  <metadata name="mnuContext.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>370, 17</value>
-  </metadata>
-  <data name="cboPropPenPattern.Size" type="System.Drawing.Size, System.Drawing">
-    <value>341, 34</value>
-  </data>
-  <data name="cboPropPenPattern.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenPattern.Name" xml:space="preserve">
-    <value>cboPropPenPattern</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenPattern.Type" xml:space="preserve">
-    <value>cSurveyPC.cPenStyleDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenPattern.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenPattern.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="txtPropPenColor.EditValue" type="System.Drawing.Color, System.Drawing">
-    <value />
-  </data>
-  <data name="txtPropPenColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>274, 29</value>
-  </data>
-  <assembly alias="DevExpress.Utils.v24.2" name="DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="txtPropPenColor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
-    <value>Combo</value>
-  </data>
-  <data name="txtPropPenColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 20</value>
-  </data>
-  <data name="txtPropPenColor.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenColor.Name" xml:space="preserve">
-    <value>txtPropPenColor</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenColor.Type" xml:space="preserve">
-    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenColor.Parent" xml:space="preserve">
-    <value>pnlPenStyle</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenColor.ZOrder" xml:space="preserve">
-    <value>11</value>
   </data>
   <data name="cmdPropPenBrowseClipart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1377,6 +1026,33 @@
   </data>
   <data name="&gt;&gt;lblPropPenClipartImage.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="pnlPenClipart.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="pnlPenClipart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 178</value>
+  </data>
+  <data name="pnlPenClipart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 70</value>
+  </data>
+  <data name="pnlPenClipart.TabIndex" type="System.Int32, mscorlib">
+    <value>247</value>
+  </data>
+  <data name="pnlPenClipart.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pnlPenClipart.Name" xml:space="preserve">
+    <value>pnlPenClipart</value>
+  </data>
+  <data name="&gt;&gt;pnlPenClipart.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlPenClipart.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlPenClipart.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="lblPropPenDecorationSpacePercentageUM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1687,617 +1363,32 @@
   <data name="&gt;&gt;cboPropPenDecorationAlignment.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="cboPropPenClipartPenStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>225, 2</value>
+  <data name="pnlPenClipartSettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
   </data>
-  <data name="cboPropPenClipartPenStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
-    <value>Combo</value>
+  <data name="pnlPenClipartSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 248</value>
   </data>
-  <data name="cboPropPenClipartPenStyle.Properties.Items" xml:space="preserve">
-    <value>Solid</value>
+  <data name="pnlPenClipartSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 156</value>
   </data>
-  <data name="cboPropPenClipartPenStyle.Properties.Items1" xml:space="preserve">
-    <value>Dash</value>
-  </data>
-  <data name="cboPropPenClipartPenStyle.Properties.Items2" xml:space="preserve">
-    <value>Dot</value>
-  </data>
-  <data name="cboPropPenClipartPenStyle.Properties.Items3" xml:space="preserve">
-    <value>Dash dot</value>
-  </data>
-  <data name="cboPropPenClipartPenStyle.Properties.Items4" xml:space="preserve">
-    <value>Dash dot dot</value>
-  </data>
-  <data name="cboPropPenClipartPenStyle.Properties.Items5" xml:space="preserve">
-    <value>Presumed</value>
-  </data>
-  <data name="cboPropPenClipartPenStyle.Properties.Items6" xml:space="preserve">
-    <value>Too narrow</value>
-  </data>
-  <data name="cboPropPenClipartPenStyle.Properties.Items7" xml:space="preserve">
-    <value>Underlying</value>
-  </data>
-  <data name="cboPropPenClipartPenStyle.Properties.Items8" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="cboPropPenClipartPenStyle.Properties.Items9" xml:space="preserve">
-    <value>Custom</value>
-  </data>
-  <data name="cboPropPenClipartPenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 20</value>
-  </data>
-  <data name="cboPropPenClipartPenStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartPenStyle.Name" xml:space="preserve">
-    <value>cboPropPenClipartPenStyle</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartPenStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartPenStyle.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenClipartPenStyle.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="lblPropPenClipartPenStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblPropPenClipartPenStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>157, 3</value>
-  </data>
-  <data name="lblPropPenClipartPenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 13</value>
-  </data>
-  <data name="lblPropPenClipartPenStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>202</value>
-  </data>
-  <data name="lblPropPenClipartPenStyle.Text" xml:space="preserve">
-    <value>Style:</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenStyle.Name" xml:space="preserve">
-    <value>lblPropPenClipartPenStyle</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenStyle.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenStyle.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="txtPropPenClipartPenWidth.EditValue" type="System.Decimal, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="txtPropPenClipartPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>225, 28</value>
-  </data>
-  <data name="txtPropPenClipartPenWidth.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
-    <value>Combo</value>
-  </data>
-  <data name="txtPropPenClipartPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 20</value>
-  </data>
-  <data name="txtPropPenClipartPenWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartPenWidth.Name" xml:space="preserve">
-    <value>txtPropPenClipartPenWidth</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartPenWidth.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartPenWidth.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartPenWidth.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="lblPropPenClipartPenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblPropPenClipartPenColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>305, 33</value>
-  </data>
-  <data name="lblPropPenClipartPenColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 13</value>
-  </data>
-  <data name="lblPropPenClipartPenColor.TabIndex" type="System.Int32, mscorlib">
-    <value>198</value>
-  </data>
-  <data name="lblPropPenClipartPenColor.Text" xml:space="preserve">
-    <value>Color:</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenColor.Name" xml:space="preserve">
-    <value>lblPropPenClipartPenColor</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenColor.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenColor.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="lblPropPenClipartPenWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblPropPenClipartPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>157, 31</value>
-  </data>
-  <data name="lblPropPenClipartPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 13</value>
-  </data>
-  <data name="lblPropPenClipartPenWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>195</value>
-  </data>
-  <data name="lblPropPenClipartPenWidth.Text" xml:space="preserve">
-    <value>Width:</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenWidth.Name" xml:space="preserve">
-    <value>lblPropPenClipartPenWidth</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenWidth.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenWidth.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartPenWidth.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="txtPropPenClipartPenColor.EditValue" type="System.Drawing.Color, System.Drawing">
-    <value />
-  </data>
-  <data name="txtPropPenClipartPenColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>353, 28</value>
-  </data>
-  <data name="txtPropPenClipartPenColor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
-    <value>Combo</value>
-  </data>
-  <data name="txtPropPenClipartPenColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 20</value>
-  </data>
-  <data name="txtPropPenClipartPenColor.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartPenColor.Name" xml:space="preserve">
-    <value>txtPropPenClipartPenColor</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartPenColor.Type" xml:space="preserve">
-    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartPenColor.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettingsPen</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenClipartPenColor.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="cmdPropPenCleanClipart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmdPropPenCleanClipart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>255, 0</value>
-  </data>
-  <data name="cmdPropPenCleanClipart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="cmdPropPenCleanClipart.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="cmdPropPenCleanClipart.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPenCleanClipart.Name" xml:space="preserve">
-    <value>cmdPropPenCleanClipart</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPenCleanClipart.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPenCleanClipart.Parent" xml:space="preserve">
-    <value>pnlPenClipart</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPenCleanClipart.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cboPropPenDecoration.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 111</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
-    <value>Combo</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items1" xml:space="preserve">
-    <value>Hatches</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items2" xml:space="preserve">
-    <value>Triangles</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items3" xml:space="preserve">
-    <value>Arrows (up)</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items4" xml:space="preserve">
-    <value>Arrows (down)</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items5" xml:space="preserve">
-    <value>Triangles (up)</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items6" xml:space="preserve">
-    <value>Triangles (down)</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items7" xml:space="preserve">
-    <value>Hatches h/v</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items8" xml:space="preserve">
-    <value>Empty triangles (up)</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items9" xml:space="preserve">
-    <value>Empty triangles (down)</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items10" xml:space="preserve">
-    <value>Up and down triangles</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items11" xml:space="preserve">
-    <value>Down and up triangles</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items12" xml:space="preserve">
-    <value>Left half arrows</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items13" xml:space="preserve">
-    <value>Right half arrows</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items14" xml:space="preserve">
-    <value>Double half arrows</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items15" xml:space="preserve">
-    <value>Left arrows</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items16" xml:space="preserve">
-    <value>Right arrows</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items17" xml:space="preserve">
-    <value>Double arrows</value>
-  </data>
-  <data name="cboPropPenDecoration.Properties.Items18" xml:space="preserve">
-    <value>Custom</value>
-  </data>
-  <data name="cboPropPenDecoration.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 20</value>
-  </data>
-  <data name="cboPropPenDecoration.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenDecoration.Name" xml:space="preserve">
-    <value>cboPropPenDecoration</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenDecoration.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenDecoration.Parent" xml:space="preserve">
-    <value>pnlPenStyle</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenDecoration.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="cboPropPenStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 2</value>
-  </data>
-  <data name="cboPropPenStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
-    <value>Combo</value>
-  </data>
-  <data name="cboPropPenStyle.Properties.Items" xml:space="preserve">
-    <value>Solid</value>
-  </data>
-  <data name="cboPropPenStyle.Properties.Items1" xml:space="preserve">
-    <value>Dash</value>
-  </data>
-  <data name="cboPropPenStyle.Properties.Items2" xml:space="preserve">
-    <value>Dot</value>
-  </data>
-  <data name="cboPropPenStyle.Properties.Items3" xml:space="preserve">
-    <value>Dash dot</value>
-  </data>
-  <data name="cboPropPenStyle.Properties.Items4" xml:space="preserve">
-    <value>Dash dot dot</value>
-  </data>
-  <data name="cboPropPenStyle.Properties.Items5" xml:space="preserve">
-    <value>Presumed</value>
-  </data>
-  <data name="cboPropPenStyle.Properties.Items6" xml:space="preserve">
-    <value>Too narrow</value>
-  </data>
-  <data name="cboPropPenStyle.Properties.Items7" xml:space="preserve">
-    <value>Underlying</value>
-  </data>
-  <data name="cboPropPenStyle.Properties.Items8" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="cboPropPenStyle.Properties.Items9" xml:space="preserve">
-    <value>Custom</value>
-  </data>
-  <data name="cboPropPenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 20</value>
-  </data>
-  <data name="cboPropPenStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenStyle.Name" xml:space="preserve">
-    <value>cboPropPenStyle</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenStyle.Parent" xml:space="preserve">
-    <value>pnlPenStyle</value>
-  </data>
-  <data name="&gt;&gt;cboPropPenStyle.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="txtPropPenWidth.EditValue" type="System.Decimal, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="txtPropPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 29</value>
-  </data>
-  <data name="txtPropPenWidth.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
-    <value>Combo</value>
-  </data>
-  <data name="txtPropPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 20</value>
-  </data>
-  <data name="txtPropPenWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenWidth.Name" xml:space="preserve">
-    <value>txtPropPenWidth</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenWidth.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenWidth.Parent" xml:space="preserve">
-    <value>pnlPenStyle</value>
-  </data>
-  <data name="&gt;&gt;txtPropPenWidth.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="chkPropPenLineCap0.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 81</value>
-  </data>
-  <data name="chkPropPenLineCap0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="chkPropPenLineCap0.TabIndex" type="System.Int32, mscorlib">
-    <value>247</value>
-  </data>
-  <data name="chkPropPenLineCap0.Text" xml:space="preserve">
-    <value>Flat line join</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineCap0.Name" xml:space="preserve">
-    <value>chkPropPenLineCap0</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineCap0.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineCap0.Parent" xml:space="preserve">
-    <value>pnlPenStyle</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineCap0.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="chkPropPenLineCap1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 81</value>
-  </data>
-  <data name="chkPropPenLineCap1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="chkPropPenLineCap1.TabIndex" type="System.Int32, mscorlib">
-    <value>246</value>
-  </data>
-  <data name="chkPropPenLineCap1.Text" xml:space="preserve">
-    <value>Squared line cap</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineCap1.Name" xml:space="preserve">
-    <value>chkPropPenLineCap1</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineCap1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineCap1.Parent" xml:space="preserve">
-    <value>pnlPenStyle</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineCap1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="chkPropPenLineCap2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 81</value>
-  </data>
-  <data name="chkPropPenLineCap2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="chkPropPenLineCap2.TabIndex" type="System.Int32, mscorlib">
-    <value>245</value>
-  </data>
-  <data name="chkPropPenLineCap2.Text" xml:space="preserve">
-    <value>Rounded line cap</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineCap2.Name" xml:space="preserve">
-    <value>chkPropPenLineCap2</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineCap2.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineCap2.Parent" xml:space="preserve">
-    <value>pnlPenStyle</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineCap2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="chkPropPenLineJoin1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 55</value>
-  </data>
-  <data name="chkPropPenLineJoin1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="chkPropPenLineJoin1.TabIndex" type="System.Int32, mscorlib">
-    <value>244</value>
-  </data>
-  <data name="chkPropPenLineJoin1.Text" xml:space="preserve">
-    <value>Bevelled line join</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineJoin1.Name" xml:space="preserve">
-    <value>chkPropPenLineJoin1</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineJoin1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineJoin1.Parent" xml:space="preserve">
-    <value>pnlPenStyle</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineJoin1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="chkPropPenLineJoin0.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 55</value>
-  </data>
-  <data name="chkPropPenLineJoin0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="chkPropPenLineJoin0.TabIndex" type="System.Int32, mscorlib">
-    <value>243</value>
-  </data>
-  <data name="chkPropPenLineJoin0.Text" xml:space="preserve">
-    <value>Mitered line join</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineJoin0.Name" xml:space="preserve">
-    <value>chkPropPenLineJoin0</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineJoin0.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineJoin0.Parent" xml:space="preserve">
-    <value>pnlPenStyle</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineJoin0.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="chkPropPenLineJoin2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 55</value>
-  </data>
-  <data name="chkPropPenLineJoin2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="chkPropPenLineJoin2.TabIndex" type="System.Int32, mscorlib">
+  <data name="pnlPenClipartSettings.TabIndex" type="System.Int32, mscorlib">
     <value>242</value>
   </data>
-  <data name="chkPropPenLineJoin2.Text" xml:space="preserve">
-    <value>Rounded line join</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineJoin2.Name" xml:space="preserve">
-    <value>chkPropPenLineJoin2</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineJoin2.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineJoin2.Parent" xml:space="preserve">
-    <value>pnlPenStyle</value>
-  </data>
-  <data name="&gt;&gt;chkPropPenLineJoin2.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;pnlParameters.Name" xml:space="preserve">
-    <value>pnlParameters</value>
-  </data>
-  <data name="&gt;&gt;pnlParameters.Type" xml:space="preserve">
-    <value>DevExpress.Utils.FlyoutPanelControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlParameters.Parent" xml:space="preserve">
-    <value>flyParameters</value>
-  </data>
-  <data name="&gt;&gt;pnlParameters.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flyParameters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>449, 7</value>
-  </data>
-  <data name="flyParameters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 70</value>
-  </data>
-  <data name="flyParameters.TabIndex" type="System.Int32, mscorlib">
-    <value>241</value>
-  </data>
-  <data name="&gt;&gt;flyParameters.Name" xml:space="preserve">
-    <value>flyParameters</value>
-  </data>
-  <data name="&gt;&gt;flyParameters.Type" xml:space="preserve">
-    <value>DevExpress.Utils.FlyoutPanel, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;flyParameters.Parent" xml:space="preserve">
-    <value>pnlPenStyle</value>
-  </data>
-  <data name="&gt;&gt;flyParameters.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="pnlParameters.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="pnlParameters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="pnlParameters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 70</value>
-  </data>
-  <data name="pnlParameters.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;pnlParameters.Name" xml:space="preserve">
-    <value>pnlParameters</value>
-  </data>
-  <data name="&gt;&gt;pnlParameters.Type" xml:space="preserve">
-    <value>DevExpress.Utils.FlyoutPanelControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlParameters.Parent" xml:space="preserve">
-    <value>flyParameters</value>
-  </data>
-  <data name="&gt;&gt;pnlParameters.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cmdDashStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmdDashStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>340, 0</value>
-  </data>
-  <data name="cmdDashStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="cmdDashStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>240</value>
-  </data>
-  <data name="cmdDashStyle.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="cmdDashStyle.ToolTip" xml:space="preserve">
-    <value>Edit dash style...</value>
-  </data>
-  <data name="cmdDashStyle.Visible" type="System.Boolean, mscorlib">
+  <data name="pnlPenClipartSettings.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;cmdDashStyle.Name" xml:space="preserve">
-    <value>cmdDashStyle</value>
+  <data name="&gt;&gt;pnlPenClipartSettings.Name" xml:space="preserve">
+    <value>pnlPenClipartSettings</value>
   </data>
-  <data name="&gt;&gt;cmdDashStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="&gt;&gt;pnlPenClipartSettings.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;cmdDashStyle.Parent" xml:space="preserve">
-    <value>pnlPenStyle</value>
+  <data name="&gt;&gt;pnlPenClipartSettings.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;cmdDashStyle.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="&gt;&gt;pnlPenClipartSettings.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="chkPropPenClipartPenLineCap0.Location" type="System.Drawing.Point, System.Drawing">
     <value>285, 80</value>
@@ -2476,6 +1567,306 @@
   <data name="&gt;&gt;cmdClipartDashStyle.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="cboPropPenClipartPenStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>225, 2</value>
+  </data>
+  <data name="cboPropPenClipartPenStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboPropPenClipartPenStyle.Properties.Items" xml:space="preserve">
+    <value>Solid</value>
+  </data>
+  <data name="cboPropPenClipartPenStyle.Properties.Items1" xml:space="preserve">
+    <value>Dash</value>
+  </data>
+  <data name="cboPropPenClipartPenStyle.Properties.Items2" xml:space="preserve">
+    <value>Dot</value>
+  </data>
+  <data name="cboPropPenClipartPenStyle.Properties.Items3" xml:space="preserve">
+    <value>Dash dot</value>
+  </data>
+  <data name="cboPropPenClipartPenStyle.Properties.Items4" xml:space="preserve">
+    <value>Dash dot dot</value>
+  </data>
+  <data name="cboPropPenClipartPenStyle.Properties.Items5" xml:space="preserve">
+    <value>Presumed</value>
+  </data>
+  <data name="cboPropPenClipartPenStyle.Properties.Items6" xml:space="preserve">
+    <value>Too narrow</value>
+  </data>
+  <data name="cboPropPenClipartPenStyle.Properties.Items7" xml:space="preserve">
+    <value>Underlying</value>
+  </data>
+  <data name="cboPropPenClipartPenStyle.Properties.Items8" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="cboPropPenClipartPenStyle.Properties.Items9" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="cboPropPenClipartPenStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 20</value>
+  </data>
+  <data name="cboPropPenClipartPenStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cboPropPenClipartPenStyle.Name" xml:space="preserve">
+    <value>cboPropPenClipartPenStyle</value>
+  </data>
+  <data name="&gt;&gt;cboPropPenClipartPenStyle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboPropPenClipartPenStyle.Parent" xml:space="preserve">
+    <value>pnlPenClipartSettingsPen</value>
+  </data>
+  <data name="&gt;&gt;cboPropPenClipartPenStyle.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="lblPropPenClipartPenStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropPenClipartPenStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 3</value>
+  </data>
+  <data name="lblPropPenClipartPenStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="lblPropPenClipartPenStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>202</value>
+  </data>
+  <data name="lblPropPenClipartPenStyle.Text" xml:space="preserve">
+    <value>Style:</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartPenStyle.Name" xml:space="preserve">
+    <value>lblPropPenClipartPenStyle</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartPenStyle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartPenStyle.Parent" xml:space="preserve">
+    <value>pnlPenClipartSettingsPen</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartPenStyle.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="lblPropPenClipartPenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropPenClipartPenColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>305, 33</value>
+  </data>
+  <data name="lblPropPenClipartPenColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
+  </data>
+  <data name="lblPropPenClipartPenColor.TabIndex" type="System.Int32, mscorlib">
+    <value>198</value>
+  </data>
+  <data name="lblPropPenClipartPenColor.Text" xml:space="preserve">
+    <value>Color:</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartPenColor.Name" xml:space="preserve">
+    <value>lblPropPenClipartPenColor</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartPenColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartPenColor.Parent" xml:space="preserve">
+    <value>pnlPenClipartSettingsPen</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartPenColor.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="lblPropPenClipartPenWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropPenClipartPenWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 31</value>
+  </data>
+  <data name="lblPropPenClipartPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 13</value>
+  </data>
+  <data name="lblPropPenClipartPenWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>195</value>
+  </data>
+  <data name="lblPropPenClipartPenWidth.Text" xml:space="preserve">
+    <value>Width:</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartPenWidth.Name" xml:space="preserve">
+    <value>lblPropPenClipartPenWidth</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartPenWidth.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartPenWidth.Parent" xml:space="preserve">
+    <value>pnlPenClipartSettingsPen</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartPenWidth.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="txtPropPenClipartPenWidth.EditValue" type="System.Decimal, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="txtPropPenClipartPenWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>225, 28</value>
+  </data>
+  <data name="txtPropPenClipartPenWidth.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtPropPenClipartPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="txtPropPenClipartPenWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtPropPenClipartPenWidth.Name" xml:space="preserve">
+    <value>txtPropPenClipartPenWidth</value>
+  </data>
+  <data name="&gt;&gt;txtPropPenClipartPenWidth.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropPenClipartPenWidth.Parent" xml:space="preserve">
+    <value>pnlPenClipartSettingsPen</value>
+  </data>
+  <data name="&gt;&gt;txtPropPenClipartPenWidth.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="txtPropPenClipartPenColor.EditValue" type="System.Drawing.Color, System.Drawing">
+    <value />
+  </data>
+  <data name="txtPropPenClipartPenColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>353, 28</value>
+  </data>
+  <data name="txtPropPenClipartPenColor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtPropPenClipartPenColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="txtPropPenClipartPenColor.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtPropPenClipartPenColor.Name" xml:space="preserve">
+    <value>txtPropPenClipartPenColor</value>
+  </data>
+  <data name="&gt;&gt;txtPropPenClipartPenColor.Type" xml:space="preserve">
+    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtPropPenClipartPenColor.Parent" xml:space="preserve">
+    <value>pnlPenClipartSettingsPen</value>
+  </data>
+  <data name="&gt;&gt;txtPropPenClipartPenColor.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="pnlPenClipartSettingsPen.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="pnlPenClipartSettingsPen.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 404</value>
+  </data>
+  <data name="pnlPenClipartSettingsPen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 110</value>
+  </data>
+  <data name="pnlPenClipartSettingsPen.TabIndex" type="System.Int32, mscorlib">
+    <value>205</value>
+  </data>
+  <data name="pnlPenClipartSettingsPen.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pnlPenClipartSettingsPen.Name" xml:space="preserve">
+    <value>pnlPenClipartSettingsPen</value>
+  </data>
+  <data name="&gt;&gt;pnlPenClipartSettingsPen.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlPenClipartSettingsPen.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlPenClipartSettingsPen.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="cboPropPenClipartBrushMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 0</value>
+  </data>
+  <data name="cboPropPenClipartBrushMode.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboPropPenClipartBrushMode.Properties.Items" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="cboPropPenClipartBrushMode.Properties.Items1" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="cboPropPenClipartBrushMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 20</value>
+  </data>
+  <data name="cboPropPenClipartBrushMode.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cboPropPenClipartBrushMode.Name" xml:space="preserve">
+    <value>cboPropPenClipartBrushMode</value>
+  </data>
+  <data name="&gt;&gt;cboPropPenClipartBrushMode.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboPropPenClipartBrushMode.Parent" xml:space="preserve">
+    <value>pnlPenClipartSettings1</value>
+  </data>
+  <data name="&gt;&gt;cboPropPenClipartBrushMode.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblPropPenClipartBrushMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropPenClipartBrushMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 0</value>
+  </data>
+  <data name="lblPropPenClipartBrushMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
+  </data>
+  <data name="lblPropPenClipartBrushMode.TabIndex" type="System.Int32, mscorlib">
+    <value>202</value>
+  </data>
+  <data name="lblPropPenClipartBrushMode.Text" xml:space="preserve">
+    <value>Brush:</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartBrushMode.Name" xml:space="preserve">
+    <value>lblPropPenClipartBrushMode</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartBrushMode.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartBrushMode.Parent" xml:space="preserve">
+    <value>pnlPenClipartSettings1</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartBrushMode.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlPenClipartSettings1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="pnlPenClipartSettings1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 514</value>
+  </data>
+  <data name="pnlPenClipartSettings1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 24</value>
+  </data>
+  <data name="pnlPenClipartSettings1.TabIndex" type="System.Int32, mscorlib">
+    <value>258</value>
+  </data>
+  <data name="pnlPenClipartSettings1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pnlPenClipartSettings1.Name" xml:space="preserve">
+    <value>pnlPenClipartSettings1</value>
+  </data>
+  <data name="&gt;&gt;pnlPenClipartSettings1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlPenClipartSettings1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlPenClipartSettings1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="cboPropPenClipartBrushStyle.Location" type="System.Drawing.Point, System.Drawing">
     <value>225, 0</value>
   </data>
@@ -2579,7 +1970,7 @@
     <value>txtPropPenClipartBrushColor</value>
   </data>
   <data name="&gt;&gt;txtPropPenClipartBrushColor.Type" xml:space="preserve">
-    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtPropPenClipartBrushColor.Parent" xml:space="preserve">
     <value>pnlPenClipartSettingsBrush</value>
@@ -2587,61 +1978,127 @@
   <data name="&gt;&gt;txtPropPenClipartBrushColor.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="cboPropPenClipartBrushMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 0</value>
+  <data name="pnlPenClipartSettingsBrush.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
   </data>
-  <data name="cboPropPenClipartBrushMode.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
-    <value>Combo</value>
+  <data name="pnlPenClipartSettingsBrush.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 538</value>
   </data>
-  <data name="cboPropPenClipartBrushMode.Properties.Items" xml:space="preserve">
-    <value>Default</value>
+  <data name="pnlPenClipartSettingsBrush.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 50</value>
   </data>
-  <data name="cboPropPenClipartBrushMode.Properties.Items1" xml:space="preserve">
-    <value>Custom</value>
+  <data name="pnlPenClipartSettingsBrush.TabIndex" type="System.Int32, mscorlib">
+    <value>257</value>
   </data>
-  <data name="cboPropPenClipartBrushMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 20</value>
+  <data name="pnlPenClipartSettingsBrush.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="cboPropPenClipartBrushMode.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;pnlPenClipartSettingsBrush.Name" xml:space="preserve">
+    <value>pnlPenClipartSettingsBrush</value>
   </data>
-  <data name="&gt;&gt;cboPropPenClipartBrushMode.Name" xml:space="preserve">
-    <value>cboPropPenClipartBrushMode</value>
+  <data name="&gt;&gt;pnlPenClipartSettingsBrush.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;cboPropPenClipartBrushMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="&gt;&gt;pnlPenClipartSettingsBrush.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;cboPropPenClipartBrushMode.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettings1</value>
+  <data name="&gt;&gt;pnlPenClipartSettingsBrush.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
-  <data name="&gt;&gt;cboPropPenClipartBrushMode.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 588</value>
   </data>
-  <data name="lblPropPenClipartBrushMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;mnuSaveAs.Name" xml:space="preserve">
+    <value>mnuSaveAs</value>
   </data>
-  <data name="lblPropPenClipartBrushMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 0</value>
+  <data name="&gt;&gt;mnuSaveAs.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="lblPropPenClipartBrushMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 13</value>
+  <data name="&gt;&gt;btnPropSaveToFile.Name" xml:space="preserve">
+    <value>btnPropSaveToFile</value>
   </data>
-  <data name="lblPropPenClipartBrushMode.TabIndex" type="System.Int32, mscorlib">
-    <value>202</value>
+  <data name="&gt;&gt;btnPropSaveToFile.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="lblPropPenClipartBrushMode.Text" xml:space="preserve">
-    <value>Brush:</value>
+  <data name="&gt;&gt;btnPropSaveToSurvey.Name" xml:space="preserve">
+    <value>btnPropSaveToSurvey</value>
   </data>
-  <data name="&gt;&gt;lblPropPenClipartBrushMode.Name" xml:space="preserve">
-    <value>lblPropPenClipartBrushMode</value>
+  <data name="&gt;&gt;btnPropSaveToSurvey.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;lblPropPenClipartBrushMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="&gt;&gt;btnPropImport.Name" xml:space="preserve">
+    <value>btnPropImport</value>
   </data>
-  <data name="&gt;&gt;lblPropPenClipartBrushMode.Parent" xml:space="preserve">
-    <value>pnlPenClipartSettings1</value>
+  <data name="&gt;&gt;btnPropImport.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;lblPropPenClipartBrushMode.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnPropExport.Name" xml:space="preserve">
+    <value>btnPropExport</value>
+  </data>
+  <data name="&gt;&gt;btnPropExport.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;BarManager.Name" xml:space="preserve">
+    <value>BarManager</value>
+  </data>
+  <data name="&gt;&gt;BarManager.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropCustomize.Name" xml:space="preserve">
+    <value>btnPropCustomize</value>
+  </data>
+  <data name="&gt;&gt;btnPropCustomize.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropEdit.Name" xml:space="preserve">
+    <value>btnPropEdit</value>
+  </data>
+  <data name="&gt;&gt;btnPropEdit.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;mnuContext.Name" xml:space="preserve">
+    <value>mnuContext</value>
+  </data>
+  <data name="&gt;&gt;mnuContext.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>cItemPenStylePropertyControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="btnPropCustomize.Caption" xml:space="preserve">
+    <value>Customize...</value>
+  </data>
+  <data name="btnPropEdit.Caption" xml:space="preserve">
+    <value>Edit...</value>
+  </data>
+  <data name="cmdPropSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>457, 6</value>
+  </data>
+  <data name="cmdPropSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 24</value>
+  </data>
+  <data name="cmdPropSave.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="cmdPropSave.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;cmdPropSave.Name" xml:space="preserve">
+    <value>cmdPropSave</value>
+  </data>
+  <data name="&gt;&gt;cmdPropSave.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.DropDownButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropSave.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdPropSave.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <metadata name="mnuContext.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>370, 17</value>
+  </metadata>
 </root>

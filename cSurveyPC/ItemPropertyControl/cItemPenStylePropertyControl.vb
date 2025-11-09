@@ -19,6 +19,7 @@ Friend Class cItemPenStylePropertyControl
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() 
+        Me.BarManager.SetPopupContextMenu(Me.cboPropPenPattern, Me.mnuContext)
     End Sub
 
     Public Shadows ReadOnly Property Item As cItem
@@ -29,6 +30,8 @@ Friend Class cItemPenStylePropertyControl
 
     Public Shadows Sub Rebind(Item As cItem, Point As cPoint, PaintOptions As cOptions)
         MyBase.Rebind(Item)
+
+        bEditUser = False
 
         If oSurvey IsNot Item.Survey Then
             oSurvey = Item.Survey
@@ -70,29 +73,13 @@ Friend Class cItemPenStylePropertyControl
         Return oPen
     End Function
 
-    Private Sub cboPropPenPattern_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropPenPattern.EditValueChanged
-        If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
-            If oPoint Is Nothing Then
-                If cPen.IsUserPenID(cboPropPenPattern.EditValue) AndAlso Not oSurvey.Pens.Contains(cboPropPenPattern.EditValue) Then
-                    Call oSurvey.Pens.Add(cboPropPenPattern.GetUserPen(cboPropPenPattern.EditValue))
-                    Call cboPropPenPattern.Rebind(oSurvey)
-                End If
-                Item.Pen.ID = cboPropPenPattern.EditValue
-            Else
-                Call pObjectSetSequencePen()
-                If cPen.IsUserPenID(cboPropPenPattern.EditValue) AndAlso Not oSurvey.Pens.Contains(cboPropPenPattern.EditValue) Then
-                    Call oSurvey.Pens.Add(cboPropPenPattern.GetUserPen(cboPropPenPattern.EditValue))
-                    Call cboPropPenPattern.Rebind(oSurvey)
-                End If
-                oPoint.Pen.ID = cboPropPenPattern.EditValue
-            End If
-            Call MyBase.CommitUndoSnapshot()
-            Call MyBase.PropertyChanged("PenPattern")
-            Call MyBase.MapInvalidate()
-        End If
+    Private Sub pRefreshPatternProperties()
+        Dim bBackupDisabledObjectProperty As Boolean = MyBase.DisabledObjectProperty
+        MyBase.DisabledObjectProperty = True
 
         If Item IsNot Nothing Then
+            lblPropPenPattern.Text = If(lblPropPenPattern.Text.Contains("<image"), lblPropPenPattern.Text.Substring(0, lblPropPenPattern.Text.IndexOf("<image")), lblPropPenPattern.Text)
+
             Dim oPen As cPen
             If oPoint Is Nothing Then
                 oPen = Item.Pen
@@ -100,8 +87,16 @@ Friend Class cItemPenStylePropertyControl
                 Call pObjectSetSequencePen()
                 oPen = oPoint.Pen
             End If
-            If oPen.Type = cPen.PenTypeEnum.Custom Then
+            If Item.Pen.Type = cPen.PenTypeEnum.Custom OrElse (bEditUser AndAlso Item.Pen.Type = cPen.PenTypeEnum.User) Then
+                If Item.Pen.Type = cPen.PenTypeEnum.User Then
+                    lblPropPenPattern.Text = lblPropPenPattern.Text & " <image=#warning;size=16,16>"
+                    btnPropSaveToSurvey.Enabled = False
+                Else
+                    btnPropSaveToSurvey.Enabled = True
+                End If
+
                 btnPropCustomize.Enabled = False
+                btnPropEdit.Enabled = False
 
                 cmdPropSave.Visible = True
                 txtPropPenWidth.Value = oPen.Width
@@ -159,11 +154,38 @@ Friend Class cItemPenStylePropertyControl
                 txtPropPenClipartBrushColor.EditValue = oPen.ClipartBrushColor
             Else
                 btnPropCustomize.Enabled = True
+                btnPropEdit.Enabled = Item.Pen.Type = cPen.PenTypeEnum.User
 
                 cmdPropSave.Visible = False
             End If
             Call pRefreshHeight()
         End If
+        MyBase.DisabledObjectProperty = bBackupDisabledObjectProperty
+    End Sub
+
+    Private Sub cboPropPenPattern_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropPenPattern.EditValueChanged
+        If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
+            If oPoint Is Nothing Then
+                If cPen.IsUserPenID(cboPropPenPattern.EditValue) AndAlso Not oSurvey.Pens.Contains(cboPropPenPattern.EditValue) Then
+                    Call oSurvey.Pens.Add(cboPropPenPattern.GetUserPen(cboPropPenPattern.EditValue))
+                    Call cboPropPenPattern.Rebind(oSurvey)
+                End If
+                Item.Pen.ID = cboPropPenPattern.EditValue
+            Else
+                Call pObjectSetSequencePen()
+                If cPen.IsUserPenID(cboPropPenPattern.EditValue) AndAlso Not oSurvey.Pens.Contains(cboPropPenPattern.EditValue) Then
+                    Call oSurvey.Pens.Add(cboPropPenPattern.GetUserPen(cboPropPenPattern.EditValue))
+                    Call cboPropPenPattern.Rebind(oSurvey)
+                End If
+                oPoint.Pen.ID = cboPropPenPattern.EditValue
+            End If
+            Call MyBase.CommitUndoSnapshot()
+            Call MyBase.PropertyChanged("PenPattern")
+            Call MyBase.MapInvalidate()
+        End If
+
+        Call pRefreshPatternProperties()
     End Sub
 
     Private Function pGetPoint(Point As cPoint) As cPoint
@@ -186,6 +208,7 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenColor")
             Call MyBase.MapInvalidate()
+            Call cboPropPenPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -215,10 +238,6 @@ Friend Class cItemPenStylePropertyControl
         End Using
     End Sub
 
-    Private Sub cmdPropPenSave_Click(sender As Object, e As EventArgs) Handles cmdPropSave.Click
-        Call pSaveToSurvey()
-    End Sub
-
     Private Sub btnPropSaveToSurvey_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPropSaveToSurvey.ItemClick
         Call pSaveToSurvey()
     End Sub
@@ -235,17 +254,11 @@ Friend Class cItemPenStylePropertyControl
         Else
             Dim sName As String = cSurvey.UIHelpers.Dialogs.TextInputBox(Me, GetLocalizedString("main.savepentext"), GetLocalizedString("main.savepentitle"), "")
             If sName IsNot Nothing Then
-                'Dim bOk As Boolean = True
-                'If oSurvey.Pens.Contains(sName) Then
-                '    bOk = cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.savepenoverwritetext"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, GetLocalizedString("main.savepentitle")) = MsgBoxResult.Yes
-                'End If
-                'If bOk Then
                 Using oNewPen As cCustomPen = oSurvey.Pens.Add(oPen, sName)
                     cboPropPenPattern.Rebind(oSurvey)
                     cboPropPenPattern.EditValue = oNewPen.ID
                     MyBase.DoCommand("refreshbrushesandpens", {1, "pens"})
                 End Using
-                'End If
             End If
         End If
     End Sub
@@ -338,6 +351,7 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenDecoration")
             Call MyBase.MapInvalidate()
+            Call cboPropPenPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -350,7 +364,7 @@ Friend Class cItemPenStylePropertyControl
         Dim bClipartSettingsPenVisible As Boolean
         Dim bClipartSettingsBrushVisible As Boolean
 
-        If oPen.Type = cPen.PenTypeEnum.Custom Then
+        If Item.Pen.Type = cPen.PenTypeEnum.Custom OrElse (bEditUser AndAlso Item.Pen.Type = cPen.PenTypeEnum.User) Then
             If cboPropPenDecoration.SelectedIndex > 0 Then
                 bStyleVisible = True
                 If cboPropPenDecoration.SelectedIndex = cboPropPenDecoration.Properties.Items.Count - 1 Then
@@ -409,6 +423,7 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenWidth")
             Call MyBase.MapInvalidate()
+            Call cboPropPenPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -426,6 +441,7 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenStyle")
             Call MyBase.MapInvalidate()
+            Call cboPropPenPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -441,6 +457,7 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenDecorationAlignment")
             Call MyBase.MapInvalidate()
+            Call cboPropPenPattern.RefreshThumbnail()
         End If
         Dim bEnabled As Boolean
         If oPoint Is Nothing Then
@@ -464,6 +481,7 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenDecorationDistancePercentage")
             Call MyBase.MapInvalidate()
+            Call cboPropPenPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -479,6 +497,7 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenDecorationSpacePercentage")
             Call MyBase.MapInvalidate()
+            Call cboPropPenPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -494,6 +513,7 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenDecorationSpacePercentage")
             Call MyBase.MapInvalidate()
+            Call cboPropPenPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -511,6 +531,7 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("ClipartPenMode")
             Call MyBase.MapInvalidate()
+            Call cboPropPenPattern.RefreshThumbnail()
         End If
         Call pRefreshHeight()
     End Sub
@@ -527,6 +548,7 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("ClipartPenWidth")
             Call MyBase.MapInvalidate()
+            Call cboPropPenPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -542,6 +564,7 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("ClipartBrushColor")
             Call MyBase.MapInvalidate()
+            Call cboPropPenPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -557,6 +580,7 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("ClipartPenColor")
             Call MyBase.MapInvalidate()
+            Call cboPropPenPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -646,6 +670,7 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenDecorationPosition")
             Call MyBase.MapInvalidate()
+            Call cboPropPenPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -663,6 +688,7 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("ClipartBrushMode")
             Call MyBase.MapInvalidate()
+            Call cboPropPenPattern.RefreshThumbnail()
         End If
         Call pRefreshHeight()
     End Sub
@@ -679,6 +705,7 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("ClipartBrushStyle")
             Call MyBase.MapInvalidate()
+            Call cboPropPenPattern.RefreshThumbnail()
         End If
         If pSelectedIndexToBrushStyle(cboPropPenClipartBrushStyle) = cPen.BrushStylesEnum.None Then
             lblPropPenClipartBrushColor.Enabled = False
@@ -744,6 +771,7 @@ Friend Class cItemPenStylePropertyControl
                 Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("LineJoin")
                 Call MyBase.MapInvalidate()
+                Call cboPropPenPattern.RefreshThumbnail()
             End If
         End If
     End Sub
@@ -761,6 +789,7 @@ Friend Class cItemPenStylePropertyControl
                 Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("LineJoin")
                 Call MyBase.MapInvalidate()
+                Call cboPropPenPattern.RefreshThumbnail()
             End If
         End If
     End Sub
@@ -778,6 +807,7 @@ Friend Class cItemPenStylePropertyControl
                 Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("LineJoin")
                 Call MyBase.MapInvalidate()
+                Call cboPropPenPattern.RefreshThumbnail()
             End If
         End If
     End Sub
@@ -795,6 +825,7 @@ Friend Class cItemPenStylePropertyControl
                 Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("LineCap")
                 Call MyBase.MapInvalidate()
+                Call cboPropPenPattern.RefreshThumbnail()
             End If
         End If
     End Sub
@@ -812,6 +843,7 @@ Friend Class cItemPenStylePropertyControl
                 Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("LineCap")
                 Call MyBase.MapInvalidate()
+                Call cboPropPenPattern.RefreshThumbnail()
             End If
         End If
     End Sub
@@ -829,6 +861,7 @@ Friend Class cItemPenStylePropertyControl
                 Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("LineCap")
                 Call MyBase.MapInvalidate()
+                Call cboPropPenPattern.RefreshThumbnail()
             End If
         End If
     End Sub
@@ -846,6 +879,7 @@ Friend Class cItemPenStylePropertyControl
                 Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("ClipartPenLineJoin")
                 Call MyBase.MapInvalidate()
+                Call cboPropPenPattern.RefreshThumbnail()
             End If
         End If
     End Sub
@@ -863,6 +897,7 @@ Friend Class cItemPenStylePropertyControl
                 Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("ClipartPenLineJoin")
                 Call MyBase.MapInvalidate()
+                Call cboPropPenPattern.RefreshThumbnail()
             End If
         End If
     End Sub
@@ -880,6 +915,7 @@ Friend Class cItemPenStylePropertyControl
                 Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("ClipartPenLineJoin")
                 Call MyBase.MapInvalidate()
+                Call cboPropPenPattern.RefreshThumbnail()
             End If
         End If
     End Sub
@@ -897,6 +933,7 @@ Friend Class cItemPenStylePropertyControl
                 Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("ClipartPenLineCap")
                 Call MyBase.MapInvalidate()
+                Call cboPropPenPattern.RefreshThumbnail()
             End If
         End If
     End Sub
@@ -914,6 +951,7 @@ Friend Class cItemPenStylePropertyControl
                 Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("ClipartPenLineCap")
                 Call MyBase.MapInvalidate()
+                Call cboPropPenPattern.RefreshThumbnail()
             End If
         End If
     End Sub
@@ -931,11 +969,18 @@ Friend Class cItemPenStylePropertyControl
                 Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("ClipartPenLineCap")
                 Call MyBase.MapInvalidate()
+                Call cboPropPenPattern.RefreshThumbnail()
             End If
         End If
     End Sub
 
     Private Sub btnPropCustomize_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPropCustomize.ItemClick
         cboPropPenPattern.EditValue = "_99"
+    End Sub
+
+    Private bEditUser As Boolean = False
+    Private Sub btnPropEdit_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPropEdit.ItemClick
+        bEditUser = True
+        pRefreshPatternProperties()
     End Sub
 End Class

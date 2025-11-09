@@ -1633,22 +1633,31 @@ Friend Class frmPreview
 
                             sLastFilename = .FileName
 
-                            Dim oXML As XmlDocument
-                            Dim oSVGOptions As cSurvey.Design.cItem.SVGOptionsEnum
+                            Dim oXML As cSVGWriter
+                            Dim oSVGOptions As cSVGWriter.SVGOptionsEnum
                             If My.Application.Settings.GetSetting("svg.exporttextaspath", 0) <> 0 Then
-                                oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.TextAsPath
+                                oSVGOptions = oSVGOptions Or cSVGWriter.SVGOptionsEnum.TextAsPath
                             End If
                             If My.Application.Settings.GetSetting("svg.exportcsurveyreferences", 1) <> 0 Then
-                                oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.AddSourceReference
+                                oSVGOptions = oSVGOptions Or cSVGWriter.SVGOptionsEnum.AddSourceReference
+                            End If
+                            If My.Application.Settings.GetSetting("svg.exportinkscapereferences", 1) <> 0 Then
+                                oSVGOptions = oSVGOptions Or cSVGWriter.SVGOptionsEnum.AddInkscapeReference
                             End If
                             If My.Application.Settings.GetSetting("svg.exportimages", 1) <> 0 Then
-                                oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.Images
+                                oSVGOptions = oSVGOptions Or cSVGWriter.SVGOptionsEnum.Images
                             End If
                             If My.Application.Settings.GetSetting("svg.exportnoclipping", 0) = 0 Then
-                                oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.Clipping
+                                oSVGOptions = oSVGOptions Or cSVGWriter.SVGOptionsEnum.Clipping
                             End If
                             If My.Application.Settings.GetSetting("svg.exportnoclipartbrushes", 0) = 0 Then
-                                oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.ClipartBrushes
+                                oSVGOptions = oSVGOptions Or cSVGWriter.SVGOptionsEnum.ClipartBrushes
+                            End If
+                            If My.Application.Settings.GetSetting("svg.usestyles", 1) = 1 Then
+                                oSVGOptions = oSVGOptions Or cSVGWriter.SVGOptionsEnum.UseStyles
+                            End If
+                            If My.Application.Settings.GetSetting("svg.reuseclipart", 0) = 1 Then
+                                oSVGOptions = oSVGOptions Or cSVGWriter.SVGOptionsEnum.ReuseClipart
                             End If
 
                             If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
@@ -1664,7 +1673,6 @@ Friend Class frmPreview
                             Using oXMLWriter As XmlWriter = XmlWriter.Create(.FileName, oXMLWriterSettings)
                                 Call oXML.Save(oXMLWriter)
                             End Using
-                            'Call oXML.Save(.FileName)
 
                             Call oMousePointer.Pop()
                     End Select
@@ -3548,5 +3556,15 @@ Friend Class frmPreview
         If cDesignMessageCorner.Type = "refreshwarning" Then
             Call btnRefresh.PerformClick()
         End If
+    End Sub
+
+    Private Sub cmdSetSVGOptions_Click(sender As Object, e As EventArgs) Handles cmdSetSVGOptions.Click
+        Dim oOptions As cSurvey.Design.cOptionsExport = oCurrentOptions
+        Dim oParameters As frmPreviewSVGOptions = New frmPreviewSVGOptions(oOptions.SVG)
+        pnlParameters.Controls.Add(oParameters)
+        flyParameters.Size = pGetFlyParametersSize(oParameters)
+        oParameters.Dock = DockStyle.Fill
+        flyParameters.OwnerControl = cmdSetSVGOptions
+        flyParameters.ShowBeakForm(True)
     End Sub
 End Class

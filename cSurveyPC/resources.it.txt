@@ -1167,4 +1167,4 @@ main.textpart180=Calc:
 
 main.filetypecSurveyXLSX=File di Microsoft Excel esportato da cSurvey
 
-calculate.textpart17=Errore: l'origine è orfana
+calculate.textpart22=Errore: l'origine è orfana

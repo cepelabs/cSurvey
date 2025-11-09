@@ -54,8 +54,6 @@ Partial Class cItemBrushStylePropertyControl
         Me.btnPropImport = New DevExpress.XtraBars.BarButtonItem()
         Me.btnPropExport = New DevExpress.XtraBars.BarButtonItem()
         Me.BarManager = New DevExpress.XtraBars.BarManager(Me.components)
-        Me.mnuContext = New DevExpress.XtraBars.PopupMenu(Me.components)
-        Me.btnPropCustomize = New DevExpress.XtraBars.BarButtonItem()
         Me.barPattern = New DevExpress.XtraBars.Bar()
         Me.btnPropPatternAdd = New DevExpress.XtraBars.BarButtonItem()
         Me.btnPropPatternDelete = New DevExpress.XtraBars.BarButtonItem()
@@ -68,6 +66,9 @@ Partial Class cItemBrushStylePropertyControl
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
+        Me.btnPropCustomize = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnPropEdit = New DevExpress.XtraBars.BarButtonItem()
+        Me.mnuContext = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.cmdPropSave = New DevExpress.XtraEditors.DropDownButton()
         Me.txtPropBrushClipartZoomFactor = New DevExpress.XtraEditors.SpinEdit()
         Me.txtPropBrushClipartDensity = New DevExpress.XtraEditors.SpinEdit()
@@ -257,7 +258,6 @@ Partial Class cItemBrushStylePropertyControl
         Me.txtPropBrushColor.Name = "txtPropBrushColor"
         Me.txtPropBrushColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPropBrushColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtPropBrushColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.txtPropBrushColor.Properties.NullColor = System.Drawing.Color.Empty
         Me.txtPropBrushColor.Properties.ShowSystemColors = False
         Me.txtPropBrushColor.Properties.ShowWebColors = False
         '
@@ -268,12 +268,12 @@ Partial Class cItemBrushStylePropertyControl
         Me.txtPropBrushAlternativeBrushColor.Name = "txtPropBrushAlternativeBrushColor"
         Me.txtPropBrushAlternativeBrushColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPropBrushAlternativeBrushColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtPropBrushAlternativeBrushColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.txtPropBrushAlternativeBrushColor.Properties.NullColor = System.Drawing.Color.Empty
         Me.txtPropBrushAlternativeBrushColor.Properties.ShowSystemColors = False
         Me.txtPropBrushAlternativeBrushColor.Properties.ShowWebColors = False
         '
         'lblBrush
         '
+        Me.lblBrush.AllowHtmlString = True
         resources.ApplyResources(Me.lblBrush, "lblBrush")
         Me.lblBrush.Name = "lblBrush"
         '
@@ -340,20 +340,8 @@ Partial Class cItemBrushStylePropertyControl
         Me.BarManager.DockControls.Add(Me.barDockControlRight)
         Me.BarManager.DockControls.Add(Me.StandaloneBarDockControl1)
         Me.BarManager.Form = Me
-        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnPropSaveToFile, Me.btnPropSaveToSurvey, Me.btnPropExport, Me.btnPropImport, Me.btnPropPatternAdd, Me.btnPropPatternDelete, Me.btnPropPatternPrevious, Me.btnPropPatternNext, Me.btnPropPatternMoveDown, Me.btnPropPatternMoveUp, Me.btnPropCustomize})
-        Me.BarManager.MaxItemId = 35
-        '
-        'mnuContext
-        '
-        Me.mnuContext.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnPropCustomize)})
-        Me.mnuContext.Manager = Me.BarManager
-        Me.mnuContext.Name = "mnuContext"
-        '
-        'btnPropCustomize
-        '
-        resources.ApplyResources(Me.btnPropCustomize, "btnPropCustomize")
-        Me.btnPropCustomize.Id = 33
-        Me.btnPropCustomize.Name = "btnPropCustomize"
+        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnPropSaveToFile, Me.btnPropSaveToSurvey, Me.btnPropExport, Me.btnPropImport, Me.btnPropPatternAdd, Me.btnPropPatternDelete, Me.btnPropPatternPrevious, Me.btnPropPatternNext, Me.btnPropPatternMoveDown, Me.btnPropPatternMoveUp, Me.btnPropCustomize, Me.btnPropEdit})
+        Me.BarManager.MaxItemId = 37
         '
         'barPattern
         '
@@ -456,9 +444,29 @@ Partial Class cItemBrushStylePropertyControl
         resources.ApplyResources(Me.barDockControlRight, "barDockControlRight")
         Me.barDockControlRight.Manager = Me.BarManager
         '
+        'btnPropCustomize
+        '
+        resources.ApplyResources(Me.btnPropCustomize, "btnPropCustomize")
+        Me.btnPropCustomize.Id = 33
+        Me.btnPropCustomize.Name = "btnPropCustomize"
+        '
+        'btnPropEdit
+        '
+        resources.ApplyResources(Me.btnPropEdit, "btnPropEdit")
+        Me.btnPropEdit.Enabled = False
+        Me.btnPropEdit.Id = 36
+        Me.btnPropEdit.Name = "btnPropEdit"
+        '
+        'mnuContext
+        '
+        Me.mnuContext.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnPropCustomize), New DevExpress.XtraBars.LinkPersistInfo(Me.btnPropEdit, True)})
+        Me.mnuContext.Manager = Me.BarManager
+        Me.mnuContext.Name = "mnuContext"
+        '
         'cmdPropSave
         '
         resources.ApplyResources(Me.cmdPropSave, "cmdPropSave")
+        Me.cmdPropSave.DropDownArrowStyle = DevExpress.XtraEditors.DropDownArrowStyle.Show
         Me.cmdPropSave.DropDownControl = Me.mnuSaveAs
         Me.cmdPropSave.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
         Me.cmdPropSave.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.savedialog
@@ -750,7 +758,6 @@ Partial Class cItemBrushStylePropertyControl
         Me.txtPropBrushBackcolor.Name = "txtPropBrushBackcolor"
         Me.txtPropBrushBackcolor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPropBrushBackcolor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtPropBrushBackcolor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.txtPropBrushBackcolor.Properties.NullColor = System.Drawing.Color.Empty
         Me.txtPropBrushBackcolor.Properties.ShowSystemColors = False
         Me.txtPropBrushBackcolor.Properties.ShowWebColors = False
         '
@@ -909,4 +916,5 @@ Partial Class cItemBrushStylePropertyControl
     Friend WithEvents pnlBrushBackgroundColor As DevExpress.XtraEditors.PanelControl
     Friend WithEvents mnuContext As DevExpress.XtraBars.PopupMenu
     Friend WithEvents btnPropCustomize As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnPropEdit As DevExpress.XtraBars.BarButtonItem
 End Class

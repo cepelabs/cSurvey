@@ -1800,7 +1800,7 @@ Namespace cSurvey.Helper.Editor
             End If
             If sExtFormats.Contains("svg") Then
                 Dim oSVGMS As IO.MemoryStream = New IO.MemoryStream
-                Call oCurrentItem.ToSvg(oSurvey.Options("_design.plan"), cItem.SVGOptionsEnum.Images).Save(oSVGMS)
+                Call oCurrentItem.ToSvg(oSurvey.Options("_design.plan"), cSVGWriter.SVGOptionsEnum.Images).Save(oSVGMS)
                 Call oDataObject.SetData("image/svg+xml", oSVGMS)
             End If
             Call Clipboard.SetDataObject(oDataObject)
@@ -1821,7 +1821,7 @@ Namespace cSurvey.Helper.Editor
             End If
             If sExtFormats.Contains("svg") Then
                 Dim oSVGMS As IO.MemoryStream = New IO.MemoryStream
-                Call oCurrentItem.ToSvg(oSurvey.Options("_design.plan"), cItem.SVGOptionsEnum.None).Save(oSVGMS)
+                Call oCurrentItem.ToSvg(oSurvey.Options("_design.plan"), cSVGWriter.SVGOptionsEnum.Images).Save(oSVGMS)
                 Call oDataObject.SetData("image/svg+xml", oSVGMS)
             End If
             Call Clipboard.SetDataObject(oDataObject)

@@ -594,7 +594,7 @@ Namespace cSurvey.Calculate
                         Return New cActionResult(False, "calculate", GetLocalizedString("calculate.textpart1"))
                     Else
                         If oOrigin.Data.IsOrphan Then
-                            Return New cActionResult(False, "calculate", GetLocalizedString("calculate.textpart17"))
+                            Return New cActionResult(False, "calculate", GetLocalizedString("calculate.textpart22"))
                         Else
                             If oSurvey.Properties.GPS.Enabled Then
                                 If oSurvey.Properties.GPS.RefPointOnOrigin Then

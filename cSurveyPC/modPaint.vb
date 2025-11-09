@@ -4279,4 +4279,27 @@ Module modPaint
             Path.Transform(oErrorMatrix)
         End Using
     End Sub
+    Function AddMatrix(m1 As Matrix, m2 As Matrix) As Matrix
+        Dim oResult As Matrix = m1.Clone()
+        oResult.Multiply(m2, MatrixOrder.Append)
+        Return oResult
+    End Function
+
+    Function AddMatrixElements(e1 As Single(), e2 As Single()) As Single()
+        If e1.Length <> 6 OrElse e2.Length <> 6 Then
+            Throw New ArgumentException("Invalid array")
+        End If
+
+        ' Calcolo composizione affine:
+        ' [a1 b1 c1 d1 e1 f1] ∘ [a2 b2 c2 d2 e2 f2]
+        ' => [a b c d e f]
+        Dim a = e1(0) * e2(0) + e1(2) * e2(1)
+        Dim b = e1(1) * e2(0) + e1(3) * e2(1)
+        Dim c = e1(0) * e2(2) + e1(2) * e2(3)
+        Dim d = e1(1) * e2(2) + e1(3) * e2(3)
+        Dim e = e1(0) * e2(4) + e1(2) * e2(5) + e1(4)
+        Dim f = e1(1) * e2(4) + e1(3) * e2(5) + e1(5)
+
+        Return {a, b, c, d, e, f}
+    End Function
 End Module

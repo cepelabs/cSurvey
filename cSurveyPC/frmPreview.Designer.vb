@@ -93,6 +93,7 @@ Partial Class frmPreview
         Me.cboImageUM = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.txtImageHeight = New System.Windows.Forms.NumericUpDown()
         Me.pnlExportOptionsPage = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdSetSVGOptions = New DevExpress.XtraEditors.SimpleButton()
         Me.lblImageOrientation = New DevExpress.XtraEditors.LabelControl()
         Me.chkImageOrientationLandscape = New DevExpress.XtraEditors.CheckButton()
         Me.cmdSetImageMargins = New DevExpress.XtraEditors.SimpleButton()
@@ -822,6 +823,7 @@ Partial Class frmPreview
         'pnlExportOptionsPage
         '
         Me.pnlExportOptionsPage.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlExportOptionsPage.Controls.Add(Me.cmdSetSVGOptions)
         Me.pnlExportOptionsPage.Controls.Add(Me.lblImageOrientation)
         Me.pnlExportOptionsPage.Controls.Add(Me.chkImageOrientationLandscape)
         Me.pnlExportOptionsPage.Controls.Add(Me.cmdSetImageMargins)
@@ -830,6 +832,14 @@ Partial Class frmPreview
         Me.pnlExportOptionsPage.Controls.Add(Me.cboSize)
         resources.ApplyResources(Me.pnlExportOptionsPage, "pnlExportOptionsPage")
         Me.pnlExportOptionsPage.Name = "pnlExportOptionsPage"
+        '
+        'cmdSetSVGOptions
+        '
+        Me.cmdSetSVGOptions.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdSetSVGOptions.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.Action_Export_ToSVG
+        Me.cmdSetSVGOptions.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.cmdSetSVGOptions, "cmdSetSVGOptions")
+        Me.cmdSetSVGOptions.Name = "cmdSetSVGOptions"
         '
         'lblImageOrientation
         '
@@ -1712,4 +1722,5 @@ Partial Class frmPreview
     Friend WithEvents chkPrintTrigpointText As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents cMainMessageBar As cMessageBar
     Friend WithEvents btnProfileLargeBar As DevExpress.XtraBars.BarCheckItem
+    Friend WithEvents cmdSetSVGOptions As DevExpress.XtraEditors.SimpleButton
 End Class

@@ -22,6 +22,8 @@ Friend Class cItemBrushStylePropertyControl
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent()
+        Me.BarManager.SetPopupContextMenu(Me.cboPropBrushPattern, Me.mnuContext)
+
         cboPropBrushPatternType.Items.Clear()
         cboPropBrushPatternType.Items.AddRange(cPatternBrushHelper.GetGallery.Select(Function(oItem As Object) oItem).ToArray)
     End Sub
@@ -29,12 +31,14 @@ Friend Class cItemBrushStylePropertyControl
     Public Shadows Sub Rebind(Item As cItem, PaintOptions As cOptions)
         MyBase.Rebind(Item)
 
+        bEditUser = False
+
         If oSurvey IsNot Item.Survey Then
             oSurvey = Item.Survey
             Call cboPropBrushPattern.Rebind(oSurvey)
         End If
 
-        If cboPropBrushPattern.EditValue = Item.Brush.ID AndAlso Item.Brush.Type = cBrush.BrushTypeEnum.Custom Then
+        If cboPropBrushPattern.EditValue = Item.Brush.ID AndAlso (Item.Brush.Type = cBrush.BrushTypeEnum.Custom OrElse Item.Brush.Type = cBrush.BrushTypeEnum.User) Then
             cboPropBrushPattern_EditValueChanged(cboPropBrushPattern, EventArgs.Empty)
         Else
             cboPropBrushPattern.EditValue = Item.Brush.ID
@@ -60,7 +64,7 @@ Friend Class cItemBrushStylePropertyControl
         Dim bAlternativeColorVisible As Boolean
         Dim bBackgroundColorVisible As Boolean
 
-        If Item.Brush.Type = cBrush.BrushTypeEnum.Custom Then
+        If Item.Brush.Type = cBrush.BrushTypeEnum.Custom OrElse (bEditUser AndAlso Item.Brush.Type = cBrush.BrushTypeEnum.User) Then
             Select Case Item.Brush.HatchType
                 Case cBrush.HatchTypeEnum.Texture
                     cmdPropBrushReseed.Visible = False
@@ -137,6 +141,7 @@ Friend Class cItemBrushStylePropertyControl
             Item.Brush.ClipartPosition = cboPropBrushClipartPosition.SelectedIndex
             Call MyBase.PropertyChanged("BrushClipartPosition")
             Call MyBase.MapInvalidate()
+            Call cboPropBrushPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -146,7 +151,7 @@ Friend Class cItemBrushStylePropertyControl
             pGetCurrentPatternBrush.PatternType = cboPropBrushPatternType.SelectedItem.id
             Call MyBase.PropertyChanged("BrushPatternType")
             Call MyBase.MapInvalidate()
-
+            Call cboPropBrushPattern.RefreshThumbnail()
             Call pRefreshPatternProperties()
         End If
     End Sub
@@ -169,6 +174,7 @@ Friend Class cItemBrushStylePropertyControl
             Item.Brush.Color = txtPropBrushColor.EditValue
             Call MyBase.PropertyChanged("BrushColor")
             Call MyBase.MapInvalidate()
+            Call cboPropBrushPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -178,6 +184,7 @@ Friend Class cItemBrushStylePropertyControl
             pGetCurrentPatternBrush.PatternPenStyle = cboPropBrushPatternPen.SelectedIndex
             Call MyBase.PropertyChanged("BrushPatternPen")
             Call MyBase.MapInvalidate()
+            Call cboPropBrushPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -187,6 +194,7 @@ Friend Class cItemBrushStylePropertyControl
             Item.Brush.ClipartAlternativeColor = txtPropBrushAlternativeBrushColor.EditValue
             Call MyBase.PropertyChanged("BrushAlternativeBrushColor")
             Call MyBase.MapInvalidate()
+            Call cboPropBrushPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -210,6 +218,7 @@ Friend Class cItemBrushStylePropertyControl
                         Call MyBase.CommitUndoSnapshot()
                         Call MyBase.PropertyChanged("BrushClipart")
                         Call MyBase.MapInvalidate()
+                        Call cboPropBrushPattern.RefreshThumbnail()
                     Catch ex1 As Exception
                     End Try
                 End If
@@ -219,6 +228,8 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub cboPropBrushPattern_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropBrushPattern.EditValueChanged
         If Not DisabledObjectProperty() Then
+            bEditUser = False
+
             Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo33"))
             If cBrush.IsUserBrushID(cboPropBrushPattern.EditValue) AndAlso Not oSurvey.Brushes.Contains(cboPropBrushPattern.EditValue) Then
                 Call oSurvey.Brushes.Add(cboPropBrushPattern.GetUserBrush(cboPropBrushPattern.EditValue))
@@ -237,8 +248,17 @@ Friend Class cItemBrushStylePropertyControl
         Dim bBackupDisabledObjectProperty As Boolean = MyBase.DisabledObjectProperty
         MyBase.DisabledObjectProperty = True
         If Item IsNot Nothing Then
-            If Item.Brush.Type = cBrush.BrushTypeEnum.Custom Then
+            lblBrush.Text = If(lblBrush.Text.Contains("<image"), lblBrush.Text.Substring(0, lblBrush.Text.IndexOf("<image")), lblBrush.Text)
+            If Item.Brush.Type = cBrush.BrushTypeEnum.Custom OrElse (bEditUser AndAlso Item.Brush.Type = cBrush.BrushTypeEnum.User) Then
+                If Item.Brush.Type = cBrush.BrushTypeEnum.User Then
+                    lblBrush.Text = lblBrush.Text & " <image=#warning;size=16,16>"
+                    btnPropSaveToSurvey.Enabled = False
+                Else
+                    btnPropSaveToSurvey.Enabled = True
+                End If
+
                 btnPropCustomize.Enabled = False
+                btnPropEdit.Enabled = False
 
                 cmdPropSave.Visible = True
                 cmdPropBrushReseed.Enabled = True
@@ -281,6 +301,7 @@ Friend Class cItemBrushStylePropertyControl
                 Call pBrushPatternRefresh()
             Else
                 btnPropCustomize.Enabled = True
+                btnPropEdit.Enabled = Item.Brush.Type = cBrush.BrushTypeEnum.User
 
                 cmdPropSave.Visible = False
                 cmdPropBrushReseed.Visible = Item.Brush.HatchType = cBrush.HatchTypeEnum.Clipart
@@ -296,6 +317,7 @@ Friend Class cItemBrushStylePropertyControl
             Item.Brush.ClipartCrop = cboPropBrushClipartCrop.SelectedIndex
             Call MyBase.PropertyChanged("BrushClipartCrop")
             Call MyBase.MapInvalidate()
+            Call cboPropBrushPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -325,17 +347,11 @@ Friend Class cItemBrushStylePropertyControl
         Else
             Dim sName As String = cSurvey.UIHelpers.Dialogs.TextInputBox(Me, GetLocalizedString("main.savepentext"), GetLocalizedString("main.savepentitle"), "")
             If sName IsNot Nothing Then
-                'Dim bOk As Boolean = True
-                'If oSurvey.Brushes.Contains(oBrush) Then
-                '    bOk = cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.savebrushoverwritetext"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, GetLocalizedString("main.savepentitle")) = MsgBoxResult.Yes
-                'End If
-                'If bOk Then
                 Using oNewBrush As cCustomBrush = oSurvey.Brushes.Add(oBrush, sName)
                     cboPropBrushPattern.Rebind(oSurvey)
                     cboPropBrushPattern.EditValue = oNewBrush.ID
                     MyBase.DoCommand("refreshbrushesandpens", {1, "brushes"})
                 End Using
-                'End If
             End If
         End If
     End Sub
@@ -399,6 +415,7 @@ Friend Class cItemBrushStylePropertyControl
             pGetCurrentPatternBrush.PatternZoomFactor = txtPropBrushPatternZoomFactor.Value '/ 1000.0F
             Call MyBase.PropertyChanged("BrushPatternZoomFactor")
             Call MyBase.MapInvalidate()
+            Call cboPropBrushPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -408,6 +425,7 @@ Friend Class cItemBrushStylePropertyControl
             Item.Brush.ClipartZoomFactor = txtPropBrushClipartZoomFactor.Value '/ 1000.0F
             Call MyBase.PropertyChanged("BrushClipartZoomFactor")
             Call MyBase.MapInvalidate()
+            Call cboPropBrushPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -417,6 +435,7 @@ Friend Class cItemBrushStylePropertyControl
             Item.Brush.ClipartDensity = txtPropBrushClipartDensity.Value '/ 100.0F
             Call MyBase.PropertyChanged("BrushClipartDensity")
             Call MyBase.MapInvalidate()
+            Call cboPropBrushPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -426,6 +445,7 @@ Friend Class cItemBrushStylePropertyControl
             Item.Brush.ClipartAngle = txtPropBrushClipartAngle.Value
             Call MyBase.PropertyChanged("BrushClipartAngle")
             Call MyBase.MapInvalidate()
+            Call cboPropBrushPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -441,6 +461,7 @@ Friend Class cItemBrushStylePropertyControl
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("BrushHatch")
             Call MyBase.MapInvalidate()
+            Call cboPropBrushPattern.RefreshThumbnail()
         End If
 
         Call pRefreshHeight()
@@ -460,6 +481,7 @@ Friend Class cItemBrushStylePropertyControl
                     Call MyBase.CommitUndoSnapshot()
                     Call MyBase.PropertyChanged("BrushTexture")
                     Call MyBase.MapInvalidate()
+                    Call cboPropBrushPattern.RefreshThumbnail()
                 End If
             End With
         End Using
@@ -471,6 +493,7 @@ Friend Class cItemBrushStylePropertyControl
             pGetCurrentPatternBrush.PatternDensity = txtPropBrushPatternDensity.Value '/ 100.0F
             Call MyBase.PropertyChanged("BrushPatternDensity")
             Call MyBase.MapInvalidate()
+            Call cboPropBrushPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -480,6 +503,7 @@ Friend Class cItemBrushStylePropertyControl
             pGetCurrentPatternBrush.PatternAngle = txtPropBrushPatternAngle.Value
             Call MyBase.PropertyChanged("BrushPatternAngle")
             Call MyBase.MapInvalidate()
+            Call cboPropBrushPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -489,6 +513,7 @@ Friend Class cItemBrushStylePropertyControl
             pGetCurrentPatternBrush.PatternAngleMode = cboPropBrushPatternAngleMode.SelectedIndex
             Call MyBase.PropertyChanged("BrushPatternAngleMode")
             Call MyBase.MapInvalidate()
+            Call cboPropBrushPattern.RefreshThumbnail()
         End If
 
         txtPropBrushPatternAngle.Enabled = pGetCurrentPatternBrush.PatternAngleMode = cBrush.PatternAngleModeEnum.Fixed
@@ -503,6 +528,7 @@ Friend Class cItemBrushStylePropertyControl
         Call MyBase.CommitUndoSnapshot()
         Call MyBase.PropertyChanged("BrushPatternAddPattern")
         Call MyBase.MapInvalidate()
+        Call cboPropBrushPattern.RefreshThumbnail()
     End Sub
 
     Private Sub pPatternPrevious()
@@ -529,6 +555,7 @@ Friend Class cItemBrushStylePropertyControl
         Call MyBase.CommitUndoSnapshot()
         Call MyBase.PropertyChanged("BrushPatternRemovePattern")
         Call MyBase.MapInvalidate()
+        Call cboPropBrushPattern.RefreshThumbnail()
     End Sub
 
     Private Sub cmdPropPatternDelete_Click(sender As Object, e As EventArgs)
@@ -541,6 +568,7 @@ Friend Class cItemBrushStylePropertyControl
             pGetCurrentPatternBrush.PatternDeltaY = txtPropBrushPatternDeltaY.Value
             Call MyBase.PropertyChanged("BrushPatternDeltaY")
             Call MyBase.MapInvalidate()
+            Call cboPropBrushPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -550,6 +578,7 @@ Friend Class cItemBrushStylePropertyControl
             pGetCurrentPatternBrush.PatternDeltaX = txtPropBrushPatternDeltaX.Value
             Call MyBase.PropertyChanged("BrushPatternDeltaX")
             Call MyBase.MapInvalidate()
+            Call cboPropBrushPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -561,6 +590,7 @@ Friend Class cItemBrushStylePropertyControl
         Call MyBase.CommitUndoSnapshot()
         Call MyBase.PropertyChanged("BrushPatternMovedDownPattern")
         Call MyBase.MapInvalidate()
+        Call cboPropBrushPattern.RefreshThumbnail()
     End Sub
 
     Private Sub pPatternMoveUp()
@@ -571,6 +601,7 @@ Friend Class cItemBrushStylePropertyControl
         Call MyBase.CommitUndoSnapshot()
         Call MyBase.PropertyChanged("BrushPatternMovedUpPattern")
         Call MyBase.MapInvalidate()
+        Call cboPropBrushPattern.RefreshThumbnail()
     End Sub
 
     Private Sub cmdPropPatternMoveUp_Click(sender As Object, e As EventArgs)
@@ -599,6 +630,7 @@ Friend Class cItemBrushStylePropertyControl
         End If
         Call MyBase.PropertyChanged("BrushPatternProperties")
         Call MyBase.MapInvalidate()
+        Call cboPropBrushPattern.RefreshThumbnail()
 
         bEditStarted = True
         Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo33"))
@@ -645,6 +677,7 @@ Friend Class cItemBrushStylePropertyControl
             Item.Brush.BackgroundColor = txtPropBrushBackcolor.EditValue
             Call MyBase.PropertyChanged("BrushPatternBackgroundColor")
             Call MyBase.MapInvalidate()
+            Call cboPropBrushPattern.RefreshThumbnail()
         End If
     End Sub
 
@@ -654,5 +687,12 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub cboPropBrushPattern_OnGalleryButtonClick(sender As Object, e As EventArgs) Handles cboPropBrushPattern.OnGalleryButtonClick
         MyBase.DoCommand("brushesandpens")
+    End Sub
+
+    Private bEditUser As Boolean = False
+
+    Private Sub btnPropEdit_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPropEdit.ItemClick
+        bEditUser = True
+        pRefreshPatternProperties()
     End Sub
 End Class

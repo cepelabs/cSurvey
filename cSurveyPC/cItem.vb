@@ -30,15 +30,17 @@ Namespace cSurvey.Design
             IgnoreMaxDrawItemCount = &H1000
         End Enum
 
-        <Flags()> Public Enum SVGOptionsEnum As Integer
-            None = &H0
-            Clipping = &H1
-            ClipartBrushes = &H2
-            Silent = &H4
-            Images = &H8
-            AddSourceReference = &H10
-            TextAsPath = &H100
-        End Enum
+        '<Flags()> Public Enum SVGOptionsEnum As Integer
+        '    None = &H0
+        '    Clipping = &H1
+        '    ClipartBrushes = &H2
+        '    Silent = &H4
+        '    Images = &H8
+        '    AddSourceReference = &H10
+        '    ReuseClipart = &H20
+        '    UseStyles = &H40
+        '    TextAsPath = &H100
+        'End Enum
 
         Public Enum BindModeEnum As Integer
             AllPoints = 0
@@ -279,23 +281,20 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Friend Overridable Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-            Dim oSVG As XmlDocument = modSVG.CreateSVG
-            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
+        Friend Overridable Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cSVGWriter.SVGOptionsEnum) As cSVGWriter
+            Dim oSVG As cSVGWriter = modSVG.CreateSVG(Options)
+            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions))
             Return oSVG
         End Function
 
-        Friend Overridable Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overridable Function ToSvgItem(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline) As XmlElement
             Using oMatrix As Matrix = New Matrix
                 If PaintOptions.DrawTranslation Then
                     Dim oTranslation As SizeF = oDesign.GetItemTranslation(Me)
                     Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
                 End If
-                Dim oSVGItem As XmlElement = oCaches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
-
-                'Call modSVG.AppendItemStyle(SVG, oSVGItem, oBrush, oPen)
-                Call modSVG.AddSourceReference(Me, oSVGItem, Options)
-
+                Dim oSVGItem As XmlElement = oCaches(PaintOptions).ToSvgItem(SVG, PaintOptions, oMatrix)
+                Call modSVG.AddSourceReference(Me, oSVGItem, SVG.Options)
                 Return oSVGItem
             End Using
         End Function

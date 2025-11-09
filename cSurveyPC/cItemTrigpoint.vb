@@ -270,11 +270,11 @@ Namespace cSurvey.Design.Items
 
         End Sub
 
-        Friend Overrides Function ToSvg(PaintOptions As cOptionsCenterline, Options As cItem.SVGOptionsEnum) As System.Xml.XmlDocument
+        Friend Overrides Function ToSvg(PaintOptions As cOptionsCenterline, Options As cSVGWriter.SVGOptionsEnum) As cSVGWriter
             Return Nothing
         End Function
 
-        Friend Overrides Function ToSvgItem(SVG As System.Xml.XmlDocument, PaintOptions As cOptionsCenterline, Options As cItem.SVGOptionsEnum) As System.Xml.XmlElement
+        Friend Overrides Function ToSvgItem(SVG As cSVGWriter, PaintOptions As cOptionsCenterline) As System.Xml.XmlElement
             Return Nothing
         End Function
 

@@ -473,8 +473,8 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-            If Options And SVGOptionsEnum.Images Then
+        Friend Overrides Function ToSvgItem(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline) As XmlElement
+            If SVG.Options And cSVGWriter.SVGOptionsEnum.Images Then
                 Dim oBounds As RectangleF = GetBounds()
                 Dim oSVGItem As XmlElement = modSVG.CreateImage(SVG, PaintOptions, oBounds, oDesignImage, 0, True)
                 Return oSVGItem
@@ -482,7 +482,7 @@ Namespace cSurvey.Design.Items
         End Function
 
         'Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-        '    Dim oSVG As XmlDocument = modSVG.CreateSVG
+        '    Dim oSVG As cSVGWriter = modSVG.CreateSVG
         '    Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
         '    Return oSVG
         'End Function

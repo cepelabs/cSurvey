@@ -575,7 +575,7 @@ Namespace cSurvey.Design.Items
             Call FixBound()
         End Sub
 
-        'Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        'Friend Overrides Function ToSvgItem(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
         '    Using oMatrix As Matrix = New Matrix
         '        If PaintOptions.DrawTranslation Then
         '            Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
@@ -588,7 +588,7 @@ Namespace cSurvey.Design.Items
         'End Function
 
         'Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-        '    Dim oSVG As XmlDocument = modSVG.CreateSVG
+        '    Dim oSVG As cSVGWriter = modSVG.CreateSVG
         '    Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
         '    Return oSVG
         'End Function

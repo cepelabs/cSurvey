@@ -457,17 +457,17 @@
   <data name="btnZOrderDetails.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
+        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
 </value>
   </data>
   <data name="btnZOrderDetails.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -1937,6 +1937,30 @@
   <data name="&gt;&gt;pnlExportOptionsSize.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="cmdSetSVGOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>202, 44</value>
+  </data>
+  <data name="cmdSetSVGOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdSetSVGOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>144</value>
+  </data>
+  <data name="cmdSetSVGOptions.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;cmdSetSVGOptions.Name" xml:space="preserve">
+    <value>cmdSetSVGOptions</value>
+  </data>
+  <data name="&gt;&gt;cmdSetSVGOptions.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdSetSVGOptions.Parent" xml:space="preserve">
+    <value>pnlExportOptionsPage</value>
+  </data>
+  <data name="&gt;&gt;cmdSetSVGOptions.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="lblImageOrientation.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 49</value>
   </data>
@@ -1959,7 +1983,7 @@
     <value>pnlExportOptionsPage</value>
   </data>
   <data name="&gt;&gt;lblImageOrientation.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="chkImageOrientationLandscape.Location" type="System.Drawing.Point, System.Drawing">
     <value>100, 43</value>
@@ -1983,7 +2007,7 @@
     <value>pnlExportOptionsPage</value>
   </data>
   <data name="&gt;&gt;chkImageOrientationLandscape.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="cmdSetImageMargins.Location" type="System.Drawing.Point, System.Drawing">
     <value>202, 7</value>
@@ -2004,7 +2028,7 @@
     <value>pnlExportOptionsPage</value>
   </data>
   <data name="&gt;&gt;cmdSetImageMargins.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="chkImageOrientationPortrait.Location" type="System.Drawing.Point, System.Drawing">
     <value>69, 43</value>
@@ -2028,7 +2052,7 @@
     <value>pnlExportOptionsPage</value>
   </data>
   <data name="&gt;&gt;chkImageOrientationPortrait.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="Label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2055,7 +2079,7 @@
     <value>pnlExportOptionsPage</value>
   </data>
   <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="cboSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>69, 3</value>
@@ -2082,7 +2106,7 @@
     <value>pnlExportOptionsPage</value>
   </data>
   <data name="&gt;&gt;cboSize.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="pnlExportOptionsPage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -2610,7 +2634,7 @@
     <value>cDesignMessageCorner</value>
   </data>
   <data name="&gt;&gt;cDesignMessageCorner.Type" xml:space="preserve">
-    <value>cSurveyPC.cMessageCorner, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cMessageCorner, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cDesignMessageCorner.Parent" xml:space="preserve">
     <value>pnlMain</value>
@@ -2645,7 +2669,7 @@
   <assembly alias="DevExpress.XtraBars.v24.2" name="DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="RibbonControl1.Categories" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v24.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMy4yLCBWZXJzaW9uPTIz
+        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyNC4yLCBWZXJzaW9uPTI0
         LjIuNS4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
         ACZEZXZFeHByZXNzLlh0cmFCYXJzLkJhck1hbmFnZXJDYXRlZ29yeQMAAAAETmFtZQRHdWlkB1Zpc2li
         bGUBAwALU3lzdGVtLkd1aWQBAgAAAAYDAAAACFByb2ZpbGVzBPz///8LU3lzdGVtLkd1aWQLAAAAAl9h
@@ -2655,7 +2679,7 @@
   </data>
   <data name="RibbonControl1.Categories1" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v24.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMy4yLCBWZXJzaW9uPTIz
+        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyNC4yLCBWZXJzaW9uPTI0
         LjIuNS4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
         ACZEZXZFeHByZXNzLlh0cmFCYXJzLkJhck1hbmFnZXJDYXRlZ29yeQMAAAAETmFtZQRHdWlkB1Zpc2li
         bGUBAwALU3lzdGVtLkd1aWQBAgAAAAYDAAAABEZpbGUE/P///wtTeXN0ZW0uR3VpZAsAAAACX2ECX2IC
@@ -2665,7 +2689,7 @@
   </data>
   <data name="RibbonControl1.Categories2" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v24.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMy4yLCBWZXJzaW9uPTIz
+        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyNC4yLCBWZXJzaW9uPTI0
         LjIuNS4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
         ACZEZXZFeHByZXNzLlh0cmFCYXJzLkJhck1hbmFnZXJDYXRlZ29yeQMAAAAETmFtZQRHdWlkB1Zpc2li
         bGUBAwALU3lzdGVtLkd1aWQBAgAAAAYDAAAABFZpZXcE/P///wtTeXN0ZW0uR3VpZAsAAAACX2ECX2IC
@@ -3061,7 +3085,7 @@
     <value>cMainMessageBar</value>
   </data>
   <data name="&gt;&gt;cMainMessageBar.Type" xml:space="preserve">
-    <value>cSurveyPC.cMessageBar, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cMessageBar, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cMainMessageBar.Parent" xml:space="preserve">
     <value>$this</value>

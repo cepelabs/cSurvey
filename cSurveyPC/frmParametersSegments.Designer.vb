@@ -32,6 +32,7 @@ Partial Class frmParametersSegments
         Me.cboSplayStyle = New System.Windows.Forms.ComboBox()
         Me.lblSplayStyle = New DevExpress.XtraEditors.LabelControl()
         Me.grpSplay = New DevExpress.XtraEditors.GroupControl()
+        Me.chkDesignPlotShowSplayMode = New DevExpress.XtraEditors.CheckEdit()
         Me.chkShowSplayLabel = New DevExpress.XtraEditors.CheckEdit()
         Me.GroupBox4 = New DevExpress.XtraEditors.GroupControl()
         Me.grdHighlights = New DevExpress.XtraGrid.GridControl()
@@ -50,6 +51,7 @@ Partial Class frmParametersSegments
         Me.grpLRUD.SuspendLayout()
         CType(Me.grpSplay, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpSplay.SuspendLayout()
+        CType(Me.chkDesignPlotShowSplayMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkShowSplayLabel.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
@@ -120,10 +122,18 @@ Partial Class frmParametersSegments
         'grpSplay
         '
         resources.ApplyResources(Me.grpSplay, "grpSplay")
+        Me.grpSplay.Controls.Add(Me.chkDesignPlotShowSplayMode)
         Me.grpSplay.Controls.Add(Me.chkShowSplayLabel)
         Me.grpSplay.Controls.Add(Me.cboSplayStyle)
         Me.grpSplay.Controls.Add(Me.lblSplayStyle)
         Me.grpSplay.Name = "grpSplay"
+        '
+        'chkDesignPlotShowSplayMode
+        '
+        resources.ApplyResources(Me.chkDesignPlotShowSplayMode, "chkDesignPlotShowSplayMode")
+        Me.chkDesignPlotShowSplayMode.Name = "chkDesignPlotShowSplayMode"
+        Me.chkDesignPlotShowSplayMode.Properties.AutoWidth = True
+        Me.chkDesignPlotShowSplayMode.Properties.Caption = resources.GetString("chkDesignPlotShowSplayMode.Properties.Caption")
         '
         'chkShowSplayLabel
         '
@@ -221,6 +231,7 @@ Partial Class frmParametersSegments
         CType(Me.grpSplay, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpSplay.ResumeLayout(False)
         Me.grpSplay.PerformLayout()
+        CType(Me.chkDesignPlotShowSplayMode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkShowSplayLabel.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
@@ -255,4 +266,5 @@ Partial Class frmParametersSegments
     Friend WithEvents colHLName As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents grpSurface As DevExpress.XtraEditors.GroupControl
     Friend WithEvents chkShowSplayLabel As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkDesignPlotShowSplayMode As DevExpress.XtraEditors.CheckEdit
 End Class

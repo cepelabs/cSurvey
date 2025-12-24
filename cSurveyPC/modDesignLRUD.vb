@@ -169,26 +169,29 @@ Module modDesignLRUD
         End Function
 
         Private Function pItemToPath(Item As cItemInvertedFreeHandArea) As GraphicsPath
-            Dim oPath As GraphicsPath = New GraphicsPath
-            For Each oSequence As cSequence In Item.Points.GetSequences
-                Dim iLineType As Items.cIItemLine.LineTypeEnum = oSequence.GetLineType(Item.LineType)
-                If iLineType = cIItemLine.LineTypeEnum.Lines Then
-                    oPath.AddLines(oSequence.GetPoints)
-                Else
-                    Dim oNewSequence As cSequence = Nothing
-                    Dim oSequencePoints() As PointF = oSequence.GetPoints
-                    If oSequencePoints.Length > 1 Then
-                        Select Case iLineType
-                            Case Items.cIItemLine.LineTypeEnum.Beziers
-                                Call modPaint.PointsToBeziers(oSequencePoints, oPath)
-                            Case Items.cIItemLine.LineTypeEnum.Splines
-                                Call oPath.AddCurve(oSequencePoints, sDefaultSplineTension)
-                        End Select
-                        Call oPath.Flatten(Nothing, sFlatness)
+            Dim oSequences As List(Of cSequence) = Item.Points.GetSequences
+            If oSequences.Count > 0 Then
+                Dim oPath As GraphicsPath = New GraphicsPath
+                For Each oSequence As cSequence In oSequences
+                    Dim iLineType As Items.cIItemLine.LineTypeEnum = oSequence.GetLineType(Item.LineType)
+                    If iLineType = cIItemLine.LineTypeEnum.Lines Then
+                        oPath.AddLines(oSequence.GetPoints)
+                    Else
+                        Dim oNewSequence As cSequence = Nothing
+                        Dim oSequencePoints() As PointF = oSequence.GetPoints
+                        If oSequencePoints.Length > 1 Then
+                            Select Case iLineType
+                                Case Items.cIItemLine.LineTypeEnum.Beziers
+                                    Call modPaint.PointsToBeziers(oSequencePoints, oPath)
+                                Case Items.cIItemLine.LineTypeEnum.Splines
+                                    Call oPath.AddCurve(oSequencePoints, sDefaultSplineTension)
+                            End Select
+                            Call oPath.Flatten(Nothing, sFlatness)
+                        End If
                     End If
-                End If
-            Next
-            Return oPath
+                Next
+                Return oPath
+            End If
         End Function
 
         Public Sub AppendAdd(Item As cItemInvertedFreeHandArea)
@@ -204,22 +207,26 @@ Module modDesignLRUD
         End Sub
 
         Public Sub AppendAdd(Path As GraphicsPath)
-            If oPathAdd Is Nothing Then
-                oPathAdd = Path.Clone
-            Else
-                Dim oPath As GraphicsPath = Path.Clone
-                oPath.Flatten(Nothing, sFlatness)
-                oPathAdd.AddPath(oPath, False)
+            If Path IsNot Nothing Then
+                If oPathAdd Is Nothing Then
+                    oPathAdd = Path.Clone
+                Else
+                    Dim oPath As GraphicsPath = Path.Clone
+                    oPath.Flatten(Nothing, sFlatness)
+                    oPathAdd.AddPath(oPath, False)
+                End If
             End If
         End Sub
 
         Public Sub AppendSubtract(Path As GraphicsPath)
-            If oPathSubtract Is Nothing Then
-                oPathSubtract = Path.Clone
-            Else
-                Dim oPath As GraphicsPath = Path.Clone
-                oPath.Flatten(Nothing, sFlatness)
-                oPathSubtract.AddPath(oPath, False)
+            If Path IsNot Nothing Then
+                If oPathSubtract Is Nothing Then
+                    oPathSubtract = Path.Clone
+                Else
+                    Dim oPath As GraphicsPath = Path.Clone
+                    oPath.Flatten(Nothing, sFlatness)
+                    oPathSubtract.AddPath(oPath, False)
+                End If
             End If
         End Sub
     End Class

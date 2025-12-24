@@ -85,7 +85,7 @@ Namespace cSurvey.Design
         Public ReadOnly Property Sand() As cCustomBrush
             Get
                 If oBrushSand Is Nothing Then
-                    oBrushSand = New cCustomBrush(oSurvey, GetLocalizedString("brushes.sand"), cBrush.BrushTypeEnum.Sand, Color.Black, cBrush.HatchTypeEnum.Clipart, modPenClipart.ClipartSand, 0.5, 0.1, Color.SandyBrown, cBrush.ClipartAngleModeEnum.Random, 0, cBrush.ClipartCropEnum.Full)
+                    oBrushSand = New cCustomBrush(oSurvey, GetLocalizedString("brushes.sand"), cBrush.BrushTypeEnum.Sand, Color.Black, cBrush.HatchTypeEnum.Clipart, modPenClipart.ClipartSand, 0.5, 0.1, Color.SandyBrown, cBrush.ClipartAngleModeEnum.Random, 0, cBrush.ClipartCropEnum.None)
                 End If
                 Return oBrushSand
             End Get

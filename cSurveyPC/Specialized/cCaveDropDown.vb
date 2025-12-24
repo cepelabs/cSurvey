@@ -57,7 +57,7 @@ Public Class cCaveDropDown
         End If
         cboCaveList.Properties.DataSource = oItems.ToList
         Try
-            If oCave Is Nothing Then
+            If oCave Is Nothing OrElse Not Survey.Properties.CaveInfos.Contains(oCave) Then
                 If cboCaveList.Properties.DataSource.count > 0 Then
                     cboCaveList.EditValue = cboCaveList.Properties.DataSource(0)
                 End If

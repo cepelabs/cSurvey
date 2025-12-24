@@ -454,7 +454,7 @@ Friend Class frmProperties
         If cboOrigin.Enabled Then
             cboOrigin.Enabled = oSurvey.Properties.DesignWarpingMode = cSurvey.cSurvey.DesignWarpingModeEnum.None Or (oSurvey.Properties.DesignWarpingMode <> cSurvey.cSurvey.DesignWarpingModeEnum.None And oSurvey.Properties.InversionMode = cSurvey.cSurvey.InversioneModeEnum.Absolute)
         End If
-        cboCaveInfoExtendStart.FastRebind(oSurvey, "", False, False)
+        cboCaveInfoExtendStart.FastRebind(oSurvey, "", True, False)
     End Sub
 
     Private Sub pOriginsEnabled()
@@ -1953,15 +1953,15 @@ Friend Class frmProperties
 
     Private Sub cboCaveInfoExtendStart_Validated(sender As Object, e As EventArgs) Handles cboCaveInfoExtendStart.Validated
         Try
-            If chkCaveInfoExtendStart.Checked Then
-                Dim sExtendStart As String = cboCaveInfoExtendStart.Text
-                Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
-                oItem.ExtendStart = sExtendStart
-                If Not sender Is chkCaveInfoExtendStart Then chkCaveInfoExtendStart.Checked = sExtendStart <> ""
-            Else
-                Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
-                oItem.ExtendStart = ""
-            End If
+            'If chkCaveInfoExtendStart.Checked Then
+            Dim sExtendStart As String = cboCaveInfoExtendStart.Text
+            Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+            oItem.ExtendStart = sExtendStart
+            'If Not sender Is chkCaveInfoExtendStart Then chkCaveInfoExtendStart.Checked = sExtendStart <> ""
+            'Else
+            'Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+            'oItem.ExtendStart = ""
+            'End If
         Catch
         End Try
     End Sub
@@ -2060,20 +2060,21 @@ Friend Class frmProperties
             txtCaveInfoPriority.Value = pGetPriority(tvCaveInfos.FocusedNode).GetValueOrDefault(0)
         End If
         Call txtCaveInfoPriority_Validated(chkCaveInfoPriority, EventArgs.Empty)
-        pnlCaveInfoConnections.Enabled = chkCaveInfoExtendStart.Checked OrElse chkCaveInfoPriority.Checked
+        pnlCaveInfoConnections.Enabled = cboCaveInfoExtendStart.Text <> "" OrElse chkCaveInfoPriority.Checked
     End Sub
 
-    Private Sub chkCaveInfoExtendStart_CheckedChanged(sender As Object, e As EventArgs) Handles chkCaveInfoExtendStart.CheckedChanged
-        cboCaveInfoExtendStart.Enabled = chkCaveInfoExtendStart.Checked
-        If cboCaveInfoExtendStart.Enabled Then
-            cboCaveInfoExtendStart.Rebind(oSurvey, Nothing, False, False)
-        Else
-            cboCaveInfoExtendStart.FastRebind(oSurvey, "" & pGetExtendStart(tvCaveInfos.FocusedNode), False, False)
-            'cboCaveInfoExtendStart.Text = "" & pGetExtendStart(tvCaveInfos.FocusedNode)
-        End If
-        Call cboCaveInfoExtendStart_Validated(chkCaveInfoExtendStart, EventArgs.Empty)
-        pnlCaveInfoConnections.Enabled = chkCaveInfoExtendStart.Checked OrElse chkCaveInfoPriority.Checked
-    End Sub
+    'Private Sub chkCaveInfoExtendStart_CheckedChanged(sender As Object, e As EventArgs) Handles chkCaveInfoExtendStart.CheckedChanged
+    '    Dim bEnabled As Boolean = chkCaveInfoExtendStart.Checked
+    '    cboCaveInfoExtendStart.Enabled = bEnabled
+    '    If bEnabled Then
+    '        cboCaveInfoExtendStart.Rebind(oSurvey, Nothing, False, False)
+    '    Else
+    '        cboCaveInfoExtendStart.FastRebind(oSurvey, "" & pGetExtendStart(tvCaveInfos.FocusedNode), False, False)
+    '        'cboCaveInfoExtendStart.Text = "" & pGetExtendStart(tvCaveInfos.FocusedNode)
+    '    End If
+    '    Call cboCaveInfoExtendStart_Validated(chkCaveInfoExtendStart, EventArgs.Empty)
+    '    pnlCaveInfoConnections.Enabled = chkCaveInfoExtendStart.Checked OrElse chkCaveInfoPriority.Checked
+    'End Sub
 
     Private Function pGetExtendStart(Node As DevExpress.XtraTreeList.Nodes.TreeListNode) As String
         Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetDataRecordByNode(Node)
@@ -2160,7 +2161,7 @@ Friend Class frmProperties
         Cursor = Cursors.Default
     End Sub
 
-    Private Sub chkCaveInfoExtendStart_Validated(sender As Object, e As EventArgs) Handles chkCaveInfoExtendStart.Validated
+    Private Sub chkCaveInfoExtendStart_Validated(sender As Object, e As EventArgs)
         Dim sExtendStart As String = ""
         Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
         Select Case oItem.Type
@@ -2663,13 +2664,14 @@ Friend Class frmProperties
                     txtCaveInfoID.Text = oCI.ID
                     txtCaveInfoDescription.Text = oCI.Description
                     txtCaveInfoColor.Color = oCI.Color
-                    If oCI.ExtendStart = "" Then
-                        chkCaveInfoExtendStart.Checked = False
-                        Call chkCaveInfoExtendStart_CheckedChanged(chkCaveInfoExtendStart, EventArgs.Empty)
-                    Else
-                        cboCaveInfoExtendStart.FastRebind(oSurvey, oCI.ExtendStart, False, False)
-                        chkCaveInfoExtendStart.Checked = True
-                    End If
+                    Call cboCaveInfoExtendStart.FastRebind(oSurvey, oCI.ExtendStart, True, False)
+                    'If oCI.ExtendStart = "" Then
+                    '    chkCaveInfoExtendStart.Checked = False
+                    '    Call chkCaveInfoExtendStart_CheckedChanged(chkCaveInfoExtendStart, EventArgs.Empty)
+                    'Else
+                    '    cboCaveInfoExtendStart.FastRebind(oSurvey, oCI.ExtendStart, False, False)
+                    '    chkCaveInfoExtendStart.Checked = True
+                    'End If
                     If oCI.Priority.HasValue Then
                         txtCaveInfoPriority.Value = oCI.Priority.GetValueOrDefault(0)
                         chkCaveInfoPriority.Checked = True
@@ -2716,14 +2718,15 @@ Friend Class frmProperties
                     txtCaveInfoName.Text = oCIB.Name
                     txtCaveInfoColor.Color = oCIB.Color
                     txtCaveInfoDescription.Text = oCIB.Description
-                    If oCIB.ExtendStart = "" Then
-                        chkCaveInfoExtendStart.Checked = False
-                        Call chkCaveInfoExtendStart_CheckedChanged(chkCaveInfoExtendStart, EventArgs.Empty)
-                    Else
-                        'cboCaveInfoExtendStart.Text = oCIB.ExtendStart
-                        cboCaveInfoExtendStart.FastRebind(oSurvey, oCIB.ExtendStart, False, False)
-                        chkCaveInfoExtendStart.Checked = True
-                    End If
+                    Call cboCaveInfoExtendStart.FastRebind(oSurvey, oCIB.ExtendStart, True, False)
+                    'If oCIB.ExtendStart = "" Then
+                    '    chkCaveInfoExtendStart.Checked = False
+                    '    Call chkCaveInfoExtendStart_CheckedChanged(chkCaveInfoExtendStart, EventArgs.Empty)
+                    'Else
+                    '    'cboCaveInfoExtendStart.Text = oCIB.ExtendStart
+                    '    cboCaveInfoExtendStart.FastRebind(oSurvey, oCIB.ExtendStart, True, False)
+                    '    chkCaveInfoExtendStart.Checked = True
+                    'End If
                     If oCIB.Priority.HasValue Then
                         txtCaveInfoPriority.Value = oCIB.Priority.GetValueOrDefault(0)
                         chkCaveInfoPriority.Checked = True
@@ -4166,5 +4169,9 @@ Friend Class frmProperties
                 e.Handled = True
             End If
         End If
+    End Sub
+
+    Private Sub cboCaveInfoExtendStart_EditValueChanged(sender As Object, e As EventArgs) Handles cboCaveInfoExtendStart.EditValueChanged
+        pnlCaveInfoPriority.Enabled = cboCaveInfoExtendStart.Text <> ""
     End Sub
 End Class

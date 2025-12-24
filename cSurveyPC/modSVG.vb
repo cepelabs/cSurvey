@@ -109,7 +109,7 @@ Module modSVG
     Public Function AppendPolygon(SVG As cSVGWriter, ByVal Parent As XmlElement, ByVal Points As PointF(), Brush As Brush, Pen As Pen) As XmlElement
         Dim oItemRect As XmlElement = SVG.CreateElement("polygon", svgNamespace)
 
-        Call oItemRect.SetAttribute("points", String.Join(" ", Points.Select(Function(oPoint) modNumbers.NumberToString(oPoint.X, "") & "," & modNumbers.NumberToString(oPoint.Y, ""))))
+        Call oItemRect.SetAttribute("points", String.Join(" ", Points.Select(Function(oPoint) SingleToSVGString(oPoint.X) & "," & SingleToSVGString(oPoint.Y))))
 
         Call AppendItemStyle(SVG, oItemRect, Brush, Pen)
 
@@ -124,10 +124,10 @@ Module modSVG
     Public Function AppendRectangle(SVG As cSVGWriter, ByVal Parent As XmlElement, ByVal Bounds As RectangleF, Brush As Brush, Pen As Pen) As XmlElement
         Dim oItemRect As XmlElement = SVG.CreateElement("rect", svgNamespace)
 
-        Call oItemRect.SetAttribute("x", modNumbers.NumberToString(Bounds.Left, ""))
-        Call oItemRect.SetAttribute("y", modNumbers.NumberToString(Bounds.Top, ""))
-        Call oItemRect.SetAttribute("width", modNumbers.NumberToString(Bounds.Width, ""))
-        Call oItemRect.SetAttribute("height", modNumbers.NumberToString(Bounds.Height, ""))
+        Call oItemRect.SetAttribute("x", SingleToSVGString(Bounds.Left))
+        Call oItemRect.SetAttribute("y", SingleToSVGString(Bounds.Top))
+        Call oItemRect.SetAttribute("width", SingleToSVGString(Bounds.Width))
+        Call oItemRect.SetAttribute("height", SingleToSVGString(Bounds.Height))
 
         Call AppendItemStyle(SVG, oItemRect, Brush, Pen)
 
@@ -139,18 +139,12 @@ Module modSVG
         Return oItemRect
     End Function
 
-    'Public Function DrawLine(ByVal XML As XmlDocument, ByVal Point1 As PointF, ByVal Point2 As PointF) As XmlElement
-    '    Dim oXMLLine As XmlElement = XML.CreateElement("line", svgNamespace)
-    '    Call oXMLLine.SetAttribute("x1", modNumbers.NumberToString(Point1.X, ""))
-    '    Call oXMLLine.SetAttribute("y1", modNumbers.NumberToString(Point1.Y, ""))
-    '    Call oXMLLine.SetAttribute("x2", modNumbers.NumberToString(Point2.X, ""))
-    '    Call oXMLLine.SetAttribute("y2", modNumbers.NumberToString(Point2.Y, ""))
-    '    Return oXMLLine
-    'End Function
+    Public Function SingleToSVGString(ByVal Value As Single) As String
+        Return Value.ToString("0.###", Globalization.CultureInfo.InvariantCulture)
+    End Function
 
     Public Function PointToSVGString(ByVal X As Single, ByVal Y As Single) As String
         Return X.ToString("0.###", Globalization.CultureInfo.InvariantCulture) & " " & Y.ToString("0.###", Globalization.CultureInfo.InvariantCulture)
-        'Return modNumbers.NumberToString(X, "") & " " & modNumbers.NumberToString(Y, "")
     End Function
 
     Public Function PointToSVGString(ByVal Point As PointF) As String
@@ -244,11 +238,11 @@ Module modSVG
         Dim sUnit As String = SizeUnitToUnit(Unit)
 
         Dim oXMLRoot As XmlElement = oXML.CreateElement("svg", svgNamespace)
-        Call oXMLRoot.SetAttribute("width", modNumbers.NumberToString(Size.Width, "") & sUnit)
-        Call oXMLRoot.SetAttribute("height", modNumbers.NumberToString(Size.Height, "") & sUnit)
+        Call oXMLRoot.SetAttribute("width", SingleToSVGString(Size.Width) & sUnit)
+        Call oXMLRoot.SetAttribute("height", SingleToSVGString(Size.Height) & sUnit)
         Call oXMLRoot.SetAttribute("version", "1.1")
 
-        Call oXMLRoot.SetAttribute("viewBox", modNumbers.NumberToString(ViewBox.Left, "") & " " & modNumbers.NumberToString(ViewBox.Top, "") & " " & modNumbers.NumberToString(ViewBox.Width, "") & " " & modNumbers.NumberToString(ViewBox.Height, ""))
+        Call oXMLRoot.SetAttribute("viewBox", SingleToSVGString(ViewBox.Left) & " " & SingleToSVGString(ViewBox.Top) & " " & SingleToSVGString(ViewBox.Width) & " " & SingleToSVGString(ViewBox.Height))
 
         Call oXMLRoot.SetAttribute("xmlns", svgNamespace)
         Call oXMLRoot.SetAttribute("xmlns:svg", svgNamespace)
@@ -303,12 +297,12 @@ Module modSVG
         If "" & id <> "" Then
             Call oXMLRoot.SetAttribute("id", id)
         End If
-        Call oXMLRoot.SetAttribute("x", modNumbers.NumberToString(Bounds.Left, "") & sUnit)
-        Call oXMLRoot.SetAttribute("y", modNumbers.NumberToString(Bounds.Top, "") & sUnit)
-        Call oXMLRoot.SetAttribute("width", modNumbers.NumberToString(Bounds.Width, "") & sUnit)
-        Call oXMLRoot.SetAttribute("height", modNumbers.NumberToString(Bounds.Height, "") & sUnit)
+        Call oXMLRoot.SetAttribute("x", SingleToSVGString(Bounds.Left) & sUnit)
+        Call oXMLRoot.SetAttribute("y", SingleToSVGString(Bounds.Top) & sUnit)
+        Call oXMLRoot.SetAttribute("width", SingleToSVGString(Bounds.Width) & sUnit)
+        Call oXMLRoot.SetAttribute("height", SingleToSVGString(Bounds.Height) & sUnit)
 
-        Call oXMLRoot.SetAttribute("viewBox", modNumbers.NumberToString(ViewBox.Left, "") & " " & modNumbers.NumberToString(ViewBox.Top, "") & " " & modNumbers.NumberToString(ViewBox.Width, "") & " " & modNumbers.NumberToString(ViewBox.Height, ""))
+        Call oXMLRoot.SetAttribute("viewBox", SingleToSVGString(ViewBox.Left) & " " & SingleToSVGString(ViewBox.Top) & " " & SingleToSVGString(ViewBox.Width) & " " & SingleToSVGString(ViewBox.Height))
 
         Return oXMLRoot
     End Function
@@ -402,10 +396,10 @@ Module modSVG
     Public Function CreateText(ByVal SVG As cSVGWriter, Text As String, Point As PointF, FontFamily As String, FontStyle As FontStyle, FontSize As Single, FontUnit As GraphicsUnit, Optional ByVal id As String = "") As XmlElement
         Dim oXMLText As XmlElement = SVG.CreateElement("text", svgNamespace)
         oXMLText.InnerText = Text
-        Call oXMLText.SetAttribute("x", modNumbers.NumberToString(Point.X, ""))
-        Call oXMLText.SetAttribute("y", modNumbers.NumberToString(Point.Y, ""))
+        Call oXMLText.SetAttribute("x", SingleToSVGString(Point.X))
+        Call oXMLText.SetAttribute("y", SingleToSVGString(Point.Y))
         Call oXMLText.SetAttribute("dominant-baseline", "hanging")
-        Call oXMLText.SetAttribute("style", "font-family:" & FontFamily & ";font-size:" & modNumbers.NumberToString(FontSize, "") & FontUnitToStyle(FontUnit))
+        Call oXMLText.SetAttribute("style", "font-family:" & FontFamily & ";font-size:" & modNumbers.NumberToString(FontSize, "0.0") & FontUnitToStyle(FontUnit))
         Return oXMLText
     End Function
 
@@ -416,17 +410,17 @@ Module modSVG
     Public Function CreateImage(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline, ByVal Bounds As RectangleF, Image As Bitmap, Optional RotationAngle As Single = 0, Optional KeepAspectRatio As Boolean = True, Optional ByVal id As String = "") As XmlElement
         If Not Image Is Nothing Then
             Dim oXMLImage As XmlElement = SVG.CreateElement("image", svgNamespace)
-            Call oXMLImage.SetAttribute("x", modNumbers.NumberToString(Bounds.X, ""))
-            Call oXMLImage.SetAttribute("y", modNumbers.NumberToString(Bounds.Y, ""))
-            Call oXMLImage.SetAttribute("width", modNumbers.NumberToString(Bounds.Width, ""))
-            Call oXMLImage.SetAttribute("height", modNumbers.NumberToString(Bounds.Height, ""))
+            Call oXMLImage.SetAttribute("x", SingleToSVGString(Bounds.X))
+            Call oXMLImage.SetAttribute("y", SingleToSVGString(Bounds.Y))
+            Call oXMLImage.SetAttribute("width", SingleToSVGString(Bounds.Width))
+            Call oXMLImage.SetAttribute("height", SingleToSVGString(Bounds.Height))
             Call oXMLImage.SetAttribute("preserveAspectRatio", If(KeepAspectRatio, "meet", "none"))
             Dim oSB As StringBuilder = New StringBuilder
             Call oSB.Append("data:image/PNG;base64,")
             Call oSB.Append(Convert.ToBase64String(modPaint.BitmapToByteArray(Image, Drawing.Imaging.ImageFormat.Png)))
             Call oXMLImage.SetAttribute("href", "http://www.w3.org/1999/xlink", oSB.ToString)
             If RotationAngle <> 0 Then
-                Call oXMLImage.SetAttribute("transform", "rotate(" & modNumbers.NumberToString(RotationAngle, "") & ")")
+                Call oXMLImage.SetAttribute("transform", "rotate(" & SingleToSVGString(RotationAngle) & ")")
             End If
             Return oXMLImage
         End If

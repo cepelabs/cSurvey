@@ -99,7 +99,7 @@ Friend Class cItemTrigpointPropertyControl
         Else
             If oTrigpoint.Survey.Calculate.TrigPoints.Contains(oTrigpoint.Name) Then
                 oCalculatedTrigpoint = oTrigpoint.Survey.Calculate.TrigPoints(oTrigpoint.Name)
-                If Not oTrigpoint.Survey.Properties.SurfaceProfileElevation Is Nothing Then
+                If oTrigpoint.Survey.Properties.SurfaceProfileElevation IsNot Nothing Then
                     sAltValue = modPaint.GetSurfaceElevation(oTrigpoint.Survey, oTrigpoint)
                 End If
                 cmdPropTrigpointGoto.Visible = True

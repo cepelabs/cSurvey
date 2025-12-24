@@ -2068,17 +2068,7 @@ Namespace cSurvey.UIHelpers
             End Get
         End Property
 
-        'Private bMoved As Boolean
         Private oOriginalParent As Object
-        'Private iOriginalPosition As Integer
-        'Private sOriginaleCave As String
-        'Private sOriginalBranch As String
-
-        'Public ReadOnly Property Moved As Boolean Implements cICaveInfoBasePlaceHolder.Moved
-        '    Get
-        '        Return bMoved
-        '    End Get
-        'End Property
 
         Public Function GetPath() As String() Implements cICaveInfoBasePlaceHolder.GetPath
             If Parent Is Nothing Then
@@ -2108,7 +2098,7 @@ Namespace cSurvey.UIHelpers
 
     End Class
 
-        Public Class cCaveInfoPlaceHolder
+    Public Class cCaveInfoPlaceHolder
         Inherits cCaveInfoBasePlaceHolder(Of cCaveInfo)
 
         Public Sub New()
@@ -2118,34 +2108,6 @@ Namespace cSurvey.UIHelpers
 
     Public Class cCaveInfoBranchPlaceHolder
         Inherits cCaveInfoBasePlaceHolder(Of cCaveInfoBranch)
-
-        'Public Sub Move(SourceCollection As cCaveInfoBranchEditBindingList, SourceItem As cICaveInfoBasePlaceHolder, NewParent As cICaveInfoBasePlaceHolder, NewPosition As Integer)
-        '    SourceItem.SetMoved(SourceItem.Parent, SourceCollection.IndexOf(SourceItem))
-        '    SourceItem.Parent = NewParent
-        '    SourceCollection.
-        'End Sub
-
-        'Public Sub CopyFrom(SourceCollection As cCaveInfoBranchEditBindingList, SourceItem As cICaveInfoBasePlaceHolder)
-        '    MyBase.ID = SourceItem.ID
-        '    MyBase.Name = SourceItem.Name
-        '    MyBase.Color = SourceItem.Color
-        '    MyBase.Description = SourceItem.Description
-        '    MyBase.SurfaceProfileShow = SourceItem.SurfaceProfileShow
-        '    MyBase.Locked = SourceItem.Locked
-        '    MyBase.ExtendStart = SourceItem.ExtendStart
-        '    MyBase.Priority = SourceItem.Priority
-        '    MyBase.ParentConnection = SourceItem.ParentConnection
-        '    MyBase.Connection = SourceItem.Connection
-
-        '    For Each oChildItem As cICaveInfoBasePlaceHolder In SourceCollection.Where(Function(oItem) oItem.Parent Is SourceItem).ToList
-        '        Dim oNewChildItem As cCaveInfoBranchPlaceHolder = New cCaveInfoBranchPlaceHolder(Me)
-        '        oNewChildItem.CopyFrom(SourceCollection, oChildItem)
-        '        SourceCollection.Add(oNewChildItem)
-        '        Call SourceCollection.Remove(oChildItem)
-        '    Next
-
-        'End Sub
-
         Public Sub New(Parent As Object)
             MyBase.New(Parent)
         End Sub
@@ -2213,7 +2175,7 @@ Namespace cSurvey.UIHelpers
                     Dim oCI As cCaveInfoPlaceHolder = pGetRootItem(Item)
                     Dim oCIB As cCaveInfoBranchPlaceHolder = Item
                     If oSurvey.Properties.CaveInfos.Contains(oCI.Source) Then
-                        If oCI.Source.Branches.GetAllBranches.Values.Contains(oCIB.Source) Then
+                        If oCI.Source.Branches.GetAllBranches.Containsvalue(oCIB.Source) Then
                             oCIB.Deleted = True
                             Call pRecursiveDelete(Item)
                             Return False
@@ -2290,20 +2252,22 @@ Namespace cSurvey.UIHelpers
 
                     If sNewCave <> sCave OrElse sNewBranch <> sBranch Then
                         If TypeOf oCI.Source Is cCaveInfo Then
-                            .CaveInfos.Remove(oCI.Source.name)
+                            .CaveInfos.Remove(oCI.Source.name, False)
                         ElseIf TypeOf oCI.Source Is cCaveInfoBranch Then
                             With DirectCast(oCI.Source, cCaveInfoBranch)
                                 If .Parent Is Nothing Then
-                                    .GetCave.Branches.Remove(oCI.Source.name)
+                                    .GetCave.Branches.Remove(oCI.Source.name, False)
                                 Else
-                                    .Parent.Branches.Remove(oCI.Source.name)
+                                    .Parent.Branches.Remove(oCI.Source.name, False)
                                 End If
                             End With
                         End If
                         oCI.Created = True
                         oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Moving shots from " & sCave & cCaveInfoBranches.sBranchSeparator & sBranch & " to " & sNewCave & cCaveInfoBranches.sBranchSeparator & sNewBranch)
-                        For Each oSegment As cSegment In oSurvey.Segments.GetCaveSegments(sCave, sBranch)
-                            oSegment.RenameCave(sNewCave, sNewBranch)
+                        For Each oSegment As cSegment In oSurvey.Segments
+                            If oSegment.Cave.ToLower = sCave AndAlso oSegment.Branch.ToLower = sBranch Then
+                                oSegment.RenameCave(sNewCave, sNewBranch)
+                            End If
                         Next
                         oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Moving design items from " & sCave & cCaveInfoBranches.sBranchSeparator & sBranch & " to " & sNewCave & cCaveInfoBranches.sBranchSeparator & sNewBranch)
                         For Each oItem As Design.cItem In oSurvey.GetAllDesignItems()

@@ -609,7 +609,13 @@ Namespace cSurvey
             [Error] = &H1
             [Warning] = &H2
             [Information] = &H4
-            [Important] = &H16
+            [BaseMask] = &HF
+
+            [Important] = &H10
+            [ImportantMask] = &HF0
+
+            [SourceConsole] = &H100
+            [SourceMask] = &HF00
         End Enum
 
         Public Class OnLogEventArgs

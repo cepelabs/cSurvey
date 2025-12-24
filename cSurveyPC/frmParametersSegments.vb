@@ -26,6 +26,7 @@ Friend Class frmParametersSegments
 
         grpsplay.enabled = Options.DrawSplay
         cboSplayStyle.SelectedIndex = oOptions.SplayStyle
+        chkDesignPlotShowSplayMode.Checked = oOptions.ShowSplayMode = cOptionsDesign.ShowSplayModeEnum.All
         chkShowSplayLabel.Checked = oOptions.ShowSplayText
 
         If iApplyTo = cIDesign.cDesignTypeEnum.Profile Then
@@ -109,6 +110,12 @@ Friend Class frmParametersSegments
     Private Sub chkDesignPlotShowSplayLabel_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowSplayLabel.CheckedChanged
         If Not oOptions Is Nothing AndAlso Not bEventDisabled Then
             oOptions.ShowSplayText = chkShowSplayLabel.Checked
+        End If
+    End Sub
+
+    Private Sub chkDesignPlotShowSplayMode_CheckedChanged(sender As Object, e As EventArgs) Handles chkDesignPlotShowSplayMode.CheckedChanged
+        If Not oOptions Is Nothing AndAlso Not bEventDisabled Then
+            oOptions.ShowSplayMode = If(chkDesignPlotShowSplayMode.Checked, cOptionsDesign.ShowSplayModeEnum.All, cOptionsDesign.ShowSplayModeEnum.OnlyInRange)
         End If
     End Sub
 End Class

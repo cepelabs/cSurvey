@@ -1160,6 +1160,7 @@ main.undo54=Join point
 
 main.textpart179=User:
 main.textpart180=Calc:
+main.textpart181=Distance from surface (calculated)
 
 main.filetypecSurveyXLSX=Microsoft Excel files from cSurvey
 

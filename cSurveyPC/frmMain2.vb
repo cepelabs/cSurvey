@@ -1377,9 +1377,15 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pSurveySegmentsRefresh()
+        bDisableSegmentsChangeEvent.Push()
+        Call oMousePointer.Push(Cursors.WaitCursor)
         Call grdSegments.BeginUpdate()
         Call grdSegments.RefreshDataSource()
         Call grdSegments.EndUpdate()
+        bDisableSegmentsChangeEvent.Pop()
+        Call oMousePointer.Pop()
+
+        Call pSegmentLoad(pGetCurrentTools.CurrentSegment)
     End Sub
 
     Private Sub pSurveySegmentsGridSetup()
@@ -1398,6 +1404,8 @@ Friend Class frmMain2
         Call pSurveyTrigpointsGridSetup()
         bDisableTrigpointsChangeEvent.Pop()
         Call oMousePointer.Pop()
+
+        Call pTrigpointLoad(pGetCurrentTools.CurrentTrigpoint)
     End Sub
 
     Private Sub pSegmentInsert(Index As Integer)
@@ -20301,6 +20309,10 @@ Friend Class frmMain2
 
     Private Sub cboSegmentCaveList_EnabledChanged(sender As Object, e As EventArgs) Handles cboSegmentCaveList.EnabledChanged
         cboSegmentCaveList.cboCaveListView.RefreshData()
+    End Sub
+
+    Private Sub oDockLS_OnLog(Sender As Object, Args As cSurvey.cSurvey.OnLogEventArgs) Handles oDockLS.OnLog
+        Call oSurvey_OnLog(Sender, Args)
     End Sub
 End Class
 

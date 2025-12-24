@@ -61,7 +61,7 @@ Public Class cTrigpointDropDown
             End If
         End If
 
-        Dim bEnabled As Boolean = bAllowNull OrElse Count > 0
+        Dim bEnabled As Boolean = bAllowNull OrElse oSourceTrigpoints.Count > 0
         cboTrigpoint.Enabled = bEnabled
         Return bEnabled
     End Function

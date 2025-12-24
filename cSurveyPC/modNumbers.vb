@@ -35,9 +35,11 @@ Module modNumbers
 
         ' Formattazione standard veloce (senza zeri inutili)
         If UseLocalFormat Then
-            Return Number.ToString("0.###", CultureInfo.CurrentCulture)
+            'Return Number.ToString("0.###", CultureInfo.CurrentCulture)
+            Return Number.ToString(CultureInfo.CurrentCulture)
         Else
-            Return Number.ToString("0.###", CultureInfo.InvariantCulture)
+            'Return Number.ToString("0.###", CultureInfo.InvariantCulture)
+            Return Number.ToString(CultureInfo.InvariantCulture)
         End If
 
         'Dim sNumber As String
@@ -63,9 +65,9 @@ Module modNumbers
 
         ' Formattazione standard veloce (senza zeri inutili)
         If UseLocalFormat Then
-            Return Number.ToString("0.###", CultureInfo.CurrentCulture)
+            Return Number.ToString(CultureInfo.CurrentCulture)
         Else
-            Return Number.ToString("0.###", CultureInfo.InvariantCulture)
+            Return Number.ToString(CultureInfo.InvariantCulture)
         End If
 
         'Dim sNumber As String
@@ -91,9 +93,9 @@ Module modNumbers
 
         ' Formattazione standard veloce (senza zeri inutili)
         If UseLocalFormat Then
-            Return Number.ToString("0.###", CultureInfo.CurrentCulture)
+            Return Number.ToString(CultureInfo.CurrentCulture)
         Else
-            Return Number.ToString("0.###", CultureInfo.InvariantCulture)
+            Return Number.ToString(CultureInfo.InvariantCulture)
         End If
 
         'Dim sNumber As String

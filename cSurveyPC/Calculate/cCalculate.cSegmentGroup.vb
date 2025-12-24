@@ -35,7 +35,7 @@ Namespace cSurvey.Calculate
         End Function
 
         Friend Function Validate(RaiseError As Boolean) As Boolean
-            If oSegments.Count = 0 Then
+            If sExtendStart = "" OrElse oSegments.Count = 0 Then
                 Return True
             Else
                 If oSegments.Select(Function(item) item.From).Distinct.Contains(sExtendStart) Then

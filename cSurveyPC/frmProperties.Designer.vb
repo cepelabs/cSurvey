@@ -118,9 +118,9 @@ Partial Class frmProperties
         Me.txtSessionVthreshold = New System.Windows.Forms.NumericUpDown()
         Me.cboSessionDataFormat = New System.Windows.Forms.ComboBox()
         Me.chkSessionVthreshold = New DevExpress.XtraEditors.CheckEdit()
-        Me.pnlSessionNorth = New System.Windows.Forms.Panel()
+        Me.pnlSessionNorth = New DevExpress.XtraEditors.PanelControl()
         Me.chkSessionDecMag = New DevExpress.XtraEditors.CheckEdit()
-        Me.txtSessionDecMag = New System.Windows.Forms.TextBox()
+        Me.txtSessionDecMag = New DevExpress.XtraEditors.TextEdit()
         Me.cboSessionNordType = New System.Windows.Forms.ComboBox()
         Me.lblSessionNordType = New DevExpress.XtraEditors.LabelControl()
         Me.lblSessionSideMeasureType = New DevExpress.XtraEditors.LabelControl()
@@ -131,22 +131,22 @@ Partial Class frmProperties
         Me.cboSessionDistanceType = New System.Windows.Forms.ComboBox()
         Me.lblSessionGrade = New DevExpress.XtraEditors.LabelControl()
         Me.cboSessionSideMeasuresReferTo = New System.Windows.Forms.ComboBox()
-        Me.pnlSessionBearing = New System.Windows.Forms.Panel()
+        Me.pnlSessionBearing = New DevExpress.XtraEditors.PanelControl()
         Me.cboSessionBearingType = New System.Windows.Forms.ComboBox()
         Me.lblSessionBearingType = New DevExpress.XtraEditors.LabelControl()
         Me.chkSessionBearingDirection = New DevExpress.XtraEditors.CheckEdit()
-        Me.pnlSessionInclination = New System.Windows.Forms.Panel()
+        Me.pnlSessionInclination = New DevExpress.XtraEditors.PanelControl()
         Me.cboSessionInclinationType = New System.Windows.Forms.ComboBox()
         Me.lblSessionInclinationType = New DevExpress.XtraEditors.LabelControl()
         Me.chkSessionInclinationDirection = New DevExpress.XtraEditors.CheckEdit()
-        Me.pnlSessionDepth = New System.Windows.Forms.Panel()
+        Me.pnlSessionDepth = New DevExpress.XtraEditors.PanelControl()
         Me.cboSessionDepthType = New System.Windows.Forms.ComboBox()
         Me.lblSessionDepthType = New DevExpress.XtraEditors.LabelControl()
         Me.tabSessionDefault1 = New DevExpress.XtraTab.XtraTabPage()
         Me.txtGlobalVthreshold = New System.Windows.Forms.NumericUpDown()
         Me.chkGlobalDecMag = New DevExpress.XtraEditors.CheckEdit()
         Me.chkGlobalVthreshold = New DevExpress.XtraEditors.CheckEdit()
-        Me.txtGlobalDecMag = New System.Windows.Forms.TextBox()
+        Me.txtGlobalDecMag = New DevExpress.XtraEditors.TextEdit()
         Me.tabSessionSegments1 = New DevExpress.XtraTab.XtraTabPage()
         Me.lvSessionSegments = New cSurveyPC.cSegmentsGrid()
         Me.btnSessionSegmentsRefresh = New DevExpress.XtraEditors.SimpleButton()
@@ -270,15 +270,14 @@ Partial Class frmProperties
         Me.cboCaveInfoSurfaceProfileShow = New System.Windows.Forms.ComboBox()
         Me.tabCaveInfoCalculateOptions1 = New DevExpress.XtraTab.XtraTabPage()
         Me.cboCaveInfoExtendStart = New cSurveyPC.cTrigpointDropDown()
-        Me.pnlCaveInfoConnections = New System.Windows.Forms.Panel()
+        Me.pnlCaveInfoConnections = New DevExpress.XtraEditors.PanelControl()
         Me.lblCaveInfoConnection = New DevExpress.XtraEditors.LabelControl()
         Me.cmdCaveInfoParentConnection = New DevExpress.XtraEditors.SimpleButton()
         Me.txtCaveInfoConnection = New DevExpress.XtraEditors.TextEdit()
         Me.txtCaveInfoParentConnection = New DevExpress.XtraEditors.TextEdit()
         Me.cmdCaveInfoConnection = New DevExpress.XtraEditors.SimpleButton()
         Me.lblCaveInfoExtendStart = New DevExpress.XtraEditors.LabelControl()
-        Me.chkCaveInfoExtendStart = New DevExpress.XtraEditors.CheckEdit()
-        Me.pnlCaveInfoPriority = New System.Windows.Forms.Panel()
+        Me.pnlCaveInfoPriority = New DevExpress.XtraEditors.PanelControl()
         Me.txtCaveInfoPriority = New System.Windows.Forms.NumericUpDown()
         Me.lblCaveInfoPriority = New DevExpress.XtraEditors.LabelControl()
         Me.chkCaveInfoPriority = New DevExpress.XtraEditors.CheckEdit()
@@ -475,7 +474,7 @@ Partial Class frmProperties
         Me.lblPlotPenWidth = New DevExpress.XtraEditors.LabelControl()
         Me.lblPlotSelectedPenWidth = New DevExpress.XtraEditors.LabelControl()
         Me.lblPlotPenStyle = New DevExpress.XtraEditors.LabelControl()
-        Me.txtDesignItemNamePattern = New System.Windows.Forms.TextBox()
+        Me.txtDesignItemNamePattern = New DevExpress.XtraEditors.TextEdit()
         Me.lblDesignItemNamePattern = New DevExpress.XtraEditors.LabelControl()
         Me.cmdItemNamePatternAdd = New DevExpress.XtraEditors.SimpleButton()
         Me.chkShowLegacyExtraPrintAndExportObjects = New DevExpress.XtraEditors.CheckEdit()
@@ -590,7 +589,7 @@ Partial Class frmProperties
         Me.lblCreatorVersion = New DevExpress.XtraEditors.LabelControl()
         Me.lblCreationDate = New DevExpress.XtraEditors.LabelControl()
         Me.lblCreatedBy = New DevExpress.XtraEditors.LabelControl()
-        Me.pnlSurfaceProfile = New System.Windows.Forms.Panel()
+        Me.pnlSurfaceProfile = New DevExpress.XtraEditors.PanelControl()
         Me.pnlsurfaceprofileelevation = New DevExpress.XtraEditors.PanelControl()
         Me.chkSurfaceProfileShow = New DevExpress.XtraEditors.CheckEdit()
         Me.cbosurfaceprofileelevation = New cSurveyPC.cElevationDropDown()
@@ -695,17 +694,23 @@ Partial Class frmProperties
         Me.tabSessionMeasure1.SuspendLayout()
         CType(Me.txtSessionVthreshold, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkSessionVthreshold.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlSessionNorth, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlSessionNorth.SuspendLayout()
         CType(Me.chkSessionDecMag.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtSessionDecMag.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlSessionBearing, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlSessionBearing.SuspendLayout()
         CType(Me.chkSessionBearingDirection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlSessionInclination, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlSessionInclination.SuspendLayout()
         CType(Me.chkSessionInclinationDirection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlSessionDepth, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlSessionDepth.SuspendLayout()
         Me.tabSessionDefault1.SuspendLayout()
         CType(Me.txtGlobalVthreshold, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkGlobalDecMag.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkGlobalVthreshold.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtGlobalDecMag.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabSessionSegments1.SuspendLayout()
         Me.tabSessionCalibrationSegments1.SuspendLayout()
         CType(Me.txtSessionDescription.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -796,10 +801,11 @@ Partial Class frmProperties
         Me.tabCaveAndBranch.SuspendLayout()
         Me.tabCaveInfoSurface1.SuspendLayout()
         Me.tabCaveInfoCalculateOptions1.SuspendLayout()
+        CType(Me.pnlCaveInfoConnections, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlCaveInfoConnections.SuspendLayout()
         CType(Me.txtCaveInfoConnection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCaveInfoParentConnection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkCaveInfoExtendStart.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlCaveInfoPriority, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlCaveInfoPriority.SuspendLayout()
         CType(Me.txtCaveInfoPriority, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkCaveInfoPriority.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -894,6 +900,7 @@ Partial Class frmProperties
         Me.frmPlotPen.SuspendLayout()
         CType(Me.chkPlotCenterlineForceSegmentColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkPlotCenterlineVectors.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignItemNamePattern.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkShowLegacyExtraPrintAndExportObjects.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox8.SuspendLayout()
@@ -937,6 +944,7 @@ Partial Class frmProperties
         CType(Me.chkBindCrossSection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkCalculateMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkHistoryEnabled.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlSurfaceProfile, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlSurfaceProfile.SuspendLayout()
         CType(Me.pnlsurfaceprofileelevation, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlsurfaceprofileelevation.SuspendLayout()
@@ -1789,6 +1797,7 @@ Partial Class frmProperties
         '
         'pnlSessionNorth
         '
+        Me.pnlSessionNorth.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSessionNorth.Controls.Add(Me.chkSessionDecMag)
         Me.pnlSessionNorth.Controls.Add(Me.txtSessionDecMag)
         Me.pnlSessionNorth.Controls.Add(Me.cboSessionNordType)
@@ -1868,6 +1877,7 @@ Partial Class frmProperties
         '
         'pnlSessionBearing
         '
+        Me.pnlSessionBearing.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSessionBearing.Controls.Add(Me.cboSessionBearingType)
         Me.pnlSessionBearing.Controls.Add(Me.lblSessionBearingType)
         Me.pnlSessionBearing.Controls.Add(Me.chkSessionBearingDirection)
@@ -1894,6 +1904,7 @@ Partial Class frmProperties
         '
         'pnlSessionInclination
         '
+        Me.pnlSessionInclination.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSessionInclination.Controls.Add(Me.cboSessionInclinationType)
         Me.pnlSessionInclination.Controls.Add(Me.lblSessionInclinationType)
         Me.pnlSessionInclination.Controls.Add(Me.chkSessionInclinationDirection)
@@ -1920,6 +1931,7 @@ Partial Class frmProperties
         '
         'pnlSessionDepth
         '
+        Me.pnlSessionDepth.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSessionDepth.Controls.Add(Me.cboSessionDepthType)
         Me.pnlSessionDepth.Controls.Add(Me.lblSessionDepthType)
         resources.ApplyResources(Me.pnlSessionDepth, "pnlSessionDepth")
@@ -2994,7 +3006,6 @@ Partial Class frmProperties
         Me.tabCaveInfoCalculateOptions1.Controls.Add(Me.cboCaveInfoExtendStart)
         Me.tabCaveInfoCalculateOptions1.Controls.Add(Me.pnlCaveInfoConnections)
         Me.tabCaveInfoCalculateOptions1.Controls.Add(Me.lblCaveInfoExtendStart)
-        Me.tabCaveInfoCalculateOptions1.Controls.Add(Me.chkCaveInfoExtendStart)
         Me.tabCaveInfoCalculateOptions1.Controls.Add(Me.pnlCaveInfoPriority)
         Me.tabCaveInfoCalculateOptions1.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.calculatenow
         Me.tabCaveInfoCalculateOptions1.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
@@ -3009,6 +3020,7 @@ Partial Class frmProperties
         '
         'pnlCaveInfoConnections
         '
+        Me.pnlCaveInfoConnections.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlCaveInfoConnections.Controls.Add(Me.lblCaveInfoConnection)
         Me.pnlCaveInfoConnections.Controls.Add(Me.cmdCaveInfoParentConnection)
         Me.pnlCaveInfoConnections.Controls.Add(Me.txtCaveInfoConnection)
@@ -3055,15 +3067,9 @@ Partial Class frmProperties
         resources.ApplyResources(Me.lblCaveInfoExtendStart, "lblCaveInfoExtendStart")
         Me.lblCaveInfoExtendStart.Name = "lblCaveInfoExtendStart"
         '
-        'chkCaveInfoExtendStart
-        '
-        resources.ApplyResources(Me.chkCaveInfoExtendStart, "chkCaveInfoExtendStart")
-        Me.chkCaveInfoExtendStart.Name = "chkCaveInfoExtendStart"
-        Me.chkCaveInfoExtendStart.Properties.AutoWidth = True
-        Me.chkCaveInfoExtendStart.Properties.Caption = resources.GetString("chkCaveInfoExtendStart.Properties.Caption")
-        '
         'pnlCaveInfoPriority
         '
+        Me.pnlCaveInfoPriority.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlCaveInfoPriority.Controls.Add(Me.txtCaveInfoPriority)
         Me.pnlCaveInfoPriority.Controls.Add(Me.lblCaveInfoPriority)
         Me.pnlCaveInfoPriority.Controls.Add(Me.chkCaveInfoPriority)
@@ -5162,6 +5168,7 @@ Partial Class frmProperties
         'pnlSurfaceProfile
         '
         resources.ApplyResources(Me.pnlSurfaceProfile, "pnlSurfaceProfile")
+        Me.pnlSurfaceProfile.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSurfaceProfile.Controls.Add(Me.chksurfaceprofile)
         Me.pnlSurfaceProfile.Controls.Add(Me.pnlsurfaceprofileelevation)
         Me.pnlSurfaceProfile.Name = "pnlSurfaceProfile"
@@ -5837,22 +5844,27 @@ Partial Class frmProperties
         Me.tabSessionMeasure1.PerformLayout()
         CType(Me.txtSessionVthreshold, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkSessionVthreshold.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlSessionNorth, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlSessionNorth.ResumeLayout(False)
         Me.pnlSessionNorth.PerformLayout()
         CType(Me.chkSessionDecMag.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtSessionDecMag.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlSessionBearing, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlSessionBearing.ResumeLayout(False)
         Me.pnlSessionBearing.PerformLayout()
         CType(Me.chkSessionBearingDirection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlSessionInclination, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlSessionInclination.ResumeLayout(False)
         Me.pnlSessionInclination.PerformLayout()
         CType(Me.chkSessionInclinationDirection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlSessionDepth, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlSessionDepth.ResumeLayout(False)
         Me.pnlSessionDepth.PerformLayout()
         Me.tabSessionDefault1.ResumeLayout(False)
-        Me.tabSessionDefault1.PerformLayout()
         CType(Me.txtGlobalVthreshold, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkGlobalDecMag.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkGlobalVthreshold.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtGlobalDecMag.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabSessionSegments1.ResumeLayout(False)
         Me.tabSessionCalibrationSegments1.ResumeLayout(False)
         CType(Me.txtSessionDescription.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -5951,11 +5963,12 @@ Partial Class frmProperties
         Me.tabCaveInfoSurface1.PerformLayout()
         Me.tabCaveInfoCalculateOptions1.ResumeLayout(False)
         Me.tabCaveInfoCalculateOptions1.PerformLayout()
+        CType(Me.pnlCaveInfoConnections, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlCaveInfoConnections.ResumeLayout(False)
         Me.pnlCaveInfoConnections.PerformLayout()
         CType(Me.txtCaveInfoConnection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCaveInfoParentConnection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkCaveInfoExtendStart.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlCaveInfoPriority, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlCaveInfoPriority.ResumeLayout(False)
         Me.pnlCaveInfoPriority.PerformLayout()
         CType(Me.txtCaveInfoPriority, System.ComponentModel.ISupportInitialize).EndInit()
@@ -6060,6 +6073,7 @@ Partial Class frmProperties
         Me.frmPlotPen.PerformLayout()
         CType(Me.chkPlotCenterlineForceSegmentColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkPlotCenterlineVectors.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignItemNamePattern.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkShowLegacyExtraPrintAndExportObjects.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupBox8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox8.ResumeLayout(False)
@@ -6115,6 +6129,7 @@ Partial Class frmProperties
         CType(Me.chkBindCrossSection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkCalculateMode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkHistoryEnabled.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlSurfaceProfile, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlSurfaceProfile.ResumeLayout(False)
         Me.pnlSurfaceProfile.PerformLayout()
         CType(Me.pnlsurfaceprofileelevation, System.ComponentModel.ISupportInitialize).EndInit()
@@ -6374,9 +6389,9 @@ Partial Class frmProperties
     Friend WithEvents lblSessionTeam As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtSessionClub As DevExpress.XtraEditors.MemoEdit
     Friend WithEvents lblSessionClub As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents pnlSessionNorth As System.Windows.Forms.Panel
+    Friend WithEvents pnlSessionNorth As DevExpress.XtraEditors.PanelControl
     Friend WithEvents chkSessionDecMag As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents txtSessionDecMag As System.Windows.Forms.TextBox
+    Friend WithEvents txtSessionDecMag As DevExpress.XtraEditors.TextEdit
     Friend WithEvents cboSessionNordType As System.Windows.Forms.ComboBox
     Friend WithEvents lblSessionNordType As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboSessionDataFormat As System.Windows.Forms.ComboBox
@@ -6395,7 +6410,7 @@ Partial Class frmProperties
     Friend WithEvents cboSessionSideMeasuresType As System.Windows.Forms.ComboBox
     Friend WithEvents lblSessionSideMeasureType As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtSessionVthreshold As System.Windows.Forms.NumericUpDown
-    Friend WithEvents txtGlobalDecMag As System.Windows.Forms.TextBox
+    Friend WithEvents txtGlobalDecMag As DevExpress.XtraEditors.TextEdit
     Friend WithEvents chkGlobalDecMag As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkGPSEnabled As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkGPSSendToTherion As DevExpress.XtraEditors.CheckEdit
@@ -6450,9 +6465,9 @@ Partial Class frmProperties
     Friend WithEvents cboClipAdvancedClipart As System.Windows.Forms.ComboBox
     Friend WithEvents lblClippingAdvancedClipart As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chk3DLochShowSplay As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents pnlSessionBearing As System.Windows.Forms.Panel
-    Friend WithEvents pnlSessionInclination As System.Windows.Forms.Panel
-    Friend WithEvents pnlSessionDepth As System.Windows.Forms.Panel
+    Friend WithEvents pnlSessionBearing As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlSessionInclination As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlSessionDepth As DevExpress.XtraEditors.PanelControl
     Friend WithEvents cboSessionDepthType As System.Windows.Forms.ComboBox
     Friend WithEvents lblSessionDepthType As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chkHistoryEnabled As DevExpress.XtraEditors.CheckEdit
@@ -6478,7 +6493,7 @@ Partial Class frmProperties
     Friend WithEvents chkSurfaceProfileShow As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents lblCaveInfoSurfaceProfileShow As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboCaveInfoSurfaceProfileShow As System.Windows.Forms.ComboBox
-    Friend WithEvents pnlSurfaceProfile As System.Windows.Forms.Panel
+    Friend WithEvents pnlSurfaceProfile As DevExpress.XtraEditors.PanelControl
     Friend WithEvents lblHighlightSize As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtHighlightName As DevExpress.XtraEditors.TextEdit
     Friend WithEvents lblHighlightName As DevExpress.XtraEditors.LabelControl
@@ -6516,17 +6531,15 @@ Partial Class frmProperties
     Friend WithEvents GroupBox10 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents lblCaveInfoExtendStart As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lblCaveInfoPriority As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents chkCaveInfoExtendStart As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents chkCaveInfoPriority As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents txtCaveInfoPriority As NumericUpDown
     Friend WithEvents chkPlotCenterlineForceSegmentColor As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents cmdCaveInfoParentConnection As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents txtCaveInfoConnection As DevExpress.XtraEditors.TextEdit
     Friend WithEvents cmdCaveInfoConnection As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents txtCaveInfoParentConnection As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents pnlCaveInfoConnections As Panel
+    Friend WithEvents pnlCaveInfoConnections As DevExpress.XtraEditors.PanelControl
     Friend WithEvents lblCaveInfoConnection As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents pnlCaveInfoPriority As Panel
+    Friend WithEvents pnlCaveInfoPriority As DevExpress.XtraEditors.PanelControl
     Friend WithEvents GroupBox2 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents cmdSurfacePenColor As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents lblSurfacePenColor As DevExpress.XtraEditors.LabelControl
@@ -6539,7 +6552,7 @@ Partial Class frmProperties
     Friend WithEvents lblSurfacePenStyle As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lblDesignItemNamePattern As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cmdItemNamePatternAdd As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents txtDesignItemNamePattern As TextBox
+    Friend WithEvents txtDesignItemNamePattern As DevExpress.XtraEditors.TextEdit
     Friend WithEvents mnuItemNamePatternTags As ContextMenuStrip
     Friend WithEvents mnuItemNamePatternTagsCave As ToolStripMenuItem
     Friend WithEvents mnuItemNamePatternTagsBranch As ToolStripMenuItem
@@ -6819,4 +6832,5 @@ Partial Class frmProperties
     Friend WithEvents lblClipSoil As DevExpress.XtraEditors.LabelControl
     Friend WithEvents BehaviorManager1 As DevExpress.Utils.Behaviors.BehaviorManager
     Friend WithEvents tvCaveInforsDragDrop As DevExpress.Utils.DragDrop.DragDropEvents
+    Friend WithEvents chkCaveInfoPriority As DevExpress.XtraEditors.CheckEdit
 End Class

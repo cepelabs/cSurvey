@@ -1633,7 +1633,6 @@ Friend Class frmPreview
 
                             sLastFilename = .FileName
 
-                            Dim oXML As cSVGWriter
                             Dim oSVGOptions As cSVGWriter.SVGOptionsEnum
                             If My.Application.Settings.GetSetting("svg.exporttextaspath", 0) <> 0 Then
                                 oSVGOptions = oSVGOptions Or cSVGWriter.SVGOptionsEnum.TextAsPath
@@ -1660,6 +1659,7 @@ Friend Class frmPreview
                                 oSVGOptions = oSVGOptions Or cSVGWriter.SVGOptionsEnum.ReuseClipart
                             End If
 
+                            Dim oXML As cSVGWriter
                             If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
                                 oXML = oSurvey.Plan.ToSvg(oOptions, oSVGOptions, oSize, oPageInSourceUnit, iUnit, oPageInMeters)
                             Else

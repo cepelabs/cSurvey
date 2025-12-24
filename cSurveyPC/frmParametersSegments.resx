@@ -136,7 +136,7 @@
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="chkDuplicate.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;chkDuplicate.Name" xml:space="preserve">
     <value>chkDuplicate</value>
@@ -163,7 +163,7 @@
     <value>60, 20</value>
   </data>
   <data name="chkSurface.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;chkSurface.Name" xml:space="preserve">
     <value>chkSurface</value>
@@ -184,7 +184,7 @@
     <value>281, 91</value>
   </data>
   <data name="grpShots.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>0</value>
   </data>
   <data name="grpShots.Text" xml:space="preserve">
     <value>Show also excluded shots:</value>
@@ -223,7 +223,7 @@
     <value>138, 21</value>
   </data>
   <data name="cboSegmentsPaintStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>110</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;cboSegmentsPaintStyle.Name" xml:space="preserve">
     <value>cboSegmentsPaintStyle</value>
@@ -274,7 +274,7 @@
     <value>281, 68</value>
   </data>
   <data name="grpLRUD.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>1</value>
   </data>
   <data name="grpLRUD.Text" xml:space="preserve">
     <value>LRUD:</value>
@@ -310,7 +310,7 @@
     <value>141, 21</value>
   </data>
   <data name="cboSplayStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>143</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;cboSplayStyle.Name" xml:space="preserve">
     <value>cboSplayStyle</value>
@@ -322,7 +322,7 @@
     <value>grpSplay</value>
   </data>
   <data name="&gt;&gt;cboSplayStyle.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="lblSplayStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -349,16 +349,43 @@
     <value>grpSplay</value>
   </data>
   <data name="&gt;&gt;lblSplayStyle.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="grpSplay.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
+  </data>
+  <data name="chkDesignPlotShowSplayMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkDesignPlotShowSplayMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>73, 60</value>
+  </data>
+  <data name="chkDesignPlotShowSplayMode.Properties.Caption" xml:space="preserve">
+    <value>Show all splays</value>
+  </data>
+  <data name="chkDesignPlotShowSplayMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 20</value>
+  </data>
+  <data name="chkDesignPlotShowSplayMode.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;chkDesignPlotShowSplayMode.Name" xml:space="preserve">
+    <value>chkDesignPlotShowSplayMode</value>
+  </data>
+  <data name="&gt;&gt;chkDesignPlotShowSplayMode.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkDesignPlotShowSplayMode.Parent" xml:space="preserve">
+    <value>grpSplay</value>
+  </data>
+  <data name="&gt;&gt;chkDesignPlotShowSplayMode.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="chkShowSplayLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkShowSplayLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>73, 60</value>
+    <value>73, 86</value>
   </data>
   <data name="chkShowSplayLabel.Properties.Caption" xml:space="preserve">
     <value>Station label</value>
@@ -367,7 +394,7 @@
     <value>82, 20</value>
   </data>
   <data name="chkShowSplayLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>144</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;chkShowSplayLabel.Name" xml:space="preserve">
     <value>chkShowSplayLabel</value>
@@ -379,16 +406,16 @@
     <value>grpSplay</value>
   </data>
   <data name="&gt;&gt;chkShowSplayLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="grpSplay.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 183</value>
   </data>
   <data name="grpSplay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 90</value>
+    <value>281, 122</value>
   </data>
   <data name="grpSplay.TabIndex" type="System.Int32, mscorlib">
-    <value>112</value>
+    <value>2</value>
   </data>
   <data name="grpSplay.Text" xml:space="preserve">
     <value>Splay:</value>
@@ -442,10 +469,10 @@
     <value>1</value>
   </data>
   <data name="grdHighlights.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 160</value>
+    <value>173, 166</value>
   </data>
   <data name="grdHighlights.TabIndex" type="System.Int32, mscorlib">
-    <value>165</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;grdHighlights.Name" xml:space="preserve">
     <value>grdHighlights</value>
@@ -487,13 +514,13 @@
     <value>1</value>
   </data>
   <data name="GroupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 353</value>
+    <value>12, 385</value>
   </data>
   <data name="GroupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 208</value>
+    <value>281, 214</value>
   </data>
   <data name="GroupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>4</value>
   </data>
   <data name="GroupBox4.Text" xml:space="preserve">
     <value>Other options:</value>
@@ -523,7 +550,7 @@
     <value>93, 20</value>
   </data>
   <data name="chkSurfaceProfile.TabIndex" type="System.Int32, mscorlib">
-    <value>160</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;chkSurfaceProfile.Name" xml:space="preserve">
     <value>chkSurfaceProfile</value>
@@ -541,13 +568,13 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="grpSurface.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 279</value>
+    <value>12, 311</value>
   </data>
   <data name="grpSurface.Size" type="System.Drawing.Size, System.Drawing">
     <value>281, 68</value>
   </data>
   <data name="grpSurface.TabIndex" type="System.Int32, mscorlib">
-    <value>144</value>
+    <value>3</value>
   </data>
   <data name="grpSurface.Text" xml:space="preserve">
     <value>Surface:</value>
@@ -571,7 +598,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 571</value>
+    <value>308, 609</value>
   </data>
   <data name="&gt;&gt;grdViewHighlights.Name" xml:space="preserve">
     <value>grdViewHighlights</value>

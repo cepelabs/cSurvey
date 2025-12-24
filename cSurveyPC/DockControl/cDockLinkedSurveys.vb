@@ -1,17 +1,19 @@
-﻿Imports System.Linq
-Imports System.ComponentModel
+﻿Imports System.ComponentModel
+Imports System.Linq
 Imports BrightIdeasSoftware
 Imports cSurveyPC.cSurvey
+Imports cSurveyPC.cSurvey.cSurvey
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Items
 Imports DevExpress.XtraBars
 Imports DevExpress.XtraTreeList
 
 Friend Class cDockLinkedSurveys
-    'Private oSurvey As cSurveyPC.cSurvey.cSurvey
     Private WithEvents oSurvey As cSurvey.cSurvey
 
     Private sDefaultFolder As String
+
+    Public Event OnLog(ByVal Sender As Object, ByVal Args As OnLogEventArgs)
 
     Friend Class cFilenameRequestEventArgs
         Inherits EventArgs
@@ -188,19 +190,19 @@ Friend Class cDockLinkedSurveys
         Cursor = Cursors.Default
     End Sub
 
-    Private Sub mnuContext_Opening(sender As Object, e As CancelEventArgs)
-        'Dim oCurrentItem As cLinkedSurvey = tvLinkedSurveys.FocusedObject
-        'Dim bCurrentItem As Boolean = Not oCurrentItem Is Nothing
-        'mnuContextUnlink.Enabled = btnUnlink.Enabled
-        'mnuContextOpen.Enabled = bCurrentItem
-        'mnucontextCalculate.Enabled = bCurrentItem
-        'mnucontextRefresh.Enabled = cmdRefresh.Enabled
-        'Dim bEnabled As Boolean = tvLinkedSurveys.Items.Count > 0
-        'mnuContextUnlinkAll.Enabled = bEnabled
-        'Dim oArgs As cFilenameRequestEventArgs = New cFilenameRequestEventArgs()
-        'RaiseEvent OnFilenameRequest(Me, oArgs)
-        'mnuContextManageLinks.Enabled = bEnabled AndAlso oArgs.Filename <> ""
-    End Sub
+    'Private Sub mnuContext_Opening(sender As Object, e As CancelEventArgs)
+    '    'Dim oCurrentItem As cLinkedSurvey = tvLinkedSurveys.FocusedObject
+    '    'Dim bCurrentItem As Boolean = Not oCurrentItem Is Nothing
+    '    'mnuContextUnlink.Enabled = btnUnlink.Enabled
+    '    'mnuContextOpen.Enabled = bCurrentItem
+    '    'mnucontextCalculate.Enabled = bCurrentItem
+    '    'mnucontextRefresh.Enabled = cmdRefresh.Enabled
+    '    'Dim bEnabled As Boolean = tvLinkedSurveys.Items.Count > 0
+    '    'mnuContextUnlinkAll.Enabled = bEnabled
+    '    'Dim oArgs As cFilenameRequestEventArgs = New cFilenameRequestEventArgs()
+    '    'RaiseEvent OnFilenameRequest(Me, oArgs)
+    '    'mnuContextManageLinks.Enabled = bEnabled AndAlso oArgs.Filename <> ""
+    'End Sub
 
     Private Sub tvLinkedSurveys_DoubleClick(sender As Object, e As EventArgs)
         Call pOpen()
@@ -213,12 +215,20 @@ Friend Class cDockLinkedSurveys
         End If
     End Sub
 
+    Private Sub oLinkedSurvey_OnLog(Sender As Object, Args As OnLogEventArgs)
+        RaiseEvent OnLog(Sender, Args)
+    End Sub
+
     Private Sub pCalculateAll()
         Cursor = Cursors.WaitCursor
         For Each oLinkedSurvey In oSurvey.LinkedSurveys.GetUsable
             Call oSurvey.RaiseOnProgressEvent("calculatelinkedsurvey", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, String.Format(modMain.GetLocalizedString("linkedsurveys.textpart2"), oLinkedSurvey.GetFilename), 0)
             Try
+                AddHandler oLinkedSurvey.LinkedSurvey.OnLog, AddressOf oLinkedSurvey_OnLog
+                RaiseEvent OnLog(oLinkedSurvey.LinkedSurvey, New OnLogEventArgs(LogEntryType.Warning, oLinkedSurvey.Filename))
+                Call oLinkedSurvey.LinkedSurvey.Invalidate()
                 Call oLinkedSurvey.LinkedSurvey.Calculate.Calculate()
+                RemoveHandler oLinkedSurvey.LinkedSurvey.OnLog, AddressOf oLinkedSurvey_OnLog
             Catch ex As Exception
                 oSurvey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Error, "linkedsurvey.calculate error: " & ex.Message)
             End Try
@@ -232,7 +242,11 @@ Friend Class cDockLinkedSurveys
         Dim oLinkedSurvey As cLinkedSurvey = TreeList1.GetFocusedObject
         If Not IsNothing(oLinkedSurvey) Then
             Call oSurvey.RaiseOnProgressEvent("calculatelinkedsurvey", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, String.Format(modMain.GetLocalizedString("linkedsurveys.textpart2"), oLinkedSurvey.GetFilename), 0)
+            AddHandler oLinkedSurvey.LinkedSurvey.OnLog, AddressOf oLinkedSurvey_OnLog
+            RaiseEvent OnLog(oLinkedSurvey.LinkedSurvey, New OnLogEventArgs(LogEntryType.Warning, oLinkedSurvey.Filename))
+            Call oLinkedSurvey.LinkedSurvey.Invalidate()
             Call oLinkedSurvey.LinkedSurvey.Calculate.Calculate()
+            RemoveHandler oLinkedSurvey.LinkedSurvey.OnLog, AddressOf oLinkedSurvey_OnLog
             Call oSurvey.RaiseOnProgressEvent("calculatelinkedsurvey", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
         End If
         Cursor = Cursors.Default
@@ -303,6 +317,7 @@ Friend Class cDockLinkedSurveys
     Private Sub btnUnlinkAll_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnUnlinkAll.ItemClick
         If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("linkedsurveys.warning1"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("linkedsurveys.warningtitle")) = MsgBoxResult.Yes Then
             Call oSurvey.LinkedSurveys.Clear()
+            Call pRefresh()
             'tvLinkedSurveys.Roots = oSurvey.LinkedSurveys.GetParents
             'Call tvLinkedSurveys_SelectionChanged(tvLinkedSurveys, EventArgs.Empty)
         End If

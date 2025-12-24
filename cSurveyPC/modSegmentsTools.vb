@@ -60,7 +60,7 @@ Module modSegmentsTools
         Return oSegmentColl
     End Function
 
-    Public Function GetCaveSegments(Survey As cSurvey.cSurvey, Segments As cISegmentCollection, ByVal Cave As String, Optional ByVal Branch As String = "") As cSegmentCollection
+    Public Function GetCaveSegments(Survey As cSurvey.cSurvey, Segments As cISegmentCollection, ByVal Cave As String, Optional ByVal Branch As String = "", Optional ExactMatch As Boolean = False) As cSegmentCollection
         Dim oSegmentColl As cSegmentCollection = New cSegmentCollection(Survey)
         Dim sCave As String = ("" & Cave).ToLower
         Dim sBranch As String = ("" & Branch).ToLower
@@ -78,7 +78,7 @@ Module modSegmentsTools
             End If
         Else
             For Each oSegment As cSegment In Segments
-                If oSegment.Cave.ToLower = sCave AndAlso (oSegment.Branch.ToLower = sBranch OrElse oSegment.Branch.ToLower.StartsWith(sBranch & cCaveInfoBranches.sBranchSeparator)) Then
+                If oSegment.Cave.ToLower = sCave AndAlso (oSegment.Branch.ToLower = sBranch OrElse (Not ExactMatch AndAlso oSegment.Branch.ToLower.StartsWith(sBranch & cCaveInfoBranches.sBranchSeparator))) Then
                     Call oSegmentColl.Append(oSegment)
                 End If
             Next
@@ -86,7 +86,7 @@ Module modSegmentsTools
         Return oSegmentColl
     End Function
 
-    Public Function GetCaveSegments(Survey As cSurvey.cSurvey, Segments As cISegmentCollection, ByVal CaveInfoBranch As cCaveInfoBranch) As cSegmentCollection
+    Public Function GetCaveSegments(Survey As cSurvey.cSurvey, Segments As cISegmentCollection, ByVal CaveInfoBranch As cCaveInfoBranch, Optional ExactMatch As Boolean = False) As cSegmentCollection
         If CaveInfoBranch Is Nothing Then
             Return GetCaveSegments(Survey, Segments, "")
         Else
@@ -94,11 +94,11 @@ Module modSegmentsTools
         End If
     End Function
 
-    Public Function GetCaveSegments(Survey As cSurvey.cSurvey, Segments As cISegmentCollection, ByVal CaveInfo As cCaveInfo) As cSegmentCollection
+    Public Function GetCaveSegments(Survey As cSurvey.cSurvey, Segments As cISegmentCollection, ByVal CaveInfo As cCaveInfo, Optional ExactMatch As Boolean = False) As cSegmentCollection
         If CaveInfo Is Nothing Then
-            Return GetCaveSegments(Survey, Segments, "")
+            Return GetCaveSegments(Survey, Segments, "", "", ExactMatch)
         Else
-            Return GetCaveSegments(Survey, Segments, CaveInfo.Name)
+            Return GetCaveSegments(Survey, Segments, CaveInfo.Name, "", ExactMatch)
         End If
     End Function
 

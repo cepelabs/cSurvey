@@ -123,8 +123,13 @@ Friend Class cDockConsole
                 Dim sLines As String() = Text.Split(vbCr)
                 For Each sLine As String In sLines
                     sLine = sLine.Replace(vbCr, "").Replace(vbLf, "")
+
+                    Dim iBaseType As cSurvey.cSurvey.LogEntryType = Type And cSurvey.cSurvey.LogEntryType.BaseMask
+                    Dim bIsImportant As Boolean = (Type And cSurvey.cSurvey.LogEntryType.Important) = cSurvey.cSurvey.LogEntryType.Important
+                    Dim iSource As cSurvey.cSurvey.LogEntryType = Type And cSurvey.cSurvey.LogEntryType.SourceMask
+
                     Dim bAboveInfo As Boolean = False
-                    If (Type And cSurvey.cSurvey.LogEntryType.Important) = cSurvey.cSurvey.LogEntryType.Important OrElse Type = cSurvey.cSurvey.LogEntryType.Warning OrElse Type = cSurvey.cSurvey.LogEntryType.Error OrElse (Type = cSurvey.cSurvey.LogEntryType.Unknown AndAlso (Text Like "* error -- *")) Then
+                    If bIsImportant OrElse iBaseType = cSurvey.cSurvey.LogEntryType.Warning OrElse iBaseType = cSurvey.cSurvey.LogEntryType.Error OrElse (iBaseType = cSurvey.cSurvey.LogEntryType.Unknown AndAlso (Text Like "* error -- *")) Then
                         bAboveInfo = True
                     End If
                     If bLogVerbose OrElse bAboveInfo Then
@@ -137,18 +142,22 @@ Friend Class cDockConsole
                         Loop
 
                         Dim oColor As System.Drawing.Color
-                        If Type = cSurvey.cSurvey.LogEntryType.Error OrElse (Type = cSurvey.cSurvey.LogEntryType.Unknown AndAlso (sLine Like "* error -- *")) Then
+                        If iBaseType = cSurvey.cSurvey.LogEntryType.Error OrElse (iBaseType = cSurvey.cSurvey.LogEntryType.Unknown AndAlso (sLine Like "* error -- *")) Then
                             oColor = Color.DarkRed
-                        ElseIf Type = cSurvey.cSurvey.LogEntryType.Warning Then
+                        ElseIf iBaseType = cSurvey.cSurvey.LogEntryType.Warning Then
                             oColor = Color.Orange
                         Else
                             oColor = My.Application.RuntimeSettings.GetSetting("forecolor", SystemColors.WindowText)
                         End If
                         Dim sHTMLLine As String
+                        Dim sHTMLLinePrefix As String = ""
+                        If iSource = cSurvey.cSurvey.LogEntryType.SourceConsole Then
+                            sHTMLLinePrefix = "<image=#console1;size=16,16>"
+                        End If
                         If URI = "" Then
-                            sHTMLLine = "<color=" & ColorTranslator.ToHtml(oColor) & ">" & sLine & "</color>"
+                            sHTMLLine = sHTMLLinePrefix & "<color=" & ColorTranslator.ToHtml(oColor) & ">" & sLine & "</color>"
                         Else
-                            sHTMLLine = "<href=""" & URI & """><color=" & ColorTranslator.ToHtml(oColor) & ">" & sLine & "</color><</href>"
+                            sHTMLLine = sHTMLLinePrefix & "<href=""" & URI & """><color=" & ColorTranslator.ToHtml(oColor) & ">" & sLine & "</color><</href>"
                         End If
                         oLog.Add(New cLogItem(dNow, Type, sLine, sHTMLLine, URI))
 

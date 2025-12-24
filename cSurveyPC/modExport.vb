@@ -1909,6 +1909,10 @@ Module modExport
                 oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart180") & modMain.GetLocalizedString("main.textpart117")
                 oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart180") & modMain.GetLocalizedString("main.textpart118")
 
+                If Survey.Properties.SurfaceProfileElevation IsNot Nothing Then
+                    oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart180") & modMain.GetLocalizedString("main.textpart181")
+                End If
+
                 For Each oDataField As Data.cDataField In Survey.Properties.DataTables.Trigpoints
                     oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = If(oDataField.Category = "", "", oDataField.Category & "/") & oDataField.Name
                 Next
@@ -1942,10 +1946,24 @@ Module modExport
                                     Dim oCalculatedTrigpoint As Calculate.cTrigPoint = Survey.Calculate.TrigPoints(oTrigpoint)
                                     If oCalculatedTrigpoint.Coordinate.IsEmpty Then
                                         pExcelNextColumn(c, 3)
+                                        If Survey.Properties.SurfaceProfileElevation IsNot Nothing Then
+                                            pExcelNextColumn(c)
+                                        End If
                                     Else
                                         oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oCalculatedTrigpoint.Coordinate.Latitude
                                         oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oCalculatedTrigpoint.Coordinate.Longitude
                                         oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oCalculatedTrigpoint.Coordinate.Altitude
+
+                                        If Survey.Properties.SurfaceProfileElevation IsNot Nothing Then
+                                            Dim dSurfaceAlt As Single? = modPaint.GetSurfaceElevation(oTrigpoint.Survey, oTrigpoint)
+                                            If dSurfaceAlt.HasValue Then
+                                                oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = modNumbers.MathRound(dSurfaceAlt.Value - oCalculatedTrigpoint.Coordinate.Altitude, 0)
+                                            Else
+                                                pExcelNextColumn(c)
+                                            End If
+                                        Else
+                                            pExcelNextColumn(c)
+                                        End If
                                     End If
                                 End If
                             End If

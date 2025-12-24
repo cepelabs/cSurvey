@@ -749,15 +749,6 @@ Namespace cSurvey.Calculate
                                         If Not oProcessed.Contains(sTrigPoint) Then oProcessed.Add(sTrigPoint)
                                         If oSurvey.Properties.CalculateVersion > 2 Then
                                             Call pCompassImportFromProcessEquate(oProcessed, oTp, sX, sY, sZ)
-                                            'For Each sEquateTrigPoint In .Connections.GetEquateShots
-                                            '    If oTPs.Contains(sEquateTrigPoint) Then
-                                            '        With oTPs.Item(sEquateTrigPoint)
-                                            '            Call .MoveTo(sX, sY, sZ)
-
-                                            '        End With
-                                            '        'If Not oProcessed.Contains(sEquateTrigPoint) Then oProcessed.Add(sEquateTrigPoint)
-                                            '    End If
-                                            'Next
                                         End If
                                     End With
                                 End If
@@ -1633,7 +1624,7 @@ Namespace cSurvey.Calculate
         End Class
 
         Private Sub pProcessOutputHandler(sendingProcess As Object, outLine As DataReceivedEventArgs)
-            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, outLine.Data)
+            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important Or cSurvey.LogEntryType.SourceConsole, outLine.Data)
         End Sub
 
         Private Sub pCalculateSegments(ByVal Origin As cTrigPointCalculateItem, Groups As cSegmentGroupCollection)
@@ -2224,7 +2215,7 @@ Namespace cSurvey.Calculate
             Call oGroups.Add(oEmptyGroup)
             For Each oSegment As cSegment In Segments
                 Dim oCaveInfo As cICaveInfoBranches = oSurvey.Properties.GetCaveInfo(oSegment)
-                If IsNothing(oCaveInfo) Then
+                If oSegment.IsEquate OrElse IsNothing(oCaveInfo) Then
                     Call oEmptyGroup.Append(oSegment)
                 Else
                     Call oGroups.NewOrExist(oCaveInfo).Append(oSegment)

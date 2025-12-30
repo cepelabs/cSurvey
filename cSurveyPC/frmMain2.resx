@@ -11508,7 +11508,7 @@
     <value>0, 32</value>
   </data>
   <data name="pnlDesigner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>711, 732</value>
+    <value>500, 732</value>
   </data>
   <data name="pnlDesigner.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -17631,6 +17631,12 @@
   <data name="&gt;&gt;mnuSelectionDeleteAll.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="&gt;&gt;txtSegmentsNullEdit.Name" xml:space="preserve">
+    <value>txtSegmentsNullEdit</value>
+  </data>
+  <data name="&gt;&gt;txtSegmentsNullEdit.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemTextEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmMain2</value>
   </data>
@@ -19156,7 +19162,7 @@
     <value>0, 0</value>
   </data>
   <data name="dockTopDesignerBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>711, 32</value>
+    <value>500, 32</value>
   </data>
   <data name="dockTopDesignerBar.Text" xml:space="preserve">
     <value>StandaloneBarDockControl1</value>
@@ -19472,8 +19478,11 @@
   <data name="txtSegmentsListBearing.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
     <value>Combo</value>
   </data>
+  <data name="txtSegmentsNullEdit.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="grdSegments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 403</value>
+    <value>388, 403</value>
   </data>
   <data name="grdSegments.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -19548,7 +19557,7 @@
     <value>1</value>
   </data>
   <data name="spSegments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>437, 403</value>
+    <value>648, 403</value>
   </data>
   <data name="spSegments.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -20178,7 +20187,7 @@
     <value>28</value>
   </data>
   <data name="grdTrigPoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 351</value>
+    <value>388, 351</value>
   </data>
   <data name="grdTrigPoints.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -20220,7 +20229,7 @@
     <value>1</value>
   </data>
   <data name="spTrigPoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>437, 351</value>
+    <value>648, 351</value>
   </data>
   <data name="spTrigPoints.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -20250,7 +20259,7 @@
     <value>1</value>
   </data>
   <data name="spSegmentsAndTrigpoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>437, 764</value>
+    <value>648, 764</value>
   </data>
   <data name="spSegmentsAndTrigpoints.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -20538,7 +20547,7 @@
     <value>0, 764</value>
   </data>
   <data name="dockBottomSegmentsAndTrigpoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>437, 32</value>
+    <value>648, 32</value>
   </data>
   <data name="dockBottomSegmentsAndTrigpoints.Text" xml:space="preserve">
     <value>StandaloneBarDockControl1</value>
@@ -20559,7 +20568,7 @@
     <value>0, 0</value>
   </data>
   <data name="ControlContainer6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>437, 796</value>
+    <value>648, 796</value>
   </data>
   <data name="ControlContainer6.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -20589,7 +20598,7 @@
     <value>0, 764</value>
   </data>
   <data name="dockBottomDesignerBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>711, 32</value>
+    <value>500, 32</value>
   </data>
   <data name="dockBottomDesignerBar.Text" xml:space="preserve">
     <value>StandaloneBarDockControl1</value>
@@ -20610,7 +20619,7 @@
     <value>0, 0</value>
   </data>
   <data name="DockPanel1_Container.Size" type="System.Drawing.Size, System.Drawing">
-    <value>711, 796</value>
+    <value>500, 796</value>
   </data>
   <data name="DockPanel1_Container.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

@@ -28,6 +28,7 @@ Imports DevExpress.Utils.Extensions
 Imports DevExpress.XtraBars.Ribbon
 Imports DevExpress.Utils
 Imports cSurveyPC.cSurvey.UIHelpers
+Imports DevExpress.XtraGrid.Views.Grid
 
 Friend Class frmMain2
     Private sZoomDefault As Single = 15.1181107F
@@ -4162,7 +4163,7 @@ Friend Class frmMain2
                         .Caption = oSegment.To
                         .Visibility = If(.Caption = "", BarItemVisibility.Never, BarItemVisibility.Always)
                     End With
-                    If oCurrentItem.Design.Type = cIDesign.cDesignTypeEnum.Profile AndAlso oSegment.IsValid Then
+                    If oCurrentItem.Design.Type = cIDesign.cDesignTypeEnum.Profile AndAlso oSegment.IsValid AndAlso Not oSegment.Splay Then
                         btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Always
                         btnCurrentItemSegmentDirection.Enabled = Not oSegment.IsProfileBinded AndAlso bIsUnlocked 'AndAlso oSegment.Direction <> cSurvey.cSurvey.DirectionEnum.Vertical
                         Select Case DirectCast(oCurrentItem, cItemSegment).Segment.Direction
@@ -20313,6 +20314,26 @@ Friend Class frmMain2
 
     Private Sub oDockLS_OnLog(Sender As Object, Args As cSurvey.cSurvey.OnLogEventArgs) Handles oDockLS.OnLog
         Call oSurvey_OnLog(Sender, Args)
+    End Sub
+
+    Private Sub grdViewSegments_CustomColumnDisplayText(sender As Object, e As CustomColumnDisplayTextEventArgs) Handles grdViewSegments.CustomColumnDisplayText
+        If e.Column Is colSegmentsListProfileDirection Then
+            Dim oSegment As UIHelpers.cSegmentPlaceholder = grdViewSegments.GetListSourceRow(e.ListSourceRowIndex)
+            If oSegment IsNot Nothing Then
+                If oSegment.Splay Then
+                    e.DisplayText = String.Empty
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub grdViewSegments_CustomRowCellEdit(sender As Object, e As CustomRowCellEditEventArgs) Handles grdViewSegments.CustomRowCellEdit
+        If e.Column Is colSegmentsListProfileDirection Then
+            Dim oSegment As UIHelpers.cSegmentPlaceholder = grdViewSegments.GetRow(e.RowHandle)
+            If oSegment.Splay Then
+                e.RepositoryItem = txtSegmentsNullEdit
+            End If
+        End If
     End Sub
 End Class
 

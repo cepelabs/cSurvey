@@ -852,6 +852,7 @@ Partial Class frmMain2
         Me.TaskbarAssistant = New DevExpress.Utils.Taskbar.TaskbarAssistant()
         Me.LayoutConverter1 = New DevExpress.XtraLayout.Converter.LayoutConverter(Me.components)
         Me.mnuSelectionDeleteAll = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.txtSegmentsNullEdit = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.Document2, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.DocumentGroup2, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1115,6 +1116,7 @@ Partial Class frmMain2
         CType(Me.mnuTray, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.svgItemImages, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.mnuSelectionDeleteAll, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentsNullEdit, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'DocumentGroup1
@@ -6515,7 +6517,7 @@ Partial Class frmMain2
         Me.grdSegments.MainView = Me.grdViewSegments
         Me.grdSegments.MenuManager = Me.RibbonControl
         Me.grdSegments.Name = "grdSegments"
-        Me.grdSegments.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.txtSegmentsListNumericEdit, Me.cboSegmentsListNote, Me.txtSegmentsListBearing, Me.cboSegmentsListAttachment, Me.cboSegmentListProfileDirection2})
+        Me.grdSegments.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.txtSegmentsListNumericEdit, Me.cboSegmentsListNote, Me.txtSegmentsListBearing, Me.cboSegmentsListAttachment, Me.cboSegmentListProfileDirection2, Me.txtSegmentsNullEdit})
         Me.grdSegments.ToolTipController = Me.ToolTipController
         Me.grdSegments.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdViewSegments})
         '
@@ -7589,9 +7591,9 @@ Partial Class frmMain2
         Me.docView.DocumentProperties.AllowClose = False
         Me.docView.Documents.AddRange(New DevExpress.XtraBars.Docking2010.Views.BaseDocument() {Me.Document1, Me.Document2})
         DockingContainer1.Element = Me.DocumentGroup1
-        DockingContainer1.Length.UnitValue = 0.76215277777777779R
+        DockingContainer1.Length.UnitValue = 1.1284722222222223R
         DockingContainer2.Element = Me.DocumentGroup2
-        DockingContainer2.Length.UnitValue = 1.2378472222222223R
+        DockingContainer2.Length.UnitValue = 0.8715277777777779R
         Me.docView.RootContainer.Nodes.AddRange(New DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer() {DockingContainer1, DockingContainer2})
         '
         'mnuSegments
@@ -7728,6 +7730,12 @@ Partial Class frmMain2
         '
         Me.mnuSelectionDeleteAll.Name = "mnuSelectionDeleteAll"
         Me.mnuSelectionDeleteAll.Ribbon = Me.RibbonControl
+        '
+        'txtSegmentsNullEdit
+        '
+        resources.ApplyResources(Me.txtSegmentsNullEdit, "txtSegmentsNullEdit")
+        Me.txtSegmentsNullEdit.Name = "txtSegmentsNullEdit"
+        Me.txtSegmentsNullEdit.ReadOnly = True
         '
         'frmMain2
         '
@@ -8020,6 +8028,7 @@ Partial Class frmMain2
         CType(Me.mnuTray, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.svgItemImages, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.mnuSelectionDeleteAll, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentsNullEdit, System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(False)
         Me.PerformLayout
 
@@ -8777,4 +8786,5 @@ Partial Class frmMain2
     Friend WithEvents btnSelectionDeleteAllShots As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnSelectionDeleteAllItems As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnSelectionDeleteAllAll As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents txtSegmentsNullEdit As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
 End Class

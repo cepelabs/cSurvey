@@ -1644,12 +1644,18 @@ Friend Class frmMain2
                     cboSegmentDirection.Enabled = False
                     chkSegmentUnbindable.Enabled = False
                     chkSegmentZSurvey.Enabled = False
+
+                    lblSegmentDirection.Visible = False
+                    cboSegmentDirection.Visible = False
                 Else
                     cboSegmentDirection.SelectedIndex = Segment.Direction
                     lblSegmentDirection.Enabled = bEnabledProfileEdit
                     cboSegmentDirection.Enabled = bEnabledProfileEdit
                     chkSegmentUnbindable.Enabled = True
                     chkSegmentZSurvey.Enabled = True
+
+                    lblSegmentDirection.Visible = True
+                    cboSegmentDirection.Visible = True
                 End If
 
                 chkSegmentExclude.Checked = .Exclude
@@ -1688,7 +1694,7 @@ Friend Class frmMain2
                 lblSegmentBearing.Text = sBearing
                 lblSegmentInclination.Text = sInclination
 
-                pnlSegmentSurfaceProfile.Visible = oSurvey.Properties.SurfaceProfile
+                pnlSegmentSurfaceProfile.Visible = Not .Splay andalso oSurvey.Properties.SurfaceProfile
                 cboSegmentSurfaceProfileShow.SelectedIndex = .SurfaceProfileShow
                 '-----------------------------------------------------------------------------------------
                 prpSegmentDataProperties.BeginUpdate()
@@ -14264,20 +14270,36 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pSegmentCheckFlags()
+        Dim bChecked As Boolean = chkSegmentSplay.Checked
+
         If Not bDisableSegmentsChangeEvent Then
             chkSegmentCutSplay.Checked = chkSegmentCutSplay.Checked And Not chkSegmentZSurvey.Checked
-            chkSegmentSplay.Checked = (chkSegmentSplay.Checked OrElse chkSegmentCutSplay.Checked) And Not chkSegmentZSurvey.Checked
-            chkSegmentExclude.Checked = (chkSegmentExclude.Checked OrElse chkSegmentCalibration.Checked OrElse chkSegmentDuplicate.Checked OrElse chkSegmentSplay.Checked OrElse chkSegmentSurface.Checked) And Not chkSegmentZSurvey.Checked
+            bChecked = (bChecked OrElse chkSegmentCutSplay.Checked) And Not chkSegmentZSurvey.Checked
+            chkSegmentExclude.Checked = (chkSegmentExclude.Checked OrElse chkSegmentCalibration.Checked OrElse chkSegmentDuplicate.Checked OrElse bChecked OrElse chkSegmentSurface.Checked) And Not chkSegmentZSurvey.Checked
         End If
-        chkSegmentUnbindable.Enabled = Not chkSegmentSplay.Checked
-        chkSegmentVirtual.Enabled = Not chkSegmentSplay.Checked
-        chkSegmentZSurvey.Enabled = Not chkSegmentSplay.Checked
+        chkSegmentUnbindable.Enabled = Not bChecked
+        chkSegmentVirtual.Enabled = Not bChecked
+        chkSegmentZSurvey.Enabled = Not bChecked
         chkSegmentExclude.Enabled = Not chkSegmentZSurvey.Checked
         chkSegmentSplay.Enabled = chkSegmentExclude.Enabled
         chkSegmentCutSplay.Enabled = chkSegmentExclude.Enabled
 
+        If bChecked Then
+            lblSegmentDirection.Visible = False
+            cboSegmentDirection.Visible = False
+        Else
+            lblSegmentDirection.Visible = True
+            cboSegmentDirection.Visible = True
+        End If
+
         cboSegmentSessionList.Enabled = Not chkSegmentVirtual.Checked
         pnlSegmentCaveBranches.Enabled = Not chkSegmentCalibration.Checked
+
+        pnlSegmentSurfaceProfile.Visible = Not bChecked AndAlso oSurvey.Properties.SurfaceProfile
+
+        If pGetCurrentDesignTools.Design.Type = cIDesign.cDesignTypeEnum.Profile Then
+            btnCurrentItemSegmentDirection.Visibility = VisibleToVisibility(Not bChecked)
+        End If
     End Sub
 
     Private Sub chkSegmentSplay_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkSegmentSplay.CheckedChanged
@@ -20330,7 +20352,7 @@ Friend Class frmMain2
     Private Sub grdViewSegments_CustomRowCellEdit(sender As Object, e As CustomRowCellEditEventArgs) Handles grdViewSegments.CustomRowCellEdit
         If e.Column Is colSegmentsListProfileDirection Then
             Dim oSegment As UIHelpers.cSegmentPlaceholder = grdViewSegments.GetRow(e.RowHandle)
-            If oSegment.Splay Then
+            If oSegment IsNot Nothing AndAlso oSegment.Splay Then
                 e.RepositoryItem = txtSegmentsNullEdit
             End If
         End If

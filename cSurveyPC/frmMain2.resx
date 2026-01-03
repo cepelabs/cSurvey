@@ -13136,9 +13136,6 @@
   <data name="pnlTrigPoint.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="tabTrigpointsCoordinateitem.Text" xml:space="preserve">
-    <value>Coordinate</value>
-  </data>
   <data name="tabTrigpointsMainitem.Text" xml:space="preserve">
     <value>Main</value>
   </data>
@@ -13153,6 +13150,9 @@
   </data>
   <data name="tabTrigpointsNoteitem.Text" xml:space="preserve">
     <value>Note</value>
+  </data>
+  <data name="tabTrigpointsCoordinateitem.Text" xml:space="preserve">
+    <value>Coordinate</value>
   </data>
   <data name="pnlTrigPoint.Size" type="System.Drawing.Size, System.Drawing">
     <value>250, 351</value>
@@ -17283,6 +17283,12 @@
   <data name="&gt;&gt;txtSegmentsListBearing.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="&gt;&gt;txtSegmentsNullEdit.Name" xml:space="preserve">
+    <value>txtSegmentsNullEdit</value>
+  </data>
+  <data name="&gt;&gt;txtSegmentsNullEdit.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemTextEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="&gt;&gt;ToolTipController.Name" xml:space="preserve">
     <value>ToolTipController</value>
   </data>
@@ -17630,12 +17636,6 @@
   </data>
   <data name="&gt;&gt;mnuSelectionDeleteAll.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtSegmentsNullEdit.Name" xml:space="preserve">
-    <value>txtSegmentsNullEdit</value>
-  </data>
-  <data name="&gt;&gt;txtSegmentsNullEdit.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.Repository.RepositoryItemTextEdit, DevExpress.XtraEditors.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmMain2</value>

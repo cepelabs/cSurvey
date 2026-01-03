@@ -1474,7 +1474,7 @@ Namespace cSurvey
                 Return oTempData.Direction
             End Get
             Set(value As cSurvey.DirectionEnum)
-                If value <> oTempData.Direction Then
+                If Not oTempData.Splay AndAlso value <> oTempData.Direction Then
                     oTempData.Direction = value
                     bChanged = True
                 End If

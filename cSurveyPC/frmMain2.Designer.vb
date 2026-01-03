@@ -745,6 +745,7 @@ Partial Class frmMain2
         Me.colSegmentsListAttachment = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.cboSegmentsListAttachment = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
         Me.txtSegmentsListBearing = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
+        Me.txtSegmentsNullEdit = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.ToolTipController = New DevExpress.Utils.ToolTipController(Me.components)
         Me.cSegmentMessageBar = New cSurveyPC.cMessageBar()
         Me.DefaultToolTipController = New DevExpress.Utils.DefaultToolTipController(Me.components)
@@ -852,7 +853,6 @@ Partial Class frmMain2
         Me.TaskbarAssistant = New DevExpress.Utils.Taskbar.TaskbarAssistant()
         Me.LayoutConverter1 = New DevExpress.XtraLayout.Converter.LayoutConverter(Me.components)
         Me.mnuSelectionDeleteAll = New DevExpress.XtraBars.PopupMenu(Me.components)
-        Me.txtSegmentsNullEdit = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.Document2, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.DocumentGroup2, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1057,6 +1057,7 @@ Partial Class frmMain2
         CType(Me.cboSegmentsListNote, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.cboSegmentsListAttachment, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtSegmentsListBearing, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtSegmentsNullEdit, System.ComponentModel.ISupportInitialize).BeginInit
         Me.mnuDesignItemOLD.SuspendLayout
         Me.pnlForm.SuspendLayout
         Me.panelContainer1.SuspendLayout
@@ -1116,7 +1117,6 @@ Partial Class frmMain2
         CType(Me.mnuTray, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.svgItemImages, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.mnuSelectionDeleteAll, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.txtSegmentsNullEdit, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'DocumentGroup1
@@ -5686,7 +5686,7 @@ Partial Class frmMain2
         Me.tabTrigpointsPropertyitem.Location = New System.Drawing.Point(0, 5)
         Me.tabTrigpointsPropertyitem.Name = "tabTrigpointsPropertyitem"
         Me.tabTrigpointsPropertyitem.Padding = New DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0)
-        Me.tabTrigpointsPropertyitem.SelectedTabPage = Me.tabTrigpointsCoordinateitem
+        Me.tabTrigpointsPropertyitem.SelectedTabPage = Me.tabTrigpointsMainitem
         Me.tabTrigpointsPropertyitem.Size = New System.Drawing.Size(233, 378)
         Me.tabTrigpointsPropertyitem.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.tabTrigpointsMainitem, Me.tabTrigpointsLayoutitem, Me.tabTrigpointsConnectionsitem, Me.tabTrigpointsDataitem, Me.tabTrigpointsNoteitem, Me.tabTrigpointsCoordinateitem})
         '
@@ -6723,6 +6723,12 @@ Partial Class frmMain2
         Me.txtSegmentsListBearing.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtSegmentsListBearing.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtSegmentsListBearing.Name = "txtSegmentsListBearing"
         '
+        'txtSegmentsNullEdit
+        '
+        resources.ApplyResources(Me.txtSegmentsNullEdit, "txtSegmentsNullEdit")
+        Me.txtSegmentsNullEdit.Name = "txtSegmentsNullEdit"
+        Me.txtSegmentsNullEdit.ReadOnly = True
+        '
         'ToolTipController
         '
         '
@@ -7731,12 +7737,6 @@ Partial Class frmMain2
         Me.mnuSelectionDeleteAll.Name = "mnuSelectionDeleteAll"
         Me.mnuSelectionDeleteAll.Ribbon = Me.RibbonControl
         '
-        'txtSegmentsNullEdit
-        '
-        resources.ApplyResources(Me.txtSegmentsNullEdit, "txtSegmentsNullEdit")
-        Me.txtSegmentsNullEdit.Name = "txtSegmentsNullEdit"
-        Me.txtSegmentsNullEdit.ReadOnly = True
-        '
         'frmMain2
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me, CType(resources.GetObject("$this.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
@@ -7967,6 +7967,7 @@ Partial Class frmMain2
         CType(Me.cboSegmentsListNote, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.cboSegmentsListAttachment, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.txtSegmentsListBearing, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtSegmentsNullEdit, System.ComponentModel.ISupportInitialize).EndInit
         Me.mnuDesignItemOLD.ResumeLayout(False)
         Me.pnlForm.ResumeLayout(False)
         Me.panelContainer1.ResumeLayout(False)
@@ -8028,7 +8029,6 @@ Partial Class frmMain2
         CType(Me.mnuTray, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.svgItemImages, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.mnuSelectionDeleteAll, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.txtSegmentsNullEdit, System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(False)
         Me.PerformLayout
 

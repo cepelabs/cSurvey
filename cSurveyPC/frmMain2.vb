@@ -2451,12 +2451,8 @@ Friend Class frmMain2
                 Dim sFilename As String = oCommandLine.GetValue("filename", "")
                 If sFilename <> "" Then
                     Call pSurveyLoad(sFilename, False)
-                    'Else
-                    '   Call pSurveyNew()
                 End If
             End If
-            'Else
-            '   Call pSurveyNew()
         End If
     End Sub
 
@@ -16605,12 +16601,18 @@ Friend Class frmMain2
     End Sub
 
     Private Sub mnuTemplates_BeforePopup(sender As Object, e As CancelEventArgs) Handles mnuTemplates.BeforePopup
-        Call mnuTemplates.ClearItems
+        Dim oLinks As List(Of BarItemLink) = New List(Of BarItemLink)(mnuTemplates.ItemLinks)
+        For Each oLink As BarItemLink In oLinks
+            If TypeOf oLink.Item.Tag Is cTemplateEntry Then
+                oLink.Manager.Items.Remove(oLink.Item)
+            End If
+        Next
+        Dim oTemplateManageLink As BarItemLink = mnuTemplates.ItemLinks(0)
         For Each oTemplate As UIHelpers.cTemplateEntry In oTemplates
             Dim oItem As BarButtonItem = New BarButtonItem(RibbonControl.Manager, oTemplate.Name)
             oItem.Tag = oTemplate
             AddHandler oItem.ItemClick, AddressOf oNewFromTemplate_ItemClick
-            mnuTemplates.AddItem(oItem)
+            mnuTemplates.InsertItem(oTemplateManageLink, oItem)
         Next
     End Sub
 
@@ -20356,6 +20358,17 @@ Friend Class frmMain2
                 e.RepositoryItem = txtSegmentsNullEdit
             End If
         End If
+    End Sub
+
+    Private Sub btnTemplateManage_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnTemplateManage.ItemClick
+        Using frmT As frmTemplates = New frmTemplates(oTemplates, False)
+            With frmT
+                Call .ShowDialog(Me)
+                'always enumerate cause default could be changed...
+                Call oTemplates.Refresh()
+                btnNew.ButtonStyle = If(oTemplates.Count > 0, BarButtonStyle.DropDown, BarButtonStyle.Default)
+            End With
+        End Using
     End Sub
 End Class
 

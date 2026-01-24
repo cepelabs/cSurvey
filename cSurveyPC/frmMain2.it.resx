@@ -6309,9 +6309,6 @@ o ad una sezione trasversale</value>
   <data name="lblPropAttachment.Text" xml:space="preserve">
     <value>Allegato:</value>
   </data>
-  <data name="mnuFileNewFromTemplate.Text" xml:space="preserve">
-    <value>Nuovo da modello</value>
-  </data>
   <data name="lblPropBindCrossSections.Text" xml:space="preserve">
     <value>Sez. trasv.:</value>
   </data>
@@ -6530,5 +6527,8 @@ o ad una sezione trasversale</value>
   </data>
   <data name="btnFilterReapplyFilter.Caption" xml:space="preserve">
     <value>Riapplica filtro</value>
+  </data>
+  <data name="btnTemplateManage.Caption" xml:space="preserve">
+    <value>Gestisci template...</value>
   </data>
 </root>

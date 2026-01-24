@@ -139,6 +139,7 @@ Partial Class frmTemplates
         '
         resources.ApplyResources(Me.btnTemplateDelete, "btnTemplateDelete")
         Me.btnTemplateDelete.Id = 0
+        Me.btnTemplateDelete.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
         Me.btnTemplateDelete.Name = "btnTemplateDelete"
         '
         'btnTemplateSetAsDefault

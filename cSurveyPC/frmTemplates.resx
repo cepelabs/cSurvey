@@ -456,9 +456,6 @@
   <data name="&gt;&gt;grdTemplates.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
@@ -517,7 +514,7 @@
     <value>frmTemplates</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cForm, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="btnTemplateDelete.Caption" xml:space="preserve">
     <value>Delete</value>

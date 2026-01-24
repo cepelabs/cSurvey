@@ -630,8 +630,6 @@ Partial Class frmMain2
         Me.txtTrigPointName = New DevExpress.XtraEditors.TextEdit()
         Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.tabTrigpointsPropertyitem = New DevExpress.XtraLayout.TabbedControlGroup()
-        Me.tabTrigpointsCoordinateitem = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.tabTrigpointsMainitem = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.tabTrigpointsLayoutitem = New DevExpress.XtraLayout.LayoutControlGroup()
@@ -642,6 +640,8 @@ Partial Class frmMain2
         Me.prpTrigpointDataPropertiesitem = New DevExpress.XtraLayout.LayoutControlItem()
         Me.tabTrigpointsNoteitem = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.txtTrigpointNoteitem = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.tabTrigpointsCoordinateitem = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.WorkspaceManager = New DevExpress.Utils.WorkspaceManager(Me.components)
         Me.pnlSegmentDataMain = New DevExpress.XtraEditors.PanelControl()
@@ -853,6 +853,7 @@ Partial Class frmMain2
         Me.TaskbarAssistant = New DevExpress.Utils.Taskbar.TaskbarAssistant()
         Me.LayoutConverter1 = New DevExpress.XtraLayout.Converter.LayoutConverter(Me.components)
         Me.mnuSelectionDeleteAll = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.btnTemplateManage = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.Document2, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.DocumentGroup2, System.ComponentModel.ISupportInitialize).BeginInit
@@ -966,8 +967,6 @@ Partial Class frmMain2
         CType(Me.txtTrigPointName.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.tabTrigpointsPropertyitem, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.tabTrigpointsCoordinateitem, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.tabTrigpointsMainitem, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.tabTrigpointsLayoutitem, System.ComponentModel.ISupportInitialize).BeginInit
@@ -978,6 +977,8 @@ Partial Class frmMain2
         CType(Me.prpTrigpointDataPropertiesitem, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.tabTrigpointsNoteitem, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtTrigpointNoteitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabTrigpointsCoordinateitem, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.pnlSegmentDataMain, System.ComponentModel.ISupportInitialize).BeginInit
         Me.pnlSegmentDataMain.SuspendLayout
@@ -1175,9 +1176,9 @@ Partial Class frmMain2
         Me.RibbonControl.Categories.AddRange(New DevExpress.XtraBars.BarManagerCategory() {CType(resources.GetObject("RibbonControl.Categories"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("RibbonControl.Categories1"), DevExpress.XtraBars.BarManagerCategory)})
         Me.RibbonControl.Controller = Me.BarAndDockingController
         Me.RibbonControl.ExpandCollapseItem.Id = 0
-        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.btnNew, Me.btnLoad, Me.btnSave, Me.btnSaveAs, Me.btnRollback, Me.btnSaveAsTemplate, Me.btnHistory, Me.btnCleanUp, Me.btnResurvey, Me.btnLoch, Me.btnTherionPad, Me.btnImport, Me.btnExport, Me.btnPrint, Me.btnProperties, Me.btnSurface, Me.btnHide, Me.btnExit, Me.btnExportData, Me.btnExportTrack, Me.btnExportImage, Me.btnExport3D, Me.btnImportData, Me.btnImportTrack, Me.btnImportDesign, Me.btnUndo, Me.btnCut, Me.btnCopy, Me.btnPasteService, Me.btnDelete, Me.btnPlotCalculate, Me.btnPlotRebind, Me.btnRefreshStations, Me.btnRemoveOrphans, Me.btnPlotInfoCave, Me.btnZoomIn, Me.btnZoomOut, Me.btnZoomToFit, Me.btnLayer_Base, Me.btnLayer_Soil, Me.btnLayer_Water, Me.btnLayer_Rocks, Me.btnLayer_TerrainLevel, Me.btnLayer_Borders, Me.btnLayer_Signs, Me.btnLayerManageLevels, Me.btnItemsEndEdit, Me.btnItemsObjectProperties, Me.btnSurveyInfoSession, Me.btnSurveyInfoEntrance, Me.btnSurveyInfoRing, Me.btnSurveyInfoOrientation, Me.btnViewDistances, Me.btnSettings, Me.btnDesignDeleteAll, Me.btnDesignPlotRebindAll, Me.btnDesignPlotRemoveBindings, Me.btnDesignPlotUnlockAll, Me.btnDesignPlotLockAll, Me.btnDesignPlotShowBindings, Me.btnDesignEditScaleRules, Me.btnViewFieldData, Me.btnViewObjectProp, Me.btnViewDesignArea, Me.btnViewPlan, Me.btnViewProfile, Me.btnView3D, Me.btnViewViewer, Me.btnViewScript, Me.btnViewSharedTexts, Me.btnViewLinkedSurveys, Me.btnViewConsole, Me.btnMainSessionList, Me.btnMainCaveList, Me.btnMainCaveBranchList, Me.btnMainBindDesignType, Me.btnMainBindCrossSections, Me.btnObjectSetCaveBranch, Me.btnGroupCaveFilters, Me.btnDesignHighlight0, Me.btnDesignHighlight1, Me.btnDesignHighlightMode, Me.btnDesignHighlightMode0, Me.btnDesignHighlightMode1, Me.btnDesignHighlightMode2, Me.btnDesignHighlightSegmentsAndTrigpoints, Me.btnViewSplayShowMode, Me.btnViewSplayShowMode1, Me.btnViewSplayShowMode0, Me.btnSegmentAdd, Me.btnSegmentDelete, Me.btnPenSmooting, Me.btnPenSmootingFactor, Me.btnPenLine, Me.btnPenSpline, Me.btnPenBezier, Me.btnGrpPensType, Me.btnGrpPenSmooting, Me.btnPlotGrades, Me.btnPlotPrefixTrigpoints, Me.btnPlotRenameTrigpoints, Me.btnPlotReplicateData, Me.btnPlotManageLRUD, Me.btnPlotSplayReplicate, Me.btnPlotDeleteAll, Me.btnPlotManageVisibility, Me.btnEditFind, Me.btnZoomZoomCenter, Me.btnZoomZoomToSelection, Me.btnZoomZoomToFitCaveBranch, Me.btnZoomAutoZoomToFit, Me.btnHelpInfo, Me.btnHelpCheckUpdate, Me.btnViewWorkspaceData, Me.btnViewWorkspaceDesign, Me.btnViewWorkspaceAll, Me.btnEditSelectAll, Me.pnlStatusText, Me.pnlStatusProgress, Me.pnlStatusCurrentRule, Me.btnStatusWMSOnLine, Me.btnStatusHistoryEnabled, Me.pnlStatusDesignSnapToGrid, Me.pnlStatusDesignInfo, Me.pnlStatusDesignZoom, Me.btnStatusDesignWarping, Me.btnStatusDesignWarpingState, Me.btnStatusDesignGeographicState, Me.pnlStatusMasterSlave, Me.btnGrpDesignPlotRebindCommands, Me.btnGrpDesignPlotRebindActions, Me.btnDesignGraphicsQuality, Me.btnDesignGraphics0, Me.btnDesignGraphics1, Me.btnDesignGraphics2, Me.btnCursorMode, Me.btnScrollMode, Me.btnAltMode, Me.btnMultiSelMode1, Me.btnMultiSelMode2, Me.btnSnapToPointNone, Me.btnSnapToPoint0, Me.btnSnapToPoint1, Me.btnSnapToPoint2, Me.btnViewRulers, Me.btnEditDrawing, Me.btnEditPointToPoint, Me.btn3DViewTop, Me.btn3DViewBottom, Me.btnFilterEdit, Me.btnFilterFiltered, Me.btnFilterWhiteboard, Me.btnFilterInvertFilter, Me.btn3dViewSN, Me.btn3dViewNS, Me.btn3dViewEW, Me.btn3dViewWE, Me.btnViewMetricGrid, Me.btnViewMetricGrid0, Me.btnViewMetricGrid1, Me.btnViewMetricGrid2, Me.btn3DCameraType, Me.btn3DCameraType1, Me.btn3DCameraType0, Me.btn3DCameraMode, Me.btn3DCameraMode0, Me.btn3DCameraMode1, Me.btnGroupDesignFilters, Me.btnSegments, Me.btnTrigpoints, Me.btnSegmentsAndTrigPoints, Me.btnSegmentGridColor, Me.btnSegmentGridColor0, Me.btnSegmentGridColor1, Me.btnSegmentGridColor2, Me.btnSegmentGridColor3, Me.btnSegmentInsert, Me.btnSegmentMoveUp, Me.btnSegmentMoveDown, Me.btnGridExport, Me.btnGridRefresh, Me.btnDataPropertiesEdit, Me.btnDataPropertiesDelete, Me.btnAliasDelete, Me.btnAliasDeleteAll, Me.btnAttachmentsOpen, Me.btnAttachmentsAdd, Me.btnAttachmentsDelete, Me.btnAttachmentsDeleteAll, Me.btnItemsSendToBottom, Me.btnItemsSendBehind, Me.btnItemsBringAhead, Me.btnItemsBringOnTop, Me.btnItemsLayouts, Me.btnCurrentItemSignSaveInGallery, Me.btnCurrentItemSignExport, Me.btnCurrentItemGenericCombine, Me.btnCurrentItemGenericDivide, Me.btnCurrentItemGenericCombineAllSequences, Me.btnCurrentItemGenericCloseAllSequences, Me.btnCurrentItemGenericReorderSequence, Me.btnCurrentItemGenericRevertAllSequences, Me.btnCurrentItemGenericRestorePointPen, Me.btnCurrentItemGenericReducePoint, Me.btnCurrentItemItemsCombine, Me.btnCurrentItemItemsCombineRockClipart, Me.btnCurrentItemItemsCombineConcretionClipart, Me.btnCurrentItemItemsCombineSignClipart, Me.btnCurrentItemPointAdd, Me.btnCurrentItemPointDelete, Me.btnCurrentItemPointSequenceDivide, Me.btnCurrentItemPointSequenceDivideAndJoin, Me.btnCurrentItemPointSequenceCombine, Me.btnCurrentItemPointCloseSequence, Me.btnCurrentItemPointDeleteSequence, Me.btnCurrentItemPointRevertSequence, Me.btnCurrentItemPointNewFromSequence0, Me.btnCurrentItemPointNewFromSequence1, Me.btnCurrentItemPlotLockSegment, Me.btnCurrentItemPlotBindSegment, Me.btnCurrentItemPointConvertToLines, Me.btnCurrentItemPointConvertToSpline, Me.btnCurrentItemPointConvertToBezier, Me.btnCurrentItemClipartSaveInGallery, Me.btnCurrentItemClipartExport, Me.btnCurrentItemLegendAddTo, Me.btnCurrentItemSendCopyTo, Me.btnCurrentItemX, Me.btnCurrentItemY, Me.btnCurrentItemW, Me.btnCurrentItemH, Me.btnCurrentItemScaleW, Me.btnCurrentItemScaleH, Me.btnCurrentItemFlipH, Me.btnCurrentItemFlipV, Me.btnCurrentItemRotateBy, Me.btnCurrentItemRotateCenteredOnOrigin, Me.btnCurrentItemRotateRight, Me.btnCurrentItemRotateLeft, Me.btnCurrentItemHAlignLeft, Me.btnCurrentItemHAlignCenter, Me.btnCurrentItemHAlignRight, Me.btnCurrenItemVAlignTop, Me.btnCurrenItemVAlignCenter, Me.btnCurrenItemVAlignBottom, Me.btnCurrentItemAlignH, Me.btnCurrentItemAlignV, Me.btnCurrentItemSpacing, Me.cmdCurrentItemHSpace, Me.cmdCurrentItemVSpace, Me.btnCurrentItemLock, Me.btnCurrentItemPointsJoin, Me.btnCurrentItemPointsJoinAndConnect, Me.btnCurrentItemPointsUnjoin, Me.btnCurrentItemPointsUnjoinAll, Me.btnCurrentItemPointResetAsParent, Me.btnCurrentItemGenericReducePointFactor, Me.btnCurrentItemConvertToLines, Me.btnCurrentItemConvertToSpline, Me.btnCurrentItemConvertToBezier, Me.btnViewImageViewer, Me.pnlStatusZoomBar, Me.btnViewAudioListener, Me.btnCurrentItemBindings, Me.btnMapDropImage, Me.btnMapDropSketch, Me.btnMapDropPocketTopo, Me.btnMapDropCaveExplorer, Me.btnMapDropGenericText, Me.btnMapDropAttachment, Me.btnCurrentItemPointInfo, Me.btnPasteStyleBrush, Me.btnPasteStylePen, Me.btnPaste, Me.btnCurrentItemSketchEdit, Me.btnCurrentItemSketchView, Me.btnCurrentItemSketchDisableMorphingForAll, Me.btnCurrentItemSketchEnableMorphingForAll, Me.btnCurrentItemSketchHideAll, Me.btnCurrentItemImageEdit, Me.btnCurrentItemImageView, Me.btnCurrentItemUnderItems, Me.btnCurrentItemSegmentDirection, Me.btnCurrentItemSegmentDirection0, Me.btnCurrentItemSegmentDirection1, Me.btnCurrentItemSegmentDirection2, Me.btnCurrentItemSegmentDirection3, Me.btnCurrentItemSegmentDirection4, Me.btnCurrentItemSegmentFromProperty, Me.btnCurrentItemSegmentToProperty, Me.btnCurrentItemShot, Me.btnCurrentItemStationSetCoordinate, Me.btnCurrentItemStationSetCoordinateCP, Me.btnCurrentItemStation, Me.btnShow, Me.btnCurrentItemConvertTo, Me.btnItemsSendAndConvert, Me.btnDesignSetCurrentCaveBranch, Me.SkinPaletteRibbonGalleryBarItem1, Me.btnAlignToGrid, Me.btnAlignToGridSize, Me.btnAlignToGridOptions, Me.btnAutoSettings, Me.btnDesignBar3DRefresh, Me.btnDesignBarPlotCalculate, Me.btnWorkspacesCapture, Me.btnWorkspacesManage, Me.btnWorkspacesList, Me.btnTrigpointGridColor, Me.btnTrigpointGridColor0, Me.btnTrigpointGridColor1, Me.btnSurveyInfoDepths, Me.btnTherionPadExportPlan, Me.btnTherionPadExportProfile, Me.btnTherionPadExport3D, Me.SkinDropDownButtonItem1, Me.btnQATBeginGroup, Me.btnQATMovePrev, Me.btnQATMoveNext, Me.btnQATRestore, Me.chkViewShowLRUD, Me.chkViewShowSplay, Me.chkViewShowShots, Me.chkViewShowStation, Me.chkViewShowStationLabel, Me.btnViewShowCenterline, Me.btnCurrentItemPlotUnlockSegment, Me.btnCurrentItemLegendAddToFakeItem, Me.btnContextMenu, Me.btnToolsMostUsed, Me.btnToolsLastUsed, Me.btnViewToolbarLevels, Me.btnViewToolbarItems, Me.btnViewToolbarLastUsedTools, Me.btnViewToolbarsDesign, Me.btnViewToolbarFloatingBar, Me.btnCurrentItemSignReplaceByCategory, Me.btnCurrentItemSignReplaceByClipart, Me.btnViewBrushesAndPens, Me.btnViewClipartGallery, Me.pnlStatusTherion, Me.btnCurrentItemPointsDoJoin, Me.btnCurrentItemPointsPointToJoinList, Me.btnFilterReapplyFilter, Me.pnlStatusVersion, Me.btnSelectionDeleteAllShots, Me.btnSelectionDeleteAllItems, Me.btnSelectionDeleteAllAll})
+        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.btnNew, Me.btnLoad, Me.btnSave, Me.btnSaveAs, Me.btnRollback, Me.btnSaveAsTemplate, Me.btnHistory, Me.btnCleanUp, Me.btnResurvey, Me.btnLoch, Me.btnTherionPad, Me.btnImport, Me.btnExport, Me.btnPrint, Me.btnProperties, Me.btnSurface, Me.btnHide, Me.btnExit, Me.btnExportData, Me.btnExportTrack, Me.btnExportImage, Me.btnExport3D, Me.btnImportData, Me.btnImportTrack, Me.btnImportDesign, Me.btnUndo, Me.btnCut, Me.btnCopy, Me.btnPasteService, Me.btnDelete, Me.btnPlotCalculate, Me.btnPlotRebind, Me.btnRefreshStations, Me.btnRemoveOrphans, Me.btnPlotInfoCave, Me.btnZoomIn, Me.btnZoomOut, Me.btnZoomToFit, Me.btnLayer_Base, Me.btnLayer_Soil, Me.btnLayer_Water, Me.btnLayer_Rocks, Me.btnLayer_TerrainLevel, Me.btnLayer_Borders, Me.btnLayer_Signs, Me.btnLayerManageLevels, Me.btnItemsEndEdit, Me.btnItemsObjectProperties, Me.btnSurveyInfoSession, Me.btnSurveyInfoEntrance, Me.btnSurveyInfoRing, Me.btnSurveyInfoOrientation, Me.btnViewDistances, Me.btnSettings, Me.btnDesignDeleteAll, Me.btnDesignPlotRebindAll, Me.btnDesignPlotRemoveBindings, Me.btnDesignPlotUnlockAll, Me.btnDesignPlotLockAll, Me.btnDesignPlotShowBindings, Me.btnDesignEditScaleRules, Me.btnViewFieldData, Me.btnViewObjectProp, Me.btnViewDesignArea, Me.btnViewPlan, Me.btnViewProfile, Me.btnView3D, Me.btnViewViewer, Me.btnViewScript, Me.btnViewSharedTexts, Me.btnViewLinkedSurveys, Me.btnViewConsole, Me.btnMainSessionList, Me.btnMainCaveList, Me.btnMainCaveBranchList, Me.btnMainBindDesignType, Me.btnMainBindCrossSections, Me.btnObjectSetCaveBranch, Me.btnGroupCaveFilters, Me.btnDesignHighlight0, Me.btnDesignHighlight1, Me.btnDesignHighlightMode, Me.btnDesignHighlightMode0, Me.btnDesignHighlightMode1, Me.btnDesignHighlightMode2, Me.btnDesignHighlightSegmentsAndTrigpoints, Me.btnViewSplayShowMode, Me.btnViewSplayShowMode1, Me.btnViewSplayShowMode0, Me.btnSegmentAdd, Me.btnSegmentDelete, Me.btnPenSmooting, Me.btnPenSmootingFactor, Me.btnPenLine, Me.btnPenSpline, Me.btnPenBezier, Me.btnGrpPensType, Me.btnGrpPenSmooting, Me.btnPlotGrades, Me.btnPlotPrefixTrigpoints, Me.btnPlotRenameTrigpoints, Me.btnPlotReplicateData, Me.btnPlotManageLRUD, Me.btnPlotSplayReplicate, Me.btnPlotDeleteAll, Me.btnPlotManageVisibility, Me.btnEditFind, Me.btnZoomZoomCenter, Me.btnZoomZoomToSelection, Me.btnZoomZoomToFitCaveBranch, Me.btnZoomAutoZoomToFit, Me.btnHelpInfo, Me.btnHelpCheckUpdate, Me.btnViewWorkspaceData, Me.btnViewWorkspaceDesign, Me.btnViewWorkspaceAll, Me.btnEditSelectAll, Me.pnlStatusText, Me.pnlStatusProgress, Me.pnlStatusCurrentRule, Me.btnStatusWMSOnLine, Me.btnStatusHistoryEnabled, Me.pnlStatusDesignSnapToGrid, Me.pnlStatusDesignInfo, Me.pnlStatusDesignZoom, Me.btnStatusDesignWarping, Me.btnStatusDesignWarpingState, Me.btnStatusDesignGeographicState, Me.pnlStatusMasterSlave, Me.btnGrpDesignPlotRebindCommands, Me.btnGrpDesignPlotRebindActions, Me.btnDesignGraphicsQuality, Me.btnDesignGraphics0, Me.btnDesignGraphics1, Me.btnDesignGraphics2, Me.btnCursorMode, Me.btnScrollMode, Me.btnAltMode, Me.btnMultiSelMode1, Me.btnMultiSelMode2, Me.btnSnapToPointNone, Me.btnSnapToPoint0, Me.btnSnapToPoint1, Me.btnSnapToPoint2, Me.btnViewRulers, Me.btnEditDrawing, Me.btnEditPointToPoint, Me.btn3DViewTop, Me.btn3DViewBottom, Me.btnFilterEdit, Me.btnFilterFiltered, Me.btnFilterWhiteboard, Me.btnFilterInvertFilter, Me.btn3dViewSN, Me.btn3dViewNS, Me.btn3dViewEW, Me.btn3dViewWE, Me.btnViewMetricGrid, Me.btnViewMetricGrid0, Me.btnViewMetricGrid1, Me.btnViewMetricGrid2, Me.btn3DCameraType, Me.btn3DCameraType1, Me.btn3DCameraType0, Me.btn3DCameraMode, Me.btn3DCameraMode0, Me.btn3DCameraMode1, Me.btnGroupDesignFilters, Me.btnSegments, Me.btnTrigpoints, Me.btnSegmentsAndTrigPoints, Me.btnSegmentGridColor, Me.btnSegmentGridColor0, Me.btnSegmentGridColor1, Me.btnSegmentGridColor2, Me.btnSegmentGridColor3, Me.btnSegmentInsert, Me.btnSegmentMoveUp, Me.btnSegmentMoveDown, Me.btnGridExport, Me.btnGridRefresh, Me.btnDataPropertiesEdit, Me.btnDataPropertiesDelete, Me.btnAliasDelete, Me.btnAliasDeleteAll, Me.btnAttachmentsOpen, Me.btnAttachmentsAdd, Me.btnAttachmentsDelete, Me.btnAttachmentsDeleteAll, Me.btnItemsSendToBottom, Me.btnItemsSendBehind, Me.btnItemsBringAhead, Me.btnItemsBringOnTop, Me.btnItemsLayouts, Me.btnCurrentItemSignSaveInGallery, Me.btnCurrentItemSignExport, Me.btnCurrentItemGenericCombine, Me.btnCurrentItemGenericDivide, Me.btnCurrentItemGenericCombineAllSequences, Me.btnCurrentItemGenericCloseAllSequences, Me.btnCurrentItemGenericReorderSequence, Me.btnCurrentItemGenericRevertAllSequences, Me.btnCurrentItemGenericRestorePointPen, Me.btnCurrentItemGenericReducePoint, Me.btnCurrentItemItemsCombine, Me.btnCurrentItemItemsCombineRockClipart, Me.btnCurrentItemItemsCombineConcretionClipart, Me.btnCurrentItemItemsCombineSignClipart, Me.btnCurrentItemPointAdd, Me.btnCurrentItemPointDelete, Me.btnCurrentItemPointSequenceDivide, Me.btnCurrentItemPointSequenceDivideAndJoin, Me.btnCurrentItemPointSequenceCombine, Me.btnCurrentItemPointCloseSequence, Me.btnCurrentItemPointDeleteSequence, Me.btnCurrentItemPointRevertSequence, Me.btnCurrentItemPointNewFromSequence0, Me.btnCurrentItemPointNewFromSequence1, Me.btnCurrentItemPlotLockSegment, Me.btnCurrentItemPlotBindSegment, Me.btnCurrentItemPointConvertToLines, Me.btnCurrentItemPointConvertToSpline, Me.btnCurrentItemPointConvertToBezier, Me.btnCurrentItemClipartSaveInGallery, Me.btnCurrentItemClipartExport, Me.btnCurrentItemLegendAddTo, Me.btnCurrentItemSendCopyTo, Me.btnCurrentItemX, Me.btnCurrentItemY, Me.btnCurrentItemW, Me.btnCurrentItemH, Me.btnCurrentItemScaleW, Me.btnCurrentItemScaleH, Me.btnCurrentItemFlipH, Me.btnCurrentItemFlipV, Me.btnCurrentItemRotateBy, Me.btnCurrentItemRotateCenteredOnOrigin, Me.btnCurrentItemRotateRight, Me.btnCurrentItemRotateLeft, Me.btnCurrentItemHAlignLeft, Me.btnCurrentItemHAlignCenter, Me.btnCurrentItemHAlignRight, Me.btnCurrenItemVAlignTop, Me.btnCurrenItemVAlignCenter, Me.btnCurrenItemVAlignBottom, Me.btnCurrentItemAlignH, Me.btnCurrentItemAlignV, Me.btnCurrentItemSpacing, Me.cmdCurrentItemHSpace, Me.cmdCurrentItemVSpace, Me.btnCurrentItemLock, Me.btnCurrentItemPointsJoin, Me.btnCurrentItemPointsJoinAndConnect, Me.btnCurrentItemPointsUnjoin, Me.btnCurrentItemPointsUnjoinAll, Me.btnCurrentItemPointResetAsParent, Me.btnCurrentItemGenericReducePointFactor, Me.btnCurrentItemConvertToLines, Me.btnCurrentItemConvertToSpline, Me.btnCurrentItemConvertToBezier, Me.btnViewImageViewer, Me.pnlStatusZoomBar, Me.btnViewAudioListener, Me.btnCurrentItemBindings, Me.btnMapDropImage, Me.btnMapDropSketch, Me.btnMapDropPocketTopo, Me.btnMapDropCaveExplorer, Me.btnMapDropGenericText, Me.btnMapDropAttachment, Me.btnCurrentItemPointInfo, Me.btnPasteStyleBrush, Me.btnPasteStylePen, Me.btnPaste, Me.btnCurrentItemSketchEdit, Me.btnCurrentItemSketchView, Me.btnCurrentItemSketchDisableMorphingForAll, Me.btnCurrentItemSketchEnableMorphingForAll, Me.btnCurrentItemSketchHideAll, Me.btnCurrentItemImageEdit, Me.btnCurrentItemImageView, Me.btnCurrentItemUnderItems, Me.btnCurrentItemSegmentDirection, Me.btnCurrentItemSegmentDirection0, Me.btnCurrentItemSegmentDirection1, Me.btnCurrentItemSegmentDirection2, Me.btnCurrentItemSegmentDirection3, Me.btnCurrentItemSegmentDirection4, Me.btnCurrentItemSegmentFromProperty, Me.btnCurrentItemSegmentToProperty, Me.btnCurrentItemShot, Me.btnCurrentItemStationSetCoordinate, Me.btnCurrentItemStationSetCoordinateCP, Me.btnCurrentItemStation, Me.btnShow, Me.btnCurrentItemConvertTo, Me.btnItemsSendAndConvert, Me.btnDesignSetCurrentCaveBranch, Me.SkinPaletteRibbonGalleryBarItem1, Me.btnAlignToGrid, Me.btnAlignToGridSize, Me.btnAlignToGridOptions, Me.btnAutoSettings, Me.btnDesignBar3DRefresh, Me.btnDesignBarPlotCalculate, Me.btnWorkspacesCapture, Me.btnWorkspacesManage, Me.btnWorkspacesList, Me.btnTrigpointGridColor, Me.btnTrigpointGridColor0, Me.btnTrigpointGridColor1, Me.btnSurveyInfoDepths, Me.btnTherionPadExportPlan, Me.btnTherionPadExportProfile, Me.btnTherionPadExport3D, Me.SkinDropDownButtonItem1, Me.btnQATBeginGroup, Me.btnQATMovePrev, Me.btnQATMoveNext, Me.btnQATRestore, Me.chkViewShowLRUD, Me.chkViewShowSplay, Me.chkViewShowShots, Me.chkViewShowStation, Me.chkViewShowStationLabel, Me.btnViewShowCenterline, Me.btnCurrentItemPlotUnlockSegment, Me.btnCurrentItemLegendAddToFakeItem, Me.btnContextMenu, Me.btnToolsMostUsed, Me.btnToolsLastUsed, Me.btnViewToolbarLevels, Me.btnViewToolbarItems, Me.btnViewToolbarLastUsedTools, Me.btnViewToolbarsDesign, Me.btnViewToolbarFloatingBar, Me.btnCurrentItemSignReplaceByCategory, Me.btnCurrentItemSignReplaceByClipart, Me.btnViewBrushesAndPens, Me.btnViewClipartGallery, Me.pnlStatusTherion, Me.btnCurrentItemPointsDoJoin, Me.btnCurrentItemPointsPointToJoinList, Me.btnFilterReapplyFilter, Me.pnlStatusVersion, Me.btnSelectionDeleteAllShots, Me.btnSelectionDeleteAllItems, Me.btnSelectionDeleteAllAll, Me.btnTemplateManage})
         resources.ApplyResources(Me.RibbonControl, "RibbonControl")
-        Me.RibbonControl.MaxItemId = 387
+        Me.RibbonControl.MaxItemId = 388
         Me.RibbonControl.Name = "RibbonControl"
         Me.RibbonControl.PageHeaderItemLinks.Add(Me.btnHelpCheckUpdate)
         Me.RibbonControl.PageHeaderItemLinks.Add(Me.btnHelpInfo)
@@ -1215,6 +1216,7 @@ Partial Class frmMain2
         '
         'mnuTemplates
         '
+        Me.mnuTemplates.ItemLinks.Add(Me.btnTemplateManage, True)
         Me.mnuTemplates.Name = "mnuTemplates"
         Me.mnuTemplates.Ribbon = Me.RibbonControl
         '
@@ -5690,25 +5692,6 @@ Partial Class frmMain2
         Me.tabTrigpointsPropertyitem.Size = New System.Drawing.Size(233, 378)
         Me.tabTrigpointsPropertyitem.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.tabTrigpointsMainitem, Me.tabTrigpointsLayoutitem, Me.tabTrigpointsConnectionsitem, Me.tabTrigpointsDataitem, Me.tabTrigpointsNoteitem, Me.tabTrigpointsCoordinateitem})
         '
-        'tabTrigpointsCoordinateitem
-        '
-        Me.tabTrigpointsCoordinateitem.CaptionImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.bo_localization
-        Me.tabTrigpointsCoordinateitem.CaptionImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.tabTrigpointsCoordinateitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem7})
-        Me.tabTrigpointsCoordinateitem.Location = New System.Drawing.Point(0, 0)
-        Me.tabTrigpointsCoordinateitem.Name = "tabTrigpointsCoordinateitem"
-        Me.tabTrigpointsCoordinateitem.Size = New System.Drawing.Size(227, 342)
-        resources.ApplyResources(Me.tabTrigpointsCoordinateitem, "tabTrigpointsCoordinateitem")
-        Me.tabTrigpointsCoordinateitem.TextVisible = False
-        '
-        'LayoutControlItem7
-        '
-        Me.LayoutControlItem7.Control = Me.pnlTrigpointsDataCoordinate
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem7.Name = "cPanelControlitem"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(227, 342)
-        Me.LayoutControlItem7.TextVisible = False
-        '
         'tabTrigpointsMainitem
         '
         Me.tabTrigpointsMainitem.CaptionImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.parameters
@@ -5803,6 +5786,25 @@ Partial Class frmMain2
         Me.txtTrigpointNoteitem.Name = "txtTrigpointNoteitem"
         Me.txtTrigpointNoteitem.Size = New System.Drawing.Size(227, 342)
         Me.txtTrigpointNoteitem.TextVisible = False
+        '
+        'tabTrigpointsCoordinateitem
+        '
+        Me.tabTrigpointsCoordinateitem.CaptionImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.bo_localization
+        Me.tabTrigpointsCoordinateitem.CaptionImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.tabTrigpointsCoordinateitem.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem7})
+        Me.tabTrigpointsCoordinateitem.Location = New System.Drawing.Point(0, 0)
+        Me.tabTrigpointsCoordinateitem.Name = "tabTrigpointsCoordinateitem"
+        Me.tabTrigpointsCoordinateitem.Size = New System.Drawing.Size(227, 342)
+        resources.ApplyResources(Me.tabTrigpointsCoordinateitem, "tabTrigpointsCoordinateitem")
+        Me.tabTrigpointsCoordinateitem.TextVisible = False
+        '
+        'LayoutControlItem7
+        '
+        Me.LayoutControlItem7.Control = Me.pnlTrigpointsDataCoordinate
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem7.Name = "cPanelControlitem"
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(227, 342)
+        Me.LayoutControlItem7.TextVisible = False
         '
         'LayoutControlItem8
         '
@@ -7547,9 +7549,11 @@ Partial Class frmMain2
         'dockData
         '
         Me.dockData.Controls.Add(Me.ControlContainer6)
+        Me.dockData.Dock = DevExpress.XtraBars.Docking.DockingStyle.Float
         Me.dockData.DockedAsTabbedDocument = True
         Me.dockData.FloatLocation = New System.Drawing.Point(759, 542)
         Me.dockData.ID = New System.Guid("7380af1d-b90e-46cf-ada0-d15b3463d9d9")
+        resources.ApplyResources(Me.dockData, "dockData")
         Me.dockData.Name = "dockData"
         Me.dockData.Options.AllowDockBottom = False
         Me.dockData.Options.AllowDockFill = False
@@ -7561,15 +7565,16 @@ Partial Class frmMain2
         Me.dockData.SavedIndex = 1
         Me.dockData.SavedMdiDocument = True
         Me.dockData.SavedMdiDocumentIndex = 0
-        resources.ApplyResources(Me.dockData, "dockData")
         '
         'dockDesigner
         '
         Me.dockDesigner.Controls.Add(Me.DockPanel1_Container)
+        Me.dockDesigner.Dock = DevExpress.XtraBars.Docking.DockingStyle.Float
         Me.dockDesigner.DockedAsTabbedDocument = True
         Me.dockDesigner.FloatLocation = New System.Drawing.Point(919, 722)
         Me.dockDesigner.FloatSize = New System.Drawing.Size(496, 824)
         Me.dockDesigner.ID = New System.Guid("cfe36b20-540d-4726-b0c0-49b498664ad0")
+        resources.ApplyResources(Me.dockDesigner, "dockDesigner")
         Me.dockDesigner.Name = "dockDesigner"
         Me.dockDesigner.Options.AllowDockBottom = False
         Me.dockDesigner.Options.AllowDockFill = False
@@ -7581,7 +7586,6 @@ Partial Class frmMain2
         Me.dockDesigner.SavedIndex = 2
         Me.dockDesigner.SavedMdiDocument = True
         Me.dockDesigner.SavedMdiDocumentIndex = 0
-        resources.ApplyResources(Me.dockDesigner, "dockDesigner")
         '
         'DocumentManager
         '
@@ -7737,6 +7741,12 @@ Partial Class frmMain2
         Me.mnuSelectionDeleteAll.Name = "mnuSelectionDeleteAll"
         Me.mnuSelectionDeleteAll.Ribbon = Me.RibbonControl
         '
+        'btnTemplateManage
+        '
+        resources.ApplyResources(Me.btnTemplateManage, "btnTemplateManage")
+        Me.btnTemplateManage.Id = 387
+        Me.btnTemplateManage.Name = "btnTemplateManage"
+        '
         'frmMain2
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me, CType(resources.GetObject("$this.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
@@ -7870,8 +7880,6 @@ Partial Class frmMain2
         CType(Me.txtTrigPointName.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.tabTrigpointsPropertyitem, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tabTrigpointsCoordinateitem, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.tabTrigpointsMainitem, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.tabTrigpointsLayoutitem, System.ComponentModel.ISupportInitialize).EndInit
@@ -7882,6 +7890,8 @@ Partial Class frmMain2
         CType(Me.prpTrigpointDataPropertiesitem, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.tabTrigpointsNoteitem, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.txtTrigpointNoteitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabTrigpointsCoordinateitem, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.pnlSegmentDataMain, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlSegmentDataMain.ResumeLayout(False)
@@ -8787,4 +8797,5 @@ Partial Class frmMain2
     Friend WithEvents btnSelectionDeleteAllItems As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnSelectionDeleteAllAll As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents txtSegmentsNullEdit As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents btnTemplateManage As DevExpress.XtraBars.BarButtonItem
 End Class

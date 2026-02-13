@@ -456,6 +456,8 @@ Partial Class frmProperties
         Me.lblPlotTranslationLinePenSize = New DevExpress.XtraEditors.LabelControl()
         Me.lblPlotTranslationLinePenStyle = New DevExpress.XtraEditors.LabelControl()
         Me.frmPlotPoint = New DevExpress.XtraEditors.GroupControl()
+        Me.lblPlotTextPolicy = New DevExpress.XtraEditors.LabelControl()
+        Me.cboPlotTextPolicy = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.cmdPlotTextFont = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdPlotPointColor = New DevExpress.XtraEditors.SimpleButton()
         Me.lblPlotTextFont = New DevExpress.XtraEditors.LabelControl()
@@ -896,6 +898,7 @@ Partial Class frmProperties
         Me.frmPlotTranslationLine.SuspendLayout()
         CType(Me.frmPlotPoint, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frmPlotPoint.SuspendLayout()
+        CType(Me.cboPlotTextPolicy.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.frmPlotPen, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frmPlotPen.SuspendLayout()
         CType(Me.chkPlotCenterlineForceSegmentColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -4301,6 +4304,8 @@ Partial Class frmProperties
         '
         'frmPlotPoint
         '
+        Me.frmPlotPoint.Controls.Add(Me.lblPlotTextPolicy)
+        Me.frmPlotPoint.Controls.Add(Me.cboPlotTextPolicy)
         Me.frmPlotPoint.Controls.Add(Me.txtPlotTextFont)
         Me.frmPlotPoint.Controls.Add(Me.cmdPlotTextFont)
         Me.frmPlotPoint.Controls.Add(Me.cmdPlotPointColor)
@@ -4320,6 +4325,20 @@ Partial Class frmProperties
         Me.frmPlotPoint.Controls.Add(Me.lblPlotPointSymbol)
         resources.ApplyResources(Me.frmPlotPoint, "frmPlotPoint")
         Me.frmPlotPoint.Name = "frmPlotPoint"
+        '
+        'lblPlotTextPolicy
+        '
+        resources.ApplyResources(Me.lblPlotTextPolicy, "lblPlotTextPolicy")
+        Me.lblPlotTextPolicy.Name = "lblPlotTextPolicy"
+        '
+        'cboPlotTextPolicy
+        '
+        resources.ApplyResources(Me.cboPlotTextPolicy, "cboPlotTextPolicy")
+        Me.cboPlotTextPolicy.MenuManager = Me.BarManager
+        Me.cboPlotTextPolicy.Name = "cboPlotTextPolicy"
+        Me.cboPlotTextPolicy.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboPlotTextPolicy.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboPlotTextPolicy.Properties.Items.AddRange(New Object() {resources.GetString("cboPlotTextPolicy.Properties.Items"), resources.GetString("cboPlotTextPolicy.Properties.Items1"), resources.GetString("cboPlotTextPolicy.Properties.Items2")})
+        Me.cboPlotTextPolicy.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'cmdPlotTextFont
         '
@@ -6068,6 +6087,7 @@ Partial Class frmProperties
         CType(Me.frmPlotPoint, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frmPlotPoint.ResumeLayout(False)
         Me.frmPlotPoint.PerformLayout()
+        CType(Me.cboPlotTextPolicy.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.frmPlotPen, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frmPlotPen.ResumeLayout(False)
         Me.frmPlotPen.PerformLayout()
@@ -6833,4 +6853,6 @@ Partial Class frmProperties
     Friend WithEvents BehaviorManager1 As DevExpress.Utils.Behaviors.BehaviorManager
     Friend WithEvents tvCaveInforsDragDrop As DevExpress.Utils.DragDrop.DragDropEvents
     Friend WithEvents chkCaveInfoPriority As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents lblPlotTextPolicy As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cboPlotTextPolicy As DevExpress.XtraEditors.ComboBoxEdit
 End Class

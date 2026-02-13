@@ -1018,17 +1018,17 @@ Namespace cSurvey.Design
                                     bVisible = True
                                 End If
                                 If bVisible Then
-
                                     Dim oSurfaceItem As Surface.cISurfaceItem = oSurvey.Surface(oSurfaceOptionItem.ID)
-                                    Call oSurvey.RaiseOnProgressEvent("", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Rendering surface layer " & oSurfaceItem.Name & "...", iIndex / iCount, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
-                                    If TypeOf oSurfaceItem Is Surface.cElevation Then
-                                        Call modPaint.MapDrawElevation(Graphics, oSurvey, DirectCast(oSurfaceItem, Surface.cElevation), oSurfaceOptionItem)
-                                    ElseIf TypeOf oSurfaceItem Is Surface.cOrthoPhoto Then
-                                        Call modPaint.MapDrawOrthophoto(Graphics, oSurvey, DirectCast(oSurfaceItem, Surface.cOrthoPhoto), oSurfaceOptionItem)
-                                    ElseIf TypeOf oSurfaceItem Is Surface.cWMS Then
-                                        Call modPaint.MapDrawWMS(Graphics, oSurvey, DirectCast(oSurfaceItem, Surface.cWMS), oSurfaceOptionItem)
+                                    If oSurfaceItem IsNot Nothing Then
+                                        Call oSurvey.RaiseOnProgressEvent("", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Rendering surface layer " & oSurfaceItem.Name & "...", iIndex / iCount, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
+                                        If TypeOf oSurfaceItem Is Surface.cElevation Then
+                                            Call modPaint.MapDrawElevation(Graphics, oSurvey, DirectCast(oSurfaceItem, Surface.cElevation), oSurfaceOptionItem)
+                                        ElseIf TypeOf oSurfaceItem Is Surface.cOrthoPhoto Then
+                                            Call modPaint.MapDrawOrthophoto(Graphics, oSurvey, DirectCast(oSurfaceItem, Surface.cOrthoPhoto), oSurfaceOptionItem)
+                                        ElseIf TypeOf oSurfaceItem Is Surface.cWMS Then
+                                            Call modPaint.MapDrawWMS(Graphics, oSurvey, DirectCast(oSurfaceItem, Surface.cWMS), oSurfaceOptionItem)
+                                        End If
                                     End If
-
                                 End If
                             End If
                             iIndex += 1

@@ -159,6 +159,8 @@ Namespace cSurvey
         Private iLabelSymbol As TrigPointLabelSymbolEnum
         Private bDrawTranslationsLine As Boolean
 
+        Private bMainEquate As Boolean
+
         Private WithEvents oCoordinate As cCoordinate
         Private iCoordinateFix As TrigPointFixEnum
 
@@ -612,6 +614,21 @@ Namespace cSurvey
                 Return New cTrigPoint(oSurvey, Name, Me)
             End If
         End Function
+
+        Public Property MainEquate() As Boolean
+            Get
+                Return bMainEquate
+            End Get
+            Set(value As Boolean)
+                If bMainEquate <> value Then
+                    bMainEquate = value
+                    bChanged = True
+
+                    iInvalidated = cCalculate.InvalidateEnum.FullCalculate
+                    RaiseEvent OnChange(Me, EventArgs.Empty)
+                End If
+            End Set
+        End Property
 
         Public Property DrawTranslationsLine As Boolean
             Get

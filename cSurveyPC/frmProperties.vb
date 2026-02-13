@@ -234,6 +234,7 @@ Friend Class frmProperties
             picPlotPenColor.BackColor = .DesignProperties.GetValue("PlotPenColor", Color.Black)
 
             txtPlotTextScaleFactor.Value = .DesignProperties.GetValue("PlotTextScaleFactor", 1)
+            cboPlotTextPolicy.SelectedIndex = .DesignProperties.GetValue("PlotTextPolicy", 0)
             Dim oPlotTextFont As cIFont = .DesignProperties.GetValue("PlotTextFont", modPaint.GetDefaultFont)
             txtPlotTextFont.Tag = oPlotTextFont
             txtPlotTextFont.Text = oPlotTextFont.ToString
@@ -798,6 +799,7 @@ Friend Class frmProperties
             Call .DesignProperties.SetValue("PlotSplayCrossScale", txtPlotSplayCrossScale.Value)
 
             Call .DesignProperties.SetValue("PlotTextScaleFactor", txtPlotTextScaleFactor.Value)
+            Call .DesignProperties.SetValue("PlotTextPolicy", cboPlotTextPolicy.SelectedIndex)
             Call .DesignProperties.SetValue("PlotTextFont", txtPlotTextFont.Tag)
             Call .DesignProperties.SetValue("PlotTextColor", picPlotTextColor.BackColor)
 

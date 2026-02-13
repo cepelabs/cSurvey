@@ -1,16 +1,17 @@
-﻿Imports System.Xml
+﻿Imports System.Drawing
+Imports System.Drawing.Drawing2D
 Imports System.IO
+Imports System.Text.RegularExpressions
+Imports System.Threading.Tasks
+Imports System.Xml
+Imports BrightIdeasSoftware
 Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Drawings
-Imports System.Drawing
-Imports System.Drawing.Drawing2D
-Imports System.Text.RegularExpressions
-Imports Diacritics.Extensions
-Imports BrightIdeasSoftware
-Imports DevExpress.XtraVerticalGrid.ViewInfo
 Imports cSurveyPC.cSurvey.UIHelpers
 Imports DevExpress.Utils.Drawing.Helpers.NativeMethods
+Imports DevExpress.XtraVerticalGrid.ViewInfo
+Imports Diacritics.Extensions
 
 Module modExport
 
@@ -688,6 +689,22 @@ Module modExport
             End Get
         End Property
 
+        Public Shared Function TryParse(VersionRaw As String, ReleaseDateRaw As String, ByRef Result As cVersion) As Boolean
+            Dim dReleaseDate As Date
+            If Date.TryParse(ReleaseDateRaw, dReleaseDate) Then
+                Dim oVersion As Version
+                If System.Version.TryParse(VersionRaw, oVersion) Then
+                    Result = New cVersion(oVersion, dReleaseDate)
+                    Return True
+                End If
+            End If
+        End Function
+
+        Public Sub New(Version As Version, ReleaseDate As Date)
+            oVersion = Version.Clone
+            dReleaseDate = ReleaseDate
+        End Sub
+
         Public Sub New(Version As String, ReleaseDate As Date)
             oVersion = New Version(Version)
             dReleaseDate = ReleaseDate
@@ -703,9 +720,11 @@ Module modExport
                                                                                                              Dim sLine As String = outLine.Data.Replace(vbCrLf, " ").Replace(vbLf, "").Trim
                                                                                                              If sLine.StartsWith("therion ") Then
                                                                                                                  Dim sLineParts As String() = sLine.Split(" ")
-                                                                                                                 Dim sVersion As String = sLineParts(1)
-                                                                                                                 Dim dReleaseDate As Date = Date.Parse(sLineParts(2).Substring(1, sLineParts(2).Length - 2))
-                                                                                                                 oResult = New cVersion(sVersion, dReleaseDate)
+                                                                                                                 If sLineParts.Length >= 3 Then
+                                                                                                                     Dim sVersionRaw As String = sLineParts(1)
+                                                                                                                     Dim sReleaseDateRaw As String = sLineParts(2).Substring(1, sLineParts(2).Length - 2)
+                                                                                                                     cVersion.TryParse(sVersionRaw, sReleaseDateRaw, oResult)
+                                                                                                                 End If
                                                                                                              End If
                                                                                                          End If
                                                                                                      End Sub)
@@ -719,10 +738,26 @@ Module modExport
     End Function
 
     'TODO: add filename and ini
-    Public Async Function GetTherionVersionAsync(TherionFilename As String) As Threading.Tasks.Task(Of cVersion)
-        Return Await Threading.Tasks.Task.Run(Function()
-                                                  Return GetTherionVersion(TherionFilename)
-                                              End Function)
+    Public Async Function GetTherionVersionAsync(TherionFilename As String) As Task(Of cVersion)
+        If Not IO.File.Exists(TherionFilename) Then
+            Return Nothing
+        End If
+        Dim oResult As cVersion = Nothing
+        Await ExecuteTherionAsync(TherionFilename, "", " -v ", True, Sub(sendingProcess As Object, outLine As DataReceivedEventArgs)
+                                                                         If outLine.Data IsNot Nothing Then
+                                                                             Dim sLine As String = outLine.Data.Replace(vbCrLf, " ").Replace(vbLf, "").Trim
+                                                                             If sLine.StartsWith("therion ") Then
+                                                                                 Dim sLineParts As String() = sLine.Split(" ")
+                                                                                 If sLineParts.Length >= 3 Then
+                                                                                     Dim sVersionRaw As String = sLineParts(1)
+                                                                                     Dim sReleaseDateRaw As String = sLineParts(2).Substring(1, sLineParts(2).Length - 2)
+                                                                                     cVersion.TryParse(sVersionRaw, sReleaseDateRaw, oResult)
+                                                                                 End If
+                                                                             End If
+                                                                         End If
+                                                                     End Sub)
+
+        Return oResult
     End Function
 
     Public Sub TherionCreateConfig(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, ByVal DataFilenames As List(Of String), ByVal Command As String)

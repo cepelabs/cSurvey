@@ -127,16 +127,67 @@ Namespace cSurvey.Calculate
             End If
         End Sub
 
+        Private oEquatesIndex As Dictionary(Of String, String)
+
+        Public Function GetMainEquate(Trigpoint As String) As String
+            If oEquatesIndex.ContainsKey(Trigpoint) Then
+                Return oEquatesIndex(Trigpoint)
+            Else
+                Return Trigpoint
+            End If
+        End Function
+
+        Public Function ToEquateTrigpoint(Trigpoint As String) As String
+            If oEquatesIndex.ContainsKey(Trigpoint) Then
+                Return oEquatesIndex(Trigpoint)
+            Else
+                Return Trigpoint
+            End If
+        End Function
+
+        Friend Sub CreateEquateIndex()
+            For Each oTrigpoint As cTrigPoint In oItems.Values
+                Dim bIndexed As Boolean = False
+                Dim oEquates As SortedSet(Of String) = EquateTo(oTrigpoint)
+                If oEquates IsNot Nothing AndAlso oEquates.Count > 0 Then
+                    If oSurvey.TrigPoints(oTrigpoint.Name).MainEquate Then
+                        oEquatesIndex.Add(oTrigpoint.Name, oTrigpoint.Name)
+                        bIndexed = True
+                    Else
+                        For Each sEquate As String In oEquates
+                            If oSurvey.TrigPoints(sEquate).MainEquate Then
+                                oEquatesIndex.Add(oTrigpoint.Name, sEquate)
+                                bIndexed = True
+                                Exit For
+                            End If
+                        Next
+                    End If
+                    If Not bIndexed Then
+                        oEquates.Add(oTrigpoint.Name)
+                        oEquatesIndex.Add(oTrigpoint.Name, oEquates(0))
+                    End If
+                End If
+            Next
+        End Sub
+
         Friend Sub New(Survey As cSurvey, ByVal Item As XmlElement)
             oSurvey = Survey
             oItems = New Dictionary(Of String, cTrigPoint) '(StringComparer.OrdinalIgnoreCase)
+            oEquatesIndex = New Dictionary(Of String, String)(StringComparer.OrdinalIgnoreCase)
             For Each oXMLItem As XmlElement In Item.ChildNodes
-                Dim oItem As cTrigPoint = New cTrigPoint(oXMLItem)
-                'this check is a fix for a strange problem with some survey where some station seem to be duplicated...I think this cound be somethings from topodroid (like station with same name but different case, A and a, that for cSurvey are the same...)
-                'but I don't have found any evidence of this at now
-                If Not oItems.ContainsKey(oItem.Name) Then
-                    Call oItems.Add(oItem.Name, oItem)
-                End If
+                Select Case oXMLItem.Name
+                    Case "t"
+                        Dim oItem As cTrigPoint = New cTrigPoint(oXMLItem)
+                        'this check is a fix for a strange problem with some survey where some station seem to be duplicated...I think this cound be somethings from topodroid (like station with same name but different case, A and a, that for cSurvey are the same...)
+                        'but I don't have found any evidence of this at now
+                        If Not oItems.ContainsKey(oItem.Name) Then
+                            Call oItems.Add(oItem.Name, oItem)
+                        End If
+                    Case "eis"
+                        For Each oXMLEquateIndexItem As XmlElement In oXMLItem.ChildNodes
+                            Call oEquatesIndex.Add(oXMLEquateIndexItem.GetAttribute("k"), oXMLEquateIndexItem.GetAttribute("v"))
+                        Next
+                End Select
             Next
             oZs = New cMinMaxs(oSurvey, GetType(cTrigPointPoint).GetProperty("Z"), Me)
         End Sub
@@ -146,6 +197,15 @@ Namespace cSurvey.Calculate
             For Each oItem As cTrigPoint In oItems.Values
                 Call oItem.SaveTo(File, Document, oXmlTrigpoints)
             Next
+            Dim oXmlEquateIndex As XmlElement = Document.CreateElement("eis")
+            For Each sKey As String In oEquatesIndex.Keys
+                Dim oXmlEquateIndexItem As XmlElement = Document.CreateElement("ei")
+                Dim sValue As String = oEquatesIndex(sKey)
+                oXmlEquateIndexItem.SetAttribute("k", sKey)
+                oXmlEquateIndexItem.SetAttribute("v", sValue)
+                oXmlEquateIndex.AppendChild(oXmlEquateIndexItem)
+            Next
+            oXmlTrigpoints.AppendChild(oXmlEquateIndex)
             Call Parent.AppendChild(oXmlTrigpoints)
             Return oXmlTrigpoints
         End Function
@@ -159,7 +219,7 @@ Namespace cSurvey.Calculate
         Friend Sub New(Survey As cSurvey)
             oSurvey = Survey
             oItems = New Dictionary(Of String, cTrigPoint)
-            'Dim oColors As List(Of Color) = modPaint.GetRainbowColors(100)
+            oEquatesIndex = New Dictionary(Of String, String)(StringComparer.OrdinalIgnoreCase)
             oZs = New cMinMaxs(oSurvey, GetType(cTrigPointPoint).GetProperty("Z"), Me)
         End Sub
 
@@ -172,6 +232,7 @@ Namespace cSurvey.Calculate
         Friend Sub Clear()
             Call oItems.Clear()
             Call oZs.Clear()
+            Call oEquatesIndex.Clear()
         End Sub
 
         Friend Sub Rename(OldName As String, NewName As String)

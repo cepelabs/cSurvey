@@ -75,7 +75,7 @@ Namespace cSurvey.Calculate
 
         Friend Function AppendAsEquate(Name As String) As cTrigPointConnection
             If oItems.ContainsKey(Name) Then
-                'check if exist a connection is of the same type, in case raise an error
+                'check if exist a connection is of the same type
                 Return oItems(Name)
             Else
                 Dim oConnection As cTrigPointConnection = New cTrigPointConnection(Name)

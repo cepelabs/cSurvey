@@ -1603,7 +1603,7 @@ Module modPaint
             Text = modPaint.ReplaceGlobalTags(Survey, Text)
             Return Text
         Else
-            Return Trigpoint.Name
+            Return GetTrigpointName(Survey, Trigpoint)
         End If
     End Function
 
@@ -1646,10 +1646,43 @@ Module modPaint
         Return Text.Trim
     End Function
 
+    Public Function GetTrigpointName(Survey As cSurvey.cSurvey, Trigpoint As cTrigPoint) As String
+        Dim iTextPolicy As Integer = Survey.Properties.DesignProperties.GetValue("PlotTextPolicy", 0)
+        Dim sName As String = Trigpoint.Name
+        If iTextPolicy = 0 Then
+            Return sName
+        ElseIf iTextPolicy = 1 Then
+            If Survey.Calculate.TrigPoints.Contains(sName) Then
+                Dim oEquate As SortedSet(Of String) = Survey.Calculate.TrigPoints.EquateTo(sName)
+                If oEquate.Count > 0 Then
+                    Call oEquate.Add(sName)
+                    Return String.Join(" - ", oEquate)
+                Else
+                    Return sName
+                End If
+            Else
+                Return sName
+            End If
+        Else
+            If Survey.Calculate.TrigPoints.Contains(sName) Then
+                Return Survey.Calculate.TrigPoints.GetMainEquate(sName)
+                'Dim oEquate As SortedSet(Of String) = Survey.Calculate.TrigPoints.EquateTo(sName)
+                'If oEquate.Count > 0 Then
+                '    Call oEquate.Add(sName)
+                '    Return oEquate(0)
+                'Else
+                '    Return sName
+                'End If
+            Else
+                Return sName
+            End If
+        End If
+    End Function
+
     Public Function ReplaceStationTags(Survey As cSurvey.cSurvey, Trigpoint As cTrigPoint, Text As String) As String
         Dim oProperties As cProperties = Survey.Properties
 
-        Text = Text.Replace("%NAME%", Trigpoint.Name)
+        Text = Text.Replace("%NAME%", GetTrigpointName(Survey, Trigpoint))
         If Trigpoint.Aliases.Count > 0 Then
             Text = Text.Replace("%FIRSTALIAS%", Trigpoint.Aliases(0))
         Else

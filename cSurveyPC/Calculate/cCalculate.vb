@@ -973,11 +973,12 @@ Namespace cSurvey.Calculate
 
                     Dim sExtendStart As String = oGroup.ExtendStart.ToUpper
                     Call oTrigPoints.Clear()
-                    If oSubSegmentColl.Where(Function(oitem) oitem.Data.Data.From = sExtendStart OrElse oitem.Data.Data.To = sExtendStart).Count > 0 Then
+                    If (oSubSegmentColl.Where(Function(oitem) oitem.Data.Data.From = sExtendStart OrElse oitem.Data.Data.To = sExtendStart).Count > 0) Then
                         Call oTrigPoints.Insert(0, New cTrigPointCalculateItem(sExtendStart, 1))
                     Else
-                        'Call oCalculateData.Add(New cCalculateDataItem(Now, cCalculateDataItem.CalculateDataItemTypeEnum.Error, String.Format(modMain.GetLocalizedString("calculate.textpart8"), sExtendStart), oSurvey.TrigPoints(sExtendStart)))
-                        Throw New cCalculateExtendStartException(String.Format(modMain.GetLocalizedString("calculate.textpart8"), sExtendStart), sExtendStart)
+                        If oGroup.IsValidable Then
+                            Throw New cCalculateExtendStartException(String.Format(modMain.GetLocalizedString("calculate.textpart8"), sExtendStart), sExtendStart)
+                        End If
                     End If
 
                     Do Until oTrigPoints.Count = 0 OrElse oSubSegmentColl.Count = 0
@@ -1029,41 +1030,6 @@ Namespace cSurvey.Calculate
                                                                                                                      End If
                                                                                                                  End If
                                                                                                              End Sub)
-
-                            'For Each oSegment As cSegment In oSubSegmentColl
-                            '    Dim bIgnore As Boolean = False
-                            '    Dim bProcess As Boolean = False
-                            '    If oSegment.Data.SourceData.From = sFrom Then
-                            '        With oSurvey.TrigPoints(oSegment.Data.SourceData.From).Connections
-                            '            If .Contains(oSegment.Data.SourceData.To) Then
-                            '                bIgnore = .Get(oSegment.Data.SourceData.To)
-                            '            End If
-                            '        End With
-                            '        bProcess = True
-                            '    End If
-                            '    If Not bProcess AndAlso oSegment.Data.SourceData.To = sFrom Then
-                            '        With oSurvey.TrigPoints(oSegment.Data.SourceData.To).Connections
-                            '            If .Contains(oSegment.Data.SourceData.From) Then
-                            '                bIgnore = .Get(oSegment.Data.SourceData.From)
-                            '            End If
-                            '        End With
-                            '        If Not bIgnore Then
-                            '            Call oSegment.Data.ReverseData(oSegment)
-                            '            bProcess = True
-                            '        End If
-                            '    End If
-                            '    If bProcess Then
-                            '        If Not oCalculatedTrigpoints.ContainsKey(oSegment.Data.Data.To) Then Call oCalculatedTrigpoints.Add(oSegment.Data.Data.To, New cTrigPointPoint(0, 0, 0, 0))
-                            '        If Not bIgnore Then
-                            '            'add shot to processed collection
-                            '            Call oCalculatedSegments.Add(oSegment)
-                            '            If Not oSegment.Splay Then
-                            '                'splay don't have next shot
-                            '                Call oNextTrigPoint.Add(New cTrigPointCalculateItem(oSegment.Data.SourceData.To, 0))
-                            '            End If
-                            '        End If
-                            '    End If
-                            'Next
                             oSubSegmentColl = oSubSegmentColl.Except(oCalculatedSegments).ToList
                             Call oCalculatedSegments.Clear()
                         Next
@@ -1115,22 +1081,6 @@ Namespace cSurvey.Calculate
                                                                                                                                                          End Sub)
 
 
-            'Threading.Tasks.Parallel.ForEach(Of cSurveyPC.cSurvey.cTrigPoint)(oSurvey.TrigPoints, Sub(oTrigpoint)
-            '                                                                                          If oTrigpoint.Name Like "*(*)" Then
-            '                                                                                              Call oTrigpoint.Data.SetSplay(True)
-            '                                                                                          Else
-            '                                                                                              If oTrigpoint.Connections.Count = 1 Then
-            '                                                                                                  Dim oSegment As cSegment = oSurvey.Segments.Find(oTrigpoint.Name, oTrigpoint.Connections.First)
-            '                                                                                                  If oSegment Is Nothing Then
-            '                                                                                                      Call oTrigpoint.Data.SetSplay(False)
-            '                                                                                                  Else
-            '                                                                                                      Call oTrigpoint.Data.SetSplay(oSegment.Splay)
-            '                                                                                                  End If
-            '                                                                                              Else
-            '                                                                                                  Call oTrigpoint.Data.SetSplay(False)
-            '                                                                                              End If
-            '                                                                                          End If
-            '                                                                                      End Sub)
 
             'set calibration flag
             Dim oCalibrationSegments As cSegmentCollection = oSurvey.Segments.GetCalibrationSegments
@@ -1254,7 +1204,7 @@ Namespace cSurvey.Calculate
             Dim oRelocateTrigpoints As List(Of cRelocatePoint) = New List(Of cRelocatePoint)
             Dim oRelocateTrigpointsByGroup As Dictionary(Of String, List(Of String)) = New Dictionary(Of String, List(Of String))
             'Dim bRelocate As Boolean
-            Dim iLeft As Integer
+            Dim iLeft As Integer = 0
             Dim bMoreSegments As Boolean
             Dim iGroupIndex As Integer = 0
             Dim oGroups As List(Of cSegmentGroup) = Groups.ToCalculateList(Origin.From, Integer.MinValue)
@@ -1279,7 +1229,7 @@ Namespace cSurvey.Calculate
                     Call oCalculatedTrigpoints.Add(sExtendStart, New cTrigPointPoint(oTPs(sExtendStart).Point, iLeft))
                     'End If
                     'this is only for debug...have to be not relevant...
-                    iLeft += 500
+                    'iLeft += 500
                     iGroupIndex += 1
 
                     Do Until oTrigPoints.Count = 0 OrElse oSubSegmentColl.Count = 0
@@ -1288,6 +1238,12 @@ Namespace cSurvey.Calculate
                             Dim sSign As Decimal = oTrigPointCalculateItem.Sign
 
                             For Each oSegment As cSegment In oSubSegmentColl
+                                'If oSegment.IsEquate Then
+                                '    'add shot to processed collection
+                                '    Call oCalculatedSegments.Add(oSegment)
+                                '    Dim sTo As String = oSegment.Data.Data.To
+                                '    Call oNextTrigPoint.Add(New cTrigPointCalculateItem(sTo, 1))
+                                'Else
                                 If oSegment.Data.Data.From = sFrom Then
                                     Dim sTo As String = oSegment.Data.Data.To
                                     Dim bIgnore As Boolean = False
@@ -1317,25 +1273,29 @@ Namespace cSurvey.Calculate
                                     End If
 
                                     Dim sD As Decimal = 0
-                                    If Not oSegment.IsEquate Then
-                                        If oSegment.Data.Data.Direction <> cSurvey.DirectionEnum.Vertical Then
+                                    'If Not oSegment.IsEquate Then
+                                    If oSegment.Data.Data.Direction <> cSurvey.DirectionEnum.Vertical Then
                                             Dim oPlanFromPoint As PointD = oFromPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
                                             Dim oPlanToPoint As PointD = oToPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
                                             sD = modPaint.DistancePointToPoint(oPlanFromPoint, oPlanToPoint)
                                         End If
-                                    End If
+                                    'End If
                                     Dim oToEEPoint As cTrigPointPoint = New cTrigPointPoint(oToPoint, oFromEEPoint.D + sD * sNewSign)
                                     If Not oCalculatedTrigpoints.ContainsKey(sTo) Then Call oCalculatedTrigpoints.Add(sTo, oToEEPoint)
+                                    'If Not oSegment.IsEquate Then
                                     With oToTP
-                                        Dim oPointToRelocate As cTrigPointPoint = .Connections.SetPoint(sFrom, oToEEPoint)
-                                        Call oRelocateTrigpoints.Add(New cRelocatePoint(sTo, sFrom, oGroup, oPointToRelocate, bIsSplay))
-                                        Call pAppendStationToGroup(oRelocateTrigpointsByGroup, sTo, oGroup)
-                                    End With
-                                    With oFromTP
-                                        Dim oPointToRelocate As cTrigPointPoint = .Connections.SetPoint(sTo, oFromEEPoint)
-                                        Call oRelocateTrigpoints.Add(New cRelocatePoint(sFrom, sTo, oGroup, oPointToRelocate, bIsSplay))
-                                        Call pAppendStationToGroup(oRelocateTrigpointsByGroup, sFrom, oGroup)
-                                    End With
+                                            Dim oPointToRelocate As cTrigPointPoint = .Connections.SetPoint(sFrom, oToEEPoint)
+                                            Call oRelocateTrigpoints.Add(New cRelocatePoint(sTo, sFrom, oGroup, oPointToRelocate, bIsSplay))
+                                            Call pAppendStationToGroup(oRelocateTrigpointsByGroup, sTo, oGroup)
+                                        End With
+                                        If sTo <> sFrom Then
+                                            With oFromTP
+                                                Dim oPointToRelocate As cTrigPointPoint = .Connections.SetPoint(sTo, oFromEEPoint)
+                                                Call oRelocateTrigpoints.Add(New cRelocatePoint(sFrom, sTo, oGroup, oPointToRelocate, bIsSplay))
+                                                Call pAppendStationToGroup(oRelocateTrigpointsByGroup, sFrom, oGroup)
+                                            End With
+                                        End If
+                                    'End If
 
                                     If Not bIgnore Then
                                         If oSegment.Splay Then
@@ -1376,6 +1336,7 @@ Namespace cSurvey.Calculate
                                         End If
                                     End If
                                 End If
+                                'End If
                             Next
                             oSubSegmentColl = oSubSegmentColl.Except(oCalculatedSegments).ToList
                             Call oCalculatedSegments.Clear()
@@ -1712,7 +1673,6 @@ Namespace cSurvey.Calculate
                                 Dim oResult As cTherionCalculateResult = modExport.TherionThExportTo(oSurvey, sTempThInputFilename, oInputdictionary, iThOptions)
                                 Call oFiles.AddRange(oResult.Files)
                                 oDepth = oResult.Depth
-                                'oCalculateData.Add(New cCalculateDataItem(Now, cCalculateDataItem.CalculateDataItemTypeEnum.DepthDetails, oResult.Depth))
                             End If
 
                             'if present, report depth info to station
@@ -1756,7 +1716,7 @@ Namespace cSurvey.Calculate
                                     bGeoMagLines = True
                                 End If
 
-                                Dim oInputLines As List(Of String)
+                                Dim oInputLines As List(Of String) = Nothing
                                 If sLogLine Like "* error -- *" Then
                                     'devo rilevare il file e il numero di riga...cosi posso riportare, se è una battuta, a quale battuta corrisponde l'errore
                                     Dim sErrorMessage As String = sLogLine.Substring(sLogLine.IndexOf(" error -- ") + 10)
@@ -1771,9 +1731,7 @@ Namespace cSurvey.Calculate
                                         Else
                                             Throw New cCalculateSegmentException(oTEM.Message, oSegment)
                                         End If
-                                        'Call oCalculateData.Add(New cCalculateDataItem(Now, cCalculateDataItem.CalculateDataItemTypeEnum.Error, oTEM.Message, oSegment))
                                     Else
-                                        'Call oCalculateData.Add(New cCalculateDataItem(Now, cCalculateDataItem.CalculateDataItemTypeEnum.Error, oTEM.Message))
                                         Throw New cCalculateTherionException(oTEM.Message)
                                     End If
                                     If iExitCode <> 0 Then
@@ -2143,12 +2101,16 @@ Namespace cSurvey.Calculate
             Dim oStationsToProcess As HashSet(Of String) = New HashSet(Of String)(oTPs.ToList.Select(Function(oitem) oitem.Name).ToList)
             Call oStationsToProcess.Remove(Origin)
             Call pTrigpointCalculateGraph(Origin, oStationsToProcess)
+
             'is this usefull? the next calculate step will raise the same exception with better information
             'If oStationsToProcess.Count > 0 Then
             '    Dim oStations As List(Of cSurveyPC.cSurvey.cTrigPoint) = oStationsToProcess.Select(Function(sStation) oSurvey.TrigPoints(sStation)).ToList
             '    Call oCalculateData.Add(New cCalculateDataItem(Now, cCalculateDataItem.CalculateDataItemTypeEnum.Error, GetLocalizedString("calculate.textpart9"), oStations))
             '    Throw New cCalculateOrphanStationsException(oStations)
             'End If
+
+            Call oTPs.CreateEquateIndex()
+
             Return oStationsToProcess.ToList
         End Function
 
@@ -2211,7 +2173,7 @@ Namespace cSurvey.Calculate
             Dim lOrdinalPosition As Long = 0
             Dim sExtendStart As String = oSurvey.Properties.Origin
             Dim oGroups As cSegmentGroupCollection = New cSegmentGroupCollection
-            Dim oEmptyGroup As cSegmentGroup = New cSegmentGroup(sExtendStart, Integer.MinValue, Nothing, Nothing)
+            Dim oEmptyGroup As cSegmentGroup = New cSegmentGroup(sExtendStart, Integer.MinValue, Nothing, Nothing, False)
             Call oGroups.Add(oEmptyGroup)
             For Each oSegment As cSegment In Segments
                 Dim oCaveInfo As cICaveInfoBranches = oSurvey.Properties.GetCaveInfo(oSegment)

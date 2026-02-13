@@ -92,6 +92,5 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {41835F43-2086-41B8-A8CE-95B69E5AB731}
-		RESX_ExcelExportMode = MultipleSheets
 	EndGlobalSection
 EndGlobal

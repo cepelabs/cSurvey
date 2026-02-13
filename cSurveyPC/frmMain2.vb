@@ -1463,6 +1463,13 @@ Friend Class frmMain2
 
     Private Sub pTrigPointSelect(Trigpoint As cTrigPoint, [Select] As Boolean, BringToTop As Boolean)
         Dim iRowHandle As Integer = grdViewTrigpoints.FindRow(Trigpoint)
+        If iRowHandle < 0 Then
+            grdViewTrigpoints.FindFilterText = ""
+            grdViewTrigpoints.ActiveFilter.Clear()
+            grdViewTrigpoints.ClearColumnsFilter()
+            iRowHandle = grdViewTrigpoints.FindRow(Trigpoint)
+        End If
+
         Call grdViewTrigpoints.FullFocusRow(iRowHandle)
         If BringToTop AndAlso Not btnTrigpoints.Checked Then
             Call btnTrigpoints.PerformClick()
@@ -1476,6 +1483,13 @@ Friend Class frmMain2
         With grdSegments
             If Not Segment Is Nothing Then
                 Dim iRowHandle As Integer = grdViewSegments.FindRow(Segment)
+                If iRowHandle < 0 Then
+                    grdViewSegments.FindFilterText = ""
+                    grdViewSegments.ActiveFilter.Clear()
+                    grdViewSegments.ClearColumnsFilter()
+                    iRowHandle = grdViewSegments.FindRow(Segment)
+                End If
+
                 If Not oTools.CurrentSegment Is Segment Then
                     Call oTools.SelectSegment(Segment)
                     Call pMapInvalidate()
@@ -1802,6 +1816,7 @@ Friend Class frmMain2
                 cboTrigPointLabelSymbol.SelectedIndex = .LabelSymbol
 
                 chkTrigpointDrawTranslationsLine.Checked = .DrawTranslationsLine
+                chkTrigpointMainEquate.Checked = .MainEquate
 
                 Call pTrigpointCoordinateLoad(Trigpoint)
 
@@ -1841,6 +1856,7 @@ Friend Class frmMain2
                             .LabelSymbol = cboTrigPointLabelSymbol.SelectedIndex
 
                             .DrawTranslationsLine = chkTrigpointDrawTranslationsLine.Checked
+                            .MainEquate = chkTrigpointMainEquate.Checked
 
                             .Coordinate.System = cboTrigpointCoordinateGeo.Text
                             Select Case .Coordinate.System
@@ -20278,7 +20294,7 @@ Friend Class frmMain2
 
     Private bTherionStatusUpdateBusy As Boolean
 
-    Private Sub pTherionStatusUpdate()
+    Private Async Sub pTherionStatusUpdate()
         If Not bTherionStatusUpdateBusy Then
             bTherionStatusUpdateBusy = True
 
@@ -20286,7 +20302,7 @@ Friend Class frmMain2
             pnlStatusVersion.SuperTip = modDevExpress.CreateSuperTip(pnlStatusVersion.Caption, Nothing, Nothing, sNewVersion, Nothing, Nothing, "", Nothing, Nothing)
 
             Dim sThProcess As String = My.Application.Settings.GetSetting("therion.path", "")
-            Dim oVersion As modExport.cVersion = modExport.GetTherionVersion(sThProcess)
+            Dim oVersion As modExport.cVersion = Await modExport.GetTherionVersionAsync(sThProcess)
             pnlStatusTherion.Description = modMain.GetLocalizedString("main.textpart174")
             If oVersion Is Nothing Then
                 Call pPopupShow("error", modMain.GetLocalizedString("calculate.textpart6"))

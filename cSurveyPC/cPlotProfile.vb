@@ -253,7 +253,7 @@ Namespace cSurvey.Design
                         If oFromSplaySegment.Count > 0 Then
                             For Each oSplaySegment As cSegment In oFromSplaySegment
                                 Dim bInRange As Boolean = (oSegment.ProfileSplayBorderPosInclinationRange = modSegmentsTools.GetDefaultProfileSplayBorderPosInclinationRange OrElse (oSplaySegment.Data.Data.Inclination >= oSegment.ProfileSplayBorderPosInclinationRange.Width AndAlso oSplaySegment.Data.Data.Inclination <= oSegment.ProfileSplayBorderPosInclinationRange.Height)) _
-                                    OrElse (oSegment.ProfileSplayBorderNegInclinationRange = modSegmentsTools.GetDefaultProfileSplayBorderNegInclinationRange OrElse (oSplaySegment.Data.Data.Inclination >= oSegment.ProfileSplayBorderNegInclinationRange.Width AndAlso oSplaySegment.Data.Data.Inclination <= oSegment.ProfileSplayBorderNegInclinationRange.Height))
+                                        OrElse (oSegment.ProfileSplayBorderNegInclinationRange = modSegmentsTools.GetDefaultProfileSplayBorderNegInclinationRange OrElse (oSplaySegment.Data.Data.Inclination >= oSegment.ProfileSplayBorderNegInclinationRange.Width AndAlso oSplaySegment.Data.Data.Inclination <= oSegment.ProfileSplayBorderNegInclinationRange.Height))
                                 Dim sSplayBearing As Single = oSplaySegment.Data.Data.Bearing
                                 bInRange = bInRange And modPaint.IsAngleBetween(sSplayBearing, dPlaneDirectionForRange - oSegment.ProfileSplayBorderMaxAngleVariation, dPlaneDirectionForRange + oSegment.ProfileSplayBorderMaxAngleVariation)
                                 Dim sSegmentAngle As Single = oSplaySegment.Data.Data.Bearing - dPlaneDirection
@@ -280,7 +280,7 @@ Namespace cSurvey.Design
                         If oToSplaySegment.Count > 0 Then
                             For Each oSplaySegment As cSegment In oToSplaySegment
                                 Dim bInRange As Boolean = (oSegment.ProfileSplayBorderPosInclinationRange = modSegmentsTools.GetDefaultProfileSplayBorderPosInclinationRange OrElse (oSplaySegment.Data.Data.Inclination >= oSegment.ProfileSplayBorderPosInclinationRange.Width AndAlso oSplaySegment.Data.Data.Inclination <= oSegment.ProfileSplayBorderPosInclinationRange.Height)) _
-                                    OrElse (oSegment.ProfileSplayBorderNegInclinationRange = modSegmentsTools.GetDefaultProfileSplayBorderNegInclinationRange OrElse (oSplaySegment.Data.Data.Inclination >= oSegment.ProfileSplayBorderNegInclinationRange.Width AndAlso oSplaySegment.Data.Data.Inclination <= oSegment.ProfileSplayBorderNegInclinationRange.Height))
+                                        OrElse (oSegment.ProfileSplayBorderNegInclinationRange = modSegmentsTools.GetDefaultProfileSplayBorderNegInclinationRange OrElse (oSplaySegment.Data.Data.Inclination >= oSegment.ProfileSplayBorderNegInclinationRange.Width AndAlso oSplaySegment.Data.Data.Inclination <= oSegment.ProfileSplayBorderNegInclinationRange.Height))
                                 Dim sSplayBearing As Single = oSplaySegment.Data.Data.Bearing
                                 bInRange = bInRange And modPaint.IsAngleBetween(sSplayBearing, dPlaneDirectionForRange - oSegment.ProfileSplayBorderMaxAngleVariation, dPlaneDirectionForRange + oSegment.ProfileSplayBorderMaxAngleVariation)
                                 Dim sSegmentAngle As Single = oSplaySegment.Data.Data.Bearing - dPlaneDirection '- if(oSplaySegment.Data.Data.Bearing > 180, 360 - dPlaneDirection, dPlaneDirection)
@@ -347,7 +347,8 @@ Namespace cSurvey.Design
                                                                                      End Sub)
         End Sub
 
-        Friend Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, Selection As Helper.Editor.cIEditDesignSelection)
+        Friend Overrides Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, Selection As Helper.Editor.cIEditDesignSelection)
+            MyBase.Render(Graphics, PaintOptions, Selection)
             'Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
             'With oCache
             '    If .Invalidated Then
@@ -367,6 +368,8 @@ Namespace cSurvey.Design
                 Dim oCurrentTrigpoint As cTrigPoint = If(PaintOptions.IsDesign, Selection.CurrentTrigpoint, Nothing)
                 Dim oDrawingObject As cOptionsDrawingObjects = PaintOptions.DrawingObjects
                 Dim oTranslationTrigPoints As cTranslatedTrigPoints = New cTranslatedTrigPoints
+
+                Dim iTextPolicy As Integer = oSurvey.Properties.DesignProperties.GetValue("PlotTextPolicy", 0)
 
                 Dim oDefaultRingColor As Color
                 Dim sDefaultRingPenWidth As Single
@@ -532,7 +535,6 @@ Namespace cSurvey.Design
                                                         Call oCacheItem.SetPen(oDrawingObject.SurfaceProfilePen)
                                                     End If
 
-
                                                     Call oCacheItem.AddLines(oSurfacePoints)
                                                     Call oCacheItem.Transform(oTranslationMatrix)
                                                 End If
@@ -608,29 +610,32 @@ Namespace cSurvey.Design
                                 End With
                             End If
                             'linee di riporto (traslazioni)
-                            If Not oSegment.Splay Then
-                                If Not PaintOptions.IsDesign AndAlso PaintOptions.DrawTranslation Then
-                                    With oSegment.Data
-                                        Dim oTranslation As SizeF = modPlot.GetProfileSegmentTranslation(oSurvey, oSegment)
-                                        If oTranslation.IsEmpty Then
-                                            'Call oTranslationTrigPoints.AddRange(oSurvey.Calculate.TrigPoints.Equate(.Data.From), .Profile.FromPoint)
-                                            'Call oTranslationTrigPoints.AddRange(oSurvey.Calculate.TrigPoints.Equate(.Data.To), .Profile.ToPoint)
-                                            Call oTranslationTrigPoints.Add(.Data.From, .Profile.FromPoint)
-                                            Call oTranslationTrigPoints.Add(.Data.To, .Profile.ToPoint)
-                                        Else
-                                            'Call oTranslationTrigPoints.AddRange(oSurvey.Calculate.TrigPoints.Equate(.Data.From), PointF.Add(.Profile.FromPoint, oTranslation))
-                                            'Call oTranslationTrigPoints.AddRange(oSurvey.Calculate.TrigPoints.Equate(.Data.To), PointF.Add(.Profile.ToPoint, oTranslation))
-                                            Call oTranslationTrigPoints.Add(.Data.From, PointF.Add(.Profile.FromPoint, oTranslation))
-                                            Call oTranslationTrigPoints.Add(.Data.To, PointF.Add(.Profile.ToPoint, oTranslation))
-                                        End If
-                                    End With
+                            With oSegment.Data
+                                Dim sFrom As String = oSurvey.Calculate.TrigPoints.ToEquateTrigpoint(.Data.From)
+                                Dim sTo As String = oSurvey.Calculate.TrigPoints.ToEquateTrigpoint(.Data.To)
+                                Dim sOriginalTo As String
+                                Dim sOriginalFrom As String
+                                If iTextPolicy = 0 Then
+                                    sOriginalFrom = .Data.From
+                                    sOriginalTo = .Data.To
                                 Else
-                                    With oSegment.Data
-                                        Call oTranslationTrigPoints.Add(.Data.From, .Profile.FromPoint)
-                                        Call oTranslationTrigPoints.Add(.Data.To, .Profile.ToPoint)
-                                    End With
+                                    sOriginalFrom = sFrom
+                                    sOriginalTo = sTo
                                 End If
-                            End If
+                                If Not PaintOptions.IsDesign AndAlso PaintOptions.DrawTranslation Then
+                                    Dim oTranslation As SizeF = modPlot.GetProfileSegmentTranslation(oSurvey, oSegment)
+                                    If oTranslation.IsEmpty Then
+                                        Call oTranslationTrigPoints.Add(sFrom, sOriginalFrom, .Data.From, .Profile.FromPoint)
+                                        Call oTranslationTrigPoints.Add(sTo, sOriginalTo, .Data.To, .Profile.ToPoint)
+                                    Else
+                                        Call oTranslationTrigPoints.Add(sFrom, sOriginalFrom, .Data.From, PointF.Add(.Profile.FromPoint, oTranslation))
+                                        Call oTranslationTrigPoints.Add(sTo, sOriginalTo, .Data.To, PointF.Add(.Profile.ToPoint, oTranslation))
+                                    End If
+                                Else
+                                    Call oTranslationTrigPoints.Add(sFrom, sOriginalFrom, .Data.From, .Profile.FromPoint)
+                                    Call oTranslationTrigPoints.Add(sTo, sOriginalTo, .Data.To, .Profile.ToPoint)
+                                End If
+                            End With
                         End If
                     End If
                 Next
@@ -643,87 +648,92 @@ Namespace cSurvey.Design
                     If Not oSegment.Splay Then
                         If modDesign.GetIfSegmentMustBeDrawedByCaveAndBranch(PaintOptions, oSegment, Selection.CurrentCave, Selection.CurrentBranch) Then
                             Dim oTranslationTrigpointsToDraw As List(Of cTranslatedTrigPoint) = New List(Of cTranslatedTrigPoint)
-                            Dim sFrom As String = oSegment.From 'oSurvey.Calculate.TrigPoints.Equate(oSegment.From).First
-                            Dim sTo As String = oSegment.To 'oSurvey.Calculate.TrigPoints.Equate(oSegment.To).First
+                            Dim sFrom As String = oSurvey.Calculate.TrigPoints.ToEquateTrigpoint(oSegment.From) 'oSurvey.Calculate.TrigPoints.Equate(oSegment.From).First
+                            Dim sTo As String = oSurvey.Calculate.TrigPoints.ToEquateTrigpoint(oSegment.To) 'oSurvey.Calculate.TrigPoints.Equate(oSegment.To).First
                             If oTranslationTrigPoints.Contains(sFrom) Then Call oTranslationTrigpointsToDraw.Add(oTranslationTrigPoints(sFrom))
                             If oTranslationTrigPoints.Contains(sTo) Then Call oTranslationTrigpointsToDraw.Add(oTranslationTrigPoints(sTo))
-                                For Each oTranslationTrigPoint As cTranslatedTrigPoint In oTranslationTrigpointsToDraw
-                                    If Not oDrawedTrigPoint.Contains(oTranslationTrigPoint.Name) Then
-                                        If oSurvey.TrigPoints.Contains(oTranslationTrigPoint.Name) Then
-                                            Dim oTrigPoint As cTrigPoint = oSurvey.TrigPoints(oTranslationTrigPoint.Name)
-                                            If ((PaintOptions.IsDesign AndAlso Not oTrigPoint.HiddenInDesign) OrElse ((PaintOptions.IsPreview OrElse PaintOptions.IsViewer) AndAlso Not oTrigPoint.HiddenInPreview)) Then
-                                                Dim oTrigpointCache As cDrawCache = pGetOrCreateTrigpointFromCache(oTrigPoint, PaintOptions)
-                                                If oTrigpointCache.Invalidated Then
-                                                    With oTrigpointCache
-                                                        'linee di traslazione
-                                                        If (Not PaintOptions.IsDesign AndAlso PaintOptions.DrawTranslation AndAlso PaintOptions.TranslationsOptions.DrawTranslationsLine AndAlso oTranslationTrigPoint.Count > 1 AndAlso oSurvey.TrigPoints(oTranslationTrigPoint.Name).DrawTranslationsLine) OrElse (PaintOptions.IsDesign AndAlso oSurvey.TrigPoints(oTranslationTrigPoint.Name).DrawTranslationsLine) Then
-                                                            Dim oFromPoint As PointF = oTranslationTrigPoint(0)
-                                                            Dim i As Integer = 1
-                                                            Do While i < oTranslationTrigPoint.Count
-                                                                oCacheItem = oTrigpointCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
-                                                                Dim oToPoint As PointF = oTranslationTrigPoint(i)
-                                                                If (sTTH = 0 OrElse modPaint.DistancePointToPoint(oToPoint, oFromPoint) > sTTH) Then
-                                                                    If (oToPoint.X <> oFromPoint.X) AndAlso (oToPoint.Y <> oFromPoint.Y) Then
-                                                                        Dim oMidPoint As PointF = New PointF(oFromPoint.X, oToPoint.Y)
-                                                                        Call oCacheItem.SetPen(oDrawingObject.TranslationPen)
-                                                                        Call oCacheItem.AddLine(oFromPoint, oMidPoint)
-                                                                        Call oCacheItem.AddLine(oMidPoint, oToPoint)
-                                                                    Else
-                                                                        Call oCacheItem.SetPen(oDrawingObject.TranslationPen)
-                                                                        Call oCacheItem.AddLine(oFromPoint, oToPoint)
-                                                                    End If
-                                                                    i += 1
-                                                                Else
-                                                                    Call oTranslationTrigPoint.Remove(oToPoint)
+
+                            For Each oTranslationTrigPoint As cTranslatedTrigPoint In oTranslationTrigpointsToDraw
+                                If Not oDrawedTrigPoint.Contains(oTranslationTrigPoint.Name) Then
+                                    If oSurvey.TrigPoints.Contains(oTranslationTrigPoint.Name) Then
+                                        Dim oTrigPoint As cTrigPoint = oSurvey.TrigPoints(oTranslationTrigPoint.Name)
+                                        If ((PaintOptions.IsDesign AndAlso Not oTrigPoint.HiddenInDesign) OrElse ((PaintOptions.IsPreview OrElse PaintOptions.IsViewer) AndAlso Not oTrigPoint.HiddenInPreview)) Then
+                                            Dim oTrigpointCache As cDrawCache = pGetOrCreateTrigpointFromCache(oTrigPoint, PaintOptions)
+                                            If oTrigpointCache.Invalidated Then
+                                                With oTrigpointCache
+                                                    Call MyBase.RenderTrigpointTranslations(PaintOptions, oDrawingObject, oTrigpointCache, oTranslationTrigPoint)
+                                                    'linee di traslazione
+                                                    'If (Not PaintOptions.IsDesign AndAlso PaintOptions.DrawTranslation AndAlso PaintOptions.TranslationsOptions.DrawTranslationsLine AndAlso oTranslationTrigPoint.Count > 1 AndAlso oSurvey.TrigPoints(oTranslationTrigPoint.Name).DrawTranslationsLine) OrElse (PaintOptions.IsDesign AndAlso oSurvey.TrigPoints(oTranslationTrigPoint.Name).DrawTranslationsLine) Then
+                                                    '    Dim oFromPoint As PointF = oTranslationTrigPoint(0).Point
+                                                    '    Dim i As Integer = 1
+                                                    '    Do While i < oTranslationTrigPoint.Count
+                                                    '        oCacheItem = oTrigpointCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
+                                                    '        Dim oToTranslationTrigpointPoint As cTranslatedTrigPointPoint = oTranslationTrigPoint(i)
+                                                    '        Dim oToPoint As PointF = oToTranslationTrigpointPoint.Point
+                                                    '        If (sTTH = 0 OrElse modPaint.DistancePointToPoint(oToPoint, oFromPoint) > sTTH) Then
+                                                    '            If (oToPoint.X <> oFromPoint.X) AndAlso (oToPoint.Y <> oFromPoint.Y) Then
+                                                    '                Dim oMidPoint As PointF = New PointF(oFromPoint.X, oToPoint.Y)
+                                                    '                Call oCacheItem.SetPen(oDrawingObject.TranslationPen)
+                                                    '                Call oCacheItem.AddLine(oFromPoint, oMidPoint)
+                                                    '                Call oCacheItem.AddLine(oMidPoint, oToPoint)
+                                                    '            Else
+                                                    '                Call oCacheItem.SetPen(oDrawingObject.TranslationPen)
+                                                    '                Call oCacheItem.AddLine(oFromPoint, oToPoint)
+                                                    '            End If
+                                                    '            i += 1
+                                                    '        Else
+                                                    '            Call oTranslationTrigPoint.Remove(oToTranslationTrigpointPoint)
+                                                    '        End If
+                                                    '    Loop
+                                                    'End If
+
+                                                    For Each oTranslatedTrigPointPoint As cTranslatedTrigPointPoint In oTranslationTrigPoint
+                                                        oTrigPoint = oSurvey.TrigPoints(oTranslatedTrigPointPoint.OriginalName)
+                                                        Dim oPoint As PointF = oTranslatedTrigPointPoint.Point
+                                                        If oTrigPoint.IsEntrance Then
+                                                            Call RenderEntrancePoint(Graphics, PaintOptions, oPoint, oTrigpointCache, oTrigPoint.ShowEntrance)
+                                                        End If
+                                                        If PaintOptions.DrawHighlights Then
+                                                            For Each sID As String In PaintOptions.HighlightsOptions
+                                                                If oSurvey.Properties.HighlightsDetails.Contains(sID) Then
+                                                                    With oSurvey.Properties.HighlightsDetails(sID)
+                                                                        If .ApplyTo = Properties.cHighlightsDetail.ApplyToEnum.Stations Then
+                                                                            Dim oMeters As Properties.cHighlightsDetailMeters = .GetMetres
+                                                                            If .GetScript.Eval("GetHighlight", {New Properties.cStationHighlightDetails(oSurvey, oTrigPoint, oMeters)}) Then
+                                                                                Call modRender.RenderHighlightStation(Graphics, PaintOptions, oPoint, oTrigpointCache, oMeters)
+                                                                            End If
+                                                                        End If
+                                                                    End With
                                                                 End If
-                                                            Loop
+                                                            Next
                                                         End If
 
-                                                        For Each oPoint As PointF In oTranslationTrigPoint
-                                                            If oTrigPoint.IsEntrance Then
-                                                                Call RenderEntrancePoint(Graphics, PaintOptions, oPoint, oTrigpointCache, oTrigPoint.ShowEntrance)
-                                                            End If
-                                                            If PaintOptions.DrawHighlights Then
-                                                                For Each sID As String In PaintOptions.HighlightsOptions
-                                                                    If oSurvey.Properties.HighlightsDetails.Contains(sID) Then
-                                                                        With oSurvey.Properties.HighlightsDetails(sID)
-                                                                            If .ApplyTo = Properties.cHighlightsDetail.ApplyToEnum.Stations Then
-                                                                                Dim oMeters As Properties.cHighlightsDetailMeters = .GetMetres
-                                                                                If .GetScript.Eval("GetHighlight", {New Properties.cStationHighlightDetails(oSurvey, oTrigPoint, oMeters)}) Then
-                                                                                    Call modRender.RenderHighlightStation(Graphics, PaintOptions, oPoint, oTrigpointCache, oMeters)
-                                                                                End If
-                                                                            End If
-                                                                        End With
-                                                                    End If
-                                                                Next
-                                                            End If
-
-                                                            'point and point name
-                                                            If pCheckLabelInSamePosition(oLabelInSamePosition, oPoint) Then
-                                                                If (oTranslationTrigPoint.Count > 1 AndAlso PaintOptions.DrawTranslation AndAlso oTrigPoint.DrawTranslationsLine) OrElse (PaintOptions.DrawPlot AndAlso PaintOptions.DrawPoints) OrElse (PaintOptions.DrawDesign AndAlso PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
-                                                                    If oTrigPoint Is oCurrentTrigpoint Then
-                                                                        Call RenderTrigPoint(Graphics, PaintOptions, oTrigPoint, oPoint, oDrawingObject.SelectedPointSize, oDrawingObject.SelectedPointBrush, oDrawingObject.SelectedPointPen, oTrigpointCache)
-                                                                    Else
-                                                                        Call RenderTrigPoint(Graphics, PaintOptions, oTrigPoint, oPoint, oDrawingObject.PointSize, oDrawingObject.PointBrush, oDrawingObject.PointPen, oTrigpointCache)
-                                                                    End If
-                                                                End If
-                                                                If PaintOptions.ShowPointText Then
-                                                                    If (PaintOptions.DrawPlot) OrElse (PaintOptions.DrawDesign AndAlso PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
-                                                                        Call RenderTrigPointName(Graphics, PaintOptions, oTrigPoint, oPoint, oTrigpointCache)
-                                                                    End If
+                                                        'point and point name
+                                                        If pCheckLabelInSamePosition(oLabelInSamePosition, oPoint) Then
+                                                            If (oTranslationTrigPoint.Count > 1 AndAlso PaintOptions.DrawTranslation AndAlso oTrigPoint.DrawTranslationsLine) OrElse (PaintOptions.DrawPlot AndAlso PaintOptions.DrawPoints) OrElse (PaintOptions.DrawDesign AndAlso PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
+                                                                If oTrigPoint Is oCurrentTrigpoint Then
+                                                                    Call RenderTrigPoint(Graphics, PaintOptions, oTrigPoint, oPoint, oDrawingObject.SelectedPointSize, oDrawingObject.SelectedPointBrush, oDrawingObject.SelectedPointPen, oTrigpointCache)
+                                                                Else
+                                                                    Call RenderTrigPoint(Graphics, PaintOptions, oTrigPoint, oPoint, oDrawingObject.PointSize, oDrawingObject.PointBrush, oDrawingObject.PointPen, oTrigpointCache)
                                                                 End If
                                                             End If
-                                                        Next
-                                                        Call oDrawedTrigPoint.Add(oTranslationTrigPoint.Name)
-                                                        .Rendered()
-                                                    End With
-                                                End If
+                                                            If PaintOptions.ShowPointText Then
+                                                                If (PaintOptions.DrawPlot) OrElse (PaintOptions.DrawDesign AndAlso PaintOptions.DrawSpecialPoints AndAlso oTrigPoint.IsSpecial) Then
+                                                                    Call RenderTrigPointName(Graphics, PaintOptions, oTrigPoint, oPoint, oTrigpointCache)
+                                                                End If
+                                                            End If
+                                                        End If
+                                                    Next
+                                                    Call oDrawedTrigPoint.Add(oTrigPoint.Name)
+                                                    .Rendered()
+                                                End With
                                             End If
                                         End If
                                     End If
-                                Next
-                            End If
+                                End If
+                            Next
                         End If
+                    End If
                 Next
             End If
         End Sub
@@ -767,102 +777,97 @@ Namespace cSurvey.Design
         Friend Overrides Sub Calculate(ByVal SegmentsColl As List(Of cSegment), Optional ByVal PerformWarping As Boolean = True)
             'Try
             For Each oSegment As cSegment In SegmentsColl 'oSurvey.Segments
-                Dim iSideMeasureReferTo As cSegment.SideMeasuresReferToEnum
+                If Not oSegment.IsEquate Then
+                    Dim iSideMeasureReferTo As cSegment.SideMeasuresReferToEnum
 
-                If oSegment.Splay Then
-                    'splay are always managed with LRUD at end station and perpedicular to shot
-                    iSideMeasureReferTo = cSegment.SideMeasuresReferToEnum.EndPoint
-                Else
-                    iSideMeasureReferTo = oSegment.GetSideMeasuresReferTo
-                End If
-
-                Dim sFrom As String = oSegment.Data.Data.From
-                Dim sTo As String = oSegment.Data.Data.To
-                'If oSegment.Data.Data.Reversed Then
-                '    sFrom = oSegment.Data.Data.To
-                '    sTo = oSegment.Data.Data.From
-                'Else
-                '    sFrom = oSegment.Data.Data.From
-                '    sTo = oSegment.Data.Data.To
-                'End If
-
-                Dim oFromTrigpoint As Calculate.cTrigPoint = oSurvey.Calculate.TrigPoints(sFrom)
-                Dim oToTrigpoint As Calculate.cTrigPoint = oSurvey.Calculate.TrigPoints(sTo)
-
-                Dim oFromPoint As PointD = oFromTrigpoint.Connections(sTo).GetPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.Perpendicular)
-                'Dim oFromPoint As PointD = oFromTrigpoint.Point.To2DPoint(cTrigPointPoint.ProjectionEnum.Perpendicular)
-                Dim oToPoint As PointD
-                If oSegment.IsSelfDefined Then
-                    oToPoint = oFromPoint
-                Else
-                    oToPoint = oToTrigpoint.Connections(sFrom).GetPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.Perpendicular)
-                End If
-
-                Dim sD As Decimal = oToPoint.X
-                oToPoint = oToTrigpoint.Point.To2DPoint(cTrigPointPoint.ProjectionEnum.Perpendicular)
-                oToPoint.X = sD
-
-                'calcolo i sidepoints
-                Dim oFromSidePointDown As PointD
-                Dim oFromSidePointUp As PointD
-                Dim oToSidePointDown As PointD
-                Dim oToSidePointUp As PointD
-                'Try
-                Dim [sTop] As Decimal
-                Dim [sBottom] As Decimal
-                With oFromTrigpoint
-                    Dim oTopBottom As SizeD = .SideMeasure.GetUpDown
-                    [sTop] = oTopBottom.Width
-                    [sBottom] = oTopBottom.Height
-                    oFromSidePointDown = New PointD(oFromPoint.X, oFromPoint.Y + [sBottom])
-                    oFromSidePointUp = New PointD(oFromPoint.X, oFromPoint.Y - [sTop])
-                End With
-                With oToTrigpoint
-                    Dim oTopBottom As SizeD = .SideMeasure.GetUpDown
-                    [sTop] = oTopBottom.Width
-                    [sBottom] = oTopBottom.Height
-                    oToSidePointDown = New PointD(oToPoint.X, oToPoint.Y + [sBottom])
-                    oToSidePointUp = New PointD(oToPoint.X, oToPoint.Y - [sTop])
-                End With
-
-                'set calculated points...here, in future, top and bottom have to be calculated using vthreshold (also in plan)
-                Call oSegment.Data.Profile.SetPoints(sFrom, sTo, oFromPoint, oToPoint)
-                Call oSegment.Data.Profile.SetSidePoints(oFromSidePointDown, oFromSidePointUp, oToSidePointDown, oToSidePointUp)
-
-                'calculate surface profile...
-                Call oSegment.Data.Profile.SurfaceProfile.Clear()
-                If Not oSurvey.Properties.SurfaceProfileElevation Is Nothing Then
-                    Dim sBaseAlt As Decimal = oSurvey.Calculate.TrigPoints(oSurvey.Properties.Origin).Coordinate.Altitude  ' oSurvey.Properties.SurfaceProfileElevation.GetElevation(oSurvey.TrigPoints.GetOrigin)
-                    Dim oPlanFromPoint As PointD = oSegment.Data.Plan.FromPoint
-                    Dim oPlanToPoint As PointD = oSegment.Data.Plan.ToPoint
-
-                    Dim oProfileFromPoint As PointD = oSegment.Data.Profile.FromPoint
-                    Dim oProfileToPoint As PointD = oSegment.Data.Profile.ToPoint
-                    Dim sSign As Decimal
-                    If oSegment.Data.Data.Direction = cSurvey.DirectionEnum.Left Then
-                        sSign = -1
+                    If oSegment.Splay Then
+                        'splay are always managed with LRUD at end station and perpedicular to shot
+                        iSideMeasureReferTo = cSegment.SideMeasuresReferToEnum.EndPoint
                     Else
-                        sSign = 1
+                        iSideMeasureReferTo = oSegment.GetSideMeasuresReferTo
                     End If
 
-                    Dim sTotProfileDistance As Decimal = oSegment.Data.Data.Distance
-                    Dim sTotPlanDistance As Decimal = modPaint.DistancePointToPoint(oPlanFromPoint, oPlanToPoint)
-                    Dim oPlanSubPoint As PointD
-                    Dim sStep As Decimal = 2    '1 surface point every 2 shot meters (plan projected)...in future set as parameters...
-                    Dim sPlanDistance As Decimal = -sStep
-                    Do
-                        sPlanDistance += sStep
-                        If sPlanDistance > sTotPlanDistance Then sPlanDistance = sTotPlanDistance
-                        If oPlanFromPoint = oPlanToPoint Then
-                            oPlanSubPoint = oPlanFromPoint
+                    Dim sFrom As String = oSegment.Data.Data.From
+                    Dim sTo As String = oSegment.Data.Data.To
+
+                    Dim oFromTrigpoint As Calculate.cTrigPoint = oSurvey.Calculate.TrigPoints(sFrom)
+                    Dim oToTrigpoint As Calculate.cTrigPoint = oSurvey.Calculate.TrigPoints(sTo)
+
+                    Dim oFromPoint As PointD = oFromTrigpoint.Connections(sTo).GetPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.Perpendicular)
+                    'Dim oFromPoint As PointD = oFromTrigpoint.Point.To2DPoint(cTrigPointPoint.ProjectionEnum.Perpendicular)
+                    Dim oToPoint As PointD
+                    If oSegment.IsSelfDefined Then
+                        oToPoint = oFromPoint
+                    Else
+                        oToPoint = oToTrigpoint.Connections(sFrom).GetPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.Perpendicular)
+                    End If
+
+                    Dim sD As Decimal = oToPoint.X
+                    oToPoint = oToTrigpoint.Point.To2DPoint(cTrigPointPoint.ProjectionEnum.Perpendicular)
+                    oToPoint.X = sD
+
+                    'calcolo i sidepoints
+                    Dim oFromSidePointDown As PointD
+                    Dim oFromSidePointUp As PointD
+                    Dim oToSidePointDown As PointD
+                    Dim oToSidePointUp As PointD
+                    'Try
+                    Dim [sTop] As Decimal
+                    Dim [sBottom] As Decimal
+                    With oFromTrigpoint
+                        Dim oTopBottom As SizeD = .SideMeasure.GetUpDown
+                        [sTop] = oTopBottom.Width
+                        [sBottom] = oTopBottom.Height
+                        oFromSidePointDown = New PointD(oFromPoint.X, oFromPoint.Y + [sBottom])
+                        oFromSidePointUp = New PointD(oFromPoint.X, oFromPoint.Y - [sTop])
+                    End With
+                    With oToTrigpoint
+                        Dim oTopBottom As SizeD = .SideMeasure.GetUpDown
+                        [sTop] = oTopBottom.Width
+                        [sBottom] = oTopBottom.Height
+                        oToSidePointDown = New PointD(oToPoint.X, oToPoint.Y + [sBottom])
+                        oToSidePointUp = New PointD(oToPoint.X, oToPoint.Y - [sTop])
+                    End With
+
+                    'set calculated points...here, in future, top and bottom have to be calculated using vthreshold (also in plan)
+                    Call oSegment.Data.Profile.SetPoints(sFrom, sTo, oFromPoint, oToPoint)
+                    Call oSegment.Data.Profile.SetSidePoints(oFromSidePointDown, oFromSidePointUp, oToSidePointDown, oToSidePointUp)
+
+                    'calculate surface profile...
+                    Call oSegment.Data.Profile.SurfaceProfile.Clear()
+                    If Not oSurvey.Properties.SurfaceProfileElevation Is Nothing Then
+                        Dim sBaseAlt As Decimal = oSurvey.Calculate.TrigPoints(oSurvey.Properties.Origin).Coordinate.Altitude  ' oSurvey.Properties.SurfaceProfileElevation.GetElevation(oSurvey.TrigPoints.GetOrigin)
+                        Dim oPlanFromPoint As PointD = oSegment.Data.Plan.FromPoint
+                        Dim oPlanToPoint As PointD = oSegment.Data.Plan.ToPoint
+
+                        Dim oProfileFromPoint As PointD = oSegment.Data.Profile.FromPoint
+                        Dim oProfileToPoint As PointD = oSegment.Data.Profile.ToPoint
+                        Dim sSign As Decimal
+                        If oSegment.Data.Data.Direction = cSurvey.DirectionEnum.Left Then
+                            sSign = -1
                         Else
-                            oPlanSubPoint = modPaint.PointOnLineByPercentage(oPlanFromPoint, oPlanToPoint, sPlanDistance / sTotPlanDistance)
+                            sSign = 1
                         End If
-                        Dim sAlt As Decimal = oSurvey.Properties.SurfaceProfileElevation.GetElevation(oPlanSubPoint)
-                        If sAlt <> Surface.cElevation.NoDataValue Then
-                            Call oSegment.Data.Profile.SurfaceProfile.Append(New PointD(oProfileFromPoint.X + sPlanDistance * sSign, -1 * (sAlt - sBaseAlt)))
-                        End If
-                    Loop Until sPlanDistance = sTotPlanDistance
+
+                        Dim sTotProfileDistance As Decimal = oSegment.Data.Data.Distance
+                        Dim sTotPlanDistance As Decimal = modPaint.DistancePointToPoint(oPlanFromPoint, oPlanToPoint)
+                        Dim oPlanSubPoint As PointD
+                        Dim sStep As Decimal = 2    '1 surface point every 2 shot meters (plan projected)...in future set as parameters...
+                        Dim sPlanDistance As Decimal = -sStep
+                        Do
+                            sPlanDistance += sStep
+                            If sPlanDistance > sTotPlanDistance Then sPlanDistance = sTotPlanDistance
+                            If oPlanFromPoint = oPlanToPoint Then
+                                oPlanSubPoint = oPlanFromPoint
+                            Else
+                                oPlanSubPoint = modPaint.PointOnLineByPercentage(oPlanFromPoint, oPlanToPoint, sPlanDistance / sTotPlanDistance)
+                            End If
+                            Dim sAlt As Decimal = oSurvey.Properties.SurfaceProfileElevation.GetElevation(oPlanSubPoint)
+                            If sAlt <> Surface.cElevation.NoDataValue Then
+                                Call oSegment.Data.Profile.SurfaceProfile.Append(New PointD(oProfileFromPoint.X + sPlanDistance * sSign, -1 * (sAlt - sBaseAlt)))
+                            End If
+                        Loop Until sPlanDistance = sTotPlanDistance
+                    End If
                 End If
             Next
 

@@ -1954,4 +1954,16 @@
   <data name="lblClipSoil.Text" xml:space="preserve">
     <value>Suolo:</value>
   </data>
+  <data name="cboPlotTextPolicy.Properties.Items" xml:space="preserve">
+    <value>Nome dalla battuta</value>
+  </data>
+  <data name="cboPlotTextPolicy.Properties.Items1" xml:space="preserve">
+    <value>Tutti i nomi dei capisaldi equivalenti</value>
+  </data>
+  <data name="cboPlotTextPolicy.Properties.Items2" xml:space="preserve">
+    <value>Solo il primo nome (in ordine alfabetico)</value>
+  </data>
+  <data name="lblPlotTextPolicy.Text" xml:space="preserve">
+    <value>Logica dei nomi:</value>
+  </data>
 </root>

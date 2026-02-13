@@ -1,4 +1,5 @@
 ﻿Imports cSurveyPC.cSurvey
+Imports CsvHelper
 
 Namespace cSurvey.Calculate
     Public Class cSegmentGroup
@@ -11,6 +12,8 @@ Namespace cSurvey.Calculate
         Private oParentConnection As cConnectionDef
         Private oConnection As cConnectionDef
 
+        Private bValidate As Boolean
+
         Private oSegments As List(Of cSegment)
 
         Public Function HaveParentConnection() As Boolean
@@ -22,7 +25,7 @@ Namespace cSurvey.Calculate
         End Function
 
         Friend Function CloneDistinct() As cSegmentGroup
-            Dim oGroup As cSegmentGroup = New cSegmentGroup(sExtendStart, iPriority, oParentConnection, oConnection)
+            Dim oGroup As cSegmentGroup = New cSegmentGroup(sExtendStart, iPriority, oParentConnection, oConnection, bValidate)
             Dim oSegmentHash As List(Of String) = New List(Of String)
             For Each oSegment As cSegment In oSegments
                 Dim sHash As String = oSegment.GetHash
@@ -35,21 +38,25 @@ Namespace cSurvey.Calculate
         End Function
 
         Friend Function Validate(RaiseError As Boolean) As Boolean
-            If sExtendStart = "" OrElse oSegments.Count = 0 Then
-                Return True
-            Else
-                If oSegments.Select(Function(item) item.From).Distinct.Contains(sExtendStart) Then
+            If bValidate Then
+                If sExtendStart = "" OrElse oSegments.Count = 0 Then
                     Return True
                 Else
-                    If oSegments.Select(Function(item) item.To).Distinct.Contains(sExtendStart) Then
+                    If oSegments.Select(Function(item) item.From).Distinct.Contains(sExtendStart) Then
                         Return True
                     Else
-                        If RaiseError Then
-                            Throw New Exception(String.Format(modMain.GetLocalizedString("calculate.textpart7"), sExtendStart))
+                        If oSegments.Select(Function(item) item.To).Distinct.Contains(sExtendStart) Then
+                            Return True
+                        Else
+                            If RaiseError Then
+                                Throw New Exception(String.Format(modMain.GetLocalizedString("calculate.textpart7"), sExtendStart))
+                            End If
+                            Return False
                         End If
-                        Return False
                     End If
                 End If
+            Else
+                Return True
             End If
         End Function
 
@@ -92,14 +99,22 @@ Namespace cSurvey.Calculate
             Return sKey
         End Function
 
-        Friend Sub New(ExtendStart As String, Priority As Integer, ParentConnection As cConnectionDef, Connection As cConnectionDef)
+        Friend Sub New(ExtendStart As String, Priority As Integer, ParentConnection As cConnectionDef, Connection As cConnectionDef, Optional Validate As Boolean = True)
             sExtendStart = ExtendStart
             iPriority = Priority
             oParentConnection = ParentConnection
             oConnection = Connection
             sKey = GetKey(sExtendStart, iPriority)
             oSegments = New List(Of cSegment)
+
+            bValidate = Validate
         End Sub
+
+        Public ReadOnly Property IsValidable() As Boolean
+            Get
+                Return bValidate
+            End Get
+        End Property
 
         Friend Sub New(CaveInfo As cICaveInfoBranches)
             sExtendStart = CaveInfo.GetExtendStart

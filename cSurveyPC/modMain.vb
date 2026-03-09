@@ -295,7 +295,7 @@ Module modMain
     '    End Using
     'End Function
 
-    Public Async Function ExecuteTherionAsync(TherionExecutable As String, TherionIni As String, Arguments As String, Background As Boolean, OutputHandler As DataReceivedEventHandler, Optional TimeoutMilliseconds As Integer = 120000, Optional CancellationToken As Threading.CancellationToken = Nothing) As Task(Of Integer)
+    Public Async Function ExecuteTherionAsync(TherionExecutable As String, TherionIni As String, Arguments As String, OutputHandler As DataReceivedEventHandler, Optional TimeoutMilliseconds As Integer = 120000, Optional CancellationToken As Threading.CancellationToken = Nothing) As Task(Of Integer)
         Dim tcs As New TaskCompletionSource(Of Integer)
         Dim p As New Process()
 
@@ -306,8 +306,8 @@ Module modMain
             .UseShellExecute = False
             .CreateNoWindow = True
             .WindowStyle = ProcessWindowStyle.Hidden
-            .RedirectStandardOutput = Background
-            .RedirectStandardInput = Background
+            .RedirectStandardOutput = True
+            .RedirectStandardInput = True
         End With
 
         ' Variabile ambiente THERION
@@ -318,7 +318,7 @@ Module modMain
         End If
 
         ' Handler output
-        If Background AndAlso OutputHandler IsNot Nothing Then
+        If OutputHandler IsNot Nothing Then
             AddHandler p.OutputDataReceived, OutputHandler
         End If
 
@@ -338,9 +338,7 @@ Module modMain
             Throw New InvalidOperationException("Unable to start Therion process.")
         End If
 
-        If Background Then
-            p.BeginOutputReadLine()
-        End If
+        p.BeginOutputReadLine()
 
         ' Timeout support
         Dim completedTask = Await Task.WhenAny(tcs.Task, Task.Delay(TimeoutMilliseconds, CancellationToken))
@@ -362,7 +360,7 @@ Module modMain
         Return Await tcs.Task
     End Function
 
-    Public Function ExecuteTherion(TherionExecutable As String, TherionIni As String, ByVal Arguments As String, ByVal Background As Boolean, OutputHandler As System.Diagnostics.DataReceivedEventHandler) As Integer
+    Public Function ExecuteTherion(TherionExecutable As String, TherionIni As String, ByVal Arguments As String, OutputHandler As System.Diagnostics.DataReceivedEventHandler) As Integer
         Dim iTimeout As Integer = 120000
         Using oProcess As Process = New Process
             With oProcess
@@ -370,38 +368,25 @@ Module modMain
                 .StartInfo.WorkingDirectory = My.Computer.FileSystem.SpecialDirectories.Temp
                 .StartInfo.FileName = TherionExecutable
                 .StartInfo.Arguments = Arguments
-
-                If Background Then
-
-                    If OutputHandler IsNot Nothing Then
-                        AddHandler .OutputDataReceived, OutputHandler
-                    End If
-
-                    .StartInfo.CreateNoWindow = True
-                    .StartInfo.WindowStyle = ProcessWindowStyle.Hidden
-                    .StartInfo.RedirectStandardInput = True
-                    .StartInfo.RedirectStandardOutput = True
-                    .StartInfo.UseShellExecute = False
-
-                    If TherionIni <> "" Then
-                        .StartInfo.EnvironmentVariables.Add("THERION", TherionIni)
-                    Else
-                        .StartInfo.EnvironmentVariables.Add("THERION", modMain.GetUserApplicationPath)
-                    End If
-
+                If OutputHandler IsNot Nothing Then
+                    AddHandler .OutputDataReceived, OutputHandler
+                End If
+                .StartInfo.CreateNoWindow = True
+                .StartInfo.WindowStyle = ProcessWindowStyle.Hidden
+                .StartInfo.RedirectStandardInput = True
+                .StartInfo.RedirectStandardOutput = True
+                .StartInfo.UseShellExecute = False
+                If TherionIni <> "" Then
+                    .StartInfo.EnvironmentVariables.Add("THERION", TherionIni)
+                Else
+                    .StartInfo.EnvironmentVariables.Add("THERION", modMain.GetUserApplicationPath)
                 End If
 
                 .Start()
-
-                If Background Then
-                    .BeginOutputReadLine()
-                End If
-
+                .BeginOutputReadLine()
                 .StandardInput.WriteLine()
-
                 Do
                     .WaitForExit(iTimeout)
-
                     If Not .HasExited Then
                         If MsgBox(GetLocalizedString("process.warning1"), MsgBoxStyle.OkCancel Or MsgBoxStyle.Critical, GetLocalizedString("process.warningtitle")) = MsgBoxResult.Cancel Then
                             KillProcessTree(oProcess)
@@ -411,7 +396,7 @@ Module modMain
 
                 Loop Until .HasExited
 
-                If Background Then
+                If Not .HasExited Then
                     .WaitForExit()        ' Attende flush AsyncStreamReader
                     .CancelOutputRead()   ' Chiude la lettura async
                 End If
@@ -423,48 +408,6 @@ Module modMain
         End Using
 
     End Function
-
-
-    'Public Function ExecuteTherion(TherionExecutable As String, TherionIni As String, ByVal Arguments As String, ByVal Background As Boolean, OutputHandler As System.Diagnostics.DataReceivedEventHandler) As Integer
-    '    Dim iTimeout As Integer = 120000
-    '    Using oProcess As Process = New Process
-    '        With oProcess
-    '            .StartInfo.WorkingDirectory = My.Computer.FileSystem.SpecialDirectories.Temp
-    '            .StartInfo.FileName = TherionExecutable
-    '            .StartInfo.Arguments = Arguments
-    '            If Background Then
-    '                If Not OutputHandler Is Nothing Then AddHandler .OutputDataReceived, OutputHandler
-    '                .StartInfo.CreateNoWindow = True
-    '                .StartInfo.WindowStyle = ProcessWindowStyle.Hidden
-    '                .StartInfo.RedirectStandardInput = True
-    '                .StartInfo.RedirectStandardOutput = True
-    '                .StartInfo.UseShellExecute = False
-    '                'usefull to allow special settings for therion launced from csurvey
-    '                Dim sCustomTherionIniPath As String = TherionIni
-    '                If sCustomTherionIniPath <> "" Then
-    '                    .StartInfo.EnvironmentVariables.Add("THERION", sCustomTherionIniPath)
-    '                Else
-    '                    .StartInfo.EnvironmentVariables.Add("THERION", modMain.GetUserApplicationPath)
-    '                End If
-    '            End If
-    '            Call .Start()
-    '            If Background Then
-    '                Call .BeginOutputReadLine()
-    '            End If
-    '            Call .StandardInput.WriteLine()
-    '            Do
-    '                Call .WaitForExit(iTimeout)
-    '                If Not .HasExited Then ' AndAlso iWait >= iTimeout Then
-    '                    If MsgBox(GetLocalizedString("process.warning1"), MsgBoxStyle.OkCancel Or MsgBoxStyle.Critical, GetLocalizedString("process.warningtitle")) = MsgBoxResult.Cancel Then
-    '                        Call KillProcessTree(oProcess)
-    '                        Call Err.Raise(vbObjectError + 200, "process.aborted", GetLocalizedString("process.textpart1"), Nothing, Nothing)
-    '                    End If
-    '                End If
-    '            Loop Until .HasExited
-    '            Return .ExitCode
-    '        End With
-    '    End Using
-    'End Function
 
     Private oRM As System.Resources.ResourceManager
 

@@ -9667,7 +9667,7 @@ Friend Class frmMain2
         Dim sThProcess As String = My.Application.Settings.GetSetting("therion.path", "")
         If sThProcess = "" Then
         Else
-            Dim bThBackgroundProcess As Boolean = My.Application.Settings.GetSetting("therion.backgroundprocess", 0)
+            'Dim bThBackgroundProcess As Boolean = My.Application.Settings.GetSetting("therion.backgroundprocess", 0)
             Dim bThTrigpointSafeName As Boolean = My.Application.Settings.GetSetting("therion.trigpointsafename", 1)
             Dim bThDeleteTempFile As Boolean = My.Application.Settings.GetSetting("therion.deletetempfiles", 0)
             If sThProcess <> "" Then
@@ -9707,7 +9707,7 @@ Friend Class frmMain2
                     Call modExport.TherionCreateConfig(oSurvey, sTempConfigFilename, sTempThInputFilename, Commands)
 
                     Dim sThIni As String = My.Application.Settings.GetSetting("therion.inipath", "")
-                    Dim iExitCode As Integer = modMain.ExecuteTherion(sThProcess, sThIni, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), bThBackgroundProcess, AddressOf pProcessOutputHandler)
+                    Dim iExitCode As Integer = modMain.ExecuteTherion(sThProcess, sThIni, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), AddressOf pProcessOutputHandler)
 
                     Output = My.Computer.FileSystem.ReadAllText(sTempThLogFilename)
 
@@ -9742,7 +9742,7 @@ Friend Class frmMain2
         Else
             Call pStatusSet(GetLocalizedString("main.textpart4"))
             Call oMousePointer.Push(Cursors.WaitCursor)
-            Dim bThBackgroundProcess As Boolean = My.Application.Settings.GetSetting("therion.backgroundprocess", 0)
+            'Dim bThBackgroundProcess As Boolean = My.Application.Settings.GetSetting("therion.backgroundprocess", 0)
             Dim bThTrigpointSafeName As Boolean = My.Application.Settings.GetSetting("therion.trigpointsafename", 1)
             Dim bThUseCadastralIDinCaveNames As Boolean = My.Application.Settings.GetSetting("therion.usecadastralidincavenames", 0)
             Dim bThDeleteTempFile As Boolean = My.Application.Settings.GetSetting("therion.deletetempfiles", 0)
@@ -9843,7 +9843,7 @@ Friend Class frmMain2
 
                         Dim sThIni As String = My.Application.Settings.GetSetting("therion.inipath", "")
 
-                        iExitCode = modMain.ExecuteTherion(sThProcess, sThIni, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), bThBackgroundProcess, AddressOf pProcessOutputHandler)
+                        iExitCode = modMain.ExecuteTherion(sThProcess, sThIni, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), AddressOf pProcessOutputHandler)
                         If iExitCode = 0 OrElse My.Computer.FileSystem.FileExists(sTempThOutputFilename) Then
                             If iExitCode <> 0 Then Call pLogAdd(cSurvey.cSurvey.LogEntryType.Warning, "Therion exit code " & iExitCode, "")
                             If iRes = DialogResult.OK Then
@@ -9855,7 +9855,7 @@ Friend Class frmMain2
                                         .Title = GetLocalizedString("main.saveloch")
                                         .Filter = GetLocalizedString("main.filetypeLOX") & " (*.LOX)|*.LOX|" & GetLocalizedString("main.filetypeALL") & " (*.*)|*.*"
                                         .FilterIndex = 1
-                                        If .ShowDialog = DialogResult.OK Then
+                                        If .ShowDialog(Me) = DialogResult.OK Then
                                             If My.Computer.FileSystem.FileExists(.FileName) Then Call My.Computer.FileSystem.DeleteFile(.FileName)
                                             Call My.Computer.FileSystem.MoveFile(sTempThOutputFilename, .FileName)
                                         End If
@@ -11839,22 +11839,28 @@ Friend Class frmMain2
         End Using
     End Sub
 
+    Private Sub frmIS_OnConnectionChanged(sender As Object, e As frmImportcSurvey.cConnectionChangedEventArgs)
+
+    End Sub
+
     Private Sub pSurveyImportcSurvey(Filename As String, Append As Boolean)
         'cSurvey
         'bDisablewarpingDetails = True
         Dim dNow As Date = Date.Now
 
-        Using frmIS As frmImportcSurvey = New frmImportcSurvey(oSurvey)
-            frmIS.txtFilename.Text = Filename
+        Call oMousePointer.Push(Cursors.WaitCursor)
+        Dim oImportSurvey As cSurvey.cSurvey = New cSurvey.cSurvey
+        Call oImportSurvey.Load(Filename, cSurvey.cSurvey.LoadOptionsEnum.FixTopoDroid)
+        If Not oImportSurvey.Calculate.LoadedFromFile Then
+            Call oImportSurvey.Invalidate()
+            Call oImportSurvey.Calculate.Calculate(True)
+        End If
+        Call oMousePointer.Pop()
 
-            Call oMousePointer.Push(Cursors.WaitCursor)
-            Dim oImportSurvey As cSurvey.cSurvey = New cSurvey.cSurvey
-            Call oImportSurvey.Load(Filename, cSurvey.cSurvey.LoadOptionsEnum.FixTopoDroid)
-            If Not oImportSurvey.Calculate.LoadedFromFile Then
-                Call oImportSurvey.Invalidate()
-                Call oImportSurvey.Calculate.Calculate(True)
-            End If
-            Call oMousePointer.Pop()
+        Using frmIS As frmImportcSurvey = New frmImportcSurvey(oSurvey, oImportSurvey)
+            AddHandler frmIS.OnConnectionChanged, AddressOf frmIS_OnConnectionChanged
+
+            frmIS.txtFilename.Text = Filename
 
             Call frmIS.cboImportAsBranchOfCave.Rebind(oSurvey, True, False)
 
@@ -12091,7 +12097,7 @@ Friend Class frmMain2
                                 End If
                             Next
 
-                            bDisableSegmentsChangeEvent.push
+                            bDisableSegmentsChangeEvent.Push()
                             Dim oImportSegments As cSegments = oImportSurvey.Segments
 
                             Call oSurvey.Properties.DataTables.Segments.MergeWith(oImportSurvey.Properties.DataTables.Segments)
@@ -12109,14 +12115,14 @@ Friend Class frmMain2
                                     Call oImportSegment.SaveTo(oFile, oXML, oXMLParent, cSurvey.cSurvey.SaveOptionsEnum.Silent Or cSurvey.cSurvey.SaveOptionsEnum.ForClipboard)
 
                                     Dim oNewSegment As cSegment = New cSegment(oSurvey, oFile, oXMLParent.ChildNodes(0))
-                                    Dim iFindDuplicateMode As Integer = 0
+                                    Dim iFindDuplicateMode As Integer = frmIS.cbocSurveyImportDuplicatesMode.SelectedIndex
                                     Dim bIsDuplicated As Boolean
 
                                     Dim oOldSegment As cSegment = Nothing
-                                    If (frmIS.cbocSurveyImportDuplicatesMode.SelectedIndex = 0 AndAlso oSurvey.Segments.Contains(oNewSegment.ID)) Then
+                                    If (iFindDuplicateMode = 0 AndAlso oSurvey.Segments.Contains(oNewSegment.ID)) Then
                                         bIsDuplicated = True
                                         oOldSegment = oSurvey.Segments(oNewSegment.ID)
-                                    ElseIf (frmIS.cbocSurveyImportDuplicatesMode.SelectedIndex = 1) Then
+                                    ElseIf (iFindDuplicateMode = 1) Then
                                         Dim oDuplicates As cSegmentCollection = oSurvey.Segments.FindDuplicate(oImportSegment)
                                         If oDuplicates.Count > 0 Then
                                             bIsDuplicated = True
@@ -12164,11 +12170,15 @@ Friend Class frmMain2
                                         End If
                                     Else
                                         Call oSurvey.Segments.Append(oNewSegment)
+                                        If oNewSegment.Splay Then
+                                            Dim sSplayTo As String = oNewSegment.GetSplayName()
+                                            oNewSegment.To = sSplayTo
+                                        End If
                                         Call oDuplicatedSegments.Add(oNewSegment.ID, oNewSegment.ID)
                                     End If
                                 End Using
                             Next
-                            bDisableSegmentsChangeEvent.pop()
+                            bDisableSegmentsChangeEvent.Pop()
 
                             bDisableTrigpointsChangeEvent.Push()
                             Dim oOriginalTrigpoints As List(Of String) = oSurvey.TrigPoints.GetNames
@@ -12490,6 +12500,8 @@ Friend Class frmMain2
                     Call pMapInvalidate()
                 End If
             End If
+
+            RemoveHandler frmIS.OnConnectionChanged, AddressOf frmIS_OnConnectionChanged
         End Using
 
         bDisablewarpingDetails = False
@@ -16518,7 +16530,7 @@ Friend Class frmMain2
     Private Sub btnSaveAsTemplate_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnSaveAsTemplate.ItemClick
         Using frmT As frmTemplates = New frmTemplates(oTemplates, True)
             With frmT
-                If .ShowDialog() = DialogResult.OK Then
+                If .ShowDialog(Me) = DialogResult.OK Then
                     Dim sTemplateFilename As String = IO.Path.Combine(oTemplates.TemplatePath, frmT.txtName.Text) & ".csz"
                     Call pSurveySave(sTemplateFilename, True, cSurvey.cSurvey.SaveOptionsEnum.NoHistory Or cSurvey.cSurvey.SaveOptionsEnum.Silent)
                 End If
@@ -18298,7 +18310,7 @@ Friend Class frmMain2
                     .Title = GetLocalizedString("main.saveclipartdialog")
                     .Filter = GetLocalizedString("main.filetypeSVG") & " (*.SVG)|*.SVG|" & GetLocalizedString("main.filetypeALL") & " (*.*)|*.*"
                     .FilterIndex = 1
-                    If .ShowDialog = DialogResult.OK Then
+                    If .ShowDialog(Me) = DialogResult.OK Then
                         Call oItemSign.ToSvg(oCurrentOptions, cSVGWriter.SVGOptionsEnum.ClipartBrushes).Save(.FileName)
                     End If
                 End With
@@ -18313,7 +18325,7 @@ Friend Class frmMain2
                 With oSFD
                     Dim iGalleryIndex As Integer = oDockClipart.GalleryIndexByCategory(oItemSign.Category)
                     .InitialDirectory = oDockClipart.GetGalleryPath(iGalleryIndex)
-                    If oSFD.ShowDialog = DialogResult.OK Then
+                    If oSFD.ShowDialog(Me) = DialogResult.OK Then
                         Call oItemSign.ToSvg(oCurrentOptions, cSVGWriter.SVGOptionsEnum.ClipartBrushes).Save(.FileName)
                     End If
                 End With
@@ -18511,7 +18523,7 @@ Friend Class frmMain2
                 With oSFD
                     Dim iGalleryIndex As Integer = oDockClipart.GalleryIndexByCategory(oItemClipart.Category)
                     .InitialDirectory = oDockClipart.GetGalleryPath(iGalleryIndex)
-                    If oSFD.ShowDialog = DialogResult.OK Then
+                    If oSFD.ShowDialog(Me) = DialogResult.OK Then
                         Call oItemClipart.ToSvg(oCurrentOptions, cSVGWriter.SVGOptionsEnum.ClipartBrushes).Save(.FileName)
                     End If
                 End With
@@ -18527,7 +18539,7 @@ Friend Class frmMain2
                     .Title = GetLocalizedString("main.saveclipartdialog")
                     .Filter = GetLocalizedString("main.filetypeSVG") & " (*.SVG)|*.SVG|" & GetLocalizedString("main.filetypeALL") & " (*.*)|*.*"
                     .FilterIndex = 1
-                    If .ShowDialog = DialogResult.OK Then
+                    If .ShowDialog(Me) = DialogResult.OK Then
                         Call oItemClipart.ToSvg(oCurrentOptions, cSVGWriter.SVGOptionsEnum.ClipartBrushes).Save(.FileName)
                     End If
                 End With

@@ -1602,7 +1602,7 @@ Namespace cSurvey.Calculate
                     If sThProcess = "" Then
                         Throw New cCalculateTherionMissingException(modMain.GetLocalizedString("calculate.textpart6"))
                     Else
-                        Dim bThBackgroundProcess As Boolean = My.Application.Settings.GetSetting("therion.backgroundprocess", 1)
+                        'Dim bThBackgroundProcess As Boolean = My.Application.Settings.GetSetting("therion.backgroundprocess", 1)
                         Dim bThDeleteTempFile As Boolean = My.Application.Settings.GetSetting("therion.deletetempfiles", 1)
 
                         Dim oDepth As Dictionary(Of String, Decimal)
@@ -1685,7 +1685,7 @@ Namespace cSurvey.Calculate
                             Call modExport.TherionCreateConfig(oSurvey, sTempConfigFilename, sTempThInputFilename, sExportCommand)
 
                             Dim sThIni As String = My.Application.Settings.GetSetting("therion.inipath", "")
-                            Dim iExitCode As Integer = modMain.ExecuteTherion(sThProcess, sThIni, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), bThBackgroundProcess, AddressOf pProcessOutputHandler)
+                            Dim iExitCode As Integer = modMain.ExecuteTherion(sThProcess, sThIni, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), AddressOf pProcessOutputHandler)
 
                             Call oGMD.Clear()
                             Call oRs.Clear()

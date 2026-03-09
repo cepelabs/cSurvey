@@ -715,19 +715,19 @@ Module modExport
         If My.Computer.FileSystem.FileExists(TherionFilename) Then
             Try
                 Dim oResult As cVersion
-                Dim iExitCode As Integer = modMain.ExecuteTherion(TherionFilename, "", " -v ", True, Sub(sendingProcess As Object, outLine As DataReceivedEventArgs)
-                                                                                                         If outLine.Data IsNot Nothing Then
-                                                                                                             Dim sLine As String = outLine.Data.Replace(vbCrLf, " ").Replace(vbLf, "").Trim
-                                                                                                             If sLine.StartsWith("therion ") Then
-                                                                                                                 Dim sLineParts As String() = sLine.Split(" ")
-                                                                                                                 If sLineParts.Length >= 3 Then
-                                                                                                                     Dim sVersionRaw As String = sLineParts(1)
-                                                                                                                     Dim sReleaseDateRaw As String = sLineParts(2).Substring(1, sLineParts(2).Length - 2)
-                                                                                                                     cVersion.TryParse(sVersionRaw, sReleaseDateRaw, oResult)
-                                                                                                                 End If
-                                                                                                             End If
-                                                                                                         End If
-                                                                                                     End Sub)
+                Dim iExitCode As Integer = modMain.ExecuteTherion(TherionFilename, "", " -v ", Sub(sendingProcess As Object, outLine As DataReceivedEventArgs)
+                                                                                                   If outLine.Data IsNot Nothing Then
+                                                                                                       Dim sLine As String = outLine.Data.Replace(vbCrLf, " ").Replace(vbLf, "").Trim
+                                                                                                       If sLine.StartsWith("therion ") Then
+                                                                                                           Dim sLineParts As String() = sLine.Split(" ")
+                                                                                                           If sLineParts.Length >= 3 Then
+                                                                                                               Dim sVersionRaw As String = sLineParts(1)
+                                                                                                               Dim sReleaseDateRaw As String = sLineParts(2).Substring(1, sLineParts(2).Length - 2)
+                                                                                                               cVersion.TryParse(sVersionRaw, sReleaseDateRaw, oResult)
+                                                                                                           End If
+                                                                                                       End If
+                                                                                                   End If
+                                                                                               End Sub)
                 Return oResult
             Catch ex As Exception
                 Return Nothing
@@ -743,19 +743,19 @@ Module modExport
             Return Nothing
         End If
         Dim oResult As cVersion = Nothing
-        Await ExecuteTherionAsync(TherionFilename, "", " -v ", True, Sub(sendingProcess As Object, outLine As DataReceivedEventArgs)
-                                                                         If outLine.Data IsNot Nothing Then
-                                                                             Dim sLine As String = outLine.Data.Replace(vbCrLf, " ").Replace(vbLf, "").Trim
-                                                                             If sLine.StartsWith("therion ") Then
-                                                                                 Dim sLineParts As String() = sLine.Split(" ")
-                                                                                 If sLineParts.Length >= 3 Then
-                                                                                     Dim sVersionRaw As String = sLineParts(1)
-                                                                                     Dim sReleaseDateRaw As String = sLineParts(2).Substring(1, sLineParts(2).Length - 2)
-                                                                                     cVersion.TryParse(sVersionRaw, sReleaseDateRaw, oResult)
-                                                                                 End If
-                                                                             End If
-                                                                         End If
-                                                                     End Sub)
+        Await ExecuteTherionAsync(TherionFilename, "", " -v ", Sub(sendingProcess As Object, outLine As DataReceivedEventArgs)
+                                                                   If outLine.Data IsNot Nothing Then
+                                                                       Dim sLine As String = outLine.Data.Replace(vbCrLf, " ").Replace(vbLf, "").Trim
+                                                                       If sLine.StartsWith("therion ") Then
+                                                                           Dim sLineParts As String() = sLine.Split(" ")
+                                                                           If sLineParts.Length >= 3 Then
+                                                                               Dim sVersionRaw As String = sLineParts(1)
+                                                                               Dim sReleaseDateRaw As String = sLineParts(2).Substring(1, sLineParts(2).Length - 2)
+                                                                               cVersion.TryParse(sVersionRaw, sReleaseDateRaw, oResult)
+                                                                           End If
+                                                                       End If
+                                                                   End If
+                                                               End Sub)
 
         Return oResult
     End Function

@@ -65,12 +65,13 @@ Friend Class frmImportcSurvey
     End Sub
 
     Private oSurvey As cSurvey.cSurvey
-
-    Public Sub New(Survey As cSurvey.cSurvey)
+    Private oImportSurvey As cSurvey.cSurvey
+    Public Sub New(Survey As cSurvey.cSurvey, ImportSurvey As cSurvey.cSurvey)
         ' Chiamata richiesta dalla finestra di progettazione.
         InitializeComponent()
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
-        osurvey = Survey
+        oSurvey = Survey
+        oImportSurvey = ImportSurvey
         Call pSettingsLoad()
     End Sub
 
@@ -105,11 +106,15 @@ Friend Class frmImportcSurvey
         chkImportAsBranchOf.Enabled = bEnabled
         cboImportAsBranchOfCave.Enabled = chkImportAsBranchOf.Checked And bEnabled
         cboImportAsBranchOfBranch.Enabled = chkImportAsBranchOf.Checked And bEnabled
+
         Call chkcSurveyImportDuplicates_CheckedChanged(Nothing, Nothing)
     End Sub
 
     Private Sub chkcSurveyImportData_CheckedChanged(sender As Object, e As EventArgs) Handles chkcSurveyImportData.CheckedChanged
         Call pImportDataChanged()
+
+        Dim oArgs As cConnectionChangedEventArgs = New cConnectionChangedEventArgs(oSurvey, oImportSurvey)
+        RaiseEvent OnConnectionChanged(Me, oArgs)
     End Sub
 
     Private Sub chkcSurveyImportDuplicates_CheckedChanged(sender As Object, e As EventArgs) Handles chkcSurveyImportDuplicates.CheckedChanged
@@ -118,9 +123,37 @@ Friend Class frmImportcSurvey
         chkcSurveyImportDuplicatesOverwriteOnlyUsed.Enabled = chkcSurveyImportDuplicatesOverwrite.Checked AndAlso bDuplicatesEnabled
     End Sub
 
+    Friend Class cConnectionChangedEventArgs
+        Inherits EventArgs
+
+        Private oSurvey As cSurvey.cSurvey
+        Private oImportSurvey As cSurvey.cSurvey
+
+        Public ReadOnly Property ImportSurvey As cSurvey.cSurvey
+            Get
+                Return oImportSurvey
+            End Get
+        End Property
+        Public ReadOnly Property Survey As cSurvey.cSurvey
+            Get
+                Return oSurvey
+            End Get
+        End Property
+
+        Public Sub New(Survey As cSurvey.cSurvey, ImportSurvey As cSurvey.cSurvey)
+            oSurvey = Survey
+            oImportSurvey = ImportSurvey
+        End Sub
+    End Class
+
+    Friend Event OnConnectionChanged(sender As Object, e As cConnectionChangedEventArgs)
+
     Private Sub chkImportAsBranchOf_CheckedChanged(sender As Object, e As EventArgs) Handles chkImportAsBranchOf.CheckedChanged
         cboImportAsBranchOfCave.Enabled = chkImportAsBranchOf.Checked
         cboImportAsBranchOfBranch.Enabled = chkImportAsBranchOf.Checked
+
+        Dim oArgs As cConnectionChangedEventArgs = New cConnectionChangedEventArgs(oSurvey, oImportSurvey)
+        RaiseEvent OnConnectionChanged(Me, oArgs)
     End Sub
 
     Private Sub chkcSurveyImportDuplicatesOverwrite_CheckedChanged(sender As Object, e As EventArgs) Handles chkcSurveyImportDuplicatesOverwrite.CheckedChanged
@@ -159,5 +192,23 @@ Friend Class frmImportcSurvey
         Dim sCave As String = "" & If(cboImportAsBranchOfCave.EditValue Is Nothing, "", cboImportAsBranchOfCave.EditValue.Name)
         Dim sCurrentBranch As String = "" & If(cboImportAsBranchOfBranch.EditValue Is Nothing, "", cboImportAsBranchOfBranch.EditValue.Path)
         Call cboImportAsBranchOfBranch.Rebind(oSurvey, cboImportAsBranchOfCave, True)
+
+        Dim oArgs As cConnectionChangedEventArgs = New cConnectionChangedEventArgs(oSurvey, oImportSurvey)
+        RaiseEvent OnConnectionChanged(Me, oArgs)
+    End Sub
+
+    Private Sub cboImportAsBranchOfBranch_EditValueChanged(sender As Object, e As EventArgs) Handles cboImportAsBranchOfBranch.EditValueChanged
+        Dim oArgs As cConnectionChangedEventArgs = New cConnectionChangedEventArgs(oSurvey, oImportSurvey)
+        RaiseEvent OnConnectionChanged(Me, oArgs)
+    End Sub
+
+    Private Sub chkcSurveyImportCreateNewBranch_CheckedChanged(sender As Object, e As EventArgs) Handles chkcSurveyImportCreateNewBranch.CheckedChanged
+        Dim oArgs As cConnectionChangedEventArgs = New cConnectionChangedEventArgs(oSurvey, oImportSurvey)
+        RaiseEvent OnConnectionChanged(Me, oArgs)
+    End Sub
+
+    Private Sub chkcSurveyDisableOriginAsExtendstart_CheckedChanged(sender As Object, e As EventArgs) Handles chkcSurveyDisableOriginAsExtendstart.CheckedChanged
+        Dim oArgs As cConnectionChangedEventArgs = New cConnectionChangedEventArgs(oSurvey, oImportSurvey)
+        RaiseEvent OnConnectionChanged(Me, oArgs)
     End Sub
 End Class

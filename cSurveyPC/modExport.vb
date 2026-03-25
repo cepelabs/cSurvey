@@ -662,6 +662,7 @@ Module modExport
 
         SegmentForceDirection = &H2000
         SegmentForcePath = &H4000
+        SegmentSplayWithoutName = &H8000
 
         Scrap = &H10000
         ScrapFor3D = &H20000
@@ -3498,6 +3499,11 @@ Module modExport
                                             sTo = DictionaryTranslate(Dictionary, sTo)
 
                                             sFlags = ""
+                                            If oSegment.Splay Then
+                                                If (Options And TherionExportOptionsEnum.SegmentSplayWithoutName) = TherionExportOptionsEnum.SegmentSplayWithoutName Then
+                                                    sTo = "."
+                                                End If
+                                            End If
                                             If oSegment.Splay AndAlso ((Options And TherionExportOptionsEnum.CalculateSplay) = TherionExportOptionsEnum.CalculateSplay) Then sFlags = sFlags & " splay" Else sFlags = sFlags & " not splay"
                                             If oSegment.Duplicate Then sFlags = sFlags & " duplicate" Else sFlags = sFlags & " not duplicate"
                                             If oSegment.Surface Then sFlags = sFlags & " surface" Else sFlags = sFlags & " not surface"
@@ -3528,13 +3534,15 @@ Module modExport
                                             End If
 
                                             If (Options And TherionExportOptionsEnum.SegmentForceDirection) = TherionExportOptionsEnum.SegmentForceDirection Then
-                                                'force segment direction
-                                                If oSegment.Data.SourceData.Direction = cSurvey.cSurvey.DirectionEnum.Left Then
-                                                    Call St.WriteLine(Space(iIndent) & "extend left " & sFrom & " " & sTo)
-                                                ElseIf oSegment.Data.SourceData.Direction = cSurvey.cSurvey.DirectionEnum.Right Then
-                                                    Call St.WriteLine(Space(iIndent) & "extend right " & sFrom & " " & sTo)
-                                                Else
-                                                    Call St.WriteLine(Space(iIndent) & "extend vertical " & sFrom & " " & sTo)
+                                                If Not oSegment.Splay AndAlso sTo <> "." Then
+                                                    'force segment direction
+                                                    If oSegment.Data.SourceData.Direction = cSurvey.cSurvey.DirectionEnum.Left Then
+                                                        Call St.WriteLine(Space(iIndent) & "extend left " & sFrom & " " & sTo)
+                                                    ElseIf oSegment.Data.SourceData.Direction = cSurvey.cSurvey.DirectionEnum.Right Then
+                                                        Call St.WriteLine(Space(iIndent) & "extend right " & sFrom & " " & sTo)
+                                                    Else
+                                                        Call St.WriteLine(Space(iIndent) & "extend vertical " & sFrom & " " & sTo)
+                                                    End If
                                                 End If
                                             End If
                                         End With
@@ -3571,16 +3579,21 @@ Module modExport
                                         Call St.WriteLine("equate " & sFrom & " " & sTo)
                                     Else
                                         sFlags = ""
+                                        If oSegment.Splay Then
+                                            If (Options And TherionExportOptionsEnum.SegmentSplayWithoutName) = TherionExportOptionsEnum.SegmentSplayWithoutName Then
+                                                sTo = "."
+                                            End If
+                                        End If
                                         If oSegment.Splay AndAlso ((Options And TherionExportOptionsEnum.CalculateSplay) = TherionExportOptionsEnum.CalculateSplay) Then sFlags = sFlags & " splay" Else sFlags = sFlags & " not splay"
                                         If oSegment.Duplicate Then sFlags = sFlags & " duplicate" Else sFlags = sFlags & " not duplicate"
                                         If oSegment.Surface Then sFlags = sFlags & " surface" Else sFlags = sFlags & " not surface"
                                         'therion does not allow generic exclusion...passed as 'surface'
                                         If oSegment.Exclude AndAlso (Not oSegment.Splay AndAlso Not oSegment.Duplicate AndAlso Not oSegment.Surface) Then sFlags = sFlags & " surface"
-                                        If sFlags <> sPreviousFlags Then
-                                            Call St.WriteLine(Space(iIndent) & "flags " & sFlags)
-                                            sPreviousFlags = sFlags
-                                        End If
-                                        If oSession.DataFormat = cSegment.DataFormatEnum.Diving Then
+                                        'If sFlags <> sPreviousFlags Then
+                                        Call St.WriteLine(Space(iIndent) & "flags " & sFlags)
+                                            'sPreviousFlags = sFlags
+                                            'End If
+                                            If oSession.DataFormat = cSegment.DataFormatEnum.Diving Then
                                             Select Case oSession.DepthType
                                                 Case cSegment.DepthTypeEnum.AbsoluteAtBegin
                                                     Dim dDepthFrom As Decimal = pGetDepthValue(Depths, sFrom)
@@ -3603,24 +3616,26 @@ Module modExport
                                         End If
 
                                         If (Options And TherionExportOptionsEnum.SegmentForceDirection) = TherionExportOptionsEnum.SegmentForceDirection Then
-                                            'forzo esplicitamente la direzione di ogni segmento...
-                                            If oSegment.Data.SourceData.Direction = cSurvey.cSurvey.DirectionEnum.Left Then
-                                                If oSegment.Data.SourceData.Reversed Then
-                                                    Call St.WriteLine(Space(iIndent) & "extend left " & sTo & " " & sFrom)
+                                            If Not oSegment.Splay AndAlso sTo <> "." Then
+                                                'forzo esplicitamente la direzione di ogni segmento...
+                                                If oSegment.Data.SourceData.Direction = cSurvey.cSurvey.DirectionEnum.Left Then
+                                                    If oSegment.Data.SourceData.Reversed Then
+                                                        Call St.WriteLine(Space(iIndent) & "extend left " & sTo & " " & sFrom)
+                                                    Else
+                                                        Call St.WriteLine(Space(iIndent) & "extend left " & sFrom & " " & sTo)
+                                                    End If
+                                                ElseIf oSegment.Data.SourceData.Direction = cSurvey.cSurvey.DirectionEnum.Right Then
+                                                    If oSegment.Data.SourceData.Reversed Then
+                                                        Call St.WriteLine(Space(iIndent) & "extend right " & sTo & " " & sFrom)
+                                                    Else
+                                                        Call St.WriteLine(Space(iIndent) & "extend right " & sFrom & " " & sTo)
+                                                    End If
                                                 Else
-                                                    Call St.WriteLine(Space(iIndent) & "extend left " & sFrom & " " & sTo)
-                                                End If
-                                            ElseIf oSegment.Data.SourceData.Direction = cSurvey.cSurvey.DirectionEnum.Right Then
-                                                If oSegment.Data.SourceData.Reversed Then
-                                                    Call St.WriteLine(Space(iIndent) & "extend right " & sTo & " " & sFrom)
-                                                Else
-                                                    Call St.WriteLine(Space(iIndent) & "extend right " & sFrom & " " & sTo)
-                                                End If
-                                            Else
-                                                If oSegment.Data.SourceData.Reversed Then
-                                                    Call St.WriteLine(Space(iIndent) & "extend vertical " & sTo & " " & sFrom)
-                                                Else
-                                                    Call St.WriteLine(Space(iIndent) & "extend vertical " & sFrom & " " & sTo)
+                                                    If oSegment.Data.SourceData.Reversed Then
+                                                        Call St.WriteLine(Space(iIndent) & "extend vertical " & sTo & " " & sFrom)
+                                                    Else
+                                                        Call St.WriteLine(Space(iIndent) & "extend vertical " & sFrom & " " & sTo)
+                                                    End If
                                                 End If
                                             End If
                                         End If

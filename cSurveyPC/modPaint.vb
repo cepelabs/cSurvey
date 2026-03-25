@@ -3124,29 +3124,9 @@ Module modPaint
         End If
     End Sub
 
-    'Public Sub MapDrawNearestStations(ByVal Graphics As Graphics, ByVal Survey As cSurvey.cSurvey, Trigpoint As cTrigPoint, Stations As List(Of frmMain.cDistance))
-    '    Try
-    '        If Not IsNothing(Stations) Then
-    '            Using oBrush As SolidBrush = New SolidBrush(Color.FromArgb(200, Color.Green))
-    '                Dim oCenterPoint As Point = Survey.Calculate.TrigPoints(Trigpoint).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.FromTop)
-    '                For Each oStation As frmMain.cDistance In Stations
-    '                    If Survey.Calculate.TrigPoints.Contains(oStation.Station) Then
-    '                        Dim sDistance As Single = oStation.Distance
-    '                        Dim oStationPoint As Point = Survey.Calculate.TrigPoints(oStation.Station).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.FromTop)
-    '                        Dim sDirection As Single = modPaint.GetBearing(oCenterPoint, oStationPoint) - 90
-    '                        Dim oRect As Rectangle = New Rectangle(oCenterPoint.X - sDistance, oCenterPoint.Y - sDistance, sDistance * 2, sDistance * 2)
-    '                        Graphics.FillPie(oBrush, oRect, sDirection - 1, 2)
-    '                    End If
-    '                Next
-    '        End Using
-    '        End If
-    '    Catch
-    '    End Try
-    'End Sub
-
-    Public Sub MapDrawAxis(ByVal Graphics As Graphics, ByVal Survey As cSurvey.cSurvey)
+    Public Sub MapDrawAxis(ByVal Graphics As Graphics, ByVal Survey As cSurvey.cSurvey, ViewPort As RectangleF)
         Try
-            Dim oRect As RectangleF = Graphics.VisibleClipBounds
+            Dim oRect As RectangleF = ViewPort
             Dim oAxisPen As Pen = Survey.EditPaintObjects.AxisPen
             Call Graphics.DrawLine(oAxisPen, 0, oRect.Top, 0, oRect.Bottom)
             Call Graphics.DrawLine(oAxisPen, oRect.Left, 0, oRect.Right, 0)
@@ -3154,7 +3134,7 @@ Module modPaint
         End Try
     End Sub
 
-    Public Sub MapDrawMetricGrid(ByVal Graphics As Graphics, ByVal Survey As cSurvey.cSurvey, Design As cDesign, Segment As cSegment, Trigpoint As cTrigPoint, PaintZoom As Single, PaintTranslation As PointF)
+    Public Sub MapDrawMetricGrid(ByVal Graphics As Graphics, ByVal Survey As cSurvey.cSurvey, Design As cDesign, Segment As cSegment, Trigpoint As cTrigPoint, ViewPort As RectangleF, PaintZoom As Single, PaintTranslation As PointF)
         Try
             Dim oState As GraphicsState = Graphics.Save
 
@@ -3198,7 +3178,7 @@ Module modPaint
                         iGridStep = 100
                     End If
 
-                    Dim oBounds As RectangleF = Graphics.VisibleClipBounds
+                    Dim oBounds As RectangleF = ViewPort
 
                     Dim iStart As Integer
                     Dim iEnd As Integer
@@ -3278,73 +3258,7 @@ Module modPaint
         End Try
     End Sub
 
-    'Public Sub MapDrawOrthoPhoto(ByVal Graphics As Graphics, ByVal Survey As cSurvey.cSurvey, PaintZoom As Single)
-    '    Try
-    '        With Survey.Surface.OrthoPhotos
-    '            If Not .IsDefaultEmpty Then
-    '                Dim oOrthoPhoto As Surface.cOrthoPhoto = .Default
-    '                Dim iGridStepX As Integer = oOrthoPhoto.XSize
-    '                Dim iGridStepY As Integer = oOrthoPhoto.YSize
-    '                Dim oBounds As RectangleF = Graphics.VisibleClipBounds
-
-    '                Dim sLeft As Single = oOrthoPhoto.GetTLTrigpoint.X
-    '                Dim [sTop] As Single = oOrthoPhoto.GetTLTrigpoint.Y
-    '                Dim sWidth As Single = oOrthoPhoto.Photo.Width * iGridStepX
-    '                Dim sHeight As Single = oOrthoPhoto.Photo.Height * iGridStepY
-    '                Dim oRect As RectangleF = New RectangleF(sLeft, [sTop], sWidth, sHeight)
-    '                Call Graphics.DrawImage(oOrthoPhoto.Photo, oRect)
-    '            End If
-    '        End With
-    '    Catch
-    '    End Try
-    'End Sub
-
-    'Public Sub MapDrawElevationGrid(ByVal Graphics As Graphics, ByVal Survey As cSurvey.cSurvey, PaintZoom As Single)
-    '    Try
-    '        With Survey.Surface.Elevations
-    '            If Not .IsDefaultEmpty Then
-    '                Dim oElevation As Surface.cElevation = .Default
-    '                Dim iGridStepX As Integer = oElevation.XSize
-    '                Dim iGridStepY As Integer = oElevation.YSize
-    '                Using oGridPen As Pen = Survey.EditPaintObjects.GridPen
-    '                    Dim oBounds As RectangleF = Graphics.VisibleClipBounds
-
-    '                    Dim iXStart As Integer
-    '                    Dim iXEnd As Integer
-    '                    Dim iYStart As Integer
-    '                    Dim iYEnd As Integer
-
-    '                    iXStart = oBounds.Left
-    '                    If iXStart Mod iGridStepX <> 0 Then
-    '                        iXStart = iXStart - (iXStart Mod iGridStepX)
-    '                    End If
-    '                    iXEnd = oBounds.Right
-    '                    iYStart = oBounds.Top
-    '                    If iYStart Mod iGridStepY <> 0 Then
-    '                        iYStart = iYStart - (iYStart Mod iGridStepY)
-    '                    End If
-    '                    iYEnd = oBounds.Bottom
-
-    '                    Dim oRange As SizeF = oElevation.GetHeightRange
-    '                    For y As Single = iYStart To iYEnd Step iGridStepY
-    '                        For x As Single = iXStart To iXEnd Step iGridStepX
-    '                            Dim sHeight As Single = oElevation.GetElevation(x, y)
-    '                            If sHeight <> Surface.cElevation.NoDataValue Then
-    '                                Dim iGrayScale As Integer = 255 - (255 * ((sHeight - oRange.Width) / (oRange.Height - oRange.Width)))
-    '                                oGridPen.Color = Color.FromArgb(255, iGrayScale, iGrayScale, iGrayScale)
-    '                                Call Graphics.DrawLine(oGridPen, x - 1, y, x + 1, y)
-    '                                Call Graphics.DrawLine(oGridPen, x, y - 1, x, y + 1)
-    '                            End If
-    '                        Next
-    '                    Next
-    '                End Using
-    '            End If
-    '        End With
-    '    Catch
-    '    End Try
-    'End Sub
-
-    Public Sub MapDrawMetricGrid(ByVal Graphics As Graphics, ByVal Survey As cSurvey.cSurvey, PaintZoom As Single)
+    Public Sub MapDrawMetricGrid(ByVal Graphics As Graphics, ByVal Survey As cSurvey.cSurvey, ViewPort As RectangleF, PaintZoom As Single)
         Try
             Dim oGridPen As Pen = Survey.EditPaintObjects.GridPen
             Dim iGridStep As Integer = 1
@@ -3361,7 +3275,7 @@ Module modPaint
             Else
                 iGridStep = 100
             End If
-            Dim oBounds As RectangleF = Graphics.VisibleClipBounds
+            Dim oBounds As RectangleF = ViewPort
 
             Dim iStart As Integer
             Dim iEnd As Integer
@@ -3391,13 +3305,8 @@ Module modPaint
         Try
             With Orthophoto
                 If Not .IsEmpty Then
-                    'Dim sWidth As Single = .GetBRPoint.X - .GetTLPoint.X
-                    'Dim sHeight As Single = -1 * (.GetTLPoint.Y - .GetBRPoint.Y)
                     Dim oImageBounds As RectangleF = New RectangleF(.GetTLPoint.X, .GetTLPoint.Y, .Photo.Width * .XSize, .Photo.Height * .YSize)
-                    'Dim oImageBounds As RectangleF = New RectangleF(.GetTLPoint.X, .GetTLPoint.Y, (.Photo.Width - 1) * .XSize, (.Photo.Height - 1) * .YSize)
-                    'Dim oImageBounds As RectangleF = New RectangleF(.GetTLPoint.X, .GetTLPoint.Y, sWidth, sHeight)
                     Call DrawImageWithTransparency(Graphics, .Photo, oImageBounds, Options.Transparency)
-                    'Graphics.DrawRectangle(New Pen(Brushes.DimGray, cSurvey.cEditPaintObjects.FilettoPenWidth), oImageBounds.Left, oImageBounds.Top, oImageBounds.Width, oImageBounds.Height)
                 End If
             End With
         Catch ex As Exception
@@ -3776,7 +3685,29 @@ Module modPaint
         End If
     End Sub
 
-    Public Sub MapDrawRulers(ByVal Graphics As Graphics, PaintOptions As cOptionsDesign, ByVal Survey As cSurvey.cSurvey, Tools As cEditDesignTools, ByVal DrawRulesStyle As frmMain2.RulersStyleEnum, ByVal PaintZoom As Single)
+    Public Function GetViewport(g As Graphics, DeviceRect As RectangleF) As RectangleF
+        Dim oPoints() As PointF = {
+                                    New PointF(DeviceRect.Left, DeviceRect.Top),
+                                    New PointF(DeviceRect.Right, DeviceRect.Top),
+                                    New PointF(DeviceRect.Right, DeviceRect.Bottom),
+                                    New PointF(DeviceRect.Left, DeviceRect.Bottom)
+                                }
+
+        Using oMatrix As Matrix = g.Transform.Clone()
+            oMatrix.Invert()
+            oMatrix.TransformPoints(oPoints)
+        End Using
+
+        Dim sMinX As Single = oPoints.Min(Function(p) p.X)
+        Dim sMaxX As Single = oPoints.Max(Function(p) p.X)
+        Dim sMinY As Single = oPoints.Min(Function(p) p.Y)
+        Dim sMaxY As Single = oPoints.Max(Function(p) p.Y)
+
+        Return RectangleF.FromLTRB(sMinX, sMinY, sMaxX, sMaxY)
+
+    End Function
+
+    Public Sub MapDrawRulers(ByVal Graphics As Graphics, PaintOptions As cOptionsDesign, ByVal Survey As cSurvey.cSurvey, Tools As cEditDesignTools, ViewPort As RectangleF, ByVal DrawRulesStyle As frmMain2.RulersStyleEnum, ByVal PaintZoom As Single)
         Try
             Dim sDPIRatio As Single = Graphics.DpiX / 96.0F
             Dim sFontScale As Single = If(sDPIRatio = 1.0F, 6.0F, 3.5F)
@@ -3786,8 +3717,8 @@ Module modPaint
                     oSF.LineAlignment = StringAlignment.Near
                     oSF.FormatFlags = StringFormatFlags.NoClip Or StringFormatFlags.NoWrap
 
-                    Dim oBounds As RectangleF = Graphics.VisibleClipBounds
-
+                    Dim oBounds As RectangleF = ViewPort
+                    Debug.Print(oBounds.ToString)
                     Dim iBarSize As Integer = Math.Round(oBounds.Left, 0).ToString.Length
                     If Math.Round(oBounds.Right, 0).ToString.Length > iBarSize Then iBarSize = Math.Round(oBounds.Right, 0).ToString.Length
                     If Math.Round(oBounds.Top, 0).ToString.Length > iBarSize Then iBarSize = Math.Round(oBounds.Top, 0).ToString.Length

@@ -1,18 +1,18 @@
-﻿Imports System.Xml
-Imports System.IO
+﻿Imports System.ComponentModel
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
-
+Imports System.IO
+Imports System.Xml
 Imports cSurveyPC.cResurvey
-Imports DevExpress.Data
-Imports DevExpress.XtraGrid.Views.Base
-Imports DevExpress.XtraBars.Docking
-Imports DevExpress.XtraBars.Docking2010.Views
-Imports DevExpress.XtraBars.Docking2010
-Imports DevExpress.XtraEditors.Controls
 Imports cSurveyPC.cSurvey.Helper.Editor
-Imports System.ComponentModel
+Imports DevExpress.Data
+Imports DevExpress.Pdf.Native
 Imports DevExpress.XtraBars
+Imports DevExpress.XtraBars.Docking
+Imports DevExpress.XtraBars.Docking2010
+Imports DevExpress.XtraBars.Docking2010.Views
+Imports DevExpress.XtraEditors.Controls
+Imports DevExpress.XtraGrid.Views.Base
 
 Friend Class frmResurveyMain
     Private oOpenHandCursor As Cursor
@@ -2696,7 +2696,7 @@ Friend Class frmResurveyMain
         oGraphics.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAliasGridFit
 
         Call oGraphics.ScaleTransform(sPlanZoom, sPlanZoom)
-
+        Dim oViewPort As RectangleF = modPaint.GetViewport(oGraphics, New RectangleF(0, 0, picPlan.ClientSize.Width, picPlan.ClientSize.Height))
         Dim oScale As cScale = pGetScale()
 
         If Not oPlanScalePath Is Nothing Then
@@ -2794,12 +2794,12 @@ Friend Class frmResurveyMain
         End SyncLock
 
         If btnShowRulers.Checked AndAlso Not oPlanLastPlaceHolder Is Nothing Then
-            Call oGraphics.DrawLine(oRulesSecondaryPen, New Point(oGraphics.VisibleClipBounds.Left, oPlanLastPlaceHolder.Point.Y), New Point(oGraphics.VisibleClipBounds.Right, oPlanLastPlaceHolder.Point.Y))
-            Call oGraphics.DrawLine(oRulesSecondaryPen, New Point(oPlanLastPlaceHolder.Point.X, oGraphics.VisibleClipBounds.Top), New Point(oPlanLastPlaceHolder.Point.X, oGraphics.VisibleClipBounds.Bottom))
+            Call oGraphics.DrawLine(oRulesSecondaryPen, New Point(oViewPort.Left, oPlanLastPlaceHolder.Point.Y), New Point(oViewPort.Right, oPlanLastPlaceHolder.Point.Y))
+            Call oGraphics.DrawLine(oRulesSecondaryPen, New Point(oPlanLastPlaceHolder.Point.X, oViewPort.Top), New Point(oPlanLastPlaceHolder.Point.X, oViewPort.Bottom))
         End If
 
         If btnShowRulers.Checked AndAlso btnShowRuler.Checked And Not oScale.PlanError Then
-            Dim oBound As RectangleF = oGraphics.VisibleClipBounds
+            Dim oBound As RectangleF = oViewPort
             Using omatrix = New Matrix
                 Call omatrix.Scale(sPlanZoom, sPlanZoom, MatrixOrder.Prepend)
                 Call omatrix.RotateAt(sPlanRulerAngle, oPlanRulerPosition, MatrixOrder.Prepend)
@@ -2817,14 +2817,16 @@ Friend Class frmResurveyMain
                 Dim sRulerBorderCenter As Single = oPlanRulerPosition.Y
                 Dim sRulerBorderBottom As Single = oPlanRulerPosition.Y + sRulerHeight / 2
                 Dim iMeters As Integer = 0
+                Dim iIndex As Integer = 0
                 For x As Single = oPlanRulerPosition.X To oBackgroudRect.Left Step -sStep
                     If (iMeters Mod 10) = 0 Then
-                        Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderTop), New PointF(x, sRulerBorderTop + 24))
+                        iIndex += 1
+                        Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderTop), New PointF(x, sRulerBorderTop + 24 + (If(iIndex Mod 2 = 0, 0, 8))))
                         If iMeters > 2 Then Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderCenter + 12), New PointF(x, sRulerBorderCenter - 12))
-                        Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderBottom), New PointF(x, sRulerBorderBottom - 24))
+                        Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderBottom), New PointF(x, sRulerBorderBottom - 24 - (If(iIndex Mod 2 = 0, 0, 8))))
 
-                        Call pRulerDrawPlanMeterUnit(oGraphics, x, sRulerBorderTop + 30, iMeters)
-                        Call pRulerDrawPlanMeterUnit(oGraphics, x, sRulerBorderBottom - 30, iMeters)
+                        Call pRulerDrawPlanMeterUnit(oGraphics, x, sRulerBorderTop + 30 + (If(iIndex Mod 2 = 0, 0, 8)), iMeters)
+                        Call pRulerDrawPlanMeterUnit(oGraphics, x, sRulerBorderBottom - 30 - (If(iIndex Mod 2 = 0, 0, 8)), iMeters)
                     Else
                         Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderTop), New PointF(x, sRulerBorderTop + 16))
                         If iMeters > 2 Then Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderCenter + 6), New PointF(x, sRulerBorderCenter - 6))
@@ -2833,14 +2835,16 @@ Friend Class frmResurveyMain
                     iMeters += 1
                 Next
                 iMeters = 0
+                iIndex = 0
                 For x As Single = oPlanRulerPosition.X To oBackgroudRect.Right Step sStep
                     If (iMeters Mod 10) = 0 Then
-                        Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderTop), New PointF(x, sRulerBorderTop + 24))
+                        iIndex += 1
+                        Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderTop), New PointF(x, sRulerBorderTop + 24 + (If(iIndex Mod 2 = 0, 0, 8))))
                         If iMeters > 2 Then Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderCenter + 12), New PointF(x, sRulerBorderCenter - 12))
-                        Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderBottom), New PointF(x, sRulerBorderBottom - 24))
+                        Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderBottom), New PointF(x, sRulerBorderBottom - 24 - (If(iIndex Mod 2 = 0, 0, 8))))
 
-                        Call pRulerDrawPlanMeterUnit(oGraphics, x, sRulerBorderTop + 30, iMeters)
-                        Call pRulerDrawPlanMeterUnit(oGraphics, x, sRulerBorderBottom - 30, iMeters)
+                        Call pRulerDrawPlanMeterUnit(oGraphics, x, sRulerBorderTop + 30 + (If(iIndex Mod 2 = 0, 0, 8)), iMeters)
+                        Call pRulerDrawPlanMeterUnit(oGraphics, x, sRulerBorderBottom - 30 - (If(iIndex Mod 2 = 0, 0, 8)), iMeters)
                     Else
                         Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderTop), New PointF(x, sRulerBorderTop + 16))
                         If iMeters > 2 Then Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderCenter + 6), New PointF(x, sRulerBorderCenter - 6))
@@ -2948,7 +2952,7 @@ Friend Class frmResurveyMain
             oGraphics.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAliasGridFit
 
             Call oGraphics.ScaleTransform(sProfileZoom, sProfileZoom)
-
+            Dim oViewPort As RectangleF = modPaint.GetViewport(oGraphics, New RectangleF(0, 0, picPlan.ClientSize.Width, picPlan.ClientSize.Height))
             Dim oScale As cScale = pGetScale()
 
             If Not oProfileScalePath Is Nothing Then
@@ -3026,13 +3030,13 @@ Friend Class frmResurveyMain
                                         oLabelSize.Width += 2
                                         oLabelSize.Height += 2
 
-                                        Call oGraphics.DrawLine(oRulesPen, New Point(oPlaceholder.Point.X + sDistance, oGraphics.VisibleClipBounds.Bottom), New Point(oPlaceholder.Point.X + sDistance, oGraphics.VisibleClipBounds.Top))
+                                        Call oGraphics.DrawLine(oRulesPen, New Point(oPlaceholder.Point.X + sDistance, oViewPort.Bottom), New Point(oPlaceholder.Point.X + sDistance, oViewPort.Top))
                                         Dim oLabelBox As Rectangle = New Rectangle(oPlaceholder.Point.X + sDistance - oLabelSize.Width / 2, oPlaceholder.Point.Y - oLabelSize.Height / 2 + iIndex, oLabelSize.Width, oLabelSize.Height)
                                         Call oGraphics.FillRectangle(oRulesLabelBrush, oLabelBox)
                                         Call oGraphics.DrawRectangle(oRulesLabelPen, oLabelBox)                                                            'Call oGraphics.FillEllipse(oRulesFillBrush, New Rectangle(oTPH.Point.X + sDistance - sSize / 2, oTPH.Point.Y - sSize / 2 - sSize * iindex, sSize, sSize))
                                         Call oGraphics.DrawString(sText, Font, oRulesBrush, oLabelBox, oSF) ' New Rectangle(oTPH.Point.X + sDistance - oLabelSize.Width / 2, oTPH.Point.Y - oLabelSize.Height / 2, oLabelSize.Width, oLabelSize.Height), oSF)
 
-                                        Call oGraphics.DrawLine(oRulesPen, New Point(oPlaceholder.Point.X - sDistance, oGraphics.VisibleClipBounds.Bottom), New Point(oPlaceholder.Point.X - sDistance, oGraphics.VisibleClipBounds.Top))
+                                        Call oGraphics.DrawLine(oRulesPen, New Point(oPlaceholder.Point.X - sDistance, oViewPort.Bottom), New Point(oPlaceholder.Point.X - sDistance, oViewPort.Top))
                                         oLabelBox = New Rectangle(oPlaceholder.Point.X - sDistance - oLabelSize.Width / 2, oPlaceholder.Point.Y - oLabelSize.Height / 2 - iIndex, oLabelSize.Width, oLabelSize.Height)
                                         Call oGraphics.FillRectangle(oRulesLabelBrush, oLabelBox)
                                         Call oGraphics.DrawRectangle(oRulesLabelPen, oLabelBox)                                                            'Call oGraphics.FillEllipse(oRulesFillBrush, New Rectangle(oTPH.Point.X + sDistance - sSize / 2, oTPH.Point.Y - sSize / 2 - sSize * iindex, sSize, sSize))
@@ -3052,12 +3056,12 @@ Friend Class frmResurveyMain
             End SyncLock
 
             If btnShowRulers.Checked AndAlso Not oProfileLastPlaceHolder Is Nothing Then
-                Call oGraphics.DrawLine(oRulesSecondaryPen, New Point(oGraphics.VisibleClipBounds.Left, oProfileLastPlaceHolder.Point.Y), New Point(oGraphics.VisibleClipBounds.Right, oProfileLastPlaceHolder.Point.Y))
-                Call oGraphics.DrawLine(oRulesSecondaryPen, New Point(oProfileLastPlaceHolder.Point.X, oGraphics.VisibleClipBounds.Top), New Point(oProfileLastPlaceHolder.Point.X, oGraphics.VisibleClipBounds.Bottom))
+                Call oGraphics.DrawLine(oRulesSecondaryPen, New Point(oViewPort.Left, oProfileLastPlaceHolder.Point.Y), New Point(oViewPort.Right, oProfileLastPlaceHolder.Point.Y))
+                Call oGraphics.DrawLine(oRulesSecondaryPen, New Point(oProfileLastPlaceHolder.Point.X, oViewPort.Top), New Point(oProfileLastPlaceHolder.Point.X, oViewPort.Bottom))
             End If
 
             If btnShowRulers.Checked AndAlso btnShowRuler.Checked And Not oScale.ProfileError Then
-                Dim oBound As RectangleF = oGraphics.VisibleClipBounds
+                Dim oBound As RectangleF = oViewPort
                 Using omatrix = New Matrix
                     Call omatrix.Scale(sProfileZoom, sProfileZoom, MatrixOrder.Prepend)
                     Call omatrix.RotateAt(sProfileRulerAngle, oProfileRulerPosition, MatrixOrder.Prepend)
@@ -3075,14 +3079,16 @@ Friend Class frmResurveyMain
                     Dim sRulerBorderCenter As Single = oProfileRulerPosition.Y
                     Dim sRulerBorderBottom As Single = oProfileRulerPosition.Y + sRulerHeight / 2
                     Dim iMeters As Integer = 0
+                    Dim iIndex As Integer = 0
                     For x As Single = oProfileRulerPosition.X To oBackgroudRect.Left Step -sStep
                         If (iMeters Mod 10) = 0 Then
-                            Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderTop), New PointF(x, sRulerBorderTop + 24))
+                            iIndex += 1
+                            Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderTop), New PointF(x, sRulerBorderTop + 24 + (If(iIndex Mod 2 = 0, 0, 8))))
                             If iMeters > 2 Then Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderCenter + 12), New PointF(x, sRulerBorderCenter - 12))
-                            Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderBottom), New PointF(x, sRulerBorderBottom - 24))
+                            Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderBottom), New PointF(x, sRulerBorderBottom - 24 - (If(iIndex Mod 2 = 0, 0, 8))))
 
-                            Call pRulerDrawProfileMeterUnit(oGraphics, x, sRulerBorderTop + 30, iMeters)
-                            Call pRulerDrawProfileMeterUnit(oGraphics, x, sRulerBorderBottom - 30, iMeters)
+                            Call pRulerDrawProfileMeterUnit(oGraphics, x, sRulerBorderTop + 30 + (If(iIndex Mod 2 = 0, 0, 8)), iMeters)
+                            Call pRulerDrawProfileMeterUnit(oGraphics, x, sRulerBorderBottom - 30 - (If(iIndex Mod 2 = 0, 0, 8)), iMeters)
                         Else
                             Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderTop), New PointF(x, sRulerBorderTop + 16))
                             If iMeters > 2 Then Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderCenter + 6), New PointF(x, sRulerBorderCenter - 6))
@@ -3090,15 +3096,17 @@ Friend Class frmResurveyMain
                         End If
                         iMeters += 1
                     Next
+                    iIndex = 0
                     iMeters = 0
                     For x As Single = oProfileRulerPosition.X To oBackgroudRect.Right Step sStep
                         If (iMeters Mod 10) = 0 Then
-                            Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderTop), New PointF(x, sRulerBorderTop + 24))
+                            iIndex += 1
+                            Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderTop), New PointF(x, sRulerBorderTop + 24 + (If(iIndex Mod 2 = 0, 0, 8))))
                             If iMeters > 2 Then Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderCenter + 12), New PointF(x, sRulerBorderCenter - 12))
-                            Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderBottom), New PointF(x, sRulerBorderBottom - 24))
+                            Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderBottom), New PointF(x, sRulerBorderBottom - 24 - (If(iIndex Mod 2 = 0, 0, 8))))
 
-                            Call pRulerDrawProfileMeterUnit(oGraphics, x, sRulerBorderTop + 30, iMeters)
-                            Call pRulerDrawProfileMeterUnit(oGraphics, x, sRulerBorderBottom - 30, iMeters)
+                            Call pRulerDrawProfileMeterUnit(oGraphics, x, sRulerBorderTop + 30 + (If(iIndex Mod 2 = 0, 0, 8)), iMeters)
+                            Call pRulerDrawProfileMeterUnit(oGraphics, x, sRulerBorderBottom - 30 - (If(iIndex Mod 2 = 0, 0, 8)), iMeters)
                         Else
                             Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderTop), New PointF(x, sRulerBorderTop + 16))
                             If iMeters > 2 Then Call oGraphics.DrawLine(oRulerForegroundPen, New PointF(x, sRulerBorderCenter + 6), New PointF(x, sRulerBorderCenter - 6))
@@ -3520,7 +3528,7 @@ Friend Class frmResurveyMain
         oRulesFillBrush = New SolidBrush(Color.FromArgb(120, Color.WhiteSmoke))
 
         oRulerAngleFont = New Font(Me.Font.FontFamily, 12.0F, FontStyle.Bold)
-        oRulerTickFont = New Font(Me.Font.FontFamily, 8.0F, FontStyle.Regular)
+        oRulerTickFont = New Font(Me.Font.FontFamily, 6.0F, FontStyle.Regular)
         oRulerFontBrush = New SolidBrush(Color.FromArgb(200, Color.DimGray))
         oRulerForegroundPen = New Pen(Color.FromArgb(200, Color.DimGray))
         oRulerCurrentAnglePen = New Pen(Color.FromArgb(200, Color.Red), 2)

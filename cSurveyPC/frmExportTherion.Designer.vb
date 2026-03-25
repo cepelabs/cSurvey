@@ -29,8 +29,10 @@ Partial Class frmExportTherion
         Me.tipDefault = New System.Windows.Forms.ToolTip(Me.components)
         Me.chkExportDesign = New DevExpress.XtraEditors.CheckEdit()
         Me.chkExportThconfig = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkExportSplayWithoutNames = New DevExpress.XtraEditors.CheckEdit()
         CType(Me.chkExportDesign.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkExportThconfig.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkExportSplayWithoutNames.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdCancel
@@ -59,6 +61,13 @@ Partial Class frmExportTherion
         Me.chkExportThconfig.Properties.AutoWidth = True
         Me.chkExportThconfig.Properties.Caption = resources.GetString("chkExportThconfig.Properties.Caption")
         '
+        'chkExportSplayWithoutNames
+        '
+        resources.ApplyResources(Me.chkExportSplayWithoutNames, "chkExportSplayWithoutNames")
+        Me.chkExportSplayWithoutNames.Name = "chkExportSplayWithoutNames"
+        Me.chkExportSplayWithoutNames.Properties.AutoWidth = True
+        Me.chkExportSplayWithoutNames.Properties.Caption = resources.GetString("chkExportSplayNames.Properties.Caption")
+        '
         'frmExportTherion
         '
         Me.AcceptButton = Me.cmdOk
@@ -69,6 +78,7 @@ Partial Class frmExportTherion
         Me.Controls.Add(Me.chkExportDesign)
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdOk)
+        Me.Controls.Add(Me.chkExportSplayWithoutNames)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
         Me.MaximizeBox = False
@@ -76,6 +86,7 @@ Partial Class frmExportTherion
         Me.Name = "frmExportTherion"
         CType(Me.chkExportDesign.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkExportThconfig.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkExportSplayWithoutNames.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -85,4 +96,5 @@ Partial Class frmExportTherion
     Friend WithEvents tipDefault As System.Windows.Forms.ToolTip
     Friend WithEvents chkExportDesign As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkExportThconfig As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkExportSplayWithoutNames As DevExpress.XtraEditors.CheckEdit
 End Class

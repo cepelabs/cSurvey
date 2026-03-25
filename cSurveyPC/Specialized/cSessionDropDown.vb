@@ -57,6 +57,23 @@ Public Class cSessionDropDown
         Return Rebind(Survey, Reset, True, Nothing)
     End Function
 
+    Public Property ShowDropDownButton As Boolean
+        Get
+            Return cboSessionList.Properties.Buttons(0).Visible
+        End Get
+        Set(value As Boolean)
+            cboSessionList.Properties.Buttons(0).Visible = value
+        End Set
+    End Property
+
+    Public Property ShowMoreButton As Boolean
+        Get
+            Return cboSessionList.Properties.Buttons(1).Visible
+        End Get
+        Set(value As Boolean)
+            cboSessionList.Properties.Buttons(1).Visible = value
+        End Set
+    End Property
     Public Property EditValue As cSurvey.cSession
         Get
             Return cboSessionList.EditValue

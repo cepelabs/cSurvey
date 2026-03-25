@@ -195,4 +195,7 @@
   <data name="chkExportDesign.Text" xml:space="preserve">
     <value>Esporta grafica</value>
   </data>
+  <data name="chkExportSplayNames.Properties.Caption" xml:space="preserve">
+    <value>Esporta splay senza riportare caposaldo di fine</value>
+  </data>
 </root>

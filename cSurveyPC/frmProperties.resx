@@ -4443,7 +4443,7 @@
     <value>111, 857</value>
   </data>
   <data name="txtDesignItemNamePattern.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 20</value>
+    <value>79, 20</value>
   </data>
   <data name="txtDesignItemNamePattern.TabIndex" type="System.Int32, mscorlib">
     <value>124</value>

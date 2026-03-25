@@ -163,12 +163,16 @@ Partial Class frmSegmentsReplicateInfo
         resources.ApplyResources(Me.cboSessionList, "cboSessionList")
         Me.cboSessionList.EditValue = Nothing
         Me.cboSessionList.Name = "cboSessionList"
+        Me.cboSessionList.ShowDropDownButton = True
+        Me.cboSessionList.ShowMoreButton = False
         '
         'cboCaveList
         '
         resources.ApplyResources(Me.cboCaveList, "cboCaveList")
         Me.cboCaveList.EditValue = Nothing
         Me.cboCaveList.Name = "cboCaveList"
+        Me.cboCaveList.ShowDropDownButton = True
+        Me.cboCaveList.ShowMoreButton = False
         Me.cboCaveList.Workmode = cSurveyPC.cCaveDropDown.WorkmodeEnum.View
         '
         'cboCaveBranchList
@@ -176,6 +180,8 @@ Partial Class frmSegmentsReplicateInfo
         resources.ApplyResources(Me.cboCaveBranchList, "cboCaveBranchList")
         Me.cboCaveBranchList.EditValue = Nothing
         Me.cboCaveBranchList.Name = "cboCaveBranchList"
+        Me.cboCaveBranchList.ShowDropDownButton = True
+        Me.cboCaveBranchList.ShowMoreButton = False
         Me.cboCaveBranchList.Workmode = cSurveyPC.cCaveDropDown.WorkmodeEnum.View
         '
         'cmdEditOtherProperties
@@ -191,7 +197,7 @@ Partial Class frmSegmentsReplicateInfo
         resources.ApplyResources(Me.chkOtherProperties, "chkOtherProperties")
         Me.chkOtherProperties.Name = "chkOtherProperties"
         Me.chkOtherProperties.Properties.AutoWidth = True
-        Me.chkOtherProperties.Properties.Caption = resources.GetString("CheckEdit1.Properties.Caption")
+        Me.chkOtherProperties.Properties.Caption = resources.GetString("chkOtherProperties.Properties.Caption")
         '
         'frmSegmentsReplicateInfo
         '

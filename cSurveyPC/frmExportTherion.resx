@@ -130,7 +130,7 @@
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cmdCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -157,7 +157,7 @@
     <value>80, 25</value>
   </data>
   <data name="cmdOk.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
@@ -181,7 +181,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkExportDesign.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+    <value>12, 38</value>
   </data>
   <data name="chkExportDesign.Properties.Caption" xml:space="preserve">
     <value>Export design</value>
@@ -190,7 +190,7 @@
     <value>89, 20</value>
   </data>
   <data name="chkExportDesign.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;chkExportDesign.Name" xml:space="preserve">
     <value>chkExportDesign</value>
@@ -208,7 +208,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkExportThconfig.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 38</value>
+    <value>12, 64</value>
   </data>
   <data name="chkExportThconfig.Properties.Caption" xml:space="preserve">
     <value>Create basic thconfig (for PDF export of plan/profile)</value>
@@ -217,7 +217,7 @@
     <value>277, 20</value>
   </data>
   <data name="chkExportThconfig.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;chkExportThconfig.Name" xml:space="preserve">
     <value>chkExportThconfig</value>
@@ -230,6 +230,33 @@
   </data>
   <data name="&gt;&gt;chkExportThconfig.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="chkExportSplayWithoutNames.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkExportSplayWithoutNames.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="chkExportSplayNames.Properties.Caption" xml:space="preserve">
+    <value>Export splay without names</value>
+  </data>
+  <data name="chkExportSplayWithoutNames.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 20</value>
+  </data>
+  <data name="chkExportSplayWithoutNames.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;chkExportSplayWithoutNames.Name" xml:space="preserve">
+    <value>chkExportSplayWithoutNames</value>
+  </data>
+  <data name="&gt;&gt;chkExportSplayWithoutNames.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkExportSplayWithoutNames.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkExportSplayWithoutNames.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -256,6 +283,6 @@
     <value>frmExportTherion</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cForm, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

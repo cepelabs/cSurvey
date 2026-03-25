@@ -1756,6 +1756,12 @@
     <Compile Include="Specialized\frmItemChunk3DPlanRenderer.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Specialized\cPictureBox.Designer.vb">
+      <DependentUpon>cPictureBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cPictureBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="cBorderFromSplay.it.resx">

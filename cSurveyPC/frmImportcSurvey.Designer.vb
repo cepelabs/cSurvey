@@ -346,6 +346,8 @@ Partial Class frmImportcSurvey
         Me.cboImportAsBranchOfCave.EditValue = Nothing
         resources.ApplyResources(Me.cboImportAsBranchOfCave, "cboImportAsBranchOfCave")
         Me.cboImportAsBranchOfCave.Name = "cboImportAsBranchOfCave"
+        Me.cboImportAsBranchOfCave.ShowDropDownButton = True
+        Me.cboImportAsBranchOfCave.ShowMoreButton = False
         Me.cboImportAsBranchOfCave.Workmode = cSurveyPC.cCaveDropDown.WorkmodeEnum.View
         '
         'cboImportAsBranchOfBranch
@@ -353,6 +355,8 @@ Partial Class frmImportcSurvey
         Me.cboImportAsBranchOfBranch.EditValue = Nothing
         resources.ApplyResources(Me.cboImportAsBranchOfBranch, "cboImportAsBranchOfBranch")
         Me.cboImportAsBranchOfBranch.Name = "cboImportAsBranchOfBranch"
+        Me.cboImportAsBranchOfBranch.ShowDropDownButton = True
+        Me.cboImportAsBranchOfBranch.ShowMoreButton = False
         Me.cboImportAsBranchOfBranch.Workmode = cSurveyPC.cCaveDropDown.WorkmodeEnum.View
         '
         'frmImportcSurvey

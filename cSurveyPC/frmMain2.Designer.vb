@@ -559,7 +559,7 @@ Partial Class frmMain2
         Me.cDesignMessageCorner = New cSurveyPC.cMessageCorner()
         Me.pnl3D = New DevExpress.XtraEditors.PanelControl()
         Me.h3D = New System.Windows.Forms.Integration.ElementHost()
-        Me.picMap = New System.Windows.Forms.PictureBox()
+        Me.picMap = New cPictureBox()
         Me.mnuUndo = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.pnlTrigpointsDataMain = New DevExpress.XtraEditors.PanelControl()
         Me.grdTrigPointAliases = New DevExpress.XtraGrid.GridControl()
@@ -8090,7 +8090,7 @@ Partial Class frmMain2
     Friend WithEvents cboTrigpointCoordinateFormat As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents lblCoordinateLat As DevExpress.XtraEditors.LabelControl
     Friend WithEvents mnuDesignItemOLD As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents picMap As System.Windows.Forms.PictureBox
+    Friend WithEvents picMap As cPictureBox
     Friend WithEvents mnuDesignItemBar0 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents lblSegmentCave As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboTrigpointEntrance As DevExpress.XtraEditors.ComboBoxEdit

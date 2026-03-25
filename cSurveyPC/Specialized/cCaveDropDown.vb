@@ -75,6 +75,24 @@ Public Class cCaveDropDown
         Return bEnabled
     End Function
 
+    Public Property ShowDropDownButton As Boolean
+        Get
+            Return cboCaveList.Properties.Buttons(0).Visible
+        End Get
+        Set(value As Boolean)
+            cboCaveList.Properties.Buttons(0).Visible = value
+        End Set
+    End Property
+
+    Public Property ShowMoreButton As Boolean
+        Get
+            Return cboCaveList.Properties.Buttons(1).Visible
+        End Get
+        Set(value As Boolean)
+            cboCaveList.Properties.Buttons(1).Visible = value
+        End Set
+    End Property
+
     Public Property EditValue As cSurvey.cCaveInfo
         Get
             Return cboCaveList.EditValue

@@ -3,11 +3,13 @@
     Private Sub pSettingsLoad()
         chkExportDesign.Checked = My.Application.Settings.GetSetting("data.export.therion.design", "0")
         chkExportThconfig.Checked = My.Application.Settings.GetSetting("data.export.holos.createthconfig", "0")
+        chkExportSplayWithoutNames.Checked = My.Application.Settings.GetSetting("data.export.therion.splaywithoutname", "0")
     End Sub
 
     Private Sub pSettingsSave()
         Call My.Application.Settings.SetSetting("data.export.therion.design", If(chkExportDesign.Checked, "1", "0"))
         Call My.Application.Settings.SetSetting("data.export.therion.createthconfig", If(chkExportThconfig.Checked, "1", "0"))
+        Call My.Application.Settings.SetSetting("data.export.therion.splaywithoutname", If(chkExportSplayWithoutNames.Checked, "1", "0"))
     End Sub
 
     Public Sub New()

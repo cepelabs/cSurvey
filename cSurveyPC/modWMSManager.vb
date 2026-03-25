@@ -416,11 +416,6 @@ Module modWMSManager
                 Call oWMSLog(New cWMSLogArgs(EventLogEntryType.Warning, "WMS to offline: " & except.Message))
                 Call WMSSetState(WMSStateEnum.Offline)
             End Try
-            'If My.Computer.Network.Ping("www.csurvey.it", 19000) Then
-            '    Call WMSSetState(WMSStateEnum.Online)
-            'Else
-            '    Call WMSSetState(WMSStateEnum.Offline)
-            'End If
         End If
         Return iState
     End Function

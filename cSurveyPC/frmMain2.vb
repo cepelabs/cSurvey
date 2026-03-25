@@ -5680,6 +5680,7 @@ Friend Class frmMain2
                                             Dim iThOptions As modExport.TherionExportOptionsEnum = If(bThSegmentForceDirection, modExport.TherionExportOptionsEnum.SegmentForceDirection, 0) Or If(bThSegmentForcePath, modExport.TherionExportOptionsEnum.SegmentForcePath, 0)
                                             'If oSurvey.Properties.ThreeDLochUseCaveBorder Then iThOptions = iThOptions Or TherionExportOptionsEnum.Scrap
                                             If frmET.chkExportDesign.Checked Then iThOptions = iThOptions Or TherionExportOptionsEnum.Scrap
+                                            If frmET.chkExportSplayWithoutNames.Checked Then iThOptions = iThOptions Or TherionExportOptionsEnum.SegmentSplayWithoutName
                                             iThOptions = iThOptions Or TherionExportOptionsEnum.CalculateSplay
                                             Dim oTherionSaveNameDictionary As Dictionary(Of String, String) = modExport.TherionGetSavenameDictionary(oSurvey)
                                             Call modExport.TherionThExportTo(oSurvey, .FileName, oTherionSaveNameDictionary, iThOptions)
@@ -9272,6 +9273,8 @@ Friend Class frmMain2
             Call Graphics.ScaleTransform(sPaintZoom, sPaintZoom, MatrixOrder.Append)
             Call Graphics.TranslateTransform(oPaintTranslation.X, oPaintTranslation.Y, MatrixOrder.Append)
 
+            Dim oViewPort As RectangleF = modPaint.GetViewport(Graphics, New RectangleF(0, 0, picMap.ClientSize.Width, picMap.ClientSize.Height))
+
             Dim oDesignTools As cEditDesignTools = pGetCurrentDesignTools()
 
             If Not oFrozenDesktop Is Nothing Then
@@ -9310,22 +9313,22 @@ Friend Class frmMain2
                 Call modPaint.PaintCurrentMarkedDesktopPoint(Graphics, oSurvey, oDesignTools.CurrentMarkedDesktopPoint, sPaintZoom)
 
                 Graphics.SmoothingMode = SmoothingMode.None
-                Call modPaint.MapDrawAxis(Graphics, oSurvey)
+                Call modPaint.MapDrawAxis(Graphics, oSurvey, oViewPort)
                 If iDrawMetricGrid = 1 Then
-                    Call modPaint.MapDrawMetricGrid(Graphics, oSurvey, sPaintZoom)
+                    Call modPaint.MapDrawMetricGrid(Graphics, oSurvey, oViewPort, sPaintZoom)
                 ElseIf iDrawMetricGrid = 2 Then
                     If oTools.CurrentSegment Is Nothing Then
-                        Call modPaint.MapDrawMetricGrid(Graphics, oSurvey, sPaintZoom)
+                        Call modPaint.MapDrawMetricGrid(Graphics, oSurvey, oViewPort, sPaintZoom)
                     Else
                         If oTools.CurrentSegment.IsValid Then
-                            Call modPaint.MapDrawMetricGrid(Graphics, oSurvey, oCurrentDesign, oTools.CurrentSegment, oTools.CurrentTrigpoint, sPaintZoom, oPaintTranslation)
+                            Call modPaint.MapDrawMetricGrid(Graphics, oSurvey, oCurrentDesign, oTools.CurrentSegment, oTools.CurrentTrigpoint, oViewPort, sPaintZoom, oPaintTranslation)
                         Else
-                            Call modPaint.MapDrawMetricGrid(Graphics, oSurvey, sPaintZoom)
+                            Call modPaint.MapDrawMetricGrid(Graphics, oSurvey, oViewPort, sPaintZoom)
                         End If
                     End If
                 End If
                 If bDrawRulers Then
-                    Call modPaint.MapDrawRulers(Graphics, oCurrentOptions, oSurvey, oDesignTools, iDrawRulesStyle, sPaintZoom)
+                    Call modPaint.MapDrawRulers(Graphics, oCurrentOptions, oSurvey, oDesignTools, oViewport, iDrawRulesStyle, sPaintZoom)
                 End If
 
                 Graphics.SmoothingMode = SmoothingMode.AntiAlias

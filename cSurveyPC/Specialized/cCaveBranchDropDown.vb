@@ -104,9 +104,31 @@ Public Class cCaveBranchDropDown
         Return EditValue
     End Function
 
+    Public Property ShowDropDownButton As Boolean
+        Get
+            Return cboCaveBranchList.Properties.Buttons(0).Visible
+        End Get
+        Set(value As Boolean)
+            cboCaveBranchList.Properties.Buttons(0).Visible = value
+        End Set
+    End Property
+
+    Public Property ShowMoreButton As Boolean
+        Get
+            Return cboCaveBranchList.Properties.Buttons(1).Visible
+        End Get
+        Set(value As Boolean)
+            cboCaveBranchList.Properties.Buttons(1).Visible = value
+        End Set
+    End Property
+
     Public ReadOnly Property Count() As Integer
         Get
-            Return cboCaveBranchList.Properties.DataSource.count
+            If cboCaveBranchList.Properties.DataSource Is Nothing Then
+                Return -1
+            Else
+                Return cboCaveBranchList.Properties.DataSource.count
+            End If
         End Get
     End Property
 

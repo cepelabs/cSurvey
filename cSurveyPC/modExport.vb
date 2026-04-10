@@ -12,6 +12,7 @@ Imports cSurveyPC.cSurvey.UIHelpers
 Imports DevExpress.Utils.Drawing.Helpers.NativeMethods
 Imports DevExpress.XtraVerticalGrid.ViewInfo
 Imports Diacritics.Extensions
+Imports Unidecode.NET
 
 Module modExport
 
@@ -876,7 +877,7 @@ Module modExport
                                 Dim sDistance As Single = modConversion.ConvertSegmentToBaseDistance(oSegment.Distance, oSegment)
                                 Call st.Write(modText.AlignRight(modText.FormatNumber(sDistance, "0.00"), 7) & " " & modText.AlignRight(modText.FormatNumber(oSegment.Bearing, "0.00"), 7) & " " & modText.AlignRight(modText.FormatNumber(oSegment.Inclination, "0.00"), 7))
                                 Call st.Write(modText.AlignRight(modText.FormatNumber(oSegment.Left, "0.00"), 7) & modText.AlignRight(modText.FormatNumber(oSegment.Right, "0.00"), 7) & modText.AlignRight(modText.FormatNumber(oSegment.Up, "0.00"), 7) & modText.AlignRight(modText.FormatNumber(oSegment.Down, "0.00"), 7))
-                                Call st.Write(" " & "N" & " " & IIf(oSegment.Exclude, "E", "I"))
+                                Call st.Write(" " & "N" & " " & If(oSegment.Exclude, "E", "I"))
                                 Call st.WriteLine()
                             End If
                         Next
@@ -1056,7 +1057,7 @@ Module modExport
     '        Call oXMLCave.SetAttribute("id", oCaveInfo.ID)
     '        Dim oColor As Color = oCaveInfo.Color
     '        Call oXMLCave.SetAttribute("color", ColorTranslator.ToHtml(oColor))
-    '        Call oXMLCave.SetAttribute("lrud", IIf(bLRUD, "1", "0"))
+    '        Call oXMLCave.SetAttribute("lrud", if(bLRUD, "1", "0"))
 
     '        Dim oTrigpoints As cTrigPointCollection = New cTrigPointCollection(Survey)
     '        Dim oSegments As cSegmentCollection = Survey.Segments.GetCaveSegments(oCaveInfo)
@@ -2359,7 +2360,7 @@ Module modExport
         End If
     End Sub
 
-    Private Function pTherionExportToScraps(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, DesignType As cIDesign.cDesignTypeEnum, Cave As String, Path As String, TrigpointFirstSession As IDictionary(Of String, String), Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing) As List(Of String)
+    Private Function pTherionExportToScraps(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, DesignType As cIDesign.cDesignTypeEnum, Cave As String, Path As String, TrigpointFirstSession As IDictionary(Of String, String), Options As TherionExportOptionsEnum, Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing) As List(Of String)
         Dim oFiles As List(Of String) = New List(Of String)
 
         Dim sCave As String = Cave.ToLower
@@ -2370,7 +2371,7 @@ Module modExport
         If sPath <> "" Then
             oBranch = oCave.Branches(sPath)
             For Each oCaveBranch As cCaveInfoBranch In oBranch.Branches
-                Call oFiles.AddRange(pTherionExportToScraps(Survey, Filename, DesignType, sCave, oCaveBranch.Path, TrigpointFirstSession, Dictionary))
+                Call oFiles.AddRange(pTherionExportToScraps(Survey, Filename, DesignType, sCave, oCaveBranch.Path, TrigpointFirstSession, Options, Dictionary))
             Next
         End If
 
@@ -2402,8 +2403,8 @@ Module modExport
             Call oItems.Reverse()
 
             'processo il ramo corrente come fosse uno scrap
-            Dim sProjection As String = IIf(DesignType = cIDesign.cDesignTypeEnum.Plan, "plan", "extended")
-            Dim sScrapName As String = FormatTextFor(IO.Path.GetFileNameWithoutExtension(Filename) & "_" & sProjection & "_" & sCave & IIf(Path = "", "", "_" & Path), FormatTextForEnum.BaseWithoutSpacesAndSlash)
+            Dim sProjection As String = If(DesignType = cIDesign.cDesignTypeEnum.Plan, "plan", "extended")
+            Dim sScrapName As String = FormatTextFor(IO.Path.GetFileNameWithoutExtension(Filename) & "_" & sProjection & "_" & sCave & If(Path = "", "", "_" & Path), FormatTextForEnum.BaseWithoutSpacesAndSlash)
             Dim sScrapFilename As String = IO.Path.Combine(IO.Path.GetDirectoryName(Filename), sScrapName & ".th2")
 
             Dim oSB As System.Text.StringBuilder = New System.Text.StringBuilder
@@ -2414,15 +2415,17 @@ Module modExport
 
             Dim oPoints As List(Of PointF) = New List(Of PointF)
             For Each oTrigPoint As cTrigPoint In oTrigpoints
-                If DesignType = cIDesign.cDesignTypeEnum.Plan Then
-                    oPoint = Survey.Calculate.TrigPoints(oTrigPoint.Name).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.FromTop)
-                Else
-                    oPoint = Survey.Calculate.TrigPoints(oTrigPoint.Name).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.Perpendicular)
-                End If
-                oPoint = pTherionGetPoint(oPoint, oTraslation, sScale)
-                Dim sName As String = DictionaryTranslate(Dictionary, oTrigPoint.Name)
-                If TrigpointFirstSession.ContainsKey(oTrigPoint.Name) Then
-                    Call oSB.AppendLine("point " & NumberToString(oPoint.X, "0.0000000") & " " & NumberToString(oPoint.Y, "0.0000000") & " station -name " & sName & "@" & TrigpointFirstSession(oTrigPoint.Name))
+                If Not oTrigPoint.Data.IsSplay OrElse (oTrigPoint.Data.IsSplay AndAlso (Not ((Options And TherionExportOptionsEnum.SegmentSplayWithoutName) = TherionExportOptionsEnum.SegmentSplayWithoutName) AndAlso Not ((Options And TherionExportOptionsEnum.ExportSplay) = TherionExportOptionsEnum.ExportSplay))) Then
+                    If DesignType = cIDesign.cDesignTypeEnum.Plan Then
+                        oPoint = Survey.Calculate.TrigPoints(oTrigPoint.Name).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.FromTop)
+                    Else
+                        oPoint = Survey.Calculate.TrigPoints(oTrigPoint.Name).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.Perpendicular)
+                    End If
+                    oPoint = pTherionGetPoint(oPoint, oTraslation, sScale)
+                    Dim sName As String = DictionaryTranslate(Dictionary, oTrigPoint.Name)
+                    If TrigpointFirstSession.ContainsKey(oTrigPoint.Name) Then
+                        Call oSB.AppendLine("point " & NumberToString(oPoint.X, "0.0000000") & " " & NumberToString(oPoint.Y, "0.0000000") & " station -name " & sName & "@" & TrigpointFirstSession(oTrigPoint.Name))
+                    End If
                 End If
             Next
 
@@ -2572,7 +2575,7 @@ Module modExport
             '    Next
             'End If
 
-            If oPoints.Count > 1 Then
+            If oPoints.Count > 2 Then
                 Dim oBounds As RectangleF
                 Using oPath As GraphicsPath = New GraphicsPath
                     Call oPath.AddPolygon(oPoints.ToArray)
@@ -2810,19 +2813,19 @@ Module modExport
         End If
     End Function
 
-    Private Function pTherionExportToScraps(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, DesignType As cIDesign.cDesignTypeEnum, Cave As String, TrigpointFirstSession As IDictionary(Of String, String), Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing) As List(Of String)
+    Private Function pTherionExportToScraps(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, DesignType As cIDesign.cDesignTypeEnum, Cave As String, TrigpointFirstSession As IDictionary(Of String, String), Options As TherionExportOptionsEnum, Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing) As List(Of String)
         Dim oFiles As List(Of String) = New List(Of String)
         Dim oCave As cCaveInfo = Survey.Properties.CaveInfos(Cave)
         For Each oCaveBranch As cCaveInfoBranch In oCave.Branches.GetAllBranchesWithEmpty(False).Values
-            Call oFiles.AddRange(pTherionExportToScraps(Survey, Filename, DesignType, Cave, oCaveBranch.Path, TrigpointFirstSession, Dictionary))
+            Call oFiles.AddRange(pTherionExportToScraps(Survey, Filename, DesignType, Cave, oCaveBranch.Path, TrigpointFirstSession, Options, Dictionary))
         Next
         Return oFiles
     End Function
 
-    Private Function pTherionExportToScraps(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, DesignType As cIDesign.cDesignTypeEnum, TrigpointFirstSession As IDictionary(Of String, String), Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing) As List(Of String)
+    Private Function pTherionExportToScraps(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, DesignType As cIDesign.cDesignTypeEnum, TrigpointFirstSession As IDictionary(Of String, String), Options As TherionExportOptionsEnum, Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing) As List(Of String)
         Dim oFiles As List(Of String) = New List(Of String)
         For Each oCave As cCaveInfo In Survey.Properties.CaveInfos
-            Call oFiles.AddRange(pTherionExportToScraps(Survey, Filename, DesignType, oCave.Name, TrigpointFirstSession, Dictionary))
+            Call oFiles.AddRange(pTherionExportToScraps(Survey, Filename, DesignType, oCave.Name, TrigpointFirstSession, Options, Dictionary))
         Next
         Return oFiles
     End Function
@@ -2871,7 +2874,7 @@ Module modExport
         Return oFiles
     End Function
 
-    Private Function pTherionExportToScrapsFor3D(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, DesignType As cIDesign.cDesignTypeEnum, Items As List(Of Items.cItemInvertedFreeHandArea), Cave As String, Path As String, TrigpointFirstSession As IDictionary(Of String, String), Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing) As List(Of String)
+    Private Function pTherionExportToScrapsFor3D(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, DesignType As cIDesign.cDesignTypeEnum, Items As List(Of Items.cItemInvertedFreeHandArea), Cave As String, Path As String, TrigpointFirstSession As IDictionary(Of String, String), Options As TherionExportOptionsEnum, Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing) As List(Of String)
         Dim oFiles As List(Of String) = New List(Of String)
 
         Dim sCave As String = Cave.ToLower
@@ -2882,7 +2885,7 @@ Module modExport
         If sPath <> "" Then
             oBranch = oCave.Branches(sPath)
             For Each oCaveBranch As cCaveInfoBranch In oBranch.Branches
-                Call oFiles.AddRange(pTherionExportToScrapsFor3D(Survey, Filename, DesignType, Items, sCave, oCaveBranch.Path, TrigpointFirstSession, Dictionary))
+                Call oFiles.AddRange(pTherionExportToScrapsFor3D(Survey, Filename, DesignType, Items, sCave, oCaveBranch.Path, TrigpointFirstSession, Options, Dictionary))
             Next
         End If
 
@@ -2904,8 +2907,8 @@ Module modExport
 
         If oTrigpoints.Count > 0 Then
             'processo il ramo corrente come fosse uno scrap
-            Dim sProjection As String = IIf(DesignType = cIDesign.cDesignTypeEnum.Plan, "plan", "extended")
-            Dim sScrapName As String = FormatTextFor(IO.Path.GetFileNameWithoutExtension(Filename) & "_" & sProjection & "_" & sCave & IIf(Path = "", "", "_" & Path), FormatTextForEnum.BaseWithoutSpacesAndSlash)
+            Dim sProjection As String = If(DesignType = cIDesign.cDesignTypeEnum.Plan, "plan", "extended")
+            Dim sScrapName As String = FormatTextFor(IO.Path.GetFileNameWithoutExtension(Filename) & "_" & sProjection & "_" & sCave & If(Path = "", "", "_" & Path), FormatTextForEnum.BaseWithoutSpacesAndSlash)
             Dim sScrapFilename As String = IO.Path.Combine(IO.Path.GetDirectoryName(Filename), sScrapName & ".th2")
 
             Dim oSB As System.Text.StringBuilder = New System.Text.StringBuilder
@@ -2925,16 +2928,18 @@ Module modExport
 
             Dim oPoints As List(Of PointF) = New List(Of PointF)
             For Each oTrigPoint As cTrigPoint In oTrigpoints
-                If DesignType = cIDesign.cDesignTypeEnum.Plan Then
-                    oPoint = Survey.Calculate.TrigPoints(oTrigPoint.Name).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.FromTop)
-                Else
-                    oPoint = Survey.Calculate.TrigPoints(oTrigPoint.Name).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.Perpendicular)
-                End If
-                oPoint = pTherionGetPoint(oPoint, oTraslation, sScale)
-                Call oPoints.Add(oPoint)
-                Dim sName As String = DictionaryTranslate(Dictionary, oTrigPoint.Name)
-                If TrigpointFirstSession.ContainsKey(oTrigPoint.Name) Then
-                    Call oSB.AppendLine("point " & NumberToString(oPoint.X, "0.0000000") & " " & NumberToString(oPoint.Y, "0.0000000") & " station -name " & sName & "@" & TrigpointFirstSession(oTrigPoint.Name))
+                If Not oTrigPoint.Data.IsSplay OrElse (oTrigPoint.Data.IsSplay AndAlso ((Options And TherionExportOptionsEnum.SegmentSplayWithoutName) = TherionExportOptionsEnum.SegmentSplayWithoutName OrElse (Options And TherionExportOptionsEnum.ExportSplay) = TherionExportOptionsEnum.ExportSplay)) Then
+                    If DesignType = cIDesign.cDesignTypeEnum.Plan Then
+                        oPoint = Survey.Calculate.TrigPoints(oTrigPoint.Name).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.FromTop)
+                    Else
+                        oPoint = Survey.Calculate.TrigPoints(oTrigPoint.Name).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.Perpendicular)
+                    End If
+                    oPoint = pTherionGetPoint(oPoint, oTraslation, sScale)
+                    Call oPoints.Add(oPoint)
+                    Dim sName As String = DictionaryTranslate(Dictionary, oTrigPoint.Name)
+                    If TrigpointFirstSession.ContainsKey(oTrigPoint.Name) Then
+                        Call oSB.AppendLine("point " & NumberToString(oPoint.X, "0.0000000") & " " & NumberToString(oPoint.Y, "0.0000000") & " station -name " & sName & "@" & TrigpointFirstSession(oTrigPoint.Name))
+                    End If
                 End If
             Next
 
@@ -2979,19 +2984,19 @@ Module modExport
         Return oFiles
     End Function
 
-    Private Function pTherionExportToScrapsFor3D(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, DesignType As cIDesign.cDesignTypeEnum, Items As List(Of Items.cItemInvertedFreeHandArea), Cave As String, TrigpointFirstSession As IDictionary(Of String, String), Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing) As List(Of String)
+    Private Function pTherionExportToScrapsFor3D(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, DesignType As cIDesign.cDesignTypeEnum, Items As List(Of Items.cItemInvertedFreeHandArea), Cave As String, TrigpointFirstSession As IDictionary(Of String, String), Options As TherionExportOptionsEnum, Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing) As List(Of String)
         Dim oFiles As List(Of String) = New List(Of String)
         Dim oCave As cCaveInfo = Survey.Properties.CaveInfos(Cave)
         For Each oCaveBranch As cCaveInfoBranch In oCave.Branches.GetAllBranchesWithEmpty(False).Values
-            Call oFiles.AddRange(pTherionExportToScrapsFor3D(Survey, Filename, DesignType, Items, Cave, oCaveBranch.Path, TrigpointFirstSession, Dictionary))
+            Call oFiles.AddRange(pTherionExportToScrapsFor3D(Survey, Filename, DesignType, Items, Cave, oCaveBranch.Path, TrigpointFirstSession, Options, Dictionary))
         Next
         Return oFiles
     End Function
 
-    Private Function pTherionExportToScrapsFor3D(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, DesignType As cIDesign.cDesignTypeEnum, Items As List(Of Items.cItemInvertedFreeHandArea), TrigpointFirstSession As IDictionary(Of String, String), Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing) As List(Of String)
+    Private Function pTherionExportToScrapsFor3D(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, DesignType As cIDesign.cDesignTypeEnum, Items As List(Of Items.cItemInvertedFreeHandArea), TrigpointFirstSession As IDictionary(Of String, String), Options As TherionExportOptionsEnum, Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing) As List(Of String)
         Dim oFiles As List(Of String) = New List(Of String)
         For Each oCave As cCaveInfo In Survey.Properties.CaveInfos
-            Call oFiles.AddRange(pTherionExportToScrapsFor3D(Survey, Filename, DesignType, Items, oCave.Name, TrigpointFirstSession, Dictionary))
+            Call oFiles.AddRange(pTherionExportToScrapsFor3D(Survey, Filename, DesignType, Items, oCave.Name, TrigpointFirstSession, Options, Dictionary))
         Next
         Return oFiles
     End Function
@@ -3040,7 +3045,8 @@ Module modExport
         Dim sText As String = Text
         Select Case Format
             Case FormatTextForEnum.Base
-                sText = UnAccent(Text)
+                sText = sText.Unidecode()
+                sText = UnAccent(sText)
                 'sText = Web.HttpUtility.UrlEncode(Text)
                 sText = sText.Replace("(", "")
                 sText = sText.Replace(")", "")
@@ -3285,7 +3291,7 @@ Module modExport
                         'genero il file th2 corrispondente a questo sketch
                         Using th2st As StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(sTh2Filename, False, TextFileEncoder)
                             Call th2st.WriteLine(pGetTherionTextEncorderDef(th2st.Encoding))
-                            Call th2st.WriteLine("scrap " & Guid.NewGuid.ToString & " -scale 1 -projection " & IIf(oSketch.Sketch.Design.Type = cIDesign.cDesignTypeEnum.Plan, "plan", "extended") & " -sketch " & sTh2BaseImageFilename & " 0 -" & oSketch.Sketch.Image.Height)
+                            Call th2st.WriteLine("scrap " & Guid.NewGuid.ToString & " -scale 1 -projection " & If(oSketch.Sketch.Design.Type = cIDesign.cDesignTypeEnum.Plan, "plan", "extended") & " -sketch " & sTh2BaseImageFilename & " 0 -" & oSketch.Sketch.Image.Height)
                             For Each oStation As Items.cItemSketch.cStation In oSketch.Sketch.Stations
                                 If Not oStation.IsOrphan Then
                                     Dim sStationName As String = DictionaryTranslate(Dictionary, oStation.Name)
@@ -3317,8 +3323,7 @@ Module modExport
                         End If
                     End If
                 Next
-                Call oScrapFiles.AddRange(pTherionExportToScrapsFor3D(Survey, Filename, cIDesign.cDesignTypeEnum.Plan, oPlanItems, Dictionary))
-                'Call oScrapFiles.AddRange(pTherionExportToScrapsFor3D(Survey, Filename, Survey.Profile, Dictionary))
+                Call oScrapFiles.AddRange(pTherionExportToScrapsFor3D(Survey, Filename, cIDesign.cDesignTypeEnum.Plan, oPlanItems, Nothing, Options, Dictionary))
             End If
             For Each sScrapFile As String In oScrapFiles
                 Call st.WriteLine("input " & Chr(34) & sScrapFile & Chr(34))
@@ -3591,9 +3596,9 @@ Module modExport
                                         If oSegment.Exclude AndAlso (Not oSegment.Splay AndAlso Not oSegment.Duplicate AndAlso Not oSegment.Surface) Then sFlags = sFlags & " surface"
                                         'If sFlags <> sPreviousFlags Then
                                         Call St.WriteLine(Space(iIndent) & "flags " & sFlags)
-                                            'sPreviousFlags = sFlags
-                                            'End If
-                                            If oSession.DataFormat = cSegment.DataFormatEnum.Diving Then
+                                        'sPreviousFlags = sFlags
+                                        'End If
+                                        If oSession.DataFormat = cSegment.DataFormatEnum.Diving Then
                                             Select Case oSession.DepthType
                                                 Case cSegment.DepthTypeEnum.AbsoluteAtBegin
                                                     Dim dDepthFrom As Decimal = pGetDepthValue(Depths, sFrom)
@@ -3903,7 +3908,7 @@ Module modExport
                         'genero il file th2 corrispondente a questo sketch
                         Using th2st As StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(sTh2Filename, False, TextFileEncoder)
                             Call th2st.WriteLine(pGetTherionTextEncorderDef(th2st.Encoding))
-                            Call th2st.WriteLine("scrap " & Guid.NewGuid.ToString & " -scale 1 -projection " & IIf(oSketch.Sketch.Design.Type = cIDesign.cDesignTypeEnum.Plan, "plan", "extended") & " -sketch " & sTh2BaseImageFilename & " 0 -" & oSketch.Sketch.Image.Height)
+                            Call th2st.WriteLine("scrap " & Guid.NewGuid.ToString & " -scale 1 -projection " & If(oSketch.Sketch.Design.Type = cIDesign.cDesignTypeEnum.Plan, "plan", "extended") & " -sketch " & sTh2BaseImageFilename & " 0 -" & oSketch.Sketch.Image.Height)
                             For Each oStation As Items.cItemSketch.cStation In oSketch.Sketch.Stations.GetValidStations
                                 If TypeOf oStation Is Items.cItemSketch.cExtraStation Then
                                     Dim oExtraStation As Items.cItemSketch.cExtraStation = oStation
@@ -3939,12 +3944,12 @@ Module modExport
                         End If
                     End If
                 Next
-                Call oScrapFiles.AddRange(pTherionExportToScrapsFor3D(Survey, Filename, cIDesign.cDesignTypeEnum.Plan, oPlanItems, oTrigpointFirstSession, Dictionary))
+                Call oScrapFiles.AddRange(pTherionExportToScrapsFor3D(Survey, Filename, cIDesign.cDesignTypeEnum.Plan, oPlanItems, oTrigpointFirstSession, Options, Dictionary))
             End If
 
             If (Options And TherionExportOptionsEnum.Scrap) = TherionExportOptionsEnum.Scrap Then
-                If Not Survey.Plan.IsEmpty Then Call oScrapFiles.AddRange(pTherionExportToScraps(Survey, Filename, cIDesign.cDesignTypeEnum.Plan, oTrigpointFirstSession, Dictionary))
-                If Not Survey.Profile.IsEmpty Then Call oScrapFiles.AddRange(pTherionExportToScraps(Survey, Filename, cIDesign.cDesignTypeEnum.Profile, oTrigpointFirstSession, Dictionary))
+                If Not Survey.Plan.IsEmpty Then Call oScrapFiles.AddRange(pTherionExportToScraps(Survey, Filename, cIDesign.cDesignTypeEnum.Plan, oTrigpointFirstSession, Options, Dictionary))
+                If Not Survey.Profile.IsEmpty Then Call oScrapFiles.AddRange(pTherionExportToScraps(Survey, Filename, cIDesign.cDesignTypeEnum.Profile, oTrigpointFirstSession, Options, Dictionary))
                 Call oResult.Files.AddRange(pTherionExportMapConfig(Survey, Filename))
             End If
 

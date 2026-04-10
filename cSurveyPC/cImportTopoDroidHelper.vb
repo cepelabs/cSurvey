@@ -58,9 +58,11 @@ Public Class cImportTopoDroidHelper
     End Sub
 
     Public Shared Sub ConvertCrossSection(Survey As cSurvey.cSurvey, Layers As cLayers, CrossSection As cDesignCrossSection, Items As XmlElement, Location As SizeF)
-        For Each oItem As XmlElement In Items.SelectNodes("item")
-            Call cImportTopoDroidHelper.ConvertItem(Survey, Layers, oItem, cItem.BindDesignTypeEnum.CrossSections, CrossSection, Location)
-        Next
+        If Items IsNot Nothing Then
+            For Each oItem As XmlElement In Items.SelectNodes("item")
+                Call cImportTopoDroidHelper.ConvertItem(Survey, Layers, oItem, cItem.BindDesignTypeEnum.CrossSections, CrossSection, Location)
+            Next
+        End If
     End Sub
 
     Private Shared Sub pConvertItem(Survey As cSurvey.cSurvey, XMLItem As XmlElement, Item As cItem)
@@ -353,6 +355,7 @@ Public Class cImportTopoDroidHelper
                         If sStationFrom <> "" AndAlso sStationTo <> "" Then
                             oSegment = Survey.Segments.Find(sStationFrom, sStationTo, True)
                         End If
+
                         Dim oItem As cItemCrossSection = Layers.SignsLayer.CreateCrossSection(sCave, sBranch, oSegment)
                         Call oItem.SetBindDesignType(BindDesignType, CrossSection)
                         Call oItem.Points.Parse(XMLItem.Item("points"))

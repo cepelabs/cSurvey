@@ -1839,34 +1839,6 @@ Friend Class frmProperties
         End Try
     End Sub
 
-    'Private Sub cmdHighlightColorChange_Click(sender As Object, e As EventArgs)
-    '    Dim oCD As ColorDialog = New ColorDialog
-    '    With oCD
-    '        .FullOpen = True
-    '        .AnyColor = True
-    '        .Color = picHighlightColor.BackColor
-    '        If .ShowDialog = Windows.Forms.DialogResult.OK Then
-    '            picHighlightColor.BackColor = .Color
-    '            Try
-    '                Select Case tvHighlights.SelectedNode.Tag.type
-    '                    Case "highlight"
-    '                        Dim oCI As cHighlightPlaceholder = tvHighlights.SelectedNode.Tag
-    '                        oCI.Color = .Color
-    '                End Select
-    '            Catch
-    '            End Try
-    '        End If
-    '    End With
-    'End Sub
-
-    Private Sub txtHighlightSize_Validated(sender As Object, e As EventArgs)
-        Try
-            Dim oCI As cHighlightPlaceholder = tvHighlights.GetFocusedObject
-            oCI.Size = txtHighlightSize.Value
-        Catch
-        End Try
-    End Sub
-
     Private Sub frmF_OnFormulaCodeRequest(Sender As frmScriptFormulaEditor, ByRef Args As frmScriptFormulaEditor.cFormulaCodeRequestEvent)
         Try
             Dim oCI As cHighlightPlaceholder = tvHighlights.GetFocusedObject
@@ -4175,5 +4147,13 @@ Friend Class frmProperties
 
     Private Sub cboCaveInfoExtendStart_EditValueChanged(sender As Object, e As EventArgs) Handles cboCaveInfoExtendStart.EditValueChanged
         pnlCaveInfoPriority.Enabled = cboCaveInfoExtendStart.Text <> ""
+    End Sub
+
+    Private Sub txtHighlightSize_EditValueChanged(sender As Object, e As EventArgs) Handles txtHighlightSize.EditValueChanged
+        Try
+            Dim oCI As cHighlightPlaceholder = tvHighlights.GetFocusedObject
+            oCI.Size = txtHighlightSize.Value
+        Catch
+        End Try
     End Sub
 End Class

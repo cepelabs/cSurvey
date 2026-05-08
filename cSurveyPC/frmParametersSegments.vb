@@ -37,10 +37,18 @@ Friend Class frmParametersSegments
         End If
 
         chkShowHLs.Checked = oOptions.DrawHighlights
+        grdHighlights.BeginUpdate()
         grdHighlights.Enabled = oOptions.DrawHighlights
-        grdHighlights.DataSource = oOptions.Survey.Properties.HighlightsDetails
+        grdHighlights.DataSource = oOptions.Survey.Properties.HighlightsDetails.ToList
+        grdHighlights.EndUpdate()
+        AddHandler chkHLSelected.EditValueChanged, AddressOf chkHLSelected_EditValueChanged
 
         bEventDisabled = False
+    End Sub
+
+    Private Sub chkHLSelected_EditValueChanged(sender As Object, e As EventArgs)
+        grdViewHighlights.PostEditor()
+        grdViewHighlights.UpdateCurrentRow()
     End Sub
 
     Private Sub grdViewHighlights_CustomUnboundColumnData(sender As Object, e As CustomColumnDataEventArgs) Handles grdViewHighlights.CustomUnboundColumnData
@@ -118,4 +126,5 @@ Friend Class frmParametersSegments
             oOptions.ShowSplayMode = If(chkDesignPlotShowSplayMode.Checked, cOptionsDesign.ShowSplayModeEnum.All, cOptionsDesign.ShowSplayModeEnum.OnlyInRange)
         End If
     End Sub
+
 End Class

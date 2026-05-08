@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="grpShots.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="chkColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="chkColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>155, 117</value>
+  </data>
+  <data name="chkColor.Properties.Caption" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="chkColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 20</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="chkColor.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;chkColor.Name" xml:space="preserve">
+    <value>chkColor</value>
+  </data>
+  <data name="&gt;&gt;chkColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkColor.Parent" xml:space="preserve">
+    <value>grpShots</value>
+  </data>
+  <data name="&gt;&gt;chkColor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkDataProperties.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkDataProperties.Location" type="System.Drawing.Point, System.Drawing">
+    <value>155, 169</value>
+  </data>
+  <data name="chkDataProperties.Properties.Caption" xml:space="preserve">
+    <value>Data properties</value>
+  </data>
+  <data name="chkDataProperties.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 20</value>
+  </data>
+  <data name="chkDataProperties.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;chkDataProperties.Name" xml:space="preserve">
+    <value>chkDataProperties</value>
+  </data>
+  <data name="&gt;&gt;chkDataProperties.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkDataProperties.Parent" xml:space="preserve">
+    <value>grpShots</value>
+  </data>
+  <data name="&gt;&gt;chkDataProperties.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkCaveBranch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkCaveBranch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>155, 35</value>
+  </data>
+  <data name="chkCaveBranch.Properties.Caption" xml:space="preserve">
+    <value>Cave/branch</value>
+  </data>
+  <data name="chkCaveBranch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 20</value>
+  </data>
+  <data name="chkCaveBranch.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;chkCaveBranch.Name" xml:space="preserve">
+    <value>chkCaveBranch</value>
+  </data>
+  <data name="&gt;&gt;chkCaveBranch.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkCaveBranch.Parent" xml:space="preserve">
+    <value>grpShots</value>
+  </data>
+  <data name="&gt;&gt;chkCaveBranch.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkSession.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkSession.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 35</value>
+  </data>
+  <data name="chkSession.Properties.Caption" xml:space="preserve">
+    <value>Session</value>
+  </data>
+  <data name="chkSession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 20</value>
+  </data>
+  <data name="chkSession.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;chkSession.Name" xml:space="preserve">
+    <value>chkSession</value>
+  </data>
+  <data name="&gt;&gt;chkSession.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkSession.Parent" xml:space="preserve">
+    <value>grpShots</value>
+  </data>
+  <data name="&gt;&gt;chkSession.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="chkNotes.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkNotes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>155, 143</value>
+  </data>
+  <data name="chkNotes.Properties.Caption" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="chkNotes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 20</value>
+  </data>
+  <data name="chkNotes.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;chkNotes.Name" xml:space="preserve">
+    <value>chkNotes</value>
+  </data>
+  <data name="&gt;&gt;chkNotes.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkNotes.Parent" xml:space="preserve">
+    <value>grpShots</value>
+  </data>
+  <data name="&gt;&gt;chkNotes.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="LabelControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>155, 199</value>
+  </data>
+  <data name="LabelControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 13</value>
+  </data>
+  <data name="LabelControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="LabelControl1.Text" xml:space="preserve">
+    <value>Other properties:</value>
+  </data>
+  <data name="&gt;&gt;LabelControl1.Name" xml:space="preserve">
+    <value>LabelControl1</value>
+  </data>
+  <data name="&gt;&gt;LabelControl1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;LabelControl1.Parent" xml:space="preserve">
+    <value>grpShots</value>
+  </data>
+  <data name="&gt;&gt;LabelControl1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cmdEditOtherProperties.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdEditOtherProperties.Location" type="System.Drawing.Point, System.Drawing">
+    <value>249, 194</value>
+  </data>
+  <data name="cmdEditOtherProperties.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdEditOtherProperties.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="cmdEditOtherProperties.ToolTip" xml:space="preserve">
+    <value>Edit properties to overwrite:</value>
+  </data>
+  <data name="&gt;&gt;cmdEditOtherProperties.Name" xml:space="preserve">
+    <value>cmdEditOtherProperties</value>
+  </data>
+  <data name="&gt;&gt;cmdEditOtherProperties.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdEditOtherProperties.Parent" xml:space="preserve">
+    <value>grpShots</value>
+  </data>
+  <data name="&gt;&gt;cmdEditOtherProperties.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="chkDirection.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>155, 91</value>
+  </data>
+  <data name="chkDirection.Properties.Caption" xml:space="preserve">
+    <value>Direction</value>
+  </data>
+  <data name="chkDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 20</value>
+  </data>
+  <data name="chkDirection.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;chkDirection.Name" xml:space="preserve">
+    <value>chkDirection</value>
+  </data>
+  <data name="&gt;&gt;chkDirection.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkDirection.Parent" xml:space="preserve">
+    <value>grpShots</value>
+  </data>
+  <data name="&gt;&gt;chkDirection.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="chkLRUD.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkLRUD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>155, 65</value>
+  </data>
+  <data name="chkLRUD.Properties.Caption" xml:space="preserve">
+    <value>LRUD</value>
+  </data>
+  <data name="chkLRUD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 20</value>
+  </data>
+  <data name="chkLRUD.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;chkLRUD.Name" xml:space="preserve">
+    <value>chkLRUD</value>
+  </data>
+  <data name="&gt;&gt;chkLRUD.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkLRUD.Parent" xml:space="preserve">
+    <value>grpShots</value>
+  </data>
+  <data name="&gt;&gt;chkLRUD.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="chkInclination.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkInclination.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 117</value>
+  </data>
+  <data name="chkInclination.Properties.Caption" xml:space="preserve">
+    <value>Inclination</value>
+  </data>
+  <data name="chkInclination.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 20</value>
+  </data>
+  <data name="chkInclination.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;chkInclination.Name" xml:space="preserve">
+    <value>chkInclination</value>
+  </data>
+  <data name="&gt;&gt;chkInclination.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkInclination.Parent" xml:space="preserve">
+    <value>grpShots</value>
+  </data>
+  <data name="&gt;&gt;chkInclination.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="chkBearing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkBearing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 91</value>
+  </data>
+  <data name="chkBearing.Properties.Caption" xml:space="preserve">
+    <value>Bearing</value>
+  </data>
+  <data name="chkBearing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 20</value>
+  </data>
+  <data name="chkBearing.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;chkBearing.Name" xml:space="preserve">
+    <value>chkBearing</value>
+  </data>
+  <data name="&gt;&gt;chkBearing.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkBearing.Parent" xml:space="preserve">
+    <value>grpShots</value>
+  </data>
+  <data name="&gt;&gt;chkBearing.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="chkDistance.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkDistance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 65</value>
+  </data>
+  <data name="chkDistance.Properties.Caption" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="chkDistance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 20</value>
+  </data>
+  <data name="chkDistance.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;chkDistance.Name" xml:space="preserve">
+    <value>chkDistance</value>
+  </data>
+  <data name="&gt;&gt;chkDistance.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkDistance.Parent" xml:space="preserve">
+    <value>grpShots</value>
+  </data>
+  <data name="&gt;&gt;chkDistance.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="grpShots.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="grpShots.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 233</value>
+  </data>
+  <data name="grpShots.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="grpShots.Text" xml:space="preserve">
+    <value>Overwrite details:</value>
+  </data>
+  <data name="&gt;&gt;grpShots.Name" xml:space="preserve">
+    <value>grpShots</value>
+  </data>
+  <data name="&gt;&gt;grpShots.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;grpShots.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpShots.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>308, 257</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmImportcSurveyShotsDetails</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.XtraUserControl, DevExpress.Utils.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+</root>

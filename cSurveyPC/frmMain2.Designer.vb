@@ -559,7 +559,7 @@ Partial Class frmMain2
         Me.cDesignMessageCorner = New cSurveyPC.cMessageCorner()
         Me.pnl3D = New DevExpress.XtraEditors.PanelControl()
         Me.h3D = New System.Windows.Forms.Integration.ElementHost()
-        Me.picMap = New cPictureBox()
+        Me.picMap = New cSurveyPC.cPictureBox()
         Me.mnuUndo = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.pnlTrigpointsDataMain = New DevExpress.XtraEditors.PanelControl()
         Me.grdTrigPointAliases = New DevExpress.XtraGrid.GridControl()
@@ -6279,6 +6279,8 @@ Partial Class frmMain2
         resources.ApplyResources(Me.cboSegmentCaveList, "cboSegmentCaveList")
         Me.cboSegmentCaveList.EditValue = Nothing
         Me.cboSegmentCaveList.Name = "cboSegmentCaveList"
+        Me.cboSegmentCaveList.ShowDropDownButton = True
+        Me.cboSegmentCaveList.ShowMoreButton = True
         Me.cboSegmentCaveList.Workmode = cSurveyPC.cCaveDropDown.WorkmodeEnum.View
         '
         'cboSegmentCaveBranchList
@@ -6287,6 +6289,8 @@ Partial Class frmMain2
         resources.ApplyResources(Me.cboSegmentCaveBranchList, "cboSegmentCaveBranchList")
         Me.cboSegmentCaveBranchList.EditValue = Nothing
         Me.cboSegmentCaveBranchList.Name = "cboSegmentCaveBranchList"
+        Me.cboSegmentCaveBranchList.ShowDropDownButton = True
+        Me.cboSegmentCaveBranchList.ShowMoreButton = True
         Me.cboSegmentCaveBranchList.Workmode = cSurveyPC.cCaveDropDown.WorkmodeEnum.View
         '
         'pnlSegmentSession
@@ -6317,6 +6321,8 @@ Partial Class frmMain2
         resources.ApplyResources(Me.cboSegmentSessionList, "cboSegmentSessionList")
         Me.cboSegmentSessionList.EditValue = Nothing
         Me.cboSegmentSessionList.Name = "cboSegmentSessionList"
+        Me.cboSegmentSessionList.ShowDropDownButton = True
+        Me.cboSegmentSessionList.ShowMoreButton = True
         '
         'LayoutControlGroup1
         '

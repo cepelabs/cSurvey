@@ -84,48 +84,73 @@ Module modRender
         Else
             iLabelSymbol = TrigPoint.LabelSymbol
         End If
+        Dim oLabelSymbolColor As Color = PointPen.Color
+        Dim oLabelPenSymbolColor As Color = PointPen.Color
+        Dim oLabelBrushSymbolColor As Color = PointPen.Color
+        If Cache.CustomDrawOptions IsNot Nothing Then
+            With DirectCast(Cache.CustomDrawOptions, cDrawCacheTrigpointCustomOptions)
+                If .Symbol.HasValue Then
+                    iLabelSymbol = .Symbol.Value
+                End If
+                If .Size.HasValue Then
+                    PointSize = .Size.Value
+                End If
+                If .SizeScale.HasValue Then
+                    PointSize *= .SizeScale.Value
+                End If
+                If .Color.HasValue Then
+                    oLabelSymbolColor = .Color.Value
+                End If
+                If .PenColor.HasValue Then
+                    oLabelPenSymbolColor = .PenColor.Value
+                End If
+                If .BrushColor.HasValue Then
+                    oLabelBrushSymbolColor = .BrushColor.Value
+                End If
+            End With
+        End If
         Dim oItem As cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
         Select Case iLabelSymbol
             Case cTrigPoint.TrigPointLabelSymbolEnum.Triangle
-                Call oItem.SetPen(PointPen)
-                Call oItem.SetBrush(PointBrush)
+                Call oItem.SetPen(PointPen, oLabelPenSymbolColor)
+                Call oItem.SetBrush(PointBrush, oLabelBrushSymbolColor)
                 Dim sR As Single = PointSize / 1.1!
                 Dim oSize As SizeF = modPaint.Trigo(sR, 30)
                 Dim oPoints() As PointF = {New PointF(Position.X, Position.Y - sR), New PointF(Position.X - oSize.Height, Position.Y + oSize.Width), New PointF(Position.X + oSize.Height, Position.Y + oSize.Width), New PointF(Position.X, Position.Y - sR)}
                 Call oItem.AddPolygon(oPoints)
             Case cTrigPoint.TrigPointLabelSymbolEnum.EmptyTriangle
-                Call oItem.SetPen(PointPen)
+                Call oItem.SetPen(PointPen, oLabelPenSymbolColor)
                 Dim sR As Single = PointSize / 1.1!
                 Dim oSize As SizeF = modPaint.Trigo(sR, 30)
                 Dim oPoints() As PointF = {New PointF(Position.X, Position.Y - sR), New PointF(Position.X - oSize.Height, Position.Y + oSize.Width), New PointF(Position.X + oSize.Height, Position.Y + oSize.Width), New PointF(Position.X, Position.Y - sR)}
                 Call oItem.AddPolygon(oPoints)
             Case cTrigPoint.TrigPointLabelSymbolEnum.Square
                 Dim oRect As RectangleF = New RectangleF(Position.X - (PointSize / 2), Position.Y - (PointSize / 2), PointSize, PointSize)
-                Call oItem.SetBrush(PointBrush)
-                Call oItem.SetPen(PointPen)
+                Call oItem.SetBrush(PointBrush, oLabelBrushSymbolColor)
+                Call oItem.SetPen(PointPen, oLabelPenSymbolColor)
                 Call oItem.AddRectangle(oRect)
             Case cTrigPoint.TrigPointLabelSymbolEnum.Circle
                 Dim oRect As RectangleF = New RectangleF(Position.X - (PointSize / 2), Position.Y - (PointSize / 2), PointSize, PointSize)
-                Call oItem.SetBrush(PointBrush)
-                Call oItem.SetPen(PointPen)
+                Call oItem.SetBrush(PointBrush, oLabelBrushSymbolColor)
+                Call oItem.SetPen(PointPen, oLabelPenSymbolColor)
                 Call oItem.AddEllipse(oRect)
             Case cTrigPoint.TrigPointLabelSymbolEnum.Plus
-                Call oItem.SetPen(PointPen)
+                Call oItem.SetPen(PointPen, oLabelPenSymbolColor)
                 Call oItem.AddLine(New PointF(Position.X - (PointSize / 2), Position.Y), New PointF(Position.X + (PointSize / 2), Position.Y))
                 Call oItem.StartFigure()
                 Call oItem.AddLine(New PointF(Position.X, Position.Y - (PointSize / 2)), New PointF(Position.X, Position.Y + (PointSize / 2)))
             Case cTrigPoint.TrigPointLabelSymbolEnum.Cross
-                Call oItem.SetPen(PointPen)
+                Call oItem.SetPen(PointPen, oLabelPenSymbolColor)
                 Call oItem.AddLine(New PointF(Position.X - (PointSize / 2), Position.Y - (PointSize / 2)), New PointF(Position.X + (PointSize / 2), Position.Y + (PointSize / 2)))
                 Call oItem.StartFigure()
                 Call oItem.AddLine(New PointF(Position.X + (PointSize / 2), Position.Y - (PointSize / 2)), New PointF(Position.X - (PointSize / 2), Position.Y + (PointSize / 2)))
             Case cTrigPoint.TrigPointLabelSymbolEnum.EmptySquare
                 Dim oRect As RectangleF = New RectangleF(Position.X - (PointSize / 2), Position.Y - (PointSize / 2), PointSize, PointSize)
-                Call oItem.SetPen(PointPen)
+                Call oItem.SetPen(PointPen, oLabelPenSymbolColor)
                 Call oItem.AddRectangle(oRect)
             Case cTrigPoint.TrigPointLabelSymbolEnum.EmptyCircle
                 Dim oRect As RectangleF = New RectangleF(Position.X - (PointSize / 2), Position.Y - (PointSize / 2), PointSize, PointSize)
-                Call oItem.SetPen(PointPen)
+                Call oItem.SetPen(PointPen, oLabelPenSymbolColor)
                 Call oItem.AddEllipse(oRect)
         End Select
     End Sub

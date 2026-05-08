@@ -2,6 +2,13 @@
 Imports DevExpress.XtraTreeList
 
 Friend Class frmImportcSurvey
+    Private oShotsDuplicateDetails As Dictionary(Of String, Object)
+
+    Friend Function GetShotsDuplicatesDetails(Key As String) As Object
+        If oShotsDuplicateDetails.ContainsKey(Key) Then
+            Return oShotsDuplicateDetails(Key)
+        End If
+    End Function
 
     Public Sub AppendLog(Text As String, Imagename As String)
         tvLog.BeginUpdate()
@@ -36,6 +43,19 @@ Friend Class frmImportcSurvey
         chkcSurveyDisableOriginAsExtendstart.Checked = My.Application.Settings.GetSetting("data.import.csurvey.disableoriginasextendstart", 0)
 
         chkcsurveyimportlinkedsurvey.Checked = My.Application.Settings.GetSetting("data.import.csurvey.linkedsurvey", 1)
+
+        chkcSurveyImportOverwriteOnlySomeData.Checked = My.Application.Settings.GetSetting("data.import.csurvey.duplicates.overwrite.onlysome", 0)
+        DirectCast(My.Application.Settings.GetSetting("data.import.csurvey.duplicates.overwrite.shotsdetails", ""), String).Split(";"c).ToList().ForEach(Sub(sKeyValue)
+                                                                                                                                                             sKeyValue = sKeyValue.Trim
+                                                                                                                                                             If sKeyValue <> "" Then
+                                                                                                                                                                 Dim sValueParts As String() = sKeyValue.Split("="c)
+                                                                                                                                                                 Dim sKey As String = sValueParts(0)
+                                                                                                                                                                 Dim sValue As String = sValueParts(1)
+                                                                                                                                                                 If Not oShotsDuplicateDetails.ContainsKey(sKey) Then
+                                                                                                                                                                     oShotsDuplicateDetails.Add(sKey, sValue = "1")
+                                                                                                                                                                 End If
+                                                                                                                                                             End If
+                                                                                                                                                         End Sub)
     End Sub
 
     Private Sub pSettingsSave()
@@ -62,6 +82,11 @@ Friend Class frmImportcSurvey
         Call My.Application.Settings.SetSetting("data.import.csurvey.updatepriority", If(chkcSurveyImportUpdateCaveBranchPriority.Checked, 1, 0))
 
         Call My.Application.Settings.SetSetting("data.import.csurvey.linkedsurvey", If(chkcsurveyimportlinkedsurvey.Checked, 1, 0))
+
+        Call My.Application.Settings.SetSetting("data.import.csurvey.duplicates.overwrite.onlysome", If(chkcSurveyImportOverwriteOnlySomeData.Checked, 1, 0))
+        Call My.Application.Settings.SetSetting("data.import.csurvey.duplicates.overwrite.shotsdetails", String.Join(";"c, oShotsDuplicateDetails.Select(Function(oValue)
+                                                                                                                                                             Return If(oValue.Value IsNot Nothing, oValue.Key & "=" & If(oValue.Value, "1", "0"), "")
+                                                                                                                                                         End Function)))
     End Sub
 
     Private oSurvey As cSurvey.cSurvey
@@ -72,6 +97,9 @@ Friend Class frmImportcSurvey
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
         oSurvey = Survey
         oImportSurvey = ImportSurvey
+
+        oShotsDuplicateDetails = New Dictionary(Of String, Object)
+
         Call pSettingsLoad()
     End Sub
 
@@ -121,6 +149,8 @@ Friend Class frmImportcSurvey
         Dim bDuplicatesEnabled As Boolean = chkcSurveyImportDuplicates.Enabled And chkcSurveyImportDuplicates.Checked
         chkcSurveyImportDuplicatesOverwrite.Enabled = bDuplicatesEnabled
         chkcSurveyImportDuplicatesOverwriteOnlyUsed.Enabled = chkcSurveyImportDuplicatesOverwrite.Checked AndAlso bDuplicatesEnabled
+        chkcSurveyImportOverwriteOnlySomeData.Enabled = bDuplicatesEnabled
+        cmdcSurveyImportShotsData.Enabled = bDuplicatesEnabled And chkcSurveyImportOverwriteOnlySomeData.Checked
     End Sub
 
     Friend Class cConnectionChangedEventArgs
@@ -210,5 +240,22 @@ Friend Class frmImportcSurvey
     Private Sub chkcSurveyDisableOriginAsExtendstart_CheckedChanged(sender As Object, e As EventArgs) Handles chkcSurveyDisableOriginAsExtendstart.CheckedChanged
         Dim oArgs As cConnectionChangedEventArgs = New cConnectionChangedEventArgs(oSurvey, oImportSurvey)
         RaiseEvent OnConnectionChanged(Me, oArgs)
+    End Sub
+
+    Private Sub cmdcSurveyImportShotsData_Click(sender As Object, e As EventArgs) Handles cmdcSurveyImportShotsData.Click
+        Dim oParameters As frmImportcSurveyShotsDetails = New frmImportcSurveyShotsDetails(oShotsDuplicateDetails)
+        pnlParameters.Controls.Add(oParameters)
+        flyParameters.Size = oParameters.Size
+        oParameters.Dock = DockStyle.Fill
+        flyParameters.OwnerControl = cmdcSurveyImportShotsData
+        flyParameters.ShowBeakForm(True)
+    End Sub
+
+    Private Sub flyParameters_Hidden(sender As Object, e As DevExpress.Utils.FlyoutPanelEventArgs) Handles flyParameters.Hidden
+
+    End Sub
+
+    Private Sub chkcSurveyImportOverwriteOnlySomeData_CheckedChanged(sender As Object, e As EventArgs) Handles chkcSurveyImportOverwriteOnlySomeData.CheckedChanged
+        cmdcSurveyImportShotsData.Enabled = chkcSurveyImportOverwriteOnlySomeData.Checked
     End Sub
 End Class

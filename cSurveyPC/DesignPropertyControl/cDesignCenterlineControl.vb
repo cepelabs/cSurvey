@@ -39,6 +39,7 @@ Public Class cDesignCenterlineControl
         grdHighlights.BeginUpdate()
         grdHighlights.DataSource = MyBase.Design.Survey.Properties.HighlightsDetails.ToList
         grdHighlights.EndUpdate()
+        AddHandler chkHLSelected.EditValueChanged, AddressOf chkHLSelected_EditValueChanged
 
         'lvDesignPlotShowHLsDett.Items.Clear()
         'For Each oDetail As cHighlightsDetail In mybase.Design.Survey.Properties.HighlightsDetails
@@ -60,6 +61,10 @@ Public Class cDesignCenterlineControl
         'Next
         'cboDesignPrintOrExportAreaProfile.SelectedItem = mybase.options.GetPrintOrExportProfile(mybase.Design)
         'cboDesignPrintOrExportAreaProfileDesignStyle.SelectedIndex = mybase.options.DrawPrintOrExportAreaDesignStyle
+    End Sub
+    Private Sub chkHLSelected_EditValueChanged(sender As Object, e As EventArgs)
+        grdViewHighlights.PostEditor()
+        grdViewHighlights.UpdateCurrentRow()
     End Sub
 
     Private Sub pRefreshSize()

@@ -752,6 +752,7 @@ Namespace cSurvey.Data
 
         Public Sub New(ByVal Survey As cSurvey, Name As String, Type As cDataFields.TypeEnum, Optional DefaultValue As Object = Nothing)
             sName = Name
+            sName = sName.Replace(".", "_")
             iType = Type
             sCategory = ""
             'oDefaultValue = DefaultValue
@@ -759,6 +760,7 @@ Namespace cSurvey.Data
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Item As XmlElement)
             sName = Item.GetAttribute("name")
+            sName = sName.Replace(".", "_") 'fix for names with . in some old version
             iType = Item.GetAttribute("type")
             sDescription = modXML.GetAttributeValue(Item, "description", "")
             sCategory = modXML.GetAttributeValue(Item, "category", "")

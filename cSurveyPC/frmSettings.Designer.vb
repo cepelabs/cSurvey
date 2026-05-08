@@ -106,6 +106,7 @@ Partial Class frmSettings
         Me.GroupBox7 = New DevExpress.XtraEditors.GroupControl()
         Me.chkShotsGridExportSplayNames = New DevExpress.XtraEditors.CheckEdit()
         Me.GroupBox2 = New DevExpress.XtraEditors.GroupControl()
+        Me.chkSVGExportInkscapeReference = New DevExpress.XtraEditors.CheckEdit()
         Me.chkSVGExportUseStyles = New DevExpress.XtraEditors.CheckEdit()
         Me.chkSVGExportReuseclipart = New DevExpress.XtraEditors.CheckEdit()
         Me.chkSVGExportTextAsPath = New DevExpress.XtraEditors.CheckEdit()
@@ -234,7 +235,6 @@ Partial Class frmSettings
         Me.lblLogMaxSize = New DevExpress.XtraEditors.LabelControl()
         Me.txtLogMaxLine = New DevExpress.XtraEditors.SpinEdit()
         Me.chkLogOnFile = New DevExpress.XtraEditors.CheckEdit()
-        Me.chkSVGExportInkscapeReference = New DevExpress.XtraEditors.CheckEdit()
         CType(Me.chkHistoryArchiveOnSave.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtHistoryMaxCopies, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtHistoryDailyCopies, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -267,6 +267,7 @@ Partial Class frmSettings
         CType(Me.chkShotsGridExportSplayNames.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.chkSVGExportInkscapeReference.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkSVGExportUseStyles.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkSVGExportReuseclipart.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkSVGExportTextAsPath.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -353,7 +354,6 @@ Partial Class frmSettings
         CType(Me.chkForceGarbaceCollect.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtLogMaxLine.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkLogOnFile.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSVGExportInkscapeReference.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'chkHistoryArchiveOnSave
@@ -884,6 +884,13 @@ Partial Class frmSettings
         Me.GroupBox2.Controls.Add(Me.txtSVGExportScale)
         resources.ApplyResources(Me.GroupBox2, "GroupBox2")
         Me.GroupBox2.Name = "GroupBox2"
+        '
+        'chkSVGExportInkscapeReference
+        '
+        resources.ApplyResources(Me.chkSVGExportInkscapeReference, "chkSVGExportInkscapeReference")
+        Me.chkSVGExportInkscapeReference.Name = "chkSVGExportInkscapeReference"
+        Me.chkSVGExportInkscapeReference.Properties.AutoWidth = True
+        Me.chkSVGExportInkscapeReference.Properties.Caption = resources.GetString("chkSVGExportInkscapeReference.Properties.Caption")
         '
         'chkSVGExportUseStyles
         '
@@ -1873,13 +1880,6 @@ Partial Class frmSettings
         Me.chkLogOnFile.Properties.AutoWidth = True
         Me.chkLogOnFile.Properties.Caption = resources.GetString("chkLogOnFile.Properties.Caption")
         '
-        'chkSVGExportInkscapeReference
-        '
-        resources.ApplyResources(Me.chkSVGExportInkscapeReference, "chkSVGExportInkscapeReference")
-        Me.chkSVGExportInkscapeReference.Name = "chkSVGExportInkscapeReference"
-        Me.chkSVGExportInkscapeReference.Properties.AutoWidth = True
-        Me.chkSVGExportInkscapeReference.Properties.Caption = resources.GetString("CheckEdit3.Properties.Caption")
-        '
         'frmSettings
         '
         resources.ApplyResources(Me, "$this")
@@ -1930,6 +1930,7 @@ Partial Class frmSettings
         CType(Me.GroupBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.chkSVGExportInkscapeReference.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkSVGExportUseStyles.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkSVGExportReuseclipart.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkSVGExportTextAsPath.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2031,7 +2032,6 @@ Partial Class frmSettings
         CType(Me.chkForceGarbaceCollect.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtLogMaxLine.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkLogOnFile.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSVGExportInkscapeReference.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

@@ -237,7 +237,7 @@ Friend Class frmSegmentsReplicateInfo
     Private oPropertiesBag As BindingList(Of UIHelpers.Reflection.cObjectPropertyBag)
 
     Private Sub cmdEditOtherProperties_Click(sender As Object, e As EventArgs) Handles cmdEditOtherProperties.Click
-        Using frmR As frmSegmentsReplicateDataFieldEditor = New frmSegmentsReplicateDataFieldEditor(oPropertiesBag)
+        Using frmR As frmSegmentsReplicateDataFieldEditor = New frmSegmentsReplicateDataFieldEditor(0, oPropertiesBag)
             If frmR.ShowDialog(Me) = DialogResult.OK Then
                 oPropertiesBag = frmR.Items
                 chkOtherProperties.Checked = True

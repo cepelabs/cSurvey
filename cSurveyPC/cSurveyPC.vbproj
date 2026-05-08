@@ -283,7 +283,7 @@
       <HintPath>packages\NAudio.WinMM.2.2.1\lib\netstandard2.0\NAudio.WinMM.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -508,6 +508,12 @@
       <DependentUpon>frmDashPatternEditor.vb</DependentUpon>
     </Compile>
     <Compile Include="frmDashPatternEditor.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmImportcSurveyShotsDetails.Designer.vb">
+      <DependentUpon>frmImportcSurveyShotsDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportcSurveyShotsDetails.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="frmPreviewSVGOptions.Designer.vb">
@@ -1861,6 +1867,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDashPatternEditor.resx">
       <DependentUpon>frmDashPatternEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportcSurveyShotsDetails.it.resx">
+      <DependentUpon>frmImportcSurveyShotsDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportcSurveyShotsDetails.resx">
+      <DependentUpon>frmImportcSurveyShotsDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportcSurveyShotsDetails.ru.resx">
+      <DependentUpon>frmImportcSurveyShotsDetails.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPreviewSVGOptions.en.resx">
       <DependentUpon>frmPreviewSVGOptions.vb</DependentUpon>
@@ -5053,6 +5068,7 @@
     <None Include="Resources\refresh_warning.svg" />
     <None Include="Resources\timezones.svg" />
     <None Include="Resources\filter_refresh.svg" />
+    <None Include="Resources\properties1.svg" />
     <Content Include="version.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

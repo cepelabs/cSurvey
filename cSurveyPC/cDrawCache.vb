@@ -9,6 +9,103 @@ Imports DevExpress.Utils.Drawing
 Imports DevExpress.XtraEditors.ButtonPanel
 
 Namespace cSurvey.Drawings
+
+    Public Interface cIDrawCacheCustomOptions
+        ReadOnly Property Type As String
+
+    End Interface
+
+    Public Class cDrawCacheSegmentCustomOptions
+        Implements cIDrawCacheCustomOptions
+
+        Private oColor As Color?
+
+        Public Property Color As Color?
+            Get
+                Return oColor
+            End Get
+            Set(value As Color?)
+                oColor = value
+            End Set
+        End Property
+
+        Public ReadOnly Property Type As String Implements cIDrawCacheCustomOptions.Type
+            Get
+                Return "segment"
+            End Get
+        End Property
+    End Class
+
+    Public Class cDrawCacheTrigpointCustomOptions
+        Implements cIDrawCacheCustomOptions
+
+        Private oColor As Color?
+        Private oPenColor As Color?
+        Private oBrushColor As Color?
+        Private iSymbol As cTrigPoint.TrigPointLabelSymbolEnum?
+        Private sSize As Single?
+        Private sSizeScale As Single?
+
+        Public Property Symbol As cTrigPoint.TrigPointLabelSymbolEnum?
+            Get
+                Return iSymbol
+            End Get
+            Set(value As cTrigPoint.TrigPointLabelSymbolEnum?)
+                iSymbol = value
+            End Set
+        End Property
+
+        Public Property SizeScale As Single?
+            Get
+                Return sSizeScale
+            End Get
+            Set(value As Single?)
+                sSizeScale = value
+            End Set
+        End Property
+
+        Public Property Size As Single?
+            Get
+                Return sSize
+            End Get
+            Set(value As Single?)
+                sSize = value
+            End Set
+        End Property
+
+        Public Property BrushColor As Color?
+            Get
+                Return oBrushColor
+            End Get
+            Set(value As Color?)
+                oBrushColor = value
+            End Set
+        End Property
+        Public Property PenColor As Color?
+            Get
+                Return oPenColor
+            End Get
+            Set(value As Color?)
+                oPenColor = value
+            End Set
+        End Property
+
+        Public Property Color As Color?
+            Get
+                Return oColor
+            End Get
+            Set(value As Color?)
+                oColor = value
+            End Set
+        End Property
+
+        Public ReadOnly Property Type As String Implements cIDrawCacheCustomOptions.Type
+            Get
+                Return "station"
+            End Get
+        End Property
+    End Class
+
     Public Class cDrawCache
         Implements IEnumerable
         Implements IDisposable
@@ -20,6 +117,17 @@ Namespace cSurvey.Drawings
         Private bInvalidaded As Boolean
 
         Private iMaxDrawItemCount As Integer
+
+        Private oCustomDrawOptions As ciDrawCacheCustomOptions
+
+        Public Property CustomDrawOptions As ciDrawCacheCustomOptions
+            Get
+                Return oCustomDrawOptions
+            End Get
+            Set(value As ciDrawCacheCustomOptions)
+                oCustomDrawOptions = value
+            End Set
+        End Property
 
         Public Function Hittest(Graphics As Graphics, Point As PointF, Scale As Single, Precision As Single, Wide As Single) As Boolean
             Try
@@ -127,7 +235,7 @@ Namespace cSurvey.Drawings
 
         Public Sub SetGUID(GUID As String, Optional MatrixElements As Single() = Nothing)
             sGUID = GUID
-            omatrixelements = MatrixElements
+            oMatrixElements = MatrixElements
         End Sub
 
         Public Sub ResetGUID()
@@ -812,6 +920,19 @@ Namespace cSurvey.Drawings
             Call oPath.AddEllipse(Rectangle)
         End Sub
 
+        Friend Sub SetBrush(ByVal Brush As Brush, Color As Color)
+            If Brush Is Nothing Then
+                oBrush = Nothing
+                bIsFilled = False
+            Else
+                oBrush = Brush.Clone
+                If TypeOf oBrush Is SolidBrush Then
+                    DirectCast(oBrush, SolidBrush).Color = Color
+                End If
+                bIsFilled = True
+            End If
+        End Sub
+
         Friend Sub SetBrush(ByVal Brush As Brush)
             If Brush Is Nothing Then
                 oBrush = Nothing
@@ -819,6 +940,17 @@ Namespace cSurvey.Drawings
             Else
                 oBrush = Brush.Clone
                 bIsFilled = True
+            End If
+        End Sub
+
+        Friend Sub SetPen(ByVal Pen As Pen, Color As Color)
+            If Pen Is Nothing Then
+                oPen = Nothing
+                bIsOutlined = False
+            Else
+                oPen = Pen.Clone
+                oPen.Color = Color
+                bIsOutlined = True
             End If
         End Sub
 

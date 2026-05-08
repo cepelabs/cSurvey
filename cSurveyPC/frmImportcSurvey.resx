@@ -142,7 +142,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtFilename.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -151,13 +151,13 @@
     <value>NoControl</value>
   </data>
   <data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>278, 628</value>
+    <value>278, 660</value>
   </data>
   <data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
   </data>
   <data name="cmdOk.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>13</value>
   </data>
   <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
@@ -172,7 +172,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -181,13 +181,13 @@
     <value>NoControl</value>
   </data>
   <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 628</value>
+    <value>364, 660</value>
   </data>
   <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
   </data>
   <data name="cmdCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>14</value>
   </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -202,7 +202,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="GroupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -268,7 +268,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;GroupBox1.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <metadata name="iml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>122, 17</value>
@@ -278,7 +278,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAC2
-        CwAAAk1TRnQBSQFMAgEBBAEAAaQBAQGkAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBBAEAAcwBAQHMAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -335,7 +335,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkcSurveyImportScaleRules.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 486</value>
+    <value>16, 516</value>
   </data>
   <data name="chkcSurveyImportScaleRules.Properties.Caption" xml:space="preserve">
     <value>Import scale settings</value>
@@ -344,7 +344,7 @@
     <value>123, 20</value>
   </data>
   <data name="chkcSurveyImportScaleRules.TabIndex" type="System.Int32, mscorlib">
-    <value>70</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportScaleRules.Name" xml:space="preserve">
     <value>chkcSurveyImportScaleRules</value>
@@ -356,13 +356,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportScaleRules.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="chkcSurveyImportDesignProperties.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkcSurveyImportDesignProperties.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 463</value>
+    <value>16, 493</value>
   </data>
   <data name="chkcSurveyImportDesignProperties.Properties.Caption" xml:space="preserve">
     <value>Import graphics settings</value>
@@ -371,7 +371,7 @@
     <value>139, 20</value>
   </data>
   <data name="chkcSurveyImportDesignProperties.TabIndex" type="System.Int32, mscorlib">
-    <value>69</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDesignProperties.Name" xml:space="preserve">
     <value>chkcSurveyImportDesignProperties</value>
@@ -383,13 +383,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDesignProperties.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="chkcSurveyImportSurface.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkcSurveyImportSurface.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 440</value>
+    <value>16, 470</value>
   </data>
   <data name="chkcSurveyImportSurface.Properties.Caption" xml:space="preserve">
     <value>Import surface data</value>
@@ -398,7 +398,7 @@
     <value>119, 20</value>
   </data>
   <data name="chkcSurveyImportSurface.TabIndex" type="System.Int32, mscorlib">
-    <value>68</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportSurface.Name" xml:space="preserve">
     <value>chkcSurveyImportSurface</value>
@@ -410,7 +410,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportSurface.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="chkcSurveyImportProfile.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -428,7 +428,7 @@
     <value>88, 20</value>
   </data>
   <data name="chkcSurveyImportProfile.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportProfile.Name" xml:space="preserve">
     <value>chkcSurveyImportProfile</value>
@@ -458,7 +458,7 @@
     <value>78, 20</value>
   </data>
   <data name="chkcSurveyImportPlan.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportPlan.Name" xml:space="preserve">
     <value>chkcSurveyImportPlan</value>
@@ -500,7 +500,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblFilename.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="chkcSurveyImportData.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -515,7 +515,7 @@
     <value>80, 20</value>
   </data>
   <data name="chkcSurveyImportData.TabIndex" type="System.Int32, mscorlib">
-    <value>66</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportData.Name" xml:space="preserve">
     <value>chkcSurveyImportData</value>
@@ -527,13 +527,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportData.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="chkcSurveyImportGraphics.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkcSurveyImportGraphics.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 314</value>
+    <value>16, 344</value>
   </data>
   <data name="chkcSurveyImportGraphics.Properties.Caption" xml:space="preserve">
     <value>Import graphics</value>
@@ -542,7 +542,7 @@
     <value>98, 20</value>
   </data>
   <data name="chkcSurveyImportGraphics.TabIndex" type="System.Int32, mscorlib">
-    <value>67</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportGraphics.Name" xml:space="preserve">
     <value>chkcSurveyImportGraphics</value>
@@ -554,7 +554,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportGraphics.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="chkcSurveyImportCaveBranchFromDesign.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -572,7 +572,7 @@
     <value>233, 20</value>
   </data>
   <data name="chkcSurveyImportCaveBranchFromDesign.TabIndex" type="System.Int32, mscorlib">
-    <value>72</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportCaveBranchFromDesign.Name" xml:space="preserve">
     <value>chkcSurveyImportCaveBranchFromDesign</value>
@@ -602,7 +602,7 @@
     <value>124, 20</value>
   </data>
   <data name="chkcSurveyImportDuplicates.TabIndex" type="System.Int32, mscorlib">
-    <value>73</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDuplicates.Name" xml:space="preserve">
     <value>chkcSurveyImportDuplicates</value>
@@ -614,7 +614,7 @@
     <value>pnlcSurveyImportData</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDuplicates.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="cbocSurveyImportDuplicatesMode.Items" xml:space="preserve">
     <value>by shot ID</value>
@@ -629,7 +629,7 @@
     <value>152, 21</value>
   </data>
   <data name="cbocSurveyImportDuplicatesMode.TabIndex" type="System.Int32, mscorlib">
-    <value>74</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;cbocSurveyImportDuplicatesMode.Name" xml:space="preserve">
     <value>cbocSurveyImportDuplicatesMode</value>
@@ -641,7 +641,7 @@
     <value>pnlcSurveyImportData</value>
   </data>
   <data name="&gt;&gt;cbocSurveyImportDuplicatesMode.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="lblcSurveyImportDuplicatesMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 5</value>
@@ -650,7 +650,7 @@
     <value>93, 13</value>
   </data>
   <data name="lblcSurveyImportDuplicatesMode.TabIndex" type="System.Int32, mscorlib">
-    <value>75</value>
+    <value>0</value>
   </data>
   <data name="lblcSurveyImportDuplicatesMode.Text" xml:space="preserve">
     <value>Find existing shots:</value>
@@ -665,7 +665,7 @@
     <value>pnlcSurveyImportData</value>
   </data>
   <data name="&gt;&gt;lblcSurveyImportDuplicatesMode.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="chkcSurveyImportDuplicatesOverwrite.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -683,7 +683,7 @@
     <value>122, 20</value>
   </data>
   <data name="chkcSurveyImportDuplicatesOverwrite.TabIndex" type="System.Int32, mscorlib">
-    <value>76</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDuplicatesOverwrite.Name" xml:space="preserve">
     <value>chkcSurveyImportDuplicatesOverwrite</value>
@@ -695,7 +695,7 @@
     <value>pnlcSurveyImportData</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDuplicatesOverwrite.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="chkcSurveyImportDuplicatesStations.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -704,7 +704,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkcSurveyImportDuplicatesStations.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 74</value>
+    <value>16, 105</value>
   </data>
   <data name="chkcSurveyImportDuplicatesStations.Properties.Caption" xml:space="preserve">
     <value>Import and overwrite existing stations</value>
@@ -713,7 +713,7 @@
     <value>206, 20</value>
   </data>
   <data name="chkcSurveyImportDuplicatesStations.TabIndex" type="System.Int32, mscorlib">
-    <value>77</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDuplicatesStations.Name" xml:space="preserve">
     <value>chkcSurveyImportDuplicatesStations</value>
@@ -725,13 +725,13 @@
     <value>pnlcSurveyImportData</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDuplicatesStations.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="chkImportAsBranchOf.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkImportAsBranchOf.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 514</value>
+    <value>16, 544</value>
   </data>
   <data name="chkImportAsBranchOf.Properties.Caption" xml:space="preserve">
     <value>Import all as branch of:</value>
@@ -740,7 +740,7 @@
     <value>138, 20</value>
   </data>
   <data name="chkImportAsBranchOf.TabIndex" type="System.Int32, mscorlib">
-    <value>79</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;chkImportAsBranchOf.Name" xml:space="preserve">
     <value>chkImportAsBranchOf</value>
@@ -752,13 +752,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkImportAsBranchOf.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="chkcSurveyImportUpdateCaveBranchPriority.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkcSurveyImportUpdateCaveBranchPriority.Location" type="System.Drawing.Point, System.Drawing">
-    <value>220, 568</value>
+    <value>220, 598</value>
   </data>
   <data name="chkcSurveyImportUpdateCaveBranchPriority.Properties.Caption" xml:space="preserve">
     <value>Update cave/branch priority</value>
@@ -767,7 +767,7 @@
     <value>158, 20</value>
   </data>
   <data name="chkcSurveyImportUpdateCaveBranchPriority.TabIndex" type="System.Int32, mscorlib">
-    <value>82</value>
+    <value>11</value>
   </data>
   <data name="chkcSurveyImportUpdateCaveBranchPriority.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -782,10 +782,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportUpdateCaveBranchPriority.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="chkcSurveyImportCreateNewBranch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 568</value>
+    <value>16, 598</value>
   </data>
   <data name="chkcSurveyImportCreateNewBranch.Properties.Caption" xml:space="preserve">
     <value>Import all as new cave/branch</value>
@@ -794,7 +794,7 @@
     <value>168, 20</value>
   </data>
   <data name="chkcSurveyImportCreateNewBranch.TabIndex" type="System.Int32, mscorlib">
-    <value>83</value>
+    <value>10</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportCreateNewBranch.Name" xml:space="preserve">
     <value>chkcSurveyImportCreateNewBranch</value>
@@ -806,7 +806,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportCreateNewBranch.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -824,7 +824,7 @@
     <value>192, 20</value>
   </data>
   <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.TabIndex" type="System.Int32, mscorlib">
-    <value>84</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDuplicatesOverwriteOnlyUsed.Name" xml:space="preserve">
     <value>chkcSurveyImportDuplicatesOverwriteOnlyUsed</value>
@@ -836,13 +836,13 @@
     <value>pnlcSurveyImportData</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportDuplicatesOverwriteOnlyUsed.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="chkcSurveyDisableOriginAsExtendstart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkcSurveyDisableOriginAsExtendstart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 591</value>
+    <value>16, 621</value>
   </data>
   <data name="chkcSurveyDisableOriginAsExtendstart.Properties.Caption" xml:space="preserve">
     <value>Do not set origin as extendstart</value>
@@ -851,7 +851,7 @@
     <value>176, 20</value>
   </data>
   <data name="chkcSurveyDisableOriginAsExtendstart.TabIndex" type="System.Int32, mscorlib">
-    <value>85</value>
+    <value>12</value>
   </data>
   <data name="&gt;&gt;chkcSurveyDisableOriginAsExtendstart.Name" xml:space="preserve">
     <value>chkcSurveyDisableOriginAsExtendstart</value>
@@ -863,7 +863,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkcSurveyDisableOriginAsExtendstart.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="lblcSurveyImportWarpingMode.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -878,7 +878,7 @@
     <value>73, 13</value>
   </data>
   <data name="lblcSurveyImportWarpingMode.TabIndex" type="System.Int32, mscorlib">
-    <value>87</value>
+    <value>0</value>
   </data>
   <data name="lblcSurveyImportWarpingMode.Text" xml:space="preserve">
     <value>Warping mode:</value>
@@ -914,7 +914,7 @@
     <value>152, 21</value>
   </data>
   <data name="cbocSurveyImportWarpingMode.TabIndex" type="System.Int32, mscorlib">
-    <value>86</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;cbocSurveyImportWarpingMode.Name" xml:space="preserve">
     <value>cbocSurveyImportWarpingMode</value>
@@ -929,7 +929,7 @@
     <value>3</value>
   </data>
   <data name="chkcsurveyimportlinkedsurvey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 486</value>
+    <value>240, 516</value>
   </data>
   <data name="chkcsurveyimportlinkedsurvey.Properties.Caption" xml:space="preserve">
     <value>Linked surveys</value>
@@ -938,7 +938,7 @@
     <value>94, 20</value>
   </data>
   <data name="chkcsurveyimportlinkedsurvey.TabIndex" type="System.Int32, mscorlib">
-    <value>88</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;chkcsurveyimportlinkedsurvey.Name" xml:space="preserve">
     <value>chkcsurveyimportlinkedsurvey</value>
@@ -950,13 +950,73 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkcsurveyimportlinkedsurvey.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
+  </data>
+  <data name="chkcSurveyImportOverwriteOnlySomeData.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkcSurveyImportOverwriteOnlySomeData.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkcSurveyImportOverwriteOnlySomeData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>37, 78</value>
+  </data>
+  <data name="CheckEdit1.Properties.Caption" xml:space="preserve">
+    <value>Overwrite only some data:</value>
+  </data>
+  <data name="chkcSurveyImportOverwriteOnlySomeData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 20</value>
+  </data>
+  <data name="chkcSurveyImportOverwriteOnlySomeData.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportOverwriteOnlySomeData.Name" xml:space="preserve">
+    <value>chkcSurveyImportOverwriteOnlySomeData</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportOverwriteOnlySomeData.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportOverwriteOnlySomeData.Parent" xml:space="preserve">
+    <value>pnlcSurveyImportData</value>
+  </data>
+  <data name="&gt;&gt;chkcSurveyImportOverwriteOnlySomeData.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cmdcSurveyImportShotsData.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cmdcSurveyImportShotsData.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdcSurveyImportShotsData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>194, 77</value>
+  </data>
+  <data name="cmdcSurveyImportShotsData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdcSurveyImportShotsData.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="cmdcSurveyImportShotsData.ToolTip" xml:space="preserve">
+    <value>Browse for another file...</value>
+  </data>
+  <data name="&gt;&gt;cmdcSurveyImportShotsData.Name" xml:space="preserve">
+    <value>cmdcSurveyImportShotsData</value>
+  </data>
+  <data name="&gt;&gt;cmdcSurveyImportShotsData.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdcSurveyImportShotsData.Parent" xml:space="preserve">
+    <value>pnlcSurveyImportData</value>
+  </data>
+  <data name="&gt;&gt;cmdcSurveyImportShotsData.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="pnlcSurveyImportData.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 210</value>
   </data>
   <data name="pnlcSurveyImportData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>428, 104</value>
+    <value>428, 128</value>
   </data>
   <data name="pnlcSurveyImportData.TabIndex" type="System.Int32, mscorlib">
     <value>89</value>
@@ -971,10 +1031,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pnlcSurveyImportData.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="pnlcSurveyImportGraphics.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 337</value>
+    <value>16, 367</value>
   </data>
   <data name="pnlcSurveyImportGraphics.Size" type="System.Drawing.Size, System.Drawing">
     <value>427, 97</value>
@@ -992,13 +1052,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pnlcSurveyImportGraphics.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="chkcSurveyImportTexts.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkcSurveyImportTexts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 463</value>
+    <value>240, 493</value>
   </data>
   <data name="chkcSurveyImportTexts.Properties.Caption" xml:space="preserve">
     <value>Import shared texts</value>
@@ -1007,7 +1067,7 @@
     <value>119, 20</value>
   </data>
   <data name="chkcSurveyImportTexts.TabIndex" type="System.Int32, mscorlib">
-    <value>91</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportTexts.Name" xml:space="preserve">
     <value>chkcSurveyImportTexts</value>
@@ -1019,19 +1079,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkcSurveyImportTexts.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="cboImportAsBranchOfCave.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="cboImportAsBranchOfCave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 514</value>
+    <value>160, 544</value>
   </data>
   <data name="cboImportAsBranchOfCave.Size" type="System.Drawing.Size, System.Drawing">
     <value>242, 20</value>
   </data>
   <data name="cboImportAsBranchOfCave.TabIndex" type="System.Int32, mscorlib">
-    <value>92</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;cboImportAsBranchOfCave.Name" xml:space="preserve">
     <value>cboImportAsBranchOfCave</value>
@@ -1043,19 +1103,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cboImportAsBranchOfCave.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="cboImportAsBranchOfBranch.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="cboImportAsBranchOfBranch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 542</value>
+    <value>160, 572</value>
   </data>
   <data name="cboImportAsBranchOfBranch.Size" type="System.Drawing.Size, System.Drawing">
     <value>242, 20</value>
   </data>
   <data name="cboImportAsBranchOfBranch.TabIndex" type="System.Int32, mscorlib">
-    <value>93</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;cboImportAsBranchOfBranch.Name" xml:space="preserve">
     <value>cboImportAsBranchOfBranch</value>
@@ -1067,7 +1127,52 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cboImportAsBranchOfBranch.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
+  </data>
+  <data name="pnlParameters.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pnlParameters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pnlParameters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 94</value>
+  </data>
+  <data name="pnlParameters.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pnlParameters.Name" xml:space="preserve">
+    <value>pnlParameters</value>
+  </data>
+  <data name="&gt;&gt;pnlParameters.Type" xml:space="preserve">
+    <value>DevExpress.Utils.FlyoutPanelControl, DevExpress.Utils.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlParameters.Parent" xml:space="preserve">
+    <value>flyParameters</value>
+  </data>
+  <data name="&gt;&gt;pnlParameters.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flyParameters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 3</value>
+  </data>
+  <data name="flyParameters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 94</value>
+  </data>
+  <data name="flyParameters.TabIndex" type="System.Int32, mscorlib">
+    <value>94</value>
+  </data>
+  <data name="&gt;&gt;flyParameters.Name" xml:space="preserve">
+    <value>flyParameters</value>
+  </data>
+  <data name="&gt;&gt;flyParameters.Type" xml:space="preserve">
+    <value>DevExpress.Utils.FlyoutPanel, DevExpress.Utils.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;flyParameters.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;flyParameters.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1076,7 +1181,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>456, 665</value>
+    <value>456, 697</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>333, 237</value>

@@ -195,9 +195,9 @@ Namespace cSurvey.Scripting
 
         Public Overrides Function ToString() As String
             If iLanguage = LanguageEnum.CSharp Then
-                Return _cprefix & IIf(bUnboxed, _unboxedprefix, "") & sCode
+                Return _cprefix & If(bUnboxed, _unboxedprefix, "") & sCode
             ElseIf iLanguage = LanguageEnum.VisualBasic Then
-                Return _vbprefix & IIf(bUnboxed, _unboxedprefix, "") & sCode
+                Return _vbprefix & If(bUnboxed, _unboxedprefix, "") & sCode
             End If
         End Function
 

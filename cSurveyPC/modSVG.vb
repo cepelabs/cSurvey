@@ -68,13 +68,17 @@ Module modSVG
         End Sub
 
         Public Sub AppendStyles()
+            Call AppendStyles("")
+        End Sub
+
+        Public Sub AppendStyles(RootItemName As String)
             If oStylesCache.Count > 0 Then
                 Dim oXmlStyles As XmlElement = Me.CreateElement("style", svgNamespace)
                 oXmlStyles.SetAttribute("type", "text/css")
                 Dim oSb As StringBuilder = New StringBuilder
                 For Each sStyleHash In oStylesCache.Keys
                     With oStylesCache(sStyleHash)
-                        oSb.AppendLine("." & .ClassKey & " {" & .Style & "}")
+                        oSb.AppendLine(If(RootItemName = "", "", "#" & RootItemName & " ") & "." & .ClassKey & " {" & .Style & "}")
                     End With
                 Next
                 oXmlStyles.InnerText = oSb.ToString

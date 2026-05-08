@@ -321,11 +321,11 @@ Namespace cSurvey.Design
                             For Each sKey As String In oMaskPaths.Keys
                                 Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("design.svgexport.progress2"), iBorderIndex / iBorderCount)
 
-                                Dim oSVGMaskPath As XmlElement = modSVG.CreateMaskPath(SVG, "mask_" & sKey)
+                                Dim oSVGMaskPath As XmlElement = modSVG.CreateMaskPath(SVG, "mask_plan_" & sKey)
                                 Dim oDirectMaskPaths As List(Of cMaskPath) = oMaskPaths(sKey)
                                 Dim iMaskIndex As Integer = 0
                                 For Each oDirectMaskPath As cMaskPath In oDirectMaskPaths
-                                    Dim oSVGItem As XmlElement = modSVG.AppendItem(SVG, oSVGMaskPath, PaintOptions, oDirectMaskPath.Path, "mask_" & sKey & "_" & iMaskIndex)
+                                    Dim oSVGItem As XmlElement = modSVG.AppendItem(SVG, oSVGMaskPath, PaintOptions, oDirectMaskPath.Path, "mask_plan_" & sKey & "_" & iMaskIndex)
                                     Select Case oDirectMaskPath.MergeMode
                                         Case cIItemMergeableArea.MergeModeEnum.Add
                                             Call oSVGItem.SetAttribute("fill", "white")
@@ -337,7 +337,7 @@ Namespace cSurvey.Design
                                 Call modSVG.AppendItem(SVG, Parent, oSVGMaskPath)
 
                                 'inverted mask may be usefull only if used in the draw...in future have to be created only in this case...
-                                Dim oSVGInvertedMaskPath As XmlElement = modSVG.CreateMaskPath(SVG, "invmask_" & sKey)
+                                Dim oSVGInvertedMaskPath As XmlElement = modSVG.CreateMaskPath(SVG, "invmask_plan_" & sKey)
                                 Dim oInvertedMaskPaths As List(Of cMaskPath) = oMaskPaths(sKey)
                                 iMaskIndex = 0
 
@@ -349,7 +349,7 @@ Namespace cSurvey.Design
                                 Call oSVGRectAll.SetAttribute("fill", "white")
                                 oSVGInvertedMaskPath.AppendChild(oSVGRectAll)
                                 For Each oInvertedMaskPath As cMaskPath In oInvertedMaskPaths
-                                    Dim oSVGItem As XmlElement = modSVG.CreateUse(SVG, PaintOptions, "mask_" & sKey & "_" & iMaskIndex)
+                                    Dim oSVGItem As XmlElement = modSVG.CreateUse(SVG, PaintOptions, "mask_plan_" & sKey & "_" & iMaskIndex)
                                     'Dim oSVGItem As XmlElement = modSVG.AppendItem(SVG, oSVGInvertedMaskPath, PaintOptions, oInvertedMaskPath.Path)
                                     Select Case oInvertedMaskPath.MergeMode
                                         Case cIItemMergeableArea.MergeModeEnum.Add
@@ -419,7 +419,7 @@ Namespace cSurvey.Design
                                                 End If
                                             End If
                                             Dim oSVGAreaItem As XmlElement = modSVG.CreateItem(SVG, PaintOptions, oBorderPath)
-                                            Dim sClippingKey As String = "mask_" & modExport.FormatCaveBranchNameForSVG(oCaveBorder.Cave, oCaveBorder.Branch)
+                                            Dim sClippingKey As String = "mask_plan_" & modExport.FormatCaveBranchNameForSVG(oCaveBorder.Cave, oCaveBorder.Branch)
                                             Call oSVGAreaItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
                                             Call modSVG.AppendItemStyle(SVG, oSVGAreaItem, oBrush, Nothing)
                                             Call modSVG.AppendItem(SVG, oSVGArea, oSVGAreaItem)
@@ -436,7 +436,7 @@ Namespace cSurvey.Design
         End Sub
 
         Friend Overrides Function ToSvgItem(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline) As XmlElement
-            Dim oSVGGroup As XmlElement = modSVG.CreateLayer(SVG, "design", "design")
+            Dim oSVGGroup As XmlElement = modSVG.CreateLayer(SVG, "plandesign", "design")
             Call pAppendSvgItem(SVG, oSVGGroup, PaintOptions)
             Return oSVGGroup
         End Function
@@ -491,7 +491,7 @@ Namespace cSurvey.Design
                 Call modSVG.AppendItem(oSVG, Nothing, oGadget)
             End If
 
-            oSVG.AppendStyles()
+            oSVG.AppendStyles("plan")
             oSVG.AppendCliparts(PaintOptions)
 
             Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, modMain.GetLocalizedString("design.svgexport.progressend1"), 0)

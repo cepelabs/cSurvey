@@ -1826,7 +1826,12 @@ Friend Class frmMain2
                 grdTrigPointAliases.DataSource = New UIHelpers.cAliasBindingList(Trigpoint.Aliases)
                 grdTrigpointConnections.DataSource = New UIHelpers.cConnectionsBindingList(Trigpoint.Connections)
 
+                prpTrigpointDataProperties.BeginUpdate()
+                prpTrigpointDataProperties.SelectedObject = Nothing
                 prpTrigpointDataProperties.SelectedObject = .DataProperties.GetClass
+                prpTrigpointDataProperties.EndUpdate()
+
+                'prpTrigpointDataProperties.SelectedObject = .DataProperties.GetClass
             End With
             Call pTrigPointSelect(Trigpoint, True, False)
             bDisableTrigpointsChangeEvent.Pop()
@@ -1852,7 +1857,7 @@ Friend Class frmMain2
                             .Note = txtTrigpointNote.Text
 
                             .LabelPosition = cboTrigPointLabelPosition.SelectedIndex
-                            .LabelDistance = txtTrigPointLabelDistance.Text
+                            .LabelDistance = txtTrigPointLabelDistance.Value
                             .LabelSymbol = cboTrigPointLabelSymbol.SelectedIndex
 
                             .DrawTranslationsLine = chkTrigpointDrawTranslationsLine.Checked
@@ -12145,6 +12150,82 @@ Friend Class frmMain2
                                                     bOverwrite = True
                                                 End If
                                                 If bOverwrite Then
+                                                    If frmIS.chkcSurveyImportOverwriteOnlySomeData.Checked Then
+                                                        With oOldSegment
+                                                            If frmIS.GetShotsDuplicatesDetails("CaveBranch") Then
+                                                                Call .SetCave(oNewSegment.Cave, oNewSegment.Branch)
+                                                            End If
+                                                            If frmIS.GetShotsDuplicatesDetails("Session") Then
+                                                                Call .SetSession(oNewSegment.Session)
+                                                            End If
+                                                            If frmIS.GetShotsDuplicatesDetails("Distance") Then
+                                                                .Distance = oNewSegment.Distance
+                                                            End If
+                                                            If frmIS.GetShotsDuplicatesDetails("Inclination") Then
+                                                                .Inclination = oNewSegment.Inclination
+                                                            End If
+                                                            If frmIS.GetShotsDuplicatesDetails("Bearing") Then
+                                                                .Bearing = oNewSegment.Bearing
+                                                            End If
+                                                            If frmIS.GetShotsDuplicatesDetails("LRUD") Then
+                                                                .Left = oNewSegment.Left
+                                                                .Right = oNewSegment.Right
+                                                                .Up = oNewSegment.Up
+                                                                .Down = oNewSegment.Down
+                                                            End If
+                                                            If frmIS.GetShotsDuplicatesDetails("Direction") Then
+                                                                .Direction = oNewSegment.Direction
+                                                            End If
+                                                            If frmIS.GetShotsDuplicatesDetails("Notes") Then
+                                                                .Note = oNewSegment.Note
+                                                            End If
+                                                            If frmIS.GetShotsDuplicatesDetails("Color") Then
+                                                                .Color = oNewSegment.Color
+                                                            End If
+
+                                                            If frmIS.GetShotsDuplicatesDetails("DataProperties") Then
+                                                                Call .DataProperties.CopyFrom(oNewSegment.DataProperties)
+                                                            End If
+
+                                                            For Each oProperty As System.Reflection.PropertyInfo In GetType(cSegment).GetProperties()
+                                                                If oProperty.CustomAttributes.Count > 0 Then
+                                                                    Dim oAttribute As System.Reflection.CustomAttributeData = oProperty.CustomAttributes.FirstOrDefault(Function(oCustomAttribute) oCustomAttribute.AttributeType.Name = "cReplicateDataAttribute")
+                                                                    If oAttribute IsNot Nothing Then
+                                                                        If frmIS.GetShotsDuplicatesDetails(oProperty.Name) Then
+                                                                            oProperty.SetValue(oOldSegment, oProperty.GetValue(oNewSegment))
+                                                                        End If
+                                                                    End If
+                                                                End If
+                                                            Next
+
+                                                            .Save()
+                                                        End With
+                                                    Else
+                                                        With oOldSegment
+                                                            Call .SetCave(oNewSegment.Cave, oNewSegment.Branch)
+                                                            Call .SetSession(oNewSegment.Session)
+                                                            .Distance = oNewSegment.Distance
+                                                            .Inclination = oNewSegment.Inclination
+                                                            .Bearing = oNewSegment.Bearing
+                                                            .Left = oNewSegment.Left
+                                                            .Right = oNewSegment.Right
+                                                            .Up = oNewSegment.Up
+                                                            .Down = oNewSegment.Down
+
+                                                            .Exclude = oNewSegment.Exclude
+                                                            .Splay = oNewSegment.Splay
+                                                            .Surface = oNewSegment.Surface
+                                                            .Duplicate = oNewSegment.Duplicate
+                                                            .Cut = oNewSegment.Cut
+                                                            .Unbindable = oNewSegment.Unbindable
+                                                            .Virtual = oNewSegment.Virtual
+                                                            .Direction = oNewSegment.Direction
+                                                            .Color = oNewSegment.Color
+                                                            .Note = oNewSegment.Note
+                                                            Call .DataProperties.CopyFrom(oNewSegment.DataProperties)
+                                                            Call .Save()
+                                                        End With
+                                                    End If
                                                     With oOldSegment
                                                         Call .SetCave(oNewSegment.Cave, oNewSegment.Branch)
                                                         Call .SetSession(oNewSegment.Session)
@@ -20326,15 +20407,35 @@ Friend Class frmMain2
                 Dim sTherionInfo As String = modMain.GetLocalizedString("main.textpart176")
                 pnlStatusTherion.SuperTip = modDevExpress.CreateSuperTip(pnlStatusTherion.Caption, pnlStatusTherion.ImageOptions.SvgImage, New System.Drawing.Size(16, 16), sTherionInfo, Nothing, Nothing, "", Nothing, Nothing)
             Else
+                Dim oTherionGithubInfo As modExport.cGitHubReleaseInfo = Await modExport.GetTherionGitHubInfoAsync()
+
                 pnlStatusTherion.Caption = "Therion " & oVersion.Version.ToString & " (" & oVersion.ReleaseDate.ToString(Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.ShortDatePattern) & ")"
+
+                Dim sCurrentTherionInfo As String = ""
+                If oTherionGithubInfo Is Nothing Then
+                    sCurrentTherionInfo = vbCrLf & modMain.GetLocalizedString("main.textpart184")
+                Else
+                    sCurrentTherionInfo = vbCrLf & modMain.GetLocalizedString("main.textpart183") & oTherionGithubInfo.TagName & " (" & oTherionGithubInfo.PublishedAt.ToString(Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.ShortDatePattern) & ")"
+                End If
                 Dim sTherionObsolete As String = ""
                 If Date.Today.Subtract(oVersion.ReleaseDate).Days > 365 Then
-                    pnlStatusTherion.ImageOptions.SvgImage = My.Resources.warning
-                    sTherionObsolete = vbCrLf & "<b>" & modMain.GetLocalizedString("main.textpart178") & "</b>"
+                    If oTherionGithubInfo Is Nothing Then
+                        pnlStatusTherion.ImageOptions.SvgImage = My.Resources.warning
+                        sTherionObsolete = vbCrLf & "<b>" & modMain.GetLocalizedString("main.textpart178") & "</b>"
+                    Else
+                        If oTherionGithubInfo.PublishedAt.Date > oVersion.ReleaseDate.Date Then
+                            pnlStatusTherion.ImageOptions.SvgImage = My.Resources.error2
+                            sTherionObsolete = vbCrLf & "<b>" & modMain.GetLocalizedString("main.textpart182") & "</b>"
+                        Else
+                            pnlStatusTherion.ImageOptions.SvgImage = My.Resources.about
+                            sTherionObsolete = vbCrLf & "<b>" & modMain.GetLocalizedString("main.textpart185") & "</b>"
+                        End If
+                    End If
+
                 Else
                     pnlStatusTherion.ImageOptions.SvgImage = Nothing
                 End If
-                Dim sTherionInfo As String = String.Format(modMain.GetLocalizedString("main.textpart177"), sThProcess) & sTherionObsolete
+                Dim sTherionInfo As String = String.Format(modMain.GetLocalizedString("main.textpart177"), sThProcess) & sCurrentTherionInfo & sTherionObsolete
                 pnlStatusTherion.SuperTip = modDevExpress.CreateSuperTip(pnlStatusTherion.Caption, pnlStatusTherion.ImageOptions.SvgImage, New System.Drawing.Size(16, 16), sTherionInfo, Nothing, Nothing, "", Nothing, Nothing)
             End If
             bTherionStatusUpdateBusy = False

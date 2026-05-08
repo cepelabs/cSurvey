@@ -11497,7 +11497,7 @@
     <value>picMap</value>
   </data>
   <data name="&gt;&gt;picMap.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>cSurveyPC.cPictureBox, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;picMap.Parent" xml:space="preserve">
     <value>pnlDesigner</value>

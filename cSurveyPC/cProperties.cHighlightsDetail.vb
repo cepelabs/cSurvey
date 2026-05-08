@@ -12,7 +12,15 @@ Namespace cSurvey.Properties
         Private oSurvey As cSurvey
         Private oElement As cSegment
         Private oMeters As cHighlightsDetailMeters
-
+        Private oCache As cDrawCache
+        Public ReadOnly Property CustomOptions As cIDrawCacheCustomOptions
+            Get
+                If oCache.CustomDrawOptions Is Nothing Then
+                    oCache.CustomDrawOptions = New cDrawCacheSegmentCustomOptions
+                End If
+                Return oCache.CustomDrawOptions
+            End Get
+        End Property
         Public ReadOnly Property Survey As cSurvey
             Get
                 Return oSurvey
@@ -31,10 +39,11 @@ Namespace cSurvey.Properties
             End Get
         End Property
 
-        Friend Sub New(Survey As cSurvey, Element As cSegment, Meters As cIHighlightsDetailMeters)
+        Friend Sub New(Survey As cSurvey, Element As cSegment, Meters As cIHighlightsDetailMeters, Cache As cDrawCache)
             oSurvey = Survey
             oElement = Element
             oMeters = Meters
+            oCache = Cache
         End Sub
     End Class
 
@@ -42,10 +51,20 @@ Namespace cSurvey.Properties
         Private oSurvey As cSurvey
         Private oElement As cTrigPoint
         Private oMeters As cHighlightsDetailMeters
+        Private oCache As cDrawCache
 
         Public ReadOnly Property Survey As cSurvey
             Get
                 Return oSurvey
+            End Get
+        End Property
+
+        Public ReadOnly Property CustomOptions As cIDrawCacheCustomOptions
+            Get
+                If oCache.CustomDrawOptions Is Nothing Then
+                    oCache.CustomDrawOptions = New cDrawCacheTrigpointCustomOptions
+                End If
+                Return oCache.CustomDrawOptions
             End Get
         End Property
 
@@ -61,10 +80,11 @@ Namespace cSurvey.Properties
             End Get
         End Property
 
-        Friend Sub New(Survey As cSurvey, Element As cTrigPoint, Meters As cIHighlightsDetailMeters)
+        Friend Sub New(Survey As cSurvey, Element As cTrigPoint, Meters As cIHighlightsDetailMeters, Cache As cDrawCache)
             oSurvey = Survey
             oElement = Element
             oMeters = Meters
+            ocache = Cache
         End Sub
     End Class
 

@@ -1800,8 +1800,6 @@ Namespace cSurvey.Design
         Private bDrawClipartBrushesAsBigPath As Boolean = False
 
         Private Sub pRenderClipart(Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache, Seed As cBrushSeed)
-            'Call pRenderClipart2(Graphics, PaintOptions, Options, Selected, Path, Cache, Seed)
-            'Exit Sub
             If PaintOptions.ShowAdvancedBrushes Then
                 If Selected = cItem.SelectionModeEnum.InEdit Then
                     Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Path, Nothing, Nothing, oClipartAlternativeBrush2)

@@ -1,6 +1,8 @@
 ﻿Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.IO
+Imports System.Net.Http
+Imports System.Net.Http.Headers
 Imports System.Text.RegularExpressions
 Imports System.Threading.Tasks
 Imports System.Xml
@@ -12,6 +14,7 @@ Imports cSurveyPC.cSurvey.UIHelpers
 Imports DevExpress.Utils.Drawing.Helpers.NativeMethods
 Imports DevExpress.XtraVerticalGrid.ViewInfo
 Imports Diacritics.Extensions
+Imports Newtonsoft.Json
 Imports Unidecode.NET
 
 Module modExport
@@ -760,6 +763,33 @@ Module modExport
                                                                End Sub)
 
         Return oResult
+    End Function
+
+    Public Class cGitHubReleaseInfo
+        <JsonProperty("tag_name")>
+        Public Property TagName As String
+
+        <JsonProperty("name")>
+        Public Property Name As String
+
+        <JsonProperty("html_url")>
+        Public Property Url As String
+
+        <JsonProperty("published_at")>
+        Public Property PublishedAt As DateTime
+    End Class
+
+    Public Async Function GetTherionGitHubInfoAsync() As Task(Of cGitHubReleaseInfo)
+        Dim sUrl As String = "https://api.github.com/repos/therion/therion/releases/latest"
+        Using oClient As New HttpClient()
+            ' GitHub richiede User-Agent
+            oClient.DefaultRequestHeaders.UserAgent.Add(New ProductInfoHeaderValue("cSurvey", "1.0"))
+            oClient.DefaultRequestHeaders.Accept.Add(New MediaTypeWithQualityHeaderValue("application/vnd.github+json"))
+            Dim oResponse As HttpResponseMessage = Await oClient.GetAsync(sUrl)
+            oResponse.EnsureSuccessStatusCode()
+            Dim sResponse As String = Await oResponse.Content.ReadAsStringAsync()
+            Return JsonConvert.DeserializeObject(Of cGitHubReleaseInfo)(sResponse)
+        End Using
     End Function
 
     Public Sub TherionCreateConfig(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, ByVal DataFilenames As List(Of String), ByVal Command As String)

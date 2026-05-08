@@ -661,6 +661,13 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>82</value>
   </metadata>
+  <metadata name="DefaultToolTipController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 54</value>
+  </metadata>
+  <assembly alias="DevExpress.Data.v24.2" name="DevExpress.Data.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="$this.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>96, 96</value>
   </data>
@@ -1381,6 +1388,9 @@
   <data name="&gt;&gt;tabInfoNote1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="cboOrigin.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboOrigin.Location" type="System.Drawing.Point, System.Drawing">
     <value>107, 9</value>
   </data>
@@ -1477,6 +1487,9 @@
   <data name="&gt;&gt;optWarpingPaused.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="cboRingCorrectionMode.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboRingCorrectionMode.Items" xml:space="preserve">
     <value>None</value>
   </data>
@@ -1513,7 +1526,6 @@
   <data name="optWarpingActive.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="DevExpress.Data.v24.2" name="DevExpress.Data.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="optWarpingActive.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFpEZXZFeHByZXNzLkRhdGEudjI0LjIsIFZlcnNpb249MjQuMi4x
@@ -1612,6 +1624,9 @@
   </data>
   <data name="&gt;&gt;chkShowWarpingDetails.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="cboCalculateType.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboCalculateType.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1719,6 +1734,9 @@
   <data name="&gt;&gt;lblCalculateMode.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="cboCalculateVersion.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboCalculateVersion.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -1754,6 +1772,9 @@
   </data>
   <data name="&gt;&gt;cboCalculateVersion.ZOrder" xml:space="preserve">
     <value>10</value>
+  </data>
+  <data name="cboDesignWarpingMode.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboDesignWarpingMode.Items" xml:space="preserve">
     <value>None</value>
@@ -1865,6 +1886,9 @@
   </data>
   <data name="&gt;&gt;lblDesignWarpingModeEnabledIn.ZOrder" xml:space="preserve">
     <value>14</value>
+  </data>
+  <data name="cboNordCorrection.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboNordCorrection.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2031,6 +2055,9 @@
   <data name="&gt;&gt;chkBindCrossSection.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
+  <data name="cboInversionMode.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboInversionMode.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -2129,6 +2156,9 @@
   <data name="&gt;&gt;Label3.ZOrder" xml:space="preserve">
     <value>23</value>
   </data>
+  <data name="cboDesignBindingMode.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboDesignBindingMode.Items" xml:space="preserve">
     <value>Automatic</value>
   </data>
@@ -2212,6 +2242,9 @@
   </data>
   <data name="&gt;&gt;lblDesignBindingMode.ZOrder" xml:space="preserve">
     <value>26</value>
+  </data>
+  <data name="cboSplayMode.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboSplayMode.Items" xml:space="preserve">
     <value>None</value>
@@ -2358,6 +2391,9 @@
   <data name="frmGPSDefaults.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
   </data>
+  <data name="cboCoordinateBand.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboCoordinateBand.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
@@ -2381,6 +2417,9 @@
   </data>
   <data name="&gt;&gt;cboCoordinateBand.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="cboCoordinateZone.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboCoordinateZone.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -2433,6 +2472,9 @@
   <data name="&gt;&gt;lblCoordinateGeo.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="cboCoordinateFormat.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboCoordinateFormat.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
@@ -2465,6 +2507,9 @@
   </data>
   <data name="&gt;&gt;cboCoordinateFormat.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="cboCoordinateGeo.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboCoordinateGeo.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -2601,6 +2646,9 @@
   <data name="&gt;&gt;frmGPSDefaults.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="pnlGPS.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="optGPSCustomRefPoint.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 48</value>
   </data>
@@ -2736,6 +2784,9 @@
   <data name="&gt;&gt;cmdGPSCustomRefPointRefreshStations.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="cboGPSCustomRefPoint.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboGPSCustomRefPoint.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -2835,6 +2886,9 @@
   <data name="&gt;&gt;tabInfoGPS1.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="pnlSurfaceProfile.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="pnlSurfaceProfile.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -2868,6 +2922,9 @@
   <data name="&gt;&gt;chksurfaceprofile.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="pnlsurfaceprofileelevation.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="pnlsurfaceprofileelevation.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -2894,6 +2951,9 @@
   </data>
   <data name="&gt;&gt;chkSurfaceProfileShow.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="cbosurfaceprofileelevation.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cbosurfaceprofileelevation.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -3238,6 +3298,9 @@
   <data name="&gt;&gt;lblCaveInfoSurfaceProfileShow.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="cboCaveInfoSurfaceProfileShow.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboCaveInfoSurfaceProfileShow.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -3295,6 +3358,9 @@
   <data name="tabCaveAndBranch.TabIndex" type="System.Int32, mscorlib">
     <value>186</value>
   </data>
+  <data name="cboCaveInfoExtendStart.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboCaveInfoExtendStart.Location" type="System.Drawing.Point, System.Drawing">
     <value>104, 8</value>
   </data>
@@ -3315,6 +3381,9 @@
   </data>
   <data name="&gt;&gt;cboCaveInfoExtendStart.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="pnlCaveInfoConnections.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="lblCaveInfoConnection.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3490,6 +3559,12 @@
   <data name="&gt;&gt;lblCaveInfoExtendStart.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="pnlCaveInfoPriority.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
+  <data name="txtCaveInfoPriority.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtCaveInfoPriority.Location" type="System.Drawing.Point, System.Drawing">
     <value>123, 5</value>
   </data>
@@ -3606,6 +3681,9 @@
   </data>
   <data name="&gt;&gt;tabCaveInfoCalculateOptions1.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="lvCaveInfoSegments.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="lvCaveInfoSegments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -4235,8 +4313,14 @@
   <data name="&gt;&gt;tabInfoInfoBox1.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="XtraScrollableControl1.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="XtraScrollableControl1.AutoScrollMargin" type="System.Drawing.Size, System.Drawing">
     <value>0, 200</value>
+  </data>
+  <data name="cboGeologicalLineType.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboGeologicalLineType.Items" xml:space="preserve">
     <value>Straight lines</value>
@@ -4294,6 +4378,9 @@
   </data>
   <data name="&gt;&gt;LabelControl3.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="pnlParameters.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="pnlParameters.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -4487,6 +4574,9 @@
   <data name="&gt;&gt;lblDesignCrossSectionTextScaleFactor.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="txtDesignCrossSectionTextScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtDesignCrossSectionTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>137, 30</value>
   </data>
@@ -4535,6 +4625,9 @@
   <data name="&gt;&gt;lblDesignCrossSectionMarkerTextScaleFactor.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="txtDesignCrossSectionMarkerTextScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtDesignCrossSectionMarkerTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>131, 30</value>
   </data>
@@ -4555,6 +4648,9 @@
   </data>
   <data name="&gt;&gt;txtDesignCrossSectionMarkerTextScaleFactor.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="txtDesignCrossSectionMarkerArrowScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtDesignCrossSectionMarkerArrowScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>131, 57</value>
@@ -4652,6 +4748,9 @@
   <data name="&gt;&gt;GroupBox11.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="txtDesignExtraScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtDesignExtraScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>140, 30</value>
   </data>
@@ -4727,6 +4826,9 @@
   <data name="&gt;&gt;lblDesignExtraScaleFactor.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="txtDesignExtraTextScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtDesignExtraTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>140, 57</value>
   </data>
@@ -4799,6 +4901,9 @@
   <data name="&gt;&gt;lblDesignTextureScale.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="txtDesignTextureScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtDesignTextureScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 61</value>
   </data>
@@ -4819,6 +4924,9 @@
   </data>
   <data name="&gt;&gt;txtDesignTextureScaleFactor.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="txtDesignTextFont.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtDesignTextFont.Location" type="System.Drawing.Point, System.Drawing">
     <value>466, 56</value>
@@ -4922,6 +5030,9 @@
   <data name="&gt;&gt;lblDesignSoilScale.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="txtDesignSoilScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtDesignSoilScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 30</value>
   </data>
@@ -4969,6 +5080,9 @@
   </data>
   <data name="&gt;&gt;lblDesignClipartScaleFactor.ZOrder" xml:space="preserve">
     <value>9</value>
+  </data>
+  <data name="txtDesignClipartScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtDesignClipartScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>323, 83</value>
@@ -5018,6 +5132,9 @@
   <data name="&gt;&gt;lblDesignTextScaleFactor.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="txtDesignTextScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtDesignTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 30</value>
   </data>
@@ -5066,6 +5183,9 @@
   <data name="&gt;&gt;lblDesignSignScaleFactor.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
+  <data name="txtDesignSignScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtDesignSignScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>323, 56</value>
   </data>
@@ -5113,6 +5233,9 @@
   </data>
   <data name="&gt;&gt;lblDesignTerrainLevelScaleFactor.ZOrder" xml:space="preserve">
     <value>15</value>
+  </data>
+  <data name="txtDesignTerrainLevelScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtDesignTerrainLevelScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>323, 30</value>
@@ -5291,6 +5414,9 @@
   <data name="&gt;&gt;LabelControl2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="txtBaseGeologyLinesScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtBaseGeologyLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>323, 84</value>
   </data>
@@ -5393,6 +5519,9 @@
   <data name="&gt;&gt;Label4.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="txtBaseMediumLinesScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtBaseMediumLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>323, 57</value>
   </data>
@@ -5413,6 +5542,9 @@
   </data>
   <data name="&gt;&gt;txtBaseMediumLinesScaleFactor.ZOrder" xml:space="preserve">
     <value>7</value>
+  </data>
+  <data name="txtBaseUltraLightLinesScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtBaseUltraLightLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 57</value>
@@ -5435,6 +5567,9 @@
   <data name="&gt;&gt;txtBaseUltraLightLinesScaleFactor.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="txtBaseLightLinesScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtBaseLightLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 30</value>
   </data>
@@ -5455,6 +5590,9 @@
   </data>
   <data name="&gt;&gt;txtBaseLightLinesScaleFactor.ZOrder" xml:space="preserve">
     <value>9</value>
+  </data>
+  <data name="txtBaseHeavyLinesScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtBaseHeavyLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>323, 30</value>
@@ -5503,6 +5641,9 @@
   </data>
   <data name="&gt;&gt;lblBaseLinesScaleFactor.ZOrder" xml:space="preserve">
     <value>11</value>
+  </data>
+  <data name="txtBaseLineWidthScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtBaseLineWidthScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 30</value>
@@ -5603,6 +5744,9 @@
   <data name="&gt;&gt;lblDesignItemNamePattern.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <data name="cboClipSoil.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboClipSoil.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
@@ -5660,6 +5804,9 @@
   <data name="&gt;&gt;lblClipSoil.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="cboClipAdvancedClipart.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboClipAdvancedClipart.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
@@ -5689,6 +5836,9 @@
   </data>
   <data name="&gt;&gt;cboClipAdvancedClipart.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="cboClipBorder.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboClipBorder.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -5801,6 +5951,9 @@
   <data name="&gt;&gt;GroupBox8.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="txtDesignEditLowerLayersTransparencyThreshold.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtDesignEditLowerLayersTransparencyThreshold.Location" type="System.Drawing.Point, System.Drawing">
     <value>138, 132</value>
   </data>
@@ -5903,6 +6056,9 @@
   <data name="&gt;&gt;lblDesignTransparencyEdit.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="txtDesignCombinedAreaTransparencyThreshold.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtDesignCombinedAreaTransparencyThreshold.Location" type="System.Drawing.Point, System.Drawing">
     <value>205, 51</value>
   </data>
@@ -5923,6 +6079,9 @@
   </data>
   <data name="&gt;&gt;txtDesignCombinedAreaTransparencyThreshold.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="txtDesignOriginalPositionTransparencyThreshold.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtDesignOriginalPositionTransparencyThreshold.Location" type="System.Drawing.Point, System.Drawing">
     <value>205, 105</value>
@@ -5972,6 +6131,9 @@
   <data name="&gt;&gt;lblDesignOriginalPositionTransparencyThreshold.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="txtDesignBackgroundTransparencyThreshold.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtDesignBackgroundTransparencyThreshold.Location" type="System.Drawing.Point, System.Drawing">
     <value>205, 78</value>
   </data>
@@ -6019,6 +6181,9 @@
   </data>
   <data name="&gt;&gt;lblDesignBackgroundTransparencyThreshold.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="txtDesignEditCombinedAreaTransparencyThreshold.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtDesignEditCombinedAreaTransparencyThreshold.Location" type="System.Drawing.Point, System.Drawing">
     <value>138, 51</value>
@@ -6146,6 +6311,9 @@
   <data name="&gt;&gt;lblSketchProfileCorrectionTranslation.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="txtDesignSketchProfileCorrectionScale.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtDesignSketchProfileCorrectionScale.Location" type="System.Drawing.Point, System.Drawing">
     <value>151, 59</value>
   </data>
@@ -6167,6 +6335,9 @@
   <data name="&gt;&gt;txtDesignSketchProfileCorrectionScale.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="txtDesignSketchProfileCorrectionX.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtDesignSketchProfileCorrectionX.Location" type="System.Drawing.Point, System.Drawing">
     <value>151, 32</value>
   </data>
@@ -6187,6 +6358,9 @@
   </data>
   <data name="&gt;&gt;txtDesignSketchProfileCorrectionX.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="txtDesignSketchProfileCorrectionY.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtDesignSketchProfileCorrectionY.Location" type="System.Drawing.Point, System.Drawing">
     <value>213, 32</value>
@@ -6287,6 +6461,9 @@
   <data name="&gt;&gt;lblSketchPlanCorrectionTranslation.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="txtDesignSketchPlanCorrectionScale.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtDesignSketchPlanCorrectionScale.Location" type="System.Drawing.Point, System.Drawing">
     <value>151, 57</value>
   </data>
@@ -6308,6 +6485,9 @@
   <data name="&gt;&gt;txtDesignSketchPlanCorrectionScale.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="txtDesignSketchPlanCorrectionX.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtDesignSketchPlanCorrectionX.Location" type="System.Drawing.Point, System.Drawing">
     <value>151, 30</value>
   </data>
@@ -6328,6 +6508,9 @@
   </data>
   <data name="&gt;&gt;txtDesignSketchPlanCorrectionX.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="txtDesignSketchPlanCorrectionY.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtDesignSketchPlanCorrectionY.Location" type="System.Drawing.Point, System.Drawing">
     <value>213, 30</value>
@@ -6401,6 +6584,9 @@
   <data name="&gt;&gt;frmSketch.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
+  <data name="cboTextRotateMode.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboTextRotateMode.Items" xml:space="preserve">
     <value>Rotable</value>
   </data>
@@ -6454,6 +6640,9 @@
   </data>
   <data name="&gt;&gt;lblTextRotateMode.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="cboSignRotateMode.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboSignRotateMode.Items" xml:space="preserve">
     <value>Rotable</value>
@@ -6532,6 +6721,9 @@
   </data>
   <data name="&gt;&gt;GroupBox5.ZOrder" xml:space="preserve">
     <value>14</value>
+  </data>
+  <data name="cboLineType.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboLineType.Items" xml:space="preserve">
     <value>Straight lines</value>
@@ -6632,6 +6824,9 @@
   <data name="&gt;&gt;tabInfoDesign1.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="XtraScrollableControl2.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="XtraScrollableControl2.AutoScrollMargin" type="System.Drawing.Size, System.Drawing">
     <value>0, 200</value>
   </data>
@@ -6722,6 +6917,9 @@
   <data name="&gt;&gt;lblSurfaceSelectedPenWidth.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="picSurfacePenColor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="picSurfacePenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -6749,6 +6947,9 @@
   <data name="&gt;&gt;picSurfacePenColor.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="txtSurfaceSelectedPenWidth.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtSurfaceSelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 58</value>
   </data>
@@ -6769,6 +6970,9 @@
   </data>
   <data name="&gt;&gt;txtSurfaceSelectedPenWidth.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="txtSurfacePenWidth.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtSurfacePenWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 29</value>
@@ -6817,6 +7021,9 @@
   </data>
   <data name="&gt;&gt;lblSurfacePenWidth.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="cboSurfacePenStyle.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboSurfacePenStyle.Items" xml:space="preserve">
     <value>Line</value>
@@ -6964,6 +7171,9 @@
   </data>
   <data name="&gt;&gt;cboPlotTextPolicy.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="txtPlotTextFont.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtPlotTextFont.Location" type="System.Drawing.Point, System.Drawing">
     <value>268, 59</value>
@@ -7121,6 +7331,9 @@
   <data name="&gt;&gt;cmdPlotTextColor.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="picPlotPointColor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="picPlotPointColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -7172,6 +7385,9 @@
   <data name="&gt;&gt;lblPlotTextColor.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="cboPlotPointSymbol.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboPlotPointSymbol.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
@@ -7220,6 +7436,9 @@
   <data name="&gt;&gt;cboPlotPointSymbol.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <data name="picPlotTextColor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="picPlotTextColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -7244,6 +7463,9 @@
   <data name="&gt;&gt;picPlotTextColor.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="txtPlotSelectedPointSize.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtPlotSelectedPointSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 57</value>
   </data>
@@ -7265,6 +7487,9 @@
   <data name="&gt;&gt;txtPlotSelectedPointSize.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
+  <data name="txtPlotTextScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtPlotTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>323, 30</value>
   </data>
@@ -7285,6 +7510,9 @@
   </data>
   <data name="&gt;&gt;txtPlotTextScaleFactor.ZOrder" xml:space="preserve">
     <value>13</value>
+  </data>
+  <data name="txtPlotPointSize.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtPlotPointSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 30</value>
@@ -7466,6 +7694,9 @@
   <data name="&gt;&gt;lblPlotLRUDSelectedPenWidth.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="txtPlotLRUDSelectedPenWidth.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtPlotLRUDSelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 59</value>
   </data>
@@ -7486,6 +7717,9 @@
   </data>
   <data name="&gt;&gt;txtPlotLRUDSelectedPenWidth.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="txtPlotLRUDPenWidth.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtPlotLRUDPenWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 30</value>
@@ -7534,6 +7768,9 @@
   </data>
   <data name="&gt;&gt;lblPlotLRUDPenWidth.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="cboPlotLRUDPenStyle.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboPlotLRUDPenStyle.Items" xml:space="preserve">
     <value>Line</value>
@@ -7621,6 +7858,9 @@
   </data>
   <data name="&gt;&gt;frmPlotLRUD.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="txtPlotNoteTextFont.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtPlotNoteTextFont.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 59</value>
@@ -7723,6 +7963,9 @@
   </data>
   <data name="&gt;&gt;lblPlotNoteTextColor.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="txtPlotNoteTextScaleFactor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtPlotNoteTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 30</value>
@@ -7877,6 +8120,9 @@
   <data name="&gt;&gt;lblPlotTranslationLinePenColor.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="picPlotTranslationLinePenColor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="picPlotTranslationLinePenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -7900,6 +8146,9 @@
   </data>
   <data name="&gt;&gt;picPlotTranslationLinePenColor.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="txtPlotTranslationLinePenWidth.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtPlotTranslationLinePenWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 32</value>
@@ -7948,6 +8197,9 @@
   </data>
   <data name="&gt;&gt;lblPlotTranslationLinePenSize.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="cboPlotTranslationLinePenStyle.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboPlotTranslationLinePenStyle.Items" xml:space="preserve">
     <value>Continuous</value>
@@ -8144,6 +8396,9 @@
   <data name="&gt;&gt;lblPlotPenColor.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="picPlotPenColor.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="picPlotPenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -8167,6 +8422,9 @@
   </data>
   <data name="&gt;&gt;picPlotPenColor.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="txtPlotPenWidth.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtPlotPenWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 30</value>
@@ -8243,6 +8501,9 @@
   <data name="&gt;&gt;lblPlotSelectedPenWidth.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="cboPlotPenStyle.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboPlotPenStyle.Items" xml:space="preserve">
     <value>Continuous</value>
   </data>
@@ -8278,6 +8539,9 @@
   </data>
   <data name="&gt;&gt;cboPlotPenStyle.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="txtPlotSelectedPenWidth.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtPlotSelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 59</value>
@@ -8432,6 +8696,9 @@
   <data name="&gt;&gt;lblPlotSplaySelectedPenWidth.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="txtPlotSplaySelectedPenWidth.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtPlotSplaySelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 59</value>
   </data>
@@ -8452,6 +8719,9 @@
   </data>
   <data name="&gt;&gt;txtPlotSplaySelectedPenWidth.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="txtPlotSplayPenWidth.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtPlotSplayPenWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 30</value>
@@ -8500,6 +8770,9 @@
   </data>
   <data name="&gt;&gt;lblPlotSplayPenWidth.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="cboPlotSplayPenStyle.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboPlotSplayPenStyle.Items" xml:space="preserve">
     <value>Continuous</value>
@@ -8945,6 +9218,9 @@
   <data name="&gt;&gt;GroupBox4.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="cbo3DModelMode.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cbo3DModelMode.Items" xml:space="preserve">
     <value>Default (volume from LRUD data)</value>
   </data>
@@ -8974,6 +9250,9 @@
   </data>
   <data name="&gt;&gt;cbo3DModelMode.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="pnl3D.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txt3DMinPassageSizeUM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -10955,6 +11234,9 @@
   <data name="&gt;&gt;txtGradesDistance.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="lblValues.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="lblValues.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -11014,6 +11296,9 @@
   </data>
   <data name="&gt;&gt;txtGradesBearing.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="cboGradesDistanceType.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboGradesDistanceType.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -11081,6 +11366,9 @@
   <data name="&gt;&gt;txtGradesInclination.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="cboGradesBearingType.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboGradesBearingType.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -11144,6 +11432,9 @@
   <data name="&gt;&gt;txtGradesDepth.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="cboGradesInclinationType.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboGradesInclinationType.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -11206,6 +11497,9 @@
   </data>
   <data name="&gt;&gt;txtGradesX.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="lblMeasureUnit.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="lblMeasureUnit.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -11417,6 +11711,9 @@
   <data name="&gt;&gt;chkGradesInclination.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
+  <data name="cboGradesZType.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboGradesZType.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -11452,6 +11749,9 @@
   </data>
   <data name="&gt;&gt;cboGradesZType.ZOrder" xml:space="preserve">
     <value>16</value>
+  </data>
+  <data name="cboGradesDepthType.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboGradesDepthType.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -11549,6 +11849,9 @@
   <data name="&gt;&gt;chkGradesDepth.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
+  <data name="cboGradesYType.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboGradesYType.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -11584,6 +11887,9 @@
   </data>
   <data name="&gt;&gt;cboGradesYType.ZOrder" xml:space="preserve">
     <value>20</value>
+  </data>
+  <data name="cboGradesXType.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboGradesXType.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -12041,6 +12347,9 @@
   </data>
   <data name="&gt;&gt;AccordionControl1.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="pnlFooter.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="lblSeparator.AutoSizeMode" type="DevExpress.XtraEditors.LabelAutoSizeMode, DevExpress.XtraEditors.v24.2">
     <value>None</value>
@@ -13097,6 +13406,12 @@
   <data name="&gt;&gt;tvCaveInforsDragDrop.Type" xml:space="preserve">
     <value>DevExpress.Utils.DragDrop.DragDropEvents, DevExpress.Utils.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="&gt;&gt;DefaultToolTipController1.Name" xml:space="preserve">
+    <value>DefaultToolTipController1</value>
+  </data>
+  <data name="&gt;&gt;DefaultToolTipController1.Type" xml:space="preserve">
+    <value>DevExpress.Utils.DefaultToolTipController, DevExpress.Utils.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmProperties</value>
   </data>
@@ -13198,6 +13513,9 @@
   </data>
   <data name="&gt;&gt;pnlSessionDate.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="pnlCalibration.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="colSessionCalibrateDesc.Caption" xml:space="preserve">
     <value>Description</value>
@@ -13592,6 +13910,9 @@
   <data name="&gt;&gt;btnSessionCalibration.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="txtSessionVthreshold.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="txtSessionVthreshold.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -13618,6 +13939,9 @@
   </data>
   <data name="&gt;&gt;txtSessionVthreshold.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="cboSessionDataFormat.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboSessionDataFormat.Items" xml:space="preserve">
     <value>Default (Distance/Bearing/Inclination)</value>
@@ -13676,6 +14000,9 @@
   <data name="&gt;&gt;chkSessionVthreshold.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="pnlSessionNorth.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="chkSessionDecMag.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -13726,6 +14053,9 @@
   </data>
   <data name="&gt;&gt;txtSessionDecMag.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="cboSessionNordType.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboSessionNordType.Items" xml:space="preserve">
     <value>Magnetic north</value>
@@ -13829,6 +14159,9 @@
   <data name="&gt;&gt;lblSessionSideMeasureType.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="cboSessionSideMeasuresType.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboSessionSideMeasuresType.Items" xml:space="preserve">
     <value>Perpendicular to the previous shot</value>
   </data>
@@ -13913,6 +14246,9 @@
   <data name="&gt;&gt;lblSessionDistanceType.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="cboSessionGrade.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboSessionGrade.Location" type="System.Drawing.Point, System.Drawing">
     <value>107, 124</value>
   </data>
@@ -13933,6 +14269,9 @@
   </data>
   <data name="&gt;&gt;cboSessionGrade.ZOrder" xml:space="preserve">
     <value>9</value>
+  </data>
+  <data name="cboSessionDistanceType.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboSessionDistanceType.Items" xml:space="preserve">
     <value>Meters</value>
@@ -13991,6 +14330,9 @@
   <data name="&gt;&gt;lblSessionGrade.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="cboSessionSideMeasuresReferTo.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboSessionSideMeasuresReferTo.Items" xml:space="preserve">
     <value>Ending station</value>
   </data>
@@ -14017,6 +14359,12 @@
   </data>
   <data name="&gt;&gt;cboSessionSideMeasuresReferTo.ZOrder" xml:space="preserve">
     <value>12</value>
+  </data>
+  <data name="pnlSessionBearing.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
+  <data name="cboSessionBearingType.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboSessionBearingType.Items" xml:space="preserve">
     <value>Degree</value>
@@ -14119,6 +14467,12 @@
   </data>
   <data name="&gt;&gt;pnlSessionBearing.ZOrder" xml:space="preserve">
     <value>13</value>
+  </data>
+  <data name="pnlSessionInclination.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
+  <data name="cboSessionInclinationType.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="cboSessionInclinationType.Items" xml:space="preserve">
     <value>Degree</value>
@@ -14225,6 +14579,12 @@
   <data name="&gt;&gt;pnlSessionInclination.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
+  <data name="pnlSessionDepth.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
+  <data name="cboSessionDepthType.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="cboSessionDepthType.Items" xml:space="preserve">
     <value>Depth (at end station)</value>
   </data>
@@ -14320,6 +14680,9 @@
   </data>
   <data name="&gt;&gt;tabSessionMeasure1.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="txtGlobalVthreshold.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="txtGlobalVthreshold.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -14444,6 +14807,9 @@
   <data name="&gt;&gt;tabSessionDefault1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="lvSessionSegments.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="lvSessionSegments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
@@ -14551,6 +14917,9 @@
   </data>
   <data name="&gt;&gt;tabSessionSegments1.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="lvSessionCalibartionSegments.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
   </data>
   <data name="lvSessionCalibartionSegments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -14792,6 +15161,9 @@
   <metadata name="mnuInfoBoxTags.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="mnuInfoBoxTags.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="mnuInfoBoxTags.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
   </data>
@@ -14909,6 +15281,9 @@
   <metadata name="mnuTrigPointTags.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>690, 17</value>
   </metadata>
+  <data name="mnuTrigPointTags.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="mnuTrigPointTags.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
   </data>
@@ -14978,6 +15353,9 @@
   <metadata name="mnuSpecialTrigPointTags.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>841, 17</value>
   </metadata>
+  <data name="mnuSpecialTrigPointTags.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="mnuSpecialTrigPointTags.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
   </data>
@@ -15047,6 +15425,9 @@
   <metadata name="mnuItemNamePatternTags.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1149, 17</value>
   </metadata>
+  <data name="mnuItemNamePatternTags.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
   <data name="mnuItemNamePatternTags.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
   </data>

@@ -666,6 +666,7 @@ Partial Class frmProperties
         Me.Bar1 = New DevExpress.XtraBars.Bar()
         Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
         Me.tvCaveInforsDragDrop = New DevExpress.Utils.DragDrop.DragDropEvents(Me.components)
+        Me.DefaultToolTipController1 = New DevExpress.Utils.DefaultToolTipController(Me.components)
         CType(Me.pnlSessions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlSessions.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlSessions.Panel1.SuspendLayout()
@@ -1021,6 +1022,7 @@ Partial Class frmProperties
         Me.pnlSessions.Panel2.MinSize = 460
         resources.ApplyResources(Me.pnlSessions.Panel2, "pnlSessions.Panel2")
         Me.pnlSessions.SplitterPosition = 190
+        Me.pnlSessions.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'tvSessions
         '
@@ -1624,6 +1626,7 @@ Partial Class frmProperties
         '
         'pnlCalibration
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlCalibration, CType(resources.GetObject("pnlCalibration.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.pnlCalibration.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlCalibration.Controls.Add(Me.tvSessionCalibration)
         resources.ApplyResources(Me.pnlCalibration, "pnlCalibration")
@@ -1779,6 +1782,7 @@ Partial Class frmProperties
         '
         'txtSessionVthreshold
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtSessionVthreshold, CType(resources.GetObject("txtSessionVthreshold.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.txtSessionVthreshold, "txtSessionVthreshold")
         Me.txtSessionVthreshold.Maximum = New Decimal(New Integer() {90, 0, 0, 0})
         Me.txtSessionVthreshold.Name = "txtSessionVthreshold"
@@ -1786,6 +1790,7 @@ Partial Class frmProperties
         '
         'cboSessionDataFormat
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboSessionDataFormat, CType(resources.GetObject("cboSessionDataFormat.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboSessionDataFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboSessionDataFormat.DropDownWidth = 320
         Me.cboSessionDataFormat.Items.AddRange(New Object() {resources.GetString("cboSessionDataFormat.Items"), resources.GetString("cboSessionDataFormat.Items1"), resources.GetString("cboSessionDataFormat.Items2")})
@@ -1800,6 +1805,7 @@ Partial Class frmProperties
         '
         'pnlSessionNorth
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlSessionNorth, CType(resources.GetObject("pnlSessionNorth.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.pnlSessionNorth.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSessionNorth.Controls.Add(Me.chkSessionDecMag)
         Me.pnlSessionNorth.Controls.Add(Me.txtSessionDecMag)
@@ -1821,6 +1827,7 @@ Partial Class frmProperties
         '
         'cboSessionNordType
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboSessionNordType, CType(resources.GetObject("cboSessionNordType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboSessionNordType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboSessionNordType.Items.AddRange(New Object() {resources.GetString("cboSessionNordType.Items"), resources.GetString("cboSessionNordType.Items1")})
         resources.ApplyResources(Me.cboSessionNordType, "cboSessionNordType")
@@ -1838,6 +1845,7 @@ Partial Class frmProperties
         '
         'cboSessionSideMeasuresType
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboSessionSideMeasuresType, CType(resources.GetObject("cboSessionSideMeasuresType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboSessionSideMeasuresType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboSessionSideMeasuresType.Items.AddRange(New Object() {resources.GetString("cboSessionSideMeasuresType.Items"), resources.GetString("cboSessionSideMeasuresType.Items1"), resources.GetString("cboSessionSideMeasuresType.Items2")})
         resources.ApplyResources(Me.cboSessionSideMeasuresType, "cboSessionSideMeasuresType")
@@ -1855,12 +1863,14 @@ Partial Class frmProperties
         '
         'cboSessionGrade
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboSessionGrade, CType(resources.GetObject("cboSessionGrade.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboSessionGrade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboSessionGrade, "cboSessionGrade")
         Me.cboSessionGrade.Name = "cboSessionGrade"
         '
         'cboSessionDistanceType
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboSessionDistanceType, CType(resources.GetObject("cboSessionDistanceType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboSessionDistanceType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboSessionDistanceType.Items.AddRange(New Object() {resources.GetString("cboSessionDistanceType.Items"), resources.GetString("cboSessionDistanceType.Items1"), resources.GetString("cboSessionDistanceType.Items2")})
         resources.ApplyResources(Me.cboSessionDistanceType, "cboSessionDistanceType")
@@ -1873,6 +1883,7 @@ Partial Class frmProperties
         '
         'cboSessionSideMeasuresReferTo
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboSessionSideMeasuresReferTo, CType(resources.GetObject("cboSessionSideMeasuresReferTo.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboSessionSideMeasuresReferTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboSessionSideMeasuresReferTo.Items.AddRange(New Object() {resources.GetString("cboSessionSideMeasuresReferTo.Items"), resources.GetString("cboSessionSideMeasuresReferTo.Items1")})
         resources.ApplyResources(Me.cboSessionSideMeasuresReferTo, "cboSessionSideMeasuresReferTo")
@@ -1880,6 +1891,7 @@ Partial Class frmProperties
         '
         'pnlSessionBearing
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlSessionBearing, CType(resources.GetObject("pnlSessionBearing.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.pnlSessionBearing.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSessionBearing.Controls.Add(Me.cboSessionBearingType)
         Me.pnlSessionBearing.Controls.Add(Me.lblSessionBearingType)
@@ -1889,6 +1901,7 @@ Partial Class frmProperties
         '
         'cboSessionBearingType
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboSessionBearingType, CType(resources.GetObject("cboSessionBearingType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboSessionBearingType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboSessionBearingType.Items.AddRange(New Object() {resources.GetString("cboSessionBearingType.Items"), resources.GetString("cboSessionBearingType.Items1")})
         resources.ApplyResources(Me.cboSessionBearingType, "cboSessionBearingType")
@@ -1907,6 +1920,7 @@ Partial Class frmProperties
         '
         'pnlSessionInclination
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlSessionInclination, CType(resources.GetObject("pnlSessionInclination.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.pnlSessionInclination.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSessionInclination.Controls.Add(Me.cboSessionInclinationType)
         Me.pnlSessionInclination.Controls.Add(Me.lblSessionInclinationType)
@@ -1916,6 +1930,7 @@ Partial Class frmProperties
         '
         'cboSessionInclinationType
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboSessionInclinationType, CType(resources.GetObject("cboSessionInclinationType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboSessionInclinationType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboSessionInclinationType.Items.AddRange(New Object() {resources.GetString("cboSessionInclinationType.Items"), resources.GetString("cboSessionInclinationType.Items1"), resources.GetString("cboSessionInclinationType.Items2")})
         resources.ApplyResources(Me.cboSessionInclinationType, "cboSessionInclinationType")
@@ -1934,6 +1949,7 @@ Partial Class frmProperties
         '
         'pnlSessionDepth
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlSessionDepth, CType(resources.GetObject("pnlSessionDepth.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.pnlSessionDepth.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSessionDepth.Controls.Add(Me.cboSessionDepthType)
         Me.pnlSessionDepth.Controls.Add(Me.lblSessionDepthType)
@@ -1942,6 +1958,7 @@ Partial Class frmProperties
         '
         'cboSessionDepthType
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboSessionDepthType, CType(resources.GetObject("cboSessionDepthType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboSessionDepthType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboSessionDepthType.DropDownWidth = 240
         Me.cboSessionDepthType.Items.AddRange(New Object() {resources.GetString("cboSessionDepthType.Items"), resources.GetString("cboSessionDepthType.Items1"), resources.GetString("cboSessionDepthType.Items2")})
@@ -1966,6 +1983,7 @@ Partial Class frmProperties
         '
         'txtGlobalVthreshold
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtGlobalVthreshold, CType(resources.GetObject("txtGlobalVthreshold.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.txtGlobalVthreshold, "txtGlobalVthreshold")
         Me.txtGlobalVthreshold.Maximum = New Decimal(New Integer() {90, 0, 0, 0})
         Me.txtGlobalVthreshold.Name = "txtGlobalVthreshold"
@@ -2000,6 +2018,7 @@ Partial Class frmProperties
         '
         'lvSessionSegments
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.lvSessionSegments, CType(resources.GetObject("lvSessionSegments.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.lvSessionSegments, "lvSessionSegments")
         Me.lvSessionSegments.Name = "lvSessionSegments"
         '
@@ -2030,6 +2049,7 @@ Partial Class frmProperties
         '
         'lvSessionCalibartionSegments
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.lvSessionCalibartionSegments, CType(resources.GetObject("lvSessionCalibartionSegments.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.lvSessionCalibartionSegments, "lvSessionCalibartionSegments")
         Me.lvSessionCalibartionSegments.Name = "lvSessionCalibartionSegments"
         '
@@ -2089,6 +2109,7 @@ Partial Class frmProperties
         Me.pnlHighlights.Panel2.MinSize = 460
         resources.ApplyResources(Me.pnlHighlights.Panel2, "pnlHighlights.Panel2")
         Me.pnlHighlights.SplitterPosition = 190
+        Me.pnlHighlights.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'tvHighlights
         '
@@ -2227,6 +2248,7 @@ Partial Class frmProperties
         Me.pnlGrades.Panel2.Controls.Add(Me.lblGradesDescription)
         resources.ApplyResources(Me.pnlGrades.Panel2, "pnlGrades.Panel2")
         Me.pnlGrades.SplitterPosition = 190
+        Me.pnlGrades.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'tvGrades
         '
@@ -2307,6 +2329,7 @@ Partial Class frmProperties
         '
         'lblValues
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.lblValues, CType(resources.GetObject("lblValues.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.lblValues, "lblValues")
         Me.lblValues.Name = "lblValues"
         '
@@ -2325,6 +2348,7 @@ Partial Class frmProperties
         '
         'cboGradesDistanceType
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboGradesDistanceType, CType(resources.GetObject("cboGradesDistanceType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboGradesDistanceType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboGradesDistanceType, "cboGradesDistanceType")
         Me.cboGradesDistanceType.Items.AddRange(New Object() {resources.GetString("cboGradesDistanceType.Items"), resources.GetString("cboGradesDistanceType.Items1"), resources.GetString("cboGradesDistanceType.Items2")})
@@ -2345,6 +2369,7 @@ Partial Class frmProperties
         '
         'cboGradesBearingType
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboGradesBearingType, CType(resources.GetObject("cboGradesBearingType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboGradesBearingType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboGradesBearingType, "cboGradesBearingType")
         Me.cboGradesBearingType.Items.AddRange(New Object() {resources.GetString("cboGradesBearingType.Items"), resources.GetString("cboGradesBearingType.Items1")})
@@ -2365,6 +2390,7 @@ Partial Class frmProperties
         '
         'cboGradesInclinationType
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboGradesInclinationType, CType(resources.GetObject("cboGradesInclinationType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboGradesInclinationType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboGradesInclinationType, "cboGradesInclinationType")
         Me.cboGradesInclinationType.Items.AddRange(New Object() {resources.GetString("cboGradesInclinationType.Items"), resources.GetString("cboGradesInclinationType.Items1")})
@@ -2385,6 +2411,7 @@ Partial Class frmProperties
         '
         'lblMeasureUnit
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.lblMeasureUnit, CType(resources.GetObject("lblMeasureUnit.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.lblMeasureUnit, "lblMeasureUnit")
         Me.lblMeasureUnit.Name = "lblMeasureUnit"
         '
@@ -2444,6 +2471,7 @@ Partial Class frmProperties
         '
         'cboGradesZType
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboGradesZType, CType(resources.GetObject("cboGradesZType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboGradesZType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboGradesZType, "cboGradesZType")
         Me.cboGradesZType.Items.AddRange(New Object() {resources.GetString("cboGradesZType.Items"), resources.GetString("cboGradesZType.Items1"), resources.GetString("cboGradesZType.Items2")})
@@ -2451,6 +2479,7 @@ Partial Class frmProperties
         '
         'cboGradesDepthType
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboGradesDepthType, CType(resources.GetObject("cboGradesDepthType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboGradesDepthType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboGradesDepthType, "cboGradesDepthType")
         Me.cboGradesDepthType.Items.AddRange(New Object() {resources.GetString("cboGradesDepthType.Items"), resources.GetString("cboGradesDepthType.Items1"), resources.GetString("cboGradesDepthType.Items2")})
@@ -2472,6 +2501,7 @@ Partial Class frmProperties
         '
         'cboGradesYType
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboGradesYType, CType(resources.GetObject("cboGradesYType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboGradesYType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboGradesYType, "cboGradesYType")
         Me.cboGradesYType.Items.AddRange(New Object() {resources.GetString("cboGradesYType.Items"), resources.GetString("cboGradesYType.Items1"), resources.GetString("cboGradesYType.Items2")})
@@ -2479,6 +2509,7 @@ Partial Class frmProperties
         '
         'cboGradesXType
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboGradesXType, CType(resources.GetObject("cboGradesXType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboGradesXType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboGradesXType, "cboGradesXType")
         Me.cboGradesXType.Items.AddRange(New Object() {resources.GetString("cboGradesXType.Items"), resources.GetString("cboGradesXType.Items1"), resources.GetString("cboGradesXType.Items2")})
@@ -2573,6 +2604,7 @@ Partial Class frmProperties
         Me.pnlElevations.Panel2.Controls.Add(Me.picElevationPreview)
         resources.ApplyResources(Me.pnlElevations.Panel2, "pnlElevations.Panel2")
         Me.pnlElevations.SplitterPosition = 190
+        Me.pnlElevations.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'tvElevations
         '
@@ -2676,6 +2708,7 @@ Partial Class frmProperties
         Me.pnlOrthophotos.Panel2.Controls.Add(Me.picOrthophotoPreview)
         resources.ApplyResources(Me.pnlOrthophotos.Panel2, "pnlOrthophotos.Panel2")
         Me.pnlOrthophotos.SplitterPosition = 190
+        Me.pnlOrthophotos.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'tvOrthophotos
         '
@@ -2768,6 +2801,7 @@ Partial Class frmProperties
         Me.pnlWMSs.Panel2.Controls.Add(Me.tvWMSLayer)
         resources.ApplyResources(Me.pnlWMSs.Panel2, "pnlWMSs.Panel2")
         Me.pnlWMSs.SplitterPosition = 190
+        Me.pnlWMSs.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'tvWMSs
         '
@@ -2998,6 +3032,7 @@ Partial Class frmProperties
         '
         'cboCaveInfoSurfaceProfileShow
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboCaveInfoSurfaceProfileShow, CType(resources.GetObject("cboCaveInfoSurfaceProfileShow.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboCaveInfoSurfaceProfileShow.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboCaveInfoSurfaceProfileShow, "cboCaveInfoSurfaceProfileShow")
         Me.cboCaveInfoSurfaceProfileShow.FormattingEnabled = True
@@ -3017,12 +3052,14 @@ Partial Class frmProperties
         '
         'cboCaveInfoExtendStart
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboCaveInfoExtendStart, CType(resources.GetObject("cboCaveInfoExtendStart.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboCaveInfoExtendStart.EditValue = Nothing
         resources.ApplyResources(Me.cboCaveInfoExtendStart, "cboCaveInfoExtendStart")
         Me.cboCaveInfoExtendStart.Name = "cboCaveInfoExtendStart"
         '
         'pnlCaveInfoConnections
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlCaveInfoConnections, CType(resources.GetObject("pnlCaveInfoConnections.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.pnlCaveInfoConnections.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlCaveInfoConnections.Controls.Add(Me.lblCaveInfoConnection)
         Me.pnlCaveInfoConnections.Controls.Add(Me.cmdCaveInfoParentConnection)
@@ -3072,6 +3109,7 @@ Partial Class frmProperties
         '
         'pnlCaveInfoPriority
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlCaveInfoPriority, CType(resources.GetObject("pnlCaveInfoPriority.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.pnlCaveInfoPriority.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlCaveInfoPriority.Controls.Add(Me.txtCaveInfoPriority)
         Me.pnlCaveInfoPriority.Controls.Add(Me.lblCaveInfoPriority)
@@ -3081,6 +3119,7 @@ Partial Class frmProperties
         '
         'txtCaveInfoPriority
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtCaveInfoPriority, CType(resources.GetObject("txtCaveInfoPriority.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.txtCaveInfoPriority, "txtCaveInfoPriority")
         Me.txtCaveInfoPriority.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.txtCaveInfoPriority.Minimum = New Decimal(New Integer() {-2147483648, 0, 0, -2147483648})
@@ -3110,6 +3149,7 @@ Partial Class frmProperties
         '
         'lvCaveInfoSegments
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.lvCaveInfoSegments, CType(resources.GetObject("lvCaveInfoSegments.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.lvCaveInfoSegments, "lvCaveInfoSegments")
         Me.lvCaveInfoSegments.Name = "lvCaveInfoSegments"
         '
@@ -3149,6 +3189,7 @@ Partial Class frmProperties
         '
         'mnuInfoBoxTags
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.mnuInfoBoxTags, CType(resources.GetObject("mnuInfoBoxTags.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.mnuInfoBoxTags, "mnuInfoBoxTags")
         Me.mnuInfoBoxTags.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuInfoBoxTags1, Me.mnuInfoBoxTags2, Me.mnuInfoBoxTags3, Me.ToolStripMenuItem4, Me.mnuInfoBoxTags4, Me.mnuInfoBoxTags5, Me.mnuInfoBoxTags11, Me.mnuInfoBoxTags13, Me.mnuInfoBoxTags12, Me.ToolStripMenuItem3, Me.mnuInfoBoxTags6, Me.ToolStripMenuItem2, Me.mnuInfoBoxTags7, Me.mnuInfoBoxTags8, Me.mnuInfoBoxTags9, Me.mnuInfoBoxTags10, Me.ToolStripMenuItem1, Me.mnuInfoBoxTags99})
         Me.mnuInfoBoxTags.Name = "mnuInfoBoxTags"
@@ -3259,6 +3300,7 @@ Partial Class frmProperties
         '
         'txtPlotSelectedPenWidth
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtPlotSelectedPenWidth, CType(resources.GetObject("txtPlotSelectedPenWidth.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtPlotSelectedPenWidth.DecimalPlaces = 4
         Me.txtPlotSelectedPenWidth.Increment = New Decimal(New Integer() {5, 0, 0, 262144})
         resources.ApplyResources(Me.txtPlotSelectedPenWidth, "txtPlotSelectedPenWidth")
@@ -3268,6 +3310,7 @@ Partial Class frmProperties
         '
         'cboPlotPenStyle
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboPlotPenStyle, CType(resources.GetObject("cboPlotPenStyle.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboPlotPenStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboPlotPenStyle.FormattingEnabled = True
         Me.cboPlotPenStyle.Items.AddRange(New Object() {resources.GetString("cboPlotPenStyle.Items"), resources.GetString("cboPlotPenStyle.Items1"), resources.GetString("cboPlotPenStyle.Items2"), resources.GetString("cboPlotPenStyle.Items3"), resources.GetString("cboPlotPenStyle.Items4")})
@@ -3276,6 +3319,7 @@ Partial Class frmProperties
         '
         'txtPlotPenWidth
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtPlotPenWidth, CType(resources.GetObject("txtPlotPenWidth.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtPlotPenWidth.DecimalPlaces = 4
         Me.txtPlotPenWidth.Increment = New Decimal(New Integer() {5, 0, 0, 262144})
         resources.ApplyResources(Me.txtPlotPenWidth, "txtPlotPenWidth")
@@ -3285,12 +3329,14 @@ Partial Class frmProperties
         '
         'picPlotPenColor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.picPlotPenColor, CType(resources.GetObject("picPlotPenColor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.picPlotPenColor, "picPlotPenColor")
         Me.picPlotPenColor.Name = "picPlotPenColor"
         Me.picPlotPenColor.TabStop = False
         '
         'txtPlotPointSize
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtPlotPointSize, CType(resources.GetObject("txtPlotPointSize.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtPlotPointSize.DecimalPlaces = 2
         Me.txtPlotPointSize.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
         resources.ApplyResources(Me.txtPlotPointSize, "txtPlotPointSize")
@@ -3298,6 +3344,7 @@ Partial Class frmProperties
         '
         'txtPlotTextScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtPlotTextScaleFactor, CType(resources.GetObject("txtPlotTextScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtPlotTextScaleFactor.DecimalPlaces = 2
         Me.txtPlotTextScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
         resources.ApplyResources(Me.txtPlotTextScaleFactor, "txtPlotTextScaleFactor")
@@ -3305,6 +3352,7 @@ Partial Class frmProperties
         '
         'txtPlotSelectedPointSize
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtPlotSelectedPointSize, CType(resources.GetObject("txtPlotSelectedPointSize.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtPlotSelectedPointSize.DecimalPlaces = 2
         Me.txtPlotSelectedPointSize.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
         resources.ApplyResources(Me.txtPlotSelectedPointSize, "txtPlotSelectedPointSize")
@@ -3312,12 +3360,14 @@ Partial Class frmProperties
         '
         'picPlotTextColor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.picPlotTextColor, CType(resources.GetObject("picPlotTextColor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.picPlotTextColor, "picPlotTextColor")
         Me.picPlotTextColor.Name = "picPlotTextColor"
         Me.picPlotTextColor.TabStop = False
         '
         'cboPlotPointSymbol
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboPlotPointSymbol, CType(resources.GetObject("cboPlotPointSymbol.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboPlotPointSymbol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboPlotPointSymbol, "cboPlotPointSymbol")
         Me.cboPlotPointSymbol.Items.AddRange(New Object() {resources.GetString("cboPlotPointSymbol.Items"), resources.GetString("cboPlotPointSymbol.Items1"), resources.GetString("cboPlotPointSymbol.Items2"), resources.GetString("cboPlotPointSymbol.Items3"), resources.GetString("cboPlotPointSymbol.Items4"), resources.GetString("cboPlotPointSymbol.Items5"), resources.GetString("cboPlotPointSymbol.Items6"), resources.GetString("cboPlotPointSymbol.Items7")})
@@ -3325,18 +3375,21 @@ Partial Class frmProperties
         '
         'picPlotPointColor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.picPlotPointColor, CType(resources.GetObject("picPlotPointColor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.picPlotPointColor, "picPlotPointColor")
         Me.picPlotPointColor.Name = "picPlotPointColor"
         Me.picPlotPointColor.TabStop = False
         '
         'txtPlotTextFont
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtPlotTextFont, CType(resources.GetObject("txtPlotTextFont.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.txtPlotTextFont, "txtPlotTextFont")
         Me.txtPlotTextFont.Name = "txtPlotTextFont"
         Me.txtPlotTextFont.ReadOnly = True
         '
         'cboPlotTranslationLinePenStyle
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboPlotTranslationLinePenStyle, CType(resources.GetObject("cboPlotTranslationLinePenStyle.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboPlotTranslationLinePenStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboPlotTranslationLinePenStyle.FormattingEnabled = True
         Me.cboPlotTranslationLinePenStyle.Items.AddRange(New Object() {resources.GetString("cboPlotTranslationLinePenStyle.Items"), resources.GetString("cboPlotTranslationLinePenStyle.Items1"), resources.GetString("cboPlotTranslationLinePenStyle.Items2"), resources.GetString("cboPlotTranslationLinePenStyle.Items3"), resources.GetString("cboPlotTranslationLinePenStyle.Items4")})
@@ -3345,6 +3398,7 @@ Partial Class frmProperties
         '
         'txtPlotTranslationLinePenWidth
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtPlotTranslationLinePenWidth, CType(resources.GetObject("txtPlotTranslationLinePenWidth.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtPlotTranslationLinePenWidth.DecimalPlaces = 4
         Me.txtPlotTranslationLinePenWidth.Increment = New Decimal(New Integer() {5, 0, 0, 262144})
         resources.ApplyResources(Me.txtPlotTranslationLinePenWidth, "txtPlotTranslationLinePenWidth")
@@ -3354,12 +3408,14 @@ Partial Class frmProperties
         '
         'picPlotTranslationLinePenColor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.picPlotTranslationLinePenColor, CType(resources.GetObject("picPlotTranslationLinePenColor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.picPlotTranslationLinePenColor, "picPlotTranslationLinePenColor")
         Me.picPlotTranslationLinePenColor.Name = "picPlotTranslationLinePenColor"
         Me.picPlotTranslationLinePenColor.TabStop = False
         '
         'cboPlotLRUDPenStyle
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboPlotLRUDPenStyle, CType(resources.GetObject("cboPlotLRUDPenStyle.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboPlotLRUDPenStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboPlotLRUDPenStyle.FormattingEnabled = True
         Me.cboPlotLRUDPenStyle.Items.AddRange(New Object() {resources.GetString("cboPlotLRUDPenStyle.Items"), resources.GetString("cboPlotLRUDPenStyle.Items1"), resources.GetString("cboPlotLRUDPenStyle.Items2"), resources.GetString("cboPlotLRUDPenStyle.Items3"), resources.GetString("cboPlotLRUDPenStyle.Items4")})
@@ -3368,6 +3424,7 @@ Partial Class frmProperties
         '
         'txtPlotLRUDPenWidth
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtPlotLRUDPenWidth, CType(resources.GetObject("txtPlotLRUDPenWidth.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtPlotLRUDPenWidth.DecimalPlaces = 4
         Me.txtPlotLRUDPenWidth.Increment = New Decimal(New Integer() {5, 0, 0, 262144})
         resources.ApplyResources(Me.txtPlotLRUDPenWidth, "txtPlotLRUDPenWidth")
@@ -3377,6 +3434,7 @@ Partial Class frmProperties
         '
         'txtPlotLRUDSelectedPenWidth
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtPlotLRUDSelectedPenWidth, CType(resources.GetObject("txtPlotLRUDSelectedPenWidth.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtPlotLRUDSelectedPenWidth.DecimalPlaces = 4
         Me.txtPlotLRUDSelectedPenWidth.Increment = New Decimal(New Integer() {5, 0, 0, 262144})
         resources.ApplyResources(Me.txtPlotLRUDSelectedPenWidth, "txtPlotLRUDSelectedPenWidth")
@@ -3386,6 +3444,7 @@ Partial Class frmProperties
         '
         'cboPlotSplayPenStyle
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboPlotSplayPenStyle, CType(resources.GetObject("cboPlotSplayPenStyle.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboPlotSplayPenStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboPlotSplayPenStyle.FormattingEnabled = True
         Me.cboPlotSplayPenStyle.Items.AddRange(New Object() {resources.GetString("cboPlotSplayPenStyle.Items"), resources.GetString("cboPlotSplayPenStyle.Items1"), resources.GetString("cboPlotSplayPenStyle.Items2"), resources.GetString("cboPlotSplayPenStyle.Items3"), resources.GetString("cboPlotSplayPenStyle.Items4")})
@@ -3394,6 +3453,7 @@ Partial Class frmProperties
         '
         'txtPlotSplayPenWidth
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtPlotSplayPenWidth, CType(resources.GetObject("txtPlotSplayPenWidth.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtPlotSplayPenWidth.DecimalPlaces = 4
         Me.txtPlotSplayPenWidth.Increment = New Decimal(New Integer() {5, 0, 0, 262144})
         resources.ApplyResources(Me.txtPlotSplayPenWidth, "txtPlotSplayPenWidth")
@@ -3403,6 +3463,7 @@ Partial Class frmProperties
         '
         'txtPlotSplaySelectedPenWidth
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtPlotSplaySelectedPenWidth, CType(resources.GetObject("txtPlotSplaySelectedPenWidth.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtPlotSplaySelectedPenWidth.DecimalPlaces = 4
         Me.txtPlotSplaySelectedPenWidth.Increment = New Decimal(New Integer() {5, 0, 0, 262144})
         resources.ApplyResources(Me.txtPlotSplaySelectedPenWidth, "txtPlotSplaySelectedPenWidth")
@@ -3412,6 +3473,7 @@ Partial Class frmProperties
         '
         'txtPlotNoteTextScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtPlotNoteTextScaleFactor, CType(resources.GetObject("txtPlotNoteTextScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtPlotNoteTextScaleFactor.DecimalPlaces = 2
         Me.txtPlotNoteTextScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
         resources.ApplyResources(Me.txtPlotNoteTextScaleFactor, "txtPlotNoteTextScaleFactor")
@@ -3419,12 +3481,14 @@ Partial Class frmProperties
         '
         'txtPlotNoteTextFont
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtPlotNoteTextFont, CType(resources.GetObject("txtPlotNoteTextFont.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.txtPlotNoteTextFont, "txtPlotNoteTextFont")
         Me.txtPlotNoteTextFont.Name = "txtPlotNoteTextFont"
         Me.txtPlotNoteTextFont.ReadOnly = True
         '
         'txtBaseLineWidthScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtBaseLineWidthScaleFactor, CType(resources.GetObject("txtBaseLineWidthScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtBaseLineWidthScaleFactor.DecimalPlaces = 4
         Me.txtBaseLineWidthScaleFactor.Increment = New Decimal(New Integer() {5, 0, 0, 262144})
         resources.ApplyResources(Me.txtBaseLineWidthScaleFactor, "txtBaseLineWidthScaleFactor")
@@ -3434,6 +3498,7 @@ Partial Class frmProperties
         '
         'txtBaseHeavyLinesScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtBaseHeavyLinesScaleFactor, CType(resources.GetObject("txtBaseHeavyLinesScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtBaseHeavyLinesScaleFactor.DecimalPlaces = 1
         Me.txtBaseHeavyLinesScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
         resources.ApplyResources(Me.txtBaseHeavyLinesScaleFactor, "txtBaseHeavyLinesScaleFactor")
@@ -3443,6 +3508,7 @@ Partial Class frmProperties
         '
         'txtBaseLightLinesScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtBaseLightLinesScaleFactor, CType(resources.GetObject("txtBaseLightLinesScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtBaseLightLinesScaleFactor.DecimalPlaces = 1
         Me.txtBaseLightLinesScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
         resources.ApplyResources(Me.txtBaseLightLinesScaleFactor, "txtBaseLightLinesScaleFactor")
@@ -3452,6 +3518,7 @@ Partial Class frmProperties
         '
         'txtBaseUltraLightLinesScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtBaseUltraLightLinesScaleFactor, CType(resources.GetObject("txtBaseUltraLightLinesScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtBaseUltraLightLinesScaleFactor.DecimalPlaces = 1
         Me.txtBaseUltraLightLinesScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
         resources.ApplyResources(Me.txtBaseUltraLightLinesScaleFactor, "txtBaseUltraLightLinesScaleFactor")
@@ -3461,6 +3528,7 @@ Partial Class frmProperties
         '
         'txtBaseMediumLinesScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtBaseMediumLinesScaleFactor, CType(resources.GetObject("txtBaseMediumLinesScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtBaseMediumLinesScaleFactor.DecimalPlaces = 1
         Me.txtBaseMediumLinesScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
         resources.ApplyResources(Me.txtBaseMediumLinesScaleFactor, "txtBaseMediumLinesScaleFactor")
@@ -3470,6 +3538,7 @@ Partial Class frmProperties
         '
         'txtDesignSignScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignSignScaleFactor, CType(resources.GetObject("txtDesignSignScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtDesignSignScaleFactor.DecimalPlaces = 2
         Me.txtDesignSignScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
         resources.ApplyResources(Me.txtDesignSignScaleFactor, "txtDesignSignScaleFactor")
@@ -3477,6 +3546,7 @@ Partial Class frmProperties
         '
         'txtDesignTextScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignTextScaleFactor, CType(resources.GetObject("txtDesignTextScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtDesignTextScaleFactor.DecimalPlaces = 2
         Me.txtDesignTextScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
         resources.ApplyResources(Me.txtDesignTextScaleFactor, "txtDesignTextScaleFactor")
@@ -3484,6 +3554,7 @@ Partial Class frmProperties
         '
         'txtDesignClipartScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignClipartScaleFactor, CType(resources.GetObject("txtDesignClipartScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtDesignClipartScaleFactor.DecimalPlaces = 2
         Me.txtDesignClipartScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
         resources.ApplyResources(Me.txtDesignClipartScaleFactor, "txtDesignClipartScaleFactor")
@@ -3491,6 +3562,7 @@ Partial Class frmProperties
         '
         'txtDesignSoilScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignSoilScaleFactor, CType(resources.GetObject("txtDesignSoilScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtDesignSoilScaleFactor.DecimalPlaces = 2
         Me.txtDesignSoilScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
         resources.ApplyResources(Me.txtDesignSoilScaleFactor, "txtDesignSoilScaleFactor")
@@ -3498,6 +3570,7 @@ Partial Class frmProperties
         '
         'txtDesignTerrainLevelScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignTerrainLevelScaleFactor, CType(resources.GetObject("txtDesignTerrainLevelScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtDesignTerrainLevelScaleFactor.DecimalPlaces = 2
         Me.txtDesignTerrainLevelScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
         resources.ApplyResources(Me.txtDesignTerrainLevelScaleFactor, "txtDesignTerrainLevelScaleFactor")
@@ -3505,12 +3578,14 @@ Partial Class frmProperties
         '
         'txtDesignTextFont
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignTextFont, CType(resources.GetObject("txtDesignTextFont.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.txtDesignTextFont, "txtDesignTextFont")
         Me.txtDesignTextFont.Name = "txtDesignTextFont"
         Me.txtDesignTextFont.ReadOnly = True
         '
         'txtDesignSketchPlanCorrectionY
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignSketchPlanCorrectionY, CType(resources.GetObject("txtDesignSketchPlanCorrectionY.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtDesignSketchPlanCorrectionY.DecimalPlaces = 1
         Me.txtDesignSketchPlanCorrectionY.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
         resources.ApplyResources(Me.txtDesignSketchPlanCorrectionY, "txtDesignSketchPlanCorrectionY")
@@ -3520,6 +3595,7 @@ Partial Class frmProperties
         '
         'txtDesignSketchPlanCorrectionX
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignSketchPlanCorrectionX, CType(resources.GetObject("txtDesignSketchPlanCorrectionX.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtDesignSketchPlanCorrectionX.DecimalPlaces = 1
         Me.txtDesignSketchPlanCorrectionX.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
         resources.ApplyResources(Me.txtDesignSketchPlanCorrectionX, "txtDesignSketchPlanCorrectionX")
@@ -3529,6 +3605,7 @@ Partial Class frmProperties
         '
         'txtDesignSketchPlanCorrectionScale
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignSketchPlanCorrectionScale, CType(resources.GetObject("txtDesignSketchPlanCorrectionScale.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtDesignSketchPlanCorrectionScale.DecimalPlaces = 1
         Me.txtDesignSketchPlanCorrectionScale.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
         resources.ApplyResources(Me.txtDesignSketchPlanCorrectionScale, "txtDesignSketchPlanCorrectionScale")
@@ -3538,6 +3615,7 @@ Partial Class frmProperties
         '
         'txtDesignSketchProfileCorrectionY
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignSketchProfileCorrectionY, CType(resources.GetObject("txtDesignSketchProfileCorrectionY.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtDesignSketchProfileCorrectionY.DecimalPlaces = 1
         Me.txtDesignSketchProfileCorrectionY.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
         resources.ApplyResources(Me.txtDesignSketchProfileCorrectionY, "txtDesignSketchProfileCorrectionY")
@@ -3547,6 +3625,7 @@ Partial Class frmProperties
         '
         'txtDesignSketchProfileCorrectionX
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignSketchProfileCorrectionX, CType(resources.GetObject("txtDesignSketchProfileCorrectionX.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtDesignSketchProfileCorrectionX.DecimalPlaces = 1
         Me.txtDesignSketchProfileCorrectionX.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
         resources.ApplyResources(Me.txtDesignSketchProfileCorrectionX, "txtDesignSketchProfileCorrectionX")
@@ -3556,6 +3635,7 @@ Partial Class frmProperties
         '
         'txtDesignSketchProfileCorrectionScale
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignSketchProfileCorrectionScale, CType(resources.GetObject("txtDesignSketchProfileCorrectionScale.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtDesignSketchProfileCorrectionScale.DecimalPlaces = 1
         Me.txtDesignSketchProfileCorrectionScale.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
         resources.ApplyResources(Me.txtDesignSketchProfileCorrectionScale, "txtDesignSketchProfileCorrectionScale")
@@ -3565,30 +3645,35 @@ Partial Class frmProperties
         '
         'txtDesignEditCombinedAreaTransparencyThreshold
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignEditCombinedAreaTransparencyThreshold, CType(resources.GetObject("txtDesignEditCombinedAreaTransparencyThreshold.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.txtDesignEditCombinedAreaTransparencyThreshold, "txtDesignEditCombinedAreaTransparencyThreshold")
         Me.txtDesignEditCombinedAreaTransparencyThreshold.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.txtDesignEditCombinedAreaTransparencyThreshold.Name = "txtDesignEditCombinedAreaTransparencyThreshold"
         '
         'txtDesignBackgroundTransparencyThreshold
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignBackgroundTransparencyThreshold, CType(resources.GetObject("txtDesignBackgroundTransparencyThreshold.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.txtDesignBackgroundTransparencyThreshold, "txtDesignBackgroundTransparencyThreshold")
         Me.txtDesignBackgroundTransparencyThreshold.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.txtDesignBackgroundTransparencyThreshold.Name = "txtDesignBackgroundTransparencyThreshold"
         '
         'txtDesignOriginalPositionTransparencyThreshold
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignOriginalPositionTransparencyThreshold, CType(resources.GetObject("txtDesignOriginalPositionTransparencyThreshold.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.txtDesignOriginalPositionTransparencyThreshold, "txtDesignOriginalPositionTransparencyThreshold")
         Me.txtDesignOriginalPositionTransparencyThreshold.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.txtDesignOriginalPositionTransparencyThreshold.Name = "txtDesignOriginalPositionTransparencyThreshold"
         '
         'txtDesignCombinedAreaTransparencyThreshold
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignCombinedAreaTransparencyThreshold, CType(resources.GetObject("txtDesignCombinedAreaTransparencyThreshold.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.txtDesignCombinedAreaTransparencyThreshold, "txtDesignCombinedAreaTransparencyThreshold")
         Me.txtDesignCombinedAreaTransparencyThreshold.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.txtDesignCombinedAreaTransparencyThreshold.Name = "txtDesignCombinedAreaTransparencyThreshold"
         '
         'cboSignRotateMode
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboSignRotateMode, CType(resources.GetObject("cboSignRotateMode.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboSignRotateMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboSignRotateMode.FormattingEnabled = True
         Me.cboSignRotateMode.Items.AddRange(New Object() {resources.GetString("cboSignRotateMode.Items"), resources.GetString("cboSignRotateMode.Items1")})
@@ -3597,6 +3682,7 @@ Partial Class frmProperties
         '
         'cboTextRotateMode
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboTextRotateMode, CType(resources.GetObject("cboTextRotateMode.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboTextRotateMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboTextRotateMode.FormattingEnabled = True
         Me.cboTextRotateMode.Items.AddRange(New Object() {resources.GetString("cboTextRotateMode.Items"), resources.GetString("cboTextRotateMode.Items1")})
@@ -3605,6 +3691,7 @@ Partial Class frmProperties
         '
         'cboGPSCustomRefPoint
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboGPSCustomRefPoint, CType(resources.GetObject("cboGPSCustomRefPoint.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboGPSCustomRefPoint.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.cboGPSCustomRefPoint.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
         resources.ApplyResources(Me.cboGPSCustomRefPoint, "cboGPSCustomRefPoint")
@@ -3612,6 +3699,7 @@ Partial Class frmProperties
         '
         'cboCoordinateGeo
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboCoordinateGeo, CType(resources.GetObject("cboCoordinateGeo.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboCoordinateGeo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboCoordinateGeo, "cboCoordinateGeo")
         Me.cboCoordinateGeo.Items.AddRange(New Object() {resources.GetString("cboCoordinateGeo.Items"), resources.GetString("cboCoordinateGeo.Items1")})
@@ -3619,6 +3707,7 @@ Partial Class frmProperties
         '
         'cboCoordinateFormat
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboCoordinateFormat, CType(resources.GetObject("cboCoordinateFormat.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboCoordinateFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboCoordinateFormat, "cboCoordinateFormat")
         Me.cboCoordinateFormat.Items.AddRange(New Object() {resources.GetString("cboCoordinateFormat.Items"), resources.GetString("cboCoordinateFormat.Items1"), resources.GetString("cboCoordinateFormat.Items2")})
@@ -3640,6 +3729,7 @@ Partial Class frmProperties
         '
         'cboDesignWarpingMode
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboDesignWarpingMode, CType(resources.GetObject("cboDesignWarpingMode.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboDesignWarpingMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboDesignWarpingMode.FormattingEnabled = True
         Me.cboDesignWarpingMode.Items.AddRange(New Object() {resources.GetString("cboDesignWarpingMode.Items"), resources.GetString("cboDesignWarpingMode.Items1")})
@@ -3648,6 +3738,7 @@ Partial Class frmProperties
         '
         'cboDesignBindingMode
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboDesignBindingMode, CType(resources.GetObject("cboDesignBindingMode.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboDesignBindingMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboDesignBindingMode.FormattingEnabled = True
         Me.cboDesignBindingMode.Items.AddRange(New Object() {resources.GetString("cboDesignBindingMode.Items"), resources.GetString("cboDesignBindingMode.Items1"), resources.GetString("cboDesignBindingMode.Items2")})
@@ -3703,6 +3794,7 @@ Partial Class frmProperties
         '
         'txtDesignEditLowerLayersTransparencyThreshold
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignEditLowerLayersTransparencyThreshold, CType(resources.GetObject("txtDesignEditLowerLayersTransparencyThreshold.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.txtDesignEditLowerLayersTransparencyThreshold, "txtDesignEditLowerLayersTransparencyThreshold")
         Me.txtDesignEditLowerLayersTransparencyThreshold.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.txtDesignEditLowerLayersTransparencyThreshold.Name = "txtDesignEditLowerLayersTransparencyThreshold"
@@ -3725,6 +3817,7 @@ Partial Class frmProperties
         '
         'txtDesignTextureScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignTextureScaleFactor, CType(resources.GetObject("txtDesignTextureScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtDesignTextureScaleFactor.DecimalPlaces = 2
         Me.txtDesignTextureScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
         resources.ApplyResources(Me.txtDesignTextureScaleFactor, "txtDesignTextureScaleFactor")
@@ -3750,6 +3843,7 @@ Partial Class frmProperties
         '
         'txtDesignExtraScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignExtraScaleFactor, CType(resources.GetObject("txtDesignExtraScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtDesignExtraScaleFactor.DecimalPlaces = 2
         Me.txtDesignExtraScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
         resources.ApplyResources(Me.txtDesignExtraScaleFactor, "txtDesignExtraScaleFactor")
@@ -3757,6 +3851,7 @@ Partial Class frmProperties
         '
         'txtDesignExtraTextScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignExtraTextScaleFactor, CType(resources.GetObject("txtDesignExtraTextScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtDesignExtraTextScaleFactor.DecimalPlaces = 2
         Me.txtDesignExtraTextScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
         resources.ApplyResources(Me.txtDesignExtraTextScaleFactor, "txtDesignExtraTextScaleFactor")
@@ -3764,6 +3859,7 @@ Partial Class frmProperties
         '
         'txtSurfaceSelectedPenWidth
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtSurfaceSelectedPenWidth, CType(resources.GetObject("txtSurfaceSelectedPenWidth.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtSurfaceSelectedPenWidth.DecimalPlaces = 4
         Me.txtSurfaceSelectedPenWidth.Increment = New Decimal(New Integer() {5, 0, 0, 262144})
         resources.ApplyResources(Me.txtSurfaceSelectedPenWidth, "txtSurfaceSelectedPenWidth")
@@ -3773,6 +3869,7 @@ Partial Class frmProperties
         '
         'txtSurfacePenWidth
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtSurfacePenWidth, CType(resources.GetObject("txtSurfacePenWidth.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtSurfacePenWidth.DecimalPlaces = 4
         Me.txtSurfacePenWidth.Increment = New Decimal(New Integer() {5, 0, 0, 262144})
         resources.ApplyResources(Me.txtSurfacePenWidth, "txtSurfacePenWidth")
@@ -3782,6 +3879,7 @@ Partial Class frmProperties
         '
         'cboSurfacePenStyle
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboSurfacePenStyle, CType(resources.GetObject("cboSurfacePenStyle.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboSurfacePenStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboSurfacePenStyle.FormattingEnabled = True
         Me.cboSurfacePenStyle.Items.AddRange(New Object() {resources.GetString("cboSurfacePenStyle.Items"), resources.GetString("cboSurfacePenStyle.Items1"), resources.GetString("cboSurfacePenStyle.Items2"), resources.GetString("cboSurfacePenStyle.Items3"), resources.GetString("cboSurfacePenStyle.Items4")})
@@ -3790,6 +3888,7 @@ Partial Class frmProperties
         '
         'picSurfacePenColor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.picSurfacePenColor, CType(resources.GetObject("picSurfacePenColor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.picSurfacePenColor, "picSurfacePenColor")
         Me.picSurfacePenColor.Name = "picSurfacePenColor"
         Me.picSurfacePenColor.TabStop = False
@@ -3840,6 +3939,7 @@ Partial Class frmProperties
         '
         'mnuTrigPointTags
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.mnuTrigPointTags, CType(resources.GetObject("mnuTrigPointTags.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.mnuTrigPointTags, "mnuTrigPointTags")
         Me.mnuTrigPointTags.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem5, Me.ToolStripMenuItem6, Me.ToolStripMenuItem11, Me.PrimoAliasToolStripMenuItem, Me.ToolStripSeparator3, Me.NomeGrottaToolStripMenuItem, Me.ToolStripMenuItem7, Me.ToolStripSeparator4, Me.ToolStripMenuItem12, Me.ToolStripSeparator6, Me.ToolStripMenuItem17})
         Me.mnuTrigPointTags.Name = "mnuInfoBoxTags"
@@ -3908,6 +4008,7 @@ Partial Class frmProperties
         '
         'mnuSpecialTrigPointTags
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.mnuSpecialTrigPointTags, CType(resources.GetObject("mnuSpecialTrigPointTags.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.mnuSpecialTrigPointTags, "mnuSpecialTrigPointTags")
         Me.mnuSpecialTrigPointTags.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem8, Me.ToolStripSeparator5, Me.ToolStripMenuItem9, Me.ToolStripMenuItem10, Me.ToolStripSeparator7, Me.ToolStripMenuItem13, Me.ToolStripMenuItem14, Me.ToolStripSeparator8, Me.ToolStripMenuItem15, Me.ToolStripSeparator9, Me.ToolStripMenuItem16})
         Me.mnuSpecialTrigPointTags.Name = "mnuInfoBoxTags"
@@ -3981,6 +4082,7 @@ Partial Class frmProperties
         Me.GroupBox9.Controls.Add(Me.frm3DSurface)
         resources.ApplyResources(Me.GroupBox9, "GroupBox9")
         Me.GroupBox9.Name = "GroupBox9"
+        Me.GroupBox9.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'txt3DExportAsImageOversampling
         '
@@ -4007,6 +4109,7 @@ Partial Class frmProperties
         Me.frm3DSurface.Controls.Add(Me.lbl3DSurfaceTextureLOD)
         resources.ApplyResources(Me.frm3DSurface, "frm3DSurface")
         Me.frm3DSurface.Name = "frm3DSurface"
+        Me.frm3DSurface.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'txt3DSurfaceModelLOD
         '
@@ -4064,6 +4167,7 @@ Partial Class frmProperties
         Me.GroupBox4.Controls.Add(Me.chk3dLochShowDialog)
         resources.ApplyResources(Me.GroupBox4, "GroupBox4")
         Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'chk3DLochShowSplay
         '
@@ -4094,6 +4198,7 @@ Partial Class frmProperties
         '
         'cbo3DModelMode
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cbo3DModelMode, CType(resources.GetObject("cbo3DModelMode.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cbo3DModelMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbo3DModelMode.DropDownWidth = 640
         Me.cbo3DModelMode.FormattingEnabled = True
@@ -4128,6 +4233,7 @@ Partial Class frmProperties
         Me.GroupBox2.Controls.Add(Me.lblSurfacePenStyle)
         resources.ApplyResources(Me.GroupBox2, "GroupBox2")
         Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'cmdSurfacePenColor
         '
@@ -4165,6 +4271,7 @@ Partial Class frmProperties
         Me.GroupBox7.Controls.Add(Me.txtPlotNoteTextColor)
         resources.ApplyResources(Me.GroupBox7, "GroupBox7")
         Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'cmdPlotNoteTextFont
         '
@@ -4208,6 +4315,7 @@ Partial Class frmProperties
         Me.GroupBox6.Controls.Add(Me.lblPlotSplayPenStyle)
         resources.ApplyResources(Me.GroupBox6, "GroupBox6")
         Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'lblPlotSplayCrossScale
         '
@@ -4254,6 +4362,7 @@ Partial Class frmProperties
         Me.frmPlotLRUD.Controls.Add(Me.lblPlotLRUDPenStyle)
         resources.ApplyResources(Me.frmPlotLRUD, "frmPlotLRUD")
         Me.frmPlotLRUD.Name = "frmPlotLRUD"
+        Me.frmPlotLRUD.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'lblPlotLRUDSelectedPenWidth
         '
@@ -4281,6 +4390,7 @@ Partial Class frmProperties
         Me.frmPlotTranslationLine.Controls.Add(Me.lblPlotTranslationLinePenStyle)
         resources.ApplyResources(Me.frmPlotTranslationLine, "frmPlotTranslationLine")
         Me.frmPlotTranslationLine.Name = "frmPlotTranslationLine"
+        Me.frmPlotTranslationLine.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'cmdPlotTranslationLinePenColor
         '
@@ -4325,6 +4435,7 @@ Partial Class frmProperties
         Me.frmPlotPoint.Controls.Add(Me.lblPlotPointSymbol)
         resources.ApplyResources(Me.frmPlotPoint, "frmPlotPoint")
         Me.frmPlotPoint.Name = "frmPlotPoint"
+        Me.frmPlotPoint.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'lblPlotTextPolicy
         '
@@ -4405,6 +4516,7 @@ Partial Class frmProperties
         Me.frmPlotPen.Controls.Add(Me.lblPlotPenStyle)
         resources.ApplyResources(Me.frmPlotPen, "frmPlotPen")
         Me.frmPlotPen.Name = "frmPlotPen"
+        Me.frmPlotPen.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'chkPlotCenterlineForceSegmentColor
         '
@@ -4474,9 +4586,11 @@ Partial Class frmProperties
         Me.GroupBox8.Controls.Add(Me.lblClippingBorder)
         resources.ApplyResources(Me.GroupBox8, "GroupBox8")
         Me.GroupBox8.Name = "GroupBox8"
+        Me.GroupBox8.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'cboClipSoil
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboClipSoil, CType(resources.GetObject("cboClipSoil.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboClipSoil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboClipSoil, "cboClipSoil")
         Me.cboClipSoil.Items.AddRange(New Object() {resources.GetString("cboClipSoil.Items"), resources.GetString("cboClipSoil.Items1")})
@@ -4489,6 +4603,7 @@ Partial Class frmProperties
         '
         'cboClipAdvancedClipart
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboClipAdvancedClipart, CType(resources.GetObject("cboClipAdvancedClipart.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboClipAdvancedClipart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboClipAdvancedClipart, "cboClipAdvancedClipart")
         Me.cboClipAdvancedClipart.Items.AddRange(New Object() {resources.GetString("cboClipAdvancedClipart.Items"), resources.GetString("cboClipAdvancedClipart.Items1")})
@@ -4496,6 +4611,7 @@ Partial Class frmProperties
         '
         'cboClipBorder
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboClipBorder, CType(resources.GetObject("cboClipBorder.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboClipBorder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboClipBorder, "cboClipBorder")
         Me.cboClipBorder.Items.AddRange(New Object() {resources.GetString("cboClipBorder.Items"), resources.GetString("cboClipBorder.Items1"), resources.GetString("cboClipBorder.Items2")})
@@ -4519,6 +4635,7 @@ Partial Class frmProperties
         Me.GroupBox5.Controls.Add(Me.lblSignRotateMode)
         resources.ApplyResources(Me.GroupBox5, "GroupBox5")
         Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'lblTextRotateMode
         '
@@ -4545,6 +4662,7 @@ Partial Class frmProperties
         Me.GroupBox3.Controls.Add(Me.lblDesignCombinedAreaTransparencyThreshold)
         resources.ApplyResources(Me.GroupBox3, "GroupBox3")
         Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'lblDesignLowerLayersTransparencyThreshold
         '
@@ -4582,6 +4700,7 @@ Partial Class frmProperties
         Me.frmSketch.Controls.Add(Me.frmSketchPlan)
         resources.ApplyResources(Me.frmSketch, "frmSketch")
         Me.frmSketch.Name = "frmSketch"
+        Me.frmSketch.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'frmSketchProfile
         '
@@ -4592,6 +4711,7 @@ Partial Class frmProperties
         Me.frmSketchProfile.Controls.Add(Me.txtDesignSketchProfileCorrectionY)
         resources.ApplyResources(Me.frmSketchProfile, "frmSketchProfile")
         Me.frmSketchProfile.Name = "frmSketchProfile"
+        Me.frmSketchProfile.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'lblSketchProfileCorrectionScale
         '
@@ -4612,6 +4732,7 @@ Partial Class frmProperties
         Me.frmSketchPlan.Controls.Add(Me.txtDesignSketchPlanCorrectionY)
         resources.ApplyResources(Me.frmSketchPlan, "frmSketchPlan")
         Me.frmSketchPlan.Name = "frmSketchPlan"
+        Me.frmSketchPlan.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'lblSketchPlanCorrectionScale
         '
@@ -4625,6 +4746,7 @@ Partial Class frmProperties
         '
         'cboLineType
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboLineType, CType(resources.GetObject("cboLineType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboLineType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboLineType.FormattingEnabled = True
         Me.cboLineType.Items.AddRange(New Object() {resources.GetString("cboLineType.Items"), resources.GetString("cboLineType.Items1"), resources.GetString("cboLineType.Items2")})
@@ -4657,6 +4779,7 @@ Partial Class frmProperties
         Me.frrmDesign.Controls.Add(Me.txtDesignTerrainLevelScaleFactor)
         resources.ApplyResources(Me.frrmDesign, "frrmDesign")
         Me.frrmDesign.Name = "frrmDesign"
+        Me.frrmDesign.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'GroupBox11
         '
@@ -4665,6 +4788,7 @@ Partial Class frmProperties
         Me.GroupBox11.Controls.Add(Me.GroupBox12)
         resources.ApplyResources(Me.GroupBox11, "GroupBox11")
         Me.GroupBox11.Name = "GroupBox11"
+        Me.GroupBox11.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'lblDesignCrossSectionTextScaleFactor
         '
@@ -4674,6 +4798,7 @@ Partial Class frmProperties
         '
         'txtDesignCrossSectionTextScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignCrossSectionTextScaleFactor, CType(resources.GetObject("txtDesignCrossSectionTextScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtDesignCrossSectionTextScaleFactor.DecimalPlaces = 2
         Me.txtDesignCrossSectionTextScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
         resources.ApplyResources(Me.txtDesignCrossSectionTextScaleFactor, "txtDesignCrossSectionTextScaleFactor")
@@ -4687,6 +4812,7 @@ Partial Class frmProperties
         Me.GroupBox12.Controls.Add(Me.lblDesignCrossSectionMarkerArrowScaleFactor)
         resources.ApplyResources(Me.GroupBox12, "GroupBox12")
         Me.GroupBox12.Name = "GroupBox12"
+        Me.GroupBox12.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'lblDesignCrossSectionMarkerTextScaleFactor
         '
@@ -4696,6 +4822,7 @@ Partial Class frmProperties
         '
         'txtDesignCrossSectionMarkerTextScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignCrossSectionMarkerTextScaleFactor, CType(resources.GetObject("txtDesignCrossSectionMarkerTextScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtDesignCrossSectionMarkerTextScaleFactor.DecimalPlaces = 2
         Me.txtDesignCrossSectionMarkerTextScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
         resources.ApplyResources(Me.txtDesignCrossSectionMarkerTextScaleFactor, "txtDesignCrossSectionMarkerTextScaleFactor")
@@ -4703,6 +4830,7 @@ Partial Class frmProperties
         '
         'txtDesignCrossSectionMarkerArrowScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignCrossSectionMarkerArrowScaleFactor, CType(resources.GetObject("txtDesignCrossSectionMarkerArrowScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtDesignCrossSectionMarkerArrowScaleFactor.DecimalPlaces = 2
         Me.txtDesignCrossSectionMarkerArrowScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
         resources.ApplyResources(Me.txtDesignCrossSectionMarkerArrowScaleFactor, "txtDesignCrossSectionMarkerArrowScaleFactor")
@@ -4722,6 +4850,7 @@ Partial Class frmProperties
         Me.GroupBox10.Controls.Add(Me.txtDesignExtraTextScaleFactor)
         resources.ApplyResources(Me.GroupBox10, "GroupBox10")
         Me.GroupBox10.Name = "GroupBox10"
+        Me.GroupBox10.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'lblDesignExtraTextScaleFactor
         '
@@ -4791,6 +4920,7 @@ Partial Class frmProperties
         Me.GroupBox1.Controls.Add(Me.lblBaseLineWidthScaleFactor)
         resources.ApplyResources(Me.GroupBox1, "GroupBox1")
         Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'LabelControl4
         '
@@ -4814,6 +4944,7 @@ Partial Class frmProperties
         '
         'txtBaseGeologyLinesScaleFactor
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtBaseGeologyLinesScaleFactor, CType(resources.GetObject("txtBaseGeologyLinesScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.txtBaseGeologyLinesScaleFactor.DecimalPlaces = 1
         Me.txtBaseGeologyLinesScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
         resources.ApplyResources(Me.txtBaseGeologyLinesScaleFactor, "txtBaseGeologyLinesScaleFactor")
@@ -4903,15 +5034,18 @@ Partial Class frmProperties
         Me.frmGPSDefaults.Controls.Add(Me.lblCoordinateZone)
         Me.frmGPSDefaults.Controls.Add(Me.lblCoordinateFormat)
         Me.frmGPSDefaults.Name = "frmGPSDefaults"
+        Me.frmGPSDefaults.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'cboCoordinateBand
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboCoordinateBand, CType(resources.GetObject("cboCoordinateBand.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboCoordinateBand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboCoordinateBand, "cboCoordinateBand")
         Me.cboCoordinateBand.Name = "cboCoordinateBand"
         '
         'cboCoordinateZone
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboCoordinateZone, CType(resources.GetObject("cboCoordinateZone.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboCoordinateZone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboCoordinateZone, "cboCoordinateZone")
         Me.cboCoordinateZone.Name = "cboCoordinateZone"
@@ -4938,6 +5072,7 @@ Partial Class frmProperties
         '
         'pnlGPS
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlGPS, CType(resources.GetObject("pnlGPS.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.pnlGPS.Controls.Add(Me.optGPSCustomRefPoint)
         Me.pnlGPS.Controls.Add(Me.optGPSRefPointOnOrigin)
         Me.pnlGPS.Controls.Add(Me.chkGPSAllowManualDeclinations)
@@ -4990,6 +5125,7 @@ Partial Class frmProperties
         '
         'cboCalculateVersion
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboCalculateVersion, CType(resources.GetObject("cboCalculateVersion.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboCalculateVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboCalculateVersion, "cboCalculateVersion")
         Me.cboCalculateVersion.FormattingEnabled = True
@@ -5042,6 +5178,7 @@ Partial Class frmProperties
         '
         'cboSplayMode
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboSplayMode, CType(resources.GetObject("cboSplayMode.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboSplayMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboSplayMode.FormattingEnabled = True
         Me.cboSplayMode.Items.AddRange(New Object() {resources.GetString("cboSplayMode.Items"), resources.GetString("cboSplayMode.Items1")})
@@ -5065,6 +5202,7 @@ Partial Class frmProperties
         '
         'cboInversionMode
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboInversionMode, CType(resources.GetObject("cboInversionMode.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboInversionMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboInversionMode, "cboInversionMode")
         Me.cboInversionMode.FormattingEnabled = True
@@ -5085,6 +5223,7 @@ Partial Class frmProperties
         '
         'cboNordCorrection
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboNordCorrection, CType(resources.GetObject("cboNordCorrection.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboNordCorrection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboNordCorrection, "cboNordCorrection")
         Me.cboNordCorrection.FormattingEnabled = True
@@ -5103,6 +5242,7 @@ Partial Class frmProperties
         '
         'cboCalculateType
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboCalculateType, CType(resources.GetObject("cboCalculateType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboCalculateType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboCalculateType, "cboCalculateType")
         Me.cboCalculateType.FormattingEnabled = True
@@ -5116,6 +5256,7 @@ Partial Class frmProperties
         '
         'cboRingCorrectionMode
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboRingCorrectionMode, CType(resources.GetObject("cboRingCorrectionMode.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboRingCorrectionMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboRingCorrectionMode.FormattingEnabled = True
         Me.cboRingCorrectionMode.Items.AddRange(New Object() {resources.GetString("cboRingCorrectionMode.Items"), resources.GetString("cboRingCorrectionMode.Items1"), resources.GetString("cboRingCorrectionMode.Items2")})
@@ -5186,6 +5327,7 @@ Partial Class frmProperties
         '
         'pnlSurfaceProfile
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlSurfaceProfile, CType(resources.GetObject("pnlSurfaceProfile.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.pnlSurfaceProfile, "pnlSurfaceProfile")
         Me.pnlSurfaceProfile.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSurfaceProfile.Controls.Add(Me.chksurfaceprofile)
@@ -5194,6 +5336,7 @@ Partial Class frmProperties
         '
         'pnlsurfaceprofileelevation
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlsurfaceprofileelevation, CType(resources.GetObject("pnlsurfaceprofileelevation.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.pnlsurfaceprofileelevation, "pnlsurfaceprofileelevation")
         Me.pnlsurfaceprofileelevation.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlsurfaceprofileelevation.Controls.Add(Me.chkSurfaceProfileShow)
@@ -5210,6 +5353,7 @@ Partial Class frmProperties
         '
         'cbosurfaceprofileelevation
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cbosurfaceprofileelevation, CType(resources.GetObject("cbosurfaceprofileelevation.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.cbosurfaceprofileelevation, "cbosurfaceprofileelevation")
         Me.cbosurfaceprofileelevation.Name = "cbosurfaceprofileelevation"
         '
@@ -5220,6 +5364,7 @@ Partial Class frmProperties
         '
         'mnuItemNamePatternTags
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.mnuItemNamePatternTags, CType(resources.GetObject("mnuItemNamePatternTags.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.mnuItemNamePatternTags, "mnuItemNamePatternTags")
         Me.mnuItemNamePatternTags.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuItemNamePatternTagsCave, Me.mnuItemNamePatternTagsBranch, Me.ToolStripSeparator13, Me.mnuItemNamePatternTagsCount, Me.mnuItemNamePatternTagsIndex})
         Me.mnuItemNamePatternTags.Name = "mnuInfoBoxTags"
@@ -5340,6 +5485,7 @@ Partial Class frmProperties
         '
         'cboOrigin
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboOrigin, CType(resources.GetObject("cboOrigin.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboOrigin.EditValue = Nothing
         resources.ApplyResources(Me.cboOrigin, "cboOrigin")
         Me.cboOrigin.Name = "cboOrigin"
@@ -5396,6 +5542,7 @@ Partial Class frmProperties
         Me.pnlCaveAndBraches.Panel2.Controls.Add(Me.txtCaveInfoID)
         Me.pnlCaveAndBraches.Panel2.MinSize = 460
         Me.pnlCaveAndBraches.SplitterPosition = 190
+        Me.pnlCaveAndBraches.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
         'tabInfoInfoBox1
         '
@@ -5419,6 +5566,7 @@ Partial Class frmProperties
         '
         'XtraScrollableControl1
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.XtraScrollableControl1, CType(resources.GetObject("XtraScrollableControl1.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.XtraScrollableControl1, "XtraScrollableControl1")
         Me.XtraScrollableControl1.Controls.Add(Me.cboGeologicalLineType)
         Me.XtraScrollableControl1.Controls.Add(Me.LabelControl3)
@@ -5441,6 +5589,7 @@ Partial Class frmProperties
         '
         'cboGeologicalLineType
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboGeologicalLineType, CType(resources.GetObject("cboGeologicalLineType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.cboGeologicalLineType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboGeologicalLineType.FormattingEnabled = True
         Me.cboGeologicalLineType.Items.AddRange(New Object() {resources.GetString("cboGeologicalLineType.Items"), resources.GetString("cboGeologicalLineType.Items1"), resources.GetString("cboGeologicalLineType.Items2")})
@@ -5460,6 +5609,7 @@ Partial Class frmProperties
         '
         'pnlParameters
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlParameters, CType(resources.GetObject("pnlParameters.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.pnlParameters.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         resources.ApplyResources(Me.pnlParameters, "pnlParameters")
         Me.pnlParameters.FlyoutPanel = Me.flyParameters
@@ -5506,6 +5656,7 @@ Partial Class frmProperties
         '
         'XtraScrollableControl2
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.XtraScrollableControl2, CType(resources.GetObject("XtraScrollableControl2.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.XtraScrollableControl2, "XtraScrollableControl2")
         Me.XtraScrollableControl2.Controls.Add(Me.GroupBox2)
         Me.XtraScrollableControl2.Controls.Add(Me.frmPlotPoint)
@@ -5528,6 +5679,7 @@ Partial Class frmProperties
         '
         'pnl3D
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnl3D, CType(resources.GetObject("pnl3D.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.pnl3D.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnl3D.Controls.Add(Me.txt3DMinPassageSizeUM)
         Me.pnl3D.Controls.Add(Me.txt3DNormalizationFactor)
@@ -5628,6 +5780,7 @@ Partial Class frmProperties
         '
         'pnlFooter
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlFooter, CType(resources.GetObject("pnlFooter.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.pnlFooter.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlFooter.Controls.Add(Me.lblSeparator)
         Me.pnlFooter.Controls.Add(Me.cmdCancel)
@@ -5815,6 +5968,7 @@ Partial Class frmProperties
         '
         'frmProperties
         '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me, CType(resources.GetObject("$this.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
@@ -6855,4 +7009,5 @@ Partial Class frmProperties
     Friend WithEvents chkCaveInfoPriority As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents lblPlotTextPolicy As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboPlotTextPolicy As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents DefaultToolTipController1 As DevExpress.Utils.DefaultToolTipController
 End Class

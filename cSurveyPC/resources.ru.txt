@@ -1165,3 +1165,8 @@ main.textpart181=Distance from surface (calculated)
 main.filetypecSurveyXLSX=Microsoft Excel files from cSurvey
 
 calculate.textpart22=Error: origin is orphaned
+
+main.textpart182=Therion version is old and there is an updated version available on Therion website.
+main.textpart183=Last online version: 
+main.textpart184=Unable to check online for the latest version of Therion. Please manually check the Therion website for a more recent version.
+main.textpart185=You are using the latest version of Therion.

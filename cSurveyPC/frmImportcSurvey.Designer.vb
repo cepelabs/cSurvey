@@ -56,10 +56,14 @@ Partial Class frmImportcSurvey
         Me.cbocSurveyImportWarpingMode = New System.Windows.Forms.ComboBox()
         Me.chkcsurveyimportlinkedsurvey = New DevExpress.XtraEditors.CheckEdit()
         Me.pnlcSurveyImportData = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdcSurveyImportShotsData = New DevExpress.XtraEditors.SimpleButton()
         Me.pnlcSurveyImportGraphics = New DevExpress.XtraEditors.PanelControl()
         Me.chkcSurveyImportTexts = New DevExpress.XtraEditors.CheckEdit()
         Me.cboImportAsBranchOfCave = New cSurveyPC.cCaveDropDown()
         Me.cboImportAsBranchOfBranch = New cSurveyPC.cCaveBranchDropDown()
+        Me.flyParameters = New DevExpress.Utils.FlyoutPanel()
+        Me.pnlParameters = New DevExpress.Utils.FlyoutPanelControl()
+        Me.chkcSurveyImportOverwriteOnlySomeData = New DevExpress.XtraEditors.CheckEdit()
         CType(Me.txtFilename.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -87,6 +91,10 @@ Partial Class frmImportcSurvey
         CType(Me.pnlcSurveyImportGraphics, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlcSurveyImportGraphics.SuspendLayout()
         CType(Me.chkcSurveyImportTexts.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.flyParameters, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.flyParameters.SuspendLayout()
+        CType(Me.pnlParameters, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkcSurveyImportOverwriteOnlySomeData.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtFilename
@@ -314,6 +322,8 @@ Partial Class frmImportcSurvey
         'pnlcSurveyImportData
         '
         Me.pnlcSurveyImportData.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlcSurveyImportData.Controls.Add(Me.chkcSurveyImportOverwriteOnlySomeData)
+        Me.pnlcSurveyImportData.Controls.Add(Me.cmdcSurveyImportShotsData)
         Me.pnlcSurveyImportData.Controls.Add(Me.chkcSurveyImportDuplicatesOverwriteOnlyUsed)
         Me.pnlcSurveyImportData.Controls.Add(Me.chkcSurveyImportDuplicatesOverwrite)
         Me.pnlcSurveyImportData.Controls.Add(Me.chkcSurveyImportDuplicates)
@@ -322,6 +332,14 @@ Partial Class frmImportcSurvey
         Me.pnlcSurveyImportData.Controls.Add(Me.chkcSurveyImportDuplicatesStations)
         resources.ApplyResources(Me.pnlcSurveyImportData, "pnlcSurveyImportData")
         Me.pnlcSurveyImportData.Name = "pnlcSurveyImportData"
+        '
+        'cmdcSurveyImportShotsData
+        '
+        resources.ApplyResources(Me.cmdcSurveyImportShotsData, "cmdcSurveyImportShotsData")
+        Me.cmdcSurveyImportShotsData.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdcSurveyImportShotsData.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        Me.cmdcSurveyImportShotsData.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.cmdcSurveyImportShotsData.Name = "cmdcSurveyImportShotsData"
         '
         'pnlcSurveyImportGraphics
         '
@@ -359,12 +377,34 @@ Partial Class frmImportcSurvey
         Me.cboImportAsBranchOfBranch.ShowMoreButton = False
         Me.cboImportAsBranchOfBranch.Workmode = cSurveyPC.cCaveDropDown.WorkmodeEnum.View
         '
+        'flyParameters
+        '
+        Me.flyParameters.Controls.Add(Me.pnlParameters)
+        resources.ApplyResources(Me.flyParameters, "flyParameters")
+        Me.flyParameters.Name = "flyParameters"
+        Me.flyParameters.OptionsButtonPanel.ButtonPanelHeight = 26
+        '
+        'pnlParameters
+        '
+        Me.pnlParameters.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        resources.ApplyResources(Me.pnlParameters, "pnlParameters")
+        Me.pnlParameters.FlyoutPanel = Me.flyParameters
+        Me.pnlParameters.Name = "pnlParameters"
+        '
+        'chkcSurveyImportOverwriteOnlySomeData
+        '
+        resources.ApplyResources(Me.chkcSurveyImportOverwriteOnlySomeData, "chkcSurveyImportOverwriteOnlySomeData")
+        Me.chkcSurveyImportOverwriteOnlySomeData.Name = "chkcSurveyImportOverwriteOnlySomeData"
+        Me.chkcSurveyImportOverwriteOnlySomeData.Properties.AutoWidth = True
+        Me.chkcSurveyImportOverwriteOnlySomeData.Properties.Caption = resources.GetString("CheckEdit1.Properties.Caption")
+        '
         'frmImportcSurvey
         '
         Me.AcceptButton = Me.cmdOk
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
+        Me.Controls.Add(Me.flyParameters)
         Me.Controls.Add(Me.chkcSurveyImportTexts)
         Me.Controls.Add(Me.pnlcSurveyImportData)
         Me.Controls.Add(Me.chkcsurveyimportlinkedsurvey)
@@ -419,6 +459,10 @@ Partial Class frmImportcSurvey
         Me.pnlcSurveyImportGraphics.ResumeLayout(False)
         Me.pnlcSurveyImportGraphics.PerformLayout()
         CType(Me.chkcSurveyImportTexts.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.flyParameters, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.flyParameters.ResumeLayout(False)
+        CType(Me.pnlParameters, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkcSurveyImportOverwriteOnlySomeData.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -459,4 +503,8 @@ Partial Class frmImportcSurvey
     Friend WithEvents tvLogImageName As DevExpress.XtraTreeList.Columns.TreeListColumn
     Friend WithEvents cboImportAsBranchOfCave As cCaveDropDown
     Friend WithEvents cboImportAsBranchOfBranch As cCaveBranchDropDown
+    Friend WithEvents cmdcSurveyImportShotsData As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents flyParameters As DevExpress.Utils.FlyoutPanel
+    Friend WithEvents pnlParameters As DevExpress.Utils.FlyoutPanelControl
+    Friend WithEvents chkcSurveyImportOverwriteOnlySomeData As DevExpress.XtraEditors.CheckEdit
 End Class

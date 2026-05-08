@@ -2956,6 +2956,7 @@ Namespace cSurvey.UIHelpers
         Public Function FormatName(Name As String) As String
             Dim sName As String = Name.Trim
             sName = sName.Replace(" ", "_")
+            sName = sName.Replace(".", "_")
             Dim sNewName As String = ""
             For Each sChar As Char In sName
                 If (sChar >= "A" And sChar <= "Z") OrElse (sChar >= "a" And sChar <= "z") OrElse (sChar >= "0" And sChar <= "9") OrElse (sChar = "_") Then

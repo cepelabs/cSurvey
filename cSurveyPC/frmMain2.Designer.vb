@@ -6819,29 +6819,32 @@ Partial Class frmMain2
         '
         'panelContainer1
         '
-        Me.panelContainer1.ActiveChild = Me.dockBrushesAndPens
+        Me.panelContainer1.ActiveChild = Me.dockClipart
         Me.panelContainer1.Controls.Add(Me.dockProperties)
         Me.panelContainer1.Controls.Add(Me.dockLevels)
         Me.panelContainer1.Controls.Add(Me.dockClipart)
-        Me.panelContainer1.Controls.Add(Me.dockBrushesAndPens)
         Me.panelContainer1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right
         Me.panelContainer1.ID = New System.Guid("fb135f4c-a1f8-477f-804d-6993a4b6f4b4")
         resources.ApplyResources(Me.panelContainer1, "panelContainer1")
         Me.panelContainer1.Name = "panelContainer1"
-        Me.panelContainer1.OriginalSize = New System.Drawing.Size(774, 200)
+        Me.panelContainer1.OriginalSize = New System.Drawing.Size(435, 200)
         Me.panelContainer1.Tabbed = True
         '
         'dockBrushesAndPens
         '
         Me.dockBrushesAndPens.Controls.Add(Me.ControlContainer13)
-        Me.dockBrushesAndPens.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill
+        Me.dockBrushesAndPens.Dock = DevExpress.XtraBars.Docking.DockingStyle.Float
+        Me.dockBrushesAndPens.FloatLocation = New System.Drawing.Point(1626, 432)
+        Me.dockBrushesAndPens.FloatVertical = True
         Me.dockBrushesAndPens.ID = New System.Guid("683676e5-c655-4d10-8b5d-0a789c027edc")
         Me.dockBrushesAndPens.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.brushesandpensgallery
         Me.dockBrushesAndPens.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         resources.ApplyResources(Me.dockBrushesAndPens, "dockBrushesAndPens")
         Me.dockBrushesAndPens.Name = "dockBrushesAndPens"
         Me.dockBrushesAndPens.Options.AllowDockAsTabbedDocument = False
-        Me.dockBrushesAndPens.OriginalSize = New System.Drawing.Size(767, 779)
+        Me.dockBrushesAndPens.OriginalSize = New System.Drawing.Size(767, 766)
+        Me.dockBrushesAndPens.SavedIndex = 2
+        Me.dockBrushesAndPens.Visibility = DevExpress.XtraBars.Docking.DockVisibility.Hidden
         '
         'ControlContainer13
         '
@@ -6859,7 +6862,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.dockProperties, "dockProperties")
         Me.dockProperties.Name = "dockProperties"
         Me.dockProperties.Options.AllowDockAsTabbedDocument = False
-        Me.dockProperties.OriginalSize = New System.Drawing.Size(767, 779)
+        Me.dockProperties.OriginalSize = New System.Drawing.Size(767, 766)
         '
         'ControlContainer10
         '
@@ -6946,7 +6949,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.dockLevels, "dockLevels")
         Me.dockLevels.Name = "dockLevels"
         Me.dockLevels.Options.AllowDockAsTabbedDocument = False
-        Me.dockLevels.OriginalSize = New System.Drawing.Size(767, 779)
+        Me.dockLevels.OriginalSize = New System.Drawing.Size(767, 766)
         '
         'ControlContainer7
         '
@@ -6964,7 +6967,7 @@ Partial Class frmMain2
         resources.ApplyResources(Me.dockClipart, "dockClipart")
         Me.dockClipart.Name = "dockClipart"
         Me.dockClipart.Options.AllowDockAsTabbedDocument = False
-        Me.dockClipart.OriginalSize = New System.Drawing.Size(767, 779)
+        Me.dockClipart.OriginalSize = New System.Drawing.Size(767, 766)
         '
         'ControlContainer9
         '
@@ -7417,7 +7420,7 @@ Partial Class frmMain2
         Me.DockManager.Controller = Me.BarAndDockingController
         Me.DockManager.DockingOptions.ShowCaptionImage = True
         Me.DockManager.Form = Me.pnlForm
-        Me.DockManager.HiddenPanels.AddRange(New DevExpress.XtraBars.Docking.DockPanel() {Me.dockScript, Me.dockIV, Me.dockAV, Me.dockJoinPoints, Me.dockTexts, Me.dockText, Me.dockLS, Me.dockConsole, Me.dockDistances})
+        Me.DockManager.HiddenPanels.AddRange(New DevExpress.XtraBars.Docking.DockPanel() {Me.dockScript, Me.dockIV, Me.dockAV, Me.dockJoinPoints, Me.dockTexts, Me.dockText, Me.dockLS, Me.dockConsole, Me.dockDistances, Me.dockBrushesAndPens})
         Me.DockManager.LayoutVersion = "2"
         Me.DockManager.MenuManager = Me.RibbonControl
         Me.DockManager.RootPanels.AddRange(New DevExpress.XtraBars.Docking.DockPanel() {Me.panelContainer1, Me.dockData, Me.dockDesigner})

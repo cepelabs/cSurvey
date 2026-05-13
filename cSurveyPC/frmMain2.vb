@@ -12226,28 +12226,28 @@ Friend Class frmMain2
                                                             Call .Save()
                                                         End With
                                                     End If
-                                                    With oOldSegment
-                                                        Call .SetCave(oNewSegment.Cave, oNewSegment.Branch)
-                                                        Call .SetSession(oNewSegment.Session)
-                                                        .Distance = oNewSegment.Distance
-                                                        .Inclination = oNewSegment.Inclination
-                                                        .Bearing = oNewSegment.Bearing
-                                                        .Left = oNewSegment.Left
-                                                        .Right = oNewSegment.Right
-                                                        .Up = oNewSegment.Up
-                                                        .Down = oNewSegment.Down
-                                                        .Exclude = oNewSegment.Exclude
-                                                        .Splay = oNewSegment.Splay
-                                                        .Surface = oNewSegment.Surface
-                                                        .Duplicate = oNewSegment.Duplicate
-                                                        .Cut = oNewSegment.Cut
-                                                        .Unbindable = oNewSegment.Unbindable
-                                                        .Virtual = oNewSegment.Virtual
-                                                        .Direction = oNewSegment.Direction
-                                                        .Color = oNewSegment.Color
-                                                        Call .DataProperties.CopyFrom(oNewSegment.DataProperties)
-                                                        Call .Save()
-                                                    End With
+                                                    'With oOldSegment
+                                                    '    Call .SetCave(oNewSegment.Cave, oNewSegment.Branch)
+                                                    '    Call .SetSession(oNewSegment.Session)
+                                                    '    .Distance = oNewSegment.Distance
+                                                    '    .Inclination = oNewSegment.Inclination
+                                                    '    .Bearing = oNewSegment.Bearing
+                                                    '    .Left = oNewSegment.Left
+                                                    '    .Right = oNewSegment.Right
+                                                    '    .Up = oNewSegment.Up
+                                                    '    .Down = oNewSegment.Down
+                                                    '    .Exclude = oNewSegment.Exclude
+                                                    '    .Splay = oNewSegment.Splay
+                                                    '    .Surface = oNewSegment.Surface
+                                                    '    .Duplicate = oNewSegment.Duplicate
+                                                    '    .Cut = oNewSegment.Cut
+                                                    '    .Unbindable = oNewSegment.Unbindable
+                                                    '    .Virtual = oNewSegment.Virtual
+                                                    '    .Direction = oNewSegment.Direction
+                                                    '    .Color = oNewSegment.Color
+                                                    '    Call .DataProperties.CopyFrom(oNewSegment.DataProperties)
+                                                    '    Call .Save()
+                                                    'End With
                                                 End If
                                             End If
                                             Call oDuplicatedSegments.Add(oNewSegment.ID, oOldSegment.ID)

@@ -11512,7 +11512,7 @@
     <value>0, 32</value>
   </data>
   <data name="pnlDesigner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 732</value>
+    <value>648, 732</value>
   </data>
   <data name="pnlDesigner.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -13242,50 +13242,72 @@
   <data name="pnlForm.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
     <value>Default</value>
   </data>
-  <data name="ControlContainer13.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+  <data name="ControlContainer9.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
     <value>Default</value>
   </data>
-  <data name="ControlContainer13.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="ControlContainer9.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="ControlContainer13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 766</value>
+  <data name="ControlContainer9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>428, 766</value>
   </data>
-  <data name="ControlContainer13.TabIndex" type="System.Int32, mscorlib">
+  <data name="ControlContainer9.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;ControlContainer13.Name" xml:space="preserve">
-    <value>ControlContainer13</value>
+  <data name="&gt;&gt;ControlContainer9.Name" xml:space="preserve">
+    <value>ControlContainer9</value>
   </data>
-  <data name="&gt;&gt;ControlContainer13.Type" xml:space="preserve">
+  <data name="&gt;&gt;ControlContainer9.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Docking.ControlContainer, DevExpress.XtraBars.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;ControlContainer13.Parent" xml:space="preserve">
-    <value>dockBrushesAndPens</value>
+  <data name="&gt;&gt;ControlContainer9.Parent" xml:space="preserve">
+    <value>dockClipart</value>
   </data>
-  <data name="&gt;&gt;ControlContainer13.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;ControlContainer9.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="dockBrushesAndPens.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="dockClipart.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFpEZXZFeHByZXNzLkRhdGEudjI0LjIsIFZlcnNpb249MjQuMi4x
+        My4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAAAB1E
+        ZXZFeHByZXNzLlV0aWxzLlN2Zy5TdmdJbWFnZQEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB1AwAAAu+7
+        vzw/eG1sIHZlcnNpb249JzEuMCcgZW5jb2Rpbmc9J1VURi04Jz8+DQo8c3ZnIHg9IjBweCIgeT0iMHB4
+        IiB2aWV3Qm94PSIwIDAgMzIgMzIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3Jn
+        LzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sOnNw
+        YWNlPSJwcmVzZXJ2ZSIgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAw
+        IDMyIDMyIj4NCiAgPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5CbGFja3tmaWxsOiM3MjcyNzI7fQoJ
+        LkdyZWVue2ZpbGw6IzAzOUMyMzt9CgkuWWVsbG93e2ZpbGw6I0ZGQjExNTt9Cgkuc3Qwe29wYWNpdHk6
+        MC41O30KPC9zdHlsZT4NCiAgPHJlY3QgeD0iMCIgeT0iMjQiIHdpZHRoPSIyNiIgaGVpZ2h0PSI4IiBj
+        bGFzcz0iWWVsbG93IiAvPg0KICA8cG9seWdvbiBwb2ludHM9IjMyLDMwIDI4LDMyIDI4LDI0IDMyLDIy
+        ICIgY2xhc3M9IlllbGxvdyIgLz4NCiAgPGNpcmNsZSBjeD0iMTkiIGN5PSIxMSIgcj0iMyIgY2xhc3M9
+        IlllbGxvdyIgLz4NCiAgPHBvbHlnb24gcG9pbnRzPSIxNiwyMiA4LDE0IDYsMTYgNiwyMiAiIGNsYXNz
+        PSJHcmVlbiIgLz4NCiAgPGcgY2xhc3M9InN0MCI+DQogICAgPHBvbHlnb24gcG9pbnRzPSIxOCwyMiAx
+        NCwxOCAxNiwxNiAyMiwyMiAgIiBjbGFzcz0iR3JlZW4iIC8+DQogIDwvZz4NCiAgPHBhdGggZD0iTTYs
+        MXYxaDIydjE4aDJWMlYxYzAtMC42LTAuNC0xLTEtMUg3QzYuNCwwLDYsMC40LDYsMXoiIGNsYXNzPSJC
+        bGFjayIgLz4NCiAgPHBhdGggZD0iTTQsNmgyMHYxNmgyVjVjMC0wLjUtMC41LTEtMS0xSDNDMi41LDQs
+        Miw0LjUsMiw1djE3aDJWNnoiIGNsYXNzPSJCbGFjayIgLz4NCjwvc3ZnPgs=
+</value>
+  </data>
+  <data name="dockClipart.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 30</value>
   </data>
-  <data name="dockBrushesAndPens.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 766</value>
+  <data name="dockClipart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>428, 766</value>
   </data>
-  <data name="dockBrushesAndPens.Text" xml:space="preserve">
-    <value>Brushes and pens gallery</value>
+  <data name="dockClipart.Text" xml:space="preserve">
+    <value>Clipart gallery</value>
   </data>
-  <data name="&gt;&gt;dockBrushesAndPens.Name" xml:space="preserve">
-    <value>dockBrushesAndPens</value>
+  <data name="&gt;&gt;dockClipart.Name" xml:space="preserve">
+    <value>dockClipart</value>
   </data>
-  <data name="&gt;&gt;dockBrushesAndPens.Type" xml:space="preserve">
+  <data name="&gt;&gt;dockClipart.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Docking.DockPanel, DevExpress.XtraBars.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;dockBrushesAndPens.Parent" xml:space="preserve">
+  <data name="&gt;&gt;dockClipart.Parent" xml:space="preserve">
     <value>panelContainer1</value>
   </data>
-  <data name="&gt;&gt;dockBrushesAndPens.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;dockClipart.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="ControlContainer10.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
     <value>Default</value>
@@ -13294,7 +13316,7 @@
     <value>Right</value>
   </data>
   <data name="pnlDesignProp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 0</value>
+    <value>-125, 0</value>
   </data>
   <data name="pnlDesignProp.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 766</value>
@@ -13321,7 +13343,7 @@
     <value>Right</value>
   </data>
   <data name="pnl3DProp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>261, 0</value>
+    <value>-78, 0</value>
   </data>
   <data name="pnl3DProp.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 766</value>
@@ -13378,7 +13400,7 @@
     <value>Right</value>
   </data>
   <data name="pnlObjectProp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>312, 0</value>
+    <value>-27, 0</value>
   </data>
   <data name="pnlObjectProp.Size" type="System.Drawing.Size, System.Drawing">
     <value>455, 766</value>
@@ -13402,7 +13424,7 @@
     <value>0, 0</value>
   </data>
   <data name="ControlContainer10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 766</value>
+    <value>428, 766</value>
   </data>
   <data name="ControlContainer10.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -13453,7 +13475,7 @@
     <value>4, 30</value>
   </data>
   <data name="dockProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 766</value>
+    <value>428, 766</value>
   </data>
   <data name="dockProperties.Text" xml:space="preserve">
     <value>Properties</value>
@@ -13477,7 +13499,7 @@
     <value>0, 0</value>
   </data>
   <data name="ControlContainer7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 766</value>
+    <value>428, 766</value>
   </data>
   <data name="ControlContainer7.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -13523,7 +13545,7 @@
     <value>4, 30</value>
   </data>
   <data name="dockLevels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 766</value>
+    <value>428, 766</value>
   </data>
   <data name="dockLevels.Text" xml:space="preserve">
     <value>Levels</value>
@@ -13540,78 +13562,11 @@
   <data name="&gt;&gt;dockLevels.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="ControlContainer9.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
-    <value>Default</value>
-  </data>
-  <data name="ControlContainer9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="ControlContainer9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 766</value>
-  </data>
-  <data name="ControlContainer9.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ControlContainer9.Name" xml:space="preserve">
-    <value>ControlContainer9</value>
-  </data>
-  <data name="&gt;&gt;ControlContainer9.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Docking.ControlContainer, DevExpress.XtraBars.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;ControlContainer9.Parent" xml:space="preserve">
-    <value>dockClipart</value>
-  </data>
-  <data name="&gt;&gt;ControlContainer9.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="dockClipart.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFpEZXZFeHByZXNzLkRhdGEudjI0LjIsIFZlcnNpb249MjQuMi4x
-        My4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAAAB1E
-        ZXZFeHByZXNzLlV0aWxzLlN2Zy5TdmdJbWFnZQEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB1AwAAAu+7
-        vzw/eG1sIHZlcnNpb249JzEuMCcgZW5jb2Rpbmc9J1VURi04Jz8+DQo8c3ZnIHg9IjBweCIgeT0iMHB4
-        IiB2aWV3Qm94PSIwIDAgMzIgMzIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3Jn
-        LzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sOnNw
-        YWNlPSJwcmVzZXJ2ZSIgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAw
-        IDMyIDMyIj4NCiAgPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5CbGFja3tmaWxsOiM3MjcyNzI7fQoJ
-        LkdyZWVue2ZpbGw6IzAzOUMyMzt9CgkuWWVsbG93e2ZpbGw6I0ZGQjExNTt9Cgkuc3Qwe29wYWNpdHk6
-        MC41O30KPC9zdHlsZT4NCiAgPHJlY3QgeD0iMCIgeT0iMjQiIHdpZHRoPSIyNiIgaGVpZ2h0PSI4IiBj
-        bGFzcz0iWWVsbG93IiAvPg0KICA8cG9seWdvbiBwb2ludHM9IjMyLDMwIDI4LDMyIDI4LDI0IDMyLDIy
-        ICIgY2xhc3M9IlllbGxvdyIgLz4NCiAgPGNpcmNsZSBjeD0iMTkiIGN5PSIxMSIgcj0iMyIgY2xhc3M9
-        IlllbGxvdyIgLz4NCiAgPHBvbHlnb24gcG9pbnRzPSIxNiwyMiA4LDE0IDYsMTYgNiwyMiAiIGNsYXNz
-        PSJHcmVlbiIgLz4NCiAgPGcgY2xhc3M9InN0MCI+DQogICAgPHBvbHlnb24gcG9pbnRzPSIxOCwyMiAx
-        NCwxOCAxNiwxNiAyMiwyMiAgIiBjbGFzcz0iR3JlZW4iIC8+DQogIDwvZz4NCiAgPHBhdGggZD0iTTYs
-        MXYxaDIydjE4aDJWMlYxYzAtMC42LTAuNC0xLTEtMUg3QzYuNCwwLDYsMC40LDYsMXoiIGNsYXNzPSJC
-        bGFjayIgLz4NCiAgPHBhdGggZD0iTTQsNmgyMHYxNmgyVjVjMC0wLjUtMC41LTEtMS0xSDNDMi41LDQs
-        Miw0LjUsMiw1djE3aDJWNnoiIGNsYXNzPSJCbGFjayIgLz4NCjwvc3ZnPgs=
-</value>
-  </data>
-  <data name="dockClipart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 30</value>
-  </data>
-  <data name="dockClipart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 766</value>
-  </data>
-  <data name="dockClipart.Text" xml:space="preserve">
-    <value>Clipart gallery</value>
-  </data>
-  <data name="&gt;&gt;dockClipart.Name" xml:space="preserve">
-    <value>dockClipart</value>
-  </data>
-  <data name="&gt;&gt;dockClipart.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Docking.DockPanel, DevExpress.XtraBars.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;dockClipart.Parent" xml:space="preserve">
-    <value>panelContainer1</value>
-  </data>
-  <data name="&gt;&gt;dockClipart.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="panelContainer1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1166, 0</value>
+    <value>1505, 0</value>
   </data>
   <data name="panelContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>774, 829</value>
+    <value>435, 829</value>
   </data>
   <data name="panelContainer1.Text" xml:space="preserve">
     <value>panelContainer1</value>
@@ -19202,7 +19157,7 @@
     <value>0, 0</value>
   </data>
   <data name="dockTopDesignerBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 32</value>
+    <value>648, 32</value>
   </data>
   <data name="dockTopDesignerBar.Text" xml:space="preserve">
     <value>StandaloneBarDockControl1</value>
@@ -19522,7 +19477,7 @@
     <value>False</value>
   </data>
   <data name="grdSegments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>388, 403</value>
+    <value>579, 403</value>
   </data>
   <data name="grdSegments.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -19597,7 +19552,7 @@
     <value>1</value>
   </data>
   <data name="spSegments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>648, 403</value>
+    <value>839, 403</value>
   </data>
   <data name="spSegments.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -20239,7 +20194,7 @@
     <value>28</value>
   </data>
   <data name="grdTrigPoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>388, 351</value>
+    <value>579, 351</value>
   </data>
   <data name="grdTrigPoints.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -20281,7 +20236,7 @@
     <value>1</value>
   </data>
   <data name="spTrigPoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>648, 351</value>
+    <value>839, 351</value>
   </data>
   <data name="spTrigPoints.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -20311,7 +20266,7 @@
     <value>1</value>
   </data>
   <data name="spSegmentsAndTrigpoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>648, 764</value>
+    <value>839, 764</value>
   </data>
   <data name="spSegmentsAndTrigpoints.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -20369,6 +20324,45 @@
   </data>
   <data name="&gt;&gt;mnuDesignItemOLD.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ControlContainer13.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
+  <data name="ControlContainer13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 34</value>
+  </data>
+  <data name="ControlContainer13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 162</value>
+  </data>
+  <data name="ControlContainer13.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ControlContainer13.Name" xml:space="preserve">
+    <value>ControlContainer13</value>
+  </data>
+  <data name="&gt;&gt;ControlContainer13.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Docking.ControlContainer, DevExpress.XtraBars.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;ControlContainer13.Parent" xml:space="preserve">
+    <value>dockBrushesAndPens</value>
+  </data>
+  <data name="&gt;&gt;ControlContainer13.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dockBrushesAndPens.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-32768, -32768</value>
+  </data>
+  <data name="dockBrushesAndPens.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 200</value>
+  </data>
+  <data name="dockBrushesAndPens.Text" xml:space="preserve">
+    <value>Brushes and pens gallery</value>
+  </data>
+  <data name="&gt;&gt;dockBrushesAndPens.Name" xml:space="preserve">
+    <value>dockBrushesAndPens</value>
+  </data>
+  <data name="&gt;&gt;dockBrushesAndPens.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Docking.DockPanel, DevExpress.XtraBars.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="ControlContainer8.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
     <value>Default</value>
@@ -20599,7 +20593,7 @@
     <value>0, 764</value>
   </data>
   <data name="dockBottomSegmentsAndTrigpoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>648, 32</value>
+    <value>839, 32</value>
   </data>
   <data name="dockBottomSegmentsAndTrigpoints.Text" xml:space="preserve">
     <value>StandaloneBarDockControl1</value>
@@ -20620,7 +20614,7 @@
     <value>0, 0</value>
   </data>
   <data name="ControlContainer6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>648, 796</value>
+    <value>839, 796</value>
   </data>
   <data name="ControlContainer6.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -20650,7 +20644,7 @@
     <value>0, 764</value>
   </data>
   <data name="dockBottomDesignerBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 32</value>
+    <value>648, 32</value>
   </data>
   <data name="dockBottomDesignerBar.Text" xml:space="preserve">
     <value>StandaloneBarDockControl1</value>
@@ -20671,7 +20665,7 @@
     <value>0, 0</value>
   </data>
   <data name="DockPanel1_Container.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 796</value>
+    <value>648, 796</value>
   </data>
   <data name="DockPanel1_Container.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

@@ -3488,8 +3488,11 @@ Namespace cSurvey.UIHelpers
         Private oIndex As Dictionary(Of cSegment, cSegmentPlaceholder)
         Private WithEvents oSegments As cSegments
 
+        Private ReadOnly oContext As Threading.SynchronizationContext
+
         Public Sub New(Segments As cSegments)
             MyBase.New
+            oContext = Threading.SynchronizationContext.Current
             oIndex = New Dictionary(Of cSegment, cSegmentPlaceholder)
             oSegments = Segments
             For Each oSegment As cSegment In oSegments
@@ -3501,59 +3504,74 @@ Namespace cSurvey.UIHelpers
         End Sub
 
         Private Sub oSegments_OnClear(Sender As cSegments) Handles oSegments.OnClear
-            Call MyBase.Clear()
-            Call oIndex.Clear()
+            oContext.Post(Sub()
+                              Call MyBase.Clear()
+                              Call oIndex.Clear()
+                          End Sub, Nothing
+                )
         End Sub
 
         Private Sub oSegments_OnSegmentAppend(Sender As cSegments, e As cSegments.OnSegmentEventArgs) Handles oSegments.OnSegmentAppend
-            Dim oPlaceholder As cSegmentPlaceholder = New cSegmentPlaceholder(e.Segment)
-            Call MyBase.Add(oPlaceholder)
-            Call oIndex.Add(e.Segment, oPlaceholder)
-            Call oPlaceholder.SetVisible(True)
-            Call Validate(oPlaceholder)
+            oContext.Post(Sub()
+                              Dim oPlaceholder As cSegmentPlaceholder = New cSegmentPlaceholder(e.Segment)
+                              Call MyBase.Add(oPlaceholder)
+                              Call oIndex.Add(e.Segment, oPlaceholder)
+                              Call oPlaceholder.SetVisible(True)
+                              Call Validate(oPlaceholder)
+                          End Sub, Nothing
+                )
         End Sub
 
         Private Sub oSegments_OnSegmentInsert(Sender As cSegments, e As cSegments.OnSegmentEventArgs) Handles oSegments.OnSegmentInsert
-            Dim oPlaceholder As cSegmentPlaceholder = New cSegmentPlaceholder(e.Segment)
-            Call MyBase.Insert(e.Index, oPlaceholder)
-            Call oIndex.Add(e.Segment, oPlaceholder)
-            Call oPlaceholder.SetVisible(True)
-            Call Validate(oPlaceholder)
+            oContext.Post(Sub()
+                              Dim oPlaceholder As cSegmentPlaceholder = New cSegmentPlaceholder(e.Segment)
+                              Call MyBase.Insert(e.Index, oPlaceholder)
+                              Call oIndex.Add(e.Segment, oPlaceholder)
+                              Call oPlaceholder.SetVisible(True)
+                              Call Validate(oPlaceholder)
+                          End Sub, Nothing)
         End Sub
 
         Public Function FindSegment(Segment As cSegment) As cSegmentPlaceholder
             Return oIndex(Segment)
-            'Return MyBase.FirstOrDefault(Function(oItem) oItem.Segment Is Segment)
         End Function
 
         Private Sub oSegments_OnSegmentRemove(Sender As cSegments, e As cSegments.OnSegmentEventArgs) Handles oSegments.OnSegmentRemove
-            Dim oPlaceholder As cSegmentPlaceholder = FindSegment(e.Segment)
-            If oPlaceholder IsNot Nothing Then
-                Call MyBase.Remove(oPlaceholder)
-                Call oIndex.Remove(oPlaceholder.Segment)
-            End If
+            oContext.Post(Sub()
+                              Dim oPlaceholder As cSegmentPlaceholder = FindSegment(e.Segment)
+                              If oPlaceholder IsNot Nothing Then
+                                  Call MyBase.Remove(oPlaceholder)
+                                  Call oIndex.Remove(oPlaceholder.Segment)
+                              End If
+                          End Sub, Nothing)
         End Sub
 
         Private Sub oSegments_OnSegmentRemoveRange(Sender As cSegments, e As cSegments.OnSegmentsEventArgs) Handles oSegments.OnSegmentRemoveRange
-            Dim oPlaceholders As List(Of cSegmentPlaceholder) = New List(Of cSegmentPlaceholder)
-            For Each iIndex As Integer In e.Indexes
-                oPlaceholders.Add(MyBase.Item(iIndex))
-            Next
-            For Each oPlaceholder As cSegmentPlaceholder In oPlaceholders
-                Call MyBase.Remove(oPlaceholder)
-                Call oIndex.Remove(oPlaceholder.Segment)
-            Next
+            oContext.Post(Sub()
+                              Dim oPlaceholders As List(Of cSegmentPlaceholder) = New List(Of cSegmentPlaceholder)
+                              For Each iIndex As Integer In e.Indexes
+                                  oPlaceholders.Add(MyBase.Item(iIndex))
+                              Next
+                              For Each oPlaceholder As cSegmentPlaceholder In oPlaceholders
+                                  Call MyBase.Remove(oPlaceholder)
+                                  Call oIndex.Remove(oPlaceholder.Segment)
+                              Next
+                          End Sub, Nothing)
         End Sub
 
         Private Sub oSegments_OnSegmentMove(Sender As cSegments, e As cSegments.OnSegmentMoveEventArgs) Handles oSegments.OnSegmentMove
-            Dim oSegmentPlaceholder As cSegmentPlaceholder = MyBase.Item(e.OldIndex)
-            Call MyBase.RemoveAt(e.OldIndex)
-            Call MyBase.Insert(e.Index, oSegmentPlaceholder)
+            oContext.Post(Sub()
+                              Dim oSegmentPlaceholder As cSegmentPlaceholder = MyBase.Item(e.OldIndex)
+                              Call MyBase.RemoveAt(e.OldIndex)
+                              Call MyBase.Insert(e.Index, oSegmentPlaceholder)
+                          End Sub, Nothing)
         End Sub
 
         Private Sub oSegments_OnSegmentChange(Sender As cSegments, e As cSegments.OnSegmentEventArgs) Handles oSegments.OnSegmentChange
-            Dim oPlaceholder As cSegmentPlaceholder = FindSegment(e.Segment)
-            Call Validate(oPlaceholder)
+            oContext.Post(Sub()
+                              Dim oPlaceholder As cSegmentPlaceholder = FindSegment(e.Segment)
+                              Call Validate(oPlaceholder)
+                          End Sub, Nothing)
         End Sub
 
         Public Sub Validate(Segment As cSegmentPlaceholder)

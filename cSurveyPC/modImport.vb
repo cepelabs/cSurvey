@@ -388,6 +388,10 @@ Module modImport
         If oXMLProperties.HasAttribute("origin") Then
             Call oXMLProperties.SetAttribute("origin", oXMLProperties.GetAttribute("origin").ToString.ToUpper)
         End If
+        'topodroid puts notes as childnode in properties, but csurvey use an attribute
+        If modXML.ChildElementExist(oXMLProperties, "note") Then
+            Call oXMLProperties.SetAttribute("note", oXMLProperties.Item("note").InnerText)
+        End If
 
         'search for segment with not guid id
         Dim oSegmentIDs As Dictionary(Of String, String) = New Dictionary(Of String, String)

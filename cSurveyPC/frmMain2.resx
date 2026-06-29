@@ -20349,21 +20349,6 @@
   <data name="&gt;&gt;ControlContainer13.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="dockBrushesAndPens.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-32768, -32768</value>
-  </data>
-  <data name="dockBrushesAndPens.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 200</value>
-  </data>
-  <data name="dockBrushesAndPens.Text" xml:space="preserve">
-    <value>Brushes and pens gallery</value>
-  </data>
-  <data name="&gt;&gt;dockBrushesAndPens.Name" xml:space="preserve">
-    <value>dockBrushesAndPens</value>
-  </data>
-  <data name="&gt;&gt;dockBrushesAndPens.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Docking.DockPanel, DevExpress.XtraBars.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
   <data name="ControlContainer8.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
     <value>Default</value>
   </data>
@@ -20681,6 +20666,21 @@
   </data>
   <data name="&gt;&gt;DockPanel1_Container.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="dockBrushesAndPens.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-32768, -32768</value>
+  </data>
+  <data name="dockBrushesAndPens.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 200</value>
+  </data>
+  <data name="dockBrushesAndPens.Text" xml:space="preserve">
+    <value>Brushes and pens gallery</value>
+  </data>
+  <data name="&gt;&gt;dockBrushesAndPens.Name" xml:space="preserve">
+    <value>dockBrushesAndPens</value>
+  </data>
+  <data name="&gt;&gt;dockBrushesAndPens.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Docking.DockPanel, DevExpress.XtraBars.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="Label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>

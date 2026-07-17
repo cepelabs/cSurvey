@@ -45,58 +45,61 @@ Friend Class cItemCrossSectionSplayPropertyControl
     End Sub
 
     Private Sub picPropCrossSectionProjectionSchema_PaintEx(sender As Object, e As DevExpress.XtraGrid.PaintExEventArgs) Handles picPropCrossSectionProjectionSchema.PaintEx
-        Dim dBearing As Decimal = DirectCast(Me.Item, cItemCrossSection).Segment.Data.Data.Bearing
-        If DirectCast(Me.Item, cItemCrossSection).Direction = cIItemCrossSection.DirectionEnum.Inverted Then
-            dBearing -= 180
-        End If
-        Dim iAngle As Integer = Me.Item.SplayBorderProjectionAngle
-        Dim iVAngle As Integer = Me.Item.SplayBorderProjectionVerticalAngle
-        Dim iVariation As Integer = Me.Item.SplayBorderMaxAngleVariation
+        Dim oSegment As cSegment = DirectCast(Me.Item, cItemCrossSection).Segment
+        If oSegment IsNot Nothing Then
+            Dim dBearing As Decimal = oSegment.Data.Data.Bearing
+            If DirectCast(Me.Item, cItemCrossSection).Direction = cIItemCrossSection.DirectionEnum.Inverted Then
+                dBearing -= 180
+            End If
+            Dim iAngle As Integer = Me.Item.SplayBorderProjectionAngle
+            Dim iVAngle As Integer = Me.Item.SplayBorderProjectionVerticalAngle
+            Dim iVariation As Integer = Me.Item.SplayBorderMaxAngleVariation
 
-        e.Cache.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
-        e.Cache.InterpolationMode = Drawing2D.InterpolationMode.HighQualityBicubic
-        e.Cache.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
+            e.Cache.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
+            e.Cache.InterpolationMode = Drawing2D.InterpolationMode.HighQualityBicubic
+            e.Cache.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
 
-        Dim iProjectionAngle As Integer = dBearing + iAngle
-        Dim oRect As Rectangle = e.ClipRectangle
-        Call oRect.Inflate(-4, -4)
-        If oRect.Width > 0 AndAlso oRect.Height > 0 Then
+            Dim iProjectionAngle As Integer = dBearing + iAngle
+            Dim oRect As Rectangle = New Rectangle(0, 0, picPropCrossSectionProjectionSchema.ClientSize.Width, picPropCrossSectionProjectionSchema.ClientSize.Height) 'e.ClipRectangle
+            Call oRect.Inflate(-4, -4)
+            If oRect.Width > 0 AndAlso oRect.Height > 0 Then
 
-            Using oMatrix As DevExpress.Utils.Drawing.DirectXMatrix = New DevExpress.Utils.Drawing.DirectXMatrix
-                Call oMatrix.RotateAt(dBearing, modPaint.GetCenterPoint(oRect))
-                e.Cache.SetTransform(oMatrix)
-                Using oPen As New Pen(Brushes.DimGray, 1)
-                    e.Cache.DrawEllipse(oPen, oRect)
-                    oPen.StartCap = Drawing2D.LineCap.Custom
-                    oPen.CustomStartCap = New Drawing2D.AdjustableArrowCap(5, 5, True)
-                    e.Cache.DrawLine(oPen, New Point(oRect.Left + oRect.Width \ 2, oRect.Top), New Point(oRect.Left + oRect.Width \ 2, oRect.Bottom))
+                Using oMatrix As DevExpress.Utils.Drawing.DirectXMatrix = New DevExpress.Utils.Drawing.DirectXMatrix
+                    Call oMatrix.RotateAt(dBearing, modPaint.GetCenterPoint(oRect))
+                    e.Cache.SetTransform(oMatrix)
+                    Using oPen As New Pen(Brushes.DimGray, 1)
+                        e.Cache.DrawEllipse(oPen, oRect)
+                        oPen.StartCap = Drawing2D.LineCap.Custom
+                        oPen.CustomStartCap = New Drawing2D.AdjustableArrowCap(5, 5, True)
+                        e.Cache.DrawLine(oPen, New Point(oRect.Left + oRect.Width \ 2, oRect.Top), New Point(oRect.Left + oRect.Width \ 2, oRect.Bottom))
+                    End Using
+                    Using oPen As New Pen(Brushes.Gray, 2)
+                        'e.Cache.DrawLine(oPen, New Point(oRect.Left + oRect.Width \ 2, oRect.Top), New Point(oRect.Left + oRect.Width \ 2, oRect.Bottom))
+                        e.Cache.DrawLine(oPen, New Point(oRect.Left, oRect.Top + oRect.Height \ 2), New Point(oRect.Right, oRect.Top + oRect.Height \ 2))
+                    End Using
                 End Using
-                Using oPen As New Pen(Brushes.Gray, 2)
-                    'e.Cache.DrawLine(oPen, New Point(oRect.Left + oRect.Width \ 2, oRect.Top), New Point(oRect.Left + oRect.Width \ 2, oRect.Bottom))
-                    e.Cache.DrawLine(oPen, New Point(oRect.Left, oRect.Top + oRect.Height \ 2), New Point(oRect.Right, oRect.Top + oRect.Height \ 2))
+                Using oMatrix As DevExpress.Utils.Drawing.DirectXMatrix = New DevExpress.Utils.Drawing.DirectXMatrix
+                    Call oMatrix.RotateAt(iProjectionAngle, modPaint.GetCenterPoint(oRect))
+                    e.Cache.SetTransform(oMatrix)
+                    Using oPen As New Pen(Color.FromArgb(180, Color.Red), 1)
+                        oPen.StartCap = Drawing2D.LineCap.Custom
+                        oPen.CustomStartCap = New Drawing2D.AdjustableArrowCap(5, 5, True)
+                        e.Cache.DrawLine(oPen, New Point(oRect.Left + oRect.Width \ 2, oRect.Top), New Point(oRect.Left + oRect.Width \ 2, oRect.Bottom))
+                    End Using
+                    Using oOtherLightBrush As Brush = New SolidBrush(Color.FromArgb(80, Color.Red))
+                        If iVariation > 0 Then
+                            Dim oRect1 As Rectangle = New Rectangle(oRect.Left, oRect.Top, oRect.Width, oRect.Height)
+                            'e.Cache.FillRectangle(Brushes.Yellow, oRect1)
+                            Call e.Cache.FillPie(oOtherLightBrush, oRect1, 180 - iVariation, iVariation * 2)
+                        End If
+                        If iVariation > 0 Then
+                            Dim oRect2 As Rectangle = New Rectangle(oRect.Left, oRect.Top, oRect.Width, oRect.Height)
+                            'e.Cache.FillRectangle(Brushes.Yellow, oRect2)
+                            Call e.Cache.FillPie(oOtherLightBrush, oRect2, 0 - iVariation, iVariation * 2)
+                        End If
+                    End Using
                 End Using
-            End Using
-            Using oMatrix As DevExpress.Utils.Drawing.DirectXMatrix = New DevExpress.Utils.Drawing.DirectXMatrix
-                Call oMatrix.RotateAt(iProjectionAngle, modPaint.GetCenterPoint(oRect))
-                e.Cache.SetTransform(oMatrix)
-                Using oPen As New Pen(Color.FromArgb(180, Color.Red), 1)
-                    oPen.StartCap = Drawing2D.LineCap.Custom
-                    oPen.CustomStartCap = New Drawing2D.AdjustableArrowCap(5, 5, True)
-                    e.Cache.DrawLine(oPen, New Point(oRect.Left + oRect.Width \ 2, oRect.Top), New Point(oRect.Left + oRect.Width \ 2, oRect.Bottom))
-                End Using
-                Using oOtherLightBrush As Brush = New SolidBrush(Color.FromArgb(80, Color.Red))
-                    If iVariation > 0 Then
-                        Dim oRect1 As Rectangle = New Rectangle(oRect.Left, oRect.Top, oRect.Width, oRect.Height)
-                        'e.Cache.FillRectangle(Brushes.Yellow, oRect1)
-                        Call e.Cache.FillPie(oOtherLightBrush, oRect1, 180 - iVariation, iVariation * 2)
-                    End If
-                    If iVariation > 0 Then
-                        Dim oRect2 As Rectangle = New Rectangle(oRect.Left, oRect.Top, oRect.Width, oRect.Height)
-                        'e.Cache.FillRectangle(Brushes.Yellow, oRect2)
-                        Call e.Cache.FillPie(oOtherLightBrush, oRect2, 0 - iVariation, iVariation * 2)
-                    End If
-                End Using
-            End Using
+            End If
         End If
     End Sub
 

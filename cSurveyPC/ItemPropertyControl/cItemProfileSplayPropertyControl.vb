@@ -110,7 +110,7 @@ Friend Class cItemProfileSplayPropertyControl
         e.Cache.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
 
         Dim iProjectionAngle As Integer = dBearing + iAngle
-        Dim oRect As Rectangle = e.ClipRectangle
+        Dim oRect As Rectangle = New Rectangle(0, 0, picPropProfileProjectionSchema.ClientSize.Width, picPropProfileProjectionSchema.ClientSize.Height) 'e.ClipRectangle
         Call oRect.Inflate(-4, -4)
 
         If oRect.Width > 0 AndAlso oRect.Height > 0 Then
@@ -145,6 +145,7 @@ Friend Class cItemProfileSplayPropertyControl
                         Call e.Cache.FillPie(oOtherLightBrush, oRect2, -90 - iVariation, iVariation * 2)
                     End If
                 End Using
+                e.Cache.ResetTransform()
             End Using
         End If
     End Sub

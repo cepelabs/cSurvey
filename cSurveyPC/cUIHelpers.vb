@@ -3503,75 +3503,117 @@ Namespace cSurvey.UIHelpers
             Next
         End Sub
 
-        Private Sub oSegments_OnClear(Sender As cSegments) Handles oSegments.OnClear
-            oContext.Post(Sub()
-                              Call MyBase.Clear()
-                              Call oIndex.Clear()
-                          End Sub, Nothing
-                )
+        Private Sub pSegmentsClear()
+            Call MyBase.Clear()
+            Call oIndex.Clear()
         End Sub
 
+        Private Sub oSegments_OnClear(Sender As cSegments) Handles oSegments.OnClear
+            If Threading.SynchronizationContext.Current Is oContext Then
+                Call pSegmentsClear()
+            Else
+                oContext.Post(Sub() Call pSegmentsClear(), Nothing)
+            End If
+        End Sub
+
+        Private Function pSegmentAppend(Segment As cSegment) As cSegmentPlaceholder
+            Dim oPlaceholder As cSegmentPlaceholder = New cSegmentPlaceholder(Segment)
+            Call MyBase.Add(oPlaceholder)
+            Call oIndex.Add(Segment, oPlaceholder)
+            Call oPlaceholder.SetVisible(True)
+            Call Validate(oPlaceholder)
+            Return oPlaceholder
+        End Function
+
+        Private Function pSegmentInsert(Segment As cSegment, Index As Integer) As cSegmentPlaceholder
+            Dim oPlaceholder As cSegmentPlaceholder = New cSegmentPlaceholder(Segment)
+            Call MyBase.Insert(Index, oPlaceholder)
+            Call oIndex.Add(Segment, oPlaceholder)
+            Call oPlaceholder.SetVisible(True)
+            Call Validate(oPlaceholder)
+            Return oPlaceholder
+        End Function
+
         Private Sub oSegments_OnSegmentAppend(Sender As cSegments, e As cSegments.OnSegmentEventArgs) Handles oSegments.OnSegmentAppend
-            oContext.Post(Sub()
-                              Dim oPlaceholder As cSegmentPlaceholder = New cSegmentPlaceholder(e.Segment)
-                              Call MyBase.Add(oPlaceholder)
-                              Call oIndex.Add(e.Segment, oPlaceholder)
-                              Call oPlaceholder.SetVisible(True)
-                              Call Validate(oPlaceholder)
-                          End Sub, Nothing
-                )
+            If Threading.SynchronizationContext.Current Is oContext Then
+                Call pSegmentAppend(e.Segment)
+            Else
+                oContext.Post(Sub() Call pSegmentAppend(e.Segment), Nothing)
+            End If
         End Sub
 
         Private Sub oSegments_OnSegmentInsert(Sender As cSegments, e As cSegments.OnSegmentEventArgs) Handles oSegments.OnSegmentInsert
-            oContext.Post(Sub()
-                              Dim oPlaceholder As cSegmentPlaceholder = New cSegmentPlaceholder(e.Segment)
-                              Call MyBase.Insert(e.Index, oPlaceholder)
-                              Call oIndex.Add(e.Segment, oPlaceholder)
-                              Call oPlaceholder.SetVisible(True)
-                              Call Validate(oPlaceholder)
-                          End Sub, Nothing)
+            If Threading.SynchronizationContext.Current Is oContext Then
+                Call pSegmentInsert(e.Segment, e.Index)
+            Else
+                oContext.Post(Sub() Call pSegmentInsert(e.Segment, e.Index), Nothing)
+            End If
         End Sub
 
         Public Function FindSegment(Segment As cSegment) As cSegmentPlaceholder
             Return oIndex(Segment)
         End Function
 
+        Private Sub pSegmentRemove(Segment As cSegment)
+            Dim oPlaceholder As cSegmentPlaceholder = FindSegment(Segment)
+            If oPlaceholder IsNot Nothing Then
+                Call MyBase.Remove(oPlaceholder)
+                Call oIndex.Remove(oPlaceholder.Segment)
+            End If
+        End Sub
+
         Private Sub oSegments_OnSegmentRemove(Sender As cSegments, e As cSegments.OnSegmentEventArgs) Handles oSegments.OnSegmentRemove
-            oContext.Post(Sub()
-                              Dim oPlaceholder As cSegmentPlaceholder = FindSegment(e.Segment)
-                              If oPlaceholder IsNot Nothing Then
-                                  Call MyBase.Remove(oPlaceholder)
-                                  Call oIndex.Remove(oPlaceholder.Segment)
-                              End If
-                          End Sub, Nothing)
+            If Threading.SynchronizationContext.Current Is oContext Then
+                Call pSegmentRemove(e.Segment)
+            Else
+                oContext.Post(Sub() Call pSegmentRemove(e.Segment), Nothing)
+            End If
+        End Sub
+
+        Private Sub pSegmentRemoveRange(Indexes As List(Of Integer))
+            Dim oPlaceholders As List(Of cSegmentPlaceholder) = New List(Of cSegmentPlaceholder)
+            For Each iIndex As Integer In Indexes
+                oPlaceholders.Add(MyBase.Item(iIndex))
+            Next
+            For Each oPlaceholder As cSegmentPlaceholder In oPlaceholders
+                Call MyBase.Remove(oPlaceholder)
+                Call oIndex.Remove(oPlaceholder.Segment)
+            Next
         End Sub
 
         Private Sub oSegments_OnSegmentRemoveRange(Sender As cSegments, e As cSegments.OnSegmentsEventArgs) Handles oSegments.OnSegmentRemoveRange
-            oContext.Post(Sub()
-                              Dim oPlaceholders As List(Of cSegmentPlaceholder) = New List(Of cSegmentPlaceholder)
-                              For Each iIndex As Integer In e.Indexes
-                                  oPlaceholders.Add(MyBase.Item(iIndex))
-                              Next
-                              For Each oPlaceholder As cSegmentPlaceholder In oPlaceholders
-                                  Call MyBase.Remove(oPlaceholder)
-                                  Call oIndex.Remove(oPlaceholder.Segment)
-                              Next
-                          End Sub, Nothing)
+            If Threading.SynchronizationContext.Current Is oContext Then
+                Call pSegmentRemoveRange(e.Indexes)
+            Else
+                oContext.Post(Sub() Call pSegmentRemoveRange(e.Indexes), Nothing)
+            End If
+        End Sub
+
+        Private Sub pSegmentMove(OldIndex As Integer, NewIndex As Integer)
+            Dim oSegmentPlaceholder As cSegmentPlaceholder = MyBase.Item(OldIndex)
+            Call MyBase.RemoveAt(OldIndex)
+            Call MyBase.Insert(NewIndex, oSegmentPlaceholder)
         End Sub
 
         Private Sub oSegments_OnSegmentMove(Sender As cSegments, e As cSegments.OnSegmentMoveEventArgs) Handles oSegments.OnSegmentMove
-            oContext.Post(Sub()
-                              Dim oSegmentPlaceholder As cSegmentPlaceholder = MyBase.Item(e.OldIndex)
-                              Call MyBase.RemoveAt(e.OldIndex)
-                              Call MyBase.Insert(e.Index, oSegmentPlaceholder)
-                          End Sub, Nothing)
+            If Threading.SynchronizationContext.Current Is oContext Then
+                Call pSegmentMove(e.OldIndex, e.Index)
+            Else
+                oContext.Post(Sub() Call pSegmentMove(e.OldIndex, e.Index), Nothing)
+            End If
+        End Sub
+
+        Private Sub pSegmentChange(Segment As cSegment)
+            Dim oPlaceholder As cSegmentPlaceholder = FindSegment(Segment)
+            Call Validate(oPlaceholder)
         End Sub
 
         Private Sub oSegments_OnSegmentChange(Sender As cSegments, e As cSegments.OnSegmentEventArgs) Handles oSegments.OnSegmentChange
-            oContext.Post(Sub()
-                              Dim oPlaceholder As cSegmentPlaceholder = FindSegment(e.Segment)
-                              Call Validate(oPlaceholder)
-                          End Sub, Nothing)
+            If Threading.SynchronizationContext.Current Is oContext Then
+                Call pSegmentChange(e.Segment)
+            Else
+                oContext.Post(Sub() Call pSegmentChange(e.Segment), Nothing)
+            End If
         End Sub
 
         Public Sub Validate(Segment As cSegmentPlaceholder)

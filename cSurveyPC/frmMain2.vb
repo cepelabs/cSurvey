@@ -17902,7 +17902,7 @@ Friend Class frmMain2
                 Call pSurveyCheckSession()
                 Call oSegment.SetSession(DirectCast(btnMainSessionList.EditValue, cSession))
                 Call oSegment.Save()
-                grdViewSegments.RefreshData()
+                'grdViewSegments.RefreshData()
                 Dim iRowHandle As Integer = grdViewSegments.FindRow(oSegment)
                 Call grdViewSegments.FullFocusRow(iRowHandle)
                 Call pSegmentLoad(oSegment)

@@ -25,6 +25,7 @@ Partial Class cItemTransparencyPropertyControl2
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(cItemTransparencyPropertyControl2))
         Me.lblPropTransparency = New DevExpress.XtraEditors.LabelControl()
         Me.trkTransparency = New DevExpress.XtraEditors.TrackBarControl()
+        Me.chkTransparencyNothing = New DevExpress.XtraEditors.CheckButton()
         CType(Me.trkTransparency, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.trkTransparency.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -44,10 +45,20 @@ Partial Class cItemTransparencyPropertyControl2
         Me.trkTransparency.Properties.Maximum = 255
         Me.trkTransparency.Properties.TickFrequency = 15
         '
+        'chkTransparencyNothing
+        '
+        Me.chkTransparencyNothing.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.chkTransparencyNothing.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.duplicatevalues
+        Me.chkTransparencyNothing.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.chkTransparencyNothing, "chkTransparencyNothing")
+        Me.chkTransparencyNothing.Name = "chkTransparencyNothing"
+        Me.chkTransparencyNothing.TabStop = False
+        '
         'cItemTransparencyPropertyControl2
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.chkTransparencyNothing)
         Me.Controls.Add(Me.trkTransparency)
         Me.Controls.Add(Me.lblPropTransparency)
         Me.Name = "cItemTransparencyPropertyControl2"
@@ -59,4 +70,5 @@ Partial Class cItemTransparencyPropertyControl2
     End Sub
     Friend WithEvents lblPropTransparency As DevExpress.XtraEditors.LabelControl
     Friend WithEvents trkTransparency As DevExpress.XtraEditors.TrackBarControl
+    Friend WithEvents chkTransparencyNothing As DevExpress.XtraEditors.CheckButton
 End Class

@@ -9701,8 +9701,8 @@ Friend Class frmMain2
                         oOutputdictionary = New Dictionary(Of String, String)
                         Dim iIndex As Integer = 0
                         For Each sTrigPoint As String In oTrigPointsToElaborate
-                            Call oInputdictionary.Add(sTrigPoint, iIndex)
-                            Call oOutputdictionary.Add(iIndex, sTrigPoint)
+                            Call oInputdictionary.Add(sTrigPoint, iIndex.ToString)
+                            Call oOutputdictionary.Add(iIndex.ToString, sTrigPoint)
                             iIndex += 1
                         Next
                     End If
@@ -9721,8 +9721,7 @@ Friend Class frmMain2
 
                     Call pConsoleAdd(cSurvey.cSurvey.LogEntryType.Unknown, Output)
 
-                    If iExitCode = 0 Then
-                    Else
+                    If iExitCode <> 0 Then
 
                     End If
 

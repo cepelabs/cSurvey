@@ -167,6 +167,12 @@ Namespace cSurvey.Design
             End Try
         End Function
 
+        Public Overridable ReadOnly Property TransparencyValue As Single?
+            Get
+                Return sTransparency
+            End Get
+        End Property
+
         Public Overridable Property Transparency As Single
             Get
                 Return sTransparency
@@ -586,6 +592,16 @@ Namespace cSurvey.Design
                     Call pInvalidate()
                 End If
             End Set
+        End Property
+
+        ''' <summary>
+        ''' Get clipping type value, usefull for reading value for single object or for multiple selection
+        ''' </summary>
+        ''' <returns>Clipping type value or nothing if multiple selection have different values</returns>
+        Public Overridable ReadOnly Property ClippingTypeValue As cItemClippingTypeEnum?
+            Get
+                Return iClippingType
+            End Get
         End Property
 
         Public Overridable Property ClippingType As cItemClippingTypeEnum

@@ -5069,6 +5069,7 @@
     <None Include="Resources\timezones.svg" />
     <None Include="Resources\filter_refresh.svg" />
     <None Include="Resources\properties1.svg" />
+    <None Include="Resources\duplicatevalues.svg" />
     <Content Include="version.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -2170,4 +2170,7 @@
   <data name="properties1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\properties1.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="duplicatevalues" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\duplicatevalues.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
 </root>

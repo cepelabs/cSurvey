@@ -28,6 +28,7 @@ Partial Class cItemClippingPropertyControl
         Me.chkClippingType3 = New DevExpress.XtraEditors.CheckButton()
         Me.chkClippingType2 = New DevExpress.XtraEditors.CheckButton()
         Me.chkClippingType1 = New DevExpress.XtraEditors.CheckButton()
+        Me.chkClippingTypeNothing = New DevExpress.XtraEditors.CheckButton()
         Me.SuspendLayout()
         '
         'lblPropClipping
@@ -43,7 +44,6 @@ Partial Class cItemClippingPropertyControl
         Me.chkClippingType0.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         resources.ApplyResources(Me.chkClippingType0, "chkClippingType0")
         Me.chkClippingType0.Name = "chkClippingType0"
-        Me.chkClippingType0.TabStop = False
         '
         'chkClippingType3
         '
@@ -53,7 +53,6 @@ Partial Class cItemClippingPropertyControl
         Me.chkClippingType3.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         resources.ApplyResources(Me.chkClippingType3, "chkClippingType3")
         Me.chkClippingType3.Name = "chkClippingType3"
-        Me.chkClippingType3.TabStop = False
         '
         'chkClippingType2
         '
@@ -63,7 +62,6 @@ Partial Class cItemClippingPropertyControl
         Me.chkClippingType2.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         resources.ApplyResources(Me.chkClippingType2, "chkClippingType2")
         Me.chkClippingType2.Name = "chkClippingType2"
-        Me.chkClippingType2.TabStop = False
         '
         'chkClippingType1
         '
@@ -73,12 +71,21 @@ Partial Class cItemClippingPropertyControl
         Me.chkClippingType1.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         resources.ApplyResources(Me.chkClippingType1, "chkClippingType1")
         Me.chkClippingType1.Name = "chkClippingType1"
-        Me.chkClippingType1.TabStop = False
+        '
+        'chkClippingTypeNothing
+        '
+        Me.chkClippingTypeNothing.GroupIndex = 1
+        Me.chkClippingTypeNothing.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.chkClippingTypeNothing.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.duplicatevalues
+        Me.chkClippingTypeNothing.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.chkClippingTypeNothing, "chkClippingTypeNothing")
+        Me.chkClippingTypeNothing.Name = "chkClippingTypeNothing"
         '
         'cItemClippingPropertyControl
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.chkClippingTypeNothing)
         Me.Controls.Add(Me.chkClippingType3)
         Me.Controls.Add(Me.chkClippingType2)
         Me.Controls.Add(Me.chkClippingType1)
@@ -94,4 +101,5 @@ Partial Class cItemClippingPropertyControl
     Friend WithEvents chkClippingType3 As DevExpress.XtraEditors.CheckButton
     Friend WithEvents chkClippingType2 As DevExpress.XtraEditors.CheckButton
     Friend WithEvents chkClippingType1 As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkClippingTypeNothing As DevExpress.XtraEditors.CheckButton
 End Class

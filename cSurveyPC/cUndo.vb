@@ -430,7 +430,7 @@ Namespace cSurvey.Helper.Editor
             Call Append(Item)
         End Sub
 
-        Friend Sub New(Parent As cUndo, Description As String, Area As cAreaEnum, Items As IEnumerable(Of cItem), ItemType As Type, PropertyName As String)
+        Friend Sub New(Parent As cUndo, Description As String, Area As cAreaEnum, Items As IEnumerable(Of cItem), PropertyName As String)
             MyBase.New(Parent, Description, Area)
             sPropertyName = PropertyName
             oFirstItems = New List(Of cUndoItemValueDesignPropertyData)
@@ -1032,7 +1032,8 @@ Namespace cSurvey.Helper.Editor
                         oItem = oParent.PlanTools.CurrentItem
                         If oItem IsNot Nothing Then
                             If TypeOf oItem Is cItemItems Then
-                                oCurrentUndoItem = New cUndoDesignItemProperty(Me, Description, Area, DirectCast(oItem, IEnumerable(Of cItem)), PropertyName)
+                                Dim oItems As IEnumerable(Of cItem) = DirectCast(oItem, IEnumerable(Of cItem))
+                                oCurrentUndoItem = New cUndoDesignItemProperty(Me, Description, Area, oItems, PropertyName)
                             Else
                                 oCurrentUndoItem = New cUndoDesignItemProperty(Me, Description, Area, oItem, PropertyName)
                             End If
@@ -1041,7 +1042,8 @@ Namespace cSurvey.Helper.Editor
                         oItem = oParent.ProfileTools.CurrentItem
                         If oItem IsNot Nothing Then
                             If TypeOf oItem Is cItemItems Then
-                                oCurrentUndoItem = New cUndoDesignItemProperty(Me, Description, Area, DirectCast(oItem, IEnumerable(Of cItem)), PropertyName)
+                                Dim oItems As IEnumerable(Of cItem) = DirectCast(oItem, IEnumerable(Of cItem))
+                                oCurrentUndoItem = New cUndoDesignItemProperty(Me, Description, Area, oItems, PropertyName)
                             Else
                                 oCurrentUndoItem = New cUndoDesignItemProperty(Me, Description, Area, oItem, PropertyName)
                             End If

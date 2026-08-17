@@ -565,6 +565,30 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
+        Public Overrides ReadOnly Property TransparencyValue As Single?
+            Get
+                If oItems.Count > 0 Then
+                    Dim sTransparency As Single
+                    Dim bFirst As Boolean = True
+                    For Each oItem As cItem In oItems
+                        If oItem.HaveTransparency Then
+                            If bFirst Then
+                                sTransparency = oItem.Transparency
+                                bFirst = False
+                            Else
+                                If sTransparency <> oItem.Transparency Then
+                                    Return Nothing
+                                End If
+                            End If
+                        End If
+                    Next
+                    Return sTransparency
+                Else
+                    Return Nothing
+                End If
+            End Get
+        End Property
+
         Public Overrides Property Transparency As Single
             Get
                 If oItems.Count > 0 Then
@@ -962,6 +986,20 @@ Namespace cSurvey.Design.Items
                 Call oPoint.MoveTo(modPaint.RotatePointAt(Angle, oCenter, oPoint.Point))
             Next
         End Sub
+
+        Public Overrides ReadOnly Property ClippingTypeValue As cItemClippingTypeEnum?
+            Get
+                If oItems.Count > 0 Then
+                    Dim iClippingType As cItemClippingTypeEnum = oItems(0).ClippingType
+                    For Each oItem As cItem In oItems
+                        If iClippingType <> oItem.ClippingType Then Return Nothing
+                    Next
+                    Return iClippingType
+                Else
+                    Return Nothing
+                End If
+            End Get
+        End Property
 
         Public Overrides Property ClippingType As cItemClippingTypeEnum
             Get

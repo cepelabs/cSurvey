@@ -17,7 +17,16 @@ Friend Class cItemClippingPropertyControl
     Public Shadows Sub Rebind(Item As cItem)
         MyBase.Rebind(Item)
 
-        DirectCast(Controls.Item("chkClippingType" & Item.ClippingType.ToString("D")), DevExpress.XtraEditors.CheckButton).Checked = True
+        Dim iValue As cItem.cItemClippingTypeEnum? = Item.ClippingTypeValue
+        If iValue.HasValue Then
+            chkClippingTypeNothing.Checked = False
+            chkClippingTypeNothing.Visible = False
+
+            DirectCast(Controls.Item("chkClippingType" & iValue.Value.ToString("D")), DevExpress.XtraEditors.CheckButton).Checked = True
+        Else
+            chkClippingTypeNothing.Visible = True
+            chkClippingTypeNothing.Checked = True
+        End If
     End Sub
 
     Private Sub pSetClippingType(Type As cItem.cItemClippingTypeEnum)
@@ -43,5 +52,9 @@ Friend Class cItemClippingPropertyControl
 
     Private Sub chkClippingType3_CheckedChanged(sender As Object, e As EventArgs) Handles chkClippingType3.CheckedChanged
         Call pSetClippingType(cItem.cItemClippingTypeEnum.OutsideBorder)
+    End Sub
+
+    Private Sub chkClippingTypeNothing_CheckedChanged(sender As Object, e As EventArgs) Handles chkClippingTypeNothing.CheckedChanged
+        'nothing...this is a readonly button
     End Sub
 End Class

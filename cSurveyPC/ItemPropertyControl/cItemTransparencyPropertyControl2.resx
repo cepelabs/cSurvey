@@ -145,7 +145,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPropTransparency.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="trkTransparency.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left</value>
@@ -172,6 +172,36 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;trkTransparency.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkTransparencyNothing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkTransparencyNothing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 3</value>
+  </data>
+  <data name="chkTransparencyNothing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkTransparencyNothing.TabIndex" type="System.Int32, mscorlib">
+    <value>201</value>
+  </data>
+  <data name="chkTransparencyNothing.ToolTip" xml:space="preserve">
+    <value>Multiple values</value>
+  </data>
+  <data name="chkTransparencyNothing.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;chkTransparencyNothing.Name" xml:space="preserve">
+    <value>chkTransparencyNothing</value>
+  </data>
+  <data name="&gt;&gt;chkTransparencyNothing.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkTransparencyNothing.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkTransparencyNothing.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -187,6 +217,6 @@
     <value>cItemTransparencyPropertyControl2</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

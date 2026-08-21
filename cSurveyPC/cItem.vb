@@ -281,10 +281,53 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Public ReadOnly Property Brush() As cBrush
+        Public Overridable Sub BrushReseed()
+            If HaveBrush Then
+                If oBrush.Seed IsNot Nothing Then
+                    oBrush.Seed.Reseed()
+                End If
+            End If
+        End Sub
+
+        Public Overridable Function SetBrush(BrushID As String) As Boolean
+            If HaveBrush Then
+                If Brush.ID <> BrushID Then
+                    oBrush.ID = BrushID
+                    Return True
+                Else
+                    Return False
+                End If
+            Else
+                Return False
+            End If
+        End Function
+
+        Public Overridable Function SetBrush(Brush As cBrush) As Boolean
+            If HaveBrush Then
+                If Brush.ID <> oBrush.ID Then
+                    oBrush.ID = Brush.ID
+                    Return True
+                Else
+                    Return False
+                End If
+            Else
+                Return False
+            End If
+        End Function
+
+        Public Overridable ReadOnly Property BrushValue As cBrush
             Get
                 Return oBrush
             End Get
+        End Property
+
+        Public Overridable ReadOnly Property Brush() As cBrush
+            Get
+                Return oBrush
+            End Get
+            'Set(value As cBrush)
+            '    oBrush.ID = value.ID
+            'End Set
         End Property
 
         Friend Overridable Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cSVGWriter.SVGOptionsEnum) As cSVGWriter
@@ -321,11 +364,43 @@ Namespace cSurvey.Design
             End If
         End Function
 
-        Public ReadOnly Property Pen() As cPen
+        Public Overridable ReadOnly Property PenValue As cPen
             Get
                 Return oPen
             End Get
         End Property
+
+        Public Overridable ReadOnly Property Pen() As cPen
+            Get
+                Return oPen
+            End Get
+        End Property
+
+        Public Overridable Function SetPen(PenID As String) As Boolean
+            If HavePen Then
+                If Pen.ID <> PenID Then
+                    oPen.ID = PenID
+                    Return True
+                Else
+                    Return False
+                End If
+            Else
+                Return False
+            End If
+        End Function
+
+        Public Overridable Function SetPen(Pen As cPen) As Boolean
+            If HavePen Then
+                If Pen.ID <> oPen.ID Then
+                    oPen.ID = Pen.ID
+                    Return True
+                Else
+                    Return False
+                End If
+            Else
+                Return False
+            End If
+        End Function
 
         Public Enum SelectionModeEnum
             None = 0
@@ -581,6 +656,12 @@ Namespace cSurvey.Design
             Call Parent.AppendChild(oXmlItem)
             Return oXmlItem
         End Function
+
+        Public Overridable ReadOnly Property DesignAffinityValue As DesignAffinityEnum?
+            Get
+                Return iDesignAffinity
+            End Get
+        End Property
 
         Public Overridable Property DesignAffinity As DesignAffinityEnum
             Get
@@ -1052,7 +1133,7 @@ Namespace cSurvey.Design
                                     oNewPoint.LineType = iSourceItemLineType
                                 End If
                                 If bSetPen And oNewPoint.Pen Is Nothing Then
-                                    oNewPoint.Pen = oItemPen
+                                    oNewPoint.ResetPen()
                                 End If
                                 If Append Then
                                     Call Me.Points.Add(oNewPoint)

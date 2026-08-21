@@ -630,14 +630,14 @@ Module modPaint
                         oFirstPoint.BeginSequence = True
                         oFirstPoint.LineType = Items.cIItemLine.LineTypeEnum.Lines
                         Dim oSourcePoint As cPoint = pToStraightLineGetSourcePoint(Sequence, oFirstPoint)
-                        oFirstPoint.Pen = oSourcePoint.Pen
+                        oFirstPoint.SetPen(oSourcePoint.Pen)
                         Call oFirstPoint.BindSegment(oSourcePoint.BindedSegment)
                         oNewSequence = New cSequence(oFirstPoint)
                     Else
                         Dim oNextPoint As cPoint = New cPoint(Survey, oPoint)
                         Call oNewSequence.Append(oNextPoint)
                         Dim oSourcePoint As cPoint = pToStraightLineGetSourcePoint(Sequence, oNextPoint)
-                        oNextPoint.Pen = oSourcePoint.Pen
+                        oNextPoint.SetPen(oSourcePoint.Pen)
                         Call oNextPoint.BindSegment(oSourcePoint.BindedSegment)
                     End If
                 Next
@@ -674,14 +674,14 @@ Module modPaint
                         oFirstPoint.BeginSequence = True
                         oFirstPoint.LineType = Items.cIItemLine.LineTypeEnum.Lines
                         Dim oSourcePoint As cPoint = pToStraightLineGetSourcePoint(Sequence, oFirstPoint)
-                        oFirstPoint.Pen = oSourcePoint.Pen
+                        oFirstPoint.SetPen(oSourcePoint.Pen)
                         Call oFirstPoint.BindSegment(oSourcePoint.BindedSegment)
                         oNewSequence = New cSequence(oFirstPoint)
                     Else
                         Dim oNextPoint As cPoint = New cPoint(Survey, oPoint)
                         Call oNewSequence.Append(oNextPoint)
                         Dim oSourcePoint As cPoint = pToStraightLineGetSourcePoint(Sequence, oNextPoint)
-                        oNextPoint.Pen = oSourcePoint.Pen
+                        oNextPoint.SetPen(oSourcePoint.Pen)
                         Call oNextPoint.BindSegment(oSourcePoint.BindedSegment)
                     End If
                 Next
@@ -4265,5 +4265,9 @@ Module modPaint
         Dim f = e1(1) * e2(4) + e1(3) * e2(5) + e1(5)
 
         Return {a, b, c, d, e, f}
+    End Function
+
+    Public Function IsTransparentColor(Color As Color) As Boolean
+        Return Color.IsEmpty OrElse Color = Color.Transparent OrElse Color.A = 0
     End Function
 End Module

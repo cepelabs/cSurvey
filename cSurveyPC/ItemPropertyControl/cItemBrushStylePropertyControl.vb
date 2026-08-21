@@ -38,16 +38,26 @@ Friend Class cItemBrushStylePropertyControl
             Call cboPropBrushPattern.Rebind(oSurvey)
         End If
 
-        If cboPropBrushPattern.EditValue = Item.Brush.ID AndAlso (Item.Brush.Type = cBrush.BrushTypeEnum.Custom OrElse Item.Brush.Type = cBrush.BrushTypeEnum.User) Then
-            cboPropBrushPattern_EditValueChanged(cboPropBrushPattern, EventArgs.Empty)
+        If Item.BrushValue Is Nothing Then
+            chkBrushNothing.Checked = True
+            chkBrushNothing.Visible = True
+            cboPropBrushPattern.EditValue = "_0"
+            cboPropBrushPattern.Visible = False
         Else
-            cboPropBrushPattern.EditValue = Item.Brush.ID
+            chkBrushNothing.Checked = False
+            chkBrushNothing.Visible = False
+            If cboPropBrushPattern.EditValue = Item.Brush.ID AndAlso (Item.Brush.Type = cBrush.BrushTypeEnum.Custom OrElse Item.Brush.Type = cBrush.BrushTypeEnum.User) Then
+                cboPropBrushPattern_EditValueChanged(cboPropBrushPattern, EventArgs.Empty)
+            Else
+                cboPropBrushPattern.EditValue = Item.Brush.ID
+            End If
+            cboPropBrushPattern.Visible = True
         End If
     End Sub
 
     Private Sub cmdPropBrushReseed_Click(sender As Object, e As EventArgs) Handles cmdPropBrushReseed.Click
         Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo32"))
-        Call Item.Brush.Seed.Reseed()
+        Call Item.BrushReseed()
         Call MyBase.CommitUndoSnapshot()
         Call MyBase.PropertyChanged("BrushReseed")
         Call MyBase.MapInvalidate()
@@ -235,7 +245,7 @@ Friend Class cItemBrushStylePropertyControl
                 Call oSurvey.Brushes.Add(cboPropBrushPattern.GetUserBrush(cboPropBrushPattern.EditValue))
                 Call cboPropBrushPattern.Rebind(oSurvey)
             End If
-            Item.Brush.ID = cboPropBrushPattern.EditValue
+            Item.SetBrush(cboPropBrushPattern.EditValue)
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("BrushPattern")
             Call MyBase.MapInvalidate()
@@ -247,7 +257,7 @@ Friend Class cItemBrushStylePropertyControl
     Private Sub pRefreshPatternProperties()
         Dim bBackupDisabledObjectProperty As Boolean = MyBase.DisabledObjectProperty
         MyBase.DisabledObjectProperty = True
-        If Item IsNot Nothing Then
+        If Item IsNot Nothing AndAlso Item.Brush IsNot Nothing Then
             lblBrush.Text = If(lblBrush.Text.Contains("<image"), lblBrush.Text.Substring(0, lblBrush.Text.IndexOf("<image")), lblBrush.Text)
             If Item.Brush.Type = cBrush.BrushTypeEnum.Custom OrElse (bEditUser AndAlso Item.Brush.Type = cBrush.BrushTypeEnum.User) Then
                 If Item.Brush.Type = cBrush.BrushTypeEnum.User Then
@@ -304,7 +314,6 @@ Friend Class cItemBrushStylePropertyControl
                 btnPropEdit.Enabled = Item.Brush.Type = cBrush.BrushTypeEnum.User
 
                 cmdPropSave.Visible = False
-                cmdPropBrushReseed.Visible = Item.Brush.HatchType = cBrush.HatchTypeEnum.Clipart
             End If
             Call pRefreshHeight()
         End If
@@ -694,5 +703,17 @@ Friend Class cItemBrushStylePropertyControl
     Private Sub btnPropEdit_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPropEdit.ItemClick
         bEditUser = True
         pRefreshPatternProperties()
+    End Sub
+
+    Private Sub chkBrushNothing_CheckedChanged(sender As Object, e As EventArgs) Handles chkBrushNothing.CheckedChanged
+        'cboPropBrush.SelectedIndex = 0
+        chkBrushNothing.Checked = False
+        chkBrushNothing.Visible = False
+
+        If TypeOf Item Is cItemItems Then
+            Dim oItems As cItemItems = Item
+            cboPropBrushPattern.EditValue = oItems.FirstOrDefault(Function(oSubItem) oSubItem.Brush IsNot Nothing).Brush.ID
+        End If
+        cboPropBrushPattern.Visible = True
     End Sub
 End Class

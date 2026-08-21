@@ -13610,7 +13610,7 @@ Friend Class frmMain2
                 Dim oItem As cItem = .CurrentItem
                 For Each oSequence As cSequence In oItem.Points.GetSequences
                     With oSequence.First
-                        .Pen = Nothing
+                        .ResetPen
                         .LineType = cIItemLine.LineTypeEnum.Undefined
                     End With
                 Next

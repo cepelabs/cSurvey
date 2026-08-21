@@ -145,61 +145,61 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPropAffinity.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="chkPropVisibleByProfile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkPropVisibleByProfile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 3</value>
-  </data>
-  <data name="chkPropVisibleByProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="chkPropVisibleByProfile.TabIndex" type="System.Int32, mscorlib">
-    <value>132</value>
-  </data>
-  <data name="chkPropVisibleByProfile.ToolTip" xml:space="preserve">
-    <value>Visibility by profile</value>
-  </data>
-  <data name="&gt;&gt;chkPropVisibleByProfile.Name" xml:space="preserve">
-    <value>chkPropVisibleByProfile</value>
-  </data>
-  <data name="&gt;&gt;chkPropVisibleByProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPropVisibleByProfile.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;chkPropVisibleByProfile.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="chkPropVisibleByScale.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="btnPropVisibleByProfile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="chkPropVisibleByScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 3</value>
+  <data name="btnPropVisibleByProfile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>193, 3</value>
   </data>
-  <data name="chkPropVisibleByScale.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnPropVisibleByProfile.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
   </data>
-  <data name="chkPropVisibleByScale.TabIndex" type="System.Int32, mscorlib">
-    <value>131</value>
+  <data name="btnPropVisibleByProfile.TabIndex" type="System.Int32, mscorlib">
+    <value>132</value>
   </data>
-  <data name="chkPropVisibleByScale.ToolTip" xml:space="preserve">
-    <value>Visibility by scale</value>
+  <data name="btnPropVisibleByProfile.ToolTip" xml:space="preserve">
+    <value>Visibility by profile</value>
   </data>
-  <data name="&gt;&gt;chkPropVisibleByScale.Name" xml:space="preserve">
-    <value>chkPropVisibleByScale</value>
+  <data name="&gt;&gt;btnPropVisibleByProfile.Name" xml:space="preserve">
+    <value>btnPropVisibleByProfile</value>
   </data>
-  <data name="&gt;&gt;chkPropVisibleByScale.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnPropVisibleByProfile.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;chkPropVisibleByScale.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnPropVisibleByProfile.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;chkPropVisibleByScale.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnPropVisibleByProfile.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="btnPropVisibleByScale.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnPropVisibleByScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>163, 3</value>
+  </data>
+  <data name="btnPropVisibleByScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="btnPropVisibleByScale.TabIndex" type="System.Int32, mscorlib">
+    <value>131</value>
+  </data>
+  <data name="btnPropVisibleByScale.ToolTip" xml:space="preserve">
+    <value>Visibility by scale</value>
+  </data>
+  <data name="&gt;&gt;btnPropVisibleByScale.Name" xml:space="preserve">
+    <value>btnPropVisibleByScale</value>
+  </data>
+  <data name="&gt;&gt;btnPropVisibleByScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropVisibleByScale.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnPropVisibleByScale.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="lblPropVisibleIn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -226,7 +226,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPropVisibleIn.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="chkPropVisibleInDesign.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -253,7 +253,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkPropVisibleInDesign.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="chkPropVisibleInPreview.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -280,7 +280,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkPropVisibleInPreview.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="chkAffinityDesign.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -307,7 +307,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkAffinityDesign.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="chkAffinityExtra.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -334,6 +334,36 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkAffinityExtra.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkAffinityNothing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkAffinityNothing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>188, 57</value>
+  </data>
+  <data name="chkAffinityNothing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkAffinityNothing.TabIndex" type="System.Int32, mscorlib">
+    <value>288</value>
+  </data>
+  <data name="chkAffinityNothing.ToolTip" xml:space="preserve">
+    <value>Multiple values</value>
+  </data>
+  <data name="chkAffinityNothing.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;chkAffinityNothing.Name" xml:space="preserve">
+    <value>chkAffinityNothing</value>
+  </data>
+  <data name="&gt;&gt;chkAffinityNothing.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkAffinityNothing.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkAffinityNothing.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -349,6 +379,6 @@
     <value>cItemVisibilityPropertyControl2</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

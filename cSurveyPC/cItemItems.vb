@@ -1,11 +1,10 @@
-﻿Imports System.Xml
-Imports System.Drawing
+﻿Imports System.Drawing
 Imports System.Drawing.Drawing2D
-Imports cSurveyPC.cSurvey.Design.Layers
-Imports cSurveyPC.cSurvey.Design.cLayers
+Imports System.Xml
 Imports cSurveyPC.cSurvey.Data
+Imports cSurveyPC.cSurvey.Design.cLayers
+Imports cSurveyPC.cSurvey.Design.Layers
 Imports DevExpress.Office
-Imports DevExpress.Pdf
 
 Namespace cSurvey.Design.Items
     Public Class cItemItems
@@ -106,6 +105,28 @@ Namespace cSurvey.Design.Items
         Public Function Last() As cItem
             Return oItems.Last
         End Function
+
+        Public Overrides ReadOnly Property DesignAffinityValue As DesignAffinityEnum?
+            Get
+                If oItems.Count > 0 Then
+                    Dim iDesignAffinity As cItem.DesignAffinityEnum
+                    Dim bFirst As Boolean = True
+                    For Each oItem As cItem In oItems
+                        If bFirst Then
+                            iDesignAffinity = oItem.DesignAffinity
+                            bFirst = False
+                        Else
+                            If iDesignAffinity <> oItem.DesignAffinity Then
+                                Return Nothing
+                            End If
+                        End If
+                    Next
+                    Return iDesignAffinity
+                Else
+                    Return Nothing
+                End If
+            End Get
+        End Property
 
         Public Overrides Property DesignAffinity As DesignAffinityEnum
             Get
@@ -343,13 +364,31 @@ Namespace cSurvey.Design.Items
 
         Public Overrides ReadOnly Property HaveBrush As Boolean
             Get
-                Return False
+                If oItems Is Nothing Then
+                    Return False
+                Else
+                    For Each oItem As cItem In oItems
+                        If Not oItem.HaveBrush Then
+                            Return False
+                        End If
+                    Next
+                    Return True
+                End If
             End Get
         End Property
 
         Public Overrides ReadOnly Property HavePen As Boolean
             Get
-                Return False
+                If oItems Is Nothing Then
+                    Return False
+                Else
+                    For Each oItem As cItem In oItems
+                        If Not oItem.HavePen Then
+                            Return False
+                        End If
+                    Next
+                    Return True
+                End If
             End Get
         End Property
 
@@ -562,6 +601,98 @@ Namespace cSurvey.Design.Items
                 Else
                     Return BindDesignTypeEnum.MainDesign
                 End If
+            End Get
+        End Property
+
+        Public Overrides Sub BrushReseed()
+            If HaveBrush Then
+                For Each oItem As cItem In oItems
+                    oItem.BrushReseed()
+                Next
+            End If
+        End Sub
+
+        Public Overrides Function SetBrush(Brush As cBrush) As Boolean
+            If HaveBrush Then
+                For Each oItem As cItem In oItems
+                    Call oItem.SetBrush(Brush)
+                Next
+            Else
+                Return False
+            End If
+        End Function
+
+        Public Overrides Function SetBrush(BrushID As String) As Boolean
+            If HaveBrush Then
+                For Each oItem As cItem In oItems
+                    Call oItem.SetBrush(BrushID)
+                Next
+            Else
+                Return False
+            End If
+        End Function
+
+        Public Overrides ReadOnly Property Brush As cBrush
+            Get
+                If oItems.Count > 0 Then
+                    Dim oBrush As cBrush = oItems(0).Brush
+                    For Each oItem As cItem In oItems
+                        If oItem.Brush.ID <> oBrush.ID Then
+                            Return Nothing
+                        End If
+                    Next
+                    Return oBrush
+                Else
+                    Return Nothing
+                End If
+            End Get
+        End Property
+
+        Public Overrides ReadOnly Property BrushValue As cBrush
+            Get
+                Return Brush
+            End Get
+        End Property
+
+        Public Overrides Function SetPen(Pen As cPen) As Boolean
+            If HavePen Then
+                For Each oItem As cItem In oItems
+                    Call oItem.SetPen(Pen)
+                Next
+            Else
+                Return False
+            End If
+        End Function
+
+        Public Overrides Function SetPen(PenID As String) As Boolean
+            If HavePen Then
+                For Each oItem As cItem In oItems
+                    Call oItem.SetPen(PenID)
+                Next
+            Else
+                Return False
+            End If
+        End Function
+
+        Public Overrides ReadOnly Property Pen As cPen
+            Get
+                If oItems.Count > 0 Then
+                    Dim oPen As cPen = oItems(0).Pen
+                    For Each oItem As cItem In oItems
+                        If oItem.Pen.ID <> oPen.ID Then
+                            Return Nothing
+                        End If
+                    Next
+                    Return oPen
+                Else
+                    Return Nothing
+                End If
+            End Get
+        End Property
+
+        Public Overrides ReadOnly Property PenValue As cPen
+            Get
+                Return Pen
             End Get
         End Property
 
@@ -1043,7 +1174,7 @@ Namespace cSurvey.Design.Items
             Next
         End Sub
 
-        Public Overrides Sub unLockSegments()
+        Public Overrides Sub UnLockSegments()
             For Each oItem As cItem In oItems
                 Call oItem.UnlockSegments()
             Next

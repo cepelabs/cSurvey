@@ -35,6 +35,8 @@ Friend Class cItemClippingPropertyControl
             Item.ClippingType = Type
             Call MyBase.PropertyChanged("ClippingType")
             Call MyBase.MapInvalidate()
+
+            chkClippingTypeNothing.Visible = False
         End If
     End Sub
 

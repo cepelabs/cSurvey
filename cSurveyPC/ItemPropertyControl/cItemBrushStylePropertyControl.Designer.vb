@@ -100,6 +100,7 @@ Partial Class cItemBrushStylePropertyControl
         Me.txtPropBrushBackcolor = New cSurveyPC.cColorSelector()
         Me.lblPropBrushPatternBackcolor = New DevExpress.XtraEditors.LabelControl()
         Me.pnlBrushBackgroundColor = New DevExpress.XtraEditors.PanelControl()
+        Me.chkBrushNothing = New DevExpress.XtraEditors.CheckButton()
         CType(Me.txtPropBrushColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropBrushAlternativeBrushColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picPropBrushClipartImage.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -774,10 +775,20 @@ Partial Class cItemBrushStylePropertyControl
         resources.ApplyResources(Me.pnlBrushBackgroundColor, "pnlBrushBackgroundColor")
         Me.pnlBrushBackgroundColor.Name = "pnlBrushBackgroundColor"
         '
+        'chkBrushNothing
+        '
+        Me.chkBrushNothing.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.chkBrushNothing.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.duplicatevalues
+        Me.chkBrushNothing.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.chkBrushNothing, "chkBrushNothing")
+        Me.chkBrushNothing.Name = "chkBrushNothing"
+        Me.chkBrushNothing.TabStop = False
+        '
         'cItemBrushStylePropertyControl
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.chkBrushNothing)
         Me.Controls.Add(Me.pnlBrushStyle)
         Me.Controls.Add(Me.pnlBrushAlternativeColor)
         Me.Controls.Add(Me.cmdPropBrushReseed)
@@ -917,4 +928,5 @@ Partial Class cItemBrushStylePropertyControl
     Friend WithEvents mnuContext As DevExpress.XtraBars.PopupMenu
     Friend WithEvents btnPropCustomize As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnPropEdit As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents chkBrushNothing As DevExpress.XtraEditors.CheckButton
 End Class

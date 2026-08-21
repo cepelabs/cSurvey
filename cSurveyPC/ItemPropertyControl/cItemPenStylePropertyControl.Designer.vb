@@ -100,6 +100,7 @@ Partial Class cItemPenStylePropertyControl
         Me.pnlPenClipartSettings1 = New DevExpress.XtraEditors.PanelControl()
         Me.cboPropPenClipartBrushMode = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.lblPropPenClipartBrushMode = New DevExpress.XtraEditors.LabelControl()
+        Me.chkPenNothing = New DevExpress.XtraEditors.CheckButton()
         CType(Me.txtPropPenColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.mnuSaveAs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -755,10 +756,20 @@ Partial Class cItemPenStylePropertyControl
         resources.ApplyResources(Me.lblPropPenClipartBrushMode, "lblPropPenClipartBrushMode")
         Me.lblPropPenClipartBrushMode.Name = "lblPropPenClipartBrushMode"
         '
+        'chkPenNothing
+        '
+        Me.chkPenNothing.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.chkPenNothing.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.duplicatevalues
+        Me.chkPenNothing.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.chkPenNothing, "chkPenNothing")
+        Me.chkPenNothing.Name = "chkPenNothing"
+        Me.chkPenNothing.TabStop = False
+        '
         'cItemPenStylePropertyControl
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.chkPenNothing)
         Me.Controls.Add(Me.pnlPenStyle)
         Me.Controls.Add(Me.pnlPenClipart)
         Me.Controls.Add(Me.lblPropPenPattern)
@@ -894,4 +905,5 @@ Partial Class cItemPenStylePropertyControl
     Friend WithEvents mnuContext As DevExpress.XtraBars.PopupMenu
     Friend WithEvents btnPropCustomize As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnPropEdit As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents chkPenNothing As DevExpress.XtraEditors.CheckButton
 End Class

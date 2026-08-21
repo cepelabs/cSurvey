@@ -452,14 +452,36 @@ Namespace cSurvey.Design
             Call MoveTo(New PointF(X, Y))
         End Sub
 
-        Public Property Pen() As cPen
+        Public Sub ResetPen()
+            If oPen IsNot Nothing Then
+                oPen = Nothing
+                RaiseEvent OnChanged(Me)
+            End If
+        End Sub
+        Public Function SetPen(ByVal Pen As cPen) As Boolean
+            If Pen IsNot oPen Then
+                If oPen Is Nothing Then
+                    oPen = Pen
+                Else
+                    If Pen Is Nothing Then
+                        oPen = Nothing
+                    Else
+                        oPen.ID = Pen.ID
+                    End If
+                End If
+                RaiseEvent OnChanged(Me)
+                Return True
+            End If
+        End Function
+
+        Public ReadOnly Property Pen() As cPen
             Get
                 Return oPen
             End Get
-            Set(ByVal value As cPen)
-                oPen = value
-                RaiseEvent OnChanged(Me)
-            End Set
+            'Set(ByVal value As cPen)
+            '    oPen = value
+            '    RaiseEvent OnChanged(Me)
+            'End Set
         End Property
 
         Public Function GetNext() As cPoint

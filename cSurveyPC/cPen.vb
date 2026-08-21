@@ -856,11 +856,7 @@ Namespace cSurvey.Design
         End Function
 
         Private Sub pRender(PaintOptions As cOptionsCenterline)
-            'Dim oRenderArgs As cPen.cRenderArgs = New cPen.cRenderArgs
-            'RaiseEvent OnRender(Me, oRenderArgs)
-
             Dim oTempPenColor As Color = If(oAlternativeColor.IsEmpty, oColor, oAlternativeColor)
-            'oTempPenColor = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oTempPenColor)
 
             If iStyle = cPen.PenStylesEnum.None Then
                 If oPen IsNot Nothing Then oPen.Dispose()
@@ -1017,12 +1013,14 @@ Namespace cSurvey.Design
                     Dim oRenderArgs As cPen.cRenderEventArgs = New cPen.cRenderEventArgs
                     RaiseEvent OnRender(Me, oRenderArgs)
 
-                    Dim oBackupColors(1) As Color
+                    Dim oBackupColors(2) As Color
                     If oRenderArgs.Transparency <> 0 Then
                         oBackupColors(0) = oPen.Color
                         oPen.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oPen.Color)
+                        oBackupColors(1) = oClipartPen.Color
+                        oClipartPen.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oClipartPen.Color)
                         If oClipartBrush IsNot Nothing Then
-                            oBackupColors(1) = oClipartBrush.Color
+                            oBackupColors(2) = oClipartBrush.Color
                             oClipartBrush.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oClipartBrush.Color)
                         End If
                     End If
@@ -1093,7 +1091,7 @@ Namespace cSurvey.Design
                                 oTmpClipart = oClipart
                                 bUseBrush = True
                         End Select
-                        Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Path.PathData, oTmpClipart, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, sDecorationDistancePercentage, oColor, oColor, sDecorationScale * sZoomFactor)
+                        Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Path.PathData, oTmpClipart, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, sDecorationDistancePercentage, sDecorationScale * sZoomFactor)
                             If Not oPath Is Nothing Then
                                 Call Cache.AddBorder(oPath, If(bUsePen, oClipartPen, Nothing), Nothing, If(bUseBrush, oClipartBrush, Nothing))
                             End If
@@ -1105,7 +1103,8 @@ Namespace cSurvey.Design
 
                     If oRenderArgs.Transparency <> 0 Then
                         oPen.Color = oBackupColors(0)
-                        If oClipartBrush IsNot Nothing Then oClipartBrush.Color = oBackupColors(1)
+                        oClipartPen.Color = oBackupColors(1)
+                        If oClipartBrush IsNot Nothing Then oClipartBrush.Color = oBackupColors(2)
                     End If
                 End If
             End If

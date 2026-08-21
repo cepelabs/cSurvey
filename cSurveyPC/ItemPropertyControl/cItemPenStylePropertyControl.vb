@@ -41,18 +41,31 @@ Friend Class cItemPenStylePropertyControl
         oPoint = pGetPoint(Point)
 
         If oPoint Is Nothing Then
-            If cboPropPenPattern.EditValue = Item.Pen.ID Then
-                cboPropPenPattern_EditValueChanged(cboPropPenPattern, EventArgs.Empty)
+            If Item.PenValue Is Nothing Then
+                chkPenNothing.Checked = True
+                chkPenNothing.Visible = True
+                cboPropPenPattern.EditValue = "_0"
+                cboPropPenPattern.Visible = False
             Else
-                cboPropPenPattern.EditValue = Item.Pen.ID
+                chkPenNothing.Checked = False
+                chkPenNothing.Visible = False
+                If cboPropPenPattern.EditValue = Item.Pen.ID Then
+                    cboPropPenPattern_EditValueChanged(cboPropPenPattern, EventArgs.Empty)
+                Else
+                    cboPropPenPattern.EditValue = Item.Pen.ID
+                End If
+                cboPropPenPattern.Visible = True
             End If
         Else
+            chkPenNothing.Checked = False
+            chkPenNothing.Visible = False
             Dim oPen As cPen = pGetPointPen()
             If cboPropPenPattern.EditValue = oPen.ID Then
                 cboPropPenPattern_EditValueChanged(cboPropPenPattern, EventArgs.Empty)
             Else
                 cboPropPenPattern.EditValue = oPen.ID
             End If
+            cboPropPenPattern.Visible = True
         End If
     End Sub
 
@@ -77,7 +90,7 @@ Friend Class cItemPenStylePropertyControl
         Dim bBackupDisabledObjectProperty As Boolean = MyBase.DisabledObjectProperty
         MyBase.DisabledObjectProperty = True
 
-        If Item IsNot Nothing Then
+        If Item IsNot Nothing AndAlso Item.Pen IsNot Nothing Then
             lblPropPenPattern.Text = If(lblPropPenPattern.Text.Contains("<image"), lblPropPenPattern.Text.Substring(0, lblPropPenPattern.Text.IndexOf("<image")), lblPropPenPattern.Text)
 
             Dim oPen As cPen
@@ -171,7 +184,7 @@ Friend Class cItemPenStylePropertyControl
                     Call oSurvey.Pens.Add(cboPropPenPattern.GetUserPen(cboPropPenPattern.EditValue))
                     Call cboPropPenPattern.Rebind(oSurvey)
                 End If
-                Item.Pen.ID = cboPropPenPattern.EditValue
+                Item.SetPen(cboPropPenPattern.EditValue)
             Else
                 Call pObjectSetSequencePen()
                 If cPen.IsUserPenID(cboPropPenPattern.EditValue) AndAlso Not oSurvey.Pens.Contains(cboPropPenPattern.EditValue) Then
@@ -215,7 +228,7 @@ Friend Class cItemPenStylePropertyControl
     Private Sub pObjectSetSequencePen()
         With oPoint
             If .Pen Is Nothing Then
-                .Pen = New cPen(MyBase.Item.Survey, MyBase.Item.Pen)
+                .SetPen(New cPen(MyBase.Item.Survey, MyBase.Item.Pen))
             End If
         End With
     End Sub
@@ -982,5 +995,18 @@ Friend Class cItemPenStylePropertyControl
     Private Sub btnPropEdit_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPropEdit.ItemClick
         bEditUser = True
         pRefreshPatternProperties()
+    End Sub
+
+    Private Sub chkPenNothing_CheckedChanged(sender As Object, e As EventArgs) Handles chkPenNothing.CheckedChanged
+        'cboPropPenPattern.SelectedIndex = 0
+        chkPenNothing.Checked = False
+        chkPenNothing.Visible = False
+
+        If TypeOf Item Is cItemItems Then
+            Dim oItems As cItemItems = Item
+            cboPropPenPattern.EditValue = oItems.FirstOrDefault(Function(oSubItem) oSubItem.Pen IsNot Nothing).Pen.ID
+        End If
+
+        cboPropPenPattern.Visible = True
     End Sub
 End Class

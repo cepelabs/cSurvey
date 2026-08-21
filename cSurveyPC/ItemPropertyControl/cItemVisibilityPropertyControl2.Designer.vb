@@ -24,13 +24,14 @@ Partial Class cItemVisibilityPropertyControl2
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(cItemVisibilityPropertyControl2))
         Me.lblPropAffinity = New DevExpress.XtraEditors.LabelControl()
-        Me.chkPropVisibleByProfile = New DevExpress.XtraEditors.SimpleButton()
-        Me.chkPropVisibleByScale = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnPropVisibleByProfile = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnPropVisibleByScale = New DevExpress.XtraEditors.SimpleButton()
         Me.lblPropVisibleIn = New DevExpress.XtraEditors.LabelControl()
         Me.chkPropVisibleInDesign = New DevExpress.XtraEditors.CheckButton()
         Me.chkPropVisibleInPreview = New DevExpress.XtraEditors.CheckButton()
         Me.chkAffinityDesign = New DevExpress.XtraEditors.CheckButton()
         Me.chkAffinityExtra = New DevExpress.XtraEditors.CheckButton()
+        Me.chkAffinityNothing = New DevExpress.XtraEditors.CheckButton()
         Me.SuspendLayout()
         '
         'lblPropAffinity
@@ -38,22 +39,22 @@ Partial Class cItemVisibilityPropertyControl2
         resources.ApplyResources(Me.lblPropAffinity, "lblPropAffinity")
         Me.lblPropAffinity.Name = "lblPropAffinity"
         '
-        'chkPropVisibleByProfile
+        'btnPropVisibleByProfile
         '
-        Me.chkPropVisibleByProfile.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.chkPropVisibleByProfile.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.preview
-        Me.chkPropVisibleByProfile.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        resources.ApplyResources(Me.chkPropVisibleByProfile, "chkPropVisibleByProfile")
-        Me.chkPropVisibleByProfile.Name = "chkPropVisibleByProfile"
+        Me.btnPropVisibleByProfile.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.btnPropVisibleByProfile.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.preview
+        Me.btnPropVisibleByProfile.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.btnPropVisibleByProfile, "btnPropVisibleByProfile")
+        Me.btnPropVisibleByProfile.Name = "btnPropVisibleByProfile"
         '
-        'chkPropVisibleByScale
+        'btnPropVisibleByScale
         '
-        Me.chkPropVisibleByScale.ImageOptions.Image = Global.cSurveyPC.My.Resources.Resources.layers_map
-        Me.chkPropVisibleByScale.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.chkPropVisibleByScale.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.icon_scale
-        Me.chkPropVisibleByScale.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        resources.ApplyResources(Me.chkPropVisibleByScale, "chkPropVisibleByScale")
-        Me.chkPropVisibleByScale.Name = "chkPropVisibleByScale"
+        Me.btnPropVisibleByScale.ImageOptions.Image = Global.cSurveyPC.My.Resources.Resources.layers_map
+        Me.btnPropVisibleByScale.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.btnPropVisibleByScale.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.icon_scale
+        Me.btnPropVisibleByScale.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.btnPropVisibleByScale, "btnPropVisibleByScale")
+        Me.btnPropVisibleByScale.Name = "btnPropVisibleByScale"
         '
         'lblPropVisibleIn
         '
@@ -98,15 +99,26 @@ Partial Class cItemVisibilityPropertyControl2
         Me.chkAffinityExtra.Name = "chkAffinityExtra"
         Me.chkAffinityExtra.TabStop = False
         '
+        'chkAffinityNothing
+        '
+        Me.chkAffinityNothing.GroupIndex = 1
+        Me.chkAffinityNothing.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.chkAffinityNothing.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.duplicatevalues
+        Me.chkAffinityNothing.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.chkAffinityNothing, "chkAffinityNothing")
+        Me.chkAffinityNothing.Name = "chkAffinityNothing"
+        Me.chkAffinityNothing.TabStop = False
+        '
         'cItemVisibilityPropertyControl2
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.chkAffinityNothing)
         Me.Controls.Add(Me.chkAffinityExtra)
         Me.Controls.Add(Me.chkAffinityDesign)
         Me.Controls.Add(Me.lblPropAffinity)
-        Me.Controls.Add(Me.chkPropVisibleByProfile)
-        Me.Controls.Add(Me.chkPropVisibleByScale)
+        Me.Controls.Add(Me.btnPropVisibleByProfile)
+        Me.Controls.Add(Me.btnPropVisibleByScale)
         Me.Controls.Add(Me.lblPropVisibleIn)
         Me.Controls.Add(Me.chkPropVisibleInDesign)
         Me.Controls.Add(Me.chkPropVisibleInPreview)
@@ -116,11 +128,12 @@ Partial Class cItemVisibilityPropertyControl2
 
     End Sub
     Friend WithEvents lblPropAffinity As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents chkPropVisibleByProfile As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents chkPropVisibleByScale As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btnPropVisibleByProfile As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btnPropVisibleByScale As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents lblPropVisibleIn As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chkPropVisibleInDesign As DevExpress.XtraEditors.CheckButton
     Friend WithEvents chkPropVisibleInPreview As DevExpress.XtraEditors.CheckButton
     Friend WithEvents chkAffinityDesign As DevExpress.XtraEditors.CheckButton
     Friend WithEvents chkAffinityExtra As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkAffinityNothing As DevExpress.XtraEditors.CheckButton
 End Class

@@ -231,12 +231,12 @@ Namespace cSurvey.Design
             Dim oLastPoint As cPoint = oPoints.Last
             With oPoints(0)
                 .BeginSequence = True
-                .Pen = oLastPoint.Pen
+                .SetPen(oLastPoint.Pen)
                 .LineType = oLastPoint.LineType
             End With
             With oLastPoint
                 .BeginSequence = False
-                .Pen = Nothing
+                .ResetPen()
                 .LineType = Items.cIItemLine.LineTypeEnum.Undefined
             End With
         End Sub

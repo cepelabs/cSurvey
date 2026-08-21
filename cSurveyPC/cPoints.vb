@@ -253,7 +253,7 @@ Namespace cSurvey.Design
                                 'e riporto le proprietà del punto al primo successivo...
                                 With oPoints(iPointIndex)
                                     .LineType = Point.LineType
-                                    .Pen = Point.Pen
+                                    .SetPen(Point.Pen)
                                     .BeginSequence = True
                                 End With
                             Else
@@ -286,7 +286,7 @@ Namespace cSurvey.Design
                                 'e riporto le proprietà del punto al primo successivo...
                                 With oPoints(iPointIndex)
                                     .LineType = Point.LineType
-                                    .Pen = Point.Pen
+                                    .SetPen(Point.Pen)
                                     .BeginSequence = True
                                 End With
                             End If
@@ -719,7 +719,7 @@ Namespace cSurvey.Design
                             oNewPoint = oPoint.Clone
                             oSequence = New cSequence(oNewPoint)
                             oNewPoint.BeginSequence = True
-                            oNewPoint.Pen = oLastPen
+                            oNewPoint.SetPen(oLastPen)
                             oNewPoint.LineType = iLastLineType
                             Call oSequences.Add(oSequence)
                         Else
@@ -881,7 +881,7 @@ Namespace cSurvey.Design
                             End If
                         End If
                         Dim oNewSequence As cSequence = oNewEditPoint.GetSequence
-                        oNewSequence.First.Pen = oOldPen
+                        oNewSequence.First.SetPen(oOldPen)
                         Call EndUpdate()
                         Return oNewEditPoint
                     End If
@@ -914,7 +914,7 @@ Namespace cSurvey.Design
                             Call Remove(oEditPoint)
                         End If
                         Dim oNewSequence As cSequence = oNewEditPoint.GetSequence
-                        oNewSequence.First.Pen = oOldPen
+                        oNewSequence.First.SetPen(oOldPen)
                         Call EndUpdate()
                         Return oNewEditPoint
                     End If

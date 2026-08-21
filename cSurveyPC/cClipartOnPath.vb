@@ -22,7 +22,7 @@ Class cClipartOnPath
         Return Not PathData.Types.Where(Function(oType) oType <> PathPointType.Start AndAlso (oType And PathPointType.PathTypeMask) <> PathPointType.Line).Count > 0
     End Function
 
-    Public Shared Function ClipartOnPath(ByVal Pathdata As PathData, ByVal Clipart As cDrawClipArt, ClipartPosition As ClipartPositionEnum, ByVal ClipartSpacePercentage As Single, ByVal ClipartDistancePercentage As Single, ByVal Color As Color, ByVal FillColor As Color, ByVal Zoom As Single) As GraphicsPath
+    Public Shared Function ClipartOnPath(ByVal Pathdata As PathData, ByVal Clipart As cDrawClipArt, ClipartPosition As ClipartPositionEnum, ByVal ClipartSpacePercentage As Single, ByVal ClipartDistancePercentage As Single, ByVal Zoom As Single) As GraphicsPath
         Dim sZoom As Single = Zoom / 40.0F
         Dim oTransformedPath As cDrawPaths
         Using oTransformMatrix As Matrix = New Matrix

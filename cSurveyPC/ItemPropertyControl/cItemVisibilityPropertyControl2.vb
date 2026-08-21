@@ -17,18 +17,29 @@ Friend Class cItemVisibilityPropertyControl2
         chkPropVisibleInDesign.Enabled = Item.CanBeHiddenInDesign
         chkPropVisibleInPreview.Enabled = Item.CanBeHiddenInPreview
 
-        If Item.haveAffinity Then
-            chkAffinityDesign.Checked = Item.DesignAffinity = cItem.DesignAffinityEnum.Design
-            chkAffinityExtra.Checked = Item.DesignAffinity = cItem.DesignAffinityEnum.Extra
-            chkAffinityDesign.Enabled = True
-            chkAffinityExtra.Enabled = True
-            chkPropVisibleByProfile.Enabled = True
-            chkPropVisibleByScale.Enabled = True
+        If Item.HaveAffinity Then
+            If Item.DesignAffinityValue.HasValue Then
+                chkAffinityDesign.Checked = Item.DesignAffinity = cItem.DesignAffinityEnum.Design
+                chkAffinityExtra.Checked = Item.DesignAffinity = cItem.DesignAffinityEnum.Extra
+                chkAffinityDesign.Enabled = True
+                chkAffinityExtra.Enabled = True
+                chkAffinityNothing.Visible = False
+            Else
+                chkAffinityDesign.Checked = False
+                chkAffinityExtra.Checked = False
+                chkAffinityDesign.Enabled = True
+                chkAffinityExtra.Enabled = True
+                chkAffinityNothing.Visible = True
+                chkAffinityNothing.Checked = True
+            End If
+
+            btnPropVisibleByProfile.Enabled = True
+            btnPropVisibleByScale.Enabled = True
         Else
             chkAffinityDesign.Enabled = False
             chkAffinityExtra.Enabled = False
-            chkPropVisibleByProfile.Enabled = False
-            chkPropVisibleByScale.Enabled = False
+            btnPropVisibleByProfile.Enabled = False
+            btnPropVisibleByScale.Enabled = False
         End If
     End Sub
 
@@ -78,7 +89,7 @@ Friend Class cItemVisibilityPropertyControl2
         End Using
     End Function
 
-    Private Sub chkPropVisibleByScale_Click(sender As Object, e As EventArgs) Handles chkPropVisibleByScale.Click
+    Private Sub chkPropVisibleByScale_Click(sender As Object, e As EventArgs) Handles btnPropVisibleByScale.Click
         Try
             If pScaleRulestemScaleVisibilityEdit(Item) Then
                 Call MyBase.MapInvalidate()
@@ -94,6 +105,8 @@ Friend Class cItemVisibilityPropertyControl2
                 Item.DesignAffinity = If(chkAffinityDesign.Checked, cItem.DesignAffinityEnum.Design, cItem.DesignAffinityEnum.Extra)
                 Call MyBase.PropertyChanged("DesignAffinity")
                 Call MyBase.MapInvalidate()
+
+                chkAffinityNothing.Visible = False
             End If
         Catch
         End Try
@@ -103,7 +116,7 @@ Friend Class cItemVisibilityPropertyControl2
         Call chkAffinityDesign_CheckedChanged(sender, e)
     End Sub
 
-    Private Sub chkPropVisibleByProfile_Click(sender As Object, e As EventArgs) Handles chkPropVisibleByProfile.Click
+    Private Sub chkPropVisibleByProfile_Click(sender As Object, e As EventArgs) Handles btnPropVisibleByProfile.Click
         If pProfileVisibilityEdit(Item) Then
             Call MyBase.MapInvalidate()
         End If

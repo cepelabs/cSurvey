@@ -582,6 +582,28 @@ Namespace cSurvey.Design.Items
             Next
         End Sub
 
+        Public Overrides ReadOnly Property BindDesignTypeValue As BindDesignTypeEnum?
+            Get
+                If oItems.Count > 0 Then
+                    Dim iBindDesignType As BindDesignTypeEnum = BindDesignTypeEnum.MainDesign
+                    Dim bFirst As Boolean = True
+                    For Each oItem As cItem In oItems
+                        If oItem.CanBeBinded Then
+                            If bFirst Then
+                                iBindDesignType = oItem.BindDesignType
+                                bFirst = False
+                            Else
+                                If iBindDesignType <> oItem.BindDesignType Then Return Nothing
+                            End If
+                        End If
+                    Next
+                    Return iBindDesignType
+                Else
+                    Return Nothing
+                End If
+            End Get
+        End Property
+
         Public Overrides ReadOnly Property BindDesignType As BindDesignTypeEnum
             Get
                 If oItems.Count > 0 Then
@@ -765,6 +787,20 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
+        Public Overrides ReadOnly Property CaveValue As String
+            Get
+                If oItems.Count > 0 Then
+                    Dim sCave As String = oItems(0).Cave
+                    For Each oItem As cItem In oItems
+                        If sCave <> oItem.Cave Then Return Nothing
+                    Next
+                    Return sCave
+                Else
+                    Return Nothing
+                End If
+            End Get
+        End Property
+
         Public Overrides ReadOnly Property Cave As String
             Get
                 If oItems.Count > 0 Then
@@ -775,6 +811,20 @@ Namespace cSurvey.Design.Items
                     Return sCave
                 Else
                     Return ""
+                End If
+            End Get
+        End Property
+
+        Public Overrides ReadOnly Property BranchValue As String
+            Get
+                If oItems.Count > 0 Then
+                    Dim sBranch As String = oItems(0).Branch
+                    For Each oItem As cItem In oItems
+                        If sBranch <> oItem.Branch Then Return Nothing
+                    Next
+                    Return sBranch
+                Else
+                    Return Nothing
                 End If
             End Get
         End Property

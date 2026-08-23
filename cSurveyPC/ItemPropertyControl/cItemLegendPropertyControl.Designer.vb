@@ -55,6 +55,8 @@ Partial Class cItemLegendPropertyControl
         Me.colItemsText = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colItemsScale = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
+        Me.colItemsVisible = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.chkItemsVisible = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         CType(Me.txtPropLegendItemHeight.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropLegendItemWidth.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropLegendItemVPadding.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -65,6 +67,7 @@ Partial Class cItemLegendPropertyControl
         CType(Me.cboItemsType, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkItemsVisible, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdAutofill
@@ -210,13 +213,14 @@ Partial Class cItemLegendPropertyControl
         resources.ApplyResources(Me.txtPropLegendItemScale, "txtPropLegendItemScale")
         Me.txtPropLegendItemScale.Name = "txtPropLegendItemScale"
         Me.txtPropLegendItemScale.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPropLegendItemScale.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txtPropLegendItemScale.Properties.DisplayFormat.FormatString = "N3"
+        Me.txtPropLegendItemScale.Properties.DisplayFormat.FormatString = "N2"
         Me.txtPropLegendItemScale.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtPropLegendItemScale.Properties.EditFormat.FormatString = "N3"
+        Me.txtPropLegendItemScale.Properties.EditFormat.FormatString = "N2"
         Me.txtPropLegendItemScale.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtPropLegendItemScale.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 196608})
-        Me.txtPropLegendItemScale.Properties.MaxValue = New Decimal(New Integer() {1, 0, 0, 196608})
-        Me.txtPropLegendItemScale.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 196608})
+        Me.txtPropLegendItemScale.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        Me.txtPropLegendItemScale.Properties.MaskSettings.Set("mask", "N2")
+        Me.txtPropLegendItemScale.Properties.MaxValue = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.txtPropLegendItemScale.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 131072})
         '
         'lblBaseLineWidthScaleFactor
         '
@@ -272,14 +276,14 @@ Partial Class cItemLegendPropertyControl
         '
         resources.ApplyResources(Me.txtItemsScale, "txtItemsScale")
         Me.txtItemsScale.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtItemsScale.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txtItemsScale.DisplayFormat.FormatString = "N3"
+        Me.txtItemsScale.DisplayFormat.FormatString = "N2"
         Me.txtItemsScale.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtItemsScale.EditFormat.FormatString = "N3"
+        Me.txtItemsScale.EditFormat.FormatString = "N2"
         Me.txtItemsScale.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtItemsScale.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
-        Me.txtItemsScale.MaskSettings.Set("mask", "N3")
+        Me.txtItemsScale.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        Me.txtItemsScale.MaskSettings.Set("mask", "N2")
         Me.txtItemsScale.MaxValue = New Decimal(New Integer() {1000, 0, 0, 0})
-        Me.txtItemsScale.MinValue = New Decimal(New Integer() {1, 0, 0, 262144})
+        Me.txtItemsScale.MinValue = New Decimal(New Integer() {1, 0, 0, 131072})
         Me.txtItemsScale.Name = "txtItemsScale"
         '
         'cboItemsType
@@ -290,7 +294,7 @@ Partial Class cItemLegendPropertyControl
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colItemsObject, Me.colItemsType, Me.colItemsText, Me.colItemsScale})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colItemsObject, Me.colItemsType, Me.colItemsText, Me.colItemsScale, Me.colItemsVisible})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsView.ColumnAutoWidth = False
@@ -333,8 +337,21 @@ Partial Class cItemLegendPropertyControl
         resources.ApplyResources(Me.GridControl1, "GridControl1")
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.txtItemsScale, Me.cboItemsType})
+        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.txtItemsScale, Me.cboItemsType, Me.chkItemsVisible})
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+        '
+        'colItemsVisible
+        '
+        resources.ApplyResources(Me.colItemsVisible, "colItemsVisible")
+        Me.colItemsVisible.ColumnEdit = Me.chkItemsVisible
+        Me.colItemsVisible.FieldName = "Visible"
+        Me.colItemsVisible.MinWidth = 24
+        Me.colItemsVisible.Name = "colItemsVisible"
+        '
+        'chkItemsVisible
+        '
+        resources.ApplyResources(Me.chkItemsVisible, "chkItemsVisible")
+        Me.chkItemsVisible.Name = "chkItemsVisible"
         '
         'cItemLegendPropertyControl
         '
@@ -376,6 +393,7 @@ Partial Class cItemLegendPropertyControl
         CType(Me.cboItemsType, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkItemsVisible, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -412,4 +430,6 @@ Partial Class cItemLegendPropertyControl
     Friend WithEvents colItemsText As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colItemsScale As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
+    Friend WithEvents colItemsVisible As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents chkItemsVisible As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
 End Class

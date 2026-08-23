@@ -21,6 +21,7 @@ Friend Class cItemSignPropertyControl
     End Property
 
     Public Shadows Sub Rebind(Item As cItemSign)
+        MyBase.RebindBegin()
         Call MyBase.Rebind(Item)
 
         cboPropSignSize.SelectedIndex = Me.Item.SignSize
@@ -28,6 +29,7 @@ Friend Class cItemSignPropertyControl
         txtPropSignRotationAngleDelta.EditValue = Me.Item.SignRotationAngleDelta
         cboPropSignFlip.SelectedIndex = Me.Item.SignFlip
         cboPropSign.SelectedIndex = New List(Of Items.cIItemSign.SignEnum)(System.Enum.GetValues(GetType(Items.cIItemSign.SignEnum))).IndexOf(Me.Item.Sign)
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub cboPropSignRotateMode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropSignRotateMode.SelectedIndexChanged

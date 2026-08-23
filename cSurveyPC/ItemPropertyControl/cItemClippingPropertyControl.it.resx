@@ -135,4 +135,7 @@
   <data name="chkClippingType0.ToolTip" xml:space="preserve">
     <value>Predefinito</value>
   </data>
+  <data name="chkClippingTypeNothing.ToolTip" xml:space="preserve">
+    <value>Valori multipli</value>
+  </data>
 </root>

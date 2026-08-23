@@ -84,6 +84,7 @@ Friend Class cItemSegmentPropertyControl
     Private oSession As cSession
 
     Public Shadows Sub Rebind(Item As cItemSegment)
+        MyBase.RebindBegin()
         MyBase.Rebind(Item)
 
         oSegment = Me.Item.Segment
@@ -144,6 +145,8 @@ Friend Class cItemSegmentPropertyControl
         End If
 
         Call pRefresh()
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub pRefresh()

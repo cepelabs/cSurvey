@@ -91,6 +91,7 @@ Friend Class cItemTrigpointPropertyControl
     End Sub
 
     Public Shadows Sub Rebind(Item As cItemTrigpoint)
+        MyBase.RebindBegin()
         MyBase.Rebind(Item)
 
         oTrigpoint = Me.Item.Trigpoint
@@ -166,6 +167,8 @@ Friend Class cItemTrigpointPropertyControl
         Call grdTrigpointInfo.RowSetVisible("note", oTrigpoint.Note <> "")
 
         Call pRefresh()
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub pRefresh()

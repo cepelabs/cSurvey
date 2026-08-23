@@ -21,6 +21,8 @@ Friend Class cItemCrossSectionMarkerPropertyControl
     End Property
 
     Public Shadows Sub Rebind(Item As cIItemCrossSectionMarker, CurrentOptions As cOptions)
+        MyBase.RebindBegin()
+
         Call MyBase.Rebind(Item)
 
         oCurrentOptions = CurrentOptions
@@ -138,6 +140,8 @@ Friend Class cItemCrossSectionMarkerPropertyControl
             cboPropCrossSectionMarkerDirection.SelectedIndex = oItemProfileCrossSectionMarker.CrossSectionItem.Direction
             cboPropCrossSectionMarkerScale.SelectedIndex = oItemProfileCrossSectionMarker.TextSize
         End If
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub cmdPropCrossSectionItem_Click(sender As Object, e As EventArgs) Handles cmdPropCrossSectionItem.Click

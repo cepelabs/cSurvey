@@ -764,6 +764,18 @@ Namespace cSurvey.Design
             Return oSurvey.Properties.GetCaveInfo(Me)
         End Function
 
+        Public Overridable ReadOnly Property CaveValue As String
+            Get
+                Return sCave
+            End Get
+        End Property
+
+        Public Overridable ReadOnly Property BranchValue As String
+            Get
+                Return sBranch
+            End Get
+        End Property
+
         Public Overridable ReadOnly Property Cave As String Implements cIItem.Cave
             Get
                 Return sCave
@@ -773,6 +785,18 @@ Namespace cSurvey.Design
         Public Overridable ReadOnly Property Branch As String Implements cIItem.Branch
             Get
                 Return sBranch
+            End Get
+        End Property
+
+        Public Overridable ReadOnly Property BindDesignTypeValue As BindDesignTypeEnum?
+            Get
+                Return iBindDesignType
+            End Get
+        End Property
+
+        Public Overridable ReadOnly Property CrossSectionValue As String
+            Get
+                Return sCrossSection
             End Get
         End Property
 

@@ -237,4 +237,7 @@
   <data name="btnPropCustomize.Caption" xml:space="preserve">
     <value>Personalizza...</value>
   </data>
+  <data name="chkBrushNothing.ToolTip" xml:space="preserve">
+    <value>Valori multipli</value>
+  </data>
 </root>

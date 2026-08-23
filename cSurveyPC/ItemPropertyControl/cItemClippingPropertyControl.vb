@@ -15,6 +15,7 @@ Friend Class cItemClippingPropertyControl
     End Sub
 
     Public Shadows Sub Rebind(Item As cItem)
+        MyBase.RebindBegin()
         MyBase.Rebind(Item)
 
         Dim iValue As cItem.cItemClippingTypeEnum? = Item.ClippingTypeValue
@@ -27,6 +28,8 @@ Friend Class cItemClippingPropertyControl
             chkClippingTypeNothing.Visible = True
             chkClippingTypeNothing.Checked = True
         End If
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub pSetClippingType(Type As cItem.cItemClippingTypeEnum)

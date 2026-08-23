@@ -12,6 +12,8 @@ Friend Class cItemNamePropertyControl2
     End Sub
 
     Public Shadows Sub Rebind(Item As cItem)
+        MyBase.RebindBegin()
+
         MyBase.Rebind(Item)
 
         If TypeOf Item Is cItemItems Then
@@ -22,6 +24,8 @@ Friend Class cItemNamePropertyControl2
             txtPropName.Text = Item.Name
         End If
         cmdItemNameRegen.Visible = Item.Survey.Properties.DesignProperties.GetValue("DesignItemNamePattern", "") <> ""
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub txtPropName_Validated(sender As Object, e As EventArgs) Handles txtPropName.Validated

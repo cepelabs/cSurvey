@@ -80,6 +80,8 @@ Friend Class cItemChunk3DPropertyControl
     End Sub
 
     Public Shadows Sub Rebind(Item As cItem)
+        MyBase.RebindBegin()
+
         MyBase.Rebind(Item)
 
         If Me.Item IsNot Item Then
@@ -110,6 +112,8 @@ Friend Class cItemChunk3DPropertyControl
         End If
 
         Call pRefresh()
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub cmdPropModelEdit_Click(sender As Object, e As EventArgs) Handles cmdPropModelEdit.Click

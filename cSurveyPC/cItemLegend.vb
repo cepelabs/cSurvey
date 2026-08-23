@@ -368,6 +368,7 @@ Namespace cSurvey.Design.Items
             Private sScale As Single
             Private ilayerIndex As Integer
             Private iItemIndex As Integer
+            Private bvisible As Boolean
             Private oItem As cItem
 
             Friend Event ResolveItem(Sender As Object, e As ResolveItemEventArgs)
@@ -379,6 +380,7 @@ Namespace cSurvey.Design.Items
                 sScale = Item.sScale
                 ilayerIndex = Item.ilayerIndex
                 iItemIndex = Item.iItemIndex
+                bvisible = Item.bvisible
             End Sub
 
             Friend Class ResolveItemEventArgs
@@ -416,6 +418,18 @@ Namespace cSurvey.Design.Items
                     End If
                     Return oItem
                 End Get
+            End Property
+
+            Public Property Visible As Boolean
+                Get
+                    Return bvisible
+                End Get
+                Set(value As Boolean)
+                    If bvisible <> value Then
+                        bvisible = value
+                        RaiseEvent OnChanged(Me, New EventArgs)
+                    End If
+                End Set
             End Property
 
             Public Property Scale As Single
@@ -461,6 +475,7 @@ Namespace cSurvey.Design.Items
                 iType = Type
                 sText = Text
                 sScale = 1
+                bvisible = True
             End Sub
 
             Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal item As XmlElement)
@@ -469,6 +484,7 @@ Namespace cSurvey.Design.Items
                 sScale = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "scale", 1))
                 ilayerIndex = modXML.GetAttributeValue(item, "l")
                 iItemIndex = modXML.GetAttributeValue(item, "i")
+                bvisible = modXML.GetAttributeValue(item, "v", True)
             End Sub
 
             Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
@@ -478,6 +494,8 @@ Namespace cSurvey.Design.Items
                 If sScale <> 1 Then Call oXMLItem.SetAttribute("scale", modNumbers.NumberToString(sScale, "0.00"))
                 Call oXMLItem.SetAttribute("l", oItem.Layer.Type.ToString("D"))
                 Call oXMLItem.SetAttribute("i", oItem.Layer.Items.IndexOf(oItem))
+                If Not bvisible Then Call oXMLItem.SetAttribute("v", "0")
+
                 Call Parent.AppendChild(oXMLItem)
                 Return oXMLItem
             End Function
@@ -816,7 +834,7 @@ Namespace cSurvey.Design.Items
                     Dim iIndex As Integer = 0
                     SyncLock oItems
                         For Each oItem As cLegendItem In oItems
-                            If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem.Item) Then
+                            If oItem.Visible AndAlso modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem.Item) Then
                                 Dim sItemItemScale As Single = oItem.Scale * sItemScale
                                 Dim oBordersBounds As RectangleF
                                 If iItemAlignment = cIItemLegend.ItemAlignmentEnum.Left Then
@@ -877,7 +895,7 @@ Namespace cSurvey.Design.Items
                                             End Using
                                         End If
                                     End If
-                                    Call oCache.AddResetclip()
+                                    Call oCache.AddResetClip()
                                 End Using
 
                                 Using oBordersPath As GraphicsPath = New GraphicsPath

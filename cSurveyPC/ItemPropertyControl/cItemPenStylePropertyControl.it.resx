@@ -342,4 +342,7 @@
   <data name="btnPropCustomize.Caption" xml:space="preserve">
     <value>Personalizza...</value>
   </data>
+  <data name="chkPenNothing.ToolTip" xml:space="preserve">
+    <value>Valori multipli</value>
+  </data>
 </root>

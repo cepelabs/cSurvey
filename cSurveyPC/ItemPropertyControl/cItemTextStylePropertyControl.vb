@@ -35,6 +35,7 @@ Friend Class cItemTextStylePropertyControl
     End Sub
 
     Public Shadows Sub Rebind(Item As cItem, PaintOptions As cOptions)
+        MyBase.RebindBegin()
         MyBase.Rebind(Item)
 
         If oPaintOptions IsNot PaintOptions Then
@@ -117,6 +118,8 @@ Friend Class cItemTextStylePropertyControl
             optPropTextVAlignCenter.Enabled = False
             optPropTextVAlignBottom.Enabled = False
         End If
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub txtPropText_Validated(sender As Object, e As EventArgs) Handles txtPropText.Validated

@@ -18,12 +18,16 @@ Friend Class cItemImagePropertyControl
     End Property
 
     Public Shadows Sub Rebind(Item As cItemImage)
+        MyBase.RebindBegin()
+
         MyBase.Rebind(Item)
 
         picPropImage.Image = Me.Item.Image
         Call pRefreshImageInfo()
         cboPropImageResizeMode.SelectedIndex = Me.Item.ImageResizeMode
         txtPropImageRotateAngle.EditValue = Me.Item.RotateBy
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub pRefreshImageInfo()

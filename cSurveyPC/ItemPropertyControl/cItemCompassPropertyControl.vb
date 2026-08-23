@@ -10,6 +10,8 @@ Friend Class cItemCompassPropertyControl
     End Property
 
     Public Shadows Sub Rebind(Item As cItemCompass)
+        MyBase.RebindBegin()
+
         Call MyBase.Rebind(Item)
 
         picCompassClipartImage.Image = Me.Item.Clipart.Clipart.GetThumbnailImage(picCompassClipartImage.Width, picCompassClipartImage.Height)
@@ -25,6 +27,8 @@ Friend Class cItemCompassPropertyControl
         End If
         chkHideNorthValue.Checked = Me.Item.HideNorthValue
         Call pSetEnabled()
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub cmdCompassBrowseClipart_Click(sender As Object, e As EventArgs) Handles cmdCompassBrowseClipart.Click

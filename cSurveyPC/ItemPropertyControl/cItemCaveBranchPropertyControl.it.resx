@@ -144,4 +144,13 @@
   <data name="lblPropBindDesignType.Text" xml:space="preserve">
     <value>Collega a:</value>
   </data>
+  <data name="chkCaveBranchNothing.ToolTip" xml:space="preserve">
+    <value>Valori multipli</value>
+  </data>
+  <data name="chkLinkToNothing.ToolTip" xml:space="preserve">
+    <value>Valori multipli</value>
+  </data>
+  <data name="chkCrossSectionsNothing.ToolTip" xml:space="preserve">
+    <value>Valori multipli</value>
+  </data>
 </root>

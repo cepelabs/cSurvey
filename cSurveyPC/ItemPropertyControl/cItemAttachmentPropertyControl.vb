@@ -22,11 +22,15 @@ Friend Class cItemAttachmentPropertyControl
     End Property
 
     Public Shadows Sub Rebind(Item As cItemAttachment)
+        MyBase.RebindBegin()
+
         MyBase.Rebind(Item)
 
         Call pRefreshPreview()
         txtPropAttachmentName.EditValue = Me.Item.Attachment.Attachment.Name
         txtPropAttachmentNote.EditValue = Me.Item.Attachment.Attachment.Note
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub pRefreshPreview()

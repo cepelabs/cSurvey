@@ -29,6 +29,8 @@ Friend Class cItemBrushStylePropertyControl
     End Sub
 
     Public Shadows Sub Rebind(Item As cItem, PaintOptions As cOptions)
+        Call MyBase.RebindBegin()
+
         MyBase.Rebind(Item)
 
         bEditUser = False
@@ -53,6 +55,8 @@ Friend Class cItemBrushStylePropertyControl
             End If
             cboPropBrushPattern.Visible = True
         End If
+
+        Call MyBase.RebindEnd()
     End Sub
 
     Private Sub cmdPropBrushReseed_Click(sender As Object, e As EventArgs) Handles cmdPropBrushReseed.Click
@@ -706,14 +710,15 @@ Friend Class cItemBrushStylePropertyControl
     End Sub
 
     Private Sub chkBrushNothing_CheckedChanged(sender As Object, e As EventArgs) Handles chkBrushNothing.CheckedChanged
-        'cboPropBrush.SelectedIndex = 0
-        chkBrushNothing.Checked = False
-        chkBrushNothing.Visible = False
+        If Not MyBase.IsInRebind Then
+            chkBrushNothing.Checked = False
+            chkBrushNothing.Visible = False
 
-        If TypeOf Item Is cItemItems Then
-            Dim oItems As cItemItems = Item
-            cboPropBrushPattern.EditValue = oItems.FirstOrDefault(Function(oSubItem) oSubItem.Brush IsNot Nothing).Brush.ID
+            If TypeOf Item Is cItemItems Then
+                Dim oItems As cItemItems = Item
+                cboPropBrushPattern.EditValue = oItems.FirstOrDefault(Function(oSubItem) oSubItem.Brush IsNot Nothing).Brush.ID
+            End If
+            cboPropBrushPattern.Visible = True
         End If
-        cboPropBrushPattern.Visible = True
     End Sub
 End Class

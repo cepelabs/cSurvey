@@ -15,6 +15,7 @@ Friend Class cItemSegmentBindingPropertyControl
     End Sub
 
     Public Shadows Sub Rebind(Item As cItem)
+        MyBase.RebindBegin()
         MyBase.Rebind(Item)
         If Item.Survey.MasterSlave.IsLocked(Item) Then
             cmdPropSegmentsLock.Enabled = False
@@ -27,6 +28,7 @@ Friend Class cItemSegmentBindingPropertyControl
         End If
         Enabled = IsAvailable
         Call pRefresh()
+        MyBase.RebindEnd()
     End Sub
 
     Public ReadOnly Property IsAvailable()

@@ -22,6 +22,8 @@ Friend Class cItemCrossSectionSplayPropertyControl
     End Property
 
     Public Shadows Sub Rebind(Item As cIItemCrossSectionSplayBorder)
+        MyBase.RebindBegin()
+
         MyBase.Rebind(Item)
 
         Try
@@ -38,6 +40,8 @@ Friend Class cItemCrossSectionSplayPropertyControl
         Catch
         End Try
         Call picPropCrossSectionProjectionSchema.Invalidate()
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub cmdPropProfileSplay_Click(sender As Object, e As EventArgs) Handles cmdPropCrossSectionSplay.Click

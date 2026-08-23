@@ -53,6 +53,7 @@ Friend Class cItemLegendPropertyControl
     End Sub
 
     Public Shadows Sub Rebind(Item As cItemLegend)
+        MyBase.RebindBegin()
         MyBase.Rebind(Item)
 
         txtPropLegendItemWidth.Value = Me.Item.ItemWidth
@@ -67,6 +68,8 @@ Friend Class cItemLegendPropertyControl
         cboPropLegendItemAlign.SelectedIndex = Me.Item.ItemAlignment
 
         Call Reload()
+
+        MyBase.RebindEnd()
     End Sub
 
     Public Sub Reload()

@@ -18,6 +18,8 @@ Friend Class cItemCrossSectionPropertyControl
     End Property
 
     Public Shadows Sub Rebind(Item As cItemCrossSection)
+        MyBase.RebindBegin()
+
         Call MyBase.Rebind(Item)
 
         cboPropCrossSectionRefStation.SelectedIndex = Me.Item.RefStation
@@ -46,6 +48,8 @@ Friend Class cItemCrossSectionPropertyControl
             chkPropCrossSectionProfileMarker.Checked = oCrossSection.HaveProfileMarker
             cmdPropCrossSectionProfileMarker.Enabled = chkPropCrossSectionProfileMarker.Checked
         End If
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub cboPropProfileTextPosition_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropProfileTextPosition.SelectedIndexChanged

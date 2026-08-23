@@ -14,12 +14,16 @@ Friend Class cItemObjectsBindingPropertyControl
     End Sub
 
     Public Shadows Sub Rebind(Item As cItem)
+        MyBase.RebindBegin()
+
         MyBase.Rebind(Item)
 
         btnPropObjectsSelect.Enabled = False
         Call tvLayers.BeginUpdate()
         tvLayers.DataSource = Nothing
         Call tvLayers.EndUpdate()
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub pRefresh()

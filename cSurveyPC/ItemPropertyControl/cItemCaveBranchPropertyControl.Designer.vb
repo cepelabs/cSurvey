@@ -32,9 +32,12 @@ Partial Class cItemCaveBranchPropertyControl
         Me.lblPropBindDesignType = New DevExpress.XtraEditors.LabelControl()
         Me.pnlPropCaveBranchesColor = New DevExpress.XtraEditors.PanelControl()
         Me.pnlPropCaveBranches = New DevExpress.XtraEditors.PanelControl()
+        Me.chkCaveBranchNothing = New DevExpress.XtraEditors.CheckButton()
         Me.cmdPropSetCurrentCaveBranch = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdPropSetCaveBranch = New DevExpress.XtraEditors.SimpleButton()
         Me.cboPropBindCrossSections = New cSurveyPC.cCrossSectionDropDown()
+        Me.chkLinkToNothing = New DevExpress.XtraEditors.CheckButton()
+        Me.chkCrossSectionsNothing = New DevExpress.XtraEditors.CheckButton()
         CType(Me.cboPropBindDesignType.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlPropCaveBranchesColor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlPropCaveBranches, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -56,6 +59,8 @@ Partial Class cItemCaveBranchPropertyControl
         resources.ApplyResources(Me.cboPropCaveList, "cboPropCaveList")
         Me.cboPropCaveList.EditValue = Nothing
         Me.cboPropCaveList.Name = "cboPropCaveList"
+        Me.cboPropCaveList.ShowDropDownButton = True
+        Me.cboPropCaveList.ShowMoreButton = True
         Me.cboPropCaveList.Workmode = cSurveyPC.cCaveDropDown.WorkmodeEnum.View
         '
         'cboPropCaveBranchList
@@ -63,6 +68,8 @@ Partial Class cItemCaveBranchPropertyControl
         resources.ApplyResources(Me.cboPropCaveBranchList, "cboPropCaveBranchList")
         Me.cboPropCaveBranchList.EditValue = Nothing
         Me.cboPropCaveBranchList.Name = "cboPropCaveBranchList"
+        Me.cboPropCaveBranchList.ShowDropDownButton = True
+        Me.cboPropCaveBranchList.ShowMoreButton = True
         Me.cboPropCaveBranchList.Workmode = cSurveyPC.cCaveDropDown.WorkmodeEnum.View
         '
         'lblPropBindCrossSections
@@ -92,6 +99,7 @@ Partial Class cItemCaveBranchPropertyControl
         'pnlPropCaveBranches
         '
         Me.pnlPropCaveBranches.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlPropCaveBranches.Controls.Add(Me.chkCaveBranchNothing)
         Me.pnlPropCaveBranches.Controls.Add(Me.pnlPropCaveBranchesColor)
         Me.pnlPropCaveBranches.Controls.Add(Me.cmdPropSetCurrentCaveBranch)
         Me.pnlPropCaveBranches.Controls.Add(Me.cmdPropSetCaveBranch)
@@ -101,6 +109,15 @@ Partial Class cItemCaveBranchPropertyControl
         Me.pnlPropCaveBranches.Controls.Add(Me.cboPropCaveList)
         resources.ApplyResources(Me.pnlPropCaveBranches, "pnlPropCaveBranches")
         Me.pnlPropCaveBranches.Name = "pnlPropCaveBranches"
+        '
+        'chkCaveBranchNothing
+        '
+        Me.chkCaveBranchNothing.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.chkCaveBranchNothing.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.duplicatevalues
+        Me.chkCaveBranchNothing.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.chkCaveBranchNothing, "chkCaveBranchNothing")
+        Me.chkCaveBranchNothing.Name = "chkCaveBranchNothing"
+        Me.chkCaveBranchNothing.TabStop = False
         '
         'cmdPropSetCurrentCaveBranch
         '
@@ -126,10 +143,30 @@ Partial Class cItemCaveBranchPropertyControl
         Me.cboPropBindCrossSections.Name = "cboPropBindCrossSections"
         Me.cboPropBindCrossSections.Workmode = cSurveyPC.cCrossSectionDropDown.WorkmodeEnum.View
         '
+        'chkLinkToNothing
+        '
+        Me.chkLinkToNothing.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.chkLinkToNothing.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.duplicatevalues
+        Me.chkLinkToNothing.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.chkLinkToNothing, "chkLinkToNothing")
+        Me.chkLinkToNothing.Name = "chkLinkToNothing"
+        Me.chkLinkToNothing.TabStop = False
+        '
+        'chkCrossSectionsNothing
+        '
+        Me.chkCrossSectionsNothing.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.chkCrossSectionsNothing.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.duplicatevalues
+        Me.chkCrossSectionsNothing.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.chkCrossSectionsNothing, "chkCrossSectionsNothing")
+        Me.chkCrossSectionsNothing.Name = "chkCrossSectionsNothing"
+        Me.chkCrossSectionsNothing.TabStop = False
+        '
         'cItemCaveBranchPropertyControl
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.chkCrossSectionsNothing)
+        Me.Controls.Add(Me.chkLinkToNothing)
         Me.Controls.Add(Me.cboPropBindCrossSections)
         Me.Controls.Add(Me.lblPropBindCrossSections)
         Me.Controls.Add(Me.cboPropBindDesignType)
@@ -163,4 +200,7 @@ Partial Class cItemCaveBranchPropertyControl
     Friend WithEvents cmdPropSetCurrentCaveBranch As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdPropSetCaveBranch As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cboPropBindCrossSections As cCrossSectionDropDown
+    Friend WithEvents chkCaveBranchNothing As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkLinkToNothing As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkCrossSectionsNothing As DevExpress.XtraEditors.CheckButton
 End Class

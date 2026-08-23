@@ -141,4 +141,7 @@
   <data name="chkPropVisibleInDesign.ToolTip" xml:space="preserve">
     <value>Disegno</value>
   </data>
+  <data name="chkAffinityNothing.ToolTip" xml:space="preserve">
+    <value>Valori multipli</value>
+  </data>
 </root>

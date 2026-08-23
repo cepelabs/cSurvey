@@ -25,6 +25,7 @@ Friend Class cItemTrigpointDistancesPropertyControl
     End Sub
 
     Public Shadows Sub Rebind(Item As cItemTrigpoint)
+        MyBase.RebindBegin()
         MyBase.Rebind(Item)
 
         oTrigpoint = Me.Item.Trigpoint
@@ -40,6 +41,8 @@ Friend Class cItemTrigpointDistancesPropertyControl
         End If
 
         Call pInvalidate()
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub chkPropTrigpointDistancesLinkedSurveys_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropTrigpointDistancesLinkedSurveys.CheckedChanged

@@ -13,6 +13,7 @@ Friend Class cItemTransparencyPropertyControl2
     End Sub
 
     Public Shadows Sub Rebind(Item As cItem)
+        MyBase.RebindBegin()
         MyBase.Rebind(Item)
         If Item.TransparencyValue.HasValue Then
             trkTransparency.EditValue = Item.TransparencyValue.Value * 255.0F
@@ -24,6 +25,8 @@ Friend Class cItemTransparencyPropertyControl2
             chkTransparencyNothing.Visible = True
             chkTransparencyNothing.Checked = True
         End If
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub trkTransparency_EditValueChanged(sender As Object, e As EventArgs) Handles trkTransparency.EditValueChanged

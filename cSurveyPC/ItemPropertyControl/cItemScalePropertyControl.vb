@@ -17,6 +17,7 @@ Friend Class cItemScalePropertyControl
     End Sub
 
     Public Shadows Sub Rebind(Item As cItemScale)
+        MyBase.RebindBegin()
         Call MyBase.Rebind(Item)
 
         txtScaleMeters.Value = Me.Item.Length
@@ -25,7 +26,8 @@ Friend Class cItemScalePropertyControl
         txtScaleScaleHeightFactor.Value = Me.Item.ScaleHeightFactor
         chkHideScaleValue.Checked = Me.Item.HideScaleValue
         cboPropScaleFillStyle.SelectedIndex = Me.Item.ScaleFillStyle
-        'txtScaleColor.EditValue = Me.Item.Pen.Color
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub txtScaleMeters_ValueChanged(sender As Object, e As EventArgs) Handles txtScaleMeters.ValueChanged

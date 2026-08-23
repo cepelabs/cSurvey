@@ -16,6 +16,8 @@ Friend Class cItemLineTypePropertyControl2
     Private oSequencesTo As SequencesToDelegate
 
     Public Shadows Sub Rebind(Item As cItem, SequencesTo As SequencesToDelegate)
+        MyBase.RebindBegin()
+
         MyBase.Rebind(Item)
 
         oSequencesTo = SequencesTo
@@ -28,6 +30,8 @@ Friend Class cItemLineTypePropertyControl2
         ElseIf oItem.LineType = cIItemLine.LineTypeEnum.Beziers Then
             chkStyleBezier.Checked = True
         End If
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub chkStyleStraightLine_CheckedChanged(sender As Object, e As EventArgs) Handles chkStyleStraightLine.CheckedChanged

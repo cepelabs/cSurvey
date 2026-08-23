@@ -17,9 +17,13 @@ Friend Class cItemMergeModeControl
     End Property
 
     Public Shadows Sub Rebind(Item As cIItemMergeableArea)
+        MyBase.RebindBegin()
+
         MyBase.Rebind(Item)
         chkMergeMode0.Checked = Me.Item.MergeMode = cIItemMergeableArea.MergeModeEnum.Add
         chkMergeMode1.Checked = Me.Item.MergeMode = cIItemMergeableArea.MergeModeEnum.Subtract
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub chkMergeMode0_CheckedChanged(sender As Object, e As EventArgs) Handles chkMergeMode0.CheckedChanged

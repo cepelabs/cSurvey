@@ -181,6 +181,25 @@ Public Class cItemPropertyControl
     End Sub
 
     Public Overridable Sub Rebind(Item As cItem)
+        Call RebindBegin()
         oItem = Item
+        Call RebindEnd()
+    End Sub
+
+    Private iIsInRebind As Integer
+
+    Public ReadOnly Property IsInRebind() As Boolean
+        Get
+            Return iIsInRebind > 0
+        End Get
+    End Property
+
+    Public Overridable Sub RebindBegin()
+        iIsInRebind += 1
+    End Sub
+
+    Public Overridable Sub RebindEnd()
+        iIsInRebind -= 1
+        If iIsInRebind < 0 Then iIsInRebind = 0
     End Sub
 End Class

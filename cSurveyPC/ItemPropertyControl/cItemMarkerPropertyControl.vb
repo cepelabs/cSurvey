@@ -32,6 +32,8 @@ Friend Class cItemMarkerPropertyControl
     Private oPoint As Helper.Editor.cMarkedDesktopPoint
 
     Public Shadows Sub Rebind(Item As cItem)
+        MyBase.RebindBegin()
+
         MyBase.Rebind(Item)
 
         oPoint = Me.Item.MarkedPoint
@@ -52,7 +54,8 @@ Friend Class cItemMarkerPropertyControl
         Call grdMarkerInfo.RowSetVisible("lon", bCoordinate)
         Call grdMarkerInfo.RowSetVisible("alt", bCoordinate)
 
-        Call pRefresh()
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub pRefresh()

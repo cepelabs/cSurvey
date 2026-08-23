@@ -19,6 +19,8 @@ Friend Class cItemQuotaPropertyControl
     End Property
 
     Public Shadows Sub Rebind(Item As cItemQuota)
+        MyBase.RebindBegin()
+
         Call MyBase.Rebind(Item)
 
         cboPropQuotaType.SelectedIndex = Me.Item.QuotaType
@@ -127,6 +129,8 @@ Friend Class cItemQuotaPropertyControl
                 lblPropQuotaFormat.Enabled = False
                 cboPropQuotaFormat.Enabled = False
         End Select
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub cboPropQuotaType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropQuotaType.SelectedIndexChanged

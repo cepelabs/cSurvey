@@ -22,6 +22,7 @@ Friend Class cItemPlanSplayPropertyControl
     End Property
 
     Public Shadows Sub Rebind(Item As cIItemPlanSplayBorder)
+        MyBase.RebindBegin()
         MyBase.Rebind(Item)
 
         Try
@@ -43,6 +44,8 @@ Friend Class cItemPlanSplayPropertyControl
             txtPropPlanSplayInclinationRangeMax.Value = Me.Item.SplayBorderInclinationRange.Height
         Catch
         End Try
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub cboPropPlanSplayPlanProjectionType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropPlanSplayPlanProjectionType.SelectedIndexChanged

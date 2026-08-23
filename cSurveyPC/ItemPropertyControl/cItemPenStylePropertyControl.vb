@@ -29,6 +29,7 @@ Friend Class cItemPenStylePropertyControl
     End Property
 
     Public Shadows Sub Rebind(Item As cItem, Point As cPoint, PaintOptions As cOptions)
+        MyBase.RebindBegin()
         MyBase.Rebind(Item)
 
         bEditUser = False
@@ -67,6 +68,8 @@ Friend Class cItemPenStylePropertyControl
             End If
             cboPropPenPattern.Visible = True
         End If
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Function pGetPointPen() As cPen
@@ -998,15 +1001,16 @@ Friend Class cItemPenStylePropertyControl
     End Sub
 
     Private Sub chkPenNothing_CheckedChanged(sender As Object, e As EventArgs) Handles chkPenNothing.CheckedChanged
-        'cboPropPenPattern.SelectedIndex = 0
-        chkPenNothing.Checked = False
-        chkPenNothing.Visible = False
+        If Not MyBase.IsInRebind Then
+            chkPenNothing.Checked = False
+            chkPenNothing.Visible = False
 
-        If TypeOf Item Is cItemItems Then
-            Dim oItems As cItemItems = Item
-            cboPropPenPattern.EditValue = oItems.FirstOrDefault(Function(oSubItem) oSubItem.Pen IsNot Nothing).Pen.ID
+            If TypeOf Item Is cItemItems Then
+                Dim oItems As cItemItems = Item
+                cboPropPenPattern.EditValue = oItems.FirstOrDefault(Function(oSubItem) oSubItem.Pen IsNot Nothing).Pen.ID
+            End If
+
+            cboPropPenPattern.Visible = True
         End If
-
-        cboPropPenPattern.Visible = True
     End Sub
 End Class

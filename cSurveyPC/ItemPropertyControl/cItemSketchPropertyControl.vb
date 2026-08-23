@@ -10,12 +10,14 @@ Friend Class cItemSketchPropertyControl
     End Property
 
     Public Shadows Sub Rebind(Item As cItemSketch)
+        MyBase.RebindBegin()
         MyBase.Rebind(Item)
 
         picPropSketch.Image = Me.Item.Image
         txtPropSketchResolution.Text = Me.Item.ImageSize.Width & "x" & Me.Item.ImageSize.Height & "px " & Me.Item.ImageResolution.X & "x" & Me.Item.ImageResolution.Y & " dpi"
         chkPropSketchManualAdjust.Checked = Me.Item.ManualAdjust
         chkPropSketchMorphingDisabled.Checked = Me.Item.MorphingDisabled
+        MyBase.RebindEnd()
     End Sub
 
     Public Sub Edit()

@@ -120,4 +120,7 @@
   <data name="lblPropTransparency.Text" xml:space="preserve">
     <value>Trasparenza:</value>
   </data>
+  <data name="chkTransparencyNothing.ToolTip" xml:space="preserve">
+    <value>Valori multipli</value>
+  </data>
 </root>

@@ -10,6 +10,8 @@ Friend Class cItemVisibilityPropertyControl2
     End Sub
 
     Public Shadows Sub Rebind(Item As cItem)
+        MyBase.RebindBegin()
+
         MyBase.Rebind(Item)
 
         chkPropVisibleInDesign.Checked = Not Item.HiddenInDesign
@@ -41,6 +43,8 @@ Friend Class cItemVisibilityPropertyControl2
             btnPropVisibleByProfile.Enabled = False
             btnPropVisibleByScale.Enabled = False
         End If
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub chkVisibleInPreview_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropVisibleInPreview.CheckedChanged
@@ -121,4 +125,5 @@ Friend Class cItemVisibilityPropertyControl2
             Call MyBase.MapInvalidate()
         End If
     End Sub
+
 End Class

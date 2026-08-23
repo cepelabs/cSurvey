@@ -20,6 +20,8 @@ Friend Class cItemCategoryAndPropertiesControl
     End Sub
 
     Public Shadows Sub Rebind(Item As cItem)
+        MyBase.RebindBegin()
+
         MyBase.Rebind(Item)
 
         cboPropCategories.SelectedIndex = Array.IndexOf([Enum].GetValues(GetType(cIItem.cItemCategoryEnum)), Item.Category)
@@ -31,6 +33,8 @@ Friend Class cItemCategoryAndPropertiesControl
             prpPropDesignDataProperties.SelectedObject = MyBase.Item.DataProperties.GetClass
             prpPropDesignDataProperties.EndUpdate()
         End If
+
+        MyBase.RebindEnd()
     End Sub
 
     Private Sub prpPropDesignDataProperties_MouseUp(sender As Object, e As MouseEventArgs) Handles prpPropDesignDataProperties.MouseUp

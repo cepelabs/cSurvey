@@ -6819,7 +6819,7 @@ Partial Class frmMain2
         '
         'panelContainer1
         '
-        Me.panelContainer1.ActiveChild = Me.dockClipart
+        Me.panelContainer1.ActiveChild = Me.dockProperties
         Me.panelContainer1.Controls.Add(Me.dockProperties)
         Me.panelContainer1.Controls.Add(Me.dockLevels)
         Me.panelContainer1.Controls.Add(Me.dockClipart)

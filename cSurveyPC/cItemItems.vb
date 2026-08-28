@@ -773,6 +773,15 @@ Namespace cSurvey.Design.Items
             End Set
         End Property
 
+        Public Overrides Property Name() As String
+            Get
+                Return ""
+            End Get
+            Set(ByVal value As String)
+
+            End Set
+        End Property
+
         Public Overrides ReadOnly Property CrossSection As String
             Get
                 If oItems.Count > 0 Then

@@ -1708,7 +1708,7 @@ Friend Class frmMain2
                 lblSegmentBearing.Text = sBearing
                 lblSegmentInclination.Text = sInclination
 
-                pnlSegmentSurfaceProfile.Visible = Not .Splay andalso oSurvey.Properties.SurfaceProfile
+                pnlSegmentSurfaceProfile.Visible = Not .Splay AndAlso oSurvey.Properties.SurfaceProfile
                 cboSegmentSurfaceProfileShow.SelectedIndex = .SurfaceProfileShow
                 '-----------------------------------------------------------------------------------------
                 prpSegmentDataProperties.BeginUpdate()
@@ -4874,18 +4874,23 @@ Friend Class frmMain2
                 oPropCaveBranch.Visible = True
                 oPropCaveBranch.Enabled = bUnlocked
 
-                If sCave = "" And sBranch = "" Then
-                    Call pPropPopupShow("warning", modMain.GetLocalizedString("main.textpart55"))
-                    bPropPopupShowed = True
+                If TypeOf oCurrentItem Is cItemItems Then
+                    oPropName.Visible = False
+                    oPropCategoryAndProperties.Visible = False
+                Else
+                    If sCave = "" And sBranch = "" Then
+                        Call pPropPopupShow("warning", modMain.GetLocalizedString("main.textpart55"))
+                        bPropPopupShowed = True
+                    End If
+
+                    Call oPropName.Rebind(oCurrentItem)
+                    oPropName.Visible = True
+                    oPropName.Enabled = bUnlocked
+
+                    Call oPropCategoryAndProperties.Rebind(oCurrentItem)
+                    oPropCategoryAndProperties.Visible = True
+                    oPropCategoryAndProperties.Enabled = bUnlocked
                 End If
-
-                Call oPropCategoryAndProperties.Rebind(oCurrentItem)
-                oPropCategoryAndProperties.Visible = True
-                oPropCategoryAndProperties.Enabled = bUnlocked
-
-                Call oPropName.Rebind(oCurrentItem)
-                oPropName.Visible = True
-                oPropName.Enabled = bUnlocked
 
                 Call pPropertyItemBounds(bPropPopupShowed)
 

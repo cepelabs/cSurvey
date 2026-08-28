@@ -40,11 +40,17 @@ Friend Class cItemCaveBranchPropertyControl
             cboPropCaveList.Visible = False
             cboPropCaveBranchList.Visible = False
 
+            cmdPropSetCaveBranch.Visible = False
+            cmdPropSetCurrentCaveBranch.Visible = False
+
             chkCaveBranchNothing.Visible = True
             chkCaveBranchNothing.Checked = True
         Else
             chkCaveBranchNothing.Visible = False
             chkCaveBranchNothing.Checked = False
+
+            cmdPropSetCaveBranch.Visible = True
+            cmdPropSetCurrentCaveBranch.Visible = True
 
             cboPropCaveList.Visible = True
             cboPropCaveBranchList.Visible = True
@@ -193,6 +199,9 @@ Friend Class cItemCaveBranchPropertyControl
 
             cboPropCaveList.Visible = True
             cboPropCaveBranchList.Visible = True
+
+            cmdPropSetCaveBranch.Visible = True
+            cmdPropSetCurrentCaveBranch.Visible = True
         End If
     End Sub
 

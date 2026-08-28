@@ -13242,73 +13242,6 @@
   <data name="pnlForm.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
     <value>Default</value>
   </data>
-  <data name="ControlContainer9.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
-    <value>Default</value>
-  </data>
-  <data name="ControlContainer9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="ControlContainer9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>428, 766</value>
-  </data>
-  <data name="ControlContainer9.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ControlContainer9.Name" xml:space="preserve">
-    <value>ControlContainer9</value>
-  </data>
-  <data name="&gt;&gt;ControlContainer9.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Docking.ControlContainer, DevExpress.XtraBars.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;ControlContainer9.Parent" xml:space="preserve">
-    <value>dockClipart</value>
-  </data>
-  <data name="&gt;&gt;ControlContainer9.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="dockClipart.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFpEZXZFeHByZXNzLkRhdGEudjI0LjIsIFZlcnNpb249MjQuMi4x
-        My4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAAAB1E
-        ZXZFeHByZXNzLlV0aWxzLlN2Zy5TdmdJbWFnZQEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB1AwAAAu+7
-        vzw/eG1sIHZlcnNpb249JzEuMCcgZW5jb2Rpbmc9J1VURi04Jz8+DQo8c3ZnIHg9IjBweCIgeT0iMHB4
-        IiB2aWV3Qm94PSIwIDAgMzIgMzIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3Jn
-        LzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sOnNw
-        YWNlPSJwcmVzZXJ2ZSIgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAw
-        IDMyIDMyIj4NCiAgPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5CbGFja3tmaWxsOiM3MjcyNzI7fQoJ
-        LkdyZWVue2ZpbGw6IzAzOUMyMzt9CgkuWWVsbG93e2ZpbGw6I0ZGQjExNTt9Cgkuc3Qwe29wYWNpdHk6
-        MC41O30KPC9zdHlsZT4NCiAgPHJlY3QgeD0iMCIgeT0iMjQiIHdpZHRoPSIyNiIgaGVpZ2h0PSI4IiBj
-        bGFzcz0iWWVsbG93IiAvPg0KICA8cG9seWdvbiBwb2ludHM9IjMyLDMwIDI4LDMyIDI4LDI0IDMyLDIy
-        ICIgY2xhc3M9IlllbGxvdyIgLz4NCiAgPGNpcmNsZSBjeD0iMTkiIGN5PSIxMSIgcj0iMyIgY2xhc3M9
-        IlllbGxvdyIgLz4NCiAgPHBvbHlnb24gcG9pbnRzPSIxNiwyMiA4LDE0IDYsMTYgNiwyMiAiIGNsYXNz
-        PSJHcmVlbiIgLz4NCiAgPGcgY2xhc3M9InN0MCI+DQogICAgPHBvbHlnb24gcG9pbnRzPSIxOCwyMiAx
-        NCwxOCAxNiwxNiAyMiwyMiAgIiBjbGFzcz0iR3JlZW4iIC8+DQogIDwvZz4NCiAgPHBhdGggZD0iTTYs
-        MXYxaDIydjE4aDJWMlYxYzAtMC42LTAuNC0xLTEtMUg3QzYuNCwwLDYsMC40LDYsMXoiIGNsYXNzPSJC
-        bGFjayIgLz4NCiAgPHBhdGggZD0iTTQsNmgyMHYxNmgyVjVjMC0wLjUtMC41LTEtMS0xSDNDMi41LDQs
-        Miw0LjUsMiw1djE3aDJWNnoiIGNsYXNzPSJCbGFjayIgLz4NCjwvc3ZnPgs=
-</value>
-  </data>
-  <data name="dockClipart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 30</value>
-  </data>
-  <data name="dockClipart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>428, 766</value>
-  </data>
-  <data name="dockClipart.Text" xml:space="preserve">
-    <value>Clipart gallery</value>
-  </data>
-  <data name="&gt;&gt;dockClipart.Name" xml:space="preserve">
-    <value>dockClipart</value>
-  </data>
-  <data name="&gt;&gt;dockClipart.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Docking.DockPanel, DevExpress.XtraBars.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;dockClipart.Parent" xml:space="preserve">
-    <value>panelContainer1</value>
-  </data>
-  <data name="&gt;&gt;dockClipart.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="ControlContainer10.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
     <value>Default</value>
   </data>
@@ -13561,6 +13494,73 @@
   </data>
   <data name="&gt;&gt;dockLevels.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="ControlContainer9.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v24.2">
+    <value>Default</value>
+  </data>
+  <data name="ControlContainer9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ControlContainer9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>428, 766</value>
+  </data>
+  <data name="ControlContainer9.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ControlContainer9.Name" xml:space="preserve">
+    <value>ControlContainer9</value>
+  </data>
+  <data name="&gt;&gt;ControlContainer9.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Docking.ControlContainer, DevExpress.XtraBars.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;ControlContainer9.Parent" xml:space="preserve">
+    <value>dockClipart</value>
+  </data>
+  <data name="&gt;&gt;ControlContainer9.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dockClipart.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFpEZXZFeHByZXNzLkRhdGEudjI0LjIsIFZlcnNpb249MjQuMi4x
+        My4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAAAB1E
+        ZXZFeHByZXNzLlV0aWxzLlN2Zy5TdmdJbWFnZQEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB1AwAAAu+7
+        vzw/eG1sIHZlcnNpb249JzEuMCcgZW5jb2Rpbmc9J1VURi04Jz8+DQo8c3ZnIHg9IjBweCIgeT0iMHB4
+        IiB2aWV3Qm94PSIwIDAgMzIgMzIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3Jn
+        LzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sOnNw
+        YWNlPSJwcmVzZXJ2ZSIgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAw
+        IDMyIDMyIj4NCiAgPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5CbGFja3tmaWxsOiM3MjcyNzI7fQoJ
+        LkdyZWVue2ZpbGw6IzAzOUMyMzt9CgkuWWVsbG93e2ZpbGw6I0ZGQjExNTt9Cgkuc3Qwe29wYWNpdHk6
+        MC41O30KPC9zdHlsZT4NCiAgPHJlY3QgeD0iMCIgeT0iMjQiIHdpZHRoPSIyNiIgaGVpZ2h0PSI4IiBj
+        bGFzcz0iWWVsbG93IiAvPg0KICA8cG9seWdvbiBwb2ludHM9IjMyLDMwIDI4LDMyIDI4LDI0IDMyLDIy
+        ICIgY2xhc3M9IlllbGxvdyIgLz4NCiAgPGNpcmNsZSBjeD0iMTkiIGN5PSIxMSIgcj0iMyIgY2xhc3M9
+        IlllbGxvdyIgLz4NCiAgPHBvbHlnb24gcG9pbnRzPSIxNiwyMiA4LDE0IDYsMTYgNiwyMiAiIGNsYXNz
+        PSJHcmVlbiIgLz4NCiAgPGcgY2xhc3M9InN0MCI+DQogICAgPHBvbHlnb24gcG9pbnRzPSIxOCwyMiAx
+        NCwxOCAxNiwxNiAyMiwyMiAgIiBjbGFzcz0iR3JlZW4iIC8+DQogIDwvZz4NCiAgPHBhdGggZD0iTTYs
+        MXYxaDIydjE4aDJWMlYxYzAtMC42LTAuNC0xLTEtMUg3QzYuNCwwLDYsMC40LDYsMXoiIGNsYXNzPSJC
+        bGFjayIgLz4NCiAgPHBhdGggZD0iTTQsNmgyMHYxNmgyVjVjMC0wLjUtMC41LTEtMS0xSDNDMi41LDQs
+        Miw0LjUsMiw1djE3aDJWNnoiIGNsYXNzPSJCbGFjayIgLz4NCjwvc3ZnPgs=
+</value>
+  </data>
+  <data name="dockClipart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 30</value>
+  </data>
+  <data name="dockClipart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>428, 766</value>
+  </data>
+  <data name="dockClipart.Text" xml:space="preserve">
+    <value>Clipart gallery</value>
+  </data>
+  <data name="&gt;&gt;dockClipart.Name" xml:space="preserve">
+    <value>dockClipart</value>
+  </data>
+  <data name="&gt;&gt;dockClipart.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Docking.DockPanel, DevExpress.XtraBars.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;dockClipart.Parent" xml:space="preserve">
+    <value>panelContainer1</value>
+  </data>
+  <data name="&gt;&gt;dockClipart.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="panelContainer1.Location" type="System.Drawing.Point, System.Drawing">
     <value>1505, 0</value>

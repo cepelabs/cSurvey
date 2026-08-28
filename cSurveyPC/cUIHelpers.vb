@@ -2175,7 +2175,7 @@ Namespace cSurvey.UIHelpers
                     Dim oCI As cCaveInfoPlaceHolder = pGetRootItem(Item)
                     Dim oCIB As cCaveInfoBranchPlaceHolder = Item
                     If oSurvey.Properties.CaveInfos.Contains(oCI.Source) Then
-                        If oCI.Source.Branches.GetAllBranches.Containsvalue(oCIB.Source) Then
+                        If oCI.Source.Branches.GetAllBranches.ContainsValue(oCIB.Source) Then
                             oCIB.Deleted = True
                             Call pRecursiveDelete(Item)
                             Return False

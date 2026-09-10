@@ -193,6 +193,12 @@ Namespace cSurvey.Design
             End Get
         End Property
 
+        Public Overridable ReadOnly Property HiddenInDesignValue As Boolean?
+            Get
+                Return HiddenInDesign
+            End Get
+        End Property
+
         Public Overridable Property HiddenInDesign As Boolean
             Get
                 Return bHiddenInDesign
@@ -213,6 +219,12 @@ Namespace cSurvey.Design
                     bFilteredInDesign = value
                 End If
             End Set
+        End Property
+
+        Public Overridable ReadOnly Property HiddenInPreviewValue As Boolean?
+            Get
+                Return HiddenInPreview
+            End Get
         End Property
 
         Public Overridable Property HiddenInPreview As Boolean

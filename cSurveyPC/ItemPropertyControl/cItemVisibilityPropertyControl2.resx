@@ -145,7 +145,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPropAffinity.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="btnPropVisibleByProfile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -172,7 +172,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnPropVisibleByProfile.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="btnPropVisibleByScale.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -199,7 +199,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnPropVisibleByScale.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="lblPropVisibleIn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -226,7 +226,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPropVisibleIn.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="chkPropVisibleInDesign.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -253,7 +253,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkPropVisibleInDesign.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="chkPropVisibleInPreview.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -280,7 +280,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkPropVisibleInPreview.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="chkAffinityDesign.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -307,7 +307,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkAffinityDesign.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="chkAffinityExtra.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -334,7 +334,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkAffinityExtra.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="chkAffinityNothing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -364,6 +364,66 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkAffinityNothing.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkPropVisibleInPreviewNothing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropVisibleInPreviewNothing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>37, 27</value>
+  </data>
+  <data name="chkPropVisibleInPreviewNothing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkPropVisibleInPreviewNothing.TabIndex" type="System.Int32, mscorlib">
+    <value>289</value>
+  </data>
+  <data name="chkPropVisibleInPreviewNothing.ToolTip" xml:space="preserve">
+    <value>Multiple values</value>
+  </data>
+  <data name="chkPropVisibleInPreviewNothing.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;chkPropVisibleInPreviewNothing.Name" xml:space="preserve">
+    <value>chkPropVisibleInPreviewNothing</value>
+  </data>
+  <data name="&gt;&gt;chkPropVisibleInPreviewNothing.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropVisibleInPreviewNothing.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPropVisibleInPreviewNothing.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkPropVisibleInDesignNothing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropVisibleInDesignNothing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 27</value>
+  </data>
+  <data name="chkPropVisibleInDesignNothing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkPropVisibleInDesignNothing.TabIndex" type="System.Int32, mscorlib">
+    <value>290</value>
+  </data>
+  <data name="chkPropVisibleInDesignNothing.ToolTip" xml:space="preserve">
+    <value>Multiple values</value>
+  </data>
+  <data name="chkPropVisibleInDesignNothing.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;chkPropVisibleInDesignNothing.Name" xml:space="preserve">
+    <value>chkPropVisibleInDesignNothing</value>
+  </data>
+  <data name="&gt;&gt;chkPropVisibleInDesignNothing.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropVisibleInDesignNothing.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPropVisibleInDesignNothing.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

@@ -70,13 +70,31 @@ Namespace cSurvey.Design.Items
 
         Public Overrides ReadOnly Property CanBeHiddenInDesign As Boolean
             Get
-                Return True
+                If oItems Is Nothing Then
+                    Return False
+                Else
+                    For Each oItem As cItem In oItems
+                        If Not oItem.CanBeHiddenInDesign Then
+                            Return False
+                        End If
+                    Next
+                    Return True
+                End If
             End Get
         End Property
 
         Public Overrides ReadOnly Property CanBeHiddenInPreview As Boolean
             Get
-                Return True
+                If oItems Is Nothing Then
+                    Return False
+                Else
+                    For Each oItem As cItem In oItems
+                        If Not oItem.CanBeHiddenInPreview Then
+                            Return False
+                        End If
+                    Next
+                    Return True
+                End If
             End Get
         End Property
 
@@ -211,6 +229,49 @@ Namespace cSurvey.Design.Items
             End Set
         End Property
 
+        Public Overrides ReadOnly Property HiddenInPreviewValue As Boolean?
+            Get
+                If oItems.Count > 0 Then
+                    Dim bHiddenInPreview As Boolean
+                    Dim bFirst As Boolean = True
+                    For Each oItem As cItem In oItems
+                        If bFirst Then
+                            bHiddenInPreview = oItem.HiddenInPreview
+                            bFirst = False
+                        Else
+                            If bHiddenInPreview <> oItem.HiddenInPreview Then
+                                Return Nothing
+                            End If
+                        End If
+                    Next
+                    Return bHiddenInPreview
+                Else
+                    Return Nothing
+                End If
+            End Get
+        End Property
+
+        Public Overrides ReadOnly Property HiddenInDesignValue As Boolean?
+            Get
+                If oItems.Count > 0 Then
+                    Dim bHiddenInDesign As Boolean
+                    Dim bFirst As Boolean = True
+                    For Each oItem As cItem In oItems
+                        If bFirst Then
+                            bHiddenInDesign = oItem.HiddenInDesign
+                            bFirst = False
+                        Else
+                            If bHiddenInDesign <> oItem.HiddenInDesign Then
+                                Return Nothing
+                            End If
+                        End If
+                    Next
+                    Return bHiddenInDesign
+                Else
+                    Return Nothing
+                End If
+            End Get
+        End Property
         Public Overrides Property HiddenInDesign As Boolean
             Get
                 If oItems.Count > 0 Then

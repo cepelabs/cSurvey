@@ -7,6 +7,11 @@ Friend Class cItemVisibilityPropertyControl2
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
+        chkPropVisibleInDesignNothing.ToolTip = chkPropVisibleInDesign.ToolTip
+        chkPropVisibleInPreviewNothing.ToolTip = chkPropVisibleInPreview.ToolTip
+
+        chkPropVisibleInDesignNothing.Location = chkPropVisibleInDesign.Location
+        chkPropVisibleInPreviewNothing.Location = chkPropVisibleInPreview.Location
     End Sub
 
     Public Shadows Sub Rebind(Item As cItem)
@@ -14,10 +19,33 @@ Friend Class cItemVisibilityPropertyControl2
 
         MyBase.Rebind(Item)
 
-        chkPropVisibleInDesign.Checked = Not Item.HiddenInDesign
-        chkPropVisibleInPreview.Checked = Not Item.HiddenInPreview
         chkPropVisibleInDesign.Enabled = Item.CanBeHiddenInDesign
+        If Item.CanBeHiddenInDesign Then
+            If Item.HiddenInDesignValue.HasValue Then
+                chkPropVisibleInDesignNothing.Visible = False
+                chkPropVisibleInDesign.Checked = Not Item.HiddenInDesign
+            Else
+                chkPropVisibleInDesignNothing.Visible = True
+                chkPropVisibleInDesignNothing.Checked = True
+                chkPropVisibleInDesign.Checked = True
+            End If
+        Else
+            chkPropVisibleInDesignNothing.Visible = False
+        End If
+
         chkPropVisibleInPreview.Enabled = Item.CanBeHiddenInPreview
+        If Item.CanBeHiddenInPreview Then
+            If Item.HiddenInPreviewValue.HasValue Then
+                chkPropVisibleInPreviewNothing.Visible = False
+                chkPropVisibleInPreview.Checked = Not Item.HiddenInPreview
+            Else
+                chkPropVisibleInPreviewNothing.Visible = True
+                chkPropVisibleInPreviewNothing.Checked = True
+                chkPropVisibleInPreview.Checked = True
+            End If
+        Else
+            chkPropVisibleInPreviewNothing.Visible = False
+        End If
 
         If Item.HaveAffinity Then
             If Item.DesignAffinityValue.HasValue Then
@@ -49,11 +77,13 @@ Friend Class cItemVisibilityPropertyControl2
 
     Private Sub chkVisibleInPreview_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropVisibleInPreview.CheckedChanged
         Try
-            If Not DisabledObjectProperty() Then
-                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo35"), "HiddenInPreview")
-                Item.HiddenInPreview = Not chkPropVisibleInPreview.Checked
-                Call MyBase.PropertyChanged("HiddenInPreview")
-                Call MyBase.MapInvalidate()
+            If Not MyBase.IsInRebind Then
+                If Not DisabledObjectProperty() Then
+                    Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo35"), "HiddenInPreview")
+                    Item.HiddenInPreview = Not chkPropVisibleInPreview.Checked
+                    Call MyBase.PropertyChanged("HiddenInPreview")
+                    Call MyBase.MapInvalidate()
+                End If
             End If
         Catch ex As Exception
         End Try
@@ -61,11 +91,13 @@ Friend Class cItemVisibilityPropertyControl2
 
     Private Sub chkVisibleInDesign_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropVisibleInDesign.CheckedChanged
         Try
-            If Not DisabledObjectProperty() Then
-                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo36"), "HiddenInDesign")
-                Item.HiddenInDesign = Not chkPropVisibleInDesign.Checked
-                Call MyBase.PropertyChanged("HiddenInDesign")
-                Call MyBase.MapInvalidate()
+            If Not MyBase.IsInRebind Then
+                If Not DisabledObjectProperty() Then
+                    Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo36"), "HiddenInDesign")
+                    Item.HiddenInDesign = Not chkPropVisibleInDesign.Checked
+                    Call MyBase.PropertyChanged("HiddenInDesign")
+                    Call MyBase.MapInvalidate()
+                End If
             End If
         Catch ex As Exception
         End Try
@@ -104,13 +136,15 @@ Friend Class cItemVisibilityPropertyControl2
 
     Private Sub chkAffinityDesign_CheckedChanged(sender As Object, e As EventArgs) Handles chkAffinityDesign.CheckedChanged
         Try
-            If Not DisabledObjectProperty() Then
-                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo37"), "DesignAffinity")
-                Item.DesignAffinity = If(chkAffinityDesign.Checked, cItem.DesignAffinityEnum.Design, cItem.DesignAffinityEnum.Extra)
-                Call MyBase.PropertyChanged("DesignAffinity")
-                Call MyBase.MapInvalidate()
+            If Not MyBase.IsInRebind Then
+                If Not DisabledObjectProperty() Then
+                    Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo37"), "DesignAffinity")
+                    Item.DesignAffinity = If(chkAffinityDesign.Checked, cItem.DesignAffinityEnum.Design, cItem.DesignAffinityEnum.Extra)
+                    Call MyBase.PropertyChanged("DesignAffinity")
+                    Call MyBase.MapInvalidate()
 
-                chkAffinityNothing.Visible = False
+                    chkAffinityNothing.Visible = False
+                End If
             End If
         Catch
         End Try
@@ -126,4 +160,17 @@ Friend Class cItemVisibilityPropertyControl2
         End If
     End Sub
 
+    Private Sub chkPropVisibleInDesignNothing_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropVisibleInDesignNothing.CheckedChanged
+        If Not MyBase.IsInRebind Then
+            chkPropVisibleInDesignNothing.Visible = False
+            Call chkVisibleInDesign_CheckedChanged(sender, e)
+        End If
+    End Sub
+
+    Private Sub chkPropVisibleInPreviewNothing_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropVisibleInPreviewNothing.CheckedChanged
+        If Not MyBase.IsInRebind Then
+            chkPropVisibleInPreviewNothing.Visible = False
+            Call chkVisibleInPreview_CheckedChanged(sender, e)
+        End If
+    End Sub
 End Class

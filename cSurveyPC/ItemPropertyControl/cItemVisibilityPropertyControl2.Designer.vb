@@ -32,6 +32,8 @@ Partial Class cItemVisibilityPropertyControl2
         Me.chkAffinityDesign = New DevExpress.XtraEditors.CheckButton()
         Me.chkAffinityExtra = New DevExpress.XtraEditors.CheckButton()
         Me.chkAffinityNothing = New DevExpress.XtraEditors.CheckButton()
+        Me.chkPropVisibleInPreviewNothing = New DevExpress.XtraEditors.CheckButton()
+        Me.chkPropVisibleInDesignNothing = New DevExpress.XtraEditors.CheckButton()
         Me.SuspendLayout()
         '
         'lblPropAffinity
@@ -109,10 +111,32 @@ Partial Class cItemVisibilityPropertyControl2
         Me.chkAffinityNothing.Name = "chkAffinityNothing"
         Me.chkAffinityNothing.TabStop = False
         '
+        'chkPropVisibleInPreviewNothing
+        '
+        Me.chkPropVisibleInPreviewNothing.GroupIndex = 1
+        Me.chkPropVisibleInPreviewNothing.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.chkPropVisibleInPreviewNothing.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.duplicatevalues
+        Me.chkPropVisibleInPreviewNothing.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.chkPropVisibleInPreviewNothing, "chkPropVisibleInPreviewNothing")
+        Me.chkPropVisibleInPreviewNothing.Name = "chkPropVisibleInPreviewNothing"
+        Me.chkPropVisibleInPreviewNothing.TabStop = False
+        '
+        'chkPropVisibleInDesignNothing
+        '
+        Me.chkPropVisibleInDesignNothing.GroupIndex = 1
+        Me.chkPropVisibleInDesignNothing.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.chkPropVisibleInDesignNothing.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.duplicatevalues
+        Me.chkPropVisibleInDesignNothing.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.chkPropVisibleInDesignNothing, "chkPropVisibleInDesignNothing")
+        Me.chkPropVisibleInDesignNothing.Name = "chkPropVisibleInDesignNothing"
+        Me.chkPropVisibleInDesignNothing.TabStop = False
+        '
         'cItemVisibilityPropertyControl2
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.chkPropVisibleInDesignNothing)
+        Me.Controls.Add(Me.chkPropVisibleInPreviewNothing)
         Me.Controls.Add(Me.chkAffinityNothing)
         Me.Controls.Add(Me.chkAffinityExtra)
         Me.Controls.Add(Me.chkAffinityDesign)
@@ -136,4 +160,6 @@ Partial Class cItemVisibilityPropertyControl2
     Friend WithEvents chkAffinityDesign As DevExpress.XtraEditors.CheckButton
     Friend WithEvents chkAffinityExtra As DevExpress.XtraEditors.CheckButton
     Friend WithEvents chkAffinityNothing As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkPropVisibleInPreviewNothing As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkPropVisibleInDesignNothing As DevExpress.XtraEditors.CheckButton
 End Class

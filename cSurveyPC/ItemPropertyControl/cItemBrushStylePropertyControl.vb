@@ -338,7 +338,7 @@ Friend Class cItemBrushStylePropertyControl
         Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, Filename, cFile.FileOptionsEnum.EmbedResource)
             Dim oXML As XmlDocument = oFile.Document
             Dim oXMLRoot As XmlElement = oXML.CreateElement("cbrush")
-            Call Brush.SaveTo(oFile, oXML, oXMLRoot)
+            Call Brush.SaveTo(oFile, oXML, oXMLRoot, cSurvey.cSurvey.SaveOptionsEnum.ForClipboard)
             oXML.AppendChild(oXMLRoot)
             oFile.Save()
         End Using

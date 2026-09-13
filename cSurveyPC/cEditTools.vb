@@ -1592,8 +1592,6 @@ Namespace cSurvey.Helper.Editor
                     bIsNewItem = False
                     bStarted = False
                     RaiseEvent OnRefreshDesign(Me, New cEditDesignToolsEventArgs(Me))
-
-                    'Call oParent.Undo.Push("Modifica oggetto", cUndo.ActionEnum.Update, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
                 End If
             End If
         End Sub
@@ -1609,6 +1607,15 @@ Namespace cSurvey.Helper.Editor
                         Dim iLayerType As cLayers.LayerTypeEnum = oXmlSubItem.GetAttribute("layer")
                         Dim oFile As cFile = New cFile(cFile.FileFormatEnum.CSX)
                         Dim oItem As cItem = Design.Layers(iLayerType).CreateItem(oFile, oXmlSubItem)
+                        If oItem.Type = cIItem.cItemTypeEnum.CrossSection Then
+                            Call oSurvey.CrossSections.Add(oItem)
+                        End If
+                        'If oItem.HavePen AndAlso oItem.Pen.Type = cPen.PenTypeEnum.User Then
+                        '    If Not oSurvey.Pens.ContainsID(oItem.Pen.ID) Then
+                        '        Dim oItemCustomPen As cCustomPen = New cCustomPen(oSurvey, oXmlSubItem("custompen")("pen"))
+                        '        oSurvey.Pens.Add(oItemCustomPen)
+                        '    End If
+                        'End If
                         If PerformEditItem Then Call EditItem(oItem, True)  'simulo un edit cosi da scatenare l'undo e tutto il resto...
                         Call oItems.Add(oItem)
                         Call EndItem()
@@ -1624,6 +1631,21 @@ Namespace cSurvey.Helper.Editor
             Else
                 Dim iLayerType As cLayers.LayerTypeEnum = oXMLItem.GetAttribute("layer")
                 Dim oFile As cFile = New cFile(cFile.FileFormatEnum.CSX)
+
+                'If modXML.ChildElementExist(oXMLItem, "custompen") Then
+                '    Dim sID As String = oXMLItem("custompen")("pen").GetAttribute("id")
+                '    If Not oSurvey.Pens.ContainsID(sID) Then
+                '        Dim oItemCustomPen As cCustomPen = New cCustomPen(oSurvey, oXMLItem("custompen")("pen"))
+                '        oSurvey.Pens.Add(oItemCustomPen)
+                '    End If
+                'End If
+                'If modXML.ChildElementExist(oXMLItem, "custombrush") Then
+                '    Dim sID As String = oXMLItem("custombrush")("brush").GetAttribute("id")
+                '    If Not oSurvey.Brushes.ContainsID(sID) Then
+                '        Dim oItemCustomBrush As cCustomBrush = New cCustomBrush(oSurvey, oFile, oXMLItem("custombrush")("brush"))
+                '        oSurvey.Brushes.Add(oItemCustomBrush)
+                '    End If
+                'End If
                 Dim oItem As cItem = Design.Layers(iLayerType).CreateItem(oFile, oXMLItem)
                 If oItem.Type = cIItem.cItemTypeEnum.CrossSection Then
                     Call oSurvey.CrossSections.Add(oItem)

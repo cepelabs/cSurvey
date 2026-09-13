@@ -1457,7 +1457,7 @@ Namespace cSurvey.Design
                 Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)
                     Dim oXML As XmlDocument = oFile.Document
                     Dim oXMLRoot As XmlElement = oXML.CreateElement("cbrush")
-                    Dim oXMLItem As XmlElement = Brush.SaveTo(oFile, oXML, oXMLRoot)
+                    Dim oXMLItem As XmlElement = Brush.SaveTo(oFile, oXML, oXMLRoot, cSurvey.SaveOptionsEnum.None)
                     'hash is calculate without name and type
                     Call oXMLItem.RemoveAttribute("type")
                     Call oXMLItem.RemoveAttribute("name")
@@ -1559,7 +1559,7 @@ Namespace cSurvey.Design
             Call Invalidate()
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oItem As XmlElement = Document.CreateElement("brush")
             Call oItem.SetAttribute("type", iType)
             If iType = cPen.PenTypeEnum.User Then
@@ -2749,7 +2749,7 @@ Namespace cSurvey.Design
                 Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)
                     Dim oXML As XmlDocument = oFile.Document
                     Dim oXMLRoot As XmlElement = oXML.CreateElement("cbrush")
-                    Dim oXMLItem As XmlElement = Brush.GetBaseBrush.SaveTo(oFile, oXML, oXMLRoot)
+                    Dim oXMLItem As XmlElement = Brush.GetBaseBrush.SaveTo(oFile, oXML, oXMLRoot, cSurvey.SaveOptionsEnum.None)
                     'hash is calculate without name and type
                     Call oXMLItem.RemoveAttribute("type")
                     Call oXMLItem.RemoveAttribute("name")
@@ -3098,10 +3098,10 @@ Namespace cSurvey.Design
             End If
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oItem As XmlElement
             If oBaseBrush.Type = cBrush.BrushTypeEnum.Custom Then
-                oItem = oBaseBrush.SaveTo(File, Document, Parent)
+                oItem = oBaseBrush.SaveTo(File, Document, Parent, Options)
             Else
                 oItem = Document.CreateElement("brush")
                 Call oItem.SetAttribute("type", oBaseBrush.Type)

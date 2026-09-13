@@ -286,7 +286,7 @@ Namespace cSurvey.Design
                 Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)
                     Dim oXML As XmlDocument = oFile.Document
                     Dim oXMLRoot As XmlElement = oXML.CreateElement("cpen")
-                    Dim oXMLItem As XmlElement = Pen.SaveTo(oFile, oXML, oXMLRoot)
+                    Dim oXMLItem As XmlElement = Pen.SaveTo(oFile, oXML, oXMLRoot, cSurvey.SaveOptionsEnum.None)
                     'hash is calculate without name and type
                     Call oXMLItem.RemoveAttribute("type")
                     Call oXMLItem.RemoveAttribute("name")
@@ -481,7 +481,7 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oItem As XmlElement = Document.CreateElement("pen")
             Call oItem.SetAttribute("type", iType)
             If iType = cPen.PenTypeEnum.User Then
@@ -1389,7 +1389,7 @@ Namespace cSurvey.Design
                 Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)
                     Dim oXML As XmlDocument = oFile.Document
                     Dim oXMLRoot As XmlElement = oXML.CreateElement("cpen")
-                    Dim oXMLItem As XmlElement = Pen.GetBasePen.SaveTo(oFile, oXML, oXMLRoot)
+                    Dim oXMLItem As XmlElement = Pen.GetBasePen.SaveTo(oFile, oXML, oXMLRoot, cSurvey.SaveOptionsEnum.None)
                     'hash is calculate without name and type
                     Call oXMLItem.RemoveAttribute("type")
                     Call oXMLItem.RemoveAttribute("name")
@@ -1459,9 +1459,9 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             If oBasePen.Type = cPen.PenTypeEnum.Custom Then
-                Return oBasePen.SaveTo(File, Document, Parent)
+                Return oBasePen.SaveTo(File, Document, Parent, Options)
             Else
                 Dim oItem As XmlElement = Document.CreateElement("pen")
                 Call oItem.SetAttribute("type", oBasePen.Type)

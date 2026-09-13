@@ -636,7 +636,7 @@ Namespace cSurvey.Design
                     Call oPointData.Append("B")
                     If Not oPoint.Pen Is Nothing Then
                         Call oPointData.Append("P")
-                        Call oPoint.Pen.SaveTo(File, Document, oXmlPoints)
+                        Call oPoint.Pen.SaveTo(File, Document, oXmlPoints, cSurvey.SaveOptionsEnum.None)
                     End If
                     If oPoint.LineType <> Items.cIItemLine.LineTypeEnum.Undefined Then
                         Call oPointData.Append("T" & oPoint.LineType.ToString("D"))

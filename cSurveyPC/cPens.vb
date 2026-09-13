@@ -664,7 +664,7 @@ Namespace cSurvey.Design
         Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum)
             Dim oXMLPens As XmlElement = Document.CreateElement("pens")
             For Each oItem As cCustomPen In oItems
-                Call oItem.SaveTo(File, Document, oXMLPens)
+                Call oItem.SaveTo(File, Document, oXMLPens, Options)
             Next
             Call Parent.AppendChild(oXMLPens)
             Return oXMLPens

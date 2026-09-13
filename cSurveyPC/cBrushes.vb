@@ -308,7 +308,7 @@ Namespace cSurvey.Design
         Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum)
             Dim oXMLbrushes As XmlElement = Document.CreateElement("brushes")
             For Each oItem As cCustomBrush In oItems
-                Call oItem.SaveTo(File, Document, oXMLbrushes)
+                Call oItem.SaveTo(File, Document, oXMLbrushes, cSurvey.SaveOptionsEnum.ForClipboard)
             Next
             Call Parent.AppendChild(oXMLbrushes)
             Return oXMLbrushes

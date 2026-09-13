@@ -599,7 +599,7 @@ Namespace cSurvey.Design
             If BeginSequence Then
                 Call oXmlPoint.SetAttribute("beginsequence", IIf(bBeginSequence, 1, 0))
                 If Not oPen Is Nothing Then
-                    Call oPen.SaveTo(File, Document, oXmlPoint)
+                    Call oPen.SaveTo(File, Document, oXmlPoint, cSurvey.SaveOptionsEnum.None)
                 End If
                 If iLineType <> Items.cIItemLine.LineTypeEnum.Undefined Then
                     Call oXmlPoint.SetAttribute("linetype", iLineType.ToString("D"))

@@ -598,6 +598,14 @@ Namespace cSurvey.Design
             If iDesignAffinity = DesignAffinityEnum.Undefined Then iDesignAffinity = DesignAffinityEnum.Design
 
             If HavePen Then
+                If modXML.ChildElementExist(Item, "custompen") Then
+                    Dim sID As String = Item("custompen")("pen").GetAttribute("id")
+                    If Not oSurvey.Pens.ContainsID(sID) Then
+                        Dim oItemCustomPen As cCustomPen = New cCustomPen(oSurvey, Item("custompen")("pen"))
+                        oSurvey.Pens.Add(oItemCustomPen)
+                    End If
+                End If
+
                 Dim oXMLPen As XmlElement = Item.SelectSingleNode("pen")
                 If oXMLPen Is Nothing Then
                     oPen = New cPen(oSurvey)
@@ -606,6 +614,14 @@ Namespace cSurvey.Design
                 End If
             End If
             If HaveBrush Then
+                If modXML.ChildElementExist(Item, "custombrush") Then
+                    Dim sID As String = Item("custombrush")("brush").GetAttribute("id")
+                    If Not oSurvey.Brushes.ContainsID(sID) Then
+                        Dim oItemCustomBrush As cCustomBrush = New cCustomBrush(oSurvey, File, Item("custombrush")("brush"))
+                        oSurvey.Brushes.Add(oItemCustomBrush)
+                    End If
+                End If
+
                 Dim oXmlBrush As XmlElement = Item.SelectSingleNode("brush")
                 If oXmlBrush Is Nothing Then
                     oBrush = New cBrush(oSurvey)
@@ -657,8 +673,30 @@ Namespace cSurvey.Design
             If iClippingType <> cItemClippingTypeEnum.Default Then Call oXmlItem.SetAttribute("clippingtype", iClippingType.ToString("D"))
             If iDesignAffinity <> DesignAffinityEnum.Design Then Call oXmlItem.SetAttribute("da", iDesignAffinity.ToString("D"))
 
-            If HavePen Then Call oPen.SaveTo(File, Document, oXmlItem)
-            If HaveBrush Then Call oBrush.SaveTo(File, Document, oXmlItem)
+            If HavePen Then
+                Call oPen.SaveTo(File, Document, oXmlItem, Options)
+                If Options And cSurvey.SaveOptionsEnum.ForClipboard OrElse Options And cSurvey.SaveOptionsEnum.ForImport Then
+                    If oPen.Type = cPen.PenTypeEnum.User Then
+                        'pen have to be saved in a special node
+                        Dim oXMLCustomPen As XmlElement = Document.CreateElement("custompen")
+                        Dim oXMLPen As XmlElement = oPen.GetBasePen.SaveTo(File, Document, oXMLCustomPen, Options)
+                        Call oXmlItem.AppendChild(oXMLCustomPen)
+                    End If
+                End If
+            End If
+
+            If HaveBrush Then
+                Call oBrush.SaveTo(File, Document, oXmlItem, Options)
+                If Options And cSurvey.SaveOptionsEnum.ForClipboard OrElse Options And cSurvey.SaveOptionsEnum.ForImport Then
+                    If oBrush.Type = cBrush.BrushTypeEnum.User Then
+                        'brush have to be saved in a special node
+                        Dim oXMLCustomBrush As XmlElement = Document.CreateElement("customprush")
+                        Dim oXMLPen As XmlElement = oBrush.GetBaseBrush.SaveTo(File, Document, oXMLCustomBrush, Options)
+                        Call oXmlItem.AppendChild(oXMLCustomBrush)
+                    End If
+                End If
+            End If
+
             If HaveTransparency Then If sTransparency <> 0 Then Call oXmlItem.SetAttribute("transparency", modNumbers.NumberToString(sTransparency, "0.00"))
 
             Call oPoints.SaveTo(File, Document, oXmlItem)

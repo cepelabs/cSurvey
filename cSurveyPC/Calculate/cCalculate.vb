@@ -1933,6 +1933,10 @@ Namespace cSurvey.Calculate
                                                             Dim sScaledX As Single
                                                             Dim sScaledY As Single
                                                             .Points.BeginUpdate()
+                                                            'in case of no points I add one point to avoid errors
+                                                            If .Points.Count = 0 Then
+                                                                .Points.Add(New cPoint(oSurvey, 0, 0))
+                                                            End If
                                                             If .ManualAdjust Then
                                                                 Dim oLocation As PointF = .Points(0).Point
                                                                 Call .Points.Clear()

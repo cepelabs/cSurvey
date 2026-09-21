@@ -1,5 +1,7 @@
-﻿Imports cSurveyPC.cSurvey.Design.Items
-Imports System.Xml
+﻿Imports System.Xml
+Imports cSurveyPC.cSurvey.cSurvey
+Imports cSurveyPC.cSurvey.Design.Items
+Imports DevExpress.Pdf.Xmp
 
 Namespace cSurvey.Design
     Public Class cOptionsDesign
@@ -85,6 +87,7 @@ Namespace cSurvey.Design
         Public Sub SetPrintOrExportProfile(Value As cIProfile) Implements cIOptionPrintAndExportArea.SetPrintOrExportProfile
             oPrintOrExportProfile = Value
         End Sub
+
 
         Public Property DrawPrintOrExportAreaDesignStyle As cIOptionPrintAndExportArea.DesignStyleEnum Implements cIOptionPrintAndExportArea.DrawPrintOrExportAreaDesignStyle
             Get

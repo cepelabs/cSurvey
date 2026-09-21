@@ -158,117 +158,17 @@ Partial Class frmProperties
         Me.lblSessionDescription = New DevExpress.XtraEditors.LabelControl()
         Me.lblSessionDate = New DevExpress.XtraEditors.LabelControl()
         Me.lblSessionColor = New DevExpress.XtraEditors.LabelControl()
-        Me.pnlHighlights = New DevExpress.XtraEditors.SplitContainerControl()
-        Me.tvHighlights = New DevExpress.XtraTreeList.TreeList()
-        Me.colHighlightsName = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.colHighlightsApplyTo = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.txtHighlightApplyTo = New DevExpress.XtraEditors.TextEdit()
-        Me.txtHighlightName = New DevExpress.XtraEditors.TextEdit()
-        Me.txtHighlightSize = New DevExpress.XtraEditors.SpinEdit()
-        Me.lblHighlightOpacity = New DevExpress.XtraEditors.LabelControl()
-        Me.trkHighlightOpacity = New DevExpress.XtraEditors.TrackBarControl()
-        Me.lblHighlightName = New DevExpress.XtraEditors.LabelControl()
-        Me.lblHighlightSize = New DevExpress.XtraEditors.LabelControl()
-        Me.lblHighlightColor = New DevExpress.XtraEditors.LabelControl()
-        Me.cmdHighlightCondition = New DevExpress.XtraEditors.SimpleButton()
-        Me.lblHighlightApplyTo = New DevExpress.XtraEditors.LabelControl()
-        Me.txtHighlightColor = New cSurveyPC.cColorSelector()
-        Me.txtHighlightCondition = New DevExpress.XtraEditors.MemoEdit()
-        Me.pnlGrades = New DevExpress.XtraEditors.SplitContainerControl()
-        Me.tvGrades = New DevExpress.XtraTreeList.TreeList()
-        Me.colGradesDescription = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.RepositoryItemPictureEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit()
-        Me.tabGradesDetails = New DevExpress.XtraTab.XtraTabControl()
-        Me.XtraTabPage2 = New DevExpress.XtraTab.XtraTabPage()
-        Me.txtGradesDistance = New DevExpress.XtraEditors.SpinEdit()
+        Me.DefaultToolTipController1 = New DevExpress.Utils.DefaultToolTipController(Me.components)
         Me.lblValues = New System.Windows.Forms.Label()
-        Me.txtGradesBearing = New DevExpress.XtraEditors.SpinEdit()
         Me.cboGradesDistanceType = New System.Windows.Forms.ComboBox()
-        Me.txtGradesInclination = New DevExpress.XtraEditors.SpinEdit()
         Me.cboGradesBearingType = New System.Windows.Forms.ComboBox()
-        Me.txtGradesDepth = New DevExpress.XtraEditors.SpinEdit()
         Me.cboGradesInclinationType = New System.Windows.Forms.ComboBox()
-        Me.txtGradesX = New DevExpress.XtraEditors.SpinEdit()
         Me.lblMeasureUnit = New System.Windows.Forms.Label()
-        Me.txtGradesY = New DevExpress.XtraEditors.SpinEdit()
-        Me.chkGradesDistance = New DevExpress.XtraEditors.CheckEdit()
-        Me.txtGradesZ = New DevExpress.XtraEditors.SpinEdit()
-        Me.chkGradesBearing = New DevExpress.XtraEditors.CheckEdit()
-        Me.chkGradesZ = New DevExpress.XtraEditors.CheckEdit()
-        Me.chkGradesInclination = New DevExpress.XtraEditors.CheckEdit()
         Me.cboGradesZType = New System.Windows.Forms.ComboBox()
         Me.cboGradesDepthType = New System.Windows.Forms.ComboBox()
-        Me.chkGradesY = New DevExpress.XtraEditors.CheckEdit()
-        Me.chkGradesDepth = New DevExpress.XtraEditors.CheckEdit()
         Me.cboGradesYType = New System.Windows.Forms.ComboBox()
         Me.cboGradesXType = New System.Windows.Forms.ComboBox()
-        Me.chkGradesX = New DevExpress.XtraEditors.CheckEdit()
-        Me.XtraTabPage3 = New DevExpress.XtraTab.XtraTabPage()
-        Me.btnGradesUsedBySelectSession = New DevExpress.XtraEditors.SimpleButton()
-        Me.tvGradesUsedBy = New DevExpress.XtraTreeList.TreeList()
-        Me.TreeListColumn1 = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.txtGradesID = New DevExpress.XtraEditors.TextEdit()
-        Me.txtGradesDescription = New DevExpress.XtraEditors.TextEdit()
-        Me.lblGradesID = New DevExpress.XtraEditors.LabelControl()
-        Me.lblGradesDescription = New DevExpress.XtraEditors.LabelControl()
-        Me.pnlElevations = New DevExpress.XtraEditors.SplitContainerControl()
-        Me.tvElevations = New DevExpress.XtraTreeList.TreeList()
-        Me.colElevationsThumbnail = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.picElevationsThumbnail = New DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit()
-        Me.colElevationsName = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.lblElevationColorSchema = New DevExpress.XtraEditors.LabelControl()
-        Me.lblElevationName = New DevExpress.XtraEditors.LabelControl()
-        Me.cboElevationColorSchema = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.txtElevationName = New DevExpress.XtraEditors.TextEdit()
-        Me.lblElevationInformation = New DevExpress.XtraEditors.LabelControl()
-        Me.lblElevationPreview = New DevExpress.XtraEditors.LabelControl()
-        Me.txtElevationInformation = New DevExpress.XtraEditors.MemoEdit()
-        Me.picElevationPreview = New DevExpress.XtraEditors.PictureEdit()
-        Me.pnlOrthophotos = New DevExpress.XtraEditors.SplitContainerControl()
-        Me.tvOrthophotos = New DevExpress.XtraTreeList.TreeList()
-        Me.colOrthophotoThumbnail = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.picOrthophotoThumbnail = New DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit()
-        Me.colOrthophotoName = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.lblOrthophotoPreview = New DevExpress.XtraEditors.LabelControl()
-        Me.lblOrthophotoName = New DevExpress.XtraEditors.LabelControl()
-        Me.lblOrthophotoInformation = New DevExpress.XtraEditors.LabelControl()
-        Me.txtOrthophotoName = New DevExpress.XtraEditors.TextEdit()
-        Me.txtOrthophotoInformation = New DevExpress.XtraEditors.MemoEdit()
-        Me.picOrthophotoPreview = New DevExpress.XtraEditors.PictureEdit()
-        Me.pnlWMSs = New DevExpress.XtraEditors.SplitContainerControl()
-        Me.tvWMSs = New DevExpress.XtraTreeList.TreeList()
-        Me.colWMSsName = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.colWMSsURL = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.colWMSsLayer = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.RepositoryItemPictureEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit()
-        Me.btnWMSLayerRefresh = New DevExpress.XtraEditors.SimpleButton()
-        Me.txtWMSName = New DevExpress.XtraEditors.TextEdit()
-        Me.cboWMSSRSOverride = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.lblWMSName = New DevExpress.XtraEditors.LabelControl()
-        Me.lblWMSSRSOverride = New DevExpress.XtraEditors.LabelControl()
-        Me.lblWMSURL = New DevExpress.XtraEditors.LabelControl()
-        Me.lblWMSLayer = New DevExpress.XtraEditors.LabelControl()
-        Me.txtWMSURL = New DevExpress.XtraEditors.TextEdit()
-        Me.tvWMSLayer = New DevExpress.XtraTreeList.TreeList()
-        Me.colWMSLayerName = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.colWMSLayerCRSs = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.colWMSImageFormat = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.tvCaveInfos = New DevExpress.XtraTreeList.TreeList()
-        Me.colCaveInfosName = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.colCaveInfosColor = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.txtCaveInfoColor = New cSurveyPC.cColorSelector()
-        Me.lblCaveInfoName = New DevExpress.XtraEditors.LabelControl()
-        Me.txtCaveInfoID = New DevExpress.XtraEditors.TextEdit()
-        Me.lblCaveInfoID = New DevExpress.XtraEditors.LabelControl()
-        Me.lblCaveInfoColor = New DevExpress.XtraEditors.LabelControl()
-        Me.chkCaveInfoLocked = New DevExpress.XtraEditors.CheckEdit()
-        Me.lblCaveInfoDescription = New DevExpress.XtraEditors.LabelControl()
-        Me.txtCaveInfoName = New DevExpress.XtraEditors.TextEdit()
-        Me.tabCaveAndBranch = New DevExpress.XtraTab.XtraTabControl()
-        Me.tabCaveInfoSurface1 = New DevExpress.XtraTab.XtraTabPage()
-        Me.lblCaveInfoSurfaceProfileShow = New DevExpress.XtraEditors.LabelControl()
         Me.cboCaveInfoSurfaceProfileShow = New System.Windows.Forms.ComboBox()
-        Me.tabCaveInfoCalculateOptions1 = New DevExpress.XtraTab.XtraTabPage()
         Me.cboCaveInfoExtendStart = New cSurveyPC.cTrigpointDropDown()
         Me.pnlCaveInfoConnections = New DevExpress.XtraEditors.PanelControl()
         Me.lblCaveInfoConnection = New DevExpress.XtraEditors.LabelControl()
@@ -276,18 +176,11 @@ Partial Class frmProperties
         Me.txtCaveInfoConnection = New DevExpress.XtraEditors.TextEdit()
         Me.txtCaveInfoParentConnection = New DevExpress.XtraEditors.TextEdit()
         Me.cmdCaveInfoConnection = New DevExpress.XtraEditors.SimpleButton()
-        Me.lblCaveInfoExtendStart = New DevExpress.XtraEditors.LabelControl()
         Me.pnlCaveInfoPriority = New DevExpress.XtraEditors.PanelControl()
         Me.txtCaveInfoPriority = New System.Windows.Forms.NumericUpDown()
         Me.lblCaveInfoPriority = New DevExpress.XtraEditors.LabelControl()
         Me.chkCaveInfoPriority = New DevExpress.XtraEditors.CheckEdit()
-        Me.tabCaveInfoSegments1 = New DevExpress.XtraTab.XtraTabPage()
         Me.lvCaveInfoSegments = New cSurveyPC.cSegmentsGrid()
-        Me.btnCaveInfoSegmentsRefresh = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnCaveInfoSelectSegment = New DevExpress.XtraEditors.SimpleButton()
-        Me.txtCaveInfoDescription = New DevExpress.XtraEditors.MemoEdit()
-        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
-        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
         Me.mnuInfoBoxTags = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.mnuInfoBoxTags1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuInfoBoxTags2 = New System.Windows.Forms.ToolStripMenuItem()
@@ -355,38 +248,16 @@ Partial Class frmProperties
         Me.cboGPSCustomRefPoint = New System.Windows.Forms.ComboBox()
         Me.cboCoordinateGeo = New System.Windows.Forms.ComboBox()
         Me.cboCoordinateFormat = New System.Windows.Forms.ComboBox()
-        Me.chkGPSSendToTherion = New DevExpress.XtraEditors.CheckEdit()
-        Me.chkGPSEnabled = New DevExpress.XtraEditors.CheckEdit()
         Me.cboDesignWarpingMode = New System.Windows.Forms.ComboBox()
         Me.cboDesignBindingMode = New System.Windows.Forms.ComboBox()
-        Me.cmdChangeInversionModeAndSetDirections = New DevExpress.XtraEditors.SimpleButton()
-        Me.txtName = New DevExpress.XtraEditors.TextEdit()
-        Me.txtDescrizione = New DevExpress.XtraEditors.MemoEdit()
-        Me.txtClub = New DevExpress.XtraEditors.MemoEdit()
-        Me.txtCatasto = New DevExpress.XtraEditors.TextEdit()
-        Me.txtTeam = New DevExpress.XtraEditors.MemoEdit()
-        Me.txtDesigner = New DevExpress.XtraEditors.MemoEdit()
-        Me.txtID = New DevExpress.XtraEditors.TextEdit()
-        Me.cmdNewID = New DevExpress.XtraEditors.SimpleButton()
         Me.txtDesignEditLowerLayersTransparencyThreshold = New System.Windows.Forms.NumericUpDown()
-        Me.chksurfaceprofile = New DevExpress.XtraEditors.CheckEdit()
-        Me.cmdUpdateCalculateVersion = New DevExpress.XtraEditors.SimpleButton()
         Me.txtDesignTextureScaleFactor = New System.Windows.Forms.NumericUpDown()
-        Me.txtCreatorID = New DevExpress.XtraEditors.TextEdit()
-        Me.txtCreationDate = New DevExpress.XtraEditors.TextEdit()
-        Me.txtCreatorVersion = New DevExpress.XtraEditors.TextEdit()
         Me.txtDesignExtraScaleFactor = New System.Windows.Forms.NumericUpDown()
         Me.txtDesignExtraTextScaleFactor = New System.Windows.Forms.NumericUpDown()
         Me.txtSurfaceSelectedPenWidth = New System.Windows.Forms.NumericUpDown()
         Me.txtSurfacePenWidth = New System.Windows.Forms.NumericUpDown()
         Me.cboSurfacePenStyle = New System.Windows.Forms.ComboBox()
         Me.picSurfacePenColor = New System.Windows.Forms.PictureBox()
-        Me.optWarpingActive = New DevExpress.XtraEditors.CheckButton()
-        Me.optWarpingPaused = New DevExpress.XtraEditors.CheckButton()
-        Me.cmdOriginRefreshStations = New DevExpress.XtraEditors.SimpleButton()
-        Me.cmdGPSCustomRefPointRefreshStations = New DevExpress.XtraEditors.SimpleButton()
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.cmdApply = New DevExpress.XtraEditors.SimpleButton()
         Me.mnuTrigPointTags = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripSeparator()
@@ -411,85 +282,86 @@ Partial Class frmProperties
         Me.ToolStripMenuItem15 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMenuItem16 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GroupBox9 = New DevExpress.XtraEditors.GroupControl()
-        Me.txt3DExportAsImageOversampling = New DevExpress.XtraEditors.SpinEdit()
-        Me.lbl3DExportAsImageOversampling = New DevExpress.XtraEditors.LabelControl()
-        Me.frm3DSurface = New DevExpress.XtraEditors.GroupControl()
-        Me.txt3DSurfaceModelLOD = New DevExpress.XtraEditors.SpinEdit()
-        Me.txt3DSurfaceTextureLOD = New DevExpress.XtraEditors.SpinEdit()
-        Me.lbl3DSurfaceModelLOD = New DevExpress.XtraEditors.LabelControl()
-        Me.lbl3DSurfaceTextureLOD = New DevExpress.XtraEditors.LabelControl()
-        Me.txt3DOversamplingFactor = New DevExpress.XtraEditors.SpinEdit()
-        Me.GroupBox4 = New DevExpress.XtraEditors.GroupControl()
-        Me.chk3DLochShowSplay = New DevExpress.XtraEditors.CheckEdit()
-        Me.chk3dLochShowDialog = New DevExpress.XtraEditors.CheckEdit()
-        Me.lbl3DOversamplingFactor = New DevExpress.XtraEditors.LabelControl()
-        Me.lbl3DModelMode = New DevExpress.XtraEditors.LabelControl()
-        Me.lbl3DNormalizationFactor = New DevExpress.XtraEditors.LabelControl()
         Me.cbo3DModelMode = New System.Windows.Forms.ComboBox()
-        Me.txt3DNormalizationFactor = New DevExpress.XtraEditors.SpinEdit()
-        Me.GroupBox2 = New DevExpress.XtraEditors.GroupControl()
-        Me.cmdSurfacePenColor = New DevExpress.XtraEditors.SimpleButton()
-        Me.lblSurfacePenColor = New DevExpress.XtraEditors.LabelControl()
-        Me.lblSurfaceSelectedPenWidth = New DevExpress.XtraEditors.LabelControl()
-        Me.lblSurfacePenWidth = New DevExpress.XtraEditors.LabelControl()
-        Me.lblSurfacePenStyle = New DevExpress.XtraEditors.LabelControl()
-        Me.GroupBox7 = New DevExpress.XtraEditors.GroupControl()
-        Me.cmdPlotNoteTextFont = New DevExpress.XtraEditors.SimpleButton()
-        Me.lblPlotNoteTextFont = New DevExpress.XtraEditors.LabelControl()
-        Me.lblPlotNoteTextColor = New DevExpress.XtraEditors.LabelControl()
-        Me.lblPlotNoteTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
-        Me.txtPlotNoteTextColor = New cSurveyPC.cColorSelector()
-        Me.GroupBox6 = New DevExpress.XtraEditors.GroupControl()
-        Me.lblPlotSplayCrossScale = New DevExpress.XtraEditors.LabelControl()
-        Me.txtPlotSplayCrossScale = New DevExpress.XtraEditors.SpinEdit()
-        Me.lblPlotSplaySelectedPenWidth = New DevExpress.XtraEditors.LabelControl()
-        Me.lblPlotSplayPenWidth = New DevExpress.XtraEditors.LabelControl()
-        Me.lblPlotSplayPenStyle = New DevExpress.XtraEditors.LabelControl()
-        Me.frmPlotLRUD = New DevExpress.XtraEditors.GroupControl()
-        Me.lblPlotLRUDSelectedPenWidth = New DevExpress.XtraEditors.LabelControl()
-        Me.lblPlotLRUDPenWidth = New DevExpress.XtraEditors.LabelControl()
-        Me.lblPlotLRUDPenStyle = New DevExpress.XtraEditors.LabelControl()
-        Me.frmPlotTranslationLine = New DevExpress.XtraEditors.GroupControl()
-        Me.cmdPlotTranslationLinePenColor = New DevExpress.XtraEditors.SimpleButton()
-        Me.lblPlotTranslationLinePenColor = New DevExpress.XtraEditors.LabelControl()
-        Me.lblPlotTranslationLinePenSize = New DevExpress.XtraEditors.LabelControl()
-        Me.lblPlotTranslationLinePenStyle = New DevExpress.XtraEditors.LabelControl()
-        Me.frmPlotPoint = New DevExpress.XtraEditors.GroupControl()
-        Me.lblPlotTextPolicy = New DevExpress.XtraEditors.LabelControl()
-        Me.cboPlotTextPolicy = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.cmdPlotTextFont = New DevExpress.XtraEditors.SimpleButton()
-        Me.cmdPlotPointColor = New DevExpress.XtraEditors.SimpleButton()
-        Me.lblPlotTextFont = New DevExpress.XtraEditors.LabelControl()
-        Me.lblPlotPointColor = New DevExpress.XtraEditors.LabelControl()
-        Me.cmdPlotTextColor = New DevExpress.XtraEditors.SimpleButton()
-        Me.lblPlotTextColor = New DevExpress.XtraEditors.LabelControl()
-        Me.lblPlotTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
-        Me.lblPlotSelectedPointSize = New DevExpress.XtraEditors.LabelControl()
-        Me.lblPlotPointSize = New DevExpress.XtraEditors.LabelControl()
-        Me.lblPlotPointSymbol = New DevExpress.XtraEditors.LabelControl()
-        Me.frmPlotPen = New DevExpress.XtraEditors.GroupControl()
-        Me.chkPlotCenterlineForceSegmentColor = New DevExpress.XtraEditors.CheckEdit()
-        Me.chkPlotCenterlineVectors = New DevExpress.XtraEditors.CheckEdit()
-        Me.cmdPlotPenColor = New DevExpress.XtraEditors.SimpleButton()
-        Me.lblPlotPenColor = New DevExpress.XtraEditors.LabelControl()
-        Me.lblPlotPenWidth = New DevExpress.XtraEditors.LabelControl()
-        Me.lblPlotSelectedPenWidth = New DevExpress.XtraEditors.LabelControl()
-        Me.lblPlotPenStyle = New DevExpress.XtraEditors.LabelControl()
-        Me.txtDesignItemNamePattern = New DevExpress.XtraEditors.TextEdit()
-        Me.lblDesignItemNamePattern = New DevExpress.XtraEditors.LabelControl()
-        Me.cmdItemNamePatternAdd = New DevExpress.XtraEditors.SimpleButton()
-        Me.chkShowLegacyExtraPrintAndExportObjects = New DevExpress.XtraEditors.CheckEdit()
-        Me.GroupBox8 = New DevExpress.XtraEditors.GroupControl()
         Me.cboClipSoil = New System.Windows.Forms.ComboBox()
-        Me.lblClipSoil = New DevExpress.XtraEditors.LabelControl()
         Me.cboClipAdvancedClipart = New System.Windows.Forms.ComboBox()
         Me.cboClipBorder = New System.Windows.Forms.ComboBox()
+        Me.cboLineType = New System.Windows.Forms.ComboBox()
+        Me.txtDesignCrossSectionTextScaleFactor = New System.Windows.Forms.NumericUpDown()
+        Me.txtDesignCrossSectionMarkerTextScaleFactor = New System.Windows.Forms.NumericUpDown()
+        Me.txtDesignCrossSectionMarkerArrowScaleFactor = New System.Windows.Forms.NumericUpDown()
+        Me.txtBaseGeologyLinesScaleFactor = New System.Windows.Forms.NumericUpDown()
+        Me.cboCoordinateBand = New System.Windows.Forms.ComboBox()
+        Me.cboCoordinateZone = New System.Windows.Forms.ComboBox()
+        Me.pnlGPS = New System.Windows.Forms.Panel()
+        Me.optGPSCustomRefPoint = New DevExpress.XtraEditors.CheckEdit()
+        Me.optGPSRefPointOnOrigin = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkGPSAllowManualDeclinations = New DevExpress.XtraEditors.CheckEdit()
+        Me.lblGPSCustomRefPoint = New DevExpress.XtraEditors.LabelControl()
+        Me.cmdGPSCustomRefPointRefreshStations = New DevExpress.XtraEditors.SimpleButton()
+        Me.chkGPSSendToTherion = New DevExpress.XtraEditors.CheckEdit()
+        Me.cboCalculateVersion = New System.Windows.Forms.ComboBox()
+        Me.cboSplayMode = New System.Windows.Forms.ComboBox()
+        Me.cboInversionMode = New System.Windows.Forms.ComboBox()
+        Me.cboNordCorrection = New System.Windows.Forms.ComboBox()
+        Me.cboCalculateType = New System.Windows.Forms.ComboBox()
+        Me.cboRingCorrectionMode = New System.Windows.Forms.ComboBox()
+        Me.pnlSurfaceProfile = New DevExpress.XtraEditors.PanelControl()
+        Me.chksurfaceprofile = New DevExpress.XtraEditors.CheckEdit()
+        Me.pnlsurfaceprofileelevation = New DevExpress.XtraEditors.PanelControl()
+        Me.chkSurfaceProfileShow = New DevExpress.XtraEditors.CheckEdit()
+        Me.cbosurfaceprofileelevation = New cSurveyPC.cElevationDropDown()
+        Me.lblsurfaceprofileelevation = New DevExpress.XtraEditors.LabelControl()
+        Me.mnuItemNamePatternTags = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.mnuItemNamePatternTagsCave = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuItemNamePatternTagsBranch = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator13 = New System.Windows.Forms.ToolStripSeparator()
+        Me.mnuItemNamePatternTagsCount = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuItemNamePatternTagsIndex = New System.Windows.Forms.ToolStripMenuItem()
+        Me.cboOrigin = New cSurveyPC.cTrigpointDropDown()
+        Me.XtraScrollableControl1 = New DevExpress.XtraEditors.XtraScrollableControl()
+        Me.cboGeologicalLineType = New System.Windows.Forms.ComboBox()
+        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
+        Me.flyParameters = New DevExpress.Utils.FlyoutPanel()
+        Me.pnlParameters = New DevExpress.Utils.FlyoutPanelControl()
+        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
+        Me.tvDefaultPenPattern = New DevExpress.XtraTreeList.TreeList()
+        Me.colDefaultPenPattern = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.txtDefaultPenPattern = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
+        Me.txtDesignItemNamePattern = New DevExpress.XtraEditors.TextEdit()
+        Me.frrmDesign = New DevExpress.XtraEditors.GroupControl()
+        Me.GroupBox11 = New DevExpress.XtraEditors.GroupControl()
+        Me.lblDesignCrossSectionTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupBox12 = New DevExpress.XtraEditors.GroupControl()
+        Me.lblDesignCrossSectionMarkerTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.lblDesignCrossSectionMarkerArrowScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupBox10 = New DevExpress.XtraEditors.GroupControl()
+        Me.lblDesignExtraTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.lblDesignExtraScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.lblDesignTextureScale = New DevExpress.XtraEditors.LabelControl()
+        Me.cmdDesignTextFont = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblDesignTextFont = New DevExpress.XtraEditors.LabelControl()
+        Me.lblDesignSoilScale = New DevExpress.XtraEditors.LabelControl()
+        Me.lblDesignClipartScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.lblDesignTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.lblDesignSignScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.lblDesignTerrainLevelScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.chkShowLegacyExtraPrintAndExportObjects = New DevExpress.XtraEditors.CheckEdit()
+        Me.cmdItemNamePatternAdd = New DevExpress.XtraEditors.SimpleButton()
+        Me.GroupBox1 = New DevExpress.XtraEditors.GroupControl()
+        Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtBaseBrushLinesScaleFactor = New DevExpress.XtraEditors.SpinEdit()
+        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
+        Me.Label8 = New DevExpress.XtraEditors.LabelControl()
+        Me.Label7 = New DevExpress.XtraEditors.LabelControl()
+        Me.Label4 = New DevExpress.XtraEditors.LabelControl()
+        Me.lblBaseLinesScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.lblBaseLineWidthScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.lblDesignItemNamePattern = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupBox8 = New DevExpress.XtraEditors.GroupControl()
+        Me.lblClipSoil = New DevExpress.XtraEditors.LabelControl()
         Me.lblClippingAdvancedClipart = New DevExpress.XtraEditors.LabelControl()
         Me.lblClippingBorder = New DevExpress.XtraEditors.LabelControl()
-        Me.GroupBox5 = New DevExpress.XtraEditors.GroupControl()
-        Me.lblTextRotateMode = New DevExpress.XtraEditors.LabelControl()
-        Me.lblSignRotateMode = New DevExpress.XtraEditors.LabelControl()
         Me.GroupBox3 = New DevExpress.XtraEditors.GroupControl()
         Me.lblDesignLowerLayersTransparencyThreshold = New DevExpress.XtraEditors.LabelControl()
         Me.lblDesignTransparencyPreview = New DevExpress.XtraEditors.LabelControl()
@@ -504,38 +376,211 @@ Partial Class frmProperties
         Me.frmSketchPlan = New DevExpress.XtraEditors.GroupControl()
         Me.lblSketchPlanCorrectionScale = New DevExpress.XtraEditors.LabelControl()
         Me.lblSketchPlanCorrectionTranslation = New DevExpress.XtraEditors.LabelControl()
-        Me.cboLineType = New System.Windows.Forms.ComboBox()
+        Me.GroupBox5 = New DevExpress.XtraEditors.GroupControl()
+        Me.lblTextRotateMode = New DevExpress.XtraEditors.LabelControl()
+        Me.lblSignRotateMode = New DevExpress.XtraEditors.LabelControl()
         Me.Label27 = New DevExpress.XtraEditors.LabelControl()
-        Me.frrmDesign = New DevExpress.XtraEditors.GroupControl()
-        Me.GroupBox11 = New DevExpress.XtraEditors.GroupControl()
-        Me.lblDesignCrossSectionTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
-        Me.txtDesignCrossSectionTextScaleFactor = New System.Windows.Forms.NumericUpDown()
-        Me.GroupBox12 = New DevExpress.XtraEditors.GroupControl()
-        Me.lblDesignCrossSectionMarkerTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
-        Me.txtDesignCrossSectionMarkerTextScaleFactor = New System.Windows.Forms.NumericUpDown()
-        Me.txtDesignCrossSectionMarkerArrowScaleFactor = New System.Windows.Forms.NumericUpDown()
-        Me.lblDesignCrossSectionMarkerArrowScaleFactor = New DevExpress.XtraEditors.LabelControl()
-        Me.GroupBox10 = New DevExpress.XtraEditors.GroupControl()
-        Me.lblDesignExtraTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
-        Me.lblDesignExtraScaleFactor = New DevExpress.XtraEditors.LabelControl()
-        Me.lblDesignTextureScale = New DevExpress.XtraEditors.LabelControl()
-        Me.cmdDesignTextFont = New DevExpress.XtraEditors.SimpleButton()
-        Me.lblDesignTextFont = New DevExpress.XtraEditors.LabelControl()
-        Me.lblDesignSoilScale = New DevExpress.XtraEditors.LabelControl()
-        Me.lblDesignClipartScaleFactor = New DevExpress.XtraEditors.LabelControl()
-        Me.lblDesignTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
-        Me.lblDesignSignScaleFactor = New DevExpress.XtraEditors.LabelControl()
-        Me.lblDesignTerrainLevelScaleFactor = New DevExpress.XtraEditors.LabelControl()
-        Me.GroupBox1 = New DevExpress.XtraEditors.GroupControl()
-        Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
-        Me.txtBaseBrushLinesScaleFactor = New DevExpress.XtraEditors.SpinEdit()
-        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
-        Me.txtBaseGeologyLinesScaleFactor = New System.Windows.Forms.NumericUpDown()
-        Me.Label8 = New DevExpress.XtraEditors.LabelControl()
-        Me.Label7 = New DevExpress.XtraEditors.LabelControl()
-        Me.Label4 = New DevExpress.XtraEditors.LabelControl()
-        Me.lblBaseLinesScaleFactor = New DevExpress.XtraEditors.LabelControl()
-        Me.lblBaseLineWidthScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.XtraScrollableControl2 = New DevExpress.XtraEditors.XtraScrollableControl()
+        Me.GroupBox2 = New DevExpress.XtraEditors.GroupControl()
+        Me.cmdSurfacePenColor = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblSurfacePenColor = New DevExpress.XtraEditors.LabelControl()
+        Me.lblSurfaceSelectedPenWidth = New DevExpress.XtraEditors.LabelControl()
+        Me.lblSurfacePenWidth = New DevExpress.XtraEditors.LabelControl()
+        Me.lblSurfacePenStyle = New DevExpress.XtraEditors.LabelControl()
+        Me.frmPlotPoint = New DevExpress.XtraEditors.GroupControl()
+        Me.lblPlotTextPolicy = New DevExpress.XtraEditors.LabelControl()
+        Me.cboPlotTextPolicy = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.cmdPlotTextFont = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdPlotPointColor = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblPlotTextFont = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotPointColor = New DevExpress.XtraEditors.LabelControl()
+        Me.cmdPlotTextColor = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblPlotTextColor = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotSelectedPointSize = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotPointSize = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotPointSymbol = New DevExpress.XtraEditors.LabelControl()
+        Me.frmPlotLRUD = New DevExpress.XtraEditors.GroupControl()
+        Me.lblPlotLRUDSelectedPenWidth = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotLRUDPenWidth = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotLRUDPenStyle = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupBox7 = New DevExpress.XtraEditors.GroupControl()
+        Me.cmdPlotNoteTextFont = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblPlotNoteTextFont = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotNoteTextColor = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotNoteTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.txtPlotNoteTextColor = New cSurveyPC.cColorSelector()
+        Me.frmPlotTranslationLine = New DevExpress.XtraEditors.GroupControl()
+        Me.cmdPlotTranslationLinePenColor = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblPlotTranslationLinePenColor = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotTranslationLinePenSize = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotTranslationLinePenStyle = New DevExpress.XtraEditors.LabelControl()
+        Me.frmPlotPen = New DevExpress.XtraEditors.GroupControl()
+        Me.chkPlotCenterlineForceSegmentColor = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkPlotCenterlineVectors = New DevExpress.XtraEditors.CheckEdit()
+        Me.cmdPlotPenColor = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblPlotPenColor = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotPenWidth = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotSelectedPenWidth = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotPenStyle = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupBox6 = New DevExpress.XtraEditors.GroupControl()
+        Me.lblPlotSplayCrossScale = New DevExpress.XtraEditors.LabelControl()
+        Me.txtPlotSplayCrossScale = New DevExpress.XtraEditors.SpinEdit()
+        Me.lblPlotSplaySelectedPenWidth = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotSplayPenWidth = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotSplayPenStyle = New DevExpress.XtraEditors.LabelControl()
+        Me.pnl3D = New DevExpress.XtraEditors.PanelControl()
+        Me.txt3DMinPassageSizeUM = New DevExpress.XtraEditors.LabelControl()
+        Me.txt3DNormalizationFactor = New DevExpress.XtraEditors.SpinEdit()
+        Me.txt3DMinPassageSize = New DevExpress.XtraEditors.SpinEdit()
+        Me.lbl3DNormalizationFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl3DMinPassageSize = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl3DOversamplingFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl3dPrecisionUM = New DevExpress.XtraEditors.LabelControl()
+        Me.txt3DOversamplingFactor = New DevExpress.XtraEditors.SpinEdit()
+        Me.txt3DPrecision = New DevExpress.XtraEditors.SpinEdit()
+        Me.lbl3DPrecision = New DevExpress.XtraEditors.LabelControl()
+        Me.pnlFooter = New DevExpress.XtraEditors.PanelControl()
+        Me.lblSeparator = New DevExpress.XtraEditors.LabelControl()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdApply = New DevExpress.XtraEditors.SimpleButton()
+        Me.pnlHighlights = New DevExpress.XtraEditors.SplitContainerControl()
+        Me.tvHighlights = New DevExpress.XtraTreeList.TreeList()
+        Me.colHighlightsName = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.colHighlightsApplyTo = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.txtHighlightApplyTo = New DevExpress.XtraEditors.TextEdit()
+        Me.txtHighlightName = New DevExpress.XtraEditors.TextEdit()
+        Me.txtHighlightSize = New DevExpress.XtraEditors.SpinEdit()
+        Me.lblHighlightOpacity = New DevExpress.XtraEditors.LabelControl()
+        Me.trkHighlightOpacity = New DevExpress.XtraEditors.TrackBarControl()
+        Me.lblHighlightName = New DevExpress.XtraEditors.LabelControl()
+        Me.lblHighlightSize = New DevExpress.XtraEditors.LabelControl()
+        Me.lblHighlightColor = New DevExpress.XtraEditors.LabelControl()
+        Me.cmdHighlightCondition = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblHighlightApplyTo = New DevExpress.XtraEditors.LabelControl()
+        Me.txtHighlightColor = New cSurveyPC.cColorSelector()
+        Me.txtHighlightCondition = New DevExpress.XtraEditors.MemoEdit()
+        Me.pnlGrades = New DevExpress.XtraEditors.SplitContainerControl()
+        Me.tvGrades = New DevExpress.XtraTreeList.TreeList()
+        Me.colGradesDescription = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.RepositoryItemPictureEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit()
+        Me.tabGradesDetails = New DevExpress.XtraTab.XtraTabControl()
+        Me.XtraTabPage2 = New DevExpress.XtraTab.XtraTabPage()
+        Me.txtGradesDistance = New DevExpress.XtraEditors.SpinEdit()
+        Me.txtGradesBearing = New DevExpress.XtraEditors.SpinEdit()
+        Me.txtGradesInclination = New DevExpress.XtraEditors.SpinEdit()
+        Me.txtGradesDepth = New DevExpress.XtraEditors.SpinEdit()
+        Me.txtGradesX = New DevExpress.XtraEditors.SpinEdit()
+        Me.txtGradesY = New DevExpress.XtraEditors.SpinEdit()
+        Me.chkGradesDistance = New DevExpress.XtraEditors.CheckEdit()
+        Me.txtGradesZ = New DevExpress.XtraEditors.SpinEdit()
+        Me.chkGradesBearing = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkGradesZ = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkGradesInclination = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkGradesY = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkGradesDepth = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkGradesX = New DevExpress.XtraEditors.CheckEdit()
+        Me.XtraTabPage3 = New DevExpress.XtraTab.XtraTabPage()
+        Me.btnGradesUsedBySelectSession = New DevExpress.XtraEditors.SimpleButton()
+        Me.tvGradesUsedBy = New DevExpress.XtraTreeList.TreeList()
+        Me.TreeListColumn1 = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.txtGradesID = New DevExpress.XtraEditors.TextEdit()
+        Me.txtGradesDescription = New DevExpress.XtraEditors.TextEdit()
+        Me.lblGradesID = New DevExpress.XtraEditors.LabelControl()
+        Me.lblGradesDescription = New DevExpress.XtraEditors.LabelControl()
+        Me.pnlElevations = New DevExpress.XtraEditors.SplitContainerControl()
+        Me.tvElevations = New DevExpress.XtraTreeList.TreeList()
+        Me.colElevationsThumbnail = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.picElevationsThumbnail = New DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit()
+        Me.colElevationsName = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.lblElevationColorSchema = New DevExpress.XtraEditors.LabelControl()
+        Me.lblElevationName = New DevExpress.XtraEditors.LabelControl()
+        Me.cboElevationColorSchema = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.txtElevationName = New DevExpress.XtraEditors.TextEdit()
+        Me.lblElevationInformation = New DevExpress.XtraEditors.LabelControl()
+        Me.lblElevationPreview = New DevExpress.XtraEditors.LabelControl()
+        Me.txtElevationInformation = New DevExpress.XtraEditors.MemoEdit()
+        Me.picElevationPreview = New DevExpress.XtraEditors.PictureEdit()
+        Me.pnlOrthophotos = New DevExpress.XtraEditors.SplitContainerControl()
+        Me.tvOrthophotos = New DevExpress.XtraTreeList.TreeList()
+        Me.colOrthophotoThumbnail = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.picOrthophotoThumbnail = New DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit()
+        Me.colOrthophotoName = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.lblOrthophotoPreview = New DevExpress.XtraEditors.LabelControl()
+        Me.lblOrthophotoName = New DevExpress.XtraEditors.LabelControl()
+        Me.lblOrthophotoInformation = New DevExpress.XtraEditors.LabelControl()
+        Me.txtOrthophotoName = New DevExpress.XtraEditors.TextEdit()
+        Me.txtOrthophotoInformation = New DevExpress.XtraEditors.MemoEdit()
+        Me.picOrthophotoPreview = New DevExpress.XtraEditors.PictureEdit()
+        Me.pnlWMSs = New DevExpress.XtraEditors.SplitContainerControl()
+        Me.tvWMSs = New DevExpress.XtraTreeList.TreeList()
+        Me.colWMSsName = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.colWMSsURL = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.colWMSsLayer = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.RepositoryItemPictureEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit()
+        Me.btnWMSLayerRefresh = New DevExpress.XtraEditors.SimpleButton()
+        Me.txtWMSName = New DevExpress.XtraEditors.TextEdit()
+        Me.cboWMSSRSOverride = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.lblWMSName = New DevExpress.XtraEditors.LabelControl()
+        Me.lblWMSSRSOverride = New DevExpress.XtraEditors.LabelControl()
+        Me.lblWMSURL = New DevExpress.XtraEditors.LabelControl()
+        Me.lblWMSLayer = New DevExpress.XtraEditors.LabelControl()
+        Me.txtWMSURL = New DevExpress.XtraEditors.TextEdit()
+        Me.tvWMSLayer = New DevExpress.XtraTreeList.TreeList()
+        Me.colWMSLayerName = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.colWMSLayerCRSs = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.colWMSImageFormat = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.tvCaveInfos = New DevExpress.XtraTreeList.TreeList()
+        Me.colCaveInfosName = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.colCaveInfosColor = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.txtCaveInfoColor = New cSurveyPC.cColorSelector()
+        Me.lblCaveInfoName = New DevExpress.XtraEditors.LabelControl()
+        Me.txtCaveInfoID = New DevExpress.XtraEditors.TextEdit()
+        Me.lblCaveInfoID = New DevExpress.XtraEditors.LabelControl()
+        Me.lblCaveInfoColor = New DevExpress.XtraEditors.LabelControl()
+        Me.chkCaveInfoLocked = New DevExpress.XtraEditors.CheckEdit()
+        Me.lblCaveInfoDescription = New DevExpress.XtraEditors.LabelControl()
+        Me.txtCaveInfoName = New DevExpress.XtraEditors.TextEdit()
+        Me.tabCaveAndBranch = New DevExpress.XtraTab.XtraTabControl()
+        Me.tabCaveInfoSurface1 = New DevExpress.XtraTab.XtraTabPage()
+        Me.lblCaveInfoSurfaceProfileShow = New DevExpress.XtraEditors.LabelControl()
+        Me.tabCaveInfoCalculateOptions1 = New DevExpress.XtraTab.XtraTabPage()
+        Me.lblCaveInfoExtendStart = New DevExpress.XtraEditors.LabelControl()
+        Me.tabCaveInfoSegments1 = New DevExpress.XtraTab.XtraTabPage()
+        Me.btnCaveInfoSegmentsRefresh = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnCaveInfoSelectSegment = New DevExpress.XtraEditors.SimpleButton()
+        Me.txtCaveInfoDescription = New DevExpress.XtraEditors.MemoEdit()
+        Me.chkGPSEnabled = New DevExpress.XtraEditors.CheckEdit()
+        Me.cmdChangeInversionModeAndSetDirections = New DevExpress.XtraEditors.SimpleButton()
+        Me.txtName = New DevExpress.XtraEditors.TextEdit()
+        Me.txtDescrizione = New DevExpress.XtraEditors.MemoEdit()
+        Me.txtClub = New DevExpress.XtraEditors.MemoEdit()
+        Me.txtCatasto = New DevExpress.XtraEditors.TextEdit()
+        Me.txtTeam = New DevExpress.XtraEditors.MemoEdit()
+        Me.txtDesigner = New DevExpress.XtraEditors.MemoEdit()
+        Me.txtID = New DevExpress.XtraEditors.TextEdit()
+        Me.cmdNewID = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdUpdateCalculateVersion = New DevExpress.XtraEditors.SimpleButton()
+        Me.txtCreatorID = New DevExpress.XtraEditors.TextEdit()
+        Me.txtCreationDate = New DevExpress.XtraEditors.TextEdit()
+        Me.txtCreatorVersion = New DevExpress.XtraEditors.TextEdit()
+        Me.optWarpingActive = New DevExpress.XtraEditors.CheckButton()
+        Me.optWarpingPaused = New DevExpress.XtraEditors.CheckButton()
+        Me.cmdOriginRefreshStations = New DevExpress.XtraEditors.SimpleButton()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.GroupBox9 = New DevExpress.XtraEditors.GroupControl()
+        Me.txt3DExportAsImageOversampling = New DevExpress.XtraEditors.SpinEdit()
+        Me.lbl3DExportAsImageOversampling = New DevExpress.XtraEditors.LabelControl()
+        Me.frm3DSurface = New DevExpress.XtraEditors.GroupControl()
+        Me.txt3DSurfaceModelLOD = New DevExpress.XtraEditors.SpinEdit()
+        Me.txt3DSurfaceTextureLOD = New DevExpress.XtraEditors.SpinEdit()
+        Me.lbl3DSurfaceModelLOD = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl3DSurfaceTextureLOD = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupBox4 = New DevExpress.XtraEditors.GroupControl()
+        Me.chk3DLochShowSplay = New DevExpress.XtraEditors.CheckEdit()
+        Me.chk3dLochShowDialog = New DevExpress.XtraEditors.CheckEdit()
+        Me.lbl3DModelMode = New DevExpress.XtraEditors.LabelControl()
         Me.cmdSpecialTrigPointStructureTagAdd = New DevExpress.XtraEditors.SimpleButton()
         Me.txtSpecialTrigPointStructure = New DevExpress.XtraEditors.MemoEdit()
         Me.txtTrigPointStructure = New DevExpress.XtraEditors.MemoEdit()
@@ -546,19 +591,11 @@ Partial Class frmProperties
         Me.cmdInfoBoxStructureTagAdd = New DevExpress.XtraEditors.SimpleButton()
         Me.lblInfoBoxStructure = New DevExpress.XtraEditors.LabelControl()
         Me.frmGPSDefaults = New DevExpress.XtraEditors.GroupControl()
-        Me.cboCoordinateBand = New System.Windows.Forms.ComboBox()
-        Me.cboCoordinateZone = New System.Windows.Forms.ComboBox()
         Me.lblCoordinateGeo = New DevExpress.XtraEditors.LabelControl()
         Me.lblCoordinateBand = New DevExpress.XtraEditors.LabelControl()
         Me.lblCoordinateZone = New DevExpress.XtraEditors.LabelControl()
         Me.lblCoordinateFormat = New DevExpress.XtraEditors.LabelControl()
-        Me.pnlGPS = New System.Windows.Forms.Panel()
-        Me.optGPSCustomRefPoint = New DevExpress.XtraEditors.CheckEdit()
-        Me.optGPSRefPointOnOrigin = New DevExpress.XtraEditors.CheckEdit()
-        Me.chkGPSAllowManualDeclinations = New DevExpress.XtraEditors.CheckEdit()
-        Me.lblGPSCustomRefPoint = New DevExpress.XtraEditors.LabelControl()
         Me.chkShowWarpingDetails = New DevExpress.XtraEditors.CheckEdit()
-        Me.cboCalculateVersion = New System.Windows.Forms.ComboBox()
         Me.lblCalculateVersion = New DevExpress.XtraEditors.LabelControl()
         Me.lblDesignWarpingModeEnabledIn = New DevExpress.XtraEditors.LabelControl()
         Me.chkProfileWarpingEnabled = New DevExpress.XtraEditors.CheckEdit()
@@ -566,19 +603,14 @@ Partial Class frmProperties
         Me.chkBindCrossSection = New DevExpress.XtraEditors.CheckEdit()
         Me.lblNordCorrectionWarning = New DevExpress.XtraEditors.LabelControl()
         Me.lblSplayMode = New DevExpress.XtraEditors.LabelControl()
-        Me.cboSplayMode = New System.Windows.Forms.ComboBox()
         Me.Label5 = New DevExpress.XtraEditors.LabelControl()
         Me.lblDesignBindingMode = New DevExpress.XtraEditors.LabelControl()
         Me.Label3 = New DevExpress.XtraEditors.LabelControl()
-        Me.cboInversionMode = New System.Windows.Forms.ComboBox()
         Me.chkCalculateMode = New DevExpress.XtraEditors.CheckEdit()
         Me.lblNordCorrection = New DevExpress.XtraEditors.LabelControl()
-        Me.cboNordCorrection = New System.Windows.Forms.ComboBox()
         Me.lblDesignWarpingMode = New DevExpress.XtraEditors.LabelControl()
         Me.lblCalculateMode = New DevExpress.XtraEditors.LabelControl()
-        Me.cboCalculateType = New System.Windows.Forms.ComboBox()
         Me.lblRingCorrectionMode = New DevExpress.XtraEditors.LabelControl()
-        Me.cboRingCorrectionMode = New System.Windows.Forms.ComboBox()
         Me.chkHistoryEnabled = New DevExpress.XtraEditors.CheckEdit()
         Me.lblID = New DevExpress.XtraEditors.LabelControl()
         Me.lblDesigner = New DevExpress.XtraEditors.LabelControl()
@@ -591,24 +623,12 @@ Partial Class frmProperties
         Me.lblCreatorVersion = New DevExpress.XtraEditors.LabelControl()
         Me.lblCreationDate = New DevExpress.XtraEditors.LabelControl()
         Me.lblCreatedBy = New DevExpress.XtraEditors.LabelControl()
-        Me.pnlSurfaceProfile = New DevExpress.XtraEditors.PanelControl()
-        Me.pnlsurfaceprofileelevation = New DevExpress.XtraEditors.PanelControl()
-        Me.chkSurfaceProfileShow = New DevExpress.XtraEditors.CheckEdit()
-        Me.cbosurfaceprofileelevation = New cSurveyPC.cElevationDropDown()
-        Me.lblsurfaceprofileelevation = New DevExpress.XtraEditors.LabelControl()
-        Me.mnuItemNamePatternTags = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.mnuItemNamePatternTagsCave = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuItemNamePatternTagsBranch = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator13 = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuItemNamePatternTagsCount = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuItemNamePatternTagsIndex = New System.Windows.Forms.ToolStripMenuItem()
         Me.tabMain = New DevExpress.XtraTab.XtraTabControl()
         Me.tabInfoMain1 = New DevExpress.XtraTab.XtraTabPage()
         Me.tabFile1 = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoNote1 = New DevExpress.XtraTab.XtraTabPage()
         Me.txtNote = New DevExpress.XtraEditors.MemoEdit()
         Me.tabInfoOptions1 = New DevExpress.XtraTab.XtraTabPage()
-        Me.cboOrigin = New cSurveyPC.cTrigpointDropDown()
         Me.tabInfoGPS1 = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoSurface1 = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoSessions1 = New DevExpress.XtraTab.XtraTabPage()
@@ -616,32 +636,13 @@ Partial Class frmProperties
         Me.pnlCaveAndBraches = New DevExpress.XtraEditors.SplitContainerControl()
         Me.tabInfoInfoBox1 = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoDesign1 = New DevExpress.XtraTab.XtraTabPage()
-        Me.XtraScrollableControl1 = New DevExpress.XtraEditors.XtraScrollableControl()
-        Me.cboGeologicalLineType = New System.Windows.Forms.ComboBox()
-        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
-        Me.flyParameters = New DevExpress.Utils.FlyoutPanel()
-        Me.pnlParameters = New DevExpress.Utils.FlyoutPanelControl()
-        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
-        Me.tvDefaultPenPattern = New DevExpress.XtraTreeList.TreeList()
-        Me.colDefaultPenPattern = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.txtDefaultPenPattern = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.tabInfoPlot1 = New DevExpress.XtraTab.XtraTabPage()
-        Me.XtraScrollableControl2 = New DevExpress.XtraEditors.XtraScrollableControl()
         Me.tabInfo3D1 = New DevExpress.XtraTab.XtraTabPage()
-        Me.pnl3D = New DevExpress.XtraEditors.PanelControl()
-        Me.txt3DMinPassageSizeUM = New DevExpress.XtraEditors.LabelControl()
-        Me.txt3DMinPassageSize = New DevExpress.XtraEditors.SpinEdit()
-        Me.lbl3DMinPassageSize = New DevExpress.XtraEditors.LabelControl()
-        Me.lbl3dPrecisionUM = New DevExpress.XtraEditors.LabelControl()
-        Me.txt3DPrecision = New DevExpress.XtraEditors.SpinEdit()
-        Me.lbl3DPrecision = New DevExpress.XtraEditors.LabelControl()
         Me.tabInfoHighlights1 = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoSurfaceElevation1 = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoSurfaceOrthophoto1 = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoSurfaceWMS1 = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoDataPrecision1 = New DevExpress.XtraTab.XtraTabPage()
-        Me.pnlFooter = New DevExpress.XtraEditors.PanelControl()
-        Me.lblSeparator = New DevExpress.XtraEditors.LabelControl()
         Me.btnMainUser = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControl1 = New DevExpress.XtraBars.Navigation.AccordionControl()
         Me.btnMain = New DevExpress.XtraBars.Navigation.AccordionControlElement()
@@ -666,7 +667,6 @@ Partial Class frmProperties
         Me.Bar1 = New DevExpress.XtraBars.Bar()
         Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
         Me.tvCaveInforsDragDrop = New DevExpress.Utils.DragDrop.DragDropEvents(Me.components)
-        Me.DefaultToolTipController1 = New DevExpress.Utils.DefaultToolTipController(Me.components)
         CType(Me.pnlSessions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlSessions.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlSessions.Panel1.SuspendLayout()
@@ -717,6 +717,134 @@ Partial Class frmProperties
         Me.tabSessionSegments1.SuspendLayout()
         Me.tabSessionCalibrationSegments1.SuspendLayout()
         CType(Me.txtSessionDescription.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlCaveInfoConnections, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlCaveInfoConnections.SuspendLayout()
+        CType(Me.txtCaveInfoConnection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtCaveInfoParentConnection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlCaveInfoPriority, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlCaveInfoPriority.SuspendLayout()
+        CType(Me.txtCaveInfoPriority, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkCaveInfoPriority.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.mnuInfoBoxTags.SuspendLayout()
+        CType(Me.txtPlotSelectedPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPlotPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picPlotPenColor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPlotPointSize, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPlotTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPlotSelectedPointSize, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picPlotTextColor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picPlotPointColor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPlotTranslationLinePenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picPlotTranslationLinePenColor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPlotLRUDPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPlotLRUDSelectedPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPlotSplayPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPlotSplaySelectedPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPlotNoteTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtBaseLineWidthScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtBaseHeavyLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtBaseLightLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtBaseUltraLightLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtBaseMediumLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignSignScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignClipartScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignSoilScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignTerrainLevelScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignSketchPlanCorrectionY, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignSketchPlanCorrectionX, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignSketchPlanCorrectionScale, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignSketchProfileCorrectionY, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignSketchProfileCorrectionX, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignSketchProfileCorrectionScale, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignEditCombinedAreaTransparencyThreshold, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignBackgroundTransparencyThreshold, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignOriginalPositionTransparencyThreshold, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignCombinedAreaTransparencyThreshold, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignEditLowerLayersTransparencyThreshold, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignTextureScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignExtraScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignExtraTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtSurfaceSelectedPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtSurfacePenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picSurfacePenColor, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.mnuTrigPointTags.SuspendLayout()
+        Me.mnuSpecialTrigPointTags.SuspendLayout()
+        CType(Me.txtDesignCrossSectionTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignCrossSectionMarkerTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignCrossSectionMarkerArrowScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtBaseGeologyLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlGPS.SuspendLayout()
+        CType(Me.optGPSCustomRefPoint.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.optGPSRefPointOnOrigin.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkGPSAllowManualDeclinations.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkGPSSendToTherion.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlSurfaceProfile, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlSurfaceProfile.SuspendLayout()
+        CType(Me.chksurfaceprofile.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlsurfaceprofileelevation, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlsurfaceprofileelevation.SuspendLayout()
+        CType(Me.chkSurfaceProfileShow.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.mnuItemNamePatternTags.SuspendLayout()
+        Me.XtraScrollableControl1.SuspendLayout()
+        CType(Me.flyParameters, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.flyParameters.SuspendLayout()
+        CType(Me.pnlParameters, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tvDefaultPenPattern, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDefaultPenPattern, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignItemNamePattern.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.frrmDesign, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.frrmDesign.SuspendLayout()
+        CType(Me.GroupBox11, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox11.SuspendLayout()
+        CType(Me.GroupBox12, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox12.SuspendLayout()
+        CType(Me.GroupBox10, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox10.SuspendLayout()
+        CType(Me.chkShowLegacyExtraPrintAndExportObjects.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
+        CType(Me.txtBaseBrushLinesScaleFactor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupBox8, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox8.SuspendLayout()
+        CType(Me.GroupBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox3.SuspendLayout()
+        CType(Me.frmSketch, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.frmSketch.SuspendLayout()
+        CType(Me.frmSketchProfile, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.frmSketchProfile.SuspendLayout()
+        CType(Me.frmSketchPlan, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.frmSketchPlan.SuspendLayout()
+        CType(Me.GroupBox5, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox5.SuspendLayout()
+        Me.XtraScrollableControl2.SuspendLayout()
+        CType(Me.GroupBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox2.SuspendLayout()
+        CType(Me.frmPlotPoint, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.frmPlotPoint.SuspendLayout()
+        CType(Me.cboPlotTextPolicy.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.frmPlotLRUD, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.frmPlotLRUD.SuspendLayout()
+        CType(Me.GroupBox7, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox7.SuspendLayout()
+        CType(Me.txtPlotNoteTextColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.frmPlotTranslationLine, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.frmPlotTranslationLine.SuspendLayout()
+        CType(Me.frmPlotPen, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.frmPlotPen.SuspendLayout()
+        CType(Me.chkPlotCenterlineForceSegmentColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPlotCenterlineVectors.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupBox6, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox6.SuspendLayout()
+        CType(Me.txtPlotSplayCrossScale.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnl3D, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnl3D.SuspendLayout()
+        CType(Me.txt3DNormalizationFactor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt3DMinPassageSize.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt3DOversamplingFactor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt3DPrecision.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlFooter, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlFooter.SuspendLayout()
         CType(Me.pnlHighlights, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlHighlights.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlHighlights.Panel1.SuspendLayout()
@@ -804,53 +932,8 @@ Partial Class frmProperties
         Me.tabCaveAndBranch.SuspendLayout()
         Me.tabCaveInfoSurface1.SuspendLayout()
         Me.tabCaveInfoCalculateOptions1.SuspendLayout()
-        CType(Me.pnlCaveInfoConnections, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlCaveInfoConnections.SuspendLayout()
-        CType(Me.txtCaveInfoConnection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCaveInfoParentConnection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlCaveInfoPriority, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlCaveInfoPriority.SuspendLayout()
-        CType(Me.txtCaveInfoPriority, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkCaveInfoPriority.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabCaveInfoSegments1.SuspendLayout()
         CType(Me.txtCaveInfoDescription.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.mnuInfoBoxTags.SuspendLayout()
-        CType(Me.txtPlotSelectedPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPlotPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picPlotPenColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPlotPointSize, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPlotTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPlotSelectedPointSize, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picPlotTextColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picPlotPointColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPlotTranslationLinePenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picPlotTranslationLinePenColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPlotLRUDPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPlotLRUDSelectedPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPlotSplayPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPlotSplaySelectedPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPlotNoteTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtBaseLineWidthScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtBaseHeavyLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtBaseLightLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtBaseUltraLightLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtBaseMediumLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignSignScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignClipartScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignSoilScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignTerrainLevelScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignSketchPlanCorrectionY, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignSketchPlanCorrectionX, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignSketchPlanCorrectionScale, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignSketchProfileCorrectionY, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignSketchProfileCorrectionX, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignSketchProfileCorrectionScale, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignEditCombinedAreaTransparencyThreshold, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignBackgroundTransparencyThreshold, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignOriginalPositionTransparencyThreshold, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignCombinedAreaTransparencyThreshold, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkGPSSendToTherion.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkGPSEnabled.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtDescrizione.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -859,19 +942,9 @@ Partial Class frmProperties
         CType(Me.txtTeam.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtDesigner.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignEditLowerLayersTransparencyThreshold, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chksurfaceprofile.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignTextureScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCreatorID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCreationDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCreatorVersion.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignExtraScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignExtraTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSurfaceSelectedPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtSurfacePenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picSurfacePenColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.mnuTrigPointTags.SuspendLayout()
-        Me.mnuSpecialTrigPointTags.SuspendLayout()
         CType(Me.GroupBox9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox9.SuspendLayout()
         CType(Me.txt3DExportAsImageOversampling.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -879,81 +952,21 @@ Partial Class frmProperties
         Me.frm3DSurface.SuspendLayout()
         CType(Me.txt3DSurfaceModelLOD.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt3DSurfaceTextureLOD.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txt3DOversamplingFactor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         CType(Me.chk3DLochShowSplay.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chk3dLochShowDialog.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txt3DNormalizationFactor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox2.SuspendLayout()
-        CType(Me.GroupBox7, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox7.SuspendLayout()
-        CType(Me.txtPlotNoteTextColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupBox6, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox6.SuspendLayout()
-        CType(Me.txtPlotSplayCrossScale.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.frmPlotLRUD, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.frmPlotLRUD.SuspendLayout()
-        CType(Me.frmPlotTranslationLine, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.frmPlotTranslationLine.SuspendLayout()
-        CType(Me.frmPlotPoint, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.frmPlotPoint.SuspendLayout()
-        CType(Me.cboPlotTextPolicy.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.frmPlotPen, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.frmPlotPen.SuspendLayout()
-        CType(Me.chkPlotCenterlineForceSegmentColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkPlotCenterlineVectors.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignItemNamePattern.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkShowLegacyExtraPrintAndExportObjects.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupBox8, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox8.SuspendLayout()
-        CType(Me.GroupBox5, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox5.SuspendLayout()
-        CType(Me.GroupBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox3.SuspendLayout()
-        CType(Me.frmSketch, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.frmSketch.SuspendLayout()
-        CType(Me.frmSketchProfile, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.frmSketchProfile.SuspendLayout()
-        CType(Me.frmSketchPlan, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.frmSketchPlan.SuspendLayout()
-        CType(Me.frrmDesign, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.frrmDesign.SuspendLayout()
-        CType(Me.GroupBox11, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox11.SuspendLayout()
-        CType(Me.txtDesignCrossSectionTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupBox12, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox12.SuspendLayout()
-        CType(Me.txtDesignCrossSectionMarkerTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignCrossSectionMarkerArrowScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupBox10, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox10.SuspendLayout()
-        CType(Me.GroupBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
-        CType(Me.txtBaseBrushLinesScaleFactor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtBaseGeologyLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtSpecialTrigPointStructure.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTrigPointStructure.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtInfoBoxStructure.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.frmGPSDefaults, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frmGPSDefaults.SuspendLayout()
-        Me.pnlGPS.SuspendLayout()
-        CType(Me.optGPSCustomRefPoint.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.optGPSRefPointOnOrigin.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkGPSAllowManualDeclinations.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkShowWarpingDetails.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkProfileWarpingEnabled.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkPlanWarpingEnabled.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkBindCrossSection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkCalculateMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkHistoryEnabled.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlSurfaceProfile, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlSurfaceProfile.SuspendLayout()
-        CType(Me.pnlsurfaceprofileelevation, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlsurfaceprofileelevation.SuspendLayout()
-        CType(Me.chkSurfaceProfileShow.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.mnuItemNamePatternTags.SuspendLayout()
         CType(Me.tabMain, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabMain.SuspendLayout()
         Me.tabInfoMain1.SuspendLayout()
@@ -973,26 +986,13 @@ Partial Class frmProperties
         Me.pnlCaveAndBraches.SuspendLayout()
         Me.tabInfoInfoBox1.SuspendLayout()
         Me.tabInfoDesign1.SuspendLayout()
-        Me.XtraScrollableControl1.SuspendLayout()
-        CType(Me.flyParameters, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.flyParameters.SuspendLayout()
-        CType(Me.pnlParameters, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tvDefaultPenPattern, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDefaultPenPattern, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabInfoPlot1.SuspendLayout()
-        Me.XtraScrollableControl2.SuspendLayout()
         Me.tabInfo3D1.SuspendLayout()
-        CType(Me.pnl3D, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnl3D.SuspendLayout()
-        CType(Me.txt3DMinPassageSize.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txt3DPrecision.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabInfoHighlights1.SuspendLayout()
         Me.tabInfoSurfaceElevation1.SuspendLayout()
         Me.tabInfoSurfaceOrthophoto1.SuspendLayout()
         Me.tabInfoSurfaceWMS1.SuspendLayout()
         Me.tabInfoDataPrecision1.SuspendLayout()
-        CType(Me.pnlFooter, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlFooter.SuspendLayout()
         CType(Me.AccordionControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -2081,270 +2081,11 @@ Partial Class frmProperties
         resources.ApplyResources(Me.lblSessionColor, "lblSessionColor")
         Me.lblSessionColor.Name = "lblSessionColor"
         '
-        'pnlHighlights
-        '
-        resources.ApplyResources(Me.pnlHighlights, "pnlHighlights")
-        Me.pnlHighlights.Name = "pnlHighlights"
-        '
-        'pnlHighlights.Panel1
-        '
-        Me.pnlHighlights.Panel1.Controls.Add(Me.tvHighlights)
-        Me.pnlHighlights.Panel1.MinSize = 180
-        resources.ApplyResources(Me.pnlHighlights.Panel1, "pnlHighlights.Panel1")
-        '
-        'pnlHighlights.Panel2
-        '
-        Me.pnlHighlights.Panel2.Controls.Add(Me.txtHighlightApplyTo)
-        Me.pnlHighlights.Panel2.Controls.Add(Me.txtHighlightName)
-        Me.pnlHighlights.Panel2.Controls.Add(Me.txtHighlightSize)
-        Me.pnlHighlights.Panel2.Controls.Add(Me.lblHighlightOpacity)
-        Me.pnlHighlights.Panel2.Controls.Add(Me.trkHighlightOpacity)
-        Me.pnlHighlights.Panel2.Controls.Add(Me.lblHighlightName)
-        Me.pnlHighlights.Panel2.Controls.Add(Me.lblHighlightSize)
-        Me.pnlHighlights.Panel2.Controls.Add(Me.lblHighlightColor)
-        Me.pnlHighlights.Panel2.Controls.Add(Me.cmdHighlightCondition)
-        Me.pnlHighlights.Panel2.Controls.Add(Me.lblHighlightApplyTo)
-        Me.pnlHighlights.Panel2.Controls.Add(Me.txtHighlightColor)
-        Me.pnlHighlights.Panel2.Controls.Add(Me.txtHighlightCondition)
-        Me.pnlHighlights.Panel2.MinSize = 460
-        resources.ApplyResources(Me.pnlHighlights.Panel2, "pnlHighlights.Panel2")
-        Me.pnlHighlights.SplitterPosition = 190
-        Me.pnlHighlights.ToolTipController = Me.DefaultToolTipController1.DefaultController
-        '
-        'tvHighlights
-        '
-        Me.tvHighlights.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colHighlightsName, Me.colHighlightsApplyTo})
-        resources.ApplyResources(Me.tvHighlights, "tvHighlights")
-        Me.tvHighlights.MenuManager = Me.BarManager
-        Me.tvHighlights.Name = "tvHighlights"
-        Me.tvHighlights.OptionsBehavior.Editable = False
-        Me.tvHighlights.OptionsBehavior.ReadOnly = True
-        Me.tvHighlights.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
-        Me.tvHighlights.OptionsView.ShowColumns = False
-        Me.tvHighlights.OptionsView.ShowIndentAsRowStyle = True
-        Me.tvHighlights.OptionsView.ShowIndicator = False
-        Me.tvHighlights.OptionsView.ShowRoot = False
-        Me.tvHighlights.SelectImageList = Me.imlsvg
-        '
-        'colHighlightsName
-        '
-        resources.ApplyResources(Me.colHighlightsName, "colHighlightsName")
-        Me.colHighlightsName.FieldName = "Name"
-        Me.colHighlightsName.Name = "colHighlightsName"
-        Me.colHighlightsName.OptionsColumn.AllowEdit = False
-        Me.colHighlightsName.OptionsColumn.ReadOnly = True
-        '
-        'colHighlightsApplyTo
-        '
-        resources.ApplyResources(Me.colHighlightsApplyTo, "colHighlightsApplyTo")
-        Me.colHighlightsApplyTo.FieldName = "_ApplyTo"
-        Me.colHighlightsApplyTo.Name = "colHighlightsApplyTo"
-        Me.colHighlightsApplyTo.OptionsColumn.AllowEdit = False
-        Me.colHighlightsApplyTo.OptionsColumn.ReadOnly = True
-        Me.colHighlightsApplyTo.UnboundType = DevExpress.XtraTreeList.Data.UnboundColumnType.[String]
-        '
-        'txtHighlightApplyTo
-        '
-        resources.ApplyResources(Me.txtHighlightApplyTo, "txtHighlightApplyTo")
-        Me.txtHighlightApplyTo.Name = "txtHighlightApplyTo"
-        Me.txtHighlightApplyTo.Properties.ReadOnly = True
-        '
-        'txtHighlightName
-        '
-        resources.ApplyResources(Me.txtHighlightName, "txtHighlightName")
-        Me.txtHighlightName.Name = "txtHighlightName"
-        '
-        'txtHighlightSize
-        '
-        resources.ApplyResources(Me.txtHighlightSize, "txtHighlightSize")
-        Me.txtHighlightSize.MenuManager = Me.BarManager
-        Me.txtHighlightSize.Name = "txtHighlightSize"
-        Me.txtHighlightSize.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtHighlightSize.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txtHighlightSize.Properties.DisplayFormat.FormatString = "N0"
-        Me.txtHighlightSize.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtHighlightSize.Properties.EditFormat.FormatString = "N0"
-        Me.txtHighlightSize.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtHighlightSize.Properties.IsFloatValue = False
-        Me.txtHighlightSize.Properties.MaskSettings.Set("mask", "N00")
-        Me.txtHighlightSize.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
-        '
-        'lblHighlightOpacity
-        '
-        resources.ApplyResources(Me.lblHighlightOpacity, "lblHighlightOpacity")
-        Me.lblHighlightOpacity.Name = "lblHighlightOpacity"
-        '
-        'trkHighlightOpacity
-        '
-        resources.ApplyResources(Me.trkHighlightOpacity, "trkHighlightOpacity")
-        Me.trkHighlightOpacity.Name = "trkHighlightOpacity"
-        Me.trkHighlightOpacity.Properties.AutoSize = False
-        Me.trkHighlightOpacity.Properties.LabelAppearance.Options.UseTextOptions = True
-        Me.trkHighlightOpacity.Properties.LabelAppearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.trkHighlightOpacity.Properties.Maximum = 255
-        Me.trkHighlightOpacity.Properties.TickFrequency = 15
-        '
-        'lblHighlightName
-        '
-        resources.ApplyResources(Me.lblHighlightName, "lblHighlightName")
-        Me.lblHighlightName.Name = "lblHighlightName"
-        '
-        'lblHighlightSize
-        '
-        resources.ApplyResources(Me.lblHighlightSize, "lblHighlightSize")
-        Me.lblHighlightSize.Name = "lblHighlightSize"
-        '
-        'lblHighlightColor
-        '
-        resources.ApplyResources(Me.lblHighlightColor, "lblHighlightColor")
-        Me.lblHighlightColor.Name = "lblHighlightColor"
-        '
-        'cmdHighlightCondition
-        '
-        resources.ApplyResources(Me.cmdHighlightCondition, "cmdHighlightCondition")
-        Me.cmdHighlightCondition.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.cmdHighlightCondition.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
-        Me.cmdHighlightCondition.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.cmdHighlightCondition.Name = "cmdHighlightCondition"
-        '
-        'lblHighlightApplyTo
-        '
-        resources.ApplyResources(Me.lblHighlightApplyTo, "lblHighlightApplyTo")
-        Me.lblHighlightApplyTo.Name = "lblHighlightApplyTo"
-        '
-        'txtHighlightColor
-        '
-        Me.txtHighlightColor.DefaultColor = System.Drawing.Color.Transparent
-        resources.ApplyResources(Me.txtHighlightColor, "txtHighlightColor")
-        Me.txtHighlightColor.Name = "txtHighlightColor"
-        Me.txtHighlightColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtHighlightColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txtHighlightColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.txtHighlightColor.Properties.ShowSystemColors = False
-        Me.txtHighlightColor.Properties.ShowWebColors = False
-        '
-        'txtHighlightCondition
-        '
-        resources.ApplyResources(Me.txtHighlightCondition, "txtHighlightCondition")
-        Me.txtHighlightCondition.Name = "txtHighlightCondition"
-        Me.txtHighlightCondition.Properties.Appearance.Font = CType(resources.GetObject("txtHighlightCondition.Properties.Appearance.Font"), System.Drawing.Font)
-        Me.txtHighlightCondition.Properties.Appearance.Options.UseFont = True
-        Me.txtHighlightCondition.Properties.ReadOnly = True
-        '
-        'pnlGrades
-        '
-        resources.ApplyResources(Me.pnlGrades, "pnlGrades")
-        Me.pnlGrades.Name = "pnlGrades"
-        '
-        'pnlGrades.Panel1
-        '
-        Me.pnlGrades.Panel1.Controls.Add(Me.tvGrades)
-        resources.ApplyResources(Me.pnlGrades.Panel1, "pnlGrades.Panel1")
-        '
-        'pnlGrades.Panel2
-        '
-        Me.pnlGrades.Panel2.Controls.Add(Me.tabGradesDetails)
-        Me.pnlGrades.Panel2.Controls.Add(Me.txtGradesID)
-        Me.pnlGrades.Panel2.Controls.Add(Me.txtGradesDescription)
-        Me.pnlGrades.Panel2.Controls.Add(Me.lblGradesID)
-        Me.pnlGrades.Panel2.Controls.Add(Me.lblGradesDescription)
-        resources.ApplyResources(Me.pnlGrades.Panel2, "pnlGrades.Panel2")
-        Me.pnlGrades.SplitterPosition = 190
-        Me.pnlGrades.ToolTipController = Me.DefaultToolTipController1.DefaultController
-        '
-        'tvGrades
-        '
-        Me.tvGrades.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colGradesDescription})
-        resources.ApplyResources(Me.tvGrades, "tvGrades")
-        Me.tvGrades.MenuManager = Me.BarManager
-        Me.tvGrades.Name = "tvGrades"
-        Me.tvGrades.OptionsBehavior.Editable = False
-        Me.tvGrades.OptionsBehavior.ReadOnly = True
-        Me.tvGrades.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
-        Me.tvGrades.OptionsView.ShowColumns = False
-        Me.tvGrades.OptionsView.ShowIndentAsRowStyle = True
-        Me.tvGrades.OptionsView.ShowIndicator = False
-        Me.tvGrades.OptionsView.ShowRoot = False
-        Me.tvGrades.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemPictureEdit2})
-        Me.tvGrades.SelectImageList = Me.imlsvg
-        '
-        'colGradesDescription
-        '
-        resources.ApplyResources(Me.colGradesDescription, "colGradesDescription")
-        Me.colGradesDescription.FieldName = "Description"
-        Me.colGradesDescription.Name = "colGradesDescription"
-        '
-        'RepositoryItemPictureEdit2
-        '
-        Me.RepositoryItemPictureEdit2.CustomHeight = 32
-        Me.RepositoryItemPictureEdit2.Name = "RepositoryItemPictureEdit2"
-        '
-        'tabGradesDetails
-        '
-        resources.ApplyResources(Me.tabGradesDetails, "tabGradesDetails")
-        Me.tabGradesDetails.Name = "tabGradesDetails"
-        Me.tabGradesDetails.SelectedTabPage = Me.XtraTabPage2
-        Me.tabGradesDetails.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.XtraTabPage2, Me.XtraTabPage3})
-        '
-        'XtraTabPage2
-        '
-        Me.XtraTabPage2.Controls.Add(Me.txtGradesDistance)
-        Me.XtraTabPage2.Controls.Add(Me.lblValues)
-        Me.XtraTabPage2.Controls.Add(Me.txtGradesBearing)
-        Me.XtraTabPage2.Controls.Add(Me.cboGradesDistanceType)
-        Me.XtraTabPage2.Controls.Add(Me.txtGradesInclination)
-        Me.XtraTabPage2.Controls.Add(Me.cboGradesBearingType)
-        Me.XtraTabPage2.Controls.Add(Me.txtGradesDepth)
-        Me.XtraTabPage2.Controls.Add(Me.cboGradesInclinationType)
-        Me.XtraTabPage2.Controls.Add(Me.txtGradesX)
-        Me.XtraTabPage2.Controls.Add(Me.lblMeasureUnit)
-        Me.XtraTabPage2.Controls.Add(Me.txtGradesY)
-        Me.XtraTabPage2.Controls.Add(Me.chkGradesDistance)
-        Me.XtraTabPage2.Controls.Add(Me.txtGradesZ)
-        Me.XtraTabPage2.Controls.Add(Me.chkGradesBearing)
-        Me.XtraTabPage2.Controls.Add(Me.chkGradesZ)
-        Me.XtraTabPage2.Controls.Add(Me.chkGradesInclination)
-        Me.XtraTabPage2.Controls.Add(Me.cboGradesZType)
-        Me.XtraTabPage2.Controls.Add(Me.cboGradesDepthType)
-        Me.XtraTabPage2.Controls.Add(Me.chkGradesY)
-        Me.XtraTabPage2.Controls.Add(Me.chkGradesDepth)
-        Me.XtraTabPage2.Controls.Add(Me.cboGradesYType)
-        Me.XtraTabPage2.Controls.Add(Me.cboGradesXType)
-        Me.XtraTabPage2.Controls.Add(Me.chkGradesX)
-        Me.XtraTabPage2.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.charttype_rangebar
-        Me.XtraTabPage2.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.XtraTabPage2.Name = "XtraTabPage2"
-        resources.ApplyResources(Me.XtraTabPage2, "XtraTabPage2")
-        '
-        'txtGradesDistance
-        '
-        resources.ApplyResources(Me.txtGradesDistance, "txtGradesDistance")
-        Me.txtGradesDistance.MenuManager = Me.BarManager
-        Me.txtGradesDistance.Name = "txtGradesDistance"
-        Me.txtGradesDistance.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtGradesDistance.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txtGradesDistance.Properties.DisplayFormat.FormatString = "N2"
-        Me.txtGradesDistance.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtGradesDistance.Properties.EditFormat.FormatString = "N2"
-        Me.txtGradesDistance.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtGradesDistance.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
-        Me.txtGradesDistance.Properties.MaxValue = New Decimal(New Integer() {10000, 0, 0, 0})
-        '
         'lblValues
         '
         Me.DefaultToolTipController1.SetAllowHtmlText(Me.lblValues, CType(resources.GetObject("lblValues.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.lblValues, "lblValues")
         Me.lblValues.Name = "lblValues"
-        '
-        'txtGradesBearing
-        '
-        resources.ApplyResources(Me.txtGradesBearing, "txtGradesBearing")
-        Me.txtGradesBearing.MenuManager = Me.BarManager
-        Me.txtGradesBearing.Name = "txtGradesBearing"
-        Me.txtGradesBearing.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtGradesBearing.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txtGradesBearing.Properties.DisplayFormat.FormatString = "N2"
-        Me.txtGradesBearing.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtGradesBearing.Properties.EditFormat.FormatString = "N2"
-        Me.txtGradesBearing.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtGradesBearing.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
-        Me.txtGradesBearing.Properties.MaxValue = New Decimal(New Integer() {10000, 0, 0, 0})
         '
         'cboGradesDistanceType
         '
@@ -2354,19 +2095,6 @@ Partial Class frmProperties
         Me.cboGradesDistanceType.Items.AddRange(New Object() {resources.GetString("cboGradesDistanceType.Items"), resources.GetString("cboGradesDistanceType.Items1"), resources.GetString("cboGradesDistanceType.Items2")})
         Me.cboGradesDistanceType.Name = "cboGradesDistanceType"
         '
-        'txtGradesInclination
-        '
-        resources.ApplyResources(Me.txtGradesInclination, "txtGradesInclination")
-        Me.txtGradesInclination.MenuManager = Me.BarManager
-        Me.txtGradesInclination.Name = "txtGradesInclination"
-        Me.txtGradesInclination.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtGradesInclination.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txtGradesInclination.Properties.DisplayFormat.FormatString = "N2"
-        Me.txtGradesInclination.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtGradesInclination.Properties.EditFormat.FormatString = "N2"
-        Me.txtGradesInclination.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtGradesInclination.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
-        Me.txtGradesInclination.Properties.MaxValue = New Decimal(New Integer() {10000, 0, 0, 0})
-        '
         'cboGradesBearingType
         '
         Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboGradesBearingType, CType(resources.GetObject("cboGradesBearingType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
@@ -2374,19 +2102,6 @@ Partial Class frmProperties
         resources.ApplyResources(Me.cboGradesBearingType, "cboGradesBearingType")
         Me.cboGradesBearingType.Items.AddRange(New Object() {resources.GetString("cboGradesBearingType.Items"), resources.GetString("cboGradesBearingType.Items1")})
         Me.cboGradesBearingType.Name = "cboGradesBearingType"
-        '
-        'txtGradesDepth
-        '
-        resources.ApplyResources(Me.txtGradesDepth, "txtGradesDepth")
-        Me.txtGradesDepth.MenuManager = Me.BarManager
-        Me.txtGradesDepth.Name = "txtGradesDepth"
-        Me.txtGradesDepth.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtGradesDepth.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txtGradesDepth.Properties.DisplayFormat.FormatString = "N2"
-        Me.txtGradesDepth.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtGradesDepth.Properties.EditFormat.FormatString = "N2"
-        Me.txtGradesDepth.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtGradesDepth.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
-        Me.txtGradesDepth.Properties.MaxValue = New Decimal(New Integer() {10000, 0, 0, 0})
         '
         'cboGradesInclinationType
         '
@@ -2396,78 +2111,11 @@ Partial Class frmProperties
         Me.cboGradesInclinationType.Items.AddRange(New Object() {resources.GetString("cboGradesInclinationType.Items"), resources.GetString("cboGradesInclinationType.Items1")})
         Me.cboGradesInclinationType.Name = "cboGradesInclinationType"
         '
-        'txtGradesX
-        '
-        resources.ApplyResources(Me.txtGradesX, "txtGradesX")
-        Me.txtGradesX.MenuManager = Me.BarManager
-        Me.txtGradesX.Name = "txtGradesX"
-        Me.txtGradesX.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtGradesX.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txtGradesX.Properties.DisplayFormat.FormatString = "N2"
-        Me.txtGradesX.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtGradesX.Properties.EditFormat.FormatString = "N2"
-        Me.txtGradesX.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtGradesX.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
-        Me.txtGradesX.Properties.MaxValue = New Decimal(New Integer() {10000, 0, 0, 0})
-        '
         'lblMeasureUnit
         '
         Me.DefaultToolTipController1.SetAllowHtmlText(Me.lblMeasureUnit, CType(resources.GetObject("lblMeasureUnit.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.lblMeasureUnit, "lblMeasureUnit")
         Me.lblMeasureUnit.Name = "lblMeasureUnit"
-        '
-        'txtGradesY
-        '
-        resources.ApplyResources(Me.txtGradesY, "txtGradesY")
-        Me.txtGradesY.MenuManager = Me.BarManager
-        Me.txtGradesY.Name = "txtGradesY"
-        Me.txtGradesY.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtGradesY.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txtGradesY.Properties.DisplayFormat.FormatString = "N2"
-        Me.txtGradesY.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtGradesY.Properties.EditFormat.FormatString = "N2"
-        Me.txtGradesY.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtGradesY.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
-        Me.txtGradesY.Properties.MaxValue = New Decimal(New Integer() {10000, 0, 0, 0})
-        '
-        'chkGradesDistance
-        '
-        resources.ApplyResources(Me.chkGradesDistance, "chkGradesDistance")
-        Me.chkGradesDistance.Name = "chkGradesDistance"
-        Me.chkGradesDistance.Properties.AutoWidth = True
-        Me.chkGradesDistance.Properties.Caption = resources.GetString("chkGradesDistance.Properties.Caption")
-        '
-        'txtGradesZ
-        '
-        resources.ApplyResources(Me.txtGradesZ, "txtGradesZ")
-        Me.txtGradesZ.MenuManager = Me.BarManager
-        Me.txtGradesZ.Name = "txtGradesZ"
-        Me.txtGradesZ.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtGradesZ.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txtGradesZ.Properties.DisplayFormat.FormatString = "N2"
-        Me.txtGradesZ.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtGradesZ.Properties.EditFormat.FormatString = "N2"
-        Me.txtGradesZ.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtGradesZ.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
-        Me.txtGradesZ.Properties.MaxValue = New Decimal(New Integer() {10000, 0, 0, 0})
-        '
-        'chkGradesBearing
-        '
-        resources.ApplyResources(Me.chkGradesBearing, "chkGradesBearing")
-        Me.chkGradesBearing.Name = "chkGradesBearing"
-        Me.chkGradesBearing.Properties.AutoWidth = True
-        Me.chkGradesBearing.Properties.Caption = resources.GetString("chkGradesBearing.Properties.Caption")
-        '
-        'chkGradesZ
-        '
-        resources.ApplyResources(Me.chkGradesZ, "chkGradesZ")
-        Me.chkGradesZ.Name = "chkGradesZ"
-        Me.chkGradesZ.Properties.AutoWidth = True
-        Me.chkGradesZ.Properties.Caption = resources.GetString("chkGradesZ.Properties.Caption")
-        '
-        'chkGradesInclination
-        '
-        resources.ApplyResources(Me.chkGradesInclination, "chkGradesInclination")
-        Me.chkGradesInclination.Name = "chkGradesInclination"
-        Me.chkGradesInclination.Properties.AutoWidth = True
-        Me.chkGradesInclination.Properties.Caption = resources.GetString("chkGradesInclination.Properties.Caption")
         '
         'cboGradesZType
         '
@@ -2485,20 +2133,6 @@ Partial Class frmProperties
         Me.cboGradesDepthType.Items.AddRange(New Object() {resources.GetString("cboGradesDepthType.Items"), resources.GetString("cboGradesDepthType.Items1"), resources.GetString("cboGradesDepthType.Items2")})
         Me.cboGradesDepthType.Name = "cboGradesDepthType"
         '
-        'chkGradesY
-        '
-        resources.ApplyResources(Me.chkGradesY, "chkGradesY")
-        Me.chkGradesY.Name = "chkGradesY"
-        Me.chkGradesY.Properties.AutoWidth = True
-        Me.chkGradesY.Properties.Caption = resources.GetString("chkGradesY.Properties.Caption")
-        '
-        'chkGradesDepth
-        '
-        resources.ApplyResources(Me.chkGradesDepth, "chkGradesDepth")
-        Me.chkGradesDepth.Name = "chkGradesDepth"
-        Me.chkGradesDepth.Properties.AutoWidth = True
-        Me.chkGradesDepth.Properties.Caption = resources.GetString("chkGradesDepth.Properties.Caption")
-        '
         'cboGradesYType
         '
         Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboGradesYType, CType(resources.GetObject("cboGradesYType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
@@ -2515,521 +2149,6 @@ Partial Class frmProperties
         Me.cboGradesXType.Items.AddRange(New Object() {resources.GetString("cboGradesXType.Items"), resources.GetString("cboGradesXType.Items1"), resources.GetString("cboGradesXType.Items2")})
         Me.cboGradesXType.Name = "cboGradesXType"
         '
-        'chkGradesX
-        '
-        resources.ApplyResources(Me.chkGradesX, "chkGradesX")
-        Me.chkGradesX.Name = "chkGradesX"
-        Me.chkGradesX.Properties.AutoWidth = True
-        Me.chkGradesX.Properties.Caption = resources.GetString("chkGradesX.Properties.Caption")
-        '
-        'XtraTabPage3
-        '
-        Me.XtraTabPage3.Controls.Add(Me.btnGradesUsedBySelectSession)
-        Me.XtraTabPage3.Controls.Add(Me.tvGradesUsedBy)
-        Me.XtraTabPage3.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_calendar
-        Me.XtraTabPage3.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.XtraTabPage3.Name = "XtraTabPage3"
-        resources.ApplyResources(Me.XtraTabPage3, "XtraTabPage3")
-        '
-        'btnGradesUsedBySelectSession
-        '
-        resources.ApplyResources(Me.btnGradesUsedBySelectSession, "btnGradesUsedBySelectSession")
-        Me.btnGradesUsedBySelectSession.ImageOptions.Image = CType(resources.GetObject("btnGradesUsedBySelectSession.ImageOptions.Image"), System.Drawing.Image)
-        Me.btnGradesUsedBySelectSession.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.btnGradesUsedBySelectSession.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources._select
-        Me.btnGradesUsedBySelectSession.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.btnGradesUsedBySelectSession.Name = "btnGradesUsedBySelectSession"
-        '
-        'tvGradesUsedBy
-        '
-        Me.tvGradesUsedBy.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.TreeListColumn1})
-        resources.ApplyResources(Me.tvGradesUsedBy, "tvGradesUsedBy")
-        Me.tvGradesUsedBy.MenuManager = Me.BarManager
-        Me.tvGradesUsedBy.Name = "tvGradesUsedBy"
-        Me.tvGradesUsedBy.OptionsBehavior.Editable = False
-        Me.tvGradesUsedBy.OptionsBehavior.ReadOnly = True
-        Me.tvGradesUsedBy.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
-        Me.tvGradesUsedBy.OptionsView.ShowColumns = False
-        Me.tvGradesUsedBy.OptionsView.ShowIndentAsRowStyle = True
-        Me.tvGradesUsedBy.OptionsView.ShowIndicator = False
-        Me.tvGradesUsedBy.OptionsView.ShowRoot = False
-        Me.tvGradesUsedBy.SelectImageList = Me.imlsvg
-        '
-        'TreeListColumn1
-        '
-        resources.ApplyResources(Me.TreeListColumn1, "TreeListColumn1")
-        Me.TreeListColumn1.FieldName = "FormattedID"
-        Me.TreeListColumn1.Name = "TreeListColumn1"
-        '
-        'txtGradesID
-        '
-        resources.ApplyResources(Me.txtGradesID, "txtGradesID")
-        Me.txtGradesID.Name = "txtGradesID"
-        Me.txtGradesID.Properties.ReadOnly = True
-        '
-        'txtGradesDescription
-        '
-        resources.ApplyResources(Me.txtGradesDescription, "txtGradesDescription")
-        Me.txtGradesDescription.Name = "txtGradesDescription"
-        '
-        'lblGradesID
-        '
-        resources.ApplyResources(Me.lblGradesID, "lblGradesID")
-        Me.lblGradesID.Name = "lblGradesID"
-        '
-        'lblGradesDescription
-        '
-        resources.ApplyResources(Me.lblGradesDescription, "lblGradesDescription")
-        Me.lblGradesDescription.Name = "lblGradesDescription"
-        '
-        'pnlElevations
-        '
-        resources.ApplyResources(Me.pnlElevations, "pnlElevations")
-        Me.pnlElevations.Name = "pnlElevations"
-        '
-        'pnlElevations.Panel1
-        '
-        Me.pnlElevations.Panel1.Controls.Add(Me.tvElevations)
-        resources.ApplyResources(Me.pnlElevations.Panel1, "pnlElevations.Panel1")
-        '
-        'pnlElevations.Panel2
-        '
-        Me.pnlElevations.Panel2.Controls.Add(Me.lblElevationColorSchema)
-        Me.pnlElevations.Panel2.Controls.Add(Me.lblElevationName)
-        Me.pnlElevations.Panel2.Controls.Add(Me.cboElevationColorSchema)
-        Me.pnlElevations.Panel2.Controls.Add(Me.txtElevationName)
-        Me.pnlElevations.Panel2.Controls.Add(Me.lblElevationInformation)
-        Me.pnlElevations.Panel2.Controls.Add(Me.lblElevationPreview)
-        Me.pnlElevations.Panel2.Controls.Add(Me.txtElevationInformation)
-        Me.pnlElevations.Panel2.Controls.Add(Me.picElevationPreview)
-        resources.ApplyResources(Me.pnlElevations.Panel2, "pnlElevations.Panel2")
-        Me.pnlElevations.SplitterPosition = 190
-        Me.pnlElevations.ToolTipController = Me.DefaultToolTipController1.DefaultController
-        '
-        'tvElevations
-        '
-        Me.tvElevations.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colElevationsThumbnail, Me.colElevationsName})
-        resources.ApplyResources(Me.tvElevations, "tvElevations")
-        Me.tvElevations.MenuManager = Me.BarManager
-        Me.tvElevations.Name = "tvElevations"
-        Me.tvElevations.OptionsBehavior.Editable = False
-        Me.tvElevations.OptionsBehavior.ReadOnly = True
-        Me.tvElevations.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
-        Me.tvElevations.OptionsView.ShowColumns = False
-        Me.tvElevations.OptionsView.ShowIndentAsRowStyle = True
-        Me.tvElevations.OptionsView.ShowIndicator = False
-        Me.tvElevations.OptionsView.ShowRoot = False
-        Me.tvElevations.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.picElevationsThumbnail})
-        Me.tvElevations.SelectImageList = Me.imlsvg
-        '
-        'colElevationsThumbnail
-        '
-        resources.ApplyResources(Me.colElevationsThumbnail, "colElevationsThumbnail")
-        Me.colElevationsThumbnail.ColumnEdit = Me.picElevationsThumbnail
-        Me.colElevationsThumbnail.FieldName = "Thumbnail"
-        Me.colElevationsThumbnail.Name = "colElevationsThumbnail"
-        '
-        'picElevationsThumbnail
-        '
-        Me.picElevationsThumbnail.CustomHeight = 32
-        Me.picElevationsThumbnail.Name = "picElevationsThumbnail"
-        '
-        'colElevationsName
-        '
-        resources.ApplyResources(Me.colElevationsName, "colElevationsName")
-        Me.colElevationsName.FieldName = "Name"
-        Me.colElevationsName.Name = "colElevationsName"
-        '
-        'lblElevationColorSchema
-        '
-        resources.ApplyResources(Me.lblElevationColorSchema, "lblElevationColorSchema")
-        Me.lblElevationColorSchema.Name = "lblElevationColorSchema"
-        '
-        'lblElevationName
-        '
-        resources.ApplyResources(Me.lblElevationName, "lblElevationName")
-        Me.lblElevationName.Name = "lblElevationName"
-        '
-        'cboElevationColorSchema
-        '
-        resources.ApplyResources(Me.cboElevationColorSchema, "cboElevationColorSchema")
-        Me.cboElevationColorSchema.MenuManager = Me.BarManager
-        Me.cboElevationColorSchema.Name = "cboElevationColorSchema"
-        Me.cboElevationColorSchema.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboElevationColorSchema.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.cboElevationColorSchema.Properties.Items.AddRange(New Object() {resources.GetString("cboElevationColorSchema.Properties.Items"), resources.GetString("cboElevationColorSchema.Properties.Items1")})
-        Me.cboElevationColorSchema.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        '
-        'txtElevationName
-        '
-        resources.ApplyResources(Me.txtElevationName, "txtElevationName")
-        Me.txtElevationName.Name = "txtElevationName"
-        '
-        'lblElevationInformation
-        '
-        resources.ApplyResources(Me.lblElevationInformation, "lblElevationInformation")
-        Me.lblElevationInformation.Name = "lblElevationInformation"
-        '
-        'lblElevationPreview
-        '
-        resources.ApplyResources(Me.lblElevationPreview, "lblElevationPreview")
-        Me.lblElevationPreview.Name = "lblElevationPreview"
-        '
-        'txtElevationInformation
-        '
-        resources.ApplyResources(Me.txtElevationInformation, "txtElevationInformation")
-        Me.txtElevationInformation.MenuManager = Me.BarManager
-        Me.txtElevationInformation.Name = "txtElevationInformation"
-        Me.txtElevationInformation.Properties.ReadOnly = True
-        '
-        'picElevationPreview
-        '
-        resources.ApplyResources(Me.picElevationPreview, "picElevationPreview")
-        Me.picElevationPreview.MenuManager = Me.BarManager
-        Me.picElevationPreview.Name = "picElevationPreview"
-        Me.picElevationPreview.Properties.ReadOnly = True
-        '
-        'pnlOrthophotos
-        '
-        resources.ApplyResources(Me.pnlOrthophotos, "pnlOrthophotos")
-        Me.pnlOrthophotos.Name = "pnlOrthophotos"
-        '
-        'pnlOrthophotos.Panel1
-        '
-        Me.pnlOrthophotos.Panel1.Controls.Add(Me.tvOrthophotos)
-        resources.ApplyResources(Me.pnlOrthophotos.Panel1, "pnlOrthophotos.Panel1")
-        '
-        'pnlOrthophotos.Panel2
-        '
-        Me.pnlOrthophotos.Panel2.Controls.Add(Me.lblOrthophotoPreview)
-        Me.pnlOrthophotos.Panel2.Controls.Add(Me.lblOrthophotoName)
-        Me.pnlOrthophotos.Panel2.Controls.Add(Me.lblOrthophotoInformation)
-        Me.pnlOrthophotos.Panel2.Controls.Add(Me.txtOrthophotoName)
-        Me.pnlOrthophotos.Panel2.Controls.Add(Me.txtOrthophotoInformation)
-        Me.pnlOrthophotos.Panel2.Controls.Add(Me.picOrthophotoPreview)
-        resources.ApplyResources(Me.pnlOrthophotos.Panel2, "pnlOrthophotos.Panel2")
-        Me.pnlOrthophotos.SplitterPosition = 190
-        Me.pnlOrthophotos.ToolTipController = Me.DefaultToolTipController1.DefaultController
-        '
-        'tvOrthophotos
-        '
-        Me.tvOrthophotos.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colOrthophotoThumbnail, Me.colOrthophotoName})
-        resources.ApplyResources(Me.tvOrthophotos, "tvOrthophotos")
-        Me.tvOrthophotos.MenuManager = Me.BarManager
-        Me.tvOrthophotos.Name = "tvOrthophotos"
-        Me.tvOrthophotos.OptionsBehavior.Editable = False
-        Me.tvOrthophotos.OptionsBehavior.ReadOnly = True
-        Me.tvOrthophotos.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
-        Me.tvOrthophotos.OptionsView.ShowColumns = False
-        Me.tvOrthophotos.OptionsView.ShowIndentAsRowStyle = True
-        Me.tvOrthophotos.OptionsView.ShowIndicator = False
-        Me.tvOrthophotos.OptionsView.ShowRoot = False
-        Me.tvOrthophotos.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.picOrthophotoThumbnail})
-        Me.tvOrthophotos.SelectImageList = Me.imlsvg
-        '
-        'colOrthophotoThumbnail
-        '
-        resources.ApplyResources(Me.colOrthophotoThumbnail, "colOrthophotoThumbnail")
-        Me.colOrthophotoThumbnail.ColumnEdit = Me.picOrthophotoThumbnail
-        Me.colOrthophotoThumbnail.FieldName = "Thumbnail"
-        Me.colOrthophotoThumbnail.Name = "colOrthophotoThumbnail"
-        '
-        'picOrthophotoThumbnail
-        '
-        Me.picOrthophotoThumbnail.CustomHeight = 32
-        Me.picOrthophotoThumbnail.Name = "picOrthophotoThumbnail"
-        '
-        'colOrthophotoName
-        '
-        resources.ApplyResources(Me.colOrthophotoName, "colOrthophotoName")
-        Me.colOrthophotoName.FieldName = "Name"
-        Me.colOrthophotoName.Name = "colOrthophotoName"
-        '
-        'lblOrthophotoPreview
-        '
-        resources.ApplyResources(Me.lblOrthophotoPreview, "lblOrthophotoPreview")
-        Me.lblOrthophotoPreview.Name = "lblOrthophotoPreview"
-        '
-        'lblOrthophotoName
-        '
-        resources.ApplyResources(Me.lblOrthophotoName, "lblOrthophotoName")
-        Me.lblOrthophotoName.Name = "lblOrthophotoName"
-        '
-        'lblOrthophotoInformation
-        '
-        resources.ApplyResources(Me.lblOrthophotoInformation, "lblOrthophotoInformation")
-        Me.lblOrthophotoInformation.Name = "lblOrthophotoInformation"
-        '
-        'txtOrthophotoName
-        '
-        resources.ApplyResources(Me.txtOrthophotoName, "txtOrthophotoName")
-        Me.txtOrthophotoName.Name = "txtOrthophotoName"
-        '
-        'txtOrthophotoInformation
-        '
-        resources.ApplyResources(Me.txtOrthophotoInformation, "txtOrthophotoInformation")
-        Me.txtOrthophotoInformation.MenuManager = Me.BarManager
-        Me.txtOrthophotoInformation.Name = "txtOrthophotoInformation"
-        Me.txtOrthophotoInformation.Properties.ReadOnly = True
-        '
-        'picOrthophotoPreview
-        '
-        resources.ApplyResources(Me.picOrthophotoPreview, "picOrthophotoPreview")
-        Me.picOrthophotoPreview.MenuManager = Me.BarManager
-        Me.picOrthophotoPreview.Name = "picOrthophotoPreview"
-        Me.picOrthophotoPreview.Properties.ReadOnly = True
-        '
-        'pnlWMSs
-        '
-        resources.ApplyResources(Me.pnlWMSs, "pnlWMSs")
-        Me.pnlWMSs.Name = "pnlWMSs"
-        '
-        'pnlWMSs.Panel1
-        '
-        Me.pnlWMSs.Panel1.Controls.Add(Me.tvWMSs)
-        resources.ApplyResources(Me.pnlWMSs.Panel1, "pnlWMSs.Panel1")
-        '
-        'pnlWMSs.Panel2
-        '
-        Me.pnlWMSs.Panel2.Controls.Add(Me.btnWMSLayerRefresh)
-        Me.pnlWMSs.Panel2.Controls.Add(Me.txtWMSName)
-        Me.pnlWMSs.Panel2.Controls.Add(Me.cboWMSSRSOverride)
-        Me.pnlWMSs.Panel2.Controls.Add(Me.lblWMSName)
-        Me.pnlWMSs.Panel2.Controls.Add(Me.lblWMSSRSOverride)
-        Me.pnlWMSs.Panel2.Controls.Add(Me.lblWMSURL)
-        Me.pnlWMSs.Panel2.Controls.Add(Me.lblWMSLayer)
-        Me.pnlWMSs.Panel2.Controls.Add(Me.txtWMSURL)
-        Me.pnlWMSs.Panel2.Controls.Add(Me.tvWMSLayer)
-        resources.ApplyResources(Me.pnlWMSs.Panel2, "pnlWMSs.Panel2")
-        Me.pnlWMSs.SplitterPosition = 190
-        Me.pnlWMSs.ToolTipController = Me.DefaultToolTipController1.DefaultController
-        '
-        'tvWMSs
-        '
-        Me.tvWMSs.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colWMSsName, Me.colWMSsURL, Me.colWMSsLayer})
-        resources.ApplyResources(Me.tvWMSs, "tvWMSs")
-        Me.tvWMSs.MenuManager = Me.BarManager
-        Me.tvWMSs.Name = "tvWMSs"
-        Me.tvWMSs.OptionsBehavior.Editable = False
-        Me.tvWMSs.OptionsBehavior.ReadOnly = True
-        Me.tvWMSs.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
-        Me.tvWMSs.OptionsView.ShowColumns = False
-        Me.tvWMSs.OptionsView.ShowIndentAsRowStyle = True
-        Me.tvWMSs.OptionsView.ShowIndicator = False
-        Me.tvWMSs.OptionsView.ShowRoot = False
-        Me.tvWMSs.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemPictureEdit1})
-        Me.tvWMSs.SelectImageList = Me.imlsvg
-        '
-        'colWMSsName
-        '
-        resources.ApplyResources(Me.colWMSsName, "colWMSsName")
-        Me.colWMSsName.FieldName = "Name"
-        Me.colWMSsName.Name = "colWMSsName"
-        '
-        'colWMSsURL
-        '
-        resources.ApplyResources(Me.colWMSsURL, "colWMSsURL")
-        Me.colWMSsURL.FieldName = "URL"
-        Me.colWMSsURL.Name = "colWMSsURL"
-        '
-        'colWMSsLayer
-        '
-        resources.ApplyResources(Me.colWMSsLayer, "colWMSsLayer")
-        Me.colWMSsLayer.FieldName = "Layer"
-        Me.colWMSsLayer.Name = "colWMSsLayer"
-        '
-        'RepositoryItemPictureEdit1
-        '
-        Me.RepositoryItemPictureEdit1.CustomHeight = 32
-        Me.RepositoryItemPictureEdit1.Name = "RepositoryItemPictureEdit1"
-        '
-        'btnWMSLayerRefresh
-        '
-        resources.ApplyResources(Me.btnWMSLayerRefresh, "btnWMSLayerRefresh")
-        Me.btnWMSLayerRefresh.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.btnWMSLayerRefresh.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_refresh
-        Me.btnWMSLayerRefresh.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.btnWMSLayerRefresh.Name = "btnWMSLayerRefresh"
-        '
-        'txtWMSName
-        '
-        resources.ApplyResources(Me.txtWMSName, "txtWMSName")
-        Me.txtWMSName.Name = "txtWMSName"
-        '
-        'cboWMSSRSOverride
-        '
-        resources.ApplyResources(Me.cboWMSSRSOverride, "cboWMSSRSOverride")
-        Me.cboWMSSRSOverride.MenuManager = Me.BarManager
-        Me.cboWMSSRSOverride.Name = "cboWMSSRSOverride"
-        Me.cboWMSSRSOverride.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboWMSSRSOverride.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.cboWMSSRSOverride.Properties.Items.AddRange(New Object() {resources.GetString("cboWMSSRSOverride.Properties.Items"), resources.GetString("cboWMSSRSOverride.Properties.Items1"), resources.GetString("cboWMSSRSOverride.Properties.Items2")})
-        Me.cboWMSSRSOverride.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        '
-        'lblWMSName
-        '
-        resources.ApplyResources(Me.lblWMSName, "lblWMSName")
-        Me.lblWMSName.Name = "lblWMSName"
-        '
-        'lblWMSSRSOverride
-        '
-        resources.ApplyResources(Me.lblWMSSRSOverride, "lblWMSSRSOverride")
-        Me.lblWMSSRSOverride.Name = "lblWMSSRSOverride"
-        '
-        'lblWMSURL
-        '
-        resources.ApplyResources(Me.lblWMSURL, "lblWMSURL")
-        Me.lblWMSURL.Name = "lblWMSURL"
-        '
-        'lblWMSLayer
-        '
-        resources.ApplyResources(Me.lblWMSLayer, "lblWMSLayer")
-        Me.lblWMSLayer.Name = "lblWMSLayer"
-        '
-        'txtWMSURL
-        '
-        resources.ApplyResources(Me.txtWMSURL, "txtWMSURL")
-        Me.txtWMSURL.Name = "txtWMSURL"
-        '
-        'tvWMSLayer
-        '
-        resources.ApplyResources(Me.tvWMSLayer, "tvWMSLayer")
-        Me.tvWMSLayer.CheckBoxFieldName = "Selected"
-        Me.tvWMSLayer.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colWMSLayerName, Me.colWMSLayerCRSs, Me.colWMSImageFormat})
-        Me.tvWMSLayer.MenuManager = Me.BarManager
-        Me.tvWMSLayer.Name = "tvWMSLayer"
-        Me.tvWMSLayer.OptionsBehavior.PopulateServiceColumns = True
-        Me.tvWMSLayer.OptionsView.CheckBoxStyle = DevExpress.XtraTreeList.DefaultNodeCheckBoxStyle.Check
-        Me.tvWMSLayer.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
-        Me.tvWMSLayer.OptionsView.ShowIndentAsRowStyle = True
-        Me.tvWMSLayer.OptionsView.ShowIndicator = False
-        Me.tvWMSLayer.OptionsView.ShowRoot = False
-        '
-        'colWMSLayerName
-        '
-        resources.ApplyResources(Me.colWMSLayerName, "colWMSLayerName")
-        Me.colWMSLayerName.FieldName = "Name"
-        Me.colWMSLayerName.Name = "colWMSLayerName"
-        Me.colWMSLayerName.OptionsColumn.AllowEdit = False
-        Me.colWMSLayerName.OptionsColumn.ReadOnly = True
-        '
-        'colWMSLayerCRSs
-        '
-        resources.ApplyResources(Me.colWMSLayerCRSs, "colWMSLayerCRSs")
-        Me.colWMSLayerCRSs.FieldName = "SRSs"
-        Me.colWMSLayerCRSs.Name = "colWMSLayerCRSs"
-        Me.colWMSLayerCRSs.OptionsColumn.AllowEdit = False
-        Me.colWMSLayerCRSs.OptionsColumn.ReadOnly = True
-        Me.colWMSLayerCRSs.UnboundType = DevExpress.XtraTreeList.Data.UnboundColumnType.[String]
-        '
-        'colWMSImageFormat
-        '
-        resources.ApplyResources(Me.colWMSImageFormat, "colWMSImageFormat")
-        Me.colWMSImageFormat.FieldName = "ImageFormats"
-        Me.colWMSImageFormat.Name = "colWMSImageFormat"
-        Me.colWMSImageFormat.OptionsColumn.AllowEdit = False
-        Me.colWMSImageFormat.OptionsColumn.ReadOnly = True
-        Me.colWMSImageFormat.UnboundType = DevExpress.XtraTreeList.Data.UnboundColumnType.[String]
-        '
-        'tvCaveInfos
-        '
-        Me.BehaviorManager1.SetBehaviors(Me.tvCaveInfos, New DevExpress.Utils.Behaviors.Behavior() {CType(DevExpress.Utils.DragDrop.DragDropBehavior.Create(GetType(DevExpress.XtraTreeList.TreeListDragDropSource), True, True, True, True, Me.tvCaveInforsDragDrop), DevExpress.Utils.Behaviors.Behavior)})
-        Me.tvCaveInfos.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colCaveInfosName, Me.colCaveInfosColor})
-        resources.ApplyResources(Me.tvCaveInfos, "tvCaveInfos")
-        Me.tvCaveInfos.KeyFieldName = "Item"
-        Me.tvCaveInfos.MenuManager = Me.BarManager
-        Me.tvCaveInfos.Name = "tvCaveInfos"
-        Me.tvCaveInfos.OptionsBehavior.Editable = False
-        Me.tvCaveInfos.OptionsBehavior.ReadOnly = True
-        Me.tvCaveInfos.OptionsView.AutoWidth = False
-        Me.tvCaveInfos.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
-        Me.tvCaveInfos.OptionsView.ShowColumns = False
-        Me.tvCaveInfos.OptionsView.ShowIndentAsRowStyle = True
-        Me.tvCaveInfos.OptionsView.ShowIndicator = False
-        Me.tvCaveInfos.ParentFieldName = "Parent"
-        Me.tvCaveInfos.SelectImageList = Me.imlsvg
-        '
-        'colCaveInfosName
-        '
-        resources.ApplyResources(Me.colCaveInfosName, "colCaveInfosName")
-        Me.colCaveInfosName.FieldName = "Name"
-        Me.colCaveInfosName.Name = "colCaveInfosName"
-        '
-        'colCaveInfosColor
-        '
-        resources.ApplyResources(Me.colCaveInfosColor, "colCaveInfosColor")
-        Me.colCaveInfosColor.FieldName = " "
-        Me.colCaveInfosColor.Name = "colCaveInfosColor"
-        Me.colCaveInfosColor.OptionsColumn.AllowEdit = False
-        Me.colCaveInfosColor.OptionsColumn.FixedWidth = True
-        Me.colCaveInfosColor.OptionsColumn.ReadOnly = True
-        '
-        'txtCaveInfoColor
-        '
-        Me.txtCaveInfoColor.DefaultColor = System.Drawing.Color.Transparent
-        resources.ApplyResources(Me.txtCaveInfoColor, "txtCaveInfoColor")
-        Me.txtCaveInfoColor.Name = "txtCaveInfoColor"
-        Me.txtCaveInfoColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtCaveInfoColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txtCaveInfoColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.txtCaveInfoColor.Properties.ShowSystemColors = False
-        Me.txtCaveInfoColor.Properties.ShowWebColors = False
-        '
-        'lblCaveInfoName
-        '
-        resources.ApplyResources(Me.lblCaveInfoName, "lblCaveInfoName")
-        Me.lblCaveInfoName.Name = "lblCaveInfoName"
-        '
-        'txtCaveInfoID
-        '
-        resources.ApplyResources(Me.txtCaveInfoID, "txtCaveInfoID")
-        Me.txtCaveInfoID.Name = "txtCaveInfoID"
-        '
-        'lblCaveInfoID
-        '
-        resources.ApplyResources(Me.lblCaveInfoID, "lblCaveInfoID")
-        Me.lblCaveInfoID.Name = "lblCaveInfoID"
-        '
-        'lblCaveInfoColor
-        '
-        resources.ApplyResources(Me.lblCaveInfoColor, "lblCaveInfoColor")
-        Me.lblCaveInfoColor.Name = "lblCaveInfoColor"
-        '
-        'chkCaveInfoLocked
-        '
-        resources.ApplyResources(Me.chkCaveInfoLocked, "chkCaveInfoLocked")
-        Me.chkCaveInfoLocked.Name = "chkCaveInfoLocked"
-        Me.chkCaveInfoLocked.Properties.Caption = resources.GetString("chkCaveInfoLocked.Properties.Caption")
-        Me.chkCaveInfoLocked.Properties.GlyphAlignment = CType(resources.GetObject("chkCaveInfoLocked.Properties.GlyphAlignment"), DevExpress.Utils.HorzAlignment)
-        '
-        'lblCaveInfoDescription
-        '
-        resources.ApplyResources(Me.lblCaveInfoDescription, "lblCaveInfoDescription")
-        Me.lblCaveInfoDescription.Name = "lblCaveInfoDescription"
-        '
-        'txtCaveInfoName
-        '
-        resources.ApplyResources(Me.txtCaveInfoName, "txtCaveInfoName")
-        Me.txtCaveInfoName.Name = "txtCaveInfoName"
-        '
-        'tabCaveAndBranch
-        '
-        resources.ApplyResources(Me.tabCaveAndBranch, "tabCaveAndBranch")
-        Me.tabCaveAndBranch.Name = "tabCaveAndBranch"
-        Me.tabCaveAndBranch.SelectedTabPage = Me.tabCaveInfoSurface1
-        Me.tabCaveAndBranch.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabCaveInfoSurface1, Me.tabCaveInfoCalculateOptions1, Me.tabCaveInfoSegments1})
-        '
-        'tabCaveInfoSurface1
-        '
-        Me.tabCaveInfoSurface1.Controls.Add(Me.lblCaveInfoSurfaceProfileShow)
-        Me.tabCaveInfoSurface1.Controls.Add(Me.cboCaveInfoSurfaceProfileShow)
-        Me.tabCaveInfoSurface1.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.soilmodel
-        Me.tabCaveInfoSurface1.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.tabCaveInfoSurface1.Name = "tabCaveInfoSurface1"
-        resources.ApplyResources(Me.tabCaveInfoSurface1, "tabCaveInfoSurface1")
-        '
-        'lblCaveInfoSurfaceProfileShow
-        '
-        resources.ApplyResources(Me.lblCaveInfoSurfaceProfileShow, "lblCaveInfoSurfaceProfileShow")
-        Me.lblCaveInfoSurfaceProfileShow.Name = "lblCaveInfoSurfaceProfileShow"
-        '
         'cboCaveInfoSurfaceProfileShow
         '
         Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboCaveInfoSurfaceProfileShow, CType(resources.GetObject("cboCaveInfoSurfaceProfileShow.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
@@ -3038,17 +2157,6 @@ Partial Class frmProperties
         Me.cboCaveInfoSurfaceProfileShow.FormattingEnabled = True
         Me.cboCaveInfoSurfaceProfileShow.Items.AddRange(New Object() {resources.GetString("cboCaveInfoSurfaceProfileShow.Items"), resources.GetString("cboCaveInfoSurfaceProfileShow.Items1"), resources.GetString("cboCaveInfoSurfaceProfileShow.Items2")})
         Me.cboCaveInfoSurfaceProfileShow.Name = "cboCaveInfoSurfaceProfileShow"
-        '
-        'tabCaveInfoCalculateOptions1
-        '
-        Me.tabCaveInfoCalculateOptions1.Controls.Add(Me.cboCaveInfoExtendStart)
-        Me.tabCaveInfoCalculateOptions1.Controls.Add(Me.pnlCaveInfoConnections)
-        Me.tabCaveInfoCalculateOptions1.Controls.Add(Me.lblCaveInfoExtendStart)
-        Me.tabCaveInfoCalculateOptions1.Controls.Add(Me.pnlCaveInfoPriority)
-        Me.tabCaveInfoCalculateOptions1.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.calculatenow
-        Me.tabCaveInfoCalculateOptions1.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.tabCaveInfoCalculateOptions1.Name = "tabCaveInfoCalculateOptions1"
-        resources.ApplyResources(Me.tabCaveInfoCalculateOptions1, "tabCaveInfoCalculateOptions1")
         '
         'cboCaveInfoExtendStart
         '
@@ -3102,11 +2210,6 @@ Partial Class frmProperties
         resources.ApplyResources(Me.cmdCaveInfoConnection, "cmdCaveInfoConnection")
         Me.cmdCaveInfoConnection.Name = "cmdCaveInfoConnection"
         '
-        'lblCaveInfoExtendStart
-        '
-        resources.ApplyResources(Me.lblCaveInfoExtendStart, "lblCaveInfoExtendStart")
-        Me.lblCaveInfoExtendStart.Name = "lblCaveInfoExtendStart"
-        '
         'pnlCaveInfoPriority
         '
         Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlCaveInfoPriority, CType(resources.GetObject("pnlCaveInfoPriority.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
@@ -3137,55 +2240,11 @@ Partial Class frmProperties
         Me.chkCaveInfoPriority.Properties.AutoWidth = True
         Me.chkCaveInfoPriority.Properties.Caption = resources.GetString("chkCaveInfoPriority.Properties.Caption")
         '
-        'tabCaveInfoSegments1
-        '
-        Me.tabCaveInfoSegments1.Controls.Add(Me.lvCaveInfoSegments)
-        Me.tabCaveInfoSegments1.Controls.Add(Me.btnCaveInfoSegmentsRefresh)
-        Me.tabCaveInfoSegments1.Controls.Add(Me.btnCaveInfoSelectSegment)
-        Me.tabCaveInfoSegments1.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.shot
-        Me.tabCaveInfoSegments1.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.tabCaveInfoSegments1.Name = "tabCaveInfoSegments1"
-        resources.ApplyResources(Me.tabCaveInfoSegments1, "tabCaveInfoSegments1")
-        '
         'lvCaveInfoSegments
         '
         Me.DefaultToolTipController1.SetAllowHtmlText(Me.lvCaveInfoSegments, CType(resources.GetObject("lvCaveInfoSegments.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.lvCaveInfoSegments, "lvCaveInfoSegments")
         Me.lvCaveInfoSegments.Name = "lvCaveInfoSegments"
-        '
-        'btnCaveInfoSegmentsRefresh
-        '
-        resources.ApplyResources(Me.btnCaveInfoSegmentsRefresh, "btnCaveInfoSegmentsRefresh")
-        Me.btnCaveInfoSegmentsRefresh.ImageOptions.Image = CType(resources.GetObject("btnCaveInfoSegmentsRefresh.ImageOptions.Image"), System.Drawing.Image)
-        Me.btnCaveInfoSegmentsRefresh.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.btnCaveInfoSegmentsRefresh.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_refresh
-        Me.btnCaveInfoSegmentsRefresh.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.btnCaveInfoSegmentsRefresh.Name = "btnCaveInfoSegmentsRefresh"
-        '
-        'btnCaveInfoSelectSegment
-        '
-        resources.ApplyResources(Me.btnCaveInfoSelectSegment, "btnCaveInfoSelectSegment")
-        Me.btnCaveInfoSelectSegment.ImageOptions.Image = CType(resources.GetObject("btnCaveInfoSelectSegment.ImageOptions.Image"), System.Drawing.Image)
-        Me.btnCaveInfoSelectSegment.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.btnCaveInfoSelectSegment.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources._select
-        Me.btnCaveInfoSelectSegment.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.btnCaveInfoSelectSegment.Name = "btnCaveInfoSelectSegment"
-        '
-        'txtCaveInfoDescription
-        '
-        resources.ApplyResources(Me.txtCaveInfoDescription, "txtCaveInfoDescription")
-        Me.txtCaveInfoDescription.Name = "txtCaveInfoDescription"
-        '
-        'cmdOk
-        '
-        resources.ApplyResources(Me.cmdOk, "cmdOk")
-        Me.cmdOk.Name = "cmdOk"
-        '
-        'cmdCancel
-        '
-        resources.ApplyResources(Me.cmdCancel, "cmdCancel")
-        Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancel.Name = "cmdCancel"
         '
         'mnuInfoBoxTags
         '
@@ -3713,20 +2772,6 @@ Partial Class frmProperties
         Me.cboCoordinateFormat.Items.AddRange(New Object() {resources.GetString("cboCoordinateFormat.Items"), resources.GetString("cboCoordinateFormat.Items1"), resources.GetString("cboCoordinateFormat.Items2")})
         Me.cboCoordinateFormat.Name = "cboCoordinateFormat"
         '
-        'chkGPSSendToTherion
-        '
-        resources.ApplyResources(Me.chkGPSSendToTherion, "chkGPSSendToTherion")
-        Me.chkGPSSendToTherion.Name = "chkGPSSendToTherion"
-        Me.chkGPSSendToTherion.Properties.AutoWidth = True
-        Me.chkGPSSendToTherion.Properties.Caption = resources.GetString("chkGPSSendToTherion.Properties.Caption")
-        '
-        'chkGPSEnabled
-        '
-        resources.ApplyResources(Me.chkGPSEnabled, "chkGPSEnabled")
-        Me.chkGPSEnabled.Name = "chkGPSEnabled"
-        Me.chkGPSEnabled.Properties.AutoWidth = True
-        Me.chkGPSEnabled.Properties.Caption = resources.GetString("chkGPSEnabled.Properties.Caption")
-        '
         'cboDesignWarpingMode
         '
         Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboDesignWarpingMode, CType(resources.GetObject("cboDesignWarpingMode.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
@@ -3745,75 +2790,12 @@ Partial Class frmProperties
         resources.ApplyResources(Me.cboDesignBindingMode, "cboDesignBindingMode")
         Me.cboDesignBindingMode.Name = "cboDesignBindingMode"
         '
-        'cmdChangeInversionModeAndSetDirections
-        '
-        Me.cmdChangeInversionModeAndSetDirections.ImageOptions.Image = CType(resources.GetObject("cmdChangeInversionModeAndSetDirections.ImageOptions.Image"), System.Drawing.Image)
-        resources.ApplyResources(Me.cmdChangeInversionModeAndSetDirections, "cmdChangeInversionModeAndSetDirections")
-        Me.cmdChangeInversionModeAndSetDirections.Name = "cmdChangeInversionModeAndSetDirections"
-        '
-        'txtName
-        '
-        resources.ApplyResources(Me.txtName, "txtName")
-        Me.txtName.Name = "txtName"
-        '
-        'txtDescrizione
-        '
-        resources.ApplyResources(Me.txtDescrizione, "txtDescrizione")
-        Me.txtDescrizione.Name = "txtDescrizione"
-        '
-        'txtClub
-        '
-        resources.ApplyResources(Me.txtClub, "txtClub")
-        Me.txtClub.Name = "txtClub"
-        '
-        'txtCatasto
-        '
-        resources.ApplyResources(Me.txtCatasto, "txtCatasto")
-        Me.txtCatasto.Name = "txtCatasto"
-        '
-        'txtTeam
-        '
-        resources.ApplyResources(Me.txtTeam, "txtTeam")
-        Me.txtTeam.Name = "txtTeam"
-        '
-        'txtDesigner
-        '
-        resources.ApplyResources(Me.txtDesigner, "txtDesigner")
-        Me.txtDesigner.Name = "txtDesigner"
-        '
-        'txtID
-        '
-        resources.ApplyResources(Me.txtID, "txtID")
-        Me.txtID.Name = "txtID"
-        Me.txtID.Properties.ReadOnly = True
-        '
-        'cmdNewID
-        '
-        resources.ApplyResources(Me.cmdNewID, "cmdNewID")
-        Me.cmdNewID.Name = "cmdNewID"
-        '
         'txtDesignEditLowerLayersTransparencyThreshold
         '
         Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignEditLowerLayersTransparencyThreshold, CType(resources.GetObject("txtDesignEditLowerLayersTransparencyThreshold.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.txtDesignEditLowerLayersTransparencyThreshold, "txtDesignEditLowerLayersTransparencyThreshold")
         Me.txtDesignEditLowerLayersTransparencyThreshold.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.txtDesignEditLowerLayersTransparencyThreshold.Name = "txtDesignEditLowerLayersTransparencyThreshold"
-        '
-        'chksurfaceprofile
-        '
-        resources.ApplyResources(Me.chksurfaceprofile, "chksurfaceprofile")
-        Me.chksurfaceprofile.Name = "chksurfaceprofile"
-        Me.chksurfaceprofile.Properties.AutoWidth = True
-        Me.chksurfaceprofile.Properties.Caption = resources.GetString("chksurfaceprofile.Properties.Caption")
-        '
-        'cmdUpdateCalculateVersion
-        '
-        Me.cmdUpdateCalculateVersion.ImageOptions.Image = CType(resources.GetObject("cmdUpdateCalculateVersion.ImageOptions.Image"), System.Drawing.Image)
-        Me.cmdUpdateCalculateVersion.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.cmdUpdateCalculateVersion.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.weather_lightning
-        Me.cmdUpdateCalculateVersion.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        resources.ApplyResources(Me.cmdUpdateCalculateVersion, "cmdUpdateCalculateVersion")
-        Me.cmdUpdateCalculateVersion.Name = "cmdUpdateCalculateVersion"
         '
         'txtDesignTextureScaleFactor
         '
@@ -3822,24 +2804,6 @@ Partial Class frmProperties
         Me.txtDesignTextureScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
         resources.ApplyResources(Me.txtDesignTextureScaleFactor, "txtDesignTextureScaleFactor")
         Me.txtDesignTextureScaleFactor.Name = "txtDesignTextureScaleFactor"
-        '
-        'txtCreatorID
-        '
-        resources.ApplyResources(Me.txtCreatorID, "txtCreatorID")
-        Me.txtCreatorID.Name = "txtCreatorID"
-        Me.txtCreatorID.Properties.ReadOnly = True
-        '
-        'txtCreationDate
-        '
-        resources.ApplyResources(Me.txtCreationDate, "txtCreationDate")
-        Me.txtCreationDate.Name = "txtCreationDate"
-        Me.txtCreationDate.Properties.ReadOnly = True
-        '
-        'txtCreatorVersion
-        '
-        resources.ApplyResources(Me.txtCreatorVersion, "txtCreatorVersion")
-        Me.txtCreatorVersion.Name = "txtCreatorVersion"
-        Me.txtCreatorVersion.Properties.ReadOnly = True
         '
         'txtDesignExtraScaleFactor
         '
@@ -3892,50 +2856,6 @@ Partial Class frmProperties
         resources.ApplyResources(Me.picSurfacePenColor, "picSurfacePenColor")
         Me.picSurfacePenColor.Name = "picSurfacePenColor"
         Me.picSurfacePenColor.TabStop = False
-        '
-        'optWarpingActive
-        '
-        resources.ApplyResources(Me.optWarpingActive, "optWarpingActive")
-        Me.optWarpingActive.GroupIndex = 2
-        Me.optWarpingActive.ImageOptions.SvgImage = CType(resources.GetObject("optWarpingActive.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.optWarpingActive.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.optWarpingActive.Name = "optWarpingActive"
-        Me.optWarpingActive.TabStop = False
-        '
-        'optWarpingPaused
-        '
-        resources.ApplyResources(Me.optWarpingPaused, "optWarpingPaused")
-        Me.optWarpingPaused.GroupIndex = 2
-        Me.optWarpingPaused.ImageOptions.Image = CType(resources.GetObject("optWarpingPaused.ImageOptions.Image"), System.Drawing.Image)
-        Me.optWarpingPaused.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.pause
-        Me.optWarpingPaused.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.optWarpingPaused.Name = "optWarpingPaused"
-        Me.optWarpingPaused.TabStop = False
-        '
-        'cmdOriginRefreshStations
-        '
-        Me.cmdOriginRefreshStations.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.cmdOriginRefreshStations.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_refresh
-        Me.cmdOriginRefreshStations.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        resources.ApplyResources(Me.cmdOriginRefreshStations, "cmdOriginRefreshStations")
-        Me.cmdOriginRefreshStations.Name = "cmdOriginRefreshStations"
-        '
-        'cmdGPSCustomRefPointRefreshStations
-        '
-        resources.ApplyResources(Me.cmdGPSCustomRefPointRefreshStations, "cmdGPSCustomRefPointRefreshStations")
-        Me.cmdGPSCustomRefPointRefreshStations.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.cmdGPSCustomRefPointRefreshStations.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_refresh
-        Me.cmdGPSCustomRefPointRefreshStations.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.cmdGPSCustomRefPointRefreshStations.Name = "cmdGPSCustomRefPointRefreshStations"
-        '
-        'ColumnHeader1
-        '
-        resources.ApplyResources(Me.ColumnHeader1, "ColumnHeader1")
-        '
-        'cmdApply
-        '
-        resources.ApplyResources(Me.cmdApply, "cmdApply")
-        Me.cmdApply.Name = "cmdApply"
         '
         'mnuTrigPointTags
         '
@@ -4075,127 +2995,6 @@ Partial Class frmProperties
         resources.ApplyResources(Me.ToolStripMenuItem16, "ToolStripMenuItem16")
         Me.ToolStripMenuItem16.Tag = "%BR%"
         '
-        'GroupBox9
-        '
-        Me.GroupBox9.Controls.Add(Me.txt3DExportAsImageOversampling)
-        Me.GroupBox9.Controls.Add(Me.lbl3DExportAsImageOversampling)
-        Me.GroupBox9.Controls.Add(Me.frm3DSurface)
-        resources.ApplyResources(Me.GroupBox9, "GroupBox9")
-        Me.GroupBox9.Name = "GroupBox9"
-        Me.GroupBox9.ToolTipController = Me.DefaultToolTipController1.DefaultController
-        '
-        'txt3DExportAsImageOversampling
-        '
-        resources.ApplyResources(Me.txt3DExportAsImageOversampling, "txt3DExportAsImageOversampling")
-        Me.txt3DExportAsImageOversampling.Name = "txt3DExportAsImageOversampling"
-        Me.txt3DExportAsImageOversampling.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txt3DExportAsImageOversampling.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txt3DExportAsImageOversampling.Properties.DisplayFormat.FormatString = "N0"
-        Me.txt3DExportAsImageOversampling.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txt3DExportAsImageOversampling.Properties.EditFormat.FormatString = "N0"
-        Me.txt3DExportAsImageOversampling.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txt3DExportAsImageOversampling.Properties.MaxValue = New Decimal(New Integer() {10, 0, 0, 0})
-        Me.txt3DExportAsImageOversampling.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
-        '
-        'lbl3DExportAsImageOversampling
-        '
-        resources.ApplyResources(Me.lbl3DExportAsImageOversampling, "lbl3DExportAsImageOversampling")
-        Me.lbl3DExportAsImageOversampling.Name = "lbl3DExportAsImageOversampling"
-        '
-        'frm3DSurface
-        '
-        Me.frm3DSurface.Controls.Add(Me.txt3DSurfaceModelLOD)
-        Me.frm3DSurface.Controls.Add(Me.txt3DSurfaceTextureLOD)
-        Me.frm3DSurface.Controls.Add(Me.lbl3DSurfaceModelLOD)
-        Me.frm3DSurface.Controls.Add(Me.lbl3DSurfaceTextureLOD)
-        resources.ApplyResources(Me.frm3DSurface, "frm3DSurface")
-        Me.frm3DSurface.Name = "frm3DSurface"
-        Me.frm3DSurface.ToolTipController = Me.DefaultToolTipController1.DefaultController
-        '
-        'txt3DSurfaceModelLOD
-        '
-        resources.ApplyResources(Me.txt3DSurfaceModelLOD, "txt3DSurfaceModelLOD")
-        Me.txt3DSurfaceModelLOD.Name = "txt3DSurfaceModelLOD"
-        Me.txt3DSurfaceModelLOD.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txt3DSurfaceModelLOD.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txt3DSurfaceModelLOD.Properties.DisplayFormat.FormatString = "N0"
-        Me.txt3DSurfaceModelLOD.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txt3DSurfaceModelLOD.Properties.EditFormat.FormatString = "N0"
-        Me.txt3DSurfaceModelLOD.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txt3DSurfaceModelLOD.Properties.MaxValue = New Decimal(New Integer() {10, 0, 0, 0})
-        Me.txt3DSurfaceModelLOD.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
-        '
-        'txt3DSurfaceTextureLOD
-        '
-        resources.ApplyResources(Me.txt3DSurfaceTextureLOD, "txt3DSurfaceTextureLOD")
-        Me.txt3DSurfaceTextureLOD.Name = "txt3DSurfaceTextureLOD"
-        Me.txt3DSurfaceTextureLOD.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txt3DSurfaceTextureLOD.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txt3DSurfaceTextureLOD.Properties.DisplayFormat.FormatString = "N1"
-        Me.txt3DSurfaceTextureLOD.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txt3DSurfaceTextureLOD.Properties.EditFormat.FormatString = "N1"
-        Me.txt3DSurfaceTextureLOD.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txt3DSurfaceTextureLOD.Properties.Increment = New Decimal(New Integer() {2, 0, 0, 65536})
-        Me.txt3DSurfaceTextureLOD.Properties.MaskSettings.Set("mask", "N1")
-        Me.txt3DSurfaceTextureLOD.Properties.MaxValue = New Decimal(New Integer() {20, 0, 0, 0})
-        Me.txt3DSurfaceTextureLOD.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
-        '
-        'lbl3DSurfaceModelLOD
-        '
-        resources.ApplyResources(Me.lbl3DSurfaceModelLOD, "lbl3DSurfaceModelLOD")
-        Me.lbl3DSurfaceModelLOD.Name = "lbl3DSurfaceModelLOD"
-        '
-        'lbl3DSurfaceTextureLOD
-        '
-        resources.ApplyResources(Me.lbl3DSurfaceTextureLOD, "lbl3DSurfaceTextureLOD")
-        Me.lbl3DSurfaceTextureLOD.Name = "lbl3DSurfaceTextureLOD"
-        '
-        'txt3DOversamplingFactor
-        '
-        resources.ApplyResources(Me.txt3DOversamplingFactor, "txt3DOversamplingFactor")
-        Me.txt3DOversamplingFactor.Name = "txt3DOversamplingFactor"
-        Me.txt3DOversamplingFactor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txt3DOversamplingFactor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txt3DOversamplingFactor.Properties.DisplayFormat.FormatString = "N1"
-        Me.txt3DOversamplingFactor.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txt3DOversamplingFactor.Properties.EditFormat.FormatString = "N1"
-        Me.txt3DOversamplingFactor.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txt3DOversamplingFactor.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
-        Me.txt3DOversamplingFactor.Properties.MaskSettings.Set("mask", "N1")
-        Me.txt3DOversamplingFactor.Properties.MaxValue = New Decimal(New Integer() {10, 0, 0, 0})
-        Me.txt3DOversamplingFactor.Properties.MinValue = New Decimal(New Integer() {5, 0, 0, 65536})
-        '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.chk3DLochShowSplay)
-        Me.GroupBox4.Controls.Add(Me.chk3dLochShowDialog)
-        resources.ApplyResources(Me.GroupBox4, "GroupBox4")
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.ToolTipController = Me.DefaultToolTipController1.DefaultController
-        '
-        'chk3DLochShowSplay
-        '
-        resources.ApplyResources(Me.chk3DLochShowSplay, "chk3DLochShowSplay")
-        Me.chk3DLochShowSplay.Name = "chk3DLochShowSplay"
-        Me.chk3DLochShowSplay.Properties.Caption = resources.GetString("chk3DLochShowSplay.Properties.Caption")
-        '
-        'chk3dLochShowDialog
-        '
-        resources.ApplyResources(Me.chk3dLochShowDialog, "chk3dLochShowDialog")
-        Me.chk3dLochShowDialog.Name = "chk3dLochShowDialog"
-        Me.chk3dLochShowDialog.Properties.Caption = resources.GetString("chk3dLochShowDialog.Properties.Caption")
-        '
-        'lbl3DOversamplingFactor
-        '
-        resources.ApplyResources(Me.lbl3DOversamplingFactor, "lbl3DOversamplingFactor")
-        Me.lbl3DOversamplingFactor.Name = "lbl3DOversamplingFactor"
-        '
-        'lbl3DModelMode
-        '
-        resources.ApplyResources(Me.lbl3DModelMode, "lbl3DModelMode")
-        Me.lbl3DModelMode.Name = "lbl3DModelMode"
-        '
-        'lbl3DNormalizationFactor
-        '
-        resources.ApplyResources(Me.lbl3DNormalizationFactor, "lbl3DNormalizationFactor")
-        Me.lbl3DNormalizationFactor.Name = "lbl3DNormalizationFactor"
-        '
         'cbo3DModelMode
         '
         Me.DefaultToolTipController1.SetAllowHtmlText(Me.cbo3DModelMode, CType(resources.GetObject("cbo3DModelMode.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
@@ -4206,388 +3005,6 @@ Partial Class frmProperties
         resources.ApplyResources(Me.cbo3DModelMode, "cbo3DModelMode")
         Me.cbo3DModelMode.Name = "cbo3DModelMode"
         '
-        'txt3DNormalizationFactor
-        '
-        resources.ApplyResources(Me.txt3DNormalizationFactor, "txt3DNormalizationFactor")
-        Me.txt3DNormalizationFactor.Name = "txt3DNormalizationFactor"
-        Me.txt3DNormalizationFactor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txt3DNormalizationFactor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txt3DNormalizationFactor.Properties.DisplayFormat.FormatString = "N1"
-        Me.txt3DNormalizationFactor.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txt3DNormalizationFactor.Properties.EditFormat.FormatString = "N1"
-        Me.txt3DNormalizationFactor.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txt3DNormalizationFactor.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
-        Me.txt3DNormalizationFactor.Properties.MaskSettings.Set("mask", "N1")
-        Me.txt3DNormalizationFactor.Properties.MaxValue = New Decimal(New Integer() {5, 0, 0, 0})
-        Me.txt3DNormalizationFactor.Properties.MinValue = New Decimal(New Integer() {5, 0, 0, 65536})
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.cmdSurfacePenColor)
-        Me.GroupBox2.Controls.Add(Me.lblSurfacePenColor)
-        Me.GroupBox2.Controls.Add(Me.lblSurfaceSelectedPenWidth)
-        Me.GroupBox2.Controls.Add(Me.picSurfacePenColor)
-        Me.GroupBox2.Controls.Add(Me.txtSurfaceSelectedPenWidth)
-        Me.GroupBox2.Controls.Add(Me.txtSurfacePenWidth)
-        Me.GroupBox2.Controls.Add(Me.lblSurfacePenWidth)
-        Me.GroupBox2.Controls.Add(Me.cboSurfacePenStyle)
-        Me.GroupBox2.Controls.Add(Me.lblSurfacePenStyle)
-        resources.ApplyResources(Me.GroupBox2, "GroupBox2")
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.ToolTipController = Me.DefaultToolTipController1.DefaultController
-        '
-        'cmdSurfacePenColor
-        '
-        resources.ApplyResources(Me.cmdSurfacePenColor, "cmdSurfacePenColor")
-        Me.cmdSurfacePenColor.Name = "cmdSurfacePenColor"
-        '
-        'lblSurfacePenColor
-        '
-        resources.ApplyResources(Me.lblSurfacePenColor, "lblSurfacePenColor")
-        Me.lblSurfacePenColor.Name = "lblSurfacePenColor"
-        '
-        'lblSurfaceSelectedPenWidth
-        '
-        resources.ApplyResources(Me.lblSurfaceSelectedPenWidth, "lblSurfaceSelectedPenWidth")
-        Me.lblSurfaceSelectedPenWidth.Name = "lblSurfaceSelectedPenWidth"
-        '
-        'lblSurfacePenWidth
-        '
-        resources.ApplyResources(Me.lblSurfacePenWidth, "lblSurfacePenWidth")
-        Me.lblSurfacePenWidth.Name = "lblSurfacePenWidth"
-        '
-        'lblSurfacePenStyle
-        '
-        resources.ApplyResources(Me.lblSurfacePenStyle, "lblSurfacePenStyle")
-        Me.lblSurfacePenStyle.Name = "lblSurfacePenStyle"
-        '
-        'GroupBox7
-        '
-        Me.GroupBox7.Controls.Add(Me.txtPlotNoteTextFont)
-        Me.GroupBox7.Controls.Add(Me.cmdPlotNoteTextFont)
-        Me.GroupBox7.Controls.Add(Me.lblPlotNoteTextFont)
-        Me.GroupBox7.Controls.Add(Me.lblPlotNoteTextColor)
-        Me.GroupBox7.Controls.Add(Me.txtPlotNoteTextScaleFactor)
-        Me.GroupBox7.Controls.Add(Me.lblPlotNoteTextScaleFactor)
-        Me.GroupBox7.Controls.Add(Me.txtPlotNoteTextColor)
-        resources.ApplyResources(Me.GroupBox7, "GroupBox7")
-        Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.ToolTipController = Me.DefaultToolTipController1.DefaultController
-        '
-        'cmdPlotNoteTextFont
-        '
-        resources.ApplyResources(Me.cmdPlotNoteTextFont, "cmdPlotNoteTextFont")
-        Me.cmdPlotNoteTextFont.Name = "cmdPlotNoteTextFont"
-        '
-        'lblPlotNoteTextFont
-        '
-        resources.ApplyResources(Me.lblPlotNoteTextFont, "lblPlotNoteTextFont")
-        Me.lblPlotNoteTextFont.Name = "lblPlotNoteTextFont"
-        '
-        'lblPlotNoteTextColor
-        '
-        resources.ApplyResources(Me.lblPlotNoteTextColor, "lblPlotNoteTextColor")
-        Me.lblPlotNoteTextColor.Name = "lblPlotNoteTextColor"
-        '
-        'lblPlotNoteTextScaleFactor
-        '
-        resources.ApplyResources(Me.lblPlotNoteTextScaleFactor, "lblPlotNoteTextScaleFactor")
-        Me.lblPlotNoteTextScaleFactor.Name = "lblPlotNoteTextScaleFactor"
-        '
-        'txtPlotNoteTextColor
-        '
-        Me.txtPlotNoteTextColor.DefaultColor = System.Drawing.Color.Transparent
-        resources.ApplyResources(Me.txtPlotNoteTextColor, "txtPlotNoteTextColor")
-        Me.txtPlotNoteTextColor.Name = "txtPlotNoteTextColor"
-        Me.txtPlotNoteTextColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPlotNoteTextColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txtPlotNoteTextColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.txtPlotNoteTextColor.Properties.ShowSystemColors = False
-        Me.txtPlotNoteTextColor.Properties.ShowWebColors = False
-        '
-        'GroupBox6
-        '
-        Me.GroupBox6.Controls.Add(Me.lblPlotSplayCrossScale)
-        Me.GroupBox6.Controls.Add(Me.txtPlotSplayCrossScale)
-        Me.GroupBox6.Controls.Add(Me.lblPlotSplaySelectedPenWidth)
-        Me.GroupBox6.Controls.Add(Me.txtPlotSplaySelectedPenWidth)
-        Me.GroupBox6.Controls.Add(Me.txtPlotSplayPenWidth)
-        Me.GroupBox6.Controls.Add(Me.lblPlotSplayPenWidth)
-        Me.GroupBox6.Controls.Add(Me.cboPlotSplayPenStyle)
-        Me.GroupBox6.Controls.Add(Me.lblPlotSplayPenStyle)
-        resources.ApplyResources(Me.GroupBox6, "GroupBox6")
-        Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.ToolTipController = Me.DefaultToolTipController1.DefaultController
-        '
-        'lblPlotSplayCrossScale
-        '
-        resources.ApplyResources(Me.lblPlotSplayCrossScale, "lblPlotSplayCrossScale")
-        Me.lblPlotSplayCrossScale.Name = "lblPlotSplayCrossScale"
-        '
-        'txtPlotSplayCrossScale
-        '
-        resources.ApplyResources(Me.txtPlotSplayCrossScale, "txtPlotSplayCrossScale")
-        Me.txtPlotSplayCrossScale.MenuManager = Me.BarManager
-        Me.txtPlotSplayCrossScale.Name = "txtPlotSplayCrossScale"
-        Me.txtPlotSplayCrossScale.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPlotSplayCrossScale.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txtPlotSplayCrossScale.Properties.DisplayFormat.FormatString = "N1"
-        Me.txtPlotSplayCrossScale.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtPlotSplayCrossScale.Properties.EditFormat.FormatString = "N1"
-        Me.txtPlotSplayCrossScale.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtPlotSplayCrossScale.Properties.MaskSettings.Set("hideInsignificantZeros", False)
-        Me.txtPlotSplayCrossScale.Properties.MaskSettings.Set("mask", "0.0")
-        Me.txtPlotSplayCrossScale.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
-        Me.txtPlotSplayCrossScale.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 65536})
-        '
-        'lblPlotSplaySelectedPenWidth
-        '
-        resources.ApplyResources(Me.lblPlotSplaySelectedPenWidth, "lblPlotSplaySelectedPenWidth")
-        Me.lblPlotSplaySelectedPenWidth.Name = "lblPlotSplaySelectedPenWidth"
-        '
-        'lblPlotSplayPenWidth
-        '
-        resources.ApplyResources(Me.lblPlotSplayPenWidth, "lblPlotSplayPenWidth")
-        Me.lblPlotSplayPenWidth.Name = "lblPlotSplayPenWidth"
-        '
-        'lblPlotSplayPenStyle
-        '
-        resources.ApplyResources(Me.lblPlotSplayPenStyle, "lblPlotSplayPenStyle")
-        Me.lblPlotSplayPenStyle.Name = "lblPlotSplayPenStyle"
-        '
-        'frmPlotLRUD
-        '
-        Me.frmPlotLRUD.Controls.Add(Me.lblPlotLRUDSelectedPenWidth)
-        Me.frmPlotLRUD.Controls.Add(Me.txtPlotLRUDSelectedPenWidth)
-        Me.frmPlotLRUD.Controls.Add(Me.txtPlotLRUDPenWidth)
-        Me.frmPlotLRUD.Controls.Add(Me.lblPlotLRUDPenWidth)
-        Me.frmPlotLRUD.Controls.Add(Me.cboPlotLRUDPenStyle)
-        Me.frmPlotLRUD.Controls.Add(Me.lblPlotLRUDPenStyle)
-        resources.ApplyResources(Me.frmPlotLRUD, "frmPlotLRUD")
-        Me.frmPlotLRUD.Name = "frmPlotLRUD"
-        Me.frmPlotLRUD.ToolTipController = Me.DefaultToolTipController1.DefaultController
-        '
-        'lblPlotLRUDSelectedPenWidth
-        '
-        resources.ApplyResources(Me.lblPlotLRUDSelectedPenWidth, "lblPlotLRUDSelectedPenWidth")
-        Me.lblPlotLRUDSelectedPenWidth.Name = "lblPlotLRUDSelectedPenWidth"
-        '
-        'lblPlotLRUDPenWidth
-        '
-        resources.ApplyResources(Me.lblPlotLRUDPenWidth, "lblPlotLRUDPenWidth")
-        Me.lblPlotLRUDPenWidth.Name = "lblPlotLRUDPenWidth"
-        '
-        'lblPlotLRUDPenStyle
-        '
-        resources.ApplyResources(Me.lblPlotLRUDPenStyle, "lblPlotLRUDPenStyle")
-        Me.lblPlotLRUDPenStyle.Name = "lblPlotLRUDPenStyle"
-        '
-        'frmPlotTranslationLine
-        '
-        Me.frmPlotTranslationLine.Controls.Add(Me.cmdPlotTranslationLinePenColor)
-        Me.frmPlotTranslationLine.Controls.Add(Me.lblPlotTranslationLinePenColor)
-        Me.frmPlotTranslationLine.Controls.Add(Me.picPlotTranslationLinePenColor)
-        Me.frmPlotTranslationLine.Controls.Add(Me.txtPlotTranslationLinePenWidth)
-        Me.frmPlotTranslationLine.Controls.Add(Me.lblPlotTranslationLinePenSize)
-        Me.frmPlotTranslationLine.Controls.Add(Me.cboPlotTranslationLinePenStyle)
-        Me.frmPlotTranslationLine.Controls.Add(Me.lblPlotTranslationLinePenStyle)
-        resources.ApplyResources(Me.frmPlotTranslationLine, "frmPlotTranslationLine")
-        Me.frmPlotTranslationLine.Name = "frmPlotTranslationLine"
-        Me.frmPlotTranslationLine.ToolTipController = Me.DefaultToolTipController1.DefaultController
-        '
-        'cmdPlotTranslationLinePenColor
-        '
-        resources.ApplyResources(Me.cmdPlotTranslationLinePenColor, "cmdPlotTranslationLinePenColor")
-        Me.cmdPlotTranslationLinePenColor.Name = "cmdPlotTranslationLinePenColor"
-        '
-        'lblPlotTranslationLinePenColor
-        '
-        resources.ApplyResources(Me.lblPlotTranslationLinePenColor, "lblPlotTranslationLinePenColor")
-        Me.lblPlotTranslationLinePenColor.Name = "lblPlotTranslationLinePenColor"
-        '
-        'lblPlotTranslationLinePenSize
-        '
-        resources.ApplyResources(Me.lblPlotTranslationLinePenSize, "lblPlotTranslationLinePenSize")
-        Me.lblPlotTranslationLinePenSize.Name = "lblPlotTranslationLinePenSize"
-        '
-        'lblPlotTranslationLinePenStyle
-        '
-        resources.ApplyResources(Me.lblPlotTranslationLinePenStyle, "lblPlotTranslationLinePenStyle")
-        Me.lblPlotTranslationLinePenStyle.Name = "lblPlotTranslationLinePenStyle"
-        '
-        'frmPlotPoint
-        '
-        Me.frmPlotPoint.Controls.Add(Me.lblPlotTextPolicy)
-        Me.frmPlotPoint.Controls.Add(Me.cboPlotTextPolicy)
-        Me.frmPlotPoint.Controls.Add(Me.txtPlotTextFont)
-        Me.frmPlotPoint.Controls.Add(Me.cmdPlotTextFont)
-        Me.frmPlotPoint.Controls.Add(Me.cmdPlotPointColor)
-        Me.frmPlotPoint.Controls.Add(Me.lblPlotTextFont)
-        Me.frmPlotPoint.Controls.Add(Me.lblPlotPointColor)
-        Me.frmPlotPoint.Controls.Add(Me.cmdPlotTextColor)
-        Me.frmPlotPoint.Controls.Add(Me.picPlotPointColor)
-        Me.frmPlotPoint.Controls.Add(Me.lblPlotTextColor)
-        Me.frmPlotPoint.Controls.Add(Me.cboPlotPointSymbol)
-        Me.frmPlotPoint.Controls.Add(Me.picPlotTextColor)
-        Me.frmPlotPoint.Controls.Add(Me.txtPlotSelectedPointSize)
-        Me.frmPlotPoint.Controls.Add(Me.txtPlotTextScaleFactor)
-        Me.frmPlotPoint.Controls.Add(Me.txtPlotPointSize)
-        Me.frmPlotPoint.Controls.Add(Me.lblPlotTextScaleFactor)
-        Me.frmPlotPoint.Controls.Add(Me.lblPlotSelectedPointSize)
-        Me.frmPlotPoint.Controls.Add(Me.lblPlotPointSize)
-        Me.frmPlotPoint.Controls.Add(Me.lblPlotPointSymbol)
-        resources.ApplyResources(Me.frmPlotPoint, "frmPlotPoint")
-        Me.frmPlotPoint.Name = "frmPlotPoint"
-        Me.frmPlotPoint.ToolTipController = Me.DefaultToolTipController1.DefaultController
-        '
-        'lblPlotTextPolicy
-        '
-        resources.ApplyResources(Me.lblPlotTextPolicy, "lblPlotTextPolicy")
-        Me.lblPlotTextPolicy.Name = "lblPlotTextPolicy"
-        '
-        'cboPlotTextPolicy
-        '
-        resources.ApplyResources(Me.cboPlotTextPolicy, "cboPlotTextPolicy")
-        Me.cboPlotTextPolicy.MenuManager = Me.BarManager
-        Me.cboPlotTextPolicy.Name = "cboPlotTextPolicy"
-        Me.cboPlotTextPolicy.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboPlotTextPolicy.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.cboPlotTextPolicy.Properties.Items.AddRange(New Object() {resources.GetString("cboPlotTextPolicy.Properties.Items"), resources.GetString("cboPlotTextPolicy.Properties.Items1"), resources.GetString("cboPlotTextPolicy.Properties.Items2")})
-        Me.cboPlotTextPolicy.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        '
-        'cmdPlotTextFont
-        '
-        resources.ApplyResources(Me.cmdPlotTextFont, "cmdPlotTextFont")
-        Me.cmdPlotTextFont.Name = "cmdPlotTextFont"
-        '
-        'cmdPlotPointColor
-        '
-        resources.ApplyResources(Me.cmdPlotPointColor, "cmdPlotPointColor")
-        Me.cmdPlotPointColor.Name = "cmdPlotPointColor"
-        '
-        'lblPlotTextFont
-        '
-        resources.ApplyResources(Me.lblPlotTextFont, "lblPlotTextFont")
-        Me.lblPlotTextFont.Name = "lblPlotTextFont"
-        '
-        'lblPlotPointColor
-        '
-        resources.ApplyResources(Me.lblPlotPointColor, "lblPlotPointColor")
-        Me.lblPlotPointColor.Name = "lblPlotPointColor"
-        '
-        'cmdPlotTextColor
-        '
-        resources.ApplyResources(Me.cmdPlotTextColor, "cmdPlotTextColor")
-        Me.cmdPlotTextColor.Name = "cmdPlotTextColor"
-        '
-        'lblPlotTextColor
-        '
-        resources.ApplyResources(Me.lblPlotTextColor, "lblPlotTextColor")
-        Me.lblPlotTextColor.Name = "lblPlotTextColor"
-        '
-        'lblPlotTextScaleFactor
-        '
-        resources.ApplyResources(Me.lblPlotTextScaleFactor, "lblPlotTextScaleFactor")
-        Me.lblPlotTextScaleFactor.Name = "lblPlotTextScaleFactor"
-        '
-        'lblPlotSelectedPointSize
-        '
-        resources.ApplyResources(Me.lblPlotSelectedPointSize, "lblPlotSelectedPointSize")
-        Me.lblPlotSelectedPointSize.Name = "lblPlotSelectedPointSize"
-        '
-        'lblPlotPointSize
-        '
-        resources.ApplyResources(Me.lblPlotPointSize, "lblPlotPointSize")
-        Me.lblPlotPointSize.Name = "lblPlotPointSize"
-        '
-        'lblPlotPointSymbol
-        '
-        resources.ApplyResources(Me.lblPlotPointSymbol, "lblPlotPointSymbol")
-        Me.lblPlotPointSymbol.Name = "lblPlotPointSymbol"
-        '
-        'frmPlotPen
-        '
-        Me.frmPlotPen.Controls.Add(Me.chkPlotCenterlineForceSegmentColor)
-        Me.frmPlotPen.Controls.Add(Me.chkPlotCenterlineVectors)
-        Me.frmPlotPen.Controls.Add(Me.cmdPlotPenColor)
-        Me.frmPlotPen.Controls.Add(Me.lblPlotPenColor)
-        Me.frmPlotPen.Controls.Add(Me.picPlotPenColor)
-        Me.frmPlotPen.Controls.Add(Me.txtPlotPenWidth)
-        Me.frmPlotPen.Controls.Add(Me.lblPlotPenWidth)
-        Me.frmPlotPen.Controls.Add(Me.lblPlotSelectedPenWidth)
-        Me.frmPlotPen.Controls.Add(Me.cboPlotPenStyle)
-        Me.frmPlotPen.Controls.Add(Me.txtPlotSelectedPenWidth)
-        Me.frmPlotPen.Controls.Add(Me.lblPlotPenStyle)
-        resources.ApplyResources(Me.frmPlotPen, "frmPlotPen")
-        Me.frmPlotPen.Name = "frmPlotPen"
-        Me.frmPlotPen.ToolTipController = Me.DefaultToolTipController1.DefaultController
-        '
-        'chkPlotCenterlineForceSegmentColor
-        '
-        resources.ApplyResources(Me.chkPlotCenterlineForceSegmentColor, "chkPlotCenterlineForceSegmentColor")
-        Me.chkPlotCenterlineForceSegmentColor.Name = "chkPlotCenterlineForceSegmentColor"
-        Me.chkPlotCenterlineForceSegmentColor.Properties.Caption = resources.GetString("chkPlotCenterlineForceSegmentColor.Properties.Caption")
-        '
-        'chkPlotCenterlineVectors
-        '
-        resources.ApplyResources(Me.chkPlotCenterlineVectors, "chkPlotCenterlineVectors")
-        Me.chkPlotCenterlineVectors.Name = "chkPlotCenterlineVectors"
-        Me.chkPlotCenterlineVectors.Properties.Caption = resources.GetString("chkPlotCenterlineVectors.Properties.Caption")
-        '
-        'cmdPlotPenColor
-        '
-        resources.ApplyResources(Me.cmdPlotPenColor, "cmdPlotPenColor")
-        Me.cmdPlotPenColor.Name = "cmdPlotPenColor"
-        '
-        'lblPlotPenColor
-        '
-        resources.ApplyResources(Me.lblPlotPenColor, "lblPlotPenColor")
-        Me.lblPlotPenColor.Name = "lblPlotPenColor"
-        '
-        'lblPlotPenWidth
-        '
-        resources.ApplyResources(Me.lblPlotPenWidth, "lblPlotPenWidth")
-        Me.lblPlotPenWidth.Name = "lblPlotPenWidth"
-        '
-        'lblPlotSelectedPenWidth
-        '
-        resources.ApplyResources(Me.lblPlotSelectedPenWidth, "lblPlotSelectedPenWidth")
-        Me.lblPlotSelectedPenWidth.Name = "lblPlotSelectedPenWidth"
-        '
-        'lblPlotPenStyle
-        '
-        resources.ApplyResources(Me.lblPlotPenStyle, "lblPlotPenStyle")
-        Me.lblPlotPenStyle.Name = "lblPlotPenStyle"
-        '
-        'txtDesignItemNamePattern
-        '
-        resources.ApplyResources(Me.txtDesignItemNamePattern, "txtDesignItemNamePattern")
-        Me.txtDesignItemNamePattern.Name = "txtDesignItemNamePattern"
-        '
-        'lblDesignItemNamePattern
-        '
-        resources.ApplyResources(Me.lblDesignItemNamePattern, "lblDesignItemNamePattern")
-        Me.lblDesignItemNamePattern.Name = "lblDesignItemNamePattern"
-        '
-        'cmdItemNamePatternAdd
-        '
-        resources.ApplyResources(Me.cmdItemNamePatternAdd, "cmdItemNamePatternAdd")
-        Me.cmdItemNamePatternAdd.Name = "cmdItemNamePatternAdd"
-        '
-        'chkShowLegacyExtraPrintAndExportObjects
-        '
-        resources.ApplyResources(Me.chkShowLegacyExtraPrintAndExportObjects, "chkShowLegacyExtraPrintAndExportObjects")
-        Me.chkShowLegacyExtraPrintAndExportObjects.Name = "chkShowLegacyExtraPrintAndExportObjects"
-        Me.chkShowLegacyExtraPrintAndExportObjects.Properties.Caption = resources.GetString("chkShowLegacyExtraPrintAndExportObjects.Properties.Caption")
-        '
-        'GroupBox8
-        '
-        Me.GroupBox8.Controls.Add(Me.cboClipSoil)
-        Me.GroupBox8.Controls.Add(Me.lblClipSoil)
-        Me.GroupBox8.Controls.Add(Me.cboClipAdvancedClipart)
-        Me.GroupBox8.Controls.Add(Me.cboClipBorder)
-        Me.GroupBox8.Controls.Add(Me.lblClippingAdvancedClipart)
-        Me.GroupBox8.Controls.Add(Me.lblClippingBorder)
-        resources.ApplyResources(Me.GroupBox8, "GroupBox8")
-        Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.ToolTipController = Me.DefaultToolTipController1.DefaultController
-        '
         'cboClipSoil
         '
         Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboClipSoil, CType(resources.GetObject("cboClipSoil.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
@@ -4595,11 +3012,6 @@ Partial Class frmProperties
         resources.ApplyResources(Me.cboClipSoil, "cboClipSoil")
         Me.cboClipSoil.Items.AddRange(New Object() {resources.GetString("cboClipSoil.Items"), resources.GetString("cboClipSoil.Items1")})
         Me.cboClipSoil.Name = "cboClipSoil"
-        '
-        'lblClipSoil
-        '
-        resources.ApplyResources(Me.lblClipSoil, "lblClipSoil")
-        Me.lblClipSoil.Name = "lblClipSoil"
         '
         'cboClipAdvancedClipart
         '
@@ -4617,6 +3029,572 @@ Partial Class frmProperties
         Me.cboClipBorder.Items.AddRange(New Object() {resources.GetString("cboClipBorder.Items"), resources.GetString("cboClipBorder.Items1"), resources.GetString("cboClipBorder.Items2")})
         Me.cboClipBorder.Name = "cboClipBorder"
         '
+        'cboLineType
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboLineType, CType(resources.GetObject("cboLineType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.cboLineType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboLineType.FormattingEnabled = True
+        Me.cboLineType.Items.AddRange(New Object() {resources.GetString("cboLineType.Items"), resources.GetString("cboLineType.Items1"), resources.GetString("cboLineType.Items2")})
+        resources.ApplyResources(Me.cboLineType, "cboLineType")
+        Me.cboLineType.Name = "cboLineType"
+        '
+        'txtDesignCrossSectionTextScaleFactor
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignCrossSectionTextScaleFactor, CType(resources.GetObject("txtDesignCrossSectionTextScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.txtDesignCrossSectionTextScaleFactor.DecimalPlaces = 2
+        Me.txtDesignCrossSectionTextScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        resources.ApplyResources(Me.txtDesignCrossSectionTextScaleFactor, "txtDesignCrossSectionTextScaleFactor")
+        Me.txtDesignCrossSectionTextScaleFactor.Name = "txtDesignCrossSectionTextScaleFactor"
+        '
+        'txtDesignCrossSectionMarkerTextScaleFactor
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignCrossSectionMarkerTextScaleFactor, CType(resources.GetObject("txtDesignCrossSectionMarkerTextScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.txtDesignCrossSectionMarkerTextScaleFactor.DecimalPlaces = 2
+        Me.txtDesignCrossSectionMarkerTextScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        resources.ApplyResources(Me.txtDesignCrossSectionMarkerTextScaleFactor, "txtDesignCrossSectionMarkerTextScaleFactor")
+        Me.txtDesignCrossSectionMarkerTextScaleFactor.Name = "txtDesignCrossSectionMarkerTextScaleFactor"
+        '
+        'txtDesignCrossSectionMarkerArrowScaleFactor
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignCrossSectionMarkerArrowScaleFactor, CType(resources.GetObject("txtDesignCrossSectionMarkerArrowScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.txtDesignCrossSectionMarkerArrowScaleFactor.DecimalPlaces = 2
+        Me.txtDesignCrossSectionMarkerArrowScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        resources.ApplyResources(Me.txtDesignCrossSectionMarkerArrowScaleFactor, "txtDesignCrossSectionMarkerArrowScaleFactor")
+        Me.txtDesignCrossSectionMarkerArrowScaleFactor.Name = "txtDesignCrossSectionMarkerArrowScaleFactor"
+        '
+        'txtBaseGeologyLinesScaleFactor
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtBaseGeologyLinesScaleFactor, CType(resources.GetObject("txtBaseGeologyLinesScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.txtBaseGeologyLinesScaleFactor.DecimalPlaces = 1
+        Me.txtBaseGeologyLinesScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
+        resources.ApplyResources(Me.txtBaseGeologyLinesScaleFactor, "txtBaseGeologyLinesScaleFactor")
+        Me.txtBaseGeologyLinesScaleFactor.Minimum = New Decimal(New Integer() {1, 0, 0, 65536})
+        Me.txtBaseGeologyLinesScaleFactor.Name = "txtBaseGeologyLinesScaleFactor"
+        Me.txtBaseGeologyLinesScaleFactor.Value = New Decimal(New Integer() {1, 0, 0, 65536})
+        '
+        'cboCoordinateBand
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboCoordinateBand, CType(resources.GetObject("cboCoordinateBand.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.cboCoordinateBand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        resources.ApplyResources(Me.cboCoordinateBand, "cboCoordinateBand")
+        Me.cboCoordinateBand.Name = "cboCoordinateBand"
+        '
+        'cboCoordinateZone
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboCoordinateZone, CType(resources.GetObject("cboCoordinateZone.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.cboCoordinateZone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        resources.ApplyResources(Me.cboCoordinateZone, "cboCoordinateZone")
+        Me.cboCoordinateZone.Name = "cboCoordinateZone"
+        '
+        'pnlGPS
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlGPS, CType(resources.GetObject("pnlGPS.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlGPS.Controls.Add(Me.optGPSCustomRefPoint)
+        Me.pnlGPS.Controls.Add(Me.optGPSRefPointOnOrigin)
+        Me.pnlGPS.Controls.Add(Me.chkGPSAllowManualDeclinations)
+        Me.pnlGPS.Controls.Add(Me.lblGPSCustomRefPoint)
+        Me.pnlGPS.Controls.Add(Me.cmdGPSCustomRefPointRefreshStations)
+        Me.pnlGPS.Controls.Add(Me.cboGPSCustomRefPoint)
+        Me.pnlGPS.Controls.Add(Me.chkGPSSendToTherion)
+        resources.ApplyResources(Me.pnlGPS, "pnlGPS")
+        Me.pnlGPS.Name = "pnlGPS"
+        '
+        'optGPSCustomRefPoint
+        '
+        resources.ApplyResources(Me.optGPSCustomRefPoint, "optGPSCustomRefPoint")
+        Me.optGPSCustomRefPoint.MenuManager = Me.BarManager
+        Me.optGPSCustomRefPoint.Name = "optGPSCustomRefPoint"
+        Me.optGPSCustomRefPoint.Properties.AutoWidth = True
+        Me.optGPSCustomRefPoint.Properties.Caption = resources.GetString("optGPSCustomRefPoint.Properties.Caption")
+        Me.optGPSCustomRefPoint.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio
+        Me.optGPSCustomRefPoint.Properties.RadioGroupIndex = 200
+        Me.optGPSCustomRefPoint.TabStop = False
+        '
+        'optGPSRefPointOnOrigin
+        '
+        resources.ApplyResources(Me.optGPSRefPointOnOrigin, "optGPSRefPointOnOrigin")
+        Me.optGPSRefPointOnOrigin.MenuManager = Me.BarManager
+        Me.optGPSRefPointOnOrigin.Name = "optGPSRefPointOnOrigin"
+        Me.optGPSRefPointOnOrigin.Properties.AutoWidth = True
+        Me.optGPSRefPointOnOrigin.Properties.Caption = resources.GetString("optGPSRefPointOnOrigin.Properties.Caption")
+        Me.optGPSRefPointOnOrigin.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio
+        Me.optGPSRefPointOnOrigin.Properties.RadioGroupIndex = 200
+        '
+        'chkGPSAllowManualDeclinations
+        '
+        resources.ApplyResources(Me.chkGPSAllowManualDeclinations, "chkGPSAllowManualDeclinations")
+        Me.chkGPSAllowManualDeclinations.Name = "chkGPSAllowManualDeclinations"
+        Me.chkGPSAllowManualDeclinations.Properties.AutoWidth = True
+        Me.chkGPSAllowManualDeclinations.Properties.Caption = resources.GetString("chkGPSAllowManualDeclinations.Properties.Caption")
+        '
+        'lblGPSCustomRefPoint
+        '
+        resources.ApplyResources(Me.lblGPSCustomRefPoint, "lblGPSCustomRefPoint")
+        Me.lblGPSCustomRefPoint.Name = "lblGPSCustomRefPoint"
+        '
+        'cmdGPSCustomRefPointRefreshStations
+        '
+        resources.ApplyResources(Me.cmdGPSCustomRefPointRefreshStations, "cmdGPSCustomRefPointRefreshStations")
+        Me.cmdGPSCustomRefPointRefreshStations.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdGPSCustomRefPointRefreshStations.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_refresh
+        Me.cmdGPSCustomRefPointRefreshStations.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.cmdGPSCustomRefPointRefreshStations.Name = "cmdGPSCustomRefPointRefreshStations"
+        '
+        'chkGPSSendToTherion
+        '
+        resources.ApplyResources(Me.chkGPSSendToTherion, "chkGPSSendToTherion")
+        Me.chkGPSSendToTherion.Name = "chkGPSSendToTherion"
+        Me.chkGPSSendToTherion.Properties.AutoWidth = True
+        Me.chkGPSSendToTherion.Properties.Caption = resources.GetString("chkGPSSendToTherion.Properties.Caption")
+        '
+        'cboCalculateVersion
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboCalculateVersion, CType(resources.GetObject("cboCalculateVersion.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.cboCalculateVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        resources.ApplyResources(Me.cboCalculateVersion, "cboCalculateVersion")
+        Me.cboCalculateVersion.FormattingEnabled = True
+        Me.cboCalculateVersion.Items.AddRange(New Object() {resources.GetString("cboCalculateVersion.Items"), resources.GetString("cboCalculateVersion.Items1"), resources.GetString("cboCalculateVersion.Items2"), resources.GetString("cboCalculateVersion.Items3")})
+        Me.cboCalculateVersion.Name = "cboCalculateVersion"
+        '
+        'cboSplayMode
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboSplayMode, CType(resources.GetObject("cboSplayMode.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.cboSplayMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboSplayMode.FormattingEnabled = True
+        Me.cboSplayMode.Items.AddRange(New Object() {resources.GetString("cboSplayMode.Items"), resources.GetString("cboSplayMode.Items1")})
+        resources.ApplyResources(Me.cboSplayMode, "cboSplayMode")
+        Me.cboSplayMode.Name = "cboSplayMode"
+        '
+        'cboInversionMode
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboInversionMode, CType(resources.GetObject("cboInversionMode.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.cboInversionMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        resources.ApplyResources(Me.cboInversionMode, "cboInversionMode")
+        Me.cboInversionMode.FormattingEnabled = True
+        Me.cboInversionMode.Items.AddRange(New Object() {resources.GetString("cboInversionMode.Items"), resources.GetString("cboInversionMode.Items1")})
+        Me.cboInversionMode.Name = "cboInversionMode"
+        '
+        'cboNordCorrection
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboNordCorrection, CType(resources.GetObject("cboNordCorrection.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.cboNordCorrection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        resources.ApplyResources(Me.cboNordCorrection, "cboNordCorrection")
+        Me.cboNordCorrection.FormattingEnabled = True
+        Me.cboNordCorrection.Items.AddRange(New Object() {resources.GetString("cboNordCorrection.Items"), resources.GetString("cboNordCorrection.Items1")})
+        Me.cboNordCorrection.Name = "cboNordCorrection"
+        '
+        'cboCalculateType
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboCalculateType, CType(resources.GetObject("cboCalculateType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.cboCalculateType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        resources.ApplyResources(Me.cboCalculateType, "cboCalculateType")
+        Me.cboCalculateType.FormattingEnabled = True
+        Me.cboCalculateType.Items.AddRange(New Object() {resources.GetString("cboCalculateType.Items"), resources.GetString("cboCalculateType.Items1"), resources.GetString("cboCalculateType.Items2")})
+        Me.cboCalculateType.Name = "cboCalculateType"
+        '
+        'cboRingCorrectionMode
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboRingCorrectionMode, CType(resources.GetObject("cboRingCorrectionMode.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.cboRingCorrectionMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboRingCorrectionMode.FormattingEnabled = True
+        Me.cboRingCorrectionMode.Items.AddRange(New Object() {resources.GetString("cboRingCorrectionMode.Items"), resources.GetString("cboRingCorrectionMode.Items1"), resources.GetString("cboRingCorrectionMode.Items2")})
+        resources.ApplyResources(Me.cboRingCorrectionMode, "cboRingCorrectionMode")
+        Me.cboRingCorrectionMode.Name = "cboRingCorrectionMode"
+        '
+        'pnlSurfaceProfile
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlSurfaceProfile, CType(resources.GetObject("pnlSurfaceProfile.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        resources.ApplyResources(Me.pnlSurfaceProfile, "pnlSurfaceProfile")
+        Me.pnlSurfaceProfile.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlSurfaceProfile.Controls.Add(Me.chksurfaceprofile)
+        Me.pnlSurfaceProfile.Controls.Add(Me.pnlsurfaceprofileelevation)
+        Me.pnlSurfaceProfile.Name = "pnlSurfaceProfile"
+        '
+        'chksurfaceprofile
+        '
+        resources.ApplyResources(Me.chksurfaceprofile, "chksurfaceprofile")
+        Me.chksurfaceprofile.Name = "chksurfaceprofile"
+        Me.chksurfaceprofile.Properties.AutoWidth = True
+        Me.chksurfaceprofile.Properties.Caption = resources.GetString("chksurfaceprofile.Properties.Caption")
+        '
+        'pnlsurfaceprofileelevation
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlsurfaceprofileelevation, CType(resources.GetObject("pnlsurfaceprofileelevation.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        resources.ApplyResources(Me.pnlsurfaceprofileelevation, "pnlsurfaceprofileelevation")
+        Me.pnlsurfaceprofileelevation.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlsurfaceprofileelevation.Controls.Add(Me.chkSurfaceProfileShow)
+        Me.pnlsurfaceprofileelevation.Controls.Add(Me.cbosurfaceprofileelevation)
+        Me.pnlsurfaceprofileelevation.Controls.Add(Me.lblsurfaceprofileelevation)
+        Me.pnlsurfaceprofileelevation.Name = "pnlsurfaceprofileelevation"
+        '
+        'chkSurfaceProfileShow
+        '
+        resources.ApplyResources(Me.chkSurfaceProfileShow, "chkSurfaceProfileShow")
+        Me.chkSurfaceProfileShow.Name = "chkSurfaceProfileShow"
+        Me.chkSurfaceProfileShow.Properties.AutoWidth = True
+        Me.chkSurfaceProfileShow.Properties.Caption = resources.GetString("chkSurfaceProfileShow.Properties.Caption")
+        '
+        'cbosurfaceprofileelevation
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cbosurfaceprofileelevation, CType(resources.GetObject("cbosurfaceprofileelevation.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        resources.ApplyResources(Me.cbosurfaceprofileelevation, "cbosurfaceprofileelevation")
+        Me.cbosurfaceprofileelevation.Name = "cbosurfaceprofileelevation"
+        '
+        'lblsurfaceprofileelevation
+        '
+        resources.ApplyResources(Me.lblsurfaceprofileelevation, "lblsurfaceprofileelevation")
+        Me.lblsurfaceprofileelevation.Name = "lblsurfaceprofileelevation"
+        '
+        'mnuItemNamePatternTags
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.mnuItemNamePatternTags, CType(resources.GetObject("mnuItemNamePatternTags.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        resources.ApplyResources(Me.mnuItemNamePatternTags, "mnuItemNamePatternTags")
+        Me.mnuItemNamePatternTags.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuItemNamePatternTagsCave, Me.mnuItemNamePatternTagsBranch, Me.ToolStripSeparator13, Me.mnuItemNamePatternTagsCount, Me.mnuItemNamePatternTagsIndex})
+        Me.mnuItemNamePatternTags.Name = "mnuInfoBoxTags"
+        '
+        'mnuItemNamePatternTagsCave
+        '
+        Me.mnuItemNamePatternTagsCave.Name = "mnuItemNamePatternTagsCave"
+        resources.ApplyResources(Me.mnuItemNamePatternTagsCave, "mnuItemNamePatternTagsCave")
+        Me.mnuItemNamePatternTagsCave.Tag = "%CAVE%"
+        '
+        'mnuItemNamePatternTagsBranch
+        '
+        Me.mnuItemNamePatternTagsBranch.Name = "mnuItemNamePatternTagsBranch"
+        resources.ApplyResources(Me.mnuItemNamePatternTagsBranch, "mnuItemNamePatternTagsBranch")
+        Me.mnuItemNamePatternTagsBranch.Tag = "%BRANCH%"
+        '
+        'ToolStripSeparator13
+        '
+        Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
+        resources.ApplyResources(Me.ToolStripSeparator13, "ToolStripSeparator13")
+        '
+        'mnuItemNamePatternTagsCount
+        '
+        Me.mnuItemNamePatternTagsCount.Name = "mnuItemNamePatternTagsCount"
+        resources.ApplyResources(Me.mnuItemNamePatternTagsCount, "mnuItemNamePatternTagsCount")
+        Me.mnuItemNamePatternTagsCount.Tag = "%C%"
+        '
+        'mnuItemNamePatternTagsIndex
+        '
+        Me.mnuItemNamePatternTagsIndex.Name = "mnuItemNamePatternTagsIndex"
+        resources.ApplyResources(Me.mnuItemNamePatternTagsIndex, "mnuItemNamePatternTagsIndex")
+        Me.mnuItemNamePatternTagsIndex.Tag = "%I%"
+        '
+        'cboOrigin
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboOrigin, CType(resources.GetObject("cboOrigin.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.cboOrigin.EditValue = Nothing
+        resources.ApplyResources(Me.cboOrigin, "cboOrigin")
+        Me.cboOrigin.Name = "cboOrigin"
+        '
+        'XtraScrollableControl1
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.XtraScrollableControl1, CType(resources.GetObject("XtraScrollableControl1.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        resources.ApplyResources(Me.XtraScrollableControl1, "XtraScrollableControl1")
+        Me.XtraScrollableControl1.Controls.Add(Me.cboGeologicalLineType)
+        Me.XtraScrollableControl1.Controls.Add(Me.LabelControl3)
+        Me.XtraScrollableControl1.Controls.Add(Me.flyParameters)
+        Me.XtraScrollableControl1.Controls.Add(Me.LabelControl1)
+        Me.XtraScrollableControl1.Controls.Add(Me.tvDefaultPenPattern)
+        Me.XtraScrollableControl1.Controls.Add(Me.txtDesignItemNamePattern)
+        Me.XtraScrollableControl1.Controls.Add(Me.frrmDesign)
+        Me.XtraScrollableControl1.Controls.Add(Me.chkShowLegacyExtraPrintAndExportObjects)
+        Me.XtraScrollableControl1.Controls.Add(Me.cmdItemNamePatternAdd)
+        Me.XtraScrollableControl1.Controls.Add(Me.GroupBox1)
+        Me.XtraScrollableControl1.Controls.Add(Me.lblDesignItemNamePattern)
+        Me.XtraScrollableControl1.Controls.Add(Me.GroupBox8)
+        Me.XtraScrollableControl1.Controls.Add(Me.GroupBox3)
+        Me.XtraScrollableControl1.Controls.Add(Me.frmSketch)
+        Me.XtraScrollableControl1.Controls.Add(Me.GroupBox5)
+        Me.XtraScrollableControl1.Controls.Add(Me.cboLineType)
+        Me.XtraScrollableControl1.Controls.Add(Me.Label27)
+        Me.XtraScrollableControl1.Name = "XtraScrollableControl1"
+        '
+        'cboGeologicalLineType
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboGeologicalLineType, CType(resources.GetObject("cboGeologicalLineType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.cboGeologicalLineType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboGeologicalLineType.FormattingEnabled = True
+        Me.cboGeologicalLineType.Items.AddRange(New Object() {resources.GetString("cboGeologicalLineType.Items"), resources.GetString("cboGeologicalLineType.Items1"), resources.GetString("cboGeologicalLineType.Items2")})
+        resources.ApplyResources(Me.cboGeologicalLineType, "cboGeologicalLineType")
+        Me.cboGeologicalLineType.Name = "cboGeologicalLineType"
+        '
+        'LabelControl3
+        '
+        resources.ApplyResources(Me.LabelControl3, "LabelControl3")
+        Me.LabelControl3.Name = "LabelControl3"
+        '
+        'flyParameters
+        '
+        Me.flyParameters.Controls.Add(Me.pnlParameters)
+        resources.ApplyResources(Me.flyParameters, "flyParameters")
+        Me.flyParameters.Name = "flyParameters"
+        '
+        'pnlParameters
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlParameters, CType(resources.GetObject("pnlParameters.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlParameters.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        resources.ApplyResources(Me.pnlParameters, "pnlParameters")
+        Me.pnlParameters.FlyoutPanel = Me.flyParameters
+        Me.pnlParameters.Name = "pnlParameters"
+        '
+        'LabelControl1
+        '
+        Me.LabelControl1.Appearance.Font = CType(resources.GetObject("LabelControl1.Appearance.Font"), System.Drawing.Font)
+        Me.LabelControl1.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.LabelControl1, "LabelControl1")
+        Me.LabelControl1.Name = "LabelControl1"
+        '
+        'tvDefaultPenPattern
+        '
+        Me.tvDefaultPenPattern.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colDefaultPenPattern})
+        resources.ApplyResources(Me.tvDefaultPenPattern, "tvDefaultPenPattern")
+        Me.tvDefaultPenPattern.Name = "tvDefaultPenPattern"
+        Me.tvDefaultPenPattern.OptionsView.ShowIndentAsRowStyle = True
+        Me.tvDefaultPenPattern.OptionsView.ShowIndicator = False
+        Me.tvDefaultPenPattern.OptionsView.ShowRoot = False
+        Me.tvDefaultPenPattern.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.txtDefaultPenPattern})
+        '
+        'colDefaultPenPattern
+        '
+        resources.ApplyResources(Me.colDefaultPenPattern, "colDefaultPenPattern")
+        Me.colDefaultPenPattern.ColumnEdit = Me.txtDefaultPenPattern
+        Me.colDefaultPenPattern.FieldName = "Name"
+        Me.colDefaultPenPattern.Name = "colDefaultPenPattern"
+        '
+        'txtDefaultPenPattern
+        '
+        resources.ApplyResources(Me.txtDefaultPenPattern, "txtDefaultPenPattern")
+        EditorButtonImageOptions1.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        EditorButtonImageOptions1.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.txtDefaultPenPattern.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtDefaultPenPattern.Buttons1"), CType(resources.GetObject("txtDefaultPenPattern.Buttons2"), Integer), CType(resources.GetObject("txtDefaultPenPattern.Buttons3"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons4"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons5"), Boolean), EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, resources.GetString("txtDefaultPenPattern.Buttons6"), CType(resources.GetObject("txtDefaultPenPattern.Buttons7"), Object), CType(resources.GetObject("txtDefaultPenPattern.Buttons8"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtDefaultPenPattern.Buttons9"), DevExpress.Utils.ToolTipAnchor)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons10"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtDefaultPenPattern.Name = "txtDefaultPenPattern"
+        Me.txtDefaultPenPattern.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
+        'txtDesignItemNamePattern
+        '
+        resources.ApplyResources(Me.txtDesignItemNamePattern, "txtDesignItemNamePattern")
+        Me.txtDesignItemNamePattern.Name = "txtDesignItemNamePattern"
+        '
+        'frrmDesign
+        '
+        Me.frrmDesign.Controls.Add(Me.GroupBox11)
+        Me.frrmDesign.Controls.Add(Me.GroupBox10)
+        Me.frrmDesign.Controls.Add(Me.lblDesignTextureScale)
+        Me.frrmDesign.Controls.Add(Me.txtDesignTextureScaleFactor)
+        Me.frrmDesign.Controls.Add(Me.txtDesignTextFont)
+        Me.frrmDesign.Controls.Add(Me.cmdDesignTextFont)
+        Me.frrmDesign.Controls.Add(Me.lblDesignTextFont)
+        Me.frrmDesign.Controls.Add(Me.lblDesignSoilScale)
+        Me.frrmDesign.Controls.Add(Me.txtDesignSoilScaleFactor)
+        Me.frrmDesign.Controls.Add(Me.lblDesignClipartScaleFactor)
+        Me.frrmDesign.Controls.Add(Me.txtDesignClipartScaleFactor)
+        Me.frrmDesign.Controls.Add(Me.lblDesignTextScaleFactor)
+        Me.frrmDesign.Controls.Add(Me.txtDesignTextScaleFactor)
+        Me.frrmDesign.Controls.Add(Me.lblDesignSignScaleFactor)
+        Me.frrmDesign.Controls.Add(Me.txtDesignSignScaleFactor)
+        Me.frrmDesign.Controls.Add(Me.lblDesignTerrainLevelScaleFactor)
+        Me.frrmDesign.Controls.Add(Me.txtDesignTerrainLevelScaleFactor)
+        resources.ApplyResources(Me.frrmDesign, "frrmDesign")
+        Me.frrmDesign.Name = "frrmDesign"
+        Me.frrmDesign.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        '
+        'GroupBox11
+        '
+        Me.GroupBox11.Controls.Add(Me.lblDesignCrossSectionTextScaleFactor)
+        Me.GroupBox11.Controls.Add(Me.txtDesignCrossSectionTextScaleFactor)
+        Me.GroupBox11.Controls.Add(Me.GroupBox12)
+        resources.ApplyResources(Me.GroupBox11, "GroupBox11")
+        Me.GroupBox11.Name = "GroupBox11"
+        Me.GroupBox11.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        '
+        'lblDesignCrossSectionTextScaleFactor
+        '
+        resources.ApplyResources(Me.lblDesignCrossSectionTextScaleFactor, "lblDesignCrossSectionTextScaleFactor")
+        Me.lblDesignCrossSectionTextScaleFactor.Name = "lblDesignCrossSectionTextScaleFactor"
+        Me.lblDesignCrossSectionTextScaleFactor.Tag = "txtDesignCrossSectionTextScaleFactor"
+        '
+        'GroupBox12
+        '
+        Me.GroupBox12.Controls.Add(Me.lblDesignCrossSectionMarkerTextScaleFactor)
+        Me.GroupBox12.Controls.Add(Me.txtDesignCrossSectionMarkerTextScaleFactor)
+        Me.GroupBox12.Controls.Add(Me.txtDesignCrossSectionMarkerArrowScaleFactor)
+        Me.GroupBox12.Controls.Add(Me.lblDesignCrossSectionMarkerArrowScaleFactor)
+        resources.ApplyResources(Me.GroupBox12, "GroupBox12")
+        Me.GroupBox12.Name = "GroupBox12"
+        Me.GroupBox12.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        '
+        'lblDesignCrossSectionMarkerTextScaleFactor
+        '
+        resources.ApplyResources(Me.lblDesignCrossSectionMarkerTextScaleFactor, "lblDesignCrossSectionMarkerTextScaleFactor")
+        Me.lblDesignCrossSectionMarkerTextScaleFactor.Name = "lblDesignCrossSectionMarkerTextScaleFactor"
+        Me.lblDesignCrossSectionMarkerTextScaleFactor.Tag = "txtDesignCrossSectionMarkerTextScaleFactor"
+        '
+        'lblDesignCrossSectionMarkerArrowScaleFactor
+        '
+        resources.ApplyResources(Me.lblDesignCrossSectionMarkerArrowScaleFactor, "lblDesignCrossSectionMarkerArrowScaleFactor")
+        Me.lblDesignCrossSectionMarkerArrowScaleFactor.Name = "lblDesignCrossSectionMarkerArrowScaleFactor"
+        Me.lblDesignCrossSectionMarkerArrowScaleFactor.Tag = "txtDesignCrossSectionMarkerArrowScaleFactor"
+        '
+        'GroupBox10
+        '
+        Me.GroupBox10.Controls.Add(Me.txtDesignExtraScaleFactor)
+        Me.GroupBox10.Controls.Add(Me.lblDesignExtraTextScaleFactor)
+        Me.GroupBox10.Controls.Add(Me.lblDesignExtraScaleFactor)
+        Me.GroupBox10.Controls.Add(Me.txtDesignExtraTextScaleFactor)
+        resources.ApplyResources(Me.GroupBox10, "GroupBox10")
+        Me.GroupBox10.Name = "GroupBox10"
+        Me.GroupBox10.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        '
+        'lblDesignExtraTextScaleFactor
+        '
+        resources.ApplyResources(Me.lblDesignExtraTextScaleFactor, "lblDesignExtraTextScaleFactor")
+        Me.lblDesignExtraTextScaleFactor.Name = "lblDesignExtraTextScaleFactor"
+        '
+        'lblDesignExtraScaleFactor
+        '
+        resources.ApplyResources(Me.lblDesignExtraScaleFactor, "lblDesignExtraScaleFactor")
+        Me.lblDesignExtraScaleFactor.Name = "lblDesignExtraScaleFactor"
+        '
+        'lblDesignTextureScale
+        '
+        resources.ApplyResources(Me.lblDesignTextureScale, "lblDesignTextureScale")
+        Me.lblDesignTextureScale.Name = "lblDesignTextureScale"
+        '
+        'cmdDesignTextFont
+        '
+        resources.ApplyResources(Me.cmdDesignTextFont, "cmdDesignTextFont")
+        Me.cmdDesignTextFont.Name = "cmdDesignTextFont"
+        '
+        'lblDesignTextFont
+        '
+        resources.ApplyResources(Me.lblDesignTextFont, "lblDesignTextFont")
+        Me.lblDesignTextFont.Name = "lblDesignTextFont"
+        '
+        'lblDesignSoilScale
+        '
+        resources.ApplyResources(Me.lblDesignSoilScale, "lblDesignSoilScale")
+        Me.lblDesignSoilScale.Name = "lblDesignSoilScale"
+        '
+        'lblDesignClipartScaleFactor
+        '
+        resources.ApplyResources(Me.lblDesignClipartScaleFactor, "lblDesignClipartScaleFactor")
+        Me.lblDesignClipartScaleFactor.Name = "lblDesignClipartScaleFactor"
+        '
+        'lblDesignTextScaleFactor
+        '
+        resources.ApplyResources(Me.lblDesignTextScaleFactor, "lblDesignTextScaleFactor")
+        Me.lblDesignTextScaleFactor.Name = "lblDesignTextScaleFactor"
+        '
+        'lblDesignSignScaleFactor
+        '
+        resources.ApplyResources(Me.lblDesignSignScaleFactor, "lblDesignSignScaleFactor")
+        Me.lblDesignSignScaleFactor.Name = "lblDesignSignScaleFactor"
+        '
+        'lblDesignTerrainLevelScaleFactor
+        '
+        resources.ApplyResources(Me.lblDesignTerrainLevelScaleFactor, "lblDesignTerrainLevelScaleFactor")
+        Me.lblDesignTerrainLevelScaleFactor.Name = "lblDesignTerrainLevelScaleFactor"
+        '
+        'chkShowLegacyExtraPrintAndExportObjects
+        '
+        resources.ApplyResources(Me.chkShowLegacyExtraPrintAndExportObjects, "chkShowLegacyExtraPrintAndExportObjects")
+        Me.chkShowLegacyExtraPrintAndExportObjects.Name = "chkShowLegacyExtraPrintAndExportObjects"
+        Me.chkShowLegacyExtraPrintAndExportObjects.Properties.Caption = resources.GetString("chkShowLegacyExtraPrintAndExportObjects.Properties.Caption")
+        '
+        'cmdItemNamePatternAdd
+        '
+        resources.ApplyResources(Me.cmdItemNamePatternAdd, "cmdItemNamePatternAdd")
+        Me.cmdItemNamePatternAdd.Name = "cmdItemNamePatternAdd"
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.LabelControl4)
+        Me.GroupBox1.Controls.Add(Me.txtBaseBrushLinesScaleFactor)
+        Me.GroupBox1.Controls.Add(Me.LabelControl2)
+        Me.GroupBox1.Controls.Add(Me.txtBaseGeologyLinesScaleFactor)
+        Me.GroupBox1.Controls.Add(Me.Label8)
+        Me.GroupBox1.Controls.Add(Me.Label7)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.txtBaseMediumLinesScaleFactor)
+        Me.GroupBox1.Controls.Add(Me.txtBaseUltraLightLinesScaleFactor)
+        Me.GroupBox1.Controls.Add(Me.txtBaseLightLinesScaleFactor)
+        Me.GroupBox1.Controls.Add(Me.txtBaseHeavyLinesScaleFactor)
+        Me.GroupBox1.Controls.Add(Me.lblBaseLinesScaleFactor)
+        Me.GroupBox1.Controls.Add(Me.txtBaseLineWidthScaleFactor)
+        Me.GroupBox1.Controls.Add(Me.lblBaseLineWidthScaleFactor)
+        resources.ApplyResources(Me.GroupBox1, "GroupBox1")
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        '
+        'LabelControl4
+        '
+        resources.ApplyResources(Me.LabelControl4, "LabelControl4")
+        Me.LabelControl4.Name = "LabelControl4"
+        '
+        'txtBaseBrushLinesScaleFactor
+        '
+        resources.ApplyResources(Me.txtBaseBrushLinesScaleFactor, "txtBaseBrushLinesScaleFactor")
+        Me.txtBaseBrushLinesScaleFactor.MenuManager = Me.BarManager
+        Me.txtBaseBrushLinesScaleFactor.Name = "txtBaseBrushLinesScaleFactor"
+        Me.txtBaseBrushLinesScaleFactor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtBaseBrushLinesScaleFactor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtBaseBrushLinesScaleFactor.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
+        Me.txtBaseBrushLinesScaleFactor.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
+        Me.txtBaseBrushLinesScaleFactor.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 65536})
+        '
+        'LabelControl2
+        '
+        resources.ApplyResources(Me.LabelControl2, "LabelControl2")
+        Me.LabelControl2.Name = "LabelControl2"
+        '
+        'Label8
+        '
+        resources.ApplyResources(Me.Label8, "Label8")
+        Me.Label8.Name = "Label8"
+        '
+        'Label7
+        '
+        resources.ApplyResources(Me.Label7, "Label7")
+        Me.Label7.Name = "Label7"
+        '
+        'Label4
+        '
+        resources.ApplyResources(Me.Label4, "Label4")
+        Me.Label4.Name = "Label4"
+        '
+        'lblBaseLinesScaleFactor
+        '
+        resources.ApplyResources(Me.lblBaseLinesScaleFactor, "lblBaseLinesScaleFactor")
+        Me.lblBaseLinesScaleFactor.Name = "lblBaseLinesScaleFactor"
+        '
+        'lblBaseLineWidthScaleFactor
+        '
+        resources.ApplyResources(Me.lblBaseLineWidthScaleFactor, "lblBaseLineWidthScaleFactor")
+        Me.lblBaseLineWidthScaleFactor.Name = "lblBaseLineWidthScaleFactor"
+        '
+        'lblDesignItemNamePattern
+        '
+        resources.ApplyResources(Me.lblDesignItemNamePattern, "lblDesignItemNamePattern")
+        Me.lblDesignItemNamePattern.Name = "lblDesignItemNamePattern"
+        '
+        'GroupBox8
+        '
+        Me.GroupBox8.Controls.Add(Me.cboClipSoil)
+        Me.GroupBox8.Controls.Add(Me.lblClipSoil)
+        Me.GroupBox8.Controls.Add(Me.cboClipAdvancedClipart)
+        Me.GroupBox8.Controls.Add(Me.cboClipBorder)
+        Me.GroupBox8.Controls.Add(Me.lblClippingAdvancedClipart)
+        Me.GroupBox8.Controls.Add(Me.lblClippingBorder)
+        resources.ApplyResources(Me.GroupBox8, "GroupBox8")
+        Me.GroupBox8.Name = "GroupBox8"
+        Me.GroupBox8.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        '
+        'lblClipSoil
+        '
+        resources.ApplyResources(Me.lblClipSoil, "lblClipSoil")
+        Me.lblClipSoil.Name = "lblClipSoil"
+        '
         'lblClippingAdvancedClipart
         '
         resources.ApplyResources(Me.lblClippingAdvancedClipart, "lblClippingAdvancedClipart")
@@ -4626,26 +3604,6 @@ Partial Class frmProperties
         '
         resources.ApplyResources(Me.lblClippingBorder, "lblClippingBorder")
         Me.lblClippingBorder.Name = "lblClippingBorder"
-        '
-        'GroupBox5
-        '
-        Me.GroupBox5.Controls.Add(Me.cboTextRotateMode)
-        Me.GroupBox5.Controls.Add(Me.lblTextRotateMode)
-        Me.GroupBox5.Controls.Add(Me.cboSignRotateMode)
-        Me.GroupBox5.Controls.Add(Me.lblSignRotateMode)
-        resources.ApplyResources(Me.GroupBox5, "GroupBox5")
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.ToolTipController = Me.DefaultToolTipController1.DefaultController
-        '
-        'lblTextRotateMode
-        '
-        resources.ApplyResources(Me.lblTextRotateMode, "lblTextRotateMode")
-        Me.lblTextRotateMode.Name = "lblTextRotateMode"
-        '
-        'lblSignRotateMode
-        '
-        resources.ApplyResources(Me.lblSignRotateMode, "lblSignRotateMode")
-        Me.lblSignRotateMode.Name = "lblSignRotateMode"
         '
         'GroupBox3
         '
@@ -4744,238 +3702,1654 @@ Partial Class frmProperties
         resources.ApplyResources(Me.lblSketchPlanCorrectionTranslation, "lblSketchPlanCorrectionTranslation")
         Me.lblSketchPlanCorrectionTranslation.Name = "lblSketchPlanCorrectionTranslation"
         '
-        'cboLineType
+        'GroupBox5
         '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboLineType, CType(resources.GetObject("cboLineType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.cboLineType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboLineType.FormattingEnabled = True
-        Me.cboLineType.Items.AddRange(New Object() {resources.GetString("cboLineType.Items"), resources.GetString("cboLineType.Items1"), resources.GetString("cboLineType.Items2")})
-        resources.ApplyResources(Me.cboLineType, "cboLineType")
-        Me.cboLineType.Name = "cboLineType"
+        Me.GroupBox5.Controls.Add(Me.cboTextRotateMode)
+        Me.GroupBox5.Controls.Add(Me.lblTextRotateMode)
+        Me.GroupBox5.Controls.Add(Me.cboSignRotateMode)
+        Me.GroupBox5.Controls.Add(Me.lblSignRotateMode)
+        resources.ApplyResources(Me.GroupBox5, "GroupBox5")
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        '
+        'lblTextRotateMode
+        '
+        resources.ApplyResources(Me.lblTextRotateMode, "lblTextRotateMode")
+        Me.lblTextRotateMode.Name = "lblTextRotateMode"
+        '
+        'lblSignRotateMode
+        '
+        resources.ApplyResources(Me.lblSignRotateMode, "lblSignRotateMode")
+        Me.lblSignRotateMode.Name = "lblSignRotateMode"
         '
         'Label27
         '
         resources.ApplyResources(Me.Label27, "Label27")
         Me.Label27.Name = "Label27"
         '
-        'frrmDesign
+        'XtraScrollableControl2
         '
-        Me.frrmDesign.Controls.Add(Me.GroupBox11)
-        Me.frrmDesign.Controls.Add(Me.GroupBox10)
-        Me.frrmDesign.Controls.Add(Me.lblDesignTextureScale)
-        Me.frrmDesign.Controls.Add(Me.txtDesignTextureScaleFactor)
-        Me.frrmDesign.Controls.Add(Me.txtDesignTextFont)
-        Me.frrmDesign.Controls.Add(Me.cmdDesignTextFont)
-        Me.frrmDesign.Controls.Add(Me.lblDesignTextFont)
-        Me.frrmDesign.Controls.Add(Me.lblDesignSoilScale)
-        Me.frrmDesign.Controls.Add(Me.txtDesignSoilScaleFactor)
-        Me.frrmDesign.Controls.Add(Me.lblDesignClipartScaleFactor)
-        Me.frrmDesign.Controls.Add(Me.txtDesignClipartScaleFactor)
-        Me.frrmDesign.Controls.Add(Me.lblDesignTextScaleFactor)
-        Me.frrmDesign.Controls.Add(Me.txtDesignTextScaleFactor)
-        Me.frrmDesign.Controls.Add(Me.lblDesignSignScaleFactor)
-        Me.frrmDesign.Controls.Add(Me.txtDesignSignScaleFactor)
-        Me.frrmDesign.Controls.Add(Me.lblDesignTerrainLevelScaleFactor)
-        Me.frrmDesign.Controls.Add(Me.txtDesignTerrainLevelScaleFactor)
-        resources.ApplyResources(Me.frrmDesign, "frrmDesign")
-        Me.frrmDesign.Name = "frrmDesign"
-        Me.frrmDesign.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.XtraScrollableControl2, CType(resources.GetObject("XtraScrollableControl2.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        resources.ApplyResources(Me.XtraScrollableControl2, "XtraScrollableControl2")
+        Me.XtraScrollableControl2.Controls.Add(Me.GroupBox2)
+        Me.XtraScrollableControl2.Controls.Add(Me.frmPlotPoint)
+        Me.XtraScrollableControl2.Controls.Add(Me.frmPlotLRUD)
+        Me.XtraScrollableControl2.Controls.Add(Me.GroupBox7)
+        Me.XtraScrollableControl2.Controls.Add(Me.frmPlotTranslationLine)
+        Me.XtraScrollableControl2.Controls.Add(Me.frmPlotPen)
+        Me.XtraScrollableControl2.Controls.Add(Me.GroupBox6)
+        Me.XtraScrollableControl2.Name = "XtraScrollableControl2"
         '
-        'GroupBox11
+        'GroupBox2
         '
-        Me.GroupBox11.Controls.Add(Me.lblDesignCrossSectionTextScaleFactor)
-        Me.GroupBox11.Controls.Add(Me.txtDesignCrossSectionTextScaleFactor)
-        Me.GroupBox11.Controls.Add(Me.GroupBox12)
-        resources.ApplyResources(Me.GroupBox11, "GroupBox11")
-        Me.GroupBox11.Name = "GroupBox11"
-        Me.GroupBox11.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        Me.GroupBox2.Controls.Add(Me.cmdSurfacePenColor)
+        Me.GroupBox2.Controls.Add(Me.lblSurfacePenColor)
+        Me.GroupBox2.Controls.Add(Me.lblSurfaceSelectedPenWidth)
+        Me.GroupBox2.Controls.Add(Me.picSurfacePenColor)
+        Me.GroupBox2.Controls.Add(Me.txtSurfaceSelectedPenWidth)
+        Me.GroupBox2.Controls.Add(Me.txtSurfacePenWidth)
+        Me.GroupBox2.Controls.Add(Me.lblSurfacePenWidth)
+        Me.GroupBox2.Controls.Add(Me.cboSurfacePenStyle)
+        Me.GroupBox2.Controls.Add(Me.lblSurfacePenStyle)
+        resources.ApplyResources(Me.GroupBox2, "GroupBox2")
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
-        'lblDesignCrossSectionTextScaleFactor
+        'cmdSurfacePenColor
         '
-        resources.ApplyResources(Me.lblDesignCrossSectionTextScaleFactor, "lblDesignCrossSectionTextScaleFactor")
-        Me.lblDesignCrossSectionTextScaleFactor.Name = "lblDesignCrossSectionTextScaleFactor"
-        Me.lblDesignCrossSectionTextScaleFactor.Tag = "txtDesignCrossSectionTextScaleFactor"
+        resources.ApplyResources(Me.cmdSurfacePenColor, "cmdSurfacePenColor")
+        Me.cmdSurfacePenColor.Name = "cmdSurfacePenColor"
         '
-        'txtDesignCrossSectionTextScaleFactor
+        'lblSurfacePenColor
         '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignCrossSectionTextScaleFactor, CType(resources.GetObject("txtDesignCrossSectionTextScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.txtDesignCrossSectionTextScaleFactor.DecimalPlaces = 2
-        Me.txtDesignCrossSectionTextScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
-        resources.ApplyResources(Me.txtDesignCrossSectionTextScaleFactor, "txtDesignCrossSectionTextScaleFactor")
-        Me.txtDesignCrossSectionTextScaleFactor.Name = "txtDesignCrossSectionTextScaleFactor"
+        resources.ApplyResources(Me.lblSurfacePenColor, "lblSurfacePenColor")
+        Me.lblSurfacePenColor.Name = "lblSurfacePenColor"
         '
-        'GroupBox12
+        'lblSurfaceSelectedPenWidth
         '
-        Me.GroupBox12.Controls.Add(Me.lblDesignCrossSectionMarkerTextScaleFactor)
-        Me.GroupBox12.Controls.Add(Me.txtDesignCrossSectionMarkerTextScaleFactor)
-        Me.GroupBox12.Controls.Add(Me.txtDesignCrossSectionMarkerArrowScaleFactor)
-        Me.GroupBox12.Controls.Add(Me.lblDesignCrossSectionMarkerArrowScaleFactor)
-        resources.ApplyResources(Me.GroupBox12, "GroupBox12")
-        Me.GroupBox12.Name = "GroupBox12"
-        Me.GroupBox12.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        resources.ApplyResources(Me.lblSurfaceSelectedPenWidth, "lblSurfaceSelectedPenWidth")
+        Me.lblSurfaceSelectedPenWidth.Name = "lblSurfaceSelectedPenWidth"
         '
-        'lblDesignCrossSectionMarkerTextScaleFactor
+        'lblSurfacePenWidth
         '
-        resources.ApplyResources(Me.lblDesignCrossSectionMarkerTextScaleFactor, "lblDesignCrossSectionMarkerTextScaleFactor")
-        Me.lblDesignCrossSectionMarkerTextScaleFactor.Name = "lblDesignCrossSectionMarkerTextScaleFactor"
-        Me.lblDesignCrossSectionMarkerTextScaleFactor.Tag = "txtDesignCrossSectionMarkerTextScaleFactor"
+        resources.ApplyResources(Me.lblSurfacePenWidth, "lblSurfacePenWidth")
+        Me.lblSurfacePenWidth.Name = "lblSurfacePenWidth"
         '
-        'txtDesignCrossSectionMarkerTextScaleFactor
+        'lblSurfacePenStyle
         '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignCrossSectionMarkerTextScaleFactor, CType(resources.GetObject("txtDesignCrossSectionMarkerTextScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.txtDesignCrossSectionMarkerTextScaleFactor.DecimalPlaces = 2
-        Me.txtDesignCrossSectionMarkerTextScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
-        resources.ApplyResources(Me.txtDesignCrossSectionMarkerTextScaleFactor, "txtDesignCrossSectionMarkerTextScaleFactor")
-        Me.txtDesignCrossSectionMarkerTextScaleFactor.Name = "txtDesignCrossSectionMarkerTextScaleFactor"
+        resources.ApplyResources(Me.lblSurfacePenStyle, "lblSurfacePenStyle")
+        Me.lblSurfacePenStyle.Name = "lblSurfacePenStyle"
         '
-        'txtDesignCrossSectionMarkerArrowScaleFactor
+        'frmPlotPoint
         '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtDesignCrossSectionMarkerArrowScaleFactor, CType(resources.GetObject("txtDesignCrossSectionMarkerArrowScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.txtDesignCrossSectionMarkerArrowScaleFactor.DecimalPlaces = 2
-        Me.txtDesignCrossSectionMarkerArrowScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
-        resources.ApplyResources(Me.txtDesignCrossSectionMarkerArrowScaleFactor, "txtDesignCrossSectionMarkerArrowScaleFactor")
-        Me.txtDesignCrossSectionMarkerArrowScaleFactor.Name = "txtDesignCrossSectionMarkerArrowScaleFactor"
+        Me.frmPlotPoint.Controls.Add(Me.lblPlotTextPolicy)
+        Me.frmPlotPoint.Controls.Add(Me.cboPlotTextPolicy)
+        Me.frmPlotPoint.Controls.Add(Me.txtPlotTextFont)
+        Me.frmPlotPoint.Controls.Add(Me.cmdPlotTextFont)
+        Me.frmPlotPoint.Controls.Add(Me.cmdPlotPointColor)
+        Me.frmPlotPoint.Controls.Add(Me.lblPlotTextFont)
+        Me.frmPlotPoint.Controls.Add(Me.lblPlotPointColor)
+        Me.frmPlotPoint.Controls.Add(Me.cmdPlotTextColor)
+        Me.frmPlotPoint.Controls.Add(Me.picPlotPointColor)
+        Me.frmPlotPoint.Controls.Add(Me.lblPlotTextColor)
+        Me.frmPlotPoint.Controls.Add(Me.cboPlotPointSymbol)
+        Me.frmPlotPoint.Controls.Add(Me.picPlotTextColor)
+        Me.frmPlotPoint.Controls.Add(Me.txtPlotSelectedPointSize)
+        Me.frmPlotPoint.Controls.Add(Me.txtPlotTextScaleFactor)
+        Me.frmPlotPoint.Controls.Add(Me.txtPlotPointSize)
+        Me.frmPlotPoint.Controls.Add(Me.lblPlotTextScaleFactor)
+        Me.frmPlotPoint.Controls.Add(Me.lblPlotSelectedPointSize)
+        Me.frmPlotPoint.Controls.Add(Me.lblPlotPointSize)
+        Me.frmPlotPoint.Controls.Add(Me.lblPlotPointSymbol)
+        resources.ApplyResources(Me.frmPlotPoint, "frmPlotPoint")
+        Me.frmPlotPoint.Name = "frmPlotPoint"
+        Me.frmPlotPoint.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
-        'lblDesignCrossSectionMarkerArrowScaleFactor
+        'lblPlotTextPolicy
         '
-        resources.ApplyResources(Me.lblDesignCrossSectionMarkerArrowScaleFactor, "lblDesignCrossSectionMarkerArrowScaleFactor")
-        Me.lblDesignCrossSectionMarkerArrowScaleFactor.Name = "lblDesignCrossSectionMarkerArrowScaleFactor"
-        Me.lblDesignCrossSectionMarkerArrowScaleFactor.Tag = "txtDesignCrossSectionMarkerArrowScaleFactor"
+        resources.ApplyResources(Me.lblPlotTextPolicy, "lblPlotTextPolicy")
+        Me.lblPlotTextPolicy.Name = "lblPlotTextPolicy"
         '
-        'GroupBox10
+        'cboPlotTextPolicy
         '
-        Me.GroupBox10.Controls.Add(Me.txtDesignExtraScaleFactor)
-        Me.GroupBox10.Controls.Add(Me.lblDesignExtraTextScaleFactor)
-        Me.GroupBox10.Controls.Add(Me.lblDesignExtraScaleFactor)
-        Me.GroupBox10.Controls.Add(Me.txtDesignExtraTextScaleFactor)
-        resources.ApplyResources(Me.GroupBox10, "GroupBox10")
-        Me.GroupBox10.Name = "GroupBox10"
-        Me.GroupBox10.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        resources.ApplyResources(Me.cboPlotTextPolicy, "cboPlotTextPolicy")
+        Me.cboPlotTextPolicy.MenuManager = Me.BarManager
+        Me.cboPlotTextPolicy.Name = "cboPlotTextPolicy"
+        Me.cboPlotTextPolicy.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboPlotTextPolicy.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboPlotTextPolicy.Properties.Items.AddRange(New Object() {resources.GetString("cboPlotTextPolicy.Properties.Items"), resources.GetString("cboPlotTextPolicy.Properties.Items1"), resources.GetString("cboPlotTextPolicy.Properties.Items2")})
+        Me.cboPlotTextPolicy.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
-        'lblDesignExtraTextScaleFactor
+        'cmdPlotTextFont
         '
-        resources.ApplyResources(Me.lblDesignExtraTextScaleFactor, "lblDesignExtraTextScaleFactor")
-        Me.lblDesignExtraTextScaleFactor.Name = "lblDesignExtraTextScaleFactor"
+        resources.ApplyResources(Me.cmdPlotTextFont, "cmdPlotTextFont")
+        Me.cmdPlotTextFont.Name = "cmdPlotTextFont"
         '
-        'lblDesignExtraScaleFactor
+        'cmdPlotPointColor
         '
-        resources.ApplyResources(Me.lblDesignExtraScaleFactor, "lblDesignExtraScaleFactor")
-        Me.lblDesignExtraScaleFactor.Name = "lblDesignExtraScaleFactor"
+        resources.ApplyResources(Me.cmdPlotPointColor, "cmdPlotPointColor")
+        Me.cmdPlotPointColor.Name = "cmdPlotPointColor"
         '
-        'lblDesignTextureScale
+        'lblPlotTextFont
         '
-        resources.ApplyResources(Me.lblDesignTextureScale, "lblDesignTextureScale")
-        Me.lblDesignTextureScale.Name = "lblDesignTextureScale"
+        resources.ApplyResources(Me.lblPlotTextFont, "lblPlotTextFont")
+        Me.lblPlotTextFont.Name = "lblPlotTextFont"
         '
-        'cmdDesignTextFont
+        'lblPlotPointColor
         '
-        resources.ApplyResources(Me.cmdDesignTextFont, "cmdDesignTextFont")
-        Me.cmdDesignTextFont.Name = "cmdDesignTextFont"
+        resources.ApplyResources(Me.lblPlotPointColor, "lblPlotPointColor")
+        Me.lblPlotPointColor.Name = "lblPlotPointColor"
         '
-        'lblDesignTextFont
+        'cmdPlotTextColor
         '
-        resources.ApplyResources(Me.lblDesignTextFont, "lblDesignTextFont")
-        Me.lblDesignTextFont.Name = "lblDesignTextFont"
+        resources.ApplyResources(Me.cmdPlotTextColor, "cmdPlotTextColor")
+        Me.cmdPlotTextColor.Name = "cmdPlotTextColor"
         '
-        'lblDesignSoilScale
+        'lblPlotTextColor
         '
-        resources.ApplyResources(Me.lblDesignSoilScale, "lblDesignSoilScale")
-        Me.lblDesignSoilScale.Name = "lblDesignSoilScale"
+        resources.ApplyResources(Me.lblPlotTextColor, "lblPlotTextColor")
+        Me.lblPlotTextColor.Name = "lblPlotTextColor"
         '
-        'lblDesignClipartScaleFactor
+        'lblPlotTextScaleFactor
         '
-        resources.ApplyResources(Me.lblDesignClipartScaleFactor, "lblDesignClipartScaleFactor")
-        Me.lblDesignClipartScaleFactor.Name = "lblDesignClipartScaleFactor"
+        resources.ApplyResources(Me.lblPlotTextScaleFactor, "lblPlotTextScaleFactor")
+        Me.lblPlotTextScaleFactor.Name = "lblPlotTextScaleFactor"
         '
-        'lblDesignTextScaleFactor
+        'lblPlotSelectedPointSize
         '
-        resources.ApplyResources(Me.lblDesignTextScaleFactor, "lblDesignTextScaleFactor")
-        Me.lblDesignTextScaleFactor.Name = "lblDesignTextScaleFactor"
+        resources.ApplyResources(Me.lblPlotSelectedPointSize, "lblPlotSelectedPointSize")
+        Me.lblPlotSelectedPointSize.Name = "lblPlotSelectedPointSize"
         '
-        'lblDesignSignScaleFactor
+        'lblPlotPointSize
         '
-        resources.ApplyResources(Me.lblDesignSignScaleFactor, "lblDesignSignScaleFactor")
-        Me.lblDesignSignScaleFactor.Name = "lblDesignSignScaleFactor"
+        resources.ApplyResources(Me.lblPlotPointSize, "lblPlotPointSize")
+        Me.lblPlotPointSize.Name = "lblPlotPointSize"
         '
-        'lblDesignTerrainLevelScaleFactor
+        'lblPlotPointSymbol
         '
-        resources.ApplyResources(Me.lblDesignTerrainLevelScaleFactor, "lblDesignTerrainLevelScaleFactor")
-        Me.lblDesignTerrainLevelScaleFactor.Name = "lblDesignTerrainLevelScaleFactor"
+        resources.ApplyResources(Me.lblPlotPointSymbol, "lblPlotPointSymbol")
+        Me.lblPlotPointSymbol.Name = "lblPlotPointSymbol"
         '
-        'GroupBox1
+        'frmPlotLRUD
         '
-        Me.GroupBox1.Controls.Add(Me.LabelControl4)
-        Me.GroupBox1.Controls.Add(Me.txtBaseBrushLinesScaleFactor)
-        Me.GroupBox1.Controls.Add(Me.LabelControl2)
-        Me.GroupBox1.Controls.Add(Me.txtBaseGeologyLinesScaleFactor)
-        Me.GroupBox1.Controls.Add(Me.Label8)
-        Me.GroupBox1.Controls.Add(Me.Label7)
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.txtBaseMediumLinesScaleFactor)
-        Me.GroupBox1.Controls.Add(Me.txtBaseUltraLightLinesScaleFactor)
-        Me.GroupBox1.Controls.Add(Me.txtBaseLightLinesScaleFactor)
-        Me.GroupBox1.Controls.Add(Me.txtBaseHeavyLinesScaleFactor)
-        Me.GroupBox1.Controls.Add(Me.lblBaseLinesScaleFactor)
-        Me.GroupBox1.Controls.Add(Me.txtBaseLineWidthScaleFactor)
-        Me.GroupBox1.Controls.Add(Me.lblBaseLineWidthScaleFactor)
-        resources.ApplyResources(Me.GroupBox1, "GroupBox1")
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        Me.frmPlotLRUD.Controls.Add(Me.lblPlotLRUDSelectedPenWidth)
+        Me.frmPlotLRUD.Controls.Add(Me.txtPlotLRUDSelectedPenWidth)
+        Me.frmPlotLRUD.Controls.Add(Me.txtPlotLRUDPenWidth)
+        Me.frmPlotLRUD.Controls.Add(Me.lblPlotLRUDPenWidth)
+        Me.frmPlotLRUD.Controls.Add(Me.cboPlotLRUDPenStyle)
+        Me.frmPlotLRUD.Controls.Add(Me.lblPlotLRUDPenStyle)
+        resources.ApplyResources(Me.frmPlotLRUD, "frmPlotLRUD")
+        Me.frmPlotLRUD.Name = "frmPlotLRUD"
+        Me.frmPlotLRUD.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
-        'LabelControl4
+        'lblPlotLRUDSelectedPenWidth
         '
-        resources.ApplyResources(Me.LabelControl4, "LabelControl4")
-        Me.LabelControl4.Name = "LabelControl4"
+        resources.ApplyResources(Me.lblPlotLRUDSelectedPenWidth, "lblPlotLRUDSelectedPenWidth")
+        Me.lblPlotLRUDSelectedPenWidth.Name = "lblPlotLRUDSelectedPenWidth"
         '
-        'txtBaseBrushLinesScaleFactor
+        'lblPlotLRUDPenWidth
         '
-        resources.ApplyResources(Me.txtBaseBrushLinesScaleFactor, "txtBaseBrushLinesScaleFactor")
-        Me.txtBaseBrushLinesScaleFactor.MenuManager = Me.BarManager
-        Me.txtBaseBrushLinesScaleFactor.Name = "txtBaseBrushLinesScaleFactor"
-        Me.txtBaseBrushLinesScaleFactor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtBaseBrushLinesScaleFactor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txtBaseBrushLinesScaleFactor.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
-        Me.txtBaseBrushLinesScaleFactor.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
-        Me.txtBaseBrushLinesScaleFactor.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 65536})
+        resources.ApplyResources(Me.lblPlotLRUDPenWidth, "lblPlotLRUDPenWidth")
+        Me.lblPlotLRUDPenWidth.Name = "lblPlotLRUDPenWidth"
         '
-        'LabelControl2
+        'lblPlotLRUDPenStyle
         '
-        resources.ApplyResources(Me.LabelControl2, "LabelControl2")
-        Me.LabelControl2.Name = "LabelControl2"
+        resources.ApplyResources(Me.lblPlotLRUDPenStyle, "lblPlotLRUDPenStyle")
+        Me.lblPlotLRUDPenStyle.Name = "lblPlotLRUDPenStyle"
         '
-        'txtBaseGeologyLinesScaleFactor
+        'GroupBox7
         '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.txtBaseGeologyLinesScaleFactor, CType(resources.GetObject("txtBaseGeologyLinesScaleFactor.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.txtBaseGeologyLinesScaleFactor.DecimalPlaces = 1
-        Me.txtBaseGeologyLinesScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
-        resources.ApplyResources(Me.txtBaseGeologyLinesScaleFactor, "txtBaseGeologyLinesScaleFactor")
-        Me.txtBaseGeologyLinesScaleFactor.Minimum = New Decimal(New Integer() {1, 0, 0, 65536})
-        Me.txtBaseGeologyLinesScaleFactor.Name = "txtBaseGeologyLinesScaleFactor"
-        Me.txtBaseGeologyLinesScaleFactor.Value = New Decimal(New Integer() {1, 0, 0, 65536})
+        Me.GroupBox7.Controls.Add(Me.txtPlotNoteTextFont)
+        Me.GroupBox7.Controls.Add(Me.cmdPlotNoteTextFont)
+        Me.GroupBox7.Controls.Add(Me.lblPlotNoteTextFont)
+        Me.GroupBox7.Controls.Add(Me.lblPlotNoteTextColor)
+        Me.GroupBox7.Controls.Add(Me.txtPlotNoteTextScaleFactor)
+        Me.GroupBox7.Controls.Add(Me.lblPlotNoteTextScaleFactor)
+        Me.GroupBox7.Controls.Add(Me.txtPlotNoteTextColor)
+        resources.ApplyResources(Me.GroupBox7, "GroupBox7")
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
-        'Label8
+        'cmdPlotNoteTextFont
         '
-        resources.ApplyResources(Me.Label8, "Label8")
-        Me.Label8.Name = "Label8"
+        resources.ApplyResources(Me.cmdPlotNoteTextFont, "cmdPlotNoteTextFont")
+        Me.cmdPlotNoteTextFont.Name = "cmdPlotNoteTextFont"
         '
-        'Label7
+        'lblPlotNoteTextFont
         '
-        resources.ApplyResources(Me.Label7, "Label7")
-        Me.Label7.Name = "Label7"
+        resources.ApplyResources(Me.lblPlotNoteTextFont, "lblPlotNoteTextFont")
+        Me.lblPlotNoteTextFont.Name = "lblPlotNoteTextFont"
         '
-        'Label4
+        'lblPlotNoteTextColor
         '
-        resources.ApplyResources(Me.Label4, "Label4")
-        Me.Label4.Name = "Label4"
+        resources.ApplyResources(Me.lblPlotNoteTextColor, "lblPlotNoteTextColor")
+        Me.lblPlotNoteTextColor.Name = "lblPlotNoteTextColor"
         '
-        'lblBaseLinesScaleFactor
+        'lblPlotNoteTextScaleFactor
         '
-        resources.ApplyResources(Me.lblBaseLinesScaleFactor, "lblBaseLinesScaleFactor")
-        Me.lblBaseLinesScaleFactor.Name = "lblBaseLinesScaleFactor"
+        resources.ApplyResources(Me.lblPlotNoteTextScaleFactor, "lblPlotNoteTextScaleFactor")
+        Me.lblPlotNoteTextScaleFactor.Name = "lblPlotNoteTextScaleFactor"
         '
-        'lblBaseLineWidthScaleFactor
+        'txtPlotNoteTextColor
         '
-        resources.ApplyResources(Me.lblBaseLineWidthScaleFactor, "lblBaseLineWidthScaleFactor")
-        Me.lblBaseLineWidthScaleFactor.Name = "lblBaseLineWidthScaleFactor"
+        Me.txtPlotNoteTextColor.DefaultColor = System.Drawing.Color.Transparent
+        resources.ApplyResources(Me.txtPlotNoteTextColor, "txtPlotNoteTextColor")
+        Me.txtPlotNoteTextColor.Name = "txtPlotNoteTextColor"
+        Me.txtPlotNoteTextColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPlotNoteTextColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtPlotNoteTextColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txtPlotNoteTextColor.Properties.ShowSystemColors = False
+        Me.txtPlotNoteTextColor.Properties.ShowWebColors = False
+        '
+        'frmPlotTranslationLine
+        '
+        Me.frmPlotTranslationLine.Controls.Add(Me.cmdPlotTranslationLinePenColor)
+        Me.frmPlotTranslationLine.Controls.Add(Me.lblPlotTranslationLinePenColor)
+        Me.frmPlotTranslationLine.Controls.Add(Me.picPlotTranslationLinePenColor)
+        Me.frmPlotTranslationLine.Controls.Add(Me.txtPlotTranslationLinePenWidth)
+        Me.frmPlotTranslationLine.Controls.Add(Me.lblPlotTranslationLinePenSize)
+        Me.frmPlotTranslationLine.Controls.Add(Me.cboPlotTranslationLinePenStyle)
+        Me.frmPlotTranslationLine.Controls.Add(Me.lblPlotTranslationLinePenStyle)
+        resources.ApplyResources(Me.frmPlotTranslationLine, "frmPlotTranslationLine")
+        Me.frmPlotTranslationLine.Name = "frmPlotTranslationLine"
+        Me.frmPlotTranslationLine.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        '
+        'cmdPlotTranslationLinePenColor
+        '
+        resources.ApplyResources(Me.cmdPlotTranslationLinePenColor, "cmdPlotTranslationLinePenColor")
+        Me.cmdPlotTranslationLinePenColor.Name = "cmdPlotTranslationLinePenColor"
+        '
+        'lblPlotTranslationLinePenColor
+        '
+        resources.ApplyResources(Me.lblPlotTranslationLinePenColor, "lblPlotTranslationLinePenColor")
+        Me.lblPlotTranslationLinePenColor.Name = "lblPlotTranslationLinePenColor"
+        '
+        'lblPlotTranslationLinePenSize
+        '
+        resources.ApplyResources(Me.lblPlotTranslationLinePenSize, "lblPlotTranslationLinePenSize")
+        Me.lblPlotTranslationLinePenSize.Name = "lblPlotTranslationLinePenSize"
+        '
+        'lblPlotTranslationLinePenStyle
+        '
+        resources.ApplyResources(Me.lblPlotTranslationLinePenStyle, "lblPlotTranslationLinePenStyle")
+        Me.lblPlotTranslationLinePenStyle.Name = "lblPlotTranslationLinePenStyle"
+        '
+        'frmPlotPen
+        '
+        Me.frmPlotPen.Controls.Add(Me.chkPlotCenterlineForceSegmentColor)
+        Me.frmPlotPen.Controls.Add(Me.chkPlotCenterlineVectors)
+        Me.frmPlotPen.Controls.Add(Me.cmdPlotPenColor)
+        Me.frmPlotPen.Controls.Add(Me.lblPlotPenColor)
+        Me.frmPlotPen.Controls.Add(Me.picPlotPenColor)
+        Me.frmPlotPen.Controls.Add(Me.txtPlotPenWidth)
+        Me.frmPlotPen.Controls.Add(Me.lblPlotPenWidth)
+        Me.frmPlotPen.Controls.Add(Me.lblPlotSelectedPenWidth)
+        Me.frmPlotPen.Controls.Add(Me.cboPlotPenStyle)
+        Me.frmPlotPen.Controls.Add(Me.txtPlotSelectedPenWidth)
+        Me.frmPlotPen.Controls.Add(Me.lblPlotPenStyle)
+        resources.ApplyResources(Me.frmPlotPen, "frmPlotPen")
+        Me.frmPlotPen.Name = "frmPlotPen"
+        Me.frmPlotPen.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        '
+        'chkPlotCenterlineForceSegmentColor
+        '
+        resources.ApplyResources(Me.chkPlotCenterlineForceSegmentColor, "chkPlotCenterlineForceSegmentColor")
+        Me.chkPlotCenterlineForceSegmentColor.Name = "chkPlotCenterlineForceSegmentColor"
+        Me.chkPlotCenterlineForceSegmentColor.Properties.Caption = resources.GetString("chkPlotCenterlineForceSegmentColor.Properties.Caption")
+        '
+        'chkPlotCenterlineVectors
+        '
+        resources.ApplyResources(Me.chkPlotCenterlineVectors, "chkPlotCenterlineVectors")
+        Me.chkPlotCenterlineVectors.Name = "chkPlotCenterlineVectors"
+        Me.chkPlotCenterlineVectors.Properties.Caption = resources.GetString("chkPlotCenterlineVectors.Properties.Caption")
+        '
+        'cmdPlotPenColor
+        '
+        resources.ApplyResources(Me.cmdPlotPenColor, "cmdPlotPenColor")
+        Me.cmdPlotPenColor.Name = "cmdPlotPenColor"
+        '
+        'lblPlotPenColor
+        '
+        resources.ApplyResources(Me.lblPlotPenColor, "lblPlotPenColor")
+        Me.lblPlotPenColor.Name = "lblPlotPenColor"
+        '
+        'lblPlotPenWidth
+        '
+        resources.ApplyResources(Me.lblPlotPenWidth, "lblPlotPenWidth")
+        Me.lblPlotPenWidth.Name = "lblPlotPenWidth"
+        '
+        'lblPlotSelectedPenWidth
+        '
+        resources.ApplyResources(Me.lblPlotSelectedPenWidth, "lblPlotSelectedPenWidth")
+        Me.lblPlotSelectedPenWidth.Name = "lblPlotSelectedPenWidth"
+        '
+        'lblPlotPenStyle
+        '
+        resources.ApplyResources(Me.lblPlotPenStyle, "lblPlotPenStyle")
+        Me.lblPlotPenStyle.Name = "lblPlotPenStyle"
+        '
+        'GroupBox6
+        '
+        Me.GroupBox6.Controls.Add(Me.lblPlotSplayCrossScale)
+        Me.GroupBox6.Controls.Add(Me.txtPlotSplayCrossScale)
+        Me.GroupBox6.Controls.Add(Me.lblPlotSplaySelectedPenWidth)
+        Me.GroupBox6.Controls.Add(Me.txtPlotSplaySelectedPenWidth)
+        Me.GroupBox6.Controls.Add(Me.txtPlotSplayPenWidth)
+        Me.GroupBox6.Controls.Add(Me.lblPlotSplayPenWidth)
+        Me.GroupBox6.Controls.Add(Me.cboPlotSplayPenStyle)
+        Me.GroupBox6.Controls.Add(Me.lblPlotSplayPenStyle)
+        resources.ApplyResources(Me.GroupBox6, "GroupBox6")
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        '
+        'lblPlotSplayCrossScale
+        '
+        resources.ApplyResources(Me.lblPlotSplayCrossScale, "lblPlotSplayCrossScale")
+        Me.lblPlotSplayCrossScale.Name = "lblPlotSplayCrossScale"
+        '
+        'txtPlotSplayCrossScale
+        '
+        resources.ApplyResources(Me.txtPlotSplayCrossScale, "txtPlotSplayCrossScale")
+        Me.txtPlotSplayCrossScale.MenuManager = Me.BarManager
+        Me.txtPlotSplayCrossScale.Name = "txtPlotSplayCrossScale"
+        Me.txtPlotSplayCrossScale.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPlotSplayCrossScale.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtPlotSplayCrossScale.Properties.DisplayFormat.FormatString = "N1"
+        Me.txtPlotSplayCrossScale.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPlotSplayCrossScale.Properties.EditFormat.FormatString = "N1"
+        Me.txtPlotSplayCrossScale.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPlotSplayCrossScale.Properties.MaskSettings.Set("hideInsignificantZeros", False)
+        Me.txtPlotSplayCrossScale.Properties.MaskSettings.Set("mask", "0.0")
+        Me.txtPlotSplayCrossScale.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
+        Me.txtPlotSplayCrossScale.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 65536})
+        '
+        'lblPlotSplaySelectedPenWidth
+        '
+        resources.ApplyResources(Me.lblPlotSplaySelectedPenWidth, "lblPlotSplaySelectedPenWidth")
+        Me.lblPlotSplaySelectedPenWidth.Name = "lblPlotSplaySelectedPenWidth"
+        '
+        'lblPlotSplayPenWidth
+        '
+        resources.ApplyResources(Me.lblPlotSplayPenWidth, "lblPlotSplayPenWidth")
+        Me.lblPlotSplayPenWidth.Name = "lblPlotSplayPenWidth"
+        '
+        'lblPlotSplayPenStyle
+        '
+        resources.ApplyResources(Me.lblPlotSplayPenStyle, "lblPlotSplayPenStyle")
+        Me.lblPlotSplayPenStyle.Name = "lblPlotSplayPenStyle"
+        '
+        'pnl3D
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnl3D, CType(resources.GetObject("pnl3D.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnl3D.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnl3D.Controls.Add(Me.txt3DMinPassageSizeUM)
+        Me.pnl3D.Controls.Add(Me.txt3DNormalizationFactor)
+        Me.pnl3D.Controls.Add(Me.txt3DMinPassageSize)
+        Me.pnl3D.Controls.Add(Me.lbl3DNormalizationFactor)
+        Me.pnl3D.Controls.Add(Me.lbl3DMinPassageSize)
+        Me.pnl3D.Controls.Add(Me.lbl3DOversamplingFactor)
+        Me.pnl3D.Controls.Add(Me.lbl3dPrecisionUM)
+        Me.pnl3D.Controls.Add(Me.txt3DOversamplingFactor)
+        Me.pnl3D.Controls.Add(Me.txt3DPrecision)
+        Me.pnl3D.Controls.Add(Me.lbl3DPrecision)
+        resources.ApplyResources(Me.pnl3D, "pnl3D")
+        Me.pnl3D.Name = "pnl3D"
+        '
+        'txt3DMinPassageSizeUM
+        '
+        resources.ApplyResources(Me.txt3DMinPassageSizeUM, "txt3DMinPassageSizeUM")
+        Me.txt3DMinPassageSizeUM.Name = "txt3DMinPassageSizeUM"
+        '
+        'txt3DNormalizationFactor
+        '
+        resources.ApplyResources(Me.txt3DNormalizationFactor, "txt3DNormalizationFactor")
+        Me.txt3DNormalizationFactor.Name = "txt3DNormalizationFactor"
+        Me.txt3DNormalizationFactor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txt3DNormalizationFactor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txt3DNormalizationFactor.Properties.DisplayFormat.FormatString = "N1"
+        Me.txt3DNormalizationFactor.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt3DNormalizationFactor.Properties.EditFormat.FormatString = "N1"
+        Me.txt3DNormalizationFactor.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt3DNormalizationFactor.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
+        Me.txt3DNormalizationFactor.Properties.MaskSettings.Set("mask", "N1")
+        Me.txt3DNormalizationFactor.Properties.MaxValue = New Decimal(New Integer() {5, 0, 0, 0})
+        Me.txt3DNormalizationFactor.Properties.MinValue = New Decimal(New Integer() {5, 0, 0, 65536})
+        '
+        'txt3DMinPassageSize
+        '
+        resources.ApplyResources(Me.txt3DMinPassageSize, "txt3DMinPassageSize")
+        Me.txt3DMinPassageSize.Name = "txt3DMinPassageSize"
+        Me.txt3DMinPassageSize.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txt3DMinPassageSize.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txt3DMinPassageSize.Properties.DisplayFormat.FormatString = "N2"
+        Me.txt3DMinPassageSize.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt3DMinPassageSize.Properties.EditFormat.FormatString = "N2"
+        Me.txt3DMinPassageSize.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt3DMinPassageSize.Properties.Increment = New Decimal(New Integer() {5, 0, 0, 131072})
+        Me.txt3DMinPassageSize.Properties.MaskSettings.Set("mask", "N2")
+        Me.txt3DMinPassageSize.Properties.MaxValue = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.txt3DMinPassageSize.Properties.MinValue = New Decimal(New Integer() {5, 0, 0, 131072})
+        '
+        'lbl3DNormalizationFactor
+        '
+        resources.ApplyResources(Me.lbl3DNormalizationFactor, "lbl3DNormalizationFactor")
+        Me.lbl3DNormalizationFactor.Name = "lbl3DNormalizationFactor"
+        '
+        'lbl3DMinPassageSize
+        '
+        resources.ApplyResources(Me.lbl3DMinPassageSize, "lbl3DMinPassageSize")
+        Me.lbl3DMinPassageSize.Name = "lbl3DMinPassageSize"
+        '
+        'lbl3DOversamplingFactor
+        '
+        resources.ApplyResources(Me.lbl3DOversamplingFactor, "lbl3DOversamplingFactor")
+        Me.lbl3DOversamplingFactor.Name = "lbl3DOversamplingFactor"
+        '
+        'lbl3dPrecisionUM
+        '
+        resources.ApplyResources(Me.lbl3dPrecisionUM, "lbl3dPrecisionUM")
+        Me.lbl3dPrecisionUM.Name = "lbl3dPrecisionUM"
+        '
+        'txt3DOversamplingFactor
+        '
+        resources.ApplyResources(Me.txt3DOversamplingFactor, "txt3DOversamplingFactor")
+        Me.txt3DOversamplingFactor.Name = "txt3DOversamplingFactor"
+        Me.txt3DOversamplingFactor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txt3DOversamplingFactor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txt3DOversamplingFactor.Properties.DisplayFormat.FormatString = "N1"
+        Me.txt3DOversamplingFactor.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt3DOversamplingFactor.Properties.EditFormat.FormatString = "N1"
+        Me.txt3DOversamplingFactor.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt3DOversamplingFactor.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
+        Me.txt3DOversamplingFactor.Properties.MaskSettings.Set("mask", "N1")
+        Me.txt3DOversamplingFactor.Properties.MaxValue = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.txt3DOversamplingFactor.Properties.MinValue = New Decimal(New Integer() {5, 0, 0, 65536})
+        '
+        'txt3DPrecision
+        '
+        resources.ApplyResources(Me.txt3DPrecision, "txt3DPrecision")
+        Me.txt3DPrecision.Name = "txt3DPrecision"
+        Me.txt3DPrecision.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txt3DPrecision.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txt3DPrecision.Properties.DisplayFormat.FormatString = "N2"
+        Me.txt3DPrecision.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt3DPrecision.Properties.EditFormat.FormatString = "N2"
+        Me.txt3DPrecision.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt3DPrecision.Properties.Increment = New Decimal(New Integer() {5, 0, 0, 131072})
+        Me.txt3DPrecision.Properties.MaskSettings.Set("mask", "N1")
+        Me.txt3DPrecision.Properties.MaxValue = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.txt3DPrecision.Properties.MinValue = New Decimal(New Integer() {5, 0, 0, 131072})
+        '
+        'lbl3DPrecision
+        '
+        resources.ApplyResources(Me.lbl3DPrecision, "lbl3DPrecision")
+        Me.lbl3DPrecision.Name = "lbl3DPrecision"
+        '
+        'pnlFooter
+        '
+        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlFooter, CType(resources.GetObject("pnlFooter.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlFooter.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlFooter.Controls.Add(Me.lblSeparator)
+        Me.pnlFooter.Controls.Add(Me.cmdCancel)
+        Me.pnlFooter.Controls.Add(Me.cmdOk)
+        Me.pnlFooter.Controls.Add(Me.cmdApply)
+        resources.ApplyResources(Me.pnlFooter, "pnlFooter")
+        Me.pnlFooter.Name = "pnlFooter"
+        '
+        'lblSeparator
+        '
+        resources.ApplyResources(Me.lblSeparator, "lblSeparator")
+        Me.lblSeparator.LineLocation = DevExpress.XtraEditors.LineLocation.Center
+        Me.lblSeparator.LineVisible = True
+        Me.lblSeparator.Name = "lblSeparator"
+        '
+        'cmdCancel
+        '
+        resources.ApplyResources(Me.cmdCancel, "cmdCancel")
+        Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdCancel.Name = "cmdCancel"
+        '
+        'cmdOk
+        '
+        resources.ApplyResources(Me.cmdOk, "cmdOk")
+        Me.cmdOk.Name = "cmdOk"
+        '
+        'cmdApply
+        '
+        resources.ApplyResources(Me.cmdApply, "cmdApply")
+        Me.cmdApply.Name = "cmdApply"
+        '
+        'pnlHighlights
+        '
+        resources.ApplyResources(Me.pnlHighlights, "pnlHighlights")
+        Me.pnlHighlights.Name = "pnlHighlights"
+        '
+        'pnlHighlights.Panel1
+        '
+        Me.pnlHighlights.Panel1.Controls.Add(Me.tvHighlights)
+        Me.pnlHighlights.Panel1.MinSize = 180
+        resources.ApplyResources(Me.pnlHighlights.Panel1, "pnlHighlights.Panel1")
+        '
+        'pnlHighlights.Panel2
+        '
+        Me.pnlHighlights.Panel2.Controls.Add(Me.txtHighlightApplyTo)
+        Me.pnlHighlights.Panel2.Controls.Add(Me.txtHighlightName)
+        Me.pnlHighlights.Panel2.Controls.Add(Me.txtHighlightSize)
+        Me.pnlHighlights.Panel2.Controls.Add(Me.lblHighlightOpacity)
+        Me.pnlHighlights.Panel2.Controls.Add(Me.trkHighlightOpacity)
+        Me.pnlHighlights.Panel2.Controls.Add(Me.lblHighlightName)
+        Me.pnlHighlights.Panel2.Controls.Add(Me.lblHighlightSize)
+        Me.pnlHighlights.Panel2.Controls.Add(Me.lblHighlightColor)
+        Me.pnlHighlights.Panel2.Controls.Add(Me.cmdHighlightCondition)
+        Me.pnlHighlights.Panel2.Controls.Add(Me.lblHighlightApplyTo)
+        Me.pnlHighlights.Panel2.Controls.Add(Me.txtHighlightColor)
+        Me.pnlHighlights.Panel2.Controls.Add(Me.txtHighlightCondition)
+        Me.pnlHighlights.Panel2.MinSize = 460
+        resources.ApplyResources(Me.pnlHighlights.Panel2, "pnlHighlights.Panel2")
+        Me.pnlHighlights.SplitterPosition = 190
+        Me.pnlHighlights.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        '
+        'tvHighlights
+        '
+        Me.tvHighlights.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colHighlightsName, Me.colHighlightsApplyTo})
+        resources.ApplyResources(Me.tvHighlights, "tvHighlights")
+        Me.tvHighlights.MenuManager = Me.BarManager
+        Me.tvHighlights.Name = "tvHighlights"
+        Me.tvHighlights.OptionsBehavior.Editable = False
+        Me.tvHighlights.OptionsBehavior.ReadOnly = True
+        Me.tvHighlights.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
+        Me.tvHighlights.OptionsView.ShowColumns = False
+        Me.tvHighlights.OptionsView.ShowIndentAsRowStyle = True
+        Me.tvHighlights.OptionsView.ShowIndicator = False
+        Me.tvHighlights.OptionsView.ShowRoot = False
+        Me.tvHighlights.SelectImageList = Me.imlsvg
+        '
+        'colHighlightsName
+        '
+        resources.ApplyResources(Me.colHighlightsName, "colHighlightsName")
+        Me.colHighlightsName.FieldName = "Name"
+        Me.colHighlightsName.Name = "colHighlightsName"
+        Me.colHighlightsName.OptionsColumn.AllowEdit = False
+        Me.colHighlightsName.OptionsColumn.ReadOnly = True
+        '
+        'colHighlightsApplyTo
+        '
+        resources.ApplyResources(Me.colHighlightsApplyTo, "colHighlightsApplyTo")
+        Me.colHighlightsApplyTo.FieldName = "_ApplyTo"
+        Me.colHighlightsApplyTo.Name = "colHighlightsApplyTo"
+        Me.colHighlightsApplyTo.OptionsColumn.AllowEdit = False
+        Me.colHighlightsApplyTo.OptionsColumn.ReadOnly = True
+        Me.colHighlightsApplyTo.UnboundType = DevExpress.XtraTreeList.Data.UnboundColumnType.[String]
+        '
+        'txtHighlightApplyTo
+        '
+        resources.ApplyResources(Me.txtHighlightApplyTo, "txtHighlightApplyTo")
+        Me.txtHighlightApplyTo.Name = "txtHighlightApplyTo"
+        Me.txtHighlightApplyTo.Properties.ReadOnly = True
+        '
+        'txtHighlightName
+        '
+        resources.ApplyResources(Me.txtHighlightName, "txtHighlightName")
+        Me.txtHighlightName.Name = "txtHighlightName"
+        '
+        'txtHighlightSize
+        '
+        resources.ApplyResources(Me.txtHighlightSize, "txtHighlightSize")
+        Me.txtHighlightSize.MenuManager = Me.BarManager
+        Me.txtHighlightSize.Name = "txtHighlightSize"
+        Me.txtHighlightSize.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtHighlightSize.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtHighlightSize.Properties.DisplayFormat.FormatString = "N0"
+        Me.txtHighlightSize.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtHighlightSize.Properties.EditFormat.FormatString = "N0"
+        Me.txtHighlightSize.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtHighlightSize.Properties.IsFloatValue = False
+        Me.txtHighlightSize.Properties.MaskSettings.Set("mask", "N00")
+        Me.txtHighlightSize.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
+        '
+        'lblHighlightOpacity
+        '
+        resources.ApplyResources(Me.lblHighlightOpacity, "lblHighlightOpacity")
+        Me.lblHighlightOpacity.Name = "lblHighlightOpacity"
+        '
+        'trkHighlightOpacity
+        '
+        resources.ApplyResources(Me.trkHighlightOpacity, "trkHighlightOpacity")
+        Me.trkHighlightOpacity.Name = "trkHighlightOpacity"
+        Me.trkHighlightOpacity.Properties.AutoSize = False
+        Me.trkHighlightOpacity.Properties.LabelAppearance.Options.UseTextOptions = True
+        Me.trkHighlightOpacity.Properties.LabelAppearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.trkHighlightOpacity.Properties.Maximum = 255
+        Me.trkHighlightOpacity.Properties.TickFrequency = 15
+        '
+        'lblHighlightName
+        '
+        resources.ApplyResources(Me.lblHighlightName, "lblHighlightName")
+        Me.lblHighlightName.Name = "lblHighlightName"
+        '
+        'lblHighlightSize
+        '
+        resources.ApplyResources(Me.lblHighlightSize, "lblHighlightSize")
+        Me.lblHighlightSize.Name = "lblHighlightSize"
+        '
+        'lblHighlightColor
+        '
+        resources.ApplyResources(Me.lblHighlightColor, "lblHighlightColor")
+        Me.lblHighlightColor.Name = "lblHighlightColor"
+        '
+        'cmdHighlightCondition
+        '
+        resources.ApplyResources(Me.cmdHighlightCondition, "cmdHighlightCondition")
+        Me.cmdHighlightCondition.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdHighlightCondition.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        Me.cmdHighlightCondition.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.cmdHighlightCondition.Name = "cmdHighlightCondition"
+        '
+        'lblHighlightApplyTo
+        '
+        resources.ApplyResources(Me.lblHighlightApplyTo, "lblHighlightApplyTo")
+        Me.lblHighlightApplyTo.Name = "lblHighlightApplyTo"
+        '
+        'txtHighlightColor
+        '
+        Me.txtHighlightColor.DefaultColor = System.Drawing.Color.Transparent
+        resources.ApplyResources(Me.txtHighlightColor, "txtHighlightColor")
+        Me.txtHighlightColor.Name = "txtHighlightColor"
+        Me.txtHighlightColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtHighlightColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtHighlightColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txtHighlightColor.Properties.ShowSystemColors = False
+        Me.txtHighlightColor.Properties.ShowWebColors = False
+        '
+        'txtHighlightCondition
+        '
+        resources.ApplyResources(Me.txtHighlightCondition, "txtHighlightCondition")
+        Me.txtHighlightCondition.Name = "txtHighlightCondition"
+        Me.txtHighlightCondition.Properties.Appearance.Font = CType(resources.GetObject("txtHighlightCondition.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.txtHighlightCondition.Properties.Appearance.Options.UseFont = True
+        Me.txtHighlightCondition.Properties.ReadOnly = True
+        '
+        'pnlGrades
+        '
+        resources.ApplyResources(Me.pnlGrades, "pnlGrades")
+        Me.pnlGrades.Name = "pnlGrades"
+        '
+        'pnlGrades.Panel1
+        '
+        Me.pnlGrades.Panel1.Controls.Add(Me.tvGrades)
+        resources.ApplyResources(Me.pnlGrades.Panel1, "pnlGrades.Panel1")
+        '
+        'pnlGrades.Panel2
+        '
+        Me.pnlGrades.Panel2.Controls.Add(Me.tabGradesDetails)
+        Me.pnlGrades.Panel2.Controls.Add(Me.txtGradesID)
+        Me.pnlGrades.Panel2.Controls.Add(Me.txtGradesDescription)
+        Me.pnlGrades.Panel2.Controls.Add(Me.lblGradesID)
+        Me.pnlGrades.Panel2.Controls.Add(Me.lblGradesDescription)
+        resources.ApplyResources(Me.pnlGrades.Panel2, "pnlGrades.Panel2")
+        Me.pnlGrades.SplitterPosition = 190
+        Me.pnlGrades.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        '
+        'tvGrades
+        '
+        Me.tvGrades.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colGradesDescription})
+        resources.ApplyResources(Me.tvGrades, "tvGrades")
+        Me.tvGrades.MenuManager = Me.BarManager
+        Me.tvGrades.Name = "tvGrades"
+        Me.tvGrades.OptionsBehavior.Editable = False
+        Me.tvGrades.OptionsBehavior.ReadOnly = True
+        Me.tvGrades.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
+        Me.tvGrades.OptionsView.ShowColumns = False
+        Me.tvGrades.OptionsView.ShowIndentAsRowStyle = True
+        Me.tvGrades.OptionsView.ShowIndicator = False
+        Me.tvGrades.OptionsView.ShowRoot = False
+        Me.tvGrades.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemPictureEdit2})
+        Me.tvGrades.SelectImageList = Me.imlsvg
+        '
+        'colGradesDescription
+        '
+        resources.ApplyResources(Me.colGradesDescription, "colGradesDescription")
+        Me.colGradesDescription.FieldName = "Description"
+        Me.colGradesDescription.Name = "colGradesDescription"
+        '
+        'RepositoryItemPictureEdit2
+        '
+        Me.RepositoryItemPictureEdit2.CustomHeight = 32
+        Me.RepositoryItemPictureEdit2.Name = "RepositoryItemPictureEdit2"
+        '
+        'tabGradesDetails
+        '
+        resources.ApplyResources(Me.tabGradesDetails, "tabGradesDetails")
+        Me.tabGradesDetails.Name = "tabGradesDetails"
+        Me.tabGradesDetails.SelectedTabPage = Me.XtraTabPage2
+        Me.tabGradesDetails.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.XtraTabPage2, Me.XtraTabPage3})
+        '
+        'XtraTabPage2
+        '
+        Me.XtraTabPage2.Controls.Add(Me.txtGradesDistance)
+        Me.XtraTabPage2.Controls.Add(Me.lblValues)
+        Me.XtraTabPage2.Controls.Add(Me.txtGradesBearing)
+        Me.XtraTabPage2.Controls.Add(Me.cboGradesDistanceType)
+        Me.XtraTabPage2.Controls.Add(Me.txtGradesInclination)
+        Me.XtraTabPage2.Controls.Add(Me.cboGradesBearingType)
+        Me.XtraTabPage2.Controls.Add(Me.txtGradesDepth)
+        Me.XtraTabPage2.Controls.Add(Me.cboGradesInclinationType)
+        Me.XtraTabPage2.Controls.Add(Me.txtGradesX)
+        Me.XtraTabPage2.Controls.Add(Me.lblMeasureUnit)
+        Me.XtraTabPage2.Controls.Add(Me.txtGradesY)
+        Me.XtraTabPage2.Controls.Add(Me.chkGradesDistance)
+        Me.XtraTabPage2.Controls.Add(Me.txtGradesZ)
+        Me.XtraTabPage2.Controls.Add(Me.chkGradesBearing)
+        Me.XtraTabPage2.Controls.Add(Me.chkGradesZ)
+        Me.XtraTabPage2.Controls.Add(Me.chkGradesInclination)
+        Me.XtraTabPage2.Controls.Add(Me.cboGradesZType)
+        Me.XtraTabPage2.Controls.Add(Me.cboGradesDepthType)
+        Me.XtraTabPage2.Controls.Add(Me.chkGradesY)
+        Me.XtraTabPage2.Controls.Add(Me.chkGradesDepth)
+        Me.XtraTabPage2.Controls.Add(Me.cboGradesYType)
+        Me.XtraTabPage2.Controls.Add(Me.cboGradesXType)
+        Me.XtraTabPage2.Controls.Add(Me.chkGradesX)
+        Me.XtraTabPage2.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.charttype_rangebar
+        Me.XtraTabPage2.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.XtraTabPage2.Name = "XtraTabPage2"
+        resources.ApplyResources(Me.XtraTabPage2, "XtraTabPage2")
+        '
+        'txtGradesDistance
+        '
+        resources.ApplyResources(Me.txtGradesDistance, "txtGradesDistance")
+        Me.txtGradesDistance.MenuManager = Me.BarManager
+        Me.txtGradesDistance.Name = "txtGradesDistance"
+        Me.txtGradesDistance.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtGradesDistance.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtGradesDistance.Properties.DisplayFormat.FormatString = "N2"
+        Me.txtGradesDistance.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtGradesDistance.Properties.EditFormat.FormatString = "N2"
+        Me.txtGradesDistance.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtGradesDistance.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        Me.txtGradesDistance.Properties.MaxValue = New Decimal(New Integer() {10000, 0, 0, 0})
+        '
+        'txtGradesBearing
+        '
+        resources.ApplyResources(Me.txtGradesBearing, "txtGradesBearing")
+        Me.txtGradesBearing.MenuManager = Me.BarManager
+        Me.txtGradesBearing.Name = "txtGradesBearing"
+        Me.txtGradesBearing.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtGradesBearing.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtGradesBearing.Properties.DisplayFormat.FormatString = "N2"
+        Me.txtGradesBearing.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtGradesBearing.Properties.EditFormat.FormatString = "N2"
+        Me.txtGradesBearing.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtGradesBearing.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        Me.txtGradesBearing.Properties.MaxValue = New Decimal(New Integer() {10000, 0, 0, 0})
+        '
+        'txtGradesInclination
+        '
+        resources.ApplyResources(Me.txtGradesInclination, "txtGradesInclination")
+        Me.txtGradesInclination.MenuManager = Me.BarManager
+        Me.txtGradesInclination.Name = "txtGradesInclination"
+        Me.txtGradesInclination.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtGradesInclination.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtGradesInclination.Properties.DisplayFormat.FormatString = "N2"
+        Me.txtGradesInclination.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtGradesInclination.Properties.EditFormat.FormatString = "N2"
+        Me.txtGradesInclination.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtGradesInclination.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        Me.txtGradesInclination.Properties.MaxValue = New Decimal(New Integer() {10000, 0, 0, 0})
+        '
+        'txtGradesDepth
+        '
+        resources.ApplyResources(Me.txtGradesDepth, "txtGradesDepth")
+        Me.txtGradesDepth.MenuManager = Me.BarManager
+        Me.txtGradesDepth.Name = "txtGradesDepth"
+        Me.txtGradesDepth.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtGradesDepth.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtGradesDepth.Properties.DisplayFormat.FormatString = "N2"
+        Me.txtGradesDepth.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtGradesDepth.Properties.EditFormat.FormatString = "N2"
+        Me.txtGradesDepth.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtGradesDepth.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        Me.txtGradesDepth.Properties.MaxValue = New Decimal(New Integer() {10000, 0, 0, 0})
+        '
+        'txtGradesX
+        '
+        resources.ApplyResources(Me.txtGradesX, "txtGradesX")
+        Me.txtGradesX.MenuManager = Me.BarManager
+        Me.txtGradesX.Name = "txtGradesX"
+        Me.txtGradesX.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtGradesX.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtGradesX.Properties.DisplayFormat.FormatString = "N2"
+        Me.txtGradesX.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtGradesX.Properties.EditFormat.FormatString = "N2"
+        Me.txtGradesX.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtGradesX.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        Me.txtGradesX.Properties.MaxValue = New Decimal(New Integer() {10000, 0, 0, 0})
+        '
+        'txtGradesY
+        '
+        resources.ApplyResources(Me.txtGradesY, "txtGradesY")
+        Me.txtGradesY.MenuManager = Me.BarManager
+        Me.txtGradesY.Name = "txtGradesY"
+        Me.txtGradesY.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtGradesY.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtGradesY.Properties.DisplayFormat.FormatString = "N2"
+        Me.txtGradesY.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtGradesY.Properties.EditFormat.FormatString = "N2"
+        Me.txtGradesY.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtGradesY.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        Me.txtGradesY.Properties.MaxValue = New Decimal(New Integer() {10000, 0, 0, 0})
+        '
+        'chkGradesDistance
+        '
+        resources.ApplyResources(Me.chkGradesDistance, "chkGradesDistance")
+        Me.chkGradesDistance.Name = "chkGradesDistance"
+        Me.chkGradesDistance.Properties.AutoWidth = True
+        Me.chkGradesDistance.Properties.Caption = resources.GetString("chkGradesDistance.Properties.Caption")
+        '
+        'txtGradesZ
+        '
+        resources.ApplyResources(Me.txtGradesZ, "txtGradesZ")
+        Me.txtGradesZ.MenuManager = Me.BarManager
+        Me.txtGradesZ.Name = "txtGradesZ"
+        Me.txtGradesZ.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtGradesZ.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtGradesZ.Properties.DisplayFormat.FormatString = "N2"
+        Me.txtGradesZ.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtGradesZ.Properties.EditFormat.FormatString = "N2"
+        Me.txtGradesZ.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtGradesZ.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        Me.txtGradesZ.Properties.MaxValue = New Decimal(New Integer() {10000, 0, 0, 0})
+        '
+        'chkGradesBearing
+        '
+        resources.ApplyResources(Me.chkGradesBearing, "chkGradesBearing")
+        Me.chkGradesBearing.Name = "chkGradesBearing"
+        Me.chkGradesBearing.Properties.AutoWidth = True
+        Me.chkGradesBearing.Properties.Caption = resources.GetString("chkGradesBearing.Properties.Caption")
+        '
+        'chkGradesZ
+        '
+        resources.ApplyResources(Me.chkGradesZ, "chkGradesZ")
+        Me.chkGradesZ.Name = "chkGradesZ"
+        Me.chkGradesZ.Properties.AutoWidth = True
+        Me.chkGradesZ.Properties.Caption = resources.GetString("chkGradesZ.Properties.Caption")
+        '
+        'chkGradesInclination
+        '
+        resources.ApplyResources(Me.chkGradesInclination, "chkGradesInclination")
+        Me.chkGradesInclination.Name = "chkGradesInclination"
+        Me.chkGradesInclination.Properties.AutoWidth = True
+        Me.chkGradesInclination.Properties.Caption = resources.GetString("chkGradesInclination.Properties.Caption")
+        '
+        'chkGradesY
+        '
+        resources.ApplyResources(Me.chkGradesY, "chkGradesY")
+        Me.chkGradesY.Name = "chkGradesY"
+        Me.chkGradesY.Properties.AutoWidth = True
+        Me.chkGradesY.Properties.Caption = resources.GetString("chkGradesY.Properties.Caption")
+        '
+        'chkGradesDepth
+        '
+        resources.ApplyResources(Me.chkGradesDepth, "chkGradesDepth")
+        Me.chkGradesDepth.Name = "chkGradesDepth"
+        Me.chkGradesDepth.Properties.AutoWidth = True
+        Me.chkGradesDepth.Properties.Caption = resources.GetString("chkGradesDepth.Properties.Caption")
+        '
+        'chkGradesX
+        '
+        resources.ApplyResources(Me.chkGradesX, "chkGradesX")
+        Me.chkGradesX.Name = "chkGradesX"
+        Me.chkGradesX.Properties.AutoWidth = True
+        Me.chkGradesX.Properties.Caption = resources.GetString("chkGradesX.Properties.Caption")
+        '
+        'XtraTabPage3
+        '
+        Me.XtraTabPage3.Controls.Add(Me.btnGradesUsedBySelectSession)
+        Me.XtraTabPage3.Controls.Add(Me.tvGradesUsedBy)
+        Me.XtraTabPage3.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_calendar
+        Me.XtraTabPage3.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.XtraTabPage3.Name = "XtraTabPage3"
+        resources.ApplyResources(Me.XtraTabPage3, "XtraTabPage3")
+        '
+        'btnGradesUsedBySelectSession
+        '
+        resources.ApplyResources(Me.btnGradesUsedBySelectSession, "btnGradesUsedBySelectSession")
+        Me.btnGradesUsedBySelectSession.ImageOptions.Image = CType(resources.GetObject("btnGradesUsedBySelectSession.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnGradesUsedBySelectSession.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.btnGradesUsedBySelectSession.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources._select
+        Me.btnGradesUsedBySelectSession.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.btnGradesUsedBySelectSession.Name = "btnGradesUsedBySelectSession"
+        '
+        'tvGradesUsedBy
+        '
+        Me.tvGradesUsedBy.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.TreeListColumn1})
+        resources.ApplyResources(Me.tvGradesUsedBy, "tvGradesUsedBy")
+        Me.tvGradesUsedBy.MenuManager = Me.BarManager
+        Me.tvGradesUsedBy.Name = "tvGradesUsedBy"
+        Me.tvGradesUsedBy.OptionsBehavior.Editable = False
+        Me.tvGradesUsedBy.OptionsBehavior.ReadOnly = True
+        Me.tvGradesUsedBy.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
+        Me.tvGradesUsedBy.OptionsView.ShowColumns = False
+        Me.tvGradesUsedBy.OptionsView.ShowIndentAsRowStyle = True
+        Me.tvGradesUsedBy.OptionsView.ShowIndicator = False
+        Me.tvGradesUsedBy.OptionsView.ShowRoot = False
+        Me.tvGradesUsedBy.SelectImageList = Me.imlsvg
+        '
+        'TreeListColumn1
+        '
+        resources.ApplyResources(Me.TreeListColumn1, "TreeListColumn1")
+        Me.TreeListColumn1.FieldName = "FormattedID"
+        Me.TreeListColumn1.Name = "TreeListColumn1"
+        '
+        'txtGradesID
+        '
+        resources.ApplyResources(Me.txtGradesID, "txtGradesID")
+        Me.txtGradesID.Name = "txtGradesID"
+        Me.txtGradesID.Properties.ReadOnly = True
+        '
+        'txtGradesDescription
+        '
+        resources.ApplyResources(Me.txtGradesDescription, "txtGradesDescription")
+        Me.txtGradesDescription.Name = "txtGradesDescription"
+        '
+        'lblGradesID
+        '
+        resources.ApplyResources(Me.lblGradesID, "lblGradesID")
+        Me.lblGradesID.Name = "lblGradesID"
+        '
+        'lblGradesDescription
+        '
+        resources.ApplyResources(Me.lblGradesDescription, "lblGradesDescription")
+        Me.lblGradesDescription.Name = "lblGradesDescription"
+        '
+        'pnlElevations
+        '
+        resources.ApplyResources(Me.pnlElevations, "pnlElevations")
+        Me.pnlElevations.Name = "pnlElevations"
+        '
+        'pnlElevations.Panel1
+        '
+        Me.pnlElevations.Panel1.Controls.Add(Me.tvElevations)
+        resources.ApplyResources(Me.pnlElevations.Panel1, "pnlElevations.Panel1")
+        '
+        'pnlElevations.Panel2
+        '
+        Me.pnlElevations.Panel2.Controls.Add(Me.lblElevationColorSchema)
+        Me.pnlElevations.Panel2.Controls.Add(Me.lblElevationName)
+        Me.pnlElevations.Panel2.Controls.Add(Me.cboElevationColorSchema)
+        Me.pnlElevations.Panel2.Controls.Add(Me.txtElevationName)
+        Me.pnlElevations.Panel2.Controls.Add(Me.lblElevationInformation)
+        Me.pnlElevations.Panel2.Controls.Add(Me.lblElevationPreview)
+        Me.pnlElevations.Panel2.Controls.Add(Me.txtElevationInformation)
+        Me.pnlElevations.Panel2.Controls.Add(Me.picElevationPreview)
+        resources.ApplyResources(Me.pnlElevations.Panel2, "pnlElevations.Panel2")
+        Me.pnlElevations.SplitterPosition = 190
+        Me.pnlElevations.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        '
+        'tvElevations
+        '
+        Me.tvElevations.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colElevationsThumbnail, Me.colElevationsName})
+        resources.ApplyResources(Me.tvElevations, "tvElevations")
+        Me.tvElevations.MenuManager = Me.BarManager
+        Me.tvElevations.Name = "tvElevations"
+        Me.tvElevations.OptionsBehavior.Editable = False
+        Me.tvElevations.OptionsBehavior.ReadOnly = True
+        Me.tvElevations.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
+        Me.tvElevations.OptionsView.ShowColumns = False
+        Me.tvElevations.OptionsView.ShowIndentAsRowStyle = True
+        Me.tvElevations.OptionsView.ShowIndicator = False
+        Me.tvElevations.OptionsView.ShowRoot = False
+        Me.tvElevations.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.picElevationsThumbnail})
+        Me.tvElevations.SelectImageList = Me.imlsvg
+        '
+        'colElevationsThumbnail
+        '
+        resources.ApplyResources(Me.colElevationsThumbnail, "colElevationsThumbnail")
+        Me.colElevationsThumbnail.ColumnEdit = Me.picElevationsThumbnail
+        Me.colElevationsThumbnail.FieldName = "Thumbnail"
+        Me.colElevationsThumbnail.Name = "colElevationsThumbnail"
+        '
+        'picElevationsThumbnail
+        '
+        Me.picElevationsThumbnail.CustomHeight = 32
+        Me.picElevationsThumbnail.Name = "picElevationsThumbnail"
+        '
+        'colElevationsName
+        '
+        resources.ApplyResources(Me.colElevationsName, "colElevationsName")
+        Me.colElevationsName.FieldName = "Name"
+        Me.colElevationsName.Name = "colElevationsName"
+        '
+        'lblElevationColorSchema
+        '
+        resources.ApplyResources(Me.lblElevationColorSchema, "lblElevationColorSchema")
+        Me.lblElevationColorSchema.Name = "lblElevationColorSchema"
+        '
+        'lblElevationName
+        '
+        resources.ApplyResources(Me.lblElevationName, "lblElevationName")
+        Me.lblElevationName.Name = "lblElevationName"
+        '
+        'cboElevationColorSchema
+        '
+        resources.ApplyResources(Me.cboElevationColorSchema, "cboElevationColorSchema")
+        Me.cboElevationColorSchema.MenuManager = Me.BarManager
+        Me.cboElevationColorSchema.Name = "cboElevationColorSchema"
+        Me.cboElevationColorSchema.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboElevationColorSchema.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboElevationColorSchema.Properties.Items.AddRange(New Object() {resources.GetString("cboElevationColorSchema.Properties.Items"), resources.GetString("cboElevationColorSchema.Properties.Items1")})
+        Me.cboElevationColorSchema.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
+        'txtElevationName
+        '
+        resources.ApplyResources(Me.txtElevationName, "txtElevationName")
+        Me.txtElevationName.Name = "txtElevationName"
+        '
+        'lblElevationInformation
+        '
+        resources.ApplyResources(Me.lblElevationInformation, "lblElevationInformation")
+        Me.lblElevationInformation.Name = "lblElevationInformation"
+        '
+        'lblElevationPreview
+        '
+        resources.ApplyResources(Me.lblElevationPreview, "lblElevationPreview")
+        Me.lblElevationPreview.Name = "lblElevationPreview"
+        '
+        'txtElevationInformation
+        '
+        resources.ApplyResources(Me.txtElevationInformation, "txtElevationInformation")
+        Me.txtElevationInformation.MenuManager = Me.BarManager
+        Me.txtElevationInformation.Name = "txtElevationInformation"
+        Me.txtElevationInformation.Properties.ReadOnly = True
+        '
+        'picElevationPreview
+        '
+        resources.ApplyResources(Me.picElevationPreview, "picElevationPreview")
+        Me.picElevationPreview.MenuManager = Me.BarManager
+        Me.picElevationPreview.Name = "picElevationPreview"
+        Me.picElevationPreview.Properties.ReadOnly = True
+        '
+        'pnlOrthophotos
+        '
+        resources.ApplyResources(Me.pnlOrthophotos, "pnlOrthophotos")
+        Me.pnlOrthophotos.Name = "pnlOrthophotos"
+        '
+        'pnlOrthophotos.Panel1
+        '
+        Me.pnlOrthophotos.Panel1.Controls.Add(Me.tvOrthophotos)
+        resources.ApplyResources(Me.pnlOrthophotos.Panel1, "pnlOrthophotos.Panel1")
+        '
+        'pnlOrthophotos.Panel2
+        '
+        Me.pnlOrthophotos.Panel2.Controls.Add(Me.lblOrthophotoPreview)
+        Me.pnlOrthophotos.Panel2.Controls.Add(Me.lblOrthophotoName)
+        Me.pnlOrthophotos.Panel2.Controls.Add(Me.lblOrthophotoInformation)
+        Me.pnlOrthophotos.Panel2.Controls.Add(Me.txtOrthophotoName)
+        Me.pnlOrthophotos.Panel2.Controls.Add(Me.txtOrthophotoInformation)
+        Me.pnlOrthophotos.Panel2.Controls.Add(Me.picOrthophotoPreview)
+        resources.ApplyResources(Me.pnlOrthophotos.Panel2, "pnlOrthophotos.Panel2")
+        Me.pnlOrthophotos.SplitterPosition = 190
+        Me.pnlOrthophotos.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        '
+        'tvOrthophotos
+        '
+        Me.tvOrthophotos.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colOrthophotoThumbnail, Me.colOrthophotoName})
+        resources.ApplyResources(Me.tvOrthophotos, "tvOrthophotos")
+        Me.tvOrthophotos.MenuManager = Me.BarManager
+        Me.tvOrthophotos.Name = "tvOrthophotos"
+        Me.tvOrthophotos.OptionsBehavior.Editable = False
+        Me.tvOrthophotos.OptionsBehavior.ReadOnly = True
+        Me.tvOrthophotos.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
+        Me.tvOrthophotos.OptionsView.ShowColumns = False
+        Me.tvOrthophotos.OptionsView.ShowIndentAsRowStyle = True
+        Me.tvOrthophotos.OptionsView.ShowIndicator = False
+        Me.tvOrthophotos.OptionsView.ShowRoot = False
+        Me.tvOrthophotos.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.picOrthophotoThumbnail})
+        Me.tvOrthophotos.SelectImageList = Me.imlsvg
+        '
+        'colOrthophotoThumbnail
+        '
+        resources.ApplyResources(Me.colOrthophotoThumbnail, "colOrthophotoThumbnail")
+        Me.colOrthophotoThumbnail.ColumnEdit = Me.picOrthophotoThumbnail
+        Me.colOrthophotoThumbnail.FieldName = "Thumbnail"
+        Me.colOrthophotoThumbnail.Name = "colOrthophotoThumbnail"
+        '
+        'picOrthophotoThumbnail
+        '
+        Me.picOrthophotoThumbnail.CustomHeight = 32
+        Me.picOrthophotoThumbnail.Name = "picOrthophotoThumbnail"
+        '
+        'colOrthophotoName
+        '
+        resources.ApplyResources(Me.colOrthophotoName, "colOrthophotoName")
+        Me.colOrthophotoName.FieldName = "Name"
+        Me.colOrthophotoName.Name = "colOrthophotoName"
+        '
+        'lblOrthophotoPreview
+        '
+        resources.ApplyResources(Me.lblOrthophotoPreview, "lblOrthophotoPreview")
+        Me.lblOrthophotoPreview.Name = "lblOrthophotoPreview"
+        '
+        'lblOrthophotoName
+        '
+        resources.ApplyResources(Me.lblOrthophotoName, "lblOrthophotoName")
+        Me.lblOrthophotoName.Name = "lblOrthophotoName"
+        '
+        'lblOrthophotoInformation
+        '
+        resources.ApplyResources(Me.lblOrthophotoInformation, "lblOrthophotoInformation")
+        Me.lblOrthophotoInformation.Name = "lblOrthophotoInformation"
+        '
+        'txtOrthophotoName
+        '
+        resources.ApplyResources(Me.txtOrthophotoName, "txtOrthophotoName")
+        Me.txtOrthophotoName.Name = "txtOrthophotoName"
+        '
+        'txtOrthophotoInformation
+        '
+        resources.ApplyResources(Me.txtOrthophotoInformation, "txtOrthophotoInformation")
+        Me.txtOrthophotoInformation.MenuManager = Me.BarManager
+        Me.txtOrthophotoInformation.Name = "txtOrthophotoInformation"
+        Me.txtOrthophotoInformation.Properties.ReadOnly = True
+        '
+        'picOrthophotoPreview
+        '
+        resources.ApplyResources(Me.picOrthophotoPreview, "picOrthophotoPreview")
+        Me.picOrthophotoPreview.MenuManager = Me.BarManager
+        Me.picOrthophotoPreview.Name = "picOrthophotoPreview"
+        Me.picOrthophotoPreview.Properties.ReadOnly = True
+        '
+        'pnlWMSs
+        '
+        resources.ApplyResources(Me.pnlWMSs, "pnlWMSs")
+        Me.pnlWMSs.Name = "pnlWMSs"
+        '
+        'pnlWMSs.Panel1
+        '
+        Me.pnlWMSs.Panel1.Controls.Add(Me.tvWMSs)
+        resources.ApplyResources(Me.pnlWMSs.Panel1, "pnlWMSs.Panel1")
+        '
+        'pnlWMSs.Panel2
+        '
+        Me.pnlWMSs.Panel2.Controls.Add(Me.btnWMSLayerRefresh)
+        Me.pnlWMSs.Panel2.Controls.Add(Me.txtWMSName)
+        Me.pnlWMSs.Panel2.Controls.Add(Me.cboWMSSRSOverride)
+        Me.pnlWMSs.Panel2.Controls.Add(Me.lblWMSName)
+        Me.pnlWMSs.Panel2.Controls.Add(Me.lblWMSSRSOverride)
+        Me.pnlWMSs.Panel2.Controls.Add(Me.lblWMSURL)
+        Me.pnlWMSs.Panel2.Controls.Add(Me.lblWMSLayer)
+        Me.pnlWMSs.Panel2.Controls.Add(Me.txtWMSURL)
+        Me.pnlWMSs.Panel2.Controls.Add(Me.tvWMSLayer)
+        resources.ApplyResources(Me.pnlWMSs.Panel2, "pnlWMSs.Panel2")
+        Me.pnlWMSs.SplitterPosition = 190
+        Me.pnlWMSs.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        '
+        'tvWMSs
+        '
+        Me.tvWMSs.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colWMSsName, Me.colWMSsURL, Me.colWMSsLayer})
+        resources.ApplyResources(Me.tvWMSs, "tvWMSs")
+        Me.tvWMSs.MenuManager = Me.BarManager
+        Me.tvWMSs.Name = "tvWMSs"
+        Me.tvWMSs.OptionsBehavior.Editable = False
+        Me.tvWMSs.OptionsBehavior.ReadOnly = True
+        Me.tvWMSs.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
+        Me.tvWMSs.OptionsView.ShowColumns = False
+        Me.tvWMSs.OptionsView.ShowIndentAsRowStyle = True
+        Me.tvWMSs.OptionsView.ShowIndicator = False
+        Me.tvWMSs.OptionsView.ShowRoot = False
+        Me.tvWMSs.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemPictureEdit1})
+        Me.tvWMSs.SelectImageList = Me.imlsvg
+        '
+        'colWMSsName
+        '
+        resources.ApplyResources(Me.colWMSsName, "colWMSsName")
+        Me.colWMSsName.FieldName = "Name"
+        Me.colWMSsName.Name = "colWMSsName"
+        '
+        'colWMSsURL
+        '
+        resources.ApplyResources(Me.colWMSsURL, "colWMSsURL")
+        Me.colWMSsURL.FieldName = "URL"
+        Me.colWMSsURL.Name = "colWMSsURL"
+        '
+        'colWMSsLayer
+        '
+        resources.ApplyResources(Me.colWMSsLayer, "colWMSsLayer")
+        Me.colWMSsLayer.FieldName = "Layer"
+        Me.colWMSsLayer.Name = "colWMSsLayer"
+        '
+        'RepositoryItemPictureEdit1
+        '
+        Me.RepositoryItemPictureEdit1.CustomHeight = 32
+        Me.RepositoryItemPictureEdit1.Name = "RepositoryItemPictureEdit1"
+        '
+        'btnWMSLayerRefresh
+        '
+        resources.ApplyResources(Me.btnWMSLayerRefresh, "btnWMSLayerRefresh")
+        Me.btnWMSLayerRefresh.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.btnWMSLayerRefresh.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_refresh
+        Me.btnWMSLayerRefresh.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.btnWMSLayerRefresh.Name = "btnWMSLayerRefresh"
+        '
+        'txtWMSName
+        '
+        resources.ApplyResources(Me.txtWMSName, "txtWMSName")
+        Me.txtWMSName.Name = "txtWMSName"
+        '
+        'cboWMSSRSOverride
+        '
+        resources.ApplyResources(Me.cboWMSSRSOverride, "cboWMSSRSOverride")
+        Me.cboWMSSRSOverride.MenuManager = Me.BarManager
+        Me.cboWMSSRSOverride.Name = "cboWMSSRSOverride"
+        Me.cboWMSSRSOverride.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboWMSSRSOverride.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboWMSSRSOverride.Properties.Items.AddRange(New Object() {resources.GetString("cboWMSSRSOverride.Properties.Items"), resources.GetString("cboWMSSRSOverride.Properties.Items1"), resources.GetString("cboWMSSRSOverride.Properties.Items2")})
+        Me.cboWMSSRSOverride.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
+        'lblWMSName
+        '
+        resources.ApplyResources(Me.lblWMSName, "lblWMSName")
+        Me.lblWMSName.Name = "lblWMSName"
+        '
+        'lblWMSSRSOverride
+        '
+        resources.ApplyResources(Me.lblWMSSRSOverride, "lblWMSSRSOverride")
+        Me.lblWMSSRSOverride.Name = "lblWMSSRSOverride"
+        '
+        'lblWMSURL
+        '
+        resources.ApplyResources(Me.lblWMSURL, "lblWMSURL")
+        Me.lblWMSURL.Name = "lblWMSURL"
+        '
+        'lblWMSLayer
+        '
+        resources.ApplyResources(Me.lblWMSLayer, "lblWMSLayer")
+        Me.lblWMSLayer.Name = "lblWMSLayer"
+        '
+        'txtWMSURL
+        '
+        resources.ApplyResources(Me.txtWMSURL, "txtWMSURL")
+        Me.txtWMSURL.Name = "txtWMSURL"
+        '
+        'tvWMSLayer
+        '
+        resources.ApplyResources(Me.tvWMSLayer, "tvWMSLayer")
+        Me.tvWMSLayer.CheckBoxFieldName = "Selected"
+        Me.tvWMSLayer.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colWMSLayerName, Me.colWMSLayerCRSs, Me.colWMSImageFormat})
+        Me.tvWMSLayer.MenuManager = Me.BarManager
+        Me.tvWMSLayer.Name = "tvWMSLayer"
+        Me.tvWMSLayer.OptionsBehavior.PopulateServiceColumns = True
+        Me.tvWMSLayer.OptionsView.CheckBoxStyle = DevExpress.XtraTreeList.DefaultNodeCheckBoxStyle.Check
+        Me.tvWMSLayer.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
+        Me.tvWMSLayer.OptionsView.ShowIndentAsRowStyle = True
+        Me.tvWMSLayer.OptionsView.ShowIndicator = False
+        Me.tvWMSLayer.OptionsView.ShowRoot = False
+        '
+        'colWMSLayerName
+        '
+        resources.ApplyResources(Me.colWMSLayerName, "colWMSLayerName")
+        Me.colWMSLayerName.FieldName = "Name"
+        Me.colWMSLayerName.Name = "colWMSLayerName"
+        Me.colWMSLayerName.OptionsColumn.AllowEdit = False
+        Me.colWMSLayerName.OptionsColumn.ReadOnly = True
+        '
+        'colWMSLayerCRSs
+        '
+        resources.ApplyResources(Me.colWMSLayerCRSs, "colWMSLayerCRSs")
+        Me.colWMSLayerCRSs.FieldName = "SRSs"
+        Me.colWMSLayerCRSs.Name = "colWMSLayerCRSs"
+        Me.colWMSLayerCRSs.OptionsColumn.AllowEdit = False
+        Me.colWMSLayerCRSs.OptionsColumn.ReadOnly = True
+        Me.colWMSLayerCRSs.UnboundType = DevExpress.XtraTreeList.Data.UnboundColumnType.[String]
+        '
+        'colWMSImageFormat
+        '
+        resources.ApplyResources(Me.colWMSImageFormat, "colWMSImageFormat")
+        Me.colWMSImageFormat.FieldName = "ImageFormats"
+        Me.colWMSImageFormat.Name = "colWMSImageFormat"
+        Me.colWMSImageFormat.OptionsColumn.AllowEdit = False
+        Me.colWMSImageFormat.OptionsColumn.ReadOnly = True
+        Me.colWMSImageFormat.UnboundType = DevExpress.XtraTreeList.Data.UnboundColumnType.[String]
+        '
+        'tvCaveInfos
+        '
+        Me.BehaviorManager1.SetBehaviors(Me.tvCaveInfos, New DevExpress.Utils.Behaviors.Behavior() {CType(DevExpress.Utils.DragDrop.DragDropBehavior.Create(GetType(DevExpress.XtraTreeList.TreeListDragDropSource), True, True, True, True, Me.tvCaveInforsDragDrop), DevExpress.Utils.Behaviors.Behavior)})
+        Me.tvCaveInfos.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colCaveInfosName, Me.colCaveInfosColor})
+        resources.ApplyResources(Me.tvCaveInfos, "tvCaveInfos")
+        Me.tvCaveInfos.KeyFieldName = "Item"
+        Me.tvCaveInfos.MenuManager = Me.BarManager
+        Me.tvCaveInfos.Name = "tvCaveInfos"
+        Me.tvCaveInfos.OptionsBehavior.Editable = False
+        Me.tvCaveInfos.OptionsBehavior.ReadOnly = True
+        Me.tvCaveInfos.OptionsView.AutoWidth = False
+        Me.tvCaveInfos.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
+        Me.tvCaveInfos.OptionsView.ShowColumns = False
+        Me.tvCaveInfos.OptionsView.ShowIndentAsRowStyle = True
+        Me.tvCaveInfos.OptionsView.ShowIndicator = False
+        Me.tvCaveInfos.ParentFieldName = "Parent"
+        Me.tvCaveInfos.SelectImageList = Me.imlsvg
+        '
+        'colCaveInfosName
+        '
+        resources.ApplyResources(Me.colCaveInfosName, "colCaveInfosName")
+        Me.colCaveInfosName.FieldName = "Name"
+        Me.colCaveInfosName.Name = "colCaveInfosName"
+        '
+        'colCaveInfosColor
+        '
+        resources.ApplyResources(Me.colCaveInfosColor, "colCaveInfosColor")
+        Me.colCaveInfosColor.FieldName = " "
+        Me.colCaveInfosColor.Name = "colCaveInfosColor"
+        Me.colCaveInfosColor.OptionsColumn.AllowEdit = False
+        Me.colCaveInfosColor.OptionsColumn.FixedWidth = True
+        Me.colCaveInfosColor.OptionsColumn.ReadOnly = True
+        '
+        'txtCaveInfoColor
+        '
+        Me.txtCaveInfoColor.DefaultColor = System.Drawing.Color.Transparent
+        resources.ApplyResources(Me.txtCaveInfoColor, "txtCaveInfoColor")
+        Me.txtCaveInfoColor.Name = "txtCaveInfoColor"
+        Me.txtCaveInfoColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtCaveInfoColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtCaveInfoColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txtCaveInfoColor.Properties.ShowSystemColors = False
+        Me.txtCaveInfoColor.Properties.ShowWebColors = False
+        '
+        'lblCaveInfoName
+        '
+        resources.ApplyResources(Me.lblCaveInfoName, "lblCaveInfoName")
+        Me.lblCaveInfoName.Name = "lblCaveInfoName"
+        '
+        'txtCaveInfoID
+        '
+        resources.ApplyResources(Me.txtCaveInfoID, "txtCaveInfoID")
+        Me.txtCaveInfoID.Name = "txtCaveInfoID"
+        '
+        'lblCaveInfoID
+        '
+        resources.ApplyResources(Me.lblCaveInfoID, "lblCaveInfoID")
+        Me.lblCaveInfoID.Name = "lblCaveInfoID"
+        '
+        'lblCaveInfoColor
+        '
+        resources.ApplyResources(Me.lblCaveInfoColor, "lblCaveInfoColor")
+        Me.lblCaveInfoColor.Name = "lblCaveInfoColor"
+        '
+        'chkCaveInfoLocked
+        '
+        resources.ApplyResources(Me.chkCaveInfoLocked, "chkCaveInfoLocked")
+        Me.chkCaveInfoLocked.Name = "chkCaveInfoLocked"
+        Me.chkCaveInfoLocked.Properties.Caption = resources.GetString("chkCaveInfoLocked.Properties.Caption")
+        Me.chkCaveInfoLocked.Properties.GlyphAlignment = CType(resources.GetObject("chkCaveInfoLocked.Properties.GlyphAlignment"), DevExpress.Utils.HorzAlignment)
+        '
+        'lblCaveInfoDescription
+        '
+        resources.ApplyResources(Me.lblCaveInfoDescription, "lblCaveInfoDescription")
+        Me.lblCaveInfoDescription.Name = "lblCaveInfoDescription"
+        '
+        'txtCaveInfoName
+        '
+        resources.ApplyResources(Me.txtCaveInfoName, "txtCaveInfoName")
+        Me.txtCaveInfoName.Name = "txtCaveInfoName"
+        '
+        'tabCaveAndBranch
+        '
+        resources.ApplyResources(Me.tabCaveAndBranch, "tabCaveAndBranch")
+        Me.tabCaveAndBranch.Name = "tabCaveAndBranch"
+        Me.tabCaveAndBranch.SelectedTabPage = Me.tabCaveInfoSurface1
+        Me.tabCaveAndBranch.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabCaveInfoSurface1, Me.tabCaveInfoCalculateOptions1, Me.tabCaveInfoSegments1})
+        '
+        'tabCaveInfoSurface1
+        '
+        Me.tabCaveInfoSurface1.Controls.Add(Me.lblCaveInfoSurfaceProfileShow)
+        Me.tabCaveInfoSurface1.Controls.Add(Me.cboCaveInfoSurfaceProfileShow)
+        Me.tabCaveInfoSurface1.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.soilmodel
+        Me.tabCaveInfoSurface1.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.tabCaveInfoSurface1.Name = "tabCaveInfoSurface1"
+        resources.ApplyResources(Me.tabCaveInfoSurface1, "tabCaveInfoSurface1")
+        '
+        'lblCaveInfoSurfaceProfileShow
+        '
+        resources.ApplyResources(Me.lblCaveInfoSurfaceProfileShow, "lblCaveInfoSurfaceProfileShow")
+        Me.lblCaveInfoSurfaceProfileShow.Name = "lblCaveInfoSurfaceProfileShow"
+        '
+        'tabCaveInfoCalculateOptions1
+        '
+        Me.tabCaveInfoCalculateOptions1.Controls.Add(Me.cboCaveInfoExtendStart)
+        Me.tabCaveInfoCalculateOptions1.Controls.Add(Me.pnlCaveInfoConnections)
+        Me.tabCaveInfoCalculateOptions1.Controls.Add(Me.lblCaveInfoExtendStart)
+        Me.tabCaveInfoCalculateOptions1.Controls.Add(Me.pnlCaveInfoPriority)
+        Me.tabCaveInfoCalculateOptions1.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.calculatenow
+        Me.tabCaveInfoCalculateOptions1.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.tabCaveInfoCalculateOptions1.Name = "tabCaveInfoCalculateOptions1"
+        resources.ApplyResources(Me.tabCaveInfoCalculateOptions1, "tabCaveInfoCalculateOptions1")
+        '
+        'lblCaveInfoExtendStart
+        '
+        resources.ApplyResources(Me.lblCaveInfoExtendStart, "lblCaveInfoExtendStart")
+        Me.lblCaveInfoExtendStart.Name = "lblCaveInfoExtendStart"
+        '
+        'tabCaveInfoSegments1
+        '
+        Me.tabCaveInfoSegments1.Controls.Add(Me.lvCaveInfoSegments)
+        Me.tabCaveInfoSegments1.Controls.Add(Me.btnCaveInfoSegmentsRefresh)
+        Me.tabCaveInfoSegments1.Controls.Add(Me.btnCaveInfoSelectSegment)
+        Me.tabCaveInfoSegments1.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.shot
+        Me.tabCaveInfoSegments1.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.tabCaveInfoSegments1.Name = "tabCaveInfoSegments1"
+        resources.ApplyResources(Me.tabCaveInfoSegments1, "tabCaveInfoSegments1")
+        '
+        'btnCaveInfoSegmentsRefresh
+        '
+        resources.ApplyResources(Me.btnCaveInfoSegmentsRefresh, "btnCaveInfoSegmentsRefresh")
+        Me.btnCaveInfoSegmentsRefresh.ImageOptions.Image = CType(resources.GetObject("btnCaveInfoSegmentsRefresh.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnCaveInfoSegmentsRefresh.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.btnCaveInfoSegmentsRefresh.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_refresh
+        Me.btnCaveInfoSegmentsRefresh.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.btnCaveInfoSegmentsRefresh.Name = "btnCaveInfoSegmentsRefresh"
+        '
+        'btnCaveInfoSelectSegment
+        '
+        resources.ApplyResources(Me.btnCaveInfoSelectSegment, "btnCaveInfoSelectSegment")
+        Me.btnCaveInfoSelectSegment.ImageOptions.Image = CType(resources.GetObject("btnCaveInfoSelectSegment.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnCaveInfoSelectSegment.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.btnCaveInfoSelectSegment.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources._select
+        Me.btnCaveInfoSelectSegment.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.btnCaveInfoSelectSegment.Name = "btnCaveInfoSelectSegment"
+        '
+        'txtCaveInfoDescription
+        '
+        resources.ApplyResources(Me.txtCaveInfoDescription, "txtCaveInfoDescription")
+        Me.txtCaveInfoDescription.Name = "txtCaveInfoDescription"
+        '
+        'chkGPSEnabled
+        '
+        resources.ApplyResources(Me.chkGPSEnabled, "chkGPSEnabled")
+        Me.chkGPSEnabled.Name = "chkGPSEnabled"
+        Me.chkGPSEnabled.Properties.AutoWidth = True
+        Me.chkGPSEnabled.Properties.Caption = resources.GetString("chkGPSEnabled.Properties.Caption")
+        '
+        'cmdChangeInversionModeAndSetDirections
+        '
+        Me.cmdChangeInversionModeAndSetDirections.ImageOptions.Image = CType(resources.GetObject("cmdChangeInversionModeAndSetDirections.ImageOptions.Image"), System.Drawing.Image)
+        resources.ApplyResources(Me.cmdChangeInversionModeAndSetDirections, "cmdChangeInversionModeAndSetDirections")
+        Me.cmdChangeInversionModeAndSetDirections.Name = "cmdChangeInversionModeAndSetDirections"
+        '
+        'txtName
+        '
+        resources.ApplyResources(Me.txtName, "txtName")
+        Me.txtName.Name = "txtName"
+        '
+        'txtDescrizione
+        '
+        resources.ApplyResources(Me.txtDescrizione, "txtDescrizione")
+        Me.txtDescrizione.Name = "txtDescrizione"
+        '
+        'txtClub
+        '
+        resources.ApplyResources(Me.txtClub, "txtClub")
+        Me.txtClub.Name = "txtClub"
+        '
+        'txtCatasto
+        '
+        resources.ApplyResources(Me.txtCatasto, "txtCatasto")
+        Me.txtCatasto.Name = "txtCatasto"
+        '
+        'txtTeam
+        '
+        resources.ApplyResources(Me.txtTeam, "txtTeam")
+        Me.txtTeam.Name = "txtTeam"
+        '
+        'txtDesigner
+        '
+        resources.ApplyResources(Me.txtDesigner, "txtDesigner")
+        Me.txtDesigner.Name = "txtDesigner"
+        '
+        'txtID
+        '
+        resources.ApplyResources(Me.txtID, "txtID")
+        Me.txtID.Name = "txtID"
+        Me.txtID.Properties.ReadOnly = True
+        '
+        'cmdNewID
+        '
+        resources.ApplyResources(Me.cmdNewID, "cmdNewID")
+        Me.cmdNewID.Name = "cmdNewID"
+        '
+        'cmdUpdateCalculateVersion
+        '
+        Me.cmdUpdateCalculateVersion.ImageOptions.Image = CType(resources.GetObject("cmdUpdateCalculateVersion.ImageOptions.Image"), System.Drawing.Image)
+        Me.cmdUpdateCalculateVersion.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdUpdateCalculateVersion.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.weather_lightning
+        Me.cmdUpdateCalculateVersion.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.cmdUpdateCalculateVersion, "cmdUpdateCalculateVersion")
+        Me.cmdUpdateCalculateVersion.Name = "cmdUpdateCalculateVersion"
+        '
+        'txtCreatorID
+        '
+        resources.ApplyResources(Me.txtCreatorID, "txtCreatorID")
+        Me.txtCreatorID.Name = "txtCreatorID"
+        Me.txtCreatorID.Properties.ReadOnly = True
+        '
+        'txtCreationDate
+        '
+        resources.ApplyResources(Me.txtCreationDate, "txtCreationDate")
+        Me.txtCreationDate.Name = "txtCreationDate"
+        Me.txtCreationDate.Properties.ReadOnly = True
+        '
+        'txtCreatorVersion
+        '
+        resources.ApplyResources(Me.txtCreatorVersion, "txtCreatorVersion")
+        Me.txtCreatorVersion.Name = "txtCreatorVersion"
+        Me.txtCreatorVersion.Properties.ReadOnly = True
+        '
+        'optWarpingActive
+        '
+        resources.ApplyResources(Me.optWarpingActive, "optWarpingActive")
+        Me.optWarpingActive.GroupIndex = 2
+        Me.optWarpingActive.ImageOptions.SvgImage = CType(resources.GetObject("optWarpingActive.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.optWarpingActive.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.optWarpingActive.Name = "optWarpingActive"
+        Me.optWarpingActive.TabStop = False
+        '
+        'optWarpingPaused
+        '
+        resources.ApplyResources(Me.optWarpingPaused, "optWarpingPaused")
+        Me.optWarpingPaused.GroupIndex = 2
+        Me.optWarpingPaused.ImageOptions.Image = CType(resources.GetObject("optWarpingPaused.ImageOptions.Image"), System.Drawing.Image)
+        Me.optWarpingPaused.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.pause
+        Me.optWarpingPaused.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.optWarpingPaused.Name = "optWarpingPaused"
+        Me.optWarpingPaused.TabStop = False
+        '
+        'cmdOriginRefreshStations
+        '
+        Me.cmdOriginRefreshStations.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdOriginRefreshStations.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_refresh
+        Me.cmdOriginRefreshStations.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.cmdOriginRefreshStations, "cmdOriginRefreshStations")
+        Me.cmdOriginRefreshStations.Name = "cmdOriginRefreshStations"
+        '
+        'ColumnHeader1
+        '
+        resources.ApplyResources(Me.ColumnHeader1, "ColumnHeader1")
+        '
+        'GroupBox9
+        '
+        Me.GroupBox9.Controls.Add(Me.txt3DExportAsImageOversampling)
+        Me.GroupBox9.Controls.Add(Me.lbl3DExportAsImageOversampling)
+        Me.GroupBox9.Controls.Add(Me.frm3DSurface)
+        resources.ApplyResources(Me.GroupBox9, "GroupBox9")
+        Me.GroupBox9.Name = "GroupBox9"
+        Me.GroupBox9.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        '
+        'txt3DExportAsImageOversampling
+        '
+        resources.ApplyResources(Me.txt3DExportAsImageOversampling, "txt3DExportAsImageOversampling")
+        Me.txt3DExportAsImageOversampling.Name = "txt3DExportAsImageOversampling"
+        Me.txt3DExportAsImageOversampling.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txt3DExportAsImageOversampling.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txt3DExportAsImageOversampling.Properties.DisplayFormat.FormatString = "N0"
+        Me.txt3DExportAsImageOversampling.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt3DExportAsImageOversampling.Properties.EditFormat.FormatString = "N0"
+        Me.txt3DExportAsImageOversampling.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt3DExportAsImageOversampling.Properties.MaxValue = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.txt3DExportAsImageOversampling.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'lbl3DExportAsImageOversampling
+        '
+        resources.ApplyResources(Me.lbl3DExportAsImageOversampling, "lbl3DExportAsImageOversampling")
+        Me.lbl3DExportAsImageOversampling.Name = "lbl3DExportAsImageOversampling"
+        '
+        'frm3DSurface
+        '
+        Me.frm3DSurface.Controls.Add(Me.txt3DSurfaceModelLOD)
+        Me.frm3DSurface.Controls.Add(Me.txt3DSurfaceTextureLOD)
+        Me.frm3DSurface.Controls.Add(Me.lbl3DSurfaceModelLOD)
+        Me.frm3DSurface.Controls.Add(Me.lbl3DSurfaceTextureLOD)
+        resources.ApplyResources(Me.frm3DSurface, "frm3DSurface")
+        Me.frm3DSurface.Name = "frm3DSurface"
+        Me.frm3DSurface.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        '
+        'txt3DSurfaceModelLOD
+        '
+        resources.ApplyResources(Me.txt3DSurfaceModelLOD, "txt3DSurfaceModelLOD")
+        Me.txt3DSurfaceModelLOD.Name = "txt3DSurfaceModelLOD"
+        Me.txt3DSurfaceModelLOD.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txt3DSurfaceModelLOD.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txt3DSurfaceModelLOD.Properties.DisplayFormat.FormatString = "N0"
+        Me.txt3DSurfaceModelLOD.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt3DSurfaceModelLOD.Properties.EditFormat.FormatString = "N0"
+        Me.txt3DSurfaceModelLOD.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt3DSurfaceModelLOD.Properties.MaxValue = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.txt3DSurfaceModelLOD.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'txt3DSurfaceTextureLOD
+        '
+        resources.ApplyResources(Me.txt3DSurfaceTextureLOD, "txt3DSurfaceTextureLOD")
+        Me.txt3DSurfaceTextureLOD.Name = "txt3DSurfaceTextureLOD"
+        Me.txt3DSurfaceTextureLOD.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txt3DSurfaceTextureLOD.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txt3DSurfaceTextureLOD.Properties.DisplayFormat.FormatString = "N1"
+        Me.txt3DSurfaceTextureLOD.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt3DSurfaceTextureLOD.Properties.EditFormat.FormatString = "N1"
+        Me.txt3DSurfaceTextureLOD.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt3DSurfaceTextureLOD.Properties.Increment = New Decimal(New Integer() {2, 0, 0, 65536})
+        Me.txt3DSurfaceTextureLOD.Properties.MaskSettings.Set("mask", "N1")
+        Me.txt3DSurfaceTextureLOD.Properties.MaxValue = New Decimal(New Integer() {20, 0, 0, 0})
+        Me.txt3DSurfaceTextureLOD.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'lbl3DSurfaceModelLOD
+        '
+        resources.ApplyResources(Me.lbl3DSurfaceModelLOD, "lbl3DSurfaceModelLOD")
+        Me.lbl3DSurfaceModelLOD.Name = "lbl3DSurfaceModelLOD"
+        '
+        'lbl3DSurfaceTextureLOD
+        '
+        resources.ApplyResources(Me.lbl3DSurfaceTextureLOD, "lbl3DSurfaceTextureLOD")
+        Me.lbl3DSurfaceTextureLOD.Name = "lbl3DSurfaceTextureLOD"
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.chk3DLochShowSplay)
+        Me.GroupBox4.Controls.Add(Me.chk3dLochShowDialog)
+        resources.ApplyResources(Me.GroupBox4, "GroupBox4")
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.ToolTipController = Me.DefaultToolTipController1.DefaultController
+        '
+        'chk3DLochShowSplay
+        '
+        resources.ApplyResources(Me.chk3DLochShowSplay, "chk3DLochShowSplay")
+        Me.chk3DLochShowSplay.Name = "chk3DLochShowSplay"
+        Me.chk3DLochShowSplay.Properties.Caption = resources.GetString("chk3DLochShowSplay.Properties.Caption")
+        '
+        'chk3dLochShowDialog
+        '
+        resources.ApplyResources(Me.chk3dLochShowDialog, "chk3dLochShowDialog")
+        Me.chk3dLochShowDialog.Name = "chk3dLochShowDialog"
+        Me.chk3dLochShowDialog.Properties.Caption = resources.GetString("chk3dLochShowDialog.Properties.Caption")
+        '
+        'lbl3DModelMode
+        '
+        resources.ApplyResources(Me.lbl3DModelMode, "lbl3DModelMode")
+        Me.lbl3DModelMode.Name = "lbl3DModelMode"
         '
         'cmdSpecialTrigPointStructureTagAdd
         '
@@ -5036,20 +5410,6 @@ Partial Class frmProperties
         Me.frmGPSDefaults.Name = "frmGPSDefaults"
         Me.frmGPSDefaults.ToolTipController = Me.DefaultToolTipController1.DefaultController
         '
-        'cboCoordinateBand
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboCoordinateBand, CType(resources.GetObject("cboCoordinateBand.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.cboCoordinateBand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        resources.ApplyResources(Me.cboCoordinateBand, "cboCoordinateBand")
-        Me.cboCoordinateBand.Name = "cboCoordinateBand"
-        '
-        'cboCoordinateZone
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboCoordinateZone, CType(resources.GetObject("cboCoordinateZone.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.cboCoordinateZone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        resources.ApplyResources(Me.cboCoordinateZone, "cboCoordinateZone")
-        Me.cboCoordinateZone.Name = "cboCoordinateZone"
-        '
         'lblCoordinateGeo
         '
         resources.ApplyResources(Me.lblCoordinateGeo, "lblCoordinateGeo")
@@ -5070,67 +5430,12 @@ Partial Class frmProperties
         resources.ApplyResources(Me.lblCoordinateFormat, "lblCoordinateFormat")
         Me.lblCoordinateFormat.Name = "lblCoordinateFormat"
         '
-        'pnlGPS
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlGPS, CType(resources.GetObject("pnlGPS.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnlGPS.Controls.Add(Me.optGPSCustomRefPoint)
-        Me.pnlGPS.Controls.Add(Me.optGPSRefPointOnOrigin)
-        Me.pnlGPS.Controls.Add(Me.chkGPSAllowManualDeclinations)
-        Me.pnlGPS.Controls.Add(Me.lblGPSCustomRefPoint)
-        Me.pnlGPS.Controls.Add(Me.cmdGPSCustomRefPointRefreshStations)
-        Me.pnlGPS.Controls.Add(Me.cboGPSCustomRefPoint)
-        Me.pnlGPS.Controls.Add(Me.chkGPSSendToTherion)
-        resources.ApplyResources(Me.pnlGPS, "pnlGPS")
-        Me.pnlGPS.Name = "pnlGPS"
-        '
-        'optGPSCustomRefPoint
-        '
-        resources.ApplyResources(Me.optGPSCustomRefPoint, "optGPSCustomRefPoint")
-        Me.optGPSCustomRefPoint.MenuManager = Me.BarManager
-        Me.optGPSCustomRefPoint.Name = "optGPSCustomRefPoint"
-        Me.optGPSCustomRefPoint.Properties.AutoWidth = True
-        Me.optGPSCustomRefPoint.Properties.Caption = resources.GetString("optGPSCustomRefPoint.Properties.Caption")
-        Me.optGPSCustomRefPoint.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio
-        Me.optGPSCustomRefPoint.Properties.RadioGroupIndex = 200
-        Me.optGPSCustomRefPoint.TabStop = False
-        '
-        'optGPSRefPointOnOrigin
-        '
-        resources.ApplyResources(Me.optGPSRefPointOnOrigin, "optGPSRefPointOnOrigin")
-        Me.optGPSRefPointOnOrigin.MenuManager = Me.BarManager
-        Me.optGPSRefPointOnOrigin.Name = "optGPSRefPointOnOrigin"
-        Me.optGPSRefPointOnOrigin.Properties.AutoWidth = True
-        Me.optGPSRefPointOnOrigin.Properties.Caption = resources.GetString("optGPSRefPointOnOrigin.Properties.Caption")
-        Me.optGPSRefPointOnOrigin.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio
-        Me.optGPSRefPointOnOrigin.Properties.RadioGroupIndex = 200
-        '
-        'chkGPSAllowManualDeclinations
-        '
-        resources.ApplyResources(Me.chkGPSAllowManualDeclinations, "chkGPSAllowManualDeclinations")
-        Me.chkGPSAllowManualDeclinations.Name = "chkGPSAllowManualDeclinations"
-        Me.chkGPSAllowManualDeclinations.Properties.AutoWidth = True
-        Me.chkGPSAllowManualDeclinations.Properties.Caption = resources.GetString("chkGPSAllowManualDeclinations.Properties.Caption")
-        '
-        'lblGPSCustomRefPoint
-        '
-        resources.ApplyResources(Me.lblGPSCustomRefPoint, "lblGPSCustomRefPoint")
-        Me.lblGPSCustomRefPoint.Name = "lblGPSCustomRefPoint"
-        '
         'chkShowWarpingDetails
         '
         resources.ApplyResources(Me.chkShowWarpingDetails, "chkShowWarpingDetails")
         Me.chkShowWarpingDetails.Name = "chkShowWarpingDetails"
         Me.chkShowWarpingDetails.Properties.AutoWidth = True
         Me.chkShowWarpingDetails.Properties.Caption = resources.GetString("chkShowWarpingDetails.Properties.Caption")
-        '
-        'cboCalculateVersion
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboCalculateVersion, CType(resources.GetObject("cboCalculateVersion.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.cboCalculateVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        resources.ApplyResources(Me.cboCalculateVersion, "cboCalculateVersion")
-        Me.cboCalculateVersion.FormattingEnabled = True
-        Me.cboCalculateVersion.Items.AddRange(New Object() {resources.GetString("cboCalculateVersion.Items"), resources.GetString("cboCalculateVersion.Items1"), resources.GetString("cboCalculateVersion.Items2"), resources.GetString("cboCalculateVersion.Items3")})
-        Me.cboCalculateVersion.Name = "cboCalculateVersion"
         '
         'lblCalculateVersion
         '
@@ -5176,15 +5481,6 @@ Partial Class frmProperties
         resources.ApplyResources(Me.lblSplayMode, "lblSplayMode")
         Me.lblSplayMode.Name = "lblSplayMode"
         '
-        'cboSplayMode
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboSplayMode, CType(resources.GetObject("cboSplayMode.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.cboSplayMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboSplayMode.FormattingEnabled = True
-        Me.cboSplayMode.Items.AddRange(New Object() {resources.GetString("cboSplayMode.Items"), resources.GetString("cboSplayMode.Items1")})
-        resources.ApplyResources(Me.cboSplayMode, "cboSplayMode")
-        Me.cboSplayMode.Name = "cboSplayMode"
-        '
         'Label5
         '
         resources.ApplyResources(Me.Label5, "Label5")
@@ -5200,15 +5496,6 @@ Partial Class frmProperties
         resources.ApplyResources(Me.Label3, "Label3")
         Me.Label3.Name = "Label3"
         '
-        'cboInversionMode
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboInversionMode, CType(resources.GetObject("cboInversionMode.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.cboInversionMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        resources.ApplyResources(Me.cboInversionMode, "cboInversionMode")
-        Me.cboInversionMode.FormattingEnabled = True
-        Me.cboInversionMode.Items.AddRange(New Object() {resources.GetString("cboInversionMode.Items"), resources.GetString("cboInversionMode.Items1")})
-        Me.cboInversionMode.Name = "cboInversionMode"
-        '
         'chkCalculateMode
         '
         resources.ApplyResources(Me.chkCalculateMode, "chkCalculateMode")
@@ -5221,15 +5508,6 @@ Partial Class frmProperties
         resources.ApplyResources(Me.lblNordCorrection, "lblNordCorrection")
         Me.lblNordCorrection.Name = "lblNordCorrection"
         '
-        'cboNordCorrection
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboNordCorrection, CType(resources.GetObject("cboNordCorrection.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.cboNordCorrection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        resources.ApplyResources(Me.cboNordCorrection, "cboNordCorrection")
-        Me.cboNordCorrection.FormattingEnabled = True
-        Me.cboNordCorrection.Items.AddRange(New Object() {resources.GetString("cboNordCorrection.Items"), resources.GetString("cboNordCorrection.Items1")})
-        Me.cboNordCorrection.Name = "cboNordCorrection"
-        '
         'lblDesignWarpingMode
         '
         resources.ApplyResources(Me.lblDesignWarpingMode, "lblDesignWarpingMode")
@@ -5240,28 +5518,10 @@ Partial Class frmProperties
         resources.ApplyResources(Me.lblCalculateMode, "lblCalculateMode")
         Me.lblCalculateMode.Name = "lblCalculateMode"
         '
-        'cboCalculateType
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboCalculateType, CType(resources.GetObject("cboCalculateType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.cboCalculateType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        resources.ApplyResources(Me.cboCalculateType, "cboCalculateType")
-        Me.cboCalculateType.FormattingEnabled = True
-        Me.cboCalculateType.Items.AddRange(New Object() {resources.GetString("cboCalculateType.Items"), resources.GetString("cboCalculateType.Items1"), resources.GetString("cboCalculateType.Items2")})
-        Me.cboCalculateType.Name = "cboCalculateType"
-        '
         'lblRingCorrectionMode
         '
         resources.ApplyResources(Me.lblRingCorrectionMode, "lblRingCorrectionMode")
         Me.lblRingCorrectionMode.Name = "lblRingCorrectionMode"
-        '
-        'cboRingCorrectionMode
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboRingCorrectionMode, CType(resources.GetObject("cboRingCorrectionMode.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.cboRingCorrectionMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboRingCorrectionMode.FormattingEnabled = True
-        Me.cboRingCorrectionMode.Items.AddRange(New Object() {resources.GetString("cboRingCorrectionMode.Items"), resources.GetString("cboRingCorrectionMode.Items1"), resources.GetString("cboRingCorrectionMode.Items2")})
-        resources.ApplyResources(Me.cboRingCorrectionMode, "cboRingCorrectionMode")
-        Me.cboRingCorrectionMode.Name = "cboRingCorrectionMode"
         '
         'chkHistoryEnabled
         '
@@ -5324,79 +5584,6 @@ Partial Class frmProperties
         '
         resources.ApplyResources(Me.lblCreatedBy, "lblCreatedBy")
         Me.lblCreatedBy.Name = "lblCreatedBy"
-        '
-        'pnlSurfaceProfile
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlSurfaceProfile, CType(resources.GetObject("pnlSurfaceProfile.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        resources.ApplyResources(Me.pnlSurfaceProfile, "pnlSurfaceProfile")
-        Me.pnlSurfaceProfile.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        Me.pnlSurfaceProfile.Controls.Add(Me.chksurfaceprofile)
-        Me.pnlSurfaceProfile.Controls.Add(Me.pnlsurfaceprofileelevation)
-        Me.pnlSurfaceProfile.Name = "pnlSurfaceProfile"
-        '
-        'pnlsurfaceprofileelevation
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlsurfaceprofileelevation, CType(resources.GetObject("pnlsurfaceprofileelevation.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        resources.ApplyResources(Me.pnlsurfaceprofileelevation, "pnlsurfaceprofileelevation")
-        Me.pnlsurfaceprofileelevation.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        Me.pnlsurfaceprofileelevation.Controls.Add(Me.chkSurfaceProfileShow)
-        Me.pnlsurfaceprofileelevation.Controls.Add(Me.cbosurfaceprofileelevation)
-        Me.pnlsurfaceprofileelevation.Controls.Add(Me.lblsurfaceprofileelevation)
-        Me.pnlsurfaceprofileelevation.Name = "pnlsurfaceprofileelevation"
-        '
-        'chkSurfaceProfileShow
-        '
-        resources.ApplyResources(Me.chkSurfaceProfileShow, "chkSurfaceProfileShow")
-        Me.chkSurfaceProfileShow.Name = "chkSurfaceProfileShow"
-        Me.chkSurfaceProfileShow.Properties.AutoWidth = True
-        Me.chkSurfaceProfileShow.Properties.Caption = resources.GetString("chkSurfaceProfileShow.Properties.Caption")
-        '
-        'cbosurfaceprofileelevation
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cbosurfaceprofileelevation, CType(resources.GetObject("cbosurfaceprofileelevation.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        resources.ApplyResources(Me.cbosurfaceprofileelevation, "cbosurfaceprofileelevation")
-        Me.cbosurfaceprofileelevation.Name = "cbosurfaceprofileelevation"
-        '
-        'lblsurfaceprofileelevation
-        '
-        resources.ApplyResources(Me.lblsurfaceprofileelevation, "lblsurfaceprofileelevation")
-        Me.lblsurfaceprofileelevation.Name = "lblsurfaceprofileelevation"
-        '
-        'mnuItemNamePatternTags
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.mnuItemNamePatternTags, CType(resources.GetObject("mnuItemNamePatternTags.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        resources.ApplyResources(Me.mnuItemNamePatternTags, "mnuItemNamePatternTags")
-        Me.mnuItemNamePatternTags.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuItemNamePatternTagsCave, Me.mnuItemNamePatternTagsBranch, Me.ToolStripSeparator13, Me.mnuItemNamePatternTagsCount, Me.mnuItemNamePatternTagsIndex})
-        Me.mnuItemNamePatternTags.Name = "mnuInfoBoxTags"
-        '
-        'mnuItemNamePatternTagsCave
-        '
-        Me.mnuItemNamePatternTagsCave.Name = "mnuItemNamePatternTagsCave"
-        resources.ApplyResources(Me.mnuItemNamePatternTagsCave, "mnuItemNamePatternTagsCave")
-        Me.mnuItemNamePatternTagsCave.Tag = "%CAVE%"
-        '
-        'mnuItemNamePatternTagsBranch
-        '
-        Me.mnuItemNamePatternTagsBranch.Name = "mnuItemNamePatternTagsBranch"
-        resources.ApplyResources(Me.mnuItemNamePatternTagsBranch, "mnuItemNamePatternTagsBranch")
-        Me.mnuItemNamePatternTagsBranch.Tag = "%BRANCH%"
-        '
-        'ToolStripSeparator13
-        '
-        Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
-        resources.ApplyResources(Me.ToolStripSeparator13, "ToolStripSeparator13")
-        '
-        'mnuItemNamePatternTagsCount
-        '
-        Me.mnuItemNamePatternTagsCount.Name = "mnuItemNamePatternTagsCount"
-        resources.ApplyResources(Me.mnuItemNamePatternTagsCount, "mnuItemNamePatternTagsCount")
-        Me.mnuItemNamePatternTagsCount.Tag = "%C%"
-        '
-        'mnuItemNamePatternTagsIndex
-        '
-        Me.mnuItemNamePatternTagsIndex.Name = "mnuItemNamePatternTagsIndex"
-        resources.ApplyResources(Me.mnuItemNamePatternTagsIndex, "mnuItemNamePatternTagsIndex")
-        Me.mnuItemNamePatternTagsIndex.Tag = "%I%"
         '
         'tabMain
         '
@@ -5483,13 +5670,6 @@ Partial Class frmProperties
         Me.tabInfoOptions1.Name = "tabInfoOptions1"
         resources.ApplyResources(Me.tabInfoOptions1, "tabInfoOptions1")
         '
-        'cboOrigin
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboOrigin, CType(resources.GetObject("cboOrigin.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.cboOrigin.EditValue = Nothing
-        resources.ApplyResources(Me.cboOrigin, "cboOrigin")
-        Me.cboOrigin.Name = "cboOrigin"
-        '
         'tabInfoGPS1
         '
         Me.tabInfoGPS1.Controls.Add(Me.chkGPSEnabled)
@@ -5564,108 +5744,11 @@ Partial Class frmProperties
         Me.tabInfoDesign1.Name = "tabInfoDesign1"
         resources.ApplyResources(Me.tabInfoDesign1, "tabInfoDesign1")
         '
-        'XtraScrollableControl1
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.XtraScrollableControl1, CType(resources.GetObject("XtraScrollableControl1.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        resources.ApplyResources(Me.XtraScrollableControl1, "XtraScrollableControl1")
-        Me.XtraScrollableControl1.Controls.Add(Me.cboGeologicalLineType)
-        Me.XtraScrollableControl1.Controls.Add(Me.LabelControl3)
-        Me.XtraScrollableControl1.Controls.Add(Me.flyParameters)
-        Me.XtraScrollableControl1.Controls.Add(Me.LabelControl1)
-        Me.XtraScrollableControl1.Controls.Add(Me.tvDefaultPenPattern)
-        Me.XtraScrollableControl1.Controls.Add(Me.txtDesignItemNamePattern)
-        Me.XtraScrollableControl1.Controls.Add(Me.frrmDesign)
-        Me.XtraScrollableControl1.Controls.Add(Me.chkShowLegacyExtraPrintAndExportObjects)
-        Me.XtraScrollableControl1.Controls.Add(Me.cmdItemNamePatternAdd)
-        Me.XtraScrollableControl1.Controls.Add(Me.GroupBox1)
-        Me.XtraScrollableControl1.Controls.Add(Me.lblDesignItemNamePattern)
-        Me.XtraScrollableControl1.Controls.Add(Me.GroupBox8)
-        Me.XtraScrollableControl1.Controls.Add(Me.GroupBox3)
-        Me.XtraScrollableControl1.Controls.Add(Me.frmSketch)
-        Me.XtraScrollableControl1.Controls.Add(Me.GroupBox5)
-        Me.XtraScrollableControl1.Controls.Add(Me.cboLineType)
-        Me.XtraScrollableControl1.Controls.Add(Me.Label27)
-        Me.XtraScrollableControl1.Name = "XtraScrollableControl1"
-        '
-        'cboGeologicalLineType
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.cboGeologicalLineType, CType(resources.GetObject("cboGeologicalLineType.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.cboGeologicalLineType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboGeologicalLineType.FormattingEnabled = True
-        Me.cboGeologicalLineType.Items.AddRange(New Object() {resources.GetString("cboGeologicalLineType.Items"), resources.GetString("cboGeologicalLineType.Items1"), resources.GetString("cboGeologicalLineType.Items2")})
-        resources.ApplyResources(Me.cboGeologicalLineType, "cboGeologicalLineType")
-        Me.cboGeologicalLineType.Name = "cboGeologicalLineType"
-        '
-        'LabelControl3
-        '
-        resources.ApplyResources(Me.LabelControl3, "LabelControl3")
-        Me.LabelControl3.Name = "LabelControl3"
-        '
-        'flyParameters
-        '
-        Me.flyParameters.Controls.Add(Me.pnlParameters)
-        resources.ApplyResources(Me.flyParameters, "flyParameters")
-        Me.flyParameters.Name = "flyParameters"
-        '
-        'pnlParameters
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlParameters, CType(resources.GetObject("pnlParameters.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnlParameters.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        resources.ApplyResources(Me.pnlParameters, "pnlParameters")
-        Me.pnlParameters.FlyoutPanel = Me.flyParameters
-        Me.pnlParameters.Name = "pnlParameters"
-        '
-        'LabelControl1
-        '
-        Me.LabelControl1.Appearance.Font = CType(resources.GetObject("LabelControl1.Appearance.Font"), System.Drawing.Font)
-        Me.LabelControl1.Appearance.Options.UseFont = True
-        resources.ApplyResources(Me.LabelControl1, "LabelControl1")
-        Me.LabelControl1.Name = "LabelControl1"
-        '
-        'tvDefaultPenPattern
-        '
-        Me.tvDefaultPenPattern.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colDefaultPenPattern})
-        resources.ApplyResources(Me.tvDefaultPenPattern, "tvDefaultPenPattern")
-        Me.tvDefaultPenPattern.Name = "tvDefaultPenPattern"
-        Me.tvDefaultPenPattern.OptionsView.ShowIndentAsRowStyle = True
-        Me.tvDefaultPenPattern.OptionsView.ShowIndicator = False
-        Me.tvDefaultPenPattern.OptionsView.ShowRoot = False
-        Me.tvDefaultPenPattern.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.txtDefaultPenPattern})
-        '
-        'colDefaultPenPattern
-        '
-        resources.ApplyResources(Me.colDefaultPenPattern, "colDefaultPenPattern")
-        Me.colDefaultPenPattern.ColumnEdit = Me.txtDefaultPenPattern
-        Me.colDefaultPenPattern.FieldName = "Name"
-        Me.colDefaultPenPattern.Name = "colDefaultPenPattern"
-        '
-        'txtDefaultPenPattern
-        '
-        resources.ApplyResources(Me.txtDefaultPenPattern, "txtDefaultPenPattern")
-        EditorButtonImageOptions1.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
-        EditorButtonImageOptions1.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.txtDefaultPenPattern.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtDefaultPenPattern.Buttons1"), CType(resources.GetObject("txtDefaultPenPattern.Buttons2"), Integer), CType(resources.GetObject("txtDefaultPenPattern.Buttons3"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons4"), Boolean), CType(resources.GetObject("txtDefaultPenPattern.Buttons5"), Boolean), EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, resources.GetString("txtDefaultPenPattern.Buttons6"), CType(resources.GetObject("txtDefaultPenPattern.Buttons7"), Object), CType(resources.GetObject("txtDefaultPenPattern.Buttons8"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtDefaultPenPattern.Buttons9"), DevExpress.Utils.ToolTipAnchor)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDefaultPenPattern.Buttons10"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txtDefaultPenPattern.Name = "txtDefaultPenPattern"
-        Me.txtDefaultPenPattern.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        '
         'tabInfoPlot1
         '
         Me.tabInfoPlot1.Controls.Add(Me.XtraScrollableControl2)
         Me.tabInfoPlot1.Name = "tabInfoPlot1"
         resources.ApplyResources(Me.tabInfoPlot1, "tabInfoPlot1")
-        '
-        'XtraScrollableControl2
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.XtraScrollableControl2, CType(resources.GetObject("XtraScrollableControl2.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        resources.ApplyResources(Me.XtraScrollableControl2, "XtraScrollableControl2")
-        Me.XtraScrollableControl2.Controls.Add(Me.GroupBox2)
-        Me.XtraScrollableControl2.Controls.Add(Me.frmPlotPoint)
-        Me.XtraScrollableControl2.Controls.Add(Me.frmPlotLRUD)
-        Me.XtraScrollableControl2.Controls.Add(Me.GroupBox7)
-        Me.XtraScrollableControl2.Controls.Add(Me.frmPlotTranslationLine)
-        Me.XtraScrollableControl2.Controls.Add(Me.frmPlotPen)
-        Me.XtraScrollableControl2.Controls.Add(Me.GroupBox6)
-        Me.XtraScrollableControl2.Name = "XtraScrollableControl2"
         '
         'tabInfo3D1
         '
@@ -5676,71 +5759,6 @@ Partial Class frmProperties
         Me.tabInfo3D1.Controls.Add(Me.pnl3D)
         Me.tabInfo3D1.Name = "tabInfo3D1"
         resources.ApplyResources(Me.tabInfo3D1, "tabInfo3D1")
-        '
-        'pnl3D
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnl3D, CType(resources.GetObject("pnl3D.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnl3D.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        Me.pnl3D.Controls.Add(Me.txt3DMinPassageSizeUM)
-        Me.pnl3D.Controls.Add(Me.txt3DNormalizationFactor)
-        Me.pnl3D.Controls.Add(Me.txt3DMinPassageSize)
-        Me.pnl3D.Controls.Add(Me.lbl3DNormalizationFactor)
-        Me.pnl3D.Controls.Add(Me.lbl3DMinPassageSize)
-        Me.pnl3D.Controls.Add(Me.lbl3DOversamplingFactor)
-        Me.pnl3D.Controls.Add(Me.lbl3dPrecisionUM)
-        Me.pnl3D.Controls.Add(Me.txt3DOversamplingFactor)
-        Me.pnl3D.Controls.Add(Me.txt3DPrecision)
-        Me.pnl3D.Controls.Add(Me.lbl3DPrecision)
-        resources.ApplyResources(Me.pnl3D, "pnl3D")
-        Me.pnl3D.Name = "pnl3D"
-        '
-        'txt3DMinPassageSizeUM
-        '
-        resources.ApplyResources(Me.txt3DMinPassageSizeUM, "txt3DMinPassageSizeUM")
-        Me.txt3DMinPassageSizeUM.Name = "txt3DMinPassageSizeUM"
-        '
-        'txt3DMinPassageSize
-        '
-        resources.ApplyResources(Me.txt3DMinPassageSize, "txt3DMinPassageSize")
-        Me.txt3DMinPassageSize.Name = "txt3DMinPassageSize"
-        Me.txt3DMinPassageSize.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txt3DMinPassageSize.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txt3DMinPassageSize.Properties.DisplayFormat.FormatString = "N2"
-        Me.txt3DMinPassageSize.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txt3DMinPassageSize.Properties.EditFormat.FormatString = "N2"
-        Me.txt3DMinPassageSize.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txt3DMinPassageSize.Properties.Increment = New Decimal(New Integer() {5, 0, 0, 131072})
-        Me.txt3DMinPassageSize.Properties.MaskSettings.Set("mask", "N2")
-        Me.txt3DMinPassageSize.Properties.MaxValue = New Decimal(New Integer() {10, 0, 0, 0})
-        Me.txt3DMinPassageSize.Properties.MinValue = New Decimal(New Integer() {5, 0, 0, 131072})
-        '
-        'lbl3DMinPassageSize
-        '
-        resources.ApplyResources(Me.lbl3DMinPassageSize, "lbl3DMinPassageSize")
-        Me.lbl3DMinPassageSize.Name = "lbl3DMinPassageSize"
-        '
-        'lbl3dPrecisionUM
-        '
-        resources.ApplyResources(Me.lbl3dPrecisionUM, "lbl3dPrecisionUM")
-        Me.lbl3dPrecisionUM.Name = "lbl3dPrecisionUM"
-        '
-        'txt3DPrecision
-        '
-        resources.ApplyResources(Me.txt3DPrecision, "txt3DPrecision")
-        Me.txt3DPrecision.Name = "txt3DPrecision"
-        Me.txt3DPrecision.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txt3DPrecision.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.txt3DPrecision.Properties.DisplayFormat.FormatString = "N2"
-        Me.txt3DPrecision.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txt3DPrecision.Properties.EditFormat.FormatString = "N2"
-        Me.txt3DPrecision.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txt3DPrecision.Properties.Increment = New Decimal(New Integer() {5, 0, 0, 131072})
-        Me.txt3DPrecision.Properties.MaskSettings.Set("mask", "N1")
-        Me.txt3DPrecision.Properties.MaxValue = New Decimal(New Integer() {10, 0, 0, 0})
-        Me.txt3DPrecision.Properties.MinValue = New Decimal(New Integer() {5, 0, 0, 131072})
-        '
-        'lbl3DPrecision
-        '
-        resources.ApplyResources(Me.lbl3DPrecision, "lbl3DPrecision")
-        Me.lbl3DPrecision.Name = "lbl3DPrecision"
         '
         'tabInfoHighlights1
         '
@@ -5777,24 +5795,6 @@ Partial Class frmProperties
         Me.tabInfoDataPrecision1.Controls.Add(Me.StandaloneBarDockControl7)
         Me.tabInfoDataPrecision1.Name = "tabInfoDataPrecision1"
         resources.ApplyResources(Me.tabInfoDataPrecision1, "tabInfoDataPrecision1")
-        '
-        'pnlFooter
-        '
-        Me.DefaultToolTipController1.SetAllowHtmlText(Me.pnlFooter, CType(resources.GetObject("pnlFooter.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnlFooter.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        Me.pnlFooter.Controls.Add(Me.lblSeparator)
-        Me.pnlFooter.Controls.Add(Me.cmdCancel)
-        Me.pnlFooter.Controls.Add(Me.cmdOk)
-        Me.pnlFooter.Controls.Add(Me.cmdApply)
-        resources.ApplyResources(Me.pnlFooter, "pnlFooter")
-        Me.pnlFooter.Name = "pnlFooter"
-        '
-        'lblSeparator
-        '
-        resources.ApplyResources(Me.lblSeparator, "lblSeparator")
-        Me.lblSeparator.LineLocation = DevExpress.XtraEditors.LineLocation.Center
-        Me.lblSeparator.LineVisible = True
-        Me.lblSeparator.Name = "lblSeparator"
         '
         'btnMainUser
         '
@@ -6041,6 +6041,158 @@ Partial Class frmProperties
         Me.tabSessionSegments1.ResumeLayout(False)
         Me.tabSessionCalibrationSegments1.ResumeLayout(False)
         CType(Me.txtSessionDescription.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlCaveInfoConnections, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlCaveInfoConnections.ResumeLayout(False)
+        Me.pnlCaveInfoConnections.PerformLayout()
+        CType(Me.txtCaveInfoConnection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtCaveInfoParentConnection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlCaveInfoPriority, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlCaveInfoPriority.ResumeLayout(False)
+        Me.pnlCaveInfoPriority.PerformLayout()
+        CType(Me.txtCaveInfoPriority, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkCaveInfoPriority.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.mnuInfoBoxTags.ResumeLayout(False)
+        CType(Me.txtPlotSelectedPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPlotPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picPlotPenColor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPlotPointSize, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPlotTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPlotSelectedPointSize, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picPlotTextColor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picPlotPointColor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPlotTranslationLinePenWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picPlotTranslationLinePenColor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPlotLRUDPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPlotLRUDSelectedPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPlotSplayPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPlotSplaySelectedPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPlotNoteTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtBaseLineWidthScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtBaseHeavyLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtBaseLightLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtBaseUltraLightLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtBaseMediumLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignSignScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignClipartScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignSoilScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignTerrainLevelScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignSketchPlanCorrectionY, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignSketchPlanCorrectionX, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignSketchPlanCorrectionScale, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignSketchProfileCorrectionY, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignSketchProfileCorrectionX, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignSketchProfileCorrectionScale, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignEditCombinedAreaTransparencyThreshold, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignBackgroundTransparencyThreshold, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignOriginalPositionTransparencyThreshold, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignCombinedAreaTransparencyThreshold, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignEditLowerLayersTransparencyThreshold, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignTextureScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignExtraScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignExtraTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtSurfaceSelectedPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtSurfacePenWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picSurfacePenColor, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.mnuTrigPointTags.ResumeLayout(False)
+        Me.mnuSpecialTrigPointTags.ResumeLayout(False)
+        CType(Me.txtDesignCrossSectionTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignCrossSectionMarkerTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignCrossSectionMarkerArrowScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtBaseGeologyLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlGPS.ResumeLayout(False)
+        Me.pnlGPS.PerformLayout()
+        CType(Me.optGPSCustomRefPoint.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.optGPSRefPointOnOrigin.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkGPSAllowManualDeclinations.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkGPSSendToTherion.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlSurfaceProfile, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlSurfaceProfile.ResumeLayout(False)
+        Me.pnlSurfaceProfile.PerformLayout()
+        CType(Me.chksurfaceprofile.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlsurfaceprofileelevation, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlsurfaceprofileelevation.ResumeLayout(False)
+        Me.pnlsurfaceprofileelevation.PerformLayout()
+        CType(Me.chkSurfaceProfileShow.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.mnuItemNamePatternTags.ResumeLayout(False)
+        Me.XtraScrollableControl1.ResumeLayout(False)
+        Me.XtraScrollableControl1.PerformLayout()
+        CType(Me.flyParameters, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.flyParameters.ResumeLayout(False)
+        CType(Me.pnlParameters, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tvDefaultPenPattern, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDefaultPenPattern, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignItemNamePattern.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.frrmDesign, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.frrmDesign.ResumeLayout(False)
+        Me.frrmDesign.PerformLayout()
+        CType(Me.GroupBox11, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox11.ResumeLayout(False)
+        Me.GroupBox11.PerformLayout()
+        CType(Me.GroupBox12, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox12.ResumeLayout(False)
+        Me.GroupBox12.PerformLayout()
+        CType(Me.GroupBox10, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox10.ResumeLayout(False)
+        Me.GroupBox10.PerformLayout()
+        CType(Me.chkShowLegacyExtraPrintAndExportObjects.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        CType(Me.txtBaseBrushLinesScaleFactor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupBox8, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox8.ResumeLayout(False)
+        Me.GroupBox8.PerformLayout()
+        CType(Me.GroupBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
+        CType(Me.frmSketch, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.frmSketch.ResumeLayout(False)
+        CType(Me.frmSketchProfile, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.frmSketchProfile.ResumeLayout(False)
+        Me.frmSketchProfile.PerformLayout()
+        CType(Me.frmSketchPlan, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.frmSketchPlan.ResumeLayout(False)
+        Me.frmSketchPlan.PerformLayout()
+        CType(Me.GroupBox5, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
+        Me.XtraScrollableControl2.ResumeLayout(False)
+        CType(Me.GroupBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        CType(Me.frmPlotPoint, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.frmPlotPoint.ResumeLayout(False)
+        Me.frmPlotPoint.PerformLayout()
+        CType(Me.cboPlotTextPolicy.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.frmPlotLRUD, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.frmPlotLRUD.ResumeLayout(False)
+        Me.frmPlotLRUD.PerformLayout()
+        CType(Me.GroupBox7, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox7.ResumeLayout(False)
+        Me.GroupBox7.PerformLayout()
+        CType(Me.txtPlotNoteTextColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.frmPlotTranslationLine, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.frmPlotTranslationLine.ResumeLayout(False)
+        Me.frmPlotTranslationLine.PerformLayout()
+        CType(Me.frmPlotPen, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.frmPlotPen.ResumeLayout(False)
+        Me.frmPlotPen.PerformLayout()
+        CType(Me.chkPlotCenterlineForceSegmentColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPlotCenterlineVectors.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupBox6, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
+        CType(Me.txtPlotSplayCrossScale.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnl3D, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnl3D.ResumeLayout(False)
+        Me.pnl3D.PerformLayout()
+        CType(Me.txt3DNormalizationFactor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt3DMinPassageSize.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt3DOversamplingFactor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt3DPrecision.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlFooter, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlFooter.ResumeLayout(False)
         CType(Me.pnlHighlights.Panel1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlHighlights.Panel1.ResumeLayout(False)
         CType(Me.pnlHighlights.Panel2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -6136,55 +6288,8 @@ Partial Class frmProperties
         Me.tabCaveInfoSurface1.PerformLayout()
         Me.tabCaveInfoCalculateOptions1.ResumeLayout(False)
         Me.tabCaveInfoCalculateOptions1.PerformLayout()
-        CType(Me.pnlCaveInfoConnections, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlCaveInfoConnections.ResumeLayout(False)
-        Me.pnlCaveInfoConnections.PerformLayout()
-        CType(Me.txtCaveInfoConnection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCaveInfoParentConnection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlCaveInfoPriority, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlCaveInfoPriority.ResumeLayout(False)
-        Me.pnlCaveInfoPriority.PerformLayout()
-        CType(Me.txtCaveInfoPriority, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkCaveInfoPriority.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabCaveInfoSegments1.ResumeLayout(False)
         CType(Me.txtCaveInfoDescription.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.mnuInfoBoxTags.ResumeLayout(False)
-        CType(Me.txtPlotSelectedPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPlotPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picPlotPenColor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPlotPointSize, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPlotTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPlotSelectedPointSize, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picPlotTextColor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picPlotPointColor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPlotTranslationLinePenWidth, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picPlotTranslationLinePenColor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPlotLRUDPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPlotLRUDSelectedPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPlotSplayPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPlotSplaySelectedPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPlotNoteTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtBaseLineWidthScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtBaseHeavyLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtBaseLightLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtBaseUltraLightLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtBaseMediumLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignSignScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignClipartScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignSoilScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignTerrainLevelScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignSketchPlanCorrectionY, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignSketchPlanCorrectionX, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignSketchPlanCorrectionScale, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignSketchProfileCorrectionY, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignSketchProfileCorrectionX, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignSketchProfileCorrectionScale, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignEditCombinedAreaTransparencyThreshold, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignBackgroundTransparencyThreshold, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignOriginalPositionTransparencyThreshold, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignCombinedAreaTransparencyThreshold, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkGPSSendToTherion.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkGPSEnabled.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtDescrizione.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -6193,19 +6298,9 @@ Partial Class frmProperties
         CType(Me.txtTeam.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtDesigner.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtID.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignEditLowerLayersTransparencyThreshold, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chksurfaceprofile.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignTextureScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCreatorID.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCreationDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCreatorVersion.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignExtraScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignExtraTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSurfaceSelectedPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtSurfacePenWidth, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picSurfacePenColor, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.mnuTrigPointTags.ResumeLayout(False)
-        Me.mnuSpecialTrigPointTags.ResumeLayout(False)
         CType(Me.GroupBox9, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox9.ResumeLayout(False)
         Me.GroupBox9.PerformLayout()
@@ -6215,102 +6310,22 @@ Partial Class frmProperties
         Me.frm3DSurface.PerformLayout()
         CType(Me.txt3DSurfaceModelLOD.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt3DSurfaceTextureLOD.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txt3DOversamplingFactor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         CType(Me.chk3DLochShowSplay.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chk3dLochShowDialog.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txt3DNormalizationFactor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
-        CType(Me.GroupBox7, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox7.ResumeLayout(False)
-        Me.GroupBox7.PerformLayout()
-        CType(Me.txtPlotNoteTextColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupBox6, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox6.ResumeLayout(False)
-        Me.GroupBox6.PerformLayout()
-        CType(Me.txtPlotSplayCrossScale.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.frmPlotLRUD, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.frmPlotLRUD.ResumeLayout(False)
-        Me.frmPlotLRUD.PerformLayout()
-        CType(Me.frmPlotTranslationLine, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.frmPlotTranslationLine.ResumeLayout(False)
-        Me.frmPlotTranslationLine.PerformLayout()
-        CType(Me.frmPlotPoint, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.frmPlotPoint.ResumeLayout(False)
-        Me.frmPlotPoint.PerformLayout()
-        CType(Me.cboPlotTextPolicy.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.frmPlotPen, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.frmPlotPen.ResumeLayout(False)
-        Me.frmPlotPen.PerformLayout()
-        CType(Me.chkPlotCenterlineForceSegmentColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkPlotCenterlineVectors.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignItemNamePattern.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkShowLegacyExtraPrintAndExportObjects.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupBox8, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox8.ResumeLayout(False)
-        Me.GroupBox8.PerformLayout()
-        CType(Me.GroupBox5, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox5.ResumeLayout(False)
-        Me.GroupBox5.PerformLayout()
-        CType(Me.GroupBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
-        CType(Me.frmSketch, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.frmSketch.ResumeLayout(False)
-        CType(Me.frmSketchProfile, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.frmSketchProfile.ResumeLayout(False)
-        Me.frmSketchProfile.PerformLayout()
-        CType(Me.frmSketchPlan, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.frmSketchPlan.ResumeLayout(False)
-        Me.frmSketchPlan.PerformLayout()
-        CType(Me.frrmDesign, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.frrmDesign.ResumeLayout(False)
-        Me.frrmDesign.PerformLayout()
-        CType(Me.GroupBox11, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox11.ResumeLayout(False)
-        Me.GroupBox11.PerformLayout()
-        CType(Me.txtDesignCrossSectionTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupBox12, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox12.ResumeLayout(False)
-        Me.GroupBox12.PerformLayout()
-        CType(Me.txtDesignCrossSectionMarkerTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignCrossSectionMarkerArrowScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupBox10, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox10.ResumeLayout(False)
-        Me.GroupBox10.PerformLayout()
-        CType(Me.GroupBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        CType(Me.txtBaseBrushLinesScaleFactor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtBaseGeologyLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtSpecialTrigPointStructure.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTrigPointStructure.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtInfoBoxStructure.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.frmGPSDefaults, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frmGPSDefaults.ResumeLayout(False)
         Me.frmGPSDefaults.PerformLayout()
-        Me.pnlGPS.ResumeLayout(False)
-        Me.pnlGPS.PerformLayout()
-        CType(Me.optGPSCustomRefPoint.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.optGPSRefPointOnOrigin.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkGPSAllowManualDeclinations.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkShowWarpingDetails.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkProfileWarpingEnabled.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkPlanWarpingEnabled.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkBindCrossSection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkCalculateMode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkHistoryEnabled.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlSurfaceProfile, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlSurfaceProfile.ResumeLayout(False)
-        Me.pnlSurfaceProfile.PerformLayout()
-        CType(Me.pnlsurfaceprofileelevation, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlsurfaceprofileelevation.ResumeLayout(False)
-        Me.pnlsurfaceprofileelevation.PerformLayout()
-        CType(Me.chkSurfaceProfileShow.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.mnuItemNamePatternTags.ResumeLayout(False)
         CType(Me.tabMain, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabMain.ResumeLayout(False)
         Me.tabInfoMain1.ResumeLayout(False)
@@ -6338,22 +6353,9 @@ Partial Class frmProperties
         Me.tabInfoInfoBox1.ResumeLayout(False)
         Me.tabInfoInfoBox1.PerformLayout()
         Me.tabInfoDesign1.ResumeLayout(False)
-        Me.XtraScrollableControl1.ResumeLayout(False)
-        Me.XtraScrollableControl1.PerformLayout()
-        CType(Me.flyParameters, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.flyParameters.ResumeLayout(False)
-        CType(Me.pnlParameters, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tvDefaultPenPattern, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDefaultPenPattern, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabInfoPlot1.ResumeLayout(False)
-        Me.XtraScrollableControl2.ResumeLayout(False)
         Me.tabInfo3D1.ResumeLayout(False)
         Me.tabInfo3D1.PerformLayout()
-        CType(Me.pnl3D, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnl3D.ResumeLayout(False)
-        Me.pnl3D.PerformLayout()
-        CType(Me.txt3DMinPassageSize.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txt3DPrecision.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabInfoHighlights1.ResumeLayout(False)
         Me.tabInfoHighlights1.PerformLayout()
         Me.tabInfoSurfaceElevation1.ResumeLayout(False)
@@ -6364,8 +6366,6 @@ Partial Class frmProperties
         Me.tabInfoSurfaceWMS1.PerformLayout()
         Me.tabInfoDataPrecision1.ResumeLayout(False)
         Me.tabInfoDataPrecision1.PerformLayout()
-        CType(Me.pnlFooter, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlFooter.ResumeLayout(False)
         CType(Me.AccordionControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

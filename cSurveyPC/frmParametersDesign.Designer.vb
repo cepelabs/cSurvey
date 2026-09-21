@@ -25,6 +25,8 @@ Partial Class frmParametersDesign
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmParametersDesign))
         Me.lblAdvancedClippingMode = New DevExpress.XtraEditors.LabelControl()
         Me.cboAdvancedClippingMode = New System.Windows.Forms.ComboBox()
+        Me.chkUseCaveBranchColorAsDefaultItemColor = New DevExpress.XtraEditors.CheckEdit()
+        CType(Me.chkUseCaveBranchColorAsDefaultItemColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblAdvancedClippingMode
@@ -40,17 +42,27 @@ Partial Class frmParametersDesign
         resources.ApplyResources(Me.cboAdvancedClippingMode, "cboAdvancedClippingMode")
         Me.cboAdvancedClippingMode.Name = "cboAdvancedClippingMode"
         '
+        'chkUseCaveBranchColorAsDefaultItemColor
+        '
+        resources.ApplyResources(Me.chkUseCaveBranchColorAsDefaultItemColor, "chkUseCaveBranchColorAsDefaultItemColor")
+        Me.chkUseCaveBranchColorAsDefaultItemColor.Name = "chkUseCaveBranchColorAsDefaultItemColor"
+        Me.chkUseCaveBranchColorAsDefaultItemColor.Properties.AutoWidth = True
+        Me.chkUseCaveBranchColorAsDefaultItemColor.Properties.Caption = resources.GetString("chkUseCaveBranchColorAsDefaultItemColor.Properties.Caption")
+        '
         'frmParametersDesign
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.chkUseCaveBranchColorAsDefaultItemColor)
         Me.Controls.Add(Me.cboAdvancedClippingMode)
         Me.Controls.Add(Me.lblAdvancedClippingMode)
         Me.Name = "frmParametersDesign"
+        CType(Me.chkUseCaveBranchColorAsDefaultItemColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents lblAdvancedClippingMode As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboAdvancedClippingMode As System.Windows.Forms.ComboBox
+    Friend WithEvents chkUseCaveBranchColorAsDefaultItemColor As DevExpress.XtraEditors.CheckEdit
 End Class

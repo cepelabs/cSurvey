@@ -16,6 +16,20 @@ Namespace cSurvey.Design
         Private iScaleMode As cIOptionsPreview.ScaleModeEnum
         Private iScale As Integer
 
+        Private bUseCaveBranchColorAsDefaultItemColor As Boolean
+
+        Public Property UseCaveBranchColorAsDefaultItemColor As Boolean Implements cIOptionsPreview.UseCaveBranchColorAsDefaultItemColor
+            Get
+                Return bUseCaveBranchColorAsDefaultItemColor
+            End Get
+            Set(value As Boolean)
+                If bUseCaveBranchColorAsDefaultItemColor <> value Then
+                    bUseCaveBranchColorAsDefaultItemColor = value
+                    Call PropertyChanged("UseCaveBranchColorAsDefaultItemColor")
+                End If
+            End Set
+        End Property
+
         Public Property ScaleMode() As cIOptionsPreview.ScaleModeEnum Implements cIOptionsPreview.ScaleMode
             Get
                 Return iScaleMode
@@ -102,6 +116,7 @@ Namespace cSurvey.Design
 
             Call oXMLOptions.SetAttribute("advancedclippingmode", iAdvancedClippingMode)
 
+            If bUseCaveBranchColorAsDefaultItemColor Then oXMLOptions.SetAttribute("ucbcadic", "1")
             'Call oXMLOptions.SetAttribute("drawsolidrock", If(bDrawSolidRock, 1, 0))
 
             'If bUseDrawingZOrder Then
@@ -120,6 +135,7 @@ Namespace cSurvey.Design
             iScaleMode = modXML.GetAttributeValue(Options, "scalemode")
             iScale = modXML.GetAttributeValue(Options, "scale")
             iAdvancedClippingMode = modXML.GetAttributeValue(Options, "advancedclippingmode")
+            bUseCaveBranchColorAsDefaultItemColor = modXML.GetAttributeValue(Options, "ucbcadic", False)
             'bDrawSolidRock = modXML.GetAttributeValue(Options, "drawsolidrock", False)
         End Sub
 

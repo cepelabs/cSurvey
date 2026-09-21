@@ -1,14 +1,14 @@
-﻿Imports cSurveyPC
-Imports cSurveyPC.cSurvey
-Imports cSurveyPC.cSurvey.Drawings
-
-Imports System.Xml
-Imports System.Drawing
+﻿Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.IO
-Imports cSurveyPC.cSurvey.Design.cPen
-Imports DevExpress.XtraTreeList.Nodes.Operations
+Imports System.Xml
+Imports cSurveyPC
+Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design.cBrush
+Imports cSurveyPC.cSurvey.Design.cItemFont
+Imports cSurveyPC.cSurvey.Design.cPen
+Imports cSurveyPC.cSurvey.Drawings
+Imports DevExpress.XtraTreeList.Nodes.Operations
 
 Namespace cSurvey.Design
 
@@ -77,7 +77,7 @@ Namespace cSurvey.Design
         ''' Get filename if userpen loaded from disk
         ''' </summary>
         ''' <returns></returns>
-        Public ReadOnly Property Filename() As String Implements cICustomPaintElement.filename
+        Public ReadOnly Property Filename() As String Implements cICustomPaintElement.Filename
             Get
                 Return sFilename
             End Get
@@ -168,7 +168,7 @@ Namespace cSurvey.Design
             End If
         End Function
 
-        Public Property ID As String Implements cICustomPaintElement.id
+        Public Property ID As String Implements cICustomPaintElement.ID
             Get
                 If iType = cPen.PenTypeEnum.User Then
                     Return sID
@@ -1010,20 +1010,44 @@ Namespace cSurvey.Design
                 If iType = cPen.PenTypeEnum.None Then
                     Call Cache.AddBorder(Path, Nothing, oWireframePen)
                 Else
-                    Dim oRenderArgs As cPen.cRenderEventArgs = New cPen.cRenderEventArgs
+                    Dim oRenderArgs As cPen.cRenderEventArgs = New cPen.cRenderEventArgs(PaintOptions)
+                    oRenderArgs.Color = oPen.Color
                     RaiseEvent OnRender(Me, oRenderArgs)
 
                     Dim oBackupColors(2) As Color
-                    If oRenderArgs.Transparency <> 0 Then
+                    If oRenderArgs.Transparency <> 0 OrElse oRenderArgs.UseColor Then
                         oBackupColors(0) = oPen.Color
-                        oPen.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oPen.Color)
+                        If oRenderArgs.UseColor Then
+                            oPen.Color = oRenderArgs.Color
+                        End If
+                        If oRenderArgs.Transparency <> 0 Then
+                            oPen.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oPen.Color)
+                        End If
+
                         oBackupColors(1) = oClipartPen.Color
+                        If oRenderArgs.UseColor AndAlso oClipartPen.Color.ToArgb = oBackupColors(0).ToArgb Then
+                            oClipartPen.Color = oRenderArgs.Color
+                        End If
                         oClipartPen.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oClipartPen.Color)
+
                         If oClipartBrush IsNot Nothing Then
                             oBackupColors(2) = oClipartBrush.Color
+                            If oRenderArgs.UseColor AndAlso oClipartBrush.Color.ToArgb = oBackupColors(0).ToArgb Then
+                                oClipartBrush.Color = oRenderArgs.Color
+                            End If
                             oClipartBrush.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oClipartBrush.Color)
                         End If
                     End If
+                    'If oRenderArgs.Transparency <> 0 Then
+                    '    oBackupColors(0) = oPen.Color
+                    '    oPen.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oPen.Color)
+                    '    oBackupColors(1) = oClipartPen.Color
+                    '    oClipartPen.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oClipartPen.Color)
+                    '    If oClipartBrush IsNot Nothing Then
+                    '        oBackupColors(2) = oClipartBrush.Color
+                    '        oClipartBrush.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oClipartBrush.Color)
+                    '    End If
+                    'End If
 
                     Dim sZoomFactor As Single = GetPaintZoomFactor(PaintOptions)
                     If iDecorationPosition = cPen.DecorationPositionEnum.Above Then
@@ -1294,7 +1318,23 @@ Namespace cSurvey.Design
 
         Friend Class cRenderEventArgs
             Inherits EventArgs
+
             Public Transparency As Single
+
+            Public UseColor As Boolean
+            Public Color As Color
+
+            Private oPaintOptions As cOptions
+
+            Public Sub New(PaintOptions As cOptions)
+                oPaintOptions = PaintOptions
+            End Sub
+
+            Public ReadOnly Property PaintOptions As cOptions
+                Get
+                    Return oPaintOptions
+                End Get
+            End Property
         End Class
         Friend Event OnRender(sender As Object, RenderArgs As cRenderEventArgs)
 

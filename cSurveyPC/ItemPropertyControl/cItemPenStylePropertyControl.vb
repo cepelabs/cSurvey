@@ -100,10 +100,15 @@ Friend Class cItemPenStylePropertyControl
             If oPoint Is Nothing Then
                 oPen = Item.Pen
             Else
-                Call pObjectSetSequencePen()
-                oPen = oPoint.Pen
+                'Call pObjectSetSequencePen()
+                If oPoint.Pen Is Nothing Then
+                    oPen = Item.Pen
+                Else
+                    oPen = oPoint.Pen
+                End If
+
             End If
-            If Item.Pen.Type = cPen.PenTypeEnum.Custom OrElse (bEditUser AndAlso Item.Pen.Type = cPen.PenTypeEnum.User) Then
+            If oPen.Type = cPen.PenTypeEnum.Custom OrElse (bEditUser AndAlso oPen.Type = cPen.PenTypeEnum.User) Then
                 If Item.Pen.Type = cPen.PenTypeEnum.User Then
                     lblPropPenPattern.Text = lblPropPenPattern.Text & " <image=#warning;size=16,16>"
                     btnPropSaveToSurvey.Enabled = False

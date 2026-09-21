@@ -4156,4 +4156,5 @@ Friend Class frmProperties
         Catch
         End Try
     End Sub
+
 End Class

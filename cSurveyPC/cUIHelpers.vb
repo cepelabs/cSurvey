@@ -1961,6 +1961,8 @@ Namespace cSurvey.UIHelpers
         ReadOnly Property Item As Object
         ReadOnly Property ImageIndex As Integer
 
+        Property UseCaveBranchColorAsDefaultItemColor As Boolean
+
         Property Created As Boolean
         Property Deleted As Boolean
         'ReadOnly Property Moved As Boolean
@@ -1997,6 +1999,7 @@ Namespace cSurvey.UIHelpers
         Property ParentConnection As cConnectionDef Implements cICaveInfoBasePlaceHolder.ParentConnection
         Property Connection As cConnectionDef Implements cICaveInfoBasePlaceHolder.Connection
         Property Parent As cICaveInfoBasePlaceHolder Implements cICaveInfoBasePlaceHolder.Parent
+        Property UseCaveBranchColorAsDefaultItemColor As Boolean Implements cICaveInfoBasePlaceHolder.UseCaveBranchColorAsDefaultItemColor
 
         Public Shadows Property Created As Boolean Implements cICaveInfoBasePlaceHolder.Created
             Get

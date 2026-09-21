@@ -4530,7 +4530,7 @@
     <value>111, 857</value>
   </data>
   <data name="txtDesignItemNamePattern.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 20</value>
+    <value>28, 20</value>
   </data>
   <data name="txtDesignItemNamePattern.TabIndex" type="System.Int32, mscorlib">
     <value>124</value>
@@ -12860,125 +12860,11 @@
   <data name="&gt;&gt;colSessionCalibrateIndex.Type" xml:space="preserve">
     <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colHighlightsName.Name" xml:space="preserve">
-    <value>colHighlightsName</value>
+  <data name="&gt;&gt;DefaultToolTipController1.Name" xml:space="preserve">
+    <value>DefaultToolTipController1</value>
   </data>
-  <data name="&gt;&gt;colHighlightsName.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colHighlightsApplyTo.Name" xml:space="preserve">
-    <value>colHighlightsApplyTo</value>
-  </data>
-  <data name="&gt;&gt;colHighlightsApplyTo.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colGradesDescription.Name" xml:space="preserve">
-    <value>colGradesDescription</value>
-  </data>
-  <data name="&gt;&gt;colGradesDescription.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;RepositoryItemPictureEdit2.Name" xml:space="preserve">
-    <value>RepositoryItemPictureEdit2</value>
-  </data>
-  <data name="&gt;&gt;RepositoryItemPictureEdit2.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;TreeListColumn1.Name" xml:space="preserve">
-    <value>TreeListColumn1</value>
-  </data>
-  <data name="&gt;&gt;TreeListColumn1.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colElevationsThumbnail.Name" xml:space="preserve">
-    <value>colElevationsThumbnail</value>
-  </data>
-  <data name="&gt;&gt;colElevationsThumbnail.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;picElevationsThumbnail.Name" xml:space="preserve">
-    <value>picElevationsThumbnail</value>
-  </data>
-  <data name="&gt;&gt;picElevationsThumbnail.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colElevationsName.Name" xml:space="preserve">
-    <value>colElevationsName</value>
-  </data>
-  <data name="&gt;&gt;colElevationsName.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colOrthophotoThumbnail.Name" xml:space="preserve">
-    <value>colOrthophotoThumbnail</value>
-  </data>
-  <data name="&gt;&gt;colOrthophotoThumbnail.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;picOrthophotoThumbnail.Name" xml:space="preserve">
-    <value>picOrthophotoThumbnail</value>
-  </data>
-  <data name="&gt;&gt;picOrthophotoThumbnail.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colOrthophotoName.Name" xml:space="preserve">
-    <value>colOrthophotoName</value>
-  </data>
-  <data name="&gt;&gt;colOrthophotoName.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colWMSsName.Name" xml:space="preserve">
-    <value>colWMSsName</value>
-  </data>
-  <data name="&gt;&gt;colWMSsName.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colWMSsURL.Name" xml:space="preserve">
-    <value>colWMSsURL</value>
-  </data>
-  <data name="&gt;&gt;colWMSsURL.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colWMSsLayer.Name" xml:space="preserve">
-    <value>colWMSsLayer</value>
-  </data>
-  <data name="&gt;&gt;colWMSsLayer.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;RepositoryItemPictureEdit1.Name" xml:space="preserve">
-    <value>RepositoryItemPictureEdit1</value>
-  </data>
-  <data name="&gt;&gt;RepositoryItemPictureEdit1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colWMSLayerName.Name" xml:space="preserve">
-    <value>colWMSLayerName</value>
-  </data>
-  <data name="&gt;&gt;colWMSLayerName.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colWMSLayerCRSs.Name" xml:space="preserve">
-    <value>colWMSLayerCRSs</value>
-  </data>
-  <data name="&gt;&gt;colWMSLayerCRSs.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colWMSImageFormat.Name" xml:space="preserve">
-    <value>colWMSImageFormat</value>
-  </data>
-  <data name="&gt;&gt;colWMSImageFormat.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colCaveInfosName.Name" xml:space="preserve">
-    <value>colCaveInfosName</value>
-  </data>
-  <data name="&gt;&gt;colCaveInfosName.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colCaveInfosColor.Name" xml:space="preserve">
-    <value>colCaveInfosColor</value>
-  </data>
-  <data name="&gt;&gt;colCaveInfosColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="&gt;&gt;DefaultToolTipController1.Type" xml:space="preserve">
+    <value>DevExpress.Utils.DefaultToolTipController, DevExpress.Utils.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;mnuInfoBoxTags1.Name" xml:space="preserve">
     <value>mnuInfoBoxTags1</value>
@@ -13087,12 +12973,6 @@
   </data>
   <data name="&gt;&gt;mnuInfoBoxTags99.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnHeader1.Name" xml:space="preserve">
-    <value>ColumnHeader1</value>
-  </data>
-  <data name="&gt;&gt;ColumnHeader1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStripMenuItem5.Name" xml:space="preserve">
     <value>ToolStripMenuItem5</value>
@@ -13268,6 +13148,132 @@
   <data name="&gt;&gt;txtDefaultPenPattern.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="&gt;&gt;colHighlightsName.Name" xml:space="preserve">
+    <value>colHighlightsName</value>
+  </data>
+  <data name="&gt;&gt;colHighlightsName.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colHighlightsApplyTo.Name" xml:space="preserve">
+    <value>colHighlightsApplyTo</value>
+  </data>
+  <data name="&gt;&gt;colHighlightsApplyTo.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colGradesDescription.Name" xml:space="preserve">
+    <value>colGradesDescription</value>
+  </data>
+  <data name="&gt;&gt;colGradesDescription.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;RepositoryItemPictureEdit2.Name" xml:space="preserve">
+    <value>RepositoryItemPictureEdit2</value>
+  </data>
+  <data name="&gt;&gt;RepositoryItemPictureEdit2.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;TreeListColumn1.Name" xml:space="preserve">
+    <value>TreeListColumn1</value>
+  </data>
+  <data name="&gt;&gt;TreeListColumn1.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colElevationsThumbnail.Name" xml:space="preserve">
+    <value>colElevationsThumbnail</value>
+  </data>
+  <data name="&gt;&gt;colElevationsThumbnail.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;picElevationsThumbnail.Name" xml:space="preserve">
+    <value>picElevationsThumbnail</value>
+  </data>
+  <data name="&gt;&gt;picElevationsThumbnail.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colElevationsName.Name" xml:space="preserve">
+    <value>colElevationsName</value>
+  </data>
+  <data name="&gt;&gt;colElevationsName.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colOrthophotoThumbnail.Name" xml:space="preserve">
+    <value>colOrthophotoThumbnail</value>
+  </data>
+  <data name="&gt;&gt;colOrthophotoThumbnail.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;picOrthophotoThumbnail.Name" xml:space="preserve">
+    <value>picOrthophotoThumbnail</value>
+  </data>
+  <data name="&gt;&gt;picOrthophotoThumbnail.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colOrthophotoName.Name" xml:space="preserve">
+    <value>colOrthophotoName</value>
+  </data>
+  <data name="&gt;&gt;colOrthophotoName.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colWMSsName.Name" xml:space="preserve">
+    <value>colWMSsName</value>
+  </data>
+  <data name="&gt;&gt;colWMSsName.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colWMSsURL.Name" xml:space="preserve">
+    <value>colWMSsURL</value>
+  </data>
+  <data name="&gt;&gt;colWMSsURL.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colWMSsLayer.Name" xml:space="preserve">
+    <value>colWMSsLayer</value>
+  </data>
+  <data name="&gt;&gt;colWMSsLayer.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;RepositoryItemPictureEdit1.Name" xml:space="preserve">
+    <value>RepositoryItemPictureEdit1</value>
+  </data>
+  <data name="&gt;&gt;RepositoryItemPictureEdit1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colWMSLayerName.Name" xml:space="preserve">
+    <value>colWMSLayerName</value>
+  </data>
+  <data name="&gt;&gt;colWMSLayerName.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colWMSLayerCRSs.Name" xml:space="preserve">
+    <value>colWMSLayerCRSs</value>
+  </data>
+  <data name="&gt;&gt;colWMSLayerCRSs.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colWMSImageFormat.Name" xml:space="preserve">
+    <value>colWMSImageFormat</value>
+  </data>
+  <data name="&gt;&gt;colWMSImageFormat.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colCaveInfosName.Name" xml:space="preserve">
+    <value>colCaveInfosName</value>
+  </data>
+  <data name="&gt;&gt;colCaveInfosName.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colCaveInfosColor.Name" xml:space="preserve">
+    <value>colCaveInfosColor</value>
+  </data>
+  <data name="&gt;&gt;colCaveInfosColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;ColumnHeader1.Name" xml:space="preserve">
+    <value>ColumnHeader1</value>
+  </data>
+  <data name="&gt;&gt;ColumnHeader1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;btnMainUser.Name" xml:space="preserve">
     <value>btnMainUser</value>
   </data>
@@ -13405,12 +13411,6 @@
   </data>
   <data name="&gt;&gt;tvCaveInforsDragDrop.Type" xml:space="preserve">
     <value>DevExpress.Utils.DragDrop.DragDropEvents, DevExpress.Utils.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;DefaultToolTipController1.Name" xml:space="preserve">
-    <value>DefaultToolTipController1</value>
-  </data>
-  <data name="&gt;&gt;DefaultToolTipController1.Type" xml:space="preserve">
-    <value>DevExpress.Utils.DefaultToolTipController, DevExpress.Utils.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmProperties</value>
@@ -15272,12 +15272,6 @@
   <data name="&gt;&gt;mnuInfoBoxTags.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ColumnHeader1.Text" xml:space="preserve">
-    <value>Shot</value>
-  </data>
-  <data name="ColumnHeader1.Width" type="System.Int32, mscorlib">
-    <value>120</value>
-  </data>
   <metadata name="mnuTrigPointTags.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>690, 17</value>
   </metadata>
@@ -15466,6 +15460,12 @@
   </data>
   <data name="&gt;&gt;mnuItemNamePatternTags.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ColumnHeader1.Text" xml:space="preserve">
+    <value>Shot</value>
+  </data>
+  <data name="ColumnHeader1.Width" type="System.Int32, mscorlib">
+    <value>120</value>
   </data>
   <data name="btnMainUser.Text" xml:space="preserve">
     <value>User</value>

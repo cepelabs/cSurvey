@@ -1145,11 +1145,35 @@ Namespace cSurvey.Design
             If HaveTransparency Then
                 RenderArgs.Transparency = sTransparency
             End If
+            'If Not TypeOf Me Is cItemSign AndAlso Not TypeOf Me Is cItemClipart Then
+            '    If TypeOf RenderArgs.PaintOptions Is cOptionsPreview Then
+            '        If DirectCast(RenderArgs.PaintOptions, cOptionsPreview).UseCaveBranchColorAsDefaultItemColor Then
+            '            If GetCaveInfo() IsNot Nothing Then
+            '                If RenderArgs.Color.ToArgb = Color.Black.ToArgb Then
+            '                    RenderArgs.UseColor = True
+            '                    RenderArgs.Color = GetCaveInfo.GetColor(RenderArgs.Color)
+            '                End If
+            '            End If
+            '        End If
+            '    End If
+            'End If
         End Sub
 
-        Private Sub oPen_OnRender(sender As Object, RenderArgs As cPen.cRenderEventArgs) Handles oPen.OnRender
+        Friend Sub oPen_OnRender(sender As Object, RenderArgs As cPen.cRenderEventArgs) Handles oPen.OnRender
             If HaveTransparency Then
                 RenderArgs.Transparency = sTransparency
+            End If
+            If Not TypeOf Me Is cItemSign AndAlso Not TypeOf Me Is cItemClipart Then
+                If TypeOf RenderArgs.PaintOptions Is cOptionsPreview Then
+                    If DirectCast(RenderArgs.PaintOptions, cOptionsPreview).UseCaveBranchColorAsDefaultItemColor Then
+                        If GetCaveInfo() IsNot Nothing Then
+                            If RenderArgs.Color.ToArgb = Color.Black.ToArgb Then
+                                RenderArgs.UseColor = True
+                                RenderArgs.Color = GetCaveInfo.GetColor(RenderArgs.Color)
+                            End If
+                        End If
+                    End If
+                End If
             End If
         End Sub
 

@@ -2463,19 +2463,22 @@ Namespace cSurvey.Design
             If bInvalidated Then Call pRender(PaintOptions)
             If iType <> cBrush.BrushTypeEnum.None Then
                 If Path.PointCount > 1 Then
-                    Dim oRenderArgs As cBrush.cRenderEventArgs = New cBrush.cRenderEventArgs
+                    Dim oRenderArgs As cBrush.cRenderEventArgs = New cBrush.cRenderEventArgs(PaintOptions)
+                    oRenderArgs.Color = oPen.Color
                     RaiseEvent OnRender(Me, oRenderArgs)
 
                     Dim oBackupColors(7) As Color
-                    If oRenderArgs.Transparency <> 0 Then
+                    If oRenderArgs.Transparency <> 0 OrElse oRenderArgs.UseColor Then
                         oBackupColors(0) = oPen.Color
+                        If oRenderArgs.UseColor Then
+                            oPen.Color = oRenderArgs.Color
+                        End If
                         oPen.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oPen.Color)
 
                         oBackupColors(1) = oBrush.Color
                         oBrush.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oBrush.Color)
 
                         oBackupColors(2) = oSchematicBrush.ForegroundColor
-                        'oSchematicBrush.ForegroundColor =
 
                         oBackupColors(3) = oBackgroundBrush.Color
                         If Not modPaint.IsTransparentColor(oBackgroundBrush.Color) Then
@@ -2693,6 +2696,21 @@ Namespace cSurvey.Design
         Friend Class cRenderEventArgs
             Inherits EventArgs
             Public Transparency As Single
+
+            Public UseColor As Boolean
+            Public Color As Color
+
+            Private oPaintOptions As cOptions
+
+            Public Sub New(PaintOptions As cOptions)
+                oPaintOptions = PaintOptions
+            End Sub
+
+            Public ReadOnly Property PaintOptions As cOptions
+                Get
+                    Return oPaintOptions
+                End Get
+            End Property
         End Class
         Friend Event OnRender(sender As Object, RenderArgs As cRenderEventArgs)
 

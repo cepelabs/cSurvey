@@ -26,6 +26,19 @@ Namespace cSurvey.Design
 
         Private oSVG As cSVGOptions
 
+        Private bUseCaveBranchColorAsDefaultItemColor As Boolean
+
+        Public Property UseCaveBranchColorAsDefaultItemColor As Boolean Implements cIOptionsPreview.UseCaveBranchColorAsDefaultItemColor
+            Get
+                Return bUseCaveBranchColorAsDefaultItemColor
+            End Get
+            Set(value As Boolean)
+                If bUseCaveBranchColorAsDefaultItemColor <> value Then
+                    bUseCaveBranchColorAsDefaultItemColor = value
+                    Call PropertyChanged("UseCaveBranchColorAsDefaultItemColor")
+                End If
+            End Set
+        End Property
         Public Property ScaleMode() As cIOptionsPreview.ScaleModeEnum Implements cIOptionsPreview.ScaleMode
             Get
                 Return iScaleMode
@@ -175,6 +188,8 @@ Namespace cSurvey.Design
             Call oXMLOptions.SetAttribute("scalemode", iScaleMode)
             Call oXMLOptions.SetAttribute("scale", iScale)
 
+            If bUseCaveBranchColorAsDefaultItemColor Then oXMLOptions.SetAttribute("ucbcadic", "1")
+
             Call oXMLOptions.SetAttribute("advancedclippingmode", iAdvancedClippingMode)
 
             Call oGPS.SaveTo(File, Document, oXMLOptions, "gps")
@@ -219,6 +234,7 @@ Namespace cSurvey.Design
             oMargins = New cMargins(modXML.GetAttributeValue(Options, "margins", "32;32;32;32"))
             iScaleMode = modXML.GetAttributeValue(Options, "scalemode")
             iScale = modXML.GetAttributeValue(Options, "scale")
+            bUseCaveBranchColorAsDefaultItemColor = modXML.GetAttributeValue(Options, "ucbcadic", False)
             iAdvancedClippingMode = modXML.GetAttributeValue(Options, "advancedclippingmode")
             If modXML.ChildElementExist(Options, "gps") Then
                 oGPS = New cGPSOptions(Options.Item("gps"))
@@ -253,6 +269,7 @@ Namespace cSurvey.Design
             oMargins = New cMargins(modXML.GetAttributeValue(Options, "margins", "32;32;32;32"))
             iScaleMode = modXML.GetAttributeValue(Options, "scalemode")
             iScale = modXML.GetAttributeValue(Options, "scale")
+            bUseCaveBranchColorAsDefaultItemColor = modXML.GetAttributeValue(Options, "ucbcadic", False)
             iAdvancedClippingMode = modXML.GetAttributeValue(Options, "advancedclippingmode")
             If modXML.ChildElementExist(Options, "gps") Then
                 oGPS = New cGPSOptions(Options.Item("gps"))

@@ -228,4 +228,7 @@
   <data name="chkTherionMergeAndReorderBorders.Properties.Caption" xml:space="preserve">
     <value>Unisci e riordina bordi</value>
   </data>
+  <data name="chkcSurveyImportCreateNewBranch.Properties.Caption" xml:space="preserve">
+    <value>Importa tutto come nuova grotta/ramo</value>
+  </data>
 </root>

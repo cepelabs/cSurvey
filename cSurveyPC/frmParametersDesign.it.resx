@@ -149,4 +149,7 @@
   <data name="lblAdvancedClippingMode.Text" xml:space="preserve">
     <value>Clipping:</value>
   </data>
+  <data name="chkUseCaveBranchColorAsDefaultItemColor.Properties.Caption" xml:space="preserve">
+    <value>Uso il colore delle grotta/ramo come predefinito per gli oggetti grafici</value>
+  </data>
 </root>

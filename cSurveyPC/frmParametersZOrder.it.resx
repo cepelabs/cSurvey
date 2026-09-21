@@ -182,4 +182,7 @@
   <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="colCaveBranch.Caption" xml:space="preserve">
+    <value>Grotta/ramo</value>
+  </data>
 </root>

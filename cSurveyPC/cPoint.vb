@@ -458,15 +458,19 @@ Namespace cSurvey.Design
                 RaiseEvent OnChanged(Me)
             End If
         End Sub
+
         Public Function SetPen(ByVal Pen As cPen) As Boolean
             If Pen IsNot oPen Then
                 If oPen Is Nothing Then
-                    oPen = Pen
+                    oPen = New cPen(oSurvey, Pen)
+                    AddHandler oPen.OnRender, AddressOf oItem.oPen_OnRender
                 Else
                     If Pen Is Nothing Then
                         oPen = Nothing
                     Else
-                        oPen.ID = Pen.ID
+                        'oPen.ID = Pen.ID
+                        oPen = New cPen(oSurvey, Pen)
+                        AddHandler oPen.OnRender, AddressOf oItem.oPen_OnRender
                     End If
                 End If
                 RaiseEvent OnChanged(Me)
@@ -478,10 +482,6 @@ Namespace cSurvey.Design
             Get
                 Return oPen
             End Get
-            'Set(ByVal value As cPen)
-            '    oPen = value
-            '    RaiseEvent OnChanged(Me)
-            'End Set
         End Property
 
         Public Function GetNext() As cPoint

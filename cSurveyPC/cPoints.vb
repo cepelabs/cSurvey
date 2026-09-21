@@ -493,7 +493,7 @@ Namespace cSurvey.Design
             Return oMetas
         End Function
 
-        Public Sub Parse(Points As XmlElement)
+        Friend Sub Parse(Points As XmlElement)
             oPoints = New List(Of cPoint)
             If Points.HasAttribute("data") Then
                 'data attribute is for 'new' survey...
@@ -570,6 +570,7 @@ Namespace cSurvey.Design
                                 If bBeginSequence Then
                                     If sValue.StartsWith("P") Then
                                         oPen = New cPen(oSurvey, Points.ChildNodes(iPenChildNodeIndex))
+                                        AddHandler oPen.OnRender, AddressOf oItem.oPen_OnRender
                                         sValue = sValue.Remove(0, 1)
                                         iPenChildNodeIndex += 1
                                     Else

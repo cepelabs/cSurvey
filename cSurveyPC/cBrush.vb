@@ -2464,8 +2464,10 @@ Namespace cSurvey.Design
             If iType <> cBrush.BrushTypeEnum.None Then
                 If Path.PointCount > 1 Then
                     Dim oRenderArgs As cBrush.cRenderEventArgs = New cBrush.cRenderEventArgs(PaintOptions)
-                    oRenderArgs.Color = oPen.Color
-                    RaiseEvent OnRender(Me, oRenderArgs)
+                    If oPen IsNot Nothing Then
+                        oRenderArgs.Color = oPen.Color
+                        RaiseEvent OnRender(Me, oRenderArgs)
+                    End If
 
                     Dim oBackupColors(7) As Color
                     If oRenderArgs.Transparency <> 0 OrElse oRenderArgs.UseColor Then

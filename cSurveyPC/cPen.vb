@@ -1011,8 +1011,10 @@ Namespace cSurvey.Design
                     Call Cache.AddBorder(Path, Nothing, oWireframePen)
                 Else
                     Dim oRenderArgs As cPen.cRenderEventArgs = New cPen.cRenderEventArgs(PaintOptions)
-                    oRenderArgs.Color = oPen.Color
-                    RaiseEvent OnRender(Me, oRenderArgs)
+                    If oPen IsNot Nothing Then
+                        oRenderArgs.Color = oPen.Color
+                        RaiseEvent OnRender(Me, oRenderArgs)
+                    End If
 
                     Dim oBackupColors(2) As Color
                     If oRenderArgs.Transparency <> 0 OrElse oRenderArgs.UseColor Then
@@ -1050,88 +1052,88 @@ Namespace cSurvey.Design
                     'End If
 
                     Dim sZoomFactor As Single = GetPaintZoomFactor(PaintOptions)
-                    If iDecorationPosition = cPen.DecorationPositionEnum.Above Then
-                        Call Cache.AddBorder(Path, oPen, oWireframePen)
-                    End If
-                    If DecorationStyle <> cPen.DecorationStylesEnum.None Then
-                        Dim oTmpClipart As cDrawClipArt
-                        Dim bUsePen As Boolean = True
-                        Dim bUseBrush As Boolean
-                        Select Case DecorationStyle
-                            Case cPen.DecorationStylesEnum.UpArrow
-                                oTmpClipart = modPenClipart.ClipartArrowUp
-                                bUseBrush = True
-                            Case cPen.DecorationStylesEnum.DownArrow
-                                oTmpClipart = modPenClipart.ClipartArrowDown
-                                bUseBrush = True
-                            Case cPen.DecorationStylesEnum.Dash
-                                oTmpClipart = modPenClipart.ClipartDash
-                                bUseBrush = False
-                            Case cPen.DecorationStylesEnum.Triangle
-                                oTmpClipart = modPenClipart.ClipartTriangleUp
-                                bUseBrush = True
-                            Case cPen.DecorationStylesEnum.DownTriangle
-                                oTmpClipart = modPenClipart.ClipartTriangleDown
-                                bUseBrush = True
-                            Case cPen.DecorationStylesEnum.UpTriangle
-                                oTmpClipart = modPenClipart.ClipartTriangleUp
-                                bUseBrush = True
-                            Case cPen.DecorationStylesEnum.Ice
-                                oTmpClipart = modPenClipart.Ice
-                                bUseBrush = False
-                            Case cPen.DecorationStylesEnum.EmptyDownTriangle
-                                oTmpClipart = modPenClipart.ClipartTriangleDown
-                                bUseBrush = False
-                            Case cPen.DecorationStylesEnum.EmptyUpTriangle
-                                oTmpClipart = modPenClipart.ClipartTriangleUp
-                                bUseBrush = False
+                        If iDecorationPosition = cPen.DecorationPositionEnum.Above Then
+                            Call Cache.AddBorder(Path, oPen, oWireframePen)
+                        End If
+                        If DecorationStyle <> cPen.DecorationStylesEnum.None Then
+                            Dim oTmpClipart As cDrawClipArt
+                            Dim bUsePen As Boolean = True
+                            Dim bUseBrush As Boolean
+                            Select Case DecorationStyle
+                                Case cPen.DecorationStylesEnum.UpArrow
+                                    oTmpClipart = modPenClipart.ClipartArrowUp
+                                    bUseBrush = True
+                                Case cPen.DecorationStylesEnum.DownArrow
+                                    oTmpClipart = modPenClipart.ClipartArrowDown
+                                    bUseBrush = True
+                                Case cPen.DecorationStylesEnum.Dash
+                                    oTmpClipart = modPenClipart.ClipartDash
+                                    bUseBrush = False
+                                Case cPen.DecorationStylesEnum.Triangle
+                                    oTmpClipart = modPenClipart.ClipartTriangleUp
+                                    bUseBrush = True
+                                Case cPen.DecorationStylesEnum.DownTriangle
+                                    oTmpClipart = modPenClipart.ClipartTriangleDown
+                                    bUseBrush = True
+                                Case cPen.DecorationStylesEnum.UpTriangle
+                                    oTmpClipart = modPenClipart.ClipartTriangleUp
+                                    bUseBrush = True
+                                Case cPen.DecorationStylesEnum.Ice
+                                    oTmpClipart = modPenClipart.Ice
+                                    bUseBrush = False
+                                Case cPen.DecorationStylesEnum.EmptyDownTriangle
+                                    oTmpClipart = modPenClipart.ClipartTriangleDown
+                                    bUseBrush = False
+                                Case cPen.DecorationStylesEnum.EmptyUpTriangle
+                                    oTmpClipart = modPenClipart.ClipartTriangleUp
+                                    bUseBrush = False
 
-                            Case cPen.DecorationStylesEnum.UpDownTriangle
-                                oTmpClipart = modPenClipart.ClipartTriangleUpDown
-                                bUseBrush = True
-                            Case cPen.DecorationStylesEnum.DownUpTriangle
-                                oTmpClipart = modPenClipart.ClipartTriangleDownUp
-                                bUseBrush = True
-                            Case cPen.DecorationStylesEnum.LeftHalfArrow
-                                oTmpClipart = modPenClipart.ClipartLeftHalfArrow
-                                bUseBrush = False
-                            Case cPen.DecorationStylesEnum.RightHalfArrow
-                                oTmpClipart = modPenClipart.ClipartRightHalfArrow
-                                bUseBrush = False
-                            Case cPen.DecorationStylesEnum.DoubleHalfArrow
-                                oTmpClipart = modPenClipart.ClipartDoubleHalfArrow
-                                bUseBrush = False
-                            Case cPen.DecorationStylesEnum.LeftArrow
-                                oTmpClipart = modPenClipart.ClipartLeftArrow
-                                bUseBrush = False
-                            Case cPen.DecorationStylesEnum.RightArrow
-                                oTmpClipart = modPenClipart.ClipartRightArrow
-                                bUseBrush = False
-                            Case cPen.DecorationStylesEnum.DoubleArrow
-                                oTmpClipart = modPenClipart.ClipartDoubleArrow
-                                bUseBrush = False
+                                Case cPen.DecorationStylesEnum.UpDownTriangle
+                                    oTmpClipart = modPenClipart.ClipartTriangleUpDown
+                                    bUseBrush = True
+                                Case cPen.DecorationStylesEnum.DownUpTriangle
+                                    oTmpClipart = modPenClipart.ClipartTriangleDownUp
+                                    bUseBrush = True
+                                Case cPen.DecorationStylesEnum.LeftHalfArrow
+                                    oTmpClipart = modPenClipart.ClipartLeftHalfArrow
+                                    bUseBrush = False
+                                Case cPen.DecorationStylesEnum.RightHalfArrow
+                                    oTmpClipart = modPenClipart.ClipartRightHalfArrow
+                                    bUseBrush = False
+                                Case cPen.DecorationStylesEnum.DoubleHalfArrow
+                                    oTmpClipart = modPenClipart.ClipartDoubleHalfArrow
+                                    bUseBrush = False
+                                Case cPen.DecorationStylesEnum.LeftArrow
+                                    oTmpClipart = modPenClipart.ClipartLeftArrow
+                                    bUseBrush = False
+                                Case cPen.DecorationStylesEnum.RightArrow
+                                    oTmpClipart = modPenClipart.ClipartRightArrow
+                                    bUseBrush = False
+                                Case cPen.DecorationStylesEnum.DoubleArrow
+                                    oTmpClipart = modPenClipart.ClipartDoubleArrow
+                                    bUseBrush = False
 
-                            Case Else
-                                oTmpClipart = oClipart
-                                bUseBrush = True
-                        End Select
-                        Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Path.PathData, oTmpClipart, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, sDecorationDistancePercentage, sDecorationScale * sZoomFactor)
-                            If Not oPath Is Nothing Then
-                                Call Cache.AddBorder(oPath, If(bUsePen, oClipartPen, Nothing), Nothing, If(bUseBrush, oClipartBrush, Nothing))
-                            End If
-                        End Using
-                    End If
-                    If iDecorationPosition = cPen.DecorationPositionEnum.Behind Then
-                        Call Cache.AddBorder(Path, oPen, oWireframePen)
-                    End If
+                                Case Else
+                                    oTmpClipart = oClipart
+                                    bUseBrush = True
+                            End Select
+                            Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Path.PathData, oTmpClipart, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, sDecorationDistancePercentage, sDecorationScale * sZoomFactor)
+                                If Not oPath Is Nothing Then
+                                    Call Cache.AddBorder(oPath, If(bUsePen, oClipartPen, Nothing), Nothing, If(bUseBrush, oClipartBrush, Nothing))
+                                End If
+                            End Using
+                        End If
+                        If iDecorationPosition = cPen.DecorationPositionEnum.Behind Then
+                            Call Cache.AddBorder(Path, oPen, oWireframePen)
+                        End If
 
-                    If oRenderArgs.Transparency <> 0 Then
-                        oPen.Color = oBackupColors(0)
-                        oClipartPen.Color = oBackupColors(1)
-                        If oClipartBrush IsNot Nothing Then oClipartBrush.Color = oBackupColors(2)
+                        If oRenderArgs.Transparency <> 0 Then
+                            oPen.Color = oBackupColors(0)
+                            oClipartPen.Color = oBackupColors(1)
+                            If oClipartBrush IsNot Nothing Then oClipartBrush.Color = oBackupColors(2)
+                        End If
                     End If
                 End If
-            End If
         End Sub
 
         Private Sub oSurvey_OnPropertiesChanged(ByVal Sender As cSurvey, ByVal Args As cSurvey.OnPropertiesChangedEventArgs) Handles oSurvey.OnPropertiesChanged

@@ -463,14 +463,13 @@ Namespace cSurvey.Design
             If Pen IsNot oPen Then
                 If oPen Is Nothing Then
                     oPen = New cPen(oSurvey, Pen)
-                    AddHandler oPen.OnRender, AddressOf oItem.oPen_OnRender
+                    AddHandler oPen.OnRender, AddressOf Item.oPen_OnRender
                 Else
                     If Pen Is Nothing Then
                         oPen = Nothing
                     Else
-                        'oPen.ID = Pen.ID
                         oPen = New cPen(oSurvey, Pen)
-                        AddHandler oPen.OnRender, AddressOf oItem.oPen_OnRender
+                        AddHandler oPen.OnRender, AddressOf Item.oPen_OnRender
                     End If
                 End If
                 RaiseEvent OnChanged(Me)

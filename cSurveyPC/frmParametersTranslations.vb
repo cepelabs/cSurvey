@@ -99,18 +99,6 @@ Friend Class frmParametersTranslations
             MyBase.New
         End Sub
 
-        'Public ReadOnly Property Item(ByVal Index As Integer) As cTranslationsBagItem
-        '    Get
-        '        Return oItems(Index)
-        '    End Get
-        'End Property
-
-        'Public ReadOnly Property Count() As Integer
-        '    Get
-        '        Return oItems.Count
-        '    End Get
-        'End Property
-
         Private Sub oItem_OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs)
             Call PropertyChanged("Item." & e.Name)
         End Sub
@@ -121,10 +109,6 @@ Friend Class frmParametersTranslations
             Call MyBase.Add(oItem)
             Return oItem
         End Function
-
-        'Public Function GetEnumerator() As System.Collections.IEnumerator Implements System.Collections.IEnumerable.GetEnumerator
-        '    Return oItems.GetEnumerator
-        'End Function
 
         Public Sub PropertyChanged(Name As String) Implements cIUIBaseInteractions.PropertyChanged
             RaiseEvent OnPropertyChanged(Me, New PropertyChangeEventArgs(Name))

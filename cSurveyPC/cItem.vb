@@ -1230,14 +1230,14 @@ Namespace cSurvey.Design
                                 If bSetLineType And oNewPoint.LineType = cIItemLine.LineTypeEnum.Undefined Then
                                     oNewPoint.LineType = iSourceItemLineType
                                 End If
-                                If bSetPen And oNewPoint.Pen Is Nothing Then
-                                    oNewPoint.ResetPen()
-                                End If
                                 If Append Then
                                     Call Me.Points.Add(oNewPoint)
                                 Else
                                     Call Me.Points.Insert(iNewIndex, oNewPoint)
                                     iNewIndex += 1
+                                End If
+                                If bSetPen And oNewPoint.Pen Is Nothing Then
+                                    oNewPoint.SetPen(oItemPen)
                                 End If
                             Next
                             Call oLayer.Items.Remove(Item)

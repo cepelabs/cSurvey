@@ -27,24 +27,23 @@ Partial Class frmSurveyCleanUp
         Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
         Me.lblDescription = New DevExpress.XtraEditors.LabelControl()
         Me.chkDesignPointReduction = New DevExpress.XtraEditors.CheckEdit()
-        Me.txtDesignPointReductionFactor = New System.Windows.Forms.NumericUpDown()
         Me.lblPointReductionUM = New DevExpress.XtraEditors.LabelControl()
         Me.chkDesignPointsCleanUp = New DevExpress.XtraEditors.CheckEdit()
         Me.chkDesignCaveBranchCheck = New DevExpress.XtraEditors.CheckEdit()
         Me.chkDesignClipart = New DevExpress.XtraEditors.CheckEdit()
         Me.chkDesignSign = New DevExpress.XtraEditors.CheckEdit()
         Me.Label1 = New DevExpress.XtraEditors.LabelControl()
-        Me.cboDesignContext = New System.Windows.Forms.ComboBox()
         Me.lblCheckWarning = New DevExpress.XtraEditors.LabelControl()
         Me.chkPlotSegments = New DevExpress.XtraEditors.CheckEdit()
         Me.GroupBox1 = New DevExpress.XtraEditors.GroupControl()
         Me.chkSplayFlagsAndNames = New DevExpress.XtraEditors.CheckEdit()
         Me.chkSplayNames = New DevExpress.XtraEditors.CheckEdit()
         Me.GroupBox2 = New DevExpress.XtraEditors.GroupControl()
+        Me.cboDesignContext = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.txtDesignPointReductionFactor = New DevExpress.XtraEditors.SpinEdit()
         Me.chkDesignRemoveInvalidItem = New DevExpress.XtraEditors.CheckEdit()
         Me.chkDesignConnectToCheck = New DevExpress.XtraEditors.CheckEdit()
         CType(Me.chkDesignPointReduction.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignPointReductionFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkDesignPointsCleanUp.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkDesignCaveBranchCheck.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkDesignClipart.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -56,6 +55,8 @@ Partial Class frmSurveyCleanUp
         CType(Me.chkSplayNames.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.cboDesignContext.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignPointReductionFactor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkDesignRemoveInvalidItem.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkDesignConnectToCheck.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -85,16 +86,6 @@ Partial Class frmSurveyCleanUp
         Me.chkDesignPointReduction.Name = "chkDesignPointReduction"
         Me.chkDesignPointReduction.Properties.AutoWidth = True
         Me.chkDesignPointReduction.Properties.Caption = resources.GetString("chkDesignPointReduction.Properties.Caption")
-        '
-        'txtDesignPointReductionFactor
-        '
-        Me.txtDesignPointReductionFactor.DecimalPlaces = 2
-        resources.ApplyResources(Me.txtDesignPointReductionFactor, "txtDesignPointReductionFactor")
-        Me.txtDesignPointReductionFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
-        Me.txtDesignPointReductionFactor.Maximum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.txtDesignPointReductionFactor.Minimum = New Decimal(New Integer() {1, 0, 0, 131072})
-        Me.txtDesignPointReductionFactor.Name = "txtDesignPointReductionFactor"
-        Me.txtDesignPointReductionFactor.Value = New Decimal(New Integer() {2, 0, 0, 131072})
         '
         'lblPointReductionUM
         '
@@ -134,14 +125,6 @@ Partial Class frmSurveyCleanUp
         resources.ApplyResources(Me.Label1, "Label1")
         Me.Label1.Name = "Label1"
         '
-        'cboDesignContext
-        '
-        Me.cboDesignContext.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboDesignContext.FormattingEnabled = True
-        Me.cboDesignContext.Items.AddRange(New Object() {resources.GetString("cboDesignContext.Items"), resources.GetString("cboDesignContext.Items1"), resources.GetString("cboDesignContext.Items2")})
-        resources.ApplyResources(Me.cboDesignContext, "cboDesignContext")
-        Me.cboDesignContext.Name = "cboDesignContext"
-        '
         'lblCheckWarning
         '
         Me.lblCheckWarning.AllowHtmlString = True
@@ -179,19 +162,40 @@ Partial Class frmSurveyCleanUp
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.cboDesignContext)
+        Me.GroupBox2.Controls.Add(Me.txtDesignPointReductionFactor)
         Me.GroupBox2.Controls.Add(Me.chkDesignRemoveInvalidItem)
         Me.GroupBox2.Controls.Add(Me.chkDesignConnectToCheck)
         Me.GroupBox2.Controls.Add(Me.chkDesignCaveBranchCheck)
         Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Controls.Add(Me.chkDesignPointReduction)
-        Me.GroupBox2.Controls.Add(Me.txtDesignPointReductionFactor)
         Me.GroupBox2.Controls.Add(Me.lblPointReductionUM)
         Me.GroupBox2.Controls.Add(Me.chkDesignSign)
         Me.GroupBox2.Controls.Add(Me.chkDesignPointsCleanUp)
         Me.GroupBox2.Controls.Add(Me.chkDesignClipart)
-        Me.GroupBox2.Controls.Add(Me.cboDesignContext)
         resources.ApplyResources(Me.GroupBox2, "GroupBox2")
         Me.GroupBox2.Name = "GroupBox2"
+        '
+        'cboDesignContext
+        '
+        resources.ApplyResources(Me.cboDesignContext, "cboDesignContext")
+        Me.cboDesignContext.Name = "cboDesignContext"
+        Me.cboDesignContext.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboDesignContext.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboDesignContext.Properties.Items.AddRange(New Object() {resources.GetString("cboDesignContext.Properties.Items"), resources.GetString("cboDesignContext.Properties.Items1"), resources.GetString("cboDesignContext.Properties.Items2")})
+        Me.cboDesignContext.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
+        'txtDesignPointReductionFactor
+        '
+        resources.ApplyResources(Me.txtDesignPointReductionFactor, "txtDesignPointReductionFactor")
+        Me.txtDesignPointReductionFactor.Name = "txtDesignPointReductionFactor"
+        Me.txtDesignPointReductionFactor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDesignPointReductionFactor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtDesignPointReductionFactor.Properties.DisplayFormat.FormatString = "N2"
+        Me.txtDesignPointReductionFactor.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtDesignPointReductionFactor.Properties.EditFormat.FormatString = "N2"
+        Me.txtDesignPointReductionFactor.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtDesignPointReductionFactor.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        Me.txtDesignPointReductionFactor.Properties.MaxValue = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.txtDesignPointReductionFactor.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 131072})
         '
         'chkDesignRemoveInvalidItem
         '
@@ -224,7 +228,6 @@ Partial Class frmSurveyCleanUp
         Me.MinimizeBox = False
         Me.Name = "frmSurveyCleanUp"
         CType(Me.chkDesignPointReduction.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignPointReductionFactor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkDesignPointsCleanUp.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkDesignCaveBranchCheck.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkDesignClipart.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -238,6 +241,8 @@ Partial Class frmSurveyCleanUp
         CType(Me.GroupBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.cboDesignContext.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignPointReductionFactor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkDesignRemoveInvalidItem.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkDesignConnectToCheck.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -248,14 +253,12 @@ Partial Class frmSurveyCleanUp
     Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents lblDescription As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chkDesignPointReduction As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents txtDesignPointReductionFactor As System.Windows.Forms.NumericUpDown
     Friend WithEvents lblPointReductionUM As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chkDesignPointsCleanUp As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkDesignCaveBranchCheck As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkDesignClipart As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkDesignSign As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents Label1 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents cboDesignContext As System.Windows.Forms.ComboBox
     Friend WithEvents lblCheckWarning As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chkPlotSegments As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents GroupBox1 As DevExpress.XtraEditors.GroupControl
@@ -264,4 +267,6 @@ Partial Class frmSurveyCleanUp
     Friend WithEvents chkSplayNames As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkSplayFlagsAndNames As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkDesignRemoveInvalidItem As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents txtDesignPointReductionFactor As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents cboDesignContext As DevExpress.XtraEditors.ComboBoxEdit
 End Class

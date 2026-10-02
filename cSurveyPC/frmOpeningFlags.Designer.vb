@@ -63,6 +63,7 @@ Partial Class frmOpeningFlags
         '
         Me.lblDescription.Appearance.Options.UseTextOptions = True
         Me.lblDescription.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top
+        Me.lblDescription.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
         resources.ApplyResources(Me.lblDescription, "lblDescription")
         Me.lblDescription.Name = "lblDescription"
         '

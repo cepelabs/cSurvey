@@ -133,7 +133,7 @@
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cmdCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>4</value>
   </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -163,7 +163,7 @@
     <value>80, 25</value>
   </data>
   <data name="cmdOk.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>3</value>
   </data>
   <data name="cmdOk.Text" xml:space="preserve">
     <value>Check</value>
@@ -191,7 +191,7 @@
     <value>487, 42</value>
   </data>
   <data name="lblDescription.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>0</value>
   </data>
   <data name="lblDescription.Text" xml:space="preserve">
     <value>This function allows you to perform a variety of maintenance tasks aimed at solving any problems that may exist within the survey. Select one or more of the activities of maintenance and press 'Check' to run them.</value>
@@ -221,7 +221,7 @@
     <value>154, 20</value>
   </data>
   <data name="chkDesignPointReduction.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;chkDesignPointReduction.Name" xml:space="preserve">
     <value>chkDesignPointReduction</value>
@@ -233,37 +233,10 @@
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;chkDesignPointReduction.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="txtDesignPointReductionFactor.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="txtDesignPointReductionFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>276, 105</value>
-  </data>
-  <data name="txtDesignPointReductionFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 21</value>
-  </data>
-  <data name="txtDesignPointReductionFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="txtDesignPointReductionFactor.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtDesignPointReductionFactor.Name" xml:space="preserve">
-    <value>txtDesignPointReductionFactor</value>
-  </data>
-  <data name="&gt;&gt;txtDesignPointReductionFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtDesignPointReductionFactor.Parent" xml:space="preserve">
-    <value>GroupBox2</value>
-  </data>
-  <data name="&gt;&gt;txtDesignPointReductionFactor.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="lblPointReductionUM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>338, 107</value>
+    <value>337, 109</value>
   </data>
   <data name="lblPointReductionUM.Size" type="System.Drawing.Size, System.Drawing">
     <value>8, 13</value>
@@ -284,7 +257,7 @@
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;lblPointReductionUM.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="chkDesignPointsCleanUp.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -299,7 +272,7 @@
     <value>225, 20</value>
   </data>
   <data name="chkDesignPointsCleanUp.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;chkDesignPointsCleanUp.Name" xml:space="preserve">
     <value>chkDesignPointsCleanUp</value>
@@ -311,7 +284,7 @@
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;chkDesignPointsCleanUp.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="chkDesignCaveBranchCheck.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -326,7 +299,7 @@
     <value>176, 20</value>
   </data>
   <data name="chkDesignCaveBranchCheck.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;chkDesignCaveBranchCheck.Name" xml:space="preserve">
     <value>chkDesignCaveBranchCheck</value>
@@ -338,7 +311,7 @@
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;chkDesignCaveBranchCheck.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="chkDesignClipart.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -365,7 +338,7 @@
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;chkDesignClipart.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="chkDesignSign.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -392,7 +365,7 @@
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;chkDesignSign.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 78</value>
@@ -401,7 +374,7 @@
     <value>221, 13</value>
   </data>
   <data name="Label1.TabIndex" type="System.Int32, mscorlib">
-    <value>166</value>
+    <value>2</value>
   </data>
   <data name="Label1.Text" xml:space="preserve">
     <value>Perform the following checks and cleaning for:</value>
@@ -416,37 +389,7 @@
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="cboDesignContext.Items" xml:space="preserve">
-    <value>Plan and profile</value>
-  </data>
-  <data name="cboDesignContext.Items1" xml:space="preserve">
-    <value>Plan</value>
-  </data>
-  <data name="cboDesignContext.Items2" xml:space="preserve">
-    <value>Profile</value>
-  </data>
-  <data name="cboDesignContext.Location" type="System.Drawing.Point, System.Drawing">
-    <value>276, 75</value>
-  </data>
-  <data name="cboDesignContext.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 21</value>
-  </data>
-  <data name="cboDesignContext.TabIndex" type="System.Int32, mscorlib">
-    <value>167</value>
-  </data>
-  <data name="&gt;&gt;cboDesignContext.Name" xml:space="preserve">
-    <value>cboDesignContext</value>
-  </data>
-  <data name="&gt;&gt;cboDesignContext.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboDesignContext.Parent" xml:space="preserve">
-    <value>GroupBox2</value>
-  </data>
-  <data name="&gt;&gt;cboDesignContext.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>5</value>
   </data>
   <data name="lblCheckWarning.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -458,7 +401,7 @@
     <value>15, 368</value>
   </data>
   <data name="lblCheckWarning.Size" type="System.Drawing.Size, System.Drawing">
-    <value>272, 13</value>
+    <value>299, 16</value>
   </data>
   <data name="lblCheckWarning.TabIndex" type="System.Int32, mscorlib">
     <value>169</value>
@@ -491,7 +434,7 @@
     <value>235, 20</value>
   </data>
   <data name="chkPlotSegments.TabIndex" type="System.Int32, mscorlib">
-    <value>170</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;chkPlotSegments.Name" xml:space="preserve">
     <value>chkPlotSegments</value>
@@ -521,7 +464,7 @@
     <value>225, 20</value>
   </data>
   <data name="chkSplayFlagsAndNames.TabIndex" type="System.Int32, mscorlib">
-    <value>172</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;chkSplayFlagsAndNames.Name" xml:space="preserve">
     <value>chkSplayFlagsAndNames</value>
@@ -551,7 +494,7 @@
     <value>123, 20</value>
   </data>
   <data name="chkSplayNames.TabIndex" type="System.Int32, mscorlib">
-    <value>171</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;chkSplayNames.Name" xml:space="preserve">
     <value>chkSplayNames</value>
@@ -572,7 +515,7 @@
     <value>488, 83</value>
   </data>
   <data name="GroupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>171</value>
+    <value>1</value>
   </data>
   <data name="GroupBox1.Text" xml:space="preserve">
     <value>Shots and data:</value>
@@ -587,6 +530,67 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;GroupBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cboDesignContext.Location" type="System.Drawing.Point, System.Drawing">
+    <value>276, 75</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v24.2" name="DevExpress.Utils.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cboDesignContext.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboDesignContext.Properties.Items" xml:space="preserve">
+    <value>Plan and profile</value>
+  </data>
+  <data name="cboDesignContext.Properties.Items1" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+  <data name="cboDesignContext.Properties.Items2" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="cboDesignContext.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 20</value>
+  </data>
+  <data name="cboDesignContext.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;cboDesignContext.Name" xml:space="preserve">
+    <value>cboDesignContext</value>
+  </data>
+  <data name="&gt;&gt;cboDesignContext.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboDesignContext.Parent" xml:space="preserve">
+    <value>GroupBox2</value>
+  </data>
+  <data name="&gt;&gt;cboDesignContext.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtDesignPointReductionFactor.EditValue" type="System.Decimal, mscorlib">
+    <value>0.02</value>
+  </data>
+  <data name="txtDesignPointReductionFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>276, 106</value>
+  </data>
+  <data name="txtDesignPointReductionFactor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v24.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtDesignPointReductionFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 20</value>
+  </data>
+  <data name="txtDesignPointReductionFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txtDesignPointReductionFactor.Name" xml:space="preserve">
+    <value>txtDesignPointReductionFactor</value>
+  </data>
+  <data name="&gt;&gt;txtDesignPointReductionFactor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtDesignPointReductionFactor.Parent" xml:space="preserve">
+    <value>GroupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtDesignPointReductionFactor.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="chkDesignRemoveInvalidItem.EditValue" type="System.Boolean, mscorlib">
@@ -605,7 +609,7 @@
     <value>146, 20</value>
   </data>
   <data name="chkDesignRemoveInvalidItem.TabIndex" type="System.Int32, mscorlib">
-    <value>169</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;chkDesignRemoveInvalidItem.Name" xml:space="preserve">
     <value>chkDesignRemoveInvalidItem</value>
@@ -617,7 +621,7 @@
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;chkDesignRemoveInvalidItem.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="chkDesignConnectToCheck.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -632,7 +636,7 @@
     <value>112, 20</value>
   </data>
   <data name="chkDesignConnectToCheck.TabIndex" type="System.Int32, mscorlib">
-    <value>168</value>
+    <value>8</value>
   </data>
   <data name="chkDesignConnectToCheck.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -647,7 +651,7 @@
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;chkDesignConnectToCheck.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="GroupBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 146</value>
@@ -656,7 +660,7 @@
     <value>487, 211</value>
   </data>
   <data name="GroupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>172</value>
+    <value>2</value>
   </data>
   <data name="GroupBox2.Text" xml:space="preserve">
     <value>Design:</value>
@@ -682,9 +686,6 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>515, 432</value>
   </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
@@ -695,6 +696,6 @@
     <value>frmSurveyCleanUp</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cForm, cSurveyPC, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

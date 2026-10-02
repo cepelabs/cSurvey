@@ -910,6 +910,7 @@ Namespace cSurvey.Design
             Dim oBaseRect As RectangleF = New RectangleF
             For Each oItem As cItem In GetAllDesignVisibleItems(PaintOptions)
                 Dim oItemRect As RectangleF = oItem.GetBounds
+                Debug.Print(oItemRect.ToString)
                 If Not oItemRect.IsEmpty Then
                     If PaintOptions.DrawTranslation Then
                         Dim oTranslation As SizeF = GetItemTranslation(oItem)
@@ -925,6 +926,7 @@ Namespace cSurvey.Design
                         End If
                     End If
                 End If
+                Debug.Print("    " & oBaseRect.ToString)
             Next
             Return oBaseRect
         End Function

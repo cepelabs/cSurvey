@@ -759,8 +759,6 @@ Partial Class frmMain2
         Me.mnuDesignItemBar8 = New System.Windows.Forms.ToolStripSeparator()
         Me.pnlForm = New DevExpress.XtraEditors.XtraUserControl()
         Me.panelContainer1 = New DevExpress.XtraBars.Docking.DockPanel()
-        Me.dockClipart = New DevExpress.XtraBars.Docking.DockPanel()
-        Me.ControlContainer9 = New DevExpress.XtraBars.Docking.ControlContainer()
         Me.dockProperties = New DevExpress.XtraBars.Docking.DockPanel()
         Me.ControlContainer10 = New DevExpress.XtraBars.Docking.ControlContainer()
         Me.pnlDesignProp = New DevExpress.XtraLayout.LayoutControl()
@@ -772,6 +770,8 @@ Partial Class frmMain2
         Me.grpObjectProp = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.dockLevels = New DevExpress.XtraBars.Docking.DockPanel()
         Me.ControlContainer7 = New DevExpress.XtraBars.Docking.ControlContainer()
+        Me.dockClipart = New DevExpress.XtraBars.Docking.DockPanel()
+        Me.ControlContainer9 = New DevExpress.XtraBars.Docking.ControlContainer()
         Me.ControlContainer13 = New DevExpress.XtraBars.Docking.ControlContainer()
         Me.ControlContainer8 = New DevExpress.XtraBars.Docking.ControlContainer()
         Me.ControlContainer1 = New DevExpress.XtraBars.Docking.ControlContainer()
@@ -1064,7 +1064,6 @@ Partial Class frmMain2
         Me.mnuDesignItemOLD.SuspendLayout
         Me.pnlForm.SuspendLayout
         Me.panelContainer1.SuspendLayout
-        Me.dockClipart.SuspendLayout
         Me.dockProperties.SuspendLayout
         Me.ControlContainer10.SuspendLayout
         CType(Me.pnlDesignProp, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1076,6 +1075,7 @@ Partial Class frmMain2
         CType(Me.pnlObjectSubProp, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.grpObjectProp, System.ComponentModel.ISupportInitialize).BeginInit
         Me.dockLevels.SuspendLayout
+        Me.dockClipart.SuspendLayout
         Me.ControlContainer6.SuspendLayout
         Me.DockPanel1_Container.SuspendLayout
         CType(Me.spTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit
@@ -6830,24 +6830,6 @@ Partial Class frmMain2
         Me.panelContainer1.OriginalSize = New System.Drawing.Size(435, 200)
         Me.panelContainer1.Tabbed = True
         '
-        'dockClipart
-        '
-        Me.dockClipart.Controls.Add(Me.ControlContainer9)
-        Me.dockClipart.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill
-        Me.dockClipart.ID = New System.Guid("1f8674cd-b2ed-48cb-b031-6cbab311d096")
-        Me.dockClipart.ImageOptions.SvgImage = CType(resources.GetObject("dockClipart.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.dockClipart.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        resources.ApplyResources(Me.dockClipart, "dockClipart")
-        Me.dockClipart.Name = "dockClipart"
-        Me.dockClipart.Options.AllowDockAsTabbedDocument = False
-        Me.dockClipart.OriginalSize = New System.Drawing.Size(767, 766)
-        '
-        'ControlContainer9
-        '
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.ControlContainer9, CType(resources.GetObject("ControlContainer9.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        resources.ApplyResources(Me.ControlContainer9, "ControlContainer9")
-        Me.ControlContainer9.Name = "ControlContainer9"
-        '
         'dockProperties
         '
         Me.dockProperties.Controls.Add(Me.ControlContainer10)
@@ -6952,6 +6934,24 @@ Partial Class frmMain2
         Me.DefaultToolTipController.SetAllowHtmlText(Me.ControlContainer7, CType(resources.GetObject("ControlContainer7.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.ControlContainer7, "ControlContainer7")
         Me.ControlContainer7.Name = "ControlContainer7"
+        '
+        'dockClipart
+        '
+        Me.dockClipart.Controls.Add(Me.ControlContainer9)
+        Me.dockClipart.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill
+        Me.dockClipart.ID = New System.Guid("1f8674cd-b2ed-48cb-b031-6cbab311d096")
+        Me.dockClipart.ImageOptions.SvgImage = CType(resources.GetObject("dockClipart.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.dockClipart.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.dockClipart, "dockClipart")
+        Me.dockClipart.Name = "dockClipart"
+        Me.dockClipart.Options.AllowDockAsTabbedDocument = False
+        Me.dockClipart.OriginalSize = New System.Drawing.Size(767, 766)
+        '
+        'ControlContainer9
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.ControlContainer9, CType(resources.GetObject("ControlContainer9.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        resources.ApplyResources(Me.ControlContainer9, "ControlContainer9")
+        Me.ControlContainer9.Name = "ControlContainer9"
         '
         'ControlContainer13
         '
@@ -8007,7 +8007,6 @@ Partial Class frmMain2
         Me.mnuDesignItemOLD.ResumeLayout(False)
         Me.pnlForm.ResumeLayout(False)
         Me.panelContainer1.ResumeLayout(False)
-        Me.dockClipart.ResumeLayout(False)
         Me.dockProperties.ResumeLayout(False)
         Me.ControlContainer10.ResumeLayout(False)
         CType(Me.pnlDesignProp, System.ComponentModel.ISupportInitialize).EndInit
@@ -8019,6 +8018,7 @@ Partial Class frmMain2
         CType(Me.pnlObjectSubProp, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.grpObjectProp, System.ComponentModel.ISupportInitialize).EndInit
         Me.dockLevels.ResumeLayout(False)
+        Me.dockClipart.ResumeLayout(False)
         Me.ControlContainer6.ResumeLayout(False)
         Me.ControlContainer6.PerformLayout
         Me.DockPanel1_Container.ResumeLayout(False)

@@ -380,6 +380,7 @@ Namespace cSurvey.Design
 
             CacheItem.SetPen(Pen)
             For Each m In oMissing
+                CacheItem.StartFigure()
                 CacheItem.AddLine(New PointF(m.Item1, y), New PointF(m.Item2, y))
                 oTranslationDrawnH(y).Add(m)
             Next
@@ -400,6 +401,7 @@ Namespace cSurvey.Design
 
             CacheItem.SetPen(Pen)
             For Each m In oMissing
+                CacheItem.StartFigure()
                 CacheItem.AddLine(New PointF(x, m.Item1), New PointF(x, m.Item2))
                 oTranslationDrawnV(x).Add(m)
             Next

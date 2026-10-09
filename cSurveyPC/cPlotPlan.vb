@@ -494,7 +494,6 @@ Namespace cSurvey.Design
                                 End With
                             End If
 
-
                             With oSegment.Data
                                 Dim sFrom As String = oSurvey.Calculate.TrigPoints.ToEquateTrigpoint(.Data.From)
                                 Dim sTo As String = oSurvey.Calculate.TrigPoints.ToEquateTrigpoint(.Data.To)

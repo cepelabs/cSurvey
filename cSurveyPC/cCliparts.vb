@@ -385,8 +385,11 @@ Namespace cSurvey
         End Property
 
         Public Sub New(Filename As String)
-            sFilename = Filename.ToLower
-            sFolder = IO.Path.GetFileName(IO.Path.GetDirectoryName(sFilename))
+            'keep the path as given: on a case-sensitive file system (e.g. a Google Drive
+            'for desktop shared folder) the lowercased path does not exist, and both the
+            'loader below and cLayerSigns.CreateSign open the file through it
+            sFilename = Filename
+            sFolder = IO.Path.GetFileName(IO.Path.GetDirectoryName(sFilename)).ToLower
             oUserData = New Drawings.cDrawUserdata
             Dim oXml As XmlDocument = New XmlDocument
             oXml.Load(sFilename)

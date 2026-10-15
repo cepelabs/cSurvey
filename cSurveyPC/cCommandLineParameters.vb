@@ -133,8 +133,12 @@ Public Class cCommandLineParameters
             Dim sKey As String
             Dim sValue As String
             If p < 0 Then
-                sKey = sParam
-                sValue = ""
+                'a bare parameter is the file to open (a double-clicked .csx/.csz arrives
+                'so): pass it as filename=, whose value keeps its case - keys are
+                'lowercased, and on a case-sensitive file system (e.g. a Google Drive for
+                'desktop shared folder) the lowercased path does not exist
+                sKey = "filename"
+                sValue = sParam
             Else
                 sKey = sParam.Substring(0, p)
                 sValue = sParam.Substring(p + 1)

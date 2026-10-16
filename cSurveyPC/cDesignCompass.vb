@@ -102,8 +102,12 @@ Namespace cSurvey.Design
 
         Friend Overrides Function ToSvgItem(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline) As XmlElement
             Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions)
-            Call oSVGItem.SetAttribute("id", MyBase.Name)
-            Return oSVGItem
+            If oSVGItem Is Nothing Then
+                Return Nothing
+            Else
+                Call oSVGItem.SetAttribute("id", MyBase.Name)
+                Return oSVGItem
+            End If
         End Function
 
         Friend Overrides Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cSVGWriter.SVGOptionsEnum) As XmlDocument

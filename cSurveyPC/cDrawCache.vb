@@ -368,7 +368,11 @@ Namespace cSurvey.Drawings
                 Next
             End SyncLock
 
-            Return oSVGGroup
+            If oSVGGroup.ChildNodes.Count = 0 Then
+                Return Nothing
+            Else
+                Return oSVGGroup
+            End If
         End Function
 
         Public Function Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum) As Boolean

@@ -355,8 +355,12 @@ Namespace cSurvey.Design
                     Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
                 End If
                 Dim oSVGItem As XmlElement = oCaches(PaintOptions).ToSvgItem(SVG, PaintOptions, oMatrix)
-                Call modSVG.AddSourceReference(Me, oSVGItem, SVG.Options)
-                Return oSVGItem
+                If oSVGItem Is Nothing Then
+                    Return Nothing
+                Else
+                    Call modSVG.AddSourceReference(Me, oSVGItem, SVG.Options)
+                    Return oSVGItem
+                End If
             End Using
         End Function
 

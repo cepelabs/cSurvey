@@ -17,8 +17,12 @@ Namespace cSurvey.Design
 
         Friend Overridable Function ToSvgItem(ByVal SVG As cSVGWriter, ByVal PaintOptions As cOptionsCenterline) As XmlElement
             Dim oSVGItem As XmlElement = oCaches(PaintOptions).ToSvgItem(SVG, PaintOptions)
-            Call oSVGItem.SetAttribute("id", sName)
-            Return oSVGItem
+            If oSVGItem Is Nothing Then
+                Return Nothing
+            Else
+                Call oSVGItem.SetAttribute("id", sName)
+                Return oSVGItem
+            End If
         End Function
 
         Friend Overridable Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cSVGWriter.SVGOptionsEnum) As XmlDocument

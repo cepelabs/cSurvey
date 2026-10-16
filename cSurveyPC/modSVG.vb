@@ -328,10 +328,12 @@ Module modSVG
     End Function
 
     Public Sub AppendItem(ByVal SVG As cSVGWriter, ByVal Parent As XmlElement, ByVal Item As XmlElement)
-        If Parent Is Nothing Then
-            Call SVG.Item("svg").AppendChild(Item)
-        Else
-            Call Parent.AppendChild(Item)
+        If Item IsNot Nothing Then
+            If Parent Is Nothing Then
+                Call SVG.Item("svg").AppendChild(Item)
+            Else
+                Call Parent.AppendChild(Item)
+            End If
         End If
     End Sub
 

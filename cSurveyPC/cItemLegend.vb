@@ -823,7 +823,7 @@ Namespace cSurvey.Design.Items
                                     Call oTextPath.Transform(oTranslateMatrix)
                                 End Using
                                 Call oFont.Render(Graphics, PaintOptions, Options, oTextPath, oCache)
-                                sItemItemTop += oTextPath.GetBounds.Height + sItemVPadding * 2
+                                sItemItemTop += oTextPath.GetBounds.Height + sItemVPadding * 4.0
                                 sItemTop = sItemItemTop
                             End Using
                         End Using

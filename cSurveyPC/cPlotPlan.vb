@@ -620,15 +620,8 @@ Namespace cSurvey.Design
             For Each oCaches As cDrawCaches In oTrigpointsCaches.Values
                 Call modSVG.AppendItem(SVG, oSVGGroup, oCaches(PaintOptions).ToSvgItem(SVG, PaintOptions))
             Next
-            'Call modSVG.AppendItem(SVG, oSVGGroup, MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options))
             Return oSVGGroup
         End Function
-
-        'Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, ByVal ViewBox As RectangleF) As XmlDocument
-        '    Dim oSVG As cSVGWriter = modSVG.CreateSVG
-        '    Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options, Size, ViewBox))
-        '    Return oSVG
-        'End Function
 
         Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, Selection As Helper.Editor.cIEditSelection)
             If Not PaintOptions.IsDesign Then
@@ -642,7 +635,6 @@ Namespace cSurvey.Design
             For Each oCaches As cDrawCaches In oTrigpointsCaches.Values
                 oCaches(PaintOptions).Paint(Graphics, PaintOptions, cItem.PaintOptionsEnum.None)
             Next
-            'Call MyBase.Caches(PaintOptions).Paint(Graphics, PaintOptions, cItem.PaintOptionsEnum.None)
         End Sub
 
         Friend Overrides Sub ResetChanges()

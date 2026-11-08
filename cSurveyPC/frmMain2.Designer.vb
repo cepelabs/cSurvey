@@ -525,7 +525,7 @@ Partial Class frmMain2
         Me.grpDesignPens = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.grpDesignOptions = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.pageView = New DevExpress.XtraBars.Ribbon.RibbonPage()
-        Me.grdViewWorkspace = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.grpViewWorkspace = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.grpViewWindows = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.grpViewToolbar = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.grpColorScheme = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
@@ -4665,18 +4665,18 @@ Partial Class frmMain2
         '
         'pageView
         '
-        Me.pageView.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.grdViewWorkspace, Me.grpViewWindows, Me.grpViewToolbar, Me.grpColorScheme})
+        Me.pageView.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.grpViewWorkspace, Me.grpViewWindows, Me.grpViewToolbar, Me.grpColorScheme})
         Me.pageView.Name = "pageView"
         resources.ApplyResources(Me.pageView, "pageView")
         '
-        'grdViewWorkspace
+        'grpViewWorkspace
         '
-        Me.grdViewWorkspace.ItemLinks.Add(Me.btnViewWorkspaceData)
-        Me.grdViewWorkspace.ItemLinks.Add(Me.btnViewWorkspaceDesign)
-        Me.grdViewWorkspace.ItemLinks.Add(Me.btnViewWorkspaceAll)
-        Me.grdViewWorkspace.ItemLinks.Add(Me.btnWorkspacesManage, True)
-        Me.grdViewWorkspace.Name = "grdViewWorkspace"
-        resources.ApplyResources(Me.grdViewWorkspace, "grdViewWorkspace")
+        Me.grpViewWorkspace.ItemLinks.Add(Me.btnViewWorkspaceData)
+        Me.grpViewWorkspace.ItemLinks.Add(Me.btnViewWorkspaceDesign)
+        Me.grpViewWorkspace.ItemLinks.Add(Me.btnViewWorkspaceAll)
+        Me.grpViewWorkspace.ItemLinks.Add(Me.btnWorkspacesManage, True)
+        Me.grpViewWorkspace.Name = "grpViewWorkspace"
+        resources.ApplyResources(Me.grpViewWorkspace, "grpViewWorkspace")
         '
         'grpViewWindows
         '
@@ -6773,7 +6773,6 @@ Partial Class frmMain2
         '
         '
         '
-        Me.DefaultToolTipController.DefaultController.KeepWhileHovered = True
         Me.DefaultToolTipController.DefaultController.ToolTipType = DevExpress.Utils.ToolTipType.SuperTip
         '
         'mnuDesignItemOLD
@@ -8255,7 +8254,7 @@ Partial Class frmMain2
     Friend WithEvents btnViewObjectProp As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnViewDesignArea As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents pageView As DevExpress.XtraBars.Ribbon.RibbonPage
-    Friend WithEvents grdViewWorkspace As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents grpViewWorkspace As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents grpViewWindows As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents btnViewPlan As DevExpress.XtraBars.BarCheckItem
     Friend WithEvents btnViewProfile As DevExpress.XtraBars.BarCheckItem

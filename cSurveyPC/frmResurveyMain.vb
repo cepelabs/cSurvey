@@ -5539,4 +5539,69 @@ Friend Class frmResurveyMain
             RibbonControl.Toolbar.ItemLinks.Insert(iIndex + 1, oItem)
         End If
     End Sub
+
+    Private Sub btnWorkspacesManage_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnWorkspacesManage.ItemClick
+        Call pWorkspacesManage()
+    End Sub
+
+    Private Sub mnuWorkspaces_Popup(sender As Object, e As EventArgs) Handles mnuWorkspaces.Popup
+        Call btnWorkspacesList.Strings.Clear()
+        Call btnWorkspacesList.Strings.AddRange(WorkspaceManager.Workspaces.Select(Function(oitem) oitem.Name).Cast(Of Object).ToArray)
+    End Sub
+
+    Private Sub btnWorkspacesList_ListItemClick(sender As Object, e As ListItemClickEventArgs) Handles btnWorkspacesList.ListItemClick
+        Dim sWorkspaceName As String = DirectCast(sender, DevExpress.XtraBars.BarListItem).Strings(e.Index)
+        Call WorkspaceManager.ApplyWorkspace(sWorkspaceName)
+    End Sub
+
+    Private Sub btnWorkspacesCapture_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnWorkspacesCapture.ItemClick
+        Dim oWorkspace As DevExpress.Utils.IWorkspace = frmManageWorkspaces.CaptureWorkspace(Me, WorkspaceManager, "CRESOURCEWORKSPACE")
+        If oWorkspace IsNot Nothing Then
+            Call pSetStatus(String.Format(modMain.GetLocalizedString("manageworkspace.textpart1"), oWorkspace.Name))
+        End If
+    End Sub
+
+    Private Sub pWorkspacesManage()
+        Using frmMW As frmManageWorkspaces = New frmManageWorkspaces(WorkspaceManager, "CRESOURCEWORKSPACE", GetLocalizedString("resurvey.filetypeCRESURVEYWORKSPACE"))
+            Call frmMW.ShowDialog(Me)
+            'refresh workspace menu...
+            'Call pWorkspacesMenuAndToolbarUpdate()
+            'RemoveHandler frmMW.OnGetWorkspaceState, AddressOf frmManagekWorkspaces_OnGetWorkspaceState
+            'RemoveHandler frmMW.OnSetWorkspaceState, AddressOf frmManagekWorkspaces_OnSetWorkspaceState
+            'RemoveHandler frmMW.OnRestoreDefaultWorkspace, AddressOf frmManagekWorkspaces_OnRestoreDefaultWorkspace
+        End Using
+    End Sub
+
+    Private Sub btnViewWorkspaceFull_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnViewWorkspaceFull.ItemClick
+        Call pWordspaceFull
+    End Sub
+
+    Private Sub btnViewWorkspacePlan_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnViewWorkspacePlan.ItemClick
+        Call pWordspaceOnlyPlan
+    End Sub
+
+    Private Sub pWorkspaceDefault()
+        Call WorkspaceManager.LoadWorkspace("_default", System.IO.Path.Combine(modMain.GetUserApplicationPath, "_default.cresurveyworkspace"))
+        Call WorkspaceManager.ApplyWorkspace("_default")
+        Call WorkspaceManager.RemoveWorkspace("_default")
+    End Sub
+
+    Private Sub pWordspaceOnlyPlan()
+        Call pWorkspaceDefault()
+
+        dockProfile.Dock = DockingStyle.Fill
+        dockProfile.Visibility = DockVisibility.Hidden
+
+        dockPlan.Visibility = DockVisibility.Visible
+        dockStations.Visibility = DockVisibility.Visible
+        dockPlot.Visibility = DockVisibility.Visible
+    End Sub
+
+    Private Sub pWordspaceFull()
+        Call pWorkspaceDefault()
+
+        dockStations.Visibility = DockVisibility.Visible
+        dockPlot.Visibility = DockVisibility.Visible
+    End Sub
+
 End Class

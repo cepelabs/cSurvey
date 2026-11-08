@@ -1174,3 +1174,5 @@ main.textpart182=La versione di Therion è datata e sul sito è disponibile una 
 main.textpart183=Ultima versione online: 
 main.textpart184=Impossibile controllare online l'ultima versione di Therion. Controlla manualmente sul sito di Therion la presenza di una versione più aggiornata.
 main.textpart185=Stai utilizzando l'ultima versione di Therion.
+
+resurvey.filetypeCRESURVEYWORKSPACE=File workspace di cSurvey resurvey

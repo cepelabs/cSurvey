@@ -11223,7 +11223,7 @@
   <data name="pageDesign.Text" xml:space="preserve">
     <value>Design</value>
   </data>
-  <data name="grdViewWorkspace.Text" xml:space="preserve">
+  <data name="grpViewWorkspace.Text" xml:space="preserve">
     <value>Workspace</value>
   </data>
   <data name="grpViewWindows.Text" xml:space="preserve">
@@ -16624,10 +16624,10 @@
   <data name="&gt;&gt;pageView.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPage, DevExpress.XtraBars.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;grdViewWorkspace.Name" xml:space="preserve">
-    <value>grdViewWorkspace</value>
+  <data name="&gt;&gt;grpViewWorkspace.Name" xml:space="preserve">
+    <value>grpViewWorkspace</value>
   </data>
-  <data name="&gt;&gt;grdViewWorkspace.Type" xml:space="preserve">
+  <data name="&gt;&gt;grpViewWorkspace.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v24.2, Version=24.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;grpViewWindows.Name" xml:space="preserve">

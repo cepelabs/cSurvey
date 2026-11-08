@@ -3436,29 +3436,31 @@ Friend Class frmMain2
     End Sub
 
     Private Function pHitTest(CurrentDesign As cDesign, Point As PointF) As cItem
-        Dim oSelectedItem As cItem
-        If iAdvancedSelectionMode > 0 Then
-            Dim oHitTestResults As List(Of cItem) = CurrentDesign.HitTest(oCurrentOptions, pGetCurrentDesignTools, Point, sWide / sPaintZoom, False)
-            For Each oHitTestResult As cItem In oHitTestResults
-                If TypeOf oHitTestResult Is cItemImage OrElse TypeOf oHitTestResult Is cItemSketch OrElse TypeOf oHitTestResult Is cItemText Then
-                    Return oHitTestResult
-                    Exit For
-                Else
-                    Using oGraphics As Graphics = picMap.CreateGraphics
-                        If oHitTestResult.Caches.Item(oCurrentOptions).Hittest(oGraphics, Point, sPaintZoom, sAdvancedSelectionPrecision, sAdvancedSelectionWide) Then
-                            oSelectedItem = oHitTestResult
-                            Exit For
-                        End If
-                    End Using
+        If CurrentDesign IsNot Nothing Then
+            Dim oSelectedItem As cItem
+            If iAdvancedSelectionMode > 0 Then
+                Dim oHitTestResults As List(Of cItem) = CurrentDesign.HitTest(oCurrentOptions, pGetCurrentDesignTools, Point, sWide / sPaintZoom, False)
+                For Each oHitTestResult As cItem In oHitTestResults
+                    If TypeOf oHitTestResult Is cItemImage OrElse TypeOf oHitTestResult Is cItemSketch OrElse TypeOf oHitTestResult Is cItemText Then
+                        Return oHitTestResult
+                        Exit For
+                    Else
+                        Using oGraphics As Graphics = picMap.CreateGraphics
+                            If oHitTestResult.Caches.Item(oCurrentOptions).Hittest(oGraphics, Point, sPaintZoom, sAdvancedSelectionPrecision, sAdvancedSelectionWide) Then
+                                oSelectedItem = oHitTestResult
+                                Exit For
+                            End If
+                        End Using
+                    End If
+                Next
+                If iAdvancedSelectionMode > 1 AndAlso IsNothing(oSelectedItem) Then
+                    oSelectedItem = oHitTestResults.FirstOrDefault()
                 End If
-            Next
-            If iAdvancedSelectionMode > 1 AndAlso IsNothing(oSelectedItem) Then
-                oSelectedItem = oHitTestResults.FirstOrDefault()
+            Else
+                oSelectedItem = CurrentDesign.HitTest(oCurrentOptions, pGetCurrentDesignTools, Point, sWide / sPaintZoom, True).FirstOrDefault()
             End If
-        Else
-            oSelectedItem = CurrentDesign.HitTest(oCurrentOptions, pGetCurrentDesignTools, Point, sWide / sPaintZoom, True).FirstOrDefault()
+            Return oSelectedItem
         End If
-        Return oSelectedItem
     End Function
 
     Private Sub pMapSetCursor(ByVal Ctrl As Boolean, ByVal Shift As Boolean, ByVal Alt As Boolean, ByVal Button As MouseButtons)
@@ -16224,7 +16226,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pWorkspacesManage()
-        Using frmMW As frmManageWorkspaces = New frmManageWorkspaces(WorkspaceManager)
+        Using frmMW As frmManageWorkspaces = New frmManageWorkspaces(WorkspaceManager, "CWORKSPACE", GetLocalizedString("main.filetypeCWORKSPACE"))
             Call frmMW.ShowDialog(Me)
             'refresh workspace menu...
             'Call pWorkspacesMenuAndToolbarUpdate()
@@ -19535,7 +19537,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub btnWorkspacesCapture_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnWorkspacesCapture.ItemClick
-        Dim oWorkspace As DevExpress.Utils.IWorkspace = frmManageWorkspaces.CaptureWorkspace(Me, WorkspaceManager)
+        Dim oWorkspace As DevExpress.Utils.IWorkspace = frmManageWorkspaces.CaptureWorkspace(Me, WorkspaceManager, "CWORKSPACE")
         If oWorkspace IsNot Nothing Then
             Call pStatusSet(String.Format(modMain.GetLocalizedString("manageworkspace.textpart1"), oWorkspace.Name))
         End If

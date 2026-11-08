@@ -454,7 +454,21 @@ Module modSVG
         Call Item.Attributes.Append(GetItemStyle(SVG, Brush, Pen))
     End Sub
 
+    Public Sub AppendItemStyle(ByVal SVG As cSVGWriter, ByVal Item As XmlElement, ByVal Brush As Brush, ByVal Pen As Pen)
+        If TypeOf Brush Is SolidBrush Then
+            Call Item.Attributes.Append(GetItemStyle(SVG, DirectCast(Brush, SolidBrush), Pen))
+        ElseIf TypeOf Brush Is TextureBrush Then
+            Call Item.Attributes.Append(GetItemStyle(SVG, DirectCast(Brush, TextureBrush), Pen))
+        Else
+            Call Item.Attributes.Append(GetItemStyle(SVG, DirectCast(Nothing, SolidBrush), Pen))
+        End If
+    End Sub
+
     Public Sub AppendItemStyle(ByVal SVG As cSVGWriter, ByVal Item As XmlElement, ByVal Brush As SolidBrush, ByVal Pen As Pen)
+        Call Item.Attributes.Append(GetItemStyle(SVG, Brush, Pen))
+    End Sub
+
+    Public Sub AppendItemStyle(ByVal SVG As cSVGWriter, ByVal Item As XmlElement, ByVal Brush As TextureBrush, ByVal Pen As Pen)
         Call Item.Attributes.Append(GetItemStyle(SVG, Brush, Pen))
     End Sub
 
@@ -554,64 +568,179 @@ Module modSVG
         'End Function
     End Class
 
-    Public Function GetItemStyle(ByVal SVG As cSVGWriter, ByVal Brush As SolidBrush, ByVal Pen As Pen) As XmlAttribute
-        Dim sStyle As String = ""
+    Private Function pGetItemBrushStyle(ByVal SVG As cSVGWriter, Style As String, Brush As TextureBrush) As String
+        If (Not Brush Is Nothing) Then
+            If Brush.WrapMode = WrapMode.Clamp Then
+                Return Style
+            Else
+
+                Dim oCulture As Globalization.CultureInfo = Globalization.CultureInfo.InvariantCulture
+                Dim sImage As String
+                Dim iWidth As Integer
+                Dim iHeight As Integer
+
+                Using oImage As Image = Brush.Image
+                    iWidth = oImage.Width
+                    iHeight = oImage.Height
+                    Using oStream As New IO.MemoryStream
+                        oImage.Save(oStream, Imaging.ImageFormat.Png)
+                        sImage = Convert.ToBase64String(oStream.ToArray())
+                    End Using
+                End Using
+
+                Dim sMatrix As String = ""
+                Using oTransform As Matrix = Brush.Transform
+                    For Each sValue As Single In oTransform.Elements
+                        If sMatrix.Length > 0 Then sMatrix &= " "
+                        sMatrix &= sValue.ToString("R", oCulture)
+                    Next
+                End Using
+
+                'L'identificativo include immagine, trasformazione e modalità di ripetizione.
+                Dim sKey As String = sImage & "|" & sMatrix & "|" & CInt(Brush.WrapMode).ToString(oCulture)
+                Dim sID As String
+                Using oHash As Security.Cryptography.SHA256 = Security.Cryptography.SHA256.Create()
+                    sID = "texture_" & BitConverter.ToString(oHash.ComputeHash(Encoding.UTF8.GetBytes(sKey))).Replace("-", "").ToLowerInvariant()
+                End Using
+
+                Dim oRoot As XmlElement = SVG.DocumentElement
+
+                'Il documento stesso fa da cache dei pattern.
+                If oRoot.SelectSingleNode(".//*[@id='" & sID & "']") Is Nothing Then
+                    Dim oDefs As XmlElement = oRoot.Item("defs", svgNamespace)
+                    If oDefs Is Nothing Then
+                        oDefs = SVG.CreateElement("defs", svgNamespace)
+                        oRoot.PrependChild(oDefs)
+                    End If
+
+                    Dim bFlipX As Boolean = Brush.WrapMode = WrapMode.TileFlipX OrElse
+                                       Brush.WrapMode = WrapMode.TileFlipXY
+                    Dim bFlipY As Boolean = Brush.WrapMode = WrapMode.TileFlipY OrElse
+                                       Brush.WrapMode = WrapMode.TileFlipXY
+
+                    Dim oPattern As XmlElement = SVG.CreateElement("pattern", svgNamespace)
+                    oPattern.SetAttribute("id", sID)
+                    oPattern.SetAttribute("patternUnits", "userSpaceOnUse")
+                    oPattern.SetAttribute("patternContentUnits", "userSpaceOnUse")
+                    oPattern.SetAttribute("width", (CLng(iWidth) * If(bFlipX, 2, 1)).ToString(oCulture))
+                    oPattern.SetAttribute("height", (CLng(iHeight) * If(bFlipY, 2, 1)).ToString(oCulture))
+                    oPattern.SetAttribute("patternTransform", "matrix(" & sMatrix & ")")
+
+                    Dim oSVGImage As XmlElement = SVG.CreateElement("image", svgNamespace)
+                    oSVGImage.SetAttribute("id", sID & "_image")
+                    oSVGImage.SetAttribute("width", iWidth.ToString(oCulture))
+                    oSVGImage.SetAttribute("height", iHeight.ToString(oCulture))
+                    oSVGImage.SetAttribute("preserveAspectRatio", "none")
+                    oSVGImage.SetAttribute("href", xlinkNamespace, "data:image/png;base64," & sImage)
+                    oPattern.AppendChild(oSVGImage)
+
+                    'Le copie specchiate riutilizzano l'immagine senza duplicare il Base64.
+                    For iY As Integer = 0 To If(bFlipY, 1, 0)
+                        For iX As Integer = 0 To If(bFlipX, 1, 0)
+                            If iX = 0 AndAlso iY = 0 Then Continue For
+
+                            Dim oUse As XmlElement = SVG.CreateElement("use", svgNamespace)
+                            oUse.SetAttribute("href", xlinkNamespace, "#" & sID & "_image")
+                            oUse.SetAttribute("transform",
+                            "translate(" &
+                            (CLng(iX) * iWidth * 2).ToString(oCulture) & " " &
+                            (CLng(iY) * iHeight * 2).ToString(oCulture) &
+                            ") scale(" & If(iX = 0, "1", "-1") &
+                            " " & If(iY = 0, "1", "-1") & ")")
+                            oPattern.AppendChild(oUse)
+                        Next
+                    Next
+
+                    oDefs.AppendChild(oPattern)
+                End If
+
+                Return pSVGAppendStyle(Style, "fill", "url(#" & sID & ")")
+            End If
+        Else
+            Style = pSVGAppendStyle(Style, "fill", "none")
+        End If
+        Return Style
+    End Function
+
+    Private Function pGetItemBrushStyle(ByVal SVG As cSVGWriter, Style As String, Brush As SolidBrush) As String
         If (Not Brush Is Nothing) Then
             If Brush.Color = Color.Transparent Then
-                sStyle = pSVGAppendStyle(sStyle, "fill", "none")
+                Style = pSVGAppendStyle(Style, "fill", "none")
             Else
-                sStyle = pSVGAppendStyle(sStyle, "fill", pGetHTMLColor(Brush.Color))
+                Style = pSVGAppendStyle(Style, "fill", pGetHTMLColor(Brush.Color))
                 Dim sOpacity As Single = pGetColorAlfaPercentage(Brush.Color)
                 If sOpacity <> 100 Then
-                    sStyle = pSVGAppendStyle(sStyle, "opacity", modNumbers.NumberToString(sOpacity, ""))
+                    Style = pSVGAppendStyle(Style, "opacity", modNumbers.NumberToString(sOpacity, ""))
                 End If
             End If
         Else
-            sStyle = pSVGAppendStyle(sStyle, "fill", "none")
+            Style = pSVGAppendStyle(Style, "fill", "none")
         End If
+        Return Style
+    End Function
+
+    Private Function pGetPenStyle(ByVal SVG As cSVGWriter, Style As String, Pen As Pen) As String
         If (Not Pen Is Nothing) Then
-            sStyle = pSVGAppendStyle(sStyle, "stroke", pGetHTMLColor(Pen.Color)) ' ColorTranslator.ToHtml(Item.Pen.Color).ToLower)
+            Style = pSVGAppendStyle(Style, "stroke", pGetHTMLColor(Pen.Color)) ' ColorTranslator.ToHtml(Item.Pen.Color).ToLower)
             Dim sPenWidth As Single = modNumbers.MathRound(Pen.Width, 2)
             If sPenWidth <= 0 Then
                 sPenWidth = sMinPenWidth
-                sStyle = pSVGAppendStyle(sStyle, "vector-effect", "none")
+                Style = pSVGAppendStyle(Style, "vector-effect", "none")
             End If
             Select Case Pen.DashStyle
                 Case DashStyle.Dash
-                    sStyle = pSVGAppendStyle(sStyle, "stroke-dasharray", modNumbers.NumberToString(sPenWidth * 2.2, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "")) ' "0.1,0.1")
+                    Style = pSVGAppendStyle(Style, "stroke-dasharray", modNumbers.NumberToString(sPenWidth * 2.2, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "")) ' "0.1,0.1")
                 Case DashStyle.DashDot
-                    sStyle = pSVGAppendStyle(sStyle, "stroke-dasharray", modNumbers.NumberToString(sPenWidth * 2.2, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, ""))' "0.1,0.01")
+                    Style = pSVGAppendStyle(Style, "stroke-dasharray", modNumbers.NumberToString(sPenWidth * 2.2, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, ""))' "0.1,0.01")
                 Case DashStyle.Dot
-                    sStyle = pSVGAppendStyle(sStyle, "stroke-dasharray", modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, ""))' "0.01,0.01")
+                    Style = pSVGAppendStyle(Style, "stroke-dasharray", modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, ""))' "0.01,0.01")
                 Case cPen.PenStylesEnum.DashDotDot
-                    sStyle = pSVGAppendStyle(sStyle, "stroke-dasharray", modNumbers.NumberToString(sPenWidth * 2.2, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "")) ' "0.1,0.01")
+                    Style = pSVGAppendStyle(Style, "stroke-dasharray", modNumbers.NumberToString(sPenWidth * 2.2, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "") & "," & modNumbers.NumberToString(sPenWidth * 1.8, "")) ' "0.1,0.01")
                 Case DashStyle.Custom
-                    sStyle = pSVGAppendStyle(sStyle, "stroke-dasharray", String.Join(",", Pen.DashPattern.Select(Function(value) NumberToString(sPenWidth * value, "")).ToArray))
+                    Style = pSVGAppendStyle(Style, "stroke-dasharray", String.Join(",", Pen.DashPattern.Select(Function(value) NumberToString(sPenWidth * value, "")).ToArray))
                 Case Else
             End Select
-            sStyle = pSVGAppendStyle(sStyle, "stroke-width", modNumbers.NumberToString(sPenWidth, ""))
+            Style = pSVGAppendStyle(Style, "stroke-width", modNumbers.NumberToString(sPenWidth, ""))
             Select Case Pen.StartCap
                 Case LineCap.Flat
-                    sStyle = pSVGAppendStyle(sStyle, "stroke-linecap", "butt ")
+                    Style = pSVGAppendStyle(Style, "stroke-linecap", "butt ")
                 Case LineCap.Round
-                    sStyle = pSVGAppendStyle(sStyle, "stroke-linecap", "round")
+                    Style = pSVGAppendStyle(Style, "stroke-linecap", "round")
                 Case LineCap.Square
-                    sStyle = pSVGAppendStyle(sStyle, "stroke-linecap", "square")
+                    Style = pSVGAppendStyle(Style, "stroke-linecap", "square")
             End Select
             Select Case Pen.LineJoin
                 Case LineJoin.Bevel
-                    sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "bevel")
+                    Style = pSVGAppendStyle(Style, "stroke-linejoin", "bevel")
                 Case LineJoin.Miter
-                    sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "miter")
+                    Style = pSVGAppendStyle(Style, "stroke-linejoin", "miter")
                 Case LineJoin.MiterClipped
-                    sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "miter-clip")
+                    Style = pSVGAppendStyle(Style, "stroke-linejoin", "miter-clip")
                 Case LineJoin.Round
-                    sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "round")
+                    Style = pSVGAppendStyle(Style, "stroke-linejoin", "round")
             End Select
-            sStyle = pSVGAppendStyle(sStyle, "stroke-opacity", "1")
+            Style = pSVGAppendStyle(Style, "stroke-opacity", "1")
         Else
-            sStyle = pSVGAppendStyle(sStyle, "stroke", "none")
+            Style = pSVGAppendStyle(Style, "stroke", "none")
         End If
+        Return Style
+    End Function
+
+    Public Function GetItemStyle(ByVal SVG As cSVGWriter, ByVal Brush As TextureBrush, ByVal Pen As Pen) As XmlAttribute
+        Dim sStyle As String = ""
+        sStyle = pGetItemBrushStyle(SVG, sStyle, Brush)
+        sStyle = pGetPenStyle(SVG, sStyle, Pen)
+
+        Dim sClassKey As String = SVG.StylesCache.Add(sStyle)
+        Dim oStyle As XmlAttribute = SVG.CreateAttribute("class")
+        oStyle.Value = sClassKey
+        Return oStyle
+    End Function
+
+    Public Function GetItemStyle(ByVal SVG As cSVGWriter, ByVal Brush As SolidBrush, ByVal Pen As Pen) As XmlAttribute
+        Dim sStyle As String = ""
+        sStyle = pGetItemBrushStyle(SVG, sStyle, Brush)
+        sStyle = pGetPenStyle(SVG, sStyle, Pen)
 
         Dim sClassKey As String = SVG.StylesCache.Add(sStyle)
         Dim oStyle As XmlAttribute = SVG.CreateAttribute("class")

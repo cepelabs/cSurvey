@@ -73,13 +73,18 @@ Friend Class frmManageWorkspaces
 
     Private oWorkspaceManager As DevExpress.Utils.WorkspaceManager
 
-    Public Sub New(WorkspaceManager As DevExpress.Utils.WorkspaceManager)
+    Private sExtension As String
+    Private sExtensionResource As String
+
+    Public Sub New(WorkspaceManager As DevExpress.Utils.WorkspaceManager, Extension As String, ExtensionResource As String)
 
         ' Chiamata richiesta dalla finestra di progettazione.
         InitializeComponent()
 
         oWorkspaceManager = WorkspaceManager
         grdWorkspaces.DataSource = WorkspaceManager.Workspaces
+
+        sExtension = Extension
     End Sub
 
     Public Shared Function GetNewWorkspaceName(WorkspaceManager As DevExpress.Utils.WorkspaceManager) As String
@@ -103,10 +108,11 @@ Friend Class frmManageWorkspaces
             Using osfd As SaveFileDialog = New SaveFileDialog
                 Dim sName As String = oWorkspace.Name
                 With osfd
-                    .Filter = GetLocalizedString("main.filetypeCWORKSPACE") & " (*.CWORKSPACE)|*.CWORKSPACE"
+                    '.Filter = GetLocalizedString("main.filetypeCWORKSPACE") & " (*.CWORKSPACE)|*.CWORKSPACE"
+                    .Filter = GetLocalizedString(sExtensionResource) & " (*." & sExtension & ")|*." & sExtension & ""
                     .FilterIndex = 1
                     .FileName = sName
-                    .DefaultExt = "CWORKSPACE"
+                    .DefaultExt = sExtension
                     If .ShowDialog(Me) = DialogResult.OK Then
                         Call oWorkspaceManager.SaveWorkspace(sName, .FileName, True)
                     End If
@@ -134,19 +140,19 @@ Friend Class frmManageWorkspaces
         End If
     End Sub
 
-    Public Shared Function CaptureWorkspace(Owner As IWin32Window, WorkspaceManager As DevExpress.Utils.WorkspaceManager) As DevExpress.Utils.IWorkspace
+    Public Shared Function CaptureWorkspace(Owner As IWin32Window, WorkspaceManager As DevExpress.Utils.WorkspaceManager, Extension As String) As DevExpress.Utils.IWorkspace
         Dim sName As String = GetNewWorkspaceName(WorkspaceManager)
         sName = sName.Trim
         If sName <> "" Then
             Dim bOk As Boolean
             sName = DevExpress.XtraEditors.XtraInputBox.Show(Owner, modMain.GetLocalizedString("manageworkspace.warning5"), modMain.GetLocalizedString("manageworkspace.warningtitle"), sName)
             If pExist(WorkspaceManager, sName) Then
-                bOk = MsgBox(modMain.GetLocalizedString("manageworkspace.warning3"), MsgBoxStyle.OkCancel, modMain.GetLocalizedString("manageworkspace.warningtitle")) = MsgBoxResult.Ok
+                bOk = cSurvey.UIHelpers.Dialogs.Msgbox(modMain.GetLocalizedString("manageworkspace.warning3"), MsgBoxStyle.OkCancel, modMain.GetLocalizedString("manageworkspace.warningtitle")) = MsgBoxResult.Ok
             Else
                 bOk = True
             End If
             If bOk Then
-                Dim sFilename As String = IO.Path.Combine(modMain.GetUserApplicationPath, sName & ".cworkspace")
+                Dim sFilename As String = IO.Path.Combine(modMain.GetUserApplicationPath, sName & "." & Extension)
                 If pExist(WorkspaceManager, sName) Then
                     Call WorkspaceManager.RemoveWorkspace(sName)
                     If My.Computer.FileSystem.FileExists(sFilename) Then
@@ -166,7 +172,7 @@ Friend Class frmManageWorkspaces
     End Function
 
     Private Sub cmdSaveAs_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles cmdSaveAs.ItemClick
-        Dim oWorkspace As DevExpress.Utils.IWorkspace = CaptureWorkspace(Me, oWorkspaceManager)
+        Dim oWorkspace As DevExpress.Utils.IWorkspace = CaptureWorkspace(Me, oWorkspaceManager, sExtension)
         If oWorkspace IsNot Nothing Then
             Call grdWorkspaces.RefreshDataSource()
         End If
@@ -175,16 +181,17 @@ Friend Class frmManageWorkspaces
     Private Sub cmdImport_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles cmdImport.ItemClick
         Using oofd As OpenFileDialog = New OpenFileDialog
             With oofd
-                .Filter = GetLocalizedString("main.filetypeCWORKSPACE") & " (*.CWORKSPACE)|*.CWORKSPACE"
+                '.Filter = GetLocalizedString("main.filetypeCWORKSPACE") & " (*.CWORKSPACE)|*.CWORKSPACE"
+                .Filter = GetLocalizedString(sExtensionResource) & " (*." & sExtension & ")|*." & sExtension & ""
                 .FilterIndex = 1
-                .DefaultExt = "CWORKSPACE"
+                .DefaultExt = sExtension
                 If .ShowDialog(Me) = DialogResult.OK Then
                     Dim sFromFilename As String = .FileName
                     Dim sName As String = IO.Path.GetFileNameWithoutExtension(sFromFilename)
-                    Dim sFilename As String = IO.Path.Combine(modMain.GetUserApplicationPath, sName & ".cworkspace")
+                    Dim sFilename As String = IO.Path.Combine(modMain.GetUserApplicationPath, sName & "." & sExtension & "")
                     If sFromFilename.ToLower <> sFilename.ToLower Then
                         My.Computer.FileSystem.CopyFile(sFromFilename, sFilename, True)
-                        Call oWorkspaceManager.LoadWorkspace(sName, IO.Path.Combine(modMain.GetUserApplicationPath, sName & ".cworkspace"), False)
+                        Call oWorkspaceManager.LoadWorkspace(sName, IO.Path.Combine(modMain.GetUserApplicationPath, sName & "." & sExtension & ""), False)
                         Call grdWorkspaces.RefreshDataSource()
                     End If
                 End If

@@ -464,22 +464,17 @@ Public Module modDevExpress
 
     <Extension>
     Public Sub ExportToCSV(Grid As DevExpress.XtraVerticalGrid.VGridControl, Filename As String)
-        Using oTW As IO.TextWriter = New IO.StreamWriter(Filename)
-            'Dim oConfiguration As CsvHelper.CsvWriter.
-            Dim oCsvWriter As CsvHelper.CsvWriter = New CsvHelper.CsvWriter(oTW, Globalization.CultureInfo.InvariantCulture)
-            'oCsvWriter.Configuration.Delimiter = ";"
-            For Each oRow As BaseRow In Grid.Rows
-                Call oCsvWriter.WriteField(oRow.Properties.Caption)
-                Call oCsvWriter.WriteField(oRow.Properties.Value.ToString)
-                Call oCsvWriter.NextRecord()
-            Next
+        Dim oOptions As New CsvHelper.CsvWriterOptions With {.Separator = ";"c}
+        Using oTW As New IO.StreamWriter(Filename)
+            Using oCsvWriter As CsvHelper.CsvWriter = CsvHelper.CsvWriter.Create(oTW, oOptions, leaveOpen:=True)
+                For Each oRow As BaseRow In Grid.Rows
+                    Dim sValue As String = If(oRow.Properties.Value Is Nothing, "", oRow.Properties.Value.ToString())
+                    Call oCsvWriter.WriteField(oRow.Properties.Caption)
+                    Call oCsvWriter.WriteField(sValue)
+                    Call oCsvWriter.EndRecord()
+                Next
+            End Using
         End Using
-
-        Dim oText As StringBuilder = New StringBuilder
-        For Each oRow As BaseRow In Grid.Rows
-            oText.AppendLine(oRow.Properties.Caption & ";" & oRow.Properties.Value.ToString)
-        Next
-        My.Computer.FileSystem.WriteAllText(Filename, oText.ToString, False)
     End Sub
 
     <Extension>
